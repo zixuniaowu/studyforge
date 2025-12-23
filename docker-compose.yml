@@ -1,0 +1,35 @@
+version: '3.8'
+
+services:
+  studyforge:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "7860:7860"
+    environment:
+      - DEBUG=true
+      - GOOGLE_CLIENT_ID=${GOOGLE_CLIENT_ID:-}
+      - GOOGLE_CLIENT_SECRET=${GOOGLE_CLIENT_SECRET:-}
+      - SUPABASE_URL=${SUPABASE_URL:-}
+      - SUPABASE_KEY=${SUPABASE_KEY:-}
+      - JWT_SECRET=${JWT_SECRET:-dev-secret-key}
+    volumes:
+      - ./output:/app/output
+    restart: unless-stopped
+
+  # For development: run backend directly
+  backend-dev:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    ports:
+      - "8000:8000"
+    environment:
+      - DEBUG=true
+    volumes:
+      - ./backend:/app
+      - ./output:/app/output
+    command: uvicorn main:app --host 0.0.0.0 --port 8000 --reload
+    profiles:
+      - dev

@@ -1,0 +1,798 @@
+{
+  "exam": {
+    "id": "aws-aif-c01-set3-ja",
+    "name": "AWS AIF-C01 模擬試験 #3",
+    "code": "AIF-C01",
+    "provider": "AWS",
+    "language": "ja",
+    "description": "AWS認定AIプラクティショナー試験模擬問題 - 第3套",
+    "totalQuestions": 50,
+    "passingScore": 70,
+    "examTime": 90,
+    "domains": [
+      {
+        "id": 1,
+        "name": "AIとMLの基礎",
+        "weight": 20
+      },
+      {
+        "id": 2,
+        "name": "生成AIの基礎",
+        "weight": 24
+      },
+      {
+        "id": 3,
+        "name": "基盤モデルのアプリケーション",
+        "weight": 28
+      },
+      {
+        "id": 4,
+        "name": "責任あるAIのガイドライン",
+        "weight": 14
+      },
+      {
+        "id": 5,
+        "name": "セキュリティ、コンプライアンス、ガバナンス",
+        "weight": 14
+      }
+    ],
+    "tags": [
+      "AWS",
+      "AI",
+      "ML",
+      "認定試験"
+    ]
+  },
+  "questions": [
+    {
+      "id": "q1",
+      "domain": 1,
+      "question": "ある企業がコンピュータと人間が自然言語で会話できるシステムを構築したいと考えています。これはAIのどのサブフィールドに属しますか？",
+      "options": {
+        "A": "コンピュータビジョン（Computer Vision）",
+        "B": "自然言語処理（NLP）",
+        "C": "ロボティクス（Robotics）",
+        "D": "エキスパートシステム（Expert Systems）"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "自然言語会話システムはNLP分野に属し、チャットボット、音声アシスタント、Q&Aシステムなどが含まれます。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q2",
+      "domain": 1,
+      "question": "深層学習において、「畳み込みニューラルネットワーク（CNN）」はどのタイプのデータ処理に最も適していますか？",
+      "options": {
+        "A": "時系列データ",
+        "B": "画像データ",
+        "C": "表形式データ",
+        "D": "テキストデータ"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "CNNは畳み込み層を通じて画像の空間特徴（エッジ、テクスチャ、形状）を抽出し、画像処理の第一選択アーキテクチャです。時系列にはRNN/LSTM、表形式データには従来のMLアルゴリズムを使用します。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q3",
+      "domain": 1,
+      "question": "以下のうち、「教師なし学習」の典型的な応用はどれですか？",
+      "options": {
+        "A": "スパムメール分類",
+        "B": "住宅価格予測",
+        "C": "顧客セグメンテーション",
+        "D": "画像ラベリング"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "顧客セグメンテーションはクラスタリング（教師なし学習）の典型的な応用であり、事前定義されたラベルは必要ありません。スパム分類、住宅価格予測、画像ラベリングはすべて教師あり学習です。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q4",
+      "domain": 1,
+      "question": "ある分類モデルの混同行列に50個の真陽性（TP）、10個の偽陽性（FP）、5個の偽陰性（FN）、35個の真陰性（TN）が表示されています。このモデルの適合率（Precision）はいくらですか？",
+      "options": {
+        "A": "50%",
+        "B": "83.3%",
+        "C": "90.9%",
+        "D": "85%"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "適合率 = TP / (TP + FP) = 50 / (50 + 10) = 50/60 = 0.833 = 83.3%\n\n再現率 = TP / (TP + FN) = 50 / (50 + 5) = 90.9%",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q5",
+      "domain": 1,
+      "question": "以下のどの技術がニューラルネットワークの過学習を減らすために使用されますか？",
+      "options": {
+        "A": "ネットワーク層数を増やす",
+        "B": "Dropout",
+        "C": "学習率を上げる",
+        "D": "訓練データを減らす"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Dropoutはランダムに一部のニューロンを「オフ」にし、モデルが特定の接続に過度に依存することを防ぎ、過学習を効果的に減らします。層数を増やすと過学習が悪化します。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q6",
+      "domain": 1,
+      "question": "「交差検証（Cross-Validation）」の主な目的は何ですか？",
+      "options": {
+        "A": "モデルの訓練速度を上げる",
+        "B": "モデルのパフォーマンスをより信頼性高く評価する",
+        "C": "訓練データ量を増やす",
+        "D": "モデルのパラメータを減らす"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "交差検証（K-foldなど）はデータを複数回分割し、複数回訓練と評価を行うことで、より安定したパフォーマンス推定を得て、偶然性を減らします。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q7",
+      "domain": 1,
+      "question": "ある企業がラベル付きの履歴データを持っており、新規顧客の購入意向を予測したいと考えています。どのタイプの学習を使用すべきですか？",
+      "options": {
+        "A": "教師なし学習",
+        "B": "教師あり学習",
+        "C": "強化学習",
+        "D": "自己教師あり学習"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "ラベル付きデータ + 予測タスク = 教師あり学習。購入意向予測は分類問題（購入する/購入しない）です。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q8",
+      "domain": 1,
+      "question": "以下のどの指標が回帰モデルのパフォーマンス評価に使用されますか？",
+      "options": {
+        "A": "正解率（Accuracy）",
+        "B": "F1スコア",
+        "C": "平均二乗誤差（MSE）",
+        "D": "AUC-ROC"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "MSEは回帰タスクの標準指標であり、予測値と実際の値の二乗差の平均を測定します。Accuracy、F1、AUC-ROCは分類に使用されます。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q9",
+      "domain": 1,
+      "question": "「勾配降下法（Gradient Descent）」の目的は何ですか？",
+      "options": {
+        "A": "モデルの複雑さを増やす",
+        "B": "損失関数を最小化する",
+        "C": "データ前処理を高速化する",
+        "D": "最適な特徴を選択する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "勾配降下法はパラメータを繰り返し調整（勾配の逆方向に移動）して損失関数を最小化し、ニューラルネットワーク訓練のコアアルゴリズムです。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q10",
+      "domain": 2,
+      "question": "以下のどの正則化技術が重みの絶対値のペナルティ項を追加することで機能しますか？",
+      "options": {
+        "A": "L2正則化（Ridge）",
+        "B": "L1正則化（Lasso）",
+        "C": "Dropout",
+        "D": "バッチ正規化"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "- L1（Lasso）：重みの絶対値ペナルティ |w| を追加し、スパースな重みを生成（特徴選択効果）\n- L2（Ridge）：重みの二乗ペナルティ w² を追加し、重みは小さくなるがゼロにはならない",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q11",
+      "domain": 1,
+      "question": "Transformerアーキテクチャにおける「アテンションメカニズム（Attention Mechanism）」の主な利点は何ですか？",
+      "options": {
+        "A": "モデルのパラメータを減らす",
+        "B": "モデルが入力の異なる部分に注目できる",
+        "C": "訓練速度を上げる",
+        "D": "メモリ使用量を減らす"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "アテンションメカニズムはモデルが異なる入力位置に異なる重みを割り当て、長距離依存関係を捕捉できるようにし、Transformerの成功の鍵です。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q12",
+      "domain": 1,
+      "question": "以下のうち、基盤モデル（Foundation Model）の特徴ではないものはどれですか？",
+      "options": {
+        "A": "大規模データで事前訓練",
+        "B": "複数の下流タスクに適応可能",
+        "C": "単一タスクにのみ使用可能",
+        "D": "通常、大量のパラメータを持つ"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "基盤モデルの特徴は複数のタスクに適応できること（テキスト生成、要約、翻訳、Q&Aなど）であるため、Cは誤った説明です。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q13",
+      "domain": 1,
+      "question": "NLPにおける「トークン化（Tokenization）」の役割は何ですか？",
+      "options": {
+        "A": "テキストデータを暗号化する",
+        "B": "テキストをモデルが処理できる単位に分割する",
+        "C": "テキストファイルを圧縮する",
+        "D": "テキストを翻訳する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "トークン化はテキストをトークン（単語、サブワード、または文字）に分割し、NLP処理の最初のステップです。例：「Hello world」→ [\"Hello\", \"world\"]",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q14",
+      "domain": 1,
+      "question": "ある企業がLLMを使用したいが、モデルが虚偽の情報を生成する可能性を懸念しています。以下のどの技術がこの問題を軽減するのに最も役立ちますか？",
+      "options": {
+        "A": "モデルサイズを増やす",
+        "B": "グラウンディング（出力を信頼できるソースと関連付ける）",
+        "C": "temperatureを上げる",
+        "D": "より多くのGPUを使用する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "グラウンディング/RAGは信頼できるソース（データベース、ドキュメント）を参照してモデル出力を検証しサポートし、ハルシネーションを減らします。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q15",
+      "domain": 1,
+      "question": "Amazon Bedrockにおいて、「Agents」の主な機能は何ですか？",
+      "options": {
+        "A": "モデルのパフォーマンスを監視する",
+        "B": "モデルが複数ステップのタスクを実行し、外部APIを呼び出せるようにする",
+        "C": "データを暗号化する",
+        "D": "ユーザー権限を管理する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Bedrock Agentsは複数ステップのタスクを計画・実行し、外部ツール（データベース、API、Lambda関数）を呼び出して、複雑な自動化プロセスを実現できます。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q16",
+      "domain": 1,
+      "question": "以下のどの評価方法が2つのテキスト間の意味的類似度を評価するために使用されますか？",
+      "options": {
+        "A": "BLEU",
+        "B": "BERTScore",
+        "C": "RMSE",
+        "D": "Accuracy"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "BERTScoreは意味埋め込みを使用してテキストの類似度を比較し、表面的な語彙だけでなく意味を理解します。BLEUはn-gramの重複のみを比較します。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q17",
+      "domain": 1,
+      "question": "「モデル蒸留（Model Distillation）」とは何ですか？",
+      "options": {
+        "A": "不要なモデルを削除する",
+        "B": "大きなモデルの知識を小さなモデルに転移する",
+        "C": "モデルのパラメータを暗号化する",
+        "D": "モデルの層数を増やす"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "蒸留は小さなモデル（生徒）に大きなモデル（教師）の振る舞いを学習させ、同様のパフォーマンスでより効率的に動作させ、エッジデプロイメントに適しています。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q18",
+      "domain": 1,
+      "question": "Few-shot promptingを使用する際の以下のベストプラクティスはどれですか？",
+      "options": {
+        "A": "できるだけ多くの例を提供する",
+        "B": "2-5個の高品質で関連性の高い例を提供する",
+        "C": "例を提供しない",
+        "D": "否定的な例のみを提供する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "少数の高品質な例は多くの低品質な例よりも効果的です。例が多すぎるとコンテキストウィンドウを消費し、少なすぎると不明確になる可能性があります。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q19",
+      "domain": 1,
+      "question": "「Prompt Chaining」とは何ですか？",
+      "options": {
+        "A": "複数のプロンプトを1つの長いプロンプトに連結する",
+        "B": "複雑なタスクを複数の連続したプロンプトステップに分解する",
+        "C": "チェーン暗号化でプロンプトを保護する",
+        "D": "複数のモデルに同時にプロンプトを送信する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Prompt Chainingは大きなタスクを小さなステップに分解して順次実行し、各ステップの出力を次のステップの入力として使用して、複雑なタスクの成功率を向上させます。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q20",
+      "domain": 1,
+      "question": "Amazon Bedrockが提供する「Titan Embeddings」モデルの主な用途は何ですか？",
+      "options": {
+        "A": "画像を生成する",
+        "B": "テキストをベクトル表現に変換する",
+        "C": "言語を翻訳する",
+        "D": "音声認識"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Titan Embeddingsはテキストのベクトル埋め込みを生成するために使用され、セマンティック検索、RAGシステムでの類似度マッチングをサポートします。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q21",
+      "domain": 1,
+      "question": "以下のうち、基盤モデルを選択する際に考慮すべき要素はどれですか？",
+      "options": {
+        "A": "モデルサイズのみを考慮",
+        "B": "タスク要件、コスト、レイテンシ、コンプライアンス要件",
+        "C": "価格のみを考慮",
+        "D": "ベンダー名のみを考慮"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "モデルの選択には複数の要素を総合的に考慮する必要があります：タスクタイプ、パフォーマンス要件、コスト予算、レイテンシ要件、データコンプライアンス、説明可能性の要件など。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q22",
+      "domain": 3,
+      "question": "「Constitutional AI」のコアコンセプトは何ですか？",
+      "options": {
+        "A": "AIに法律を遵守させる",
+        "B": "一連の原則でAIの振る舞いを指導し、有害な出力を減らす",
+        "C": "AIに政治に参加させる",
+        "D": "AIの推論速度を上げる"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Constitutional AIはAnthropicが提案した方法であり、「憲法原則」のセットでAIの振る舞いを制約し、より安全で有益にします。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q23",
+      "domain": 1,
+      "question": "ある企業がAmazon Bedrockを使用して、会社のデータベースにクエリを実行できるAIアシスタントを作成したいと考えています。どの機能を使用すべきですか？",
+      "options": {
+        "A": "Bedrock Guardrails",
+        "B": "Bedrock Agents",
+        "C": "Bedrock Model Evaluation",
+        "D": "Bedrock Provisioned Throughput"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Agentsはデータベース、APIなどの外部システムに接続し、複数ステップのクエリと操作を実行して、データベースと対話するAIアシスタントを実現できます。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q24",
+      "domain": 1,
+      "question": "以下のどの方法で、基盤モデルが再訓練なしで最新情報にアクセスできますか？",
+      "options": {
+        "A": "モデルのパラメータを増やす",
+        "B": "RAG（検索拡張生成）",
+        "C": "temperatureを下げる",
+        "D": "より多くのGPUを使用する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "RAGは外部ナレッジベースから最新情報をコンテキストとして検索し、モデルが最新データに基づいて回答できるようにし、再訓練は不要です。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q25",
+      "domain": 1,
+      "question": "ある企業がAmazon Rekognitionを顔認識に使用したいと考えています。以下のうち、このサービスの正しい用途はどれですか？",
+      "options": {
+        "A": "テキスト感情分析",
+        "B": "画像内の顔を検出・認識",
+        "C": "音声からテキストへの変換",
+        "D": "テキスト翻訳"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Rekognitionは画像と動画の分析を専門とし、顔検出、顔比較、有名人認識、コンテンツモデレーションなどが含まれます。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q26",
+      "domain": 1,
+      "question": "Amazon SageMaker Autopilotの主な機能は何ですか？",
+      "options": {
+        "A": "自動でコードを書く",
+        "B": "MLモデルの構築、訓練、チューニングを自動化",
+        "C": "データを自動バックアップ",
+        "D": "すべてのリージョンに自動デプロイ"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "AutopilotはAutoMLサービスであり、データ探索、特徴エンジニアリング、アルゴリズム選択、ハイパーパラメータチューニング、モデル訓練のMLフロー全体を自動化します。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q27",
+      "domain": 1,
+      "question": "ある企業がIoTデバイスからのデータストリームをリアルタイムで分析したいと考えています。どのサービスを使用すべきですか？",
+      "options": {
+        "A": "Amazon S3",
+        "B": "Amazon Kinesis Data Analytics",
+        "C": "Amazon Glacier",
+        "D": "Amazon RDS"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Kinesisはリアルタイムストリームデータの処理と分析に使用され、IoTデータ、ログ分析、リアルタイムモニタリングなどのシナリオに適しています。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q28",
+      "domain": 1,
+      "question": "以下のどの方法でAmazon Bedrockのモデルの特定ドメインでのパフォーマンスを向上させることができますか？",
+      "options": {
+        "A": "デフォルト設定のみを使用",
+        "B": "ファインチューニング（Fine-tuning）",
+        "C": "呼び出し頻度を下げる",
+        "D": "より小さなモデルを使用"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "ファインチューニングはドメイン固有のラベル付きデータでモデルを訓練し、モデルに特定ドメインの知識、用語、スタイルを学習させます。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q29",
+      "domain": 1,
+      "question": "Amazon Comprehend Medicalは何に特化していますか？",
+      "options": {
+        "A": "一般的なテキスト分析",
+        "B": "医療テキストから健康情報を抽出",
+        "C": "画像診断",
+        "D": "医薬品開発"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Comprehend Medicalは医学用語の理解を専門とし、診断、薬物、投与量、症状などの臨床情報を抽出します。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q30",
+      "domain": 1,
+      "question": "ある企業がMLモデルをエッジデバイス（カメラなど）にデプロイしたいと考えています。どのサービスを使用すべきですか？",
+      "options": {
+        "A": "Amazon SageMaker Neo",
+        "B": "Amazon Redshift",
+        "C": "Amazon DynamoDB",
+        "D": "Amazon S3"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Neoはエッジデバイスで効率的に実行できるようにモデルを最適化し、複数のハードウェアプラットフォーム（ARM、Intel、NVIDIAなど）をサポートします。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q31",
+      "domain": 1,
+      "question": "以下のうち、Amazon LexとAmazon Pollyを組み合わせて使用する典型的なシナリオはどれですか？",
+      "options": {
+        "A": "データストレージ",
+        "B": "音声インタラクティブチャットボット",
+        "C": "画像認識",
+        "D": "データ暗号化"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Lex（会話理解）+ Polly（音声合成）= 完全な音声インタラクティブチャットボット、ユーザーが話す → 理解 → 音声で応答。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q32",
+      "domain": 1,
+      "question": "Amazon Fraud Detectorの主な用途は何ですか？",
+      "options": {
+        "A": "ネットワーク侵入の検出",
+        "B": "オンライン詐欺活動の検出",
+        "C": "データエラーの検出",
+        "D": "システム障害の検出"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Fraud Detectorはオンライン支払い詐欺、アカウント登録詐欺、プロモーション悪用などの詐欺行為を専門的に検出します。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q33",
+      "domain": 1,
+      "question": "ある企業が契約書類から主要条項を自動抽出したいと考えています。最も適切なAWSサービスの組み合わせは何ですか？",
+      "options": {
+        "A": "Amazon Polly + Amazon Translate",
+        "B": "Amazon Textract + Amazon Comprehend",
+        "C": "Amazon Rekognition + Amazon Lex",
+        "D": "Amazon Kinesis + Amazon S3"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Textractがドキュメントからテキストを抽出 + Comprehendがキーエンティティと条項情報を分析・抽出します。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q34",
+      "domain": 1,
+      "question": "Amazon SageMaker Experimentsの主な用途は何ですか？",
+      "options": {
+        "A": "A/Bテストを実行",
+        "B": "ML実験の追跡、整理、比較",
+        "C": "デプロイメントの自動化",
+        "D": "データストレージ"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Experimentsは異なるML実験の実行を管理・比較し、パラメータ、指標、バージョンを記録して、再現と最適化を容易にします。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q35",
+      "domain": 1,
+      "question": "ある企業がAmazon Bedrockを使用したいが、一貫した低レイテンシ応答が必要です。どの価格モデルを使用すべきですか？",
+      "options": {
+        "A": "オンデマンド",
+        "B": "プロビジョンドスループット",
+        "C": "スポットインスタンス",
+        "D": "無料利用枠"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "プロビジョンドスループットは一貫したパフォーマンスと低レイテンシを保証し、レイテンシに敏感な本番環境に適しています。オンデマンドにはレイテンシの変動がある可能性があります。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q36",
+      "domain": 4,
+      "question": "以下のうち、Amazon Bedrock Knowledge Basesを使用する利点はどれですか？",
+      "options": {
+        "A": "データが不要",
+        "B": "RAG用のベクトルストレージと検索を自動的に管理",
+        "C": "新しいモデルを自動的に訓練",
+        "D": "無制限の無料使用"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Knowledge BasesはRAGの実装を簡素化し、ドキュメントの取り込み、ベクトル化、保存、検索を自動的に処理して、開発作業を削減します。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q37",
+      "domain": 1,
+      "question": "ある企業のAI採用システムが男性候補者に偏っていることが判明しました。これは主にどのタイプの問題ですか？",
+      "options": {
+        "A": "技術的障害",
+        "B": "データ/アルゴリズムバイアス",
+        "C": "セキュリティ脆弱性",
+        "D": "パフォーマンス問題"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "過去の採用データは過去のジェンダーバイアス（より多くの男性が採用された）を反映している可能性があり、モデルはこのバイアスパターンを学習しました。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q38",
+      "domain": 1,
+      "question": "以下のうち、AIシステムの「監査可能性（Auditability）」を確保するために重要なのはどれですか？",
+      "options": {
+        "A": "最新のモデルを使用",
+        "B": "詳細なログと決定記録を保持",
+        "C": "より多くの計算リソースを使用",
+        "D": "モデルサイズを増やす"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "監査可能性には完全な記録（入力、出力、決定プロセス、タイムスタンプ）が必要であり、事後の検査と検証を可能にします。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q39",
+      "domain": 1,
+      "question": "責任あるAI原則に従い、高リスクAIシステムをデプロイする前に何を行うべきですか？",
+      "options": {
+        "A": "直接デプロイ",
+        "B": "包括的な影響評価とテスト",
+        "C": "パフォーマンスのみをテスト",
+        "D": "コストのみを考慮"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "高リスクAIシステム（医療、金融、採用）のデプロイ前には、潜在的なリスク、バイアス、セキュリティ問題、社会的影響を包括的に評価する必要があります。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q40",
+      "domain": 1,
+      "question": "ある企業がAIシステムがすべての年齢層のユーザーに公平であることを確認したいと考えています。何を確認すべきですか？",
+      "options": {
+        "A": "正解率のみを確認",
+        "B": "異なる年齢グループ間でのモデルパフォーマンスの違いを確認",
+        "C": "速度のみを確認",
+        "D": "コストのみを確認"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "公平性は各グループ（年齢、性別、人種など）が平等に扱われているかを確認し、グループ化された指標の違いを分析することを要求します。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q41",
+      "domain": 1,
+      "question": "「差分プライバシー（Differential Privacy）」の目的は何ですか？",
+      "options": {
+        "A": "モデルの精度を向上させる",
+        "B": "個人データを保護しながらデータ分析を可能にする",
+        "C": "訓練速度を上げる",
+        "D": "モデルサイズを減らす"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "差分プライバシーは数学的ノイズを追加することで、分析結果から個人情報を推測できないようにしながら、全体的な統計の有効性を維持します。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q42",
+      "domain": 1,
+      "question": "以下のうち、Amazon Bedrockでモデルが個人識別情報（PII）を生成するのを防ぐ方法はどれですか？",
+      "options": {
+        "A": "より大きなモデルを使用",
+        "B": "GuardrailsでPIIフィルタリングを設定",
+        "C": "temperatureを上げる",
+        "D": "コンテキスト長を減らす"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Guardrailsは自動的にPII（名前、電話、メール、住所など）を検出してマスクし、機密情報の漏洩を防ぎます。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q43",
+      "domain": 5,
+      "question": "ある企業がAI開発を監督するためにAI倫理委員会を設立したいと考えています。これは責任あるAIのどの原則を体現していますか？",
+      "options": {
+        "A": "パフォーマンス",
+        "B": "ガバナンスとアカウンタビリティ",
+        "C": "コスト効率",
+        "D": "速度"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "倫理委員会は組織のAI責任ある使用へのコミットメントを体現し、監督メカニズムを確立してアカウンタビリティとガバナンスを確保します。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q44",
+      "domain": 1,
+      "question": "ある企業がAmazon SageMakerで機密の顧客データを処理しています。以下のうち、静止データを保護する最良の方法はどれですか？",
+      "options": {
+        "A": "パフォーマンス向上のため暗号化しない",
+        "B": "AWS KMS暗号化を使用",
+        "C": "パブリックS3バケットを使用",
+        "D": "HTTPSの代わりにHTTPを使用"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "KMSはマネージドキー管理と暗号化サービスを提供し、静止データ（保存中のデータ）を保護します。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q45",
+      "domain": 1,
+      "question": "以下のどのサービスが、企業がAWSリソースがセキュリティベストプラクティスに準拠しているかを自動評価するのに役立ちますか？",
+      "options": {
+        "A": "Amazon S3",
+        "B": "AWS Security Hub",
+        "C": "Amazon Bedrock",
+        "D": "Amazon SageMaker"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Security Hubは複数のAWSサービスからのセキュリティ発見を集約し、ベストプラクティスとコンプライアンス標準と比較してセキュリティポスチャビューを提供します。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q46",
+      "domain": 1,
+      "question": "ある企業が特定のMLエンジニアのみが本番モデルを変更できるようにしたいと考えています。どのように実装すべきですか？",
+      "options": {
+        "A": "パブリックアクセスを使用",
+        "B": "IAMロールとポリシーで最小権限の原則を実装",
+        "C": "全員に管理者権限を付与",
+        "D": "権限を設定しない"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "最小権限はユーザーが作業を完了するために必要な最小限の権限のみを持つことを確保し、不正アクセスと変更を防ぎます。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q47",
+      "domain": 1,
+      "question": "以下のうち、VPCエンドポイント（VPC Endpoints）の主なセキュリティ上の利点はどれですか？",
+      "options": {
+        "A": "ネットワーク速度の向上",
+        "B": "トラフィックがパブリックインターネットを経由しない",
+        "C": "コストの削減",
+        "D": "設定の簡素化"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "VPCエンドポイント（PrivateLink）はトラフィックをAWSネットワーク内に保持し、パブリックインターネットに公開せず、セキュリティを向上させます。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q48",
+      "domain": 1,
+      "question": "ある企業がAIシステムがISO 27001標準に準拠していることを証明する必要があります。最初に何をすべきですか？",
+      "options": {
+        "A": "標準を無視",
+        "B": "AWS Artifactから関連するコンプライアンスレポートを取得し、必要なコントロールを実装",
+        "C": "パフォーマンスのみに焦点を当てる",
+        "D": "すべてのデータを削除"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "ArtifactはAWSのISO 27001認証レポートを提供し、インフラストラクチャのコンプライアンスを証明するのに役立ちます。顧客は自分自身のコントロール措置も実装する必要があります。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q49",
+      "domain": 1,
+      "question": "以下のうち、AWSアカウント内の異常活動を検出する最良のサービスはどれですか？",
+      "options": {
+        "A": "Amazon S3",
+        "B": "Amazon GuardDuty",
+        "C": "Amazon Polly",
+        "D": "Amazon Lex"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "GuardDutyはMLを使用して脅威と異常活動を検出し、CloudTrail、VPC Flow Logs、DNSログを分析して疑わしい動作を発見します。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q50",
+      "domain": 1,
+      "question": "ある企業のAIモデルは機密の訓練データを使用しています。モデルが不要になった場合、どのような措置を講じるべきですか？",
+      "options": {
+        "A": "何もしない",
+        "B": "モデルと関連データを安全に削除し、データ保持ポリシーに従う",
+        "C": "モデルを公開共有",
+        "D": "個人アカウントに転送"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "データライフサイクル管理は不要になったデータとモデルの安全な廃棄を要求し、データ漏洩を防ぎ、コンプライアンス要件に従います。",
+      "difficulty": "medium"
+    }
+  ]
+}

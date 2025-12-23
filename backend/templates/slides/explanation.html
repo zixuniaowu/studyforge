@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="{{ language }}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=1920, height=1080">
+    <title>Explanation</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            width: 1920px;
+            height: 1080px;
+            font-family: 'Noto Sans CJK SC', 'Noto Sans CJK JP', 'Segoe UI', system-ui, sans-serif;
+            background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+            display: flex;
+            flex-direction: column;
+            padding: 60px;
+            color: #1a1a2e;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 40px;
+        }
+
+        .title {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 16px 32px;
+            border-radius: 12px;
+            font-size: 28px;
+            font-weight: 600;
+        }
+
+        .answer-badge {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: white;
+            padding: 16px 32px;
+            border-radius: 12px;
+            color: #38a169;
+            font-size: 28px;
+            font-weight: 600;
+        }
+
+        .answer-badge .icon {
+            width: 32px;
+            height: 32px;
+            background: #38a169;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+
+        .content {
+            flex: 1;
+            background: white;
+            border-radius: 24px;
+            padding: 50px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+        }
+
+        .section {
+            margin-bottom: 40px;
+        }
+
+        .section-title {
+            font-size: 24px;
+            color: #718096;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 16px;
+            font-weight: 600;
+        }
+
+        .question-summary {
+            font-size: 28px;
+            line-height: 1.5;
+            color: #2d3748;
+            padding: 24px;
+            background: #f7fafc;
+            border-radius: 16px;
+            border-left: 6px solid #667eea;
+        }
+
+        .explanation-text {
+            font-size: 32px;
+            line-height: 1.8;
+            color: #2d3748;
+        }
+
+        .correct-answer {
+            display: inline-flex;
+            align-items: center;
+            gap: 16px;
+            background: #c6f6d5;
+            padding: 16px 24px;
+            border-radius: 12px;
+            font-size: 28px;
+            font-weight: 600;
+            color: #22543d;
+        }
+
+        .footer {
+            margin-top: 30px;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="title">{{ explanation_label }}</div>
+        <div class="answer-badge">
+            <div class="icon">&#10003;</div>
+            {{ correct_answer_label }}: {{ correct_answer }}
+        </div>
+    </div>
+
+    <div class="content">
+        <div class="section">
+            <div class="section-title">{{ question_label }}</div>
+            <div class="question-summary">{{ question_text }}</div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">{{ explanation_label }}</div>
+            <div class="explanation-text">{{ explanation_text }}</div>
+        </div>
+    </div>
+
+    <div class="footer">StudyForge - {{ footer_text }}</div>
+</body>
+</html>

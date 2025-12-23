@@ -1,0 +1,60 @@
+name: Deploy to Hugging Face Spaces
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+          cache-dependency-path: web/package-lock.json
+
+      - name: Install dependencies
+        working-directory: ./web
+        run: npm ci
+
+      - name: Build
+        working-directory: ./web
+        run: npm run build
+
+      - name: Prepare Hugging Face Space
+        run: |
+          # Create Space README
+          cat > web/dist/README.md << 'EOF'
+          ---
+          title: StudyForge
+          emoji: 📚
+          colorFrom: blue
+          colorTo: purple
+          sdk: static
+          pinned: false
+          ---
+
+          # StudyForge - Exam Practice Platform
+
+          An interactive exam preparation platform supporting Chinese and Japanese.
+          EOF
+
+      - name: Deploy to Hugging Face Spaces
+        env:
+          HF_TOKEN: ${{ secrets.HF_TOKEN }}
+        run: |
+          cd web/dist
+          git init
+          git config user.name "GitHub Actions"
+          git config user.email "actions@github.com"
+          git add .
+          git commit -m "Deploy from GitHub Actions"
+          git push --force https://user:$HF_TOKEN@huggingface.co/spaces/${{ secrets.HF_SPACE_NAME }} main

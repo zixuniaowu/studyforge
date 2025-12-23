@@ -1,0 +1,798 @@
+{
+  "exam": {
+    "id": "aws-aif-c01-set1",
+    "name": "AWS AIF-C01 模拟考试 #1",
+    "code": "AIF-C01",
+    "provider": "AWS",
+    "language": "zh-CN",
+    "description": "AWS认证AI从业者考试模拟题 - 第1套",
+    "totalQuestions": 50,
+    "passingScore": 70,
+    "examTime": 90,
+    "domains": [
+      {
+        "id": 1,
+        "name": "Fundamentals of AI and ML",
+        "weight": 20
+      },
+      {
+        "id": 2,
+        "name": "Fundamentals of Generative AI",
+        "weight": 24
+      },
+      {
+        "id": 3,
+        "name": "Applications of Foundation Models",
+        "weight": 28
+      },
+      {
+        "id": 4,
+        "name": "Guidelines for Responsible AI",
+        "weight": 14
+      },
+      {
+        "id": 5,
+        "name": "Security, Compliance, and Governance",
+        "weight": 14
+      }
+    ],
+    "tags": [
+      "AWS",
+      "AI",
+      "ML",
+      "认证考试"
+    ]
+  },
+  "questions": [
+    {
+      "id": "q1",
+      "domain": 1,
+      "question": "一家公司每季度进行预测以优化运营来满足预期需求。公司使用ML模型进行这些预测。一位AI从业者正在撰写关于已训练ML模型的报告，以向公司利益相关者提供透明度和可解释性。AI从业者应在报告中包含什么以满足透明度和可解释性要求？",
+      "options": {
+        "A": "模型训练代码",
+        "B": "部分依赖图 (PDPs)",
+        "C": "训练样本数据",
+        "D": "模型收敛表"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "部分依赖图 (Partial Dependence Plots, PDPs) 是机器学习可解释性的重要工具：\n- 展示特征对预测结果的边际效应\n- 帮助理解模型决策过程\n- 为非技术利益相关者提供直观解释\n\n其他选项：代码(A)、样本数据(C)、收敛表(D)都不能直接解释模型行为。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q2",
+      "domain": 1,
+      "question": "一家公司想要将人类基因分类为20个类别。公司需要一种ML算法来记录模型内部机制如何影响输出。哪种ML算法满足这些要求？",
+      "options": {
+        "A": "决策树 (Decision trees)",
+        "B": "线性回归 (Linear regression)",
+        "C": "逻辑回归 (Logistic regression)",
+        "D": "神经网络 (Neural networks)"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "决策树是最具可解释性的ML算法：\n- 可视化整个决策过程\n- 每个节点有明确规则\n- 可追踪完整决策路径\n- 属于\"白盒\"模型\n\n神经网络(D)是\"黑盒\"，难以解释内部机制。线性/逻辑回归用于回归或二分类，不适合20类分类。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q3",
+      "domain": 1,
+      "question": "一家公司建立了一个图像分类模型来预测植物叶片照片中的植物疾病。公司想要评估模型正确分类了多少张图像。应该使用哪个评估指标来衡量模型性能？",
+      "options": {
+        "A": "R-squared score (R²分数)",
+        "B": "Accuracy (准确率)",
+        "C": "Root mean squared error (RMSE)",
+        "D": "Learning rate (学习率)"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "- Accuracy = 正确预测数 / 总预测数\n- 直接衡量\"正确分类了多少\"\n- R²和RMSE是回归指标，不适用于分类\n- Learning rate是训练参数，不是评估指标",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q4",
+      "domain": 1,
+      "question": "一家公司正在使用领域特定模型。公司希望避免从头创建新模型，而是想调整预训练模型来为新的相关任务创建模型。哪种ML策略满足这些要求？",
+      "options": {
+        "A": "增加epochs数量",
+        "B": "使用迁移学习 (Transfer learning)",
+        "C": "减少epochs数量",
+        "D": "使用无监督学习"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "迁移学习将预训练模型的知识转移到新任务：\n- 不需要从零开始\n- 利用已有知识\n- 节省时间和资源\n- 只需要少量新数据即可适应新任务",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q5",
+      "domain": 1,
+      "question": "在机器学习中，模型在训练数据上表现很好，但在新数据上表现差。这种现象叫什么？",
+      "options": {
+        "A": "欠拟合 (Underfitting)",
+        "B": "过拟合 (Overfitting)",
+        "C": "数据漂移 (Data drift)",
+        "D": "模型偏见 (Model bias)"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "过拟合特征：\n- 训练集表现好\n- 新数据/测试集表现差\n- 模型\"记住\"了训练数据而非学习规律\n\n欠拟合(A)是两边都表现差。数据漂移(C)是生产数据分布变化。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q6",
+      "domain": 1,
+      "question": "以下哪种学习类型使用带标签的数据进行训练？",
+      "options": {
+        "A": "强化学习 (Reinforcement Learning)",
+        "B": "无监督学习 (Unsupervised Learning)",
+        "C": "监督学习 (Supervised Learning)",
+        "D": "自监督学习 (Self-supervised Learning)"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "- 监督学习：带标签数据（输入-输出对）\n- 无监督学习：无标签数据，发现模式\n- 强化学习：通过奖励信号学习\n- 自监督学习：从数据自身生成标签",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q7",
+      "domain": 1,
+      "question": "预测房屋价格属于哪种类型的ML问题？",
+      "options": {
+        "A": "分类 (Classification)",
+        "B": "回归 (Regression)",
+        "C": "聚类 (Clustering)",
+        "D": "降维 (Dimensionality Reduction)"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "- 回归：预测连续数值（价格、温度、销量）\n- 分类：预测离散类别（是/否、A/B/C）\n- 房价是连续数值 → 回归问题",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q8",
+      "domain": 1,
+      "question": "一家公司想要根据客户特征将客户分成不同的群组，但没有预定义的标签。应该使用哪种ML方法？",
+      "options": {
+        "A": "监督学习 - 分类",
+        "B": "监督学习 - 回归",
+        "C": "无监督学习 - 聚类",
+        "D": "强化学习"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "没有预定义标签，要分组 → 聚类（无监督学习）\n- K-means\n- 层次聚类\n- DBSCAN\n\n监督学习需要标签，这里没有标签。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q9",
+      "domain": 1,
+      "question": "在神经网络中，什么是\"Epoch\"？",
+      "options": {
+        "A": "模型的层数",
+        "B": "训练数据被完整遍历一次",
+        "C": "神经网络的类型",
+        "D": "学习率的值"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "- Epoch：整个数据集遍历一次\n- Batch：一次更新使用的样本数\n- Iteration：一次batch训练\n\n例如：1000个样本，batch=100，则1个epoch = 10个iterations",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q10",
+      "domain": 2,
+      "question": "以下哪项不是防止过拟合的方法？",
+      "options": {
+        "A": "增加训练数据",
+        "B": "使用正则化 (Regularization)",
+        "C": "增加模型复杂度",
+        "D": "使用Dropout"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "增加模型复杂度会加重过拟合！\n\n防止过拟合的方法：\n- ✅ 增加训练数据\n- ✅ 正则化 (L1, L2)\n- ✅ Dropout\n- ✅ 早停 (Early Stopping)\n- ✅ 数据增强\n- ❌ 增加复杂度（会加重过拟合）",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q11",
+      "domain": 1,
+      "question": "一家公司正在使用预训练的大语言模型 (LLM) 构建产品推荐聊天机器人。公司需要LLM输出简短并以特定语言编写。哪种解决方案可以使LLM响应质量符合公司期望？",
+      "options": {
+        "A": "调整提示词 (Adjust the prompt)",
+        "B": "选择不同大小的LLM",
+        "C": "增加温度 (temperature)",
+        "D": "增加 Top K 值"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Prompt Engineering是控制LLM输出最直接的方法：\n- 指定长度：\"请用50字以内回答\"\n- 指定语言：\"请用中文回答\"\n- 指定格式和风格\n\n增加temperature会使输出更随机，不是控制长度和语言的方法。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q12",
+      "domain": 1,
+      "question": "在生成式AI中，\"temperature\" 参数的作用是什么？",
+      "options": {
+        "A": "控制模型的训练速度",
+        "B": "控制输出的随机性/创造性",
+        "C": "控制模型使用的GPU数量",
+        "D": "控制输入文本的最大长度"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Temperature参数：\n- 温度=0：最确定、最保守、最一致\n- 温度=0.5-0.7：平衡创造性和一致性\n- 温度=1：标准采样\n- 温度>1：非常随机、更有创造性",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q13",
+      "domain": 1,
+      "question": "大语言模型生成看似合理但实际上不正确或虚构的信息，这种现象叫什么？",
+      "options": {
+        "A": "过拟合 (Overfitting)",
+        "B": "幻觉 (Hallucination)",
+        "C": "偏见 (Bias)",
+        "D": "漂移 (Drift)"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "LLM幻觉指：\n- 生成看似合理但错误的信息\n- 编造不存在的事实、引用、数据\n- 对不确定的事情表现得很自信\n\n减少幻觉的方法：RAG、Grounding、降低temperature",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q14",
+      "domain": 1,
+      "question": "RAG (Retrieval-Augmented Generation) 的主要优势是什么？",
+      "options": {
+        "A": "减少模型训练时间",
+        "B": "使模型能够访问最新的外部知识",
+        "C": "提高模型的推理速度",
+        "D": "减少模型的参数数量"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "RAG (检索增强生成)：\n1. 从知识库检索相关信息\n2. 将信息与查询一起给LLM\n3. LLM基于上下文生成回答\n\n优势：访问最新信息、减少幻觉、无需重新训练。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q15",
+      "domain": 1,
+      "question": "在Amazon Bedrock中，\"continued pre-training\"和\"fine-tuning\"的主要区别是什么？",
+      "options": {
+        "A": "Continued pre-training使用标注数据，fine-tuning使用未标注数据",
+        "B": "Continued pre-training使用未标注数据，fine-tuning使用标注数据",
+        "C": "两者完全相同",
+        "D": "Fine-tuning不改变模型权重"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "| 方法 | 数据类型 | 目的 |\n|:-----|:---------|:-----|\n| Continued Pre-training | 未标注数据 | 让模型熟悉领域知识 |\n| Fine-tuning | 标注数据(输入-输出对) | 优化特定任务表现 |",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q16",
+      "domain": 1,
+      "question": "什么是\"Token\"在大语言模型中的含义？",
+      "options": {
+        "A": "身份验证凭证",
+        "B": "模型处理文本的基本单位",
+        "C": "API密钥",
+        "D": "计费货币"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Token可以是：\n- 完整单词\n- 子词（如\"playing\" → \"play\" + \"ing\"）\n- 字符\n- 一个英文单词约1-2个token\n- 一个中文字约1-2个token",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q17",
+      "domain": 1,
+      "question": "如果想让LLM的输出更加确定和一致，应该如何调整temperature参数？",
+      "options": {
+        "A": "增加temperature",
+        "B": "降低temperature",
+        "C": "设置temperature为1",
+        "D": "Temperature与输出一致性无关"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "- 低温度 (0-0.3) → 输出更确定、更一致、更保守\n- 高温度 (0.7-1+) → 输出更随机、更多样、更有创意",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q18",
+      "domain": 1,
+      "question": "以下哪种Prompt技术最适合复杂推理任务？",
+      "options": {
+        "A": "Zero-shot prompting",
+        "B": "Chain-of-thought prompting",
+        "C": "One-shot prompting",
+        "D": "Completion prompting"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "思维链提示 (Chain-of-thought)：\n- 引导模型逐步推理\n- 适合数学、逻辑、多步推理任务\n- 在提示中展示推理过程\n- 例如：\"让我们一步一步思考...\"",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q19",
+      "domain": 1,
+      "question": "什么是\"上下文窗口 (Context Window)\"？",
+      "options": {
+        "A": "模型的训练时间",
+        "B": "模型能处理的最大token数量",
+        "C": "模型的层数",
+        "D": "模型的参数数量"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "上下文窗口限制：\n- 输入 + 输出的总token数\n- 不同模型有不同限制（如4K, 8K, 32K, 128K）\n- 影响能处理的文档长度\n- 超出限制的内容会被截断",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q20",
+      "domain": 1,
+      "question": "以下哪项最能有效减少LLM的幻觉问题？",
+      "options": {
+        "A": "增加模型大小",
+        "B": "使用RAG提供相关上下文",
+        "C": "增加temperature",
+        "D": "减少训练数据"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "减少幻觉的方法：\n- ✅ RAG提供真实、相关的信息\n- ✅ 降低temperature\n- ✅ 明确的提示词\n- ✅ Grounding到可靠来源\n- ❌ 增加temperature会加剧幻觉",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q21",
+      "domain": 1,
+      "question": "Amazon Titan 是什么？",
+      "options": {
+        "A": "AWS的服务器硬件",
+        "B": "Amazon的基础模型系列",
+        "C": "数据库服务",
+        "D": "容器服务"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Amazon Titan包括：\n- Titan Text（文本生成）\n- Titan Embeddings（向量化）\n- Titan Image Generator（图像生成）\n- Titan Multimodal Embeddings\n- 通过Amazon Bedrock访问",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q22",
+      "domain": 3,
+      "question": "在Few-shot prompting中，\"few-shot\"指的是什么？",
+      "options": {
+        "A": "使用很少的训练数据",
+        "B": "在提示中提供少量示例",
+        "C": "模型只能生成很短的回答",
+        "D": "快速推理模式"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "- Zero-shot：不提供示例，直接问\n- One-shot：提供1个示例\n- Few-shot：提供2-5个示例\n- 示例帮助模型理解任务格式和期望输出",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q23",
+      "domain": 1,
+      "question": "一家律师事务所想使用大语言模型 (LLM) 构建AI应用程序。该应用程序将阅读法律文件并从文件中提取关键点。哪种解决方案满足这些要求？",
+      "options": {
+        "A": "构建自动命名实体识别系统",
+        "B": "创建推荐引擎",
+        "C": "开发摘要聊天机器人",
+        "D": "开发多语言翻译系统"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "阅读文档 + 提取关键点 = 摘要任务\n- 命名实体识别只识别实体名称，不提取关键点\n- 推荐引擎用于推荐内容\n- 翻译系统只做语言转换",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q24",
+      "domain": 1,
+      "question": "一家公司想要创建一个聊天机器人，使用Amazon Bedrock上的基础模型 (FM)。FM需要访问存储在Amazon S3存储桶中的加密数据。FM在尝试访问S3数据时遇到失败。最可能的原因是什么？",
+      "options": {
+        "A": "S3数据格式不正确",
+        "B": "Bedrock角色缺少解密权限",
+        "C": "提示词写得不好",
+        "D": "模型太小"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "访问加密S3数据需要：\n- S3读取权限 (s3:GetObject)\n- KMS解密权限 (kms:Decrypt)\n- 这是IAM权限配置问题，不是数据格式或模型问题",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q25",
+      "domain": 1,
+      "question": "一家公司使用Amazon SageMaker作为其生产环境中的ML管道。公司有高达1GB的大型输入数据和长达1小时的处理时间。公司需要接近实时的延迟。哪种SageMaker推理选项满足这些要求？",
+      "options": {
+        "A": "实时推理 (Real-time inference)",
+        "B": "无服务器推理 (Serverless inference)",
+        "C": "异步推理 (Asynchronous inference)",
+        "D": "批量转换 (Batch transform)"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "| 选项 | 输入大小 | 处理时间 | 延迟 |\n|:-----|:---------|:---------|:-----|\n| 实时推理 | <6MB | <60秒 | 毫秒级 |\n| 无服务器推理 | <4MB | <60秒 | 有冷启动 |\n| 异步推理 | 最高1GB | 可达1小时 | 近实时 |\n| 批量转换 | 大 | 长 | 非实时 |",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q26",
+      "domain": 1,
+      "question": "一家公司想使用语言模型在边缘设备上创建推理应用程序。推理必须具有尽可能低的延迟。哪种解决方案满足这些要求？",
+      "options": {
+        "A": "在边缘设备上部署优化的小型语言模型 (SLM)",
+        "B": "在边缘设备上部署优化的大型语言模型 (LLM)",
+        "C": "使用集中式API异步通信",
+        "D": "使用云端大型模型实时调用"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "最低延迟需要：\n- 本地部署（无网络延迟）\n- 小型模型（推理快，资源占用少）\n- 优化后的SLM是最佳选择\n\nLLM太大，边缘设备资源有限跑不动。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q27",
+      "domain": 1,
+      "question": "一家公司正在构建解决方案来生成防护眼镜的图像标注。解决方案必须具有高准确性并最小化错误注释的风险。哪种解决方案满足这些要求？",
+      "options": {
+        "A": "使用Amazon SageMaker Ground Truth Plus进行人机循环验证",
+        "B": "使用Amazon Bedrock知识库进行数据增强",
+        "C": "使用Amazon Rekognition进行图像识别",
+        "D": "使用Amazon QuickSight Q进行数据摘要"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Ground Truth Plus提供：\n- 托管数据标注服务\n- 专家团队审核\n- 人机循环验证确保高准确性\n- 最小化错误标注",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q28",
+      "domain": 1,
+      "question": "一家公司想要从产品图像中提取文字信息。应该使用哪个AWS服务？",
+      "options": {
+        "A": "Amazon Rekognition",
+        "B": "Amazon Textract",
+        "C": "Amazon Comprehend",
+        "D": "Amazon Polly"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "AWS服务对照：\n- Textract：图像/PDF文字提取(OCR) ← 正确答案\n- Rekognition：图像/视频分析（人脸、物体检测）\n- Comprehend：文本分析（情感、实体）\n- Polly：文字转语音",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q29",
+      "domain": 1,
+      "question": "一家公司想要分析客户评论的情感（正面/负面/中性）。应该使用哪个AWS服务？",
+      "options": {
+        "A": "Amazon Lex",
+        "B": "Amazon Comprehend",
+        "C": "Amazon Transcribe",
+        "D": "Amazon Translate"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Comprehend是NLP服务：\n- ✅ 情感分析（正面/负面/中性/混合）\n- ✅ 命名实体识别\n- ✅ 关键词提取\n- ✅ 语言检测\n- ✅ 主题建模",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q30",
+      "domain": 1,
+      "question": "一家公司想要将客服电话录音转换为文本。应该使用哪个AWS服务？",
+      "options": {
+        "A": "Amazon Polly",
+        "B": "Amazon Transcribe",
+        "C": "Amazon Comprehend",
+        "D": "Amazon Textract"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "- Transcribe：语音→文字 (ASR/STT) ← 正确答案\n- Polly：文字→语音 (TTS)\n- 两者功能相反！\n\n记忆：Transcribe = 转录 = 把听到的写下来",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q31",
+      "domain": 1,
+      "question": "一家公司想要构建一个智能搜索功能，让用户可以用自然语言搜索内部文档。应该使用哪个AWS服务？",
+      "options": {
+        "A": "Amazon OpenSearch",
+        "B": "Amazon Kendra",
+        "C": "Amazon S3",
+        "D": "Amazon DynamoDB"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Kendra是智能企业搜索：\n- 理解自然语言查询意图\n- 提供答案而非仅链接\n- 专为企业文档搜索设计\n- 支持多种数据源连接\n\nOpenSearch是全文搜索引擎，不理解自然语言。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q32",
+      "domain": 1,
+      "question": "一家电商公司想要为用户提供个性化产品推荐。应该使用哪个AWS服务？",
+      "options": {
+        "A": "Amazon Comprehend",
+        "B": "Amazon Personalize",
+        "C": "Amazon Forecast",
+        "D": "Amazon Lex"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Personalize用于：\n- 个性化产品推荐\n- 基于用户行为学习\n- 适合电商、内容推荐、营销\n\nForecast用于时间序列预测（销量预测），不是推荐。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q33",
+      "domain": 1,
+      "question": "Amazon Bedrock 和 Amazon SageMaker 的主要区别是什么？",
+      "options": {
+        "A": "Bedrock用于数据存储，SageMaker用于计算",
+        "B": "Bedrock提供预训练基础模型，SageMaker用于构建自定义模型",
+        "C": "两者功能完全相同",
+        "D": "Bedrock只支持文本，SageMaker只支持图像"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "- Bedrock：预训练基础模型API、无需管理基础设施、快速使用\n- SageMaker：完整ML平台、构建训练部署自定义模型、更多控制",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q34",
+      "domain": 1,
+      "question": "公司想要构建一个能够理解客户意图的聊天机器人。应该使用哪个AWS服务？",
+      "options": {
+        "A": "Amazon Rekognition",
+        "B": "Amazon Lex",
+        "C": "Amazon Transcribe",
+        "D": "Amazon Polly"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Lex用于构建对话式AI：\n- 自然语言理解 (NLU)\n- 意图识别\n- 槽位填充\n- 对话管理\n- 聊天机器人首选服务",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q35",
+      "domain": 1,
+      "question": "什么是\"向量数据库 (Vector Database)\"在生成式AI中的主要作用？",
+      "options": {
+        "A": "存储关系型数据",
+        "B": "存储文本嵌入向量以支持语义搜索",
+        "C": "执行SQL查询",
+        "D": "管理用户权限"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "向量数据库在生成式AI中：\n- 存储嵌入向量 (embeddings)\n- 支持语义相似度搜索\n- RAG系统核心组件\n- 例如：Amazon OpenSearch Serverless Vector Engine",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q36",
+      "domain": 4,
+      "question": "Amazon Q 的主要用途是什么？",
+      "options": {
+        "A": "传统数据库查询",
+        "B": "AI助手，用于回答问题和辅助工作任务",
+        "C": "图像生成",
+        "D": "语音合成"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Amazon Q：\n- Q Business：企业知识问答助手\n- Q Developer：编程辅助（类似GitHub Copilot）\n- 基于企业数据回答问题\n- 类似企业版AI助手",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q37",
+      "domain": 1,
+      "question": "以下哪项是负责任AI (Responsible AI) 的核心原则？",
+      "options": {
+        "A": "最大化模型准确率",
+        "B": "降低计算成本",
+        "C": "确保公平性、透明度和可解释性",
+        "D": "使用最新的模型架构"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "负责任AI核心原则：\n- 公平性 (Fairness)\n- 透明度 (Transparency)\n- 可解释性 (Explainability)\n- 隐私保护 (Privacy)\n- 安全性 (Security)\n- 问责制 (Accountability)",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q38",
+      "domain": 1,
+      "question": "AI中的\"偏见 (Bias)\"指的是什么？",
+      "options": {
+        "A": "模型训练速度太慢",
+        "B": "系统性的错误导致对某些群体的不公平对待",
+        "C": "模型无法处理大量数据",
+        "D": "模型需要太多计算资源"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "AI偏见：\n- 对特定群体（性别、种族、年龄等）不公平\n- 可能来自训练数据中的历史偏见\n- 可能来自数据采样不均\n- 需要使用SageMaker Clarify检测",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q39",
+      "domain": 1,
+      "question": "Amazon SageMaker Clarify 的主要功能是什么？",
+      "options": {
+        "A": "优化模型训练速度",
+        "B": "检测机器学习模型中的偏见并提供可解释性",
+        "C": "自动部署模型到生产环境",
+        "D": "管理ML实验版本"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "SageMaker Clarify：\n- 偏见检测（训练前和训练后）\n- 可解释性（SHAP值、特征重要性）\n- 公平性监控\n- 生成偏见报告",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q40",
+      "domain": 1,
+      "question": "Amazon Bedrock Guardrails 的主要用途是什么？",
+      "options": {
+        "A": "优化模型推理速度",
+        "B": "过滤和阻止不安全或不当的内容",
+        "C": "管理AWS账单",
+        "D": "自动化模型训练"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Bedrock Guardrails：\n- 内容过滤（有害、暴力、仇恨内容）\n- PII检测和屏蔽\n- 主题限制（阻止特定话题）\n- 词汇过滤\n- 在应用层保护模型输出",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q41",
+      "domain": 1,
+      "question": "一个数据科学团队发现他们的贷款审批模型对女性申请者的批准率明显低于男性。这是什么问题？",
+      "options": {
+        "A": "过拟合",
+        "B": "欠拟合",
+        "C": "模型偏见",
+        "D": "数据泄露"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "女性批准率低于男性 = 性别偏见\n- 系统性地对某一群体不公平\n- 可能来自历史数据中的偏见\n- 需要调查数据和模型\n- 使用Clarify检测",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q42",
+      "domain": 1,
+      "question": "在AI应用中，如何最好地保护用户隐私？",
+      "options": {
+        "A": "使用最强大的模型",
+        "B": "对个人身份信息 (PII) 进行数据脱敏或匿名化",
+        "C": "增加训练数据量",
+        "D": "提高模型准确率"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "隐私保护方法：\n- 数据脱敏/匿名化\n- 数据最小化（只收集必要数据）\n- 差分隐私\n- 联邦学习\n- 加密处理",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q43",
+      "domain": 5,
+      "question": "使用Amazon Bedrock时，如何确保模型不会讨论公司禁止的话题？",
+      "options": {
+        "A": "调整模型权重",
+        "B": "使用Bedrock Guardrails设置主题过滤",
+        "C": "重新训练模型",
+        "D": "更换不同的模型"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Guardrails可以：\n- 配置\"拒绝的主题\"列表\n- 阻止特定话题讨论\n- 无需改变模型\n- 在应用层实现控制",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q44",
+      "domain": 1,
+      "question": "在AWS上保护AI模型数据的最佳实践是什么？",
+      "options": {
+        "A": "使所有数据公开可访问",
+        "B": "使用AWS KMS加密静态数据，使用TLS加密传输中的数据",
+        "C": "将所有数据存储在本地服务器上",
+        "D": "避免使用任何加密以提高性能"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "AWS数据安全最佳实践：\n- 静态加密：AWS KMS管理密钥\n- 传输加密：TLS/SSL\n- 访问控制：IAM最小权限\n- 审计日志：CloudTrail",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q45",
+      "domain": 1,
+      "question": "AWS Shared Responsibility Model（共享责任模型）中，客户负责什么？",
+      "options": {
+        "A": "物理数据中心安全",
+        "B": "数据的加密和访问控制",
+        "C": "网络基础设施硬件",
+        "D": "AWS服务的可用性"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "共享责任模型：\n- AWS负责：物理安全、基础设施、网络硬件\n- 客户负责：数据加密、访问控制、应用安全、IAM配置",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q46",
+      "domain": 1,
+      "question": "哪个AWS服务用于管理AI/ML资源的访问权限？",
+      "options": {
+        "A": "Amazon S3",
+        "B": "AWS IAM (Identity and Access Management)",
+        "C": "Amazon SageMaker",
+        "D": "Amazon Bedrock"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "IAM用于：\n- 用户和角色管理\n- 权限策略定义\n- 最小权限原则\n- 多因素认证 (MFA)\n- 控制谁可以访问什么AWS资源",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q47",
+      "domain": 1,
+      "question": "AWS CloudTrail 在AI治理中的作用是什么？",
+      "options": {
+        "A": "训练机器学习模型",
+        "B": "记录和监控AWS API调用以进行审计",
+        "C": "存储训练数据",
+        "D": "优化模型推理性能"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "CloudTrail提供：\n- 记录所有AWS API调用\n- 谁在什么时候做了什么\n- 合规审计支持\n- 安全分析和故障排查",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q48",
+      "domain": 1,
+      "question": "一个ML模型在训练时使用了包含个人健康信息的数据集。根据HIPAA合规要求，应该采取什么措施？",
+      "options": {
+        "A": "不采取任何额外措施",
+        "B": "确保数据加密、访问控制，并签署商业伙伴协议 (BAA)",
+        "C": "将数据移至非AWS服务器",
+        "D": "公开数据以提高透明度"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "HIPAA合规要求：\n- 数据加密（静态和传输中）\n- 严格访问控制\n- 审计日志\n- 与AWS签署BAA（商业伙伴协议）\n- 使用HIPAA合规的AWS服务",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q49",
+      "domain": 1,
+      "question": "Amazon Macie 的主要功能是什么？",
+      "options": {
+        "A": "训练机器学习模型",
+        "B": "自动发现、分类和保护敏感数据（如PII）",
+        "C": "管理容器部署",
+        "D": "优化数据库性能"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Amazon Macie：\n- 自动扫描S3中的敏感数据\n- 识别PII（姓名、地址、信用卡号等）\n- 分类数据敏感级别\n- 生成安全发现报告",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q50",
+      "domain": 1,
+      "question": "一个ML模型在测试集上的准确率是95%，但在生产环境中表现很差。可能的原因是什么？",
+      "options": {
+        "A": "模型太简单",
+        "B": "训练和生产数据分布不同（数据漂移）",
+        "C": "使用的评估指标不对",
+        "D": "测试集太大"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "数据漂移 (Data Drift)：\n- 训练数据分布 ≠ 生产数据分布\n- 用户行为变化\n- 季节性变化\n- 需要使用SageMaker Model Monitor监控\n- 可能需要重新训练模型",
+      "difficulty": "medium"
+    }
+  ]
+}
