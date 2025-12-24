@@ -1,11 +1,11 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { HashRouter, Routes, Route } from 'react-router-dom';
 import { Header } from './components/Layout/Header';
 import { HomePage } from './pages/HomePage';
 import { QuizPage } from './pages/QuizPage';
 
 function App() {
   return (
-    <BrowserRouter>
+    <HashRouter>
       <div className="min-h-screen bg-gray-50">
         <Header />
         <Routes>
@@ -13,7 +13,7 @@ function App() {
           <Route path="/quiz/:examId" element={<QuizPage />} />
         </Routes>
       </div>
-    </BrowserRouter>
+    </HashRouter>
   );
 }
 
