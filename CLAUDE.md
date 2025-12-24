@@ -2,6 +2,30 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Current Status (2025-12-24)
+
+### Completed Tasks ✅
+- [x] Web app (React + TypeScript + Vite + Tailwind)
+- [x] Multi-language support (中文/日本語)
+- [x] Practice mode and exam mode
+- [x] Wrong answer tracking with IndexedDB
+- [x] 6 YouTube videos generated (Set1-3 × 中文/日本語)
+- [x] Code pushed to GitHub: https://github.com/zixuniaowu/studyforge
+- [x] Deployed to Hugging Face: https://jackywangsh-studyforge.hf.space
+- [x] Japanese tech blog published: https://zenn.dev/wangsh/articles/d3b1fb4b35e253
+
+### Generated Videos
+| Set | Language | Size | Duration |
+|-----|----------|------|----------|
+| Set1 | 中文 | 59MB | 41 min |
+| Set1 | 日本語 | 81MB | 56 min |
+| Set2 | 中文 | 51MB | 35 min |
+| Set2 | 日本語 | 69MB | 48 min |
+| Set3 | 中文 | 47MB | 33 min |
+| Set3 | 日本語 | 154MB | 45 min |
+
+Videos located in: `backend/output/aws-aif-c01-*.mp4`
+
 ## Project Overview
 
 StudyForge is an exam preparation platform with two independent modules:
