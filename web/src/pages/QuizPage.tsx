@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { useParams, useSearchParams, useNavigate } from 'react-router-dom';
 import { useExamStore } from '../stores/examStore';
 import { useQuizStore, QuizResult } from '../stores/quizStore';
@@ -28,13 +28,18 @@ export const QuizPage: React.FC = () => {
 
   const [result, setResult] = useState<QuizResult | null>(null);
   const [submitting, setSubmitting] = useState(false);
+  const prevExamIdRef = useRef<string | null>(null);
 
+  // Reset quiz and load exam when examId changes
   useEffect(() => {
-    if (examId) {
+    if (examId && examId !== prevExamIdRef.current) {
+      prevExamIdRef.current = examId;
+      resetQuiz();
       selectExam(examId);
     }
-  }, [examId, selectExam]);
+  }, [examId, selectExam, resetQuiz]);
 
+  // Start quiz when exam is loaded
   useEffect(() => {
     if (currentExam && examQuestions.length > 0 && questions.length === 0) {
       // Shuffle questions for variety
@@ -43,11 +48,13 @@ export const QuizPage: React.FC = () => {
     }
   }, [currentExam, examQuestions, mode, questions.length, startQuiz]);
 
+  // Cleanup on unmount
   useEffect(() => {
     return () => {
       resetQuiz();
     };
-  }, [resetQuiz]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const handleSubmit = async () => {
     const unanswered = questions.length - Object.keys(answers).length;

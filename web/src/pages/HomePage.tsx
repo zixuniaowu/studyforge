@@ -87,7 +87,9 @@ export const HomePage: React.FC = () => {
 
   // 根据语言筛选考试
   const langCode = language === 'ja' ? 'ja' : 'zh-CN';
-  const languageFilteredExams = exams.filter(exam => exam.language === langCode);
+  const languageFilteredExams = useMemo(() => {
+    return exams.filter(exam => exam.language === langCode);
+  }, [exams, langCode]);
 
   // Get available providers from exams
   const availableProviders = useMemo(() => {
