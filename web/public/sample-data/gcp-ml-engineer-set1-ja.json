@@ -1,0 +1,803 @@
+{
+  "exam": {
+    "id": "gcp-ml-engineer-set1-ja",
+    "name": "GCP ML Engineer 模擬試験 #1",
+    "code": "Professional-MLE",
+    "provider": "GCP",
+    "language": "ja",
+    "description": "GCP认证考试模擬問題",
+    "totalQuestions": 50,
+    "passingScore": 70,
+    "examTime": 120,
+    "domains": [
+      {
+        "id": 1,
+        "name": "MLソリューションのアーキテクチャ",
+        "weight": 25
+      },
+      {
+        "id": 2,
+        "name": "データ準備と処理",
+        "weight": 25
+      },
+      {
+        "id": 3,
+        "name": "MLモデルの開発",
+        "weight": 32
+      },
+      {
+        "id": 4,
+        "name": "訓練と評価 ML Models",
+        "weight": 25
+      },
+      {
+        "id": 5,
+        "name": "デプロイとスケーリング ML Solutions",
+        "weight": 25
+      },
+      {
+        "id": 6,
+        "name": "ML パイプライン自動化 and オーケストレーション",
+        "weight": 17
+      }
+    ],
+    "tags": [
+      "GCP",
+      "AI",
+      "ML",
+      "認定試験"
+    ]
+  },
+  "questions": [
+    {
+      "id": "q1",
+      "domain": 1,
+      "question": "ある企業したいと考えています在Google Cloud上构建端到端的機械学習解决方案。どのサービス提供统一的ML平台，包括データ准备、訓練、デプロイ和モニタリング？",
+      "options": {
+        "A": "BigQuery ML",
+        "B": "Vertex AI",
+        "C": "Cloud Functions",
+        "D": "Dataflow"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Vertex AI是Google Cloud的统一ML平台，提供：\n- AutoML和自定义訓練\n- Feature Store\n- モデル注册和デプロイ\n- Pipelines\n- 实验跟踪\n- モデルモニタリング\n---",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q2",
+      "domain": 1,
+      "question": "ある企業的データ科学团队主要使用するSQL，したいと考えています快速构建MLモデル而不必要があります将データ移出BigQuery。を使用するすべきです何？",
+      "options": {
+        "A": "Vertex AI AutoML",
+        "B": "BigQuery ML",
+        "C": "Dataproc",
+        "D": "Cloud AI Platform"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "BigQuery ML允许使用するSQL直接在BigQuery中訓練MLモデル：\n- 无需移动データ\n- 支持线性回归、逻辑回归、K-means等\n- 适合SQL熟练的用户\n- 快速原型開発\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q3",
+      "domain": 1,
+      "question": "ある企業したいと考えています构建画像分類モデル，但团队没有ディープラーニング专业知识。最简单的方法是何？",
+      "options": {
+        "A": "使用するTensorFlow从头訓練",
+        "B": "使用するVertex AI AutoML",
+        "C": "使用するCloud TPU訓練",
+        "D": "使用するDataproc"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Vertex AI AutoML：\n- 自動化モデル架构検索\n- 自動化ハイパーパラメータ调优\n- 无需ML专业知识\n- 支持画像、テキスト、表格、ビデオデータ\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q4",
+      "domain": 1,
+      "question": "ある企業したいと考えています使用する预訓練的大規模言語モデル（如PaLM 2或Gemini）构建生成AI应用。を使用するすべきです何？",
+      "options": {
+        "A": "BigQuery ML",
+        "B": "Vertex AI Model Garden",
+        "C": "Cloud Natural Language API",
+        "D": "Dialogflow"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Vertex AI Model Garden提供：\n- Google基础モデル（PaLM 2、Gemini等）\n- 开源モデル（Llama 2、Stable Diffusion等）\n- 一键デプロイ和ファインチューニング\n- Vertex AI Agent Builder集成\n---",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q5",
+      "domain": 2,
+      "question": "ある企業有大量结构化データ必要があります用于ML訓練。どのサービス最适合ストレージ和クエリ这些データ？",
+      "options": {
+        "A": "Cloud Storage",
+        "B": "BigQuery",
+        "C": "Cloud SQL",
+        "D": "Firestore"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "BigQuery适合MLデータストレージ：\n- PB级データ仓库\n- 与Vertex AI集成\n- 支持BigQuery ML\n- 支持特徴工程SQL\n---",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q6",
+      "domain": 2,
+      "question": "ある企業必要があります对リアルタイム流データ进行预処理，然后用于ML推論。を使用するすべきです何サービス？",
+      "options": {
+        "A": "Cloud Dataproc",
+        "B": "Cloud Dataflow",
+        "C": "Cloud Composer",
+        "D": "Cloud Pub/Sub"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Dataflow是托管的Apache Beamサービス：\n- 支持批処理和流処理\n- 统一编程モデル\n- 自动扩展\n- 与Vertex AI集成\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q7",
+      "domain": 2,
+      "question": "ある企業したいと考えています在多个ML项目中重用特徴，并确保訓練和推論时使用する相同的特徴。を使用するすべきです何？",
+      "options": {
+        "A": "BigQuery",
+        "B": "Vertex AI Feature Store",
+        "C": "Cloud Storage",
+        "D": "Cloud Spanner"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Vertex AI Feature Store：\n- 集中管理特徴\n- 訓練-推論一致性\n- 特徴共享和发现\n- 时间点クエリ（避免データ泄露）\n- オンライン和オフラインサービス\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q8",
+      "domain": 2,
+      "question": "ある企業したいと考えています在MLパイプライン中自动検出データ质量问题（如模式变化、异常值）。TensorFlow Extended (TFX)的どの组件专门用于此目的？",
+      "options": {
+        "A": "Transform",
+        "B": "Trainer",
+        "C": "ExampleValidator",
+        "D": "Pusher"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "TFX组件：\n- StatisticsGen：生成データ统计\n- SchemaGen：推断データ模式\n- ExampleValidator：検証データ是否符合模式\n- Transform：特徴工程\n- Trainer：モデル訓練\n---",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q9",
+      "domain": 2,
+      "question": "在准备ML訓練データ时，処理缺失值的最適な方法取决于何？",
+      "options": {
+        "A": "总是删除缺失值的行",
+        "B": "总是用平均值填充",
+        "C": "根据データ类型、缺失原因和业务上下文选择策略",
+        "D": "总是用零填充"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "処理缺失值的策略：\n- 删除：缺失比例小，随机缺失\n- 均值/中位数填充：数值型\n- 众数填充：分類型\n- 插值：时间序列\n- モデル予測填充：复杂场景\n- 添加\"缺失\"指示特徴\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q10",
+      "domain": 2,
+      "question": "何是\"データ泄露 (Data Leakage)\"，なぜ它在ML中是一个问题？",
+      "options": {
+        "A": "訓練データ被未授权访问",
+        "B": "モデル在訓練时使用する了推論时不可用的信息",
+        "C": "データストレージ空间不足",
+        "D": "网络传输データ丢失"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "データ泄露导致モデル在テスト/検証集上表现好，但在本番環境中失败：\n- 使用する未来信息（时间泄露）\n- テストデータ参与预処理（如整体データ的均值）\n- 目标泄露（特徴包含目标信息）\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q11",
+      "domain": 3,
+      "question": "以下のどの是Google開発的开源機械学習框架？",
+      "options": {
+        "A": "PyTorch",
+        "B": "TensorFlow",
+        "C": "Scikit-learn",
+        "D": "MXNet"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "TensorFlow是Google開発的ML框架：\n- Keras高级API\n- TensorFlow Extended (TFX)本番流水线\n- TensorFlow Lite（移动/エッジ）\n- TensorFlow.js（浏览器）\n---",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q12",
+      "domain": 3,
+      "question": "ある企業的データ科学家したいと考えています在Google Cloud上进行交互式ML開発。を使用するすべきです何？",
+      "options": {
+        "A": "Cloud Shell",
+        "B": "Vertex AI Workbench",
+        "C": "Cloud Functions",
+        "D": "App Engine"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Vertex AI Workbench（原AI Platform Notebooks）：\n- 托管Jupyter環境\n- 预装ML框架\n- 与Vertex AIサービス集成\n- 支持GPU/TPU\n- Git集成\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q13",
+      "domain": 3,
+      "question": "在訓練ニューラルネットワーク时，以下のどのような技术可以帮助防止過学習？",
+      "options": {
+        "A": "增加学習率",
+        "B": "L2正則化",
+        "C": "减少訓練データ",
+        "D": "增加层数"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "防止過学習的技术：\n- L1/L2正則化\n- Dropout\n- 早停 (Early Stopping)\n- データ拡張\n- 减少モデル复杂度\n- バッチ归一化\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q14",
+      "domain": 3,
+      "question": "ある企業有少量标注的医学画像，したいと考えています构建分類モデル。最も効果的的方法是何？",
+      "options": {
+        "A": "从头訓練大型CNN",
+        "B": "使用する迁移学习，ファインチューニング预訓練モデル",
+        "C": "使用する简单的决策树",
+        "D": "收集更多データ再訓練"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "迁移学习在小データ集上特别有效：\n- 使用するImageNet预訓練的モデル\n- 冻结早期层（通用特徴）\n- ファインチューニング后期层（任务特定）\n- 或只訓練新的分類头\n---",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q15",
+      "domain": 3,
+      "question": "在Vertex AI中，何サービス可以自动検索最適なハイパーパラメータ组合？",
+      "options": {
+        "A": "AutoML Tables",
+        "B": "Vertex AI Hyperparameter Tuning",
+        "C": "BigQuery ML",
+        "D": "Cloud TPU"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Vertex AI Hyperparameter Tuning：\n- 贝叶斯优化\n- 网格検索\n- 随机検索\n- 并行试验\n- 与訓練作业集成\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q16",
+      "domain": 3,
+      "question": "在二分類问题的ニューラルネットワーク输出层，を使用するすべきです何活性化関数？",
+      "options": {
+        "A": "ReLU",
+        "B": "Sigmoid",
+        "C": "Tanh",
+        "D": "Softmax"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "活性化関数选择：\n- 二分類输出：Sigmoid（0-1概率）\n- 多分類输出：Softmax\n- 隐藏层：ReLU及其变体\n- 回归输出：线性（无激活）\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q17",
+      "domain": 3,
+      "question": "Transformer架构的核心创新是何？",
+      "options": {
+        "A": "卷积层",
+        "B": "循环连接",
+        "C": "自注意力机制",
+        "D": "池化层"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "自注意力机制：\n- 并行処理所有位置\n- 捕捉长距离依赖\n- 可学习的位置权重\n- 是GPT、BERT等モデル的基础\n---",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q18",
+      "domain": 4,
+      "question": "在划分訓練集和テスト集时，最適な实践是何？",
+      "options": {
+        "A": "随机打乱后划分",
+        "B": "取前80%作为訓練集",
+        "C": "对于时间序列データ，按时间顺序划分",
+        "D": "A和C都是，取决于データ类型"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "データ划分最適な实践：\n- 一般データ：随机打乱后分层划分\n- 时间序列：按时间顺序划分（避免データ泄露）\n- 通常比例：70-80%訓練，10-15%検証，10-15%テスト\n---",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q19",
+      "domain": 4,
+      "question": "当データ量有限时，どのような評価策略可以更可靠地估计モデルパフォーマンス？",
+      "options": {
+        "A": "单次訓練-テスト划分",
+        "B": "K折交叉検証",
+        "C": "使用する全部データ訓練",
+        "D": "增加テスト集比例"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "K折交叉検証：\n- データ分成K份\n- 每次用K-1份訓練，1份検証\n- 重复K次，平均结果\n- 更稳健的パフォーマンス估计\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q20",
+      "domain": 4,
+      "question": "AUC-ROC指标衡量的是何？",
+      "options": {
+        "A": "モデル的訓練速度",
+        "B": "モデル在不同阈值下区分正负类的能力",
+        "C": "モデル的内存使用する",
+        "D": "モデル的参数数量"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "AUC-ROC：\n- ROC曲线：真阳性率 vs 假阳性率\n- AUC：曲线下面积\n- 1.0 = 完美分類器\n- 0.5 = 随机猜测\n- 不受阈值和类别不平衡影响\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q21",
+      "domain": 4,
+      "question": "訓練大型モデル时，何技术可以将モデル分布到多个GPU上？",
+      "options": {
+        "A": "データ并行 (Data Parallelism)",
+        "B": "モデル并行 (Model Parallelism)",
+        "C": "两者都可以",
+        "D": "只能使用する单GPU"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "分布式訓練策略：\n- データ并行：每个GPU有完整モデル副本，処理不同データ批次\n- モデル并行：モデル太大无法放入单GPU，分割到多个GPU\n- パイプライン并行：モデル分层，不同层在不同GPU\n---",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q22",
+      "domain": 4,
+      "question": "在Google Cloud上訓練大规模ディープラーニングモデル时，何硬件可以提供最高パフォーマンス？",
+      "options": {
+        "A": "CPU",
+        "B": "GPU",
+        "C": "TPU",
+        "D": "FPGA"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "TPU（Tensor Processing Unit）：\n- 专为ML工作负载设计\n- 矩阵运算优化\n- 适合大规模訓練和推論\n- 与TensorFlow深度集成\n- コスト效益高于等效GPU集群\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q23",
+      "domain": 4,
+      "question": "何是\"早停 (Early Stopping)\"技术？",
+      "options": {
+        "A": "在訓練开始时停止",
+        "B": "当検証損失不再改善时停止訓練",
+        "C": "减少訓練データ量",
+        "D": "降低学習率"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "早停：\n- モニタリング検証集パフォーマンス\n- 连续多个epoch无改善时停止\n- 防止過学習\n- 节省訓練时间\n- 保存最適なモデル检查点\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q24",
+      "domain": 5,
+      "question": "在Vertex AI中，どのように将訓練好的モデルデプロイ为可调用的API？",
+      "options": {
+        "A": "上传到Cloud Storage",
+        "B": "作成Vertex AI Endpoint",
+        "C": "使用するCloud Functions",
+        "D": "使用するApp Engine"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Vertex AI Endpoint：\n- 托管モデル推論\n- 自动扩展\n- A/Bテスト（流量分割）\n- モニタリング和ログ\n- 支持オンライン和バッチ予測\n---",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q25",
+      "domain": 5,
+      "question": "ある企業必要があります对数百万条记录进行予測，但不必要がありますリアルタイム响应。最经济高效的方法是何？",
+      "options": {
+        "A": "作成高設定的オンラインエンドポイント",
+        "B": "使用するVertex AIバッチ予測",
+        "C": "作成多个エンドポイント并行処理",
+        "D": "使用するCloud Functions"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "バッチ予測：\n- 処理大量データ\n- コスト低于持续运行的エンドポイント\n- 结果输出到Cloud Storage或BigQuery\n- 适合非リアルタイム场景\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q26",
+      "domain": 5,
+      "question": "在本番環境中，どのように検出モデルパフォーマンス随时间下降（モデルドリフト）？",
+      "options": {
+        "A": "定期重新訓練",
+        "B": "使用するVertex AI Model Monitoring",
+        "C": "增加モデル复杂度",
+        "D": "使用する更多訓練データ"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Vertex AI Model Monitoring：\n- 検出特徴ドリフト\n- 検出予測ドリフト\n- 検出目标ドリフト（需标签）\n- 自动アラート\n- トリガー重新訓練\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q27",
+      "domain": 5,
+      "question": "ある企業したいと考えていますセキュリティ地发布新バージョンモデル，先让少量流量テスト新モデル。を使用するすべきです何デプロイ策略？",
+      "options": {
+        "A": "蓝绿デプロイ",
+        "B": "金丝雀デプロイ (Canary)",
+        "C": "滚动更新",
+        "D": "直接替换"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "金丝雀デプロイ：\n- 逐步增加新バージョン流量（如5%→20%→50%→100%）\n- モニタリング新バージョンパフォーマンス\n- 问题时快速ロールバック\n- Vertex AI Endpoint支持流量分割\n---",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q28",
+      "domain": 5,
+      "question": "ある企業したいと考えています在没有网络连接的设备上运行ML推論。を使用するすべきです何？",
+      "options": {
+        "A": "Vertex AI Endpoint",
+        "B": "TensorFlow Lite或TensorFlow.js",
+        "C": "BigQuery ML",
+        "D": "Cloud Functions"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "エッジデプロイ选项：\n- TensorFlow Lite：移动设备和埋め込み式\n- TensorFlow.js：浏览器\n- TensorRT：NVIDIA硬件\n- Edge TPU：Googleエッジ设备\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q29",
+      "domain": 5,
+      "question": "一家金融企業必要があります解释其贷款审批モデル的决策。Vertex AI提供何機能？",
+      "options": {
+        "A": "Model Monitoring",
+        "B": "Explainable AI (特徴归因)",
+        "C": "AutoML",
+        "D": "Feature Store"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Vertex Explainable AI：\n- 特徴归因（哪些特徴影响予測）\n- 基于采样的解释\n- 集成梯度（ニューラルネットワーク）\n- 可在エンドポイント上启用\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q30",
+      "domain": 6,
+      "question": "ある企業したいと考えています自動化其MLワークフロー程，从データ処理到モデルデプロイ。を使用するすべきです何？",
+      "options": {
+        "A": "Cloud Scheduler",
+        "B": "Vertex AI Pipelines",
+        "C": "Cloud Functions",
+        "D": "Cloud Composer"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Vertex AI Pipelines：\n- 定义可重复的MLワークフロー\n- 基于Kubeflow Pipelines\n- バージョン控制和追踪\n- 与Vertex AIサービス集成\n- 支持スケジューリング和トリガー\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q31",
+      "domain": 6,
+      "question": "Kubeflow的主要目的是何？",
+      "options": {
+        "A": "訓練单个モデル",
+        "B": "在Kubernetes上オーケストレーションMLワークフロー",
+        "C": "データストレージ",
+        "D": "网络管理"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Kubeflow：\n- 在Kubernetes上运行MLワークフロー\n- 可移植性（オンプレミス、クラウド）\n- Pipelines定义ワークフロー\n- Notebooks交互開発\n- 訓練和推論组件\n---",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q32",
+      "domain": 6,
+      "question": "何是MLOps中的持续集成/持续デプロイ (CI/CD)？",
+      "options": {
+        "A": "只自動化代码デプロイ",
+        "B": "自動化ML代码、データ和モデル的テスト、訓練和デプロイ",
+        "C": "只自動化データ処理",
+        "D": "手动デプロイモデル"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "ML中的CI/CD包括：\n- 代码テスト和集成\n- データ検証\n- 自動化訓練\n- モデル検証\n- 自動化デプロイ\n- 持续モニタリング\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q33",
+      "domain": 1,
+      "question": "ある企業したいと考えています降低ML訓練コスト。以下のどのような方法最も効果的？",
+      "options": {
+        "A": "使用する抢占式VM",
+        "B": "只在工作时间运行",
+        "C": "减少データ量",
+        "D": "使用する更复杂的モデル"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "降低訓練コスト：\n- 抢占式/Spot VM（60-80%折扣）\n- 正しい选择机器类型\n- ハイブリッド精度訓練\n- 使用する检查点恢复\n- ハイパーパラメータ调优减少试验次数\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q34",
+      "domain": 2,
+      "question": "在処理分類特徴时，\"One-hot Encoding\"的作用是何？",
+      "options": {
+        "A": "压缩データ",
+        "B": "将分類值转换为二进制ベクトル",
+        "C": "删除缺失值",
+        "D": "规范化数值"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "One-hot Encoding：\n- 每个类别成为一个特徴列\n- 该类别为1，其他为0\n- 例如：颜色[红,绿,蓝] → [1,0,0], [0,1,0], [0,0,1]\n- 避免分類变量被当作数值処理\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q35",
+      "domain": 3,
+      "question": "バッチ归一化 (Batch Normalization) 的主要优势是何？",
+      "options": {
+        "A": "减少モデル参数",
+        "B": "稳定訓練并允许使用する更高的学習率",
+        "C": "增加モデル复杂度",
+        "D": "减少訓練データ需求"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "バッチ归一化：\n- 标准化每层的输入\n- 减少内部协变量偏移\n- 允许更高的学習率\n- 一定的正則化效果\n- 加速收敛\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q36",
+      "domain": 3,
+      "question": "在処理高基数分類变量（如用户ID）时，何技术比One-hot Encoding更有效？",
+      "options": {
+        "A": "标签编码",
+        "B": "埋め込み (Embedding)",
+        "C": "二进制编码",
+        "D": "频率编码"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "埋め込み层：\n- 将高维稀疏ベクトル映射到低维密集ベクトル\n- 可学习语义关系\n- 减少维度灾难\n- 常用于推荐系统、NLP\n---",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q37",
+      "domain": 4,
+      "question": "在混淆矩阵中，\"假阴性 (False Negative)\"代表何？",
+      "options": {
+        "A": "正しい予測为正",
+        "B": "正しい予測为负",
+        "C": "間違い予測为正",
+        "D": "間違い予測为负（实际为正）"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "混淆矩阵：\n- 真阳性(TP)：实际正，予測正\n- 真阴性(TN)：实际负，予測负\n- 假阳性(FP)：实际负，予測正（误报）\n- 假阴性(FN)：实际正，予測负（漏报）\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q38",
+      "domain": 4,
+      "question": "在処理类别极度不平衡的データ时（如欺诈検出），以下のどのような方法最も効果的？",
+      "options": {
+        "A": "使用する精度作为主要指标",
+        "B": "使用するSMOTE过采样、欠采样或类权重",
+        "C": "增加訓練轮次",
+        "D": "使用する更复杂的モデル"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "処理不平衡データ：\n- 过采样少数类（SMOTE）\n- 欠采样多数类\n- 类权重调整\n- 使用するAUC、F1而非精度\n- Focal Loss\n---",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q39",
+      "domain": 5,
+      "question": "ある企業したいと考えています比较两个MLモデル在本番中的效果。最適な实践是何？",
+      "options": {
+        "A": "只看オフライン指标",
+        "B": "进行オンラインA/Bテスト",
+        "C": "选择更复杂的モデル",
+        "D": "使用する更多訓練データ"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "A/Bテスト：\n- 将流量分配给不同モデルバージョン\n- 测量实际业务指标\n- 统计显著性検証\n- Vertex AI Endpoint支持流量分割\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q40",
+      "domain": 5,
+      "question": "ある企業的モデル推論レイテンシ过高。以下のどのような方法可以降低レイテンシ？",
+      "options": {
+        "A": "增加モデル复杂度",
+        "B": "使用するモデル蒸馏或量化",
+        "C": "增加バッチ大小",
+        "D": "使用する更慢的硬件"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "降低推論レイテンシ：\n- モデル蒸馏（小モデル学习大モデル）\n- 量化（FP32→INT8）\n- 剪枝（去除不重要的连接）\n- 使用するGPU/TPU\n- 优化批処理策略\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q41",
+      "domain": 6,
+      "question": "在Vertex AI中，どのように跟踪和比较多次訓練运行的结果？",
+      "options": {
+        "A": "使用するCloud Logging",
+        "B": "使用するVertex AI Experiments",
+        "C": "使用するBigQuery",
+        "D": "手动记录"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Vertex AI Experiments：\n- 记录ハイパーパラメータ和指标\n- 比较不同运行\n- 可视化结果\n- 与Pipelines集成\n- 可重复实验\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q42",
+      "domain": 1,
+      "question": "在构建MLモデル时，以下の哪项是責任あるAI的核心考虑因素？",
+      "options": {
+        "A": "只关注精度",
+        "B": "确保公平性、説明可能性和プライバシー保护",
+        "C": "使用する最新的算法",
+        "D": "最大化モデル复杂度"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Google責任あるAI原则：\n- 对社会有益\n- 避免创造或加强不公平的バイアス\n- セキュリティ构建和テスト\n- 对人负责\n- プライバシー设计原则\n- 坚持高标准的科学卓越性\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q43",
+      "domain": 2,
+      "question": "ある企業したいと考えています使用するApache Spark进行大规模データ処理。Google Cloud上を使用するすべきです何サービス？",
+      "options": {
+        "A": "Dataflow",
+        "B": "Dataproc",
+        "C": "BigQuery",
+        "D": "Cloud Functions"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Dataproc：\n- 托管Hadoop和Spark\n- 快速作成集群\n- 与Cloud Storage、BigQuery集成\n- 支持Spark MLlib\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q44",
+      "domain": 3,
+      "question": "Adamオプティマイザ相比标准SGD的优势是何？",
+      "options": {
+        "A": "计算更简单",
+        "B": "自适应学習率，对不同参数使用する不同学習率",
+        "C": "内存使用する更少",
+        "D": "不必要があります设置ハイパーパラメータ"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Adam（Adaptive Moment Estimation）：\n- 结合Momentum和RMSprop\n- 为每个参数维护自适应学習率\n- 对稀疏梯度表现好\n- 是ディープラーニング中最常用的オプティマイザ之一\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q45",
+      "domain": 4,
+      "question": "モデル的\"偏差-方差权衡\"是何意思？",
+      "options": {
+        "A": "訓練速度和精度的权衡",
+        "B": "アンダーフィッティング（高偏差）和過学習（高方差）之间的平衡",
+        "C": "コスト和パフォーマンス的权衡",
+        "D": "データ量和モデル大小的权衡"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "偏差-方差权衡：\n- 高偏差：モデル过于简单，アンダーフィッティング\n- 高方差：モデル过于复杂，過学習\n- 目标：找到复杂度平衡点\n- 通过正則化、モデル选择控制\n---",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q46",
+      "domain": 5,
+      "question": "在Vertex AI中，何機能用于管理モデルバージョン和元データ？",
+      "options": {
+        "A": "Feature Store",
+        "B": "Model Registry",
+        "C": "Experiments",
+        "D": "Pipelines"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Vertex AI Model Registry：\n- モデルバージョン管理\n- 元データストレージ\n- デプロイ历史\n- モデル血缘\n- 与Endpoints集成\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q47",
+      "domain": 6,
+      "question": "在TFXパイプライン中，どの组件负责モデル検証，确保新モデル比当前本番モデル更好？",
+      "options": {
+        "A": "Evaluator",
+        "B": "Trainer",
+        "C": "Pusher",
+        "D": "Transform"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "TFX Evaluator：\n- 評価モデルパフォーマンス\n- 与基准モデル比较\n- 検証阈值\n- 只有通过検証的モデル才能デプロイ\n- 使用するTensorFlow Model Analysis\n---",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q48",
+      "domain": 1,
+      "question": "ある企業したいと考えています限制只有特定团队可以デプロイモデル到本番環境。を使用するすべきです何？",
+      "options": {
+        "A": "VPC",
+        "B": "IAM角色和权限",
+        "C": "防火墙",
+        "D": "加密"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "GCP IAM：\n- Vertex AI User：使用する予測サービス\n- Vertex AI Developer：開発和訓練\n- Vertex AI Admin：完全管理权限\n- 最小权限原则\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q49",
+      "domain": 3,
+      "question": "在訓練循环ニューラルネットワーク时，何技术可以防止\"梯度爆炸\"问题？",
+      "options": {
+        "A": "Dropout",
+        "B": "梯度裁剪 (Gradient Clipping)",
+        "C": "バッチ归一化",
+        "D": "权重初始化"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "梯度裁剪：\n- 限制梯度的最大范数\n- 防止参数更新过大\n- 常用于RNN、LSTM\n- 稳定訓練过程\n---",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q50",
+      "domain": 5,
+      "question": "ある企業したいと考えています优化モデルサービスコスト，同时保持可用性。を使用するすべきです何Vertex AI Endpoint設定？",
+      "options": {
+        "A": "最大实例数设为1",
+        "B": "使用する自动スケーリング，设置最小和最大实例数",
+        "C": "使用する最大实例数而不スケーリング",
+        "D": "完全禁用スケーリング"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "自动スケーリング最適な实践：\n- 设置最小实例（保证可用性）\n- 设置最大实例（控制コスト）\n- 根据流量自动スケーリング\n- 使用する预热请求减少冷启动",
+      "difficulty": "medium"
+    }
+  ]
+}
