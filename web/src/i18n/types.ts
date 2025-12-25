@@ -66,6 +66,9 @@ export interface Translations {
     correctAnswer: string;
     yourAnswer: string;
     explanation: string;
+    examNotFound: string;
+    examNotFoundDesc: string;
+    backToHome: string;
   };
 
   // Result page

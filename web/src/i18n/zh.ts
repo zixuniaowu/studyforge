@@ -61,6 +61,9 @@ export const zh: Translations = {
     correctAnswer: '正确答案',
     yourAnswer: '你的答案',
     explanation: '解析',
+    examNotFound: '考试未找到',
+    examNotFoundDesc: '请返回首页重新加载题库',
+    backToHome: '返回首页',
   },
 
   result: {

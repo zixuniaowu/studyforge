@@ -76,10 +76,31 @@ export const QuizPage: React.FC = () => {
     navigate('/');
   };
 
-  if (loading || !currentExam) {
+  if (loading) {
     return (
       <div className="min-h-screen bg-gray-50 flex items-center justify-center">
         <Loader2 size={40} className="animate-spin text-blue-600" />
+      </div>
+    );
+  }
+
+  if (!currentExam || examQuestions.length === 0) {
+    return (
+      <div className="min-h-screen bg-gray-50 flex flex-col items-center justify-center">
+        <div className="text-center">
+          <h2 className="text-2xl font-bold text-gray-800 mb-4">
+            {t.quiz.examNotFound || '考试未找到'}
+          </h2>
+          <p className="text-gray-600 mb-6">
+            {t.quiz.examNotFoundDesc || '请返回首页重新加载题库'}
+          </p>
+          <button
+            onClick={() => navigate('/')}
+            className="px-6 py-3 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors"
+          >
+            {t.quiz.backToHome || '返回首页'}
+          </button>
+        </div>
       </div>
     );
   }

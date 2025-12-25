@@ -61,6 +61,9 @@ export const ja: Translations = {
     correctAnswer: '正解',
     yourAnswer: 'あなたの回答',
     explanation: '解説',
+    examNotFound: '試験が見つかりません',
+    examNotFoundDesc: 'ホームに戻って問題集を再読み込みしてください',
+    backToHome: 'ホームに戻る',
   },
 
   result: {
