@@ -150,29 +150,32 @@ def create_exam_json(md_path: str, exam_id: str, exam_name: str, provider: str) 
 
 
 def main():
-    # Azure AI-102
-    azure_json = create_exam_json(
-        '/home/zixuniaowu/dev/studyforge/Azure/azure-ai-102-set1.md',
-        'azure-ai-102-set1',
-        'Azure AI-102 模拟考试 #1',
-        'Azure'
-    )
+    base_path = '/home/zixuniaowu/dev/studyforge'
+    output_path = f'{base_path}/web/public/sample-data'
 
-    with open('/home/zixuniaowu/dev/studyforge/web/public/sample-data/azure-ai-102-set1.json', 'w', encoding='utf-8') as f:
-        json.dump(azure_json, f, ensure_ascii=False, indent=2)
-    print(f"Created azure-ai-102-set1.json with {len(azure_json['questions'])} questions")
+    # Azure AI-102 (3 sets)
+    for i in range(1, 4):
+        azure_json = create_exam_json(
+            f'{base_path}/Azure/azure-ai-102-set{i}.md',
+            f'azure-ai-102-set{i}',
+            f'Azure AI-102 模拟考试 #{i}',
+            'Azure'
+        )
+        with open(f'{output_path}/azure-ai-102-set{i}.json', 'w', encoding='utf-8') as f:
+            json.dump(azure_json, f, ensure_ascii=False, indent=2)
+        print(f"Created azure-ai-102-set{i}.json with {len(azure_json['questions'])} questions")
 
-    # GCP ML Engineer
-    gcp_json = create_exam_json(
-        '/home/zixuniaowu/dev/studyforge/GCP/gcp-ml-engineer-set1.md',
-        'gcp-ml-engineer-set1',
-        'GCP ML Engineer 模拟考试 #1',
-        'GCP'
-    )
-
-    with open('/home/zixuniaowu/dev/studyforge/web/public/sample-data/gcp-ml-engineer-set1.json', 'w', encoding='utf-8') as f:
-        json.dump(gcp_json, f, ensure_ascii=False, indent=2)
-    print(f"Created gcp-ml-engineer-set1.json with {len(gcp_json['questions'])} questions")
+    # GCP ML Engineer (3 sets)
+    for i in range(1, 4):
+        gcp_json = create_exam_json(
+            f'{base_path}/GCP/gcp-ml-engineer-set{i}.md',
+            f'gcp-ml-engineer-set{i}',
+            f'GCP ML Engineer 模拟考试 #{i}',
+            'GCP'
+        )
+        with open(f'{output_path}/gcp-ml-engineer-set{i}.json', 'w', encoding='utf-8') as f:
+            json.dump(gcp_json, f, ensure_ascii=False, indent=2)
+        print(f"Created gcp-ml-engineer-set{i}.json with {len(gcp_json['questions'])} questions")
 
 
 if __name__ == '__main__':

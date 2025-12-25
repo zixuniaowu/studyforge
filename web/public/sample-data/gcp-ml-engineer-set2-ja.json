@@ -1,0 +1,803 @@
+{
+  "exam": {
+    "id": "gcp-ml-engineer-set2-ja",
+    "name": "GCP ML Engineer 模擬試験 #2",
+    "code": "Professional-MLE",
+    "provider": "GCP",
+    "language": "ja",
+    "description": "GCP认证考试模擬問題",
+    "totalQuestions": 50,
+    "passingScore": 70,
+    "examTime": 120,
+    "domains": [
+      {
+        "id": 1,
+        "name": "MLソリューションのアーキテクチャ",
+        "weight": 25
+      },
+      {
+        "id": 2,
+        "name": "データ準備と処理",
+        "weight": 25
+      },
+      {
+        "id": 3,
+        "name": "MLモデルの開発",
+        "weight": 32
+      },
+      {
+        "id": 4,
+        "name": "訓練と評価 ML Models",
+        "weight": 25
+      },
+      {
+        "id": 5,
+        "name": "デプロイとスケーリング ML Solutions",
+        "weight": 25
+      },
+      {
+        "id": 6,
+        "name": "ML パイプライン自動化 and オーケストレーション",
+        "weight": 17
+      }
+    ],
+    "tags": [
+      "GCP",
+      "AI",
+      "ML",
+      "認定試験"
+    ]
+  },
+  "questions": [
+    {
+      "id": "q1",
+      "domain": 1,
+      "question": "ある企業したいと考えています构建一个能够検索内部ドキュメント并回答问题的AI助手。最简单的方法是何？",
+      "options": {
+        "A": "从头訓練LLM",
+        "B": "使用するVertex AI Agent Builder",
+        "C": "使用するBigQuery ML",
+        "D": "使用するCloud Functions"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Vertex AI Agent Builder（原Enterprise Search）：\n- 快速构建検索和対話应用\n- 无代码/低代码\n- 自动RAG实现\n- 支持多种データ源\n- 与Gemini集成\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q2",
+      "domain": 1,
+      "question": "ある企業必要があります选择ML方法来予測客户流失。以下のどのような方法最合适？",
+      "options": {
+        "A": "无监督聚类",
+        "B": "二分類监督学习",
+        "C": "回归分析",
+        "D": "强化学习"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "客户流失予測：\n- 有标签データ（流失/不流失）\n- 两个类别 = 二分類\n- 可以使用する逻辑回归、随机森林、XGBoost、ニューラルネットワーク等\n---",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q3",
+      "domain": 1,
+      "question": "一家金融企業必要があります在50ms内完成欺诈検出推論。すべきです考虑何架构？",
+      "options": {
+        "A": "バッチ予測",
+        "B": "オンライン予測エンドポイント，使用する小型优化モデル",
+        "C": "BigQuery ML",
+        "D": "手动审核"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "低レイテンシ要求：\n- オンラインエンドポイント（非バッチ）\n- モデル优化（量化、蒸馏）\n- 适当的硬件（GPU）\n- モデル缓存\n- 减少网络跳数\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q4",
+      "domain": 2,
+      "question": "在TFXパイプライン中，どの组件负责将原始データ转换为モデル可用的特徴？",
+      "options": {
+        "A": "ExampleGen",
+        "B": "Transform",
+        "C": "Trainer",
+        "D": "Evaluator"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "TFX Transform：\n- 特徴工程\n- 归一化、标准化\n- 词汇表构建\n- 生成预処理图（訓練和推論一致）\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q5",
+      "domain": 2,
+      "question": "何是\"訓練-サービス偏差 (Training-Serving Skew)\"？どのように避免？",
+      "options": {
+        "A": "モデル在訓練和テスト上的パフォーマンス差异",
+        "B": "訓練时和推論时的データ処理不一致",
+        "C": "データ集大小差异",
+        "D": "モデルバージョン差异"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "訓練-サービス偏差：\n- 訓練时用Python预処理\n- 推論时用不同实现\n- 导致不一致的结果\n避免方法：\n- 使用するTFX Transform生成统一预処理\n- 使用するFeature Store确保一致性\n---",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q6",
+      "domain": 2,
+      "question": "TensorFlow Data Validation (TFDV) 的主要機能是何？",
+      "options": {
+        "A": "訓練モデル",
+        "B": "生成データ统计、検出异常和データドリフト",
+        "C": "デプロイモデル",
+        "D": "可视化结果"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "TFDV機能：\n- 生成データ统计\n- 推断schema\n- 検出データ异常\n- 可视化データ分布\n- 比较不同データ集\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q7",
+      "domain": 2,
+      "question": "処理类别不平衡データ时，以下のどのような采样策略在訓練集上使用する？",
+      "options": {
+        "A": "对テスト集过采样",
+        "B": "对訓練集的少数类过采样或多数类欠采样",
+        "C": "不做任何処理",
+        "D": "对検証集欠采样"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "采样策略只应用于訓練集：\n- 保持テスト/検証集原始分布\n- 真实評価モデルパフォーマンス\n- 訓練集可以SMOTE过采样或欠采样\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q8",
+      "domain": 3,
+      "question": "在TensorFlow/Keras中，作成ニューラルネットワーク最常用的高级API是何？",
+      "options": {
+        "A": "tf.Session",
+        "B": "tf.keras.Sequential 或 Functional API",
+        "C": "tf.raw_ops",
+        "D": "tf.data"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Keras构建モデル：\n- Sequential：线性堆叠层\n- Functional API：复杂拓扑（多输入/输出）\n- Subclassing：完全自定义\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q9",
+      "domain": 3,
+      "question": "对于表格データ的分類/回归问题，以下のどのような算法通常表现最好？",
+      "options": {
+        "A": "深度ニューラルネットワーク",
+        "B": "梯度提升树（如XGBoost、LightGBM）",
+        "C": "线性回归",
+        "D": "K近邻"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "表格データ：\n- 梯度提升树通常是首选\n- 对特徴工程要求较低\n- 処理缺失值和类别特徴\n- 比DNN更易调优\n---",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q10",
+      "domain": 3,
+      "question": "学習率设置过高会导致何问题？",
+      "options": {
+        "A": "收敛太慢",
+        "B": "訓練不收敛或震荡",
+        "C": "内存不足",
+        "D": "データ泄露"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "学習率影响：\n- 过高：震荡、发散、错过最优解\n- 过低：收敛慢、可能陷入局部最优\n- 常用策略：学習率スケジューリング（逐渐降低）\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q11",
+      "domain": 3,
+      "question": "BERTモデル的预訓練任务是何？",
+      "options": {
+        "A": "机器翻訳",
+        "B": "掩码语言モデル(MLM)和下一句予測(NSP)",
+        "C": "感情分析",
+        "D": "固有表現認識"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "BERT预訓練：\n- MLM：随机掩盖15%的词，予測被掩盖的词\n- NSP：判断两句是否连续\n- 双向上下文理解\n- 然后在下游任务ファインチューニング\n---",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q12",
+      "domain": 3,
+      "question": "在CNN中，池化层(Pooling)的主要作用是何？",
+      "options": {
+        "A": "增加参数数量",
+        "B": "降低特徴图维度，减少计算量",
+        "C": "学习新特徴",
+        "D": "正則化"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "池化层：\n- 下采样（减小尺寸）\n- 提供平移不变性\n- 减少参数和计算\n- 常用：Max Pooling, Average Pooling\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q13",
+      "domain": 4,
+      "question": "在分類问题中划分データ集时，なぜ要使用する分层采样(Stratified Sampling)？",
+      "options": {
+        "A": "加快訓練速度",
+        "B": "确保每个子集中各类别的比例与原始データ一致",
+        "C": "增加データ量",
+        "D": "减少過学習"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "分层采样：\n- 保持类别分布\n- 特别重要于不平衡データ\n- sklearn: train_test_split(stratify=y)\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q14",
+      "domain": 4,
+      "question": "どのように在訓練过程中可视化損失曲线和指标？",
+      "options": {
+        "A": "打印到控制台",
+        "B": "使用するTensorBoard",
+        "C": "保存到文件",
+        "D": "使用するmatplotlib"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "TensorBoard機能：\n- 标量（損失、精度）\n- 画像\n- 直方图（权重分布）\n- 计算图\n- 与Vertex AI集成\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q15",
+      "domain": 4,
+      "question": "L1正則化和L2正則化的主要区别是何？",
+      "options": {
+        "A": "L1更快",
+        "B": "L1产生稀疏权重（特徴选择），L2产生小但非零权重",
+        "C": "L2产生稀疏权重",
+        "D": "没有区别"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "正則化区别：\n- L1（Lasso）：权重可变为0 → 特徴选择\n- L2（Ridge）：权重趋向于小但不为0\n- Elastic Net：L1 + L2组合\n---",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q16",
+      "domain": 4,
+      "question": "在Vertex AI中，どのように指定使用するGPU进行訓練？",
+      "options": {
+        "A": "自动使用するGPU",
+        "B": "在訓練作业設定中指定机器类型和加速器",
+        "C": "只能在オンプレミス使用するGPU",
+        "D": "使用する特殊的代码"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Vertex AI GPU設定：\n- 选择包含GPU的机器类型\n- 指定加速器类型（如NVIDIA Tesla T4、V100、A100）\n- 指定GPU数量\n- 代码需使用するGPU框架\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q17",
+      "domain": 4,
+      "question": "何是ハイブリッド精度訓練(Mixed Precision Training)？",
+      "options": {
+        "A": "使用する多种オプティマイザ",
+        "B": "使用するFP16和FP32ハイブリッド计算，加速訓練",
+        "C": "使用する多种損失函数",
+        "D": "使用する多个GPU"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "ハイブリッド精度訓練：\n- FP16计算（更快）\n- FP32ストレージ权重（精度）\n- 减少内存使用する\n- 加速訓練\n- TensorFlow: tf.keras.mixed_precision\n---",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q18",
+      "domain": 5,
+      "question": "在Vertex AI Endpoint上デプロイモデル时，どのように确保高可用性？",
+      "options": {
+        "A": "使用する单个节点",
+        "B": "設定多个副本和自动扩展",
+        "C": "使用するバッチ予測",
+        "D": "降低モデル复杂度"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "高可用設定：\n- 最小副本数 ≥ 2\n- 自动扩展\n- 多区域デプロイ\n- 健康检查\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q19",
+      "domain": 5,
+      "question": "何是\"影子デプロイ (Shadow Deployment)\"？",
+      "options": {
+        "A": "在夜间デプロイ",
+        "B": "新モデル接收流量副本但不返回结果给用户，用于テスト",
+        "C": "デプロイ到テスト環境",
+        "D": "加密デプロイ"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "影子デプロイ：\n- 新モデル接收实际流量的副本\n- 不影响用户（结果不返回）\n- 比较新旧モデルパフォーマンス\n- 検証后再正式切换\n---",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q20",
+      "domain": 5,
+      "question": "以下のどのようなドリフト类型指的是输入特徴分布的变化？",
+      "options": {
+        "A": "概念ドリフト",
+        "B": "データ/特徴ドリフト",
+        "C": "标签ドリフト",
+        "D": "モデルドリフト"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "ドリフト类型：\n- 特徴ドリフト：输入分布变化\n- 概念ドリフト：输入和输出关系变化\n- 标签ドリフト：标签分布变化\n- 予測ドリフト：モデル输出分布变化\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q21",
+      "domain": 5,
+      "question": "将TensorFlowモデル转换为ONNX格式的主要优势是何？",
+      "options": {
+        "A": "减少モデル大小",
+        "B": "跨框架和平台的互操作性",
+        "C": "提高精度",
+        "D": "加密保护"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "ONNX（Open Neural Network Exchange）：\n- 跨框架标准格式\n- TensorFlow → PyTorch可用\n- 多种推論引擎支持\n- エッジ设备デプロイ\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q22",
+      "domain": 6,
+      "question": "在Vertex AI Pipelines中，何是\"组件 (Component)\"？",
+      "options": {
+        "A": "物理硬件",
+        "B": "可重用的代码单元，执行特定任务",
+        "C": "データストレージ",
+        "D": "网络設定"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Pipeline组件：\n- 封装特定機能（データ処理、訓練等）\n- 可重用\n- 有输入/输出定义\n- Python函数或コンテナ化\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q23",
+      "domain": 6,
+      "question": "在ML CI/CD流程中，何事件すべきですトリガー重新訓練パイプライン？",
+      "options": {
+        "A": "只有代码更改",
+        "B": "データ更改、モデルパフォーマンス下降、代码更改",
+        "C": "只有手动トリガー",
+        "D": "每天固定时间"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "重新訓練トリガー器：\n- 代码更改（新特徴、算法）\n- データ更新（新データ可用）\n- パフォーマンス下降（モニタリング検出到）\n- 定期スケジューリング（保持新鲜度）\n---",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q24",
+      "domain": 1,
+      "question": "Google Cloud的Geminiモデル能够処理哪些类型的输入？",
+      "options": {
+        "A": "只有テキスト",
+        "B": "テキスト、画像、ビデオ、音频",
+        "C": "只有画像",
+        "D": "只有代码"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Gemini多模态能力：\n- テキスト理解和生成\n- 画像分析\n- ビデオ理解\n- 音频処理\n- 代码生成\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q25",
+      "domain": 2,
+      "question": "使用するDataproc进行大规模特徴工程时，何格式最适合ストレージ特徴データ？",
+      "options": {
+        "A": "CSV",
+        "B": "Parquet",
+        "C": "JSON",
+        "D": "XML"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Parquet优势：\n- 列式ストレージ（快速列读取）\n- 高效压缩\n- 支持复杂嵌套结构\n- 与Spark、BigQuery兼容\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q26",
+      "domain": 3,
+      "question": "多分類问题を使用するすべきです何損失函数？",
+      "options": {
+        "A": "均方误差 (MSE)",
+        "B": "分類交叉熵 (Categorical Cross-entropy)",
+        "C": "二元交叉熵",
+        "D": "Hinge Loss"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "損失函数选择：\n- 回归：MSE, MAE\n- 二分類：Binary Cross-entropy\n- 多分類（互斥）：Categorical Cross-entropy\n- 多标签：Binary Cross-entropy per label\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q27",
+      "domain": 3,
+      "question": "ResNet架构中的\"跳跃连接 (Skip Connection)\"解决何问题？",
+      "options": {
+        "A": "過学習",
+        "B": "梯度消失，允许訓練更深的网络",
+        "C": "データ不平衡",
+        "D": "过度拟合"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "跳跃连接：\n- 直接将输入传递到后面的层\n- 梯度可以直接流回\n- 解决深度网络的梯度消失\n- 允许訓練100+层的网络\n---",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q28",
+      "domain": 4,
+      "question": "検証曲线(Validation Curve)用于分析何？",
+      "options": {
+        "A": "データ分布",
+        "B": "ハイパーパラメータ对訓練和検証パフォーマンス的影响",
+        "C": "特徴重要性",
+        "D": "予測结果"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "検証曲线：\n- X轴：ハイパーパラメータ值\n- Y轴：訓練和検証分数\n- 找到最適なハイパーパラメータ\n- 诊断アンダーフィッティング/過学習\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q29",
+      "domain": 4,
+      "question": "在Keras中，どのように在每个epoch后保存モデル检查点？",
+      "options": {
+        "A": "手动保存",
+        "B": "使用するModelCheckpoint回调",
+        "C": "訓練结束后保存",
+        "D": "使用するTensorBoard"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Keras回调：\n```python\ncheckpoint = ModelCheckpoint(\nfilepath='model_{epoch}.h5',\nsave_best_only=True,\nmonitor='val_loss'\n)\nmodel.fit(x, y, callbacks=[checkpoint])\n```\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q30",
+      "domain": 5,
+      "question": "なぜ在デプロイ新モデル到Vertex AI Endpoint时要使用する预热(Pre-warming)？",
+      "options": {
+        "A": "テストモデル",
+        "B": "减少首次请求的冷启动レイテンシ",
+        "C": "検証データ",
+        "D": "訓練モデル"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "预热请求：\n- 在接收真实流量前发送テスト请求\n- 加载モデル到内存\n- 初始化依赖\n- 减少用户感知的レイテンシ\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q31",
+      "domain": 5,
+      "question": "对于频繁请求相同输入的场景，どのように优化推論パフォーマンス？",
+      "options": {
+        "A": "增加モデル复杂度",
+        "B": "实现予測缓存",
+        "C": "使用する更多GPU",
+        "D": "减少バッチ大小"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "予測缓存：\n- 缓存常见输入的予測结果\n- 使用するMemorystore或Redis\n- 减少冗余计算\n- 适合输入有限的场景\n---",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q32",
+      "domain": 6,
+      "question": "在Vertex AI中，どのように追踪モデル是从どのデータ集和代码バージョン訓練的？",
+      "options": {
+        "A": "手动记录",
+        "B": "使用するVertex ML Metadata和血缘追踪",
+        "C": "查看ログ",
+        "D": "检查ストレージ"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "ML Metadata：\n- 自动记录artifact血缘\n- データ集→訓練作业→モデル→エンドポイント\n- 可视化依赖关系\n- 支持复现和审计\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q33",
+      "domain": 1,
+      "question": "一家金融企業したいと考えています确保ML訓練データ不会离开其VPC。すべきです設定何？",
+      "options": {
+        "A": "防火墙规则",
+        "B": "VPC Service Controls",
+        "C": "IAM权限",
+        "D": "加密"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "VPC Service Controls：\n- 定义セキュリティ边界\n- 防止データ外泄\n- 限制サービス之间的通信\n- 即使有权限也无法跨边界访问\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q34",
+      "domain": 2,
+      "question": "在処理时间序列データ进行ML时，\"滑动窗口\"(Sliding Window)方法的作用是何？",
+      "options": {
+        "A": "加密データ",
+        "B": "作成固定长度的历史输入序列用于予測",
+        "C": "压缩データ",
+        "D": "去除异常值"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "滑动窗口：\n- 将时间序列转换为监督学习\n- 例如：用过去7天予測第8天\n- 作成多个訓練样本\n- 窗口大小是重要ハイパーパラメータ\n---",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q35",
+      "domain": 3,
+      "question": "在画像分類任务中，データ拡張(Data Augmentation)的作用是何？",
+      "options": {
+        "A": "减少データ量",
+        "B": "通过变换增加訓練样本多样性，提高泛化能力",
+        "C": "压缩画像",
+        "D": "加速訓練"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "画像データ拡張：\n- 旋转、翻转、スケーリング\n- 颜色变换\n- 裁剪\n- 增加多样性，减少過学習\n- 使用するtf.image或albumentations\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q36",
+      "domain": 4,
+      "question": "以下のどのような学習率スケジューリング策略在訓練初期使用する较小学習率，然后逐渐增加？",
+      "options": {
+        "A": "指数衰减",
+        "B": "学習率预热 (Warmup)",
+        "C": "余弦衰减",
+        "D": "阶梯衰减"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "学習率预热：\n- 开始用小学習率\n- 逐渐增加到目标值\n- 然后再衰减\n- 常用于Transformer訓練\n---",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q37",
+      "domain": 4,
+      "question": "对于二分類问题，Log Loss（对数損失）值越低表示何？",
+      "options": {
+        "A": "モデル越差",
+        "B": "モデル的概率予測越准确",
+        "C": "訓練时间越长",
+        "D": "データ量越少"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Log Loss：\n- 衡量予測概率与真实标签的差距\n- 范围：0到无穷大\n- 0表示完美予測\n- 惩罚間違い的自信予測\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q38",
+      "domain": 5,
+      "question": "在Vertex AI Model Registry中，なぜ要为モデル作成不同バージョン？",
+      "options": {
+        "A": "减少ストレージコスト",
+        "B": "追踪モデル演进，支持ロールバック和A/Bテスト",
+        "C": "加速訓練",
+        "D": "简化代码"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "モデルバージョン管理：\n- 追踪モデル历史\n- 比较不同バージョンパフォーマンス\n- 快速ロールバック问题バージョン\n- 支持A/Bテスト不同バージョン\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q39",
+      "domain": 5,
+      "question": "TensorFlow Serving中的\"动态批処理 (Dynamic Batching)\"どのように提高吞吐量？",
+      "options": {
+        "A": "使用する更大的モデル",
+        "B": "将多个请求合并成一个批次进行推論",
+        "C": "使用する更多内存",
+        "D": "减少并发"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "动态批処理：\n- 在短时间窗口收集请求\n- 合并成批次処理\n- 利用GPU批処理能力\n- 提高吞吐量，可能稍增レイテンシ\n---",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q40",
+      "domain": 6,
+      "question": "Cloud Composer与Vertex AI Pipelines的主要区别是何？",
+      "options": {
+        "A": "没有区别",
+        "B": "Composer是通用オーケストレーション(Airflow)，Pipelines专为MLワークフロー设计",
+        "C": "Composer更便宜",
+        "D": "Pipelines不支持スケジューリング"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "サービス比较：\n- Cloud Composer：通用ワークフローオーケストレーション（Airflow）\n- Vertex Pipelines：ML专用，Kubeflow基础\n- Composer可调用Pipelines\n- 复杂ETL + ML可能必要があります两者结合\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q41",
+      "domain": 1,
+      "question": "以下のどのような定价模式最适合有稳定ML推論需求的企業？",
+      "options": {
+        "A": "按需付费",
+        "B": "预留容量",
+        "C": "抢占式实例",
+        "D": "免费层"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "预留/承诺使用する折扣：\n- 1年或3年承诺\n- 获得显著折扣\n- 适合可予測的工作负载\n- 抢占式适合可中断的訓練\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q42",
+      "domain": 2,
+      "question": "何情况下を使用するすべきです标签编码(Label Encoding)而非One-hot Encoding？",
+      "options": {
+        "A": "总是使用する标签编码",
+        "B": "有序分類变量（如：低、中、高）",
+        "C": "任何分類变量",
+        "D": "数值变量"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "编码选择：\n- 有序变量：标签编码（保留顺序）\n- 无序变量：One-hot（避免間違い顺序）\n- 高基数：埋め込み\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q43",
+      "domain": 3,
+      "question": "在注意力机制中，どのように计算注意力分数？",
+      "options": {
+        "A": "随机生成",
+        "B": "Query和Key的点积，然后Softmax",
+        "C": "简单相加",
+        "D": "取最大值"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "注意力计算：\n1. Query × Key^T = 相似度矩阵\n2. 除以sqrt(d_k)スケーリング\n3. Softmax得到权重\n4. 权重 × Value = 输出\n---",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q44",
+      "domain": 4,
+      "question": "在信息検索和推荐系统中，MAP (Mean Average Precision) 衡量何？",
+      "options": {
+        "A": "訓練速度",
+        "B": "排序结果的质量，考虑相关项的位置",
+        "C": "モデル大小",
+        "D": "データ质量"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "MAP（平均精度均值）：\n- 衡量排序质量\n- 考虑相关项的位置\n- 越靠前的相关项贡献越大\n- 常用于検索和推荐評価\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q45",
+      "domain": 5,
+      "question": "蓝绿デプロイ(Blue-Green Deployment)的工作方式是何？",
+      "options": {
+        "A": "逐渐增加流量",
+        "B": "同时运行两个完整環境，一键切换",
+        "C": "只デプロイ到テスト環境",
+        "D": "滚动更新"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "蓝绿デプロイ：\n- 蓝色：当前本番\n- 绿色：新バージョン\n- テスト绿色環境\n- 一键切换流量\n- 问题时快速ロールバック\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q46",
+      "domain": 6,
+      "question": "在Vertex AI Pipelines中，パイプライン运行产生的输出ストレージ在哪里？",
+      "options": {
+        "A": "オンプレミス文件系统",
+        "B": "Cloud Storage（作为Artifact Store）",
+        "C": "内存",
+        "D": "BigQuery"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Pipeline Artifactストレージ：\n- 输出ストレージ在Cloud Storage\n- 自动记录到ML Metadata\n- 可以在后续步骤使用する\n- 支持血缘追踪\n---",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q47",
+      "domain": 1,
+      "question": "ある企業部分データ因法规不能离开オンプレミス。どのように构建ハイブリッドML架构？",
+      "options": {
+        "A": "全部在クラウド",
+        "B": "使用するAnthos和GKE连接オンプレミス和クラウド",
+        "C": "全部在オンプレミス",
+        "D": "不使用するML"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "ハイブリッドML架构：\n- Anthos：统一的ハイブリッド/マルチクラウド平台\n- 敏感データ保留オンプレミス\n- 使用するVertex AI管理\n- 统一的MLワークフロー\n---",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q48",
+      "domain": 3,
+      "question": "在推論时すべきですどのように処理Dropout层？",
+      "options": {
+        "A": "保持訓練时的行为",
+        "B": "禁用Dropout，使用する所有神经元",
+        "C": "增加Dropout率",
+        "D": "删除Dropout层"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Dropout推論行为：\n- 訓練时：随机关闭神经元\n- 推論时：使用する所有神经元\n- Keras自动処理：model.predict()\n- 或设置training=False\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q49",
+      "domain": 4,
+      "question": "なぜ必要があります单独的テスト集而不只是検証集？",
+      "options": {
+        "A": "增加データ量",
+        "B": "テスト集提供对未见データ的无偏估计，検証集用于调参可能過学習",
+        "C": "加速訓練",
+        "D": "简化流程"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "データ集划分目的：\n- 訓練集：学习モデル参数\n- 検証集：调整ハイパーパラメータ（可能過学習）\n- テスト集：最终无偏評価\n- テスト集只在最后使用する一次\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q50",
+      "domain": 5,
+      "question": "一个エンドポイント必要があります在高峰期処理10倍于平时的流量。最適なリソース設定策略是何？",
+      "options": {
+        "A": "始终設定最大容量",
+        "B": "使用する自动扩展，设置合适的指标和阈值",
+        "C": "始终設定最小容量",
+        "D": "手动モニタリング和调整"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "自动扩展設定：\n- 设置最小/最大副本数\n- 选择扩展指标（CPU、请求数）\n- 设置目标利用率\n- 設定扩展冷却时间\n- 平衡コスト和パフォーマンス",
+      "difficulty": "hard"
+    }
+  ]
+}

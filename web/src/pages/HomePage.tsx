@@ -114,13 +114,17 @@ export const HomePage: React.FC = () => {
         setImporting(true);
         try {
           const langSuffix = language === 'ja' ? '-ja' : '';
-          // Import all exam sets: AWS (3 sets), Azure (1 set), GCP (1 set)
+          // Import all exam sets: AWS (3 sets), Azure (3 sets), GCP (3 sets)
           const examFiles = [
             'aws-aif-c01-set1',
             'aws-aif-c01-set2',
             'aws-aif-c01-set3',
             'azure-ai-102-set1',
-            'gcp-ml-engineer-set1'
+            'azure-ai-102-set2',
+            'azure-ai-102-set3',
+            'gcp-ml-engineer-set1',
+            'gcp-ml-engineer-set2',
+            'gcp-ml-engineer-set3'
           ];
           for (const examFile of examFiles) {
             try {
@@ -167,7 +171,11 @@ export const HomePage: React.FC = () => {
           'aws-aif-c01-set2',
           'aws-aif-c01-set3',
           'azure-ai-102-set1',
-          'gcp-ml-engineer-set1'
+          'azure-ai-102-set2',
+          'azure-ai-102-set3',
+          'gcp-ml-engineer-set1',
+          'gcp-ml-engineer-set2',
+          'gcp-ml-engineer-set3'
         ];
         const languages = ['', '-ja'];
         for (const suffix of languages) {

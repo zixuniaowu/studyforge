@@ -217,21 +217,25 @@ def create_japanese_version(input_path: str, output_path: str, new_id: str, new_
 
 
 def main():
-    # Azure AI-102 Japanese
-    create_japanese_version(
-        '/home/zixuniaowu/dev/studyforge/web/public/sample-data/azure-ai-102-set1.json',
-        '/home/zixuniaowu/dev/studyforge/web/public/sample-data/azure-ai-102-set1-ja.json',
-        'azure-ai-102-set1-ja',
-        'Azure AI-102 模擬試験 #1'
-    )
+    base_path = '/home/zixuniaowu/dev/studyforge/web/public/sample-data'
 
-    # GCP ML Engineer Japanese
-    create_japanese_version(
-        '/home/zixuniaowu/dev/studyforge/web/public/sample-data/gcp-ml-engineer-set1.json',
-        '/home/zixuniaowu/dev/studyforge/web/public/sample-data/gcp-ml-engineer-set1-ja.json',
-        'gcp-ml-engineer-set1-ja',
-        'GCP ML Engineer 模擬試験 #1'
-    )
+    # Azure AI-102 Japanese (3 sets)
+    for i in range(1, 4):
+        create_japanese_version(
+            f'{base_path}/azure-ai-102-set{i}.json',
+            f'{base_path}/azure-ai-102-set{i}-ja.json',
+            f'azure-ai-102-set{i}-ja',
+            f'Azure AI-102 模擬試験 #{i}'
+        )
+
+    # GCP ML Engineer Japanese (3 sets)
+    for i in range(1, 4):
+        create_japanese_version(
+            f'{base_path}/gcp-ml-engineer-set{i}.json',
+            f'{base_path}/gcp-ml-engineer-set{i}-ja.json',
+            f'gcp-ml-engineer-set{i}-ja',
+            f'GCP ML Engineer 模擬試験 #{i}'
+        )
 
 
 if __name__ == '__main__':
