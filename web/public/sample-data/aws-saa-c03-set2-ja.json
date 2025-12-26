@@ -1,0 +1,672 @@
+{
+  "exam": {
+    "id": "aws-saa-c03-set2-ja",
+    "name": "AWS SAA-C03 ソリューションアーキテクト模擬試験 #2",
+    "code": "SAA-C03",
+    "provider": "AWS",
+    "language": "ja",
+    "description": "AWSソリューションアーキテクト アソシエイト試験模擬問題 - 第2セット",
+    "totalQuestions": 50,
+    "passingScore": 72,
+    "examTime": 130,
+    "domains": [
+      {"id": 1, "name": "Design Secure Architectures", "weight": 30},
+      {"id": 2, "name": "Design Resilient Architectures", "weight": 26},
+      {"id": 3, "name": "Design High-Performing Architectures", "weight": 24},
+      {"id": 4, "name": "Design Cost-Optimized Architectures", "weight": 20}
+    ],
+    "tags": ["AWS", "アーキテクチャ", "SAA", "認定試験"]
+  },
+  "questions": [
+    {
+      "id": "q1",
+      "domain": 1,
+      "question": "金融会社がS3に保存された顧客データを暗号化する必要があり、キーの使用状況を監査できる必要があります。また、AWSにキーのローテーションを管理させたいと考えています。どの暗号化方式を使用すべきですか？",
+      "options": {
+        "A": "SSE-S3",
+        "B": "SSE-KMS with AWS managed key",
+        "C": "SSE-KMS with customer managed key (CMK)",
+        "D": "SSE-C"
+      },
+      "answer": "C",
+      "explanation": "SSE-KMSでカスタマーマネージドキー(CMK)を使用すると、CloudTrailを通じてキーの使用状況を監査でき、自動キーローテーションを設定できます。SSE-S3は監査機能を提供せず、SSE-Cは顧客がキーを管理しますがAWS側でのローテーションと監査機能は提供されません。"
+    },
+    {
+      "id": "q2",
+      "domain": 1,
+      "question": "会社がWebアプリケーションを運用しており、DDoS攻撃を防止し、24時間365日のDDoS対応チームのサポートを受ける必要があります。どのサービスを使用すべきですか？",
+      "options": {
+        "A": "AWS WAF",
+        "B": "AWS Shield Standard",
+        "C": "AWS Shield Advanced",
+        "D": "Amazon GuardDuty"
+      },
+      "answer": "C",
+      "explanation": "AWS Shield Advancedは高度なDDoS保護を提供し、24時間365日のDDoS対応チーム(DRT)サポート、コスト保護、詳細な攻撃診断を含みます。Shield Standardは無料ですがDRTサポートは含まれていません。"
+    },
+    {
+      "id": "q3",
+      "domain": 1,
+      "question": "Lambda関数がRDSデータベースにアクセスする必要があり、データベース認証情報を安全に保存し自動的にローテーションする必要があります。Lambdaはどのようにデータベース認証情報を取得すべきですか？",
+      "options": {
+        "A": "認証情報をLambda環境変数に保存する",
+        "B": "認証情報をコードにハードコードする",
+        "C": "AWS Secrets Managerを使用して自動ローテーションを設定する",
+        "D": "認証情報を暗号化されたS3オブジェクトに保存する"
+      },
+      "answer": "C",
+      "explanation": "AWS Secrets Managerはデータベース認証情報を安全に保存し自動的にローテーションするために設計されています。RDSと統合され、データベースパスワードを自動的に更新し、アプリケーションが最新の認証情報を取得できるようにします。"
+    },
+    {
+      "id": "q4",
+      "domain": 1,
+      "question": "会社は開発者が特定のAWSリージョンでのみリソースを起動できるようにしたいと考えています。組織レベルでこのポリシーをどのように強制すべきですか？",
+      "options": {
+        "A": "各IAMユーザーポリシーにリージョン制限を追加する",
+        "B": "AWS Organizationsのサービスコントロールポリシー(SCP)を使用する",
+        "C": "AWS Configルールを設定する",
+        "D": "Security Hubコントロールを使用する"
+      },
+      "answer": "B",
+      "explanation": "サービスコントロールポリシー(SCP)はAWS Organizationsの機能で、組織、OU、またはアカウントレベルで権限ガードレールを設定できます。条件キーaws:RequestedRegionを使用して利用可能なリージョンを制限できます。"
+    },
+    {
+      "id": "q5",
+      "domain": 1,
+      "question": "EC2インスタンスで実行されているアプリケーションの詳細なネットワークトラフィックログを有効にする必要があります。送信元/宛先IPとポート情報を含める必要があります。何を使用すべきですか？",
+      "options": {
+        "A": "CloudWatch Logs",
+        "B": "VPC Flow Logs",
+        "C": "AWS CloudTrail",
+        "D": "Amazon Inspector"
+      },
+      "answer": "B",
+      "explanation": "VPC Flow LogsはVPC内のネットワークインターフェースを出入りするIPトラフィック情報をキャプチャします。送信元/宛先IPアドレス、ポート、プロトコル、パケット数、バイト数を含みます。セキュリティ分析とトラブルシューティングに使用できます。"
+    },
+    {
+      "id": "q6",
+      "domain": 1,
+      "question": "アプリケーションがプライベートサブネットからDynamoDBにアクセスする必要がありますが、トラフィックはインターネットを経由してはいけません。何を使用すべきですか？",
+      "options": {
+        "A": "NAT Gateway",
+        "B": "Internet Gateway",
+        "C": "VPC Gateway Endpoint for DynamoDB",
+        "D": "AWS PrivateLink"
+      },
+      "answer": "C",
+      "explanation": "VPC Gateway EndpointによりVPCからDynamoDBとS3にプライベートにアクセスでき、トラフィックはインターネットではなくAWSバックボーンネットワークを経由します。Gateway Endpointは無料で、NAT Gatewayの費用がかかりません。"
+    },
+    {
+      "id": "q7",
+      "domain": 1,
+      "question": "会社がAWSアカウント内の疑わしいアクティビティ（異常なAPI呼び出しパターンや潜在的なセキュリティ脅威など）を自動的に検出する必要があります。どのサービスを使用すべきですか？",
+      "options": {
+        "A": "AWS Config",
+        "B": "Amazon GuardDuty",
+        "C": "AWS CloudTrail",
+        "D": "AWS Security Hub"
+      },
+      "answer": "B",
+      "explanation": "Amazon GuardDutyはインテリジェントな脅威検出サービスで、機械学習を使用してCloudTrail、VPC Flow Logs、DNSログを分析し、異常なアクティビティと潜在的な脅威を検出します。"
+    },
+    {
+      "id": "q8",
+      "domain": 1,
+      "question": "アプリケーションがRDS MySQLデータベースとの接続を転送中に暗号化する必要があります。どのように設定すべきですか？",
+      "options": {
+        "A": "RDSストレージ暗号化を有効にする",
+        "B": "SSL/TLS証明書を使用して暗号化接続を強制する",
+        "C": "VPN接続を使用する",
+        "D": "IAMデータベース認証を有効にする"
+      },
+      "answer": "B",
+      "explanation": "RDSは転送中のデータのSSL/TLS暗号化をサポートしています。AWSが提供するCA証明書をダウンロードし、アプリケーションでSSL接続を設定し、パラメータグループでSSL接続を強制できます。"
+    },
+    {
+      "id": "q9",
+      "domain": 2,
+      "question": "重要なビジネスアプリケーションが単一リージョンで実行されており、災害復旧ソリューションを設計する必要があります。RPOは1時間、RTOは4時間です。最もコスト効率の良い戦略は何ですか？",
+      "options": {
+        "A": "マルチサイト(Multi-Site)",
+        "B": "ウォームスタンバイ(Warm Standby)",
+        "C": "パイロットライト(Pilot Light)",
+        "D": "バックアップと復元(Backup and Restore)"
+      },
+      "answer": "C",
+      "explanation": "Pilot Light戦略はDRリージョンにコアシステムの最小バージョン（データベースレプリカなど）を維持し、数時間以内に完全に起動できます。1時間のRPOと4時間のRTOに対して、これが最もコスト効率の良い選択です。"
+    },
+    {
+      "id": "q10",
+      "domain": 2,
+      "question": "ECサイトがプロモーション期間中にトラフィックが10倍に急増します。負荷変動を自動的に処理するためにアプリケーション層をどのように設計すべきですか？",
+      "options": {
+        "A": "固定数の大型EC2インスタンスを使用する",
+        "B": "ターゲット追跡スケーリングポリシーを備えたAuto Scalingグループを使用する",
+        "C": "プロモーション前に手動でインスタンスを増やす",
+        "D": "リザーブドインスタンスを使用する"
+      },
+      "answer": "B",
+      "explanation": "ターゲット追跡スケーリングポリシー（平均CPU使用率を70%に維持するなど）を備えたAuto Scalingグループは、負荷に応じて自動的にインスタンス数を増減させ、トラフィックの急増を処理できます。"
+    },
+    {
+      "id": "q11",
+      "domain": 2,
+      "question": "アプリケーションがAurora MySQLを使用しており、読み取りスケーリングを実現し、プライマリインスタンス障害時に迅速に復旧する必要があります。どのように設定すべきですか？",
+      "options": {
+        "A": "Auroraリードレプリカを作成する",
+        "B": "Aurora Multi-AZを使用する",
+        "C": "クロスリージョンAuroraレプリカを作成する",
+        "D": "AとBの両方が必要"
+      },
+      "answer": "A",
+      "explanation": "Auroraリードレプリカは読み取りスケーリングを提供し、プライマリインスタンス障害時に通常30秒以内で新しいプライマリに自動的に昇格できます。Auroraはデフォルトでデータを6つのストレージノードにレプリケートし、すでに高可用性を備えています。"
+    },
+    {
+      "id": "q12",
+      "domain": 2,
+      "question": "サーバーレスアプリケーションがAPI GatewayとLambdaを使用しています。バックエンドの一時的な障害を処理する必要があります。どのように弾力性を高めますか？",
+      "options": {
+        "A": "Lambdaタイムアウト時間を増やす",
+        "B": "LambdaとバックエンドにSQSキューを追加する",
+        "C": "Lambdaプロビジョニング済み同時実行を使用する",
+        "D": "Lambdaメモリを増やす"
+      },
+      "answer": "B",
+      "explanation": "SQSキューは疎結合とバッファリングを提供し、Lambdaはキューのコンシューマーとして動作できます。バックエンドが一時的に利用できない場合、メッセージはキューに保持され、システムの弾力性が向上します。"
+    },
+    {
+      "id": "q13",
+      "domain": 2,
+      "question": "会社がS3バケット内のデータが誤って削除されないようにする必要があります。どの機能を有効にすべきですか？",
+      "options": {
+        "A": "S3暗号化",
+        "B": "S3バージョニングとMFA削除",
+        "C": "S3レプリケーション",
+        "D": "S3ライフサイクルポリシー"
+      },
+      "answer": "B",
+      "explanation": "S3バージョニングはオブジェクトのすべてのバージョンを保持し、削除しても復元できます。MFA削除はオブジェクトバージョンを永久に削除するためにMFAデバイスの使用を要求し、誤削除や悪意のある削除を防ぎます。"
+    },
+    {
+      "id": "q14",
+      "domain": 2,
+      "question": "EC2上で実行されているステートフルアプリケーションの高可用性アーキテクチャを設計する必要があります。アプリケーションのセッション状態は現在メモリに保存されています。どのように改善しますか？",
+      "options": {
+        "A": "より大きなEC2インスタンスを使用する",
+        "B": "ElastiCache Redisを使用してセッション状態を保存する",
+        "C": "EBSボリュームを使用して状態を保存する",
+        "D": "インスタンスストアを使用する"
+      },
+      "answer": "B",
+      "explanation": "セッション状態をElastiCache Redisに外部化することで、アプリケーションをステートレスにでき、複数インスタンスのロードバランシングと弾力的なスケーリングが可能になります。Redisはレプリケーションと高可用性をサポートしています。"
+    },
+    {
+      "id": "q15",
+      "domain": 2,
+      "question": "DynamoDBテーブルがリージョン障害時にも利用可能である必要があります。どの機能を使用すべきですか？",
+      "options": {
+        "A": "DynamoDB Streams",
+        "B": "DynamoDBグローバルテーブル",
+        "C": "DynamoDBバックアップ",
+        "D": "DynamoDB Accelerator (DAX)"
+      },
+      "answer": "B",
+      "explanation": "DynamoDBグローバルテーブルは複数のAWSリージョン間でデータを自動的にレプリケートし、マルチアクティブなクロスリージョンレプリケーションを提供します。1つのリージョンが利用できなくなった場合、アプリケーションは他のリージョンに切り替えられます。"
+    },
+    {
+      "id": "q16",
+      "domain": 3,
+      "question": "アプリケーションがユーザーがアップロードした画像を処理する必要があり、各画像の処理に30秒かかります。毎日数千回のアップロードがありますが、リアルタイム処理は必要ありません。最適なアーキテクチャは何ですか？",
+      "options": {
+        "A": "大型EC2インスタンスを使用した同期処理",
+        "B": "S3イベントがLambda処理をトリガー",
+        "C": "S3イベント通知をSQSに送信し、EC2ワーカーがキューを処理",
+        "D": "API Gatewayを使用した同期処理"
+      },
+      "answer": "C",
+      "explanation": "30秒の処理時間では、Lambdaがタイムアウトする可能性があります。SQSキューを使用してアップロードと処理を疎結合にし、EC2ワーカーが長時間実行タスクを確実に処理しながら弾力性を提供できます。"
+    },
+    {
+      "id": "q17",
+      "domain": 3,
+      "question": "毎秒100,000リクエストを処理するAPIを構築する必要があり、バックエンドはDynamoDBです。最低レイテンシを実現するにはどのように設計しますか？",
+      "options": {
+        "A": "API Gateway + Lambda + DynamoDB",
+        "B": "ALB + EC2 + DynamoDB",
+        "C": "API Gateway + Lambda + DynamoDB with DAX",
+        "D": "CloudFront + API Gateway + Lambda + DynamoDB"
+      },
+      "answer": "C",
+      "explanation": "DAX（DynamoDB Accelerator）はインメモリキャッシュで、読み取りレイテンシをミリ秒からマイクロ秒に削減できます。高並列読み取りシナリオでは、DAXはパフォーマンスを大幅に向上させ、DynamoDBリクエストを削減できます。"
+    },
+    {
+      "id": "q18",
+      "domain": 3,
+      "question": "グローバル規模でミリ秒レベルの一貫したユーザーセッションデータアクセスを提供する必要があります。何を使用すべきですか？",
+      "options": {
+        "A": "S3クロスリージョンレプリケーション",
+        "B": "DynamoDBグローバルテーブル",
+        "C": "Auroraグローバルデータベース",
+        "D": "ElastiCacheグローバルデータストア"
+      },
+      "answer": "D",
+      "explanation": "ElastiCacheグローバルデータストアはリージョン間のフルマネージドレプリケーションを提供し、典型的なレイテンシは1秒未満です。低レイテンシ読み取りが必要なセッションデータなどのシナリオに非常に適しています。"
+    },
+    {
+      "id": "q19",
+      "domain": 3,
+      "question": "会社が高トラフィックのWordPressウェブサイトをホストする必要があり、低レイテンシと高可用性が要件です。最適なデータベースの選択は何ですか？",
+      "options": {
+        "A": "RDS MySQL Multi-AZ",
+        "B": "Amazon Aurora MySQL",
+        "C": "DynamoDB",
+        "D": "Amazon DocumentDB"
+      },
+      "answer": "B",
+      "explanation": "Aurora MySQLはMySQLと互換性があり、標準MySQLの5倍のパフォーマンス、自動ストレージスケーリング、最大15のリードレプリカを提供します。高トラフィックWordPressには最適な選択です。"
+    },
+    {
+      "id": "q20",
+      "domain": 3,
+      "question": "S3に保存されたPBスケールのデータに対してアドホックSQLクエリを実行する必要があります。サーバーのプロビジョニングは不要です。何を使用すべきですか？",
+      "options": {
+        "A": "Amazon Redshift",
+        "B": "Amazon EMR",
+        "C": "Amazon Athena",
+        "D": "AWS Glue"
+      },
+      "answer": "C",
+      "explanation": "Amazon Athenaはサーバーレスのインタラクティブクエリサービスで、S3内のデータに対して標準SQLを直接使用してクエリできます。スキャンしたデータ量に対して課金され、サーバー管理は不要です。"
+    },
+    {
+      "id": "q21",
+      "domain": 3,
+      "question": "オンプレミスデータセンターから大量のデータ（100TB）をAWS S3に一度に移行する必要があります。ネットワーク帯域幅は限られています。最適なソリューションは何ですか？",
+      "options": {
+        "A": "AWS Direct Connectを使用する",
+        "B": "VPN経由でAWS DataSyncを使用する",
+        "C": "AWS Snowball Edgeを使用する",
+        "D": "S3 Transfer Accelerationを使用する"
+      },
+      "answer": "C",
+      "explanation": "AWS Snowball Edgeは最大80TBのデータを保存できる物理デバイスです。100TBの一度きりの移行には、2台のSnowballデバイスを使用する方がネットワーク経由で転送するよりも高速で経済的です。"
+    },
+    {
+      "id": "q22",
+      "domain": 3,
+      "question": "GPUを必要とする機械学習推論ワークロードを実行する必要があり、低コストで中断を許容できます。何を使用すべきですか？",
+      "options": {
+        "A": "オンデマンドP3インスタンス",
+        "B": "リザーブドP3インスタンス",
+        "C": "P3スポットインスタンス",
+        "D": "SageMaker推論エンドポイント"
+      },
+      "answer": "C",
+      "explanation": "スポットインスタンスは最大90%のコスト削減が可能です。中断を許容できるML推論ワークロードには、GPUスポットインスタンスを使用することが最も経済的な選択です。"
+    },
+    {
+      "id": "q23",
+      "domain": 3,
+      "question": "アプリケーションが複数のEC2インスタンス間で高性能ファイルストレージを共有する必要があり、サブミリ秒のレイテンシが要件です。何を使用すべきですか？",
+      "options": {
+        "A": "Amazon EFS",
+        "B": "Amazon FSx for Lustre",
+        "C": "Amazon S3",
+        "D": "EBSマルチアタッチ"
+      },
+      "answer": "B",
+      "explanation": "Amazon FSx for Lustreは高性能コンピューティング向けに設計されており、サブミリ秒のレイテンシ、数百GB/sのスループットを提供します。HPC、機械学習、メディア処理ワークロードに適しています。"
+    },
+    {
+      "id": "q24",
+      "domain": 3,
+      "question": "モバイルアプリ向けのバックエンドAPIを構築する必要があり、トラフィックの変動が大きい（毎秒10〜10,000リクエスト）ことが予想されます。最も弾力性のあるアーキテクチャは何ですか？",
+      "options": {
+        "A": "ALB + Auto Scaling EC2",
+        "B": "API Gateway + Lambda",
+        "C": "CloudFront + EC2",
+        "D": "NLB + Fargate"
+      },
+      "answer": "B",
+      "explanation": "API Gateway + Lambdaは完全にサーバーレスで、0から数千の同時リクエストに自動的にスケールでき、容量のプロビジョニングや管理は不要です。変動の大きいトラフィックに非常に適しています。"
+    },
+    {
+      "id": "q25",
+      "domain": 4,
+      "question": "会社には24時間365日稼働する長期運用の本番EC2インスタンスのグループがあります。コストをどのように削減しますか？",
+      "options": {
+        "A": "スポットインスタンスを使用する",
+        "B": "Savings Plansを購入する",
+        "C": "より小さいインスタンスタイプを使用する",
+        "D": "オンデマンド課金"
+      },
+      "answer": "B",
+      "explanation": "安定して実行されるワークロードには、Savings Plansで最大72%のコスト削減が可能です。特定のインスタンスタイプではなく使用量をコミットする柔軟性を提供します。"
+    },
+    {
+      "id": "q26",
+      "domain": 4,
+      "question": "S3バケットに大量のログファイルが保存されており、アクセスパターンが予測できません。ストレージコストをどのように最適化しますか？",
+      "options": {
+        "A": "S3 Standardを使用する",
+        "B": "S3 Intelligent-Tieringを使用する",
+        "C": "S3 Glacierを使用する",
+        "D": "S3 One Zone-IAを使用する"
+      },
+      "answer": "B",
+      "explanation": "S3 Intelligent-Tieringはアクセス層間でデータを自動的に移動し、アクセスパターンを推測する必要がありません。予測できないアクセスパターンでは、パフォーマンスに影響を与えずにコストを最適化できます。"
+    },
+    {
+      "id": "q27",
+      "domain": 4,
+      "question": "開発チームがテスト用のデータベースを必要としており、1日に数時間使用した後はアイドル状態になります。最も経済的な選択は何ですか？",
+      "options": {
+        "A": "RDS Multi-AZ",
+        "B": "Aurora Serverless v2",
+        "C": "DynamoDBオンデマンドモード",
+        "D": "EC2上のセルフマネージドデータベース"
+      },
+      "answer": "B",
+      "explanation": "Aurora Serverless v2は使用していないときに最小容量（0.5 ACU）にスケールダウンでき、使用時に自動的にスケールアップします。間欠的な使用に対して非常に経済的です。"
+    },
+    {
+      "id": "q28",
+      "domain": 4,
+      "question": "AWSアカウント内のコスト異常と無駄を分析して特定する必要があります。何を使用すべきですか？",
+      "options": {
+        "A": "AWS Cost Explorer",
+        "B": "AWS Budgets",
+        "C": "AWS Cost Anomaly Detection",
+        "D": "AWS Pricing Calculator"
+      },
+      "answer": "C",
+      "explanation": "AWS Cost Anomaly Detectionは機械学習を使用して異常な支出パターンを自動的に検出し、異常が検出されるとアラートを送信します。予期しないコスト増加を迅速に特定するのに役立ちます。"
+    },
+    {
+      "id": "q29",
+      "domain": 4,
+      "question": "アプリケーションが複数のアベイラビリティゾーンのEC2インスタンスで実行されており、ロードバランシングが必要です。クロスAZデータ転送コストをどのように削減しますか？",
+      "options": {
+        "A": "より少ないアベイラビリティゾーンを使用する",
+        "B": "クロスゾーンロードバランシングを有効にする",
+        "C": "ALBを使用してターゲットがクライアントと同じAZにいることを確認する",
+        "D": "ALBの代わりにNLBを使用する"
+      },
+      "answer": "C",
+      "explanation": "ALBはデフォルトでクロスゾーンロードバランシングを有効にしており、クロスAZ料金が発生します。クロスゾーンロードバランシングを無効にするか、スティッキーセッションを使用してクロスAZトラフィックを削減できます。ただし、可用性とのトレードオフを考慮する必要があります。"
+    },
+    {
+      "id": "q30",
+      "domain": 4,
+      "question": "Lambda関数が毎月数百万回呼び出され、各実行時間は約100msです。コストをどのように最適化しますか？",
+      "options": {
+        "A": "Lambdaメモリを増やす",
+        "B": "Lambdaメモリを最小に減らす",
+        "C": "プロビジョニング済み同時実行を使用する",
+        "D": "ARMアーキテクチャ（Graviton2）を使用する"
+      },
+      "answer": "D",
+      "explanation": "LambdaはARMアーキテクチャ（Graviton2）プロセッサをサポートしており、x86より20%安く、通常はパフォーマンスも向上します。高い呼び出し数の関数では、大幅なコスト削減が可能です。"
+    },
+    {
+      "id": "q31",
+      "domain": 1,
+      "question": "CloudFrontで配信されるコンテンツへのアクセス制御を行い、有料ユーザーのみアクセスを許可する必要があります。何を使用すべきですか？",
+      "options": {
+        "A": "CloudFront Origin Access Control",
+        "B": "CloudFront署名付きURLまたは署名付きCookie",
+        "C": "S3バケットポリシー",
+        "D": "AWS WAFルール"
+      },
+      "answer": "B",
+      "explanation": "CloudFront署名付きURLと署名付きCookieはプライベートコンテンツへのアクセスを制限するために使用されます。有効期限を設定して署名を検証することで、誰がコンテンツにアクセスできるか、どのくらいの期間アクセスできるかを制御できます。"
+    },
+    {
+      "id": "q32",
+      "domain": 1,
+      "question": "会社がオンプレミスのActive DirectoryユーザーをAWSにフェデレートして認証する必要があります。何を使用すべきですか？",
+      "options": {
+        "A": "AWS IAMユーザー",
+        "B": "AWS IAM Identity Center (SSO)",
+        "C": "Amazon Cognito",
+        "D": "AWS Directory Service for Microsoft AD"
+      },
+      "answer": "B",
+      "explanation": "IAM Identity Center（旧AWS SSO）はオンプレミスADと統合でき、企業ユーザーが既存の認証情報を使用してAWSコンソールとCLIにログインできるようにします。SAML 2.0フェデレーションをサポートしています。"
+    },
+    {
+      "id": "q33",
+      "domain": 1,
+      "question": "EC2インスタンス上のEBSボリュームデータが保存時に暗号化されることを確認する必要があります。どのように設定すべきですか？",
+      "options": {
+        "A": "インスタンスに暗号化ソフトウェアをインストールする",
+        "B": "EBSボリューム作成時に暗号化を有効にする",
+        "C": "EBSの代わりにインスタンスストアを使用する",
+        "D": "S3暗号化を有効にする"
+      },
+      "answer": "B",
+      "explanation": "EBSはネイティブに暗号化をサポートしており、ボリューム作成時に有効にします。アカウントレベルのデフォルト暗号化を設定でき、すべての新しいボリュームを自動的に暗号化します。EC2とEBS間で転送中のデータも暗号化されます。"
+    },
+    {
+      "id": "q34",
+      "domain": 2,
+      "question": "アプリケーションがデータベースへの大量の同時書き込みリクエストを処理する必要があります。RDS MySQLがボトルネックになっています。書き込み能力をどのように拡張しますか？",
+      "options": {
+        "A": "リードレプリカをさらに追加する",
+        "B": "より大きなRDSインスタンスにアップグレードする",
+        "C": "Aurora書き込みスケーリングを使用する",
+        "D": "DynamoDBシャーディングまたはAuroraパラレルクエリを使用する"
+      },
+      "answer": "D",
+      "explanation": "リレーショナルデータベースは書き込みの水平スケーリングが困難です。DynamoDB（自動シャーディングをサポート）に移行するか、Auroraのパラレルクエリ機能を使用できます。極めて高い書き込みには、アプリケーション層のシャーディングを検討してください。"
+    },
+    {
+      "id": "q35",
+      "domain": 2,
+      "question": "複数のコンシューマーが同じメッセージを独立して処理できるメッセージングシステムを設計する必要があります。何を使用すべきですか？",
+      "options": {
+        "A": "Amazon SQS標準キュー",
+        "B": "Amazon SQS FIFOキュー",
+        "C": "Amazon SNSと複数のSQSキュー",
+        "D": "Amazon MQ"
+      },
+      "answer": "C",
+      "explanation": "SNSトピックは複数のSQSキューサブスクライバーにメッセージを発行でき、各キューは完全なメッセージを独立して受信します。これによりファンアウトパターンが実現され、複数のコンシューマーが並行して処理できます。"
+    },
+    {
+      "id": "q36",
+      "domain": 2,
+      "question": "バッチ処理タスクがEC2上で実行されており、処理時間は数分から数時間まで変動します。インスタンスが失敗した場合、タスクは最後のチェックポイントから再開する必要があります。最適な設計は何ですか？",
+      "options": {
+        "A": "スポットインスタンスを使用する",
+        "B": "AWS Batchを使用してチェックポイントをS3に保存する",
+        "C": "Lambdaを使用する",
+        "D": "Step Functionsを使用する"
+      },
+      "answer": "B",
+      "explanation": "AWS Batchはコンピューティングリソースを管理し、チェックポイントをサポートします。状態をS3に保存することで、中断後にチェックポイントから再開でき、長時間実行のバッチ処理タスクに適しています。"
+    },
+    {
+      "id": "q37",
+      "domain": 3,
+      "question": "ウェブサイトがCloudFrontを使用して静的コンテンツを配信しており、オリジンはS3です。ユーザーがCloudFrontを通じてのみS3コンテンツにアクセスできるようにするにはどうすればよいですか？",
+      "options": {
+        "A": "S3バケットを公開に設定する",
+        "B": "CloudFront Origin Access Control (OAC)を使用する",
+        "C": "S3ブロックパブリックアクセスを使用する",
+        "D": "すべてのIPを許可するS3バケットポリシーを設定する"
+      },
+      "answer": "B",
+      "explanation": "Origin Access Control (OAC)は古いOAIに代わるもので、S3バケットへのアクセスをCloudFrontディストリビューションのみに制限します。S3はプライベートのままで、ユーザーはCloudFrontを通じてアクセスする必要があります。"
+    },
+    {
+      "id": "q38",
+      "domain": 3,
+      "question": "ゲームアプリケーション向けにリアルタイムリーダーボードを実装する必要があり、毎秒数千回更新されます。何を使用すべきですか？",
+      "options": {
+        "A": "RDS MySQL",
+        "B": "ElastiCache Redis Sorted Sets",
+        "C": "DynamoDB",
+        "D": "Amazon Neptune"
+      },
+      "answer": "B",
+      "explanation": "Redis Sorted Setsはリーダーボード用に設計されており、アトミックなインクリメントとソート操作をサポートしています。ElastiCache Redisはミリ秒レベルのレイテンシを提供し、リアルタイムリーダーボードに非常に適しています。"
+    },
+    {
+      "id": "q39",
+      "domain": 3,
+      "question": "アプリケーションがIoTデバイスからの大量のテレメトリデータ（毎秒数百万レコード）を処理し、リアルタイム分析を行う必要があります。何を使用すべきですか？",
+      "options": {
+        "A": "Amazon SQS",
+        "B": "Amazon Kinesis Data Streams + Kinesis Data Analytics",
+        "C": "Amazon SNS",
+        "D": "AWS IoT Core + Lambda"
+      },
+      "answer": "B",
+      "explanation": "Kinesis Data Streamsは毎秒数百万レコードを取り込むことができ、Kinesis Data Analyticsはストリーミングデータに対してリアルタイムSQL分析を実行できます。これは大規模IoTテレメトリデータ処理に最適な組み合わせです。"
+    },
+    {
+      "id": "q40",
+      "domain": 3,
+      "question": "ユーザーデバイスから大きな動画ファイルをS3バケットに素早くアップロードする必要があります。ユーザーは世界中に分散しています。アップロード速度をどのように最適化しますか？",
+      "options": {
+        "A": "S3 Standardストレージクラスを使用する",
+        "B": "S3 Transfer Accelerationを使用する",
+        "C": "マルチパートアップロードを使用する",
+        "D": "BとCの両方を使用する"
+      },
+      "answer": "D",
+      "explanation": "S3 Transfer AccelerationはCloudFrontエッジロケーションを経由してアップロードを高速化します。マルチパートアップロードは複数のパートを並行してアップロードできます。両方を組み合わせることで、大きなファイルのアップロード速度を大幅に向上できます。"
+    },
+    {
+      "id": "q41",
+      "domain": 4,
+      "question": "会社には複数のAWSアカウントがあり、組織全体のコストを一元的に表示および管理したいと考えています。何を使用すべきですか？",
+      "options": {
+        "A": "各アカウントのAWS Budgets",
+        "B": "AWS Organizations一括請求",
+        "C": "AWS Cost Explorerのリンクアカウントビュー",
+        "D": "サードパーティのコスト管理ツール"
+      },
+      "answer": "B",
+      "explanation": "AWS Organizations一括請求はすべてのメンバーアカウントの使用量を集計し、統一された請求書を提供するとともに、ボリュームディスカウントを受けられます。Cost Explorerと組み合わせて、組織全体のコストを分析できます。"
+    },
+    {
+      "id": "q42",
+      "domain": 4,
+      "question": "EC2インスタンスが高IOPSを必要とするデータベースを格納しています。現在gp2ボリュームを使用していますが、パフォーマンスが不足しています。コストを抑えながらパフォーマンスをどのように向上させますか？",
+      "options": {
+        "A": "gp2ボリュームサイズを増やす",
+        "B": "io2ボリュームに切り替える",
+        "C": "gp3ボリュームに切り替えて必要なIOPSを設定する",
+        "D": "インスタンスストアを使用する"
+      },
+      "answer": "C",
+      "explanation": "gp3はボリュームサイズに依存せずにIOPSとスループットを独立して設定できます。io2と比較してコストが低く、gp2（より多くのIOPSを得るためにボリュームを大きくする必要がある）と比較してより柔軟です。"
+    },
+    {
+      "id": "q43",
+      "domain": 4,
+      "question": "会社が実行するアプリケーションはスポットインスタンスを使用できますが、常に一定数のインスタンスが実行されていることを確認する必要があります。最適なソリューションは何ですか？",
+      "options": {
+        "A": "スポットインスタンスのみを使用する",
+        "B": "オンデマンドインスタンスのみを使用する",
+        "C": "Auto Scaling混合インスタンスポリシー（オンデマンド+スポット）を使用する",
+        "D": "リザーブドインスタンスを使用する"
+      },
+      "answer": "C",
+      "explanation": "Auto Scaling混合インスタンスポリシーにより、オンデマンドベース容量とスポットインスタンスの組み合わせを設定できます。最小容量を確保しながらスポットインスタンスを活用してコストを削減できます。"
+    },
+    {
+      "id": "q44",
+      "domain": 4,
+      "question": "コンプライアンス用の大量のログデータを保存する必要があり、保持期間は10年で、ほとんどアクセスされません。最も経済的なストレージは何ですか？",
+      "options": {
+        "A": "S3 Standard",
+        "B": "S3 Standard-IA",
+        "C": "S3 Glacier Deep Archive",
+        "D": "EBSボリューム"
+      },
+      "answer": "C",
+      "explanation": "S3 Glacier Deep Archiveは最もコストが低いストレージクラスで、10年以上の長期アーカイブに適しています。取得時間は12〜48時間ですが、コンプライアンスアーカイブでは通常許容範囲内です。"
+    },
+    {
+      "id": "q45",
+      "domain": 1,
+      "question": "VPC内部からのみアクセス可能なプライベートAPI Gateway APIを作成する必要があります。どのように設定すべきですか？",
+      "options": {
+        "A": "Edge-optimized API Gatewayを使用する",
+        "B": "Regional API GatewayとVPC Endpointを組み合わせる",
+        "C": "Private API GatewayとVPC Endpointを組み合わせる",
+        "D": "API GatewayとWAFを組み合わせる"
+      },
+      "answer": "C",
+      "explanation": "Private API GatewayはVPC Endpointを通じてのみアクセス可能で、パブリックインターネットには公開されません。APIにアクセスするためにVPC内にInterface VPC Endpointを作成する必要があります。"
+    },
+    {
+      "id": "q46",
+      "domain": 1,
+      "question": "アプリケーションがAWS Secrets Managerに保存された認証情報にアクセスする必要があります。Lambda関数がこれらの認証情報にアクセスすることをどのように承認しますか？",
+      "options": {
+        "A": "LambdaコードにSecrets Manager ARNをハードコードする",
+        "B": "Lambdaにsecretsmanager:GetSecretValue権限を持つIAM実行ロールを設定する",
+        "C": "Lambda環境変数に認証情報を保存する",
+        "D": "認証情報をS3に保存する"
+      },
+      "answer": "B",
+      "explanation": "Lambda実行ロールにはシークレットを取得するためのsecretsmanager:GetSecretValue権限が必要です。これが最も安全な方法で、コードに認証情報を保存する必要がありません。"
+    },
+    {
+      "id": "q47",
+      "domain": 2,
+      "question": "重要なアプリケーションがEC2上で実行されており、データを格納するためにEBSを使用しています。リージョンレベルの障害時にデータが利用可能であることを確認する必要があります。どのように設計すべきですか？",
+      "options": {
+        "A": "EBSスナップショットを使用する",
+        "B": "EBSマルチアタッチを使用する",
+        "C": "EBSスナップショットを別のリージョンにコピーする",
+        "D": "RAID構成を使用する"
+      },
+      "answer": "C",
+      "explanation": "EBSスナップショットは他のリージョンにコピーできます。DRリージョンでは、スナップショットから新しいEBSボリュームを作成し、EC2インスタンスを起動できます。これはクロスリージョン災害復旧の重要な戦略です。"
+    },
+    {
+      "id": "q48",
+      "domain": 2,
+      "question": "複数のLambda関数を順序どおりに実行するワークフローを設計する必要があり、エラー処理と再試行ロジックを含める必要があります。何を使用すべきですか？",
+      "options": {
+        "A": "Lambdaネスト呼び出し",
+        "B": "AWS Step Functions",
+        "C": "Amazon SQS",
+        "D": "Amazon EventBridge"
+      },
+      "answer": "B",
+      "explanation": "AWS Step Functionsはサーバーレスワークフローサービスで、Lambda関数を視覚的にオーケストレートし、組み込みのエラー処理、再試行、条件分岐、並列実行機能を備えています。"
+    },
+    {
+      "id": "q49",
+      "domain": 3,
+      "question": "Webアプリケーション向けにWebSocketリアルタイム通信を実装する必要があります。バックエンドはLambda関数です。何を使用すべきですか？",
+      "options": {
+        "A": "Application Load Balancer",
+        "B": "API Gateway WebSocket APIs",
+        "C": "Network Load Balancer",
+        "D": "CloudFront"
+      },
+      "answer": "B",
+      "explanation": "API GatewayはWebSocket APIをサポートしており、永続的な接続を維持してメッセージをLambda関数にルーティングできます。チャットアプリケーション、リアルタイムダッシュボードなどのシナリオに適しています。"
+    },
+    {
+      "id": "q50",
+      "domain": 4,
+      "question": "会社がリザーブドキャパシティを購入したいと考えていますが、ワークロードがインスタンスタイプを変更する可能性があります。どのSavings Planが最大の柔軟性を提供しますか？",
+      "options": {
+        "A": "EC2 Instance Savings Plans",
+        "B": "Compute Savings Plans",
+        "C": "1年リザーブドインスタンス",
+        "D": "3年リザーブドインスタンス"
+      },
+      "answer": "B",
+      "explanation": "Compute Savings Plansは最大の柔軟性を提供し、割引は任意のEC2インスタンスファミリー、サイズ、OS、テナンシー、またはリージョン、およびFargateとLambdaに適用されます。"
+    }
+  ]
+}

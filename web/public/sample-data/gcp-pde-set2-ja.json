@@ -1,0 +1,799 @@
+{
+  "exam": {
+    "id": "gcp-pde-set2-ja",
+    "name": "GCP Professional Data Engineer 模擬試験 #2",
+    "code": "PDE",
+    "provider": "GCP",
+    "language": "ja",
+    "description": "Google Cloud Professional Data Engineer認定試験模擬問題 - 第2セット",
+    "totalQuestions": 50,
+    "passingScore": 70,
+    "examTime": 120,
+    "domains": [
+      {
+        "id": 1,
+        "name": "Designing Data Processing Systems",
+        "weight": 22
+      },
+      {
+        "id": 2,
+        "name": "Ingesting and Processing the Data",
+        "weight": 25
+      },
+      {
+        "id": 3,
+        "name": "Storing the Data",
+        "weight": 20
+      },
+      {
+        "id": 4,
+        "name": "Preparing and Using Data for Analysis",
+        "weight": 18
+      },
+      {
+        "id": 5,
+        "name": "Maintaining and Automating Data Workloads",
+        "weight": 15
+      }
+    ],
+    "tags": [
+      "GCP",
+      "Data Engineering",
+      "BigQuery",
+      "Dataflow",
+      "認定試験"
+    ]
+  },
+  "questions": [
+    {
+      "id": "q1",
+      "domain": 1,
+      "question": "あるメディア企業は、毎日数十億件のユーザー行動ログを処理し、ユーザーのリクエスト時にミリ秒レベルのレスポンスでパーソナライズされたレコメンデーションを提供するレコメンドシステムを構築する必要があります。最も適切なアーキテクチャはどれですか？",
+      "options": {
+        "A": "Cloud SQLでユーザーデータを保存 → Dataprocでバッチ処理してレコメンドを生成 → Cloud SQLでサービス提供",
+        "B": "Pub/Subで行動を収集 → Dataflowで処理 → BigQueryで保存 → Vertex AIでモデルをトレーニング → Bigtableで低レイテンシーのレコメンドを提供",
+        "C": "Cloud Storageでログを保存 → Cloud Functionsで処理 → Firestoreでサービス提供",
+        "D": "Pub/Subで行動を収集 → Cloud SQLで保存 → App Engineでサービス提供"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "レコメンドシステムのアーキテクチャ設計：\n- Pub/Sub：高スループットでリアルタイムにユーザー行動を収集\n- Dataflow：リアルタイム/バッチでユーザー行動データを処理\n- BigQuery：モデルトレーニング用の履歴データを保存\n- Vertex AI：レコメンドモデルのトレーニングとデプロイ\n- Bigtable：ミリ秒レベルの低レイテンシーでレコメンド結果を提供\n---",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q2",
+      "domain": 1,
+      "question": "ある小売企業がデータウェアハウスアーキテクチャを設計しており、複雑なSQL分析クエリのサポート、パートナーへのデータ共有、および既存のBIツールとの統合が必要です。最適な選択肢は何ですか？",
+      "options": {
+        "A": "Cloud Bigtable",
+        "B": "Cloud Spanner",
+        "C": "BigQuery",
+        "D": "Cloud SQL PostgreSQL"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "企業データウェアハウスとしてのBigQuery：\n- 標準SQLと複雑な分析クエリをサポート\n- Analytics Hubで安全なデータ共有をサポート\n- Looker、Tableauなどのツールとネイティブ統合\n- サーバーレスアーキテクチャで、インフラ管理不要\n- PBスケールのデータに対する高性能クエリをサポート\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q3",
+      "domain": 1,
+      "question": "OLTPとOLAPの両方のワークロードを同時にサポートする必要があるシステムを設計する場合、GCPでどのように実現しますか？",
+      "options": {
+        "A": "Cloud SQLで両方のワークロードを処理",
+        "B": "Cloud SpannerでOLTPを処理し、BigQueryフェデレーションクエリまたはデータレプリケーションでOLAPを実現",
+        "C": "Bigtableですべてのワークロードを処理",
+        "D": "Firestoreで両方のワークロードを処理"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "HTAP（ハイブリッドトランザクション分析処理）アーキテクチャ：\n- Cloud Spanner：強一貫性OLTP、グローバル分散トランザクションをサポート\n- BigQuery：高性能OLAP分析\n- Datastreamでリアルタイム同期またはフェデレーションクエリで接続\n- 各コンポーネントは特定のワークロード向けに最適化\n---",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q4",
+      "domain": 1,
+      "question": "ある保険会社は、不正取引を検出するシステムを設計する必要があり、取引発生後1秒以内にリスクスコアを提供することが要件です。どのように設計しますか？",
+      "options": {
+        "A": "取引データをBigQueryにバッチロードし、定期的に分析を実行",
+        "B": "Pub/Subで取引を受信 → Dataflowでリアルタイム処理 → Vertex AIのオンライン予測エンドポイントを呼び出す",
+        "C": "データをCloud Storageに保存し、Dataprocで定期的に処理",
+        "D": "Cloud FunctionsでCloud SQLを直接クエリ"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "リアルタイム不正検出アーキテクチャ：\n- Pub/Sub：リアルタイム取引イベントを受信\n- Dataflow：ストリーム処理、特徴量エンジニアリングとデータエンリッチメント\n- Vertex AIオンライン予測：ミリ秒レベルのML推論レスポンス\n- 結果はPub/Subに書き戻すか、直接下流のアクションをトリガー\n---",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q5",
+      "domain": 1,
+      "question": "リージョン間データパイプラインを設計する際、データ転送コストを最小化するにはどうすればよいですか？",
+      "options": {
+        "A": "すべての処理を1つのリージョンに集中させる",
+        "B": "各リージョンでローカル処理と集約を行い、集約結果のみを中央リージョンに転送する",
+        "C": "より大きなマシンタイプを使用して処理を高速化",
+        "D": "データ圧縮を無効にして転送を高速化"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "リージョン間データ転送の最適化：\n- データ発生地で前処理と集約を実行\n- 必要な集約データのみを転送\n- データ圧縮で転送量を削減\n- CDNで頻繁にアクセスされるデータをキャッシュ\n- 適切なネットワーク層（Premium vs Standard）を選択\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q6",
+      "domain": 2,
+      "question": "あるゲーム会社は、プレイヤーの行動をリアルタイムで分析する必要があり、毎秒100万件以上のイベントを処理します。データ取り込みの信頼性を確保するにはどうすればよいですか？",
+      "options": {
+        "A": "データを直接BigQueryストリーミング挿入に書き込む",
+        "B": "Pub/Subをバッファ層として使用し、適切な確認応答メカニズムとデッドレターキューを設定",
+        "C": "データをまずCloud SQLに書き込み、その後バッチでインポート",
+        "D": "Cloud Functionsで各イベントを直接処理"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "高スループットデータ取り込みのベストプラクティス：\n- Pub/Subは無限にスケール可能なメッセージバッファを提供\n- 確認応答期限を設定してメッセージの重複を回避\n- デッドレターキューで処理失敗したメッセージをキャプチャ\n- メッセージ保持ポリシーでデータの永続性を確保\n- 後続のDataflowで信頼性の高い処理を実行\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q7",
+      "domain": 2,
+      "question": "Dataflowでストリームデータを処理する際、データスキュー（data skew）問題にどのように対処しますか？",
+      "options": {
+        "A": "ワーカー数を増やす",
+        "B": "Combine.perKeyで事前集約を使用するか、ホットキー処理戦略を使用",
+        "C": "ウィンドウサイズを縮小",
+        "D": "自動スケーリングを無効化"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "データスキュー処理戦略：\n- Combine.perKeyで事前集約してデータ量を削減\n- withHotKeyFanoutでホットキー処理を分散\n- キー値にランダムなサフィックスを追加して二次集約\n- サンプリングでホットキーを識別\n- キー値分布戦略の再設計を検討\n---",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q8",
+      "domain": 2,
+      "question": "ある物流会社は、全国に分散するGPSデバイスから位置データを収集する必要があり、デバイスはMQTTプロトコルを使用しています。データをGCPに取り込むにはどうすればよいですか？",
+      "options": {
+        "A": "BigQueryに直接接続",
+        "B": "Cloud IoT CoreまたはMQTTブリッジを使用してPub/Subに接続",
+        "C": "Cloud Storageでデータを受信",
+        "D": "Cloud SQLでデータを受信"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "IoTデータ取り込みソリューション：\n- Cloud IoT CoreはMQTTプロトコルをネイティブサポート\n- Pub/Subとの自動統合\n- デバイス認証と安全な接続\n- デバイス状態管理\n- またはサードパーティのMQTT brokerを使用してPub/Subにブリッジ\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q9",
+      "domain": 2,
+      "question": "DataflowにおけるTriggerの役割は何ですか？",
+      "options": {
+        "A": "データソースを定義する",
+        "B": "ウィンドウの計算結果をいつ出力するかを決定する",
+        "C": "データ出力先を定義する",
+        "D": "ワーカー数を制御する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Dataflow Triggerの種類：\n- Event Time Trigger：ウォーターマークの進行に基づいてトリガー\n- Processing Time Trigger：処理時間に基づいてトリガー\n- Data-driven Trigger：データ到着に基づいてトリガー\n- Composite Trigger：複数のトリガー条件を組み合わせ\n- 累積モード（Accumulating）と破棄モード（Discarding）をサポート\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q10",
+      "domain": 2,
+      "question": "DatastreamでCDC（変更データキャプチャ）をどのように使用しますか？",
+      "options": {
+        "A": "DatastreamはCDCをサポートしていない",
+        "B": "Datastreamはソースデータベースから変更をキャプチャし、BigQueryまたはCloud Storageにリアルタイムでレプリケート",
+        "C": "ETLコードを手動で記述する必要がある",
+        "D": "完全レプリケーションのみサポート"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Datastream CDCの特徴：\n- Oracle、MySQL、PostgreSQLなどのソースデータベースをサポート\n- INSERT、UPDATE、DELETE操作をリアルタイムでキャプチャ\n- 宛先はBigQuery、Cloud Storage、Cloud SQLが可能\n- 初期スナップショット + 増分変更をサポート\n- Dataflowと統合して変換処理を実行\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q11",
+      "domain": 2,
+      "question": "Pub/Sub Liteと標準Pub/Subの主な違いは何ですか？",
+      "options": {
+        "A": "機能は完全に同じ",
+        "B": "Pub/Sub Liteはリージョナルでコストが低い選択肢を提供するが、容量の事前プロビジョニングが必要",
+        "C": "Pub/Sub Liteの方がパフォーマンスが高い",
+        "D": "Pub/Sub Liteはより多くのプロトコルをサポート"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Pub/Sub Liteの特徴：\n- リージョナルサービス（グローバル分散ではない）\n- ストレージとスループットの事前プロビジョニングが必要\n- 標準Pub/Subより80-90%コストが低い\n- 予算に敏感で予測可能なワークロードに適している\n- Seek、Snapshotなど一部の高度な機能はサポートしていない\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q12",
+      "domain": 2,
+      "question": "Cloud Data Fusionを使用する主な利点は何ですか？",
+      "options": {
+        "A": "コード開発のみをサポート",
+        "B": "ビジュアルインターフェースでデータパイプラインを構築し、150以上の事前構築コネクタをサポート",
+        "C": "バッチデータのみ処理可能",
+        "D": "他のGCPサービスとの統合はサポートしていない"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Cloud Data Fusionの利点：\n- CDAPベースのビジュアルETLツール\n- 150以上の事前構築コネクタ\n- バッチ処理とリアルタイムパイプラインをサポート\n- ドラッグ＆ドロップでパイプライン設計\n- 組み込みのデータ品質とWrangler機能\n---",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q13",
+      "domain": 3,
+      "question": "あるフィンテック企業は、毎秒100万件の取引クエリリクエストの結果キャッシュを保存する必要があり、レイテンシー要件は10ミリ秒以内です。最適な選択肢は何ですか？",
+      "options": {
+        "A": "BigQuery",
+        "B": "Cloud Storage",
+        "C": "Memorystore for Redisクラスターモード",
+        "D": "Cloud SQL"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "高性能キャッシュソリューション：\n- Memorystore for Redisクラスターモードは高スループットをサポート\n- サブミリ秒の読み取りレイテンシー\n- 自動シャーディングとスケーリング\n- 組み込みのレプリケーションとフェイルオーバー\n- セッションストレージ、キャッシュなどのシナリオに適している\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q14",
+      "domain": 3,
+      "question": "BigQueryのSEARCHインデックス機能はどのようなシナリオに適していますか？",
+      "options": {
+        "A": "すべてのタイプのクエリを高速化",
+        "B": "大規模なテキストフィールドのあいまい検索と完全一致クエリを高速化",
+        "C": "数値型にのみ使用可能",
+        "D": "パーティション機能を置き換える"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "BigQuery SEARCHインデックス：\n- SEARCH関数クエリを高速化\n- ログ分析、テキスト検索シナリオに適している\n- あいまい一致と完全一致をサポート\n- 自動メンテナンス、手動更新不要\n- 大規模な非構造化データ列に特に効果的\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q15",
+      "domain": 3,
+      "question": "Cloud Spannerのインターリーブテーブル機能の用途は何ですか？",
+      "options": {
+        "A": "ストレージコストを削減",
+        "B": "親子テーブルの関連する行を物理的に一緒に保存し、結合クエリのパフォーマンスを向上",
+        "C": "同時書き込み能力を増加",
+        "D": "データモデルを簡素化"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Spannerインターリーブテーブル：\n- 親子行データを物理的に共同保存\n- ノード間クエリを削減\n- 関連クエリのパフォーマンスを向上\n- 階層関係のあるデータモデルに適している\n- テーブル作成時に関係を定義する必要がある\n---",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q16",
+      "domain": 3,
+      "question": "BigQueryでデータマスキングをどのように実装しますか？",
+      "options": {
+        "A": "BigQueryはデータマスキングをサポートしていない",
+        "B": "列レベルのアクセス制御とデータマスキングルール（Data Masking）を使用",
+        "C": "データロード時にのみ処理可能",
+        "D": "ビューを使用することが唯一の方法"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "BigQueryデータマスキングソリューション：\n- 列レベルセキュリティポリシー（Policy Tags）\n- 動的データマスキングルール\n- ロールベースのアクセス制御\n- ハッシュ、非表示、置換などのマスキング方法をサポート\n- Data Catalogと統合して機密データを管理\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q17",
+      "domain": 3,
+      "question": "Bigtableのレプリケーション機能で何が実現できますか？",
+      "options": {
+        "A": "バックアップにのみ使用可能",
+        "B": "リージョン間/クラスター間レプリケーションで、高可用性、低レイテンシー読み取り、災害復旧を実現",
+        "C": "ストレージ容量を増加",
+        "D": "書き込みパフォーマンスを向上"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Bigtableレプリケーション機能：\n- リージョン間でデータを自動レプリケート\n- マルチリージョン読み書きをサポート\n- リージョン障害時の自動フェイルオーバー\n- 最寄りの読み取りでレイテンシーを低減\n- レプリケーションポリシーと一貫性レベルを設定可能\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q18",
+      "domain": 3,
+      "question": "Cloud Storageの保持ポリシー（Retention Policy）とオブジェクトロック（Object Lock）の役割は何ですか？",
+      "options": {
+        "A": "データアクセスを高速化",
+        "B": "指定された保持期間中にデータが削除または変更されることを防ぎ、コンプライアンス要件を満たす",
+        "C": "ストレージコストを削減",
+        "D": "ストレージクラスを自動移行"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "データ保持とコンプライアンス：\n- 保持ポリシー：最短保持期間を設定\n- オブジェクトロック：WORM（Write Once Read Many）モード\n- 金融、医療などの業界コンプライアンス要件を満たす\n- 意図しない削除や悪意のある削除を防止\n- 保持ポリシーをロックして変更を防止可能\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q19",
+      "domain": 3,
+      "question": "Filestoreを使用するのに適したシナリオは何ですか？",
+      "options": {
+        "A": "オブジェクトストレージシナリオ",
+        "B": "共有ファイルシステムが必要で、NFSプロトコルをサポートするワークロード（レンダリング、HPC、MLトレーニングなど）",
+        "C": "時系列データストレージ",
+        "D": "BigQueryストレージの代替"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Filestoreの適用シナリオ：\n- POSIX互換ファイルシステムが必要\n- 複数インスタンスでのデータ共有（GKE、Compute Engineなど）\n- メディアレンダリング、ゲーム開発\n- HPCと科学計算\n- MLトレーニングデータ共有\n---",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q20",
+      "domain": 3,
+      "question": "BigQueryのBigLake機能はどのような機能を提供しますか？",
+      "options": {
+        "A": "単なる別のストレージオプション",
+        "B": "BigQueryテーブルとCloud Storage内のデータレイクデータを統一ガバナンスし、きめ細かいアクセス制御を提供",
+        "C": "バッチロードを高速化",
+        "D": "Dataflowの代替"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "BigLake機能：\n- データレイクとデータウェアハウスの統一ガバナンス\n- 外部テーブルに行/列レベルのアクセス制御を提供\n- Cloud StorageやAWS S3などのマルチクラウドデータをサポート\n- パフォーマンス最適化された外部テーブルアクセス\n- 統一メタデータ管理\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q21",
+      "domain": 4,
+      "question": "BigQuery MLでモデルをトレーニングする際、適切なモデルタイプをどのように選択しますか？（2つ選択）",
+      "options": {
+        "A": "連続数値の予測には線形回帰を使用",
+        "B": "すべての問題にロジスティック回帰を使用",
+        "C": "顧客セグメンテーションにはK-meansクラスタリングを使用",
+        "D": "すべてのシナリオでAutoML Tablesを使用"
+      },
+      "answer": ["A", "C"],
+      "answerType": "multiple",
+      "explanation": "BigQuery MLモデル選択：\n- 線形回帰：連続数値の予測（住宅価格、売上など）\n- ロジスティック回帰：二値分類問題（離脱するかどうかなど）\n- K-means：教師なしクラスタリング（顧客セグメンテーションなど）\n- ARIMA_PLUS：時系列予測\n- XGBoost/DNN：複雑な非線形関係\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q22",
+      "domain": 4,
+      "question": "BigQueryで複数のCTE（共通テーブル式）を含む複雑なクエリをどのように最適化しますか？",
+      "options": {
+        "A": "CTEは自動的に最適化されるため、介入不要",
+        "B": "頻繁に使用されるCTEを一時テーブルまたはマテリアライズドビューとして実体化",
+        "C": "すべてのCTEを削除",
+        "D": "プロジェクトクォータを増加"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "CTE最適化戦略：\n- BigQueryはCTEを複数回実行する\n- 再利用されるCTEを一時テーブルとして作成\n- マテリアライズドビューで頻繁な計算をキャッシュ\n- CREATE TEMP TABLEの使用を検討\n- 実行計画を分析してボトルネックを特定\n---",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q23",
+      "domain": 4,
+      "question": "Vertex AI Feature Storeの主な用途は何ですか？",
+      "options": {
+        "A": "モデルの重みを保存",
+        "B": "ML特徴量を一元管理・提供し、トレーニングと予測で一貫した特徴量を使用することを保証",
+        "C": "BigQueryの代替",
+        "D": "データ可視化"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Vertex AI Feature Store：\n- 統一された特徴量管理とバージョン管理\n- トレーニング-サービング一貫性（スキューを回避）\n- 低レイテンシーオンライン特徴量サービング\n- トレーニング用のバッチ特徴量エクスポート\n- 特徴量共有と発見\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q24",
+      "domain": 4,
+      "question": "BigQueryで、近似クエリを使用して大規模データの統計計算を高速化するにはどうすればよいですか？",
+      "options": {
+        "A": "正確な計算のみ使用可能",
+        "B": "APPROX_COUNT_DISTINCT、APPROX_QUANTILESなどの近似集計関数を使用",
+        "C": "スロット数を増加",
+        "D": "より小さなデータセットを使用"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "BigQuery近似集計：\n- APPROX_COUNT_DISTINCT：近似ユニーク値カウント\n- APPROX_QUANTILES：近似分位数\n- APPROX_TOP_COUNT：近似Top-N\n- パフォーマンスが大幅に向上（10倍以上）\n- 誤差は許容範囲内（通常1%未満）\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q25",
+      "domain": 4,
+      "question": "Lookerでセマンティックモデルレイヤーをどのように作成しますか？",
+      "options": {
+        "A": "Lookerはセマンティックモデルをサポートしていない",
+        "B": "LookMLでディメンション、メジャー、関係を定義し、一貫したビジネス用語と指標を作成",
+        "C": "SQLを直接記述",
+        "D": "ドラッグ＆ドロップインターフェースのみ使用可能"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "LookMLセマンティックレイヤー：\n- ディメンション（Dimensions）とメジャー（Measures）を定義\n- 統一されたビジネス用語と計算ロジック\n- テーブル間の関係（Explores）を定義\n- バージョン管理とコードレビュー\n- SQLを書かずにセルフサービス分析\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q26",
+      "domain": 4,
+      "question": "BigQueryリモート関数（Remote Functions）で何が実現できますか？",
+      "options": {
+        "A": "内部関数のみ呼び出し可能",
+        "B": "SQLクエリ内でCloud FunctionsまたはCloud Runサービスを呼び出してカスタムロジックを実行",
+        "C": "UDFの代替",
+        "D": "Pythonのみサポート"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "BigQueryリモート関数：\n- SQL内で外部サービスを呼び出し\n- Cloud FunctionsとCloud Runをサポート\n- 任意のプログラミング言語を使用可能\n- MLモデル、API、複雑な計算の呼び出しに適している\n- 自動並列呼び出しと結果集約\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q27",
+      "domain": 4,
+      "question": "BigQueryでリアルタイムダッシュボードのデータ更新をどのように実装しますか？",
+      "options": {
+        "A": "BigQueryはリアルタイムデータをサポートしていない",
+        "B": "ストリーミング挿入 + マテリアライズドビュー + BI Engineでニアリアルタイムダッシュボードを実現",
+        "C": "バッチロードのみ使用可能",
+        "D": "他のツールを使用する必要がある"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "リアルタイムダッシュボードアーキテクチャ：\n- ストリーミング挿入でリアルタイムにデータを格納\n- マテリアライズドビューで一般的な集計を事前計算\n- BI Engineメモリアクセラレーションレイヤー\n- Looker Studioの自動更新\n- 組み合わせて使用することで秒レベルのデータ更新を実現\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q28",
+      "domain": 4,
+      "question": "Analytics Hubの主な用途は何ですか？",
+      "options": {
+        "A": "データストレージ",
+        "B": "内部チーム、パートナー、公開マーケットプレイスを含むデータセットを安全に共有・交換",
+        "C": "データ変換",
+        "D": "レポート生成"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Analytics Hub：\n- データエクスチェンジ（Exchange）を作成\n- データリスティング（Listings）を公開\n- きめ細かいアクセス制御\n- データをコピーせずに共有\n- プライベートと公開共有モードをサポート\n---",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q29",
+      "domain": 5,
+      "question": "Cloud Composer 2をCloud Composer 1と比較した場合の主な利点は何ですか？",
+      "options": {
+        "A": "機能は完全に同じ",
+        "B": "自動スケーリング、より速い起動、より低いコスト、GKE Autopilotを使用",
+        "C": "DAGをサポートしていない",
+        "D": "Airflowと互換性がない"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Cloud Composer 2の利点：\n- GKE Autopilotベースで自動スケーリング\n- より速い環境作成とDAG解析\n- より低いコスト（実際の使用量に基づく課金）\n- より良い分離とセキュリティ\n- 最新のAirflowバージョンをサポート\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q30",
+      "domain": 5,
+      "question": "BigQueryのカスタムコスト管理をどのように設定しますか？",
+      "options": {
+        "A": "コスト管理は不可能",
+        "B": "プロジェクトクォータ、ユーザークォータ、スロット予約、予算アラートを使用",
+        "C": "クエリを減らすことでのみ対応可能",
+        "D": "より少ないテーブルを使用"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "BigQueryコスト管理：\n- プロジェクトレベルとユーザーレベルのクエリクォータ（日次TB制限）\n- スロット予約（Reservations）で固定容量価格設定\n- 予算アラートと通知\n- INFORMATION_SCHEMAで使用状況を監視\n- ドライランクエリでコストを見積もり\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q31",
+      "domain": 5,
+      "question": "Dataflow Primeは標準Dataflowと比べてどのような改善がありますか？",
+      "options": {
+        "A": "違いはない",
+        "B": "インテリジェントな自動スケーリング、ライトサイジング、より良いリソース最適化と診断機能",
+        "C": "ストリーム処理をサポートしていない",
+        "D": "異なるAPIを使用"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Dataflow Primeの特徴：\n- Vertical Autoscaling：ワーカー仕様を自動調整\n- Right Fitting：最適なマシンタイプを選択\n- インテリジェント診断とパフォーマンス提案\n- より良いメモリ管理\n- コード変更なしで使用可能\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q32",
+      "domain": 5,
+      "question": "DataprocジョブのCI/CDをどのように実装しますか？",
+      "options": {
+        "A": "手動デプロイのみ可能",
+        "B": "Cloud Build + Dataproc Workflow Templates + バージョン管理されたコードを使用",
+        "C": "CI/CDをサポートしていない",
+        "D": "UIのみ使用可能"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Dataproc CI/CDベストプラクティス：\n- Git バージョン管理でSpark/Hadoopコードを管理\n- Cloud Buildトリガーで自動ビルド\n- Workflow Templatesで再利用可能なパイプラインを定義\n- Cloud StorageでジョブJAR/スクリプトを保存\n- 初期化スクリプトで環境を設定\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q33",
+      "domain": 5,
+      "question": "BigQueryスクリプトとストアドプロシージャを使用してデータ処理を自動化するにはどうすればよいですか？",
+      "options": {
+        "A": "BigQueryはスクリプトをサポートしていない",
+        "B": "DECLARE、SET、IF、LOOPなどのステートメントとCREATE PROCEDUREで再利用可能なロジックを作成",
+        "C": "単一のSQLのみ使用可能",
+        "D": "外部ツールを使用する必要がある"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "BigQueryスクリプティング：\n- 変数の宣言と代入\n- 制御フロー（IF、LOOP、WHILE）\n- 例外処理（BEGIN...EXCEPTION）\n- ストアドプロシージャでビジネスロジックをカプセル化\n- スケジュール実行\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q34",
+      "domain": 1,
+      "question": "ある通信会社は、ネットワークログ分析システムを設計する必要があり、毎日50TBのログが生成され、リアルタイム異常検出と履歴トレンド分析をサポートする必要があります。どのように設計しますか？",
+      "options": {
+        "A": "すべてのデータをCloud SQLに保存",
+        "B": "ホットデータはPub/Sub + Dataflow + Bigtableでリアルタイム処理、コールドデータはCloud Storage + BigQueryで履歴分析",
+        "C": "BigQueryのみですべてのデータを保存",
+        "D": "Firestoreですべてのログを保存"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "階層化ストレージアーキテクチャ：\n- ホットパス：Pub/Sub → Dataflow → Bigtable（リアルタイムアラート）\n- ウォームパス：Pub/Sub → Dataflow → BigQuery（ニアリアルタイム分析）\n- コールドパス：Cloud Storage Archive（長期アーカイブ）\n- ライフサイクルポリシーで自動的にデータを移行\n---",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q35",
+      "domain": 2,
+      "question": "Dataflowを使用する際、Session Windowsでユーザーセッションを処理するにはどうすればよいですか？",
+      "options": {
+        "A": "Session Windowsは手動実装が必要",
+        "B": "Sessions.withGapDuration()でセッションギャップを定義し、ユーザーごとに自動的にセッションをグループ化",
+        "C": "固定ウィンドウのみ使用可能",
+        "D": "外部ツールを使用する必要がある"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Dataflow Session Windows：\n- アクティビティギャップに基づいて自動的にセッションを分割\n- withGapDurationで最大ギャップ時間を設定\n- ユーザー行動分析でよく使用される\n- カスタムマージロジックをサポート\n- 他のウィンドウタイプと組み合わせて使用可能\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q36",
+      "domain": 2,
+      "question": "Pub/Sub Schemaを使用してメッセージフォーマットの一貫性を確保するにはどうすればよいですか？",
+      "options": {
+        "A": "Pub/SubはSchemaをサポートしていない",
+        "B": "AvroまたはProtocol Buffer Schemaを作成し、Topicに関連付けてメッセージを検証",
+        "C": "クライアント側でのみ検証可能",
+        "D": "Dataflowで検証が必要"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Pub/Sub Schema管理：\n- AvroとProtocol Bufferをサポート\n- Schemaバージョン管理\n- 発行時にメッセージフォーマットを自動検証\n- Schemaに準拠しないメッセージを拒否\n- Schema Registryで一元管理\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q37",
+      "domain": 3,
+      "question": "Cloud Storageのデュアルリージョン（Dual-region）ストレージとマルチリージョン（Multi-region）ストレージの違いは何ですか？",
+      "options": {
+        "A": "機能は完全に同じ",
+        "B": "デュアルリージョンは指定した2つのリージョンに保存し、より正確な場所制御を提供。マルチリージョンは大陸範囲で自動分散",
+        "C": "マルチリージョンの方がパフォーマンスが悪い",
+        "D": "デュアルリージョンの方がコストが高い"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "ストレージロケーションの選択：\n- デュアルリージョン：特定の2つのリージョンを選択、turboレプリケーションオプションあり\n- マルチリージョン：大陸レベルの分散（US、EUなど）\n- デュアルリージョンはデータ所在地と正確な場所要件を満たす\n- マルチリージョンは最高の可用性を提供\n- コンプライアンスとパフォーマンス要件に応じて選択\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q38",
+      "domain": 3,
+      "question": "AlloyDBとCloud SQL PostgreSQLの主な違いは何ですか？",
+      "options": {
+        "A": "機能は完全に同じ",
+        "B": "AlloyDBはOLTP向けに最適化されており、パフォーマンスが高く、カラムナストレージで分析クエリを高速化",
+        "C": "AlloyDBはPostgreSQLと互換性がない",
+        "D": "Cloud SQLの方がパフォーマンスが良い"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "AlloyDBの特徴：\n- PostgreSQLと完全互換\n- Cloud SQLより4倍高速（OLTP）、100倍高速（分析）\n- カラムナストレージエンジンで分析を高速化\n- インテリジェントキャッシュとAI最適化\n- 高可用性（99.99% SLA）\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q39",
+      "domain": 4,
+      "question": "BigQueryのML.EVALUATEを使用して機械学習モデルをどのように評価しますか？",
+      "options": {
+        "A": "評価は不要",
+        "B": "ML.EVALUATE関数を使用してROC AUC、適合率、再現率などのモデルパフォーマンス指標を取得",
+        "C": "手動計算のみ可能",
+        "D": "外部ツールにエクスポートする必要がある"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "BigQuery MLモデル評価：\n- ML.EVALUATEで評価指標を返す\n- 分類モデル：適合率、再現率、F1、ROC AUC\n- 回帰モデル：MAE、RMSE、R-squared\n- ML.CONFUSION_MATRIXで混同行列を表示\n- ML.ROC_CURVEでROC曲線を描画\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q40",
+      "domain": 4,
+      "question": "BigQueryのTABLESAMPLE機能は何に使用されますか？",
+      "options": {
+        "A": "テーブルをコピー",
+        "B": "探索的分析やモデル開発のために大規模テーブルから効率的にデータをサンプリング",
+        "C": "データをパーティション分割",
+        "D": "データを圧縮"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "TABLESAMPLEサンプリング：\n- TABLESAMPLE SYSTEM (x PERCENT)\n- 代表的なデータサンプルを素早く取得\n- 探索的分析のコストを削減\n- モデル開発の反復を高速化\n- パーセントまたは行数によるサンプリングをサポート\n---",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q41",
+      "domain": 5,
+      "question": "Workflowsを使用して複数のGCPサービスをオーケストレーションするにはどうすればよいですか？",
+      "options": {
+        "A": "Workflowsは単純なタスクのみサポート",
+        "B": "YAMLでワークフローを定義し、Cloud Functions、Cloud Run、BigQueryなどのサービスを呼び出す",
+        "C": "Cloud Composerのみ使用可能",
+        "D": "大量のコードを書く必要がある"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Cloud Workflows：\n- サーバーレスワークフローオーケストレーション\n- YAMLでステップとロジックを定義\n- 組み込みコネクタでGCPサービスを呼び出し\n- 条件、ループ、並列実行をサポート\n- Composerより軽量でコストが低い\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q42",
+      "domain": 5,
+      "question": "Cloud LoggingとCloud Monitoringを使用してデータパイプラインのアラートをどのように作成しますか？（2つ選択）",
+      "options": {
+        "A": "手動監視のみ可能",
+        "B": "ログからメトリクスを作成し、アラートポリシーを設定",
+        "C": "Cloud Monitoringダッシュボードで主要指標を監視し、通知を設定",
+        "D": "アラート機能は追加料金が必要"
+      },
+      "answer": ["B", "C"],
+      "answerType": "multiple",
+      "explanation": "データパイプライン監視アラート：\n- ログメトリクス：ログからカスタムメトリクスを抽出\n- アラートポリシー：閾値または異常に基づいてトリガー\n- 通知チャネル：メール、Slack、PagerDuty\n- ダッシュボード：パイプラインの健全性を可視化\n- ランブック：アラートトリガー時の対応手順\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q43",
+      "domain": 1,
+      "question": "マイクロバッチ処理アーキテクチャを設計する際、純粋なストリーム処理と比較してどのようなトレードオフがありますか？",
+      "options": {
+        "A": "マイクロバッチ処理は常により良い",
+        "B": "マイクロバッチ処理はレイテンシーが高いがデバッグと再処理が容易。純粋なストリーム処理はレイテンシーが低いが複雑性が高い",
+        "C": "純粋なストリーム処理の方がコストが低い",
+        "D": "両者に違いはない"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "マイクロバッチ vs 純粋なストリーム処理：\n- マイクロバッチ処理：小バッチで処理、レイテンシーは秒レベル\n- 純粋なストリーム処理：1件ずつ処理、レイテンシーはミリ秒レベル\n- マイクロバッチはexactly-onceの実現が容易\n- マイクロバッチはデバッグと再処理が簡単\n- レイテンシー要件と複雑性に応じて選択\n---",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q44",
+      "domain": 2,
+      "question": "DataflowのFlexTemplatesを使用してパラメータ化されたパイプラインを実装するにはどうすればよいですか？",
+      "options": {
+        "A": "FlexTemplatesはパラメータをサポートしていない",
+        "B": "パイプラインをコンテナイメージとしてパッケージ化し、実行時にパラメータで設定を渡す",
+        "C": "Classic Templatesのみ使用可能",
+        "D": "毎回コードを変更する必要がある"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Dataflow Flex Templates：\n- Dockerコンテナとしてパッケージ化\n- 実行時のパラメータ化設定\n- 任意の言語と依存関係をサポート\n- より柔軟なリソース設定\n- バージョン管理とCI/CD統合\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q45",
+      "domain": 3,
+      "question": "Cloud Spannerの外部バックアップとリストアをどのように実装しますか？",
+      "options": {
+        "A": "Spannerはバックアップをサポートしていない",
+        "B": "組み込みバックアップ機能を使用するか、DataflowでCloud Storageにデータをエクスポート",
+        "C": "手動でデータをコピーする必要がある",
+        "D": "停止してバックアップする必要がある"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Cloud Spannerバックアップ戦略：\n- 組み込みバックアップ：データベースバックアップを作成\n- 自動バックアップスケジュール\n- DataflowテンプレートでCloud Storageにエクスポート\n- インスタンス間リストア\n- PITR（ポイントインタイムリカバリ）プレビュー\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q46",
+      "domain": 4,
+      "question": "BigQueryのJSONデータ型にはどのような利点がありますか？",
+      "options": {
+        "A": "STRINGでJSONを保存するのと完全に同じ",
+        "B": "ネイティブJSONタイプはより効率的なストレージ、クエリ、インデックスをサポートし、JSON関数を直接使用可能",
+        "C": "ネストされたクエリをサポートしていない",
+        "D": "パフォーマンスが悪い"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "BigQuery JSONデータ型：\n- ネイティブストレージフォーマットでスペース効率が高い\n- JSON_VALUE、JSON_QUERYなどの関数\n- JSONパス式をサポート\n- 仮想列とインデックスを作成可能\n- スキーマ推論をサポート\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q47",
+      "domain": 5,
+      "question": "Terraformを使用してGCPデータインフラストラクチャを管理するにはどうすればよいですか？",
+      "options": {
+        "A": "GCPはTerraformをサポートしていない",
+        "B": "Terraform Providerを使用してBigQuery、Dataflow、Pub/Subなどのリソースを定義し、IaCを実現",
+        "C": "Cloud Consoleのみ使用可能",
+        "D": "専用ツールを使用する必要がある"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Terraform GCPデータインフラストラクチャ：\n- Google Cloud Terraform Provider\n- 宣言的リソース定義\n- バージョン管理と監査\n- 環境の一貫性\n- すべての主要なデータサービスをサポート\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q48",
+      "domain": 1,
+      "question": "ある医療会社は、HIPAAに準拠したデータ分析プラットフォームを設計する必要があります。どのようなセキュリティ対策を考慮する必要がありますか？",
+      "options": {
+        "A": "公開データセットを使用",
+        "B": "VPC Service Controls、CMEK暗号化、監査ログ、データマスキング、アクセス制御",
+        "C": "ネットワーク分離のみ必要",
+        "D": "データ暗号化のみ必要"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "HIPAAコンプライアンスデータプラットフォーム：\n- VPC Service Controlsでデータ漏洩を防止\n- CMEK顧客管理暗号化キー\n- 監査ログですべてのアクセスを追跡\n- データマスキングでPHIを保護\n- IAM最小権限アクセス制御\n---",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q49",
+      "domain": 2,
+      "question": "Dataflowで有界データと無界データを処理する際、コードにはどのような違いがありますか？",
+      "options": {
+        "A": "完全に異なるコードが必要",
+        "B": "Apache Beam統一モデルにより同じコードでバッチとストリームを処理可能。主な違いはウィンドウとトリガーの設定",
+        "C": "1種類のみ処理可能",
+        "D": "異なるSDKを使用する必要がある"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Beam統一プログラミングモデル：\n- PCollectionで有界と無界データを統一表現\n- 同じ変換操作\n- ストリーム処理にはウィンドウとトリガーの設定が必要\n- バッチ処理はグローバルウィンドウを使用\n- 実行時にRunnerに応じて最適化\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q50",
+      "domain": 5,
+      "question": "BigQueryの増分データ処理と更新をどのように実装しますか？",
+      "options": {
+        "A": "全量置換のみ可能",
+        "B": "MERGEステートメント、テーブルパーティション、増分マテリアライズドビュー、またはDataform増分モデルを使用",
+        "C": "テーブルを削除して再作成する必要がある",
+        "D": "増分処理をサポートしていない"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "BigQuery増分処理戦略：\n- MERGEステートメントでupsert操作\n- 時間パーティションで新しいパーティションのみ処理\n- マテリアライズドビューの増分更新\n- Dataform増分モデル\n- _PARTITIONTIMEで増分データをフィルタリング\n---",
+      "difficulty": "medium"
+    }
+  ]
+}

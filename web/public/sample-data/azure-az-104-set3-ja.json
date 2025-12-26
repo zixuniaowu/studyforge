@@ -1,0 +1,799 @@
+{
+  "exam": {
+    "id": "azure-az-104-set3-ja",
+    "name": "Azure AZ-104 管理者模擬試験 #3",
+    "code": "AZ-104",
+    "provider": "Microsoft",
+    "language": "ja",
+    "description": "Microsoft Azure管理者認定試験模擬問題 - 第3セット",
+    "totalQuestions": 50,
+    "passingScore": 70,
+    "examTime": 150,
+    "domains": [
+      {
+        "id": 1,
+        "name": "Azure IDとガバナンスの管理 (Manage Azure identities and governance)",
+        "weight": 25
+      },
+      {
+        "id": 2,
+        "name": "ストレージの実装と管理 (Implement and manage storage)",
+        "weight": 20
+      },
+      {
+        "id": 3,
+        "name": "Azureコンピューティングリソースのデプロイと管理 (Deploy and manage Azure compute resources)",
+        "weight": 25
+      },
+      {
+        "id": 4,
+        "name": "仮想ネットワークの実装と管理 (Implement and manage virtual networking)",
+        "weight": 20
+      },
+      {
+        "id": 5,
+        "name": "Azureリソースの監視と保守 (Monitor and maintain Azure resources)",
+        "weight": 10
+      }
+    ],
+    "tags": [
+      "Azure",
+      "AZ-104",
+      "管理者",
+      "認定試験",
+      "クラウドコンピューティング"
+    ]
+  },
+  "questions": [
+    {
+      "id": "q1",
+      "domain": 1,
+      "question": "ある企業はAzure ADのパスワードリセットポリシーを構成し、ユーザーがIT部門に連絡せずにパスワードを自分でリセットできるようにする必要があります。どの機能を構成すべきですか？",
+      "options": {
+        "A": "Azure AD条件付きアクセス",
+        "B": "Azure ADセルフサービスパスワードリセット (SSPR)",
+        "C": "Azure AD Identity Protection",
+        "D": "Azure AD Privileged Identity Management"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure ADセルフサービスパスワードリセット (SSPR) により、ユーザーはIT部門に連絡せずにパスワードをリセットまたはアカウントのロックを解除できます。管理者は認証方法（携帯電話認証、セキュリティの質問など）と適用されるユーザーグループを構成できます。\n---",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q2",
+      "domain": 1,
+      "question": "ある企業は、ユーザーが見慣れない場所からサインインした場合に自動的に多要素認証を要求したいと考えています。何を使用すべきですか？",
+      "options": {
+        "A": "Azure ADセルフサービスパスワードリセット",
+        "B": "Azure AD条件付きアクセスポリシー",
+        "C": "Azure ADアプリケーションプロキシ",
+        "D": "Azure ADドメインサービス"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "条件付きアクセスポリシーは、ユーザーの場所、デバイスの状態、アプリケーションなどの様々なシグナルに基づいてサインイン要求を評価し、アクセス制御を適用できます。見慣れない場所が検出された場合にMFAを要求するようにポリシーを構成できます。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q3",
+      "domain": 1,
+      "question": "ある企業は外部の契約業者に特定のAzureリソースへの一時的なアクセス権限を付与する必要があり、アクセス権限は30日後に自動的に失効する必要があります。どの機能を使用すべきですか？",
+      "options": {
+        "A": "Azure AD動的グループ",
+        "B": "Azure ADアクセスレビュー",
+        "C": "Azure ADエンタイトルメント管理 (Entitlement Management)",
+        "D": "Azure AD管理単位"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "Azure ADエンタイトルメント管理により、リソースを含むアクセスパッケージを作成し、有効期限ポリシーを設定してアクセス権限を自動的に取り消すことができます。外部ユーザーはアクセスパッケージを要求でき、管理者は承認ワークフローとライフサイクルポリシーを構成できます。\n---",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q4",
+      "domain": 1,
+      "question": "ある企業には複数の部門があり、各部門に独自のIT管理者がいます。企業は部門管理者が自分の部門のユーザーのみを管理でき、他の部門のユーザーにはアクセスできないようにしたいと考えています。何を使用すべきですか？",
+      "options": {
+        "A": "Azure ADロール",
+        "B": "Azure AD管理単位 (Administrative Units)",
+        "C": "リソースグループ",
+        "D": "管理グループ"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "管理単位により、Azure AD内のユーザーとグループを論理的なコンテナに分割し、管理者ロールの範囲を特定の管理単位に制限できます。これにより、委任された管理の最小権限の原則が実現されます。\n---",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q5",
+      "domain": 1,
+      "question": "ある企業は、機密リソースへのアクセス権を持つユーザーを定期的に監査し、アクセスが不要になったユーザーを削除する必要があります。何を使用すべきですか？",
+      "options": {
+        "A": "Azure ADアクセスレビュー",
+        "B": "Azure AD条件付きアクセス",
+        "C": "Azure Policy",
+        "D": "Azureアクティビティログ"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Azure ADアクセスレビューにより、グループ、アプリケーション、ロールへのユーザーアクセスを定期的に確認できます。レビュー担当者はアクセスの継続を承認または拒否でき、自動推奨とレビュー結果の自動適用を構成できます。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q6",
+      "domain": 1,
+      "question": "ある企業は、ユーザーの部門属性に基づいて対応するAzure ADグループに自動的にユーザーを追加したいと考えています。どの種類のグループを作成すべきですか？",
+      "options": {
+        "A": "Microsoft 365グループ",
+        "B": "割り当て済みセキュリティグループ",
+        "C": "動的メンバーシップセキュリティグループ",
+        "D": "メール対応セキュリティグループ"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "動的メンバーシップグループは、ユーザーまたはデバイス属性に基づくルールに従って自動的にメンバーを追加または削除します。例えば、departmentが「営業」に等しいすべてのユーザーを自動的に営業グループに追加するルールを作成できます。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q7",
+      "domain": 1,
+      "question": "ある企業は、すべてのAzureリソースが特定のAzureリージョンにデプロイされることを確認したいと考えています。この要件をどのように実装すべきですか？",
+      "options": {
+        "A": "RBACロールを構成する",
+        "B": "Azure Policyの「許可された場所」ポリシーを作成する",
+        "C": "管理グループを作成する",
+        "D": "Azure Blueprintsを構成する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure Policyの「許可された場所」組み込みポリシーにより、リソースをデプロイできるAzureリージョンを制限できます。許可されていないリージョンでリソースを作成しようとすると、デプロイは拒否されます。\n---",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q8",
+      "domain": 1,
+      "question": "ある企業は、仮想マシンの起動と停止のみを行う必要があるユーザーにカスタムRBACロールを割り当てる必要があります。最小権限の原則に最も適合する権限セットはどれですか？",
+      "options": {
+        "A": "Microsoft.Compute/virtualMachines/*",
+        "B": "Microsoft.Compute/virtualMachines/start/action と Microsoft.Compute/virtualMachines/powerOff/action",
+        "C": "*/read と Microsoft.Compute/*",
+        "D": "Microsoft.Compute/virtualMachines/read"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "最小権限の原則では、タスクを完了するために必要な最小限の権限のみを付与する必要があります。VMの起動と停止のみを行う必要があるユーザーには、startとpowerOffアクションの権限のみを付与し、他のVM管理権限は付与すべきではありません。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q9",
+      "domain": 1,
+      "question": "ある企業のAzureサブスクリプションの費用が予算を超えています。管理者は、どのリソースが最も多くの費用を発生させているかを特定する必要があります。どのツールを使用すべきですか？",
+      "options": {
+        "A": "Azure Advisor",
+        "B": "Azureコスト管理と課金",
+        "C": "Azure Monitor",
+        "D": "Azure Policy"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azureコスト管理と課金はコスト分析機能を提供し、リソース、リソースグループ、タグなどの次元別にコストの内訳を表示できます。予算とアラートの設定、およびコスト最適化の推奨事項も取得できます。\n---",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q10",
+      "domain": 1,
+      "question": "ある企業は、サブスクリプション内のすべての仮想マシンでAzure Backupが有効になっていることを確認する必要があります。どの方法を使用すべきですか？",
+      "options": {
+        "A": "各VMを手動で確認する",
+        "B": "Azure Policyの「DeployIfNotExists」効果を使用する",
+        "C": "RBACロールを作成する",
+        "D": "Azure Advisorを構成する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure PolicyのDeployIfNotExists効果により、リソースが準拠していない場合に自動的に修復をデプロイできます。VMにバックアップが構成されていない場合に自動的にAzure Backupを構成するポリシーを作成し、すべてのVMが保護されるようにできます。\n---",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q11",
+      "domain": 1,
+      "question": "ある企業は、ユーザーが同じ資格情報を使用してオンプレミスアプリケーションとAzureリソースの両方にサインインできるようにしたいと考えていますが、パスワードをクラウドに同期する必要性を減らしたいと考えています。どの認証方法を構成すべきですか？",
+      "options": {
+        "A": "パスワードハッシュ同期 (PHS)",
+        "B": "パススルー認証 (PTA)",
+        "C": "フェデレーション認証 (Federation)",
+        "D": "クラウドIDのみ"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "パススルー認証は、ユーザーがAzure ADにサインインする際にパスワード検証要求をオンプレミスのActive Directoryに送信します。パスワードはクラウドに保存されないため、データの所在地に厳格な要件がある組織に適しています。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q12",
+      "domain": 1,
+      "question": "ある企業は、Azureリソースのコンプライアンス状態を追跡してレポートする必要があります。何を使用すべきですか？",
+      "options": {
+        "A": "Azureアクティビティログ",
+        "B": "Azure Policyコンプライアンスダッシュボード",
+        "C": "Azure Advisor",
+        "D": "Azure Security Center"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure Policyコンプライアンスダッシュボードは、割り当てられたポリシーのコンプライアンス状態を表示し、準拠リソースと非準拠リソースの数を含みます。非準拠リソースの詳細を確認し、修復タスクをトリガーできます。\n---",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q13",
+      "domain": 2,
+      "question": "ある企業は、規制要件により7年間保持し、変更または削除できないデータを保存する必要があります。どのストレージ機能を使用すべきですか？",
+      "options": {
+        "A": "論理的な削除",
+        "B": "不変ストレージポリシー",
+        "C": "ライフサイクル管理",
+        "D": "バージョン管理"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "不変ストレージポリシーにより、Blobコンテナに時間ベースの保持ポリシーまたは訴訟ホールドを構成できます。保持期間中、Blobは変更または削除できず、WORM（Write Once, Read Many）コンプライアンス要件を満たします。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q14",
+      "domain": 2,
+      "question": "ある企業は、カスタマーマネージド暗号化キーを使用するようにAzureストレージアカウントを構成する必要があります。キーはどこに保存すべきですか？",
+      "options": {
+        "A": "ストレージアカウント自体",
+        "B": "Azure Key Vault",
+        "C": "Azure AD",
+        "D": "オンプレミスのハードウェアセキュリティモジュール"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "カスタマーマネージドキー (CMK) はAzure Key Vaultに保存する必要があります。ストレージアカウントはKey Vault内のキーを参照してデータを暗号化し、キーは顧客が制御およびローテーションできます。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q15",
+      "domain": 2,
+      "question": "ある企業は大量のオンプレミスデータをAzure Blobストレージに移行する必要がありますが、ネットワーク帯域幅が限られています。どのサービスを使用すべきですか？",
+      "options": {
+        "A": "AzCopy",
+        "B": "Azure Data Box",
+        "C": "Azure File Sync",
+        "D": "Azure Storage Explorer"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure Data Boxは、ネットワークに依存せずに大量のデータ（最大80TB以上）をAzureに安全に転送できる物理デバイスです。Microsoftがデバイスを発送し、データをデバイスにコピーしてからMicrosoftに返送します。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q16",
+      "domain": 2,
+      "question": "ある企業は、特定のIPアドレスからの要求のみがストレージアカウントにアクセスできるようにする必要があります。この要件を実現できる構成はどれですか？（2つ選択）",
+      "options": {
+        "A": "ストレージアカウントファイアウォールルールを構成する",
+        "B": "共有アクセス署名 (SAS) を作成する",
+        "C": "プライベートエンドポイントを有効にする",
+        "D": "Azure AD認証を構成する"
+      },
+      "answer": ["A", "C"],
+      "answerType": "multiple",
+      "explanation": "ストレージアカウントファイアウォールでは、許可されるIPアドレス範囲を構成できます。プライベートエンドポイントはVNet内にプライベートIPを作成し、パブリックアクセスを完全にブロックします。両方を組み合わせることで、ストレージアカウントへのネットワークアクセスを厳密に制御できます。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q17",
+      "domain": 2,
+      "question": "ある企業は、Azure Files共有のIDベースのアクセス制御を構成する必要があります。SMBアクセスに使用できるIDソースはどれですか？（2つ選択）",
+      "options": {
+        "A": "オンプレミスのActive Directoryドメインサービス",
+        "B": "Azure ADドメインサービス",
+        "C": "Azure AD B2C",
+        "D": "Microsoftアカウント"
+      },
+      "answer": ["A", "B"],
+      "answerType": "multiple",
+      "explanation": "Azure FilesはオンプレミスAD DSまたはAzure AD DSを介したIDベースのKerberos認証をサポートしています。これにより、ユーザーはAD資格情報を使用してファイル共有にアクセスでき、NTFS権限を適用できます。\n---",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q18",
+      "domain": 2,
+      "question": "ある企業はHTTPSとAzure AD認証を使用してAzure Files共有にアクセスしたいと考えています。どのプロトコルを使用すべきですか？",
+      "options": {
+        "A": "SMB 3.0",
+        "B": "NFS 4.1",
+        "C": "REST API",
+        "D": "FTP"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "Azure File Storage REST APIはHTTPS経由でのファイル共有へのアクセスをサポートし、Azure AD認証（OAuth 2.0トークン）を使用できます。これは、ファイルシステムプロトコルではなくHTTPプロトコル経由でアクセスする必要があるアプリケーションに適しています。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q19",
+      "domain": 2,
+      "question": "ある企業は、プライマリストレージアカウントが使用できない場合に備えて、複数のストレージアカウント間でBlobをレプリケートする必要があります。どの機能を使用すべきですか？",
+      "options": {
+        "A": "地理冗長ストレージ (GRS)",
+        "B": "オブジェクトレプリケーション",
+        "C": "Blobスナップショット",
+        "D": "論理的な削除"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "オブジェクトレプリケーションにより、ブロックBlobとそのスナップショット、バージョン、メタデータを宛先ストレージアカウントに非同期でレプリケートできます。リージョン間、サブスクリプション間でレプリケートでき、災害復旧とデータ配布のシナリオに適しています。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q20",
+      "domain": 2,
+      "question": "ある企業のアプリケーションは、データベースワークロードを実行するために低遅延のブロックストレージを必要としています。どの種類のAzureストレージを使用すべきですか？",
+      "options": {
+        "A": "Azure Blobストレージ",
+        "B": "Azureマネージドディスク",
+        "C": "Azure Filesストレージ",
+        "D": "Azure Tableストレージ"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azureマネージドディスクは、VM用に設計されたブロックストレージで、低遅延、高IOPSのパフォーマンスを提供します。Premium SSDとUltra Diskは、パフォーマンスに敏感なデータベースワークロードに特に適しています。\n---",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q21",
+      "domain": 2,
+      "question": "ある企業は、アプリケーションのアクセスを中断せずにストレージアカウントのアクセスキーを定期的にローテーションする必要があります。どの戦略を採用すべきですか？",
+      "options": {
+        "A": "一度に1つのキーのみをローテーションし、アプリケーションを更新してからもう一方をローテーションする",
+        "B": "両方のキーを同時にローテーションする",
+        "C": "ストレージアカウントを削除して再作成する",
+        "D": "アクセスキーの代わりに共有アクセス署名を使用する"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "ストレージアカウントは、サービスを中断せずにキーローテーションをサポートするために2つのアクセスキーを提供します。正しい手順は、key2を使用するようにアプリケーション構成を更新し、正常であることを確認してからkey1を再生成し、その後アプリケーションを新しいkey1を使用するように切り替えることです。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q22",
+      "domain": 2,
+      "question": "ある企業は、ストレージコストを最適化し、頻繁にアクセスされないが高速アクセスが必要なデータをより安価なストレージ層に移動する必要があります。どのアクセス層を選択すべきですか？",
+      "options": {
+        "A": "ホットアクセス層 (Hot)",
+        "B": "クールアクセス層 (Cool)",
+        "C": "アーカイブアクセス層 (Archive)",
+        "D": "プレミアムアクセス層 (Premium)"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "クールアクセス層は、頻繁にアクセスされない（少なくとも30日）が高速アクセスが必要なデータに適しています。ストレージコストはホット層より低いですが、アクセスコストは高くなります。アーカイブ層は最もコストが低いですが、アクセス遅延は数時間に達することがあります。\n---",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q23",
+      "domain": 3,
+      "question": "ある企業は、固定数のインスタンスを持つ仮想マシングループをデプロイし、インスタンスが異なる障害ドメインと更新ドメインに分散されるようにする必要があります。何を使用すべきですか？",
+      "options": {
+        "A": "仮想マシンスケールセット",
+        "B": "可用性セット",
+        "C": "可用性ゾーン",
+        "D": "近接配置グループ"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "可用性セットはVMを複数の障害ドメイン（異なるラック）と更新ドメイン（異なるメンテナンスグループ）に分散し、ハードウェア障害と計画メンテナンスに対する保護を提供します。固定数のVMデプロイに適しています。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q24",
+      "domain": 3,
+      "question": "ある企業は、低遅延のネットワーク通信を必要とするHPCワークロードを実行する必要があり、仮想マシンの物理的な配置が可能な限り近いことを要求しています。何を使用すべきですか？",
+      "options": {
+        "A": "可用性セット",
+        "B": "近接配置グループ (Proximity Placement Group)",
+        "C": "可用性ゾーン",
+        "D": "仮想マシンスケールセット"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "近接配置グループは、Azureリソースが物理的に互いに近くに配置されることを確保する論理的なグループで、最小のネットワーク遅延を提供します。HPC、リアルタイム分析など、遅延に敏感なワークロードに適しています。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q25",
+      "domain": 3,
+      "question": "ある企業はAzure仮想マシンをより大きなSKUにサイズ変更する必要があります。サイズ変更中に何が起こりますか？",
+      "options": {
+        "A": "仮想マシンは実行中のまま維持される",
+        "B": "仮想マシンは再起動される",
+        "C": "仮想マシンは削除されて再作成される",
+        "D": "仮想マシンのIPアドレスが変更される"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "VMのサイズ変更には仮想マシンの再起動が必要です。新しいサイズが現在のハードウェアクラスターで利用できない場合、VMの割り当てを解除する必要がある場合があります（動的パブリックIPは解放されます）。サイズ変更ではプライベートIPやデータディスクは変更されません。\n---",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q26",
+      "domain": 3,
+      "question": "ある企業はAzure Kubernetes Service (AKS) クラスターの自動ノードスケーリングを構成する必要があります。どの機能を有効にすべきですか？",
+      "options": {
+        "A": "水平Podオートスケーラー (HPA)",
+        "B": "クラスターオートスケーラー (Cluster Autoscaler)",
+        "C": "仮想ノード",
+        "D": "Azure Container Instances"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "クラスターオートスケーラーは、Podリソースの需要に基づいてAKSノードプール内のノード数を自動的に調整します。リソース不足でPodをスケジュールできない場合はノードを増やし、ノードの使用率が低い場合はノードを減らします。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q27",
+      "domain": 3,
+      "question": "ある企業は、既存のVMイメージを使用して同じ構成の複数の仮想マシンを作成する必要があります。何を使用すべきですか？",
+      "options": {
+        "A": "Azureマネージドディスクスナップショット",
+        "B": "Azure Compute Gallery (旧Shared Image Gallery)",
+        "C": "仮想マシン拡張機能",
+        "D": "Azure Backup"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure Compute Galleryにより、カスタムVMイメージのリポジトリを作成および管理でき、バージョン管理、リージョン間レプリケーション、共有をサポートします。Gallery内のイメージから一貫した構成の複数のVMを迅速に作成できます。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q28",
+      "domain": 3,
+      "question": "ある企業はAzure App Service Webアプリケーションを特定のIPアドレスからのトラフィックのみを受け入れるように構成する必要があります。何を構成すべきですか？",
+      "options": {
+        "A": "ネットワークセキュリティグループ",
+        "B": "App Serviceアクセス制限",
+        "C": "Azure Firewall",
+        "D": "Azure Front Door"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "App Serviceアクセス制限により、IPアドレス、VNetサブネット、またはサービスタグに基づく許可/拒否ルールを構成できます。これらのルールはプラットフォームレベルで評価され、リクエストがアプリケーションに到達する前にフィルタリングされます。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q29",
+      "domain": 3,
+      "question": "ある企業はAzure App Serviceでアプリケーションの環境変数と接続文字列を構成する必要があります。これらの値を安全に管理するためにどこに保存すべきですか？",
+      "options": {
+        "A": "アプリケーションコード内の構成ファイル",
+        "B": "App Service構成のアプリケーション設定",
+        "C": "Azure Key Vault、Key Vault参照経由でアクセス",
+        "D": "ストレージアカウント内の構成ファイル"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "機密性の高い構成値（接続文字列など）はAzure Key Vaultに保存すべきです。App ServiceはKey Vault参照をサポートしており、アプリケーション設定でKey Vaultシークレットを直接参照でき、コードや構成で機密値を公開する必要がありません。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q30",
+      "domain": 3,
+      "question": "ある企業はAzure Container Instances (ACI) コンテナグループの永続ストレージを構成する必要があります。どの種類のストレージをマウントすべきですか？",
+      "options": {
+        "A": "Azureマネージドディスク",
+        "B": "Azure Files共有",
+        "C": "Azure Blobストレージ",
+        "D": "ローカルディスク"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure Container InstancesはAzure Files共有を永続ボリュームとしてマウントすることをサポートしています。データはコンテナの再起動後も保持され、複数のコンテナが同じ共有に同時にアクセスできます。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q31",
+      "domain": 3,
+      "question": "ある企業は仮想マシンにWebサーバーソフトウェアを自動的にインストールおよび構成する必要があります。Infrastructure as Code (IaC) の原則に最も適した方法はどれですか？",
+      "options": {
+        "A": "リモートデスクトップによる手動インストール",
+        "B": "Desired State Configuration (DSC) 拡張機能",
+        "C": "Azure Bastion",
+        "D": "Azureシリアルコンソール"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "DSC拡張機能により、仮想マシンの構成状態を宣言的に定義し、VMが常に目的の構成に準拠していることを確認できます。これはInfrastructure as Codeのベストプラクティスで、構成のバージョン管理と自動化デプロイを実現できます。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q32",
+      "domain": 3,
+      "question": "ある企業はAzure仮想マシンのOSディスクを標準HDDからPremium SSDにアップグレードする必要があります。どの操作を実行すべきですか？",
+      "options": {
+        "A": "新しいVMを作成してデータを移行する",
+        "B": "VMを停止し、ディスクSKUを変更してからVMを起動する",
+        "C": "既存のディスクのSKUは変更できない",
+        "D": "Azure Migrateを使用する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "マネージドディスクは異なるSKU間の変換（StandardからPremiumなど）をサポートしています。VMを停止（割り当て解除）し、ディスクのSKU設定を変更してからVMを再起動する必要があります。これにより、新しいパフォーマンス特性と課金が適用されます。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q33",
+      "domain": 3,
+      "question": "ある企業はAzure仮想マシンスケールセットに正常性プローブを構成して、異常なインスタンスを自動的に置き換える必要があります。何を構成すべきですか？",
+      "options": {
+        "A": "Azure Monitorアラート",
+        "B": "アプリケーション正常性拡張機能と自動インスタンス修復",
+        "C": "Azure Advisor",
+        "D": "仮想マシンシリアルコンソール"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "アプリケーション正常性拡張機能はVMSSインスタンスのアプリケーション正常性状態を監視できます。自動インスタンス修復ポリシーと組み合わせると、インスタンスが異常として検出された場合、自動的に削除され新しい正常なインスタンスが再作成されます。\n---",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q34",
+      "domain": 3,
+      "question": "ある企業はBicepまたはARMテンプレートを使用してAzureリソースをデプロイする必要があります。リソースが既に存在する場合、テンプレートで定義されたリソースのみを更新するためにどのデプロイモードを使用すべきですか？",
+      "options": {
+        "A": "完全モード (Complete)",
+        "B": "増分モード (Incremental)",
+        "C": "検証モード (Validate)",
+        "D": "What-Ifモード"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "増分モードはテンプレートで定義されたリソースのみを追加または更新し、テンプレートで定義されていないリソースグループ内の既存リソースは削除しません。完全モードはテンプレートにないリソースを削除するため、使用時には特に注意が必要です。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q35",
+      "domain": 4,
+      "question": "ある企業は会社のドメイン名をホストするためにAzure DNSゾーンを構成する必要があります。WebサーバーのIPアドレスを指すためにDNSゾーンにどの種類のレコードを作成すべきですか？",
+      "options": {
+        "A": "MXレコード",
+        "B": "Aレコード",
+        "C": "CNAMEレコード",
+        "D": "TXTレコード"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Aレコード（アドレスレコード）はドメイン名をIPv4アドレスにマップします。www.contoso.comをWebサーバーのIPアドレスに指すには、Aレコードを作成する必要があります。AAAAレコードはIPv6アドレス用です。\n---",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q36",
+      "domain": 4,
+      "question": "ある企業はVNet間でAzureプライベートDNSゾーンを共有する必要があります。どのように構成すべきですか？",
+      "options": {
+        "A": "各VNetに同じプライベートDNSゾーンを作成する",
+        "B": "仮想ネットワークリンクを作成してプライベートDNSゾーンを複数のVNetにリンクする",
+        "C": "VNetピアリングを構成する",
+        "D": "Azure DNSフォワーダーを使用する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "プライベートDNSゾーンは仮想ネットワークリンクを介して複数のVNetに関連付けることができます。リンクすると、VNet内のリソースはプライベートDNSゾーン内のレコードを解決できます。自動登録を有効にして、VMのDNSレコードを自動的に登録できます。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q37",
+      "domain": 4,
+      "question": "ある企業はSQLインジェクションやクロスサイトスクリプティング攻撃からWebアプリケーションを保護するためにAzure Application Gatewayを構成する必要があります。どの機能を有効にすべきですか？",
+      "options": {
+        "A": "SSL終端",
+        "B": "Webアプリケーションファイアウォール (WAF)",
+        "C": "URLパスルーティング",
+        "D": "セッションアフィニティ"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Webアプリケーションファイアウォール (WAF) は、SQLインジェクション、XSS、コマンドインジェクションなどの一般的な攻撃からWebアプリケーションを保護できます。WAFはOWASPコアルールセットに基づいており、検出モードまたはブロックモードに構成できます。\n---",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q38",
+      "domain": 4,
+      "question": "ある企業はAzure仮想ネットワークからAzure SQLデータベースへの安全なアクセスを許可し、インターネットからのすべてのアクセスをブロックする必要があります。何を構成すべきですか？",
+      "options": {
+        "A": "SQLデータベースファイアウォールルール",
+        "B": "仮想ネットワークサービスエンドポイントまたはプライベートエンドポイント",
+        "C": "ネットワークセキュリティグループ",
+        "D": "Azure AD認証"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "仮想ネットワークサービスエンドポイントまたはプライベートエンドポイントにより、VNet内のトラフィックがAzureバックボーンネットワークを介してAzure SQLに安全にアクセスできます。プライベートエンドポイントはSQLデータベースにVNet内のプライベートIPを割り当て、パブリックアクセスを完全に無効にします。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q39",
+      "domain": 4,
+      "question": "ある企業はAzure VPNゲートウェイの高可用性を構成する必要があります。どの構成を選択すべきですか？",
+      "options": {
+        "A": "Basic SKU VPNゲートウェイ",
+        "B": "アクティブ/アクティブ構成VPNゲートウェイ",
+        "C": "ポイント対サイトVPN",
+        "D": "ExpressRouteゲートウェイ"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "アクティブ/アクティブVPNゲートウェイ構成は、それぞれ独自のパブリックIPとIPsecトンネルを持つ2つのゲートウェイインスタンスを作成します。これにより冗長性が提供され、1つのインスタンスが利用できなくなった場合、トラフィックは自動的に別のインスタンスに切り替わります。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q40",
+      "domain": 4,
+      "question": "ある企業はAzure VNetに接続する必要がありますが、VPNクライアントソフトウェアをインストールしたくありません。リモートで作業する従業員は何を使用すべきですか？",
+      "options": {
+        "A": "サイト間VPN",
+        "B": "Azure証明書認証を使用したポイント対サイトVPN",
+        "C": "Azure AD認証を使用したポイント対サイトVPN",
+        "D": "ExpressRoute"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "Azure AD認証を使用したポイント対サイトVPNにより、ユーザーはAzure VPNクライアントとAzure AD資格情報を使用して接続できます。VPNクライアントは引き続き必要ですが、OpenVPNプロトコルを使用してAzure AD経由で一元的なID管理が可能です。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q41",
+      "domain": 4,
+      "question": "ある企業は仮想ネットワーク内のリソースを保護するためにAzure Firewallを構成する必要があります。Azure Firewallはどこにデプロイすべきですか？",
+      "options": {
+        "A": "アプリケーションと同じサブネット",
+        "B": "専用のAzureFirewallSubnetサブネット",
+        "C": "ゲートウェイサブネット",
+        "D": "任意の利用可能なサブネット"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure FirewallはAzureFirewallSubnetという名前の専用サブネットにデプロイする必要があり、そのサブネットの最小サイズは/26です。ファイアウォールは他のリソースとサブネットを共有できません。これはAzureの設計要件です。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q42",
+      "domain": 4,
+      "question": "ある企業はAzure Load Balancerでセッション永続性を構成し、同じクライアントからのリクエストが常に同じバックエンドインスタンスにルーティングされるようにする必要があります。何を構成すべきですか？",
+      "options": {
+        "A": "正常性プローブ",
+        "B": "セッション永続性（ソースIPアフィニティ）",
+        "C": "インバウンドNATルール",
+        "D": "アウトバウンドルール"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure Load Balancerはセッション永続性（ソースIPアフィニティ）の構成をサポートしており、ソースIP、ソースIPとプロトコル、またはソースIP、プロトコル、ポートに基づいてトラフィックを同じバックエンドインスタンスにルーティングできます。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q43",
+      "domain": 4,
+      "question": "ある企業はVNet内のサブネット間のトラフィックを許可する必要がありますが、特定のサブネット間の特定のトラフィックをブロックする必要があります。何を使用すべきですか？",
+      "options": {
+        "A": "ユーザー定義ルート",
+        "B": "ネットワークセキュリティグループルール",
+        "C": "VNetピアリング",
+        "D": "Azure Firewall"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "ネットワークセキュリティグループをサブネットに関連付け、セキュリティルールを使用してサブネット間のトラフィックを制御できます。特定のソースと宛先間の特定のポートとプロトコルのトラフィックを許可または拒否するルールを作成できます。\n---",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q44",
+      "domain": 4,
+      "question": "ある企業はVNetピアリングを構成しましたが、ピアリングされたネットワーク内のリソースが相互に通信できません。考えられる原因は何ですか？（2つ選択）",
+      "options": {
+        "A": "2つのVNetのアドレス空間が重複している",
+        "B": "「転送されたトラフィックを許可する」オプションが有効になっていない",
+        "C": "ネットワークセキュリティグループがトラフィックをブロックしている",
+        "D": "VNetが異なるサブスクリプションにある"
+      },
+      "answer": ["A", "C"],
+      "answerType": "multiple",
+      "explanation": "VNetピアリングが失敗する一般的な原因には、アドレス空間の重複（一意である必要があります）、NSGによるトラフィックのブロック、ピアリング状態が接続されていない、または必要なオプションが有効になっていないことが含まれます。VNetは異なるサブスクリプションにあっても問題ありません。それ自体は通信をブロックしません。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q45",
+      "domain": 5,
+      "question": "ある企業はすべてのAzureリソースのパフォーマンスメトリクスを可視化するためのAzureダッシュボードを作成する必要があります。何を使用すべきですか？",
+      "options": {
+        "A": "Azure Monitorブック (Workbooks)",
+        "B": "Azure Advisor",
+        "C": "Azureコスト管理",
+        "D": "Azureアクティビティログ"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Azure Monitorブックは豊富な可視化機能を提供し、メトリクス、ログクエリ、テキスト、パラメータを組み合わせて対話型レポートを作成できます。ブックは共有およびエクスポートでき、包括的な監視ダッシュボードの作成に適しています。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q46",
+      "domain": 5,
+      "question": "ある企業はLog Analyticsワークスペースで特定のエラーパターンが検出されたときにトリガーするアラートを構成する必要があります。どの種類のアラートルールを作成すべきですか？",
+      "options": {
+        "A": "メトリックアラート",
+        "B": "ログ検索アラート",
+        "C": "アクティビティログアラート",
+        "D": "スマート検出"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "ログ検索アラートはKQLクエリを使用してLog Analyticsワークスペース内のログデータを分析します。クエリの一致条件と評価頻度を定義でき、クエリが条件に一致する結果を返したときにアラートがトリガーされます。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q47",
+      "domain": 5,
+      "question": "ある企業はアラートノイズを減らし、関連するアラートをグループ化したいと考えています。どのAzure Monitor機能を構成すべきですか？",
+      "options": {
+        "A": "アラート抑制ルール",
+        "B": "スマートグループ (Smart Groups)",
+        "C": "アクションルール",
+        "D": "ログクエリ"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "スマートグループは機械学習を使用してアラートパターンを分析し、関連するアラートを自動的にグループ化します。これによりアラートノイズが減少し、運用チームは個々のアラートを1つずつ処理するのではなく、関連する問題を一度に処理できます。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q48",
+      "domain": 5,
+      "question": "ある企業は仮想マシンを保護するためにAzure Backupを構成する必要があり、毎日バックアップして30日間保持する必要があります。最初に何を作成すべきですか？",
+      "options": {
+        "A": "ストレージアカウント",
+        "B": "Recovery Servicesコンテナーとバックアップポリシー",
+        "C": "Azure Automationアカウント",
+        "D": "Log Analyticsワークスペース"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure VMバックアップにはバックアップデータを保存するためのRecovery Servicesコンテナーが必要です。バックアップスケジュール（毎日など）と保持期間（30日など）を定義するバックアップポリシーを作成または選択してから、VMのバックアップを有効にする必要があります。\n---",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q49",
+      "domain": 5,
+      "question": "ある企業は仮想マシン全体ではなく、Azure Backupから単一のファイルを復元する必要があります。どの機能を使用すべきですか？",
+      "options": {
+        "A": "VM全体を復元してからファイルをコピーする",
+        "B": "ファイルの回復（回復ポイントをドライブとしてマウント）",
+        "C": "バックアップから新しいディスクを作成する",
+        "D": "Azure Site Recoveryを使用する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure Backupのファイルの回復機能により、回復ポイントからディスクをローカルコンピューターにマウントできます。バックアップされたファイルシステムを参照し、必要なファイルのみを復元でき、VM全体を復元する必要がありません。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q50",
+      "domain": 5,
+      "question": "ある企業は複数のサブスクリプションからAzureリソースログを一元的に収集する必要があります。どのように構成すべきですか？",
+      "options": {
+        "A": "各サブスクリプションに個別のLog Analyticsワークスペースを作成する",
+        "B": "一元化されたLog Analyticsワークスペースを作成し、診断設定を構成してログを送信する",
+        "C": "Azure Advisorを使用する",
+        "D": "Azure Policyを構成する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "一元化されたLog Analyticsワークスペース（サブスクリプション間でアクセス可能）を作成し、監視が必要な各リソースで診断設定を構成して、その一元化されたワークスペースにログを送信できます。これにより、統一されたクエリと分析が容易になります。\n---",
+      "difficulty": "medium"
+    }
+  ]
+}

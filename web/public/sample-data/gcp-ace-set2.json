@@ -1,0 +1,798 @@
+{
+  "exam": {
+    "id": "gcp-ace-set2",
+    "name": "GCP Associate Cloud Engineer 模拟考试 #2",
+    "code": "ACE",
+    "provider": "GCP",
+    "language": "zh-CN",
+    "description": "Google Cloud Associate Cloud Engineer认证考试模拟题 - 第2套",
+    "totalQuestions": 50,
+    "passingScore": 70,
+    "examTime": 120,
+    "domains": [
+      {
+        "id": 1,
+        "name": "设置云解决方案环境",
+        "weight": 20
+      },
+      {
+        "id": 2,
+        "name": "规划和配置云解决方案",
+        "weight": 20
+      },
+      {
+        "id": 3,
+        "name": "部署和实施云解决方案",
+        "weight": 25
+      },
+      {
+        "id": 4,
+        "name": "确保云解决方案的成功运行",
+        "weight": 20
+      },
+      {
+        "id": 5,
+        "name": "配置访问和安全",
+        "weight": 15
+      }
+    ],
+    "tags": [
+      "GCP",
+      "Cloud",
+      "ACE",
+      "认证考试"
+    ]
+  },
+  "questions": [
+    {
+      "id": "q1",
+      "domain": 1,
+      "question": "您的团队需要管理多个GCP项目的配置。使用gcloud时，如何管理多个命名配置以快速切换不同环境？",
+      "options": {
+        "A": "使用gcloud config configurations create命令创建新配置",
+        "B": "为每个项目创建单独的服务账号",
+        "C": "每次使用前重新运行gcloud init",
+        "D": "在环境变量中设置不同的项目ID"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "gcloud config configurations允许创建和管理多个命名配置。使用gcloud config configurations create创建新配置，使用gcloud config configurations activate切换配置。每个配置可以包含不同的项目、账号、区域等设置，非常适合管理多环境。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q2",
+      "domain": 1,
+      "question": "您需要将计费账户链接到一个新创建的项目。以下哪个命令可以实现？",
+      "options": {
+        "A": "gcloud billing projects link PROJECT_ID --billing-account=BILLING_ACCOUNT_ID",
+        "B": "gcloud projects add-billing PROJECT_ID --account=BILLING_ACCOUNT_ID",
+        "C": "gcloud billing accounts link PROJECT_ID",
+        "D": "gcloud config set billing BILLING_ACCOUNT_ID"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "gcloud billing projects link命令用于将计费账户链接到项目。语法是：gcloud billing projects link PROJECT_ID --billing-account=BILLING_ACCOUNT_ID。没有关联计费账户的项目无法使用大多数付费服务。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q3",
+      "domain": 1,
+      "question": "您的组织希望限制用户只能在特定区域创建资源。最佳实现方式是什么？",
+      "options": {
+        "A": "修改每个用户的IAM角色",
+        "B": "在组织级别设置资源位置限制策略",
+        "C": "为每个区域创建单独的项目",
+        "D": "使用VPC网络限制"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "组织策略中的gcp.resourceLocations约束可以限制资源只能在特定位置创建。在组织或文件夹级别设置此策略后，所有子资源都会继承该限制。这是集中管理合规性要求的最佳方式。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q4",
+      "domain": 1,
+      "question": "您需要查看当前项目中所有已启用的API服务。应该使用哪个命令？",
+      "options": {
+        "A": "gcloud services list --enabled",
+        "B": "gcloud apis list",
+        "C": "gcloud projects describe --apis",
+        "D": "gcloud compute apis list"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "gcloud services list --enabled命令显示当前项目中所有已启用的API服务。不加--enabled标志则显示所有可用的API。您也可以使用--available查看所有可启用的API。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q5",
+      "domain": 1,
+      "question": "您的公司需要导出所有项目的成本数据到BigQuery进行分析。应该如何配置？",
+      "options": {
+        "A": "使用Cloud Monitoring导出指标",
+        "B": "在Cloud Billing中配置计费数据导出到BigQuery",
+        "C": "使用Cloud Logging导出日志",
+        "D": "手动下载账单并上传到BigQuery"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Cloud Billing支持将详细的计费数据自动导出到BigQuery。在计费账户的"计费导出"设置中，可以配置标准使用成本和详细使用成本导出。这使您能够使用SQL查询分析成本趋势和优化支出。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q6",
+      "domain": 2,
+      "question": "您正在为一个电子商务网站设计架构。网站需要处理突发流量，同时保持成本效益。最适合的计算选项是什么？",
+      "options": {
+        "A": "使用固定数量的n1-standard实例",
+        "B": "使用托管实例组配合自动扩缩",
+        "C": "使用单个高配置实例",
+        "D": "使用抢占式实例作为主要计算资源"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "托管实例组（MIG）配合自动扩缩是处理可变流量的最佳选择：自动根据需求调整实例数量、在低流量时减少成本、提供高可用性和负载均衡集成。抢占式实例可能随时被终止，不适合作为主要计算资源。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q7",
+      "domain": 2,
+      "question": "您需要存储应用程序会话数据，要求低延迟读写，数据可以容忍丢失。最佳存储选择是什么？",
+      "options": {
+        "A": "Cloud SQL",
+        "B": "Cloud Memorystore for Redis",
+        "C": "Cloud Storage",
+        "D": "Cloud Firestore"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Cloud Memorystore for Redis是托管的内存数据存储服务，提供亚毫秒级延迟。非常适合会话存储、缓存等场景。由于是内存存储，数据可能因故障丢失，但对于会话数据这是可以接受的。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q8",
+      "domain": 2,
+      "question": "您需要设计一个无服务器的数据处理管道，从Cloud Storage读取文件并进行转换。最适合的服务组合是什么？",
+      "options": {
+        "A": "Compute Engine + cron作业",
+        "B": "Cloud Functions触发器 + Cloud Storage",
+        "C": "App Engine + Cloud Tasks",
+        "D": "GKE + CronJob"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Cloud Functions可以配置Cloud Storage触发器，当对象创建、删除或归档时自动执行。这是真正的无服务器方案：无需管理基础设施、按执行付费、自动扩缩。非常适合事件驱动的数据处理。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q9",
+      "domain": 2,
+      "question": "您需要在两个不同VPC网络之间建立私有连接，两个VPC的IP范围不重叠。最简单的方法是什么？",
+      "options": {
+        "A": "使用Cloud VPN",
+        "B": "使用VPC网络对等（VPC Peering）",
+        "C": "使用Cloud Interconnect",
+        "D": "合并两个VPC为一个"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "VPC网络对等允许两个VPC网络之间的私有通信，使用内部IP地址。前提是IP范围不能重叠。配置简单，无需VPN网关，流量使用Google内部网络。适合同一组织内或与合作伙伴的VPC连接。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q10",
+      "domain": 2,
+      "question": "您需要选择数据库来存储用户文档数据，数据结构可能随时变化，需要实时同步到移动应用。最佳选择是什么？",
+      "options": {
+        "A": "Cloud SQL for PostgreSQL",
+        "B": "Cloud Firestore",
+        "C": "Cloud Bigtable",
+        "D": "Cloud Spanner"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Cloud Firestore是灵活的NoSQL文档数据库：支持灵活的数据模型（无需预定义架构）；内置实时监听器支持移动和Web应用的实时同步；离线支持；自动扩缩。非常适合移动应用后端。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q11",
+      "domain": 3,
+      "question": "您需要创建一个自定义镜像用于后续的VM部署。正确的步骤是什么？",
+      "options": {
+        "A": "直接从运行中的实例创建镜像",
+        "B": "停止实例，然后从实例的磁盘创建镜像",
+        "C": "导出实例到Cloud Storage，然后导入为镜像",
+        "D": "使用机器镜像（Machine Image）"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "创建自定义镜像的最佳实践：首先停止实例以确保磁盘一致性；使用gcloud compute images create --source-disk命令从磁盘创建镜像。虽然可以从运行中的实例创建，但可能导致数据不一致。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q12",
+      "domain": 3,
+      "question": "您需要在GKE中部署一个应用，该应用需要访问Cloud SQL。如何安全地配置连接？",
+      "options": {
+        "A": "在Pod中硬编码数据库密码",
+        "B": "使用Kubernetes Secret存储凭据，并使用Cloud SQL Auth Proxy sidecar",
+        "C": "使用公共IP直接连接",
+        "D": "在每个节点上安装数据库客户端"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "GKE中连接Cloud SQL的最佳实践：使用Cloud SQL Auth Proxy作为sidecar容器；使用Kubernetes Secret管理凭据；启用Workload Identity让Pod使用服务账号身份。这样无需管理SSL证书，且通过IAM控制访问。",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q13",
+      "domain": 3,
+      "question": "您需要将一个现有的VM实例添加到非托管实例组。以下哪个命令是正确的？",
+      "options": {
+        "A": "gcloud compute instance-groups unmanaged add-instances GROUP_NAME --instances=INSTANCE_NAME",
+        "B": "gcloud compute instances add-to-group INSTANCE_NAME --group=GROUP_NAME",
+        "C": "gcloud compute instance-groups managed add-instances GROUP_NAME --instances=INSTANCE_NAME",
+        "D": "gcloud compute groups add INSTANCE_NAME --to GROUP_NAME"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "非托管实例组允许添加现有的异构实例。使用gcloud compute instance-groups unmanaged add-instances命令添加实例。注意实例必须与组在同一区域。非托管实例组适合不需要自动扩缩的场景。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q14",
+      "domain": 3,
+      "question": "您需要配置Cloud Run服务以使用自定义域名。正确的步骤顺序是什么？",
+      "options": {
+        "A": "配置DNS > 部署服务 > 映射域名",
+        "B": "部署服务 > 验证域名所有权 > 映射域名 > 配置DNS",
+        "C": "映射域名 > 部署服务 > 配置DNS",
+        "D": "购买SSL证书 > 部署服务 > 配置域名"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Cloud Run自定义域名配置步骤：首先部署服务；在Cloud Run控制台验证域名所有权；将域名映射到服务；最后在DNS提供商配置CNAME或A记录指向Cloud Run。Google会自动管理SSL证书。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q15",
+      "domain": 3,
+      "question": "您需要使用Terraform部署GCP资源。Terraform状态文件应该存储在哪里？",
+      "options": {
+        "A": "本地工作目录",
+        "B": "Git仓库",
+        "C": "Cloud Storage存储桶（配置后端）",
+        "D": "Compute Engine实例"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "Terraform状态文件应该存储在Cloud Storage中作为远程后端：支持团队协作、状态锁定防止并发修改、版本控制、安全存储。在terraform配置中使用backend \"gcs\"块配置。避免存储在本地或Git中。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q16",
+      "domain": 3,
+      "question": "您需要在Cloud Build中构建Docker镜像并推送到Artifact Registry。cloudbuild.yaml中应该使用什么步骤？",
+      "options": {
+        "A": "使用docker命令直接构建和推送",
+        "B": "使用cloud-builders/docker构建器构建，然后推送到Artifact Registry",
+        "C": "使用gcloud container builds submit",
+        "D": "使用kubectl apply部署"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Cloud Build使用构建步骤定义在cloudbuild.yaml中。使用gcr.io/cloud-builders/docker构建器执行docker build和docker push。Cloud Build服务账号需要Artifact Registry写入权限。这是CI/CD管道的标准做法。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q17",
+      "domain": 3,
+      "question": "您需要为Dataflow批处理作业指定工作节点的机器类型。应该使用哪个参数？",
+      "options": {
+        "A": "--worker-machine-type",
+        "B": "--machine-type",
+        "C": "--instance-type",
+        "D": "--compute-type"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Dataflow作业使用--worker-machine-type参数指定工作节点的机器类型（如n1-standard-4）。其他有用的参数包括--num-workers（初始工作节点数）、--max-num-workers（最大工作节点数）。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q18",
+      "domain": 3,
+      "question": "您需要将Cloud Storage存储桶配置为静态网站托管。需要设置什么？",
+      "options": {
+        "A": "仅上传HTML文件",
+        "B": "设置存储桶为公开，配置MainPageSuffix和NotFoundPage",
+        "C": "启用Cloud CDN",
+        "D": "创建负载均衡器"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "配置Cloud Storage静态网站：存储桶名称应为域名；设置公开读取权限；使用gsutil web set配置MainPageSuffix（如index.html）和NotFoundPage（如404.html）；配置DNS CNAME记录指向c.storage.googleapis.com。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q19",
+      "domain": 4,
+      "question": "您的GKE集群中Pod频繁被驱逐。如何诊断问题？",
+      "options": {
+        "A": "检查Cloud Logging中的Pod日志",
+        "B": "使用kubectl describe pod查看Events和状态，检查资源请求和限制",
+        "C": "重启集群",
+        "D": "增加节点数量"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Pod驱逐诊断步骤：kubectl describe pod查看Events了解驱逐原因；检查Pod的资源请求和限制是否合理；使用kubectl top nodes/pods查看实际资源使用；可能原因包括节点资源不足、资源限制过高、节点压力等。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q20",
+      "domain": 4,
+      "question": "您需要创建基于日志的指标，统计应用程序中特定错误出现的次数。应该在哪里配置？",
+      "options": {
+        "A": "Cloud Monitoring指标浏览器",
+        "B": "Cloud Logging > 日志路由 > 创建基于日志的指标",
+        "C": "BigQuery",
+        "D": "Cloud Trace"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "基于日志的指标（Log-based metrics）在Cloud Logging中创建：定义过滤器匹配特定日志条目；选择计数器或分布类型；创建后可以在Cloud Monitoring中使用该指标创建图表和警报。这是日志与监控集成的关键功能。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q21",
+      "domain": 4,
+      "question": "您的Compute Engine实例无法启动，显示内核恐慌错误。最佳故障排除方法是什么？",
+      "options": {
+        "A": "删除实例并重新创建",
+        "B": "将启动磁盘附加到另一个实例进行检查和修复",
+        "C": "等待实例自动恢复",
+        "D": "联系Google支持"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "内核恐慌故障排除：停止故障实例；分离启动磁盘；将磁盘作为数据盘附加到健康实例；挂载磁盘检查日志和配置文件；修复问题后重新附加为启动磁盘。这是一种标准的磁盘级故障恢复方法。",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q22",
+      "domain": 4,
+      "question": "您需要配置uptime检查来监控外部网站的可用性。应该使用什么服务？",
+      "options": {
+        "A": "Cloud Logging",
+        "B": "Cloud Monitoring Uptime Checks",
+        "C": "Cloud Trace",
+        "D": "Cloud Profiler"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Cloud Monitoring Uptime Checks可以监控URL端点的可用性：支持HTTP/HTTPS/TCP检查；从多个全球位置检查；可配置检查间隔；创建警报策略在检查失败时通知。非常适合监控网站和API端点。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q23",
+      "domain": 4,
+      "question": "您需要分析应用程序的性能瓶颈，找出哪些函数消耗最多的CPU时间。应该使用什么工具？",
+      "options": {
+        "A": "Cloud Logging",
+        "B": "Cloud Monitoring",
+        "C": "Cloud Profiler",
+        "D": "Cloud Trace"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "Cloud Profiler是持续性能分析工具：低开销收集CPU和堆内存性能数据；可视化火焰图显示函数调用栈和资源消耗；帮助识别热点代码；支持多种语言。Cloud Trace用于分布式追踪，侧重请求延迟。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q24",
+      "domain": 4,
+      "question": "您需要自动化Cloud SQL实例的备份，并在需要时恢复到特定时间点。应该配置什么？",
+      "options": {
+        "A": "手动创建快照",
+        "B": "启用自动备份和二进制日志（用于MySQL）或WAL日志（用于PostgreSQL）",
+        "C": "使用Cloud Storage存储数据导出",
+        "D": "使用Deployment Manager"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Cloud SQL时间点恢复（PITR）配置：启用自动备份（每日备份）；启用二进制日志（MySQL）或归档日志（PostgreSQL）；这样可以恢复到备份保留期内的任意时间点。自动备份默认保留7天。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q25",
+      "domain": 4,
+      "question": "您的应用程序部署在多个区域，需要监控端到端请求延迟。最合适的工具是什么？",
+      "options": {
+        "A": "Cloud Logging",
+        "B": "Cloud Monitoring",
+        "C": "Cloud Trace",
+        "D": "Cloud Debugger"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "Cloud Trace用于分布式追踪：收集跨服务的请求延迟数据；可视化请求路径和每个服务的耗时；识别慢速请求和瓶颈；与GCP服务和OpenTelemetry集成。适合微服务架构的性能分析。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q26",
+      "domain": 5,
+      "question": "您需要授予开发团队对特定Cloud Storage存储桶的完全控制权限，但不能访问其他存储桶。应该如何配置？",
+      "options": {
+        "A": "在项目级别授予Storage Admin角色",
+        "B": "在特定存储桶级别授予Storage Object Admin角色",
+        "C": "创建自定义角色",
+        "D": "使用ACL"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "IAM权限可以在资源级别授予。在特定存储桶上授予roles/storage.objectAdmin角色，用户只能管理该存储桶中的对象。这遵循最小权限原则，比项目级别授权更安全。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q27",
+      "domain": 5,
+      "question": "您需要允许Cloud Functions访问Secret Manager中的密钥。最佳配置方式是什么？",
+      "options": {
+        "A": "将密钥硬编码在函数代码中",
+        "B": "使用环境变量存储密钥",
+        "C": "授予函数服务账号Secret Manager Secret Accessor角色",
+        "D": "使用Cloud Storage存储密钥"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "Cloud Functions运行时使用服务账号身份。授予该服务账号roles/secretmanager.secretAccessor角色，函数可以在运行时通过Secret Manager API访问密钥。这比环境变量更安全，密钥不会出现在部署配置中。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q28",
+      "domain": 5,
+      "question": "您需要配置VPC防火墙规则，只允许来自负载均衡器的流量到达后端实例。应该如何配置源？",
+      "options": {
+        "A": "使用负载均衡器的IP地址",
+        "B": "使用健康检查和代理的IP范围（35.191.0.0/16和130.211.0.0/22）",
+        "C": "使用0.0.0.0/0",
+        "D": "使用VPC内部IP范围"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Google Cloud负载均衡器使用特定IP范围进行健康检查和代理流量。防火墙规则应允许35.191.0.0/16和130.211.0.0/22作为源。这确保只有通过负载均衡器的流量能到达后端，提高安全性。",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q29",
+      "domain": 5,
+      "question": "您需要审计谁在什么时间访问了Cloud Storage存储桶中的敏感数据。应该启用什么？",
+      "options": {
+        "A": "Cloud Monitoring",
+        "B": "数据访问审计日志（Data Access Audit Logs）",
+        "C": "Cloud Trace",
+        "D": "存储桶版本控制"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "数据访问审计日志记录读取资源元数据或配置的API调用（ADMIN_READ）和读取用户数据的API调用（DATA_READ）。默认禁用，需要在IAM设置中显式启用。对于合规性和安全审计非常重要。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q30",
+      "domain": 5,
+      "question": "您的安全团队要求所有Cloud Storage上传的文件必须使用客户管理的加密密钥（CMEK）。应该如何配置？",
+      "options": {
+        "A": "在每次上传时指定密钥",
+        "B": "在存储桶级别设置默认CMEK",
+        "C": "使用客户端加密",
+        "D": "启用存储桶锁定"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "可以在存储桶级别设置默认加密密钥。使用Cloud KMS创建密钥，然后在存储桶设置中配置默认加密密钥。所有上传到该存储桶的对象都会自动使用指定的CMEK加密，无需在每次上传时指定。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q31",
+      "domain": 3,
+      "question": "您需要在Cloud Run上部署需要VPC访问的服务，以连接内部资源。应该如何配置？",
+      "options": {
+        "A": "Cloud Run默认可以访问VPC",
+        "B": "配置Serverless VPC Access连接器",
+        "C": "使用Cloud VPN",
+        "D": "创建公共端点"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Cloud Run是无服务器平台，默认在Google管理的网络中运行。要访问VPC内部资源，需要创建Serverless VPC Access连接器，并在Cloud Run服务配置中指定该连接器。这样服务可以访问VPC中的Memorystore、Cloud SQL私有IP等。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q32",
+      "domain": 2,
+      "question": "您的应用需要在全球范围内分发静态内容。最佳架构是什么？",
+      "options": {
+        "A": "在每个区域部署Compute Engine实例",
+        "B": "使用Cloud Storage配合Cloud CDN",
+        "C": "使用单个区域的App Engine",
+        "D": "使用Cloud Functions"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Cloud Storage + Cloud CDN是分发静态内容的最佳组合：Cloud Storage提供高持久性存储；Cloud CDN在全球边缘位置缓存内容；用户从最近的边缘位置获取内容；降低延迟和源站负载。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q33",
+      "domain": 3,
+      "question": "您需要在GKE中配置水平Pod自动扩缩（HPA）。以下哪个命令是正确的？",
+      "options": {
+        "A": "kubectl autoscale deployment my-app --min=2 --max=10 --cpu-percent=80",
+        "B": "kubectl scale deployment my-app --replicas=auto",
+        "C": "gcloud container autoscale my-app",
+        "D": "kubectl set autoscale my-app"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "kubectl autoscale命令创建Horizontal Pod Autoscaler。参数说明：--min设置最小Pod数；--max设置最大Pod数；--cpu-percent设置目标CPU使用率。HPA会自动调整Pod副本数以维持目标指标。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q34",
+      "domain": 4,
+      "question": "您需要设置告警，当App Engine应用的请求延迟超过2秒时发送通知。应该如何配置？",
+      "options": {
+        "A": "在App Engine设置中配置",
+        "B": "在Cloud Monitoring中创建警报策略，使用请求延迟指标",
+        "C": "在Cloud Logging中设置日志警报",
+        "D": "使用Cloud Trace"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Cloud Monitoring警报策略可以基于App Engine指标创建。选择appengine.googleapis.com/http/server/response_latencies指标；设置阈值条件（大于2秒）；配置通知渠道。这是监控应用性能的标准方式。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q35",
+      "domain": 5,
+      "question": "您需要防止服务账号密钥被下载创建。应该使用什么？",
+      "options": {
+        "A": "IAM角色限制",
+        "B": "组织策略约束iam.disableServiceAccountKeyCreation",
+        "C": "VPC Service Controls",
+        "D": "Cloud Armor"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "组织策略约束iam.disableServiceAccountKeyCreation可以禁止在组织或项目中创建服务账号密钥。这是安全最佳实践，强制使用更安全的身份验证方式如Workload Identity Federation，避免密钥泄露风险。",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q36",
+      "domain": 1,
+      "question": "您的组织需要设置成本分配，能够按部门和项目追踪支出。最佳方法是什么？",
+      "options": {
+        "A": "为每个部门使用单独的计费账户",
+        "B": "使用标签（labels）标记资源，并在计费报告中按标签分组",
+        "C": "手动计算每个部门的成本",
+        "D": "使用Cloud Monitoring"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "资源标签是成本分配的最佳实践：为资源添加department、team、cost-center等标签；标签会出现在计费数据中；可以按标签过滤和分组成本报告；配合BigQuery导出可以进行详细分析。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q37",
+      "domain": 2,
+      "question": "您需要设计一个异步消息处理系统，消息需要保证至少被处理一次，即使处理失败也能重试。最佳选择是什么？",
+      "options": {
+        "A": "Cloud Tasks",
+        "B": "Cloud Pub/Sub",
+        "C": "Cloud Scheduler",
+        "D": "直接HTTP调用"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Cloud Pub/Sub提供至少一次传递保证：消息在确认前会持久存储；未确认的消息会自动重试；支持死信队列处理反复失败的消息；解耦生产者和消费者；高可扩展性。非常适合异步事件处理。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q38",
+      "domain": 3,
+      "question": "您需要在Compute Engine实例启动时自动安装软件和配置系统。除了启动脚本，还可以使用什么？",
+      "options": {
+        "A": "Cloud Deployment Manager",
+        "B": "OS Config代理和来宾策略",
+        "C": "Cloud Functions",
+        "D": "Cloud Run"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "OS Config提供来宾策略（Guest Policies）功能：声明式配置管理；自动安装软件包；运行脚本；持续确保配置合规。比启动脚本更适合大规模配置管理，支持配置漂移检测和自动修复。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q39",
+      "domain": 4,
+      "question": "您的BigQuery查询运行缓慢，需要优化性能。以下哪些是有效的优化策略？（选择两个）",
+      "options": {
+        "A": "使用SELECT *查询所有列",
+        "B": "使用分区表和聚簇表",
+        "C": "在WHERE子句中过滤分区列",
+        "D": "增加slot配额"
+      },
+      "answer": ["B", "C"],
+      "answerType": "multiple",
+      "explanation": "BigQuery优化最佳实践：使用分区表按日期分区减少扫描数据量；使用聚簇表提高过滤效率；在WHERE中过滤分区列；只选择需要的列避免SELECT *。这些可以显著减少成本和提高查询速度。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q40",
+      "domain": 5,
+      "question": "您需要使用VPC Service Controls保护敏感API。VPC Service Controls提供什么功能？",
+      "options": {
+        "A": "仅网络层面的防火墙",
+        "B": "定义服务边界，限制数据在边界外的访问和导出",
+        "C": "用户身份验证",
+        "D": "DDoS防护"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "VPC Service Controls创建安全边界：限制对Google管理服务（如BigQuery、Cloud Storage）的访问；防止数据泄露；定义信任的访问级别和身份；与IAM配合使用。适合保护高度敏感的数据和服务。",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q41",
+      "domain": 2,
+      "question": "您的应用需要运行长时间的后台任务（可能超过1小时）。最适合的无服务器选项是什么？",
+      "options": {
+        "A": "Cloud Functions（第1代）",
+        "B": "Cloud Run Jobs",
+        "C": "Cloud Functions（第2代）",
+        "D": "App Engine标准环境"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Cloud Run Jobs适合长时间运行的任务：最长执行时间24小时；可以并行运行多个任务；按实际执行时间付费；支持重试和超时配置。Cloud Functions最长9分钟（第2代）或60分钟（Cloud Functions for Firebase）。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q42",
+      "domain": 3,
+      "question": "您需要使用Cloud Scheduler定期触发Cloud Function。应该配置什么类型的目标？",
+      "options": {
+        "A": "HTTP目标，使用函数的HTTPS URL",
+        "B": "Pub/Sub目标",
+        "C": "App Engine HTTP目标",
+        "D": "以上都可以"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "Cloud Scheduler支持多种目标：HTTP目标可以直接调用Cloud Function的HTTPS端点；Pub/Sub目标可以发布消息，然后由Pub/Sub触发的函数处理；App Engine目标调用App Engine服务。选择取决于架构需求。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q43",
+      "domain": 4,
+      "question": "您需要配置日志路由，将特定日志发送到多个目的地。应该使用什么？",
+      "options": {
+        "A": "创建多个日志接收器（sinks）",
+        "B": "使用单个接收器配置多个目的地",
+        "C": "使用Cloud Pub/Sub分发",
+        "D": "日志只能发送到一个目的地"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "可以为同一日志创建多个接收器，每个接收器可以有不同的目的地（Cloud Storage、BigQuery、Pub/Sub、其他项目）和过滤条件。使用包含过滤器和排除过滤器精确控制哪些日志发送到哪里。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q44",
+      "domain": 5,
+      "question": "您需要确保只有经过批准的容器镜像才能部署到GKE集群。应该使用什么？",
+      "options": {
+        "A": "Kubernetes网络策略",
+        "B": "Binary Authorization",
+        "C": "Pod安全策略",
+        "D": "IAM角色"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Binary Authorization是部署时安全控制：定义策略只允许经过签名和验证的容器镜像；与Container Analysis集成进行漏洞扫描；支持多级批准流程；可以豁免特定镜像。增强供应链安全。",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q45",
+      "domain": 1,
+      "question": "您需要为新加入的开发人员设置GCP环境访问。最佳实践是什么？",
+      "options": {
+        "A": "共享现有用户的凭据",
+        "B": "将用户添加到Google Cloud Identity组，通过组授予IAM角色",
+        "C": "为每个用户创建服务账号",
+        "D": "使用根账户添加IAM策略"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "使用组管理IAM是最佳实践：在Cloud Identity或Google Workspace中创建组；将用户添加到相应组；授予组IAM角色而非单个用户。这简化了权限管理，用户入职/离职只需调整组成员身份。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q46",
+      "domain": 2,
+      "question": "您需要为移动应用提供后端API，要求低延迟和自动扩缩。最佳选择是什么？",
+      "options": {
+        "A": "Compute Engine配合负载均衡器",
+        "B": "Cloud Run配合Cloud Endpoints",
+        "C": "App Engine标准环境",
+        "D": "B和C都是好选择"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "移动后端API选项：Cloud Run提供容器化部署、自动扩缩、按请求付费；App Engine标准环境提供托管运行时、自动扩缩、快速冷启动。两者都支持Cloud Endpoints进行API管理。选择取决于技术栈偏好。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q47",
+      "domain": 3,
+      "question": "您需要将数据从本地Hadoop集群迁移到GCP。最适合的目标存储是什么？",
+      "options": {
+        "A": "Compute Engine本地SSD",
+        "B": "Cloud Storage",
+        "C": "持久磁盘",
+        "D": "Filestore"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Cloud Storage是Hadoop数据迁移的最佳目标：与HDFS兼容（使用Cloud Storage连接器）；无限扩展；与Dataproc原生集成；支持数据分析服务（BigQuery、Dataflow）；成本低于本地存储。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q48",
+      "domain": 4,
+      "question": "您的Cloud Functions函数执行失败，返回错误代码。如何最快找到错误详情？",
+      "options": {
+        "A": "检查Cloud Monitoring指标",
+        "B": "在Cloud Console的Cloud Functions页面查看日志",
+        "C": "使用Cloud Debugger",
+        "D": "检查IAM权限"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Cloud Functions日志是排查错误的首选：在控制台函数页面直接查看日志；包含函数执行日志、错误消息、堆栈跟踪；也可以在Cloud Logging中使用过滤器查看。日志提供最直接的错误信息。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q49",
+      "domain": 5,
+      "question": "您需要限制Cloud Storage存储桶只能被特定服务账号访问，禁止所有用户账号访问。应该如何配置？",
+      "options": {
+        "A": "删除所有IAM策略",
+        "B": "只授予特定服务账号Storage Object Viewer/Admin角色，移除其他主体的权限",
+        "C": "使用签名URL",
+        "D": "设置存储桶为私有"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "IAM控制存储桶访问：确保只有指定的服务账号有存储桶级别的IAM角色；移除allUsers、allAuthenticatedUsers和其他用户/组的权限；禁用统一存储桶级访问时检查对象ACL。这确保只有授权服务可以访问。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q50",
+      "domain": 3,
+      "question": "您需要将现有虚拟机从本地迁移到GCP。Google推荐的迁移工具是什么？",
+      "options": {
+        "A": "手动创建镜像并上传",
+        "B": "Migrate to Virtual Machines（原Migrate for Compute Engine）",
+        "C": "使用gcloud compute instances create",
+        "D": "使用第三方工具"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Migrate to Virtual Machines（原Migrate for Compute Engine）是Google官方VM迁移工具：支持从VMware、AWS、Azure、物理服务器迁移；在线迁移最小化停机时间；自动化测试和回滚；与Cloud Console集成。是企业迁移的推荐方式。",
+      "difficulty": "medium"
+    }
+  ]
+}
