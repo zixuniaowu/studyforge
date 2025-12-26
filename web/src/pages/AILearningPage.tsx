@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import {
   ArrowLeft,
@@ -20,7 +20,8 @@ import {
   Globe,
   Code2,
   Layers,
-  Star
+  Star,
+  Hexagon
 } from 'lucide-react';
 import { useLanguageStore } from '../stores/languageStore';
 import {
@@ -31,6 +32,261 @@ import {
   LLMWorkflowSVG,
   AttentionSVG
 } from '../components/AIIntro/SVGIllustrations';
+
+// Animated Background Component
+const TechBackground: React.FC = () => {
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+
+    const particles: Array<{
+      x: number;
+      y: number;
+      vx: number;
+      vy: number;
+      size: number;
+      alpha: number;
+      color: string;
+    }> = [];
+
+    const colors = ['#8b5cf6', '#06b6d4', '#10b981', '#f59e0b', '#ec4899'];
+
+    const resize = () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    };
+
+    const createParticle = () => ({
+      x: Math.random() * canvas.width,
+      y: Math.random() * canvas.height,
+      vx: (Math.random() - 0.5) * 0.5,
+      vy: (Math.random() - 0.5) * 0.5,
+      size: Math.random() * 3 + 1,
+      alpha: Math.random() * 0.5 + 0.2,
+      color: colors[Math.floor(Math.random() * colors.length)]
+    });
+
+    resize();
+    for (let i = 0; i < 80; i++) {
+      particles.push(createParticle());
+    }
+
+    let animationId: number;
+
+    const animate = () => {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      // Draw grid
+      ctx.strokeStyle = 'rgba(139, 92, 246, 0.03)';
+      ctx.lineWidth = 1;
+      const gridSize = 60;
+      for (let x = 0; x < canvas.width; x += gridSize) {
+        ctx.beginPath();
+        ctx.moveTo(x, 0);
+        ctx.lineTo(x, canvas.height);
+        ctx.stroke();
+      }
+      for (let y = 0; y < canvas.height; y += gridSize) {
+        ctx.beginPath();
+        ctx.moveTo(0, y);
+        ctx.lineTo(canvas.width, y);
+        ctx.stroke();
+      }
+
+      // Update and draw particles
+      particles.forEach((p, i) => {
+        p.x += p.vx;
+        p.y += p.vy;
+
+        if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
+        if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
+
+        // Draw glow
+        const gradient = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.size * 4);
+        gradient.addColorStop(0, p.color + Math.floor(p.alpha * 255).toString(16).padStart(2, '0'));
+        gradient.addColorStop(1, 'transparent');
+        ctx.fillStyle = gradient;
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.size * 4, 0, Math.PI * 2);
+        ctx.fill();
+
+        // Draw particle
+        ctx.fillStyle = p.color;
+        ctx.globalAlpha = p.alpha;
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.globalAlpha = 1;
+
+        // Draw connections
+        particles.slice(i + 1).forEach(p2 => {
+          const dx = p.x - p2.x;
+          const dy = p.y - p2.y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist < 150) {
+            ctx.strokeStyle = `rgba(139, 92, 246, ${0.15 * (1 - dist / 150)})`;
+            ctx.lineWidth = 0.5;
+            ctx.beginPath();
+            ctx.moveTo(p.x, p.y);
+            ctx.lineTo(p2.x, p2.y);
+            ctx.stroke();
+          }
+        });
+      });
+
+      animationId = requestAnimationFrame(animate);
+    };
+
+    animate();
+    window.addEventListener('resize', resize);
+
+    return () => {
+      cancelAnimationFrame(animationId);
+      window.removeEventListener('resize', resize);
+    };
+  }, []);
+
+  return (
+    <canvas
+      ref={canvasRef}
+      className="fixed inset-0 pointer-events-none"
+      style={{ zIndex: 0 }}
+    />
+  );
+};
+
+// Floating Hexagon Decorations
+const FloatingHexagons: React.FC = () => (
+  <div className="fixed inset-0 overflow-hidden pointer-events-none" style={{ zIndex: 1 }}>
+    {[...Array(6)].map((_, i) => (
+      <div
+        key={i}
+        className="absolute animate-float"
+        style={{
+          left: `${10 + i * 15}%`,
+          top: `${20 + (i % 3) * 25}%`,
+          animationDelay: `${i * 0.5}s`,
+          opacity: 0.1
+        }}
+      >
+        <Hexagon
+          size={40 + i * 20}
+          className="text-violet-500"
+          strokeWidth={1}
+        />
+      </div>
+    ))}
+  </div>
+);
+
+// Glassmorphism Card Component
+const GlassCard: React.FC<{
+  children: React.ReactNode;
+  className?: string;
+  gradient?: string;
+  hover?: boolean;
+}> = ({ children, className = '', gradient, hover = true }) => (
+  <div
+    className={`
+      relative overflow-hidden rounded-2xl
+      bg-white/70 dark:bg-gray-900/70
+      backdrop-blur-xl
+      border border-white/20
+      shadow-[0_8px_32px_rgba(139,92,246,0.1)]
+      ${hover ? 'hover:shadow-[0_8px_32px_rgba(139,92,246,0.2)] hover:border-violet-300/50 transition-all duration-300' : ''}
+      ${className}
+    `}
+  >
+    {gradient && (
+      <div className={`absolute inset-0 opacity-5 ${gradient}`} />
+    )}
+    <div className="relative z-10">{children}</div>
+  </div>
+);
+
+// Animated Progress Ring
+const ProgressRing: React.FC<{ progress: number; size?: number }> = ({ progress, size = 120 }) => {
+  const strokeWidth = 8;
+  const radius = (size - strokeWidth) / 2;
+  const circumference = radius * 2 * Math.PI;
+  const offset = circumference - (progress / 100) * circumference;
+
+  return (
+    <svg width={size} height={size} className="transform -rotate-90">
+      <circle
+        cx={size / 2}
+        cy={size / 2}
+        r={radius}
+        fill="none"
+        stroke="rgba(139, 92, 246, 0.1)"
+        strokeWidth={strokeWidth}
+      />
+      <circle
+        cx={size / 2}
+        cy={size / 2}
+        r={radius}
+        fill="none"
+        stroke="url(#progressGradient)"
+        strokeWidth={strokeWidth}
+        strokeDasharray={circumference}
+        strokeDashoffset={offset}
+        strokeLinecap="round"
+        className="transition-all duration-1000 ease-out"
+      />
+      <defs>
+        <linearGradient id="progressGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" stopColor="#8b5cf6" />
+          <stop offset="50%" stopColor="#06b6d4" />
+          <stop offset="100%" stopColor="#10b981" />
+        </linearGradient>
+      </defs>
+    </svg>
+  );
+};
+
+// Neon Button Component
+const NeonButton: React.FC<{
+  children: React.ReactNode;
+  onClick?: () => void;
+  variant?: 'primary' | 'secondary' | 'success';
+  disabled?: boolean;
+  className?: string;
+  icon?: React.ReactNode;
+}> = ({ children, onClick, variant = 'primary', disabled, className = '', icon }) => {
+  const variants = {
+    primary: 'from-violet-600 to-purple-600 hover:from-violet-500 hover:to-purple-500 shadow-violet-500/25',
+    secondary: 'from-gray-600 to-gray-700 hover:from-gray-500 hover:to-gray-600 shadow-gray-500/25',
+    success: 'from-emerald-600 to-green-600 hover:from-emerald-500 hover:to-green-500 shadow-emerald-500/25'
+  };
+
+  return (
+    <button
+      onClick={onClick}
+      disabled={disabled}
+      className={`
+        relative group px-6 py-3 rounded-xl font-bold text-white
+        bg-gradient-to-r ${variants[variant]}
+        shadow-lg hover:shadow-xl
+        transform hover:scale-[1.02] active:scale-[0.98]
+        transition-all duration-200
+        disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none
+        overflow-hidden
+        ${className}
+      `}
+    >
+      <span className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700" />
+      <span className="relative flex items-center justify-center gap-2">
+        {icon}
+        {children}
+      </span>
+    </button>
+  );
+};
 
 interface QuizQuestion {
   question: string;
@@ -44,6 +300,8 @@ interface LessonSection {
   title: string;
   icon: React.FC<{ className?: string; size?: number }>;
   color: string;
+  gradientFrom: string;
+  gradientTo: string;
   content: React.ReactNode;
   quiz: QuizQuestion[];
 }
@@ -61,6 +319,14 @@ const AILearningPage: React.FC = () => {
   const [correctCount, setCorrectCount] = useState(0);
   const [completedSections, setCompletedSections] = useState<Set<number>>(new Set());
   const [quizCompleted, setQuizCompleted] = useState(false);
+  const [isAnimating, setIsAnimating] = useState(false);
+
+  // Animation on section change
+  useEffect(() => {
+    setIsAnimating(true);
+    const timer = setTimeout(() => setIsAnimating(false), 300);
+    return () => clearTimeout(timer);
+  }, [currentSection]);
 
   // Lesson sections with content and quizzes
   const sections: LessonSection[] = [
@@ -69,36 +335,45 @@ const AILearningPage: React.FC = () => {
       title: lang === 'ja' ? 'AI とは？' : '什么是 AI？',
       icon: Lightbulb,
       color: 'violet',
+      gradientFrom: 'from-violet-500',
+      gradientTo: 'to-purple-600',
       content: (
         <div className="space-y-6">
-          <div className="bg-gradient-to-br from-violet-500 to-purple-600 rounded-2xl p-6 text-white">
-            <h3 className="text-2xl font-bold mb-3">
-              {lang === 'ja' ? '人工知能（AI）' : '人工智能（AI）'}
-            </h3>
-            <p className="text-white/90 leading-relaxed">
-              {lang === 'ja'
-                ? '人工知能とは、人間の知能を模倣し、学習、推論、問題解決などのタスクを実行できるコンピュータシステムです。'
-                : '人工智能是能够模拟人类智能，执行学习、推理、问题解决等任务的计算机系统。'}
-            </p>
-          </div>
+          <GlassCard className="p-6" gradient="bg-gradient-to-br from-violet-500 to-purple-600">
+            <div className="flex items-start gap-4">
+              <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-violet-500 to-purple-600 flex items-center justify-center flex-shrink-0 shadow-lg shadow-violet-500/30">
+                <Brain className="w-7 h-7 text-white" />
+              </div>
+              <div>
+                <h3 className="text-2xl font-bold text-gray-900 mb-2">
+                  {lang === 'ja' ? '人工知能（AI）' : '人工智能（AI）'}
+                </h3>
+                <p className="text-gray-600 leading-relaxed">
+                  {lang === 'ja'
+                    ? '人工知能とは、人間の知能を模倣し、学習、推論、問題解決などのタスクを実行できるコンピュータシステムです。'
+                    : '人工智能是能够模拟人类智能，执行学习、推理、问题解决等任务的计算机系统。'}
+                </p>
+              </div>
+            </div>
+          </GlassCard>
 
           <div className="grid md:grid-cols-3 gap-4">
             {[
-              { icon: Target, title: lang === 'ja' ? '弱いAI（ANI）' : '弱人工智能', desc: lang === 'ja' ? '特定タスクに特化、現在の全てのAI' : '专注特定任务，当前所有AI', color: 'blue' },
-              { icon: Zap, title: lang === 'ja' ? '汎用AI（AGI）' : '通用人工智能', desc: lang === 'ja' ? '人間レベルの汎用知能' : '人类水平的通用智能', color: 'amber' },
-              { icon: Globe, title: lang === 'ja' ? '超AI（ASI）' : '超级人工智能', desc: lang === 'ja' ? '人間を超える知能、理論段階' : '超越人类的智能，理论阶段', color: 'rose' }
+              { icon: Target, title: lang === 'ja' ? '弱いAI（ANI）' : '弱人工智能', desc: lang === 'ja' ? '特定タスクに特化、現在の全てのAI' : '专注特定任务，当前所有AI', gradient: 'from-blue-500 to-cyan-500', shadow: 'shadow-blue-500/20' },
+              { icon: Zap, title: lang === 'ja' ? '汎用AI（AGI）' : '通用人工智能', desc: lang === 'ja' ? '人間レベルの汎用知能' : '人类水平的通用智能', gradient: 'from-amber-500 to-orange-500', shadow: 'shadow-amber-500/20' },
+              { icon: Globe, title: lang === 'ja' ? '超AI（ASI）' : '超级人工智能', desc: lang === 'ja' ? '人間を超える知能、理論段階' : '超越人类的智能，理论阶段', gradient: 'from-rose-500 to-pink-500', shadow: 'shadow-rose-500/20' }
             ].map((item, i) => (
-              <div key={i} className={`p-5 bg-${item.color}-50 rounded-xl border-2 border-${item.color}-200 hover:shadow-lg transition-all`}>
-                <div className={`w-12 h-12 bg-${item.color}-500 rounded-xl flex items-center justify-center mb-3`}>
+              <GlassCard key={i} className="p-5 group">
+                <div className={`w-12 h-12 bg-gradient-to-br ${item.gradient} rounded-xl flex items-center justify-center mb-4 shadow-lg ${item.shadow} group-hover:scale-110 transition-transform duration-300`}>
                   <item.icon className="w-6 h-6 text-white" />
                 </div>
-                <h4 className="font-bold text-gray-900 mb-1">{item.title}</h4>
+                <h4 className="font-bold text-gray-900 mb-2">{item.title}</h4>
                 <p className="text-sm text-gray-600">{item.desc}</p>
-              </div>
+              </GlassCard>
             ))}
           </div>
 
-          <div className="bg-white rounded-xl border border-gray-200 p-5">
+          <GlassCard className="p-5">
             <h4 className="font-bold text-gray-900 mb-4 flex items-center gap-2">
               <BookOpen className="w-5 h-5 text-violet-500" />
               {lang === 'ja' ? 'AI発展の歴史' : 'AI 发展历程'}
@@ -106,27 +381,28 @@ const AILearningPage: React.FC = () => {
             <div className="overflow-x-auto -mx-2 px-2">
               <AITimelineSVG className="w-full min-w-[600px] h-auto" />
             </div>
-          </div>
+          </GlassCard>
 
-          <div className="bg-gradient-to-r from-indigo-50 to-purple-50 rounded-xl p-5 border border-indigo-100">
-            <h4 className="font-semibold text-indigo-900 mb-3">
-              {lang === 'ja' ? '💡 ポイント' : '💡 要点'}
+          <GlassCard className="p-5" gradient="bg-gradient-to-r from-indigo-500 to-purple-500">
+            <h4 className="font-semibold text-indigo-900 mb-3 flex items-center gap-2">
+              <Sparkles className="w-5 h-5 text-indigo-500" />
+              {lang === 'ja' ? 'ポイント' : '要点'}
             </h4>
-            <ul className="space-y-2 text-indigo-800">
-              <li className="flex items-start gap-2">
-                <CheckCircle2 className="w-5 h-5 text-indigo-500 flex-shrink-0 mt-0.5" />
-                <span>{lang === 'ja' ? 'AI = 人間の知能をシミュレートする技術' : 'AI = 模拟人类智能的技术'}</span>
-              </li>
-              <li className="flex items-start gap-2">
-                <CheckCircle2 className="w-5 h-5 text-indigo-500 flex-shrink-0 mt-0.5" />
-                <span>{lang === 'ja' ? '現在のAIは全て「弱いAI」（特化型）' : '当前所有 AI 都是「弱人工智能」（专用型）'}</span>
-              </li>
-              <li className="flex items-start gap-2">
-                <CheckCircle2 className="w-5 h-5 text-indigo-500 flex-shrink-0 mt-0.5" />
-                <span>{lang === 'ja' ? '2022年のChatGPT登場でAIブーム到来' : '2022年 ChatGPT 发布引爆 AI 热潮'}</span>
-              </li>
+            <ul className="space-y-2">
+              {[
+                lang === 'ja' ? 'AI = 人間の知能をシミュレートする技術' : 'AI = 模拟人类智能的技术',
+                lang === 'ja' ? '現在のAIは全て「弱いAI」（特化型）' : '当前所有 AI 都是「弱人工智能」（专用型）',
+                lang === 'ja' ? '2022年のChatGPT登場でAIブーム到来' : '2022年 ChatGPT 发布引爆 AI 热潮'
+              ].map((text, i) => (
+                <li key={i} className="flex items-start gap-3 group">
+                  <div className="w-6 h-6 rounded-full bg-gradient-to-br from-indigo-500 to-purple-500 flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
+                    <CheckCircle2 className="w-4 h-4 text-white" />
+                  </div>
+                  <span className="text-gray-700">{text}</span>
+                </li>
+              ))}
             </ul>
-          </div>
+          </GlassCard>
         </div>
       ),
       quiz: lang === 'ja' ? [
@@ -144,20 +420,29 @@ const AILearningPage: React.FC = () => {
       title: lang === 'ja' ? '機械学習' : '机器学习',
       icon: Database,
       color: 'blue',
+      gradientFrom: 'from-blue-500',
+      gradientTo: 'to-cyan-600',
       content: (
         <div className="space-y-6">
-          <div className="bg-gradient-to-br from-blue-500 to-cyan-600 rounded-2xl p-6 text-white">
-            <h3 className="text-2xl font-bold mb-3">
-              {lang === 'ja' ? '機械学習（Machine Learning）' : '机器学习（Machine Learning）'}
-            </h3>
-            <p className="text-white/90 leading-relaxed">
-              {lang === 'ja'
-                ? '機械学習は、明示的にプログラムすることなく、データから学習し改善する能力をコンピュータに与える技術です。'
-                : '机器学习是让计算机能够从数据中学习和改进的技术，而无需明确编程。'}
-            </p>
-          </div>
+          <GlassCard className="p-6" gradient="bg-gradient-to-br from-blue-500 to-cyan-600">
+            <div className="flex items-start gap-4">
+              <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-blue-500 to-cyan-600 flex items-center justify-center flex-shrink-0 shadow-lg shadow-blue-500/30">
+                <Database className="w-7 h-7 text-white" />
+              </div>
+              <div>
+                <h3 className="text-2xl font-bold text-gray-900 mb-2">
+                  {lang === 'ja' ? '機械学習（Machine Learning）' : '机器学习（Machine Learning）'}
+                </h3>
+                <p className="text-gray-600 leading-relaxed">
+                  {lang === 'ja'
+                    ? '機械学習は、明示的にプログラムすることなく、データから学習し改善する能力をコンピュータに与える技術です。'
+                    : '机器学习是让计算机能够从数据中学习和改进的技术，而无需明确编程。'}
+                </p>
+              </div>
+            </div>
+          </GlassCard>
 
-          <div className="bg-white rounded-xl border border-gray-200 p-5">
+          <GlassCard className="p-5">
             <h4 className="font-bold text-gray-900 mb-4 flex items-center gap-2">
               <Layers className="w-5 h-5 text-blue-500" />
               {lang === 'ja' ? '三大パラダイム' : '三大范式'}
@@ -165,46 +450,29 @@ const AILearningPage: React.FC = () => {
             <div className="overflow-x-auto -mx-2 px-2">
               <MLTypesSVG className="w-full min-w-[700px] h-auto" />
             </div>
-          </div>
+          </GlassCard>
 
           <div className="grid md:grid-cols-3 gap-4">
-            <div className="bg-blue-50 rounded-xl p-5 border border-blue-200">
-              <div className="w-10 h-10 bg-blue-500 rounded-lg flex items-center justify-center mb-3">
-                <Target className="w-5 h-5 text-white" />
-              </div>
-              <h4 className="font-bold text-blue-900 mb-2">{lang === 'ja' ? '教師あり学習' : '监督学习'}</h4>
-              <p className="text-sm text-blue-700 mb-3">{lang === 'ja' ? 'ラベル付きデータで学習' : '使用标注数据学习'}</p>
-              <div className="bg-white rounded-lg p-3 text-xs font-mono text-blue-800">
-                <div>X (入力) → Y (ラベル)</div>
-                <div className="text-blue-500 mt-1">{lang === 'ja' ? '例: 画像→猫/犬' : '例: 图片→猫/狗'}</div>
-              </div>
-            </div>
-            <div className="bg-green-50 rounded-xl p-5 border border-green-200">
-              <div className="w-10 h-10 bg-green-500 rounded-lg flex items-center justify-center mb-3">
-                <Sparkles className="w-5 h-5 text-white" />
-              </div>
-              <h4 className="font-bold text-green-900 mb-2">{lang === 'ja' ? '教師なし学習' : '无监督学习'}</h4>
-              <p className="text-sm text-green-700 mb-3">{lang === 'ja' ? 'ラベルなしで構造発見' : '无标注数据发现结构'}</p>
-              <div className="bg-white rounded-lg p-3 text-xs font-mono text-green-800">
-                <div>X → {lang === 'ja' ? 'パターン/クラスタ' : '模式/聚类'}</div>
-                <div className="text-green-500 mt-1">{lang === 'ja' ? '例: 顧客セグメント' : '例: 客户分群'}</div>
-              </div>
-            </div>
-            <div className="bg-amber-50 rounded-xl p-5 border border-amber-200">
-              <div className="w-10 h-10 bg-amber-500 rounded-lg flex items-center justify-center mb-3">
-                <Zap className="w-5 h-5 text-white" />
-              </div>
-              <h4 className="font-bold text-amber-900 mb-2">{lang === 'ja' ? '強化学習' : '强化学习'}</h4>
-              <p className="text-sm text-amber-700 mb-3">{lang === 'ja' ? '試行錯誤と報酬で学習' : '通过试错和奖励学习'}</p>
-              <div className="bg-white rounded-lg p-3 text-xs font-mono text-amber-800">
-                <div>{lang === 'ja' ? '行動→報酬→学習' : '动作→奖励→学习'}</div>
-                <div className="text-amber-500 mt-1">{lang === 'ja' ? '例: ゲームAI' : '例: 游戏AI'}</div>
-              </div>
-            </div>
+            {[
+              { icon: Target, title: lang === 'ja' ? '教師あり学習' : '监督学习', desc: lang === 'ja' ? 'ラベル付きデータで学習' : '使用标注数据学习', example: lang === 'ja' ? '例: 画像→猫/犬' : '例: 图片→猫/狗', gradient: 'from-blue-500 to-blue-600' },
+              { icon: Sparkles, title: lang === 'ja' ? '教師なし学習' : '无监督学习', desc: lang === 'ja' ? 'ラベルなしで構造発見' : '无标注数据发现结构', example: lang === 'ja' ? '例: 顧客セグメント' : '例: 客户分群', gradient: 'from-green-500 to-emerald-600' },
+              { icon: Zap, title: lang === 'ja' ? '強化学習' : '强化学习', desc: lang === 'ja' ? '試行錯誤と報酬で学習' : '通过试错和奖励学习', example: lang === 'ja' ? '例: ゲームAI' : '例: 游戏AI', gradient: 'from-amber-500 to-orange-600' }
+            ].map((item, i) => (
+              <GlassCard key={i} className="p-5 group">
+                <div className={`w-12 h-12 bg-gradient-to-br ${item.gradient} rounded-xl flex items-center justify-center mb-4 shadow-lg group-hover:scale-110 transition-transform duration-300`}>
+                  <item.icon className="w-6 h-6 text-white" />
+                </div>
+                <h4 className="font-bold text-gray-900 mb-1">{item.title}</h4>
+                <p className="text-sm text-gray-600 mb-3">{item.desc}</p>
+                <div className="bg-gray-900/5 rounded-lg p-3 font-mono text-xs text-gray-700">
+                  {item.example}
+                </div>
+              </GlassCard>
+            ))}
           </div>
 
-          <div className="bg-gradient-to-r from-blue-50 to-cyan-50 rounded-xl p-5 border border-blue-100">
-            <h4 className="font-semibold text-blue-900 mb-3">{lang === 'ja' ? '📊 MLワークフロー' : '📊 机器学习流程'}</h4>
+          <GlassCard className="p-5" gradient="bg-gradient-to-r from-blue-500 to-cyan-500">
+            <h4 className="font-semibold text-blue-900 mb-4">{lang === 'ja' ? '📊 MLワークフロー' : '📊 机器学习流程'}</h4>
             <div className="flex flex-wrap items-center gap-2 justify-center">
               {(lang === 'ja'
                 ? ['問題定義', '→', 'データ収集', '→', '前処理', '→', '特徴量', '→', '訓練', '→', '評価', '→', 'デプロイ']
@@ -212,10 +480,10 @@ const AILearningPage: React.FC = () => {
               ).map((step, i) => (
                 step === '→'
                   ? <ChevronRight key={i} className="w-4 h-4 text-blue-400" />
-                  : <span key={i} className="px-3 py-1.5 bg-white rounded-lg text-sm font-medium text-blue-700 shadow-sm border border-blue-100">{step}</span>
+                  : <span key={i} className="px-3 py-1.5 bg-white/80 backdrop-blur rounded-lg text-sm font-medium text-blue-700 shadow-sm border border-blue-100/50">{step}</span>
               ))}
             </div>
-          </div>
+          </GlassCard>
         </div>
       ),
       quiz: lang === 'ja' ? [
@@ -233,20 +501,29 @@ const AILearningPage: React.FC = () => {
       title: lang === 'ja' ? '深層学習' : '深度学习',
       icon: Cpu,
       color: 'purple',
+      gradientFrom: 'from-purple-500',
+      gradientTo: 'to-pink-600',
       content: (
         <div className="space-y-6">
-          <div className="bg-gradient-to-br from-purple-500 to-pink-600 rounded-2xl p-6 text-white">
-            <h3 className="text-2xl font-bold mb-3">
-              {lang === 'ja' ? '深層学習（Deep Learning）' : '深度学习（Deep Learning）'}
-            </h3>
-            <p className="text-white/90 leading-relaxed">
-              {lang === 'ja'
-                ? '深層学習は多層のニューラルネットワークを使い、データの複雑なパターンを自動で学習します。画像認識、自然言語処理などで革命的な成果を上げています。'
-                : '深度学习使用多层神经网络自动学习数据的复杂模式。它在图像识别、自然语言处理等领域取得了革命性突破。'}
-            </p>
-          </div>
+          <GlassCard className="p-6" gradient="bg-gradient-to-br from-purple-500 to-pink-600">
+            <div className="flex items-start gap-4">
+              <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-purple-500 to-pink-600 flex items-center justify-center flex-shrink-0 shadow-lg shadow-purple-500/30">
+                <Cpu className="w-7 h-7 text-white" />
+              </div>
+              <div>
+                <h3 className="text-2xl font-bold text-gray-900 mb-2">
+                  {lang === 'ja' ? '深層学習（Deep Learning）' : '深度学习（Deep Learning）'}
+                </h3>
+                <p className="text-gray-600 leading-relaxed">
+                  {lang === 'ja'
+                    ? '深層学習は多層のニューラルネットワークを使い、データの複雑なパターンを自動で学習します。'
+                    : '深度学习使用多层神经网络自动学习数据的复杂模式。'}
+                </p>
+              </div>
+            </div>
+          </GlassCard>
 
-          <div className="bg-white rounded-xl border border-gray-200 p-5">
+          <GlassCard className="p-5">
             <h4 className="font-bold text-gray-900 mb-4 flex items-center gap-2">
               <Brain className="w-5 h-5 text-purple-500" />
               {lang === 'ja' ? 'ニューラルネットワーク構造' : '神经网络结构'}
@@ -255,22 +532,20 @@ const AILearningPage: React.FC = () => {
               <NeuralNetworkSVG className="w-full max-w-xl mx-auto h-auto" />
             </div>
             <div className="mt-4 grid md:grid-cols-3 gap-3 text-sm">
-              <div className="bg-blue-50 rounded-lg p-3 text-center">
-                <div className="font-bold text-blue-700">{lang === 'ja' ? '入力層' : '输入层'}</div>
-                <div className="text-blue-600">{lang === 'ja' ? '特徴を受け取る' : '接收特征'}</div>
-              </div>
-              <div className="bg-purple-50 rounded-lg p-3 text-center">
-                <div className="font-bold text-purple-700">{lang === 'ja' ? '隠れ層' : '隐藏层'}</div>
-                <div className="text-purple-600">{lang === 'ja' ? 'パターンを抽出' : '提取模式'}</div>
-              </div>
-              <div className="bg-green-50 rounded-lg p-3 text-center">
-                <div className="font-bold text-green-700">{lang === 'ja' ? '出力層' : '输出层'}</div>
-                <div className="text-green-600">{lang === 'ja' ? '予測を出力' : '输出预测'}</div>
-              </div>
+              {[
+                { title: lang === 'ja' ? '入力層' : '输入层', desc: lang === 'ja' ? '特徴を受け取る' : '接收特征', color: 'blue' },
+                { title: lang === 'ja' ? '隠れ層' : '隐藏层', desc: lang === 'ja' ? 'パターンを抽出' : '提取模式', color: 'purple' },
+                { title: lang === 'ja' ? '出力層' : '输出层', desc: lang === 'ja' ? '予測を出力' : '输出预测', color: 'green' }
+              ].map((item, i) => (
+                <div key={i} className={`bg-${item.color}-50/50 backdrop-blur rounded-lg p-3 text-center border border-${item.color}-100/50`}>
+                  <div className={`font-bold text-${item.color}-700`}>{item.title}</div>
+                  <div className={`text-${item.color}-600`}>{item.desc}</div>
+                </div>
+              ))}
             </div>
-          </div>
+          </GlassCard>
 
-          <div className="bg-white rounded-xl border border-gray-200 p-5">
+          <GlassCard className="p-5">
             <h4 className="font-bold text-gray-900 mb-4 flex items-center gap-2">
               <Zap className="w-5 h-5 text-amber-500" />
               Transformer {lang === 'ja' ? 'アーキテクチャ' : '架构'}
@@ -278,9 +553,9 @@ const AILearningPage: React.FC = () => {
             <div className="overflow-x-auto -mx-2 px-2">
               <TransformerSVG className="w-full max-w-2xl mx-auto h-auto" />
             </div>
-          </div>
+          </GlassCard>
 
-          <div className="bg-white rounded-xl border border-gray-200 p-5">
+          <GlassCard className="p-5">
             <h4 className="font-bold text-gray-900 mb-4 flex items-center gap-2">
               <Target className="w-5 h-5 text-pink-500" />
               {lang === 'ja' ? '自己注意機構' : '自注意力机制'}
@@ -288,21 +563,21 @@ const AILearningPage: React.FC = () => {
             <div className="overflow-x-auto -mx-2 px-2">
               <AttentionSVG className="w-full max-w-xl mx-auto h-auto" />
             </div>
-          </div>
+          </GlassCard>
 
           <div className="grid md:grid-cols-2 gap-4">
-            <div className="bg-gradient-to-br from-purple-50 to-pink-50 rounded-xl p-5 border border-purple-100">
+            <GlassCard className="p-5" gradient="bg-gradient-to-br from-purple-500 to-pink-500">
               <h4 className="font-semibold text-purple-900 mb-3">{lang === 'ja' ? '🏗️ 代表的アーキテクチャ' : '🏗️ 代表架构'}</h4>
               <div className="space-y-2">
-                {['CNN - '+( lang === 'ja' ? '画像処理' : '图像处理'), 'RNN/LSTM - '+(lang === 'ja' ? '時系列' : '时序数据'), 'Transformer - '+(lang === 'ja' ? '現代NLP/CV' : '现代NLP/CV'), 'GAN - '+(lang === 'ja' ? '画像生成' : '图像生成')].map((item, i) => (
+                {['CNN - '+(lang === 'ja' ? '画像処理' : '图像处理'), 'RNN/LSTM - '+(lang === 'ja' ? '時系列' : '时序数据'), 'Transformer - '+(lang === 'ja' ? '現代NLP/CV' : '现代NLP/CV'), 'GAN - '+(lang === 'ja' ? '画像生成' : '图像生成')].map((item, i) => (
                   <div key={i} className="flex items-center gap-2 text-purple-800">
                     <CheckCircle2 className="w-4 h-4 text-purple-500" />
                     <span className="text-sm">{item}</span>
                   </div>
                 ))}
               </div>
-            </div>
-            <div className="bg-gradient-to-br from-amber-50 to-orange-50 rounded-xl p-5 border border-amber-100">
+            </GlassCard>
+            <GlassCard className="p-5" gradient="bg-gradient-to-br from-amber-500 to-orange-500">
               <h4 className="font-semibold text-amber-900 mb-3">{lang === 'ja' ? '⚡ 訓練のポイント' : '⚡ 训练要点'}</h4>
               <div className="space-y-2">
                 {[lang === 'ja' ? '大量のデータ' : '大量数据', lang === 'ja' ? 'GPU/TPU加速' : 'GPU/TPU 加速', lang === 'ja' ? '適切な損失関数' : '合适的损失函数', lang === 'ja' ? '正則化で過学習防止' : '正则化防过拟合'].map((item, i) => (
@@ -312,7 +587,7 @@ const AILearningPage: React.FC = () => {
                   </div>
                 ))}
               </div>
-            </div>
+            </GlassCard>
           </div>
         </div>
       ),
@@ -331,20 +606,29 @@ const AILearningPage: React.FC = () => {
       title: lang === 'ja' ? '大規模言語モデル' : '大语言模型',
       icon: Brain,
       color: 'rose',
+      gradientFrom: 'from-rose-500',
+      gradientTo: 'to-pink-600',
       content: (
         <div className="space-y-6">
-          <div className="bg-gradient-to-br from-rose-500 to-pink-600 rounded-2xl p-6 text-white">
-            <h3 className="text-2xl font-bold mb-3">
-              {lang === 'ja' ? '大規模言語モデル（LLM）' : '大语言模型（LLM）'}
-            </h3>
-            <p className="text-white/90 leading-relaxed">
-              {lang === 'ja'
-                ? 'LLMは大量のテキストで訓練された巨大なニューラルネットワークで、人間のように言語を理解し生成できます。ChatGPT、Claude、Geminiなどが代表例です。'
-                : 'LLM 是在海量文本上训练的大型神经网络，能够像人类一样理解和生成语言。ChatGPT、Claude、Gemini 等都是其代表。'}
-            </p>
-          </div>
+          <GlassCard className="p-6" gradient="bg-gradient-to-br from-rose-500 to-pink-600">
+            <div className="flex items-start gap-4">
+              <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-rose-500 to-pink-600 flex items-center justify-center flex-shrink-0 shadow-lg shadow-rose-500/30">
+                <Brain className="w-7 h-7 text-white" />
+              </div>
+              <div>
+                <h3 className="text-2xl font-bold text-gray-900 mb-2">
+                  {lang === 'ja' ? '大規模言語モデル（LLM）' : '大语言模型（LLM）'}
+                </h3>
+                <p className="text-gray-600 leading-relaxed">
+                  {lang === 'ja'
+                    ? 'LLMは大量のテキストで訓練された巨大なニューラルネットワークで、人間のように言語を理解し生成できます。'
+                    : 'LLM 是在海量文本上训练的大型神经网络，能够像人类一样理解和生成语言。'}
+                </p>
+              </div>
+            </div>
+          </GlassCard>
 
-          <div className="bg-white rounded-xl border border-gray-200 p-5">
+          <GlassCard className="p-5">
             <h4 className="font-bold text-gray-900 mb-4 flex items-center gap-2">
               <Zap className="w-5 h-5 text-rose-500" />
               LLM {lang === 'ja' ? 'の動作原理' : '工作原理'}
@@ -352,24 +636,25 @@ const AILearningPage: React.FC = () => {
             <div className="overflow-x-auto -mx-2 px-2">
               <LLMWorkflowSVG className="w-full min-w-[600px] h-auto" />
             </div>
-          </div>
+          </GlassCard>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
             {[
-              { name: 'GPT-4', company: 'OpenAI', color: 'from-emerald-500 to-green-600', features: lang === 'ja' ? '最強の推論能力' : '最强推理能力' },
-              { name: 'Claude', company: 'Anthropic', color: 'from-orange-500 to-amber-600', features: lang === 'ja' ? '安全性重視' : '注重安全性' },
-              { name: 'Gemini', company: 'Google', color: 'from-blue-500 to-cyan-600', features: lang === 'ja' ? 'マルチモーダル' : '多模态' },
-              { name: 'LLaMA', company: 'Meta', color: 'from-purple-500 to-violet-600', features: lang === 'ja' ? 'オープンソース' : '开源' }
+              { name: 'GPT-4', company: 'OpenAI', gradient: 'from-emerald-500 to-green-600', features: lang === 'ja' ? '最強の推論能力' : '最强推理能力' },
+              { name: 'Claude', company: 'Anthropic', gradient: 'from-orange-500 to-amber-600', features: lang === 'ja' ? '安全性重視' : '注重安全性' },
+              { name: 'Gemini', company: 'Google', gradient: 'from-blue-500 to-cyan-600', features: lang === 'ja' ? 'マルチモーダル' : '多模态' },
+              { name: 'LLaMA', company: 'Meta', gradient: 'from-purple-500 to-violet-600', features: lang === 'ja' ? 'オープンソース' : '开源' }
             ].map((llm, i) => (
-              <div key={i} className={`bg-gradient-to-br ${llm.color} rounded-xl p-4 text-white`}>
-                <h4 className="font-bold text-lg">{llm.name}</h4>
-                <p className="text-white/80 text-sm">{llm.company}</p>
-                <p className="text-white/90 text-xs mt-2">{llm.features}</p>
-              </div>
+              <GlassCard key={i} className="p-4 group overflow-hidden">
+                <div className={`absolute inset-0 bg-gradient-to-br ${llm.gradient} opacity-0 group-hover:opacity-10 transition-opacity duration-300`} />
+                <h4 className="font-bold text-lg text-gray-900">{llm.name}</h4>
+                <p className="text-gray-500 text-sm">{llm.company}</p>
+                <p className="text-gray-600 text-xs mt-2">{llm.features}</p>
+              </GlassCard>
             ))}
           </div>
 
-          <div className="bg-gradient-to-r from-rose-50 to-pink-50 rounded-xl p-5 border border-rose-100">
+          <GlassCard className="p-5" gradient="bg-gradient-to-r from-rose-500 to-pink-500">
             <h4 className="font-semibold text-rose-900 mb-4 flex items-center gap-2">
               <Code2 className="w-5 h-5" />
               Prompt Engineering {lang === 'ja' ? 'テクニック' : '技巧'}
@@ -381,20 +666,20 @@ const AILearningPage: React.FC = () => {
                 { title: lang === 'ja' ? '📝 例を提供' : '📝 提供示例', example: 'Few-shot: ' + (lang === 'ja' ? '入出力例を示す' : '给出输入输出示例') },
                 { title: lang === 'ja' ? '🔗 段階的思考' : '🔗 思维链', example: lang === 'ja' ? '「ステップバイステップで考えて」' : '「请一步一步思考」' }
               ].map((tip, i) => (
-                <div key={i} className="bg-white rounded-lg p-4 border border-rose-100">
+                <div key={i} className="bg-white/60 backdrop-blur rounded-lg p-4 border border-rose-100/50">
                   <h5 className="font-semibold text-rose-900 mb-1">{tip.title}</h5>
-                  <p className="text-sm text-rose-700 font-mono bg-rose-50 px-2 py-1 rounded">{tip.example}</p>
+                  <p className="text-sm text-rose-700 font-mono bg-rose-50/50 px-2 py-1 rounded">{tip.example}</p>
                 </div>
               ))}
             </div>
-          </div>
+          </GlassCard>
 
-          <div className="bg-gray-900 rounded-xl p-5 text-white">
-            <h4 className="font-semibold mb-3 flex items-center gap-2">
+          <GlassCard className="p-5 bg-gray-900/95 border-gray-700">
+            <h4 className="font-semibold mb-3 flex items-center gap-2 text-white">
               <Code2 className="w-5 h-5 text-green-400" />
               {lang === 'ja' ? 'API使用例' : 'API 调用示例'}
             </h4>
-            <pre className="text-sm overflow-x-auto bg-gray-800 rounded-lg p-4 text-green-300">
+            <pre className="text-sm overflow-x-auto bg-gray-800/50 rounded-lg p-4 text-green-300 font-mono">
 {`from openai import OpenAI
 
 client = OpenAI(api_key="your-key")
@@ -409,7 +694,7 @@ response = client.chat.completions.create(
 
 print(response.choices[0].message.content)`}
             </pre>
-          </div>
+          </GlassCard>
         </div>
       ),
       quiz: lang === 'ja' ? [
@@ -427,20 +712,20 @@ print(response.choices[0].message.content)`}
   const currentSectionData = sections[currentSection];
   const currentQuiz = currentSectionData.quiz;
 
-  const handleAnswerSelect = (index: number) => {
+  const handleAnswerSelect = useCallback((index: number) => {
     if (showResult) return;
     setSelectedAnswer(index);
-  };
+  }, [showResult]);
 
-  const handleSubmitAnswer = () => {
+  const handleSubmitAnswer = useCallback(() => {
     if (selectedAnswer === null) return;
     setShowResult(true);
     if (selectedAnswer === currentQuiz[currentQuizIndex].answer) {
       setCorrectCount(prev => prev + 1);
     }
-  };
+  }, [selectedAnswer, currentQuiz, currentQuizIndex]);
 
-  const handleNextQuestion = () => {
+  const handleNextQuestion = useCallback(() => {
     if (currentQuizIndex < currentQuiz.length - 1) {
       setCurrentQuizIndex(prev => prev + 1);
       setSelectedAnswer(null);
@@ -449,81 +734,106 @@ print(response.choices[0].message.content)`}
       setQuizCompleted(true);
       setCompletedSections(prev => new Set([...prev, currentSection]));
     }
-  };
+  }, [currentQuizIndex, currentQuiz.length, currentSection]);
 
-  const handleStartQuiz = () => {
+  const handleStartQuiz = useCallback(() => {
     setShowQuiz(true);
     setCurrentQuizIndex(0);
     setSelectedAnswer(null);
     setShowResult(false);
     setCorrectCount(0);
     setQuizCompleted(false);
-  };
+  }, []);
 
-  const handleRetryQuiz = () => {
+  const handleRetryQuiz = useCallback(() => {
     setCurrentQuizIndex(0);
     setSelectedAnswer(null);
     setShowResult(false);
     setCorrectCount(0);
     setQuizCompleted(false);
-  };
+  }, []);
 
-  const handleNextSection = () => {
+  const handleNextSection = useCallback(() => {
     if (currentSection < sections.length - 1) {
       setCurrentSection(prev => prev + 1);
       setShowQuiz(false);
       setQuizCompleted(false);
     }
-  };
+  }, [currentSection, sections.length]);
 
-  const handlePrevSection = () => {
+  const handlePrevSection = useCallback(() => {
     if (currentSection > 0) {
       setCurrentSection(prev => prev - 1);
       setShowQuiz(false);
       setQuizCompleted(false);
     }
-  };
+  }, [currentSection]);
 
   const progress = ((completedSections.size) / sections.length) * 100;
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-violet-50/30">
+    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900/20 to-slate-900 text-white overflow-hidden">
+      {/* Animated Background */}
+      <TechBackground />
+      <FloatingHexagons />
+
+      {/* CSS for animations */}
+      <style>{`
+        @keyframes float {
+          0%, 100% { transform: translateY(0) rotate(0deg); }
+          50% { transform: translateY(-20px) rotate(5deg); }
+        }
+        .animate-float {
+          animation: float 6s ease-in-out infinite;
+        }
+        @keyframes pulse-glow {
+          0%, 100% { box-shadow: 0 0 20px rgba(139, 92, 246, 0.3); }
+          50% { box-shadow: 0 0 40px rgba(139, 92, 246, 0.6); }
+        }
+        .animate-pulse-glow {
+          animation: pulse-glow 2s ease-in-out infinite;
+        }
+        @keyframes slide-up {
+          from { opacity: 0; transform: translateY(20px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-slide-up {
+          animation: slide-up 0.5s ease-out forwards;
+        }
+      `}</style>
+
       {/* Header */}
-      <div className="bg-white border-b border-gray-200 sticky top-0 z-40 shadow-sm">
-        <div className="px-4 lg:px-8 py-3">
+      <div className="relative z-40 bg-black/30 backdrop-blur-xl border-b border-white/10 sticky top-0">
+        <div className="px-4 lg:px-8 py-4">
           <div className="flex items-center justify-between">
             <button
               onClick={() => navigate('/')}
-              className="flex items-center gap-2 text-gray-600 hover:text-gray-900 transition-colors"
+              className="flex items-center gap-2 text-white/70 hover:text-white transition-colors group"
             >
-              <ArrowLeft size={20} />
+              <ArrowLeft size={20} className="group-hover:-translate-x-1 transition-transform" />
               <span className="hidden sm:inline">{lang === 'ja' ? 'トップ' : '首页'}</span>
             </button>
 
-            <div className="flex items-center gap-3">
-              <div className="flex items-center gap-2">
-                <Trophy className="w-5 h-5 text-amber-500" />
-                <span className="font-bold text-gray-900">{completedSections.size}/{sections.length}</span>
-              </div>
-              <div className="w-32 h-2 bg-gray-200 rounded-full overflow-hidden">
-                <div
-                  className="h-full bg-gradient-to-r from-violet-500 to-purple-500 transition-all duration-500"
-                  style={{ width: `${progress}%` }}
-                />
+            <div className="flex items-center gap-4">
+              <div className="relative">
+                <ProgressRing progress={progress} size={50} />
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <span className="text-xs font-bold">{completedSections.size}/{sections.length}</span>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
 
-      <div className="flex">
+      <div className="relative z-10 flex">
         {/* Sidebar - Section Navigation */}
-        <div className="hidden lg:block w-64 bg-white border-r border-gray-200 min-h-[calc(100vh-57px)] sticky top-[57px]">
-          <div className="p-4">
-            <h3 className="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-4">
+        <div className="hidden lg:block w-72 bg-black/20 backdrop-blur-xl border-r border-white/10 min-h-[calc(100vh-73px)] sticky top-[73px]">
+          <div className="p-6">
+            <h3 className="text-sm font-semibold text-white/50 uppercase tracking-wider mb-6">
               {lang === 'ja' ? '目次' : '目录'}
             </h3>
-            <nav className="space-y-1">
+            <nav className="space-y-2">
               {sections.map((section, index) => {
                 const Icon = section.icon;
                 const isCompleted = completedSections.has(index);
@@ -536,26 +846,26 @@ print(response.choices[0].message.content)`}
                       setShowQuiz(false);
                       setQuizCompleted(false);
                     }}
-                    className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-left transition-all ${
+                    className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl text-left transition-all duration-300 ${
                       isCurrent
-                        ? `bg-${section.color}-100 text-${section.color}-900 font-medium`
-                        : 'text-gray-600 hover:bg-gray-100'
+                        ? 'bg-white/10 text-white shadow-lg shadow-purple-500/20'
+                        : 'text-white/60 hover:bg-white/5 hover:text-white'
                     }`}
                   >
-                    <div className={`w-8 h-8 rounded-lg flex items-center justify-center ${
+                    <div className={`w-10 h-10 rounded-xl flex items-center justify-center transition-all duration-300 ${
                       isCompleted
-                        ? 'bg-green-500'
+                        ? 'bg-gradient-to-br from-emerald-500 to-green-600 shadow-lg shadow-emerald-500/30'
                         : isCurrent
-                          ? `bg-${section.color}-500`
-                          : 'bg-gray-200'
+                          ? `bg-gradient-to-br ${section.gradientFrom} ${section.gradientTo} shadow-lg`
+                          : 'bg-white/10'
                     }`}>
                       {isCompleted ? (
-                        <CheckCircle2 className="w-4 h-4 text-white" />
+                        <CheckCircle2 className="w-5 h-5 text-white" />
                       ) : (
-                        <Icon className={`w-4 h-4 ${isCurrent ? 'text-white' : 'text-gray-500'}`} />
+                        <Icon className="w-5 h-5 text-white" />
                       )}
                     </div>
-                    <span className="text-sm">{section.title}</span>
+                    <span className="text-sm font-medium">{section.title}</span>
                   </button>
                 );
               })}
@@ -564,9 +874,9 @@ print(response.choices[0].message.content)`}
         </div>
 
         {/* Main Content */}
-        <div className="flex-1 max-w-4xl mx-auto px-4 lg:px-8 py-6">
+        <div className="flex-1 max-w-4xl mx-auto px-4 lg:px-8 py-8">
           {/* Mobile Section Nav */}
-          <div className="lg:hidden mb-4 flex gap-2 overflow-x-auto pb-2">
+          <div className="lg:hidden mb-6 flex gap-2 overflow-x-auto pb-2 scrollbar-hide">
             {sections.map((section, index) => {
               const Icon = section.icon;
               const isCompleted = completedSections.has(index);
@@ -579,13 +889,13 @@ print(response.choices[0].message.content)`}
                     setShowQuiz(false);
                     setQuizCompleted(false);
                   }}
-                  className={`flex-shrink-0 flex items-center gap-2 px-3 py-2 rounded-lg text-sm transition-all ${
+                  className={`flex-shrink-0 flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm transition-all duration-300 ${
                     isCurrent
-                      ? 'bg-violet-100 text-violet-900 font-medium'
-                      : 'bg-white text-gray-600 border border-gray-200'
+                      ? 'bg-white/20 text-white'
+                      : 'bg-white/5 text-white/60 hover:bg-white/10'
                   }`}
                 >
-                  {isCompleted && <CheckCircle2 className="w-4 h-4 text-green-500" />}
+                  {isCompleted && <CheckCircle2 className="w-4 h-4 text-emerald-400" />}
                   <Icon className="w-4 h-4" />
                   <span>{section.title}</span>
                 </button>
@@ -594,106 +904,96 @@ print(response.choices[0].message.content)`}
           </div>
 
           {/* Section Header */}
-          <div className="mb-6">
-            <div className="flex items-center gap-3 mb-2">
-              <div className={`w-10 h-10 bg-gradient-to-br from-${currentSectionData.color}-500 to-${currentSectionData.color}-600 rounded-xl flex items-center justify-center`}>
-                <currentSectionData.icon className="w-5 h-5 text-white" />
+          <div className={`mb-8 ${isAnimating ? 'animate-slide-up' : ''}`}>
+            <div className="flex items-center gap-4 mb-2">
+              <div className={`w-14 h-14 bg-gradient-to-br ${currentSectionData.gradientFrom} ${currentSectionData.gradientTo} rounded-2xl flex items-center justify-center shadow-lg animate-pulse-glow`}>
+                <currentSectionData.icon className="w-7 h-7 text-white" />
               </div>
               <div>
-                <div className="text-sm text-gray-500">{lang === 'ja' ? 'レッスン' : '课程'} {currentSection + 1}/{sections.length}</div>
-                <h1 className="text-2xl font-bold text-gray-900">{currentSectionData.title}</h1>
+                <div className="text-sm text-white/50 font-medium">{lang === 'ja' ? 'レッスン' : '课程'} {currentSection + 1}/{sections.length}</div>
+                <h1 className="text-3xl font-bold bg-gradient-to-r from-white to-white/60 bg-clip-text text-transparent">
+                  {currentSectionData.title}
+                </h1>
               </div>
             </div>
           </div>
 
           {!showQuiz ? (
-            <>
+            <div className={isAnimating ? 'animate-slide-up' : ''}>
               {/* Lesson Content */}
               <div className="mb-8">
                 {currentSectionData.content}
               </div>
 
               {/* Start Quiz Button */}
-              <div className="bg-gradient-to-r from-violet-500 to-purple-600 rounded-2xl p-6 text-white">
+              <GlassCard className="p-6 bg-gradient-to-r from-violet-600/20 to-purple-600/20 border-violet-500/30">
                 <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
                   <div>
-                    <h3 className="text-xl font-bold mb-1">
+                    <h3 className="text-xl font-bold text-white mb-1">
                       {lang === 'ja' ? '理解度チェック' : '检验学习成果'}
                     </h3>
-                    <p className="text-white/80">
+                    <p className="text-white/60">
                       {currentQuiz.length} {lang === 'ja' ? '問のクイズで確認しよう' : '道题测试你的理解'}
                     </p>
                   </div>
-                  <button
-                    onClick={handleStartQuiz}
-                    className="flex items-center gap-2 px-6 py-3 bg-white text-violet-600 rounded-xl font-bold hover:bg-violet-50 transition-colors"
-                  >
-                    <Play className="w-5 h-5" />
+                  <NeonButton onClick={handleStartQuiz} icon={<Play className="w-5 h-5" />}>
                     {lang === 'ja' ? 'クイズ開始' : '开始测验'}
-                  </button>
+                  </NeonButton>
                 </div>
-              </div>
-            </>
+              </GlassCard>
+            </div>
           ) : quizCompleted ? (
             /* Quiz Results */
-            <div className="bg-white rounded-2xl border border-gray-200 p-8 text-center">
-              <div className={`w-20 h-20 mx-auto mb-4 rounded-full flex items-center justify-center ${
+            <GlassCard className="p-8 text-center">
+              <div className={`w-24 h-24 mx-auto mb-6 rounded-full flex items-center justify-center ${
                 correctCount === currentQuiz.length
-                  ? 'bg-gradient-to-br from-green-400 to-emerald-500'
+                  ? 'bg-gradient-to-br from-emerald-400 to-green-500 shadow-lg shadow-emerald-500/50 animate-pulse-glow'
                   : correctCount >= currentQuiz.length / 2
-                    ? 'bg-gradient-to-br from-amber-400 to-orange-500'
+                    ? 'bg-gradient-to-br from-amber-400 to-orange-500 shadow-lg shadow-amber-500/50'
                     : 'bg-gradient-to-br from-gray-400 to-gray-500'
               }`}>
                 {correctCount === currentQuiz.length ? (
-                  <Trophy className="w-10 h-10 text-white" />
+                  <Trophy className="w-12 h-12 text-white" />
                 ) : (
-                  <Star className="w-10 h-10 text-white" />
+                  <Star className="w-12 h-12 text-white" />
                 )}
               </div>
-              <h3 className="text-2xl font-bold text-gray-900 mb-2">
+              <h3 className="text-3xl font-bold text-white mb-2">
                 {correctCount === currentQuiz.length
                   ? (lang === 'ja' ? 'パーフェクト！' : '满分！')
                   : correctCount >= currentQuiz.length / 2
                     ? (lang === 'ja' ? 'よくできました！' : '做得不错！')
                     : (lang === 'ja' ? 'もう一度挑戦！' : '再试一次！')}
               </h3>
-              <p className="text-gray-600 mb-6">
-                {lang === 'ja' ? '正解' : '正确'}: {correctCount}/{currentQuiz.length}
+              <p className="text-white/60 mb-8 text-lg">
+                {lang === 'ja' ? '正解' : '正确'}: <span className="text-white font-bold">{correctCount}/{currentQuiz.length}</span>
               </p>
               <div className="flex flex-col sm:flex-row gap-3 justify-center">
-                <button
-                  onClick={handleRetryQuiz}
-                  className="flex items-center justify-center gap-2 px-6 py-3 border-2 border-gray-200 text-gray-700 rounded-xl font-medium hover:bg-gray-50 transition-colors"
-                >
-                  <RotateCcw className="w-5 h-5" />
+                <NeonButton onClick={handleRetryQuiz} variant="secondary" icon={<RotateCcw className="w-5 h-5" />}>
                   {lang === 'ja' ? '再挑戦' : '重新测验'}
-                </button>
+                </NeonButton>
                 {currentSection < sections.length - 1 && (
-                  <button
-                    onClick={handleNextSection}
-                    className="flex items-center justify-center gap-2 px-6 py-3 bg-gradient-to-r from-violet-500 to-purple-600 text-white rounded-xl font-medium hover:from-violet-600 hover:to-purple-700 transition-colors"
-                  >
+                  <NeonButton onClick={handleNextSection} icon={<ChevronRight className="w-5 h-5" />}>
                     {lang === 'ja' ? '次のレッスン' : '下一课'}
-                    <ChevronRight className="w-5 h-5" />
-                  </button>
+                  </NeonButton>
                 )}
               </div>
-            </div>
+            </GlassCard>
           ) : (
             /* Quiz Question */
-            <div className="bg-white rounded-2xl border border-gray-200 overflow-hidden">
+            <GlassCard className="overflow-hidden">
               {/* Progress */}
-              <div className="bg-gray-50 px-6 py-3 border-b border-gray-200">
+              <div className="bg-white/5 px-6 py-4 border-b border-white/10">
                 <div className="flex items-center justify-between text-sm">
-                  <span className="text-gray-500">
+                  <span className="text-white/60">
                     {lang === 'ja' ? '問題' : '题目'} {currentQuizIndex + 1}/{currentQuiz.length}
                   </span>
-                  <div className="flex gap-1">
+                  <div className="flex gap-2">
                     {currentQuiz.map((_, i) => (
                       <div
                         key={i}
-                        className={`w-2 h-2 rounded-full transition-colors ${
-                          i < currentQuizIndex ? 'bg-green-500' : i === currentQuizIndex ? 'bg-violet-500' : 'bg-gray-300'
+                        className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                          i < currentQuizIndex ? 'bg-emerald-500 shadow-lg shadow-emerald-500/50' : i === currentQuizIndex ? 'bg-violet-500 shadow-lg shadow-violet-500/50 scale-125' : 'bg-white/20'
                         }`}
                       />
                     ))}
@@ -703,7 +1003,7 @@ print(response.choices[0].message.content)`}
 
               {/* Question */}
               <div className="p-6">
-                <h3 className="text-lg font-bold text-gray-900 mb-6">
+                <h3 className="text-xl font-bold text-white mb-8">
                   {currentQuiz[currentQuizIndex].question}
                 </h3>
 
@@ -720,24 +1020,24 @@ print(response.choices[0].message.content)`}
                         key={index}
                         onClick={() => handleAnswerSelect(index)}
                         disabled={showResult}
-                        className={`w-full flex items-center gap-3 p-4 rounded-xl border-2 text-left transition-all ${
+                        className={`w-full flex items-center gap-4 p-4 rounded-xl border-2 text-left transition-all duration-300 ${
                           showCorrect
-                            ? 'border-green-500 bg-green-50'
+                            ? 'border-emerald-500 bg-emerald-500/20 shadow-lg shadow-emerald-500/20'
                             : showWrong
-                              ? 'border-red-500 bg-red-50'
+                              ? 'border-red-500 bg-red-500/20 shadow-lg shadow-red-500/20'
                               : isSelected
-                                ? 'border-violet-500 bg-violet-50'
-                                : 'border-gray-200 hover:border-violet-300 hover:bg-violet-50/50'
+                                ? 'border-violet-500 bg-violet-500/20 shadow-lg shadow-violet-500/20'
+                                : 'border-white/10 bg-white/5 hover:border-violet-500/50 hover:bg-white/10'
                         }`}
                       >
-                        <div className={`w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0 ${
+                        <div className={`w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0 font-bold transition-all duration-300 ${
                           showCorrect
-                            ? 'bg-green-500 text-white'
+                            ? 'bg-emerald-500 text-white'
                             : showWrong
                               ? 'bg-red-500 text-white'
                               : isSelected
                                 ? 'bg-violet-500 text-white'
-                                : 'bg-gray-100 text-gray-600'
+                                : 'bg-white/10 text-white/60'
                         }`}>
                           {showCorrect ? (
                             <CheckCircle2 className="w-5 h-5" />
@@ -747,7 +1047,7 @@ print(response.choices[0].message.content)`}
                             String.fromCharCode(65 + index)
                           )}
                         </div>
-                        <span className={`flex-1 ${showCorrect ? 'text-green-900' : showWrong ? 'text-red-900' : 'text-gray-700'}`}>
+                        <span className={`flex-1 ${showCorrect ? 'text-emerald-100' : showWrong ? 'text-red-100' : 'text-white/80'}`}>
                           {option}
                         </span>
                       </button>
@@ -757,47 +1057,44 @@ print(response.choices[0].message.content)`}
 
                 {/* Explanation */}
                 {showResult && (
-                  <div className={`p-4 rounded-xl mb-6 ${
+                  <GlassCard className={`p-4 mb-6 ${
                     selectedAnswer === currentQuiz[currentQuizIndex].answer
-                      ? 'bg-green-50 border border-green-200'
-                      : 'bg-amber-50 border border-amber-200'
+                      ? 'bg-emerald-500/10 border-emerald-500/30'
+                      : 'bg-amber-500/10 border-amber-500/30'
                   }`}>
                     <p className={`text-sm ${
                       selectedAnswer === currentQuiz[currentQuizIndex].answer
-                        ? 'text-green-800'
-                        : 'text-amber-800'
+                        ? 'text-emerald-200'
+                        : 'text-amber-200'
                     }`}>
                       <span className="font-semibold">{lang === 'ja' ? '解説: ' : '解析: '}</span>
                       {currentQuiz[currentQuizIndex].explanation}
                     </p>
-                  </div>
+                  </GlassCard>
                 )}
 
                 {/* Action Button */}
                 {!showResult ? (
-                  <button
+                  <NeonButton
                     onClick={handleSubmitAnswer}
                     disabled={selectedAnswer === null}
-                    className={`w-full py-3 rounded-xl font-bold transition-all ${
-                      selectedAnswer === null
-                        ? 'bg-gray-100 text-gray-400 cursor-not-allowed'
-                        : 'bg-gradient-to-r from-violet-500 to-purple-600 text-white hover:from-violet-600 hover:to-purple-700'
-                    }`}
+                    className="w-full"
                   >
                     {lang === 'ja' ? '回答する' : '提交答案'}
-                  </button>
+                  </NeonButton>
                 ) : (
-                  <button
+                  <NeonButton
                     onClick={handleNextQuestion}
-                    className="w-full py-3 bg-gradient-to-r from-violet-500 to-purple-600 text-white rounded-xl font-bold hover:from-violet-600 hover:to-purple-700 transition-all"
+                    className="w-full"
+                    variant="success"
                   >
                     {currentQuizIndex < currentQuiz.length - 1
                       ? (lang === 'ja' ? '次の問題' : '下一题')
                       : (lang === 'ja' ? '結果を見る' : '查看结果')}
-                  </button>
+                  </NeonButton>
                 )}
               </div>
-            </div>
+            </GlassCard>
           )}
 
           {/* Navigation */}
@@ -806,10 +1103,10 @@ print(response.choices[0].message.content)`}
               <button
                 onClick={handlePrevSection}
                 disabled={currentSection === 0}
-                className={`flex items-center gap-2 px-4 py-2 rounded-lg transition-colors ${
+                className={`flex items-center gap-2 px-4 py-2 rounded-xl transition-all duration-300 ${
                   currentSection === 0
-                    ? 'text-gray-300 cursor-not-allowed'
-                    : 'text-gray-600 hover:bg-gray-100'
+                    ? 'text-white/20 cursor-not-allowed'
+                    : 'text-white/60 hover:text-white hover:bg-white/10'
                 }`}
               >
                 <ChevronLeft className="w-5 h-5" />
@@ -818,10 +1115,10 @@ print(response.choices[0].message.content)`}
               <button
                 onClick={handleNextSection}
                 disabled={currentSection === sections.length - 1}
-                className={`flex items-center gap-2 px-4 py-2 rounded-lg transition-colors ${
+                className={`flex items-center gap-2 px-4 py-2 rounded-xl transition-all duration-300 ${
                   currentSection === sections.length - 1
-                    ? 'text-gray-300 cursor-not-allowed'
-                    : 'text-gray-600 hover:bg-gray-100'
+                    ? 'text-white/20 cursor-not-allowed'
+                    : 'text-white/60 hover:text-white hover:bg-white/10'
                 }`}
               >
                 {lang === 'ja' ? '次へ' : '下一课'}
