@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useMemo } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { useExamStore } from '../stores/examStore';
 import { ExamCard } from '../components/Exam/ExamCard';
 import { ImportExam } from '../components/Exam/ImportExam';
@@ -112,6 +112,7 @@ export const HomePage: React.FC = () => {
   const t = useT();
   const language = useLanguageStore(state => state.language);
   const location = useLocation();
+  const navigate = useNavigate();
 
   // Reset view when clicking header logo
   useEffect(() => {
@@ -658,7 +659,7 @@ export const HomePage: React.FC = () => {
                 return (
                   <button
                     key={key}
-                    onClick={() => setSelectedView(key)}
+                    onClick={() => key === 'ai-intro' ? navigate('/ai-intro') : setSelectedView(key)}
                     className={`group relative bg-white rounded-2xl p-6 shadow-md hover:shadow-xl ${config.hoverShadow} transition-all duration-300 border-2 ${config.borderColor} hover:border-transparent overflow-hidden text-left`}
                   >
                     <div className={`absolute inset-0 bg-gradient-to-br ${config.gradient} opacity-0 group-hover:opacity-5 transition-opacity duration-300`}></div>
