@@ -1,0 +1,794 @@
+{
+  "exam": {
+    "id": "aws-mls-c01-set1",
+    "name": "AWS MLS-C01 机器学习专业级模拟考试 #1",
+    "code": "MLS-C01",
+    "provider": "AWS",
+    "language": "zh-CN",
+    "description": "AWS认证机器学习专业级考试模拟题 - 第1套",
+    "totalQuestions": 50,
+    "passingScore": 75,
+    "examTime": 180,
+    "domains": [
+      {
+        "id": 1,
+        "name": "Data Engineering",
+        "weight": 20
+      },
+      {
+        "id": 2,
+        "name": "Exploratory Data Analysis",
+        "weight": 24
+      },
+      {
+        "id": 3,
+        "name": "Modeling",
+        "weight": 36
+      },
+      {
+        "id": 4,
+        "name": "Machine Learning Implementation and Operations",
+        "weight": 20
+      }
+    ],
+    "tags": [
+      "AWS",
+      "Machine Learning",
+      "SageMaker",
+      "认证考试",
+      "专业级"
+    ]
+  },
+  "questions": [
+    {
+      "id": "q1",
+      "domain": 1,
+      "question": "一家公司需要将大量CSV格式的历史数据转换为适合机器学习训练的格式。数据存储在Amazon S3中，需要进行清洗和转换。哪种AWS服务组合最适合此场景？",
+      "options": {
+        "A": "Amazon Kinesis Data Streams + Amazon Redshift",
+        "B": "AWS Glue + Amazon S3",
+        "C": "Amazon EMR + Amazon DynamoDB",
+        "D": "AWS Lambda + Amazon RDS"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "AWS Glue是完全托管的ETL服务：\n- 自动发现和分类数据\n- 内置转换功能\n- 与S3原生集成\n- 支持数据目录管理\n\nKinesis用于实时流数据，不适合批量历史数据处理。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q2",
+      "domain": 1,
+      "question": "一家公司正在构建实时欺诈检测系统，需要在毫秒级别处理交易数据。数据需要进行实时特征工程后送入SageMaker端点。应该使用哪种数据摄取方案？",
+      "options": {
+        "A": "Amazon S3 + AWS Glue",
+        "B": "Amazon Kinesis Data Streams + AWS Lambda",
+        "C": "Amazon SQS + Amazon EC2",
+        "D": "AWS Data Pipeline + Amazon Redshift"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "实时数据处理需要：\n- Kinesis Data Streams：毫秒级延迟的数据流摄取\n- Lambda：无服务器实时特征计算\n- 组合提供低延迟、高吞吐量的实时处理能力\n\nS3/Glue适合批处理，不满足毫秒级要求。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q3",
+      "domain": 1,
+      "question": "一个机器学习团队需要将多个来源的数据整合到统一的数据湖中，并希望实现数据版本控制和ACID事务支持。应该使用哪种解决方案？",
+      "options": {
+        "A": "Amazon S3 + AWS Glue Data Catalog",
+        "B": "Amazon S3 + Apache Hudi / Delta Lake",
+        "C": "Amazon Redshift + Amazon S3",
+        "D": "Amazon DynamoDB + DAX"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Apache Hudi和Delta Lake提供：\n- ACID事务支持\n- 数据版本控制和时间旅行\n- 增量数据处理\n- 架构演进\n\n原生S3不支持ACID事务。Redshift是数据仓库，不是数据湖。",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q4",
+      "domain": 1,
+      "question": "公司需要将IoT设备产生的时序数据进行近实时分析，每秒数百万条记录。数据需要进行聚合和窗口计算后用于异常检测模型。最佳方案是什么？",
+      "options": {
+        "A": "Amazon Kinesis Data Analytics + Amazon S3",
+        "B": "AWS Glue Streaming + Amazon Redshift",
+        "C": "Amazon EMR + Apache Kafka",
+        "D": "AWS Lambda + Amazon DynamoDB"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Kinesis Data Analytics：\n- 使用SQL进行实时流分析\n- 内置窗口函数（滑动窗口、滚动窗口）\n- 原生支持时间序列聚合\n- 可直接输出到S3或实时端点\n\n每秒百万条记录需要专门的流处理引擎。",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q5",
+      "domain": 1,
+      "question": "一家公司使用SageMaker进行模型训练，训练数据存储在S3中。为了提高训练性能，应该使用哪种数据输入模式？",
+      "options": {
+        "A": "File模式，将所有数据下载到训练实例",
+        "B": "Pipe模式，从S3流式传输数据",
+        "C": "FastFile模式",
+        "D": "B和C都可以，取决于数据大小"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "SageMaker数据输入模式：\n- File模式：下载后训练，适合小数据集\n- Pipe模式：流式传输，减少启动时间\n- FastFile模式：POSIX接口访问S3，结合两者优势\n\n大数据集推荐Pipe或FastFile模式减少等待时间。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q6",
+      "domain": 1,
+      "question": "公司需要定期运行ETL作业将数据从多个源系统提取到S3数据湖。作业需要按依赖关系编排，失败时自动重试。应该使用什么服务？",
+      "options": {
+        "A": "AWS Step Functions",
+        "B": "Amazon MWAA (Managed Workflows for Apache Airflow)",
+        "C": "AWS Glue Workflows",
+        "D": "以上都可以"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "三种服务都支持ETL编排：\n- Step Functions：适合AWS原生服务编排\n- MWAA：复杂DAG工作流，已有Airflow经验\n- Glue Workflows：Glue作业间依赖管理\n\n选择取决于团队技术栈和具体需求。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q7",
+      "domain": 1,
+      "question": "一个机器学习项目需要将结构化和非结构化数据统一存储，同时支持SQL查询和机器学习工作负载。应该采用什么架构？",
+      "options": {
+        "A": "Amazon Redshift作为主存储",
+        "B": "Amazon S3数据湖 + AWS Lake Formation + Amazon Athena",
+        "C": "Amazon DynamoDB + ElastiCache",
+        "D": "Amazon RDS + S3"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "现代数据湖架构：\n- S3：统一存储各类数据\n- Lake Formation：数据治理和权限管理\n- Athena：无服务器SQL查询\n- 支持SageMaker直接访问训练\n\nRedshift适合结构化数据仓库，不适合非结构化数据。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q8",
+      "domain": 1,
+      "question": "数据工程师需要处理存储在S3中的10TB Parquet文件，进行数据转换后用于模型训练。考虑到成本和性能，应该选择什么方案？",
+      "options": {
+        "A": "Amazon EC2 + Python pandas",
+        "B": "AWS Glue (Spark)",
+        "C": "Amazon Athena CTAS",
+        "D": "B和C都是合理选择"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "10TB数据处理：\n- Glue Spark：分布式处理，复杂转换\n- Athena CTAS：简单转换，按查询付费\n\nEC2 + pandas无法处理这么大的数据（内存限制）。选择取决于转换复杂度和使用频率。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q9",
+      "domain": 1,
+      "question": "公司的ML管道需要在数据到达S3后自动触发预处理作业。应该使用什么机制？",
+      "options": {
+        "A": "S3 Event Notifications + Lambda + Step Functions",
+        "B": "CloudWatch Events定时触发",
+        "C": "手动触发AWS Glue作业",
+        "D": "Amazon SNS轮询"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "事件驱动架构：\n- S3 Event Notifications：检测新文件到达\n- Lambda：处理事件，启动工作流\n- Step Functions：编排后续处理步骤\n\n这是AWS推荐的事件驱动数据处理模式。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q10",
+      "domain": 1,
+      "question": "一个数据科学团队需要对敏感的PII数据进行机器学习训练。数据需要在使用前进行脱敏处理。应该使用什么方法？",
+      "options": {
+        "A": "使用AWS Glue DataBrew进行数据脱敏",
+        "B": "使用Amazon Comprehend识别PII后手动删除",
+        "C": "使用Amazon Macie扫描后删除敏感数据",
+        "D": "A和B都可以"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "PII数据处理：\n- Glue DataBrew：内置PII检测和脱敏转换\n- Comprehend：NLP识别PII实体\n- Macie：用于发现敏感数据，不做转换\n\n实际脱敏需要DataBrew或自定义转换逻辑。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q11",
+      "domain": 2,
+      "question": "数据科学家发现数据集中有30%的值缺失。在决定如何处理之前，应该首先做什么？",
+      "options": {
+        "A": "直接删除包含缺失值的行",
+        "B": "用均值填充所有缺失值",
+        "C": "分析缺失值的模式（随机缺失还是非随机缺失）",
+        "D": "使用KNN算法填充"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "缺失值分析步骤：\n1. 分析缺失模式：\n   - MCAR（完全随机缺失）\n   - MAR（随机缺失）\n   - MNAR（非随机缺失）\n2. 根据模式选择处理方法\n3. 非随机缺失需要特殊处理\n\n盲目删除或填充可能引入偏差。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q12",
+      "domain": 2,
+      "question": "在探索性数据分析中，发现某特征的分布严重右偏（正偏态）。为了使其更接近正态分布，应该使用什么转换？",
+      "options": {
+        "A": "对数转换 (Log Transformation)",
+        "B": "标准化 (Standardization)",
+        "C": "归一化 (Min-Max Normalization)",
+        "D": "独热编码 (One-Hot Encoding)"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "处理偏态分布：\n- 右偏（正偏态）：对数转换、平方根转换\n- 左偏（负偏态）：平方转换、指数转换\n- Box-Cox转换：自动选择最佳参数\n\n标准化和归一化不改变分布形状。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q13",
+      "domain": 2,
+      "question": "数据集包含1000个特征，数据科学家想要识别最重要的特征子集。哪种方法最适合作为初步筛选？",
+      "options": {
+        "A": "主成分分析 (PCA)",
+        "B": "相关性分析 + 方差分析",
+        "C": "递归特征消除 (RFE)",
+        "D": "LASSO回归"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "初步特征筛选：\n- 相关性分析：识别与目标相关的特征\n- 方差分析：去除低方差特征\n- 快速、计算成本低\n\nPCA改变特征空间。RFE和LASSO需要训练模型，成本更高。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q14",
+      "domain": 2,
+      "question": "在分析客户交易数据时，发现有些特征之间存在多重共线性。这可能导致什么问题？如何检测？",
+      "options": {
+        "A": "会导致模型无法训练；使用PCA检测",
+        "B": "会导致系数不稳定和可解释性下降；使用VIF检测",
+        "C": "会导致过拟合；使用交叉验证检测",
+        "D": "不会造成任何问题"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "多重共线性影响：\n- 系数估计不稳定\n- 标准误增大\n- 可解释性下降\n\n检测方法：\n- VIF（方差膨胀因子）：VIF > 5或10表示存在共线性\n- 相关矩阵热图\n\n处理：删除冗余特征或使用正则化。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q15",
+      "domain": 2,
+      "question": "数据集中的分类变量有超过100个类别。使用独热编码会导致维度爆炸。应该使用什么替代方法？",
+      "options": {
+        "A": "标签编码 (Label Encoding)",
+        "B": "目标编码 (Target Encoding)",
+        "C": "频率编码 (Frequency Encoding)",
+        "D": "B和C都可以"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "高基数分类变量处理：\n- 目标编码：用目标变量均值替换类别\n- 频率编码：用类别出现频率替换\n- 嵌入编码：用于深度学习\n\n标签编码会引入错误的序数关系。独热编码产生100+列。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q16",
+      "domain": 2,
+      "question": "在时间序列数据中，如何检测和处理趋势和季节性成分？",
+      "options": {
+        "A": "使用移动平均或STL分解",
+        "B": "直接使用原始数据训练模型",
+        "C": "删除时间戳特征",
+        "D": "使用独热编码处理日期"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "时间序列分解：\n- 趋势：移动平均、差分\n- 季节性：STL分解\n- 残差：去除趋势和季节性后的部分\n\n分解后可以：\n- 分别建模各成分\n- 使数据平稳用于ARIMA\n- 创建时间特征用于ML模型",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q17",
+      "domain": 2,
+      "question": "数据科学家发现训练数据中正负样本比例为1:100。这种类别不平衡会导致什么问题？应该如何处理？",
+      "options": {
+        "A": "不会有问题，直接训练即可",
+        "B": "模型会偏向多数类；使用SMOTE过采样或欠采样",
+        "C": "模型会偏向少数类；增加训练轮数",
+        "D": "会导致模型无法收敛；使用更大的学习率"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "类别不平衡处理：\n- SMOTE：合成少数类样本\n- 欠采样：减少多数类样本\n- 类别权重：调整损失函数权重\n- 阈值调整：优化决策阈值\n\n不处理会导致模型总是预测多数类。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q18",
+      "domain": 2,
+      "question": "在数据可视化过程中，如何最有效地展示多个特征与目标变量之间的关系？",
+      "options": {
+        "A": "散点图矩阵 (Pairplot)",
+        "B": "箱线图",
+        "C": "直方图",
+        "D": "饼图"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "散点图矩阵：\n- 同时展示多个变量间的关系\n- 可以按目标变量着色\n- 快速识别相关性和模式\n- 发现潜在的非线性关系\n\n箱线图适合单变量分布，饼图不适合连续变量。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q19",
+      "domain": 2,
+      "question": "数据集中有异常值（离群点）。在决定如何处理之前，应该考虑什么？",
+      "options": {
+        "A": "始终删除所有异常值",
+        "B": "始终保留所有异常值",
+        "C": "分析异常值是数据错误还是真实极端值，根据业务上下文决定",
+        "D": "用均值替换所有异常值"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "异常值处理原则：\n- 数据录入错误 → 删除或修正\n- 测量误差 → 删除\n- 真实极端值 → 可能保留（如欺诈检测）\n- 考虑业务场景和模型目标\n\n盲目删除可能丢失重要信息。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q20",
+      "domain": 2,
+      "question": "使用Amazon SageMaker Data Wrangler可以完成哪些数据分析任务？（选择所有适用的）",
+      "options": {
+        "A": "数据可视化和统计分析",
+        "B": "特征转换和创建",
+        "C": "模型训练和部署",
+        "D": "A和B"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "SageMaker Data Wrangler功能：\n- 数据导入（S3、Redshift、Athena等）\n- 数据可视化和统计分析\n- 300+内置数据转换\n- 特征工程\n- 导出到SageMaker Pipeline或Notebook\n\n模型训练是SageMaker其他组件的功能。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q21",
+      "domain": 2,
+      "question": "在特征工程中，创建交互特征（如两个特征的乘积）有什么作用？",
+      "options": {
+        "A": "减少模型复杂度",
+        "B": "捕捉特征之间的非线性关系",
+        "C": "加速模型训练",
+        "D": "减少过拟合"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "交互特征：\n- 捕捉特征间的联合效应\n- 帮助线性模型学习非线性关系\n- 例如：收入×教育水平可能比单独特征更有预测力\n\n注意：会增加特征数量，可能导致过拟合。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q22",
+      "domain": 2,
+      "question": "使用PCA进行降维时，如何确定要保留的主成分数量？",
+      "options": {
+        "A": "始终保留前3个主成分",
+        "B": "根据累计解释方差（如保留95%方差）",
+        "C": "保留所有主成分",
+        "D": "随机选择"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "确定PCA主成分数量：\n- 累计解释方差法：保留解释80-95%方差的成分\n- 肘部法则：看解释方差的拐点\n- Kaiser准则：保留特征值>1的成分\n\n具体阈值取决于任务需求和数据特性。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q23",
+      "domain": 3,
+      "question": "公司需要构建一个预测客户流失的模型。数据集包含客户使用行为和历史交易记录。应该选择什么类型的算法？",
+      "options": {
+        "A": "线性回归",
+        "B": "K-Means聚类",
+        "C": "XGBoost分类器",
+        "D": "主成分分析"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "客户流失预测：\n- 二分类问题（流失/不流失）\n- XGBoost优势：\n  - 处理不平衡数据\n  - 特征重要性可解释\n  - 处理缺失值\n  - 通常优于传统算法\n\n线性回归用于连续值预测。K-Means是无监督聚类。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q24",
+      "domain": 3,
+      "question": "在SageMaker中训练XGBoost模型时，以下哪个超参数对防止过拟合最有效？",
+      "options": {
+        "A": "num_round（提升轮数）",
+        "B": "eta（学习率）+ max_depth（最大深度）",
+        "C": "objective（目标函数）",
+        "D": "num_class（类别数）"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "XGBoost防止过拟合的关键参数：\n- eta（学习率）：降低学习率，增加泛化\n- max_depth：限制树深度\n- min_child_weight：叶子节点最小权重\n- subsample：行采样比例\n- colsample_bytree：列采样比例\n\nnum_round增加可能导致过拟合。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q25",
+      "domain": 3,
+      "question": "一个图像分类任务需要从少量标注数据（每类100张图像）开始训练。最佳策略是什么？",
+      "options": {
+        "A": "从头训练一个深度CNN",
+        "B": "使用预训练模型（如ResNet）进行迁移学习",
+        "C": "使用简单的逻辑回归",
+        "D": "使用K-Means聚类"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "小数据集图像分类：\n- 迁移学习利用预训练知识\n- 冻结底层，微调顶层\n- 减少过拟合风险\n- 大幅减少训练时间\n\n从头训练深度CNN需要大量数据，否则严重过拟合。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q26",
+      "domain": 3,
+      "question": "在NLP任务中，使用SageMaker内置的BlazingText算法可以完成什么任务？",
+      "options": {
+        "A": "仅图像分类",
+        "B": "文本分类和词向量训练",
+        "C": "仅语音识别",
+        "D": "仅时间序列预测"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "BlazingText功能：\n- 监督文本分类（多类和多标签）\n- 无监督词向量学习（Word2Vec）\n- 高度优化，训练速度快\n- 支持分布式训练\n\n是SageMaker内置NLP算法的首选。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q27",
+      "domain": 3,
+      "question": "公司需要预测商品的销售量（连续值）。有历史销售数据和多个特征。使用SageMaker内置算法，应该选择哪个？",
+      "options": {
+        "A": "Image Classification",
+        "B": "XGBoost",
+        "C": "K-Means",
+        "D": "Semantic Segmentation"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "销售量预测是回归问题：\n- XGBoost支持回归（objective: reg:linear）\n- 处理表格数据效果优秀\n- 特征重要性分析\n- 内置缺失值处理\n\nK-Means是聚类算法，不适合预测。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q28",
+      "domain": 3,
+      "question": "使用SageMaker自动模型调优（HPO）时，如何定义搜索空间以最高效地找到最佳超参数？",
+      "options": {
+        "A": "对所有参数使用最大范围",
+        "B": "根据参数特性选择合适的分布（连续/离散/对数尺度）",
+        "C": "仅调优一个参数",
+        "D": "不需要定义搜索空间"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "HPO搜索空间定义：\n- 学习率：对数尺度（0.001-0.1）\n- 层数：整数离散值（1-10）\n- Dropout：连续均匀分布（0.1-0.5）\n\n合理的搜索空间可以：\n- 加速搜索\n- 避免无效区域\n- 提高找到最优解的概率",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q29",
+      "domain": 3,
+      "question": "在构建深度学习模型时，如何选择激活函数？",
+      "options": {
+        "A": "始终使用Sigmoid",
+        "B": "隐藏层用ReLU，输出层根据任务选择（分类用Softmax，回归用Linear）",
+        "C": "始终使用Tanh",
+        "D": "激活函数不重要"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "激活函数选择：\n- 隐藏层：ReLU（及其变体LeakyReLU, ELU）\n- 二分类输出：Sigmoid\n- 多分类输出：Softmax\n- 回归输出：Linear（无激活）\n\nSigmoid在深层网络有梯度消失问题。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q30",
+      "domain": 3,
+      "question": "模型在训练集上表现很好（98%准确率），但在验证集上表现差（70%准确率）。这是什么问题？如何解决？",
+      "options": {
+        "A": "欠拟合；增加模型复杂度",
+        "B": "过拟合；使用正则化、Dropout、早停",
+        "C": "数据不足；收集更多数据",
+        "D": "学习率太低；增加学习率"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "训练集好验证集差 = 过拟合\n\n解决方法：\n- L1/L2正则化\n- Dropout\n- 早停（Early Stopping）\n- 数据增强\n- 减少模型复杂度\n- 收集更多数据",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q31",
+      "domain": 3,
+      "question": "在SageMaker中使用分布式训练时，哪种策略适合数据并行（Data Parallelism）？",
+      "options": {
+        "A": "模型太大无法放入单个GPU",
+        "B": "数据量大，模型可以放入单个GPU",
+        "C": "只需要单个实例训练",
+        "D": "需要实时推理"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "分布式训练策略：\n- 数据并行：模型副本在多个GPU，每个处理不同数据批次\n- 模型并行：模型分割到多个GPU（用于超大模型）\n\nSageMaker数据并行库优化梯度同步，适合大数据集训练。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q32",
+      "domain": 3,
+      "question": "评估二分类模型时，当关注减少假阴性（漏检）比减少假阳性更重要时，应该优化什么指标？",
+      "options": {
+        "A": "精确率 (Precision)",
+        "B": "召回率 (Recall)",
+        "C": "准确率 (Accuracy)",
+        "D": "特异性 (Specificity)"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "指标选择：\n- 减少假阴性（FN）→ 优化召回率\n- 例如：疾病检测不能漏诊\n- Recall = TP / (TP + FN)\n\n减少假阳性（FP）→ 优化精确率\n例如：垃圾邮件分类不能误判正常邮件",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q33",
+      "domain": 3,
+      "question": "使用SageMaker的Object Detection算法时，需要什么格式的标注数据？",
+      "options": {
+        "A": "CSV文件",
+        "B": "RecordIO格式或JSON行注释文件",
+        "C": "纯文本文件",
+        "D": "Excel文件"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "SageMaker Object Detection支持：\n- RecordIO格式（推荐，高效）\n- 图像文件 + JSON行注释（每行包含图像路径和边界框）\n\n注释格式包含：\n- 图像路径\n- 边界框坐标（左上角、宽、高）\n- 类别标签",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q34",
+      "domain": 3,
+      "question": "时间序列预测任务使用SageMaker DeepAR算法，需要什么类型的输入数据？",
+      "options": {
+        "A": "单一时间序列",
+        "B": "多个相关时间序列（可以学习跨序列模式）",
+        "C": "仅图像数据",
+        "D": "仅文本数据"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "DeepAR特点：\n- 支持多个相关时间序列\n- 学习跨序列的全局模式\n- 处理缺失值\n- 生成概率预测（分位数）\n\n与传统ARIMA不同，DeepAR可以利用多序列信息。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q35",
+      "domain": 3,
+      "question": "在SageMaker中训练模型时，如何避免因意外中断导致的进度丢失？",
+      "options": {
+        "A": "使用更小的数据集",
+        "B": "启用Checkpoint保存到S3",
+        "C": "使用更大的实例",
+        "D": "减少训练轮数"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "SageMaker Checkpoint：\n- 定期保存训练状态到S3\n- Spot实例中断后可恢复\n- 支持托管Spot训练（节省高达90%成本）\n- 配置checkpoint_s3_uri参数",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q36",
+      "domain": 3,
+      "question": "使用SageMaker Autopilot时，它会自动完成哪些任务？",
+      "options": {
+        "A": "仅数据预处理",
+        "B": "数据分析、特征工程、模型选择、超参数调优",
+        "C": "仅模型部署",
+        "D": "仅生成预测"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "SageMaker Autopilot自动化：\n- 数据探索和分析\n- 特征工程\n- 算法选择\n- 超参数调优\n- 生成可解释的Notebook\n- 多个候选模型评估\n\n是AutoML的完整实现。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q37",
+      "domain": 3,
+      "question": "在构建推荐系统时，使用SageMaker的Factorization Machines算法最适合什么场景？",
+      "options": {
+        "A": "图像分类",
+        "B": "高维稀疏数据的预测（如点击率预测）",
+        "C": "语音识别",
+        "D": "文档聚类"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Factorization Machines适用于：\n- 高维稀疏数据\n- 推荐系统（用户-物品交互）\n- 点击率预测\n- 广告排序\n\n通过分解捕捉特征交互，处理稀疏矩阵高效。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q38",
+      "domain": 3,
+      "question": "模型集成（Ensemble）的主要目的是什么？",
+      "options": {
+        "A": "减少训练时间",
+        "B": "通过组合多个模型提高预测性能和鲁棒性",
+        "C": "简化模型部署",
+        "D": "减少数据需求"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "模型集成方法：\n- Bagging：减少方差（如随机森林）\n- Boosting：减少偏差（如XGBoost）\n- Stacking：使用元学习器组合\n\n集成通常优于单一模型，但增加计算成本。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q39",
+      "domain": 4,
+      "question": "在SageMaker中部署模型进行实时推理时，如何处理突发流量？",
+      "options": {
+        "A": "手动增加实例数量",
+        "B": "配置自动扩展策略",
+        "C": "使用更大的单个实例",
+        "D": "限制请求数量"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "SageMaker自动扩展：\n- 基于CloudWatch指标（如InvocationsPerInstance）\n- 配置目标追踪扩展策略\n- 定义最小/最大实例数\n- 自动响应负载变化\n\n确保服务高可用同时优化成本。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q40",
+      "domain": 4,
+      "question": "使用SageMaker Model Monitor可以检测什么问题？",
+      "options": {
+        "A": "仅模型训练错误",
+        "B": "数据漂移、模型漂移、偏见检测、特征归因变化",
+        "C": "仅网络延迟",
+        "D": "仅存储容量"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "SageMaker Model Monitor功能：\n- 数据质量监控（数据漂移）\n- 模型质量监控（预测漂移）\n- 偏见检测（与Clarify集成）\n- 特征归因漂移\n\n持续监控生产模型健康状态。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q41",
+      "domain": 4,
+      "question": "公司需要在边缘设备上部署ML模型进行实时推理。应该使用什么AWS服务？",
+      "options": {
+        "A": "Amazon SageMaker端点",
+        "B": "AWS IoT Greengrass + SageMaker Neo",
+        "C": "Amazon EC2",
+        "D": "AWS Lambda"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "边缘部署方案：\n- SageMaker Neo：模型编译优化\n- IoT Greengrass：边缘运行时\n- 本地推理，低延迟\n- 支持多种边缘硬件\n\nSageMaker端点是云端服务，不适合边缘。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q42",
+      "domain": 4,
+      "question": "在SageMaker中实现A/B测试新模型的最佳方法是什么？",
+      "options": {
+        "A": "完全替换旧模型",
+        "B": "使用生产变体（Production Variants）分配流量",
+        "C": "在不同账户中部署",
+        "D": "使用不同的区域"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "SageMaker Production Variants：\n- 同一端点托管多个模型版本\n- 按权重分配流量（如90%旧模型，10%新模型）\n- 支持金丝雀发布\n- 逐步增加新模型流量\n\n安全地验证新模型性能。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q43",
+      "domain": 4,
+      "question": "使用SageMaker Pipelines构建ML工作流的主要优势是什么？",
+      "options": {
+        "A": "仅用于数据存储",
+        "B": "自动化、版本控制、可重复的ML工作流",
+        "C": "仅用于模型推理",
+        "D": "仅用于数据可视化"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "SageMaker Pipelines优势：\n- 定义可重复的ML工作流\n- 步骤间依赖管理\n- 与模型注册表集成\n- 版本控制和审计追踪\n- 支持CI/CD集成\n\n实现MLOps自动化。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q44",
+      "domain": 4,
+      "question": "部署的SageMaker模型需要减少推理延迟。哪种方法最有效？",
+      "options": {
+        "A": "使用更大的模型",
+        "B": "使用SageMaker Neo编译模型 + GPU实例",
+        "C": "增加批处理大小",
+        "D": "使用更多特征"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "降低推理延迟：\n- SageMaker Neo：编译优化，可提速2倍\n- GPU实例：加速矩阵运算\n- 模型量化：减少精度换速度\n- 选择合适的实例类型\n\n更大的模型和更多特征会增加延迟。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q45",
+      "domain": 4,
+      "question": "如何在SageMaker中管理多个模型版本并控制哪个版本用于生产？",
+      "options": {
+        "A": "手动重命名模型文件",
+        "B": "使用SageMaker Model Registry",
+        "C": "创建不同的S3存储桶",
+        "D": "使用不同的AWS账户"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "SageMaker Model Registry：\n- 模型版本管理\n- 模型审批工作流\n- 模型状态追踪（待审批、已批准、已拒绝）\n- 与Pipelines集成\n- 支持模型血缘追踪",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q46",
+      "domain": 4,
+      "question": "在生产环境中，如何确保ML模型的可解释性和审计追踪？",
+      "options": {
+        "A": "仅记录最终预测结果",
+        "B": "使用SageMaker Clarify生成解释 + CloudTrail记录API调用",
+        "C": "不需要记录任何信息",
+        "D": "仅保存模型代码"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "ML可解释性和审计：\n- Clarify：特征归因、偏见报告\n- CloudTrail：API调用日志\n- CloudWatch：指标和日志\n- Model Monitor：持续监控\n\n满足合规和治理要求。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q47",
+      "domain": 4,
+      "question": "使用SageMaker Serverless Inference适合什么场景？",
+      "options": {
+        "A": "持续高流量的实时应用",
+        "B": "流量不可预测、有间歇性的工作负载",
+        "C": "需要GPU的大型模型",
+        "D": "毫秒级延迟要求"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Serverless Inference特点：\n- 自动扩展至零（无流量时不收费）\n- 适合间歇性工作负载\n- 无需管理实例\n- 有冷启动延迟\n\n持续高流量使用标准端点更经济。不支持GPU。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q48",
+      "domain": 4,
+      "question": "在SageMaker中，如何安全地存储和使用敏感配置（如数据库密码）？",
+      "options": {
+        "A": "硬编码在训练脚本中",
+        "B": "使用AWS Secrets Manager并在运行时获取",
+        "C": "存储在S3公开存储桶",
+        "D": "通过环境变量明文传递"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "安全管理敏感信息：\n- Secrets Manager：加密存储和自动轮换\n- IAM角色：控制访问权限\n- 运行时获取：不在代码中暴露\n\n绝不硬编码密码或使用明文传递。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q49",
+      "domain": 4,
+      "question": "如何使用SageMaker处理批量推理请求（如每天处理百万条记录）？",
+      "options": {
+        "A": "使用实时推理端点",
+        "B": "使用SageMaker Batch Transform",
+        "C": "手动循环调用",
+        "D": "使用Lambda函数"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "SageMaker Batch Transform：\n- 大规模离线批量推理\n- 无需维护端点\n- 自动分配到多个实例\n- 处理完成后释放资源\n- 成本低于持续运行的端点",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q50",
+      "domain": 4,
+      "question": "公司需要确保SageMaker训练作业的VPC隔离和网络安全。应该配置什么？",
+      "options": {
+        "A": "使用公共子网",
+        "B": "配置VPC、私有子网和安全组",
+        "C": "不需要网络配置",
+        "D": "使用互联网网关"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "SageMaker网络安全：\n- VPC：网络隔离\n- 私有子网：无公网访问\n- 安全组：控制入站/出站流量\n- VPC端点：私有访问AWS服务\n- 启用网络隔离模式\n\n满足企业安全和合规要求。",
+      "difficulty": "medium"
+    }
+  ]
+}

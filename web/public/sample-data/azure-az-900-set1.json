@@ -1,0 +1,788 @@
+{
+  "exam": {
+    "id": "azure-az-900-set1",
+    "name": "Azure AZ-900 模拟考试 #1",
+    "code": "AZ-900",
+    "provider": "Microsoft",
+    "language": "zh-CN",
+    "description": "Microsoft Azure Fundamentals 认证考试模拟题 - 第1套",
+    "totalQuestions": 50,
+    "passingScore": 70,
+    "examTime": 85,
+    "domains": [
+      {
+        "id": 1,
+        "name": "Cloud Concepts",
+        "weight": 25
+      },
+      {
+        "id": 2,
+        "name": "Azure Architecture and Services",
+        "weight": 40
+      },
+      {
+        "id": 3,
+        "name": "Azure Management and Governance",
+        "weight": 35
+      }
+    ],
+    "tags": [
+      "Azure",
+      "Cloud",
+      "Microsoft",
+      "认证考试"
+    ]
+  },
+  "questions": [
+    {
+      "id": "q1",
+      "domain": 1,
+      "question": "云计算的哪种服务模型要求客户管理操作系统、中间件和应用程序，而云提供商管理底层基础设施？",
+      "options": {
+        "A": "软件即服务 (SaaS)",
+        "B": "平台即服务 (PaaS)",
+        "C": "基础设施即服务 (IaaS)",
+        "D": "桌面即服务 (DaaS)"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "IaaS (基础设施即服务)：\n- 客户管理：操作系统、中间件、运行时、数据、应用程序\n- 提供商管理：服务器、存储、网络、虚拟化\n\nPaaS：提供商还管理操作系统和中间件\nSaaS：提供商管理一切，客户只使用软件",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q2",
+      "domain": 1,
+      "question": "以下哪项是公有云的主要特征？",
+      "options": {
+        "A": "仅供单个组织专用的资源",
+        "B": "由组织在其本地数据中心运行",
+        "C": "多个组织共享的云基础设施",
+        "D": "无法通过互联网访问"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "公有云特征：\n- 多租户共享基础设施\n- 通过互联网公开可用\n- 按需付费\n- 由云提供商管理\n\n私有云才是单个组织专用。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q3",
+      "domain": 1,
+      "question": "一家公司想要在保持本地基础设施的同时，将部分工作负载迁移到Azure。这种云部署模型叫什么？",
+      "options": {
+        "A": "公有云",
+        "B": "私有云",
+        "C": "混合云",
+        "D": "社区云"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "混合云结合：\n- 本地（私有）基础设施\n- 公有云资源\n- 两者之间可以共享数据和应用\n- 提供灵活性和更多部署选择",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q4",
+      "domain": 1,
+      "question": "以下哪项是云计算的资本支出 (CapEx) 和运营支出 (OpEx) 的正确描述？",
+      "options": {
+        "A": "云计算需要大量CapEx投资",
+        "B": "云计算将CapEx转变为OpEx",
+        "C": "云计算消除所有支出",
+        "D": "CapEx和OpEx在云中是相同的"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "云计算经济模型：\n- CapEx：前期资本投入（购买服务器、数据中心）\n- OpEx：运营费用（按使用付费）\n- 云计算：无需大量前期投资，按需付费\n- 将固定成本转变为可变成本",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q5",
+      "domain": 1,
+      "question": "Azure提供的\"按需自助服务\"是云计算的哪种特性？",
+      "options": {
+        "A": "高可用性",
+        "B": "弹性",
+        "C": "敏捷性",
+        "D": "灾难恢复"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "敏捷性 (Agility)：\n- 快速部署和配置资源\n- 按需自助服务\n- 无需等待硬件采购\n- 快速响应业务需求变化\n\n弹性是自动扩展能力，高可用是保持运行。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q6",
+      "domain": 1,
+      "question": "当应用程序需求增加时，Azure自动添加更多资源；需求减少时自动减少资源。这种能力叫什么？",
+      "options": {
+        "A": "高可用性",
+        "B": "弹性 (Elasticity)",
+        "C": "容错",
+        "D": "灾难恢复"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "弹性 (Elasticity)：\n- 根据需求自动扩展和收缩\n- 水平扩展：增加/减少实例数量\n- 垂直扩展：增加/减少单个资源大小\n- 优化成本，只为使用的付费",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q7",
+      "domain": 1,
+      "question": "Azure承诺99.99%的SLA意味着什么？",
+      "options": {
+        "A": "服务永远不会中断",
+        "B": "每年最多约52分钟的停机时间",
+        "C": "每月最多约4分钟的停机时间",
+        "D": "每天最多约1小时的停机时间"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "99.99% SLA计算：\n- 每年允许停机时间 = 365天 × 24小时 × 60分钟 × 0.01% ≈ 52.56分钟\n- 这是\"四个九\"的可用性\n- 99.9% = 每年约8.76小时停机",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q8",
+      "domain": 1,
+      "question": "以下哪个场景最适合使用SaaS模型？",
+      "options": {
+        "A": "构建自定义虚拟机环境",
+        "B": "使用Microsoft 365进行日常办公",
+        "C": "开发自定义Web应用程序",
+        "D": "管理企业级数据中心"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "SaaS适用场景：\n- 直接使用现成软件（如M365、Salesforce）\n- 无需管理底层基础设施\n- 通过订阅付费使用\n\n构建VM用IaaS，开发应用用PaaS。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q9",
+      "domain": 1,
+      "question": "Azure在全球分布的物理数据中心位置称为什么？",
+      "options": {
+        "A": "可用性区域 (Availability Zones)",
+        "B": "区域 (Regions)",
+        "C": "资源组 (Resource Groups)",
+        "D": "订阅 (Subscriptions)"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure区域层次结构：\n- Region（区域）：地理位置（如East US、Japan East）\n- Availability Zone：区域内的独立数据中心\n- 数据中心：物理设施\n\n区域决定数据驻留位置和延迟。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q10",
+      "domain": 1,
+      "question": "消费模型 (Consumption-based Model) 的主要优势是什么？",
+      "options": {
+        "A": "需要大量前期投资",
+        "B": "固定月费，无论使用多少",
+        "C": "只为实际使用的资源付费",
+        "D": "一次性购买终身使用"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "消费模型优势：\n- 按使用量付费\n- 无前期成本\n- 不使用不付费\n- 弹性扩展成本\n- 将CapEx转为OpEx",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q11",
+      "domain": 1,
+      "question": "在共享责任模型中，对于Azure虚拟机，客户负责什么？",
+      "options": {
+        "A": "物理主机安全",
+        "B": "操作系统补丁和更新",
+        "C": "数据中心网络",
+        "D": "虚拟化层管理"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "IaaS共享责任：\n- Azure负责：物理安全、网络基础设施、虚拟化层\n- 客户负责：OS补丁、应用程序、数据、访问控制\n\n责任随服务模型变化（IaaS > PaaS > SaaS客户责任递减）",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q12",
+      "domain": 1,
+      "question": "什么是\"可伸缩性 (Scalability)\"？",
+      "options": {
+        "A": "系统在故障时继续运行的能力",
+        "B": "系统增加容量以处理更多负载的能力",
+        "C": "系统从故障中恢复的能力",
+        "D": "系统加密数据的能力"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "可伸缩性类型：\n- 垂直扩展 (Scale Up)：增加单个资源的能力（更大的VM）\n- 水平扩展 (Scale Out)：增加更多实例\n\n弹性是自动扩展，可伸缩性是能够扩展。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q13",
+      "domain": 2,
+      "question": "以下哪个Azure服务是用于创建虚拟机的？",
+      "options": {
+        "A": "Azure App Service",
+        "B": "Azure Virtual Machines",
+        "C": "Azure Functions",
+        "D": "Azure Container Instances"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure计算服务对比：\n- Virtual Machines：IaaS，完全控制的VM\n- App Service：PaaS，托管Web应用\n- Functions：无服务器，事件驱动\n- Container Instances：运行容器",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q14",
+      "domain": 2,
+      "question": "Azure虚拟机规模集 (Virtual Machine Scale Sets) 的主要用途是什么？",
+      "options": {
+        "A": "备份虚拟机",
+        "B": "自动创建和管理相同VM的组",
+        "C": "加密虚拟机磁盘",
+        "D": "连接虚拟机到本地网络"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "VM规模集功能：\n- 创建和管理一组相同的VM\n- 根据需求自动扩展\n- 负载均衡支持\n- 高可用性配置\n- 适合大规模工作负载",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q15",
+      "domain": 2,
+      "question": "Azure App Service属于哪种云服务模型？",
+      "options": {
+        "A": "IaaS",
+        "B": "PaaS",
+        "C": "SaaS",
+        "D": "FaaS"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure App Service是PaaS：\n- 托管Web应用、API、移动后端\n- Azure管理基础设施\n- 自动扩展和负载均衡\n- 支持多种语言（.NET、Java、Node.js等）",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q16",
+      "domain": 2,
+      "question": "Azure Functions最适合哪种场景？",
+      "options": {
+        "A": "运行需要24/7在线的大型应用程序",
+        "B": "事件驱动的短期任务处理",
+        "C": "托管关系型数据库",
+        "D": "运行Windows桌面应用程序"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure Functions（无服务器）：\n- 事件驱动执行\n- 按执行次数和时间计费\n- 短期任务（超时限制）\n- 自动扩展到零\n- 适合：API、数据处理、自动化任务",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q17",
+      "domain": 2,
+      "question": "Azure Blob Storage最适合存储什么类型的数据？",
+      "options": {
+        "A": "关系型数据表",
+        "B": "非结构化数据如图片、视频、日志",
+        "C": "实时流数据",
+        "D": "消息队列"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Blob Storage用于：\n- 非结构化数据（图片、视频、文档、备份）\n- 三种Blob类型：Block、Append、Page\n- 访问层：Hot、Cool、Archive\n- 大规模可扩展对象存储",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q18",
+      "domain": 2,
+      "question": "Azure存储账户中，哪种访问层适合需要频繁访问的数据？",
+      "options": {
+        "A": "Archive（存档层）",
+        "B": "Cool（冷层）",
+        "C": "Hot（热层）",
+        "D": "Cold（冷冻层）"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "Azure存储访问层：\n- Hot：频繁访问，存储成本高，访问成本低\n- Cool：不频繁访问（30天+），存储成本低，访问成本高\n- Archive：极少访问，最低存储成本，最高访问成本和延迟",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q19",
+      "domain": 2,
+      "question": "Azure SQL Database属于哪种服务模型？",
+      "options": {
+        "A": "IaaS",
+        "B": "PaaS",
+        "C": "SaaS",
+        "D": "On-premises"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure SQL Database是PaaS：\n- 完全托管的关系型数据库\n- 自动补丁、备份、高可用\n- 无需管理底层基础设施\n- 内置智能性能调优",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q20",
+      "domain": 2,
+      "question": "以下哪个Azure服务是NoSQL数据库？",
+      "options": {
+        "A": "Azure SQL Database",
+        "B": "Azure Cosmos DB",
+        "C": "Azure Database for MySQL",
+        "D": "Azure Database for PostgreSQL"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure Cosmos DB：\n- 全球分布式多模型NoSQL数据库\n- 支持多种API（SQL、MongoDB、Cassandra等）\n- 毫秒级延迟\n- 99.999%可用性SLA\n- 弹性扩展",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q21",
+      "domain": 2,
+      "question": "Azure虚拟网络 (VNet) 的主要用途是什么？",
+      "options": {
+        "A": "存储备份数据",
+        "B": "在Azure中创建隔离的私有网络",
+        "C": "管理用户身份",
+        "D": "监控应用程序性能"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure VNet功能：\n- 创建隔离的私有网络\n- 定义IP地址范围和子网\n- 连接Azure资源\n- VPN/ExpressRoute连接本地\n- 网络安全组控制流量",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q22",
+      "domain": 2,
+      "question": "以下哪个服务用于将本地网络安全地连接到Azure？",
+      "options": {
+        "A": "Azure Load Balancer",
+        "B": "Azure VPN Gateway",
+        "C": "Azure CDN",
+        "D": "Azure Traffic Manager"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure VPN Gateway：\n- 站点到站点VPN连接\n- 点到站点VPN连接\n- 加密的互联网连接\n- 混合云场景必需\n\nExpressRoute提供专线连接（非互联网）",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q23",
+      "domain": 2,
+      "question": "Azure ExpressRoute与VPN Gateway的主要区别是什么？",
+      "options": {
+        "A": "ExpressRoute更便宜",
+        "B": "ExpressRoute使用专线而非公共互联网",
+        "C": "VPN Gateway速度更快",
+        "D": "两者功能完全相同"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "ExpressRoute vs VPN Gateway：\n- ExpressRoute：专用私有连接，更高带宽，更低延迟，更可靠\n- VPN Gateway：通过互联网的加密连接\n\nExpressRoute适合高带宽、低延迟需求的企业。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q24",
+      "domain": 2,
+      "question": "Azure Load Balancer的主要功能是什么？",
+      "options": {
+        "A": "存储数据",
+        "B": "分发传入流量到多个后端资源",
+        "C": "管理DNS记录",
+        "D": "加密数据传输"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure Load Balancer：\n- 在多个VM之间分发流量\n- 提高应用可用性\n- 支持入站和出站场景\n- L4负载均衡（TCP/UDP）\n\nApplication Gateway是L7负载均衡。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q25",
+      "domain": 2,
+      "question": "什么是Azure可用性区域 (Availability Zones)？",
+      "options": {
+        "A": "不同国家的Azure区域",
+        "B": "同一区域内物理隔离的数据中心",
+        "C": "Azure定价区域",
+        "D": "Azure支持团队的时区"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "可用性区域：\n- 同一区域内独立的物理位置\n- 独立电源、冷却、网络\n- 至少3个区域组成\n- 保护应用免受数据中心故障\n- 实现99.99% SLA",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q26",
+      "domain": 2,
+      "question": "Azure Active Directory (现称Microsoft Entra ID) 的主要用途是什么？",
+      "options": {
+        "A": "文件存储服务",
+        "B": "身份和访问管理服务",
+        "C": "虚拟机管理",
+        "D": "网络防火墙"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Microsoft Entra ID (前Azure AD)：\n- 云身份和访问管理\n- 单点登录 (SSO)\n- 多因素认证 (MFA)\n- 条件访问策略\n- B2B和B2C身份管理",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q27",
+      "domain": 2,
+      "question": "以下哪个服务用于在Azure中存储机密信息如API密钥和证书？",
+      "options": {
+        "A": "Azure Storage Account",
+        "B": "Azure Key Vault",
+        "C": "Azure Blob Storage",
+        "D": "Azure Active Directory"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure Key Vault：\n- 安全存储机密（密码、API密钥）\n- 管理加密密钥\n- 存储SSL/TLS证书\n- 硬件安全模块 (HSM) 支持\n- 审计访问日志",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q28",
+      "domain": 2,
+      "question": "Azure Kubernetes Service (AKS) 的主要用途是什么？",
+      "options": {
+        "A": "托管关系型数据库",
+        "B": "托管容器化应用程序",
+        "C": "存储非结构化数据",
+        "D": "管理虚拟桌面"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "AKS功能：\n- 托管Kubernetes集群\n- 自动化容器编排\n- 扩展、更新、自我修复\n- 与Azure DevOps集成\n- 无需管理控制平面",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q29",
+      "domain": 2,
+      "question": "Azure Content Delivery Network (CDN) 的主要优势是什么？",
+      "options": {
+        "A": "降低存储成本",
+        "B": "通过缓存内容到全球边缘节点来减少延迟",
+        "C": "增强数据加密",
+        "D": "自动备份数据"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure CDN：\n- 将内容缓存到全球边缘位置\n- 减少用户访问延迟\n- 减轻源服务器负载\n- 适合静态内容、媒体流\n- 提高用户体验",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q30",
+      "domain": 2,
+      "question": "Azure Files提供什么类型的存储？",
+      "options": {
+        "A": "对象存储",
+        "B": "块存储",
+        "C": "SMB/NFS文件共享",
+        "D": "队列存储"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "Azure Files：\n- 托管文件共享服务\n- 支持SMB和NFS协议\n- 可从云端和本地访问\n- 替代传统文件服务器\n- Azure File Sync可同步本地",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q31",
+      "domain": 2,
+      "question": "以下哪个服务用于自动化Azure资源的部署和管理？",
+      "options": {
+        "A": "Azure Blob Storage",
+        "B": "Azure Resource Manager (ARM)",
+        "C": "Azure Traffic Manager",
+        "D": "Azure Load Balancer"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure Resource Manager：\n- Azure的部署和管理服务\n- 使用ARM模板进行基础设施即代码\n- 管理资源组\n- 提供一致的管理层\n- 支持RBAC和标签",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q32",
+      "domain": 2,
+      "question": "什么是Azure区域对 (Region Pairs)？",
+      "options": {
+        "A": "两个相邻的可用性区域",
+        "B": "同一地理区域内配对的两个区域用于灾难恢复",
+        "C": "两个相同价格的区域",
+        "D": "管理员账户的配对"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "区域对特点：\n- 同一地理区域内的两个区域\n- 至少300英里距离\n- 自动复制某些服务\n- 计划维护顺序进行\n- 灾难恢复优先恢复",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q33",
+      "domain": 3,
+      "question": "Azure成本管理和计费工具的主要功能是什么？",
+      "options": {
+        "A": "部署虚拟机",
+        "B": "分析和优化Azure成本",
+        "C": "管理用户身份",
+        "D": "监控应用性能"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure成本管理功能：\n- 分析当前支出\n- 预测未来成本\n- 设置预算和警报\n- 成本优化建议\n- 部门/项目成本分配",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q34",
+      "domain": 3,
+      "question": "以下哪个工具用于估算Azure服务的成本？",
+      "options": {
+        "A": "Azure Advisor",
+        "B": "Azure Pricing Calculator",
+        "C": "Azure Monitor",
+        "D": "Azure Policy"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure定价计算器：\n- 估算Azure服务成本\n- 配置不同场景\n- 比较定价选项\n- 导出和保存估算\n\nTCO计算器用于比较本地vs云成本。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q35",
+      "domain": 3,
+      "question": "Azure保留实例 (Reserved Instances) 的主要优势是什么？",
+      "options": {
+        "A": "更高的性能",
+        "B": "承诺1-3年使用可获得显著折扣",
+        "C": "更多存储空间",
+        "D": "更好的安全性"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure保留实例：\n- 承诺1年或3年使用\n- 相比即用即付最多省72%\n- 适合可预测的工作负载\n- 支持VM、SQL DB、Cosmos DB等\n- 可交换或退款（有条件）",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q36",
+      "domain": 3,
+      "question": "Azure资源组 (Resource Groups) 的作用是什么？",
+      "options": {
+        "A": "存储用户密码",
+        "B": "作为相关Azure资源的逻辑容器",
+        "C": "加密数据传输",
+        "D": "提供网络隔离"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "资源组：\n- 逻辑容器组织相关资源\n- 统一管理生命周期\n- 应用RBAC权限\n- 一个资源只能属于一个资源组\n- 删除资源组删除其中所有资源",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q37",
+      "domain": 3,
+      "question": "Azure Policy的主要用途是什么？",
+      "options": {
+        "A": "管理用户密码",
+        "B": "强制执行组织标准和评估合规性",
+        "C": "备份虚拟机",
+        "D": "监控网络流量"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure Policy：\n- 创建和分配策略规则\n- 强制资源合规\n- 评估现有资源\n- 自动修复不合规资源\n- 例如：禁止某些VM大小、要求标签",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q38",
+      "domain": 3,
+      "question": "Azure蓝图 (Blueprints) 与ARM模板的区别是什么？",
+      "options": {
+        "A": "蓝图只能部署VM",
+        "B": "蓝图可以包含策略、角色分配和ARM模板的组合",
+        "C": "ARM模板更全面",
+        "D": "两者完全相同"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure Blueprints：\n- 将ARM模板、策略、RBAC组合在一起\n- 定义可重复的环境\n- 版本控制\n- 跟踪部署关系\n- 快速设置符合规范的环境",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q39",
+      "domain": 3,
+      "question": "Azure RBAC (基于角色的访问控制) 中，\"Owner\"角色有什么权限？",
+      "options": {
+        "A": "只能查看资源",
+        "B": "完全控制资源并可以分配访问权限",
+        "C": "只能创建资源",
+        "D": "只能删除资源"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure内置角色：\n- Owner：完全控制 + 管理访问权限\n- Contributor：完全控制，不能管理访问权限\n- Reader：只读访问\n- User Access Administrator：只管理访问权限",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q40",
+      "domain": 3,
+      "question": "Azure Monitor的主要功能是什么？",
+      "options": {
+        "A": "部署应用程序",
+        "B": "收集、分析和响应遥测数据",
+        "C": "管理用户账户",
+        "D": "存储备份数据"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure Monitor：\n- 收集指标和日志\n- 分析和可视化数据\n- 设置警报\n- 自动响应\n- Application Insights（应用性能）\n- Log Analytics（日志查询）",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q41",
+      "domain": 3,
+      "question": "Azure Advisor提供什么类型的建议？",
+      "options": {
+        "A": "只有安全建议",
+        "B": "可靠性、安全性、性能、成本和卓越运营建议",
+        "C": "只有成本建议",
+        "D": "只有性能建议"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure Advisor五大类建议：\n- 可靠性：提高应用可用性\n- 安全性：安全最佳实践\n- 性能：优化资源性能\n- 成本：降低支出\n- 卓越运营：提高效率",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q42",
+      "domain": 3,
+      "question": "以下哪个服务提供Azure资源的安全建议和威胁防护？",
+      "options": {
+        "A": "Azure Advisor",
+        "B": "Microsoft Defender for Cloud",
+        "C": "Azure Monitor",
+        "D": "Azure Cost Management"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Microsoft Defender for Cloud：\n- 安全态势管理\n- 威胁检测和响应\n- 合规性评估\n- 安全建议\n- 跨云安全（Azure、AWS、GCP）",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q43",
+      "domain": 3,
+      "question": "Azure中的\"标签 (Tags)\"有什么用途？",
+      "options": {
+        "A": "加密资源",
+        "B": "组织和分类资源以进行成本管理和管理",
+        "C": "提高资源性能",
+        "D": "备份资源"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure标签用途：\n- 组织和分类资源\n- 成本分配和跟踪\n- 自动化管理\n- 格式：名称-值对\n- 例如：Environment=Production, Owner=IT",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q44",
+      "domain": 3,
+      "question": "Azure订阅 (Subscription) 的作用是什么？",
+      "options": {
+        "A": "存储数据的容器",
+        "B": "Azure服务的计费和访问控制边界",
+        "C": "网络安全边界",
+        "D": "用户身份验证服务"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure订阅：\n- 计费边界：独立账单\n- 访问控制边界：管理权限\n- 资源限制边界\n- 一个租户可有多个订阅\n- 用于分离环境、部门、项目",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q45",
+      "domain": 3,
+      "question": "Azure管理组 (Management Groups) 的用途是什么？",
+      "options": {
+        "A": "管理单个资源",
+        "B": "在多个订阅之间组织和应用治理",
+        "C": "存储日志数据",
+        "D": "管理网络流量"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "管理组层次结构：\n- 根管理组 → 管理组 → 订阅 → 资源组 → 资源\n- 统一管理多个订阅\n- 继承策略和RBAC\n- 企业级治理\n- 最多6层嵌套",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q46",
+      "domain": 3,
+      "question": "Azure Service Health的主要功能是什么？",
+      "options": {
+        "A": "优化资源成本",
+        "B": "提供Azure服务状态和计划维护的个性化视图",
+        "C": "管理用户权限",
+        "D": "加密数据"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure Service Health：\n- 跟踪影响您资源的Azure问题\n- 计划维护通知\n- 健康建议\n- 个性化仪表板\n- 历史事件查看",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q47",
+      "domain": 3,
+      "question": "以下哪个工具用于管理Azure资源的命令行操作？",
+      "options": {
+        "A": "Azure Portal",
+        "B": "Azure CLI 和 Azure PowerShell",
+        "C": "Azure Mobile App",
+        "D": "Azure Advisor"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure管理工具：\n- Azure Portal：图形界面\n- Azure CLI：跨平台命令行\n- Azure PowerShell：Windows PowerShell模块\n- Cloud Shell：浏览器内命令行\n- ARM模板：基础设施即代码",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q48",
+      "domain": 3,
+      "question": "Azure Arc的主要用途是什么？",
+      "options": {
+        "A": "只管理Azure虚拟机",
+        "B": "将Azure管理扩展到非Azure环境（本地、其他云）",
+        "C": "加速网络连接",
+        "D": "压缩存储数据"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure Arc：\n- 将Azure管理扩展到任何基础设施\n- 管理本地、多云、边缘服务器\n- 统一管理和治理\n- 应用Azure Policy和RBAC\n- 混合云管理",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q49",
+      "domain": 3,
+      "question": "Microsoft Purview的主要功能是什么？",
+      "options": {
+        "A": "管理虚拟机",
+        "B": "统一数据治理和合规管理",
+        "C": "存储大数据",
+        "D": "管理网络安全"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Microsoft Purview：\n- 数据目录和发现\n- 数据分类和标记\n- 数据血缘追踪\n- 合规性和风险管理\n- 跨本地、云、SaaS的数据治理",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q50",
+      "domain": 3,
+      "question": "以下哪项最能帮助降低Azure成本？",
+      "options": {
+        "A": "使用最大规格的虚拟机",
+        "B": "结合使用Azure保留实例、正确调整资源大小和关闭未使用资源",
+        "C": "部署更多资源",
+        "D": "忽略Azure Advisor建议"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "降低Azure成本的策略：\n- 保留实例（1-3年承诺）\n- 正确调整资源大小\n- 关闭或删除未使用资源\n- 使用Azure Hybrid Benefit\n- 选择合适的存储层\n- 遵循Advisor成本建议",
+      "difficulty": "medium"
+    }
+  ]
+}
