@@ -112,9 +112,10 @@ const CertificationPathSVG: React.FC<{
     expert: language === 'ja' ? 'エキスパート' : '专家'
   };
 
-  // Calculate max certs per level to determine SVG width
-  const maxCertsPerLevel = Math.max(...levels.map(level => certsByLevel[level].length), 1);
-  const svgWidth = Math.max(800, 100 + maxCertsPerLevel * 160 + 50);
+  // Calculate SVG dimensions - use FIXED width for consistent font size across all providers
+  // Fixed viewBox width of 1800px ensures consistent scaling/font size
+  // This accommodates the largest provider (Azure with ~11 certs/level)
+  const svgWidth = 1800;
   const svgHeight = 40 + levels.length * 95 + 20;
 
   return (
@@ -131,7 +132,7 @@ const CertificationPathSVG: React.FC<{
       </defs>
 
       {/* Background */}
-      <rect x="0" y="0" width={svgWidth} height={svgHeight} fill="#FAFAFA" rx="12" />
+      <rect x="0" y="0" width="1800" height={svgHeight} fill="#FAFAFA" rx="12" />
 
       {/* Level lanes - only levels with certifications */}
       {levels.map((level, i) => (
@@ -139,7 +140,7 @@ const CertificationPathSVG: React.FC<{
           <rect
             x="30"
             y={40 + i * 95}
-            width={svgWidth - 60}
+            width="1740"
             height="85"
             fill={i % 2 === 0 ? '#F8FAFC' : '#FFFFFF'}
             rx="8"
@@ -261,7 +262,7 @@ const CertificationPathSVG: React.FC<{
       ))}
 
       {/* Legend - positioned at bottom right */}
-      <g transform={`translate(${svgWidth - 220}, ${svgHeight - 25})`}>
+      <g transform={`translate(1580, ${svgHeight - 25})`}>
         <circle cx="0" cy="0" r="6" fill={config.pathColor} />
         <text x="15" y="4" fill="#6B7280" fontSize="10">
           {language === 'ja' ? '練習問題あり' : '有题库'}
@@ -480,7 +481,6 @@ export const CertificationPathPage: React.FC = () => {
   const pageTitle = lang === 'ja' ? '認証学習パス' : '认证学习路径';
   const backText = lang === 'ja' ? 'ホームに戻る' : '返回首页';
   const careerTitle = lang === 'ja' ? 'キャリアパス推奨' : '职业路径推荐';
-  const careerSubtitle = lang === 'ja' ? 'あなたのキャリア目標に合った認定を見つけましょう' : '找到适合你职业目标的认证';
   const pathTitle = lang === 'ja' ? '認定パスマップ' : '认证路径图';
   const certTitle = lang === 'ja' ? '認定一覧' : '认证列表';
   const viewAllText = lang === 'ja' ? 'すべての認定を表示' : '查看全部认证';
@@ -492,7 +492,7 @@ export const CertificationPathPage: React.FC = () => {
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-indigo-50/30">
       {/* Header - Very Compact */}
       <div className={`bg-gradient-to-r ${isCareerMode ? 'from-indigo-50 to-purple-50' : config.bgGradient} border-b ${isCareerMode ? 'border-indigo-200' : config.borderColor}`}>
-        <div className="px-4 lg:px-8 py-2">
+        <div className="px-3 lg:px-4 py-2">
           <div className="flex items-center justify-between gap-3">
             <div className="flex items-center gap-2">
               <button
@@ -532,7 +532,7 @@ export const CertificationPathPage: React.FC = () => {
         </div>
       </div>
 
-      <div className="px-4 lg:px-8 py-2 max-w-[1600px] mx-auto">
+      <div className="px-3 lg:px-4 py-2">
         {/* Career Paths Section - Very Compact */}
         <section className="mb-4">
           {!isCareerMode ? (

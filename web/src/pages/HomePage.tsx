@@ -26,6 +26,10 @@ import {
   Building2,
   Cog,
   Shield,
+  Network,
+  HardDrive,
+  Sparkles,
+  Users,
   LucideIcon
 } from 'lucide-react';
 import { importExamFromJson } from '../lib/import';
@@ -37,18 +41,28 @@ import { careerPaths } from '../data/certifications';
 const careerIcons: Record<string, LucideIcon> = {
   'cloud-architect': Building2,
   'ai-engineer': Brain,
+  'genai-engineer': Sparkles,
   'data-engineer': Database,
   'devops-engineer': Cog,
-  'security-engineer': Shield
+  'security-engineer': Shield,
+  'network-engineer': Network,
+  'database-engineer': HardDrive,
+  'cloud-developer': Code2,
+  'enterprise-admin': Users
 };
 
 // Career gradient colors
 const careerGradients: Record<string, string> = {
   'cloud-architect': 'from-blue-500 to-indigo-600',
   'ai-engineer': 'from-purple-500 to-pink-600',
+  'genai-engineer': 'from-violet-500 to-fuchsia-600',
   'data-engineer': 'from-emerald-500 to-teal-600',
   'devops-engineer': 'from-orange-500 to-red-600',
-  'security-engineer': 'from-slate-500 to-zinc-700'
+  'security-engineer': 'from-slate-500 to-zinc-700',
+  'network-engineer': 'from-cyan-500 to-blue-600',
+  'database-engineer': 'from-amber-500 to-orange-600',
+  'cloud-developer': 'from-green-500 to-emerald-600',
+  'enterprise-admin': 'from-rose-500 to-pink-600'
 };
 
 // Provider configuration for certification exams
@@ -331,24 +345,24 @@ export const HomePage: React.FC = () => {
     return (
       <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-indigo-50/30">
         <div className={`bg-gradient-to-r ${config.bgGradient} border-b ${config.borderColor}`}>
-          <div className="px-6 lg:px-10 py-6">
+          <div className="px-3 lg:px-6 py-4">
             <button
               onClick={() => { setSelectedView(null); setCertCodeFilter(null); }}
-              className="flex items-center gap-2 text-gray-600 hover:text-gray-900 mb-4 transition-colors"
+              className="flex items-center gap-2 text-gray-600 hover:text-gray-900 mb-3 transition-colors text-sm"
             >
-              <ArrowLeft size={20} />
+              <ArrowLeft size={16} />
               <span>{language === 'ja' ? 'トップに戻る' : '返回首页'}</span>
             </button>
             <div className="flex items-center justify-between">
-              <div className="flex items-center gap-4">
-                <div className={`p-3 ${config.iconBg} rounded-2xl shadow-lg`}>
-                  <GraduationCap size={32} className="text-white" />
+              <div className="flex items-center gap-3">
+                <div className={`p-2 ${config.iconBg} rounded-xl shadow-lg`}>
+                  <GraduationCap size={24} className="text-white" />
                 </div>
                 <div>
-                  <h1 className="text-2xl lg:text-3xl font-bold text-gray-900">
+                  <h1 className="text-xl lg:text-2xl font-bold text-gray-900">
                     {config.shortName} {certCodeFilter ? certCodeFilter.toUpperCase() : (language === 'ja' ? '認定試験' : '认证考试')}
                   </h1>
-                  <p className="text-gray-600 mt-1">
+                  <p className="text-gray-600 text-sm">
                     {filteredExams.length} {language === 'ja' ? 'セット' : '套题库'}
                     {certCodeFilter && (
                       <button
@@ -361,16 +375,16 @@ export const HomePage: React.FC = () => {
                   </p>
                 </div>
               </div>
-              <div className="flex items-center gap-3">
-                <button onClick={handleReset} disabled={importing} className="p-2.5 text-gray-500 hover:text-gray-700 hover:bg-white/50 rounded-xl transition-colors" title={language === 'ja' ? 'リセット' : '重置数据'}>
-                  <RefreshCw size={20} />
+              <div className="flex items-center gap-2">
+                <button onClick={handleReset} disabled={importing} className="p-2 text-gray-500 hover:text-gray-700 hover:bg-white/50 rounded-lg transition-colors" title={language === 'ja' ? 'リセット' : '重置数据'}>
+                  <RefreshCw size={18} />
                 </button>
                 <ImportExam onImportSuccess={loadExams} />
               </div>
             </div>
           </div>
         </div>
-        <div className="px-6 lg:px-10 py-8">
+        <div className="px-3 lg:px-6 py-6">
           {error && <div className="mb-5 p-4 bg-red-50 text-red-700 rounded-xl text-base border border-red-100">{error}</div>}
           {filteredExams.length === 0 ? (
             <div className="text-center py-20 bg-white rounded-2xl border border-gray-200 shadow-sm">
@@ -460,23 +474,23 @@ export const HomePage: React.FC = () => {
     return (
       <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-indigo-50/30">
         <div className={`bg-gradient-to-r ${config.bgGradient} border-b ${config.borderColor}`}>
-          <div className="px-6 lg:px-10 py-6">
-            <button onClick={() => setSelectedView(null)} className="flex items-center gap-2 text-gray-600 hover:text-gray-900 mb-4 transition-colors">
-              <ArrowLeft size={20} />
+          <div className="px-3 lg:px-6 py-4">
+            <button onClick={() => setSelectedView(null)} className="flex items-center gap-2 text-gray-600 hover:text-gray-900 mb-3 transition-colors text-sm">
+              <ArrowLeft size={16} />
               <span>{language === 'ja' ? 'トップに戻る' : '返回首页'}</span>
             </button>
-            <div className="flex items-center gap-4">
-              <div className={`p-3 ${config.iconBg} rounded-2xl shadow-lg`}>
-                <Lightbulb size={32} className="text-white" />
+            <div className="flex items-center gap-3">
+              <div className={`p-2 ${config.iconBg} rounded-xl shadow-lg`}>
+                <Lightbulb size={24} className="text-white" />
               </div>
               <div>
-                <h1 className="text-2xl lg:text-3xl font-bold text-gray-900">{content.title}</h1>
-                <p className="text-gray-600 mt-1">{content.subtitle}</p>
+                <h1 className="text-xl lg:text-2xl font-bold text-gray-900">{content.title}</h1>
+                <p className="text-gray-600 text-sm">{content.subtitle}</p>
               </div>
             </div>
           </div>
         </div>
-        <div className="px-6 lg:px-10 py-8 max-w-5xl mx-auto">
+        <div className="px-3 lg:px-6 py-6 max-w-5xl mx-auto">
           <div className="grid gap-6 mb-12">
             {content.sections.map((section, i) => (
               <div key={i} className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 hover:shadow-lg transition-shadow">
@@ -596,23 +610,23 @@ export const HomePage: React.FC = () => {
     return (
       <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-indigo-50/30">
         <div className={`bg-gradient-to-r ${config.bgGradient} border-b ${config.borderColor}`}>
-          <div className="px-6 lg:px-10 py-6">
-            <button onClick={() => setSelectedView(null)} className="flex items-center gap-2 text-gray-600 hover:text-gray-900 mb-4 transition-colors">
-              <ArrowLeft size={20} />
+          <div className="px-3 lg:px-6 py-4">
+            <button onClick={() => setSelectedView(null)} className="flex items-center gap-2 text-gray-600 hover:text-gray-900 mb-3 transition-colors text-sm">
+              <ArrowLeft size={16} />
               <span>{language === 'ja' ? 'トップに戻る' : '返回首页'}</span>
             </button>
-            <div className="flex items-center gap-4">
-              <div className={`p-3 ${config.iconBg} rounded-2xl shadow-lg`}>
-                <Boxes size={32} className="text-white" />
+            <div className="flex items-center gap-3">
+              <div className={`p-2 ${config.iconBg} rounded-xl shadow-lg`}>
+                <Boxes size={24} className="text-white" />
               </div>
               <div>
-                <h1 className="text-2xl lg:text-3xl font-bold text-gray-900">{content.title}</h1>
-                <p className="text-gray-600 mt-1">{content.subtitle}</p>
+                <h1 className="text-xl lg:text-2xl font-bold text-gray-900">{content.title}</h1>
+                <p className="text-gray-600 text-sm">{content.subtitle}</p>
               </div>
             </div>
           </div>
         </div>
-        <div className="px-6 lg:px-10 py-8 max-w-6xl mx-auto">
+        <div className="px-3 lg:px-6 py-6">
           <div className="grid md:grid-cols-3 gap-6">
             {content.categories.map((category, i) => (
               <div key={i} className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
@@ -652,7 +666,7 @@ export const HomePage: React.FC = () => {
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-gradient-to-br from-indigo-400/10 to-purple-400/10 rounded-full blur-3xl"></div>
         </div>
 
-        <div className="relative px-6 lg:px-10 py-12 lg:py-20">
+        <div className="relative px-3 lg:px-6 py-8 lg:py-12">
           <div className="max-w-4xl mx-auto text-center mb-12">
             <div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-indigo-500/10 to-purple-500/10 rounded-full border border-indigo-200/50 mb-6">
               <Award className="w-4 h-4 text-indigo-600" />
@@ -697,14 +711,14 @@ export const HomePage: React.FC = () => {
           </div>
 
           {/* Career Path Recommendation Section */}
-          <div className="max-w-6xl mx-auto mb-16">
+          <div className="mb-12">
             <h2 className="text-center text-xl font-bold text-gray-800 mb-2">
               {language === 'ja' ? 'キャリアパスで選ぶ' : '按职业路径选择'}
             </h2>
-            <p className="text-center text-gray-500 mb-8">
+            <p className="text-center text-gray-500 mb-6">
               {language === 'ja' ? '目標のキャリアに合った認定資格を探す' : '找到适合你职业目标的认证资格'}
             </p>
-            <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3">
               {careerPaths.map((path) => {
                 const IconComponent = careerIcons[path.id] || Building2;
                 const gradient = careerGradients[path.id] || 'from-gray-500 to-gray-600';
@@ -712,29 +726,34 @@ export const HomePage: React.FC = () => {
                   <button
                     key={path.id}
                     onClick={() => navigate(`/certification-path?career=${path.id}`)}
-                    className="group relative bg-white rounded-2xl p-5 shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 hover:border-transparent overflow-hidden text-center"
+                    className="group relative bg-white rounded-xl p-4 shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 hover:border-transparent overflow-hidden text-center"
                   >
                     <div className={`absolute inset-0 bg-gradient-to-br ${gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-300`}></div>
                     <div className="relative z-10">
-                      <div className={`inline-flex p-3 rounded-xl bg-gradient-to-br ${gradient} mb-3 shadow-lg group-hover:scale-110 group-hover:bg-white/20 transition-all duration-300`}>
-                        <IconComponent size={24} className="text-white" />
+                      <div className={`inline-flex p-2.5 rounded-lg bg-gradient-to-br ${gradient} mb-2 shadow-lg group-hover:scale-110 group-hover:bg-white/20 transition-all duration-300`}>
+                        <IconComponent size={20} className="text-white" />
                       </div>
-                      <h3 className="text-sm font-bold text-gray-900 group-hover:text-white transition-colors">
+                      <h3 className="text-xs font-bold text-gray-900 group-hover:text-white transition-colors leading-tight">
                         {path.name[language === 'ja' ? 'ja' : 'zh']}
                       </h3>
-                      <p className="text-xs text-gray-500 group-hover:text-white/80 mt-1 line-clamp-2 transition-colors">
-                        {path.description[language === 'ja' ? 'ja' : 'zh']}
-                      </p>
                     </div>
-                    <ChevronRight size={16} className="absolute bottom-3 right-3 text-gray-300 group-hover:text-white transition-colors" />
                   </button>
                 );
               })}
             </div>
+            <div className="text-center mt-4">
+              <button
+                onClick={() => navigate('/certification-path')}
+                className="inline-flex items-center gap-2 text-sm text-indigo-600 hover:text-indigo-700 font-medium transition-colors"
+              >
+                {language === 'ja' ? 'すべての認定資格を見る' : '查看全部认证'}
+                <ChevronRight size={16} />
+              </button>
+            </div>
           </div>
 
           {/* Certification Exams Section */}
-          <div className="max-w-6xl mx-auto mb-16">
+          <div className="mb-12">
             <h2 className="text-center text-xl font-bold text-gray-800 mb-2">
               {language === 'ja' ? '認定試験' : '认证考试'}
             </h2>
@@ -769,7 +788,7 @@ export const HomePage: React.FC = () => {
           </div>
 
           {/* AI Learning Section */}
-          <div className="max-w-6xl mx-auto">
+          <div>
             <h2 className="text-center text-xl font-bold text-gray-800 mb-2">
               {language === 'ja' ? 'AI学習' : 'AI 学习'}
             </h2>

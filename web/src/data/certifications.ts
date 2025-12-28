@@ -733,18 +733,31 @@ export const careerPaths: CareerPath[] = [
     name: { zh: 'AI 工程师', ja: 'AI エンジニア' },
     description: { zh: '构建和部署 AI/ML 解决方案的专家', ja: 'AI/ML ソリューションの構築とデプロイの専門家' },
     certifications: [
-      // AWS AI Path: AIF-C01 → MLA-C01 → MLS-C01
       { provider: 'AWS', certId: 'aws-aif-c01' },
       { provider: 'AWS', certId: 'aws-mla-c01' },
       { provider: 'AWS', certId: 'aws-mls-c01' },
-      // Azure AI Path: AI-900 → AI-102 → DP-100
       { provider: 'Azure', certId: 'azure-ai-900' },
       { provider: 'Azure', certId: 'azure-ai-102' },
       { provider: 'Azure', certId: 'azure-dp-100' },
-      // GCP AI Path: CDL → ACE → ML-Engineer
       { provider: 'GCP', certId: 'gcp-cdl' },
       { provider: 'GCP', certId: 'gcp-ace' },
       { provider: 'GCP', certId: 'gcp-ml-engineer' }
+    ]
+  },
+  {
+    id: 'genai-engineer',
+    name: { zh: '生成式 AI 工程师', ja: '生成 AI エンジニア' },
+    description: { zh: '专注于大语言模型和生成式 AI 应用开发', ja: 'LLM と生成 AI アプリケーション開発の専門家' },
+    certifications: [
+      { provider: 'AWS', certId: 'aws-aif-c01' },
+      { provider: 'AWS', certId: 'aws-mla-c01' },
+      { provider: 'AWS', certId: 'aws-mls-c01' },
+      { provider: 'Azure', certId: 'azure-ai-900' },
+      { provider: 'Azure', certId: 'azure-ai-102' },
+      { provider: 'Azure', certId: 'azure-dp-100' },
+      { provider: 'GCP', certId: 'gcp-cdl' },
+      { provider: 'GCP', certId: 'gcp-ml-engineer' },
+      { provider: 'GCP', certId: 'gcp-pgai' }
     ]
   },
   {
@@ -755,6 +768,7 @@ export const careerPaths: CareerPath[] = [
       { provider: 'AWS', certId: 'aws-clf-c02' },
       { provider: 'AWS', certId: 'aws-dea-c01' },
       { provider: 'Azure', certId: 'azure-dp-900' },
+      { provider: 'Azure', certId: 'azure-dp-203' },
       { provider: 'Azure', certId: 'azure-dp-300' },
       { provider: 'GCP', certId: 'gcp-cdl' },
       { provider: 'GCP', certId: 'gcp-ace' },
@@ -767,6 +781,7 @@ export const careerPaths: CareerPath[] = [
     description: { zh: '自动化部署和运维流程的专家', ja: 'デプロイと運用プロセスの自動化の専門家' },
     certifications: [
       { provider: 'AWS', certId: 'aws-clf-c02' },
+      { provider: 'AWS', certId: 'aws-soa-c02' },
       { provider: 'AWS', certId: 'aws-dva-c02' },
       { provider: 'AWS', certId: 'aws-dop-c02' },
       { provider: 'Azure', certId: 'azure-az-900' },
@@ -787,9 +802,71 @@ export const careerPaths: CareerPath[] = [
       { provider: 'AWS', certId: 'aws-scs-c02' },
       { provider: 'Azure', certId: 'azure-sc-900' },
       { provider: 'Azure', certId: 'azure-az-500' },
+      { provider: 'Azure', certId: 'azure-sc-200' },
+      { provider: 'Azure', certId: 'azure-sc-300' },
       { provider: 'GCP', certId: 'gcp-cdl' },
       { provider: 'GCP', certId: 'gcp-ace' },
       { provider: 'GCP', certId: 'gcp-pse' }
+    ]
+  },
+  {
+    id: 'network-engineer',
+    name: { zh: '网络工程师', ja: 'ネットワークエンジニア' },
+    description: { zh: '设计和管理云网络架构的专家', ja: 'クラウドネットワークアーキテクチャの設計と管理の専門家' },
+    certifications: [
+      { provider: 'AWS', certId: 'aws-clf-c02' },
+      { provider: 'AWS', certId: 'aws-saa-c03' },
+      { provider: 'AWS', certId: 'aws-ans-c01' },
+      { provider: 'Azure', certId: 'azure-az-900' },
+      { provider: 'Azure', certId: 'azure-az-104' },
+      { provider: 'Azure', certId: 'azure-az-700' },
+      { provider: 'GCP', certId: 'gcp-cdl' },
+      { provider: 'GCP', certId: 'gcp-ace' },
+      { provider: 'GCP', certId: 'gcp-pne' }
+    ]
+  },
+  {
+    id: 'database-engineer',
+    name: { zh: '数据库工程师', ja: 'データベースエンジニア' },
+    description: { zh: '设计和管理云数据库系统的专家', ja: 'クラウドデータベースシステムの設計と管理の専門家' },
+    certifications: [
+      { provider: 'AWS', certId: 'aws-clf-c02' },
+      { provider: 'AWS', certId: 'aws-saa-c03' },
+      { provider: 'AWS', certId: 'aws-dbs-c01' },
+      { provider: 'Azure', certId: 'azure-dp-900' },
+      { provider: 'Azure', certId: 'azure-dp-300' },
+      { provider: 'GCP', certId: 'gcp-cdl' },
+      { provider: 'GCP', certId: 'gcp-ace' },
+      { provider: 'GCP', certId: 'gcp-pdba' }
+    ]
+  },
+  {
+    id: 'cloud-developer',
+    name: { zh: '云开发者', ja: 'クラウド開発者' },
+    description: { zh: '开发云原生应用和服务的专家', ja: 'クラウドネイティブアプリとサービス開発の専門家' },
+    certifications: [
+      { provider: 'AWS', certId: 'aws-clf-c02' },
+      { provider: 'AWS', certId: 'aws-dva-c02' },
+      { provider: 'Azure', certId: 'azure-az-900' },
+      { provider: 'Azure', certId: 'azure-pl-900' },
+      { provider: 'Azure', certId: 'azure-az-204' },
+      { provider: 'GCP', certId: 'gcp-cdl' },
+      { provider: 'GCP', certId: 'gcp-ace' },
+      { provider: 'GCP', certId: 'gcp-pcdev' }
+    ]
+  },
+  {
+    id: 'enterprise-admin',
+    name: { zh: '企业协作管理员', ja: 'エンタープライズ管理者' },
+    description: { zh: '管理企业级云协作平台和虚拟桌面', ja: 'エンタープライズクラウドコラボレーションと仮想デスクトップの管理' },
+    certifications: [
+      { provider: 'AWS', certId: 'aws-clf-c02' },
+      { provider: 'AWS', certId: 'aws-soa-c02' },
+      { provider: 'Azure', certId: 'azure-az-900' },
+      { provider: 'Azure', certId: 'azure-az-104' },
+      { provider: 'Azure', certId: 'azure-az-140' },
+      { provider: 'GCP', certId: 'gcp-cdl' },
+      { provider: 'GCP', certId: 'gcp-pwa' }
     ]
   }
 ];
