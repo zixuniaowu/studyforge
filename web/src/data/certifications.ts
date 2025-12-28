@@ -429,6 +429,85 @@ export const azureCertifications: Certification[] = [
     prerequisites: ['azure-az-104', 'azure-az-204'],
     hasExamData: false,
     description: { zh: 'Azure DevOps 工程师专家认证', ja: 'Azure DevOps エンジニア エキスパート認定' }
+  },
+  // Additional Fundamentals
+  {
+    id: 'azure-pl-900',
+    code: 'PL-900',
+    provider: 'Azure',
+    name: { zh: 'Power Platform 基础', ja: 'Power Platform 基礎' },
+    fullName: { zh: 'Microsoft Power Platform Fundamentals', ja: 'Microsoft Power Platform Fundamentals' },
+    level: 'foundational',
+    category: 'developer',
+    examDuration: 60,
+    questionCount: 45,
+    passingScore: 70,
+    prerequisites: [],
+    hasExamData: false,
+    description: { zh: 'Power Platform 低代码平台基础认证', ja: 'Power Platform ローコードプラットフォーム基礎認定' }
+  },
+  // Additional Associate - Security
+  {
+    id: 'azure-sc-200',
+    code: 'SC-200',
+    provider: 'Azure',
+    name: { zh: '安全运营分析师', ja: 'セキュリティ運用アナリスト' },
+    fullName: { zh: 'Microsoft Security Operations Analyst', ja: 'Microsoft Security Operations Analyst' },
+    level: 'associate',
+    category: 'security',
+    examDuration: 150,
+    questionCount: 50,
+    passingScore: 70,
+    prerequisites: ['azure-sc-900'],
+    hasExamData: false,
+    description: { zh: 'Microsoft Sentinel 和 Defender 安全运营认证', ja: 'Microsoft Sentinel と Defender セキュリティ運用認定' }
+  },
+  {
+    id: 'azure-sc-300',
+    code: 'SC-300',
+    provider: 'Azure',
+    name: { zh: '身份和访问管理员', ja: 'ID とアクセス管理者' },
+    fullName: { zh: 'Microsoft Identity and Access Administrator', ja: 'Microsoft Identity and Access Administrator' },
+    level: 'associate',
+    category: 'security',
+    examDuration: 150,
+    questionCount: 50,
+    passingScore: 70,
+    prerequisites: ['azure-sc-900'],
+    hasExamData: false,
+    description: { zh: 'Azure AD 身份和访问管理认证', ja: 'Azure AD ID とアクセス管理認定' }
+  },
+  // Additional Associate - Data
+  {
+    id: 'azure-dp-203',
+    code: 'DP-203',
+    provider: 'Azure',
+    name: { zh: '数据工程师', ja: 'データエンジニア' },
+    fullName: { zh: 'Azure Data Engineer Associate', ja: 'Azure Data Engineer Associate' },
+    level: 'associate',
+    category: 'data',
+    examDuration: 150,
+    questionCount: 50,
+    passingScore: 70,
+    prerequisites: ['azure-dp-900'],
+    hasExamData: false,
+    description: { zh: 'Azure 数据工程和 ETL 管道认证', ja: 'Azure データエンジニアリングと ETL パイプライン認定' }
+  },
+  // Additional Associate - Virtual Desktop
+  {
+    id: 'azure-az-140',
+    code: 'AZ-140',
+    provider: 'Azure',
+    name: { zh: '虚拟桌面专家', ja: 'バーチャルデスクトップスペシャリスト' },
+    fullName: { zh: 'Azure Virtual Desktop Specialty', ja: 'Azure Virtual Desktop Specialty' },
+    level: 'associate',
+    category: 'cloud',
+    examDuration: 150,
+    questionCount: 50,
+    passingScore: 70,
+    prerequisites: ['azure-az-104'],
+    hasExamData: false,
+    description: { zh: 'Azure 虚拟桌面部署和管理认证', ja: 'Azure Virtual Desktop のデプロイと管理認定' }
   }
 ];
 
@@ -586,6 +665,36 @@ export const gcpCertifications: Certification[] = [
     prerequisites: ['gcp-ace'],
     hasExamData: false,
     description: { zh: 'GCP 云数据库工程师专业认证', ja: 'GCP クラウドデータベースエンジニア プロフェッショナル認定' }
+  },
+  {
+    id: 'gcp-pwa',
+    code: 'PWA',
+    provider: 'GCP',
+    name: { zh: 'Workspace 管理员专业', ja: 'Professional Google Workspace Administrator' },
+    fullName: { zh: 'Google Cloud Professional Google Workspace Administrator', ja: 'Google Cloud Professional Google Workspace Administrator' },
+    level: 'professional',
+    category: 'cloud',
+    examDuration: 120,
+    questionCount: 50,
+    passingScore: 70,
+    prerequisites: ['gcp-cdl'],
+    hasExamData: false,
+    description: { zh: 'Google Workspace 企业协作平台管理认证', ja: 'Google Workspace 企業コラボレーションプラットフォーム管理認定' }
+  },
+  {
+    id: 'gcp-pgai',
+    code: 'PGAI',
+    provider: 'GCP',
+    name: { zh: '生成式 AI 专业', ja: 'Professional Cloud Generative AI' },
+    fullName: { zh: 'Google Cloud Professional Cloud Generative AI', ja: 'Google Cloud Professional Cloud Generative AI' },
+    level: 'professional',
+    category: 'ai',
+    examDuration: 120,
+    questionCount: 50,
+    passingScore: 70,
+    prerequisites: ['gcp-ml-engineer'],
+    hasExamData: false,
+    description: { zh: 'Vertex AI、Gemini 生成式 AI 技术认证', ja: 'Vertex AI、Gemini 生成 AI 技術認定' }
   }
 ];
 
