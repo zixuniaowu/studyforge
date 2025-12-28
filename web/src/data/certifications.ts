@@ -511,9 +511,9 @@ export const azureCertifications: Certification[] = [
   }
 ];
 
-// GCP Certifications
+// GCP Certifications (Official: 2 Foundational + 3 Associate + 9 Professional = 14 total)
 export const gcpCertifications: Certification[] = [
-  // Foundational
+  // ========== Foundational (2) ==========
   {
     id: 'gcp-cdl',
     code: 'CDL',
@@ -527,9 +527,24 @@ export const gcpCertifications: Certification[] = [
     passingScore: 70,
     prerequisites: [],
     hasExamData: true,
-    description: { zh: 'GCP 云基础知识认证', ja: 'GCP クラウドの基礎知識を証明する認定' }
+    description: { zh: '云概念和 Google Cloud 产品服务基础知识认证', ja: 'クラウドの概念と Google Cloud 製品・サービスの基礎知識認定' }
   },
-  // Associate
+  {
+    id: 'gcp-gail',
+    code: 'GAIL',
+    provider: 'GCP',
+    name: { zh: '生成式 AI 领导者', ja: 'Generative AI Leader' },
+    fullName: { zh: 'Google Cloud Generative AI Leader', ja: 'Google Cloud Generative AI Leader' },
+    level: 'foundational',
+    category: 'ai',
+    examDuration: 90,
+    questionCount: 50,
+    passingScore: 70,
+    prerequisites: [],
+    hasExamData: false,
+    description: { zh: 'Google Cloud AI 工具和 GenAI 解决方案基础知识认证', ja: 'Google Cloud AI ツールと GenAI ソリューションの基礎知識認定' }
+  },
+  // ========== Associate (3) ==========
   {
     id: 'gcp-ace',
     code: 'ACE',
@@ -543,9 +558,39 @@ export const gcpCertifications: Certification[] = [
     passingScore: 70,
     prerequisites: ['gcp-cdl'],
     hasExamData: true,
-    description: { zh: 'GCP 云工程师助理认证', ja: 'GCP クラウドエンジニア アソシエイト認定' }
+    description: { zh: '部署应用、监控运维、管理 GCP 企业解决方案', ja: 'アプリのデプロイ、運用監視、GCP 企業ソリューションの管理' }
   },
-  // Professional
+  {
+    id: 'gcp-adp',
+    code: 'ADP',
+    provider: 'GCP',
+    name: { zh: '数据从业者助理', ja: 'Associate Data Practitioner' },
+    fullName: { zh: 'Google Cloud Associate Data Practitioner', ja: 'Google Cloud Associate Data Practitioner' },
+    level: 'associate',
+    category: 'data',
+    examDuration: 120,
+    questionCount: 50,
+    passingScore: 70,
+    prerequisites: ['gcp-cdl'],
+    hasExamData: false,
+    description: { zh: '数据准备、摄取、分析和管理，BigQuery 查询', ja: 'データの準備・取り込み・分析・管理、BigQuery クエリ' }
+  },
+  {
+    id: 'gcp-awa',
+    code: 'AWA',
+    provider: 'GCP',
+    name: { zh: 'Workspace 管理员助理', ja: 'Associate Google Workspace Administrator' },
+    fullName: { zh: 'Google Cloud Associate Google Workspace Administrator', ja: 'Google Cloud Associate Google Workspace Administrator' },
+    level: 'associate',
+    category: 'cloud',
+    examDuration: 120,
+    questionCount: 50,
+    passingScore: 70,
+    prerequisites: ['gcp-cdl'],
+    hasExamData: false,
+    description: { zh: 'Google Workspace 环境管理、AI 助手配置', ja: 'Google Workspace 環境管理、AI アシスタント設定' }
+  },
+  // ========== Professional (9) ==========
   {
     id: 'gcp-pca',
     code: 'PCA',
@@ -559,37 +604,7 @@ export const gcpCertifications: Certification[] = [
     passingScore: 70,
     prerequisites: ['gcp-ace'],
     hasExamData: false,
-    description: { zh: 'GCP 云架构师专业认证', ja: 'GCP クラウドアーキテクト プロフェッショナル認定' }
-  },
-  {
-    id: 'gcp-pde',
-    code: 'PDE',
-    provider: 'GCP',
-    name: { zh: '数据工程师专业', ja: 'Professional Data Engineer' },
-    fullName: { zh: 'Google Cloud Professional Data Engineer', ja: 'Google Cloud Professional Data Engineer' },
-    level: 'professional',
-    category: 'data',
-    examDuration: 120,
-    questionCount: 50,
-    passingScore: 70,
-    prerequisites: ['gcp-ace'],
-    hasExamData: true,
-    description: { zh: 'GCP 数据工程师专业认证', ja: 'GCP データエンジニア プロフェッショナル認定' }
-  },
-  {
-    id: 'gcp-ml-engineer',
-    code: 'ML-Engineer',
-    provider: 'GCP',
-    name: { zh: '机器学习工程师专业', ja: 'Professional ML Engineer' },
-    fullName: { zh: 'Google Cloud Professional Machine Learning Engineer', ja: 'Google Cloud Professional Machine Learning Engineer' },
-    level: 'professional',
-    category: 'ai',
-    examDuration: 120,
-    questionCount: 50,
-    passingScore: 70,
-    prerequisites: ['gcp-cdl', 'gcp-ace'],
-    hasExamData: true,
-    description: { zh: 'GCP 机器学习工程师专业认证', ja: 'GCP 機械学習エンジニア プロフェッショナル認定' }
+    description: { zh: '设计、开发和管理安全可扩展的云解决方案', ja: 'セキュアでスケーラブルなクラウドソリューションの設計・開発・管理' }
   },
   {
     id: 'gcp-pcdev',
@@ -604,13 +619,28 @@ export const gcpCertifications: Certification[] = [
     passingScore: 70,
     prerequisites: ['gcp-ace'],
     hasExamData: false,
-    description: { zh: 'GCP 云开发者专业认证', ja: 'GCP クラウド開発者 プロフェッショナル認定' }
+    description: { zh: '构建可扩展、高可用的云原生应用', ja: 'スケーラブルで高可用性のクラウドネイティブアプリケーション構築' }
+  },
+  {
+    id: 'gcp-pde',
+    code: 'PDE',
+    provider: 'GCP',
+    name: { zh: '数据工程师专业', ja: 'Professional Data Engineer' },
+    fullName: { zh: 'Google Cloud Professional Data Engineer', ja: 'Google Cloud Professional Data Engineer' },
+    level: 'professional',
+    category: 'data',
+    examDuration: 120,
+    questionCount: 50,
+    passingScore: 70,
+    prerequisites: ['gcp-ace'],
+    hasExamData: true,
+    description: { zh: '设计和构建数据处理系统、部署 ML 模型', ja: 'データ処理システムの設計・構築、ML モデルのデプロイ' }
   },
   {
     id: 'gcp-pdevops',
     code: 'PDevOps',
     provider: 'GCP',
-    name: { zh: '云DevOps工程师专业', ja: 'Professional Cloud DevOps Engineer' },
+    name: { zh: '云 DevOps 工程师专业', ja: 'Professional Cloud DevOps Engineer' },
     fullName: { zh: 'Google Cloud Professional Cloud DevOps Engineer', ja: 'Google Cloud Professional Cloud DevOps Engineer' },
     level: 'professional',
     category: 'devops',
@@ -619,7 +649,7 @@ export const gcpCertifications: Certification[] = [
     passingScore: 70,
     prerequisites: ['gcp-ace'],
     hasExamData: false,
-    description: { zh: 'GCP 云DevOps工程师专业认证', ja: 'GCP クラウド DevOps エンジニア プロフェッショナル認定' }
+    description: { zh: '实施 DevOps 流程、平衡可靠性与交付速度', ja: 'DevOps プロセスの実装、信頼性とデリバリー速度のバランス' }
   },
   {
     id: 'gcp-pse',
@@ -634,7 +664,7 @@ export const gcpCertifications: Certification[] = [
     passingScore: 70,
     prerequisites: ['gcp-ace'],
     hasExamData: false,
-    description: { zh: 'GCP 云安全工程师专业认证', ja: 'GCP クラウドセキュリティエンジニア プロフェッショナル認定' }
+    description: { zh: '管理访问控制、组织策略和网络安全', ja: 'アクセス制御、組織ポリシー、ネットワークセキュリティの管理' }
   },
   {
     id: 'gcp-pne',
@@ -649,7 +679,37 @@ export const gcpCertifications: Certification[] = [
     passingScore: 70,
     prerequisites: ['gcp-ace'],
     hasExamData: false,
-    description: { zh: 'GCP 云网络工程师专业认证', ja: 'GCP クラウドネットワークエンジニア プロフェッショナル認定' }
+    description: { zh: '混合连接、网络服务和网络架构安全', ja: 'ハイブリッド接続、ネットワークサービス、ネットワークアーキテクチャセキュリティ' }
+  },
+  {
+    id: 'gcp-ml-engineer',
+    code: 'PMLE',
+    provider: 'GCP',
+    name: { zh: '机器学习工程师专业', ja: 'Professional Machine Learning Engineer' },
+    fullName: { zh: 'Google Cloud Professional Machine Learning Engineer', ja: 'Google Cloud Professional Machine Learning Engineer' },
+    level: 'professional',
+    category: 'ai',
+    examDuration: 120,
+    questionCount: 50,
+    passingScore: 70,
+    prerequisites: ['gcp-ace'],
+    hasExamData: true,
+    description: { zh: '设计、构建和生产化 ML 模型', ja: 'ML モデルの設計・構築・本番化' }
+  },
+  {
+    id: 'gcp-pwa',
+    code: 'PWA',
+    provider: 'GCP',
+    name: { zh: 'Workspace 管理员专业', ja: 'Professional Google Workspace Administrator' },
+    fullName: { zh: 'Google Cloud Professional Google Workspace Administrator', ja: 'Google Cloud Professional Google Workspace Administrator' },
+    level: 'professional',
+    category: 'cloud',
+    examDuration: 120,
+    questionCount: 50,
+    passingScore: 70,
+    prerequisites: ['gcp-awa'],
+    hasExamData: false,
+    description: { zh: 'Workspace 策略、安全和协作配置', ja: 'Workspace ポリシー、セキュリティ、コラボレーション設定' }
   },
   {
     id: 'gcp-pdba',
@@ -664,37 +724,7 @@ export const gcpCertifications: Certification[] = [
     passingScore: 70,
     prerequisites: ['gcp-ace'],
     hasExamData: false,
-    description: { zh: 'GCP 云数据库工程师专业认证', ja: 'GCP クラウドデータベースエンジニア プロフェッショナル認定' }
-  },
-  {
-    id: 'gcp-pwa',
-    code: 'PWA',
-    provider: 'GCP',
-    name: { zh: 'Workspace 管理员专业', ja: 'Professional Google Workspace Administrator' },
-    fullName: { zh: 'Google Cloud Professional Google Workspace Administrator', ja: 'Google Cloud Professional Google Workspace Administrator' },
-    level: 'professional',
-    category: 'cloud',
-    examDuration: 120,
-    questionCount: 50,
-    passingScore: 70,
-    prerequisites: ['gcp-cdl'],
-    hasExamData: false,
-    description: { zh: 'Google Workspace 企业协作平台管理认证', ja: 'Google Workspace 企業コラボレーションプラットフォーム管理認定' }
-  },
-  {
-    id: 'gcp-pgai',
-    code: 'PGAI',
-    provider: 'GCP',
-    name: { zh: '生成式 AI 专业', ja: 'Professional Cloud Generative AI' },
-    fullName: { zh: 'Google Cloud Professional Cloud Generative AI', ja: 'Google Cloud Professional Cloud Generative AI' },
-    level: 'professional',
-    category: 'ai',
-    examDuration: 120,
-    questionCount: 50,
-    passingScore: 70,
-    prerequisites: ['gcp-ml-engineer'],
-    hasExamData: false,
-    description: { zh: 'Vertex AI、Gemini 生成式 AI 技术认证', ja: 'Vertex AI、Gemini 生成 AI 技術認定' }
+    description: { zh: '设计和管理 Cloud SQL、Spanner、Bigtable 等数据库', ja: 'Cloud SQL、Spanner、Bigtable などのデータベース設計・管理' }
   }
 ];
 
@@ -756,8 +786,8 @@ export const careerPaths: CareerPath[] = [
       { provider: 'Azure', certId: 'azure-ai-102' },
       { provider: 'Azure', certId: 'azure-dp-100' },
       { provider: 'GCP', certId: 'gcp-cdl' },
-      { provider: 'GCP', certId: 'gcp-ml-engineer' },
-      { provider: 'GCP', certId: 'gcp-pgai' }
+      { provider: 'GCP', certId: 'gcp-gail' },
+      { provider: 'GCP', certId: 'gcp-ml-engineer' }
     ]
   },
   {
