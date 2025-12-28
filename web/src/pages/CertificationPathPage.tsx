@@ -109,8 +109,13 @@ const CertificationPathSVG: React.FC<{
     expert: language === 'ja' ? 'エキスパート' : '专家'
   };
 
+  // Calculate max certs per level to determine SVG width
+  const maxCertsPerLevel = Math.max(...levels.map(level => certsByLevel[level].length), 1);
+  const svgWidth = Math.max(800, 100 + maxCertsPerLevel * 160 + 50);
+  const svgHeight = 40 + levels.length * 95 + 20;
+
   return (
-    <svg viewBox="0 0 800 420" className="w-full h-auto" xmlns="http://www.w3.org/2000/svg">
+    <svg viewBox={`0 0 ${svgWidth} ${svgHeight}`} className="w-full h-auto" xmlns="http://www.w3.org/2000/svg">
       <defs>
         <linearGradient id={`pathGrad-${provider}`} x1="0%" y1="0%" x2="100%" y2="0%">
           <stop offset="0%" stopColor={config.pathColor} stopOpacity="0.2" />
@@ -123,15 +128,15 @@ const CertificationPathSVG: React.FC<{
       </defs>
 
       {/* Background */}
-      <rect x="0" y="0" width="800" height="420" fill="#FAFAFA" rx="12" />
+      <rect x="0" y="0" width={svgWidth} height={svgHeight} fill="#FAFAFA" rx="12" />
 
-      {/* Level lanes */}
-      {['foundational', 'associate', 'professional', 'specialty'].map((level, i) => (
+      {/* Level lanes - all 5 levels */}
+      {levels.map((level, i) => (
         <g key={level}>
           <rect
             x="30"
             y={40 + i * 95}
-            width="740"
+            width={svgWidth - 60}
             height="85"
             fill={i % 2 === 0 ? '#F8FAFC' : '#FFFFFF'}
             rx="8"
@@ -185,7 +190,7 @@ const CertificationPathSVG: React.FC<{
           const x = 100 + certIndex * 160;
           const y = 55 + levelIndex * 95;
           const isHighlighted = !hasHighlight || (highlightedCertIds && highlightedCertIds.includes(cert.id));
-          const nodeOpacity = hasHighlight && !isHighlighted ? 0.3 : 1;
+          const nodeOpacity = hasHighlight && !isHighlighted ? 0.6 : 1;
 
           return (
             <g key={cert.id} transform={`translate(${x}, ${y})`} filter="url(#shadow)" opacity={nodeOpacity}>
@@ -366,19 +371,21 @@ const CareerPathCard: React.FC<{
   return (
     <button
       onClick={onClick}
-      className={`flex flex-col items-center p-4 rounded-xl transition-all duration-300 ${
+      className={`flex items-center gap-3 p-3 rounded-xl transition-all duration-300 ${
         isSelected
-          ? 'bg-gradient-to-br from-indigo-500 to-purple-600 text-white shadow-lg scale-105'
+          ? 'bg-gradient-to-br from-indigo-500 to-purple-600 text-white shadow-lg'
           : 'bg-white hover:bg-gray-50 text-gray-700 shadow-sm border border-gray-100'
       }`}
     >
-      <div className={`p-3 rounded-xl mb-2 ${isSelected ? 'bg-white/20' : 'bg-indigo-100'}`}>
-        <IconComponent size={24} className={isSelected ? 'text-white' : 'text-indigo-600'} />
+      <div className={`p-2 rounded-lg shrink-0 ${isSelected ? 'bg-white/20' : 'bg-indigo-100'}`}>
+        <IconComponent size={20} className={isSelected ? 'text-white' : 'text-indigo-600'} />
       </div>
-      <h3 className="text-sm font-semibold text-center">{path.name[language]}</h3>
-      <p className={`text-xs mt-1 text-center line-clamp-2 ${isSelected ? 'text-white/80' : 'text-gray-500'}`}>
-        {path.description[language]}
-      </p>
+      <div className="text-left min-w-0">
+        <h3 className="text-sm font-semibold truncate">{path.name[language]}</h3>
+        <p className={`text-xs truncate ${isSelected ? 'text-white/80' : 'text-gray-500'}`}>
+          {path.description[language]}
+        </p>
+      </div>
     </button>
   );
 };
@@ -490,27 +497,27 @@ export const CertificationPathPage: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-indigo-50/30">
-      {/* Header */}
+      {/* Header - Compact */}
       <div className={`bg-gradient-to-r ${isCareerMode ? 'from-indigo-50 to-purple-50' : config.bgGradient} border-b ${isCareerMode ? 'border-indigo-200' : config.borderColor}`}>
-        <div className="px-6 lg:px-10 py-6">
-          <button
-            onClick={() => navigate('/')}
-            className="flex items-center gap-2 text-gray-600 hover:text-gray-900 mb-4 transition-colors"
-          >
-            <ArrowLeft size={20} />
-            <span>{backText}</span>
-          </button>
-
-          <div className="flex items-center justify-between flex-wrap gap-4">
-            <div className="flex items-center gap-4">
-              <div className={`p-3 bg-gradient-to-br ${isCareerMode ? 'from-indigo-500 to-purple-600' : config.gradient} rounded-2xl shadow-lg`}>
-                <Award size={32} className="text-white" />
+        <div className="px-6 lg:px-10 py-3">
+          <div className="flex items-center justify-between flex-wrap gap-3">
+            <div className="flex items-center gap-3">
+              <button
+                onClick={() => navigate('/')}
+                className="flex items-center gap-1 text-gray-600 hover:text-gray-900 transition-colors text-sm"
+              >
+                <ArrowLeft size={16} />
+                <span>{backText}</span>
+              </button>
+              <div className="w-px h-6 bg-gray-300"></div>
+              <div className={`p-2 bg-gradient-to-br ${isCareerMode ? 'from-indigo-500 to-purple-600' : config.gradient} rounded-xl shadow-lg`}>
+                <Award size={24} className="text-white" />
               </div>
               <div>
-                <h1 className="text-2xl lg:text-3xl font-bold text-gray-900">
+                <h1 className="text-xl font-bold text-gray-900">
                   {isCareerMode ? currentCareerPath?.name[lang] : pageTitle}
                 </h1>
-                <p className="text-gray-600 mt-1">
+                <p className="text-gray-600 text-sm">
                   {isCareerMode
                     ? currentCareerPath?.description[lang]
                     : config.name
@@ -548,15 +555,17 @@ export const CertificationPathPage: React.FC = () => {
         </div>
       </div>
 
-      <div className="px-6 lg:px-10 py-8 max-w-7xl mx-auto">
-        {/* Career Paths Section */}
-        <section className="mb-10">
-          <div className="text-center mb-6">
-            <h2 className="text-xl font-bold text-gray-900 mb-2">{careerTitle}</h2>
-            <p className="text-gray-500 text-sm">{careerSubtitle}</p>
+      <div className="px-6 lg:px-10 py-4 max-w-7xl mx-auto">
+        {/* Career Paths Section - Compact */}
+        <section className="mb-6">
+          <div className="flex items-center justify-between mb-4">
+            <div>
+              <h2 className="text-lg font-bold text-gray-900">{careerTitle}</h2>
+              <p className="text-gray-500 text-xs">{careerSubtitle}</p>
+            </div>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3">
             {careerPaths.map((path) => (
               <CareerPathCard
                 key={path.id}
@@ -596,15 +605,15 @@ export const CertificationPathPage: React.FC = () => {
                 .filter(g => g.certs.length > 0);
 
               return (
-                <section key={provider} className="mb-12">
+                <section key={provider} className="mb-8">
                   {/* Provider Header */}
-                  <div className={`flex items-center gap-4 mb-6 p-4 rounded-2xl bg-gradient-to-r ${pConfig.bgGradient} border ${pConfig.borderColor}`}>
-                    <div className={`p-3 bg-gradient-to-br ${pConfig.gradient} rounded-xl shadow-lg`}>
-                      <Award size={24} className="text-white" />
+                  <div className={`flex items-center gap-3 mb-4 p-3 rounded-xl bg-gradient-to-r ${pConfig.bgGradient} border ${pConfig.borderColor}`}>
+                    <div className={`p-2 bg-gradient-to-br ${pConfig.gradient} rounded-lg shadow-lg`}>
+                      <Award size={20} className="text-white" />
                     </div>
                     <div>
-                      <h2 className="text-xl font-bold text-gray-900">{provider}</h2>
-                      <p className="text-sm text-gray-600">{pConfig.name}</p>
+                      <h2 className="text-lg font-bold text-gray-900">{provider}</h2>
+                      <p className="text-xs text-gray-600">{pConfig.name}</p>
                     </div>
                     <div className="ml-auto">
                       <span className={`px-3 py-1 rounded-full text-sm font-medium ${pConfig.lightBg} ${pConfig.textColor}`}>
@@ -614,7 +623,7 @@ export const CertificationPathPage: React.FC = () => {
                   </div>
 
                   {/* SVG Path for this provider */}
-                  <div className={`bg-white rounded-2xl p-6 shadow-sm border ${pConfig.borderColor} mb-6`}>
+                  <div className={`bg-white rounded-xl p-4 shadow-sm border ${pConfig.borderColor} mb-4 overflow-x-auto`}>
                     <CertificationPathSVG
                       provider={provider}
                       certifications={allCerts}
@@ -657,9 +666,9 @@ export const CertificationPathPage: React.FC = () => {
         {!isCareerMode && (
           <>
             {/* Certification Path SVG */}
-            <section className="mb-10">
-              <h2 className="text-xl font-bold text-gray-900 mb-4 text-center">{pathTitle}</h2>
-              <div className={`bg-white rounded-2xl p-6 shadow-sm border ${config.borderColor}`}>
+            <section className="mb-6">
+              <h2 className="text-lg font-bold text-gray-900 mb-3">{pathTitle}</h2>
+              <div className={`bg-white rounded-xl p-4 shadow-sm border ${config.borderColor} overflow-x-auto`}>
                 <CertificationPathSVG
                   provider={selectedProvider}
                   certifications={certifications}
@@ -671,7 +680,7 @@ export const CertificationPathPage: React.FC = () => {
 
             {/* Certification Cards Grid */}
             <section>
-              <h2 className="text-xl font-bold text-gray-900 mb-6 text-center">{certTitle}</h2>
+              <h2 className="text-lg font-bold text-gray-900 mb-4">{certTitle}</h2>
 
               {certsByLevel.map(({ level, certs }) => (
                 <div key={level} className="mb-8">
