@@ -3,6 +3,7 @@ import { Header } from './components/Layout/Header';
 import { HomePage } from './pages/HomePage';
 import { QuizPage } from './pages/QuizPage';
 import AILearningPage from './pages/AILearningPage';
+import { CertificationPathPage } from './pages/CertificationPathPage';
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/quiz/:examId" element={<QuizPage />} />
           <Route path="/ai-intro" element={<AILearningPage />} />
+          <Route path="/certification-path" element={<CertificationPathPage />} />
         </Routes>
       </div>
     </HashRouter>

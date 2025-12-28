@@ -21,11 +21,35 @@ import {
   Code2,
   Database,
   Cpu,
-  Globe
+  Globe,
+  Map,
+  Building2,
+  Cog,
+  Shield,
+  LucideIcon
 } from 'lucide-react';
 import { importExamFromJson } from '../lib/import';
 import { useT, useLanguageStore } from '../stores/languageStore';
 import { db } from '../lib/db';
+import { careerPaths } from '../data/certifications';
+
+// Career icons mapping
+const careerIcons: Record<string, LucideIcon> = {
+  'cloud-architect': Building2,
+  'ai-engineer': Brain,
+  'data-engineer': Database,
+  'devops-engineer': Cog,
+  'security-engineer': Shield
+};
+
+// Career gradient colors
+const careerGradients: Record<string, string> = {
+  'cloud-architect': 'from-blue-500 to-indigo-600',
+  'ai-engineer': 'from-purple-500 to-pink-600',
+  'data-engineer': 'from-emerald-500 to-teal-600',
+  'devops-engineer': 'from-orange-500 to-red-600',
+  'security-engineer': 'from-slate-500 to-zinc-700'
+};
 
 // Provider configuration for certification exams
 const providerConfig = {
@@ -85,6 +109,19 @@ const learningConfig = {
     hoverShadow: 'hover:shadow-violet-200/50',
     icon: Lightbulb
   },
+  'cert-path': {
+    name: { zh: '认证路径', ja: '認定パス' },
+    description: {
+      zh: 'AWS、Azure、GCP 云认证学习路径图谱，包含依赖关系和职业建议',
+      ja: 'AWS、Azure、GCPクラウド認定学習パス、依存関係とキャリアアドバイス'
+    },
+    gradient: 'from-cyan-500 via-teal-500 to-emerald-500',
+    bgGradient: 'from-cyan-50 to-teal-50',
+    borderColor: 'border-cyan-200',
+    iconBg: 'bg-cyan-500',
+    hoverShadow: 'hover:shadow-cyan-200/50',
+    icon: Map
+  },
   'ai-resources': {
     name: { zh: 'AI 资源', ja: 'AIリソース' },
     description: {
@@ -108,16 +145,27 @@ export const HomePage: React.FC = () => {
   const { exams, loading, error, loadExams, deleteExam } = useExamStore();
   const [importing, setImporting] = useState(false);
   const [selectedView, setSelectedView] = useState<ViewType>(null);
+  const [certCodeFilter, setCertCodeFilter] = useState<string | null>(null);
   const [stats, setStats] = useState({ totalQuestions: 0, totalExams: 0, wrongCount: 0 });
   const t = useT();
   const language = useLanguageStore(state => state.language);
   const location = useLocation();
   const navigate = useNavigate();
 
-  // Reset view when clicking header logo
+  // Handle navigation: read provider and certCode from state or reset view
   useEffect(() => {
-    setSelectedView(null);
-  }, [location.key]);
+    const state = location.state as { provider?: string; certCode?: string } | null;
+    if (state?.provider && ['AWS', 'Azure', 'GCP'].includes(state.provider)) {
+      setSelectedView(state.provider as ProviderKey);
+      setCertCodeFilter(state.certCode || null);
+      // Clear the state so it doesn't persist on refresh
+      window.history.replaceState({}, document.title);
+    } else {
+      // Reset view when clicking header logo (no provider state)
+      setSelectedView(null);
+      setCertCodeFilter(null);
+    }
+  }, [location.key, location.state]);
 
   useEffect(() => {
     const init = async () => {
@@ -147,8 +195,15 @@ export const HomePage: React.FC = () => {
 
   const filteredExams = useMemo(() => {
     if (!selectedView || selectedView in learningConfig) return [];
-    return languageFilteredExams.filter(exam => exam.provider === selectedView);
-  }, [languageFilteredExams, selectedView]);
+    let result = languageFilteredExams.filter(exam => exam.provider === selectedView);
+    // If certCode filter is set, filter by exam ID containing the cert code
+    if (certCodeFilter) {
+      result = result.filter(exam =>
+        exam.id.toLowerCase().includes(certCodeFilter.toLowerCase())
+      );
+    }
+    return result;
+  }, [languageFilteredExams, selectedView, certCodeFilter]);
 
   useEffect(() => {
     const totalQuestions = languageFilteredExams.reduce((sum, e) => sum + e.totalQuestions, 0);
@@ -254,7 +309,7 @@ export const HomePage: React.FC = () => {
         <div className={`bg-gradient-to-r ${config.bgGradient} border-b ${config.borderColor}`}>
           <div className="px-6 lg:px-10 py-6">
             <button
-              onClick={() => setSelectedView(null)}
+              onClick={() => { setSelectedView(null); setCertCodeFilter(null); }}
               className="flex items-center gap-2 text-gray-600 hover:text-gray-900 mb-4 transition-colors"
             >
               <ArrowLeft size={20} />
@@ -267,10 +322,18 @@ export const HomePage: React.FC = () => {
                 </div>
                 <div>
                   <h1 className="text-2xl lg:text-3xl font-bold text-gray-900">
-                    {config.shortName} {language === 'ja' ? '認定試験' : '认证考试'}
+                    {config.shortName} {certCodeFilter ? certCodeFilter.toUpperCase() : (language === 'ja' ? '認定試験' : '认证考试')}
                   </h1>
                   <p className="text-gray-600 mt-1">
-                    {providerStats[selectedView]?.examCount || 0} {language === 'ja' ? 'セット' : '套题库'} · {providerStats[selectedView]?.questionCount || 0} {language === 'ja' ? '問' : '题'}
+                    {filteredExams.length} {language === 'ja' ? 'セット' : '套题库'}
+                    {certCodeFilter && (
+                      <button
+                        onClick={() => setCertCodeFilter(null)}
+                        className="ml-3 text-sm text-indigo-600 hover:text-indigo-700 font-medium"
+                      >
+                        {language === 'ja' ? 'すべて表示' : '显示全部'}
+                      </button>
+                    )}
                   </p>
                 </div>
               </div>
@@ -609,6 +672,43 @@ export const HomePage: React.FC = () => {
             </div>
           </div>
 
+          {/* Career Path Recommendation Section */}
+          <div className="max-w-6xl mx-auto mb-16">
+            <h2 className="text-center text-xl font-bold text-gray-800 mb-2">
+              {language === 'ja' ? 'キャリアパスで選ぶ' : '按职业路径选择'}
+            </h2>
+            <p className="text-center text-gray-500 mb-8">
+              {language === 'ja' ? '目標のキャリアに合った認定資格を探す' : '找到适合你职业目标的认证资格'}
+            </p>
+            <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
+              {careerPaths.map((path) => {
+                const IconComponent = careerIcons[path.id] || Building2;
+                const gradient = careerGradients[path.id] || 'from-gray-500 to-gray-600';
+                return (
+                  <button
+                    key={path.id}
+                    onClick={() => navigate(`/certification-path?career=${path.id}`)}
+                    className="group relative bg-white rounded-2xl p-5 shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 hover:border-transparent overflow-hidden text-center"
+                  >
+                    <div className={`absolute inset-0 bg-gradient-to-br ${gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-300`}></div>
+                    <div className="relative z-10">
+                      <div className={`inline-flex p-3 rounded-xl bg-gradient-to-br ${gradient} mb-3 shadow-lg group-hover:scale-110 group-hover:bg-white/20 transition-all duration-300`}>
+                        <IconComponent size={24} className="text-white" />
+                      </div>
+                      <h3 className="text-sm font-bold text-gray-900 group-hover:text-white transition-colors">
+                        {path.name[language === 'ja' ? 'ja' : 'zh']}
+                      </h3>
+                      <p className="text-xs text-gray-500 group-hover:text-white/80 mt-1 line-clamp-2 transition-colors">
+                        {path.description[language === 'ja' ? 'ja' : 'zh']}
+                      </p>
+                    </div>
+                    <ChevronRight size={16} className="absolute bottom-3 right-3 text-gray-300 group-hover:text-white transition-colors" />
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+
           {/* Certification Exams Section */}
           <div className="max-w-6xl mx-auto mb-16">
             <h2 className="text-center text-xl font-bold text-gray-800 mb-2">
@@ -652,14 +752,18 @@ export const HomePage: React.FC = () => {
             <p className="text-center text-gray-500 mb-8">
               {language === 'ja' ? '入門から最新技術まで' : '从入门到最新技术'}
             </p>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {(Object.keys(learningConfig) as LearningKey[]).map((key) => {
                 const config = learningConfig[key];
                 const IconComponent = config.icon;
                 return (
                   <button
                     key={key}
-                    onClick={() => key === 'ai-intro' ? navigate('/ai-intro') : setSelectedView(key)}
+                    onClick={() => {
+                      if (key === 'ai-intro') navigate('/ai-intro');
+                      else if (key === 'cert-path') navigate('/certification-path');
+                      else setSelectedView(key);
+                    }}
                     className={`group relative bg-white rounded-2xl p-6 shadow-md hover:shadow-xl ${config.hoverShadow} transition-all duration-300 border-2 ${config.borderColor} hover:border-transparent overflow-hidden text-left`}
                   >
                     <div className={`absolute inset-0 bg-gradient-to-br ${config.gradient} opacity-0 group-hover:opacity-5 transition-opacity duration-300`}></div>
