@@ -148,9 +148,9 @@ const CertificationPathSVG: React.FC<{
           <text
             x="50"
             y={70 + i * 95}
-            fill="#9CA3AF"
-            fontSize="11"
-            fontWeight="500"
+            fill="#6B7280"
+            fontSize="13"
+            fontWeight="600"
           >
             {levelLabels[level as Level]}
           </text>
@@ -234,22 +234,23 @@ const CertificationPathSVG: React.FC<{
               )}
               <text
                 x="65"
-                y="22"
+                y="24"
                 textAnchor="middle"
                 fill={isHighlighted ? '#374151' : '#9CA3AF'}
-                fontSize="11"
-                fontWeight="600"
+                fontSize="14"
+                fontWeight="700"
               >
                 {cert.code}
               </text>
               <text
                 x="65"
-                y="40"
+                y="44"
                 textAnchor="middle"
                 fill={isHighlighted ? '#6B7280' : '#D1D5DB'}
-                fontSize="9"
+                fontSize="12"
+                fontWeight="500"
               >
-                {cert.name[language].length > 12 ? cert.name[language].slice(0, 12) + '...' : cert.name[language]}
+                {cert.name[language].length > 10 ? cert.name[language].slice(0, 10) + '...' : cert.name[language]}
               </text>
               {cert.hasExamData && (
                 <circle cx="115" cy="12" r="6" fill={isHighlighted ? config.pathColor : '#D1D5DB'}>
@@ -262,13 +263,13 @@ const CertificationPathSVG: React.FC<{
       ))}
 
       {/* Legend - positioned at bottom right */}
-      <g transform={`translate(1580, ${svgHeight - 25})`}>
-        <circle cx="0" cy="0" r="6" fill={config.pathColor} />
-        <text x="15" y="4" fill="#6B7280" fontSize="10">
+      <g transform={`translate(1560, ${svgHeight - 25})`}>
+        <circle cx="0" cy="0" r="7" fill={config.pathColor} />
+        <text x="15" y="5" fill="#6B7280" fontSize="12" fontWeight="500">
           {language === 'ja' ? '練習問題あり' : '有题库'}
         </text>
-        <circle cx="100" cy="0" r="6" fill="none" stroke="#E5E7EB" strokeWidth="2" />
-        <text x="115" y="4" fill="#6B7280" fontSize="10">
+        <circle cx="110" cy="0" r="7" fill="none" stroke="#E5E7EB" strokeWidth="2" />
+        <text x="125" y="5" fill="#6B7280" fontSize="12" fontWeight="500">
           {language === 'ja' ? '準備中' : '即将推出'}
         </text>
       </g>
@@ -684,12 +685,12 @@ export const CertificationPathPage: React.FC = () => {
         )}
       </div>
 
-      {/* Footer */}
-      <footer className="py-8 border-t border-gray-100 bg-white/50">
+      {/* Footer - Compact */}
+      <footer className="py-3 border-t border-gray-100 bg-white/50">
         <div className="text-center">
-          <p className="text-gray-500">
+          <p className="text-gray-500 text-sm">
             <span className="font-semibold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">StudyForge</span>
-            <span className="mx-2">-</span>
+            <span className="mx-2">·</span>
             {lang === 'ja' ? '認証学習プラットフォーム' : '认证学习平台'}
           </p>
         </div>

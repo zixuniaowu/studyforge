@@ -80,7 +80,7 @@ export const QuizPage: React.FC = () => {
       if (!confirmed) return;
     }
     resetQuiz();
-    navigate('/');
+    navigate(`/exam/${examId}`);
   };
 
   if (loading) {
@@ -157,7 +157,7 @@ export const QuizPage: React.FC = () => {
 
             <div className="flex flex-col sm:flex-row gap-5 justify-center">
               <button
-                onClick={() => navigate('/')}
+                onClick={() => navigate(`/exam/${examId}`)}
                 className="px-10 py-4 text-lg font-medium bg-gray-100 text-gray-700 rounded-xl hover:bg-gray-200 transition-colors"
               >
                 {t.result.backToExams}

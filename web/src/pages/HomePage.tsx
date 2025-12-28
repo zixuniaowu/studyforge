@@ -9,7 +9,6 @@ import {
   RefreshCw,
   Trophy,
   Target,
-  Award,
   Brain,
   ArrowLeft,
   ChevronRight,
@@ -30,7 +29,13 @@ import {
   HardDrive,
   Sparkles,
   Users,
-  LucideIcon
+  LucideIcon,
+  Clock,
+  BarChart3,
+  Award,
+  Play,
+  FileCheck,
+  AlertCircle
 } from 'lucide-react';
 import { importExamFromJson } from '../lib/import';
 import { useT, useLanguageStore } from '../stores/languageStore';
@@ -161,6 +166,23 @@ export const HomePage: React.FC = () => {
   const [selectedView, setSelectedView] = useState<ViewType>(null);
   const [certCodeFilter, setCertCodeFilter] = useState<string | null>(null);
   const [stats, setStats] = useState({ totalQuestions: 0, totalExams: 0, wrongCount: 0 });
+  const [learningStats, setLearningStats] = useState({
+    // Overall stats
+    totalAnswered: 0,
+    overallCorrectRate: 0,
+    studyDays: 0,
+    // Practice mode stats
+    practiceQuestions: 0,
+    practiceCorrectRate: 0,
+    // Exam mode stats
+    examCount: 0,
+    examAvgScore: 0,
+    examPassRate: 0,
+    // Per-certification stats
+    certStats: [] as { certCode: string; provider: string; questionsAnswered: number; correctRate: number; bestScore: number }[],
+    // Recent sessions
+    recentSessions: [] as { examName: string; score: number; date: string; mode: string }[]
+  });
   const t = useT();
   const language = useLanguageStore(state => state.language);
   const location = useLocation();
@@ -184,8 +206,94 @@ export const HomePage: React.FC = () => {
   useEffect(() => {
     const init = async () => {
       await loadExams();
-      const wrongCount = await db.wrongAnswers.count();
+      const wrongAnswers = await db.wrongAnswers.filter(w => !w.mastered).toArray();
+      const wrongCount = wrongAnswers.length;
       setStats(prev => ({ ...prev, wrongCount }));
+
+      // Load learning stats from quiz sessions
+      const sessions = await db.quizSessions.toArray();
+      const completedSessions = sessions.filter(s => s.completed && s.score !== undefined);
+
+      if (completedSessions.length > 0) {
+        // Overall stats
+        const totalAnswered = completedSessions.reduce((sum, s) => sum + s.questions.length, 0);
+        const overallCorrectRate = Math.round(
+          completedSessions.reduce((sum, s) => sum + (s.score || 0), 0) / completedSessions.length
+        );
+
+        // Study days (unique dates)
+        const studyDates = new Set(
+          completedSessions.map(s => (s.endTime || s.startTime).split('T')[0])
+        );
+        const studyDays = studyDates.size;
+
+        // Practice mode stats
+        const practiceSessions = completedSessions.filter(s => s.mode === 'practice');
+        const practiceQuestions = practiceSessions.reduce((sum, s) => sum + s.questions.length, 0);
+        const practiceCorrectRate = practiceSessions.length > 0
+          ? Math.round(practiceSessions.reduce((sum, s) => sum + (s.score || 0), 0) / practiceSessions.length)
+          : 0;
+
+        // Exam mode stats
+        const examSessions = completedSessions.filter(s => s.mode === 'exam');
+        const examCount = examSessions.length;
+        const examAvgScore = examCount > 0
+          ? Math.round(examSessions.reduce((sum, s) => sum + (s.score || 0), 0) / examCount)
+          : 0;
+        const examPassRate = examCount > 0
+          ? Math.round((examSessions.filter(s => (s.score || 0) >= 70).length / examCount) * 100)
+          : 0;
+
+        // Per-certification stats
+        type CertData = { questions: number; totalScore: number; count: number; bestScore: number; provider: string };
+        const certMap: Record<string, CertData> = {};
+        completedSessions.forEach(s => {
+          // Extract cert code from examId (e.g., "aws-aif-c01-set1-ja" -> "AWS-AIF-C01")
+          const parts = s.examId.split('-');
+          const provider = parts[0].toUpperCase();
+          const certCode = parts.slice(0, 3).join('-').toUpperCase();
+
+          if (!certMap[certCode]) {
+            certMap[certCode] = { questions: 0, totalScore: 0, count: 0, bestScore: 0, provider };
+          }
+          certMap[certCode].questions += s.questions.length;
+          certMap[certCode].totalScore += s.score || 0;
+          certMap[certCode].count += 1;
+          certMap[certCode].bestScore = Math.max(certMap[certCode].bestScore, s.score || 0);
+        });
+
+        const certStats = Object.entries(certMap).map(([certCode, data]) => ({
+          certCode,
+          provider: data.provider,
+          questionsAnswered: data.questions,
+          correctRate: Math.round(data.totalScore / data.count),
+          bestScore: data.bestScore
+        })).sort((a, b) => b.questionsAnswered - a.questionsAnswered);
+
+        // Recent sessions (last 5)
+        const recentSessions = completedSessions
+          .sort((a, b) => new Date(b.endTime || b.startTime).getTime() - new Date(a.endTime || a.startTime).getTime())
+          .slice(0, 5)
+          .map(s => ({
+            examName: s.examId.split('-').slice(0, 3).join('-').toUpperCase(),
+            score: s.score || 0,
+            date: s.endTime || s.startTime,
+            mode: s.mode
+          }));
+
+        setLearningStats({
+          totalAnswered,
+          overallCorrectRate,
+          studyDays,
+          practiceQuestions,
+          practiceCorrectRate,
+          examCount,
+          examAvgScore,
+          examPassRate,
+          certStats,
+          recentSessions
+        });
+      }
     };
     init();
   }, [loadExams]);
@@ -657,68 +765,62 @@ export const HomePage: React.FC = () => {
 
   // Cover page view (default)
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-indigo-50/30">
-      {/* Hero Section */}
-      <section className="relative overflow-hidden">
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute -top-40 -right-40 w-80 h-80 bg-gradient-to-br from-purple-400/20 to-pink-400/20 rounded-full blur-3xl"></div>
-          <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-gradient-to-br from-blue-400/20 to-cyan-400/20 rounded-full blur-3xl"></div>
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-gradient-to-br from-indigo-400/10 to-purple-400/10 rounded-full blur-3xl"></div>
-        </div>
+    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-indigo-950 to-slate-900 flex flex-col overflow-hidden">
+      {/* Animated Background */}
+      <div className="fixed inset-0 overflow-hidden pointer-events-none">
+        {/* Animated gradient orbs */}
+        <div className="absolute top-0 -left-40 w-80 h-80 bg-purple-500/30 rounded-full mix-blend-multiply filter blur-3xl animate-blob"></div>
+        <div className="absolute top-0 -right-40 w-80 h-80 bg-cyan-500/30 rounded-full mix-blend-multiply filter blur-3xl animate-blob animation-delay-2000"></div>
+        <div className="absolute -bottom-40 left-1/2 w-80 h-80 bg-pink-500/30 rounded-full mix-blend-multiply filter blur-3xl animate-blob animation-delay-4000"></div>
+        {/* Grid pattern overlay */}
+        <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:50px_50px]"></div>
+        {/* Radial gradient overlay */}
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-slate-900/50"></div>
+      </div>
 
-        <div className="relative px-3 lg:px-6 py-8 lg:py-12">
-          <div className="max-w-4xl mx-auto text-center mb-12">
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-indigo-500/10 to-purple-500/10 rounded-full border border-indigo-200/50 mb-6">
-              <Award className="w-4 h-4 text-indigo-600" />
-              <span className="text-sm font-medium text-indigo-700">
-                {language === 'ja' ? 'AI学習・認定試験プラットフォーム' : 'AI 学习与认证考试平台'}
-              </span>
-            </div>
-            <h1 className="text-4xl lg:text-5xl font-bold mb-4 bg-gradient-to-r from-gray-900 via-indigo-900 to-purple-900 bg-clip-text text-transparent leading-tight">
+      {/* Main Content Section */}
+      <section className="relative z-10">
+
+        <div className="relative px-3 lg:px-6 py-3 lg:py-4">
+          {/* Centered Hero Header */}
+          <div className="text-center mb-4">
+            <h1 className="text-2xl lg:text-4xl font-bold bg-gradient-to-r from-white via-cyan-200 to-purple-200 bg-clip-text text-transparent mb-1 animate-gradient bg-[length:200%_auto]">
               {language === 'ja' ? '効率的に学習、確実に合格' : '高效学习，稳过考试'}
             </h1>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              {language === 'ja'
-                ? 'AI入門から認定試験対策まで、あなたの学習をサポートします'
-                : '从 AI 入门到认证考试，全方位支持你的学习之旅'
-              }
+            <p className="text-base text-slate-400">
+              {language === 'ja' ? 'AWS・Azure・GCP クラウド認定試験対策' : 'AWS・Azure・GCP 云认证考试备考'}
             </p>
-          </div>
-
-          {/* Stats Bar */}
-          <div className="flex flex-wrap justify-center gap-6 mb-12">
-            <div className="flex items-center gap-3 px-5 py-3 bg-white rounded-xl shadow-sm border border-gray-100">
-              <div className="p-2 bg-indigo-100 rounded-lg"><BookOpen className="w-5 h-5 text-indigo-600" /></div>
-              <div>
-                <div className="text-2xl font-bold text-gray-900">{stats.totalExams}</div>
-                <div className="text-xs text-gray-500">{language === 'ja' ? '試験セット' : '套题库'}</div>
+            {/* Stats Row */}
+            <div className="flex justify-center items-center gap-6 mt-3">
+              <div className="flex items-center gap-2 px-3 py-1.5 bg-white/5 backdrop-blur-sm rounded-full border border-white/10">
+                <BookOpen className="w-4 h-4 text-cyan-400" />
+                <span className="text-base font-semibold text-white">{stats.totalExams}</span>
+                <span className="text-xs text-slate-400">{language === 'ja' ? 'セット' : '套'}</span>
               </div>
-            </div>
-            <div className="flex items-center gap-3 px-5 py-3 bg-white rounded-xl shadow-sm border border-gray-100">
-              <div className="p-2 bg-green-100 rounded-lg"><Target className="w-5 h-5 text-green-600" /></div>
-              <div>
-                <div className="text-2xl font-bold text-gray-900">{stats.totalQuestions}</div>
-                <div className="text-xs text-gray-500">{language === 'ja' ? '問題' : '道题目'}</div>
+              <div className="flex items-center gap-2 px-3 py-1.5 bg-white/5 backdrop-blur-sm rounded-full border border-white/10">
+                <Target className="w-4 h-4 text-emerald-400" />
+                <span className="text-base font-semibold text-white">{stats.totalQuestions}</span>
+                <span className="text-xs text-slate-400">{language === 'ja' ? '問' : '题'}</span>
               </div>
-            </div>
-            <div className="flex items-center gap-3 px-5 py-3 bg-white rounded-xl shadow-sm border border-gray-100">
-              <div className="p-2 bg-amber-100 rounded-lg"><Trophy className="w-5 h-5 text-amber-600" /></div>
-              <div>
-                <div className="text-2xl font-bold text-gray-900">{stats.wrongCount}</div>
-                <div className="text-xs text-gray-500">{language === 'ja' ? '要復習' : '待复习'}</div>
-              </div>
+              {stats.wrongCount > 0 && (
+                <div className="flex items-center gap-2 px-3 py-1.5 bg-amber-500/10 backdrop-blur-sm rounded-full border border-amber-500/20">
+                  <Trophy className="w-4 h-4 text-amber-400" />
+                  <span className="text-base font-semibold text-amber-300">{stats.wrongCount}</span>
+                  <span className="text-xs text-amber-400/80">{language === 'ja' ? '要復習' : '待复习'}</span>
+                </div>
+              )}
             </div>
           </div>
 
           {/* Career Path Recommendation Section */}
-          <div className="mb-12">
-            <h2 className="text-center text-xl font-bold text-gray-800 mb-2">
+          <div className="mb-4">
+            <h2 className="text-center text-lg font-bold text-white mb-0.5">
               {language === 'ja' ? 'キャリアパスで選ぶ' : '按职业路径选择'}
             </h2>
-            <p className="text-center text-gray-500 mb-6">
+            <p className="text-center text-slate-400 text-sm mb-2">
               {language === 'ja' ? '目標のキャリアに合った認定資格を探す' : '找到适合你职业目标的认证资格'}
             </p>
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3">
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-2">
               {careerPaths.map((path) => {
                 const IconComponent = careerIcons[path.id] || Building2;
                 const gradient = careerGradients[path.id] || 'from-gray-500 to-gray-600';
@@ -726,14 +828,14 @@ export const HomePage: React.FC = () => {
                   <button
                     key={path.id}
                     onClick={() => navigate(`/certification-path?career=${path.id}`)}
-                    className="group relative bg-white rounded-xl p-4 shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 hover:border-transparent overflow-hidden text-center"
+                    className="group relative bg-white/5 backdrop-blur-sm rounded-lg p-2.5 border border-white/10 hover:border-white/30 hover:bg-white/10 transition-all duration-300 overflow-hidden text-center hover:scale-105 hover:shadow-lg hover:shadow-purple-500/20"
                   >
-                    <div className={`absolute inset-0 bg-gradient-to-br ${gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-300`}></div>
+                    <div className={`absolute inset-0 bg-gradient-to-br ${gradient} opacity-0 group-hover:opacity-20 transition-opacity duration-300`}></div>
                     <div className="relative z-10">
-                      <div className={`inline-flex p-2.5 rounded-lg bg-gradient-to-br ${gradient} mb-2 shadow-lg group-hover:scale-110 group-hover:bg-white/20 transition-all duration-300`}>
-                        <IconComponent size={20} className="text-white" />
+                      <div className={`inline-flex p-2 rounded-lg bg-gradient-to-br ${gradient} mb-1.5 shadow-lg group-hover:scale-110 group-hover:shadow-xl transition-all duration-300`}>
+                        <IconComponent size={18} className="text-white" />
                       </div>
-                      <h3 className="text-xs font-bold text-gray-900 group-hover:text-white transition-colors leading-tight">
+                      <h3 className="text-xs font-bold text-white/90 group-hover:text-white transition-colors leading-tight">
                         {path.name[language === 'ja' ? 'ja' : 'zh']}
                       </h3>
                     </div>
@@ -741,26 +843,26 @@ export const HomePage: React.FC = () => {
                 );
               })}
             </div>
-            <div className="text-center mt-4">
+            <div className="text-center mt-2">
               <button
                 onClick={() => navigate('/certification-path')}
-                className="inline-flex items-center gap-2 text-sm text-indigo-600 hover:text-indigo-700 font-medium transition-colors"
+                className="inline-flex items-center gap-1 text-xs text-cyan-400 hover:text-cyan-300 font-medium transition-colors"
               >
                 {language === 'ja' ? 'すべての認定資格を見る' : '查看全部认证'}
-                <ChevronRight size={16} />
+                <ChevronRight size={14} />
               </button>
             </div>
           </div>
 
           {/* Certification Exams Section */}
-          <div className="mb-12">
-            <h2 className="text-center text-xl font-bold text-gray-800 mb-2">
+          <div className="mb-8">
+            <h2 className="text-center text-xl font-bold text-white mb-1">
               {language === 'ja' ? '認定試験' : '认证考试'}
             </h2>
-            <p className="text-center text-gray-500 mb-8">
+            <p className="text-center text-slate-400 text-base mb-4">
               {language === 'ja' ? 'クラウドAI認定試験の対策' : '云厂商 AI 认证考试备考'}
             </p>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               {(Object.keys(providerConfig) as ProviderKey[]).map((provider) => {
                 const config = providerConfig[provider];
                 const pStats = providerStats[provider] || { examCount: 0, questionCount: 0 };
@@ -768,67 +870,208 @@ export const HomePage: React.FC = () => {
                   <button
                     key={provider}
                     onClick={() => setSelectedView(provider)}
-                    className={`group relative bg-white rounded-2xl p-6 shadow-md hover:shadow-xl ${config.hoverShadow} transition-all duration-300 border-2 ${config.borderColor} hover:border-transparent overflow-hidden text-left`}
+                    className="group relative bg-white/5 backdrop-blur-sm rounded-xl p-4 border border-white/10 hover:border-white/30 hover:bg-white/10 transition-all duration-300 overflow-hidden text-left hover:scale-[1.02] hover:shadow-lg hover:shadow-cyan-500/10"
                   >
-                    <div className={`absolute inset-0 bg-gradient-to-br ${config.gradient} opacity-0 group-hover:opacity-5 transition-opacity duration-300`}></div>
-                    <div className={`inline-flex p-3 rounded-xl bg-gradient-to-br ${config.gradient} mb-4 shadow-lg group-hover:scale-110 transition-transform duration-300`}>
-                      <GraduationCap size={28} className="text-white" />
+                    <div className={`absolute inset-0 bg-gradient-to-br ${config.gradient} opacity-0 group-hover:opacity-10 transition-opacity duration-300`}></div>
+                    <div className="relative flex items-center gap-3">
+                      <div className={`p-2.5 rounded-lg bg-gradient-to-br ${config.gradient} shadow-lg group-hover:scale-110 group-hover:shadow-xl transition-all duration-300`}>
+                        <GraduationCap size={22} className="text-white" />
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <h3 className="text-lg font-bold text-white">{config.shortName}</h3>
+                        <p className="text-sm text-slate-400 truncate">{config.description[language === 'ja' ? 'ja' : 'zh']}</p>
+                      </div>
+                      <div className="flex items-center gap-2 text-sm">
+                        <span className="px-2 py-0.5 bg-white/10 rounded-full text-slate-300">{pStats.examCount}{language === 'ja' ? 'セット' : '套'}</span>
+                        <span className="px-2 py-0.5 bg-white/10 rounded-full text-slate-300">{pStats.questionCount}{language === 'ja' ? '問' : '题'}</span>
+                      </div>
                     </div>
-                    <h3 className="text-xl font-bold text-gray-900 mb-1">{config.shortName}</h3>
-                    <p className="text-sm text-gray-500 mb-4 line-clamp-2">{config.description[language === 'ja' ? 'ja' : 'zh']}</p>
-                    <div className="flex items-center gap-3 text-sm">
-                      <span className="px-2.5 py-1 bg-gray-100 rounded-full text-gray-700 font-medium">{pStats.examCount} {language === 'ja' ? 'セット' : '套'}</span>
-                      <span className="px-2.5 py-1 bg-gray-100 rounded-full text-gray-700 font-medium">{pStats.questionCount} {language === 'ja' ? '問' : '题'}</span>
-                    </div>
-                    <ChevronRight size={20} className="absolute bottom-6 right-6 text-gray-300 group-hover:text-gray-500 transition-colors" />
                   </button>
                 );
               })}
             </div>
           </div>
 
-          {/* AI Learning Section */}
+          {/* Learning Dashboard Section */}
           <div>
-            <h2 className="text-center text-xl font-bold text-gray-800 mb-2">
-              {language === 'ja' ? 'AI学習' : 'AI 学习'}
+            <h2 className="text-center text-xl font-bold text-white mb-1">
+              {language === 'ja' ? '学習ダッシュボード' : '学习仪表盘'}
             </h2>
-            <p className="text-center text-gray-500 mb-8">
-              {language === 'ja' ? '入門から最新技術まで' : '从入门到最新技术'}
+            <p className="text-center text-slate-400 text-base mb-4">
+              {language === 'ja' ? '学習進捗とリソース' : '学习进度与资源'}
             </p>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              {(Object.keys(learningConfig) as LearningKey[]).map((key) => {
-                const config = learningConfig[key];
-                const IconComponent = config.icon;
-                return (
-                  <button
-                    key={key}
-                    onClick={() => {
-                      if (key === 'ai-intro') navigate('/ai-intro');
-                      else if (key === 'cert-path') navigate('/certification-path');
-                      else setSelectedView(key);
-                    }}
-                    className={`group relative bg-white rounded-2xl p-6 shadow-md hover:shadow-xl ${config.hoverShadow} transition-all duration-300 border-2 ${config.borderColor} hover:border-transparent overflow-hidden text-left`}
-                  >
-                    <div className={`absolute inset-0 bg-gradient-to-br ${config.gradient} opacity-0 group-hover:opacity-5 transition-opacity duration-300`}></div>
-                    <div className={`inline-flex p-3 rounded-xl bg-gradient-to-br ${config.gradient} mb-4 shadow-lg group-hover:scale-110 transition-transform duration-300`}>
-                      <IconComponent size={28} className="text-white" />
+
+            <div className="grid grid-cols-1 lg:grid-cols-4 gap-4">
+              {/* Overall Stats Card */}
+              <div className="bg-white/5 backdrop-blur-sm rounded-xl p-4 border border-white/10">
+                <h3 className="text-sm font-semibold text-slate-400 mb-3 flex items-center gap-2">
+                  <BarChart3 size={16} className="text-cyan-400" />
+                  {language === 'ja' ? '総合統計' : '总体统计'}
+                </h3>
+                <div className="space-y-3">
+                  <div className="flex items-center justify-between">
+                    <span className="text-xs text-slate-500">{language === 'ja' ? '総回答数' : '总答题数'}</span>
+                    <span className="text-lg font-bold text-cyan-400">{learningStats.totalAnswered}</span>
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <span className="text-xs text-slate-500">{language === 'ja' ? '総正解率' : '总正确率'}</span>
+                    <span className="text-lg font-bold text-emerald-400">{learningStats.overallCorrectRate}%</span>
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <span className="text-xs text-slate-500">{language === 'ja' ? '学習日数' : '学习天数'}</span>
+                    <span className="text-lg font-bold text-purple-400">{learningStats.studyDays}</span>
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <span className="text-xs text-slate-500">{language === 'ja' ? '要復習' : '待复习'}</span>
+                    <span className={`text-lg font-bold ${stats.wrongCount > 0 ? 'text-amber-400' : 'text-slate-500'}`}>{stats.wrongCount}</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Practice & Exam Mode Stats */}
+              <div className="bg-white/5 backdrop-blur-sm rounded-xl p-4 border border-white/10">
+                <h3 className="text-sm font-semibold text-slate-400 mb-3 flex items-center gap-2">
+                  <Target size={16} className="text-emerald-400" />
+                  {language === 'ja' ? 'モード別統計' : '模式统计'}
+                </h3>
+                <div className="space-y-3">
+                  {/* Practice Mode */}
+                  <div className="p-2 bg-green-500/10 rounded-lg border border-green-500/20">
+                    <div className="flex items-center gap-2 mb-1">
+                      <Play size={12} className="text-green-400" />
+                      <span className="text-xs text-green-400 font-medium">{language === 'ja' ? '練習モード' : '练习模式'}</span>
                     </div>
-                    <h3 className="text-xl font-bold text-gray-900 mb-1">{config.name[language === 'ja' ? 'ja' : 'zh']}</h3>
-                    <p className="text-sm text-gray-500">{config.description[language === 'ja' ? 'ja' : 'zh']}</p>
-                    <ChevronRight size={20} className="absolute bottom-6 right-6 text-gray-300 group-hover:text-gray-500 transition-colors" />
+                    <div className="flex items-center justify-between text-sm">
+                      <span className="text-slate-400">{learningStats.practiceQuestions}{language === 'ja' ? '問' : '题'}</span>
+                      <span className="font-semibold text-green-400">{learningStats.practiceCorrectRate}%</span>
+                    </div>
+                  </div>
+                  {/* Exam Mode */}
+                  <div className="p-2 bg-red-500/10 rounded-lg border border-red-500/20">
+                    <div className="flex items-center gap-2 mb-1">
+                      <FileCheck size={12} className="text-red-400" />
+                      <span className="text-xs text-red-400 font-medium">{language === 'ja' ? '模擬試験' : '模拟考试'}</span>
+                    </div>
+                    <div className="flex items-center justify-between text-sm">
+                      <span className="text-slate-400">{learningStats.examCount}{language === 'ja' ? '回' : '次'}</span>
+                      <span className="font-semibold text-red-400">{learningStats.examAvgScore}%</span>
+                    </div>
+                    {learningStats.examCount > 0 && (
+                      <div className="text-xs text-slate-500 mt-1">
+                        {language === 'ja' ? '合格率' : '通过率'}: {learningStats.examPassRate}%
+                      </div>
+                    )}
+                  </div>
+                </div>
+              </div>
+
+              {/* Recent Sessions Card */}
+              <div className="bg-white/5 backdrop-blur-sm rounded-xl p-4 border border-white/10">
+                <h3 className="text-sm font-semibold text-slate-400 mb-3 flex items-center gap-2">
+                  <Clock size={16} className="text-purple-400" />
+                  {language === 'ja' ? '最近の学習' : '最近学习'}
+                </h3>
+                {learningStats.recentSessions.length > 0 ? (
+                  <div className="space-y-2">
+                    {learningStats.recentSessions.slice(0, 4).map((session, i) => (
+                      <div key={i} className="flex items-center justify-between text-sm">
+                        <div className="flex items-center gap-2">
+                          {session.mode === 'exam' ? (
+                            <FileCheck size={10} className="text-red-400" />
+                          ) : (
+                            <Play size={10} className="text-green-400" />
+                          )}
+                          <span className="text-slate-300 text-xs">{session.examName}</span>
+                        </div>
+                        <span className={`font-semibold text-xs ${session.score >= 70 ? 'text-emerald-400' : 'text-amber-400'}`}>
+                          {session.score}%
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+                ) : (
+                  <div className="text-center text-sm text-slate-500 py-4">
+                    {language === 'ja' ? 'まだ学習記録がありません' : '暂无学习记录'}
+                  </div>
+                )}
+              </div>
+
+              {/* Quick Links Card */}
+              <div className="bg-white/5 backdrop-blur-sm rounded-xl p-4 border border-white/10">
+                <h3 className="text-sm font-semibold text-slate-400 mb-3 flex items-center gap-2">
+                  <Rocket size={16} className="text-rose-400" />
+                  {language === 'ja' ? 'クイックリンク' : '快捷入口'}
+                </h3>
+                <div className="space-y-2">
+                  <button
+                    onClick={() => navigate('/ai-intro')}
+                    className="w-full flex items-center gap-2 p-2 rounded-lg hover:bg-white/5 transition-colors text-left group"
+                  >
+                    <div className="p-1.5 bg-violet-500/20 rounded-lg group-hover:bg-violet-500/30 transition-colors">
+                      <Lightbulb size={14} className="text-violet-400" />
+                    </div>
+                    <div className="text-sm font-medium text-white">{language === 'ja' ? 'AI入門' : 'AI 入门'}</div>
                   </button>
-                );
-              })}
+                  <button
+                    onClick={() => setSelectedView('ai-resources')}
+                    className="w-full flex items-center gap-2 p-2 rounded-lg hover:bg-white/5 transition-colors text-left group"
+                  >
+                    <div className="p-1.5 bg-rose-500/20 rounded-lg group-hover:bg-rose-500/30 transition-colors">
+                      <Boxes size={14} className="text-rose-400" />
+                    </div>
+                    <div className="text-sm font-medium text-white">{language === 'ja' ? 'AIリソース' : 'AI 资源'}</div>
+                  </button>
+                  {stats.wrongCount > 0 && (
+                    <button
+                      onClick={() => navigate('/wrong-answers')}
+                      className="w-full flex items-center gap-2 p-2 rounded-lg hover:bg-white/5 transition-colors text-left group"
+                    >
+                      <div className="p-1.5 bg-amber-500/20 rounded-lg group-hover:bg-amber-500/30 transition-colors">
+                        <AlertCircle size={14} className="text-amber-400" />
+                      </div>
+                      <div className="text-sm font-medium text-white">
+                        {language === 'ja' ? '復習する' : '去复习'} ({stats.wrongCount})
+                      </div>
+                    </button>
+                  )}
+                </div>
+              </div>
             </div>
+
+            {/* Per-Certification Progress (show if has data) */}
+            {learningStats.certStats.length > 0 && (
+              <div className="mt-4">
+                <h3 className="text-sm font-semibold text-slate-400 mb-3 flex items-center gap-2">
+                  <Award size={16} className="text-yellow-400" />
+                  {language === 'ja' ? '認定別進捗' : '认证进度'}
+                </h3>
+                <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-2">
+                  {learningStats.certStats.slice(0, 6).map((cert, i) => (
+                    <div key={i} className="bg-white/5 backdrop-blur-sm rounded-lg p-3 border border-white/10">
+                      <div className="text-xs font-bold text-white mb-1">{cert.certCode}</div>
+                      <div className="flex items-center justify-between text-xs">
+                        <span className="text-slate-500">{cert.questionsAnswered}{language === 'ja' ? '問' : '题'}</span>
+                        <span className={`font-semibold ${cert.correctRate >= 70 ? 'text-emerald-400' : 'text-amber-400'}`}>
+                          {cert.correctRate}%
+                        </span>
+                      </div>
+                      <div className="text-xs text-slate-500 mt-1">
+                        {language === 'ja' ? '最高' : '最高'}: {cert.bestScore}%
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
           </div>
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="py-8 border-t border-gray-100 bg-white/50">
+      {/* Footer - Compact */}
+      <footer className="relative z-10 py-4 border-t border-white/10">
         <div className="text-center">
-          <p className="text-gray-500">
-            <span className="font-semibold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">StudyForge</span>
+          <p className="text-slate-500 text-sm">
+            <span className="font-semibold bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent">StudyForge</span>
             <span className="mx-2">·</span>
             {language === 'ja' ? 'AI学習プラットフォーム' : 'AI 学习平台'}
           </p>
