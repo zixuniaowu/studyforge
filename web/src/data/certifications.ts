@@ -179,7 +179,7 @@ export const awsCertifications: Certification[] = [
     examDuration: 180,
     questionCount: 65,
     passingScore: 75,
-    prerequisites: ['aws-saa-c03'],
+    prerequisites: ['aws-mla-c01'],
     hasExamData: true,
     description: { zh: 'AWS 机器学习专家认证', ja: 'AWS 機械学習の専門知識を証明する認定' }
   },
@@ -498,8 +498,8 @@ export const gcpCertifications: Certification[] = [
     description: { zh: 'GCP 数据工程师专业认证', ja: 'GCP データエンジニア プロフェッショナル認定' }
   },
   {
-    id: 'gcp-pmle',
-    code: 'PMLE',
+    id: 'gcp-ml-engineer',
+    code: 'ML-Engineer',
     provider: 'GCP',
     name: { zh: '机器学习工程师专业', ja: 'Professional ML Engineer' },
     fullName: { zh: 'Google Cloud Professional Machine Learning Engineer', ja: 'Google Cloud Professional Machine Learning Engineer' },
@@ -508,7 +508,7 @@ export const gcpCertifications: Certification[] = [
     examDuration: 120,
     questionCount: 50,
     passingScore: 70,
-    prerequisites: ['gcp-ace'],
+    prerequisites: ['gcp-cdl', 'gcp-ace'],
     hasExamData: true,
     description: { zh: 'GCP 机器学习工程师专业认证', ja: 'GCP 機械学習エンジニア プロフェッショナル認定' }
   },
@@ -624,13 +624,18 @@ export const careerPaths: CareerPath[] = [
     name: { zh: 'AI 工程师', ja: 'AI エンジニア' },
     description: { zh: '构建和部署 AI/ML 解决方案的专家', ja: 'AI/ML ソリューションの構築とデプロイの専門家' },
     certifications: [
+      // AWS AI Path: AIF-C01 → MLA-C01 → MLS-C01
       { provider: 'AWS', certId: 'aws-aif-c01' },
+      { provider: 'AWS', certId: 'aws-mla-c01' },
       { provider: 'AWS', certId: 'aws-mls-c01' },
+      // Azure AI Path: AI-900 → AI-102 → DP-100
       { provider: 'Azure', certId: 'azure-ai-900' },
       { provider: 'Azure', certId: 'azure-ai-102' },
       { provider: 'Azure', certId: 'azure-dp-100' },
+      // GCP AI Path: CDL → ACE → ML-Engineer
       { provider: 'GCP', certId: 'gcp-cdl' },
-      { provider: 'GCP', certId: 'gcp-pmle' }
+      { provider: 'GCP', certId: 'gcp-ace' },
+      { provider: 'GCP', certId: 'gcp-ml-engineer' }
     ]
   },
   {
