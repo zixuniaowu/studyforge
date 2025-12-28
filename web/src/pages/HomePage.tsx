@@ -217,9 +217,21 @@ export const HomePage: React.FC = () => {
         try {
           const langSuffix = language === 'ja' ? '-ja' : '';
           const examFiles = [
+            // AWS
             'aws-aif-c01-set1', 'aws-aif-c01-set2', 'aws-aif-c01-set3',
+            'aws-clf-c02-set1', 'aws-clf-c02-set2', 'aws-clf-c02-set3',
+            'aws-mls-c01-set1', 'aws-mls-c01-set2', 'aws-mls-c01-set3',
+            'aws-saa-c03-set1', 'aws-saa-c03-set2', 'aws-saa-c03-set3',
+            // Azure
             'azure-ai-102-set1', 'azure-ai-102-set2', 'azure-ai-102-set3',
-            'gcp-ml-engineer-set1', 'gcp-ml-engineer-set2', 'gcp-ml-engineer-set3'
+            'azure-az-104-set1', 'azure-az-104-set2', 'azure-az-104-set3',
+            'azure-az-900-set1', 'azure-az-900-set2', 'azure-az-900-set3',
+            'azure-dp-100-set1', 'azure-dp-100-set2', 'azure-dp-100-set3',
+            // GCP
+            'gcp-ace-set1', 'gcp-ace-set2', 'gcp-ace-set3',
+            'gcp-cdl-set1', 'gcp-cdl-set2', 'gcp-cdl-set3',
+            'gcp-ml-engineer-set1', 'gcp-ml-engineer-set2', 'gcp-ml-engineer-set3',
+            'gcp-pde-set1', 'gcp-pde-set2', 'gcp-pde-set3'
           ];
           for (const examFile of examFiles) {
             try {
@@ -259,9 +271,21 @@ export const HomePage: React.FC = () => {
         await db.quizSessions.clear();
         await db.wrongAnswers.clear();
         const examFiles = [
+          // AWS
           'aws-aif-c01-set1', 'aws-aif-c01-set2', 'aws-aif-c01-set3',
+          'aws-clf-c02-set1', 'aws-clf-c02-set2', 'aws-clf-c02-set3',
+          'aws-mls-c01-set1', 'aws-mls-c01-set2', 'aws-mls-c01-set3',
+          'aws-saa-c03-set1', 'aws-saa-c03-set2', 'aws-saa-c03-set3',
+          // Azure
           'azure-ai-102-set1', 'azure-ai-102-set2', 'azure-ai-102-set3',
-          'gcp-ml-engineer-set1', 'gcp-ml-engineer-set2', 'gcp-ml-engineer-set3'
+          'azure-az-104-set1', 'azure-az-104-set2', 'azure-az-104-set3',
+          'azure-az-900-set1', 'azure-az-900-set2', 'azure-az-900-set3',
+          'azure-dp-100-set1', 'azure-dp-100-set2', 'azure-dp-100-set3',
+          // GCP
+          'gcp-ace-set1', 'gcp-ace-set2', 'gcp-ace-set3',
+          'gcp-cdl-set1', 'gcp-cdl-set2', 'gcp-cdl-set3',
+          'gcp-ml-engineer-set1', 'gcp-ml-engineer-set2', 'gcp-ml-engineer-set3',
+          'gcp-pde-set1', 'gcp-pde-set2', 'gcp-pde-set3'
         ];
         const languages = ['', '-ja'];
         for (const suffix of languages) {
