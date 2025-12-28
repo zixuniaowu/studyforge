@@ -571,7 +571,7 @@ export const CertificationPathPage: React.FC = () => {
                 </span>
               </div>
               <button
-                onClick={() => setSelectedCareerPath(null)}
+                onClick={() => navigate('/certification-path')}
                 className="text-sm text-indigo-600 hover:text-indigo-700 font-medium"
               >
                 {viewAllText}
