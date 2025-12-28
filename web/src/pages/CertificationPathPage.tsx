@@ -105,7 +105,7 @@ const CertificationPathSVG: React.FC<{
     foundational: language === 'ja' ? '入門' : '入门',
     associate: language === 'ja' ? 'アソシエイト' : '助理',
     professional: language === 'ja' ? 'プロフェッショナル' : '专业',
-    specialty: language === 'ja' ? 'スペシャリティ' : '专家',
+    specialty: language === 'ja' ? 'スペシャリティ' : '专项',
     expert: language === 'ja' ? 'エキスパート' : '专家'
   };
 
@@ -257,8 +257,8 @@ const CertificationPathSVG: React.FC<{
         })
       ))}
 
-      {/* Legend */}
-      <g transform="translate(600, 390)">
+      {/* Legend - positioned at bottom right */}
+      <g transform={`translate(${svgWidth - 220}, ${svgHeight - 25})`}>
         <circle cx="0" cy="0" r="6" fill={config.pathColor} />
         <text x="15" y="4" fill="#6B7280" fontSize="10">
           {language === 'ja' ? '練習問題あり' : '有题库'}
