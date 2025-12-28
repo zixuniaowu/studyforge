@@ -456,11 +456,8 @@ export const CertificationPathPage: React.FC = () => {
       .map(c => c.certId);
   }, [selectedCareerPath, selectedProvider]);
 
-  // Filter certifications for single provider mode
-  const filteredCertifications = useMemo(() => {
-    if (!selectedCareerPath || highlightedCertIds.length === 0) return certifications;
-    return certifications.filter(c => highlightedCertIds.includes(c.id));
-  }, [certifications, selectedCareerPath, highlightedCertIds]);
+  // Always show all certifications, highlighting is done via highlightedCertIds
+  const filteredCertifications = certifications;
 
   // Group by level for single provider mode
   const certsByLevel = useMemo(() => {
@@ -488,8 +485,8 @@ export const CertificationPathPage: React.FC = () => {
   const certTitle = lang === 'ja' ? '認定一覧' : '认证列表';
   const viewAllText = lang === 'ja' ? 'すべての認定を表示' : '查看全部认证';
 
-  // Career mode: show all providers for selected career
-  const isCareerMode = selectedCareerPath && certsByProvider;
+  // Always show single provider mode, career path just affects highlighting
+  const isCareerMode = false; // Disabled - always show single provider with tabs
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-indigo-50/30">
@@ -511,31 +508,26 @@ export const CertificationPathPage: React.FC = () => {
               </h1>
             </div>
 
-            {/* Provider Tabs - only show when not in career mode */}
-            {!isCareerMode && (
-              <div className="flex items-center gap-1 p-0.5 bg-white rounded-lg shadow-sm">
-                {(['AWS', 'Azure', 'GCP'] as Provider[]).map((provider) => {
-                  const pConfig = providerConfig[provider];
-                  const isActive = selectedProvider === provider;
-                  return (
-                    <button
-                      key={provider}
-                      onClick={() => {
-                        setSelectedProvider(provider);
-                        setSelectedCareerPath(null);
-                      }}
-                      className={`px-3 py-1 rounded-md font-medium text-xs transition-all ${
-                        isActive
-                          ? `${pConfig.activeBg} ${pConfig.activeText}`
-                          : `text-gray-600 ${pConfig.hoverBg}`
-                      }`}
-                    >
-                      {provider}
-                    </button>
-                  );
-                })}
-              </div>
-            )}
+            {/* Provider Tabs - always visible */}
+            <div className="flex items-center gap-1 p-0.5 bg-white rounded-lg shadow-sm">
+              {(['AWS', 'Azure', 'GCP'] as Provider[]).map((provider) => {
+                const pConfig = providerConfig[provider];
+                const isActive = selectedProvider === provider;
+                return (
+                  <button
+                    key={provider}
+                    onClick={() => setSelectedProvider(provider)}
+                    className={`px-3 py-1 rounded-md font-medium text-xs transition-all ${
+                      isActive
+                        ? `${pConfig.activeBg} ${pConfig.activeText}`
+                        : `text-gray-600 ${pConfig.hoverBg}`
+                    }`}
+                  >
+                    {provider}
+                  </button>
+                );
+              })}
+            </div>
           </div>
         </div>
       </div>
