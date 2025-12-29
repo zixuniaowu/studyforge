@@ -1,0 +1,199 @@
+{
+  "exam": {
+    "id": "azure-az-204-set3-ja",
+    "name": "Azure AZ-204 開発者模擬試験 #3",
+    "code": "AZ-204",
+    "provider": "Azure",
+    "language": "ja",
+    "description": "Microsoft Azure Developer Associate 認定試験の模擬問題です。Azure コンピューティングソリューション、ストレージソリューション、セキュリティ、監視と最適化、サードパーティサービス統合などのコア開発領域をカバーしています。",
+    "totalQuestions": 40,
+    "passingScore": 70,
+    "examTime": 120,
+    "domains": [
+      {
+        "id": 1,
+        "name": "Azure コンピューティングソリューションの開発 (Develop Azure compute solutions)",
+        "weight": 28
+      },
+      {
+        "id": 2,
+        "name": "Azure ストレージソリューションの開発 (Develop for Azure storage)",
+        "weight": 17
+      },
+      {
+        "id": 3,
+        "name": "Azure セキュリティの実装 (Implement Azure security)",
+        "weight": 22
+      },
+      {
+        "id": 4,
+        "name": "監視、トラブルシューティング、最適化 (Monitor, troubleshoot, and optimize)",
+        "weight": 18
+      },
+      {
+        "id": 5,
+        "name": "Azure およびサードパーティサービスへの接続と利用 (Connect to and consume Azure and third-party services)",
+        "weight": 15
+      }
+    ],
+    "tags": [
+      "Azure",
+      "AZ-204",
+      "開発者",
+      "認定試験",
+      "クラウド開発"
+    ]
+  },
+  "questions": [
+    {
+      "id": "q1",
+      "domain": 1,
+      "question": "メッセージの処理が完了した後、結果を複数の出力先に書き込む必要がある Azure Function を開発しています。何を使用すべきですか？",
+      "options": {
+        "A": "複数の関数",
+        "B": "複数の出力バインディング",
+        "C": "Durable Functions",
+        "D": "Azure Logic Apps"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure Functions は複数の出力バインディングをサポートしており、関数が複数のターゲット（キュー、Blob、Cosmos DB など）にデータを書き込むことができます。複数の関数を作成する必要がなく、コードが簡素化され、効率が向上します。\n---",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q2",
+      "domain": 1,
+      "question": "Azure App Service を使用しており、ダウンタイムなしでデプロイを実行する必要があります。どの機能を使用すべきですか？",
+      "options": {
+        "A": "自動スケーリング",
+        "B": "デプロイスロットとスワップ",
+        "C": "WebJobs",
+        "D": "Application Insights"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "デプロイスロットを使用すると、新しいバージョンを本番前のスロットにデプロイし、テストとウォームアップを行った後、スロットスワップを実行して本番環境に投入できます。スワップ操作は即座に行われ、トラフィックルーティングを切り替えるだけなので、ダウンタイムは発生しません。\n---",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q3",
+      "domain": 1,
+      "question": "大量のメッセージを処理する必要がある Azure Function を開発しています。関数インスタンスの同時実行数を制御する必要があります。この設定はどこで構成すべきですか？",
+      "options": {
+        "A": "function.json",
+        "B": "host.json",
+        "C": "local.settings.json",
+        "D": "アプリケーション設定"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "host.json ファイルには、同時実行設定を含む関数アプリレベルの構成が含まれています。例えば、キュートリガーの場合は batchSize と newBatchThreshold を、HTTP トリガーの場合は maxConcurrentRequests を構成できます。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q4",
+      "domain": 1,
+      "question": "Azure Container Apps の Dapr 統合を使用しています。別のサービスからアプリケーションを呼び出す必要があります。どの Dapr ビルディングブロックを使用すべきですか？",
+      "options": {
+        "A": "状態管理",
+        "B": "サービス呼び出し",
+        "C": "パブリッシュ/サブスクライブ",
+        "D": "バインディング"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Dapr のサービス呼び出しビルディングブロックは、サービス間の安全で信頼性の高い通信を提供します。サービスディスカバリ、負荷分散、リトライ、mTLS 暗号化を処理し、マイクロサービス間の呼び出しを簡素化します。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q5",
+      "domain": 1,
+      "question": "Azure Service Bus キューによってトリガーされる Azure Function を開発しています。処理が失敗した場合、メッセージがデッドレターキューに移動されることを確認する必要があります。どのように処理すべきですか？",
+      "options": {
+        "A": "コード内でメッセージを手動で移動する",
+        "B": "例外をスローして、Service Bus に自動的に処理させる",
+        "C": "Complete メソッドを使用してメッセージを完了する",
+        "D": "AutoComplete を true に構成する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure Function が Service Bus メッセージの処理中に例外をスローすると、メッセージはキューに戻ります。構成された最大リトライ回数を超えると、メッセージは自動的にデッドレターキューに移動されます。これは Service Bus の組み込み機能であり、手動で処理する必要はありません。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q6",
+      "domain": 1,
+      "question": "Azure Container Instances を使用してマルチコンテナグループをデプロイしています。コンテナ間で localhost を介して通信する必要があります。これは可能ですか？",
+      "options": {
+        "A": "不可能、コンテナグループ内のコンテナは通信できない",
+        "B": "可能、同じコンテナグループ内のコンテナはネットワーク名前空間を共有する",
+        "C": "仮想ネットワークの構成が必要",
+        "D": "パブリック IP 経由でのみ通信可能"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure Container Instances のコンテナグループ内のコンテナは、ネットワーク名前空間を共有します（Kubernetes Pod に似ています）。追加のネットワーク構成なしで、localhost とポートを介して相互に通信できます。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q7",
+      "domain": 1,
+      "question": "Durable Functions のエンティティ機能（Durable Entities）を使用しています。エンティティはどのようなシナリオに使用されますか？",
+      "options": {
+        "A": "アクティビティの順次実行",
+        "B": "分散状態の管理",
+        "C": "並列処理",
+        "D": "スケジュールされたタスク"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Durable Entities（永続エンティティ）は分散状態を管理するために使用され、Actor モデルに似たプログラミングパターンを提供します。エンティティには一意の識別子があり、状態を安全に読み書きし、同時操作を処理できます。ショッピングカートやゲーム状態などのシナリオに適しています。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q8",
+      "domain": 1,
+      "question": "Azure App Service のカスタムヘルスチェックを構成しています。ヘルスチェックエンドポイントは何を検証すべきですか？",
+      "options": {
+        "A": "HTTP 200 を返すだけ",
+        "B": "アプリケーションとその依存関係の正常性状態",
+        "C": "サーバーの CPU 使用率",
+        "D": "ネットワーク遅延"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "効果的なヘルスチェックは、アプリケーションとその重要な依存関係（データベース、キャッシュ、外部サービスなど）が正常に動作しているかどうかを検証する必要があります。重要な依存関係が利用できない場合、ヘルスチェックは非成功のステータスコードを返し、ロードバランサーがトラフィックを正常なインスタンスにルーティングできるようにする必要があります。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q9",
+      "domain": 2,
+      "question": "Azure Cosmos DB を使用しており、ページネーションクエリを実装する必要があります。何を使用すべきですか？",
+      "options": {
+        "A": "OFFSET と LIMIT",
+        "B": "継続トークン (Continuation Token)",
+        "C": "カーソル",
+        "D": "ページ番号パラメータ"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Cosmos DB は継続トークンを使用してページネーションを実装します。各クエリレスポンスには継続トークンが含まれており、次のリクエストでそれを使用して次のページの結果を取得できます。レコードをスキップする必要がないため、OFFSET よりも効率的です。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q10",
+      "domain": 2,
+      "question": "Azure Blob Storage を使用しており、Blob の変更を監視する必要があります。何を使用すべきですか？",
+      "options": {
+        "A": "Blob トリガー",
+        "B": "変更フィード (Change Feed)",
+        "C": "Blob インデックス",
+        "D": "ライフサイクル管理"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure Blob Storage の変更フィードは、Blob の作成と変更イベントの順序付きログを提供します。処理ロジックのトリガー、データの同期維持、監査に使用できます。変更フィードはイベントを時系列順に提供し、永続的です。\n---",
+      "difficulty": "medium"
+    }
+  ]
+}

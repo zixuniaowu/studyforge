@@ -1,0 +1,205 @@
+{
+  "exam": {
+    "id": "gcp-pca-set3-ja",
+    "name": "GCP Professional Cloud Architect 模擬試験 #3",
+    "code": "PCA",
+    "provider": "GCP",
+    "language": "ja",
+    "description": "Google Cloud Professional Cloud Architect認定試験の模擬問題集",
+    "totalQuestions": 10,
+    "passingScore": 70,
+    "examTime": 120,
+    "domains": [
+      {
+        "id": 1,
+        "name": "クラウドソリューションアーキテクチャの設計と計画",
+        "weight": 24
+      },
+      {
+        "id": 2,
+        "name": "ソリューションインフラストラクチャの管理と構成",
+        "weight": 15
+      },
+      {
+        "id": 3,
+        "name": "セキュリティとコンプライアンスの設計",
+        "weight": 18
+      },
+      {
+        "id": 4,
+        "name": "技術およびビジネスプロセスの分析と最適化",
+        "weight": 18
+      },
+      {
+        "id": 5,
+        "name": "実装の管理",
+        "weight": 11
+      },
+      {
+        "id": 6,
+        "name": "ソリューションと運用の信頼性確保",
+        "weight": 14
+      }
+    ],
+    "tags": [
+      "GCP",
+      "Cloud",
+      "PCA",
+      "Professional",
+      "Architect",
+      "認定試験"
+    ]
+  },
+  "questions": [
+    {
+      "id": "q1",
+      "domain": 1,
+      "question": "医療会社が機密性の高い患者データを処理するデータ分析プラットフォームを構築する必要があります。ソリューションはHIPAA規制に準拠し、保存時と転送中の両方でデータが暗号化されていることを確認する必要があります。これらの要件を最も満たすアーキテクチャはどれですか？",
+      "options": {
+        "A": "デフォルト暗号化でCloud Storageにデータを保存し、パブリックエンドポイント経由でアクセス",
+        "B": "顧客管理の暗号化キー（CMEK）、VPC Service Controls、Private Google Accessを使用したBigQuery",
+        "C": "カスタム暗号化を使用してCompute Engine上に自己管理のHadoopクラスタをデプロイ",
+        "D": "SSL接続と標準的なGoogle管理の暗号化を使用したCloud SQL"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "CMEKを使用したBigQueryは、コンプライアンス要件のための顧客制御の暗号化キーを提供します。VPC Service Controlsはデータ漏洩を防ぐセキュリティ境界を作成します。Private Google Accessにより、Google APIへのトラフィックがパブリックインターネットを経由しないことを保証します。この組み合わせにより、分析機能を維持しながら、機密性の高い医療データを包括的に保護できます。",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q2",
+      "domain": 1,
+      "question": "企業がプレイヤー状態の更新に10ms未満のレイテンシで数百万の同時ユーザーを処理する必要があるグローバルモバイルゲームバックエンドを設計しています。最も適切なデータベースソリューションはどれですか？",
+      "options": {
+        "A": "複数リージョンにリードレプリカを持つCloud SQL",
+        "B": "マルチリージョン構成のCloud Spanner",
+        "C": "リージョンクラスタを持つMemorystore for Redis",
+        "D": "ネイティブモードのCloud Firestore"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "Memorystore for Redisはサブミリ秒のレイテンシを提供し、リアルタイムゲームの状態更新に不可欠です。そのインメモリアーキテクチャは、プレイヤー状態のような頻繁にアクセスされ急速に変化するデータに最適です。Cloud Spannerはグローバルな一貫性を提供しますが、そのレイテンシ（通常10〜100ms）はゲームワークロードの10ms未満の要件を満たさない場合があります。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q3",
+      "domain": 2,
+      "question": "組織は、異なるプロジェクトの複数のVPCが中央ハブVPCを介して通信できるハブアンドスポークネットワークトポロジを実装したいと考えています。推奨されるアプローチは何ですか？",
+      "options": {
+        "A": "各スポークVPCと他のすべてのスポークVPC間にVPCピアリングを作成",
+        "B": "ハブをホストプロジェクト、スポークをサービスプロジェクトとしてShared VPCを使用",
+        "C": "すべてのVPC間にCloud VPNトンネルをデプロイ",
+        "D": "各スポークからハブへのVPCピアリングを使用し、Cloud Routerを介して推移的ルーティングを有効化"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Shared VPCはGoogle Cloudでのハブアンドスポークトポロジに推奨されるアプローチです。ハブプロジェクトは共有ネットワークを含むホストプロジェクトになり、スポークプロジェクトは共有ネットワーク内のリソースを使用できるサービスプロジェクトになります。これにより、プロジェクト間でリソースを分離しながら、集中的なネットワーク管理が可能になります。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q4",
+      "domain": 2,
+      "question": "VPC内のリソースがCloud SQLインスタンスのプライベートホスト名を解決でき、パブリックインターネットに公開されないようにDNS解決を構成する必要があります。何を構成すべきですか？",
+      "options": {
+        "A": "Cloud DNSでパブリックDNSゾーンを作成",
+        "B": "Cloud SQL用のPrivate Service Connectを構成",
+        "C": "Cloud SQLのプライベートIPを有効にし、Cloud DNSプライベートゾーンを使用",
+        "D": "オンプレミスDNSサーバーへのDNS転送ゾーンを設定"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "Cloud SQLのプライベートIPを有効にすると、インスタンスに内部IPアドレスが割り当てられ、VPC内からのみアクセス可能になります。Cloud DNSプライベートゾーンにより、指定されたVPCネットワーク内からのみ解決可能なカスタムDNSレコードを作成できます。この組み合わせにより、Cloud SQLインスタンスに対する安全でプライベートなDNS解決が提供されます。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q5",
+      "domain": 3,
+      "question": "セキュリティチームは、組織からGoogle Cloudサービスへのすべての API コールが、企業管理デバイスまたは企業ネットワークから発信される必要があることを要求しています。この要件をどのように強制できますか？",
+      "options": {
+        "A": "ファイアウォールルールを構成して外部アクセスをブロック",
+        "B": "デバイスとIPに基づくアクセスレベルでVPC Service Controlsを使用",
+        "C": "カスタム認証ミドルウェアを実装",
+        "D": "IAM権限を特定のサービスアカウントに制限"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "VPC Service Controlsのアクセスレベルにより、IPアドレス範囲（企業ネットワーク）、デバイス属性（BeyondCorp Enterprise経由の企業管理デバイス）、その他の要因に基づいて条件を定義できます。サービス境界と組み合わせることで、これらの条件を満たすリクエストのみが保護されたGoogle Cloudリソースにアクセスできるように強制します。",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q6",
+      "domain": 3,
+      "question": "金融サービス会社は、PIIを含むBigQueryデータセットに対してデータ損失防止を実装する必要があります。ソリューションはクエリ結果で機密データを自動的に検出してマスクする必要があります。何を使用すべきですか？",
+      "options": {
+        "A": "IAMを使用したBigQuery列レベルセキュリティ",
+        "B": "BigQueryと統合されたCloud Data Loss Prevention（DLP）API",
+        "C": "CASE文を使用したBigQuery承認済みビュー",
+        "D": "BigQuery用の顧客管理の暗号化キー（CMEK）"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Cloud DLP APIは、PIIなどの機密データタイプの自動検出と分類を提供します。BigQueryと統合してデータセットをスキャンし、マスキング、トークン化、編集などの匿名化変換を適用できます。これにより、機密フィールドを手動で識別する必要なく、包括的で自動化されたデータ保護が提供されます。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q7",
+      "domain": 4,
+      "question": "チームは異なる環境（dev、staging、production）にまたがる複数のGKEクラスタを管理しています。すべてのクラスタにわたって一貫した構成とポリシーの適用を確保したいと考えています。推奨されるアプローチは何ですか？",
+      "options": {
+        "A": "各クラスタにkubectlコマンドを手動で適用",
+        "B": "Policy ControllerとAnthos Config Managementを使用",
+        "C": "クラスタ構成用のTerraformモジュールを作成",
+        "D": "クラスタ間でYAMLマニフェストをエクスポートおよびインポート"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Anthos Config Managementは、複数のKubernetesクラスタにわたってGitOpsスタイルの構成管理を可能にします。Gitリポジトリからすべての管理対象クラスタに構成を自動的に同期します。Policy Controller（Open Policy Agentに基づく）により、クラスタ全体でポリシーを定義して適用し、コンプライアンスと一貫性を確保できます。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q8",
+      "domain": 4,
+      "question": "データエンジニアリングチームは、BigQueryジョブ、Dataflow処理、Cloud Functionsを含む複雑なデータパイプラインをオーケストレーションする必要があります。パイプラインには依存関係があり、リトライロジックが必要です。どのサービスを使用すべきですか？",
+      "options": {
+        "A": "Pub/SubトリガーでCloud Scheduler",
+        "B": "Cloud Composer（マネージドApache Airflow）",
+        "C": "ジョブキューイング用のCloud Tasks",
+        "D": "サーバーレスオーケストレーション用のWorkflows"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Cloud Composerは複雑なワークフローオーケストレーション用に設計されたフルマネージドApache Airflowサービスです。ビジュアルDAG表現、依存関係管理、リトライロジック、BigQuery、Dataflow、Cloud Functionsを含むGoogle Cloudサービスとのネイティブ統合を提供します。複雑な依存関係を持つデータエンジニアリングパイプラインに最適です。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q9",
+      "domain": 5,
+      "question": "開発チームは、インフラストラクチャの変更がメインブランチにマージされたときに自動的に適用されるGitOpsワークフローを実装したいと考えています。インフラストラクチャはTerraformを使用して定義されています。推奨されるセットアップは何ですか？",
+      "options": {
+        "A": "各マージ後にTerraformコマンドを手動で実行",
+        "B": "Terraform Cloudバックエンドを使用したCloud Buildトリガーを使用",
+        "C": "Terraform自動化用にGKEにJenkinsをデプロイ",
+        "D": "リポジトリイベントでトリガーされるCloud Functionsを使用"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Cloud Buildトリガーは、コードが特定のブランチにマージされたときにTerraformのプランと適用を自動的に実行できます。Terraform Cloud（またはCloud Storage）をリモートバックエンドとして使用すると、状態のロックとコラボレーションが確保されます。これにより、Google Cloud上のインフラストラクチャ管理のための完全に自動化された監査可能なGitOpsワークフローが提供されます。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q10",
+      "domain": 6,
+      "question": "RPO 1時間、RTO 4時間の重要なアプリケーションの災害復旧戦略を設計する必要があります。アプリケーションはCloud SQL、GKE、Cloud Storageを使用しています。これらの要件を最も満たすアプローチはどれですか？",
+      "options": {
+        "A": "すべてのサービスに自動バックアップを使用し、必要に応じて手動で復元",
+        "B": "Cloud SQLクロスリージョンレプリカとGKEクラスタを持つ別のリージョンにウォームスタンバイをデプロイ",
+        "C": "単一リージョン内のGoogleの組み込み冗長性に依存",
+        "D": "データの冗長性にCloud Storageのマルチリージョンバケットのみを使用"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "クロスリージョンCloud SQLレプリカを使用したウォームスタンバイアプローチは継続的なレプリケーションを提供し（RPO < 1時間を満たす）、DRリージョンに事前プロビジョニングされたGKEクラスタはフェイルオーバー中に迅速にスケールアップできます。このアーキテクチャはコストと復旧目標のバランスを取り、1時間のRPOと4時間のRTO要件の両方を満たすことができます。",
+      "difficulty": "hard"
+    }
+  ]
+}

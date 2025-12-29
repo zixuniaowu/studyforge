@@ -1,0 +1,643 @@
+{
+  "exam": {
+    "id": "aws-dva-c02-set1",
+    "name": "AWS DVA-C02 模拟考试 #1",
+    "code": "DVA-C02",
+    "provider": "AWS",
+    "language": "zh-CN",
+    "description": "AWS认证开发者助理考试模拟题 - 第1套",
+    "totalQuestions": 40,
+    "passingScore": 72,
+    "examTime": 130,
+    "domains": [
+      {
+        "id": 1,
+        "name": "AWS 服务开发",
+        "weight": 32
+      },
+      {
+        "id": 2,
+        "name": "安全性",
+        "weight": 26
+      },
+      {
+        "id": 3,
+        "name": "部署",
+        "weight": 24
+      },
+      {
+        "id": 4,
+        "name": "故障排除和优化",
+        "weight": 18
+      }
+    ],
+    "tags": [
+      "AWS",
+      "Developer",
+      "Lambda",
+      "认证考试"
+    ]
+  },
+  "questions": [
+    {
+      "id": "q1",
+      "domain": 1,
+      "question": "一个开发团队正在使用AWS Lambda处理来自Amazon S3的文件上传事件。Lambda函数需要访问存储在Amazon DynamoDB中的配置数据。哪种方法可以最安全地为Lambda函数提供访问DynamoDB的权限？",
+      "options": {
+        "A": "在Lambda函数代码中硬编码AWS访问密钥",
+        "B": "使用带有适当DynamoDB权限的IAM执行角色",
+        "C": "将AWS凭证存储在Lambda环境变量中",
+        "D": "在S3存储桶中存储凭证文件"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "IAM执行角色是为Lambda函数提供AWS服务访问权限的最安全方式：\n- 无需管理或轮换凭证\n- 遵循最小权限原则\n- 凭证由AWS自动管理和轮换\n\n硬编码凭证(A)、环境变量存储凭证(C)、S3存储凭证(D)都存在安全风险，不符合AWS最佳实践。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q2",
+      "domain": 1,
+      "question": "开发人员正在使用Amazon API Gateway创建REST API。API需要对每个客户端实施请求速率限制。应该如何配置？",
+      "options": {
+        "A": "在API Gateway中配置使用计划和API密钥",
+        "B": "使用Lambda授权方实现自定义速率限制",
+        "C": "在每个Lambda函数中添加速率限制逻辑",
+        "D": "使用Amazon CloudFront进行请求限制"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "API Gateway使用计划和API密钥提供内置的速率限制功能：\n- 使用计划定义请求配额和节流限制\n- API密钥用于识别不同的客户端\n- 可以为每个客户端设置不同的限制\n\n这是API Gateway原生功能，无需自定义实现，比其他选项更简单和可靠。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q3",
+      "domain": 1,
+      "question": "开发人员正在编写一个从Amazon DynamoDB表读取数据的应用程序。应用程序需要读取最新的数据，即使这会增加读取成本。应该使用哪种读取一致性？",
+      "options": {
+        "A": "最终一致性读取",
+        "B": "强一致性读取",
+        "C": "事务读取",
+        "D": "批量读取"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "强一致性读取确保返回最新数据：\n- 反映所有先前成功写入的结果\n- 消耗的读取容量单位是最终一致性读取的两倍\n- 适用于需要最新数据的场景\n\n最终一致性读取(A)可能返回过时数据。事务读取(C)用于事务操作。批量读取(D)是操作类型，不是一致性级别。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q4",
+      "domain": 1,
+      "question": "开发人员需要将大量数据（每条记录约400KB）存储在DynamoDB中。哪种方法最符合DynamoDB的最佳实践？",
+      "options": {
+        "A": "将大型属性压缩后直接存储在DynamoDB中",
+        "B": "将大型数据存储在S3中，在DynamoDB中存储S3对象的引用",
+        "C": "增加DynamoDB表的预置容量",
+        "D": "使用多个DynamoDB表分散存储数据"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "DynamoDB项目大小限制为400KB，最佳实践是：\n- 将大型对象存储在S3中\n- 在DynamoDB中只存储S3对象的键/URL\n- 这种模式既满足大小限制，又优化成本和性能\n\n直接存储大对象会接近限制(A)。增加容量(C)不能解决大小限制问题。分表存储(D)增加复杂性。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q5",
+      "domain": 1,
+      "question": "开发人员使用AWS SDK for Python (Boto3)调用DynamoDB API时收到ProvisionedThroughputExceededException错误。SDK应该如何处理这个错误？",
+      "options": {
+        "A": "SDK会自动使用指数退避重试",
+        "B": "开发人员必须手动实现重试逻辑",
+        "C": "SDK会立即抛出异常，不进行重试",
+        "D": "SDK会无限期重试直到成功"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "AWS SDK内置了自动重试机制：\n- 对于可重试的错误（如节流错误），SDK会自动重试\n- 使用指数退避算法（每次重试等待时间加倍）\n- 默认最大重试次数可配置\n\n开发人员可以自定义重试配置，但基本重试功能是SDK内置的。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q6",
+      "domain": 2,
+      "question": "开发人员需要在Lambda函数中安全存储数据库连接字符串，包括用户名和密码。哪种方法最安全？",
+      "options": {
+        "A": "使用AWS Secrets Manager存储凭证",
+        "B": "使用Lambda环境变量存储明文凭证",
+        "C": "将凭证硬编码在Lambda函数代码中",
+        "D": "将凭证存储在S3存储桶的文本文件中"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "AWS Secrets Manager是存储敏感凭证的最佳选择：\n- 自动凭证轮换\n- 加密存储\n- 细粒度访问控制\n- 审计日志\n- 与Lambda原生集成\n\n环境变量(B)不安全。硬编码(C)是最差做法。S3文本文件(D)缺乏加密和轮换功能。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q7",
+      "domain": 2,
+      "question": "开发人员正在为Web应用程序实现用户身份验证。应用程序需要支持社交登录（Google、Facebook）和自定义用户注册。应该使用哪个AWS服务？",
+      "options": {
+        "A": "AWS IAM",
+        "B": "Amazon Cognito",
+        "C": "AWS Directory Service",
+        "D": "AWS Single Sign-On"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Amazon Cognito专为Web和移动应用身份验证设计：\n- 用户池：管理用户注册和登录\n- 身份池：联合身份提供商（Google、Facebook等）\n- 支持MFA和安全功能\n- 与API Gateway和ALB集成\n\nIAM(A)用于AWS服务访问。Directory Service(C)用于企业目录。SSO(D)用于AWS账户访问管理。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q8",
+      "domain": 2,
+      "question": "开发人员需要加密存储在DynamoDB中的敏感数据。应该使用哪种加密方法？",
+      "options": {
+        "A": "使用AWS KMS客户管理密钥进行服务端加密",
+        "B": "在应用程序端使用自己的加密算法",
+        "C": "使用SSL/TLS传输加密",
+        "D": "使用DynamoDB流加密"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "DynamoDB支持使用AWS KMS进行静态加密：\n- AWS托管密钥（默认）\n- 客户管理密钥（CMK）- 提供更多控制\n- 自动加密所有数据\n- 与AWS审计服务集成\n\nSSL/TLS(C)只保护传输中的数据。自定义加密(B)增加复杂性。DynamoDB流加密(D)与存储加密无关。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q9",
+      "domain": 2,
+      "question": "API Gateway REST API需要验证传入请求的JWT令牌。哪种配置可以实现这个需求？",
+      "options": {
+        "A": "使用Cognito用户池授权方",
+        "B": "使用IAM授权",
+        "C": "使用API密钥",
+        "D": "使用资源策略"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Cognito用户池授权方专门用于JWT令牌验证：\n- 自动验证JWT签名和声明\n- 与Cognito用户池无缝集成\n- 支持自定义声明验证\n- 无需编写验证代码\n\nIAM授权(B)用于AWS签名请求。API密钥(C)用于识别客户端。资源策略(D)用于IP限制等。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q10",
+      "domain": 2,
+      "question": "开发人员需要为Lambda函数配置VPC访问，以便访问私有子网中的RDS数据库。还需要配置什么才能让Lambda函数访问互联网资源？",
+      "options": {
+        "A": "将Lambda函数放入公有子网",
+        "B": "在私有子网中配置NAT网关",
+        "C": "为Lambda函数分配弹性IP",
+        "D": "使用VPC对等连接"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "VPC中的Lambda函数访问互联网需要NAT网关：\n- Lambda函数放在私有子网中\n- 私有子网路由表指向NAT网关\n- NAT网关放在公有子网中\n\nLambda不能直接放在公有子网(A)。Lambda不支持弹性IP(C)。VPC对等(D)用于VPC间通信。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q11",
+      "domain": 3,
+      "question": "开发团队希望使用AWS CodePipeline实现持续部署。当代码推送到CodeCommit仓库时，管道应自动触发。应该如何配置？",
+      "options": {
+        "A": "使用Amazon EventBridge规则监控CodeCommit事件",
+        "B": "配置定时轮询CodeCommit仓库",
+        "C": "使用SNS通知触发管道",
+        "D": "手动触发每次部署"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Amazon EventBridge（原CloudWatch Events）是推荐的触发方式：\n- CodeCommit推送时自动发送事件到EventBridge\n- EventBridge规则触发CodePipeline\n- 实时响应，无延迟\n- 这是AWS推荐的最佳实践\n\n轮询(B)有延迟且消耗资源。SNS(C)不是标准集成方式。手动触发(D)不符合CI/CD原则。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q12",
+      "domain": 3,
+      "question": "开发人员正在使用AWS SAM部署无服务器应用程序。SAM模板中定义了Lambda函数和API Gateway。执行什么命令可以在本地测试API？",
+      "options": {
+        "A": "sam local start-api",
+        "B": "sam deploy --local",
+        "C": "sam invoke local",
+        "D": "sam test api"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "sam local start-api命令用于本地测试API Gateway：\n- 启动本地HTTP服务器\n- 模拟API Gateway行为\n- 自动重新加载代码更改\n- 支持本地调试\n\n这是SAM CLI提供的标准本地开发命令。其他选项不是有效的SAM CLI命令。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q13",
+      "domain": 3,
+      "question": "开发团队使用AWS CodeDeploy将应用程序部署到EC2实例。他们希望在部署新版本时最小化停机时间，如果出现问题可以快速回滚。应该使用哪种部署策略？",
+      "options": {
+        "A": "就地部署",
+        "B": "蓝/绿部署",
+        "C": "滚动部署",
+        "D": "一次性部署"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "蓝/绿部署提供最佳的零停机和快速回滚：\n- 创建新环境（绿色）运行新版本\n- 验证通过后切换流量\n- 出问题时立即切回原环境（蓝色）\n- 无停机时间\n\n就地部署(A)需要停机。滚动部署(C)回滚较慢。一次性部署(D)风险最高。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q14",
+      "domain": 3,
+      "question": "开发人员使用AWS CloudFormation部署基础设施。需要在不同环境（开发、测试、生产）中使用不同的实例类型。应该如何实现？",
+      "options": {
+        "A": "为每个环境创建单独的模板",
+        "B": "使用CloudFormation参数和条件",
+        "C": "使用嵌套堆栈",
+        "D": "使用CloudFormation宏"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "CloudFormation参数和条件是处理多环境的最佳方式：\n- 参数允许在部署时传入环境变量\n- 条件根据参数值选择不同配置\n- 单一模板管理所有环境\n- 减少代码重复\n\n单独模板(A)增加维护负担。嵌套堆栈(C)用于模块化。宏(D)用于模板转换。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q15",
+      "domain": 3,
+      "question": "开发人员需要配置AWS CodeBuild项目来运行单元测试。测试报告应该显示在CodeBuild控制台中。应该在buildspec.yml中配置什么？",
+      "options": {
+        "A": "reports部分，指定测试报告文件位置",
+        "B": "artifacts部分，上传测试结果",
+        "C": "phases部分，添加测试命令",
+        "D": "cache部分，缓存测试依赖"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "buildspec.yml的reports部分用于测试报告集成：\n- 指定测试报告的文件位置和格式\n- 支持JUnit、Cucumber等格式\n- 报告自动显示在CodeBuild控制台\n- 支持测试趋势分析\n\nartifacts(B)用于构建产出。phases(C)定义构建步骤。cache(D)用于构建缓存。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q16",
+      "domain": 4,
+      "question": "开发人员注意到Lambda函数的执行时间越来越长。应该使用什么AWS服务来分析和诊断性能问题？",
+      "options": {
+        "A": "Amazon CloudWatch Logs",
+        "B": "AWS X-Ray",
+        "C": "Amazon CloudWatch Metrics",
+        "D": "AWS Config"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "AWS X-Ray专门用于分布式应用程序的性能分析：\n- 跟踪请求在服务间的流动\n- 可视化服务依赖图\n- 识别性能瓶颈\n- 分析延迟分布\n\nCloudWatch Logs(A)用于日志。CloudWatch Metrics(C)显示指标但不提供详细跟踪。Config(D)用于配置合规性。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q17",
+      "domain": 4,
+      "question": "开发人员在使用AWS SDK调用S3 API时遇到间歇性超时错误。应该如何改进应用程序的可靠性？",
+      "options": {
+        "A": "增加SDK的连接超时设置",
+        "B": "实现指数退避重试策略",
+        "C": "使用S3 Transfer Acceleration",
+        "D": "切换到不同的AWS区域"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "指数退避重试是处理间歇性错误的最佳实践：\n- 初始等待后重试\n- 每次失败后等待时间加倍\n- 添加随机抖动避免雷群效应\n- AWS SDK内置此功能，可配置参数\n\n增加超时(A)不解决间歇性问题。Transfer Acceleration(C)用于加速传输。切换区域(D)增加延迟。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q18",
+      "domain": 4,
+      "question": "Lambda函数读取DynamoDB表时偶尔返回过时的数据。应该如何解决这个问题？",
+      "options": {
+        "A": "增加Lambda函数的内存",
+        "B": "使用强一致性读取替代最终一致性读取",
+        "C": "启用DynamoDB加速器(DAX)",
+        "D": "增加DynamoDB表的读取容量单位"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "过时数据问题通常是因为使用了最终一致性读取：\n- DynamoDB默认使用最终一致性读取\n- 强一致性读取返回最新数据\n- 消耗两倍读取容量单位\n- 在GetItem/Query/Scan中设置ConsistentRead=true\n\n增加内存(A)和容量(D)不影响一致性。DAX(C)也是最终一致性。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q19",
+      "domain": 4,
+      "question": "开发人员需要监控API Gateway API的请求延迟。应该查看哪个CloudWatch指标？",
+      "options": {
+        "A": "Count",
+        "B": "Latency",
+        "C": "IntegrationLatency",
+        "D": "CacheHitCount"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Latency指标显示完整的请求延迟：\n- 从API Gateway收到请求到返回响应的时间\n- 包括后端集成时间\n- 用于监控整体API性能\n\nIntegrationLatency(C)只包含后端处理时间。Count(A)是请求计数。CacheHitCount(D)是缓存命中数。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q20",
+      "domain": 4,
+      "question": "开发人员发现Lambda函数的冷启动时间过长。哪种方法可以减少冷启动延迟？",
+      "options": {
+        "A": "增加Lambda函数的超时设置",
+        "B": "配置Lambda预置并发",
+        "C": "减少Lambda函数的内存",
+        "D": "使用同步调用替代异步调用"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "预置并发是减少冷启动的最有效方法：\n- 预先初始化指定数量的执行环境\n- 请求立即由预热的环境处理\n- 消除冷启动延迟\n- 适用于延迟敏感的应用\n\n超时设置(A)不影响启动时间。减少内存(C)可能增加冷启动时间。调用类型(D)与冷启动无关。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q21",
+      "domain": 1,
+      "question": "开发人员正在构建一个处理用户上传图片的应用程序。图片上传到S3后，需要自动生成缩略图。应该如何实现？",
+      "options": {
+        "A": "使用S3事件通知触发Lambda函数",
+        "B": "使用定时任务轮询S3存储桶",
+        "C": "使用EC2实例持续监控S3",
+        "D": "使用S3批量操作"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "S3事件通知触发Lambda是最佳的事件驱动架构：\n- S3对象创建时自动触发Lambda\n- 无需轮询，实时响应\n- 无服务器，按使用付费\n- 自动扩展处理并发上传\n\n轮询(B)有延迟且效率低。EC2监控(C)成本高且复杂。批量操作(D)用于大规模批处理。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q22",
+      "domain": 1,
+      "question": "开发人员使用DynamoDB存储电子商务订单数据。需要查询特定客户在特定日期范围内的所有订单。应该如何设计表结构？",
+      "options": {
+        "A": "使用订单ID作为分区键，客户ID作为排序键",
+        "B": "使用客户ID作为分区键，订单日期作为排序键",
+        "C": "使用订单日期作为分区键，客户ID作为排序键",
+        "D": "只使用订单ID作为分区键"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "复合主键设计应支持主要查询模式：\n- 客户ID作为分区键：查询特定客户的订单\n- 订单日期作为排序键：支持日期范围查询\n- 使用Query操作高效获取数据\n\n其他设计无法高效支持\"客户+日期范围\"查询模式。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q23",
+      "domain": 1,
+      "question": "开发人员需要在Lambda函数中处理来自SQS队列的消息。如果消息处理失败，应该如何确保消息不会丢失？",
+      "options": {
+        "A": "增加队列的可见性超时",
+        "B": "配置死信队列",
+        "C": "使用FIFO队列",
+        "D": "启用长轮询"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "死信队列(DLQ)用于处理失败的消息：\n- 消息多次处理失败后移动到DLQ\n- 防止消息丢失\n- 可以稍后分析和重新处理\n- 配置maxReceiveCount设置最大重试次数\n\n可见性超时(A)影响重试间隔。FIFO(C)保证顺序。长轮询(D)减少空轮询。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q24",
+      "domain": 1,
+      "question": "开发人员正在使用Step Functions编排多个Lambda函数。需要在一个步骤中并行处理多个独立任务。应该使用哪种状态类型？",
+      "options": {
+        "A": "Task状态",
+        "B": "Parallel状态",
+        "C": "Map状态",
+        "D": "Choice状态"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Parallel状态用于并行执行多个独立分支：\n- 同时执行多个任务\n- 所有分支完成后继续\n- 适合独立的并行处理\n\nTask(A)是单个任务。Map(C)用于动态数组迭代。Choice(D)用于条件分支。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q25",
+      "domain": 1,
+      "question": "开发人员使用API Gateway创建REST API。需要将请求体从一种格式转换为另一种格式后再发送到后端。应该使用什么功能？",
+      "options": {
+        "A": "API Gateway阶段变量",
+        "B": "API Gateway映射模板",
+        "C": "API Gateway缓存",
+        "D": "API Gateway资源策略"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "映射模板使用VTL(Velocity Template Language)转换请求和响应：\n- 转换请求/响应格式\n- 添加或删除字段\n- 重命名属性\n- 在集成请求和集成响应中配置\n\n阶段变量(A)用于环境配置。缓存(C)用于响应缓存。资源策略(D)用于访问控制。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q26",
+      "domain": 2,
+      "question": "开发人员需要确保只有特定VPC中的资源可以访问API Gateway私有REST API。应该如何配置？",
+      "options": {
+        "A": "配置API Gateway资源策略限制VPC访问",
+        "B": "使用IAM策略限制访问",
+        "C": "配置安全组规则",
+        "D": "使用WAF规则限制访问"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "API Gateway资源策略可以限制私有API的VPC访问：\n- 使用aws:sourceVpce或aws:sourceVpc条件\n- 只允许来自特定VPC端点的请求\n- 与VPC端点结合使用\n\nIAM策略(B)基于身份。安全组(C)不适用于API Gateway。WAF(D)用于Web攻击防护。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q27",
+      "domain": 2,
+      "question": "开发人员需要在Lambda函数中使用临时AWS凭证访问其他AWS账户的资源。应该使用什么方法？",
+      "options": {
+        "A": "使用STS AssumeRole获取跨账户角色的临时凭证",
+        "B": "在环境变量中存储其他账户的访问密钥",
+        "C": "使用Lambda层共享凭证",
+        "D": "使用Secrets Manager存储访问密钥"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "STS AssumeRole是跨账户访问的标准方法：\n- 源账户Lambda角色配置AssumeRole权限\n- 目标账户创建角色并信任源账户\n- Lambda使用STS获取临时凭证\n- 凭证自动轮换，安全可审计\n\n存储访问密钥(B,C,D)不符合安全最佳实践。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q28",
+      "domain": 2,
+      "question": "开发人员正在为移动应用程序实现身份验证。用户通过Cognito用户池登录后，需要访问S3存储桶中的私有数据。应该如何配置？",
+      "options": {
+        "A": "直接在移动应用中使用IAM用户凭证",
+        "B": "使用Cognito身份池交换临时AWS凭证",
+        "C": "在Lambda函数中代理所有S3访问",
+        "D": "使用S3预签名URL访问所有对象"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Cognito身份池为认证用户提供临时AWS凭证：\n- 用户池认证后获取令牌\n- 身份池交换令牌获取临时AWS凭证\n- 使用IAM角色定义权限\n- 支持细粒度访问控制\n\n直接使用IAM凭证(A)不安全。Lambda代理(C)增加延迟和成本。预签名URL(D)需要后端生成。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q29",
+      "domain": 2,
+      "question": "开发人员需要在应用程序中加密敏感数据，并确保加密密钥每年自动轮换。应该使用什么AWS服务？",
+      "options": {
+        "A": "AWS KMS客户管理密钥，启用自动轮换",
+        "B": "AWS CloudHSM",
+        "C": "S3服务端加密",
+        "D": "ACM证书"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "KMS客户管理密钥(CMK)支持自动密钥轮换：\n- 启用后每年自动轮换\n- 保留旧密钥版本用于解密\n- 无需更改应用程序代码\n- 完全托管，审计支持\n\nCloudHSM(B)需要手动管理。S3加密(C)是存储加密。ACM(D)用于SSL证书。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q30",
+      "domain": 2,
+      "question": "开发人员需要确保API Gateway REST API只接受来自已知IP地址的请求。应该如何配置？",
+      "options": {
+        "A": "使用API Gateway资源策略配置IP条件",
+        "B": "使用Lambda授权方验证IP",
+        "C": "配置VPC端点策略",
+        "D": "使用Cognito进行IP验证"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "API Gateway资源策略支持IP条件限制：\n- 使用aws:SourceIp条件键\n- 允许或拒绝特定IP范围\n- 无需额外代码\n- 在API级别统一管理\n\nLambda授权方(B)增加复杂性。VPC端点策略(C)用于私有API。Cognito(D)用于用户认证。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q31",
+      "domain": 3,
+      "question": "开发团队使用AWS CodePipeline进行持续部署。管道需要在部署到生产环境前获得人工批准。应该如何配置？",
+      "options": {
+        "A": "添加手动批准操作",
+        "B": "使用Lambda函数等待批准",
+        "C": "配置SNS通知等待响应",
+        "D": "使用CodeDeploy部署组的批准功能"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "CodePipeline原生支持手动批准操作：\n- 在管道阶段之间添加批准操作\n- 可配置SNS通知审批者\n- 支持设置超时时间\n- 审批者可在控制台批准或拒绝\n\n这是CodePipeline的内置功能，无需自定义实现。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q32",
+      "domain": 3,
+      "question": "开发人员使用AWS SAM定义无服务器应用程序。需要为Lambda函数配置死信队列。应该在SAM模板中使用什么属性？",
+      "options": {
+        "A": "DeadLetterQueue",
+        "B": "DeadLetterConfig",
+        "C": "OnFailure",
+        "D": "FailureDestination"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "SAM使用DeadLetterQueue属性配置DLQ：\n- 指定SQS队列或SNS主题\n- SAM自动配置所需IAM权限\n- 简化的语法相比CloudFormation\n\nDeadLetterConfig(B)是CloudFormation原生属性。OnFailure(C)和FailureDestination(D)用于Lambda目标。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q33",
+      "domain": 3,
+      "question": "开发人员需要将Docker容器部署到AWS。容器应该按需启动，无需管理服务器。应该使用什么服务？",
+      "options": {
+        "A": "Amazon ECS with Fargate",
+        "B": "Amazon ECS with EC2",
+        "C": "Amazon EKS with EC2节点组",
+        "D": "直接在EC2上运行Docker"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "ECS with Fargate是无服务器容器服务：\n- 无需管理EC2实例\n- 按容器资源使用付费\n- 自动扩展\n- 适合事件驱动和按需工作负载\n\nECS with EC2(B)和EKS(C)需要管理实例。直接在EC2运行(D)需要最多管理工作。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q34",
+      "domain": 3,
+      "question": "开发人员正在使用CloudFormation部署堆栈。需要在堆栈更新时保护某些资源不被删除或替换。应该使用什么功能？",
+      "options": {
+        "A": "堆栈策略",
+        "B": "更改集",
+        "C": "漂移检测",
+        "D": "资源导入"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "堆栈策略控制堆栈更新期间的资源操作：\n- 定义哪些资源可以更新\n- 防止意外删除或替换\n- JSON格式定义策略\n- 保护关键资源如数据库\n\n更改集(B)预览更改。漂移检测(C)检测手动更改。资源导入(D)导入现有资源。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q35",
+      "domain": 3,
+      "question": "开发人员需要创建可复用的CloudFormation模板片段。这些片段应该可以在多个模板中引用。应该使用什么功能？",
+      "options": {
+        "A": "嵌套堆栈",
+        "B": "堆栈集",
+        "C": "更改集",
+        "D": "导出/导入"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "嵌套堆栈用于模块化CloudFormation模板：\n- 将通用基础设施定义为独立模板\n- 在父模板中使用AWS::CloudFormation::Stack引用\n- 支持参数传递\n- 促进模板复用和标准化\n\n堆栈集(B)用于多账户部署。更改集(C)用于预览更改。导出/导入(D)用于跨堆栈引用值。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q36",
+      "domain": 4,
+      "question": "开发人员在Lambda函数中遇到\"Task timed out\"错误。函数需要更多时间来完成处理。应该怎么做？",
+      "options": {
+        "A": "增加Lambda函数的超时设置",
+        "B": "增加Lambda函数的内存",
+        "C": "使用异步调用",
+        "D": "使用Step Functions"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "\"Task timed out\"表示函数执行超过配置的超时时间：\n- Lambda最大超时为15分钟\n- 默认超时3秒\n- 根据实际需要调整超时设置\n\n增加内存(B)可能加快执行但不直接解决超时问题。异步调用(C)和Step Functions(D)用于不同场景。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q37",
+      "domain": 4,
+      "question": "开发人员需要分析Lambda函数调用的详细性能数据，包括每个下游服务调用的延迟。应该使用什么工具？",
+      "options": {
+        "A": "CloudWatch Logs Insights",
+        "B": "AWS X-Ray服务图和跟踪",
+        "C": "CloudWatch Container Insights",
+        "D": "CloudWatch Contributor Insights"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "X-Ray提供分布式跟踪和服务图：\n- 可视化请求在服务间的流动\n- 显示每个段的延迟\n- 识别下游服务的性能问题\n- Lambda原生X-Ray集成\n\nLogs Insights(A)用于日志分析。Container Insights(C)用于容器监控。Contributor Insights(D)用于高基数分析。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q38",
+      "domain": 4,
+      "question": "开发人员发现DynamoDB表的写入操作经常被节流。当前使用按需容量模式。应该怎么优化？",
+      "options": {
+        "A": "切换到预置容量模式并设置更高的WCU",
+        "B": "检查并优化分区键设计以避免热分区",
+        "C": "启用DynamoDB加速器(DAX)",
+        "D": "增加项目大小"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "按需模式下的节流通常是热分区问题：\n- 写入集中在少数分区键\n- 优化分区键设计分散写入\n- 使用高基数分区键\n- 考虑写入分片模式\n\n切换到预置模式(A)不解决热分区问题。DAX(C)用于读取缓存。增加项目大小(D)会使问题更严重。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q39",
+      "domain": 4,
+      "question": "开发人员需要在Lambda函数中记录结构化日志，以便于使用CloudWatch Logs Insights进行查询。应该使用什么日志格式？",
+      "options": {
+        "A": "纯文本日志",
+        "B": "JSON格式日志",
+        "C": "XML格式日志",
+        "D": "CSV格式日志"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "JSON格式是结构化日志的最佳选择：\n- CloudWatch Logs Insights原生支持JSON解析\n- 可以查询特定字段\n- Lambda Powertools提供JSON日志支持\n- 便于日志聚合和分析\n\n纯文本(A)难以查询特定字段。XML(C)和CSV(D)不是常用日志格式。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q40",
+      "domain": 4,
+      "question": "开发人员需要监控API Gateway API的错误率并在错误率超过阈值时收到警报。应该配置什么？",
+      "options": {
+        "A": "CloudWatch告警监控5XXError指标",
+        "B": "API Gateway访问日志",
+        "C": "X-Ray跟踪",
+        "D": "CloudWatch Events规则"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "CloudWatch告警是监控指标和触发通知的标准方式：\n- API Gateway发出5XXError和4XXError指标\n- 配置告警阈值和评估周期\n- 触发SNS通知或其他操作\n- 支持异常检测\n\n访问日志(B)用于详细日志。X-Ray(C)用于跟踪。Events规则(D)用于事件路由。",
+      "difficulty": "medium"
+    }
+  ]
+}

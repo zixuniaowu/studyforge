@@ -1,0 +1,644 @@
+{
+  "exam": {
+    "id": "azure-az-500-set1-ja",
+    "name": "Azure AZ-500 セキュリティエンジニア模擬試験 #1",
+    "code": "AZ-500",
+    "provider": "Azure",
+    "language": "ja",
+    "description": "Microsoft Azureセキュリティエンジニア認定試験の模擬問題です。ID とアクセス管理、プラットフォーム保護、セキュリティ運用、データとアプリケーションのセキュリティをカバーしています。",
+    "totalQuestions": 40,
+    "passingScore": 70,
+    "examTime": 120,
+    "domains": [
+      {
+        "id": 1,
+        "name": "ID とアクセスの管理 (Manage identity and access)",
+        "weight": 28
+      },
+      {
+        "id": 2,
+        "name": "プラットフォーム保護の実装 (Implement platform protection)",
+        "weight": 22
+      },
+      {
+        "id": 3,
+        "name": "セキュリティ運用の管理 (Manage security operations)",
+        "weight": 28
+      },
+      {
+        "id": 4,
+        "name": "データとアプリケーションの保護 (Secure data and applications)",
+        "weight": 22
+      }
+    ],
+    "tags": [
+      "Azure",
+      "AZ-500",
+      "セキュリティエンジニア",
+      "認定試験",
+      "クラウドセキュリティ"
+    ]
+  },
+  "questions": [
+    {
+      "id": "q1",
+      "domain": 1,
+      "question": "ある企業が、ユーザーが会社のネットワークまたは登録済みデバイスからのみ Azure リソースにアクセスできるようにしたいと考えています。何を構成すべきですか？",
+      "options": {
+        "A": "Azure AD Identity Protection",
+        "B": "条件付きアクセスポリシー (Conditional Access)",
+        "C": "Azure AD B2B",
+        "D": "Azure AD アプリケーションプロキシ"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "条件付きアクセスポリシーを使用すると、場所、デバイスの状態、ユーザーリスクなどの条件に基づいてリソースへのアクセスを制御できます。信頼できるネットワーク場所または Azure AD に参加しているデバイスからのアクセスを要求するポリシーを構成できます。\n---",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q2",
+      "domain": 1,
+      "question": "ある企業が、高権限管理者ロールに対してジャストインタイム（JIT）アクセスを実装する必要があります。管理者は特権操作を実行する際にアクセスを要求し、承認を得る必要があります。何を使用すべきですか？",
+      "options": {
+        "A": "Azure AD Identity Protection",
+        "B": "Azure AD 条件付きアクセス",
+        "C": "Azure AD Privileged Identity Management (PIM)",
+        "D": "Azure AD アクセスレビュー"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "Azure AD PIM はジャストインタイムアクセス管理機能を提供し、ユーザーが必要な時に特権ロールのアクティブ化を要求できます。承認プロセス、MFA 要件、時間制限を構成でき、特権アクセスが一時的かつ承認済みであることを保証します。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q3",
+      "domain": 1,
+      "question": "ある企業が、匿名 IP アドレスからのログインや不可能な移動などのユーザー ID 関連のリスクイベントを自動的に検出し、対応する必要があります。何を使用すべきですか？",
+      "options": {
+        "A": "Azure AD 条件付きアクセス",
+        "B": "Azure AD Identity Protection",
+        "C": "Microsoft Defender for Identity",
+        "D": "Azure AD アクセスレビュー"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure AD Identity Protection は機械学習を使用して疑わしいログイン動作とユーザーリスクイベントを検出します。匿名 IP ログイン、不可能な移動、漏洩した資格情報などの異常なアクティビティを自動的に検出し、修復アクションを自動的に実行できます。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q4",
+      "domain": 1,
+      "question": "ある企業が、ユーザーが現在のリソースアクセス権限をまだ必要としているかどうかを定期的に確認したいと考えています。どの Azure 機能を使用すべきですか？",
+      "options": {
+        "A": "Azure AD PIM",
+        "B": "Azure AD アクセスレビュー (Access Reviews)",
+        "C": "Azure AD 条件付きアクセス",
+        "D": "Azure RBAC"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure AD アクセスレビューを使用すると、組織はユーザーのグループ、アプリケーション、ロールへのアクセス権限を定期的にレビューし、再確認できます。管理者またはユーザー自身がアクセス権限がまだ必要かどうかを確認する自動レビューを構成できます。\n---",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q5",
+      "domain": 1,
+      "question": "ある企業が、アプリケーションがユーザー ID ではなく独自の ID で Azure リソースにアクセスできるように権限を構成する必要があります。何を使用すべきですか？",
+      "options": {
+        "A": "ユーザー割り当てマネージド ID",
+        "B": "サービスプリンシパルとクライアントシークレット",
+        "C": "Azure AD B2B",
+        "D": "システム割り当てマネージド ID"
+      },
+      "answer": ["B", "D"],
+      "answerType": "multiple",
+      "explanation": "サービスプリンシパル（クライアントシークレットまたは証明書を使用）とマネージド ID の両方で、アプリケーションが独自の ID で Azure リソースにアクセスできます。マネージド ID（システム割り当てまたはユーザー割り当て）は資格情報を管理する必要がないため推奨されます。サービスプリンシパルも有効なオプションですが、キーまたは証明書の管理が必要です。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q6",
+      "domain": 1,
+      "question": "ある企業が、外部パートナーがローカルアカウントを作成せずに、自社の企業資格情報を使用して Azure リソースにアクセスできるようにする必要があります。何を使用すべきですか？",
+      "options": {
+        "A": "Azure AD B2C",
+        "B": "Azure AD B2B",
+        "C": "Azure AD Domain Services",
+        "D": "Azure AD アプリケーションプロキシ"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure AD B2B（企業間）を使用すると、外部ユーザーをゲストユーザーとして招待し、Azure リソースにアクセスさせることができます。ゲストユーザーは自分の組織の資格情報を使用して認証するため、パスワードやアカウントを管理する必要がありません。\n---",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q7",
+      "domain": 1,
+      "question": "ある企業が、ユーザーが一般的なパスワードや漏洩したパスワードを使用できないようにしたいと考えています。何を構成すべきですか？",
+      "options": {
+        "A": "Azure AD Identity Protection",
+        "B": "Azure AD パスワード保護",
+        "C": "条件付きアクセスポリシー",
+        "D": "Azure AD MFA"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure AD パスワード保護は、一般的なパスワードと組織が定義したカスタム禁止パスワードリストをブロックできます。グローバル禁止パスワードリストが含まれており、既知の弱いパスワードと一般的なバリエーションを自動的にブロックします。\n---",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q8",
+      "domain": 1,
+      "question": "ある企業のセキュリティポリシーでは、すべての管理者がログイン時に場所やデバイスに関係なく多要素認証（MFA）を使用する必要があります。どのように構成すべきですか？",
+      "options": {
+        "A": "Azure AD セキュリティの既定値を有効にする",
+        "B": "管理者ロールに対して MFA を要求する条件付きアクセスポリシーを構成する",
+        "C": "Azure AD でユーザーごとの MFA を有効にする",
+        "D": "Azure AD Identity Protection ポリシーを構成する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "条件付きアクセスポリシーは、最も細かい MFA 制御を提供します。管理者ロールを持つユーザーを対象とするポリシーを作成し、すべての状況で MFA 検証を完了することを要求できます。これは、セキュリティの既定値やユーザーごとの MFA よりも柔軟な制御を提供します。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q9",
+      "domain": 1,
+      "question": "ある企業が、高リスクサインインが検出された場合にユーザーにパスワードの変更を自動的に要求するように Azure AD を構成する必要があります。何を構成すべきですか？",
+      "options": {
+        "A": "Identity Protection と統合した条件付きアクセスポリシー",
+        "B": "Azure AD MFA 設定",
+        "C": "Azure AD パスワード保護",
+        "D": "Azure AD PIM"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "条件付きアクセスと Azure AD Identity Protection を統合することで、ユーザーリスクまたはサインインリスクに基づくポリシーを作成できます。高リスクサインインが検出された場合、ポリシーは修復措置として MFA の完了またはパスワードの強制変更を要求できます。\n---",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q10",
+      "domain": 1,
+      "question": "ある企業が、Azure 仮想マシンがコード内に資格情報を保存せずに Azure Key Vault にアクセスできるように認証を構成する必要があります。何を使用すべきですか？",
+      "options": {
+        "A": "サービスプリンシパル",
+        "B": "システム割り当てマネージド ID",
+        "C": "Shared Access Signature (SAS)",
+        "D": "Azure AD アプリケーション登録"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "システム割り当てマネージド ID は、Azure リソースに自動管理される ID を提供します。VM はこの ID を使用して、Azure AD 認証をサポートするサービス（Key Vault など）に認証でき、コード内で資格情報を管理する必要がありません。ID のライフサイクルは VM にバインドされます。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q11",
+      "domain": 2,
+      "question": "ある企業が Azure 仮想ネットワーク内の受信および送信ネットワークトラフィックを制限する必要があります。何を使用すべきですか？",
+      "options": {
+        "A": "Azure Firewall",
+        "B": "ネットワークセキュリティグループ (NSG)",
+        "C": "Azure DDoS Protection",
+        "D": "Azure Bastion"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "ネットワークセキュリティグループ (NSG) には、Azure リソースへのネットワークトラフィックを許可または拒否するセキュリティルールが含まれています。NSG はサブネットまたはネットワークインターフェースに関連付けることができ、ソース、宛先、ポート、プロトコルに基づいてトラフィックをフィルタリングします。\n---",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q12",
+      "domain": 2,
+      "question": "ある企業が複数の仮想ネットワークのネットワークセキュリティルールを一元管理し、脅威インテリジェンスの統合と高度なフィルタリング機能を取得する必要があります。何を使用すべきですか？",
+      "options": {
+        "A": "ネットワークセキュリティグループ",
+        "B": "Azure Firewall",
+        "C": "Azure Front Door",
+        "D": "Application Gateway WAF"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure Firewall は、アプリケーションとネットワーク接続ポリシーを一元的に作成、適用、記録できるマネージドクラウドネイティブネットワークセキュリティサービスです。脅威インテリジェンスの統合、FQDN フィルタリング、ネットワークルールなどの高度な機能を提供し、複数の仮想ネットワークのセキュリティを一元管理するのに適しています。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q13",
+      "domain": 2,
+      "question": "ある企業が、RDP/SSH ポートをパブリックインターネットに公開せずに Azure 仮想マシンに安全に接続する必要があります。何を使用すべきですか？",
+      "options": {
+        "A": "VPN ゲートウェイ",
+        "B": "Azure Bastion",
+        "C": "Azure Firewall",
+        "D": "ネットワークセキュリティグループ"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure Bastion は、Azure ポータルから直接仮想マシンへの安全な RDP/SSH 接続を提供するフルマネージド PaaS サービスです。VM にパブリック IP を公開する必要がなくなり、SSL を介した安全な接続を提供します。\n---",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q14",
+      "domain": 2,
+      "question": "ある企業が、インターネットに公開された Web アプリケーションを SQL インジェクション、クロスサイトスクリプティング (XSS) などの一般的な Web 攻撃から保護する必要があります。何を使用すべきですか？",
+      "options": {
+        "A": "Azure Firewall",
+        "B": "ネットワークセキュリティグループ",
+        "C": "Azure Web Application Firewall (WAF)",
+        "D": "Azure DDoS Protection"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "Azure Web Application Firewall (WAF) は、SQL インジェクション、XSS などの一般的な攻撃から Web アプリケーションを保護できます。WAF は Azure Application Gateway、Azure Front Door、または Azure CDN にデプロイでき、OWASP コアルールセットに基づく保護を提供します。\n---",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q15",
+      "domain": 2,
+      "question": "ある企業が Azure リソースを分散型サービス拒否 (DDoS) 攻撃から保護し、攻撃のテレメトリと軽減レポートを必要としています。何を使用すべきですか？",
+      "options": {
+        "A": "Azure Firewall",
+        "B": "Azure DDoS Protection Standard",
+        "C": "ネットワークセキュリティグループ",
+        "D": "Azure WAF"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure DDoS Protection Standard は、適応型チューニング、攻撃分析、テレメトリ、アラートを含む強化された DDoS 軽減機能を提供します。仮想ネットワーク内のすべてのリソースを自動的に保護し、詳細な攻撃軽減レポートを提供します。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q16",
+      "domain": 2,
+      "question": "ある企業が、Azure ストレージアカウントに仮想ネットワークからプライベート IP アドレス経由でのみアクセスできるようにプライベートリンクを構成する必要があります。何を使用すべきですか？",
+      "options": {
+        "A": "サービスエンドポイント",
+        "B": "プライベートエンドポイント (Private Endpoint)",
+        "C": "VNet ピアリング",
+        "D": "ネットワークセキュリティグループ"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "プライベートエンドポイントは、仮想ネットワーク内のプライベート IP アドレスを使用して VNet を Azure サービスに安全に接続します。トラフィックは Microsoft バックボーンネットワークを経由し、パブリックインターネットへの露出を排除します。これはサービスエンドポイントよりも優れたセキュリティを提供します。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q17",
+      "domain": 2,
+      "question": "ある企業が Azure 仮想マシンが特定の Azure サービス（ストレージアカウントなど）にのみアクセスできるようにし、パブリックインターネットを経由しないようにする必要があります。何を使用すべきですか？",
+      "options": {
+        "A": "VPN ゲートウェイ",
+        "B": "サービスエンドポイント",
+        "C": "ExpressRoute",
+        "D": "Azure Firewall"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "サービスエンドポイントは仮想ネットワークを Azure サービスに直接接続し、トラフィックは Azure バックボーンネットワーク上に留まります。ストレージアカウントなどのサービスを構成して、特定の仮想ネットワークサブネットからのトラフィックのみを受け入れるようにし、アクセスを制限できます。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q18",
+      "domain": 2,
+      "question": "ある企業が、管理ポートへの露出を減らすためにジャストインタイム (JIT) 仮想マシンアクセスを有効にする必要があります。この機能はどこで構成すべきですか？",
+      "options": {
+        "A": "Azure Firewall",
+        "B": "Microsoft Defender for Cloud",
+        "C": "ネットワークセキュリティグループ",
+        "D": "Azure Bastion"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Microsoft Defender for Cloud（以前の Azure Security Center）は JIT VM アクセス機能を提供します。必要な時に管理ポート（RDP、SSH など）を一時的に開き、指定された時間後に自動的に閉じることで、攻撃対象領域を削減します。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q19",
+      "domain": 2,
+      "question": "ある企業が Azure Kubernetes Service (AKS) クラスター内でネットワークセグメンテーションを実装し、Pod 間のトラフィックを制御する必要があります。何を使用すべきですか？",
+      "options": {
+        "A": "ネットワークセキュリティグループ",
+        "B": "Kubernetes ネットワークポリシー",
+        "C": "Azure Firewall",
+        "D": "サービスエンドポイント"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Kubernetes ネットワークポリシーを使用すると、AKS クラスター内の Pod 間のトラフィックを制御できます。ラベルセレクターに基づいて受信および送信トラフィックを許可または拒否するルールを定義し、マイクロセグメンテーションとゼロトラストセキュリティモデルを実装できます。\n---",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q20",
+      "domain": 2,
+      "question": "ある企業が、Azure にデプロイされるすべての仮想マシンに特定のセキュリティエージェントがインストールされていることを確認する必要があります。この要件を強制するために何を使用すべきですか？",
+      "options": {
+        "A": "Azure Policy",
+        "B": "Azure Blueprints",
+        "C": "Azure Automation",
+        "D": "Microsoft Defender for Cloud"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Azure Policy は VM 拡張機能のインストール要件を監査または強制できます。すべての VM に必要なセキュリティエージェント（監視エージェントやマルウェア対策拡張機能など）がインストールされていることを確認するポリシーを作成でき、要件を満たさない VM はフラグが付けられるかデプロイがブロックされます。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q21",
+      "domain": 3,
+      "question": "ある企業がすべての Azure リソースのセキュリティ状態を統一的に表示し、セキュリティ推奨事項とセキュリティスコアを取得する必要があります。何を使用すべきですか？",
+      "options": {
+        "A": "Azure Monitor",
+        "B": "Microsoft Defender for Cloud",
+        "C": "Azure Sentinel",
+        "D": "Azure Advisor"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Microsoft Defender for Cloud は、セキュリティスコア、セキュリティ推奨事項、コンプライアンス評価を含むクラウドセキュリティ態勢管理 (CSPM) 機能を提供します。セキュリティ構成の問題を特定して修復し、リソースのセキュリティ状態を継続的に監視するのに役立ちます。\n---",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q22",
+      "domain": 3,
+      "question": "ある企業が、Azure、オンプレミス、その他のクラウドを含む複数のソースからのセキュリティイベントを収集、分析、対応するための SIEM ソリューションを実装する必要があります。何を使用すべきですか？",
+      "options": {
+        "A": "Microsoft Defender for Cloud",
+        "B": "Azure Monitor",
+        "C": "Microsoft Sentinel",
+        "D": "Azure Log Analytics"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "Microsoft Sentinel は、様々なソースからセキュリティデータを収集し、AI を使用して脅威を検出し、自動化されたワークブックでインシデント対応を実現するクラウドネイティブの SIEM および SOAR ソリューションです。Azure、オンプレミス、マルチクラウド環境をサポートしています。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q23",
+      "domain": 3,
+      "question": "ある企業が、Microsoft Sentinel で検出されたセキュリティインシデントに自動的に対応する必要があります（例：感染した仮想マシンを自動的に隔離する）。何を使用すべきですか？",
+      "options": {
+        "A": "分析ルール",
+        "B": "ワークブック (Workbooks)",
+        "C": "プレイブック (Playbooks)",
+        "D": "データコネクタ"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "Microsoft Sentinel プレイブック（Azure Logic Apps ベース）は、セキュリティ対応アクションを自動的に実行できます。分析ルールがアラートを生成すると、プレイブックは VM の隔離、ユーザーアカウントの無効化、通知の送信などのアクションを自動的に実行し、セキュリティオーケストレーション自動化対応 (SOAR) を実現します。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q24",
+      "domain": 3,
+      "question": "ある企業が、Azure Active Directory からサインインログと監査ログを受信するように Microsoft Sentinel を構成する必要があります。何を構成すべきですか？",
+      "options": {
+        "A": "分析ルール",
+        "B": "データコネクタ",
+        "C": "ワークブック",
+        "D": "ハンティングクエリ"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "データコネクタは、様々なデータソースを Microsoft Sentinel に接続するために使用されます。Azure Active Directory コネクタは、サインインログ、監査ログ、プロビジョニングログを Sentinel ワークスペースに送信し、セキュリティ分析と脅威検出を可能にします。\n---",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q25",
+      "domain": 3,
+      "question": "ある企業が、疑わしいサインインパターンが検出されたときにインシデントをトリガーするカスタムアラートルールを作成する必要があります。Microsoft Sentinel で何を使用すべきですか？",
+      "options": {
+        "A": "データコネクタ",
+        "B": "ワークブック",
+        "C": "分析ルール",
+        "D": "プレイブック"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "分析ルールは KQL クエリを使用してログデータ内の脅威と疑わしいアクティビティを検出します。特定のパターン（複数回のログイン失敗など）を検出するスケジュールされたクエリルールを作成し、条件が満たされたときにインシデントを自動生成できます。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q26",
+      "domain": 3,
+      "question": "ある企業が Azure リソースのアクティビティログを Log Analytics ワークスペースに送信するように診断設定を構成する必要があります。アクティビティログにはどのような種類の情報が含まれていますか？",
+      "options": {
+        "A": "アプリケーションパフォーマンスデータ",
+        "B": "サブスクリプションレベルの管理操作",
+        "C": "仮想マシンパフォーマンスメトリック",
+        "D": "Azure AD サインインログ"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure アクティビティログは、リソースの作成、削除、変更、サービス正常性イベントなど、サブスクリプションレベルの管理操作を記録します。サブスクリプション内のリソースに対して実行された操作の外部（コントロールプレーン）監査証跡を提供します。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q27",
+      "domain": 3,
+      "question": "ある企業が Azure サブスクリプション内の疑わしいアクティビティ（暗号通貨マイニングや疑わしいコマンド実行など）を検出する必要があります。何を使用すべきですか？",
+      "options": {
+        "A": "Azure Monitor",
+        "B": "Microsoft Defender for Cloud 脅威防護",
+        "C": "Azure Advisor",
+        "D": "Azure Policy"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Microsoft Defender for Cloud の脅威防護機能は、暗号通貨マイニング、疑わしいプロセス実行、横方向移動などの様々な脅威を検出できます。行動分析と機械学習を使用して悪意のあるアクティビティを識別し、セキュリティアラートを生成します。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q28",
+      "domain": 3,
+      "question": "ある企業が、長期保存とコンプライアンスのためにリソースログ（診断ログ）をストレージアカウントに送信するように Azure リソースを構成する必要があります。何を構成すべきですか？",
+      "options": {
+        "A": "Azure Monitor アラート",
+        "B": "診断設定",
+        "C": "Azure Policy",
+        "D": "Log Analytics エージェント"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "診断設定は、Azure リソースがリソースログとメトリックを宛先（ストレージアカウント、Log Analytics ワークスペース、イベントハブなど）に送信するように構成するために使用されます。長期保存の場合、ログをストレージアカウントに送信し、保持ポリシーを構成できます。\n---",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q29",
+      "domain": 3,
+      "question": "ある企業が Azure サブスクリプションのセキュリティ構成を監視し、リソースが CIS ベンチマークに準拠していることを確認する必要があります。何を使用すべきですか？",
+      "options": {
+        "A": "Azure Policy",
+        "B": "Microsoft Defender for Cloud 規制コンプライアンス",
+        "C": "Azure Advisor",
+        "D": "Azure Blueprints"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Microsoft Defender for Cloud の規制コンプライアンスダッシュボードは、CIS、PCI DSS、ISO 27001 などの様々な標準に対して環境を評価できます。コンプライアンススコアを表示し、コンプライアンス要件を満たすための修復推奨事項を提供します。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q30",
+      "domain": 3,
+      "question": "ある企業が、Azure Key Vault でキーが削除されたときにセキュリティチームに通知するアラートを構成する必要があります。何を使用すべきですか？",
+      "options": {
+        "A": "Azure Policy",
+        "B": "Azure Monitor アラート",
+        "C": "Microsoft Defender for Key Vault",
+        "D": "Key Vault アクセスポリシー"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure Monitor アラートは、アクティビティログまたは診断ログのイベントに基づいてトリガーできます。Key Vault キーの削除操作が検出されたときに通知を送信するアクティビティログアラートを作成し、セキュリティチームが機密性の高い操作をタイムリーに把握できるようにします。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q31",
+      "domain": 4,
+      "question": "ある企業がアプリケーションで使用される接続文字列、API キー、証明書を安全に保存する必要があります。どの Azure サービスを使用すべきですか？",
+      "options": {
+        "A": "Azure ストレージアカウント",
+        "B": "Azure Key Vault",
+        "C": "Azure App Configuration",
+        "D": "Azure Blob ストレージ"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure Key Vault は、シークレット（接続文字列、キーなど）、暗号化キー、証明書を安全に保存および管理するための専用サービスです。ハードウェアセキュリティモジュール (HSM) サポート、アクセスポリシー制御、監査ログ機能を提供します。\n---",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q32",
+      "domain": 4,
+      "question": "ある企業が Azure ストレージアカウント内のデータが保存時にカスタマー管理キーで暗号化されていることを確認する必要があります。どのように構成すべきですか？",
+      "options": {
+        "A": "Azure ストレージサービス暗号化を有効にし、Microsoft 管理キーを使用する",
+        "B": "Azure Key Vault でカスタマー管理キー (CMK) を構成する",
+        "C": "Azure Disk Encryption を使用する",
+        "D": "転送中の暗号化を構成する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure ストレージは、Azure Key Vault に保存されたカスタマー管理キー (CMK) を使用して保存時の暗号化を構成できます。これにより、組織は暗号化キーのライフサイクルを完全に制御し、コンプライアンス要件を満たすことができます。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q33",
+      "domain": 4,
+      "question": "ある企業が Azure SQL データベースの機密列（クレジットカード番号など）を暗号化し、データベースアクセス権限を持つユーザーでも平文データを見ることができないようにする必要があります。何を使用すべきですか？",
+      "options": {
+        "A": "透過的データ暗号化 (TDE)",
+        "B": "Always Encrypted",
+        "C": "動的データマスキング",
+        "D": "行レベルセキュリティ"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Always Encrypted はクライアント側で機密データを暗号化し、キーはデータベースエンジンに公開されません。データベース管理者でさえ暗号化された列の平文データを見ることができません。復号化はキーにアクセスできるクライアントアプリケーションでのみ行われるためです。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q34",
+      "domain": 4,
+      "question": "ある企業が非特権ユーザーが Azure SQL データベース内の完全なクレジットカード番号を表示できないように制限し、代わりに部分的にマスクされた値（****-****-****-1234 など）を表示する必要があります。何を使用すべきですか？",
+      "options": {
+        "A": "Always Encrypted",
+        "B": "動的データマスキング",
+        "C": "透過的データ暗号化",
+        "D": "列レベルセキュリティ"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "動的データマスキングは、権限のないユーザーに対してデータを非表示にすることで、機密データの露出を制限できます。マスキングルールを構成して部分的なデータ（クレジットカード番号の最後の 4 桁など）を表示し、完全な権限を持つユーザーには影響を与えません。\n---",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q35",
+      "domain": 4,
+      "question": "ある企業が Azure App Service 用の SSL/TLS 証明書を構成して HTTPS を有効にする必要があります。証明書は安全に保存され、自動更新できる必要があります。何を使用すべきですか？",
+      "options": {
+        "A": "証明書を Azure Blob ストレージに保存する",
+        "B": "Azure Key Vault 証明書を使用する",
+        "C": "App Service に証明書を直接アップロードする",
+        "D": "自己署名証明書を使用する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure Key Vault は SSL/TLS 証明書を安全に保存し、App Service と統合して証明書を自動的に取得できます。証明機関との統合を構成して証明書の自動更新を実現し、証明書管理を簡素化することもできます。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q36",
+      "domain": 4,
+      "question": "ある企業が Azure ストレージアカウントを構成して、特定の仮想ネットワークからのアクセスのみを許可し、すべてのパブリックインターネットアクセスをブロックする必要があります。何を構成すべきですか？",
+      "options": {
+        "A": "Shared Access Signature (SAS)",
+        "B": "ストレージアカウントファイアウォールと仮想ネットワークルール",
+        "C": "Azure AD 認証",
+        "D": "ストレージアカウントキー"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "ストレージアカウントファイアウォールと仮想ネットワークルールを使用すると、ネットワークアクセス制御を構成できます。デフォルトのアクションを拒否に設定し、許可された仮想ネットワークと IP アドレス範囲を追加して、承認されたネットワークのみがストレージにアクセスできるようにします。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q37",
+      "domain": 4,
+      "question": "ある企業が、機密情報（社会保障番号など）がメールや SharePoint 経由で外部に送信されるのを防ぐためにデータ損失防止 (DLP) ポリシーを実装する必要があります。何を使用すべきですか？",
+      "options": {
+        "A": "Azure Information Protection",
+        "B": "Microsoft Purview データ損失防止",
+        "C": "Azure AD 条件付きアクセス",
+        "D": "Microsoft Defender for Cloud Apps"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Microsoft Purview DLP は、組織内の機密情報を識別、監視、自動保護できます。メール、SharePoint、OneDrive、Teams で機密データタイプをスキャンし、機密情報を外部と共有しようとする試みをブロックまたは警告できます。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q38",
+      "domain": 4,
+      "question": "ある企業が Azure Blob ストレージに保存された機密ドキュメントを分類し、保護ラベルを自動的に適用する必要があります。何を使用すべきですか？",
+      "options": {
+        "A": "Azure Policy",
+        "B": "Microsoft Purview データマップ",
+        "C": "Azure Information Protection",
+        "D": "Microsoft Defender for Cloud"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "Azure Information Protection (AIP) は、ドキュメントを自動または手動で分類およびラベル付けできます。コンテンツに基づいて保護（暗号化やアクセス制限など）を自動的に適用するラベルポリシーを構成し、ドキュメントの使用状況を追跡できます。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q39",
+      "domain": 4,
+      "question": "ある企業が、特定のアプリケーションのみが保存されたシークレットを取得できるように Azure Key Vault を構成する必要があります。アクセスを制御するために何を使用すべきですか？",
+      "options": {
+        "A": "Key Vault ファイアウォール",
+        "B": "Key Vault アクセスポリシーまたは Azure RBAC",
+        "C": "Shared Access Signature",
+        "D": "Azure AD 条件付きアクセス"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Key Vault は 2 つのアクセス制御モデルをサポートしています：アクセスポリシーと Azure RBAC。両方とも、どのユーザー、アプリケーション、またはマネージド ID がシークレット、キー、証明書に対して特定の操作（取得、一覧表示、設定など）を実行できるかを細かく制御できます。\n---",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q40",
+      "domain": 4,
+      "question": "ある企業が Azure SQL データベースの透過的データ暗号化 (TDE) をカスタマー管理キーで構成する必要があります。どのように構成すべきですか？",
+      "options": {
+        "A": "データベース設定でキーを直接アップロードする",
+        "B": "Azure Key Vault にキーを保存し、TDE プロテクターを構成する",
+        "C": "Azure Disk Encryption を使用する",
+        "D": "Always Encrypted を有効にする"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "カスタマー管理キーで TDE を構成するには、Azure Key Vault でキーを作成またはインポートし、SQL サーバーの TDE プロテクターとして構成する必要があります。これにより、キーローテーションやアクセスポリシーを含む暗号化キーの完全な制御が可能になります。\n---",
+      "difficulty": "hard"
+    }
+  ]
+}

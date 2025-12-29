@@ -1,0 +1,544 @@
+{
+  "exam": {
+    "id": "aws-soa-c02-set2",
+    "name": "AWS SOA-C02 模拟考试 #2",
+    "code": "SOA-C02",
+    "provider": "AWS",
+    "language": "zh-CN",
+    "description": "AWS系统运维管理员助理认证考试模拟题 - 第2套",
+    "totalQuestions": 40,
+    "passingScore": 72,
+    "examTime": 130,
+    "domains": [
+      {"id": 1, "name": "Monitoring, Logging, and Remediation", "weight": 20},
+      {"id": 2, "name": "Reliability and Business Continuity", "weight": 16},
+      {"id": 3, "name": "Deployment, Provisioning, and Automation", "weight": 18},
+      {"id": 4, "name": "Security and Compliance", "weight": 16},
+      {"id": 5, "name": "Networking and Content Delivery", "weight": 18},
+      {"id": 6, "name": "Cost and Performance Optimization", "weight": 12}
+    ],
+    "tags": ["AWS", "SysOps", "SOA", "认证考试", "运维"]
+  },
+  "questions": [
+    {
+      "id": "q1",
+      "domain": 1,
+      "question": "运维团队需要为CloudWatch告警配置多个通知渠道，包括邮件、短信和Slack。应该使用什么服务？",
+      "options": {
+        "A": "CloudWatch直接发送通知",
+        "B": "Amazon SNS主题",
+        "C": "Amazon SQS队列",
+        "D": "AWS Lambda函数"
+      },
+      "answer": "B",
+      "explanation": "CloudWatch告警通过SNS主题发送通知。SNS主题可以配置多种订阅类型，包括邮件、短信、HTTP/HTTPS（用于Slack等）、Lambda函数等，实现多渠道通知。"
+    },
+    {
+      "id": "q2",
+      "domain": 1,
+      "question": "公司需要保留CloudWatch Logs中的日志数据3年以满足合规要求。默认情况下日志永不过期。如何优化成本？",
+      "options": {
+        "A": "设置日志组保留期为3年",
+        "B": "将日志导出到S3并使用生命周期策略",
+        "C": "使用Kinesis Data Firehose传输日志",
+        "D": "删除旧的日志流"
+      },
+      "answer": "B",
+      "explanation": "将日志导出到S3，然后使用S3生命周期策略将旧日志转移到更便宜的存储类（如S3 Glacier），可以显著降低长期存储成本，同时满足合规要求。"
+    },
+    {
+      "id": "q3",
+      "domain": 1,
+      "question": "团队需要创建一个CloudWatch告警来监控应用程序的自定义业务指标。应用程序运行在EC2上。如何发布这些指标？",
+      "options": {
+        "A": "配置CloudWatch代理收集业务指标",
+        "B": "使用CloudWatch API的PutMetricData操作",
+        "C": "启用EC2详细监控",
+        "D": "使用CloudWatch Logs指标筛选器"
+      },
+      "answer": "B",
+      "explanation": "自定义业务指标需要通过CloudWatch API的PutMetricData操作或AWS SDK发布。应用程序可以编程方式将业务相关的指标发送到CloudWatch。"
+    },
+    {
+      "id": "q4",
+      "domain": 1,
+      "question": "运维团队发现AWS账户中有异常的API活动。需要快速调查过去24小时内所有来自特定IP地址的API调用。应该使用什么服务？",
+      "options": {
+        "A": "CloudWatch Logs Insights",
+        "B": "CloudTrail事件历史记录",
+        "C": "VPC Flow Logs",
+        "D": "GuardDuty发现"
+      },
+      "answer": "B",
+      "explanation": "CloudTrail事件历史记录可以快速搜索和筛选过去90天内的管理事件，支持按IP地址、用户、事件名称等筛选，便于快速调查异常API活动。"
+    },
+    {
+      "id": "q5",
+      "domain": 1,
+      "question": "公司需要在Lambda函数执行时间超过配置超时的90%时收到告警。应该监控哪个CloudWatch指标？",
+      "options": {
+        "A": "Invocations",
+        "B": "Duration",
+        "C": "Throttles",
+        "D": "ConcurrentExecutions"
+      },
+      "answer": "B",
+      "explanation": "Duration指标记录Lambda函数的执行时间。可以创建告警监控Duration指标，当其接近配置的超时值（如超时的90%）时触发通知。"
+    },
+    {
+      "id": "q6",
+      "domain": 1,
+      "question": "EventBridge规则需要在每天凌晨2:00触发Systems Manager自动化运行补丁更新。应该使用什么类型的事件模式？",
+      "options": {
+        "A": "事件模式匹配",
+        "B": "计划表达式（cron）",
+        "C": "AWS API调用事件",
+        "D": "自定义事件总线"
+      },
+      "answer": "B",
+      "explanation": "对于定时任务，EventBridge规则应使用计划表达式。cron表达式（如cron(0 2 * * ? *)）可以精确定义执行时间，每天凌晨2:00触发。"
+    },
+    {
+      "id": "q7",
+      "domain": 1,
+      "question": "团队需要识别导致CloudWatch告警频繁触发的根本原因。应用程序使用多个AWS服务。应该使用什么工具进行根因分析？",
+      "options": {
+        "A": "CloudWatch Contributor Insights",
+        "B": "AWS X-Ray",
+        "C": "CloudWatch Application Insights",
+        "D": "CloudWatch Anomaly Detection"
+      },
+      "answer": "C",
+      "explanation": "CloudWatch Application Insights可以自动发现应用程序资源、配置监控，并使用机器学习检测异常模式。它提供问题的根因分析和相关见解，帮助快速定位问题。"
+    },
+    {
+      "id": "q8",
+      "domain": 2,
+      "question": "一个Auto Scaling组需要根据SQS队列中的消息数量进行扩缩容。应该使用什么扩展策略？",
+      "options": {
+        "A": "简单扩展策略",
+        "B": "步进扩展策略",
+        "C": "目标跟踪扩展策略",
+        "D": "预测扩展"
+      },
+      "answer": "C",
+      "explanation": "目标跟踪扩展策略可以基于自定义指标（如每个实例的SQS队列消息数）自动调整容量，保持指标接近目标值。这是处理基于队列深度扩展的推荐方法。"
+    },
+    {
+      "id": "q9",
+      "domain": 2,
+      "question": "公司的RDS MySQL实例需要执行版本升级。如何最小化停机时间？",
+      "options": {
+        "A": "创建只读副本，升级副本，然后提升为主实例",
+        "B": "直接在生产实例上执行升级",
+        "C": "使用蓝绿部署升级",
+        "D": "从快照恢复到新版本"
+      },
+      "answer": "C",
+      "explanation": "RDS蓝绿部署允许创建生产环境的副本（绿色环境），在副本上执行升级，然后在几秒内切换流量。这大大减少了升级期间的停机时间。"
+    },
+    {
+      "id": "q10",
+      "domain": 2,
+      "question": "运维团队需要确保EBS卷的数据在区域性灾难中可以恢复。应该采取什么措施？",
+      "options": {
+        "A": "创建更频繁的EBS快照",
+        "B": "将EBS快照复制到另一个区域",
+        "C": "使用EBS Multi-Attach",
+        "D": "启用EBS加密"
+      },
+      "answer": "B",
+      "explanation": "EBS快照存储在S3中，默认只在同一区域可用。要保护数据免受区域性灾难影响，需要将快照复制到另一个AWS区域。"
+    },
+    {
+      "id": "q11",
+      "domain": 2,
+      "question": "公司需要为其应用程序实现灾难恢复，RTO为15分钟，RPO为1小时。成本应该尽可能低。应该使用什么策略？",
+      "options": {
+        "A": "多站点主动-主动",
+        "B": "热备份",
+        "C": "温备份（Warm Standby）",
+        "D": "备份和恢复"
+      },
+      "answer": "C",
+      "explanation": "温备份策略在DR区域运行最小版本的应用程序，可以快速扩展。RTO 15分钟和RPO 1小时的要求适合温备份，它比热备份和多站点成本低，但比备份和恢复更快恢复。"
+    },
+    {
+      "id": "q12",
+      "domain": 2,
+      "question": "ELB健康检查显示实例健康，但Auto Scaling EC2健康检查显示实例不健康。可能的原因是什么？",
+      "options": {
+        "A": "健康检查类型配置不正确",
+        "B": "EC2系统状态检查失败",
+        "C": "安全组配置错误",
+        "D": "实例类型不支持"
+      },
+      "answer": "B",
+      "explanation": "Auto Scaling EC2健康检查基于EC2状态检查（实例状态和系统状态）。即使ELB健康检查通过，如果EC2系统状态检查失败（如底层硬件问题），Auto Scaling仍会将实例标记为不健康。"
+    },
+    {
+      "id": "q13",
+      "domain": 2,
+      "question": "公司需要确保DynamoDB表在区域故障时保持可用。应该使用什么功能？",
+      "options": {
+        "A": "DynamoDB Auto Scaling",
+        "B": "DynamoDB全局表",
+        "C": "DynamoDB按需备份",
+        "D": "DynamoDB Streams"
+      },
+      "answer": "B",
+      "explanation": "DynamoDB全局表在多个AWS区域之间自动复制数据，提供多区域、多活动的数据库解决方案。在一个区域发生故障时，应用程序可以自动切换到另一个区域。"
+    },
+    {
+      "id": "q14",
+      "domain": 3,
+      "question": "运维团队需要在不中断服务的情况下更新Auto Scaling组中EC2实例的AMI。应该使用什么方法？",
+      "options": {
+        "A": "终止所有实例并使用新AMI",
+        "B": "使用实例刷新功能",
+        "C": "手动逐个替换实例",
+        "D": "创建新的Auto Scaling组"
+      },
+      "answer": "B",
+      "explanation": "Auto Scaling实例刷新功能可以自动替换Auto Scaling组中的实例，同时保持最小健康百分比。可以配置替换速度和暂停时间，实现平滑的AMI更新。"
+    },
+    {
+      "id": "q15",
+      "domain": 3,
+      "question": "CloudFormation模板需要在不同环境（开发、测试、生产）中使用不同的实例类型。应该如何实现？",
+      "options": {
+        "A": "创建多个模板",
+        "B": "使用CloudFormation参数和条件",
+        "C": "使用嵌套堆栈",
+        "D": "使用CloudFormation StackSets"
+      },
+      "answer": "B",
+      "explanation": "CloudFormation参数允许在部署时传入不同的值（如环境名称），条件（Conditions）可以根据参数值选择不同的资源配置，如不同环境使用不同的实例类型。"
+    },
+    {
+      "id": "q16",
+      "domain": 3,
+      "question": "团队使用Systems Manager运行命令在多个实例上执行脚本。需要确保命令只在补丁维护窗口期间执行。应该使用什么功能？",
+      "options": {
+        "A": "Systems Manager Run Command",
+        "B": "Systems Manager维护窗口",
+        "C": "Systems Manager State Manager",
+        "D": "EventBridge规则"
+      },
+      "answer": "B",
+      "explanation": "Systems Manager维护窗口允许定义执行自动化任务的时间窗口。可以将Run Command任务注册到维护窗口，确保命令只在指定的维护时间执行。"
+    },
+    {
+      "id": "q17",
+      "domain": 3,
+      "question": "公司需要在多个AWS账户中部署相同的CloudFormation堆栈。应该使用什么功能？",
+      "options": {
+        "A": "CloudFormation嵌套堆栈",
+        "B": "CloudFormation StackSets",
+        "C": "CloudFormation变更集",
+        "D": "CloudFormation导出"
+      },
+      "answer": "B",
+      "explanation": "CloudFormation StackSets允许使用单个模板在多个AWS账户和区域中创建、更新或删除堆栈。它与AWS Organizations集成，简化多账户部署。"
+    },
+    {
+      "id": "q18",
+      "domain": 3,
+      "question": "运维团队需要管理EC2实例上的配置状态，确保特定软件始终安装。应该使用什么服务？",
+      "options": {
+        "A": "Systems Manager Run Command",
+        "B": "Systems Manager State Manager",
+        "C": "Systems Manager Automation",
+        "D": "AWS Config"
+      },
+      "answer": "B",
+      "explanation": "Systems Manager State Manager可以定义和维护实例的配置状态。通过关联（Association），可以确保指定的配置（如安装特定软件）在实例上持续应用和维护。"
+    },
+    {
+      "id": "q19",
+      "domain": 3,
+      "question": "CloudFormation堆栈创建了一个S3存储桶。团队想要在删除堆栈时保留此存储桶。应该如何配置？",
+      "options": {
+        "A": "使用条件删除",
+        "B": "设置DeletionPolicy为Retain",
+        "C": "使用UpdateReplacePolicy",
+        "D": "添加终止保护"
+      },
+      "answer": "B",
+      "explanation": "DeletionPolicy: Retain告诉CloudFormation在删除堆栈时保留该资源。这对于需要保留数据的资源（如S3存储桶、RDS数据库）非常有用。"
+    },
+    {
+      "id": "q20",
+      "domain": 3,
+      "question": "团队需要使用OpsWorks管理一组EC2实例上的应用程序部署。OpsWorks使用什么配置管理工具？",
+      "options": {
+        "A": "Ansible",
+        "B": "Puppet",
+        "C": "Chef",
+        "D": "Terraform"
+      },
+      "answer": "C",
+      "explanation": "AWS OpsWorks Stacks使用Chef作为配置管理工具。用户编写Chef recipes来定义如何配置和管理实例上的应用程序和资源。"
+    },
+    {
+      "id": "q21",
+      "domain": 4,
+      "question": "AWS Config检测到一个安全组允许SSH从0.0.0.0/0入站。需要自动修复此违规。应该如何实现？",
+      "options": {
+        "A": "使用CloudWatch告警",
+        "B": "使用AWS Config自动修复操作",
+        "C": "使用GuardDuty",
+        "D": "使用Inspector评估"
+      },
+      "answer": "B",
+      "explanation": "AWS Config规则可以配置自动修复操作，当检测到非合规资源时自动触发SSM Automation文档或Lambda函数来修复问题，如删除允许0.0.0.0/0的SSH规则。"
+    },
+    {
+      "id": "q22",
+      "domain": 4,
+      "question": "公司需要确保所有EC2实例的元数据服务使用IMDSv2。如何强制执行此要求？",
+      "options": {
+        "A": "使用安全组规则",
+        "B": "使用IAM策略",
+        "C": "在启动模板中配置HttpTokens为required",
+        "D": "使用网络ACL"
+      },
+      "answer": "C",
+      "explanation": "在EC2启动模板或实例元数据选项中设置HttpTokens为required，强制使用IMDSv2（需要会话令牌）。这防止了使用不安全的IMDSv1访问实例元数据。"
+    },
+    {
+      "id": "q23",
+      "domain": 4,
+      "question": "Inspector发现了EC2实例上的多个软件漏洞。运维团队需要快速了解哪些实例受影响最严重。应该查看Inspector的什么功能？",
+      "options": {
+        "A": "发现列表",
+        "B": "仪表板和风险分数",
+        "C": "抑制规则",
+        "D": "评估运行"
+      },
+      "answer": "B",
+      "explanation": "Inspector仪表板提供安全发现的概览，包括按资源类型和严重性分组的发现。风险分数帮助识别最严重受影响的资源，便于确定修复优先级。"
+    },
+    {
+      "id": "q24",
+      "domain": 4,
+      "question": "公司需要在IAM用户的访问密钥创建后自动发送通知。应该如何实现？",
+      "options": {
+        "A": "使用CloudWatch告警",
+        "B": "使用CloudTrail和EventBridge",
+        "C": "使用AWS Config规则",
+        "D": "使用IAM Access Analyzer"
+      },
+      "answer": "B",
+      "explanation": "CloudTrail记录CreateAccessKey API调用。配置EventBridge规则匹配此事件，触发SNS主题或Lambda函数发送通知，实现访问密钥创建的实时告警。"
+    },
+    {
+      "id": "q25",
+      "domain": 4,
+      "question": "运维团队需要确保所有EBS卷都使用特定的KMS密钥加密。如何实现此要求？",
+      "options": {
+        "A": "使用IAM策略限制EBS创建",
+        "B": "使用SCP阻止未加密卷",
+        "C": "配置账户级别的EBS加密设置",
+        "D": "使用AWS Config规则监控"
+      },
+      "answer": "C",
+      "explanation": "可以在EC2控制台的账户属性中启用默认EBS加密，并指定默认KMS密钥。这确保所有新创建的EBS卷自动使用指定的密钥加密。"
+    },
+    {
+      "id": "q26",
+      "domain": 4,
+      "question": "Security Hub显示了来自多个AWS服务的安全发现。团队需要将这些发现导出到第三方SIEM系统。应该如何实现？",
+      "options": {
+        "A": "手动导出发现",
+        "B": "使用Security Hub与EventBridge集成",
+        "C": "使用CloudWatch Logs订阅",
+        "D": "使用S3导出"
+      },
+      "answer": "B",
+      "explanation": "Security Hub可以将发现事件发送到EventBridge。配置EventBridge规则将发现路由到Kinesis Data Firehose或Lambda，然后发送到外部SIEM系统。"
+    },
+    {
+      "id": "q27",
+      "domain": 5,
+      "question": "公司的VPC使用IPv4 CIDR块10.0.0.0/16。需要扩展IP地址空间以支持更多资源。应该如何操作？",
+      "options": {
+        "A": "修改现有CIDR块大小",
+        "B": "为VPC添加辅助CIDR块",
+        "C": "创建新VPC并建立对等连接",
+        "D": "使用NAT实现地址复用"
+      },
+      "answer": "B",
+      "explanation": "VPC支持添加辅助CIDR块（最多5个IPv4 CIDR）。这允许在不影响现有资源的情况下扩展IP地址空间，新CIDR可以用于新的子网。"
+    },
+    {
+      "id": "q28",
+      "domain": 5,
+      "question": "应用程序需要从VPC私有子网访问Amazon SQS。不能使用NAT Gateway。应该使用什么解决方案？",
+      "options": {
+        "A": "VPC Gateway Endpoint",
+        "B": "VPC Interface Endpoint",
+        "C": "Internet Gateway",
+        "D": "VPC Peering"
+      },
+      "answer": "B",
+      "explanation": "SQS是通过VPC Interface Endpoint（由AWS PrivateLink提供支持）访问的服务。Interface Endpoint在子网中创建ENI，允许私有子网中的资源通过私有IP访问SQS。"
+    },
+    {
+      "id": "q29",
+      "domain": 5,
+      "question": "运维团队需要阻止VPC中特定子网之间的流量。应该使用什么？",
+      "options": {
+        "A": "安全组",
+        "B": "网络ACL",
+        "C": "路由表",
+        "D": "VPC端点策略"
+      },
+      "answer": "B",
+      "explanation": "网络ACL（NACL）在子网级别控制入站和出站流量。通过配置NACL拒绝规则，可以阻止特定子网之间的流量。安全组是实例级别的，不能在子网级别阻止流量。"
+    },
+    {
+      "id": "q30",
+      "domain": 5,
+      "question": "Route 53健康检查显示端点健康，但用户无法访问应用程序。最可能的原因是什么？",
+      "options": {
+        "A": "DNS TTL过长",
+        "B": "健康检查配置的路径与应用程序路径不同",
+        "C": "Route 53区域错误",
+        "D": "用户DNS缓存"
+      },
+      "answer": "B",
+      "explanation": "如果健康检查配置的路径（如/health）返回成功，但实际应用程序路径存在问题，健康检查会显示健康但用户无法访问。应确保健康检查路径能真正反映应用程序可用性。"
+    },
+    {
+      "id": "q31",
+      "domain": 5,
+      "question": "公司需要将多个VPC与本地数据中心连接。每个VPC都需要访问本地资源。应该使用什么架构？",
+      "options": {
+        "A": "为每个VPC创建单独的VPN连接",
+        "B": "使用Transit Gateway",
+        "C": "使用VPC Peering",
+        "D": "使用多个Direct Connect连接"
+      },
+      "answer": "B",
+      "explanation": "Transit Gateway是区域性网络中转中心，可以连接多个VPC和VPN/Direct Connect。使用Transit Gateway可以简化网络架构，避免为每个VPC创建单独的连接。"
+    },
+    {
+      "id": "q32",
+      "domain": 5,
+      "question": "CloudFront分发需要只允许特定国家/地区的用户访问。应该使用什么功能？",
+      "options": {
+        "A": "CloudFront签名URL",
+        "B": "CloudFront地理限制",
+        "C": "Origin Access Control",
+        "D": "CloudFront字段级加密"
+      },
+      "answer": "B",
+      "explanation": "CloudFront地理限制（Geo Restriction）允许配置白名单或黑名单，只允许或阻止特定国家/地区的用户访问分发的内容。"
+    },
+    {
+      "id": "q33",
+      "domain": 6,
+      "question": "公司的EC2实例使用按需定价运行稳定的工作负载。Compute Optimizer建议使用Reserved Instances。购买1年期标准RI可以节省多少成本？",
+      "options": {
+        "A": "约25%",
+        "B": "约40%",
+        "C": "约60%",
+        "D": "约75%"
+      },
+      "answer": "B",
+      "explanation": "1年期标准预留实例通常可以节省约40%的成本（相比按需定价）。3年期RI可以节省更多（约60%），但需要更长期的承诺。"
+    },
+    {
+      "id": "q34",
+      "domain": 6,
+      "question": "运维团队发现S3存储成本快速增长。需要分析哪些存储桶和前缀占用最多空间。应该使用什么工具？",
+      "options": {
+        "A": "S3 Storage Class Analysis",
+        "B": "S3 Storage Lens",
+        "C": "S3 Inventory",
+        "D": "CloudWatch S3指标"
+      },
+      "answer": "B",
+      "explanation": "S3 Storage Lens提供整个组织S3存储的可见性，包括按存储桶、前缀、区域等维度的存储使用情况分析，帮助识别成本驱动因素。"
+    },
+    {
+      "id": "q35",
+      "domain": 6,
+      "question": "公司有多个开发和测试环境在晚上和周末不使用。如何自动化关闭这些环境以节省成本？",
+      "options": {
+        "A": "使用Auto Scaling计划扩展",
+        "B": "使用AWS Instance Scheduler",
+        "C": "使用CloudWatch告警",
+        "D": "手动关闭实例"
+      },
+      "answer": "B",
+      "explanation": "AWS Instance Scheduler是一个AWS解决方案，可以根据计划自动启动和停止EC2和RDS实例。可以定义工作时间，在非工作时间自动关闭资源以节省成本。"
+    },
+    {
+      "id": "q36",
+      "domain": 6,
+      "question": "Lambda函数的执行时间比预期长，导致成本增加。如何优化性能？",
+      "options": {
+        "A": "增加函数超时时间",
+        "B": "增加函数内存分配",
+        "C": "使用预置并发",
+        "D": "减少函数代码大小"
+      },
+      "answer": "B",
+      "explanation": "Lambda内存分配与CPU和网络带宽成正比。增加内存分配可以提高函数执行速度，虽然每毫秒成本更高，但总执行时间减少可能降低总成本。"
+    },
+    {
+      "id": "q37",
+      "domain": 6,
+      "question": "公司需要在预算即将超支时自动采取措施。应该使用AWS Budgets的什么功能？",
+      "options": {
+        "A": "预算告警通知",
+        "B": "预算操作（Budget Actions）",
+        "C": "Cost Explorer预测",
+        "D": "Savings Plans建议"
+      },
+      "answer": "B",
+      "explanation": "AWS Budgets操作可以在达到预算阈值时自动执行操作，如应用IAM策略限制服务使用、应用SCP或发送通知。这允许自动化成本控制响应。"
+    },
+    {
+      "id": "q38",
+      "domain": 6,
+      "question": "运维团队需要分析RDS数据库性能瓶颈。Performance Insights显示等待事件主要是I/O。应该如何优化？",
+      "options": {
+        "A": "增加数据库实例内存",
+        "B": "迁移到gp3或io1存储",
+        "C": "增加连接数",
+        "D": "启用Multi-AZ"
+      },
+      "answer": "B",
+      "explanation": "I/O等待事件表明存储是瓶颈。迁移到gp3（可以独立配置IOPS）或io1/io2（高性能存储）可以增加IOPS和吞吐量，减少I/O等待时间。"
+    },
+    {
+      "id": "q39",
+      "domain": 1,
+      "question": "团队需要创建一个合成监控来模拟用户与Web应用程序的交互并测量延迟。应该使用什么服务？",
+      "options": {
+        "A": "CloudWatch RUM",
+        "B": "CloudWatch Synthetics",
+        "C": "AWS X-Ray",
+        "D": "CloudWatch ServiceLens"
+      },
+      "answer": "B",
+      "explanation": "CloudWatch Synthetics允许创建金丝雀（Canary）脚本来模拟用户行为，定期运行并测量端点可用性和延迟。它可以在用户发现问题之前检测到应用程序问题。"
+    },
+    {
+      "id": "q40",
+      "domain": 2,
+      "question": "公司使用ALB分发流量到Auto Scaling组。需要确保在缩容时正在处理请求的实例不会立即终止。应该配置什么？",
+      "options": {
+        "A": "延迟注销（Connection Draining）",
+        "B": "粘性会话",
+        "C": "健康检查宽限期",
+        "D": "跨区域负载均衡"
+      },
+      "answer": "A",
+      "explanation": "延迟注销（也称为连接耗尽或Deregistration Delay）允许ALB在取消注册实例时继续向正在处理的请求发送流量，直到现有连接关闭或超时，避免请求被中断。"
+    }
+  ]
+}

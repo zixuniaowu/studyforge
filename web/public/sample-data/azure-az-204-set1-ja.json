@@ -1,0 +1,649 @@
+{
+  "exam": {
+    "id": "azure-az-204-set1-ja",
+    "name": "Azure AZ-204 開発者模擬試験 #1",
+    "code": "AZ-204",
+    "provider": "Azure",
+    "language": "ja",
+    "description": "Microsoft Azure Developer Associate 認定試験の模擬問題です。Azure コンピューティングソリューション、ストレージソリューション、セキュリティ、監視と最適化、サードパーティサービス統合などのコア開発領域をカバーしています。",
+    "totalQuestions": 40,
+    "passingScore": 70,
+    "examTime": 120,
+    "domains": [
+      {
+        "id": 1,
+        "name": "Azure コンピューティングソリューションの開発 (Develop Azure compute solutions)",
+        "weight": 28
+      },
+      {
+        "id": 2,
+        "name": "Azure ストレージソリューションの開発 (Develop for Azure storage)",
+        "weight": 17
+      },
+      {
+        "id": 3,
+        "name": "Azure セキュリティの実装 (Implement Azure security)",
+        "weight": 22
+      },
+      {
+        "id": 4,
+        "name": "監視、トラブルシューティング、最適化 (Monitor, troubleshoot, and optimize)",
+        "weight": 18
+      },
+      {
+        "id": 5,
+        "name": "Azure およびサードパーティサービスへの接続と利用 (Connect to and consume Azure and third-party services)",
+        "weight": 15
+      }
+    ],
+    "tags": [
+      "Azure",
+      "AZ-204",
+      "開発者",
+      "認定試験",
+      "クラウド開発"
+    ]
+  },
+  "questions": [
+    {
+      "id": "q1",
+      "domain": 1,
+      "question": "HTTP リクエストを受信したときに実行される Azure Function を開発しています。この関数は認証されたユーザーのみがアクセスできるようにする必要があります。どの認証レベルを使用すべきですか？",
+      "options": {
+        "A": "Anonymous",
+        "B": "Function",
+        "C": "Admin",
+        "D": "User"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Function レベル認証では、リクエストに関数キーを含める必要があります。Anonymous は誰でもアクセス可能、Admin はホストキーが必要、User は有効な認証レベルではありません。Function レベルは適切なセキュリティを提供しながら柔軟性を維持します。\n---",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q2",
+      "domain": 1,
+      "question": "5 分ごとに自動的に実行される Azure Function を作成する必要があります。どのトリガータイプを使用すべきですか？",
+      "options": {
+        "A": "HTTP トリガー",
+        "B": "Timer トリガー",
+        "C": "Blob トリガー",
+        "D": "Queue トリガー"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Timer トリガーは CRON 式を使用して関数の定期実行をスケジュールします。5 分ごとに実行するには、CRON 式 '0 */5 * * * *' を使用できます。HTTP トリガーは外部リクエストが必要で、Blob と Queue トリガーはそれぞれストレージイベントに応答します。\n---",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q3",
+      "domain": 1,
+      "question": "Azure App Service にアプリケーションをデプロイしています。アプリケーションは Azure Key Vault に保存されているシークレットにアクセスする必要があります。シークレットに安全にアクセスするにはどのように構成すべきですか？（2 つ選択）",
+      "options": {
+        "A": "アプリケーションコードに Key Vault アクセスキーをハードコーディングする",
+        "B": "App Service のシステム割り当てマネージド ID を有効にする",
+        "C": "Key Vault でマネージド ID にアクセスを許可するアクセスポリシーを構成する",
+        "D": "Key Vault シークレットをアプリケーション設定に保存する"
+      },
+      "answer": ["B", "C"],
+      "answerType": "multiple",
+      "explanation": "マネージド ID を使用することが Azure リソースにアクセスする最も安全な方法です。まず App Service のシステム割り当てマネージド ID を有効にし、次に Key Vault でそのマネージド ID に適切な権限を付与するアクセスポリシーを構成します。これにより、コードや設定に資格情報を保存する必要がなくなります。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q4",
+      "domain": 1,
+      "question": "Azure Container Apps にコンテナ化されたアプリケーションをデプロイする必要があります。アプリケーションは HTTP トラフィックに基づいて自動スケーリングする必要があります。何を構成すべきですか？",
+      "options": {
+        "A": "手動スケーリングルール",
+        "B": "KEDA カスタムスケーラー",
+        "C": "HTTP スケーリングルール",
+        "D": "CPU スケーリングルール"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "Azure Container Apps は HTTP トラフィックに基づく自動スケーリングをサポートしています。HTTP スケーリングルールは同時 HTTP リクエスト数に基づいてレプリカ数を自動調整します。KEDA はカスタムイベントソース用、CPU スケーリングは CPU 使用率に基づきます。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q5",
+      "domain": 1,
+      "question": "Azure Function アプリケーションを開発しており、関数の実行時間をデフォルトの 5 分タイムアウトを超えて延長する必要があります。どのプランで関数をホストすべきですか？",
+      "options": {
+        "A": "従量課金プラン (Consumption Plan)",
+        "B": "Premium プラン",
+        "C": "専用プラン (Dedicated Plan)",
+        "D": "従量課金プランと Premium プランの両方"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "従量課金プランの最大実行時間は 10 分（デフォルト 5 分）です。Premium プランは無制限の実行時間を許可し、VNET 統合、常時ウォーム状態のインスタンスなどの機能を提供します。専用プランも長いタイムアウトをサポートしますが、Premium プランがより良い選択です。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q6",
+      "domain": 1,
+      "question": "Azure App Service で自動スケーリングを構成し、CPU 使用率が 80% を超えたときにインスタンスを追加する必要があります。何を構成すべきですか？",
+      "options": {
+        "A": "デプロイスロット",
+        "B": "自動スケーリングルール",
+        "C": "Traffic Manager",
+        "D": "ロードバランサー"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure App Service の自動スケーリングルールでは、メトリック（CPU、メモリ、HTTP キュー長など）に基づいてインスタンス数を自動的に増減できます。CPU がしきい値を超えたときにスケールアウトし、低下したときにスケールインするルールを設定できます。\n---",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q7",
+      "domain": 1,
+      "question": "Azure Functions Durable Functions 拡張機能を使用して、外部イベントを待機する必要があるワークフローを実装しています。どのパターンを使用すべきですか？",
+      "options": {
+        "A": "関数チェーン (Function Chaining)",
+        "B": "ファンアウト/ファンイン (Fan-out/Fan-in)",
+        "C": "人間による操作 (Human Interaction)",
+        "D": "非同期 HTTP API"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "人間による操作パターンは、外部イベントや人間の介入を待機する必要があるワークフローに使用されます。WaitForExternalEvent メソッドを使用してオーケストレーションを一時停止し、外部シグナルを待機できます。関数チェーンは順次実行用、ファンアウト/ファンインは並列処理用です。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q8",
+      "domain": 1,
+      "question": "Azure Container Instances (ACI) に Docker コンテナをデプロイしています。Azure Container Registry (ACR) からプライベートイメージをプルできるようにする必要があります。どのように構成すべきですか？",
+      "options": {
+        "A": "サービスプリンシパル資格情報を使用して認証する",
+        "B": "ACR をパブリックアクセスに設定する",
+        "C": "SSH キーを使用して認証する",
+        "D": "Azure AD ユーザー資格情報を使用する"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Azure Container Instances はサービスプリンシパル資格情報を使用してプライベート Azure Container Registry からイメージをプルできます。ACR プル権限を持つサービスプリンシパルを作成し、コンテナグループ作成時に資格情報を提供する必要があります。ACR を公開するとセキュリティリスクが生じます。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q9",
+      "domain": 2,
+      "question": "Azure Blob Storage に大きなファイルをアップロードする必要があります。ファイルサイズは 500 GB です。どのアップロード方法を使用すべきですか？",
+      "options": {
+        "A": "Put Blob 操作",
+        "B": "Put Block と Put Block List 操作",
+        "C": "Append Blob 操作",
+        "D": "Copy Blob 操作"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "大きなファイル（256 MB 以上）には、ブロックアップロードを使用すべきです。Put Block 操作で個々のブロック（最大 4000 MB）をアップロードし、Put Block List 操作ですべてのブロックを最終的な Blob に結合します。これにより、並列アップロードと障害からの回復が可能になります。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q10",
+      "domain": 2,
+      "question": "Azure Cosmos DB に JSON ドキュメントを保存する必要があるアプリケーションを開発しています。アプリケーションは特定のプロパティで効率的にクエリを実行する必要があります。クエリパフォーマンスを最適化するにはどうすべきですか？",
+      "options": {
+        "A": "RU/s 設定を増やす",
+        "B": "正しいパーティションキーを使用する",
+        "C": "クロスリージョンレプリケーションを有効にする",
+        "D": "MongoDB API の代わりに SQL API を使用する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "正しいパーティションキーを選択することが Cosmos DB クエリパフォーマンスを最適化する鍵です。良いパーティションキーは高いカーディナリティを持ち、データを均等に分散し、クエリで頻繁に使用されるプロパティである必要があります。これによりクロスパーティションクエリを回避し、パフォーマンスを大幅に向上できます。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q11",
+      "domain": 2,
+      "question": "Azure Blob Storage のライフサイクル管理ポリシーを構成し、30 日後に Blob をクールストレージ層に移動する必要があります。何を使用すべきですか？",
+      "options": {
+        "A": "Azure Policy",
+        "B": "Blob ライフサイクル管理ルール",
+        "C": "Azure Automation",
+        "D": "Azure Logic Apps"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure Blob Storage ライフサイクル管理では、Blob を異なるアクセス層間で自動的に移行したり削除したりするルールベースのポリシーを作成できます。Blob の作成時刻または最終変更時刻に基づいてルールを設定できます。\n---",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q12",
+      "domain": 2,
+      "question": "Azure Cosmos DB の変更フィード機能を使用してドキュメントの更新を処理しています。変更フィードを読み取るには何を使用すべきですか？",
+      "options": {
+        "A": "Azure Functions Cosmos DB トリガー",
+        "B": "Azure Event Hubs",
+        "C": "Azure Service Bus",
+        "D": "Azure Queue Storage"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Azure Functions の Cosmos DB トリガーは Cosmos DB 変更フィードに自動的に接続し、ドキュメントが変更されたときに関数をトリガーします。これは Cosmos DB の変更を処理する最も簡単な方法で、変更フィード読み取りロジックを手動で管理する必要がありません。\n---",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q13",
+      "domain": 2,
+      "question": "ユーザーが次の 1 時間、特定の Blob に読み取り専用アクセスできるようにする Shared Access Signature (SAS) を生成する必要があります。どの SAS タイプを使用すべきですか？",
+      "options": {
+        "A": "サービス SAS",
+        "B": "アカウント SAS",
+        "C": "ユーザー委任 SAS",
+        "D": "ストアドアクセスポリシー"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "サービス SAS は特定のストレージサービスリソース（単一の Blob など）へのアクセスを許可できます。アクセス許可（読み取り専用）と有効期限（1 時間）を指定できます。ユーザー委任 SAS はより安全ですが Azure AD が必要、アカウント SAS はより広範なアクセスを許可します。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q14",
+      "domain": 2,
+      "question": "Azure Cosmos DB を使用しており、複数のリージョン間でフェイルオーバー時のデータ整合性を確保する必要があります。最も強い整合性を確保するにはどの整合性レベルを構成すべきですか？",
+      "options": {
+        "A": "最終的 (Eventual)",
+        "B": "セッション (Session)",
+        "C": "強い (Strong)",
+        "D": "有界キャッシュ (Bounded Staleness)"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "強い整合性レベルは、読み取りが常に最新のコミットされた書き込みバージョンを返すことを保証します。これは線形化可能性を提供しますが、レイテンシが増加し可用性が低下します。絶対的なデータ整合性が必要なシナリオで使用します。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q15",
+      "domain": 3,
+      "question": "Azure Key Vault にアプリケーションのデータベース接続文字列を保存する必要があります。Key Vault のどのオブジェクトタイプを使用すべきですか？",
+      "options": {
+        "A": "キー (Key)",
+        "B": "シークレット (Secret)",
+        "C": "証明書 (Certificate)",
+        "D": "マネージドストレージアカウント"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Key Vault シークレットは、接続文字列、パスワード、API キーなどの機密性の高い文字列値を保存するために使用されます。キーは暗号化操作用、証明書は SSL/TLS およびコード署名用です。\n---",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q16",
+      "domain": 3,
+      "question": "Azure AD 認証を実装しており、アプリケーションがユーザーに代わって Microsoft Graph API にアクセスする必要があります。どの OAuth 2.0 フローを使用すべきですか？",
+      "options": {
+        "A": "クライアント資格情報フロー",
+        "B": "認証コードフロー",
+        "C": "暗黙的フロー",
+        "D": "リソースオーナーパスワード資格情報フロー"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "認証コードフローは、ユーザーに代わってリソースにアクセスするための推奨フローです。ユーザーが最初に認証を行い、アプリケーションが認証コードを受け取り、それをアクセストークンと交換します。クライアント資格情報フローはアプリケーション自体の ID 用、暗黙的フローは非推奨です。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q17",
+      "domain": 3,
+      "question": "Azure AD を使用した認証を使用するように Azure App Service を構成する必要があります。特定のユーザーのみがアプリケーションにアクセスできるようにしたいです。どのように構成すべきですか？（2 つ選択）",
+      "options": {
+        "A": "App Service 認証/認可を有効にする",
+        "B": "ユーザー割り当てを必須とするようにアプリ登録を構成する",
+        "C": "匿名認証を使用する",
+        "D": "IP 制限を構成する"
+      },
+      "answer": ["A", "B"],
+      "answerType": "multiple",
+      "explanation": "まず App Service 認証/認可（Easy Auth）を有効にし、次に Azure AD アプリ登録で「ユーザー割り当てを必須とする」オプションを構成します。これにより、アプリケーションに割り当てられたユーザーのみがアクセスできるようになります。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q18",
+      "domain": 3,
+      "question": "Azure Storage にアクセスする必要があるアプリケーションを開発しています。コードでストレージアカウントキーを使用しないようにしたいです。何を使用すべきですか？",
+      "options": {
+        "A": "Shared Access Signature (SAS)",
+        "B": "マネージド ID と Azure RBAC",
+        "C": "ストレージアカウントファイアウォール",
+        "D": "プライベートエンドポイント"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "マネージド ID と Azure RBAC の組み合わせは、Azure リソースへのパスワードレスアクセスのベストプラクティスです。マネージド ID は Azure によって自動的に管理され、コードに資格情報を保存する必要がありません。RBAC ロール割り当てにより適切なストレージ権限を付与します。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q19",
+      "domain": 3,
+      "question": "Azure Function に CORS（クロスオリジンリソース共有）を構成し、特定のドメインからのアクセスを許可する必要があります。この設定はどこで構成すべきですか？",
+      "options": {
+        "A": "関数コード内",
+        "B": "Azure Portal の関数アプリ CORS 設定",
+        "C": "host.json ファイル内",
+        "D": "function.json ファイル内"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure Functions の CORS 設定は、Azure Portal の関数アプリレベルまたは Azure CLI を通じて構成します。許可されるオリジン、メソッド、ヘッダーを指定できます。関数コードで手動で CORS ヘッダーを処理する必要はありません。\n---",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q20",
+      "domain": 3,
+      "question": "Microsoft Authentication Library (MSAL) を使用してアクセストークンを取得しています。Azure AD へのリクエストを減らすためにトークンがキャッシュされるようにする必要があります。MSAL はデフォルトでどのキャッシュを提供しますか？",
+      "options": {
+        "A": "キャッシュなし",
+        "B": "メモリキャッシュ",
+        "C": "ディスクキャッシュ",
+        "D": "分散キャッシュ"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "MSAL はデフォルトでアクセストークンとリフレッシュトークンを保存するメモリキャッシュを提供します。Web アプリケーションやサービスでは、複数のインスタンス間でトークンキャッシュを共有するために分散キャッシュ（Redis など）を実装することが推奨されます。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q21",
+      "domain": 4,
+      "question": "Azure Application Insights でカスタムイベントとメトリックを追跡する必要があります。どの API を使用すべきですか？",
+      "options": {
+        "A": "TrackEvent と TrackMetric",
+        "B": "TrackRequest と TrackResponse",
+        "C": "TrackLog と TrackError",
+        "D": "TrackCustom と TrackData"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Application Insights SDK は、カスタムイベントを追跡するための TrackEvent とカスタムメトリックを追跡するための TrackMetric を提供します。これらのデータは Azure Portal で表示および分析でき、アプリケーションの動作を監視するために使用できます。\n---",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q22",
+      "domain": 4,
+      "question": "Azure CDN を使用して静的コンテンツをキャッシュしています。コンテンツ更新後、すぐにキャッシュをクリアする必要があります。どの操作を実行すべきですか？",
+      "options": {
+        "A": "TTL の有効期限を待つ",
+        "B": "CDN パージ機能を使用する",
+        "C": "CDN エンドポイントを削除して再作成する",
+        "D": "ストレージアカウントのアクセスキーを変更する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure CDN はパージ機能を提供しており、すべてのエッジノードからキャッシュされたコンテンツを削除できます。特定のパスまたはワイルドカードに一致するコンテンツをパージできます。TTL の有効期限を待つより速く、エンドポイントを再作成するより簡単です。\n---",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q23",
+      "domain": 4,
+      "question": "Azure Application Insights を構成して、パフォーマンス異常と障害を自動的に検出する必要があります。どの機能を有効にすべきですか？",
+      "options": {
+        "A": "ライブメトリクスストリーム",
+        "B": "スマート検出",
+        "C": "可用性テスト",
+        "D": "診断設定"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "スマート検出は機械学習を使用してテレメトリデータを自動的に分析し、パフォーマンス問題、障害率の上昇、メモリリークなどの異常パターンを検出します。問題が検出されると自動的に通知を送信します。ライブメトリクスストリームはリアルタイムビューを提供しますが、自動検出は行いません。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q24",
+      "domain": 4,
+      "question": "Azure App Service の自動スケーリングを構成しています。スケーリング操作間に十分なクールダウン時間を確保し、振動を避ける必要があります。何を構成すべきですか？",
+      "options": {
+        "A": "スケーリング制限",
+        "B": "クールダウン期間",
+        "C": "期間",
+        "D": "評価頻度"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "クールダウン期間は、前回のスケーリング操作後、次のスケーリングを実行する前に待機する必要がある時間を定義します。これにより、メトリクスの急激な変動による頻繁なスケーリング（振動）を防止します。デフォルトのクールダウン期間は 5 分です。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q25",
+      "domain": 4,
+      "question": "Azure Redis Cache を使用してセッションデータをキャッシュする必要があります。高可用性を確保するには、どの層を選択すべきですか？",
+      "options": {
+        "A": "Basic 層",
+        "B": "Standard 層",
+        "C": "Premium 層",
+        "D": "Basic 層と Standard 層の両方"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Standard 層は、プライマリ/レプリカレプリケーションを備えた 2 ノード Redis キャッシュを提供し、99.9% SLA があります。Basic 層はシングルノードキャッシュで SLA がありません。Premium 層はクラスターや VNET などの追加機能を提供しますが、シンプルなセッションキャッシュには Standard 層で十分です。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q26",
+      "domain": 4,
+      "question": "Application Insights の分散トレースデータを分析しています。リクエストが異なるマイクロサービス間でたどる完全なパスを確認する必要があります。どの機能を使用すべきですか？",
+      "options": {
+        "A": "アプリケーションマップ",
+        "B": "トランザクション検索",
+        "C": "エンドツーエンドトランザクション詳細",
+        "D": "メトリクスエクスプローラー"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "エンドツーエンドトランザクション詳細ビューは、単一のリクエストがすべてのコンポーネントにわたる完全なトレースを表示し、依存関係呼び出し、例外、タイムラインを含みます。アプリケーションマップは全体的なトポロジを表示し、トランザクション検索は特定のイベントを検索するために使用します。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q27",
+      "domain": 5,
+      "question": "Azure API Management を使用して API の呼び出しレートを制限する必要があります。どのポリシーを使用すべきですか？",
+      "options": {
+        "A": "ip-filter",
+        "B": "rate-limit-by-key",
+        "C": "quota-by-key",
+        "D": "validate-jwt"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "rate-limit-by-key ポリシーは、特定の時間枠内の API 呼び出し数を制限し、バーストトラフィックを防止するために使用されます。quota-by-key は長期的なクォータ制限に使用されます。ip-filter は IP フィルタリング用、validate-jwt はトークン検証用です。\n---",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q28",
+      "domain": 5,
+      "question": "Azure Event Grid を使用して Azure Blob Storage から Azure Function にイベントを送信しています。新しい Blob が作成されたときに関数をトリガーします。どのイベントタイプをサブスクライブすべきですか？",
+      "options": {
+        "A": "Microsoft.Storage.BlobCreated",
+        "B": "Microsoft.Storage.BlobUploaded",
+        "C": "Microsoft.Storage.NewBlob",
+        "D": "Microsoft.Storage.ContainerCreated"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Microsoft.Storage.BlobCreated イベントは、Blob が作成または置換されたときにトリガーされます。Event Grid は BlobCreated、BlobDeleted など、複数のストレージイベントタイプを提供します。これにより、イベント駆動型アーキテクチャを実装できます。\n---",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q29",
+      "domain": 5,
+      "question": "Azure Service Bus を使用してメッセージキューを実装し、メッセージが送信順に処理されることを要求しています。どの機能を使用すべきですか？",
+      "options": {
+        "A": "デッドレターキュー",
+        "B": "セッション",
+        "C": "重複検出",
+        "D": "自動転送"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Service Bus セッションはメッセージの先入れ先出し (FIFO) 処理をサポートします。メッセージにセッション ID を設定することで、同じセッション ID を持つメッセージが順序どおりに処理されることを保証できます。これはトランザクション処理など、順序付き処理が必要なシナリオに重要です。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q30",
+      "domain": 5,
+      "question": "Azure Queue Storage を使用して非同期メッセージ処理を行っています。メッセージ処理が失敗した場合にメッセージが失われないようにする必要があります。どのように処理すべきですか？",
+      "options": {
+        "A": "メッセージを即座に削除する",
+        "B": "可視性タイムアウトと条件付き削除を使用する",
+        "C": "メッセージを別のキューにコピーする",
+        "D": "メッセージ削除を無効にする"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure Queue Storage は可視性タイムアウトメカニズムを使用します。メッセージを取得すると不可視になり、処理成功後に明示的に削除します。処理が失敗してメッセージが削除されない場合、タイムアウト後にメッセージが再び可視になり、他のコンシューマーが処理できます。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q31",
+      "domain": 5,
+      "question": "Azure API Management で API レスポンスのフォーマットを XML から JSON に変換する必要があります。どのポリシーを使用すべきですか？",
+      "options": {
+        "A": "set-body",
+        "B": "xml-to-json",
+        "C": "find-and-replace",
+        "D": "rewrite-uri"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "xml-to-json ポリシーはレスポンスボディを XML から JSON 形式に変換できます。これはバックエンド API が XML を返すがクライアントが JSON を必要とする場合に非常に便利です。set-body はリクエスト/レスポンスボディの設定または変更に使用されます。\n---",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q32",
+      "domain": 5,
+      "question": "Azure Event Hubs を使用して高スループットのテレメトリデータを受信しています。コンシューマーが水平方向にスケーリングできるようにする必要があります。何を使用すべきですか？",
+      "options": {
+        "A": "単一のコンシューマーグループ",
+        "B": "複数のパーティションとコンシューマーグループ",
+        "C": "イベントプロセッサホスト",
+        "D": "上記すべて"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "Event Hubs の水平スケーリングは、パーティション（並列処理ユニット）、コンシューマーグループ（独立した読み取りストリーム）、イベントプロセッサホスト（自動ロードバランシング）に依存します。これらのコンポーネントが連携して高スループットのスケーラブルなイベント処理を実現します。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q33",
+      "domain": 1,
+      "question": ".NET Core アプリケーションを Azure App Service にデプロイしています。開発と本番で異なる環境設定を使用するようにアプリケーションを構成する必要があります。何を使用すべきですか？",
+      "options": {
+        "A": "Web.config 変換",
+        "B": "Azure App Service アプリケーション設定とデプロイスロット",
+        "C": "環境変数ファイル",
+        "D": "ハードコーディングされた構成"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure App Service アプリケーション設定は appsettings.json の値を上書きします。デプロイスロットと組み合わせることで、異なる環境（開発、ステージング、本番）に異なる設定を構成できます。設定は「スロット設定」としてマークしてスロット固有に保持できます。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q34",
+      "domain": 1,
+      "question": "Azure Functions の Durable Functions 拡張機能を使用しています。複数のアクティビティ関数を並列に実行し、すべての結果を待機する必要があります。どのメソッドを使用すべきですか？",
+      "options": {
+        "A": "CallActivityAsync",
+        "B": "WaitForExternalEvent",
+        "C": "Task.WhenAll",
+        "D": "ContinueWith"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "Durable Functions では、Task.WhenAll を使用して複数のアクティビティ関数を並列に実行できます。まず複数の CallActivityAsync タスクを作成し、次に Task.WhenAll を使用してすべてのタスクの完了を待機します。これによりファンアウト/ファンインパターンを実装できます。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q35",
+      "domain": 2,
+      "question": "Azure Cosmos DB を使用しており、7 日後にドキュメントを自動的に削除するように Time to Live (TTL) を構成する必要があります。どのように構成すべきですか？",
+      "options": {
+        "A": "コンテナレベルで DefaultTimeToLive を 604800 秒に設定する",
+        "B": "ドキュメントに expirationDate プロパティを追加する",
+        "C": "Azure Logic Apps を使用して定期的に削除する",
+        "D": "Cosmos DB トリガーを構成する"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Cosmos DB TTL 機能では、コンテナレベルで DefaultTimeToLive（秒単位）を設定できます。7 日は 604800 秒に相当します。個々のドキュメントに ttl プロパティを設定してデフォルト値を上書きすることもできます。これは自動データ有効期限のネイティブ機能です。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q36",
+      "domain": 3,
+      "question": "Azure Key Vault でシークレットをローテーションする必要がありますが、アプリケーションが中断されないようにする必要があります。どの戦略を使用すべきですか？",
+      "options": {
+        "A": "シークレットバージョンを直接更新する",
+        "B": "新しいバージョンのシークレットを作成し、アプリケーション参照を更新する",
+        "C": "古いシークレットを削除して新しいシークレットを作成する",
+        "D": "同じ名前で新しいシークレットを作成する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Key Vault はシークレットのバージョン管理をサポートしています。新しいバージョンを作成しても、古いバージョンは引き続き利用可能です。まず新しいバージョンを作成し、アプリケーション構成を新しいバージョンを使用するように更新し、検証後に古いバージョンを無効にできます。これにより、中断のないシークレットローテーションが保証されます。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q37",
+      "domain": 4,
+      "question": "Application Insights 可用性テストを構成して、Web アプリケーションの応答時間を監視する必要があります。どのタイプのテストを作成すべきですか？",
+      "options": {
+        "A": "URL ping テスト",
+        "B": "複数ステップ Web テスト",
+        "C": "カスタムトラック可用性テスト",
+        "D": "パフォーマンスカウンター"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "URL ping テストは最もシンプルな可用性テストタイプで、複数の場所から定期的に URL をリクエストし、応答時間とステータスコードを測定できます。複数ステップ Web テストはログインフローなど、より複雑なシナリオに使用されます。\n---",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q38",
+      "domain": 5,
+      "question": "Azure API Management を使用して API を公開しています。異なる API コンシューマーに異なるレベルのアクセスとレート制限を提供する必要があります。何を使用すべきですか？",
+      "options": {
+        "A": "API バージョン",
+        "B": "製品 (Products)",
+        "C": "リビジョン (Revisions)",
+        "D": "バックエンドサービス"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure API Management 製品は 1 つ以上の API のコレクションで、異なるアクセスレベル、使用条件、レート制限を構成できます。開発者は製品をサブスクライブしてアクセス権を取得します。これにより、異なるユーザーグループに異なるサービス層を提供できます。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q39",
+      "domain": 1,
+      "question": "Azure Container Apps を使用してマイクロサービスアプリケーションをデプロイしています。サービス間の内部通信を構成する必要があります。何を使用すべきですか？",
+      "options": {
+        "A": "外部イングレス",
+        "B": "内部イングレス (Internal Ingress)",
+        "C": "パブリック IP アドレス",
+        "D": "Azure Front Door"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure Container Apps の内部イングレスにより、コンテナアプリは仮想ネットワーク内でのみアクセス可能になります。これはマイクロサービス間の安全な通信に非常に便利で、サービスをインターネットに公開する必要がありません。サービスディスカバリを使用して名前で他のサービスにアクセスできます。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q40",
+      "domain": 3,
+      "question": "アプリケーションは Azure AD で保護された Web API を使用する必要があります。受信リクエストのアクセストークンを検証する必要があります。トークンのどのクレームを検証すべきですか？（2 つ選択）",
+      "options": {
+        "A": "aud (オーディエンス) クレーム",
+        "B": "name クレーム",
+        "C": "iss (発行者) クレーム",
+        "D": "email クレーム"
+      },
+      "answer": ["A", "C"],
+      "answerType": "multiple",
+      "explanation": "アクセストークンを検証する際、aud（オーディエンス）クレームをチェックしてトークンが自分の API 用に発行されたことを確認し、iss（発行者）クレームをチェックしてトークンが期待される ID プロバイダーからのものであることを確認する必要があります。name や email などの他のクレームはオプションのユーザー情報です。\n---",
+      "difficulty": "medium"
+    }
+  ]
+}

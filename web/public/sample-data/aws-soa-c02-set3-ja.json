@@ -1,0 +1,154 @@
+{
+  "exam": {
+    "id": "aws-soa-c02-set3-ja",
+    "name": "AWS SOA-C02 模擬試験 #3",
+    "code": "SOA-C02",
+    "provider": "AWS",
+    "language": "ja",
+    "description": "AWSシステムオペレーション管理者アソシエイト認定試験模擬問題 - 第3セット",
+    "totalQuestions": 10,
+    "passingScore": 72,
+    "examTime": 130,
+    "domains": [
+      {"id": 1, "name": "Monitoring, Logging, and Remediation", "weight": 20},
+      {"id": 2, "name": "Reliability and Business Continuity", "weight": 16},
+      {"id": 3, "name": "Deployment, Provisioning, and Automation", "weight": 18},
+      {"id": 4, "name": "Security and Compliance", "weight": 16},
+      {"id": 5, "name": "Networking and Content Delivery", "weight": 18},
+      {"id": 6, "name": "Cost and Performance Optimization", "weight": 12}
+    ],
+    "tags": ["AWS", "SysOps", "SOA", "認定試験", "運用管理"]
+  },
+  "questions": [
+    {
+      "id": "q1",
+      "domain": 1,
+      "question": "運用チームが複数のAWSサービスからのメトリクスを単一のビューに集約して相関分析を行う必要があります。CloudWatchダッシュボードに表示されるメトリクスは異なるAWSアカウントからのものです。どの機能を使用すべきですか？",
+      "options": {
+        "A": "CloudWatchクロスリージョンダッシュボード",
+        "B": "CloudWatchクロスアカウントオブザーバビリティ",
+        "C": "CloudWatch Container Insights",
+        "D": "CloudWatch Metric Math"
+      },
+      "answer": "B",
+      "explanation": "CloudWatchクロスアカウントオブザーバビリティにより、1つの中央アカウントで複数のAWSアカウントからのメトリクス、ログ、トレースデータを収集・表示でき、統一されたオブザーバビリティビューを提供します。"
+    },
+    {
+      "id": "q2",
+      "domain": 1,
+      "question": "チームがCloudWatchログ内の異常パターン（エラー率の急激な増加など）を検出する必要があります。手動でアラームしきい値を作成するのは現実的ではありません。どの機能を使用すべきですか？",
+      "options": {
+        "A": "CloudWatch Metric Filters",
+        "B": "CloudWatch Anomaly Detection",
+        "C": "CloudWatch Logs Insights",
+        "D": "CloudWatch Contributor Insights"
+      },
+      "answer": "B",
+      "explanation": "CloudWatch Anomaly Detectionは機械学習を使用して履歴データを分析し、自動的に正常範囲を決定して異常を検出します。手動で静的しきい値を設定する必要がなく、システムが履歴パターンに基づいて自動的に調整します。"
+    },
+    {
+      "id": "q3",
+      "domain": 1,
+      "question": "企業がCloudTrailログの完全性を確保し、ログの改ざんや削除を防止する必要があります。どの機能を有効にすべきですか？",
+      "options": {
+        "A": "CloudTrailログ暗号化",
+        "B": "CloudTrailログファイル検証",
+        "C": "S3オブジェクトロック",
+        "D": "S3バージョニング"
+      },
+      "answer": "B",
+      "explanation": "CloudTrailログファイル検証はデジタル署名を使用してログファイルの完全性を検証します。ログが変更、削除、または偽造されたかどうかを検出でき、監査証跡の信頼性を確保します。"
+    },
+    {
+      "id": "q4",
+      "domain": 1,
+      "question": "運用チームがEC2インスタンスのCPU使用率メトリクスがCloudWatchで不連続に表示されていることを発見しました。インスタンスは正常に動作しています。考えられる原因は何ですか？",
+      "options": {
+        "A": "インスタンスタイプがCloudWatchをサポートしていない",
+        "B": "CloudWatchエージェントの設定が間違っている",
+        "C": "基本モニタリングは5分ごとにデータを収集する",
+        "D": "インスタンスにIAMロールがない"
+      },
+      "answer": "C",
+      "explanation": "EC2基本モニタリングは5分ごとにメトリクスデータを収集するため、グラフが不連続に見える場合があります。詳細モニタリングを有効にすると、1分ごとにデータを収集し、より精細なビューを提供できます。"
+    },
+    {
+      "id": "q5",
+      "domain": 1,
+      "question": "チームがVPC Flow Logsをリアルタイムで分析してネットワーク異常を検出する必要があります。ログ量が大きく、コスト効率の良いソリューションが必要です。どのアーキテクチャを使用すべきですか？",
+      "options": {
+        "A": "Flow LogsをS3に送信し、Athenaでクエリする",
+        "B": "Flow LogsをCloudWatch Logs Insightsに送信する",
+        "C": "Flow LogsをKinesis Data Streamsに送信してリアルタイム処理する",
+        "D": "Flow LogsをElasticSearchに送信する"
+      },
+      "answer": "C",
+      "explanation": "大量のVPC Flow Logsのリアルタイム分析には、Kinesis Data Streamsが理想的な選択です。リアルタイムでトラフィックデータを処理・分析でき、LambdaやKinesis Data Analyticsと組み合わせて異常を検出できます。"
+    },
+    {
+      "id": "q6",
+      "domain": 1,
+      "question": "CloudWatchアラームの状態がINSUFFICIENT_DATAと表示されています。最も可能性の高い原因は何ですか？",
+      "options": {
+        "A": "メトリクスしきい値が高すぎる",
+        "B": "評価期間中にメトリクスのデータポイントがない",
+        "C": "アラーム設定が間違っている",
+        "D": "SNSトピックが設定されていない"
+      },
+      "answer": "B",
+      "explanation": "INSUFFICIENT_DATA状態は、評価期間中にアラーム状態を判断するための十分なデータポイントがないことを示します。これは、インスタンスの停止、メトリクス発行の遅延、またはメトリクス名の設定ミスが原因である可能性があります。"
+    },
+    {
+      "id": "q7",
+      "domain": 1,
+      "question": "運用チームがEC2インスタンスのシステムイベント（計画されたメンテナンスイベントなど）を監視システムに統合する必要があります。どのサービスを使用すべきですか？",
+      "options": {
+        "A": "CloudWatch Events",
+        "B": "AWS Health DashboardとEventBridge",
+        "C": "CloudTrail",
+        "D": "Systems Manager OpsCenter"
+      },
+      "answer": "B",
+      "explanation": "AWS Health DashboardはAWSサービスとリソースに影響を与えるイベント情報（計画されたメンテナンスイベントを含む）を提供します。EventBridgeとの統合により、自動的に対応アクションや通知をトリガーできます。"
+    },
+    {
+      "id": "q8",
+      "domain": 2,
+      "question": "企業がEC2インスタンスが誤って終了された場合に迅速に復旧できるようにする必要があります。インスタンスはインスタンスストアを使用しています。どの対策を講じるべきですか？",
+      "options": {
+        "A": "インスタンス終了保護を有効にする",
+        "B": "定期的にAMIバックアップを作成する",
+        "C": "Auto Scalingを使用する",
+        "D": "データをEBSに移行する"
+      },
+      "answer": "B",
+      "explanation": "インスタンスストアは一時的なストレージであり、インスタンスが終了するとデータは失われます。定期的にAMIを作成することで、インスタンス設定とルートボリュームデータをバックアップできます。インスタンスストアデータについては、追加のバックアップ戦略も必要です。"
+    },
+    {
+      "id": "q9",
+      "domain": 2,
+      "question": "ELBターゲットグループのヘルスチェックが継続的に失敗していますが、アプリケーションはインスタンス上で正常に動作しています。最も可能性の高い原因は何ですか？",
+      "options": {
+        "A": "ヘルスチェックポートがアプリケーションポートと一致していない",
+        "B": "インスタンスのメモリが不足している",
+        "C": "ELBサブネットの設定が間違っている",
+        "D": "SSL証明書が期限切れ"
+      },
+      "answer": "A",
+      "explanation": "ヘルスチェック失敗の最も一般的な原因は設定の不一致です。ヘルスチェックに設定されたポートまたはパスがアプリケーションが実際にリッスンしているものと異なる場合、アプリケーションが正常に動作していてもヘルスチェックは失敗します。"
+    },
+    {
+      "id": "q10",
+      "domain": 2,
+      "question": "Auto Scalingグループが複数のインスタンスタイプでSpotインスタンスを使用するように設定されています。グループが常に十分な容量を持つようにするにはどうすればよいですか？",
+      "options": {
+        "A": "オンデマンドインスタンスのみを使用する",
+        "B": "混合インスタンスポリシーと複数のインスタンスタイプを設定する",
+        "C": "最大容量を増やす",
+        "D": "リザーブドインスタンスを使用する"
+      },
+      "answer": "B",
+      "explanation": "混合インスタンスポリシーにより、複数のインスタンスタイプと購入オプション（オンデマンド+Spot）を設定できます。一部のSpotインスタンスタイプが利用できない場合、Auto Scalingは他の設定されたインスタンスタイプからインスタンスを起動できます。"
+    }
+  ]
+}

@@ -1,0 +1,649 @@
+{
+  "exam": {
+    "id": "azure-az-204-set3",
+    "name": "Azure AZ-204 开发人员认证模拟考试 #3",
+    "code": "AZ-204",
+    "provider": "Azure",
+    "language": "zh-CN",
+    "description": "Microsoft Azure Developer Associate 认证考试模拟题，涵盖 Azure 计算解决方案、存储解决方案、安全性、监控优化以及第三方服务集成等核心开发领域",
+    "totalQuestions": 40,
+    "passingScore": 70,
+    "examTime": 120,
+    "domains": [
+      {
+        "id": 1,
+        "name": "开发 Azure 计算解决方案 (Develop Azure compute solutions)",
+        "weight": 28
+      },
+      {
+        "id": 2,
+        "name": "开发 Azure 存储解决方案 (Develop for Azure storage)",
+        "weight": 17
+      },
+      {
+        "id": 3,
+        "name": "实现 Azure 安全性 (Implement Azure security)",
+        "weight": 22
+      },
+      {
+        "id": 4,
+        "name": "监视、故障排除和优化 Azure 解决方案 (Monitor, troubleshoot, and optimize)",
+        "weight": 18
+      },
+      {
+        "id": 5,
+        "name": "连接和使用 Azure 服务及第三方服务 (Connect to and consume Azure and third-party services)",
+        "weight": 15
+      }
+    ],
+    "tags": [
+      "Azure",
+      "AZ-204",
+      "开发人员",
+      "认证考试",
+      "云开发"
+    ]
+  },
+  "questions": [
+    {
+      "id": "q1",
+      "domain": 1,
+      "question": "您正在开发一个 Azure Function，需要在处理完消息后将结果写入多个输出目标。您应该使用什么？",
+      "options": {
+        "A": "多个函数",
+        "B": "多个输出绑定",
+        "C": "Durable Functions",
+        "D": "Azure Logic Apps"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure Functions 支持多个输出绑定，允许函数将数据写入多个目标（如队列、Blob、Cosmos DB 等），而无需创建多个函数。这简化了代码并提高了效率。\n---",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q2",
+      "domain": 1,
+      "question": "您正在使用 Azure App Service 并需要执行零停机部署。您应该使用什么功能？",
+      "options": {
+        "A": "自动缩放",
+        "B": "部署槽和交换",
+        "C": "WebJobs",
+        "D": "Application Insights"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "部署槽允许您将新版本部署到预生产槽，进行测试和预热，然后执行槽交换将其投入生产。交换操作是即时的，不会导致停机时间，因为它只是切换流量路由。\n---",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q3",
+      "domain": 1,
+      "question": "您正在开发一个需要处理大量消息的 Azure Function。您需要控制函数实例的并发度。您应该在哪里配置此设置？",
+      "options": {
+        "A": "function.json",
+        "B": "host.json",
+        "C": "local.settings.json",
+        "D": "应用程序设置"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "host.json 文件包含函数应用级别的配置，包括并发设置。例如，对于队列触发器，可以配置 batchSize 和 newBatchThreshold；对于 HTTP 触发器，可以配置 maxConcurrentRequests。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q4",
+      "domain": 1,
+      "question": "您正在使用 Azure Container Apps 的 Dapr 集成。您需要从另一个服务调用应用程序。您应该使用什么 Dapr 构建块？",
+      "options": {
+        "A": "状态管理",
+        "B": "服务调用",
+        "C": "发布/订阅",
+        "D": "绑定"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Dapr 的服务调用构建块提供了服务之间的安全可靠通信。它处理服务发现、负载均衡、重试和 mTLS 加密，简化了微服务间的调用。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q5",
+      "domain": 1,
+      "question": "您正在开发一个 Azure Function，该函数由 Azure Service Bus 队列触发。您需要确保如果处理失败，消息会被移动到死信队列。您应该如何处理？",
+      "options": {
+        "A": "在代码中手动移动消息",
+        "B": "抛出异常，让 Service Bus 自动处理",
+        "C": "使用 Complete 方法完成消息",
+        "D": "配置 AutoComplete 为 true"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "当 Azure Function 处理 Service Bus 消息时抛出异常，消息会返回队列。经过配置的最大重试次数后，消息会自动移动到死信队列。这是 Service Bus 的内置功能，无需手动处理。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q6",
+      "domain": 1,
+      "question": "您正在使用 Azure Container Instances 部署多容器组。容器之间需要通过 localhost 通信。这是否可能？",
+      "options": {
+        "A": "不可能，容器组中的容器不能通信",
+        "B": "可以，同一容器组中的容器共享网络命名空间",
+        "C": "需要配置虚拟网络",
+        "D": "只能通过公共 IP 通信"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure Container Instances 容器组中的容器共享网络命名空间（类似于 Kubernetes Pod）。它们可以通过 localhost 和端口相互通信，无需额外的网络配置。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q7",
+      "domain": 1,
+      "question": "您正在使用 Durable Functions 的实体功能（Durable Entities）。实体用于什么场景？",
+      "options": {
+        "A": "顺序执行活动",
+        "B": "管理分布式状态",
+        "C": "并行处理",
+        "D": "定时任务"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Durable Entities（持久实体）用于管理分布式状态，提供了类似于 Actor 模型的编程模式。实体有唯一标识符，可以安全地读写状态，并处理并发操作。适用于购物车、游戏状态等场景。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q8",
+      "domain": 1,
+      "question": "您正在为 Azure App Service 配置自定义健康检查。健康检查端点应该验证什么？",
+      "options": {
+        "A": "仅返回 HTTP 200",
+        "B": "应用程序及其依赖项的健康状态",
+        "C": "服务器 CPU 使用率",
+        "D": "网络延迟"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "有效的健康检查应该验证应用程序及其关键依赖项（如数据库、缓存、外部服务）是否正常工作。如果任何关键依赖项不可用，健康检查应返回非成功状态码，以便负载均衡器将流量路由到健康的实例。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q9",
+      "domain": 2,
+      "question": "您正在使用 Azure Cosmos DB 并需要实现分页查询。您应该使用什么？",
+      "options": {
+        "A": "OFFSET 和 LIMIT",
+        "B": "延续令牌 (Continuation Token)",
+        "C": "游标",
+        "D": "页码参数"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Cosmos DB 使用延续令牌实现分页。每个查询响应包含一个延续令牌，可以在下一个请求中使用它来获取下一页结果。这比 OFFSET 更高效，因为不需要跳过记录。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q10",
+      "domain": 2,
+      "question": "您正在使用 Azure Blob Storage 并需要监控 Blob 的更改。您应该使用什么？",
+      "options": {
+        "A": "Blob 触发器",
+        "B": "更改源 (Change Feed)",
+        "C": "Blob 索引",
+        "D": "生命周期管理"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure Blob Storage 更改源提供了 Blob 创建和修改事件的有序日志。它可以用于触发处理逻辑、保持数据同步或进行审计。更改源按时间顺序提供事件，并且是持久的。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q11",
+      "domain": 2,
+      "question": "您正在使用 Azure Cosmos DB，需要在插入或更新文档之前自动修改文档。您应该使用什么？",
+      "options": {
+        "A": "存储过程",
+        "B": "预触发器 (Pre-trigger)",
+        "C": "后触发器 (Post-trigger)",
+        "D": "用户定义函数"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "预触发器在插入或更新操作之前执行，可以修改要保存的文档。例如，可以自动添加时间戳或验证数据。后触发器在操作之后执行，用户定义函数用于查询中的计算。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q12",
+      "domain": 2,
+      "question": "您正在使用 Azure Table Storage。您需要查询特定分区内的实体。这种查询的性能特点是什么？",
+      "options": {
+        "A": "需要扫描所有分区",
+        "B": "在单个分区内高效查询",
+        "C": "总是使用索引",
+        "D": "性能与数据量无关"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure Table Storage 按分区键组织数据。指定分区键的查询只扫描单个分区，非常高效。跨分区查询需要扫描多个分区，性能较差。设计时应确保常见查询在单个分区内完成。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q13",
+      "domain": 2,
+      "question": "您正在使用 Azure Cosmos DB 的 SQL API。您需要检索文档的特定属性而不是整个文档。您应该如何编写查询？",
+      "options": {
+        "A": "SELECT * FROM c",
+        "B": "SELECT c.property1, c.property2 FROM c",
+        "C": "SELECT TOP 1 FROM c",
+        "D": "SELECT DISTINCT FROM c"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "通过在 SELECT 子句中指定所需的属性（投影），可以只检索需要的数据，减少网络传输和 RU 消耗。这是一个重要的性能优化技术，特别是对于大型文档。\n---",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q14",
+      "domain": 2,
+      "question": "您正在配置 Azure Blob Storage 的静态网站托管。您需要配置自定义 404 错误页面。您应该在哪里指定？",
+      "options": {
+        "A": "在 Azure CDN 中",
+        "B": "在静态网站配置的错误文档路径中",
+        "C": "在 Blob 容器的元数据中",
+        "D": "在 CORS 配置中"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure Blob Storage 静态网站配置允许指定索引文档路径和错误文档路径。错误文档路径用于配置 404 页面，当请求的资源不存在时返回此页面。\n---",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q15",
+      "domain": 3,
+      "question": "您正在使用 Azure AD B2C 为消费者应用程序提供身份验证。您需要自定义用户登录体验。您应该使用什么？",
+      "options": {
+        "A": "条件访问策略",
+        "B": "用户流或自定义策略",
+        "C": "应用程序清单",
+        "D": "Azure AD Connect"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure AD B2C 使用用户流（预配置的策略）或自定义策略（使用 Identity Experience Framework）来定义用户体验。可以自定义注册、登录、密码重置等流程的外观和行为。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q16",
+      "domain": 3,
+      "question": "您需要使用 Azure Key Vault 中的证书来签名 JWT 令牌。您应该使用哪个 Key Vault API？",
+      "options": {
+        "A": "GetSecret",
+        "B": "Sign",
+        "C": "Encrypt",
+        "D": "GetCertificate"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Key Vault 的 Sign API 使用存储在 Key Vault 中的密钥（包括证书的私钥）对数据进行签名，而无需将私钥暴露给应用程序。这提供了安全的签名操作，私钥永远不会离开 Key Vault。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q17",
+      "domain": 3,
+      "question": "您的应用程序需要使用用户委托 SAS（User Delegation SAS）访问 Azure Blob Storage。与服务 SAS 相比，用户委托 SAS 的优势是什么？",
+      "options": {
+        "A": "更长的有效期",
+        "B": "使用 Azure AD 凭据而非存储帐户密钥",
+        "C": "支持更多权限",
+        "D": "更低的成本"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "用户委托 SAS 使用 Azure AD 凭据签名，而不是存储帐户密钥。这更安全，因为不需要管理和轮换存储密钥。用户委托 SAS 还支持通过 Azure RBAC 进行细粒度访问控制。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q18",
+      "domain": 3,
+      "question": "您正在实现 Microsoft Graph API 调用。应用程序需要在没有用户交互的情况下运行并访问组织数据。您应该请求什么类型的权限？",
+      "options": {
+        "A": "委托权限",
+        "B": "应用程序权限",
+        "C": "用户权限",
+        "D": "管理员权限"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "应用程序权限用于后台服务或守护程序，无需用户交互即可访问资源。这些权限需要管理员同意，因为它们授予对整个租户资源的访问权限。委托权限用于代表登录用户访问资源。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q19",
+      "domain": 3,
+      "question": "您正在配置 Azure App Service 以使用证书进行客户端身份验证。您应该启用什么设置？",
+      "options": {
+        "A": "HTTPS Only",
+        "B": "客户端证书模式",
+        "C": "TLS 版本",
+        "D": "托管标识"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure App Service 的客户端证书模式允许应用程序要求客户端提供证书进行身份验证。可以设置为 Required（必需）或 Optional（可选）。应用程序代码需要验证客户端证书。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q20",
+      "domain": 3,
+      "question": "您需要在 Azure Key Vault 中启用软删除和清除保护。这些功能的作用是什么？（选择两个）",
+      "options": {
+        "A": "软删除允许恢复已删除的对象",
+        "B": "清除保护防止在保留期内永久删除",
+        "C": "软删除加密所有数据",
+        "D": "清除保护自动备份密钥"
+      },
+      "answer": ["A", "B"],
+      "answerType": "multiple",
+      "explanation": "软删除使已删除的 Key Vault 对象在保留期内可恢复。清除保护在软删除期间防止永久删除（清除）操作，提供额外的保护层。这对于防止意外或恶意删除关键加密材料非常重要。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q21",
+      "domain": 4,
+      "question": "您正在使用 Application Insights 并需要将自定义属性添加到所有遥测数据中。您应该使用什么？",
+      "options": {
+        "A": "TrackEvent",
+        "B": "遥测初始化程序 (Telemetry Initializer)",
+        "C": "TrackMetric",
+        "D": "遥测处理器 (Telemetry Processor)"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "遥测初始化程序在遥测发送之前运行，可以修改或添加属性到所有遥测项。这对于添加全局上下文（如环境名称、版本号、用户信息）非常有用。遥测处理器用于过滤遥测。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q22",
+      "domain": 4,
+      "question": "您正在使用 Azure Cache for Redis 并需要实现缓存失效策略。当数据更新时，您应该如何处理缓存？",
+      "options": {
+        "A": "等待 TTL 过期",
+        "B": "使用缓存旁路模式（Cache-Aside Pattern）",
+        "C": "禁用缓存",
+        "D": "增加缓存大小"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "缓存旁路模式是常用的缓存策略。读取时先检查缓存，缓存未命中则从数据源读取并更新缓存。写入时更新数据源并使缓存失效（删除缓存项）。这确保缓存数据的一致性。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q23",
+      "domain": 4,
+      "question": "您需要在 Azure Monitor 中创建日志查询警报，当错误计数在 5 分钟内超过 100 时触发。您应该使用什么聚合类型？",
+      "options": {
+        "A": "平均值",
+        "B": "计数",
+        "C": "最大值",
+        "D": "百分位数"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "计数聚合用于统计匹配日志条目的数量。配置警报规则时，使用计数聚合统计错误日志数量，设置阈值为 100，评估频率和时间窗口为 5 分钟。\n---",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q24",
+      "domain": 4,
+      "question": "您正在使用 Application Insights 并需要关联前端 JavaScript 调用与后端 API 调用。您应该使用什么？",
+      "options": {
+        "A": "操作 ID (Operation ID)",
+        "B": "会话 ID",
+        "C": "用户 ID",
+        "D": "客户端 IP"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "操作 ID 在整个请求链中保持一致，用于关联分布式系统中的相关遥测。Application Insights JavaScript SDK 会自动生成并传播操作 ID 到后端调用，实现端到端跟踪。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q25",
+      "domain": 4,
+      "question": "您正在优化 Azure App Service 应用程序的性能。您需要减少首次请求的延迟。您应该配置什么？",
+      "options": {
+        "A": "自动缩放",
+        "B": "应用程序初始化（Application Initialization）",
+        "C": "流量路由",
+        "D": "部署槽"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "应用程序初始化功能允许在应用程序接收流量之前发送预热请求到指定的初始化路径。这确保应用程序在开始处理用户请求之前完全启动，减少冷启动延迟。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q26",
+      "domain": 4,
+      "question": "您正在使用 Azure CDN 并需要分析边缘节点的性能。您应该启用什么功能？",
+      "options": {
+        "A": "诊断日志",
+        "B": "核心分析",
+        "C": "智能检测",
+        "D": "可用性测试"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure CDN 核心分析提供了边缘节点性能的详细指标，包括带宽、命中率、地理分布等。这有助于了解 CDN 的效率和优化缓存策略。诊断日志提供原始访问日志。\n---",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q27",
+      "domain": 5,
+      "question": "您正在使用 Azure API Management 并需要将多个微服务聚合为单个 API 响应。您应该使用什么功能？",
+      "options": {
+        "A": "API 版本",
+        "B": "后端服务",
+        "C": "send-request 策略",
+        "D": "产品"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "send-request 策略允许从 API Management 向多个后端服务发送请求，并组合结果。这实现了 API 网关模式中的请求聚合，减少了客户端需要进行的调用次数。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q28",
+      "domain": 5,
+      "question": "您正在使用 Azure Service Bus 并需要实现消息的延迟处理。您应该使用什么功能？",
+      "options": {
+        "A": "死信队列",
+        "B": "计划消息（Scheduled Messages）",
+        "C": "会话",
+        "D": "自动转发"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure Service Bus 支持计划消息，允许指定消息在未来某个时间点才可见。使用 ScheduledEnqueueTimeUtc 属性设置消息的计划时间，实现延迟处理。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q29",
+      "domain": 5,
+      "question": "您正在使用 Azure Event Grid 并需要确保事件可靠传递。如果终结点暂时不可用会发生什么？",
+      "options": {
+        "A": "事件立即丢失",
+        "B": "Event Grid 使用指数退避重试传递",
+        "C": "事件返回给发布者",
+        "D": "Event Grid 创建新的终结点"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure Event Grid 使用指数退避算法重试事件传递。默认重试周期为 24 小时，最多重试 30 次。可以配置死信目标来存储无法传递的事件以供后续处理。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q30",
+      "domain": 5,
+      "question": "您正在使用 Azure API Management 并需要在 API 响应中添加自定义标头。您应该使用什么策略？",
+      "options": {
+        "A": "set-header",
+        "B": "set-body",
+        "C": "rewrite-uri",
+        "D": "validate-jwt"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "set-header 策略用于添加、修改或删除 HTTP 标头。在 outbound 部分使用此策略可以向响应添加自定义标头，如缓存控制、CORS 标头或自定义元数据。\n---",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q31",
+      "domain": 5,
+      "question": "您正在使用 Azure Event Hubs 并需要保证事件的顺序处理。您应该如何发送事件？",
+      "options": {
+        "A": "使用随机分区",
+        "B": "为相关事件指定相同的分区键",
+        "C": "使用单个消费者",
+        "D": "禁用分区"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Event Hubs 在单个分区内保证事件顺序。通过为相关事件指定相同的分区键，确保它们发送到同一分区。消费者按顺序处理每个分区中的事件。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q32",
+      "domain": 5,
+      "question": "您正在使用 Azure API Management 并需要缓存 API 响应以提高性能。您应该使用什么策略？",
+      "options": {
+        "A": "cache-lookup 和 cache-store",
+        "B": "rate-limit",
+        "C": "validate-jwt",
+        "D": "set-backend-service"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "cache-lookup 策略在 inbound 部分检查缓存，如果找到缓存的响应则返回。cache-store 策略在 outbound 部分将响应存储到缓存。这两个策略配合使用实现响应缓存。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q33",
+      "domain": 1,
+      "question": "您正在使用 Azure Functions 的 OpenAPI 扩展。此扩展的主要目的是什么？",
+      "options": {
+        "A": "提高函数性能",
+        "B": "自动生成 API 文档",
+        "C": "实现身份验证",
+        "D": "配置监控"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure Functions OpenAPI 扩展允许从 HTTP 触发器函数自动生成 OpenAPI（Swagger）规范。这提供了 API 文档、可以与 API Management 集成，并允许客户端生成 SDK。\n---",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q34",
+      "domain": 1,
+      "question": "您正在使用 Azure Container Apps 的修订版本管理。您需要将流量分配给多个修订版本。这种模式称为什么？",
+      "options": {
+        "A": "蓝绿部署",
+        "B": "金丝雀部署",
+        "C": "滚动部署",
+        "D": "流量分割"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "Azure Container Apps 支持流量分割，允许将流量按百分比分配到不同的修订版本。这可用于金丝雀发布、A/B 测试或渐进式部署。可以在流量分配配置中指定每个修订版本的权重。\n---",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q35",
+      "domain": 2,
+      "question": "您正在使用 Azure Cosmos DB 并需要导入大量数据。您应该使用什么以获得最佳性能？",
+      "options": {
+        "A": "逐个插入文档",
+        "B": "批量执行器库（Bulk Executor）",
+        "C": "存储过程",
+        "D": "触发器"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "批量执行器库针对大规模数据操作进行了优化，可以高效地批量导入、更新或删除文档。它自动管理 RU 消耗、重试和并行度，比逐个插入快得多。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q36",
+      "domain": 3,
+      "question": "您的应用程序使用 Azure AD 进行身份验证。您需要实现增量同意（Incremental Consent）。这是什么意思？",
+      "options": {
+        "A": "一次请求所有权限",
+        "B": "在需要时逐步请求额外权限",
+        "C": "自动授予权限",
+        "D": "定期刷新权限"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "增量同意允许应用程序在首次登录时只请求基本权限，然后在用户需要特定功能时请求额外权限。这提供了更好的用户体验，用户更有可能同意他们理解需要的权限。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q37",
+      "domain": 4,
+      "question": "您正在使用 Application Insights 并需要分析应用程序的依赖关系调用。您应该查看什么？",
+      "options": {
+        "A": "请求",
+        "B": "依赖项",
+        "C": "异常",
+        "D": "事件"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Application Insights 的依赖项遥测跟踪应用程序对外部服务的调用，如数据库、HTTP API、Azure 服务等。可以查看调用持续时间、成功率和失败原因，帮助识别性能瓶颈。\n---",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q38",
+      "domain": 5,
+      "question": "您正在使用 Azure Service Bus 并需要将消息从一个队列自动转发到另一个队列。您应该配置什么？",
+      "options": {
+        "A": "死信队列",
+        "B": "自动转发",
+        "C": "消息会话",
+        "D": "重复检测"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Service Bus 自动转发功能允许将消息自动从一个队列/订阅转发到另一个队列/主题。这用于构建消息处理管道或实现消息路由，无需编写额外的消费者代码。\n---",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q39",
+      "domain": 1,
+      "question": "您正在使用 Azure App Service 并需要在不重新部署的情况下更新应用程序设置。更改何时生效？",
+      "options": {
+        "A": "需要手动重启",
+        "B": "应用程序自动重启",
+        "C": "立即生效，无需重启",
+        "D": "需要重新部署"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "当在 Azure Portal 或通过 CLI 更改 App Service 应用程序设置时，应用程序会自动重启以应用新设置。这是 Azure 管理的行为，确保设置更改立即生效。\n---",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q40",
+      "domain": 2,
+      "question": "您正在使用 Azure Cosmos DB 并需要确保写入操作持久化到多个区域。您应该配置什么写入策略？",
+      "options": {
+        "A": "单区域写入",
+        "B": "多区域写入（多主复制）",
+        "C": "本地写入",
+        "D": "异步写入"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure Cosmos DB 的多区域写入（多主复制）允许在任何配置的区域中写入数据。数据自动复制到所有其他区域。这提供了低延迟的写入和高可用性，但需要处理潜在的冲突。\n---",
+      "difficulty": "medium"
+    }
+  ]
+}

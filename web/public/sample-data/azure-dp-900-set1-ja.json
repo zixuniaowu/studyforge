@@ -1,0 +1,638 @@
+{
+  "exam": {
+    "id": "azure-dp-900-set1-ja",
+    "name": "Azure DP-900 模擬試験 #1",
+    "code": "DP-900",
+    "provider": "Azure",
+    "language": "ja",
+    "description": "Azure Data Fundamentals 認定試験対策 - セット1",
+    "totalQuestions": 40,
+    "passingScore": 70,
+    "examTime": 60,
+    "domains": [
+      {
+        "id": 1,
+        "name": "コアデータ概念の説明",
+        "weight": 28
+      },
+      {
+        "id": 2,
+        "name": "Azure でのリレーショナルデータに関する考慮事項",
+        "weight": 22
+      },
+      {
+        "id": 3,
+        "name": "Azure での非リレーショナルデータに関する考慮事項",
+        "weight": 18
+      },
+      {
+        "id": 4,
+        "name": "Azure での分析ワークロードの説明",
+        "weight": 32
+      }
+    ],
+    "tags": ["Azure", "データ", "基礎認定", "DP-900"]
+  },
+  "questions": [
+    {
+      "id": "q1",
+      "domain": 1,
+      "question": "構造化データを最も正確に説明しているのはどれですか？",
+      "options": {
+        "A": "事前定義されたスキーマを持たないデータ",
+        "B": "リレーショナルデータベーステーブルに格納され、固定スキーマに従うデータ",
+        "C": "自由形式のテキストとして格納されるデータ",
+        "D": "クラウドにのみ格納できるデータ"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "構造化データとは、固定スキーマに従うデータであり、通常はリレーショナルデータベースのテーブルに格納されます。データには明確に定義された列とデータ型があり、クエリと分析が容易です。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q2",
+      "domain": 1,
+      "question": "半構造化データの例は何ですか？",
+      "options": {
+        "A": "SQL Server のテーブル",
+        "B": "JSON ドキュメント",
+        "C": "MP3 オーディオファイル",
+        "D": "JPEG 画像"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "JSON ドキュメントは半構造化データの典型的な例です。キーと値のペアという一定の構造を持ちますが、固定スキーマに従う必要はありません。各ドキュメントは異なるフィールドを持つことができます。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q3",
+      "domain": 1,
+      "question": "非構造化データの典型的な例は何ですか？（2つ選択）",
+      "options": {
+        "A": "ビデオファイル",
+        "B": "リレーショナルデータベーステーブル",
+        "C": "画像ファイル",
+        "D": "CSV ファイル"
+      },
+      "answer": ["A", "C"],
+      "answerType": "multiple",
+      "explanation": "ビデオファイルと画像ファイルは非構造化データの典型的な例です。事前定義されたデータモデルがなく、従来のリレーショナルデータベースクエリメソッドで直接処理することはできません。リレーショナルデータベーステーブルは構造化データ、CSVは半構造化データです。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q4",
+      "domain": 1,
+      "question": "データ処理において、OLTP は何を表しますか？",
+      "options": {
+        "A": "Online Transaction Processing（オンライントランザクション処理）",
+        "B": "Online Transfer Protocol（オンライン転送プロトコル）",
+        "C": "Offline Transaction Processing（オフライントランザクション処理）",
+        "D": "Optimized Large-scale Transfer Processing（最適化大規模転送処理）"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "OLTP は Online Transaction Processing（オンライントランザクション処理）の略です。銀行取引や注文処理など、大量の短期トランザクションの処理に焦点を当てたデータ処理の種類です。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q5",
+      "domain": 1,
+      "question": "OLAP システムの主な用途を最もよく説明しているのはどれですか？",
+      "options": {
+        "A": "日常のビジネストランザクションの処理",
+        "B": "意思決定をサポートするための履歴データの分析",
+        "C": "リアルタイムセンサーデータの格納",
+        "D": "ユーザー認証の管理"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "OLAP（オンライン分析処理）システムは、主に意思決定をサポートするための履歴データの分析に使用されます。トランザクション処理ではなく、複雑なクエリとデータ集計に最適化されています。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q6",
+      "domain": 1,
+      "question": "データウェアハウスにおける ETL プロセスの正しい順序は何ですか？",
+      "options": {
+        "A": "ロード、抽出、変換",
+        "B": "抽出、変換、ロード",
+        "C": "変換、抽出、ロード",
+        "D": "抽出、ロード、変換"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "ETL は Extract（抽出）、Transform（変換）、Load（ロード）の略です。まずソースシステムからデータを抽出し、次にデータをターゲット形式に変換し、最後にターゲットシステムにロードします。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q7",
+      "domain": 1,
+      "question": "バッチ処理とストリーム処理の主な違いは何ですか？",
+      "options": {
+        "A": "バッチ処理はクラウドでのみ実行できる",
+        "B": "ストリーム処理はリアルタイムでデータを処理し、バッチ処理はスケジュールに従って大量のデータを処理する",
+        "C": "バッチ処理はストリーム処理より高速",
+        "D": "ストリーム処理は構造化データのみを処理できる"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "ストリーム処理はリアルタイムまたはほぼリアルタイムでデータを処理し、即時応答が必要なシナリオに適しています。バッチ処理はスケジュールに従って実行され、一度に大量の蓄積されたデータを処理し、即時の結果を必要としないシナリオに適しています。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q8",
+      "domain": 1,
+      "question": "データストレージソリューションの設計と実装を主に担当する役割はどれですか？",
+      "options": {
+        "A": "データアナリスト",
+        "B": "データエンジニア",
+        "C": "データベース管理者",
+        "D": "データサイエンティスト"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "データエンジニアは、データインフラストラクチャとパイプラインの設計、実装、管理を担当します。データストレージソリューション、ETLプロセスを構築し、アナリストやサイエンティストがデータを利用できるようにします。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q9",
+      "domain": 1,
+      "question": "データアナリストの主な責任は何ですか？",
+      "options": {
+        "A": "機械学習モデルの設計",
+        "B": "データベースサーバーの管理",
+        "C": "データの探索と可視化によるトレンドと洞察の特定",
+        "D": "ETL パイプラインコードの作成"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "データアナリストの主な責任は、データを探索し、可視化レポートを作成し、トレンドと洞察を特定して、ビジネス上の意思決定を支援することです。Power BI などのツールを使用してダッシュボードとレポートを作成します。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q10",
+      "domain": 1,
+      "question": "データサイエンティストの典型的なタスクはどれですか？",
+      "options": {
+        "A": "データベースのバックアップ",
+        "B": "予測モデルの作成",
+        "C": "ネットワークセキュリティの構成",
+        "D": "ユーザーインターフェースの設計"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "データサイエンティストは、統計学と機械学習技術を使用して予測モデルと高度な分析ソリューションを作成します。複雑なデータ問題を処理し、データ駆動の洞察を提供します。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q11",
+      "domain": 2,
+      "question": "リレーショナルデータベースにおける主キーの役割は何ですか？",
+      "options": {
+        "A": "データベース内のすべてのデータを暗号化する",
+        "B": "テーブル内の各行を一意に識別する",
+        "C": "2つの異なるデータベースを接続する",
+        "D": "データを自動的にバックアップする"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "主キーは、テーブル内の各行を一意に識別する列または列の組み合わせです。各行が一意の識別子を持つことを保証し、NULL値を許可せず、テーブル間の関係を確立する基礎となります。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q12",
+      "domain": 2,
+      "question": "リレーショナルデータベースにおける外部キーの役割は何ですか？",
+      "options": {
+        "A": "テーブル内のデータを暗号化する",
+        "B": "テーブル間の関係を定義する",
+        "C": "一意の識別子を自動生成する",
+        "D": "テーブルのサイズを制限する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "外部キーは、2つのテーブル間の関係を定義するために使用されます。別のテーブルの主キーを参照し、参照整合性を確保し、無効な参照の作成を防ぎます。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q13",
+      "domain": 2,
+      "question": "Azure SQL Database はどのクラウドサービスモデルに属しますか？",
+      "options": {
+        "A": "Infrastructure as a Service (IaaS)",
+        "B": "Platform as a Service (PaaS)",
+        "C": "Software as a Service (SaaS)",
+        "D": "Functions as a Service (FaaS)"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure SQL Database は、完全に管理された Platform as a Service (PaaS) データベースエンジンです。Azure がインフラストラクチャ、パッチ適用、バックアップを管理し、ユーザーはデータベースとアプリケーションに集中できます。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q14",
+      "domain": 2,
+      "question": "Azure SQL Managed Instance の Azure SQL Database に対する主な利点は何ですか？",
+      "options": {
+        "A": "より低いコスト",
+        "B": "オンプレミス SQL Server とのほぼ100%の互換性",
+        "C": "バックアップ不要",
+        "D": "読み取り操作のみをサポート"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure SQL Managed Instance は、SQL Server Agent、クロスデータベースクエリなどの機能を含む、オンプレミス SQL Server とのほぼ100%の互換性を提供します。既存の SQL Server アプリケーションの移行が必要なシナリオに適しています。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q15",
+      "domain": 2,
+      "question": "テーブルからデータを取得するために使用される SQL ステートメントはどれですか？",
+      "options": {
+        "A": "INSERT",
+        "B": "UPDATE",
+        "C": "SELECT",
+        "D": "DELETE"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "SELECT ステートメントは、データベーステーブルからデータを取得するために使用されます。最も一般的に使用される SQL ステートメントであり、1つまたは複数のテーブルをクエリでき、フィルタ条件、ソート、集計を含めることができます。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q16",
+      "domain": 2,
+      "question": "テーブルに新しい行を追加するために使用される SQL ステートメントはどれですか？",
+      "options": {
+        "A": "SELECT",
+        "B": "INSERT",
+        "C": "UPDATE",
+        "D": "CREATE"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "INSERT ステートメントは、テーブルに新しい行を追加するために使用されます。構文は通常 INSERT INTO table_name (columns) VALUES (values) です。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q17",
+      "domain": 2,
+      "question": "データベース正規化の主な目的は何ですか？",
+      "options": {
+        "A": "データの冗長性を増やす",
+        "B": "データの冗長性を減らし、データ整合性を確保する",
+        "C": "データベースの実行を遅くする",
+        "D": "すべてのインデックスを削除する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "データベース正規化は、冗長性と依存関係を減らすためにデータを整理するプロセスです。データを複数の関連テーブルに分解することで、データ整合性を確保し、ストレージスペースを削減します。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q18",
+      "domain": 2,
+      "question": "Azure SQL Database のエラスティックプールとは何ですか？",
+      "options": {
+        "A": "バックアップ戦略の一種",
+        "B": "リソースを共有する複数のデータベースのコレクション",
+        "C": "暗号化メソッドの一種",
+        "D": "単一の大規模データベース"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "エラスティックプールは、複数のデータベースがリソースセットを共有できるコスト効率の高いソリューションです。予測不可能な使用パターンを持つデータベースに特に有用で、リソース利用とコストを最適化できます。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q19",
+      "domain": 2,
+      "question": "データベースビューとは何ですか？",
+      "options": {
+        "A": "データを物理的に格納するテーブル",
+        "B": "クエリに基づく仮想テーブル",
+        "C": "データベースのバックアップコピー",
+        "D": "暗号化のためのツール"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "ビューは SQL クエリに基づく仮想テーブルです。データを物理的に格納せず、クエリ時に結果を動的に生成します。ビューは複雑なクエリを簡素化し、セキュリティとデータ抽象化を提供できます。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q20",
+      "domain": 2,
+      "question": "Azure Database for PostgreSQL はどのようなシナリオに適していますか？",
+      "options": {
+        "A": "JSON ドキュメントのみを格納する",
+        "B": "オープンソースのリレーショナルデータベースが必要なアプリケーション",
+        "C": "NoSQL ワークロードのみ",
+        "D": "ビッグデータ分析のみ"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure Database for PostgreSQL は、完全に管理された PostgreSQL データベースサービスであり、オープンソースのリレーショナルデータベース機能が必要なアプリケーションに適しています。PostgreSQL 拡張機能、高可用性、自動バックアップをサポートします。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q21",
+      "domain": 3,
+      "question": "Azure Cosmos DB がサポートする API はどれですか？（2つ選択）",
+      "options": {
+        "A": "SQL API",
+        "B": "FTP API",
+        "C": "MongoDB API",
+        "D": "SMTP API"
+      },
+      "answer": ["A", "C"],
+      "answerType": "multiple",
+      "explanation": "Azure Cosmos DB は、SQL (Core) API、MongoDB API、Cassandra API、Gremlin API、Table API など、複数の API をサポートします。これにより、アプリケーションは使い慣れたインターフェースで Cosmos DB と対話できます。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q22",
+      "domain": 3,
+      "question": "Azure Cosmos DB の主な利点の1つは何ですか？",
+      "options": {
+        "A": "単一リージョンデプロイのみをサポート",
+        "B": "グローバル分散とマルチリージョン書き込み",
+        "C": "構造化データのみをサポート",
+        "D": "SLA を提供しない"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure Cosmos DB の主な利点は、マルチリージョン書き込みをサポートするグローバル分散機能です。世界中の複数の Azure リージョンにデータを透過的にレプリケートし、低レイテンシアクセスと高可用性を提供します。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q23",
+      "domain": 3,
+      "question": "Azure Blob Storage の「ホット」アクセス層はどのタイプのデータに適していますか？",
+      "options": {
+        "A": "めったにアクセスされないアーカイブデータ",
+        "B": "頻繁にアクセスされるデータ",
+        "C": "削除が必要なデータ",
+        "D": "暗号化されたデータ"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "ホットアクセス層は、頻繁にアクセスされるデータに最適化されています。ストレージコストは高いですがアクセスコストは低く、ウェブサイトコンテンツやアクティビティログなど、アクティブに使用されるデータに適しています。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q24",
+      "domain": 3,
+      "question": "Azure Blob Storage の「アーカイブ」アクセス層の特徴は何ですか？",
+      "options": {
+        "A": "即時データアクセス",
+        "B": "最低のストレージコストだが、取得レイテンシが高い",
+        "C": "最高のストレージコスト",
+        "D": "自動的にデータを削除する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "アーカイブアクセス層は最低のストレージコストを提供しますが、データの取得には数時間かかります。コンプライアンスアーカイブや履歴バックアップなど、めったにアクセスされない長期アーカイブデータに適しています。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q25",
+      "domain": 3,
+      "question": "Azure Table Storage はどのタイプのデータの格納に最適ですか？",
+      "options": {
+        "A": "大規模なバイナリファイル",
+        "B": "構造化された NoSQL キーバリューデータ",
+        "C": "ビデオストリーム",
+        "D": "リレーショナルデータベーステーブル"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure Table Storage は、構造化データの格納に適した NoSQL キーバリューストアです。大量の非リレーショナルデータへの高速アクセスを提供し、ウェブアプリケーションのユーザーデータやデバイス情報などによく使用されます。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q26",
+      "domain": 3,
+      "question": "Cosmos DB におけるパーティションキーとは何ですか？",
+      "options": {
+        "A": "データを暗号化するためのキー",
+        "B": "データを物理パーティションに分散するためのプロパティ",
+        "C": "データを削除するためのコマンド",
+        "D": "バックアップのための識別子"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "パーティションキーは、データを異なる物理パーティションに分散するために使用されるプロパティです。適切なパーティションキーの選択はパフォーマンスとスケーラビリティにとって重要であり、Cosmos DB でのデータの分散方法を決定します。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q27",
+      "domain": 3,
+      "question": "Azure Data Lake Storage Gen2 はどの2つのサービスの機能を組み合わせていますか？",
+      "options": {
+        "A": "Azure SQL Database と Cosmos DB",
+        "B": "Azure Blob Storage と Azure Data Lake Storage Gen1",
+        "C": "Azure Files と Azure Queue Storage",
+        "D": "Azure Table Storage と Redis Cache"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure Data Lake Storage Gen2 は、Azure Blob Storage の低コスト階層化ストレージと、階層型名前空間を含む Azure Data Lake Storage Gen1 のビッグデータファイルシステム機能を組み合わせています。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q28",
+      "domain": 3,
+      "question": "ソーシャルネットワークの関係を格納するのに最適な NoSQL データベースのタイプはどれですか？",
+      "options": {
+        "A": "キーバリューストア",
+        "B": "ドキュメントデータベース",
+        "C": "グラフデータベース",
+        "D": "列ファミリーデータベース"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "グラフデータベースは、ソーシャルネットワークにおける友人関係など、エンティティ間の複雑な関係を格納およびクエリするのに最適です。Cosmos DB の Gremlin API はグラフデータベース機能を提供します。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q29",
+      "domain": 3,
+      "question": "Azure Files の主な用途は何ですか？",
+      "options": {
+        "A": "リレーショナルデータの格納",
+        "B": "完全に管理されたファイル共有の提供",
+        "C": "仮想マシンの実行",
+        "D": "リアルタイムストリームデータの処理"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure Files は、SMB および NFS プロトコルを介してアクセスできる完全に管理されたクラウドファイル共有を提供します。アプリケーション共有構成ファイルやユーザーホームディレクトリなど、ファイル共有シナリオに適しています。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q30",
+      "domain": 3,
+      "question": "Cosmos DB の一貫性レベル「Strong」は何を意味しますか？",
+      "options": {
+        "A": "読み取りが古いデータを返す可能性がある",
+        "B": "読み取りは常に最新のコミットされた書き込みを返す",
+        "C": "データはレプリケートされない",
+        "D": "書き込み操作が失敗する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Strong 一貫性は、読み取りが常に最新のコミットされた書き込みバージョンを返すことを保証します。これは最高レベルのデータ一貫性を提供しますが、レイテンシと可用性に影響を与える可能性があります。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q31",
+      "domain": 4,
+      "question": "Azure Synapse Analytics の主な用途は何ですか？",
+      "options": {
+        "A": "ウェブサイトのホスティング",
+        "B": "エンタープライズデータウェアハウスとビッグデータ分析",
+        "C": "電子メールの送信",
+        "D": "仮想マシンの管理"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure Synapse Analytics は、エンタープライズデータウェアハウスとビッグデータ分析機能を組み合わせた統合分析プラットフォームです。SQL クエリ、Spark 処理、データ統合をサポートします。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q32",
+      "domain": 4,
+      "question": "Power BI の主な機能は何ですか？",
+      "options": {
+        "A": "大量のデータを格納する",
+        "B": "インタラクティブなデータ可視化とレポートの作成",
+        "C": "ETL ジョブの実行",
+        "D": "データベースセキュリティの管理"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Power BI は、インタラクティブなデータ可視化とレポートを作成するための Microsoft のビジネスインテリジェンスツールです。さまざまなデータソースに接続し、ダッシュボードを作成し、組織と洞察を共有できます。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q33",
+      "domain": 4,
+      "question": "データウェアハウスにおいて、スタースキーマの中心は何ですか？",
+      "options": {
+        "A": "ディメンションテーブル",
+        "B": "ファクトテーブル",
+        "C": "ステージングテーブル",
+        "D": "ログテーブル"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "スタースキーマでは、ファクトテーブルが中心にあり、ビジネスメトリックとディメンションテーブルへの外部キーが含まれています。ディメンションテーブルはファクトテーブルを囲み、分析とフィルタリングに使用される記述属性を提供します。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q34",
+      "domain": 4,
+      "question": "Azure Data Factory の主な用途は何ですか？",
+      "options": {
+        "A": "機械学習モデルの作成",
+        "B": "データ統合と ETL/ELT オーケストレーション",
+        "C": "ウェブサイトのホスティング",
+        "D": "通知の送信"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure Data Factory は、データパイプラインを作成およびオーケストレートするためのクラウドデータ統合サービスです。ETL/ELT プロセスをサポートし、複数のデータソースからデータを抽出、変換、ロードできます。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q35",
+      "domain": 4,
+      "question": "Azure Databricks は主にどのテクノロジーに基づいていますか？",
+      "options": {
+        "A": "Hadoop MapReduce",
+        "B": "Apache Spark",
+        "C": "Apache Kafka",
+        "D": "MongoDB"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure Databricks は、Apache Spark に基づく統合分析プラットフォームです。最適化された Spark 環境を提供し、ビッグデータ処理、機械学習、コラボレーションワークスペースをサポートします。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q36",
+      "domain": 4,
+      "question": "データウェアハウスにおけるディメンションテーブルとは何ですか？",
+      "options": {
+        "A": "ビジネスメトリックを含むテーブル",
+        "B": "データのフィルタリングとグループ化に使用される記述属性を含むテーブル",
+        "C": "生データを格納するテーブル",
+        "D": "ログを格納するテーブル"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "ディメンションテーブルには、ファクトテーブル内のメトリックをフィルタリング、グループ化、および説明するために使用される記述属性が含まれています。一般的なディメンションには、時間、場所、製品、顧客などがあります。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q37",
+      "domain": 4,
+      "question": "Azure Stream Analytics は主に何に使用されますか？",
+      "options": {
+        "A": "バッチデータ処理",
+        "B": "リアルタイムデータストリーム処理と分析",
+        "C": "ファイルストレージ",
+        "D": "データベース管理"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure Stream Analytics は、IoT デバイスやイベントハブなどからのストリームデータを処理するためのリアルタイム分析サービスです。リアルタイムデータ変換と分析のために SQL に似たクエリ言語をサポートします。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q38",
+      "domain": 4,
+      "question": "ELT と ETL の主な違いは何ですか？",
+      "options": {
+        "A": "ELT はデータを抽出する必要がない",
+        "B": "ELT はターゲットシステム内でデータ変換を行う",
+        "C": "ETL はより高速",
+        "D": "ELT はクラウド環境をサポートしない"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "ELT（抽出、ロード、変換）は、データをターゲットシステムにロードした後に変換を行いますが、ETL はロード前に変換します。ELT は、データウェアハウスなどのターゲットシステムの強力な計算能力を活用して変換を行います。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q39",
+      "domain": 4,
+      "question": "Azure HDInsight がサポートするオープンソースフレームワークはどれですか？（2つ選択）",
+      "options": {
+        "A": "Apache Hadoop",
+        "B": "Microsoft SQL Server",
+        "C": "Apache Kafka",
+        "D": "Oracle Database"
+      },
+      "answer": ["A", "C"],
+      "answerType": "multiple",
+      "explanation": "Azure HDInsight は、Apache Hadoop、Spark、Hive、Kafka など、複数のオープンソースフレームワークをサポートするマネージドオープンソース分析サービスです。エンタープライズグレードのビッグデータ処理機能を提供します。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q40",
+      "domain": 4,
+      "question": "Power BI におけるダッシュボードとレポートの違いは何ですか？",
+      "options": {
+        "A": "ダッシュボードには1つの可視化しか含めることができない",
+        "B": "レポートは単一ページで、ダッシュボードは複数ページ",
+        "C": "ダッシュボードには1つ以上のレポートからの可視化のコレクションが含まれる",
+        "D": "ダッシュボードとレポートは完全に同じ"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "Power BI ダッシュボードは、1つ以上のレポートからの可視化（タイルと呼ばれる）を含む単一ページのキャンバスです。レポートは複数ページにすることができ、詳細なデータ分析が含まれています。ダッシュボードは主要な指標の概要を提供します。",
+      "difficulty": "medium"
+    }
+  ]
+}

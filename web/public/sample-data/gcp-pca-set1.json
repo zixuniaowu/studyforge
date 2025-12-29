@@ -1,0 +1,655 @@
+{
+  "exam": {
+    "id": "gcp-pca-set1",
+    "name": "GCP 专业云架构师模拟考试 #1",
+    "code": "PCA",
+    "provider": "GCP",
+    "language": "zh-CN",
+    "description": "Google Cloud Professional Cloud Architect认证考试模拟题",
+    "totalQuestions": 40,
+    "passingScore": 70,
+    "examTime": 120,
+    "domains": [
+      {
+        "id": 1,
+        "name": "设计和规划云解决方案架构",
+        "weight": 24
+      },
+      {
+        "id": 2,
+        "name": "管理和配置解决方案基础设施",
+        "weight": 15
+      },
+      {
+        "id": 3,
+        "name": "设计安全性和合规性",
+        "weight": 18
+      },
+      {
+        "id": 4,
+        "name": "分析和优化技术和业务流程",
+        "weight": 18
+      },
+      {
+        "id": 5,
+        "name": "管理实施",
+        "weight": 11
+      },
+      {
+        "id": 6,
+        "name": "确保解决方案和运营的可靠性",
+        "weight": 14
+      }
+    ],
+    "tags": [
+      "GCP",
+      "Cloud",
+      "PCA",
+      "Professional",
+      "Architect",
+      "认证考试"
+    ]
+  },
+  "questions": [
+    {
+      "id": "q1",
+      "domain": 1,
+      "question": "一家跨国零售公司希望将其电子商务平台迁移到Google Cloud。该平台需要支持全球用户访问，并在高峰期处理大量并发请求。哪种架构最适合？",
+      "options": {
+        "A": "在单个区域部署所有资源，使用Cloud CDN加速全球访问",
+        "B": "使用全球外部HTTP(S)负载均衡器，在多个区域部署后端实例组",
+        "C": "在每个主要市场区域部署独立的应用实例，使用DNS轮询分发流量",
+        "D": "使用单区域的Compute Engine实例，配置自动扩缩"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "全球外部HTTP(S)负载均衡器提供全球任播IP地址，可以将用户流量智能路由到最近的健康后端。结合多区域部署的托管实例组，可以实现低延迟、高可用性和自动扩展。这是处理全球流量的最佳实践架构。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q2",
+      "domain": 1,
+      "question": "您正在设计一个需要处理大量IoT设备数据的架构。数据需要实时分析，并存储用于历史分析。哪种组合最合适？",
+      "options": {
+        "A": "Cloud IoT Core → Cloud Pub/Sub → Dataflow → BigQuery",
+        "B": "Cloud IoT Core → Cloud Storage → BigQuery",
+        "C": "直接将数据发送到Cloud SQL进行存储和分析",
+        "D": "Cloud IoT Core → Cloud Functions → Cloud Firestore"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "这是典型的IoT数据处理流水线。Cloud IoT Core管理设备连接，Pub/Sub提供可靠的消息传递，Dataflow进行实时流处理和转换，BigQuery用于大规模数据仓库和分析。此架构支持实时和批量分析需求。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q3",
+      "domain": 1,
+      "question": "一家金融服务公司需要在Google Cloud上运行其核心交易系统。系统需要极低的延迟和99.999%的可用性。应该采用哪种部署策略？",
+      "options": {
+        "A": "在单个zone部署并使用快照进行备份",
+        "B": "在单个region的多个zone部署，使用区域性托管实例组",
+        "C": "在多个region部署，使用全球负载均衡和主动-主动配置",
+        "D": "使用Cloud Run部署容器化应用"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "99.999%的可用性(年停机时间约5分钟)需要多区域冗余部署。主动-主动配置确保即使整个区域故障，系统仍然可用。全球负载均衡可以自动将流量路由到健康的区域。对于关键金融系统，这是必要的架构。",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q4",
+      "domain": 1,
+      "question": "您需要为一个微服务架构设计解决方案。团队希望使用Kubernetes，但不想管理集群基础设施。同时需要支持有状态和无状态工作负载。最佳选择是什么？",
+      "options": {
+        "A": "在Compute Engine上自行部署Kubernetes集群",
+        "B": "使用GKE Standard模式",
+        "C": "使用Cloud Run完全托管容器",
+        "D": "使用App Engine Flexible环境"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "GKE Standard模式提供完全托管的Kubernetes控制平面，同时支持有状态工作负载(通过PersistentVolumes和StatefulSets)和无状态工作负载。它减少了运维负担，同时保留了Kubernetes的完整功能。Cloud Run不支持有状态工作负载。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q5",
+      "domain": 1,
+      "question": "一家医疗保健公司需要存储患者的医疗影像数据。数据需要长期保留（7年以上），但访问频率很低。哪种存储方案最具成本效益？",
+      "options": {
+        "A": "Cloud Storage Standard类",
+        "B": "Cloud Storage Nearline类",
+        "C": "Cloud Storage Archive类",
+        "D": "Persistent Disk SSD"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "Cloud Storage Archive类专为长期存储、很少访问的数据设计。它提供最低的存储成本，但检索时间和费用较高。对于需要保留7年以上且很少访问的医疗影像数据，Archive类是最经济的选择。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q6",
+      "domain": 1,
+      "question": "您正在设计一个需要进行大规模数据分析的系统。数据来自多个来源，需要进行ETL处理后加载到数据仓库。哪种组合最适合？",
+      "options": {
+        "A": "Cloud Storage → Cloud Functions → Cloud SQL",
+        "B": "Cloud Storage → Dataflow → BigQuery",
+        "C": "Cloud Pub/Sub → Cloud Run → Cloud Spanner",
+        "D": "Cloud Storage → Compute Engine → Cloud Bigtable"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Cloud Storage用于存储原始数据，Dataflow是托管的Apache Beam服务，非常适合批处理和流处理ETL工作负载，BigQuery是Google Cloud的企业级数据仓库，专为大规模分析设计。这是标准的ETL到数据仓库的架构模式。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q7",
+      "domain": 1,
+      "question": "一家游戏公司需要设计一个实时排行榜系统。系统需要支持每秒数百万次的读写操作，延迟要求在毫秒级别。最佳的数据库选择是？",
+      "options": {
+        "A": "Cloud SQL with read replicas",
+        "B": "Cloud Spanner",
+        "C": "Cloud Bigtable",
+        "D": "Memorystore for Redis"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "Memorystore for Redis是托管的内存数据存储，提供亚毫秒级延迟，非常适合排行榜等需要快速读写的用例。Redis的有序集合(Sorted Sets)数据结构特别适合实现排行榜功能。Bigtable虽然也很快，但Redis更适合这种特定场景。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q8",
+      "domain": 1,
+      "question": "您需要设计一个应用程序，该应用需要强一致性的全球分布式数据库，支持SQL查询，并能自动处理跨区域复制。应该选择哪个服务？",
+      "options": {
+        "A": "Cloud SQL with replicas",
+        "B": "Cloud Spanner",
+        "C": "Cloud Firestore",
+        "D": "BigQuery"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Cloud Spanner是唯一提供强一致性、全球分布、自动复制和完整SQL支持的数据库服务。它结合了关系型数据库的ACID事务和NoSQL数据库的水平扩展能力，非常适合需要全球一致性的关键业务应用。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q9",
+      "domain": 1,
+      "question": "一家媒体公司需要构建一个视频转码平台。视频上传后需要自动转换为多种格式和分辨率。哪种架构模式最适合？",
+      "options": {
+        "A": "同步处理：上传API直接调用转码服务",
+        "B": "使用Cloud Tasks队列处理转码任务",
+        "C": "使用Cloud Pub/Sub触发Cloud Functions进行转码",
+        "D": "使用Transcoder API并通过Pub/Sub接收完成通知"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "Transcoder API是Google Cloud专门用于视频转码的托管服务，它可以自动将视频转换为多种格式。使用Pub/Sub接收完成通知实现了异步处理模式，这对于耗时的转码任务是最佳实践。这种方式既高效又易于扩展。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q10",
+      "domain": 1,
+      "question": "您的公司正在进行云迁移。现有的本地数据中心有大量虚拟机需要迁移到Google Cloud。哪种迁移方法最适合大规模VM迁移？",
+      "options": {
+        "A": "手动在GCP上重新创建所有VM",
+        "B": "使用Migrate to Virtual Machines(原Migrate for Compute Engine)",
+        "C": "将所有应用容器化后部署到GKE",
+        "D": "使用Transfer Appliance传输数据"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Migrate to Virtual Machines(原Migrate for Compute Engine，现在是Migration Center的一部分)是专门用于将VM从本地或其他云迁移到Google Cloud的工具。它支持实时迁移、最小化停机时间，适合大规模VM迁移项目。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q11",
+      "domain": 2,
+      "question": "您需要在Google Cloud上创建一个自定义VPC网络，该网络需要跨多个区域部署子网。以下哪个说法是正确的？",
+      "options": {
+        "A": "VPC网络是区域性资源，每个区域需要创建单独的VPC",
+        "B": "子网是全局资源，可以跨多个区域",
+        "C": "VPC网络是全局资源，子网是区域性资源",
+        "D": "VPC和子网都是全局资源"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "在Google Cloud中，VPC网络是全局资源，可以包含来自任何区域的子网。子网是区域性资源，每个子网属于特定的区域。这与AWS不同，AWS的VPC是区域性的。这种设计允许跨区域的资源在同一VPC内通信。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q12",
+      "domain": 2,
+      "question": "您需要配置两个不同项目中的VPC网络之间的私有通信。不希望通过公共互联网路由流量。最佳解决方案是什么？",
+      "options": {
+        "A": "在两个VPC之间设置Cloud VPN",
+        "B": "使用VPC Network Peering",
+        "C": "将两个项目合并为一个",
+        "D": "使用Cloud NAT"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "VPC Network Peering允许不同项目（或同一项目）中的VPC网络私密通信，流量完全在Google的网络内部路由，不经过公共互联网。它提供低延迟、高带宽的连接，无需VPN的开销。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q13",
+      "domain": 2,
+      "question": "您的应用程序需要访问Cloud SQL实例，但出于安全考虑，SQL实例不应有公共IP地址。如何安全地从GKE集群连接到Cloud SQL？",
+      "options": {
+        "A": "使用Cloud SQL Auth Proxy",
+        "B": "配置VPC防火墙规则允许所有流量",
+        "C": "使用Cloud NAT",
+        "D": "为Cloud SQL配置公共IP并使用SSL"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Cloud SQL Auth Proxy提供安全的连接方式，无需公共IP。它可以作为sidecar容器运行在GKE Pod中，通过IAM进行身份验证，并自动处理SSL加密。这是连接到私有Cloud SQL实例的推荐方式。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q14",
+      "domain": 2,
+      "question": "您需要为一个全球分布式应用配置负载均衡。应用使用WebSocket进行实时通信。应该选择哪种负载均衡器？",
+      "options": {
+        "A": "TCP/UDP网络负载均衡器",
+        "B": "外部HTTP(S)负载均衡器(传统版)",
+        "C": "全球外部HTTP(S)负载均衡器(高级版)",
+        "D": "内部TCP/UDP负载均衡器"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "全球外部HTTP(S)负载均衡器(高级版)支持WebSocket连接，提供全球负载均衡、自动SSL管理和CDN集成。它是Web应用程序的首选，特别是需要实时通信功能的应用。高级版提供更多的流量管理功能。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q15",
+      "domain": 2,
+      "question": "您的组织需要将本地数据中心与Google Cloud建立专用高速连接。需要保证稳定的带宽和低延迟。应该选择什么？",
+      "options": {
+        "A": "Cloud VPN",
+        "B": "Cloud Interconnect - Dedicated",
+        "C": "Cloud Interconnect - Partner",
+        "D": "Carrier Peering"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Dedicated Interconnect提供10Gbps或100Gbps的专用物理连接，直接连接到Google的网络。它提供最低的延迟和最高的带宽保证，适合有大量数据传输需求的企业。如果无法直接接入Google的co-location facility，可以考虑Partner Interconnect。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q16",
+      "domain": 2,
+      "question": "您正在配置一个GKE集群，需要确保Pod可以使用内部IP地址访问Google API和服务，而不通过公共互联网。应该如何配置？",
+      "options": {
+        "A": "使用VPC原生集群并配置Private Google Access",
+        "B": "配置Cloud NAT",
+        "C": "使用公共GKE集群",
+        "D": "配置Cloud VPN到Google API端点"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "VPC原生GKE集群使用别名IP为Pod分配地址。启用Private Google Access后，没有外部IP的Pod可以通过内部路由访问Google API和服务。这提供了更好的安全性，因为流量不会离开Google的网络。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q17",
+      "domain": 3,
+      "question": "您的公司需要确保只有特定的服务账号可以访问Cloud Storage存储桶中的敏感数据。应该使用什么方法来实现最小权限原则？",
+      "options": {
+        "A": "使用统一存储桶级访问（Uniform bucket-level access）并通过IAM策略授权",
+        "B": "使用ACL为每个对象设置权限",
+        "C": "将存储桶设为公开并使用签名URL",
+        "D": "在项目级别授予Storage Admin角色"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "统一存储桶级访问是推荐的权限管理方式，它简化了权限管理并消除了ACL和IAM之间的冲突。通过IAM策略，可以精确控制谁可以访问存储桶及其内容，实现最小权限原则。避免使用项目级别的广泛权限。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q18",
+      "domain": 3,
+      "question": "您需要为在GKE上运行的应用程序配置服务账号。应用需要读取Cloud Storage中的数据。最安全的做法是什么？",
+      "options": {
+        "A": "使用节点的默认服务账号",
+        "B": "在Pod中硬编码服务账号密钥",
+        "C": "使用Workload Identity",
+        "D": "使用环境变量传递服务账号密钥"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "Workload Identity是GKE的推荐身份验证方式。它允许将Kubernetes服务账号与Google Cloud服务账号关联，无需管理密钥。Pod自动获得所需权限，密钥不会暴露在集群中，这是最安全的做法。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q19",
+      "domain": 3,
+      "question": "您的组织需要满足数据驻留要求，确保所有客户数据仅存储在特定国家/地区。在Google Cloud中如何实现？",
+      "options": {
+        "A": "这在Google Cloud中无法实现",
+        "B": "使用资源位置限制组织政策",
+        "C": "手动选择每个资源的区域",
+        "D": "仅使用Cloud Storage的双区域配置"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "资源位置限制（Resource Location Restriction）是一个组织政策约束，可以限制资源只能在指定的位置创建。这是满足数据驻留合规性要求的有效方法，适用于组织、文件夹或项目级别。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q20",
+      "domain": 3,
+      "question": "您需要保护存储在Cloud Storage中的敏感数据。数据必须使用客户管理的加密密钥(CMEK)加密。应该使用什么服务来管理密钥？",
+      "options": {
+        "A": "Cloud KMS",
+        "B": "Secret Manager",
+        "C": "Cloud HSM",
+        "D": "Data Loss Prevention"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Cloud KMS（密钥管理服务）是用于创建、管理和使用加密密钥的服务。CMEK允许您使用Cloud KMS中的密钥来加密Cloud Storage对象。Secret Manager用于存储密码等秘密，Cloud HSM是硬件安全模块，DLP用于数据脱敏。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q21",
+      "domain": 3,
+      "question": "您发现有未经授权的IP地址尝试访问您的Cloud SQL实例。如何配置以只允许特定IP范围访问？",
+      "options": {
+        "A": "配置VPC防火墙规则",
+        "B": "在Cloud SQL实例上配置授权网络",
+        "C": "使用Cloud Armor WAF",
+        "D": "配置IAM条件策略"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Cloud SQL的授权网络(Authorized Networks)功能允许您指定哪些IP地址或CIDR范围可以连接到实例。这是控制Cloud SQL网络访问的主要方式。对于更高安全性，建议使用私有IP和VPC。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q22",
+      "domain": 3,
+      "question": "您的Web应用程序面临DDoS攻击和SQL注入威胁。需要保护全局负载均衡器后的后端服务。应该使用什么？",
+      "options": {
+        "A": "Cloud Firewall规则",
+        "B": "Cloud Armor",
+        "C": "Cloud IDS",
+        "D": "VPC Service Controls"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Cloud Armor是Google Cloud的Web应用防火墙(WAF)服务，与全局HTTP(S)负载均衡器集成。它提供DDoS防护、预配置的WAF规则（如OWASP Top 10防护），以及地理位置访问控制。非常适合保护Web应用免受常见攻击。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q23",
+      "domain": 3,
+      "question": "您的组织需要实施安全控制，防止敏感数据从VPC内的服务泄露到外部。应该使用什么？",
+      "options": {
+        "A": "Cloud NAT",
+        "B": "VPC Service Controls",
+        "C": "Private Google Access",
+        "D": "Cloud VPN"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "VPC Service Controls允许定义安全边界，限制Google Cloud服务之间的数据移动。它可以防止数据从受保护的项目中泄露，即使用户有权限访问数据。这对于满足数据安全和合规性要求至关重要。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q24",
+      "domain": 4,
+      "question": "您的BigQuery数据仓库查询成本不断增加。经分析，多个团队在运行类似的大型查询。如何优化成本？",
+      "options": {
+        "A": "升级到BigQuery企业版",
+        "B": "使用物化视图缓存常用查询结果",
+        "C": "将数据移至Cloud SQL",
+        "D": "限制用户的查询权限"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "物化视图(Materialized Views)会预计算并缓存查询结果，当底层数据更新时自动刷新。BigQuery可以智能地使用物化视图来回答查询，即使查询不直接引用视图。这可以显著减少扫描的数据量和成本。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q25",
+      "domain": 4,
+      "question": "您的Compute Engine实例在大部分时间处于空闲状态，但在业务高峰期需要快速响应。如何优化成本同时保持响应能力？",
+      "options": {
+        "A": "使用抢占式VM",
+        "B": "始终使用按需实例",
+        "C": "使用承诺使用折扣(CUD)购买",
+        "D": "配置自动扩缩组，设置最小实例数为0"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "自动扩缩组可以根据负载自动调整实例数量。将最小实例数设置为0，在空闲时关闭所有实例，在需要时快速扩展。这比抢占式VM更可靠，比CUD更灵活。对于不规律的工作负载，这是最佳的成本优化方式。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q26",
+      "domain": 4,
+      "question": "您需要分析应用程序的性能瓶颈。应用分布在多个微服务中。哪个工具最适合追踪跨服务的请求延迟？",
+      "options": {
+        "A": "Cloud Monitoring",
+        "B": "Cloud Logging",
+        "C": "Cloud Trace",
+        "D": "Cloud Profiler"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "Cloud Trace是分布式追踪系统，可以跟踪请求在多个服务之间的传播。它显示每个服务的延迟，帮助识别性能瓶颈。Cloud Profiler用于CPU和内存分析，Monitoring用于指标监控，Logging用于日志管理。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q27",
+      "domain": 4,
+      "question": "您正在评估是否将现有的自建Kafka集群迁移到Google Cloud的托管服务。主要考虑因素是减少运维负担。应该选择什么？",
+      "options": {
+        "A": "在Compute Engine上运行Kafka",
+        "B": "使用Cloud Pub/Sub替代Kafka",
+        "C": "使用Managed Service for Apache Kafka",
+        "D": "在GKE上运行Kafka"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "Managed Service for Apache Kafka（之前称为Confluent Cloud的集成）是Google Cloud提供的完全托管的Kafka服务。如果需要保持Kafka兼容性和现有应用的最小改动，这是最佳选择。Pub/Sub虽然是托管的，但API不兼容Kafka。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q28",
+      "domain": 4,
+      "question": "您的数据分析团队需要在BigQuery中处理PB级数据。查询性能随着数据量增长而下降。如何优化查询性能？",
+      "options": {
+        "A": "增加更多并发槽位",
+        "B": "使用分区表和聚簇表",
+        "C": "将数据移至Cloud SQL",
+        "D": "使用更小的数据类型"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "分区表根据日期或时间戳列分区数据，减少查询扫描的数据量。聚簇表根据指定列对数据进行物理排序，提高过滤效率。这两种技术结合使用可以显著提高大规模数据集的查询性能。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q29",
+      "domain": 4,
+      "question": "您需要建立一个机器学习流水线，从数据准备到模型部署实现自动化。哪个Google Cloud服务最适合？",
+      "options": {
+        "A": "Cloud Composer",
+        "B": "Vertex AI Pipelines",
+        "C": "Cloud Scheduler + Cloud Functions",
+        "D": "Dataflow"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Vertex AI Pipelines是专门为机器学习工作流设计的托管服务，基于Kubeflow Pipelines。它支持整个ML生命周期，包括数据准备、模型训练、评估和部署。Cloud Composer更适合通用的工作流编排。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q30",
+      "domain": 4,
+      "question": "您的团队希望实现基础设施即代码(IaC)来管理Google Cloud资源。哪种方法是Google Cloud推荐的原生解决方案？",
+      "options": {
+        "A": "使用gcloud命令行脚本",
+        "B": "手动通过Cloud Console创建资源",
+        "C": "使用Terraform或Deployment Manager",
+        "D": "使用REST API调用"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "Terraform和Cloud Deployment Manager都支持基础设施即代码。Terraform是业界标准的多云IaC工具，而Deployment Manager是Google Cloud原生的IaC服务。两者都支持声明式配置、版本控制和可重复部署。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q31",
+      "domain": 5,
+      "question": "您的开发团队希望实现持续集成/持续部署(CI/CD)流水线。代码存储在Cloud Source Repositories中。应该使用什么服务来构建和部署？",
+      "options": {
+        "A": "手动运行gcloud命令",
+        "B": "Cloud Build",
+        "C": "Jenkins on Compute Engine",
+        "D": "Cloud Scheduler"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Cloud Build是Google Cloud的CI/CD平台，与Cloud Source Repositories原生集成。它可以自动触发构建、运行测试、创建容器镜像并部署到GKE、Cloud Run或其他目标。它是无服务器的，按使用计费。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q32",
+      "domain": 5,
+      "question": "您需要将一个单体应用程序逐步迁移到微服务架构。在过渡期间，新旧系统需要共存。哪种模式最适合？",
+      "options": {
+        "A": "一次性完全重写所有代码",
+        "B": "Strangler Fig模式",
+        "C": "直接将单体应用容器化",
+        "D": "并行运行两个完全独立的系统"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Strangler Fig模式允许逐步将单体应用的功能迁移到微服务。使用API网关或负载均衡器将请求路由到新服务或旧系统。随着时间推移，越来越多的流量转向新服务，直到旧系统完全被\"勒死\"(替换)。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q33",
+      "domain": 5,
+      "question": "您的团队正在使用Anthos将工作负载部署到多个环境（Google Cloud、本地和其他云）。如何确保配置的一致性？",
+      "options": {
+        "A": "手动在每个环境中配置",
+        "B": "使用Anthos Config Management",
+        "C": "使用SSH脚本同步配置",
+        "D": "导出并导入YAML文件"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Anthos Config Management允许从Git仓库自动同步配置到所有Anthos集群，无论它们运行在哪里。它实现了GitOps模式，确保所有环境的配置一致性和可审计性。Policy Controller可以强制执行合规性策略。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q34",
+      "domain": 5,
+      "question": "您需要在不停机的情况下更新生产环境中的应用程序。应用运行在GKE上。哪种部署策略最安全？",
+      "options": {
+        "A": "直接替换所有Pod",
+        "B": "滚动更新(Rolling Update)",
+        "C": "蓝绿部署或金丝雀发布",
+        "D": "停止服务，更新后重启"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "蓝绿部署和金丝雀发布是最安全的部署策略。蓝绿部署运行两个完整的环境，可以快速回滚。金丝雀发布逐步将流量从旧版本转移到新版本，可以在问题影响所有用户之前发现问题。Kubernetes原生支持这些策略。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q35",
+      "domain": 6,
+      "question": "您需要监控在GKE上运行的应用程序的健康状况。需要在容器崩溃时自动重启，在节点故障时自动重新调度。应该如何配置？",
+      "options": {
+        "A": "使用外部监控工具检查并手动重启",
+        "B": "配置Kubernetes liveness和readiness探针",
+        "C": "使用Cloud Monitoring告警",
+        "D": "编写自定义脚本检查进程状态"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Kubernetes的liveness探针检测容器是否健康，如果失败则重启容器。readiness探针检测容器是否准备好接收流量。这些是Kubernetes内置的自愈机制，与GKE的节点自动修复配合，提供全面的可靠性保障。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q36",
+      "domain": 6,
+      "question": "您的关键业务应用需要99.95%的可用性SLO。如何配置Cloud Monitoring来追踪和告警？",
+      "options": {
+        "A": "创建自定义仪表板查看指标",
+        "B": "配置SLO监控和错误预算告警",
+        "C": "只查看Cloud Logging中的错误日志",
+        "D": "使用第三方监控工具"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Cloud Monitoring的SLO功能允许定义服务级别目标并自动追踪。错误预算(Error Budget)显示剩余的允许停机时间。当错误预算消耗过快时触发告警，这是SRE实践中管理可靠性的最佳方式。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q37",
+      "domain": 6,
+      "question": "您的Cloud SQL实例在高峰期出现性能问题。需要分析问题原因。哪个工具最有帮助？",
+      "options": {
+        "A": "Cloud Logging",
+        "B": "Cloud SQL Insights",
+        "C": "Cloud Trace",
+        "D": "BigQuery审计日志"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Cloud SQL Insights提供数据库性能诊断功能，包括查询统计、锁等待分析、资源使用情况等。它可以识别慢查询、分析查询计划，帮助定位和解决性能问题。这是Cloud SQL内置的性能分析工具。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q38",
+      "domain": 6,
+      "question": "您需要设计一个灾难恢复方案，确保在整个区域故障时，应用可以在另一个区域恢复运行。RPO要求小于15分钟。对于Cloud SQL，应该使用什么配置？",
+      "options": {
+        "A": "定期手动备份",
+        "B": "跨区域只读副本",
+        "C": "单区域高可用配置",
+        "D": "仅使用自动备份"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "跨区域只读副本通过持续复制保持数据同步，可以实现非常低的RPO（通常几分钟以内）。在主区域故障时，可以将副本提升为主实例。这比依赖备份恢复快得多，更适合严格的RPO要求。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q39",
+      "domain": 6,
+      "question": "您的应用程序日志分散在多个GKE集群和Cloud Run服务中。需要集中分析和关联这些日志。应该使用什么？",
+      "options": {
+        "A": "在每个服务中配置独立的日志文件",
+        "B": "使用Cloud Logging和日志分析",
+        "C": "将所有日志发送到BigQuery",
+        "D": "使用SSH登录每个实例查看日志"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Cloud Logging是Google Cloud的集中日志管理服务，自动收集GKE和Cloud Run的日志。Log Analytics功能支持使用SQL查询分析日志，关联不同服务的事件。可以创建日志度量和告警，并与Cloud Monitoring集成。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q40",
+      "domain": 6,
+      "question": "您需要确保应用程序的可靠性，同时允许团队以合理的速度发布新功能。如何平衡可靠性和创新速度？",
+      "options": {
+        "A": "禁止所有变更直到问题解决",
+        "B": "使用错误预算和变更冻结策略",
+        "C": "总是优先发布新功能",
+        "D": "雇佣更多的运维人员"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "错误预算是SRE的核心概念。当系统可靠性高于SLO时，团队可以进行变更和发布新功能。当错误预算耗尽时，团队应该专注于提高可靠性。这种机制在可靠性和创新速度之间建立了合理的平衡。",
+      "difficulty": "medium"
+    }
+  ]
+}

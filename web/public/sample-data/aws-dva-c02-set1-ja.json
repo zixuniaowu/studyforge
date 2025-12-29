@@ -1,0 +1,643 @@
+{
+  "exam": {
+    "id": "aws-dva-c02-set1-ja",
+    "name": "AWS DVA-C02 模擬試験 #1",
+    "code": "DVA-C02",
+    "provider": "AWS",
+    "language": "ja",
+    "description": "AWS認定デベロッパーアソシエイト試験模擬問題 - 第1套",
+    "totalQuestions": 40,
+    "passingScore": 72,
+    "examTime": 130,
+    "domains": [
+      {
+        "id": 1,
+        "name": "AWSサービスによる開発",
+        "weight": 32
+      },
+      {
+        "id": 2,
+        "name": "セキュリティ",
+        "weight": 26
+      },
+      {
+        "id": 3,
+        "name": "デプロイ",
+        "weight": 24
+      },
+      {
+        "id": 4,
+        "name": "トラブルシューティングと最適化",
+        "weight": 18
+      }
+    ],
+    "tags": [
+      "AWS",
+      "Developer",
+      "Lambda",
+      "認定試験"
+    ]
+  },
+  "questions": [
+    {
+      "id": "q1",
+      "domain": 1,
+      "question": "開発チームがAWS Lambdaを使用してAmazon S3からのファイルアップロードイベントを処理しています。Lambda関数はAmazon DynamoDBに保存された設定データにアクセスする必要があります。Lambda関数にDynamoDBへのアクセス権限を最も安全に提供する方法はどれですか？",
+      "options": {
+        "A": "Lambda関数コードにAWSアクセスキーをハードコーディングする",
+        "B": "適切なDynamoDB権限を持つIAM実行ロールを使用する",
+        "C": "Lambda環境変数にAWS認証情報を保存する",
+        "D": "S3バケットに認証情報ファイルを保存する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "IAM実行ロールはLambda関数にAWSサービスへのアクセス権限を提供する最も安全な方法です：\n- 認証情報の管理やローテーションが不要\n- 最小権限の原則に従う\n- 認証情報はAWSによって自動的に管理・ローテーション\n\nハードコーディング(A)、環境変数(C)、S3保存(D)はすべてセキュリティリスクがあり、AWSのベストプラクティスに反します。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q2",
+      "domain": 1,
+      "question": "開発者がAmazon API Gatewayを使用してREST APIを作成しています。APIは各クライアントにリクエストレート制限を実装する必要があります。どのように設定すべきですか？",
+      "options": {
+        "A": "API Gatewayで使用量プランとAPIキーを設定する",
+        "B": "Lambda認証を使用してカスタムレート制限を実装する",
+        "C": "各Lambda関数にレート制限ロジックを追加する",
+        "D": "Amazon CloudFrontを使用してリクエスト制限を行う"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "API Gatewayの使用量プランとAPIキーは組み込みのレート制限機能を提供します：\n- 使用量プランでリクエストクォータとスロットリング制限を定義\n- APIキーで異なるクライアントを識別\n- 各クライアントに異なる制限を設定可能\n\nこれはAPI Gatewayのネイティブ機能であり、カスタム実装は不要で、他の選択肢よりシンプルで信頼性が高いです。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q3",
+      "domain": 1,
+      "question": "開発者がAmazon DynamoDBテーブルからデータを読み取るアプリケーションを作成しています。アプリケーションは読み取りコストが増加しても最新のデータを読み取る必要があります。どの読み取り整合性を使用すべきですか？",
+      "options": {
+        "A": "結果整合性のある読み取り",
+        "B": "強力な整合性のある読み取り",
+        "C": "トランザクション読み取り",
+        "D": "バッチ読み取り"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "強力な整合性のある読み取りは最新データを保証します：\n- 以前のすべての成功した書き込みの結果を反映\n- 結果整合性のある読み取りの2倍の読み取り容量ユニットを消費\n- 最新データが必要なシナリオに適切\n\n結果整合性のある読み取り(A)は古いデータを返す可能性があります。トランザクション読み取り(C)はトランザクション操作用です。バッチ読み取り(D)は操作タイプであり、整合性レベルではありません。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q4",
+      "domain": 1,
+      "question": "開発者が大量のデータ（各レコード約400KB）をDynamoDBに保存する必要があります。DynamoDBのベストプラクティスに最も適した方法はどれですか？",
+      "options": {
+        "A": "大きな属性を圧縮してDynamoDBに直接保存する",
+        "B": "大きなデータをS3に保存し、DynamoDBにはS3オブジェクトの参照を保存する",
+        "C": "DynamoDBテーブルのプロビジョニング容量を増やす",
+        "D": "複数のDynamoDBテーブルにデータを分散して保存する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "DynamoDBのアイテムサイズ制限は400KBであり、ベストプラクティスは：\n- 大きなオブジェクトをS3に保存\n- DynamoDBにはS3オブジェクトのキー/URLのみを保存\n- このパターンはサイズ制限を満たし、コストとパフォーマンスを最適化\n\n大きなオブジェクトを直接保存すると制限に近づきます(A)。容量増加(C)はサイズ制限の問題を解決しません。テーブル分割(D)は複雑さを増します。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q5",
+      "domain": 1,
+      "question": "開発者がAWS SDK for Python (Boto3)を使用してDynamoDB APIを呼び出す際にProvisionedThroughputExceededExceptionエラーを受け取りました。SDKはこのエラーをどのように処理しますか？",
+      "options": {
+        "A": "SDKは指数バックオフで自動的にリトライする",
+        "B": "開発者はリトライロジックを手動で実装する必要がある",
+        "C": "SDKはリトライせずに即座に例外をスローする",
+        "D": "SDKは成功するまで無期限にリトライする"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "AWS SDKには自動リトライメカニズムが組み込まれています：\n- リトライ可能なエラー（スロットリングエラーなど）に対してSDKは自動的にリトライ\n- 指数バックオフアルゴリズムを使用（リトライごとに待機時間が倍増）\n- デフォルトの最大リトライ回数は設定可能\n\n開発者はリトライ設定をカスタマイズできますが、基本的なリトライ機能はSDKに組み込まれています。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q6",
+      "domain": 2,
+      "question": "開発者がLambda関数でユーザー名とパスワードを含むデータベース接続文字列を安全に保存する必要があります。最も安全な方法はどれですか？",
+      "options": {
+        "A": "AWS Secrets Managerを使用して認証情報を保存する",
+        "B": "Lambda環境変数に平文で認証情報を保存する",
+        "C": "Lambda関数コードに認証情報をハードコーディングする",
+        "D": "S3バケットのテキストファイルに認証情報を保存する"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "AWS Secrets Managerは機密認証情報を保存するための最適な選択です：\n- 自動認証情報ローテーション\n- 暗号化保存\n- きめ細かいアクセス制御\n- 監査ログ\n- Lambdaとのネイティブ統合\n\n環境変数(B)は安全ではありません。ハードコーディング(C)は最悪のプラクティスです。S3テキストファイル(D)は暗号化とローテーション機能が不足しています。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q7",
+      "domain": 2,
+      "question": "開発者がWebアプリケーションのユーザー認証を実装しています。アプリケーションはソーシャルログイン（Google、Facebook）とカスタムユーザー登録をサポートする必要があります。どのAWSサービスを使用すべきですか？",
+      "options": {
+        "A": "AWS IAM",
+        "B": "Amazon Cognito",
+        "C": "AWS Directory Service",
+        "D": "AWS Single Sign-On"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Amazon CognitoはWebおよびモバイルアプリの認証用に設計されています：\n- ユーザープール：ユーザー登録とログインを管理\n- IDプール：フェデレーテッドIDプロバイダー（Google、Facebookなど）\n- MFAとセキュリティ機能をサポート\n- API GatewayとALBとの統合\n\nIAM(A)はAWSサービスアクセス用です。Directory Service(C)は企業ディレクトリ用です。SSO(D)はAWSアカウントアクセス管理用です。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q8",
+      "domain": 2,
+      "question": "開発者がDynamoDBに保存された機密データを暗号化する必要があります。どの暗号化方法を使用すべきですか？",
+      "options": {
+        "A": "AWS KMSカスタマー管理キーによるサーバー側暗号化",
+        "B": "アプリケーション側で独自の暗号化アルゴリズムを使用",
+        "C": "SSL/TLS転送暗号化を使用",
+        "D": "DynamoDB Streamsの暗号化を使用"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "DynamoDBはAWS KMSを使用した保存時の暗号化をサポートしています：\n- AWS管理キー（デフォルト）\n- カスタマー管理キー（CMK）- より多くの制御を提供\n- すべてのデータを自動暗号化\n- AWS監査サービスとの統合\n\nSSL/TLS(C)は転送中のデータのみを保護します。カスタム暗号化(B)は複雑さを増します。DynamoDB Streams暗号化(D)はストレージ暗号化とは無関係です。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q9",
+      "domain": 2,
+      "question": "API Gateway REST APIは受信リクエストのJWTトークンを検証する必要があります。この要件を実現する設定はどれですか？",
+      "options": {
+        "A": "Cognitoユーザープールオーソライザーを使用する",
+        "B": "IAM認可を使用する",
+        "C": "APIキーを使用する",
+        "D": "リソースポリシーを使用する"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "CognitoユーザープールオーソライザーはJWTトークン検証専用です：\n- JWT署名とクレームを自動検証\n- Cognitoユーザープールとシームレスに統合\n- カスタムクレーム検証をサポート\n- 検証コードを書く必要がない\n\nIAM認可(B)はAWS署名リクエスト用です。APIキー(C)はクライアント識別用です。リソースポリシー(D)はIP制限などに使用します。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q10",
+      "domain": 2,
+      "question": "開発者がプライベートサブネット内のRDSデータベースにアクセスするためにLambda関数のVPCアクセスを設定する必要があります。Lambda関数がインターネットリソースにもアクセスするために、さらに何を設定する必要がありますか？",
+      "options": {
+        "A": "Lambda関数をパブリックサブネットに配置する",
+        "B": "プライベートサブネットにNATゲートウェイを設定する",
+        "C": "Lambda関数にElastic IPを割り当てる",
+        "D": "VPCピアリング接続を使用する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "VPC内のLambda関数がインターネットにアクセスするにはNATゲートウェイが必要です：\n- Lambda関数はプライベートサブネットに配置\n- プライベートサブネットのルートテーブルはNATゲートウェイを指す\n- NATゲートウェイはパブリックサブネットに配置\n\nLambdaは直接パブリックサブネットに配置できません(A)。LambdaはElastic IPをサポートしません(C)。VPCピアリング(D)はVPC間通信用です。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q11",
+      "domain": 3,
+      "question": "開発チームがAWS CodePipelineを使用して継続的デプロイを実装しています。コードがCodeCommitリポジトリにプッシュされると、パイプラインが自動的にトリガーされる必要があります。どのように設定すべきですか？",
+      "options": {
+        "A": "Amazon EventBridgeルールを使用してCodeCommitイベントを監視する",
+        "B": "CodeCommitリポジトリをポーリングするようにスケジュールを設定する",
+        "C": "SNS通知を使用してパイプラインをトリガーする",
+        "D": "各デプロイを手動でトリガーする"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Amazon EventBridge（旧CloudWatch Events）が推奨されるトリガー方法です：\n- CodeCommitプッシュ時に自動的にEventBridgeにイベントを送信\n- EventBridgeルールがCodePipelineをトリガー\n- リアルタイム応答、遅延なし\n- これがAWS推奨のベストプラクティス\n\nポーリング(B)は遅延があり、リソースを消費します。SNS(C)は標準的な統合方法ではありません。手動トリガー(D)はCI/CD原則に反します。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q12",
+      "domain": 3,
+      "question": "開発者がAWS SAMを使用してサーバーレスアプリケーションをデプロイしています。SAMテンプレートにはLambda関数とAPI Gatewayが定義されています。APIをローカルでテストするにはどのコマンドを実行しますか？",
+      "options": {
+        "A": "sam local start-api",
+        "B": "sam deploy --local",
+        "C": "sam invoke local",
+        "D": "sam test api"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "sam local start-apiコマンドはAPI Gatewayのローカルテストに使用します：\n- ローカルHTTPサーバーを起動\n- API Gatewayの動作をシミュレート\n- コード変更を自動的に再読み込み\n- ローカルデバッグをサポート\n\nこれはSAM CLIが提供する標準的なローカル開発コマンドです。他の選択肢は有効なSAM CLIコマンドではありません。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q13",
+      "domain": 3,
+      "question": "開発チームがAWS CodeDeployを使用してEC2インスタンスにアプリケーションをデプロイしています。新しいバージョンのデプロイ時にダウンタイムを最小化し、問題が発生した場合は迅速にロールバックしたいと考えています。どのデプロイ戦略を使用すべきですか？",
+      "options": {
+        "A": "インプレースデプロイ",
+        "B": "Blue/Greenデプロイ",
+        "C": "ローリングデプロイ",
+        "D": "オールアットワンスデプロイ"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Blue/Greenデプロイはゼロダウンタイムと高速ロールバックを提供します：\n- 新しい環境（グリーン）を作成して新しいバージョンを実行\n- 検証後にトラフィックを切り替え\n- 問題が発生した場合は即座に元の環境（ブルー）に切り戻し\n- ダウンタイムなし\n\nインプレースデプロイ(A)はダウンタイムが必要です。ローリングデプロイ(C)はロールバックが遅いです。オールアットワンス(D)はリスクが最も高いです。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q14",
+      "domain": 3,
+      "question": "開発者がAWS CloudFormationを使用してインフラストラクチャをデプロイしています。異なる環境（開発、テスト、本番）で異なるインスタンスタイプを使用する必要があります。どのように実現すべきですか？",
+      "options": {
+        "A": "各環境に個別のテンプレートを作成する",
+        "B": "CloudFormationパラメータと条件を使用する",
+        "C": "ネストされたスタックを使用する",
+        "D": "CloudFormationマクロを使用する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "CloudFormationパラメータと条件は複数環境を処理する最良の方法です：\n- パラメータでデプロイ時に環境変数を渡すことができる\n- 条件でパラメータ値に基づいて異なる設定を選択\n- 単一テンプレートですべての環境を管理\n- コードの重複を削減\n\n個別テンプレート(A)はメンテナンスの負担が増えます。ネストされたスタック(C)はモジュール化用です。マクロ(D)はテンプレート変換用です。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q15",
+      "domain": 3,
+      "question": "開発者がAWS CodeBuildプロジェクトを設定してユニットテストを実行する必要があります。テストレポートはCodeBuildコンソールに表示される必要があります。buildspec.ymlで何を設定すべきですか？",
+      "options": {
+        "A": "reportsセクションでテストレポートファイルの場所を指定",
+        "B": "artifactsセクションでテスト結果をアップロード",
+        "C": "phasesセクションにテストコマンドを追加",
+        "D": "cacheセクションでテスト依存関係をキャッシュ"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "buildspec.ymlのreportsセクションはテストレポート統合に使用します：\n- テストレポートのファイル場所と形式を指定\n- JUnit、Cucumberなどの形式をサポート\n- レポートはCodeBuildコンソールに自動表示\n- テストトレンド分析をサポート\n\nartifacts(B)はビルド成果物用です。phases(C)はビルドステップを定義します。cache(D)はビルドキャッシュ用です。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q16",
+      "domain": 4,
+      "question": "開発者がLambda関数の実行時間が徐々に長くなっていることに気づきました。パフォーマンスの問題を分析・診断するためにどのAWSサービスを使用すべきですか？",
+      "options": {
+        "A": "Amazon CloudWatch Logs",
+        "B": "AWS X-Ray",
+        "C": "Amazon CloudWatch Metrics",
+        "D": "AWS Config"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "AWS X-Rayは分散アプリケーションのパフォーマンス分析専用です：\n- サービス間のリクエストの流れを追跡\n- サービス依存関係マップを視覚化\n- パフォーマンスボトルネックを特定\n- レイテンシー分布を分析\n\nCloudWatch Logs(A)はログ用です。CloudWatch Metrics(C)はメトリクスを表示しますが、詳細なトレースは提供しません。Config(D)は設定コンプライアンス用です。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q17",
+      "domain": 4,
+      "question": "開発者がAWS SDKを使用してS3 APIを呼び出す際に断続的なタイムアウトエラーに遭遇しています。アプリケーションの信頼性を向上させるにはどうすべきですか？",
+      "options": {
+        "A": "SDKの接続タイムアウト設定を増やす",
+        "B": "指数バックオフリトライ戦略を実装する",
+        "C": "S3 Transfer Accelerationを使用する",
+        "D": "別のAWSリージョンに切り替える"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "指数バックオフリトライは断続的なエラーを処理するためのベストプラクティスです：\n- 初期待機後にリトライ\n- 失敗するたびに待機時間を倍増\n- ランダムジッターを追加してサンダーハード効果を回避\n- AWS SDKにはこの機能が組み込まれており、パラメータを設定可能\n\nタイムアウトの増加(A)は断続的な問題を解決しません。Transfer Acceleration(C)は転送の高速化用です。リージョン切り替え(D)はレイテンシーを増加させます。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q18",
+      "domain": 4,
+      "question": "Lambda関数がDynamoDBテーブルを読み取る際に古いデータを返すことがあります。この問題を解決するにはどうすべきですか？",
+      "options": {
+        "A": "Lambda関数のメモリを増やす",
+        "B": "結果整合性のある読み取りの代わりに強力な整合性のある読み取りを使用する",
+        "C": "DynamoDB Accelerator（DAX）を有効にする",
+        "D": "DynamoDBテーブルの読み取り容量ユニットを増やす"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "古いデータの問題は通常、結果整合性のある読み取りを使用しているためです：\n- DynamoDBはデフォルトで結果整合性のある読み取りを使用\n- 強力な整合性のある読み取りは最新データを返す\n- 2倍の読み取り容量ユニットを消費\n- GetItem/Query/ScanでConsistentRead=trueを設定\n\nメモリ増加(A)と容量増加(D)は整合性に影響しません。DAX(C)も結果整合性です。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q19",
+      "domain": 4,
+      "question": "開発者がAPI Gateway APIのリクエストレイテンシーを監視する必要があります。どのCloudWatchメトリクスを確認すべきですか？",
+      "options": {
+        "A": "Count",
+        "B": "Latency",
+        "C": "IntegrationLatency",
+        "D": "CacheHitCount"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Latencyメトリクスは完全なリクエストレイテンシーを示します：\n- API Gatewayがリクエストを受信してからレスポンスを返すまでの時間\n- バックエンド統合時間を含む\n- 全体的なAPIパフォーマンスの監視に使用\n\nIntegrationLatency(C)はバックエンド処理時間のみを含みます。Count(A)はリクエスト数です。CacheHitCount(D)はキャッシュヒット数です。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q20",
+      "domain": 4,
+      "question": "開発者がLambda関数のコールドスタート時間が長すぎることを発見しました。コールドスタートレイテンシーを削減する方法はどれですか？",
+      "options": {
+        "A": "Lambda関数のタイムアウト設定を増やす",
+        "B": "Lambdaプロビジョニング済み同時実行を設定する",
+        "C": "Lambda関数のメモリを減らす",
+        "D": "非同期呼び出しの代わりに同期呼び出しを使用する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "プロビジョニング済み同時実行はコールドスタートを削減する最も効果的な方法です：\n- 指定された数の実行環境を事前に初期化\n- リクエストはウォームアップ済みの環境で即座に処理\n- コールドスタートレイテンシーを排除\n- レイテンシーに敏感なアプリケーションに適切\n\nタイムアウト設定(A)は起動時間に影響しません。メモリ削減(C)はコールドスタート時間を増加させる可能性があります。呼び出しタイプ(D)はコールドスタートに無関係です。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q21",
+      "domain": 1,
+      "question": "開発者がユーザーがアップロードした画像を処理するアプリケーションを構築しています。画像がS3にアップロードされた後、サムネイルを自動生成する必要があります。どのように実装すべきですか？",
+      "options": {
+        "A": "S3イベント通知を使用してLambda関数をトリガーする",
+        "B": "定期タスクを使用してS3バケットをポーリングする",
+        "C": "EC2インスタンスを使用してS3を継続的に監視する",
+        "D": "S3バッチオペレーションを使用する"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "S3イベント通知でLambdaをトリガーするのは最適なイベント駆動アーキテクチャです：\n- S3オブジェクト作成時に自動的にLambdaをトリガー\n- ポーリング不要、リアルタイム応答\n- サーバーレス、使用量に応じた課金\n- 並行アップロードを自動スケール\n\nポーリング(B)は遅延があり非効率です。EC2監視(C)は高コストで複雑です。バッチオペレーション(D)は大規模バッチ処理用です。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q22",
+      "domain": 1,
+      "question": "開発者がDynamoDBを使用してeコマースの注文データを保存しています。特定の顧客の特定の日付範囲内のすべての注文をクエリする必要があります。テーブル構造はどのように設計すべきですか？",
+      "options": {
+        "A": "注文IDをパーティションキー、顧客IDをソートキーとして使用する",
+        "B": "顧客IDをパーティションキー、注文日をソートキーとして使用する",
+        "C": "注文日をパーティションキー、顧客IDをソートキーとして使用する",
+        "D": "注文IDのみをパーティションキーとして使用する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "複合プライマリキー設計は主要なクエリパターンをサポートする必要があります：\n- 顧客IDをパーティションキー：特定の顧客の注文をクエリ\n- 注文日をソートキー：日付範囲クエリをサポート\n- Query操作を使用して効率的にデータを取得\n\n他の設計では「顧客+日付範囲」クエリパターンを効率的にサポートできません。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q23",
+      "domain": 1,
+      "question": "開発者がLambda関数でSQSキューからのメッセージを処理する必要があります。メッセージ処理が失敗した場合、メッセージが失われないようにするにはどうすべきですか？",
+      "options": {
+        "A": "キューの可視性タイムアウトを増やす",
+        "B": "デッドレターキューを設定する",
+        "C": "FIFOキューを使用する",
+        "D": "ロングポーリングを有効にする"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "デッドレターキュー（DLQ）は失敗したメッセージを処理するために使用します：\n- メッセージが複数回処理に失敗した後、DLQに移動\n- メッセージの損失を防止\n- 後で分析と再処理が可能\n- maxReceiveCountを設定して最大リトライ回数を設定\n\n可視性タイムアウト(A)はリトライ間隔に影響します。FIFO(C)は順序を保証します。ロングポーリング(D)は空ポーリングを削減します。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q24",
+      "domain": 1,
+      "question": "開発者がStep Functionsを使用して複数のLambda関数をオーケストレーションしています。1つのステップで複数の独立したタスクを並行処理する必要があります。どの状態タイプを使用すべきですか？",
+      "options": {
+        "A": "Task状態",
+        "B": "Parallel状態",
+        "C": "Map状態",
+        "D": "Choice状態"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Parallel状態は複数の独立したブランチを並行実行するために使用します：\n- 複数のタスクを同時に実行\n- すべてのブランチが完了後に続行\n- 独立した並行処理に適切\n\nTask(A)は単一タスクです。Map(C)は動的配列イテレーション用です。Choice(D)は条件分岐用です。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q25",
+      "domain": 1,
+      "question": "開発者がAPI GatewayでREST APIを作成しています。リクエストボディをある形式から別の形式に変換してからバックエンドに送信する必要があります。どの機能を使用すべきですか？",
+      "options": {
+        "A": "API Gatewayステージ変数",
+        "B": "API Gatewayマッピングテンプレート",
+        "C": "API Gatewayキャッシュ",
+        "D": "API Gatewayリソースポリシー"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "マッピングテンプレートはVTL（Velocity Template Language）を使用してリクエストとレスポンスを変換します：\n- リクエスト/レスポンス形式を変換\n- フィールドを追加または削除\n- 属性名を変更\n- 統合リクエストと統合レスポンスで設定\n\nステージ変数(A)は環境設定用です。キャッシュ(C)はレスポンスキャッシュ用です。リソースポリシー(D)はアクセス制御用です。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q26",
+      "domain": 2,
+      "question": "開発者が特定のVPC内のリソースのみがAPI Gatewayプライベート REST APIにアクセスできるようにする必要があります。どのように設定すべきですか？",
+      "options": {
+        "A": "API GatewayリソースポリシーでVPCアクセスを制限する",
+        "B": "IAMポリシーを使用してアクセスを制限する",
+        "C": "セキュリティグループルールを設定する",
+        "D": "WAFルールを使用してアクセスを制限する"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "API GatewayリソースポリシーはプライベートAPIのVPCアクセスを制限できます：\n- aws:sourceVpceまたはaws:sourceVpc条件を使用\n- 特定のVPCエンドポイントからのリクエストのみを許可\n- VPCエンドポイントと組み合わせて使用\n\nIAMポリシー(B)はアイデンティティベースです。セキュリティグループ(C)はAPI Gatewayには適用されません。WAF(D)はWeb攻撃防御用です。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q27",
+      "domain": 2,
+      "question": "開発者がLambda関数で一時的なAWS認証情報を使用して別のAWSアカウントのリソースにアクセスする必要があります。どの方法を使用すべきですか？",
+      "options": {
+        "A": "STS AssumeRoleを使用してクロスアカウントロールの一時認証情報を取得する",
+        "B": "環境変数に別のアカウントのアクセスキーを保存する",
+        "C": "Lambdaレイヤーを使用して認証情報を共有する",
+        "D": "Secrets Managerを使用してアクセスキーを保存する"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "STS AssumeRoleはクロスアカウントアクセスの標準的な方法です：\n- ソースアカウントのLambdaロールにAssumeRole権限を設定\n- ターゲットアカウントでロールを作成しソースアカウントを信頼\n- LambdaはSTSを使用して一時認証情報を取得\n- 認証情報は自動ローテーション、安全で監査可能\n\nアクセスキーの保存(B,C,D)はセキュリティのベストプラクティスに反します。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q28",
+      "domain": 2,
+      "question": "開発者がモバイルアプリケーションの認証を実装しています。ユーザーがCognitoユーザープールでログイン後、S3バケット内のプライベートデータにアクセスする必要があります。どのように設定すべきですか？",
+      "options": {
+        "A": "モバイルアプリでIAMユーザー認証情報を直接使用する",
+        "B": "Cognito IDプールを使用して一時的なAWS認証情報と交換する",
+        "C": "Lambda関数ですべてのS3アクセスをプロキシする",
+        "D": "S3署名付きURLを使用してすべてのオブジェクトにアクセスする"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Cognito IDプールは認証されたユーザーに一時的なAWS認証情報を提供します：\n- ユーザープール認証後にトークンを取得\n- IDプールでトークンを一時的なAWS認証情報と交換\n- IAMロールを使用して権限を定義\n- きめ細かいアクセス制御をサポート\n\nIAM認証情報の直接使用(A)は安全ではありません。Lambdaプロキシ(C)はレイテンシーとコストを増加させます。署名付きURL(D)はバックエンドでの生成が必要です。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q29",
+      "domain": 2,
+      "question": "開発者がアプリケーションで機密データを暗号化し、暗号化キーが毎年自動的にローテーションされることを確認する必要があります。どのAWSサービスを使用すべきですか？",
+      "options": {
+        "A": "AWS KMSカスタマー管理キー、自動ローテーションを有効化",
+        "B": "AWS CloudHSM",
+        "C": "S3サーバー側暗号化",
+        "D": "ACM証明書"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "KMSカスタマー管理キー（CMK）は自動キーローテーションをサポートします：\n- 有効化すると毎年自動的にローテーション\n- 復号用に古いキーバージョンを保持\n- アプリケーションコードの変更不要\n- フルマネージド、監査サポート\n\nCloudHSM(B)は手動管理が必要です。S3暗号化(C)はストレージ暗号化です。ACM(D)はSSL証明書用です。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q30",
+      "domain": 2,
+      "question": "開発者がAPI Gateway REST APIが既知のIPアドレスからのリクエストのみを受け入れるようにする必要があります。どのように設定すべきですか？",
+      "options": {
+        "A": "API GatewayリソースポリシーでIP条件を設定する",
+        "B": "LambdaオーソライザーでIPを検証する",
+        "C": "VPCエンドポイントポリシーを設定する",
+        "D": "CognitoでIP検証を行う"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "API GatewayリソースポリシーはIP条件制限をサポートします：\n- aws:SourceIp条件キーを使用\n- 特定のIP範囲を許可または拒否\n- 追加のコード不要\n- API レベルで統一管理\n\nLambdaオーソライザー(B)は複雑さを増します。VPCエンドポイントポリシー(C)はプライベートAPI用です。Cognito(D)はユーザー認証用です。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q31",
+      "domain": 3,
+      "question": "開発チームがAWS CodePipelineを使用して継続的デプロイを行っています。パイプラインは本番環境へのデプロイ前に人間の承認を取得する必要があります。どのように設定すべきですか？",
+      "options": {
+        "A": "手動承認アクションを追加する",
+        "B": "Lambda関数を使用して承認を待機する",
+        "C": "SNS通知を設定してレスポンスを待機する",
+        "D": "CodeDeployデプロイグループの承認機能を使用する"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "CodePipelineは手動承認アクションをネイティブでサポートします：\n- パイプラインステージ間に承認アクションを追加\n- 承認者にSNS通知を設定可能\n- タイムアウト時間を設定可能\n- 承認者はコンソールで承認または拒否可能\n\nこれはCodePipelineの組み込み機能であり、カスタム実装は不要です。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q32",
+      "domain": 3,
+      "question": "開発者がAWS SAMを使用してサーバーレスアプリケーションを定義しています。Lambda関数にデッドレターキューを設定する必要があります。SAMテンプレートでどの属性を使用すべきですか？",
+      "options": {
+        "A": "DeadLetterQueue",
+        "B": "DeadLetterConfig",
+        "C": "OnFailure",
+        "D": "FailureDestination"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "SAMはDeadLetterQueue属性を使用してDLQを設定します：\n- SQSキューまたはSNSトピックを指定\n- SAMは必要なIAM権限を自動設定\n- CloudFormationと比較して簡略化された構文\n\nDeadLetterConfig(B)はCloudFormationネイティブの属性です。OnFailure(C)とFailureDestination(D)はLambda宛先用です。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q33",
+      "domain": 3,
+      "question": "開発者がDockerコンテナをAWSにデプロイする必要があります。コンテナはオンデマンドで起動し、サーバー管理は不要です。どのサービスを使用すべきですか？",
+      "options": {
+        "A": "Amazon ECS with Fargate",
+        "B": "Amazon ECS with EC2",
+        "C": "Amazon EKS with EC2ノードグループ",
+        "D": "EC2で直接Dockerを実行"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "ECS with Fargateはサーバーレスコンテナサービスです：\n- EC2インスタンスの管理不要\n- コンテナリソース使用量に応じた課金\n- 自動スケーリング\n- イベント駆動およびオンデマンドワークロードに適切\n\nECS with EC2(B)とEKS(C)はインスタンス管理が必要です。EC2での直接実行(D)は最も多くの管理作業が必要です。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q34",
+      "domain": 3,
+      "question": "開発者がCloudFormationを使用してスタックをデプロイしています。スタック更新時に特定のリソースが削除または置換されないように保護する必要があります。どの機能を使用すべきですか？",
+      "options": {
+        "A": "スタックポリシー",
+        "B": "変更セット",
+        "C": "ドリフト検出",
+        "D": "リソースインポート"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "スタックポリシーはスタック更新時のリソース操作を制御します：\n- どのリソースを更新できるかを定義\n- 意図しない削除や置換を防止\n- JSON形式でポリシーを定義\n- データベースなどの重要なリソースを保護\n\n変更セット(B)は変更をプレビューします。ドリフト検出(C)は手動変更を検出します。リソースインポート(D)は既存リソースをインポートします。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q35",
+      "domain": 3,
+      "question": "開発者が再利用可能なCloudFormationテンプレートフラグメントを作成する必要があります。これらのフラグメントは複数のテンプレートで参照できる必要があります。どの機能を使用すべきですか？",
+      "options": {
+        "A": "ネストされたスタック",
+        "B": "スタックセット",
+        "C": "変更セット",
+        "D": "エクスポート/インポート"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "ネストされたスタックはCloudFormationテンプレートをモジュール化するために使用します：\n- 共通インフラストラクチャを独立したテンプレートとして定義\n- 親テンプレートでAWS::CloudFormation::Stackを使用して参照\n- パラメータの受け渡しをサポート\n- テンプレートの再利用と標準化を促進\n\nスタックセット(B)はマルチアカウントデプロイ用です。変更セット(C)は変更プレビュー用です。エクスポート/インポート(D)はスタック間での値参照用です。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q36",
+      "domain": 4,
+      "question": "開発者がLambda関数で「Task timed out」エラーに遭遇しています。関数の処理を完了するためにより多くの時間が必要です。どうすべきですか？",
+      "options": {
+        "A": "Lambda関数のタイムアウト設定を増やす",
+        "B": "Lambda関数のメモリを増やす",
+        "C": "非同期呼び出しを使用する",
+        "D": "Step Functionsを使用する"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "「Task timed out」は関数の実行が設定されたタイムアウト時間を超えたことを示します：\n- Lambdaの最大タイムアウトは15分\n- デフォルトタイムアウトは3秒\n- 実際のニーズに応じてタイムアウト設定を調整\n\nメモリ増加(B)は実行を高速化する可能性がありますが、タイムアウトの問題を直接解決しません。非同期呼び出し(C)とStep Functions(D)は異なるシナリオ用です。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q37",
+      "domain": 4,
+      "question": "開発者がLambda関数呼び出しの詳細なパフォーマンスデータを分析する必要があります。各ダウンストリームサービス呼び出しのレイテンシーを含めます。どのツールを使用すべきですか？",
+      "options": {
+        "A": "CloudWatch Logs Insights",
+        "B": "AWS X-Rayサービスマップとトレース",
+        "C": "CloudWatch Container Insights",
+        "D": "CloudWatch Contributor Insights"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "X-Rayは分散トレースとサービスマップを提供します：\n- サービス間のリクエストの流れを視覚化\n- 各セグメントのレイテンシーを表示\n- ダウンストリームサービスのパフォーマンス問題を特定\n- LambdaネイティブX-Ray統合\n\nLogs Insights(A)はログ分析用です。Container Insights(C)はコンテナ監視用です。Contributor Insights(D)は高カーディナリティ分析用です。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q38",
+      "domain": 4,
+      "question": "開発者がDynamoDBテーブルの書き込み操作が頻繁にスロットリングされていることを発見しました。現在はオンデマンド容量モードを使用しています。どのように最適化すべきですか？",
+      "options": {
+        "A": "プロビジョニング容量モードに切り替えてより高いWCUを設定する",
+        "B": "パーティションキー設計を確認・最適化してホットパーティションを回避する",
+        "C": "DynamoDB Accelerator（DAX）を有効にする",
+        "D": "アイテムサイズを増やす"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "オンデマンドモードでのスロットリングは通常、ホットパーティションの問題です：\n- 書き込みが少数のパーティションキーに集中\n- パーティションキー設計を最適化して書き込みを分散\n- 高カーディナリティパーティションキーを使用\n- 書き込みシャーディングパターンを検討\n\nプロビジョニングモードへの切り替え(A)はホットパーティションの問題を解決しません。DAX(C)は読み取りキャッシュ用です。アイテムサイズの増加(D)は問題を悪化させます。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q39",
+      "domain": 4,
+      "question": "開発者がLambda関数で構造化ログを記録し、CloudWatch Logs Insightsでクエリしやすくする必要があります。どのログ形式を使用すべきですか？",
+      "options": {
+        "A": "プレーンテキストログ",
+        "B": "JSON形式ログ",
+        "C": "XML形式ログ",
+        "D": "CSV形式ログ"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "JSON形式は構造化ログの最適な選択です：\n- CloudWatch Logs InsightsはネイティブでJSON解析をサポート\n- 特定のフィールドをクエリ可能\n- Lambda PowertoolsはJSONログサポートを提供\n- ログ集約と分析に便利\n\nプレーンテキスト(A)は特定のフィールドのクエリが困難です。XML(C)とCSV(D)は一般的なログ形式ではありません。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q40",
+      "domain": 4,
+      "question": "開発者がAPI Gateway APIのエラー率を監視し、エラー率がしきい値を超えたときにアラートを受け取る必要があります。何を設定すべきですか？",
+      "options": {
+        "A": "CloudWatchアラームで5XXErrorメトリクスを監視",
+        "B": "API Gatewayアクセスログ",
+        "C": "X-Rayトレース",
+        "D": "CloudWatch Eventsルール"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "CloudWatchアラームはメトリクス監視と通知トリガーの標準的な方法です：\n- API Gatewayは5XXErrorと4XXErrorメトリクスを発行\n- アラームしきい値と評価期間を設定\n- SNS通知またはその他のアクションをトリガー\n- 異常検出をサポート\n\nアクセスログ(B)は詳細なログ用です。X-Ray(C)はトレース用です。Eventsルール(D)はイベントルーティング用です。",
+      "difficulty": "medium"
+    }
+  ]
+}

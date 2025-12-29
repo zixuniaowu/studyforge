@@ -1,0 +1,649 @@
+{
+  "exam": {
+    "id": "azure-az-204-set1",
+    "name": "Azure AZ-204 开发人员认证模拟考试 #1",
+    "code": "AZ-204",
+    "provider": "Azure",
+    "language": "zh-CN",
+    "description": "Microsoft Azure Developer Associate 认证考试模拟题，涵盖 Azure 计算解决方案、存储解决方案、安全性、监控优化以及第三方服务集成等核心开发领域",
+    "totalQuestions": 40,
+    "passingScore": 70,
+    "examTime": 120,
+    "domains": [
+      {
+        "id": 1,
+        "name": "开发 Azure 计算解决方案 (Develop Azure compute solutions)",
+        "weight": 28
+      },
+      {
+        "id": 2,
+        "name": "开发 Azure 存储解决方案 (Develop for Azure storage)",
+        "weight": 17
+      },
+      {
+        "id": 3,
+        "name": "实现 Azure 安全性 (Implement Azure security)",
+        "weight": 22
+      },
+      {
+        "id": 4,
+        "name": "监视、故障排除和优化 Azure 解决方案 (Monitor, troubleshoot, and optimize)",
+        "weight": 18
+      },
+      {
+        "id": 5,
+        "name": "连接和使用 Azure 服务及第三方服务 (Connect to and consume Azure and third-party services)",
+        "weight": 15
+      }
+    ],
+    "tags": [
+      "Azure",
+      "AZ-204",
+      "开发人员",
+      "认证考试",
+      "云开发"
+    ]
+  },
+  "questions": [
+    {
+      "id": "q1",
+      "domain": 1,
+      "question": "您正在开发一个 Azure Function，该函数需要在收到 HTTP 请求时执行。该函数应该只允许经过身份验证的用户访问。您应该使用哪种授权级别？",
+      "options": {
+        "A": "Anonymous",
+        "B": "Function",
+        "C": "Admin",
+        "D": "User"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Function 级别授权要求在请求中提供函数密钥。Anonymous 允许任何人访问，Admin 需要主机密钥，User 不是有效的授权级别。Function 级别提供了适当的安全性，同时保持了灵活性。\n---",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q2",
+      "domain": 1,
+      "question": "您需要创建一个 Azure Function，该函数每 5 分钟自动执行一次。您应该使用哪种触发器类型？",
+      "options": {
+        "A": "HTTP 触发器",
+        "B": "Timer 触发器",
+        "C": "Blob 触发器",
+        "D": "Queue 触发器"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Timer 触发器使用 CRON 表达式来安排函数的定期执行。对于每 5 分钟执行一次的场景，可以使用 CRON 表达式 '0 */5 * * * *'。HTTP 触发器需要外部请求，Blob 和 Queue 触发器分别响应存储事件。\n---",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q3",
+      "domain": 1,
+      "question": "您正在将应用程序部署到 Azure App Service。应用程序需要访问存储在 Azure Key Vault 中的密钥。您应该如何配置应用程序以安全地访问密钥？（选择两个）",
+      "options": {
+        "A": "在应用程序代码中硬编码 Key Vault 访问密钥",
+        "B": "为 App Service 启用系统分配的托管标识",
+        "C": "在 Key Vault 中配置访问策略以授予托管标识访问权限",
+        "D": "将 Key Vault 密钥存储在应用程序设置中"
+      },
+      "answer": ["B", "C"],
+      "answerType": "multiple",
+      "explanation": "使用托管标识是访问 Azure 资源的最安全方式。首先为 App Service 启用系统分配的托管标识，然后在 Key Vault 中配置访问策略，授予该托管标识相应的权限。这避免了在代码或配置中存储凭据。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q4",
+      "domain": 1,
+      "question": "您需要在 Azure Container Apps 中部署一个容器化应用程序。该应用程序需要根据 HTTP 流量自动缩放。您应该配置什么？",
+      "options": {
+        "A": "手动缩放规则",
+        "B": "KEDA 自定义缩放器",
+        "C": "HTTP 缩放规则",
+        "D": "CPU 缩放规则"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "Azure Container Apps 支持基于 HTTP 流量的自动缩放。HTTP 缩放规则会根据并发 HTTP 请求数自动调整副本数量。KEDA 用于自定义事件源，而 CPU 缩放基于 CPU 使用率。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q5",
+      "domain": 1,
+      "question": "您正在开发一个 Azure Function 应用程序，需要将函数的执行时间延长到超过默认的 5 分钟超时。您应该将函数托管在哪个计划中？",
+      "options": {
+        "A": "消耗计划 (Consumption Plan)",
+        "B": "高级计划 (Premium Plan)",
+        "C": "专用计划 (Dedicated Plan)",
+        "D": "消耗计划和高级计划都可以"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "消耗计划的最大执行时间为 10 分钟（默认 5 分钟）。高级计划允许无限制的执行时间，并提供 VNET 集成、始终热启动实例等功能。专用计划也支持更长的超时，但高级计划是更好的选择。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q6",
+      "domain": 1,
+      "question": "您需要在 Azure App Service 中配置自动缩放，以在 CPU 使用率超过 80% 时添加实例。您应该配置什么？",
+      "options": {
+        "A": "部署槽",
+        "B": "自动缩放规则",
+        "C": "流量管理器",
+        "D": "负载均衡器"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure App Service 的自动缩放规则允许根据指标（如 CPU、内存、HTTP 队列长度等）自动增加或减少实例数。可以设置规则在 CPU 超过阈值时横向扩展，在 CPU 降低时缩减。\n---",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q7",
+      "domain": 1,
+      "question": "您正在使用 Azure Functions Durable Functions 扩展来实现一个需要等待外部事件的工作流。您应该使用哪种模式？",
+      "options": {
+        "A": "函数链接 (Function Chaining)",
+        "B": "扇出/扇入 (Fan-out/Fan-in)",
+        "C": "人工交互 (Human Interaction)",
+        "D": "异步 HTTP API"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "人工交互模式用于需要等待外部事件或人工干预的工作流。使用 WaitForExternalEvent 方法可以暂停编排并等待外部信号。函数链接用于顺序执行，扇出/扇入用于并行处理。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q8",
+      "domain": 1,
+      "question": "您正在将 Docker 容器部署到 Azure Container Instances (ACI)。您需要确保容器可以从 Azure Container Registry (ACR) 拉取私有镜像。您应该如何配置？",
+      "options": {
+        "A": "使用服务主体凭据进行身份验证",
+        "B": "将 ACR 设置为公开访问",
+        "C": "使用 SSH 密钥进行身份验证",
+        "D": "使用 Azure AD 用户凭据"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Azure Container Instances 可以使用服务主体凭据从私有 Azure Container Registry 拉取镜像。这需要创建具有 ACR 拉取权限的服务主体，并在创建容器组时提供凭据。公开 ACR 会带来安全风险。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q9",
+      "domain": 2,
+      "question": "您需要将大型文件上传到 Azure Blob Storage。文件大小为 500 GB。您应该使用哪种上传方法？",
+      "options": {
+        "A": "Put Blob 操作",
+        "B": "Put Block 和 Put Block List 操作",
+        "C": "Append Blob 操作",
+        "D": "Copy Blob 操作"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "对于大型文件（超过 256 MB），应该使用分块上传。Put Block 操作上传单个块（最大 4000 MB），Put Block List 操作将所有块组合成最终的 Blob。这允许并行上传和故障恢复。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q10",
+      "domain": 2,
+      "question": "您正在开发一个应用程序，需要在 Azure Cosmos DB 中存储 JSON 文档。应用程序需要按特定属性进行高效查询。您应该如何优化查询性能？",
+      "options": {
+        "A": "增加 RU/s 配置",
+        "B": "使用正确的分区键",
+        "C": "启用跨区域复制",
+        "D": "使用 SQL API 而不是 MongoDB API"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "选择正确的分区键是优化 Cosmos DB 查询性能的关键。好的分区键应该具有高基数、均匀分布数据，并且是查询中经常使用的属性。这可以避免跨分区查询，显著提高性能。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q11",
+      "domain": 2,
+      "question": "您需要配置 Azure Blob Storage 的生命周期管理策略，以在 30 天后将 Blob 移动到冷存储层。您应该使用什么？",
+      "options": {
+        "A": "Azure Policy",
+        "B": "Blob 生命周期管理规则",
+        "C": "Azure Automation",
+        "D": "Azure Logic Apps"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure Blob Storage 生命周期管理允许创建基于规则的策略，自动将 Blob 在不同访问层之间转换或删除。可以根据 Blob 的创建时间或最后修改时间设置规则。\n---",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q12",
+      "domain": 2,
+      "question": "您正在使用 Azure Cosmos DB 的更改源功能来处理文档更新。您应该使用什么来读取更改源？",
+      "options": {
+        "A": "Azure Functions Cosmos DB 触发器",
+        "B": "Azure Event Hubs",
+        "C": "Azure Service Bus",
+        "D": "Azure Queue Storage"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Azure Functions 的 Cosmos DB 触发器可以自动连接到 Cosmos DB 更改源，在文档发生更改时触发函数。这是处理 Cosmos DB 更改的最简单方式，无需手动管理更改源读取逻辑。\n---",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q13",
+      "domain": 2,
+      "question": "您需要生成一个共享访问签名 (SAS)，允许用户在接下来的 1 小时内只读访问特定的 Blob。您应该使用哪种 SAS 类型？",
+      "options": {
+        "A": "服务 SAS",
+        "B": "帐户 SAS",
+        "C": "用户委托 SAS",
+        "D": "存储访问策略"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "服务 SAS 可以授予对特定存储服务资源（如单个 Blob）的访问权限。可以指定权限（只读）和过期时间（1 小时）。用户委托 SAS 更安全但需要 Azure AD，帐户 SAS 授予更广泛的访问权限。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q14",
+      "domain": 2,
+      "question": "您正在使用 Azure Cosmos DB，需要确保在多个区域之间进行故障转移时数据的一致性。您应该配置哪种一致性级别以确保最强的一致性？",
+      "options": {
+        "A": "最终一致性 (Eventual)",
+        "B": "会话一致性 (Session)",
+        "C": "强一致性 (Strong)",
+        "D": "有界过时 (Bounded Staleness)"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "强一致性级别保证读取始终返回最新提交的写入版本。这提供了线性化保证，但会增加延迟和降低可用性。在需要绝对数据一致性的场景中使用。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q15",
+      "domain": 3,
+      "question": "您需要在 Azure Key Vault 中存储应用程序的数据库连接字符串。您应该使用 Key Vault 的哪种对象类型？",
+      "options": {
+        "A": "密钥 (Key)",
+        "B": "机密 (Secret)",
+        "C": "证书 (Certificate)",
+        "D": "托管存储帐户"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Key Vault 机密用于存储敏感的字符串值，如连接字符串、密码和 API 密钥。密钥用于加密操作，证书用于 SSL/TLS 和代码签名。\n---",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q16",
+      "domain": 3,
+      "question": "您正在实现 Azure AD 身份验证，应用程序需要代表用户访问 Microsoft Graph API。您应该使用哪种 OAuth 2.0 流？",
+      "options": {
+        "A": "客户端凭据流",
+        "B": "授权码流",
+        "C": "隐式流",
+        "D": "资源所有者密码凭据流"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "授权码流是代表用户访问资源的推荐流程。用户首先进行身份验证，应用程序收到授权码，然后交换为访问令牌。客户端凭据流用于应用程序自身的身份，隐式流已不推荐使用。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q17",
+      "domain": 3,
+      "question": "您需要配置 Azure App Service 以使用 Azure AD 进行身份验证。您希望只允许特定的用户访问应用程序。您应该如何配置？（选择两个）",
+      "options": {
+        "A": "启用 App Service 身份验证/授权",
+        "B": "将应用程序注册配置为需要用户分配",
+        "C": "使用匿名身份验证",
+        "D": "配置 IP 限制"
+      },
+      "answer": ["A", "B"],
+      "answerType": "multiple",
+      "explanation": "首先启用 App Service 身份验证/授权（Easy Auth），然后在 Azure AD 应用注册中配置"需要用户分配"选项。这样只有被分配到应用程序的用户才能访问。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q18",
+      "domain": 3,
+      "question": "您正在开发一个需要访问 Azure Storage 的应用程序。您希望避免在代码中使用存储帐户密钥。您应该使用什么？",
+      "options": {
+        "A": "共享访问签名 (SAS)",
+        "B": "托管标识和 Azure RBAC",
+        "C": "存储帐户防火墙",
+        "D": "私有终结点"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "托管标识结合 Azure RBAC 是无密码访问 Azure 资源的最佳实践。托管标识由 Azure 自动管理，无需在代码中存储凭据。通过 RBAC 角色分配授予适当的存储权限。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q19",
+      "domain": 3,
+      "question": "您需要为 Azure Function 配置 CORS（跨源资源共享）以允许从特定域进行访问。您应该在哪里配置此设置？",
+      "options": {
+        "A": "在函数代码中",
+        "B": "在 Azure Portal 的函数应用 CORS 设置中",
+        "C": "在 host.json 文件中",
+        "D": "在 function.json 文件中"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure Functions 的 CORS 配置在 Azure Portal 的函数应用级别或通过 Azure CLI 设置。可以指定允许的源、方法和标头。不需要在函数代码中手动处理 CORS 标头。\n---",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q20",
+      "domain": 3,
+      "question": "您正在使用 Microsoft Authentication Library (MSAL) 获取访问令牌。您需要确保令牌被缓存以减少对 Azure AD 的请求。MSAL 默认提供哪种缓存？",
+      "options": {
+        "A": "无缓存",
+        "B": "内存缓存",
+        "C": "磁盘缓存",
+        "D": "分布式缓存"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "MSAL 默认提供内存缓存来存储访问令牌和刷新令牌。对于 Web 应用程序和服务，建议实现分布式缓存（如 Redis）以在多个实例之间共享令牌缓存。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q21",
+      "domain": 4,
+      "question": "您需要在 Azure Application Insights 中跟踪自定义事件和指标。您应该使用哪个 API？",
+      "options": {
+        "A": "TrackEvent 和 TrackMetric",
+        "B": "TrackRequest 和 TrackResponse",
+        "C": "TrackLog 和 TrackError",
+        "D": "TrackCustom 和 TrackData"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Application Insights SDK 提供 TrackEvent 用于跟踪自定义事件，TrackMetric 用于跟踪自定义指标。这些数据可以在 Azure Portal 中查看和分析，用于监控应用程序行为。\n---",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q22",
+      "domain": 4,
+      "question": "您正在使用 Azure CDN 缓存静态内容。您需要在更新内容后立即清除缓存。您应该执行什么操作？",
+      "options": {
+        "A": "等待 TTL 过期",
+        "B": "使用 CDN 清除功能",
+        "C": "删除并重新创建 CDN 终结点",
+        "D": "更改存储帐户访问密钥"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure CDN 提供清除（Purge）功能，允许从所有边缘节点删除缓存的内容。可以清除特定路径或通配符匹配的内容。这比等待 TTL 过期更快，比重新创建终结点更简单。\n---",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q23",
+      "domain": 4,
+      "question": "您需要配置 Azure Application Insights 以自动检测性能异常和故障。您应该启用什么功能？",
+      "options": {
+        "A": "实时指标流",
+        "B": "智能检测",
+        "C": "可用性测试",
+        "D": "诊断设置"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "智能检测使用机器学习自动分析遥测数据，检测异常模式如性能问题、故障率上升和内存泄漏。检测到问题时会自动发送通知。实时指标流提供实时视图，但不进行自动检测。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q24",
+      "domain": 4,
+      "question": "您正在为 Azure App Service 配置自动缩放。您需要确保在缩放操作之间有足够的冷却时间以避免振荡。您应该配置什么？",
+      "options": {
+        "A": "缩放限制",
+        "B": "冷却周期",
+        "C": "持续时间",
+        "D": "评估频率"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "冷却周期定义了在上一次缩放操作后，再次执行缩放之前必须等待的时间。这防止了因指标快速波动导致的频繁缩放（振荡）。默认冷却周期为 5 分钟。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q25",
+      "domain": 4,
+      "question": "您需要使用 Azure Redis Cache 来缓存会话数据。为了确保高可用性，您应该选择哪个层？",
+      "options": {
+        "A": "基本层",
+        "B": "标准层",
+        "C": "高级层",
+        "D": "基本层和标准层都可以"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "标准层提供主/副本复制的双节点 Redis 缓存，具有 99.9% SLA。基本层是单节点缓存，没有 SLA。高级层提供更多功能如群集和 VNET，但对于简单的会话缓存，标准层就足够了。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q26",
+      "domain": 4,
+      "question": "您正在分析 Application Insights 中的分布式跟踪数据。您需要查看请求在不同微服务之间的完整路径。您应该使用什么功能？",
+      "options": {
+        "A": "应用程序映射",
+        "B": "事务搜索",
+        "C": "端到端事务详细信息",
+        "D": "指标资源管理器"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "端到端事务详细信息视图显示单个请求跨所有组件的完整跟踪，包括依赖调用、异常和时间线。应用程序映射显示整体拓扑，事务搜索用于查找特定事件。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q27",
+      "domain": 5,
+      "question": "您需要使用 Azure API Management 来限制 API 的调用速率。您应该使用哪种策略？",
+      "options": {
+        "A": "ip-filter",
+        "B": "rate-limit-by-key",
+        "C": "quota-by-key",
+        "D": "validate-jwt"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "rate-limit-by-key 策略用于限制特定时间窗口内的 API 调用次数，防止突发流量。quota-by-key 用于长期配额限制。ip-filter 用于 IP 过滤，validate-jwt 用于令牌验证。\n---",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q28",
+      "domain": 5,
+      "question": "您正在使用 Azure Event Grid 将事件从 Azure Blob Storage 发送到 Azure Function。当新 Blob 创建时触发函数。您应该订阅哪种事件类型？",
+      "options": {
+        "A": "Microsoft.Storage.BlobCreated",
+        "B": "Microsoft.Storage.BlobUploaded",
+        "C": "Microsoft.Storage.NewBlob",
+        "D": "Microsoft.Storage.ContainerCreated"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Microsoft.Storage.BlobCreated 事件在 Blob 创建或替换时触发。Event Grid 提供了多种存储事件类型，包括 BlobCreated、BlobDeleted 等。这允许实现事件驱动的架构。\n---",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q29",
+      "domain": 5,
+      "question": "您需要使用 Azure Service Bus 实现消息队列，要求消息按照发送顺序被处理。您应该使用什么功能？",
+      "options": {
+        "A": "死信队列",
+        "B": "会话",
+        "C": "重复检测",
+        "D": "自动转发"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Service Bus 会话支持消息的先进先出 (FIFO) 处理。通过为消息设置会话 ID，可以确保具有相同会话 ID 的消息按顺序处理。这对于需要有序处理的场景（如事务处理）很重要。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q30",
+      "domain": 5,
+      "question": "您正在使用 Azure Queue Storage 进行异步消息处理。您需要确保如果消息处理失败，消息不会丢失。您应该如何处理？",
+      "options": {
+        "A": "立即删除消息",
+        "B": "使用可见性超时和条件删除",
+        "C": "将消息复制到另一个队列",
+        "D": "禁用消息删除"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure Queue Storage 使用可见性超时机制。获取消息时消息变为不可见，处理成功后显式删除消息。如果处理失败且未删除，消息在超时后重新可见，可被其他消费者处理。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q31",
+      "domain": 5,
+      "question": "您需要在 Azure API Management 中转换 API 响应的格式，从 XML 转换为 JSON。您应该使用哪种策略？",
+      "options": {
+        "A": "set-body",
+        "B": "xml-to-json",
+        "C": "find-and-replace",
+        "D": "rewrite-uri"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "xml-to-json 策略可以将响应正文从 XML 转换为 JSON 格式。这在后端 API 返回 XML 但客户端需要 JSON 时非常有用。set-body 用于设置或修改请求/响应正文。\n---",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q32",
+      "domain": 5,
+      "question": "您正在使用 Azure Event Hubs 接收高吞吐量的遥测数据。您需要确保消费者可以水平扩展。您应该使用什么？",
+      "options": {
+        "A": "单个消费者组",
+        "B": "多个分区和消费者组",
+        "C": "事件处理器主机",
+        "D": "以上所有"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "Event Hubs 的水平扩展依赖于分区（并行处理单元）、消费者组（独立读取流）和事件处理器主机（自动负载均衡）。这些组件协同工作以实现高吞吐量的可扩展事件处理。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q33",
+      "domain": 1,
+      "question": "您正在将 .NET Core 应用程序部署到 Azure App Service。您需要配置应用程序以使用不同的环境设置进行开发和生产。您应该使用什么？",
+      "options": {
+        "A": "Web.config 转换",
+        "B": "Azure App Service 应用程序设置和部署槽",
+        "C": "环境变量文件",
+        "D": "硬编码配置"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure App Service 应用程序设置会覆盖 appsettings.json 中的值。结合部署槽，可以为不同环境（开发、预生产、生产）配置不同的设置。设置可以标记为"槽设置"以保持槽特定。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q34",
+      "domain": 1,
+      "question": "您正在使用 Azure Functions 的 Durable Functions 扩展。您需要并行执行多个活动函数并等待所有结果。您应该使用什么方法？",
+      "options": {
+        "A": "CallActivityAsync",
+        "B": "WaitForExternalEvent",
+        "C": "Task.WhenAll",
+        "D": "ContinueWith"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "在 Durable Functions 中，可以使用 Task.WhenAll 并行执行多个活动函数。首先创建多个 CallActivityAsync 任务，然后使用 Task.WhenAll 等待所有任务完成。这实现了扇出/扇入模式。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q35",
+      "domain": 2,
+      "question": "您正在使用 Azure Cosmos DB，需要配置 Time to Live (TTL) 以在 7 天后自动删除文档。您应该如何配置？",
+      "options": {
+        "A": "在容器级别设置 DefaultTimeToLive 为 604800 秒",
+        "B": "在文档中添加 expirationDate 属性",
+        "C": "使用 Azure Logic Apps 定期删除",
+        "D": "配置 Cosmos DB 触发器"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Cosmos DB TTL 功能允许在容器级别设置 DefaultTimeToLive（以秒为单位）。7 天等于 604800 秒。也可以在单个文档上设置 ttl 属性来覆盖默认值。这是自动数据过期的原生功能。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q36",
+      "domain": 3,
+      "question": "您需要在 Azure Key Vault 中轮换密钥，同时确保应用程序不会中断。您应该使用什么策略？",
+      "options": {
+        "A": "直接更新密钥版本",
+        "B": "创建新版本的密钥并更新应用程序引用",
+        "C": "删除旧密钥并创建新密钥",
+        "D": "使用相同名称创建新密钥"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Key Vault 支持密钥版本控制。创建新版本时，旧版本仍然可用。可以先创建新版本，更新应用程序配置以使用新版本，验证后再禁用旧版本。这确保了无中断的密钥轮换。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q37",
+      "domain": 4,
+      "question": "您需要配置 Application Insights 可用性测试以监控 Web 应用程序的响应时间。您应该创建什么类型的测试？",
+      "options": {
+        "A": "URL ping 测试",
+        "B": "多步骤 Web 测试",
+        "C": "自定义跟踪可用性测试",
+        "D": "性能计数器"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "URL ping 测试是最简单的可用性测试类型，可以从多个位置定期请求 URL 并测量响应时间和状态码。多步骤 Web 测试用于更复杂的场景（如登录流程）。\n---",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q38",
+      "domain": 5,
+      "question": "您正在使用 Azure API Management 发布 API。您需要为不同的 API 消费者提供不同级别的访问和速率限制。您应该使用什么？",
+      "options": {
+        "A": "API 版本",
+        "B": "产品 (Products)",
+        "C": "修订版本 (Revisions)",
+        "D": "后端服务"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure API Management 产品是一个或多个 API 的集合，可以配置不同的访问级别、使用条款和速率限制。开发人员订阅产品以获取访问权限。这允许为不同用户群体提供不同的服务层级。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q39",
+      "domain": 1,
+      "question": "您正在使用 Azure Container Apps 部署微服务应用程序。您需要配置服务之间的内部通信。您应该使用什么？",
+      "options": {
+        "A": "外部入口",
+        "B": "内部入口 (Internal Ingress)",
+        "C": "公共 IP 地址",
+        "D": "Azure Front Door"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure Container Apps 的内部入口允许容器应用程序仅在虚拟网络内部可访问。这对于微服务之间的安全通信非常有用，不需要将服务暴露到互联网。使用服务发现可以通过名称访问其他服务。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q40",
+      "domain": 3,
+      "question": "您的应用程序需要使用 Azure AD 保护的 Web API。您需要验证传入请求中的访问令牌。您应该验证令牌的哪些声明？（选择两个）",
+      "options": {
+        "A": "aud (受众) 声明",
+        "B": "name 声明",
+        "C": "iss (颁发者) 声明",
+        "D": "email 声明"
+      },
+      "answer": ["A", "C"],
+      "answerType": "multiple",
+      "explanation": "验证访问令牌时，必须检查 aud（受众）声明以确保令牌是为您的 API 颁发的，以及 iss（颁发者）声明以确保令牌来自预期的身份提供者。其他声明如 name 和 email 是可选的用户信息。\n---",
+      "difficulty": "medium"
+    }
+  ]
+}

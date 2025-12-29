@@ -1,0 +1,622 @@
+{
+  "exam": {
+    "id": "aws-sap-c02-set2",
+    "name": "AWS SAP-C02 模拟考试 #2",
+    "code": "SAP-C02",
+    "provider": "AWS",
+    "language": "zh-CN",
+    "description": "AWS Solutions Architect Professional (SAP-C02) 认证模拟考试第二套，涵盖复杂架构设计、迁移策略、成本优化和组织复杂性管理。",
+    "totalQuestions": 40,
+    "passingScore": 75,
+    "examTime": 180,
+    "domains": [
+      {"id": 1, "name": "复杂组织的解决方案设计", "weight": 26},
+      {"id": 2, "name": "新解决方案设计", "weight": 29},
+      {"id": 3, "name": "持续改进现有解决方案", "weight": 25},
+      {"id": 4, "name": "加速工作负载迁移和现代化", "weight": 20}
+    ],
+    "tags": ["AWS", "SAP-C02", "Professional", "Architecture"]
+  },
+  "questions": [
+    {
+      "id": 1,
+      "domain": 1,
+      "question": "一家企业使用 AWS Organizations 管理 150 个账户。需要实现以下安全要求：1) 禁止在未授权区域创建资源；2) 强制所有 EBS 卷使用 KMS 加密；3) 阻止用户禁用 CloudTrail。如何以最少的管理开销实现这些要求？",
+      "options": {
+        "A": "在每个账户中使用 AWS Config 规则检测并使用 Lambda 自动修复",
+        "B": "使用 AWS Control Tower 部署预防性和检测性护栏",
+        "C": "在根 OU 级别应用 Service Control Policies (SCPs) 限制这些操作",
+        "D": "使用 CloudFormation StackSets 在所有账户中部署 IAM 策略"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "SCPs 可以在组织级别强制执行权限边界，阻止在 API 级别创建不合规资源。这是最直接和低开销的方法。SCPs 可以限制区域、强制加密、阻止禁用 CloudTrail 等操作。Control Tower 虽然也可用，但会引入额外的复杂性。",
+      "difficulty": "hard"
+    },
+    {
+      "id": 2,
+      "domain": 1,
+      "question": "公司正在设计多账户网络架构。有生产、开发和共享服务三个 VPC，需要满足：1) 所有 VPC 可以访问共享服务；2) 生产和开发 VPC 之间不能直接通信；3) 需要支持未来扩展到 100+ VPC。最佳设计是什么？",
+      "options": {
+        "A": "使用 VPC Peering 将每个 VPC 连接到共享服务 VPC",
+        "B": "使用 Transit Gateway，通过路由表隔离生产和开发流量",
+        "C": "使用 AWS PrivateLink 从每个 VPC 访问共享服务",
+        "D": "在每个 VPC 中部署 VPN 网关互联"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Transit Gateway 提供了可扩展的网络架构，支持 100+ VPC。通过 Transit Gateway 路由表，可以精确控制 VPC 间的路由，实现生产和开发的隔离。VPC Peering 不能传递路由，且管理复杂度随 VPC 数量增长。",
+      "difficulty": "hard"
+    },
+    {
+      "id": 3,
+      "domain": 2,
+      "question": "一个金融交易系统需要在两个 AWS 区域间实现主动-主动部署，要求写入延迟 < 50ms，数据一致性，以及在任何单区域故障时自动故障转移。使用 PostgreSQL 数据库。最佳解决方案是什么？",
+      "options": {
+        "A": "在两个区域部署 Aurora PostgreSQL，使用应用层双写逻辑",
+        "B": "使用 Aurora PostgreSQL Global Database，在主区域写入并异步复制到次要区域",
+        "C": "使用 Amazon DynamoDB Global Tables 替代 PostgreSQL",
+        "D": "在两个区域部署独立的 RDS PostgreSQL，使用 AWS DMS 进行双向复制"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Aurora Global Database 提供跨区域复制，复制延迟通常 < 1秒，支持快速故障转移。虽然它是主动-被动模式，但对于需要 PostgreSQL 兼容性和低延迟复制的场景是最佳选择。真正的主动-主动对于关系数据库会带来复杂的冲突解决问题。",
+      "difficulty": "hard"
+    },
+    {
+      "id": 4,
+      "domain": 2,
+      "question": "公司需要构建一个事件驱动的微服务架构，每秒处理 50,000 个事件。要求：1) 服务间解耦；2) 事件持久化供重放；3) 按序处理同一客户的事件。最佳架构是什么？",
+      "options": {
+        "A": "Amazon SNS -> SQS -> Lambda",
+        "B": "Amazon Kinesis Data Streams (使用分区键) -> Lambda",
+        "C": "Amazon MSK (Kafka) -> ECS 消费者",
+        "D": "Amazon EventBridge -> Step Functions"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Kinesis Data Streams 支持高吞吐量、事件持久化（默认24小时，可延长至365天）和有序处理。通过使用客户ID作为分区键，确保同一客户的事件被同一个分片处理，保证顺序。MSK 也可行但管理开销更大。",
+      "difficulty": "medium"
+    },
+    {
+      "id": 5,
+      "domain": 3,
+      "question": "一个 Web 应用使用 CloudFront + ALB + EC2 Auto Scaling 架构。用户报告间歇性 504 Gateway Timeout 错误。CloudWatch 显示 ALB 健康检查正常，EC2 实例 CPU < 30%。应该首先检查什么？",
+      "options": {
+        "A": "增加 EC2 实例数量以处理更多流量",
+        "B": "检查 CloudFront 到 ALB 的连接超时设置和 Origin Response Timeout",
+        "C": "升级 EC2 实例类型提高性能",
+        "D": "检查 VPC 安全组配置"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "504 错误表示后端响应超时。由于 CPU 利用率低且健康检查正常，问题很可能是某些请求处理时间超过了 CloudFront 的 Origin Response Timeout（默认30秒）。应检查长时间运行的请求并相应调整超时设置。",
+      "difficulty": "medium"
+    },
+    {
+      "id": 6,
+      "domain": 4,
+      "question": "公司有 2000 台服务器运行各种应用程序，计划迁移到 AWS。需要在迁移前了解服务器依赖关系、运行的应用程序和资源利用率。推荐的发现方法是什么？",
+      "options": {
+        "A": "手动收集每台服务器的配置信息",
+        "B": "使用 AWS Application Discovery Service 的代理或无代理发现",
+        "C": "使用 AWS Migration Hub 直接开始迁移",
+        "D": "使用 CloudWatch Agent 收集指标"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "AWS Application Discovery Service 专门用于发现本地服务器的配置、性能数据和网络依赖关系。代理模式提供更详细的数据（包括进程和网络连接），无代理模式使用 VMware vCenter 收集基本信息。这些数据可以导入 Migration Hub 进行规划。",
+      "difficulty": "easy"
+    },
+    {
+      "id": 7,
+      "domain": 1,
+      "question": "企业需要实现账户级别的预算控制。当账户支出接近预算限制时，需要自动阻止新资源的创建，同时不影响现有资源的运行。如何实现？",
+      "options": {
+        "A": "使用 AWS Budgets 配合 Budgets Actions 在超出阈值时自动应用限制性 SCP",
+        "B": "使用 AWS Cost Explorer 监控支出并手动干预",
+        "C": "在每个账户中设置 CloudWatch 告警发送通知",
+        "D": "使用 AWS Organizations 的配额限制"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "AWS Budgets Actions 可以在预算阈值达到时自动执行操作，包括应用自定义 IAM 策略或 SCP。这允许在不影响现有资源的情况下阻止新资源创建。Cost Explorer 仅用于分析，不能自动采取行动。",
+      "difficulty": "hard"
+    },
+    {
+      "id": 8,
+      "domain": 2,
+      "question": "一个内容管理系统需要处理大量图片上传，每张图片需要生成多种尺寸的缩略图。处理时间可能长达 5 分钟，每天约处理 100,000 张图片。最具成本效益的架构是什么？",
+      "options": {
+        "A": "使用 EC2 实例运行图片处理服务，配合 Auto Scaling",
+        "B": "S3 事件触发 Lambda 进行处理",
+        "C": "S3 事件 -> SQS -> Lambda (或 Fargate) 进行异步处理",
+        "D": "使用 AWS Batch 处理图片"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "SQS + Lambda/Fargate 的异步模式最适合这个场景。SQS 提供缓冲和可靠性，Lambda 可以并行处理（5分钟在限制内），Fargate 可用于需要更长时间的任务。直接 S3 触发 Lambda 在高并发时可能达到并发限制。",
+      "difficulty": "medium"
+    },
+    {
+      "id": 9,
+      "domain": 3,
+      "question": "公司的生产数据库运行在 RDS MySQL Multi-AZ 上。DBA 报告每周日凌晨数据库性能下降约 30 分钟。分析发现这与自动备份时间窗口重叠。如何解决？",
+      "options": {
+        "A": "将自动备份时间调整到业务低峰期",
+        "B": "禁用自动备份，改用手动快照",
+        "C": "迁移到 Aurora MySQL，利用其连续备份机制",
+        "D": "增加预置 IOPS 以处理备份期间的额外负载"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "Aurora 使用连续备份到 S3，不会像 RDS MySQL 那样在备份期间创建存储 I/O 暂停。这是根本性解决方案。调整备份窗口只是推迟问题，禁用备份不推荐，增加 IOPS 成本高且效果有限。",
+      "difficulty": "medium"
+    },
+    {
+      "id": 10,
+      "domain": 4,
+      "question": "公司决定将核心 Java 应用程序容器化并迁移到 AWS。应用程序当前使用 Oracle 数据库和 Redis 缓存。团队对 Kubernetes 经验有限。推荐的计算平台是什么？",
+      "options": {
+        "A": "Amazon ECS on Fargate",
+        "B": "Amazon EKS on EC2",
+        "C": "Amazon EKS on Fargate",
+        "D": "在 EC2 上自行管理 Docker"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "对于 Kubernetes 经验有限的团队，ECS 比 EKS 更容易上手。Fargate 消除了服务器管理需求。ECS 提供了足够的容器编排能力，同时学习曲线较低。如果未来需要，可以迁移到 EKS。",
+      "difficulty": "medium"
+    },
+    {
+      "id": 11,
+      "domain": 1,
+      "question": "一家跨国公司需要在 EU 数据保护法规下运营。要求所有欧洲用户数据必须存储在欧洲区域，且需要审计数据访问。如何在 AWS 上实现这些要求？（选择两项）",
+      "options": {
+        "A": "使用 AWS Organizations SCPs 限制在欧洲区域外创建数据存储服务",
+        "B": "启用 CloudTrail 并将日志发送到受保护的 S3 存储桶",
+        "C": "使用 Amazon Macie 自动分类敏感数据",
+        "D": "将所有数据加密存储在 S3 Glacier"
+      },
+      "answer": ["A", "B"],
+      "answerType": "multiple",
+      "explanation": "SCPs 可以强制数据主权要求，阻止在欧洲区域外创建 S3、RDS 等服务。CloudTrail 记录所有 API 调用，提供数据访问审计。Macie 有用但不是必需的，Glacier 是存储类而非合规控制。",
+      "difficulty": "medium"
+    },
+    {
+      "id": 12,
+      "domain": 2,
+      "question": "一个电商平台需要实现个性化推荐系统。要求：1) 实时推荐（延迟 < 200ms）；2) 每天基于新数据更新模型；3) 最小化机器学习基础设施管理。最佳方案是什么？",
+      "options": {
+        "A": "使用 Amazon Personalize 托管服务",
+        "B": "在 SageMaker 上训练自定义模型，部署到实时端点",
+        "C": "使用 EMR 运行 Spark MLlib 训练模型，部署到 EC2",
+        "D": "使用 Lambda 运行简单的协同过滤算法"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Amazon Personalize 是完全托管的推荐服务，支持实时推荐、自动模型再训练和 API 集成。它最小化了 ML 基础设施管理工作。SageMaker 需要更多的 ML 专业知识，EMR/EC2 方案管理开销最大。",
+      "difficulty": "medium"
+    },
+    {
+      "id": 13,
+      "domain": 3,
+      "question": "一个应用程序使用 DynamoDB 存储用户会话数据，设置了 TTL 自动删除过期会话。最近发现删除操作有显著延迟，有些项目在过期后几天才被删除。如何改善？",
+      "options": {
+        "A": "增加 DynamoDB 表的预置容量",
+        "B": "这是 DynamoDB TTL 的正常行为，TTL 删除是尽最大努力且非即时的",
+        "C": "使用 Lambda 定期扫描并删除过期项目",
+        "D": "迁移到 ElastiCache 进行会话管理"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "DynamoDB TTL 是后台进程，通常在过期后 48 小时内删除项目，这是设计行为而非问题。如果应用需要精确的过期行为，应在读取时检查时间戳并过滤过期数据，而不是依赖 TTL 的删除时间。",
+      "difficulty": "medium"
+    },
+    {
+      "id": 14,
+      "domain": 4,
+      "question": "公司正在将大型机应用程序现代化。应用程序包含复杂的 COBOL 业务逻辑，每天处理数百万笔交易。如何以最低风险进行现代化？",
+      "options": {
+        "A": "使用 AWS Mainframe Modernization 的自动重构模式将 COBOL 转换为 Java",
+        "B": "使用 AWS Mainframe Modernization 的重平台模式在 AWS 上运行现有代码",
+        "C": "完全重写应用程序为云原生微服务",
+        "D": "保持大型机不变，只迁移周边系统"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "AWS Mainframe Modernization 的重平台（Replatform）模式允许现有大型机应用程序在 AWS 托管运行时环境中运行，保留现有代码逻辑。这是风险最低的方式。自动重构或完全重写风险更高，且需要大量测试。",
+      "difficulty": "hard"
+    },
+    {
+      "id": 15,
+      "domain": 1,
+      "question": "公司使用 AWS Organizations 管理 50 个账户。安全团队需要确保所有账户的 GuardDuty 都已启用，并将发现结果集中到安全账户。如何实现？",
+      "options": {
+        "A": "在每个账户中手动启用 GuardDuty",
+        "B": "使用 AWS Organizations 的委托管理员功能，指定安全账户为 GuardDuty 管理员",
+        "C": "使用 CloudFormation StackSets 在所有账户中部署 GuardDuty",
+        "D": "使用 AWS Config 规则检测未启用 GuardDuty 的账户"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "GuardDuty 支持 Organizations 集成，可以指定委托管理员账户。管理员账户可以自动在所有组织成员账户中启用 GuardDuty，并集中查看所有发现结果。这是最简单和最有效的方法。",
+      "difficulty": "medium"
+    },
+    {
+      "id": 16,
+      "domain": 2,
+      "question": "一个物联网平台需要支持 500 万台设备，每台设备每分钟发送一条遥测数据。数据需要存储 2 年供历史分析，最近 7 天的数据需要支持实时查询。最佳存储策略是什么？",
+      "options": {
+        "A": "所有数据存储在 DynamoDB",
+        "B": "所有数据存储在 Amazon Timestream",
+        "C": "所有数据存储在 S3，使用 Athena 查询",
+        "D": "最近 7 天数据存储在 Timestream，历史数据存储在 S3"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "Amazon Timestream 专为时序数据设计，提供快速查询性能，但长期存储成本高。S3 适合长期存储历史数据。Timestream 可以配置自动将旧数据移至内存存储、磁性存储，但更经济的方案是将历史数据导出到 S3。",
+      "difficulty": "hard"
+    },
+    {
+      "id": 17,
+      "domain": 3,
+      "question": "应用程序在 EKS 集群上运行，使用 Horizontal Pod Autoscaler (HPA) 基于 CPU 进行扩展。发现扩展响应太慢，流量高峰时用户体验下降。如何改善？（选择两项）",
+      "options": {
+        "A": "配置 Cluster Autoscaler 更快地添加节点",
+        "B": "使用 KEDA 基于自定义指标（如队列深度）进行扩展",
+        "C": "增加每个 Pod 的资源限制",
+        "D": "使用 AWS Fargate 替代 EC2 节点"
+      },
+      "answer": ["A", "B"],
+      "answerType": "multiple",
+      "explanation": "扩展延迟通常由两个因素造成：1) 节点不足导致 Pod pending，需要优化 Cluster Autoscaler；2) 基于 CPU 的反应式扩展太慢，使用 KEDA 基于预测性指标（如队列深度）可以提前扩展。Fargate 冷启动更慢，不能解决问题。",
+      "difficulty": "hard"
+    },
+    {
+      "id": 18,
+      "domain": 4,
+      "question": "公司需要将 100TB 的 NFS 文件共享迁移到 AWS，同时保持本地应用程序的持续访问。迁移完成后，所有应用程序将迁移到 AWS 并使用 Amazon EFS。推荐的迁移策略是什么？",
+      "options": {
+        "A": "使用 AWS DataSync 将数据复制到 EFS，然后切换应用程序",
+        "B": "使用 AWS Storage Gateway File Gateway 提供混合访问，然后逐步迁移",
+        "C": "使用 Snowball Edge 传输数据到 S3，然后复制到 EFS",
+        "D": "直接将 NFS 挂载点重定向到 EFS"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Storage Gateway File Gateway 可以在本地提供 NFS 接口，同时将数据存储在 S3。这允许本地应用继续访问，同时数据已经在 AWS。之后可以使用 DataSync 将 S3 数据同步到 EFS。这提供了平滑的过渡而无需停机。",
+      "difficulty": "medium"
+    },
+    {
+      "id": 19,
+      "domain": 1,
+      "question": "公司需要为其 AWS 环境实施 Zero Trust 网络安全模型。以下哪些是关键组件？（选择两项）",
+      "options": {
+        "A": "在 VPC 边界使用 AWS Network Firewall",
+        "B": "对所有内部流量使用 VPC 端点和 PrivateLink",
+        "C": "使用 AWS Verified Access 验证每个访问请求",
+        "D": "将所有资源部署在公有子网以便监控"
+      },
+      "answer": ["B", "C"],
+      "answerType": "multiple",
+      "explanation": "Zero Trust 的核心是'永不信任，始终验证'。VPC 端点和 PrivateLink 确保流量不经过公共互联网。AWS Verified Access 可以对每个请求进行身份和安全态势验证。Network Firewall 是边界防护，不是 Zero Trust 的核心。",
+      "difficulty": "hard"
+    },
+    {
+      "id": 20,
+      "domain": 2,
+      "question": "一个社交媒体应用需要存储和检索用户生成的内容（图片和视频）。要求：1) 低延迟的元数据查询；2) 高效的内容分发；3) 支持按时间线和按标签查询。最佳数据架构是什么？",
+      "options": {
+        "A": "所有数据存储在 Amazon RDS",
+        "B": "元数据存储在 DynamoDB（使用 GSI 支持多种查询），媒体存储在 S3 + CloudFront",
+        "C": "所有数据存储在 MongoDB (DocumentDB)",
+        "D": "元数据和媒体都存储在 S3"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "DynamoDB 提供低延迟的元数据查询，GSI（全局二级索引）支持按不同属性查询（时间线、标签等）。S3 适合存储大型媒体文件，CloudFront 提供全球低延迟分发。这是典型的社交媒体架构模式。",
+      "difficulty": "medium"
+    },
+    {
+      "id": 21,
+      "domain": 3,
+      "question": "一个 Lambda 函数连接到 RDS 数据库，在高并发时出现数据库连接耗尽错误。数据库 max_connections 设置为 500，但 Lambda 并发可能达到数千。如何解决？",
+      "options": {
+        "A": "增加 RDS 实例大小以支持更多连接",
+        "B": "使用 Amazon RDS Proxy 管理数据库连接池",
+        "C": "减少 Lambda 函数的保留并发",
+        "D": "在 Lambda 代码中实现连接池"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "RDS Proxy 专门解决 Lambda 与 RDS 的连接问题。它维护到数据库的连接池，并多路复用 Lambda 的短暂连接。这大大减少了实际的数据库连接数，同时支持高 Lambda 并发。Lambda 代码中的连接池在无服务器环境中效果有限。",
+      "difficulty": "medium"
+    },
+    {
+      "id": 22,
+      "domain": 4,
+      "question": "公司正在评估是否将其 SAP HANA 工作负载迁移到 AWS。需要考虑的关键因素是什么？（选择两项）",
+      "options": {
+        "A": "确认所需的 EC2 实例类型已通过 SAP 认证",
+        "B": "SAP 只能运行在 AWS 的专用主机上",
+        "C": "评估 AWS Launch Wizard for SAP 以简化部署",
+        "D": "SAP 许可证不能在 AWS 上使用"
+      },
+      "answer": ["A", "C"],
+      "answerType": "multiple",
+      "explanation": "SAP 在 AWS 上运行需要使用 SAP 认证的实例类型（如 X1、X2idn、u-* 高内存实例）。AWS Launch Wizard for SAP 提供自动化的最佳实践部署。SAP 可以在共享租户实例上运行（不一定需要专用主机），许可证可以迁移（BYOL）。",
+      "difficulty": "medium"
+    },
+    {
+      "id": 23,
+      "domain": 1,
+      "question": "公司的安全策略要求所有跨 VPC 的流量必须经过安全检查。有 20 个 VPC 需要相互通信，并且需要流量检查。最佳网络架构是什么？",
+      "options": {
+        "A": "在每对 VPC 之间使用 VPC Peering",
+        "B": "使用 Transit Gateway 配合 AWS Network Firewall 在检查 VPC 中进行集中流量检查",
+        "C": "在每个 VPC 中部署网络设备",
+        "D": "使用 VPC Flow Logs 监控流量"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "这是 Transit Gateway 集中检查架构。所有 VPC 连接到 Transit Gateway，流量通过路由到达检查 VPC，由 AWS Network Firewall 检查后再路由到目标。这提供了集中管理和一致的安全策略，而不是在每个 VPC 中分散部署。",
+      "difficulty": "hard"
+    },
+    {
+      "id": 24,
+      "domain": 2,
+      "question": "一个数据仓库需要每晚从 10 个不同的数据源导入数据，进行转换后加载到 Redshift。数据源包括 S3、RDS、DynamoDB 和本地数据库。最佳 ETL 解决方案是什么？",
+      "options": {
+        "A": "使用 AWS Glue ETL 作业进行所有转换",
+        "B": "使用 Lambda 函数编排所有 ETL 流程",
+        "C": "使用 AWS Glue 配合 Glue Workflows 编排多个数据源的 ETL",
+        "D": "使用 Amazon EMR 运行 Spark 作业"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "AWS Glue 是无服务器 ETL 服务，原生支持多种数据源（S3、RDS、DynamoDB 等）。Glue Workflows 可以编排多个 crawlers 和 jobs 的执行顺序和依赖关系。对于 10 个数据源的复杂场景，Glue Workflows 提供了可视化的流程编排。",
+      "difficulty": "medium"
+    },
+    {
+      "id": 25,
+      "domain": 3,
+      "question": "一个应用程序使用 AWS Secrets Manager 存储数据库凭证。安全审计发现凭证轮换从未成功执行过。如何排查和修复？（选择两项）",
+      "options": {
+        "A": "检查 Secrets Manager 轮换 Lambda 函数的 CloudWatch Logs",
+        "B": "确认轮换 Lambda 函数有权限更新数据库用户密码",
+        "C": "增加 Secret 的版本保留数量",
+        "D": "将数据库迁移到 Aurora 以支持自动轮换"
+      },
+      "answer": ["A", "B"],
+      "answerType": "multiple",
+      "explanation": "Secrets Manager 使用 Lambda 函数执行凭证轮换。常见问题包括：Lambda 函数执行错误（查看 CloudWatch Logs）、Lambda 无法访问数据库（网络配置）、Lambda 没有更新数据库密码的权限。这些是排查的首要步骤。",
+      "difficulty": "medium"
+    },
+    {
+      "id": 26,
+      "domain": 4,
+      "question": "公司正在将单体应用程序重构为微服务。团队决定使用 API Gateway 作为前端，后端服务运行在 ECS。服务间通信应该如何设计？",
+      "options": {
+        "A": "所有服务间调用都通过 API Gateway",
+        "B": "使用 AWS App Mesh 管理服务间通信",
+        "C": "服务直接通过 ECS Service Discovery 相互调用",
+        "D": "使用 SQS 进行所有服务间通信"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "AWS App Mesh 提供应用级网络（服务网格），支持服务发现、负载均衡、流量管理和可观测性。它是微服务间通信的最佳选择。API Gateway 不适合内部服务通信，纯 SQS 适合异步但不适合所有场景。",
+      "difficulty": "medium"
+    },
+    {
+      "id": 27,
+      "domain": 1,
+      "question": "公司需要在 AWS 和本地数据中心之间建立高可用的网络连接。要求 99.99% 的可用性和最大 10ms 的延迟。推荐的架构是什么？",
+      "options": {
+        "A": "使用两个 Site-to-Site VPN 连接",
+        "B": "使用一个 Direct Connect 连接和一个 VPN 作为备份",
+        "C": "使用两个不同位置的 Direct Connect 连接配合 Direct Connect Gateway",
+        "D": "使用单个 10 Gbps Direct Connect 连接"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "对于 99.99% 可用性，AWS 推荐在不同 Direct Connect 位置建立两条连接，以避免单点故障。Direct Connect Gateway 允许从一个连接访问多个区域的 VPC。单个连接无论带宽多大都无法达到最高可用性 SLA。",
+      "difficulty": "hard"
+    },
+    {
+      "id": 28,
+      "domain": 2,
+      "question": "一个 GraphQL API 需要聚合来自多个后端服务（REST API、DynamoDB、Aurora）的数据。要求低延迟和简化的客户端开发。最佳实现方案是什么？",
+      "options": {
+        "A": "使用 API Gateway 创建多个 REST 端点",
+        "B": "使用 AWS AppSync 作为 GraphQL 层，配置多个数据源解析器",
+        "C": "在 EC2 上部署自定义 GraphQL 服务器",
+        "D": "使用 Lambda 作为 API Gateway 的后端聚合数据"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "AWS AppSync 是托管的 GraphQL 服务，支持多种数据源（DynamoDB、Aurora、HTTP 端点等）。解析器可以从不同来源获取数据并组合返回给客户端。这简化了开发并提供了缓存、实时订阅等功能。",
+      "difficulty": "medium"
+    },
+    {
+      "id": 29,
+      "domain": 3,
+      "question": "一个运行在 EC2 上的应用程序使用实例存储（Instance Store）作为临时数据存储。运维团队报告在实例停止/启动后数据丢失。如何解决？",
+      "options": {
+        "A": "将实例存储替换为 EBS 卷",
+        "B": "使用 EBS 快照备份实例存储",
+        "C": "将数据定期同步到 S3",
+        "D": "使用更大的实例存储"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "实例存储是临时性的，在实例停止、终止或硬件故障时数据会丢失。如果需要持久化数据，应使用 EBS 卷。EBS 是独立于实例生命周期的块存储。S3 同步是额外的复杂性，不能直接替代块存储需求。",
+      "difficulty": "easy"
+    },
+    {
+      "id": 30,
+      "domain": 4,
+      "question": "公司希望将其数据中心的 VMware 虚拟机扩展到 AWS 云，保持使用相同的 VMware 工具和流程。最佳方案是什么？",
+      "options": {
+        "A": "使用 AWS Application Migration Service 将虚拟机迁移到 EC2",
+        "B": "使用 VMware Cloud on AWS 在 AWS 上运行 VMware SDDC",
+        "C": "使用 AWS Outposts 在本地运行 AWS 服务",
+        "D": "使用 VM Import/Export 转换虚拟机"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "VMware Cloud on AWS 是 VMware 和 AWS 的联合服务，在 AWS 裸机基础设施上运行 VMware 软件定义数据中心（SDDC）。这允许使用现有的 VMware 工具、技能和流程，同时获得 AWS 云的优势。这是真正的混合云扩展方案。",
+      "difficulty": "medium"
+    },
+    {
+      "id": 31,
+      "domain": 1,
+      "question": "公司需要确保跨多个 AWS 账户的一致性安全基线。要求自动检测偏离基线的配置并发出警报。如何实现？",
+      "options": {
+        "A": "在每个账户中手动审核安全配置",
+        "B": "使用 AWS Security Hub 配合 AWS 基础安全最佳实践标准，启用跨账户聚合",
+        "C": "使用 AWS Trusted Advisor 检查每个账户",
+        "D": "部署第三方安全扫描工具"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "AWS Security Hub 提供了安全最佳实践检查（如 AWS 基础安全最佳实践、CIS AWS Foundations Benchmark），可以跨组织所有账户聚合发现结果。它与 GuardDuty、Inspector、Macie 等集成，提供集中的安全视图。",
+      "difficulty": "medium"
+    },
+    {
+      "id": 32,
+      "domain": 2,
+      "question": "一个批处理作业需要处理 S3 中的大量文件，每个文件处理需要 30 分钟到 2 小时不等。作业需要容错能力，失败的文件应该能够重新处理。最佳计算方案是什么？",
+      "options": {
+        "A": "使用 Lambda 函数处理每个文件",
+        "B": "使用 AWS Batch 配合 Spot 实例",
+        "C": "使用 EC2 Auto Scaling 组",
+        "D": "使用 ECS Fargate 任务"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "AWS Batch 专为批处理工作负载设计，自动管理计算资源的配置和扩展。Spot 实例可以大幅降低成本。Batch 提供作业队列、依赖关系管理和自动重试失败作业的功能。30分钟到2小时的处理时间超过了 Lambda 的15分钟限制。",
+      "difficulty": "medium"
+    },
+    {
+      "id": 33,
+      "domain": 3,
+      "question": "一个 API 使用 API Gateway + Lambda 架构。CloudWatch 显示 Lambda 函数的平均持续时间为 500ms，但 API Gateway 的平均延迟为 2 秒。如何诊断延迟差异？",
+      "options": {
+        "A": "Lambda 函数存在冷启动问题",
+        "B": "API Gateway 的集成超时设置过高",
+        "C": "启用 API Gateway 和 Lambda 的 X-Ray 追踪以分析延迟分布",
+        "D": "升级 API Gateway 到更高性能级别"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "X-Ray 提供端到端的请求追踪，可以显示 API Gateway 处理时间、Lambda 初始化时间、函数执行时间和 AWS 服务调用时间。这可以精确识别延迟来源（可能是冷启动、下游服务调用或其他因素）。",
+      "difficulty": "medium"
+    },
+    {
+      "id": 34,
+      "domain": 4,
+      "question": "公司需要将 Hadoop 集群从本地迁移到 AWS。集群运行 HDFS、Hive、Spark 和 Presto 工作负载。如何最小化重新架构的工作量？",
+      "options": {
+        "A": "使用 Amazon EMR 运行相同的开源组件",
+        "B": "将所有工作负载迁移到 AWS Glue",
+        "C": "使用 EC2 实例自行管理 Hadoop 集群",
+        "D": "将数据迁移到 Redshift 并重写所有查询"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Amazon EMR 支持 Hadoop、Spark、Hive、Presto 等开源框架，可以运行现有的作业和查询，最小化代码更改。EMR 可以使用 S3 作为存储层（EMRFS）替代 HDFS，提供更好的扩展性和持久性，同时保持兼容性。",
+      "difficulty": "easy"
+    },
+    {
+      "id": 35,
+      "domain": 1,
+      "question": "公司需要在 AWS 上存储和处理支付卡数据，必须符合 PCI DSS 合规要求。以下哪些是必需的措施？（选择两项）",
+      "options": {
+        "A": "使用 VPC 和安全组将支付系统隔离在专用网络段",
+        "B": "仅使用 AWS 符合 PCI DSS 合规的服务",
+        "C": "所有 EC2 实例必须使用专用主机",
+        "D": "使用 AWS Artifact 获取 AWS 的 PCI DSS 合规证明"
+      },
+      "answer": ["A", "B"],
+      "answerType": "multiple",
+      "explanation": "PCI DSS 要求网络分段以隔离持卡人数据环境。必须使用 AWS 的 PCI DSS 合规服务列表中的服务。AWS Artifact 提供合规报告但不是技术控制。专用主机不是 PCI DSS 的必要要求（虽然某些情况下可能需要）。",
+      "difficulty": "hard"
+    },
+    {
+      "id": 36,
+      "domain": 2,
+      "question": "一个游戏应用需要实现实时排行榜功能。要求：1) 全球玩家排名实时更新；2) 支持查询 Top 100 和特定玩家排名；3) 每秒数千次写入。最佳数据存储是什么？",
+      "options": {
+        "A": "Amazon DynamoDB 配合 Global Tables",
+        "B": "Amazon ElastiCache for Redis 使用 Sorted Sets",
+        "C": "Amazon Aurora PostgreSQL",
+        "D": "Amazon Neptune"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Redis Sorted Sets 专为排行榜场景设计。提供 O(log N) 的插入和 O(log N + M) 的范围查询性能。支持 ZADD、ZRANK、ZRANGE 等命令完美匹配排行榜需求。ElastiCache for Redis 提供托管服务和全球数据存储选项。",
+      "difficulty": "medium"
+    },
+    {
+      "id": 37,
+      "domain": 3,
+      "question": "公司的 Aurora MySQL 数据库在执行某个特定查询时性能很差。查询涉及多个表的 JOIN 和复杂过滤条件。如何诊断和优化？（选择两项）",
+      "options": {
+        "A": "使用 Aurora 的 Performance Insights 分析等待事件和查询统计",
+        "B": "增加 Aurora 实例大小",
+        "C": "使用 EXPLAIN 分析查询执行计划，添加适当的索引",
+        "D": "迁移到 Aurora Serverless"
+      },
+      "answer": ["A", "C"],
+      "answerType": "multiple",
+      "explanation": "Performance Insights 可以识别问题查询和等待事件。EXPLAIN 显示查询执行计划，帮助识别缺失索引、全表扫描等问题。这是数据库性能优化的标准方法。盲目增加实例大小不能解决查询效率问题。",
+      "difficulty": "medium"
+    },
+    {
+      "id": 38,
+      "domain": 4,
+      "question": "公司决定采用多云策略，在 AWS 和 GCP 之间分布工作负载。需要统一的容器编排平台。推荐的方案是什么？",
+      "options": {
+        "A": "在 AWS 使用 ECS，在 GCP 使用 Cloud Run",
+        "B": "在两个云上都使用 Kubernetes (EKS 和 GKE)",
+        "C": "使用 AWS Outposts 部署到 GCP",
+        "D": "使用 AWS App Runner 在两个云上运行"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Kubernetes 是云原生容器编排的开放标准，在 AWS (EKS) 和 GCP (GKE) 上都有托管服务。使用相同的 Kubernetes API 和工具可以实现跨云的一致操作体验。这是多云策略的最佳实践。",
+      "difficulty": "easy"
+    },
+    {
+      "id": 39,
+      "domain": 1,
+      "question": "一家企业需要为敏感工作负载实施硬件安全模块 (HSM) 来管理加密密钥。密钥必须在 FIPS 140-2 Level 3 验证的设备上生成和存储。推荐的 AWS 服务是什么？",
+      "options": {
+        "A": "AWS KMS 使用 AWS 管理的密钥",
+        "B": "AWS KMS 使用客户管理的密钥",
+        "C": "AWS CloudHSM",
+        "D": "AWS Secrets Manager"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "AWS CloudHSM 提供专用的 FIPS 140-2 Level 3 验证的硬件安全模块，客户对密钥有完全控制权。KMS 的 HSM 是 FIPS 140-2 Level 2 验证（使用 AWS 管理的 HSM）。对于需要 Level 3 合规的场景，必须使用 CloudHSM。",
+      "difficulty": "medium"
+    },
+    {
+      "id": 40,
+      "domain": 2,
+      "question": "一个机器学习团队需要训练大规模深度学习模型，数据存储在 S3 中。训练需要多个 GPU 实例协同工作。如何最有效地运行分布式训练？",
+      "options": {
+        "A": "使用多个 EC2 GPU 实例手动配置分布式训练",
+        "B": "使用 SageMaker 分布式训练库配合托管训练作业",
+        "C": "使用 AWS Batch 运行 GPU 作业",
+        "D": "使用 Lambda 进行模型训练"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "SageMaker 分布式训练库（包括数据并行和模型并行库）优化了跨多个 GPU 和实例的训练。托管训练作业处理基础设施管理，自动从 S3 加载数据，并在训练完成后释放资源。这比手动配置分布式训练简单得多。",
+      "difficulty": "medium"
+    }
+  ]
+}

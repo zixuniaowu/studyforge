@@ -1,0 +1,638 @@
+{
+  "exam": {
+    "id": "azure-dp-900-set3",
+    "name": "Azure DP-900 模拟考试 #3",
+    "code": "DP-900",
+    "provider": "Azure",
+    "language": "zh-CN",
+    "description": "Azure 数据基础认证考试模拟题 - 第3套",
+    "totalQuestions": 40,
+    "passingScore": 70,
+    "examTime": 60,
+    "domains": [
+      {
+        "id": 1,
+        "name": "描述核心数据概念",
+        "weight": 28
+      },
+      {
+        "id": 2,
+        "name": "确定 Azure 上的关系数据注意事项",
+        "weight": 22
+      },
+      {
+        "id": 3,
+        "name": "描述 Azure 上非关系数据的注意事项",
+        "weight": 18
+      },
+      {
+        "id": 4,
+        "name": "描述 Azure 上的分析工作负载",
+        "weight": 32
+      }
+    ],
+    "tags": ["Azure", "数据", "基础认证", "DP-900"]
+  },
+  "questions": [
+    {
+      "id": "q1",
+      "domain": 1,
+      "question": "以下哪项描述了数据摄取过程？",
+      "options": {
+        "A": "从数据中创建可视化报告",
+        "B": "将数据从源系统收集并导入到存储系统",
+        "C": "删除不需要的数据",
+        "D": "加密数据以确保安全"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "数据摄取是将数据从一个或多个源系统收集并导入到目标存储系统的过程。这是数据管道的第一步，可以是批量或实时摄取。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q2",
+      "domain": 1,
+      "question": "哪种数据类型通常存储在列族数据库中？",
+      "options": {
+        "A": "社交网络关系",
+        "B": "时间序列数据和 IoT 遥测数据",
+        "C": "电子商务产品目录",
+        "D": "用户会话数据"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "列族数据库如 Apache Cassandra 和 Azure Cosmos DB Cassandra API 适合存储时间序列数据和 IoT 遥测数据，因为它们优化了大规模写入和基于时间的查询。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q3",
+      "domain": 1,
+      "question": "ACID 属性中的 \"D\" 代表什么？",
+      "options": {
+        "A": "分布式 (Distributed)",
+        "B": "持久性 (Durability)",
+        "C": "数据 (Data)",
+        "D": "删除 (Deletion)"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "ACID 中的 D 代表持久性 (Durability)。它确保一旦事务提交，其结果将永久保存，即使系统发生故障也不会丢失。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q4",
+      "domain": 1,
+      "question": "数据转换的示例包括哪些？（选择两个）",
+      "options": {
+        "A": "将温度从华氏度转换为摄氏度",
+        "B": "将数据复制到备份位置",
+        "C": "清洗数据以删除重复项",
+        "D": "将数据存储在加密格式中"
+      },
+      "answer": ["A", "C"],
+      "answerType": "multiple",
+      "explanation": "数据转换包括修改数据的格式、结构或值。将温度单位转换和清洗重复数据都是转换操作。数据复制和加密存储不属于转换。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q5",
+      "domain": 1,
+      "question": "什么是数据血缘？",
+      "options": {
+        "A": "数据的加密方法",
+        "B": "跟踪数据从源到目标的完整生命周期",
+        "C": "数据的存储位置",
+        "D": "数据的访问权限"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "数据血缘是跟踪数据从原始源通过各种转换到最终目标的完整路径。它帮助理解数据的来源、如何被修改以及流向何处。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q6",
+      "domain": 1,
+      "question": "以下哪项是数据字典的主要用途？",
+      "options": {
+        "A": "存储用户密码",
+        "B": "记录数据资产的元数据和定义",
+        "C": "执行数据备份",
+        "D": "加速查询性能"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "数据字典是记录数据资产的元数据、定义、数据类型、关系和业务规则的文档。它帮助用户理解数据的含义和用法。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q7",
+      "domain": 1,
+      "question": "在数据处理中，什么是幂等操作？",
+      "options": {
+        "A": "只能执行一次的操作",
+        "B": "多次执行产生相同结果的操作",
+        "C": "需要用户交互的操作",
+        "D": "消耗大量资源的操作"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "幂等操作是指无论执行多少次都产生相同结果的操作。在数据处理中，这很重要，因为它允许安全地重试失败的操作而不会造成数据不一致。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q8",
+      "domain": 1,
+      "question": "哪种场景最适合使用关系数据库？",
+      "options": {
+        "A": "存储非结构化社交媒体帖子",
+        "B": "需要事务完整性的财务系统",
+        "C": "存储大量视频文件",
+        "D": "实时传感器数据流"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "关系数据库最适合需要 ACID 事务保证的场景，如财务系统。它们确保数据完整性，支持复杂查询和表之间的关系。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q9",
+      "domain": 1,
+      "question": "数据质量的关键维度包括什么？",
+      "options": {
+        "A": "数据大小和存储成本",
+        "B": "准确性、完整性和一致性",
+        "C": "查询速度和响应时间",
+        "D": "用户数量和并发连接"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "数据质量的关键维度包括准确性（数据是否正确）、完整性（是否有缺失值）、一致性（数据在不同系统中是否一致）、时效性和有效性等。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q10",
+      "domain": 1,
+      "question": "什么是数据分析中的描述性分析？",
+      "options": {
+        "A": "预测未来事件",
+        "B": "分析历史数据以了解发生了什么",
+        "C": "推荐最佳行动方案",
+        "D": "自动化决策过程"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "描述性分析关注分析历史数据以了解过去发生了什么。它回答\"发生了什么\"的问题，常用于报告和仪表板。预测性分析预测未来，规范性分析推荐行动。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q11",
+      "domain": 2,
+      "question": "在 SQL 中，INNER JOIN 返回什么？",
+      "options": {
+        "A": "左表的所有行",
+        "B": "右表的所有行",
+        "C": "两个表中匹配的行",
+        "D": "两个表的所有行"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "INNER JOIN 只返回两个表中满足连接条件的匹配行。如果某行在一个表中没有匹配，则不包含在结果中。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q12",
+      "domain": 2,
+      "question": "什么是数据库事务？",
+      "options": {
+        "A": "单个 SQL 查询",
+        "B": "一组作为单个工作单元执行的操作",
+        "C": "数据库备份过程",
+        "D": "用户登录会话"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "数据库事务是一组作为单个逻辑工作单元执行的操作。事务要么完全成功（提交），要么完全回滚，确保数据一致性。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q13",
+      "domain": 2,
+      "question": "Azure SQL Database 的 \"Hyperscale\" 服务层的主要特点是什么？",
+      "options": {
+        "A": "仅适用于小型数据库",
+        "B": "支持高达 100 TB 的数据库和快速扩展",
+        "C": "不支持自动备份",
+        "D": "仅支持单用户访问"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Hyperscale 服务层专为需要大规模存储的工作负载设计，支持高达 100 TB 的数据库。它提供快速扩展、快速备份和几乎即时的数据库恢复。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q14",
+      "domain": 2,
+      "question": "LEFT JOIN 与 INNER JOIN 的区别是什么？",
+      "options": {
+        "A": "LEFT JOIN 更快",
+        "B": "LEFT JOIN 返回左表的所有行，即使右表没有匹配",
+        "C": "INNER JOIN 返回更多行",
+        "D": "它们完全相同"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "LEFT JOIN 返回左表的所有行，以及右表中匹配的行。如果右表没有匹配，则相应列显示 NULL。INNER JOIN 只返回两表都有匹配的行。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q15",
+      "domain": 2,
+      "question": "什么是 SQL 中的子查询？",
+      "options": {
+        "A": "并行执行的多个查询",
+        "B": "嵌套在另一个查询中的查询",
+        "C": "用于删除数据的查询",
+        "D": "创建表的查询"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "子查询是嵌套在另一个 SQL 语句（如 SELECT、INSERT、UPDATE 或 DELETE）中的查询。它首先执行，其结果用于外部查询。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q16",
+      "domain": 2,
+      "question": "数据库复制的主要好处是什么？（选择两个）",
+      "options": {
+        "A": "提高可用性",
+        "B": "减少存储成本",
+        "C": "提高读取性能",
+        "D": "简化架构设计"
+      },
+      "answer": ["A", "C"],
+      "answerType": "multiple",
+      "explanation": "数据库复制通过创建数据的多个副本来提高可用性（故障转移）和读取性能（可以从副本读取）。它实际上增加了存储需求而不是减少。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q17",
+      "domain": 2,
+      "question": "什么是 Azure SQL Database 的异地复制？",
+      "options": {
+        "A": "在同一区域创建备份",
+        "B": "在不同 Azure 区域创建可读的次要数据库",
+        "C": "自动数据压缩",
+        "D": "本地文件系统备份"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "异地复制允许在不同的 Azure 区域创建可读的次要数据库。这提供了灾难恢复能力和地理上分布的读取工作负载。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q18",
+      "domain": 2,
+      "question": "SQL 中的聚合函数 AVG 做什么？",
+      "options": {
+        "A": "返回最大值",
+        "B": "返回平均值",
+        "C": "返回行数",
+        "D": "返回总和"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "AVG 函数计算并返回指定列中数值的平均值。它忽略 NULL 值。常与 GROUP BY 一起使用来计算分组的平均值。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q19",
+      "domain": 2,
+      "question": "什么是数据库的参照完整性？",
+      "options": {
+        "A": "确保数据被加密",
+        "B": "确保外键引用有效的主键",
+        "C": "确保数据被备份",
+        "D": "确保用户已认证"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "参照完整性是关系数据库中的约束，确保外键值必须引用另一个表中存在的主键值，或者为 NULL。这防止了悬空引用。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q20",
+      "domain": 2,
+      "question": "Azure SQL Database 的透明数据加密 (TDE) 做什么？",
+      "options": {
+        "A": "加密网络传输中的数据",
+        "B": "加密静态存储的数据库文件",
+        "C": "加密用户密码",
+        "D": "加密查询结果"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "透明数据加密 (TDE) 自动加密静态存储的数据库文件、日志文件和备份。这保护数据免受物理介质被盗的威胁，且对应用程序透明。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q21",
+      "domain": 3,
+      "question": "Cosmos DB 的 Gremlin API 用于什么类型的数据？",
+      "options": {
+        "A": "文档数据",
+        "B": "图形数据",
+        "C": "表格数据",
+        "D": "列族数据"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Gremlin API 用于图形数据库场景，存储和查询实体（节点）之间的关系（边）。它适用于社交网络、推荐引擎等需要关系分析的场景。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q22",
+      "domain": 3,
+      "question": "Azure Blob Storage 中的块 Blob 主要用于什么？",
+      "options": {
+        "A": "虚拟机磁盘",
+        "B": "流式传输视频",
+        "C": "存储文本、图像和视频等文件",
+        "D": "仅存储日志文件"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "块 Blob 是最常见的 Blob 类型，适合存储文本和二进制数据，如文档、图像、视频文件等。它们支持高效的上传和下载操作。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q23",
+      "domain": 3,
+      "question": "Cosmos DB 中选择分区键的最佳实践是什么？",
+      "options": {
+        "A": "选择具有少量唯一值的属性",
+        "B": "选择具有高基数和均匀分布的属性",
+        "C": "始终使用自动生成的 ID",
+        "D": "选择最常更新的属性"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "好的分区键应该具有高基数（许多唯一值）和均匀分布，以便数据和请求均匀分布在分区之间。这优化了性能和扩展性。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q24",
+      "domain": 3,
+      "question": "Azure Cosmos DB 的多区域写入功能提供什么好处？",
+      "options": {
+        "A": "降低存储成本",
+        "B": "在任何区域都能执行低延迟写入",
+        "C": "自动数据加密",
+        "D": "简化查询语法"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "多区域写入允许应用程序在任何配置的区域执行低延迟写入。这对于需要全球分布和高可用性的应用程序非常重要。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q25",
+      "domain": 3,
+      "question": "什么是追加 Blob 的最佳使用场景？",
+      "options": {
+        "A": "存储经常随机读写的数据",
+        "B": "日志文件和审计跟踪",
+        "C": "虚拟机操作系统磁盘",
+        "D": "静态网站内容"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "追加 Blob 优化用于追加操作，非常适合日志文件、审计跟踪等只在末尾添加数据的场景。它们不支持修改现有数据块。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q26",
+      "domain": 3,
+      "question": "Cosmos DB 的 \"Bounded Staleness\" 一致性级别意味着什么？",
+      "options": {
+        "A": "读取总是返回最新数据",
+        "B": "读取可能落后于写入，但有时间或版本限制",
+        "C": "数据永不过期",
+        "D": "所有操作都同步执行"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Bounded Staleness 一致性保证读取落后于写入的时间或版本数有一个上限。这在一致性和性能之间提供了平衡。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q27",
+      "domain": 3,
+      "question": "Azure Files 支持哪些协议？（选择两个）",
+      "options": {
+        "A": "SMB",
+        "B": "FTP",
+        "C": "NFS",
+        "D": "SMTP"
+      },
+      "answer": ["A", "C"],
+      "answerType": "multiple",
+      "explanation": "Azure Files 支持 SMB（Server Message Block）和 NFS（Network File System）协议。SMB 通常用于 Windows，NFS 通常用于 Linux 系统。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q28",
+      "domain": 3,
+      "question": "什么是 Cosmos DB 的生存时间 (TTL) 功能？",
+      "options": {
+        "A": "数据备份的保留期",
+        "B": "自动删除过期文档的功能",
+        "C": "查询超时设置",
+        "D": "连接保持活动的时间"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "生存时间 (TTL) 功能允许 Cosmos DB 在指定时间后自动删除文档。这对于临时数据、缓存或需要数据保留策略的场景非常有用。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q29",
+      "domain": 3,
+      "question": "Azure Blob Storage 的不可变存储功能用于什么？",
+      "options": {
+        "A": "提高读取速度",
+        "B": "防止数据被修改或删除以满足合规要求",
+        "C": "自动数据压缩",
+        "D": "跨区域复制"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "不可变存储允许以 WORM（一次写入，多次读取）状态存储数据，防止数据被修改或删除。这对于满足法规合规要求（如金融、医疗记录保留）非常重要。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q30",
+      "domain": 3,
+      "question": "什么是 Azure Cosmos DB 的更改源功能？",
+      "options": {
+        "A": "备份和恢复功能",
+        "B": "跟踪容器中文档更改的有序日志",
+        "C": "性能监控工具",
+        "D": "用户权限管理"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "更改源是 Cosmos DB 中文档更改的持久、有序日志。它可用于触发下游处理、维护物化视图或实现事件驱动架构。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q31",
+      "domain": 4,
+      "question": "什么是 Azure Synapse Analytics 中的 Apache Spark 池？",
+      "options": {
+        "A": "关系数据库服务",
+        "B": "用于大数据处理和机器学习的计算集群",
+        "C": "消息队列服务",
+        "D": "文件存储服务"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Apache Spark 池是 Azure Synapse Analytics 中的计算集群，用于大数据处理、机器学习和数据工程任务。它支持多种语言，包括 Python、Scala、SQL 和 R。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q32",
+      "domain": 4,
+      "question": "Power BI 中的切片器用于什么？",
+      "options": {
+        "A": "创建新数据源",
+        "B": "允许用户筛选报告中的数据",
+        "C": "导出报告为 PDF",
+        "D": "设置用户权限"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "切片器是 Power BI 中的交互式筛选控件，允许报告用户选择值来筛选页面上的可视化效果。它提供了直观的数据探索方式。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q33",
+      "domain": 4,
+      "question": "什么是预测性分析？",
+      "options": {
+        "A": "分析过去发生了什么",
+        "B": "预测未来可能发生的事件",
+        "C": "推荐应该采取的行动",
+        "D": "实时监控系统状态"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "预测性分析使用历史数据、统计算法和机器学习技术来预测未来可能发生的事件。它回答\"将会发生什么\"的问题。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q34",
+      "domain": 4,
+      "question": "Azure Data Factory 中的数据集代表什么？",
+      "options": {
+        "A": "数据转换逻辑",
+        "B": "指向或引用管道活动中使用的数据的命名视图",
+        "C": "计划触发器",
+        "D": "错误处理机制"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "在 Azure Data Factory 中，数据集是指向或引用要在活动中使用的数据的命名视图。它定义了数据的结构和位置，如 Blob 存储中的文件或数据库中的表。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q35",
+      "domain": 4,
+      "question": "什么是数据集市？",
+      "options": {
+        "A": "存储所有企业数据的中央仓库",
+        "B": "面向特定业务领域或部门的数据子集",
+        "C": "实时数据流平台",
+        "D": "数据加密服务"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "数据集市是数据仓库的子集，专注于特定的业务领域、部门或用户组。它包含与该领域相关的数据，使访问和分析更加高效。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q36",
+      "domain": 4,
+      "question": "Azure Stream Analytics 使用什么查询语言？",
+      "options": {
+        "A": "Python",
+        "B": "类似 SQL 的查询语言",
+        "C": "JavaScript",
+        "D": "R"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure Stream Analytics 使用类似 SQL 的查询语言（Stream Analytics Query Language）来定义数据转换和分析逻辑。这使得熟悉 SQL 的用户能够快速上手。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q37",
+      "domain": 4,
+      "question": "什么是规范性分析？",
+      "options": {
+        "A": "描述过去发生了什么",
+        "B": "预测未来趋势",
+        "C": "推荐应该采取的最佳行动",
+        "D": "监控实时性能"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "规范性分析不仅预测会发生什么，还推荐应该采取的最佳行动。它回答\"我们应该做什么\"的问题，使用优化和模拟技术。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q38",
+      "domain": 4,
+      "question": "Azure Data Factory 中的触发器用于什么？",
+      "options": {
+        "A": "定义数据转换逻辑",
+        "B": "确定管道何时执行",
+        "C": "存储连接信息",
+        "D": "监控管道性能"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "触发器定义了管道何时执行。可以是计划触发器（按时间表）、翻转窗口触发器（按时间间隔）、事件触发器（响应事件）等。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q39",
+      "domain": 4,
+      "question": "Power BI 报告可以发布到哪里进行共享？（选择两个）",
+      "options": {
+        "A": "Power BI Service 工作区",
+        "B": "本地文件系统",
+        "C": "Power BI 应用",
+        "D": "FTP 服务器"
+      },
+      "answer": ["A", "C"],
+      "answerType": "multiple",
+      "explanation": "Power BI 报告可以发布到 Power BI Service 的工作区进行协作，或打包为 Power BI 应用进行分发。工作区支持团队协作，应用则方便将内容分发给更广泛的受众。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q40",
+      "domain": 4,
+      "question": "什么是 Azure Synapse Analytics 中的数据流？",
+      "options": {
+        "A": "实时消息传递服务",
+        "B": "可视化设计的数据转换",
+        "C": "数据存储服务",
+        "D": "用户身份验证机制"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure Synapse Analytics 中的数据流（Mapping Data Flows）是可视化设计的数据转换，允许数据工程师在不编写代码的情况下构建数据转换逻辑。它使用 Spark 在后台执行。",
+      "difficulty": "medium"
+    }
+  ]
+}

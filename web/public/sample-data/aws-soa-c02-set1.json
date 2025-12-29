@@ -1,0 +1,544 @@
+{
+  "exam": {
+    "id": "aws-soa-c02-set1",
+    "name": "AWS SOA-C02 模拟考试 #1",
+    "code": "SOA-C02",
+    "provider": "AWS",
+    "language": "zh-CN",
+    "description": "AWS系统运维管理员助理认证考试模拟题 - 第1套",
+    "totalQuestions": 40,
+    "passingScore": 72,
+    "examTime": 130,
+    "domains": [
+      {"id": 1, "name": "Monitoring, Logging, and Remediation", "weight": 20},
+      {"id": 2, "name": "Reliability and Business Continuity", "weight": 16},
+      {"id": 3, "name": "Deployment, Provisioning, and Automation", "weight": 18},
+      {"id": 4, "name": "Security and Compliance", "weight": 16},
+      {"id": 5, "name": "Networking and Content Delivery", "weight": 18},
+      {"id": 6, "name": "Cost and Performance Optimization", "weight": 12}
+    ],
+    "tags": ["AWS", "SysOps", "SOA", "认证考试", "运维"]
+  },
+  "questions": [
+    {
+      "id": "q1",
+      "domain": 1,
+      "question": "一家公司需要监控其EC2实例的内存使用率。默认的CloudWatch指标不包含此信息。应该如何解决？",
+      "options": {
+        "A": "启用EC2详细监控",
+        "B": "安装CloudWatch代理并配置收集内存指标",
+        "C": "使用AWS Systems Manager收集指标",
+        "D": "在EC2控制台中启用内存监控"
+      },
+      "answer": "B",
+      "explanation": "CloudWatch代理可以收集操作系统级别的指标，包括内存使用率、磁盘空间等。默认的EC2指标不包含内存和磁盘使用率，需要安装CloudWatch代理来收集这些自定义指标。"
+    },
+    {
+      "id": "q2",
+      "domain": 1,
+      "question": "运维团队需要在EC2实例CPU使用率超过80%并持续5分钟时收到告警。应该如何配置CloudWatch告警？",
+      "options": {
+        "A": "设置周期为300秒，评估周期为1",
+        "B": "设置周期为60秒，评估周期为5",
+        "C": "设置周期为60秒，评估周期为1",
+        "D": "设置周期为300秒，评估周期为5"
+      },
+      "answer": "B",
+      "explanation": "周期（Period）是收集数据的时间间隔，评估周期（Evaluation Periods）是连续的数据点数量。60秒周期×5个评估周期=5分钟，满足持续5分钟超过80%的要求。"
+    },
+    {
+      "id": "q3",
+      "domain": 1,
+      "question": "一个应用程序在多个EC2实例上运行，团队需要集中查看和搜索所有实例的应用程序日志。应该使用什么解决方案？",
+      "options": {
+        "A": "使用S3存储日志并使用Athena查询",
+        "B": "使用CloudWatch Logs代理将日志发送到CloudWatch Logs",
+        "C": "使用EBS快照备份日志",
+        "D": "使用AWS Backup备份日志"
+      },
+      "answer": "B",
+      "explanation": "CloudWatch Logs代理（或统一CloudWatch代理）可以将应用程序日志发送到CloudWatch Logs，提供集中的日志管理、搜索和分析功能。"
+    },
+    {
+      "id": "q4",
+      "domain": 1,
+      "question": "公司希望在AWS API调用发生特定操作时自动触发Lambda函数。例如，当有人创建新的IAM用户时发送通知。应该使用什么服务？",
+      "options": {
+        "A": "CloudWatch Logs",
+        "B": "CloudTrail与EventBridge集成",
+        "C": "AWS Config规则",
+        "D": "VPC Flow Logs"
+      },
+      "answer": "B",
+      "explanation": "CloudTrail记录AWS API调用，可以与EventBridge（原CloudWatch Events）集成，当特定API调用发生时触发规则，自动调用Lambda函数或其他目标。"
+    },
+    {
+      "id": "q5",
+      "domain": 1,
+      "question": "运维团队发现某个CloudWatch告警频繁在OK和ALARM状态之间切换。如何减少这种抖动现象？",
+      "options": {
+        "A": "增加告警阈值",
+        "B": "增加评估周期数量",
+        "C": "减少告警周期",
+        "D": "启用详细监控"
+      },
+      "answer": "B",
+      "explanation": "增加评估周期数量意味着需要更多连续的数据点超过阈值才会触发告警，这可以有效减少由于短暂波动导致的告警抖动。"
+    },
+    {
+      "id": "q6",
+      "domain": 1,
+      "question": "一家公司需要监控其RDS数据库的慢查询。应该如何配置？",
+      "options": {
+        "A": "启用RDS增强监控",
+        "B": "启用RDS Performance Insights",
+        "C": "配置RDS参数组启用慢查询日志并发送到CloudWatch Logs",
+        "D": "使用AWS X-Ray追踪数据库调用"
+      },
+      "answer": "C",
+      "explanation": "要监控慢查询，需要在RDS参数组中启用慢查询日志（slow_query_log），并配置将日志发布到CloudWatch Logs。Performance Insights提供性能分析但不专门针对慢查询日志。"
+    },
+    {
+      "id": "q7",
+      "domain": 1,
+      "question": "团队需要创建一个CloudWatch仪表板来显示多个AWS账户的指标。应该如何实现？",
+      "options": {
+        "A": "在每个账户中创建相同的仪表板",
+        "B": "使用CloudWatch跨账户功能共享指标",
+        "C": "将所有指标导出到S3然后可视化",
+        "D": "使用AWS Organizations合并账户"
+      },
+      "answer": "B",
+      "explanation": "CloudWatch跨账户可观测性功能允许在一个监控账户中查看和分析来自多个源账户的指标、日志和追踪，无需在每个账户中单独配置仪表板。"
+    },
+    {
+      "id": "q8",
+      "domain": 1,
+      "question": "运维团队需要自动修复处于unhealthy状态的EC2实例。当实例连续两次系统状态检查失败时，应该自动重启实例。如何配置？",
+      "options": {
+        "A": "使用Auto Scaling健康检查",
+        "B": "创建CloudWatch告警并配置EC2操作为重启",
+        "C": "使用AWS Systems Manager自动化",
+        "D": "配置ELB健康检查"
+      },
+      "answer": "B",
+      "explanation": "CloudWatch告警可以配置EC2操作（如重启、停止、终止或恢复），当StatusCheckFailed_System指标触发告警时，可以自动执行重启操作来修复实例。"
+    },
+    {
+      "id": "q9",
+      "domain": 2,
+      "question": "一家公司的应用程序需要99.99%的可用性。应用程序部署在单个AWS区域的多个可用区中。如何满足可用性要求？",
+      "options": {
+        "A": "在当前区域增加更多实例",
+        "B": "部署到多个AWS区域并使用Route 53故障转移",
+        "C": "使用更大的EC2实例类型",
+        "D": "启用EC2增强网络"
+      },
+      "answer": "B",
+      "explanation": "单个AWS区域的SLA通常为99.95%或更低。要实现99.99%的可用性，需要跨多个区域部署应用程序，并使用Route 53配置健康检查和故障转移路由。"
+    },
+    {
+      "id": "q10",
+      "domain": 2,
+      "question": "运维团队需要确保Auto Scaling组中的实例在终止前完成正在处理的请求。应该使用什么功能？",
+      "options": {
+        "A": "冷却期（Cooldown Period）",
+        "B": "生命周期钩子（Lifecycle Hooks）",
+        "C": "预热时间（Warmup Time）",
+        "D": "健康检查宽限期"
+      },
+      "answer": "B",
+      "explanation": "生命周期钩子允许在实例启动或终止时暂停Auto Scaling操作，执行自定义操作。通过Terminating钩子，可以在实例终止前等待请求处理完成。"
+    },
+    {
+      "id": "q11",
+      "domain": 2,
+      "question": "公司使用RDS MySQL数据库，需要每天创建数据库快照并保留30天。如何以最小的运维开销实现？",
+      "options": {
+        "A": "使用Lambda函数每天创建手动快照",
+        "B": "配置RDS自动备份，保留期设为30天",
+        "C": "使用AWS Backup创建备份计划",
+        "D": "使用CloudWatch Events触发手动快照"
+      },
+      "answer": "B",
+      "explanation": "RDS自动备份功能可以每天自动创建数据库快照，只需设置保留期为30天即可。这是最简单的方法，无需额外的Lambda或事件配置。"
+    },
+    {
+      "id": "q12",
+      "domain": 2,
+      "question": "一个Auto Scaling组配置为最小2个、期望2个、最大6个实例。当一个实例变得不健康时会发生什么？",
+      "options": {
+        "A": "Auto Scaling会终止不健康实例并启动新实例",
+        "B": "Auto Scaling会尝试修复不健康实例",
+        "C": "Auto Scaling会发送通知但不采取行动",
+        "D": "Auto Scaling会将期望容量增加到3"
+      },
+      "answer": "A",
+      "explanation": "当Auto Scaling检测到不健康实例时，会终止该实例并启动新实例来替换它，以维持期望容量。Auto Scaling不会尝试修复实例，而是直接替换。"
+    },
+    {
+      "id": "q13",
+      "domain": 2,
+      "question": "公司需要为其S3存储桶配置跨区域复制以实现灾难恢复。必须满足哪些先决条件？",
+      "options": {
+        "A": "源和目标存储桶必须启用版本控制",
+        "B": "源和目标存储桶必须在同一账户中",
+        "C": "源存储桶必须启用服务器端加密",
+        "D": "目标存储桶必须为空"
+      },
+      "answer": "A",
+      "explanation": "S3跨区域复制要求源和目标存储桶都必须启用版本控制。存储桶可以在不同账户中，加密和内容不是必需的先决条件。"
+    },
+    {
+      "id": "q14",
+      "domain": 2,
+      "question": "运维团队需要测试应用程序在AZ故障时的行为。如何安全地模拟AZ故障？",
+      "options": {
+        "A": "手动终止一个AZ中的所有实例",
+        "B": "使用AWS Fault Injection Simulator",
+        "C": "修改安全组阻止该AZ的流量",
+        "D": "联系AWS支持触发AZ故障"
+      },
+      "answer": "B",
+      "explanation": "AWS Fault Injection Simulator (FIS) 是一项托管服务，允许安全地进行故障注入实验，包括模拟AZ故障、网络中断等场景，用于测试应用程序的弹性。"
+    },
+    {
+      "id": "q15",
+      "domain": 3,
+      "question": "运维团队需要在多个EC2实例上安装和配置软件。实例没有公网IP且无法连接互联网。如何使用Systems Manager执行此操作？",
+      "options": {
+        "A": "为实例分配公网IP",
+        "B": "配置VPC端点用于Systems Manager",
+        "C": "使用NAT Gateway",
+        "D": "使用EC2 Instance Connect"
+      },
+      "answer": "B",
+      "explanation": "在没有互联网访问的情况下使用Systems Manager，需要配置VPC端点（ssm、ssmmessages、ec2messages）。这允许实例通过私有网络与Systems Manager通信。"
+    },
+    {
+      "id": "q16",
+      "domain": 3,
+      "question": "团队需要使用CloudFormation部署一个包含EC2实例和RDS数据库的堆栈。RDS创建需要较长时间。如何确保EC2实例在RDS完全可用后才开始配置？",
+      "options": {
+        "A": "使用CreationPolicy",
+        "B": "使用DependsOn属性",
+        "C": "使用WaitCondition",
+        "D": "使用UpdatePolicy"
+      },
+      "answer": "B",
+      "explanation": "DependsOn属性用于指定资源创建顺序。将EC2实例的DependsOn设置为RDS资源，可确保RDS完全创建后才开始创建EC2实例。"
+    },
+    {
+      "id": "q17",
+      "domain": 3,
+      "question": "公司使用CloudFormation管理基础设施。开发人员意外地手动修改了由CloudFormation创建的安全组。如何检测这种配置漂移？",
+      "options": {
+        "A": "使用CloudTrail查看API调用",
+        "B": "使用CloudFormation漂移检测",
+        "C": "使用AWS Config规则",
+        "D": "手动比较当前配置与模板"
+      },
+      "answer": "B",
+      "explanation": "CloudFormation漂移检测功能可以检测堆栈资源的实际配置与模板定义之间的差异，帮助识别手动更改或意外修改。"
+    },
+    {
+      "id": "q18",
+      "domain": 3,
+      "question": "运维团队需要在所有EC2实例上定期运行安全补丁更新。实例分布在多个区域和账户中。应该使用什么服务？",
+      "options": {
+        "A": "AWS Systems Manager Patch Manager",
+        "B": "AWS OpsWorks",
+        "C": "Amazon Inspector",
+        "D": "AWS Config"
+      },
+      "answer": "A",
+      "explanation": "Systems Manager Patch Manager可以自动化补丁管理过程，支持跨多个区域和账户的实例。可以定义补丁基线、维护窗口和补丁组来管理补丁部署。"
+    },
+    {
+      "id": "q19",
+      "domain": 3,
+      "question": "团队正在使用CloudFormation创建一个新堆栈，但创建失败并开始回滚。如何在不删除已创建资源的情况下调试问题？",
+      "options": {
+        "A": "使用--disable-rollback选项",
+        "B": "使用--on-failure DO_NOTHING选项",
+        "C": "在模板中添加DeletionPolicy: Retain",
+        "D": "使用变更集预览更改"
+      },
+      "answer": "A",
+      "explanation": "使用--disable-rollback选项（或在控制台中选择"保留成功预置的资源"）可以在堆栈创建失败时保留已创建的资源，便于调试问题。"
+    },
+    {
+      "id": "q20",
+      "domain": 3,
+      "question": "公司需要为Auto Scaling组中的新实例自动配置软件和应用程序。应该使用什么方法？",
+      "options": {
+        "A": "使用EC2启动模板的用户数据",
+        "B": "手动SSH连接并配置",
+        "C": "使用EBS快照",
+        "D": "使用AWS Backup"
+      },
+      "answer": "A",
+      "explanation": "EC2启动模板的用户数据脚本在实例首次启动时执行，可以自动安装软件、配置应用程序等。这是Auto Scaling环境中自动化配置的标准方法。"
+    },
+    {
+      "id": "q21",
+      "domain": 4,
+      "question": "安全团队需要确保所有S3存储桶都启用了服务器端加密。如何持续监控并自动修复不合规的存储桶？",
+      "options": {
+        "A": "使用CloudTrail监控S3 API调用",
+        "B": "使用AWS Config托管规则和自动修复",
+        "C": "使用CloudWatch告警",
+        "D": "使用IAM策略阻止未加密上传"
+      },
+      "answer": "B",
+      "explanation": "AWS Config托管规则s3-bucket-server-side-encryption-enabled可以检查存储桶加密状态。配合自动修复操作（使用SSM文档或Lambda），可以自动为不合规的存储桶启用加密。"
+    },
+    {
+      "id": "q22",
+      "domain": 4,
+      "question": "公司需要允许第三方审计人员临时访问AWS账户来审查安全配置。审计人员有自己的AWS账户。应该如何授予访问权限？",
+      "options": {
+        "A": "创建IAM用户并提供凭证",
+        "B": "创建跨账户IAM角色供审计人员代入",
+        "C": "共享根账户凭证",
+        "D": "创建VPN连接"
+      },
+      "answer": "B",
+      "explanation": "跨账户IAM角色允许外部AWS账户的用户临时代入角色获得权限。这是安全的方法，无需共享长期凭证，且可以轻松撤销访问权限。"
+    },
+    {
+      "id": "q23",
+      "domain": 4,
+      "question": "GuardDuty检测到一个EC2实例正在与已知的恶意IP地址通信。应该采取什么即时响应措施？",
+      "options": {
+        "A": "删除EC2实例",
+        "B": "修改安全组阻止出站流量并隔离实例",
+        "C": "重启EC2实例",
+        "D": "创建实例快照"
+      },
+      "answer": "B",
+      "explanation": "发现潜在安全威胁时，应立即隔离受影响的实例以防止进一步损害。修改安全组阻止流量是快速隔离的方法，同时保留实例用于取证分析。"
+    },
+    {
+      "id": "q24",
+      "domain": 4,
+      "question": "公司需要确保IAM用户在90天未使用后自动禁用其访问密钥。应该如何实现？",
+      "options": {
+        "A": "使用IAM密码策略",
+        "B": "使用AWS Config规则和Lambda自动修复",
+        "C": "使用CloudTrail监控",
+        "D": "使用IAM Access Analyzer"
+      },
+      "answer": "B",
+      "explanation": "AWS Config规则iam-user-unused-credentials-check可以检测未使用的凭证。配合Lambda自动修复，可以自动禁用超过指定天数未使用的访问密钥。"
+    },
+    {
+      "id": "q25",
+      "domain": 4,
+      "question": "Security Hub显示多个高严重性发现。团队需要快速了解整体安全状况并确定优先级。应该查看Security Hub的哪个功能？",
+      "options": {
+        "A": "安全标准评分",
+        "B": "洞察（Insights）",
+        "C": "集成列表",
+        "D": "自定义操作"
+      },
+      "answer": "A",
+      "explanation": "Security Hub的安全标准评分提供整体安全状况的概览，显示各安全标准（如CIS基准、PCI DSS）的合规百分比，帮助快速评估和确定优先级。"
+    },
+    {
+      "id": "q26",
+      "domain": 4,
+      "question": "公司需要存储敏感的数据库凭证供应用程序使用。凭证需要自动轮换。应该使用什么服务？",
+      "options": {
+        "A": "AWS Systems Manager Parameter Store",
+        "B": "AWS Secrets Manager",
+        "C": "AWS KMS",
+        "D": "环境变量"
+      },
+      "answer": "B",
+      "explanation": "AWS Secrets Manager专门用于管理敏感信息，支持RDS、DocumentDB和Redshift等数据库凭证的自动轮换。Parameter Store虽然也可存储凭证，但不支持自动轮换。"
+    },
+    {
+      "id": "q27",
+      "domain": 5,
+      "question": "公司的VPC中的EC2实例需要访问互联网下载软件更新，但不应该从互联网接受入站连接。应该使用什么配置？",
+      "options": {
+        "A": "Internet Gateway和公有子网",
+        "B": "NAT Gateway在公有子网，实例在私有子网",
+        "C": "VPC端点",
+        "D": "Transit Gateway"
+      },
+      "answer": "B",
+      "explanation": "NAT Gateway允许私有子网中的实例访问互联网（出站），同时阻止来自互联网的入站连接。实例保留在私有子网中，通过NAT Gateway访问互联网。"
+    },
+    {
+      "id": "q28",
+      "domain": 5,
+      "question": "运维团队需要在VPC中捕获网络流量信息以进行安全分析。应该使用什么功能？",
+      "options": {
+        "A": "CloudTrail",
+        "B": "VPC Flow Logs",
+        "C": "CloudWatch Logs",
+        "D": "AWS Config"
+      },
+      "answer": "B",
+      "explanation": "VPC Flow Logs捕获VPC、子网或网络接口级别的IP流量信息，包括源/目标IP、端口、协议、数据包/字节数和操作（接受/拒绝）。"
+    },
+    {
+      "id": "q29",
+      "domain": 5,
+      "question": "公司使用Route 53进行DNS管理。需要配置健康检查以在主要端点不可用时自动故障转移到备用端点。应该使用什么路由策略？",
+      "options": {
+        "A": "简单路由",
+        "B": "加权路由",
+        "C": "故障转移路由",
+        "D": "地理位置路由"
+      },
+      "answer": "C",
+      "explanation": "故障转移路由策略与健康检查结合使用，当主要资源健康检查失败时，自动将流量路由到备用资源，实现自动故障转移。"
+    },
+    {
+      "id": "q30",
+      "domain": 5,
+      "question": "CloudFront分发返回504 Gateway Timeout错误。最可能的原因是什么？",
+      "options": {
+        "A": "CloudFront边缘位置过载",
+        "B": "源服务器响应时间超过CloudFront超时设置",
+        "C": "SSL证书过期",
+        "D": "WAF规则阻止了请求"
+      },
+      "answer": "B",
+      "explanation": "504错误表示CloudFront无法在配置的超时时间内从源服务器获得响应。这通常是因为源服务器响应慢或不可达。需要检查源服务器性能或调整CloudFront超时设置。"
+    },
+    {
+      "id": "q31",
+      "domain": 5,
+      "question": "公司需要将本地数据中心与AWS VPC通过专用连接互联。连接需要低延迟和一致的网络性能。应该使用什么服务？",
+      "options": {
+        "A": "Site-to-Site VPN",
+        "B": "AWS Direct Connect",
+        "C": "VPC Peering",
+        "D": "Transit Gateway"
+      },
+      "answer": "B",
+      "explanation": "AWS Direct Connect提供从本地到AWS的专用物理连接，提供比VPN更低的延迟和更一致的网络性能。适合需要高带宽和稳定连接的场景。"
+    },
+    {
+      "id": "q32",
+      "domain": 5,
+      "question": "应用程序负载均衡器(ALB)的目标组中所有目标都显示为unhealthy。EC2实例运行正常。最可能的原因是什么？",
+      "options": {
+        "A": "实例类型不支持ALB",
+        "B": "安全组不允许来自ALB的健康检查流量",
+        "C": "实例没有公网IP",
+        "D": "目标组容量不足"
+      },
+      "answer": "B",
+      "explanation": "如果实例的安全组不允许来自ALB安全组或ALB子网CIDR的入站流量（健康检查端口），ALB无法完成健康检查，目标将显示为unhealthy。"
+    },
+    {
+      "id": "q33",
+      "domain": 6,
+      "question": "公司想要分析过去6个月的AWS成本并识别节省机会。应该使用什么服务？",
+      "options": {
+        "A": "AWS Budgets",
+        "B": "Cost Explorer",
+        "C": "CloudWatch Billing告警",
+        "D": "AWS Pricing Calculator"
+      },
+      "answer": "B",
+      "explanation": "Cost Explorer提供历史成本数据的可视化和分析，可以按服务、账户、标签等维度查看成本，并提供预测和节省建议，如预留实例推荐。"
+    },
+    {
+      "id": "q34",
+      "domain": 6,
+      "question": "Trusted Advisor检查显示有多个未附加的EBS卷。这属于哪个检查类别？",
+      "options": {
+        "A": "安全性",
+        "B": "容错能力",
+        "C": "成本优化",
+        "D": "服务限制"
+      },
+      "answer": "C",
+      "explanation": "未附加的EBS卷会持续产生存储费用但未被使用。Trusted Advisor将此归类为成本优化检查，建议删除或使用这些卷以节省成本。"
+    },
+    {
+      "id": "q35",
+      "domain": 6,
+      "question": "公司的EC2实例平均CPU使用率长期低于10%。Compute Optimizer会提供什么建议？",
+      "options": {
+        "A": "增加实例数量",
+        "B": "迁移到更小的实例类型以降低成本",
+        "C": "启用增强网络",
+        "D": "增加EBS吞吐量"
+      },
+      "answer": "B",
+      "explanation": "AWS Compute Optimizer分析EC2实例的利用率，对于利用率低的实例，会建议迁移到更小（成本更低）但仍满足性能需求的实例类型。"
+    },
+    {
+      "id": "q36",
+      "domain": 6,
+      "question": "公司需要确保每月AWS支出不超过$10,000。当达到$8,000时应收到告警。应该如何配置？",
+      "options": {
+        "A": "使用CloudWatch Billing告警",
+        "B": "使用AWS Budgets创建成本预算",
+        "C": "使用Cost Explorer设置阈值",
+        "D": "使用AWS Organizations SCP"
+      },
+      "answer": "B",
+      "explanation": "AWS Budgets允许创建预算并设置多个阈值告警。可以设置$10,000预算，并在达到80%（$8,000）时发送告警通知。"
+    },
+    {
+      "id": "q37",
+      "domain": 6,
+      "question": "公司使用标签来跟踪各部门的AWS成本。发现许多资源没有正确标签。如何强制执行标签策略？",
+      "options": {
+        "A": "使用IAM策略",
+        "B": "使用AWS Organizations标签策略",
+        "C": "使用CloudFormation",
+        "D": "使用Service Control Policies"
+      },
+      "answer": "B",
+      "explanation": "AWS Organizations的标签策略可以定义标签规则和命名约定，并识别不合规的资源。配合SCP可以强制执行标签要求，阻止创建未标记的资源。"
+    },
+    {
+      "id": "q38",
+      "domain": 6,
+      "question": "运维团队需要优化一个I/O密集型应用程序的EBS性能。当前使用gp2卷但IOPS不足。应该如何优化？",
+      "options": {
+        "A": "增加gp2卷大小",
+        "B": "迁移到gp3或io1/io2卷",
+        "C": "启用EBS优化",
+        "D": "使用RAID配置"
+      },
+      "answer": "B",
+      "explanation": "gp3卷允许独立于卷大小配置IOPS（最高16,000 IOPS）。io1/io2卷可提供更高IOPS（最高64,000-256,000）。这些选项比单纯增加gp2大小更灵活、成本效益更高。"
+    },
+    {
+      "id": "q39",
+      "domain": 1,
+      "question": "团队需要分析CloudWatch Logs中的日志数据以识别特定错误模式。应该使用什么功能？",
+      "options": {
+        "A": "CloudWatch Logs Insights",
+        "B": "CloudWatch Metric Filters",
+        "C": "CloudWatch Contributor Insights",
+        "D": "CloudWatch ServiceLens"
+      },
+      "answer": "A",
+      "explanation": "CloudWatch Logs Insights是交互式日志分析服务，提供类SQL查询语言来搜索和分析日志数据，可以快速识别错误模式、异常和趋势。"
+    },
+    {
+      "id": "q40",
+      "domain": 3,
+      "question": "CloudFormation堆栈更新失败并回滚到之前的状态。团队需要了解具体失败原因。应该查看什么？",
+      "options": {
+        "A": "CloudTrail日志",
+        "B": "CloudFormation堆栈事件",
+        "C": "CloudWatch Logs",
+        "D": "EC2系统日志"
+      },
+      "answer": "B",
+      "explanation": "CloudFormation堆栈事件记录了所有资源操作的详细信息，包括失败原因和状态。查看堆栈事件可以快速定位更新失败的具体资源和错误消息。"
+    }
+  ]
+}
