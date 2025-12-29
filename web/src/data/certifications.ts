@@ -88,7 +88,7 @@ export const awsCertifications: Certification[] = [
     questionCount: 65,
     passingScore: 72,
     prerequisites: ['aws-clf-c02'],
-    hasExamData: false,
+    hasExamData: true,
     description: { zh: 'AWS 应用开发能力认证', ja: 'AWS アプリケーション開発能力を証明する認定' }
   },
   {
@@ -103,7 +103,7 @@ export const awsCertifications: Certification[] = [
     questionCount: 65,
     passingScore: 72,
     prerequisites: ['aws-clf-c02'],
-    hasExamData: false,
+    hasExamData: true,
     description: { zh: 'AWS 系统运维管理能力认证', ja: 'AWS システム運用管理能力を証明する認定' }
   },
   {
@@ -149,7 +149,7 @@ export const awsCertifications: Certification[] = [
     questionCount: 75,
     passingScore: 75,
     prerequisites: ['aws-saa-c03'],
-    hasExamData: false,
+    hasExamData: true,
     description: { zh: '高级架构设计能力认证', ja: '高度なアーキテクチャ設計能力を証明する認定' }
   },
   {
@@ -260,7 +260,7 @@ export const azureCertifications: Certification[] = [
     questionCount: 50,
     passingScore: 70,
     prerequisites: [],
-    hasExamData: false,
+    hasExamData: true,
     description: { zh: 'Azure AI 基础知识认证', ja: 'Azure AI の基礎知識を証明する認定' }
   },
   {
@@ -275,7 +275,7 @@ export const azureCertifications: Certification[] = [
     questionCount: 50,
     passingScore: 70,
     prerequisites: [],
-    hasExamData: false,
+    hasExamData: true,
     description: { zh: 'Azure 数据基础知识认证', ja: 'Azure データの基礎知識を証明する認定' }
   },
   {
@@ -321,7 +321,7 @@ export const azureCertifications: Certification[] = [
     questionCount: 50,
     passingScore: 70,
     prerequisites: ['azure-az-900'],
-    hasExamData: false,
+    hasExamData: true,
     description: { zh: 'Azure 开发者认证', ja: 'Azure 開発者認定' }
   },
   {
@@ -336,7 +336,7 @@ export const azureCertifications: Certification[] = [
     questionCount: 50,
     passingScore: 70,
     prerequisites: ['azure-az-104'],
-    hasExamData: false,
+    hasExamData: true,
     description: { zh: 'Azure 安全工程师认证', ja: 'Azure セキュリティエンジニア認定' }
   },
   {
@@ -412,7 +412,7 @@ export const azureCertifications: Certification[] = [
     questionCount: 50,
     passingScore: 70,
     prerequisites: ['azure-az-104'],
-    hasExamData: false,
+    hasExamData: true,
     description: { zh: 'Azure 解决方案架构师专家认证', ja: 'Azure ソリューションアーキテクト エキスパート認定' }
   },
   {
@@ -603,7 +603,7 @@ export const gcpCertifications: Certification[] = [
     questionCount: 50,
     passingScore: 70,
     prerequisites: ['gcp-ace'],
-    hasExamData: false,
+    hasExamData: true,
     description: { zh: '设计、开发和管理安全可扩展的云解决方案', ja: 'セキュアでスケーラブルなクラウドソリューションの設計・開発・管理' }
   },
   {
