@@ -1,0 +1,643 @@
+{
+  "exam": {
+    "id": "aws-mla-c01-set1",
+    "name": "AWS MLA-C01 Practice Exam #1",
+    "code": "MLA-C01",
+    "provider": "AWS",
+    "language": "en",
+    "description": "AWS Certified Machine Learning Engineer - Associate Practice Exam - Set 1",
+    "totalQuestions": 40,
+    "passingScore": 70,
+    "examTime": 170,
+    "domains": [
+      {
+        "id": 1,
+        "name": "Data Preparation for ML",
+        "weight": 28
+      },
+      {
+        "id": 2,
+        "name": "ML Model Development",
+        "weight": 26
+      },
+      {
+        "id": 3,
+        "name": "ML Model Deployment and Orchestration",
+        "weight": 22
+      },
+      {
+        "id": 4,
+        "name": "ML Solution Monitoring and Maintenance",
+        "weight": 24
+      }
+    ],
+    "tags": [
+      "AWS",
+      "Machine Learning",
+      "SageMaker",
+      "Associate"
+    ]
+  },
+  "questions": [
+    {
+      "id": "q1",
+      "domain": 1,
+      "question": "A data scientist needs to prepare a large dataset stored in Amazon S3 for machine learning. The dataset contains missing values and requires feature engineering. Which AWS service should they use for scalable data transformation?",
+      "options": {
+        "A": "Amazon SageMaker Data Wrangler",
+        "B": "Amazon Redshift",
+        "C": "Amazon DynamoDB",
+        "D": "Amazon ElastiCache"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Amazon SageMaker Data Wrangler provides a visual interface for data preparation and feature engineering. It allows you to:\n- Import data from various sources including S3\n- Handle missing values and outliers\n- Perform feature transformations\n- Export data preparation workflows\n\nRedshift (B) is a data warehouse. DynamoDB (C) is a NoSQL database. ElastiCache (D) is for caching.",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q2",
+      "domain": 1,
+      "question": "A machine learning engineer needs to create a feature store to share features across multiple ML models. Which AWS service provides this capability?",
+      "options": {
+        "A": "Amazon S3",
+        "B": "Amazon SageMaker Feature Store",
+        "C": "Amazon RDS",
+        "D": "AWS Glue Data Catalog"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Amazon SageMaker Feature Store is a fully managed repository for ML features that enables:\n- Centralized feature storage and management\n- Feature sharing across teams and models\n- Both online (low-latency) and offline (batch) feature access\n- Feature versioning and lineage tracking\n\nS3 (A) is object storage. RDS (C) is relational database. Glue Data Catalog (D) is for metadata.",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q3",
+      "domain": 1,
+      "question": "A data engineer needs to detect and handle data quality issues in a streaming pipeline before the data is used for ML model training. Which approach is most appropriate?",
+      "options": {
+        "A": "Use Amazon Kinesis Data Firehose with AWS Lambda for data validation",
+        "B": "Store all data in S3 and manually review",
+        "C": "Use Amazon SQS to queue data for later processing",
+        "D": "Disable data quality checks to improve throughput"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Using Kinesis Data Firehose with Lambda allows real-time data validation:\n- Lambda functions can validate and transform streaming data\n- Invalid records can be filtered or redirected\n- Maintains throughput while ensuring data quality\n- Integrates seamlessly with S3 for storage\n\nManual review (B) doesn't scale. SQS (C) just queues data. Disabling checks (D) leads to poor model quality.",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q4",
+      "domain": 1,
+      "question": "A company wants to catalog and discover datasets across their organization for ML projects. Which service should they use?",
+      "options": {
+        "A": "AWS Glue Data Catalog",
+        "B": "Amazon S3 Inventory",
+        "C": "Amazon CloudWatch",
+        "D": "AWS Config"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "AWS Glue Data Catalog provides centralized metadata management:\n- Automatically crawls and catalogs data sources\n- Maintains schema information and statistics\n- Enables data discovery across the organization\n- Integrates with SageMaker and other analytics services\n\nS3 Inventory (B) only lists S3 objects. CloudWatch (C) is for monitoring. Config (D) tracks AWS resource configurations.",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q5",
+      "domain": 1,
+      "question": "A machine learning team needs to label a large image dataset for a computer vision project. They want to use human labelers while minimizing cost. Which AWS service should they use?",
+      "options": {
+        "A": "Amazon Rekognition Custom Labels",
+        "B": "Amazon SageMaker Ground Truth",
+        "C": "Amazon Mechanical Turk directly",
+        "D": "Amazon Comprehend"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Amazon SageMaker Ground Truth is designed for data labeling:\n- Provides built-in labeling workflows\n- Uses automated labeling to reduce human labeling needs\n- Integrates with Mechanical Turk, private, and vendor workforces\n- Includes quality control mechanisms\n\nRekognition (A) is for inference. Direct MTurk (C) requires more setup. Comprehend (D) is for NLP.",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q6",
+      "domain": 1,
+      "question": "A data scientist needs to transform categorical features into numerical representations for a classification model. Which technique should they use for high-cardinality categorical variables?",
+      "options": {
+        "A": "One-hot encoding",
+        "B": "Target encoding",
+        "C": "Binary encoding",
+        "D": "Label encoding"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Target encoding is best for high-cardinality categorical variables:\n- Replaces categories with the mean of the target variable\n- Doesn't increase dimensionality significantly\n- Works well when categories have many unique values\n- Requires careful handling to prevent data leakage\n\nOne-hot encoding (A) creates too many features. Binary (C) and Label (D) encoding may not capture relationships well.",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q7",
+      "domain": 1,
+      "question": "A company needs to process and transform petabytes of data for ML training. The transformation logic is complex and involves multiple steps. Which AWS service is most suitable?",
+      "options": {
+        "A": "AWS Glue ETL",
+        "B": "Amazon Kinesis Data Analytics",
+        "C": "AWS Lambda",
+        "D": "Amazon SQS"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "AWS Glue ETL is designed for large-scale data transformation:\n- Serverless Spark-based processing\n- Handles petabyte-scale data\n- Supports complex transformation logic\n- Integrates with S3, Redshift, and other data stores\n\nKinesis (B) is for streaming. Lambda (C) has execution limits. SQS (D) is a message queue.",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q8",
+      "domain": 1,
+      "question": "A data scientist needs to detect outliers in a numerical feature before training an ML model. Which statistical method is commonly used for outlier detection?",
+      "options": {
+        "A": "IQR (Interquartile Range) method",
+        "B": "Principal Component Analysis",
+        "C": "K-means clustering",
+        "D": "Gradient descent"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "The IQR method is a robust statistical approach for outlier detection:\n- Calculate Q1 (25th percentile) and Q3 (75th percentile)\n- IQR = Q3 - Q1\n- Values below Q1 - 1.5*IQR or above Q3 + 1.5*IQR are outliers\n- Works well for detecting extreme values\n\nPCA (B) is for dimensionality reduction. K-means (C) is for clustering. Gradient descent (D) is an optimization algorithm.",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q9",
+      "domain": 1,
+      "question": "A machine learning engineer needs to split a time-series dataset for model training and validation. Which approach should they use?",
+      "options": {
+        "A": "Random sampling to create train/test sets",
+        "B": "Time-based split with training data before test data",
+        "C": "Stratified sampling based on target values",
+        "D": "K-fold cross-validation with random folds"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Time-based splitting is essential for time-series data:\n- Preserves temporal order of observations\n- Prevents data leakage from future to past\n- Training data should be from earlier time periods\n- Test data should be from later time periods\n\nRandom sampling (A) and K-fold (D) break temporal relationships. Stratified sampling (C) doesn't address time dependency.",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q10",
+      "domain": 1,
+      "question": "A data scientist needs to handle imbalanced classes in a classification dataset. Which technique can help address this issue during data preparation?",
+      "options": {
+        "A": "SMOTE (Synthetic Minority Over-sampling Technique)",
+        "B": "Principal Component Analysis",
+        "C": "Feature scaling",
+        "D": "One-hot encoding"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "SMOTE is a popular technique for handling class imbalance:\n- Creates synthetic samples for the minority class\n- Generates new samples based on feature space interpolation\n- Helps prevent model bias towards majority class\n- Can be combined with undersampling techniques\n\nPCA (B) reduces dimensions. Feature scaling (C) normalizes values. One-hot encoding (D) handles categorical variables.",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q11",
+      "domain": 2,
+      "question": "A machine learning engineer needs to train a custom deep learning model on a large dataset. Which SageMaker training option provides the best performance for distributed training?",
+      "options": {
+        "A": "SageMaker Training with multiple GPU instances",
+        "B": "SageMaker Autopilot",
+        "C": "SageMaker Studio notebooks",
+        "D": "SageMaker Serverless Inference"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "SageMaker Training with multiple GPU instances enables distributed training:\n- Supports data parallelism and model parallelism\n- Automatic model and data distribution across instances\n- Optimized for deep learning frameworks\n- Provides near-linear scaling for large models\n\nAutopilot (B) is for AutoML. Notebooks (C) are for development. Serverless Inference (D) is for deployment.",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q12",
+      "domain": 2,
+      "question": "A data scientist wants to quickly build and compare multiple ML models without writing extensive code. Which AWS service should they use?",
+      "options": {
+        "A": "Amazon SageMaker Autopilot",
+        "B": "Amazon Comprehend",
+        "C": "AWS Lambda",
+        "D": "Amazon EC2"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "SageMaker Autopilot provides automated machine learning:\n- Automatically explores multiple algorithms\n- Performs hyperparameter optimization\n- Generates notebooks with training code\n- Provides model explainability\n\nComprehend (B) is a pre-built NLP service. Lambda (C) is for serverless compute. EC2 (D) requires manual setup.",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q13",
+      "domain": 2,
+      "question": "A machine learning engineer needs to optimize hyperparameters for a XGBoost model. Which SageMaker feature should they use?",
+      "options": {
+        "A": "SageMaker Automatic Model Tuning (Hyperparameter Optimization)",
+        "B": "SageMaker Model Monitor",
+        "C": "SageMaker Clarify",
+        "D": "SageMaker Debugger"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "SageMaker Automatic Model Tuning (HPO) optimizes hyperparameters:\n- Supports Bayesian optimization and random search\n- Runs multiple training jobs in parallel\n- Automatically finds optimal hyperparameter combinations\n- Works with built-in and custom algorithms\n\nModel Monitor (B) monitors deployed models. Clarify (C) analyzes bias. Debugger (D) debugs training issues.",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q14",
+      "domain": 2,
+      "question": "A data scientist needs to analyze the bias in their ML model and dataset. Which AWS service provides this capability?",
+      "options": {
+        "A": "Amazon SageMaker Clarify",
+        "B": "Amazon Rekognition",
+        "C": "Amazon Forecast",
+        "D": "Amazon Personalize"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "SageMaker Clarify provides bias detection and explainability:\n- Detects pre-training and post-training bias\n- Provides feature importance analysis\n- Generates explainability reports\n- Supports various bias metrics (DPL, KL, etc.)\n\nRekognition (B) is for computer vision. Forecast (C) is for time-series forecasting. Personalize (D) is for recommendations.",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q15",
+      "domain": 2,
+      "question": "A machine learning team wants to track experiments, compare model versions, and manage the ML lifecycle. Which capability should they use?",
+      "options": {
+        "A": "SageMaker Experiments and Model Registry",
+        "B": "AWS CloudTrail",
+        "C": "Amazon S3 versioning",
+        "D": "AWS CodeCommit"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "SageMaker Experiments and Model Registry provide ML lifecycle management:\n- Track training runs and hyperparameters\n- Compare model metrics across experiments\n- Version and catalog trained models\n- Manage model approval workflows\n\nCloudTrail (B) logs API calls. S3 versioning (C) is for object versioning. CodeCommit (D) is for code versioning.",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q16",
+      "domain": 2,
+      "question": "A data scientist needs to debug training issues in a neural network model, including vanishing gradients. Which SageMaker feature helps with this?",
+      "options": {
+        "A": "SageMaker Debugger",
+        "B": "SageMaker Profiler",
+        "C": "SageMaker Model Monitor",
+        "D": "SageMaker Autopilot"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "SageMaker Debugger helps identify training issues:\n- Captures tensors during training\n- Detects issues like vanishing gradients, overfitting\n- Provides built-in rules for common problems\n- Enables real-time debugging of training jobs\n\nProfiler (B) focuses on hardware utilization. Model Monitor (C) is for deployed models. Autopilot (D) is for AutoML.",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q17",
+      "domain": 2,
+      "question": "A company wants to build a text classification model using transfer learning. Which approach is most efficient?",
+      "options": {
+        "A": "Fine-tune a pre-trained BERT model from Hugging Face on SageMaker",
+        "B": "Train a model from scratch using a simple neural network",
+        "C": "Use Amazon Comprehend custom classification",
+        "D": "Build a rule-based classification system"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Fine-tuning a pre-trained transformer model is most efficient:\n- Leverages learned language representations\n- Requires less training data\n- Achieves better accuracy faster\n- SageMaker supports Hugging Face models natively\n\nTraining from scratch (B) requires more data and time. Comprehend (C) is limited to supported use cases. Rule-based (D) doesn't generalize well.",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q18",
+      "domain": 2,
+      "question": "A machine learning engineer needs to reduce the size of a trained neural network model for edge deployment. Which technique should they use?",
+      "options": {
+        "A": "Model quantization",
+        "B": "Data augmentation",
+        "C": "Feature engineering",
+        "D": "Hyperparameter tuning"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Model quantization reduces model size and improves inference speed:\n- Converts 32-bit floating point to lower precision (8-bit integers)\n- Significantly reduces model size\n- Improves inference speed on edge devices\n- May have minimal impact on accuracy\n\nData augmentation (B) increases training data. Feature engineering (C) improves features. HPO (D) optimizes training parameters.",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q19",
+      "domain": 2,
+      "question": "A data scientist needs to select the most important features for an ML model. Which SageMaker capability helps with feature selection?",
+      "options": {
+        "A": "SageMaker Clarify feature importance",
+        "B": "SageMaker Ground Truth",
+        "C": "SageMaker Experiments",
+        "D": "SageMaker Pipelines"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "SageMaker Clarify provides feature importance analysis:\n- Uses SHAP values to explain feature contributions\n- Identifies which features impact predictions most\n- Helps with feature selection decisions\n- Works with various model types\n\nGround Truth (B) is for labeling. Experiments (C) tracks training runs. Pipelines (D) orchestrates workflows.",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q20",
+      "domain": 2,
+      "question": "A company wants to train an ML model using data from multiple AWS accounts without moving the data. Which SageMaker feature enables this?",
+      "options": {
+        "A": "SageMaker with cross-account S3 access",
+        "B": "SageMaker Ground Truth",
+        "C": "SageMaker Canvas",
+        "D": "SageMaker JumpStart"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "SageMaker can access data across accounts using IAM policies:\n- Configure cross-account S3 bucket policies\n- Use IAM roles with appropriate permissions\n- Data remains in original accounts\n- Training job accesses data securely\n\nGround Truth (B) is for labeling. Canvas (C) is no-code ML. JumpStart (D) provides pre-built solutions.",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q21",
+      "domain": 3,
+      "question": "A company needs to deploy an ML model that can handle variable traffic with minimal infrastructure management. Which deployment option is best?",
+      "options": {
+        "A": "SageMaker Serverless Inference",
+        "B": "SageMaker Real-Time Inference with fixed instances",
+        "C": "Self-managed EC2 instances",
+        "D": "Amazon ECS with manual scaling"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "SageMaker Serverless Inference is ideal for variable traffic:\n- Automatically scales to zero when not in use\n- Scales up based on demand\n- No infrastructure management required\n- Pay only for actual usage\n\nReal-Time Inference (B) requires capacity planning. EC2 (C) and ECS (D) require more management.",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q22",
+      "domain": 3,
+      "question": "A machine learning engineer needs to deploy multiple ML models behind a single endpoint to perform A/B testing. Which SageMaker feature should they use?",
+      "options": {
+        "A": "SageMaker Multi-Model Endpoints",
+        "B": "SageMaker Inference Pipelines",
+        "C": "SageMaker Production Variants",
+        "D": "SageMaker Batch Transform"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "SageMaker Production Variants enable A/B testing:\n- Deploy multiple model versions to same endpoint\n- Control traffic distribution between variants\n- Compare model performance in production\n- Gradually shift traffic to better performing model\n\nMulti-Model (A) hosts multiple models for efficiency. Inference Pipelines (B) chains processing steps. Batch Transform (D) is for batch inference.",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q23",
+      "domain": 3,
+      "question": "A company needs to run ML inference on large batches of data stored in S3. Which SageMaker feature is most appropriate?",
+      "options": {
+        "A": "SageMaker Batch Transform",
+        "B": "SageMaker Real-Time Inference",
+        "C": "SageMaker Serverless Inference",
+        "D": "SageMaker Asynchronous Inference"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "SageMaker Batch Transform is designed for batch inference:\n- Processes large datasets stored in S3\n- Spins up compute resources, runs inference, and shuts down\n- Cost-effective for non-real-time scenarios\n- Supports parallel processing\n\nReal-Time (B) and Serverless (C) are for synchronous requests. Asynchronous (D) is for large payloads with queuing.",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q24",
+      "domain": 3,
+      "question": "A machine learning engineer needs to create an automated ML workflow that includes data preparation, training, and deployment. Which SageMaker feature should they use?",
+      "options": {
+        "A": "SageMaker Pipelines",
+        "B": "SageMaker Studio",
+        "C": "SageMaker Experiments",
+        "D": "SageMaker Ground Truth"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "SageMaker Pipelines provides ML workflow orchestration:\n- Define end-to-end ML workflows as code\n- Automate data preparation, training, and deployment\n- Track lineage and artifacts\n- Integrates with CI/CD systems\n\nStudio (B) is the IDE. Experiments (C) tracks training runs. Ground Truth (D) is for labeling.",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q25",
+      "domain": 3,
+      "question": "A company wants to deploy a computer vision model to edge devices with limited compute resources. Which AWS service should they use?",
+      "options": {
+        "A": "AWS IoT Greengrass with SageMaker Neo",
+        "B": "Amazon Rekognition",
+        "C": "Amazon SageMaker Real-Time Inference",
+        "D": "AWS Lambda"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "IoT Greengrass with SageMaker Neo enables edge ML deployment:\n- Neo optimizes models for specific hardware\n- Greengrass deploys and runs models on edge devices\n- Supports offline inference\n- Works with limited compute resources\n\nRekognition (B) is cloud-based. SageMaker Real-Time (C) requires cloud connectivity. Lambda (D) is cloud serverless.",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q26",
+      "domain": 3,
+      "question": "A machine learning engineer needs to preprocess input data before model inference. Which SageMaker feature allows chaining preprocessing with model inference?",
+      "options": {
+        "A": "SageMaker Inference Pipelines",
+        "B": "SageMaker Feature Store",
+        "C": "SageMaker Experiments",
+        "D": "SageMaker Debugger"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "SageMaker Inference Pipelines chain multiple containers:\n- Define preprocessing, inference, and postprocessing steps\n- Deploy as a single endpoint\n- Each step runs in its own container\n- Supports different frameworks in each step\n\nFeature Store (B) stores features. Experiments (C) tracks training. Debugger (D) debugs training.",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q27",
+      "domain": 3,
+      "question": "A company needs to deploy hundreds of ML models cost-effectively. Each model receives infrequent requests. Which deployment option is most suitable?",
+      "options": {
+        "A": "SageMaker Multi-Model Endpoints",
+        "B": "Separate SageMaker endpoints for each model",
+        "C": "AWS Lambda with models loaded from S3",
+        "D": "Amazon EC2 instances with all models loaded"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Multi-Model Endpoints are designed for many models with sparse traffic:\n- Host thousands of models on shared infrastructure\n- Models are dynamically loaded/unloaded based on traffic\n- Cost-effective compared to separate endpoints\n- Supports automatic scaling\n\nSeparate endpoints (B) is expensive. Lambda (C) has size limits. EC2 (D) requires manual management.",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q28",
+      "domain": 3,
+      "question": "A machine learning engineer needs to containerize a custom inference script for SageMaker deployment. Which approach should they use?",
+      "options": {
+        "A": "Use SageMaker Bring Your Own Container (BYOC)",
+        "B": "Use AWS Lambda",
+        "C": "Use Amazon EKS",
+        "D": "Use AWS Batch"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "SageMaker BYOC allows custom containers for inference:\n- Create Docker container with custom dependencies\n- Include inference script and model artifacts\n- Deploy using SageMaker's managed infrastructure\n- Supports any framework or language\n\nLambda (B) has deployment package limits. EKS (C) requires more management. Batch (D) is for batch processing.",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q29",
+      "domain": 3,
+      "question": "A company needs to implement blue-green deployment for their ML model to minimize downtime. Which approach should they use in SageMaker?",
+      "options": {
+        "A": "Update endpoint with new model using deployment configuration",
+        "B": "Delete old endpoint and create new one",
+        "C": "Use Lambda functions to route traffic",
+        "D": "Manually switch DNS records"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "SageMaker supports blue-green deployments natively:\n- Update endpoint configuration with new model\n- SageMaker provisions new instances before switching\n- Automatic rollback on failure\n- Zero downtime deployment\n\nDeleting endpoints (B) causes downtime. Lambda routing (C) adds complexity. DNS switching (D) is manual and slow.",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q30",
+      "domain": 3,
+      "question": "A machine learning engineer needs to process large input payloads (up to 1GB) asynchronously. Which SageMaker inference option is appropriate?",
+      "options": {
+        "A": "SageMaker Asynchronous Inference",
+        "B": "SageMaker Real-Time Inference",
+        "C": "SageMaker Serverless Inference",
+        "D": "SageMaker Batch Transform"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "SageMaker Asynchronous Inference handles large payloads:\n- Supports payloads up to 1GB\n- Input stored in S3, results returned to S3\n- Queue-based processing for variable latency\n- Scales to zero when idle\n\nReal-Time (B) has 6MB limit. Serverless (C) has similar limits. Batch Transform (D) is for batch processing.",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q31",
+      "domain": 4,
+      "question": "A machine learning engineer needs to detect when a deployed model's predictions start degrading due to data drift. Which SageMaker feature should they use?",
+      "options": {
+        "A": "SageMaker Model Monitor",
+        "B": "SageMaker Debugger",
+        "C": "SageMaker Experiments",
+        "D": "SageMaker Clarify"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "SageMaker Model Monitor detects data and model quality issues:\n- Monitors input data distribution drift\n- Detects model quality degradation\n- Generates alerts for anomalies\n- Provides visualization dashboards\n\nDebugger (B) is for training. Experiments (C) tracks training runs. Clarify (D) analyzes bias.",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q32",
+      "domain": 4,
+      "question": "A company needs to track the lineage of their ML models, including which datasets and code were used for training. Which capability provides this?",
+      "options": {
+        "A": "SageMaker ML Lineage Tracking",
+        "B": "AWS CloudTrail",
+        "C": "Amazon S3 versioning",
+        "D": "AWS Config"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "SageMaker ML Lineage Tracking provides end-to-end ML traceability:\n- Automatically tracks artifacts, experiments, and models\n- Shows relationships between datasets, training jobs, and models\n- Enables reproducibility\n- Supports governance requirements\n\nCloudTrail (B) logs API calls. S3 versioning (C) versions objects. Config (D) tracks AWS resources.",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q33",
+      "domain": 4,
+      "question": "A machine learning engineer notices that model latency has increased significantly. Which tool should they use to identify the bottleneck?",
+      "options": {
+        "A": "Amazon CloudWatch metrics and SageMaker endpoint logs",
+        "B": "AWS X-Ray",
+        "C": "AWS Config",
+        "D": "Amazon Inspector"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "CloudWatch and SageMaker logs help identify inference bottlenecks:\n- Monitor ModelLatency and OverheadLatency metrics\n- Analyze endpoint logs for errors\n- Check CPU/GPU utilization\n- Identify resource constraints\n\nX-Ray (B) is for distributed tracing. Config (C) tracks configurations. Inspector (D) is for security assessment.",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q34",
+      "domain": 4,
+      "question": "A company's ML model is experiencing concept drift where the relationship between features and target has changed. What action should be taken?",
+      "options": {
+        "A": "Retrain the model with recent data",
+        "B": "Increase the number of inference instances",
+        "C": "Add more features to the model",
+        "D": "Reduce model complexity"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Concept drift requires model retraining with recent data:\n- Concept drift means the underlying patterns have changed\n- Historical training data no longer reflects current patterns\n- Retrain with recent data to capture new relationships\n- Set up continuous training pipelines for ongoing drift\n\nScaling (B) doesn't fix drift. Adding features (C) or reducing complexity (D) don't address concept changes.",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q35",
+      "domain": 4,
+      "question": "A machine learning engineer needs to automatically retrain models when data drift is detected. Which architecture should they implement?",
+      "options": {
+        "A": "SageMaker Model Monitor with EventBridge triggering SageMaker Pipelines",
+        "B": "Manual monitoring with monthly retraining",
+        "C": "CloudWatch alarms with email notifications",
+        "D": "Lambda function checking model accuracy daily"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Automated retraining with Model Monitor and Pipelines:\n- Model Monitor detects drift and sends events to EventBridge\n- EventBridge triggers SageMaker Pipeline for retraining\n- Pipeline handles data prep, training, and deployment\n- Fully automated with minimal human intervention\n\nManual monitoring (B) is slow. Email alerts (C) require manual action. Lambda checks (D) need manual pipeline triggers.",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q36",
+      "domain": 4,
+      "question": "A company needs to ensure their ML models comply with regulatory requirements for model explainability. Which AWS service helps with this?",
+      "options": {
+        "A": "Amazon SageMaker Clarify",
+        "B": "AWS Audit Manager",
+        "C": "Amazon Detective",
+        "D": "AWS Security Hub"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "SageMaker Clarify provides model explainability for compliance:\n- Generates feature importance reports\n- Provides individual prediction explanations\n- Uses SHAP values for interpretability\n- Supports regulatory documentation requirements\n\nAudit Manager (B) is for general compliance. Detective (C) and Security Hub (D) are for security.",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q37",
+      "domain": 4,
+      "question": "A machine learning team needs to set up alerting when model inference latency exceeds acceptable thresholds. What should they configure?",
+      "options": {
+        "A": "CloudWatch alarms on SageMaker endpoint ModelLatency metric",
+        "B": "SageMaker Debugger alerts",
+        "C": "AWS Config rules",
+        "D": "S3 event notifications"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "CloudWatch alarms monitor SageMaker endpoint metrics:\n- ModelLatency metric shows inference time\n- Set alarm thresholds for acceptable latency\n- Configure SNS notifications for alerts\n- Integrate with incident management systems\n\nDebugger (B) is for training. Config (C) tracks resources. S3 events (D) are for object changes.",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q38",
+      "domain": 4,
+      "question": "A company wants to track the cost of their ML workloads across different projects and teams. Which approach should they use?",
+      "options": {
+        "A": "Use AWS Cost Explorer with resource tags",
+        "B": "Create separate AWS accounts for each team",
+        "C": "Monitor CloudWatch metrics only",
+        "D": "Use SageMaker Experiments"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Cost Explorer with tags enables cost allocation:\n- Tag SageMaker resources by project/team\n- Use Cost Explorer to analyze costs by tags\n- Create cost allocation reports\n- Set up budgets and alerts\n\nSeparate accounts (B) is complex. CloudWatch (C) doesn't show costs. Experiments (D) tracks ML metrics, not costs.",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q39",
+      "domain": 4,
+      "question": "A machine learning engineer needs to schedule model retraining jobs to run weekly. Which AWS service should they use?",
+      "options": {
+        "A": "Amazon EventBridge Scheduler with SageMaker Pipelines",
+        "B": "AWS Step Functions only",
+        "C": "Manual job submission",
+        "D": "EC2 cron jobs"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "EventBridge Scheduler provides managed scheduling:\n- Schedule recurring events with cron expressions\n- Trigger SageMaker Pipeline executions\n- Fully managed, no infrastructure to maintain\n- Supports complex scheduling patterns\n\nStep Functions alone (B) needs a trigger. Manual (C) doesn't scale. EC2 cron (D) requires maintenance.",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q40",
+      "domain": 4,
+      "question": "A company needs to ensure their ML inference endpoints can handle sudden traffic spikes. Which configuration should they implement?",
+      "options": {
+        "A": "SageMaker endpoint auto-scaling based on InvocationsPerInstance",
+        "B": "Fixed number of instances based on peak traffic",
+        "C": "Manual scaling during business hours",
+        "D": "Serverless inference only"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Auto-scaling handles traffic spikes efficiently:\n- Configure scaling policies based on metrics\n- InvocationsPerInstance is a key metric for ML endpoints\n- Automatically add instances during spikes\n- Scale down during low traffic to save costs\n\nFixed capacity (B) is expensive. Manual scaling (C) is too slow. Serverless (D) has latency for cold starts.",
+      "difficulty": "medium"
+    }
+  ]
+}

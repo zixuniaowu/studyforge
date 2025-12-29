@@ -1,0 +1,649 @@
+{
+  "exam": {
+    "id": "azure-az-700-set2",
+    "name": "Azure AZ-700 网络工程师认证模拟考试 #2",
+    "code": "AZ-700",
+    "provider": "Azure",
+    "language": "zh-CN",
+    "description": "Microsoft Azure网络工程师认证考试模拟题，涵盖设计和实施Azure核心网络基础设施、混合网络、路由、安全和私有访问等核心领域",
+    "totalQuestions": 40,
+    "passingScore": 70,
+    "examTime": 120,
+    "domains": [
+      {
+        "id": 1,
+        "name": "设计和实施核心网络基础设施 (Design and implement core networking infrastructure)",
+        "weight": 25
+      },
+      {
+        "id": 2,
+        "name": "设计和实施路由 (Design and implement routing)",
+        "weight": 25
+      },
+      {
+        "id": 3,
+        "name": "设计和实施Azure安全服务 (Design and implement Azure security services)",
+        "weight": 25
+      },
+      {
+        "id": 4,
+        "name": "设计和实施私有访问 (Design and implement private access)",
+        "weight": 15
+      },
+      {
+        "id": 5,
+        "name": "设计和实施负载均衡 (Design and implement load balancing)",
+        "weight": 10
+      }
+    ],
+    "tags": [
+      "Azure",
+      "AZ-700",
+      "网络工程师",
+      "认证考试",
+      "云计算"
+    ]
+  },
+  "questions": [
+    {
+      "id": "q1",
+      "domain": 1,
+      "question": "一家公司需要在Azure中创建一个网关子网以支持VPN连接。网关子网的最小推荐大小是什么？",
+      "options": {
+        "A": "/29",
+        "B": "/28",
+        "C": "/27",
+        "D": "/26"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "虽然/29是技术上的最小值，但Microsoft建议使用/27或更大的网关子网，以便为将来的增长和ExpressRoute共存提供足够的IP地址空间。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q2",
+      "domain": 1,
+      "question": "一家公司配置了VNet对等互连，但发现对等网络中的虚拟机无法通信。可能的原因是什么？",
+      "options": {
+        "A": "VNet地址空间重叠",
+        "B": "对等互连状态显示为已连接",
+        "C": "两个VNet在同一区域",
+        "D": "使用了标准负载均衡器"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "VNet对等互连要求两个虚拟网络的地址空间不能重叠。如果地址空间有任何重叠，对等互连将无法成功建立或流量将无法正确路由。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q3",
+      "domain": 1,
+      "question": "一家公司需要允许虚拟网络A通过虚拟网络B访问虚拟网络C。但是A和C之间没有直接对等互连。应该启用什么设置？",
+      "options": {
+        "A": "允许网关传输",
+        "B": "允许转发流量",
+        "C": "使用远程网关",
+        "D": "允许虚拟网络访问"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "在VNet对等互连中启用\"允许转发流量\"选项，可以让来自对等网络的流量转发到其他网络。这对于hub-spoke拓扑中的传输路由很重要。",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q4",
+      "domain": 1,
+      "question": "一家公司想要使用Azure虚拟WAN连接多个分支办公室。Azure虚拟WAN集线器提供什么功能？",
+      "options": {
+        "A": "仅虚拟机托管",
+        "B": "充当所有连接的中心路由点",
+        "C": "仅存储服务",
+        "D": "仅DNS服务"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure虚拟WAN集线器是一个托管的区域网络实体，作为所有连接（VPN、ExpressRoute、VNet）的中心路由点。它自动处理路由传播和连接。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q5",
+      "domain": 1,
+      "question": "一家公司需要配置Azure私有DNS区域以支持虚拟网络中的名称解析。需要做什么才能使DNS区域对VNet可用？",
+      "options": {
+        "A": "创建DNS转发器",
+        "B": "将DNS区域链接到虚拟网络",
+        "C": "配置公共DNS",
+        "D": "创建DNS记录"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "要使私有DNS区域对虚拟网络中的资源可用，必须创建虚拟网络链接。可以启用自动注册以自动创建VM的DNS记录。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q6",
+      "domain": 1,
+      "question": "一家公司需要在虚拟网络中部署Azure Bastion。Azure Bastion子网的名称和最小大小是什么？",
+      "options": {
+        "A": "BastionSubnet，/27",
+        "B": "AzureBastionSubnet，/26",
+        "C": "AzureBastionSubnet，/27",
+        "D": "BastionSubnet，/26"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure Bastion必须部署在名为AzureBastionSubnet的子网中，最小大小为/26（64个IP地址）。这是Azure的强制要求。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q7",
+      "domain": 1,
+      "question": "一家公司需要将多个虚拟网络连接到一个中心虚拟网络，并通过中心网络的VPN网关连接到本地。这种拓扑称为什么？",
+      "options": {
+        "A": "网状拓扑",
+        "B": "星型（Hub-Spoke）拓扑",
+        "C": "环形拓扑",
+        "D": "总线拓扑"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Hub-Spoke（星型）拓扑是一种常见的Azure网络架构，其中中心VNet（Hub）包含共享服务（如VPN网关），分支VNet（Spoke）通过对等互连连接到中心。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q8",
+      "domain": 1,
+      "question": "一家公司需要为其Azure虚拟网络配置DHCP选项。Azure虚拟网络的DHCP由谁管理？",
+      "options": {
+        "A": "用户完全管理",
+        "B": "Azure平台自动管理",
+        "C": "需要第三方DHCP服务器",
+        "D": "每个子网单独配置"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure虚拟网络的DHCP完全由Azure平台自动管理。当VM连接到子网时，Azure会自动分配IP地址、网关和DNS设置。用户无法部署自己的DHCP服务器。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q9",
+      "domain": 2,
+      "question": "一家公司有多个虚拟网络通过VNet对等互连连接。如果需要在所有VNet之间启用传输路由，应该配置什么？",
+      "options": {
+        "A": "在每个VNet中配置静态路由",
+        "B": "使用Azure Route Server",
+        "C": "在Hub VNet部署NVA并使用UDR",
+        "D": "B和C都可以"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "可以使用Azure Route Server在Hub VNet中自动交换路由，或者部署网络虚拟设备（NVA）并使用用户定义路由（UDR）手动配置传输路由。两种方法都可以实现传输路由。",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q10",
+      "domain": 2,
+      "question": "一家公司使用ExpressRoute连接到Azure，同时也有站点到站点VPN作为备份。如何确保ExpressRoute是首选路径？",
+      "options": {
+        "A": "删除VPN连接",
+        "B": "ExpressRoute默认优先级更高",
+        "C": "配置更高的BGP本地优先级",
+        "D": "使用静态路由"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "当同时存在ExpressRoute和VPN连接时，Azure默认优先使用ExpressRoute，因为它的路由具有更高的优先级。只有当ExpressRoute不可用时，流量才会通过VPN。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q11",
+      "domain": 2,
+      "question": "一家公司需要配置Azure VPN网关以支持主动-主动模式。这需要什么？",
+      "options": {
+        "A": "一个公共IP地址",
+        "B": "两个公共IP地址",
+        "C": "三个公共IP地址",
+        "D": "不需要公共IP"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "主动-主动VPN网关配置需要两个公共IP地址，每个网关实例一个。这提供了更高的可用性，因为两个隧道同时处于活动状态。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q12",
+      "domain": 2,
+      "question": "一家公司需要确保Azure虚拟机的出站流量通过本地防火墙。除了强制隧道，还需要注意什么？",
+      "options": {
+        "A": "Azure服务的流量不受影响",
+        "B": "需要配置返回路由",
+        "C": "可能需要配置服务端点或豁免路由",
+        "D": "以上所有"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "配置强制隧道时，需要确保返回流量有正确的路由，某些Azure服务（如Azure Backup）可能需要服务端点或特殊路由以正常工作。",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q13",
+      "domain": 2,
+      "question": "一家公司在Azure Route Server上配置了BGP对等。Route Server会自动将学到的路由传播到哪里？",
+      "options": {
+        "A": "仅传播到同一子网",
+        "B": "传播到整个虚拟网络",
+        "C": "传播到所有Azure订阅",
+        "D": "需要手动传播"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure Route Server会自动将从NVA学到的BGP路由传播到虚拟网络中的所有子网。这消除了手动配置用户定义路由的需要。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q14",
+      "domain": 2,
+      "question": "一家公司需要使用ExpressRoute Global Reach连接两个本地网络。Global Reach需要什么？",
+      "options": {
+        "A": "两个ExpressRoute电路在同一对等位置",
+        "B": "两个ExpressRoute电路可以在不同对等位置",
+        "C": "仅需要一个ExpressRoute电路",
+        "D": "需要VPN作为后备"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "ExpressRoute Global Reach允许通过Microsoft骨干网络连接两个不同的ExpressRoute电路，即使它们位于不同的对等位置。这使本地网络可以直接通信。",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q15",
+      "domain": 2,
+      "question": "一家公司需要查看虚拟网络中的有效路由。应该在哪里查看？",
+      "options": {
+        "A": "虚拟网络概述",
+        "B": "路由表设置",
+        "C": "网络接口的有效路由",
+        "D": "Azure Monitor"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "可以在虚拟机网络接口的\"有效路由\"部分查看该网络接口的所有有效路由，包括系统路由和用户定义路由。这对于故障排除非常有用。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q16",
+      "domain": 2,
+      "question": "一家公司配置了用户定义路由，但路由似乎不起作用。可能的原因是什么？",
+      "options": {
+        "A": "路由表未关联到子网",
+        "B": "NVA上未启用IP转发",
+        "C": "NSG阻止了流量",
+        "D": "以上所有都可能"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "UDR不工作可能有多种原因：路由表可能未正确关联到子网，NVA的网络接口上可能未启用IP转发，或者NSG规则可能阻止了流量。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q17",
+      "domain": 3,
+      "question": "一家公司需要使用Azure Firewall保护多个虚拟网络。如何实现最佳架构？",
+      "options": {
+        "A": "在每个VNet中部署Azure Firewall",
+        "B": "在Hub VNet中部署Azure Firewall，Spoke VNet通过对等互连连接",
+        "C": "使用网络安全组替代",
+        "D": "在每个子网部署防火墙"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "最佳实践是在Hub VNet中集中部署Azure Firewall，Spoke VNet通过对等互连连接到Hub。使用UDR将Spoke的流量路由到Hub中的防火墙进行检查。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q18",
+      "domain": 3,
+      "question": "一家公司需要配置Azure Firewall以允许访问Windows更新。应该使用什么？",
+      "options": {
+        "A": "网络规则允许特定IP",
+        "B": "应用程序规则使用FQDN标签",
+        "C": "NAT规则",
+        "D": "基础设施规则"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure Firewall提供内置的FQDN标签，如WindowsUpdate，可以轻松允许对Windows更新服务的访问，无需手动指定所有相关FQDN。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q19",
+      "domain": 3,
+      "question": "一家公司部署了Azure Firewall Standard。他们需要入侵检测和防御系统（IDPS）功能。应该怎么做？",
+      "options": {
+        "A": "在Standard上启用IDPS",
+        "B": "升级到Azure Firewall Premium",
+        "C": "部署第三方NVA",
+        "D": "使用网络安全组"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "IDPS（入侵检测和防御系统）是Azure Firewall Premium的功能，Standard版本不支持。需要升级到Premium才能获得此功能。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q20",
+      "domain": 3,
+      "question": "一家公司需要使用Azure Firewall的威胁情报功能。威胁情报可以设置为什么模式？",
+      "options": {
+        "A": "仅警报",
+        "B": "警报和拒绝",
+        "C": "关闭、仅警报、警报和拒绝",
+        "D": "仅拒绝"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "Azure Firewall的威胁情报功能支持三种模式：关闭（禁用）、仅警报（记录但不阻止）、警报和拒绝（记录并阻止恶意流量）。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q21",
+      "domain": 3,
+      "question": "一家公司需要配置网络安全组规则以允许来自Azure负载均衡器的流量。应该使用什么服务标签？",
+      "options": {
+        "A": "Internet",
+        "B": "AzureLoadBalancer",
+        "C": "VirtualNetwork",
+        "D": "AzureCloud"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "AzureLoadBalancer服务标签代表Azure负载均衡器的健康探测源IP。如果阻止此标签的入站流量，负载均衡器的健康探测将失败。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q22",
+      "domain": 3,
+      "question": "一家公司需要使用Azure DDoS Protection保护其公共IP地址。DDoS Protection Standard需要在哪个级别配置？",
+      "options": {
+        "A": "资源级别",
+        "B": "虚拟网络级别",
+        "C": "订阅级别",
+        "D": "管理组级别"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure DDoS Protection Standard需要在虚拟网络级别启用，然后会自动保护该VNet中的所有公共IP资源。可以创建DDoS保护计划并将其与VNet关联。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q23",
+      "domain": 3,
+      "question": "一家公司需要配置Azure Firewall策略层次结构。子策略可以覆盖父策略的什么设置？",
+      "options": {
+        "A": "所有设置",
+        "B": "规则集合组",
+        "C": "威胁情报设置",
+        "D": "规则优先级更高的规则"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "在Azure Firewall策略层次结构中，子策略继承父策略的设置，但可以添加自己的规则集合组。父策略的规则优先级更高，会先于子策略的规则评估。",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q24",
+      "domain": 3,
+      "question": "一家公司需要限制Azure Application Gateway WAF的请求速率。应该使用什么功能？",
+      "options": {
+        "A": "自定义规则",
+        "B": "托管规则",
+        "C": "排除规则",
+        "D": "诊断日志"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "WAF自定义规则可以配置速率限制，限制来自单个客户端IP的请求速率。这有助于防止暴力攻击和过度使用API。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q25",
+      "domain": 4,
+      "question": "一家公司为Azure存储创建了私有端点。私有端点的网络接口位于哪里？",
+      "options": {
+        "A": "Azure存储的VNet",
+        "B": "客户的虚拟网络子网",
+        "C": "单独的管理VNet",
+        "D": "Azure骨干网络"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "创建私有端点时，会在指定的虚拟网络子网中创建一个网络接口。此网络接口从子网获得私有IP地址，用于连接到Azure服务。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q26",
+      "domain": 4,
+      "question": "一家公司需要确保私有端点的DNS配置正确。为Azure SQL创建的私有DNS区域名称是什么？",
+      "options": {
+        "A": "privatelink.sql.azure.com",
+        "B": "privatelink.database.windows.net",
+        "C": "sql.privatelink.azure.com",
+        "D": "azure.sql.privatelink.net"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure SQL的私有DNS区域名称是privatelink.database.windows.net。每个Azure服务都有特定的私有DNS区域名称，必须正确配置才能解析私有端点。",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q27",
+      "domain": 4,
+      "question": "一家公司使用服务端点连接到Azure存储。与私有端点相比，服务端点的一个限制是什么？",
+      "options": {
+        "A": "成本更高",
+        "B": "不支持从本地网络通过VPN/ExpressRoute访问",
+        "C": "性能更低",
+        "D": "不支持Azure存储"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "服务端点不支持从本地网络通过VPN或ExpressRoute访问Azure服务。如果需要从本地访问Azure服务的私有连接，必须使用私有端点。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q28",
+      "domain": 4,
+      "question": "一家公司需要使用Azure Private Link服务暴露其内部负载均衡器后面的服务。Private Link服务需要与什么类型的负载均衡器关联？",
+      "options": {
+        "A": "基本负载均衡器",
+        "B": "标准负载均衡器",
+        "C": "应用程序网关",
+        "D": "任何类型都可以"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure Private Link服务必须与标准负载均衡器关联。基本负载均衡器不支持Private Link服务。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q29",
+      "domain": 4,
+      "question": "一家公司创建了到多个Azure服务的私有端点。如何简化DNS管理？",
+      "options": {
+        "A": "为每个端点创建单独的DNS区域",
+        "B": "使用Azure Private DNS解析器和集中式私有DNS区域",
+        "C": "仅使用公共DNS",
+        "D": "手动在每台VM上配置hosts文件"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure Private DNS解析器可以集中管理私有DNS区域，并支持从本地网络和Azure转发DNS查询。这简化了大规模私有端点部署的DNS管理。",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q30",
+      "domain": 4,
+      "question": "一家公司需要查看私有端点连接的状态。连接状态\"待定\"表示什么？",
+      "options": {
+        "A": "连接已建立",
+        "B": "连接被拒绝",
+        "C": "等待服务提供商批准",
+        "D": "连接已删除"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "私有端点连接状态\"待定\"表示连接请求正在等待服务提供商（资源所有者）的批准。批准后状态会变为\"已批准\"。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q31",
+      "domain": 5,
+      "question": "一家公司需要配置Azure负载均衡器以处理高可用性场景。应该选择什么SKU？",
+      "options": {
+        "A": "基本SKU",
+        "B": "标准SKU",
+        "C": "两者都可以",
+        "D": "网关SKU"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "标准负载均衡器提供更高的可用性保证（99.99% SLA），支持可用性区域，并提供更多高级功能。对于生产工作负载，建议使用标准SKU。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q32",
+      "domain": 5,
+      "question": "一家公司需要配置Azure应用程序网关以支持WebSocket连接。需要特殊配置吗？",
+      "options": {
+        "A": "是，需要启用WebSocket支持",
+        "B": "否，WebSocket默认支持",
+        "C": "WebSocket不受支持",
+        "D": "需要Premium SKU"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure应用程序网关默认支持WebSocket连接，无需特殊配置。WebSocket流量通过应用程序网关的HTTP/HTTPS监听器处理。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q33",
+      "domain": 5,
+      "question": "一家公司需要配置Azure负载均衡器的健康探测。如果连续多少次探测失败，后端实例会被标记为不健康？",
+      "options": {
+        "A": "1次",
+        "B": "2次（默认）",
+        "C": "3次",
+        "D": "5次"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "默认情况下，如果连续两次健康探测失败（不健康阈值），Azure负载均衡器会将后端实例标记为不健康。此值可以配置。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q34",
+      "domain": 5,
+      "question": "一家公司使用Azure Front Door进行全球负载均衡。Front Door使用什么协议终止客户端连接？",
+      "options": {
+        "A": "仅HTTP",
+        "B": "仅HTTPS",
+        "C": "HTTP和HTTPS",
+        "D": "TCP"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "Azure Front Door支持HTTP和HTTPS协议终止。它可以配置为接受HTTP或HTTPS流量，并可以配置HTTP到HTTPS重定向。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q35",
+      "domain": 5,
+      "question": "一家公司需要使用Azure流量管理器实现故障转移。应该使用什么路由方法？",
+      "options": {
+        "A": "性能路由",
+        "B": "地理路由",
+        "C": "优先级路由",
+        "D": "加权路由"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "优先级路由方法适用于故障转移场景。它按优先级顺序将流量路由到终结点，如果最高优先级的终结点不可用，则自动故障转移到下一个终结点。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q36",
+      "domain": 5,
+      "question": "一家公司需要在Azure应用程序网关上配置SSL证书。应该使用什么类型的证书？",
+      "options": {
+        "A": "仅自签名证书",
+        "B": "仅CA签名证书",
+        "C": "PFX格式的证书",
+        "D": "PEM格式的证书"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "Azure应用程序网关需要PFX（PKCS#12）格式的证书，其中包含私钥。可以使用Azure Key Vault集成来管理证书。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q37",
+      "domain": 5,
+      "question": "一家公司需要配置Azure负载均衡器的浮动IP功能。什么时候需要启用浮动IP？",
+      "options": {
+        "A": "总是需要",
+        "B": "配置SQL Server Always On可用性组时",
+        "C": "使用基本SKU时",
+        "D": "进行出站连接时"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "浮动IP（也称为直接服务器返回）在配置SQL Server Always On可用性组、某些故障转移群集场景时需要启用。它允许后端服务器直接响应客户端。",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q38",
+      "domain": 5,
+      "question": "一家公司需要配置Azure应用程序网关的自动缩放。自动缩放基于什么指标？",
+      "options": {
+        "A": "仅CPU使用率",
+        "B": "仅当前连接数",
+        "C": "多种指标包括计算单元",
+        "D": "仅请求速率"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "应用程序网关自动缩放基于多种指标，包括计算单元（结合CPU、连接和吞吐量）。可以配置最小和最大实例数以控制缩放范围。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q39",
+      "domain": 5,
+      "question": "一家公司使用Azure Front Door，需要缓存静态内容。缓存行为在哪里配置？",
+      "options": {
+        "A": "后端池",
+        "B": "路由规则",
+        "C": "前端主机",
+        "D": "健康探测"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure Front Door的缓存行为在路由规则中配置。可以为每个路由规则启用或禁用缓存，并配置缓存持续时间和查询字符串缓存行为。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q40",
+      "domain": 5,
+      "question": "一家公司需要使用Azure负载均衡器配置高可用性端口。这意味着什么？",
+      "options": {
+        "A": "负载均衡特定端口",
+        "B": "负载均衡所有端口上的所有流量",
+        "C": "仅负载均衡HTTP/HTTPS",
+        "D": "负载均衡UDP流量"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "高可用性端口规则将所有端口上的所有TCP和UDP流量负载均衡到后端池。这对于网络虚拟设备（NVA）场景特别有用，无需为每个端口创建单独的规则。",
+      "difficulty": "hard"
+    }
+  ]
+}

@@ -1,0 +1,649 @@
+{
+  "exam": {
+    "id": "azure-az-700-set3",
+    "name": "Azure AZ-700 网络工程师认证模拟考试 #3",
+    "code": "AZ-700",
+    "provider": "Azure",
+    "language": "zh-CN",
+    "description": "Microsoft Azure网络工程师认证考试模拟题，涵盖设计和实施Azure核心网络基础设施、混合网络、路由、安全和私有访问等核心领域",
+    "totalQuestions": 40,
+    "passingScore": 70,
+    "examTime": 120,
+    "domains": [
+      {
+        "id": 1,
+        "name": "设计和实施核心网络基础设施 (Design and implement core networking infrastructure)",
+        "weight": 25
+      },
+      {
+        "id": 2,
+        "name": "设计和实施路由 (Design and implement routing)",
+        "weight": 25
+      },
+      {
+        "id": 3,
+        "name": "设计和实施Azure安全服务 (Design and implement Azure security services)",
+        "weight": 25
+      },
+      {
+        "id": 4,
+        "name": "设计和实施私有访问 (Design and implement private access)",
+        "weight": 15
+      },
+      {
+        "id": 5,
+        "name": "设计和实施负载均衡 (Design and implement load balancing)",
+        "weight": 10
+      }
+    ],
+    "tags": [
+      "Azure",
+      "AZ-700",
+      "网络工程师",
+      "认证考试",
+      "云计算"
+    ]
+  },
+  "questions": [
+    {
+      "id": "q1",
+      "domain": 1,
+      "question": "一家公司需要设计一个Azure网络架构，其中不同的业务部门需要相互隔离。每个部门应该使用什么来实现网络分段？",
+      "options": {
+        "A": "在同一VNet中使用多个子网",
+        "B": "为每个部门创建单独的虚拟网络",
+        "C": "使用网络安全组",
+        "D": "B和C结合使用"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "最佳实践是为每个业务部门创建单独的虚拟网络以实现网络隔离，并使用网络安全组来控制VNet之间和VNet内部的流量。这提供了多层安全性。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q2",
+      "domain": 1,
+      "question": "一家公司正在使用Azure虚拟WAN。他们需要连接两个分支办公室的VPN设备。每个分支需要什么来连接到虚拟WAN集线器？",
+      "options": {
+        "A": "VNet对等互连",
+        "B": "站点到站点VPN连接",
+        "C": "ExpressRoute电路",
+        "D": "点到站点VPN"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "分支办公室的VPN设备通过站点到站点VPN连接到Azure虚拟WAN集线器。虚拟WAN集线器内置VPN网关，可以自动处理分支之间的连接。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q3",
+      "domain": 1,
+      "question": "一家公司需要为其Azure DNS区域启用别名记录以指向Azure负载均衡器。这样做的好处是什么？",
+      "options": {
+        "A": "降低成本",
+        "B": "自动更新记录以反映资源IP变化",
+        "C": "提高DNS解析速度",
+        "D": "启用DNSSEC"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure DNS别名记录可以直接指向Azure资源（如负载均衡器）。当资源的IP地址更改时，别名记录会自动更新，避免了悬空DNS记录的问题。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q4",
+      "domain": 1,
+      "question": "一家公司需要跨多个可用性区域部署应用程序网关以实现高可用性。应用程序网关v2支持多少个可用性区域？",
+      "options": {
+        "A": "1个",
+        "B": "2个",
+        "C": "最多3个",
+        "D": "不支持可用性区域"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "应用程序网关v2 SKU支持跨最多3个可用性区域部署，提供区域级别的冗余。这确保即使一个区域发生故障，应用程序网关仍然可用。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q5",
+      "domain": 1,
+      "question": "一家公司需要为其虚拟网络配置IPv6支持。Azure虚拟网络中IPv6的当前状态是什么？",
+      "options": {
+        "A": "不支持IPv6",
+        "B": "仅支持IPv6",
+        "C": "支持双栈（IPv4和IPv6）",
+        "D": "仅在特定区域支持"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "Azure虚拟网络支持双栈配置，可以同时使用IPv4和IPv6地址空间。这允许VM同时拥有IPv4和IPv6地址。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q6",
+      "domain": 1,
+      "question": "一家公司需要确保其虚拟网络的地址空间不与本地网络重叠。在规划时应该考虑什么？",
+      "options": {
+        "A": "仅考虑当前使用的地址",
+        "B": "考虑所有现有和计划的本地网络、Azure网络和对等网络",
+        "C": "使用公共IP地址空间",
+        "D": "仅考虑Azure网络"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "在规划地址空间时，应考虑所有现有和计划的网络，包括本地数据中心、Azure虚拟网络、计划的VNet对等互连和VPN连接。地址重叠会导致路由问题。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q7",
+      "domain": 1,
+      "question": "一家公司需要将网络流量从一个子网镜像到网络虚拟设备进行分析。应该使用什么功能？",
+      "options": {
+        "A": "网络安全组流日志",
+        "B": "虚拟网络TAP",
+        "C": "Azure Monitor",
+        "D": "网络观察程序"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "虚拟网络TAP（终端访问点）可以将网络流量持续流式传输到网络虚拟设备或分析工具。这对于深度包检查和网络取证很有用。",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q8",
+      "domain": 1,
+      "question": "一家公司需要在Azure中创建一个网络拓扑，其中所有Spoke VNet可以相互通信，而无需在每对Spoke之间创建对等互连。应该使用什么架构？",
+      "options": {
+        "A": "网状对等互连",
+        "B": "使用NVA的Hub-Spoke拓扑",
+        "C": "Azure虚拟WAN",
+        "D": "B和C都可以"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "可以使用带有NVA（如Azure Firewall）的Hub-Spoke拓扑，或使用Azure虚拟WAN来实现any-to-any连接。虚拟WAN会自动处理Spoke之间的路由。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q9",
+      "domain": 2,
+      "question": "一家公司使用Azure Route Server并启用了分支到分支功能。这意味着什么？",
+      "options": {
+        "A": "仅允许VNet之间通信",
+        "B": "允许通过Route Server学习的路由在ExpressRoute和VPN之间交换",
+        "C": "禁用所有路由",
+        "D": "仅允许本地分支通信"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "启用分支到分支功能后，Azure Route Server可以在ExpressRoute网关和VPN网关之间交换路由。这允许本地网络通过Azure进行传输路由。",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q10",
+      "domain": 2,
+      "question": "一家公司需要配置ExpressRoute以支持Microsoft 365服务。需要配置什么对等类型？",
+      "options": {
+        "A": "Azure私有对等",
+        "B": "Azure公共对等（已弃用）",
+        "C": "Microsoft对等",
+        "D": "不需要特殊配置"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "Microsoft对等用于连接Microsoft在线服务，如Microsoft 365和Dynamics 365。Azure私有对等用于连接Azure IaaS和PaaS服务的私有地址。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q11",
+      "domain": 2,
+      "question": "一家公司需要在Azure中实现非对称路由检测。什么场景可能导致非对称路由？",
+      "options": {
+        "A": "单一路径配置",
+        "B": "同时存在ExpressRoute和VPN连接",
+        "C": "仅使用系统路由",
+        "D": "使用单个网关"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "当同时配置ExpressRoute和VPN时，可能出现非对称路由：请求通过一个路径进入，响应通过另一个路径返回。这可能导致有状态设备（如防火墙）的连接问题。",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q12",
+      "domain": 2,
+      "question": "一家公司需要查看ExpressRoute电路的BGP会话状态。应该使用什么工具？",
+      "options": {
+        "A": "Azure门户 - ExpressRoute电路",
+        "B": "网络观察程序",
+        "C": "Azure Monitor",
+        "D": "所有选项都可以提供信息"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "可以通过多种方式查看ExpressRoute BGP状态：Azure门户显示对等配置，网络观察程序提供诊断工具，Azure Monitor提供监控指标和警报。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q13",
+      "domain": 2,
+      "question": "一家公司配置了VPN网关的主动-主动模式。客户端连接时应该如何配置？",
+      "options": {
+        "A": "连接到单个公共IP",
+        "B": "配置两个隧道，分别连接到两个公共IP",
+        "C": "使用负载均衡器",
+        "D": "使用流量管理器"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "在主动-主动VPN配置中，本地VPN设备应配置两个IPsec隧道，分别连接到Azure VPN网关的两个公共IP地址。两个隧道同时处于活动状态。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q14",
+      "domain": 2,
+      "question": "一家公司需要使用Azure CLI查看有效的路由表。哪个命令是正确的？",
+      "options": {
+        "A": "az network route-table list",
+        "B": "az network nic show-effective-route-table",
+        "C": "az network vnet show",
+        "D": "az network route show"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "az network nic show-effective-route-table命令显示网络接口的有效路由，包括系统路由、用户定义路由和BGP路由。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q15",
+      "domain": 2,
+      "question": "一家公司需要理解Azure路由优先级。以下哪种路由源具有最高优先级？",
+      "options": {
+        "A": "系统路由",
+        "B": "用户定义路由",
+        "C": "BGP路由",
+        "D": "默认路由"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "用户定义路由具有最高优先级，可以覆盖系统路由和BGP路由。优先级顺序是：用户定义路由 > BGP路由 > 系统路由。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q16",
+      "domain": 2,
+      "question": "一家公司使用ExpressRoute FastPath。FastPath的主要优势是什么？",
+      "options": {
+        "A": "更低的成本",
+        "B": "绕过ExpressRoute网关以获得更低延迟",
+        "C": "更高的带宽",
+        "D": "更好的安全性"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "ExpressRoute FastPath将数据路径流量直接发送到虚拟网络中的虚拟机，绕过ExpressRoute虚拟网络网关。这降低了延迟并提高了性能。",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q17",
+      "domain": 3,
+      "question": "一家公司需要配置Azure Firewall的DNS代理功能。这提供什么好处？",
+      "options": {
+        "A": "加密DNS查询",
+        "B": "允许在网络规则中使用FQDN",
+        "C": "减少DNS流量",
+        "D": "阻止所有DNS请求"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "启用DNS代理后，Azure Firewall可以解析网络规则中的FQDN。流量经过防火墙时，FQDN被解析为IP地址，然后应用网络规则。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q18",
+      "domain": 3,
+      "question": "一家公司需要使用Azure Firewall创建入站DNAT规则。DNAT规则用于什么场景？",
+      "options": {
+        "A": "出站流量过滤",
+        "B": "将入站Internet流量转发到内部资源",
+        "C": "VNet之间的流量过滤",
+        "D": "阻止恶意IP"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "DNAT（目标网络地址转换）规则用于将到达防火墙公共IP的入站流量转发到虚拟网络中的内部资源，同时可以更改端口号。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q19",
+      "domain": 3,
+      "question": "一家公司需要使用Azure Firewall Manager管理多个虚拟WAN集线器中的安全策略。这种部署模式叫什么？",
+      "options": {
+        "A": "Hub虚拟网络",
+        "B": "安全虚拟集线器",
+        "C": "托管集线器",
+        "D": "防火墙集群"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "安全虚拟集线器是在Azure虚拟WAN集线器中部署Azure Firewall的配置。Azure Firewall Manager可以集中管理多个安全虚拟集线器的策略。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q20",
+      "domain": 3,
+      "question": "一家公司需要理解网络安全组规则的评估顺序。入站和出站规则是如何评估的？",
+      "options": {
+        "A": "所有规则同时评估",
+        "B": "按优先级从低到高评估",
+        "C": "按优先级从高到低评估（数字越小优先级越高）",
+        "D": "随机评估"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "NSG规则按优先级从最低数字到最高数字评估（数字越小优先级越高）。一旦找到匹配的规则，评估就会停止，并应用该规则的操作（允许或拒绝）。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q21",
+      "domain": 3,
+      "question": "一家公司需要使用应用程序安全组（ASG）简化NSG规则管理。ASG的主要优点是什么？",
+      "options": {
+        "A": "自动创建NSG规则",
+        "B": "允许按应用程序逻辑分组VM，而不是按IP地址",
+        "C": "提供DDoS保护",
+        "D": "加密网络流量"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "应用程序安全组允许将VM逻辑分组（如Web服务器、数据库服务器），然后在NSG规则中使用这些组作为源或目标，而不是使用IP地址。这简化了规则管理。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q22",
+      "domain": 3,
+      "question": "一家公司需要检查Azure Firewall日志以进行故障排除。日志存储在哪里？",
+      "options": {
+        "A": "本地存储",
+        "B": "Log Analytics工作区、存储账户或Event Hubs",
+        "C": "仅Azure门户",
+        "D": "防火墙本地缓存"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure Firewall日志可以发送到Log Analytics工作区（用于查询和分析）、存储账户（用于归档）或Event Hubs（用于流式传输到外部系统）。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q23",
+      "domain": 3,
+      "question": "一家公司部署了Azure DDoS Protection Standard。如何验证保护是否正常工作？",
+      "options": {
+        "A": "等待真实攻击发生",
+        "B": "使用Azure DDoS Protection测试伙伴进行模拟",
+        "C": "检查订阅配额",
+        "D": "查看资源标签"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure与测试伙伴合作提供DDoS模拟服务。可以使用授权的测试伙伴（如BreakingPoint Cloud）生成模拟攻击流量来验证DDoS保护配置。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q24",
+      "domain": 3,
+      "question": "一家公司需要实现Azure Firewall的SNAT行为。默认情况下，SNAT会使用什么？",
+      "options": {
+        "A": "后端池IP",
+        "B": "防火墙公共IP地址",
+        "C": "随机IP",
+        "D": "源VM的IP"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "默认情况下，Azure Firewall对所有出站流量执行SNAT，使用防火墙的公共IP地址作为源IP。可以配置多个公共IP或不对RFC 1918地址执行SNAT。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q25",
+      "domain": 4,
+      "question": "一家公司需要从本地网络通过ExpressRoute访问Azure存储的私有端点。需要什么配置？",
+      "options": {
+        "A": "仅创建私有端点",
+        "B": "私有端点和正确的DNS配置以解析私有IP",
+        "C": "公共端点",
+        "D": "服务端点"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "从本地访问私有端点需要：1）创建私有端点，2）配置DNS以将服务FQDN解析为私有IP。通常使用DNS转发器或条件转发来实现。",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q26",
+      "domain": 4,
+      "question": "一家公司需要理解私有端点的网络安全组支持。NSG对私有端点有什么影响？",
+      "options": {
+        "A": "NSG完全控制私有端点流量",
+        "B": "NSG对私有端点流量没有影响",
+        "C": "NSG可以应用于私有端点，但需要启用特定策略",
+        "D": "私有端点不支持NSG"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "默认情况下，NSG规则不适用于私有端点。需要在子网上启用\"privatelinkNetworkPolicies\"以允许NSG和UDR应用于私有端点流量。",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q27",
+      "domain": 4,
+      "question": "一家公司想要使用Azure Private Link服务并配置NAT IP地址。NAT IP的用途是什么？",
+      "options": {
+        "A": "提供公共访问",
+        "B": "对来自消费者的流量执行SNAT",
+        "C": "加密流量",
+        "D": "负载均衡"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Private Link服务的NAT IP用于对来自消费者私有端点的流量执行源NAT。这确保返回流量正确路由回消费者网络。",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q28",
+      "domain": 4,
+      "question": "一家公司需要确定哪些Azure服务支持私有端点。以下哪项服务支持私有端点？",
+      "options": {
+        "A": "Azure存储",
+        "B": "Azure SQL数据库",
+        "C": "Azure Cosmos DB",
+        "D": "所有以上"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "许多Azure PaaS服务支持私有端点，包括Azure存储、Azure SQL数据库、Azure Cosmos DB、Azure Key Vault、Azure容器注册表等。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q29",
+      "domain": 4,
+      "question": "一家公司需要配置Azure Private DNS解析器。解析器的入站端点用于什么？",
+      "options": {
+        "A": "从Azure向本地转发DNS查询",
+        "B": "从本地接收DNS查询并解析Azure私有DNS区域",
+        "C": "阻止DNS查询",
+        "D": "加密DNS流量"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Private DNS解析器的入站端点用于从本地网络接收DNS查询。本地DNS服务器可以将查询转发到入站端点，由解析器查询Azure私有DNS区域。",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q30",
+      "domain": 4,
+      "question": "一家公司需要为Azure Key Vault配置私有端点。应该禁用什么以确保仅通过私有端点访问？",
+      "options": {
+        "A": "所有访问策略",
+        "B": "公共网络访问",
+        "C": "RBAC",
+        "D": "软删除"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "配置私有端点后，应在Key Vault的网络设置中禁用公共网络访问。这确保只能通过私有端点访问Key Vault，增强安全性。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q31",
+      "domain": 5,
+      "question": "一家公司需要配置Azure负载均衡器以支持多个前端IP配置。这有什么用途？",
+      "options": {
+        "A": "仅用于冗余",
+        "B": "可以将不同的公共IP映射到不同的后端池或端口",
+        "C": "提高性能",
+        "D": "降低成本"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "多前端IP配置允许单个负载均衡器为不同服务使用不同的公共IP地址。每个前端IP可以有自己的负载均衡规则，映射到相同或不同的后端池。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q32",
+      "domain": 5,
+      "question": "一家公司需要理解Azure应用程序网关的连接耗尽功能。这个功能做什么？",
+      "options": {
+        "A": "立即终止所有连接",
+        "B": "在从后端池移除实例前优雅地完成现有连接",
+        "C": "增加连接数",
+        "D": "加密连接"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "连接耗尽确保当后端实例从池中移除时，现有连接可以优雅地完成，而不是立即断开。可以配置耗尽超时时间。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q33",
+      "domain": 5,
+      "question": "一家公司需要配置Azure流量管理器的终结点监控。可以配置什么探测协议？",
+      "options": {
+        "A": "仅HTTP",
+        "B": "仅HTTPS",
+        "C": "HTTP、HTTPS或TCP",
+        "D": "仅ICMP"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "Azure流量管理器支持HTTP、HTTPS和TCP探测协议进行终结点健康监控。可以配置探测路径、间隔和容错阈值。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q34",
+      "domain": 5,
+      "question": "一家公司需要使用Azure Front Door实现蓝绿部署。应该使用什么功能？",
+      "options": {
+        "A": "URL重定向",
+        "B": "加权后端池",
+        "C": "缓存",
+        "D": "WAF"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "使用加权后端池，可以为不同的后端（如蓝色和绿色环境）分配流量权重。逐渐增加新环境的权重可以实现平滑的蓝绿部署。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q35",
+      "domain": 5,
+      "question": "一家公司需要配置Azure负载均衡器的TCP重置功能。这个功能什么时候发送TCP重置？",
+      "options": {
+        "A": "连接成功时",
+        "B": "连接空闲超时或健康探测失败时",
+        "C": "所有入站连接",
+        "D": "仅出站连接"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "启用TCP重置后，负载均衡器会在连接空闲超时、后端池成员健康探测失败或连接异常终止时向客户端和服务器发送TCP RST包。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q36",
+      "domain": 5,
+      "question": "一家公司需要配置Azure应用程序网关以基于主机头路由流量。应该使用什么功能？",
+      "options": {
+        "A": "URL路径路由",
+        "B": "多站点监听器",
+        "C": "重定向规则",
+        "D": "重写规则"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "多站点监听器允许在同一应用程序网关上配置多个网站。根据请求的主机头（Host header），流量被路由到不同的后端池。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q37",
+      "domain": 5,
+      "question": "一家公司需要配置Azure Front Door的会话亲和性。会话亲和性基于什么？",
+      "options": {
+        "A": "源IP地址",
+        "B": "客户端Cookie",
+        "C": "URL参数",
+        "D": "请求头"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure Front Door的会话亲和性使用客户端Cookie来确保来自同一用户会话的请求被路由到同一后端。这对有状态应用程序很重要。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q38",
+      "domain": 5,
+      "question": "一家公司需要配置Azure网关负载均衡器。这个服务的主要用途是什么？",
+      "options": {
+        "A": "Web应用程序负载均衡",
+        "B": "在网络虚拟设备前插入透明负载均衡",
+        "C": "DNS负载均衡",
+        "D": "全球流量管理"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure网关负载均衡器用于在NVA（如防火墙、IDS/IPS）前透明插入负载均衡。它与其他负载均衡器链接，确保所有流量通过NVA。",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q39",
+      "domain": 5,
+      "question": "一家公司需要理解Azure负载均衡器的SNAT端口耗尽问题。什么情况可能导致SNAT端口耗尽？",
+      "options": {
+        "A": "太少的后端实例处理大量出站连接",
+        "B": "太多的入站连接",
+        "C": "健康探测失败",
+        "D": "公共IP地址不足"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "当少量后端实例需要建立大量出站连接时，可用的SNAT端口可能不足。解决方案包括增加后端实例、配置NAT网关或使用出站规则分配更多SNAT端口。",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q40",
+      "domain": 5,
+      "question": "一家公司需要为其Azure应用程序网关配置重写规则。可以重写什么？",
+      "options": {
+        "A": "仅请求头",
+        "B": "仅响应头",
+        "C": "请求头、响应头和URL",
+        "D": "仅URL"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "应用程序网关v2的重写规则可以修改HTTP请求头、响应头和URL（包括路径和查询字符串）。这对于修改安全头、重定向或URL规范化很有用。",
+      "difficulty": "medium"
+    }
+  ]
+}

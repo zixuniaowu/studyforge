@@ -118,7 +118,7 @@ export const awsCertifications: Certification[] = [
     questionCount: 65,
     passingScore: 72,
     prerequisites: ['aws-aif-c01'],
-    hasExamData: false,
+    hasExamData: true,
     description: { zh: 'AWS ML 工程实践能力认证', ja: 'AWS ML エンジニアリング能力を証明する認定' }
   },
   {
@@ -195,7 +195,7 @@ export const awsCertifications: Certification[] = [
     questionCount: 65,
     passingScore: 75,
     prerequisites: ['aws-saa-c03'],
-    hasExamData: false,
+    hasExamData: true,
     description: { zh: 'AWS 安全专家认证', ja: 'AWS セキュリティの専門知識を証明する認定' }
   },
   {
@@ -290,7 +290,7 @@ export const azureCertifications: Certification[] = [
     questionCount: 50,
     passingScore: 70,
     prerequisites: [],
-    hasExamData: false,
+    hasExamData: true,
     description: { zh: 'Microsoft 安全基础认证', ja: 'Microsoft セキュリティの基礎知識を証明する認定' }
   },
   // Associate
@@ -351,7 +351,7 @@ export const azureCertifications: Certification[] = [
     questionCount: 50,
     passingScore: 70,
     prerequisites: ['azure-az-104'],
-    hasExamData: false,
+    hasExamData: true,
     description: { zh: 'Azure 网络工程师认证', ja: 'Azure ネットワークエンジニア認定' }
   },
   {
@@ -541,7 +541,7 @@ export const gcpCertifications: Certification[] = [
     questionCount: 50,
     passingScore: 70,
     prerequisites: [],
-    hasExamData: false,
+    hasExamData: true,
     description: { zh: 'Google Cloud AI 工具和 GenAI 解决方案基础知识认证', ja: 'Google Cloud AI ツールと GenAI ソリューションの基礎知識認定' }
   },
   // ========== Associate (3) ==========
@@ -618,7 +618,7 @@ export const gcpCertifications: Certification[] = [
     questionCount: 50,
     passingScore: 70,
     prerequisites: ['gcp-ace'],
-    hasExamData: false,
+    hasExamData: true,
     description: { zh: '构建可扩展、高可用的云原生应用', ja: 'スケーラブルで高可用性のクラウドネイティブアプリケーション構築' }
   },
   {

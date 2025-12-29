@@ -1,0 +1,654 @@
+{
+  "exam": {
+    "id": "aws-scs-c02-set2",
+    "name": "AWS SCS-C02 Security Specialty Practice Exam #2",
+    "code": "SCS-C02",
+    "provider": "AWS",
+    "language": "en",
+    "description": "AWS Certified Security Specialty Practice Exam - Set 2",
+    "totalQuestions": 40,
+    "passingScore": 75,
+    "examTime": 170,
+    "domains": [
+      {
+        "id": 1,
+        "name": "Threat Detection and Incident Response",
+        "weight": 14
+      },
+      {
+        "id": 2,
+        "name": "Security Logging and Monitoring",
+        "weight": 18
+      },
+      {
+        "id": 3,
+        "name": "Infrastructure Security",
+        "weight": 20
+      },
+      {
+        "id": 4,
+        "name": "Identity and Access Management",
+        "weight": 16
+      },
+      {
+        "id": 5,
+        "name": "Data Protection",
+        "weight": 18
+      },
+      {
+        "id": 6,
+        "name": "Management and Security Governance",
+        "weight": 14
+      }
+    ],
+    "tags": [
+      "AWS",
+      "Security",
+      "Specialty",
+      "SCS-C02",
+      "Certification"
+    ]
+  },
+  "questions": [
+    {
+      "id": "q1",
+      "domain": 1,
+      "question": "A company suspects that an attacker has gained access to their AWS account. Amazon GuardDuty shows findings related to unauthorized API calls from an unknown IP address. What should the security team do FIRST?",
+      "options": {
+        "A": "Delete all IAM users immediately",
+        "B": "Identify the compromised credentials and disable them without deleting",
+        "C": "Shut down all EC2 instances",
+        "D": "Contact AWS Support to reset all credentials"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "The first step is to identify which credentials were compromised (using CloudTrail and GuardDuty findings) and disable them to stop the attack while preserving evidence. Deleting users or credentials would destroy audit trails. Shutting down all instances is too broad and may not address the root cause.",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q2",
+      "domain": 1,
+      "question": "A security team needs to automatically collect memory dumps and disk images from potentially compromised EC2 instances for forensic analysis. Which approach should they use?",
+      "options": {
+        "A": "Manually SSH into each instance and collect data",
+        "B": "Use AWS Systems Manager Run Command with pre-configured forensic scripts",
+        "C": "Terminate instances and analyze EBS snapshots only",
+        "D": "Use Amazon Inspector to collect memory dumps"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "AWS Systems Manager Run Command can execute forensic collection scripts across multiple instances without requiring SSH access. This is faster, more secure, and provides audit trails. Memory dumps are volatile and cannot be collected from snapshots alone. Inspector is for vulnerability assessment, not forensics.",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q3",
+      "domain": 1,
+      "question": "Which Amazon GuardDuty finding type indicates that an EC2 instance might be part of a botnet?",
+      "options": {
+        "A": "Recon:EC2/PortProbeUnprotectedPort",
+        "B": "Backdoor:EC2/C&CActivity.B!DNS",
+        "C": "UnauthorizedAccess:EC2/SSHBruteForce",
+        "D": "CryptoCurrency:EC2/BitcoinTool.B"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Backdoor:EC2/C&CActivity.B!DNS indicates that an EC2 instance is communicating with a command and control (C&C) server, which is characteristic of botnet activity. Recon findings indicate scanning. SSHBruteForce indicates attack attempts. CryptoCurrency indicates mining activity.",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q4",
+      "domain": 2,
+      "question": "A company needs to retain CloudTrail logs for 7 years to meet compliance requirements. What is the MOST cost-effective storage strategy?",
+      "options": {
+        "A": "Store logs in CloudWatch Logs with a 7-year retention period",
+        "B": "Store logs in S3 with lifecycle policies transitioning to S3 Glacier after 90 days",
+        "C": "Store logs in S3 Standard for 7 years",
+        "D": "Use CloudTrail Lake for all log storage"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Storing logs in S3 with lifecycle policies that transition older logs to S3 Glacier is the most cost-effective approach for long-term retention. Glacier is significantly cheaper than S3 Standard or CloudWatch Logs. CloudTrail Lake is useful for querying but more expensive for pure storage.",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q5",
+      "domain": 2,
+      "question": "A security engineer needs to create a dashboard showing security metrics across multiple AWS accounts in an organization. Which service should they use?",
+      "options": {
+        "A": "Amazon CloudWatch with cross-account sharing",
+        "B": "AWS Security Hub with cross-account aggregation",
+        "C": "Amazon QuickSight connected to CloudTrail logs",
+        "D": "All of the above can work, depending on requirements"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "All options are valid depending on the specific requirements. Security Hub provides built-in security dashboards with cross-account aggregation. CloudWatch can share dashboards across accounts. QuickSight can create custom visualizations from CloudTrail data. The choice depends on the metrics needed and existing infrastructure.",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q6",
+      "domain": 2,
+      "question": "What information is captured in AWS CloudTrail management events?",
+      "options": {
+        "A": "Only failed API calls",
+        "B": "Control plane operations like creating/modifying/deleting resources",
+        "C": "Data plane operations like S3 GetObject and PutObject",
+        "D": "Only events from the AWS Management Console"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "CloudTrail management events capture control plane operations such as creating, modifying, and deleting AWS resources (e.g., RunInstances, CreateBucket, ModifyDBInstance). Data events (like S3 object operations) must be separately enabled. All API calls are captured regardless of success/failure or source.",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q7",
+      "domain": 2,
+      "question": "A company wants to detect and alert on suspicious patterns in their CloudTrail logs, such as unusual API call volumes or calls from new geographic locations. What is the BEST solution?",
+      "options": {
+        "A": "Create CloudWatch metric filters for every possible API call",
+        "B": "Enable CloudTrail Insights",
+        "C": "Write Lambda functions to analyze CloudTrail logs in S3",
+        "D": "Use Amazon Athena to query logs daily"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "CloudTrail Insights automatically analyzes management events and identifies unusual activity patterns like spikes in API calls or calls from unusual locations. It uses machine learning and doesn't require manual configuration of every pattern. Custom solutions require more effort and may miss unknown patterns.",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q8",
+      "domain": 3,
+      "question": "A company needs to implement a web application firewall that can block requests based on IP reputation, geographic location, and custom rate limiting rules. Which solution should they use?",
+      "options": {
+        "A": "Security Groups with deny rules",
+        "B": "Network ACLs with geographic blocking",
+        "C": "AWS WAF with managed rule groups and custom rules",
+        "D": "Amazon GuardDuty with automatic blocking"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "AWS WAF supports IP reputation lists (via managed rules), geographic blocking, and custom rate-based rules. It integrates with ALB, CloudFront, and API Gateway. Security groups don't support deny rules. Network ACLs don't have geographic or IP reputation features. GuardDuty doesn't block traffic.",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q9",
+      "domain": 3,
+      "question": "What is the purpose of AWS Network Firewall and how does it differ from security groups?",
+      "options": {
+        "A": "They serve the same purpose",
+        "B": "Network Firewall provides stateful inspection and deep packet inspection at the VPC level; security groups operate at the instance level",
+        "C": "Security groups provide more features than Network Firewall",
+        "D": "Network Firewall only works with on-premises connections"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "AWS Network Firewall is a managed service that provides stateful network traffic filtering with deep packet inspection, intrusion detection/prevention, and URL filtering at the VPC level. Security groups are stateful but operate at the instance/ENI level and don't support deep packet inspection or IDS/IPS.",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q10",
+      "domain": 3,
+      "question": "A company is deploying a three-tier web application. The web tier needs to communicate with the application tier, and the application tier needs to communicate with the database tier. What is the MOST secure network design?",
+      "options": {
+        "A": "Place all tiers in the same public subnet with security groups",
+        "B": "Place web tier in public subnet, application and database tiers in separate private subnets with security groups limiting traffic",
+        "C": "Use separate VPCs for each tier connected via VPC peering",
+        "D": "Place all tiers in the same private subnet"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "The most secure design places only the web tier (load balancer) in a public subnet. Application servers go in a private subnet accessible only from the web tier. Database servers go in a separate private subnet accessible only from the application tier. This implements network segmentation and least privilege.",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q11",
+      "domain": 3,
+      "question": "A company wants to inspect all traffic entering and leaving their VPC for threats and compliance. Which architecture should they implement?",
+      "options": {
+        "A": "Attach a NAT Gateway to all subnets",
+        "B": "Deploy AWS Network Firewall with an inspection VPC using Transit Gateway",
+        "C": "Enable VPC Flow Logs on all subnets",
+        "D": "Use security groups to log all traffic"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "AWS Network Firewall deployed in an inspection VPC with Transit Gateway allows all traffic to pass through the firewall for inspection before reaching workload VPCs. This provides centralized traffic inspection with IDS/IPS capabilities. VPC Flow Logs only capture metadata, not content. Security groups don't provide inspection.",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q12",
+      "domain": 3,
+      "question": "What is the difference between a Gateway VPC Endpoint and an Interface VPC Endpoint?",
+      "options": {
+        "A": "They are the same",
+        "B": "Gateway endpoints are free and use route tables (S3/DynamoDB); Interface endpoints have hourly costs and use ENIs with private IPs",
+        "C": "Interface endpoints are free; Gateway endpoints have costs",
+        "D": "Gateway endpoints support all AWS services; Interface endpoints only support S3"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Gateway endpoints are free and available only for S3 and DynamoDB - they use route table entries. Interface endpoints (powered by PrivateLink) create ENIs with private IPs in your VPC and support most other AWS services but have hourly and data processing charges.",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q13",
+      "domain": 4,
+      "question": "A company wants to grant an AWS Lambda function access to secrets stored in AWS Secrets Manager. What is the BEST practice?",
+      "options": {
+        "A": "Store the secrets as environment variables in the Lambda function",
+        "B": "Create an execution role for Lambda with permission to access specific secrets in Secrets Manager",
+        "C": "Hardcode the secrets in the Lambda code",
+        "D": "Use the root account credentials in Lambda"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Best practice is to create an IAM execution role for the Lambda function with permissions to call secretsmanager:GetSecretValue for specific secrets. The Lambda function retrieves secrets at runtime. This avoids hardcoding secrets and provides audit trails through CloudTrail.",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q14",
+      "domain": 4,
+      "question": "An application needs to assume an IAM role in another AWS account. What components are required to enable cross-account access?",
+      "options": {
+        "A": "Only the role's permission policy",
+        "B": "A trust policy in the role allowing the source account, and permissions in the source account to assume the role",
+        "C": "A VPC peering connection between accounts",
+        "D": "The root account password of the target account"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Cross-account role assumption requires: 1) A trust policy in the target role that allows the source account/role/user to assume it, and 2) An IAM policy in the source account granting permission to call sts:AssumeRole for the target role. No network connection is required - it uses AWS STS.",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q15",
+      "domain": 4,
+      "question": "What is the purpose of IAM session policies?",
+      "options": {
+        "A": "To grant additional permissions beyond the role's permissions",
+        "B": "To further restrict the permissions of a role session below what the role grants",
+        "C": "To extend the session duration",
+        "D": "To change the role's trust policy"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Session policies are inline policies that you pass when you assume a role. They scope down (restrict) the effective permissions for that session to be less than or equal to the role's permissions. They cannot grant additional permissions beyond what the role has.",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q16",
+      "domain": 4,
+      "question": "A company wants to prevent users from creating IAM users with console access without MFA. Which approach should they use?",
+      "options": {
+        "A": "Create an SCP that denies iam:CreateUser unless MFA is configured",
+        "B": "Create an SCP or IAM policy that denies iam:CreateLoginProfile unless the caller has MFA",
+        "C": "Use AWS Config to detect and delete users without MFA",
+        "D": "Disable the ability to create IAM users entirely"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "You can create an SCP or IAM policy that denies iam:CreateLoginProfile (which enables console access) unless the caller is authenticated with MFA using the aws:MultiFactorAuthPresent condition. This prevents creating console access for users unless the administrator is MFA-authenticated.",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q17",
+      "domain": 4,
+      "question": "A company uses SAML 2.0 federation for AWS access. They want to ensure that federated users can only access resources that match their department. How can this be implemented?",
+      "options": {
+        "A": "Create separate IAM roles for each department",
+        "B": "Use ABAC (Attribute-Based Access Control) with SAML session tags",
+        "C": "Create individual IAM users for each federated user",
+        "D": "Use separate AWS accounts for each department"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "ABAC with SAML session tags allows you to pass user attributes (like department) from your IdP as session tags. IAM policies can then use these tags to control access to resources tagged with matching values. This is more scalable than creating separate roles for each department.",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q18",
+      "domain": 5,
+      "question": "A company needs to encrypt data in Amazon RDS with a key that they can audit and rotate on their own schedule. Which encryption option should they use?",
+      "options": {
+        "A": "RDS default encryption with AWS managed keys",
+        "B": "RDS encryption with customer managed KMS keys",
+        "C": "Client-side encryption before storing in RDS",
+        "D": "RDS encryption is not supported"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "RDS encryption with customer managed KMS keys allows full control over key rotation schedule (via manual rotation) and provides detailed audit trails in CloudTrail. AWS managed keys rotate automatically every year but don't allow custom rotation schedules.",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q19",
+      "domain": 5,
+      "question": "How can a company ensure that an S3 bucket can only be accessed from a specific VPC?",
+      "options": {
+        "A": "Use an S3 bucket policy with the aws:SourceVpc condition",
+        "B": "Create a security group for the S3 bucket",
+        "C": "Use S3 Access Points with VPC origin",
+        "D": "Both A and C can achieve this"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "You can restrict S3 bucket access to a specific VPC using: 1) A bucket policy with aws:SourceVpc condition, or 2) S3 Access Points configured with a VPC origin that restricts access to requests from a specific VPC. Both approaches work; Access Points provide more granular control.",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q20",
+      "domain": 5,
+      "question": "What is envelope encryption and why is it used with AWS KMS?",
+      "options": {
+        "A": "Encrypting data with multiple layers of encryption for extra security",
+        "B": "Using a data key to encrypt data, and encrypting the data key with a KMS key to reduce KMS API calls",
+        "C": "Sending encrypted data in an envelope to S3",
+        "D": "Using email encryption with KMS"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Envelope encryption uses a data encryption key (DEK) to encrypt the actual data locally, then encrypts the DEK with a KMS customer master key. This reduces KMS API calls (only needed for DEK encryption/decryption), improves performance for large data, and reduces costs.",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q21",
+      "domain": 5,
+      "question": "A company needs to share encrypted data with a partner organization that has their own AWS account. How should they manage the encryption keys?",
+      "options": {
+        "A": "Share the KMS key ARN and grant the partner account access through the key policy",
+        "B": "Export the KMS key and send it to the partner",
+        "C": "Decrypt the data and re-encrypt with the partner's key",
+        "D": "Both A and C are valid approaches depending on requirements"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "Both approaches work: 1) Grant cross-account access to the KMS key through the key policy (simpler, but couples you to that key), or 2) Decrypt and re-encrypt with the partner's key (more isolated, but requires data handling). The choice depends on security requirements and operational preferences.",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q22",
+      "domain": 5,
+      "question": "What is the purpose of AWS Certificate Manager (ACM) and which services can use ACM certificates?",
+      "options": {
+        "A": "ACM manages SSH keys for EC2 instances",
+        "B": "ACM provisions, manages, and deploys SSL/TLS certificates for use with AWS services like CloudFront, ALB, and API Gateway",
+        "C": "ACM encrypts S3 data at rest",
+        "D": "ACM manages IAM credentials"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "AWS Certificate Manager provisions, manages, and deploys public and private SSL/TLS certificates. It handles renewal automatically. ACM certificates can be used with integrated services: CloudFront, Elastic Load Balancing, API Gateway, and CloudFormation. It does not manage SSH keys or IAM credentials.",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q23",
+      "domain": 5,
+      "question": "A company wants to use their own certificate authority (CA) for issuing private certificates within their organization. Which AWS service should they use?",
+      "options": {
+        "A": "AWS Certificate Manager public CA",
+        "B": "AWS Private Certificate Authority (Private CA)",
+        "C": "AWS KMS",
+        "D": "AWS Secrets Manager"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "AWS Private Certificate Authority allows you to create a private CA hierarchy and issue private certificates for internal use. This is useful for internal services, IoT devices, and microservices. The public ACM only issues certificates validated by public CAs.",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q24",
+      "domain": 6,
+      "question": "A company needs to ensure that all new EC2 instances are tagged with specific required tags. What is the BEST approach?",
+      "options": {
+        "A": "Use AWS Config rules to detect and report untagged instances",
+        "B": "Create an SCP or IAM policy that denies ec2:RunInstances unless required tags are present",
+        "C": "Train developers to always add tags",
+        "D": "Use Lambda to tag instances after they are created"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Using an SCP or IAM policy with conditions requiring specific tags (aws:RequestTag) prevents instances from being created without proper tags. This is a preventive control. Config rules detect after creation. Lambda tagging is reactive. Training alone is unreliable.",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q25",
+      "domain": 6,
+      "question": "What is AWS Firewall Manager and when should it be used?",
+      "options": {
+        "A": "A service to manage on-premises firewalls",
+        "B": "A central management service for WAF rules, Shield Advanced, security groups, and Network Firewall across multiple accounts",
+        "C": "A replacement for security groups",
+        "D": "A logging service for firewall events"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "AWS Firewall Manager provides central management for security policies across multiple accounts in an AWS Organization. It can manage AWS WAF rules, Shield Advanced protections, VPC security groups, Network Firewall policies, and Route 53 Resolver DNS Firewall rules.",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q26",
+      "domain": 6,
+      "question": "A company wants to detect when an S3 bucket's encryption setting is changed to disabled. Which service should they use?",
+      "options": {
+        "A": "Amazon Macie",
+        "B": "AWS Config with the s3-bucket-server-side-encryption-enabled rule",
+        "C": "Amazon GuardDuty",
+        "D": "AWS Trusted Advisor"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "AWS Config continuously monitors resource configurations. The s3-bucket-server-side-encryption-enabled managed rule detects when S3 bucket encryption is not enabled. It can send notifications and trigger auto-remediation. Macie is for data classification. GuardDuty is for threat detection.",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q27",
+      "domain": 1,
+      "question": "A company needs to establish an incident response plan for AWS. Which AWS service provides runbooks for common security incident scenarios?",
+      "options": {
+        "A": "AWS Systems Manager Automation (with incident response runbooks)",
+        "B": "Amazon Inspector",
+        "C": "AWS Config",
+        "D": "Amazon Detective"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "AWS Systems Manager Automation provides runbooks (Automation documents) that can automate incident response procedures. AWS publishes incident response runbooks for common scenarios like compromised credentials or EC2 instances. Amazon Detective helps investigate but doesn't provide runbooks.",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q28",
+      "domain": 2,
+      "question": "A security team needs to analyze and visualize security findings to investigate potential attacks. Which AWS service should they use?",
+      "options": {
+        "A": "Amazon CloudWatch",
+        "B": "Amazon Detective",
+        "C": "AWS CloudTrail",
+        "D": "Amazon QuickSight"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Amazon Detective automatically collects and analyzes data from CloudTrail, VPC Flow Logs, and GuardDuty findings. It provides visualizations and context to help investigate security issues. It can show relationships between resources and identify root causes of security findings.",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q29",
+      "domain": 3,
+      "question": "A company runs containers on Amazon ECS. They need to ensure containers can only communicate with specific other containers. What should they implement?",
+      "options": {
+        "A": "VPC security groups",
+        "B": "AWS App Mesh with mTLS",
+        "C": "Network ACLs for each container",
+        "D": "A and B both provide different levels of container network security"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "Security groups (with awsvpc network mode) provide network-level isolation for ECS tasks. AWS App Mesh provides service mesh capabilities with mutual TLS for application-level security and fine-grained traffic control. Both can be used together for defense in depth.",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q30",
+      "domain": 3,
+      "question": "What is AWS Shield Advanced and when should a company use it instead of Shield Standard?",
+      "options": {
+        "A": "Shield Advanced is the same as Shield Standard but with a different name",
+        "B": "Shield Advanced provides DDoS response team access, cost protection, advanced attack visibility, and WAF integration at additional cost",
+        "C": "Shield Advanced is required for all AWS resources",
+        "D": "Shield Standard provides more features than Shield Advanced"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Shield Advanced ($3000/month) provides: 24/7 access to the DDoS Response Team (DRT), cost protection for scaling during attacks, real-time visibility and attack diagnostics, integration with WAF (WAF fees waived), and health-based detection. It's for business-critical applications requiring enhanced protection.",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q31",
+      "domain": 4,
+      "question": "An organization wants to centrally manage access to multiple AWS accounts using their existing Active Directory. What is the recommended approach?",
+      "options": {
+        "A": "Create IAM users in each account that match AD users",
+        "B": "Use AWS IAM Identity Center with AD Connector or AWS Managed Microsoft AD",
+        "C": "Share root account credentials across accounts",
+        "D": "Manually create cross-account roles for each user"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "AWS IAM Identity Center can federate with Active Directory using AD Connector (for on-premises AD) or AWS Managed Microsoft AD. This provides centralized access management with SSO to multiple AWS accounts and business applications using existing AD credentials.",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q32",
+      "domain": 4,
+      "question": "What is the aws:PrincipalOrgID condition key used for?",
+      "options": {
+        "A": "To identify the principal's organization unit",
+        "B": "To restrict resource access to principals from specific AWS Organizations",
+        "C": "To identify the original requester in a service chain",
+        "D": "To specify the organization's root account"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "aws:PrincipalOrgID is a condition key that represents the organization ID of the principal making the request. It's used in resource policies (like S3 bucket policies) to restrict access to principals belonging to a specific AWS Organization, simplifying cross-account access within an organization.",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q33",
+      "domain": 5,
+      "question": "A company stores PII data in DynamoDB and needs to encrypt specific attributes with different keys for different customers. What should they use?",
+      "options": {
+        "A": "DynamoDB server-side encryption with AWS managed keys",
+        "B": "DynamoDB server-side encryption with customer managed KMS keys",
+        "C": "Client-side encryption with the DynamoDB Encryption Client using per-customer keys",
+        "D": "DynamoDB does not support encryption"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "The DynamoDB Encryption Client provides client-side encryption at the attribute level, allowing different keys for different attributes or customers. Server-side encryption (SSE) encrypts the entire table with a single key and doesn't support attribute-level or per-customer key separation.",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q34",
+      "domain": 5,
+      "question": "What happens when you schedule a KMS key for deletion?",
+      "options": {
+        "A": "The key is immediately deleted",
+        "B": "The key enters a waiting period (7-30 days) during which deletion can be cancelled, and data encrypted with the key becomes unrecoverable after deletion",
+        "C": "The key is archived and can be restored at any time",
+        "D": "Only the key metadata is deleted; encrypted data can still be decrypted"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "When a KMS key is scheduled for deletion, it enters a configurable waiting period (7-30 days) during which the key is disabled but deletion can be cancelled. After the waiting period, the key is permanently deleted and data encrypted with it cannot be recovered.",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q35",
+      "domain": 6,
+      "question": "What is AWS Control Tower and how does it help with security governance?",
+      "options": {
+        "A": "A service to control network traffic in VPCs",
+        "B": "An orchestration service that sets up and governs a secure, compliant multi-account AWS environment based on best practices",
+        "C": "A logging service for control plane operations",
+        "D": "A replacement for AWS Organizations"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "AWS Control Tower automates the setup of a landing zone (multi-account environment) based on best practices. It implements guardrails (preventive and detective controls), manages account provisioning, provides dashboards for compliance visibility, and integrates with AWS Organizations.",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q36",
+      "domain": 1,
+      "question": "During an incident response, a security analyst needs to quickly find all resources accessed by a specific IAM role in the past hour. What is the fastest approach?",
+      "options": {
+        "A": "Download and parse CloudTrail log files from S3",
+        "B": "Use CloudTrail Event History in the console with a filter for the role",
+        "C": "Use Amazon Detective to visualize the role's activity",
+        "D": "B for immediate access or C for detailed investigation"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "CloudTrail Event History provides quick access to the last 90 days of management events with filtering by user/role. For immediate needs, this is fastest. Amazon Detective provides richer visualization and analysis for detailed investigations but requires more setup time for initial queries.",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q37",
+      "domain": 2,
+      "question": "A company needs to ensure that CloudTrail logging cannot be stopped or disabled by anyone, including administrators. What should they implement?",
+      "options": {
+        "A": "Create an SCP that denies cloudtrail:StopLogging and cloudtrail:DeleteTrail",
+        "B": "Use CloudTrail with CloudWatch Logs integration",
+        "C": "Enable CloudTrail log file integrity validation",
+        "D": "Use AWS Organizations with all features enabled"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "An SCP that denies cloudtrail:StopLogging, cloudtrail:DeleteTrail, and cloudtrail:UpdateTrail actions prevents anyone in the organization (including administrators) from disabling logging, except the management account. This protects audit trails from being tampered with.",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q38",
+      "domain": 3,
+      "question": "A company wants to implement a hub-and-spoke network architecture for their multi-VPC AWS environment. Which service should they use?",
+      "options": {
+        "A": "VPC Peering for all VPC connections",
+        "B": "AWS Transit Gateway",
+        "C": "AWS Direct Connect for all VPCs",
+        "D": "Internet Gateway with routing"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "AWS Transit Gateway acts as a hub that connects multiple VPCs and on-premises networks. It simplifies network architecture compared to full mesh VPC peering, provides centralized routing control, and supports network segmentation with route tables. It's designed for hub-and-spoke topologies.",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q39",
+      "domain": 4,
+      "question": "How can a company prevent IAM users from creating access keys for themselves?",
+      "options": {
+        "A": "It cannot be prevented",
+        "B": "Create an IAM policy that denies iam:CreateAccessKey for self-service",
+        "C": "Disable programmatic access at the account level",
+        "D": "Use SCPs to deny all IAM actions"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "You can create an IAM policy that denies iam:CreateAccessKey when the resource matches the caller (${aws:username}). This prevents users from creating their own access keys while still allowing administrators to create keys for users when necessary.",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q40",
+      "domain": 5,
+      "question": "A company is using AWS Lambda functions that need to decrypt data using KMS. How can they optimize performance and reduce KMS costs?",
+      "options": {
+        "A": "Use larger Lambda memory sizes",
+        "B": "Use data key caching with the AWS Encryption SDK",
+        "C": "Call KMS directly for each encryption operation",
+        "D": "Store decryption keys in Lambda environment variables"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "The AWS Encryption SDK supports data key caching, which stores data keys for reuse rather than calling KMS for each operation. This significantly reduces KMS API calls (and costs) while improving performance. The cache can be configured with TTL and usage limits for security.",
+      "difficulty": "medium"
+    }
+  ]
+}

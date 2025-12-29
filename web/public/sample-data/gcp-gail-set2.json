@@ -1,0 +1,643 @@
+{
+  "exam": {
+    "id": "gcp-gail-set2",
+    "name": "GCP Generative AI Leader 模拟考试 #2",
+    "code": "GAIL",
+    "provider": "GCP",
+    "language": "zh-CN",
+    "description": "Google Cloud Generative AI Leader认证考试模拟题",
+    "totalQuestions": 40,
+    "passingScore": 70,
+    "examTime": 90,
+    "domains": [
+      {
+        "id": 1,
+        "name": "生成式AI基础知识",
+        "weight": 25
+      },
+      {
+        "id": 2,
+        "name": "Google Cloud AI产品和服务",
+        "weight": 25
+      },
+      {
+        "id": 3,
+        "name": "负责任的AI和伦理",
+        "weight": 25
+      },
+      {
+        "id": 4,
+        "name": "AI战略和业务应用",
+        "weight": 25
+      }
+    ],
+    "tags": [
+      "GCP",
+      "AI",
+      "Generative AI",
+      "认证考试"
+    ]
+  },
+  "questions": [
+    {
+      "id": "q1",
+      "domain": 1,
+      "question": "什么是Token在大型语言模型中的作用？",
+      "options": {
+        "A": "一种身份验证机制",
+        "B": "模型处理文本的基本单位，可以是单词、子词或字符",
+        "C": "一种加密方法",
+        "D": "网络通信协议"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "在LLM中，Token是文本被分割成的基本单位。根据分词方法不同，一个token可以是完整单词、单词的一部分（子词）或单个字符。模型的上下文窗口和计费通常以token为单位。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q2",
+      "domain": 1,
+      "question": "什么是上下文窗口（Context Window）？",
+      "options": {
+        "A": "计算机屏幕的显示区域",
+        "B": "模型一次可以处理的最大token数量",
+        "C": "数据存储位置",
+        "D": "网络连接参数"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "上下文窗口是指LLM在一次交互中可以处理的最大token数量，包括输入提示和生成的输出。较大的上下文窗口允许模型处理更长的文档和保持更多的对话历史。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q3",
+      "domain": 1,
+      "question": "什么是思维链（Chain-of-Thought）提示？",
+      "options": {
+        "A": "一种硬件连接方式",
+        "B": "引导模型逐步推理以解决复杂问题的提示技术",
+        "C": "一种数据加密方法",
+        "D": "网络拓扑结构"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "思维链提示是一种提示工程技术，通过在提示中要求或演示逐步推理过程，帮助模型更好地解决需要多步推理的复杂问题。这可以显著提高模型在数学和逻辑推理任务上的表现。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q4",
+      "domain": 1,
+      "question": "什么是模型的推理（Inference）？",
+      "options": {
+        "A": "模型训练过程",
+        "B": "使用训练好的模型对新输入生成预测或输出",
+        "C": "数据收集过程",
+        "D": "模型评估过程"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "推理是指使用已经训练好的模型对新的、未见过的输入数据进行处理并生成输出（预测、生成文本等）的过程。推理阶段是模型实际应用的阶段，与训练阶段不同。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q5",
+      "domain": 1,
+      "question": "什么是基础模型（Foundation Model）？",
+      "options": {
+        "A": "只能用于特定任务的小型模型",
+        "B": "在大规模数据上预训练、可适应多种下游任务的大型模型",
+        "C": "数据库管理系统",
+        "D": "网络基础设施"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "基础模型是在大规模数据集上进行预训练的大型AI模型，可以通过微调或提示工程适应各种下游任务。GPT、Gemini、Claude等都是基础模型的例子。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q6",
+      "domain": 1,
+      "question": "什么是Top-K采样？",
+      "options": {
+        "A": "选择排名前K的用户",
+        "B": "在生成时只考虑概率最高的K个token",
+        "C": "选择K个数据集",
+        "D": "使用K个GPU进行训练"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Top-K采样是一种文本生成策略，在每个生成步骤中只考虑概率最高的K个token，然后从中采样。这可以避免选择极低概率的token，同时保持一定的随机性和创造性。",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q7",
+      "domain": 1,
+      "question": "什么是Top-P（Nucleus）采样？",
+      "options": {
+        "A": "选择排名前P的用户",
+        "B": "选择累积概率达到P的最小token集合进行采样",
+        "C": "使用P个处理器",
+        "D": "数据分区策略"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Top-P采样（也称为Nucleus采样）动态选择累积概率达到阈值P的最小token集合进行采样。与Top-K不同，它根据概率分布自适应调整候选token数量。",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q8",
+      "domain": 1,
+      "question": "预训练和微调的主要区别是什么？",
+      "options": {
+        "A": "没有区别",
+        "B": "预训练在大规模通用数据上进行，微调在特定任务数据上进行",
+        "C": "预训练更快",
+        "D": "微调不需要数据"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "预训练是在大规模、多样化的数据集上训练基础模型，学习通用的语言理解和生成能力。微调是在预训练模型的基础上，使用特定领域或任务的数据进行进一步训练，使模型更好地适应特定用例。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q9",
+      "domain": 1,
+      "question": "什么是向量数据库？",
+      "options": {
+        "A": "存储图形的数据库",
+        "B": "专门存储和检索高维向量嵌入的数据库系统",
+        "C": "传统关系型数据库",
+        "D": "文件存储系统"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "向量数据库是专门设计用于存储和高效检索高维向量的数据库系统。在AI应用中，它们用于存储文本、图像等内容的嵌入向量，支持相似性搜索，是RAG系统的核心组件。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q10",
+      "domain": 1,
+      "question": "什么是语义搜索？",
+      "options": {
+        "A": "基于关键词完全匹配的搜索",
+        "B": "基于内容意义和上下文理解的搜索",
+        "C": "搜索语法错误",
+        "D": "搜索数据库表结构"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "语义搜索是基于查询和内容的实际含义（而非仅仅关键词匹配）进行搜索的技术。它使用嵌入向量来理解语义相似性，可以找到意义相关但措辞不同的内容。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q11",
+      "domain": 2,
+      "question": "Vertex AI中的Tuning功能支持哪些方式？",
+      "options": {
+        "A": "仅支持全量微调",
+        "B": "支持监督微调、强化学习微调和提示调优等多种方式",
+        "C": "不支持任何调优",
+        "D": "仅支持提示调优"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Vertex AI的调优功能支持多种方法：监督微调（使用标记数据训练）、强化学习微调（RLHF）、参数高效微调（如LoRA）和提示调优。用户可以根据需求和数据选择合适的方法。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q12",
+      "domain": 2,
+      "question": "Google Cloud的Chirp是什么？",
+      "options": {
+        "A": "一种鸟类识别工具",
+        "B": "Google的通用语音模型，支持语音识别和转录",
+        "C": "聊天机器人框架",
+        "D": "图像生成模型"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Chirp是Google的通用语音模型，支持多种语言的语音识别（ASR）和转录。它可以处理不同的口音、背景噪音，并提供高质量的语音到文本转换服务。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q13",
+      "domain": 2,
+      "question": "Vertex AI Search的主要功能是什么？",
+      "options": {
+        "A": "搜索代码漏洞",
+        "B": "基于企业数据构建语义搜索和推荐系统",
+        "C": "搜索网络攻击",
+        "D": "搜索硬件故障"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Vertex AI Search允许企业基于自身数据构建高质量的搜索和推荐系统。它支持多种数据源，提供语义搜索能力，并可以与生成式AI结合提供摘要和问答功能。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q14",
+      "domain": 2,
+      "question": "PaLM API和Gemini API的关系是什么？",
+      "options": {
+        "A": "完全相同的产品",
+        "B": "Gemini是Google更新的多模态模型，逐步取代PaLM",
+        "C": "PaLM比Gemini更新",
+        "D": "两者完全不相关"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "PaLM是Google早期的大型语言模型系列，而Gemini是Google最新的多模态模型。Gemini具有更强的能力，支持文本、图像、音频等多种模态，正在逐步成为Google AI产品的核心模型。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q15",
+      "domain": 2,
+      "question": "Duet AI for Google Cloud是什么？",
+      "options": {
+        "A": "音乐创作工具",
+        "B": "集成在Google Cloud Console中的AI助手，帮助开发和运维",
+        "C": "双人游戏平台",
+        "D": "视频编辑工具"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Duet AI（现已更名为Gemini for Google Cloud）是集成在Google Cloud控制台和开发工具中的AI助手，可以帮助开发者编写代码、解答问题、优化配置、排查问题等。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q16",
+      "domain": 2,
+      "question": "Vertex AI Matching Engine的用途是什么？",
+      "options": {
+        "A": "匹配约会对象",
+        "B": "高性能向量相似性搜索引擎，支持大规模嵌入检索",
+        "C": "匹配网络设备",
+        "D": "匹配数据库记录"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Vertex AI Matching Engine是一个托管的向量相似性搜索服务，可以在数十亿向量中进行毫秒级的最近邻搜索。它是构建推荐系统、语义搜索和RAG应用的基础组件。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q17",
+      "domain": 2,
+      "question": "使用Vertex AI Workbench的优势是什么？",
+      "options": {
+        "A": "只能用于数据存储",
+        "B": "提供托管的Jupyter笔记本环境，集成GCP服务和ML工具",
+        "C": "仅用于网页浏览",
+        "D": "只能用于视频编辑"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Vertex AI Workbench提供托管的JupyterLab环境，预装数据科学和ML库，与BigQuery、Cloud Storage等GCP服务深度集成，支持GPU加速，便于数据探索、模型开发和实验。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q18",
+      "domain": 2,
+      "question": "Vertex AI Pipelines的作用是什么？",
+      "options": {
+        "A": "管理水管",
+        "B": "创建和管理可重复的ML工作流",
+        "C": "视频处理流水线",
+        "D": "网络数据传输"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Vertex AI Pipelines是一个托管的ML工作流编排服务，允许用户定义、运行和监控可重复的机器学习管道。它支持Kubeflow Pipelines和TensorFlow Extended，便于实现MLOps最佳实践。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q19",
+      "domain": 2,
+      "question": "Google Cloud Translation AI的高级功能包括什么？",
+      "options": {
+        "A": "只支持基础翻译",
+        "B": "支持术语表、自适应翻译和批量翻译等高级功能",
+        "C": "只支持英语翻译",
+        "D": "不支持任何定制"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Translation AI除基础翻译外，还提供：术语表（确保特定术语翻译一致）、自适应翻译（根据用户反馈改进）、文档翻译（保留格式）、批量翻译等高级功能。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q20",
+      "domain": 2,
+      "question": "Vertex AI Feature Store的用途是什么？",
+      "options": {
+        "A": "存储应用程序功能列表",
+        "B": "集中管理、存储和服务ML特征的托管仓库",
+        "C": "存储用户偏好设置",
+        "D": "存储代码库"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Vertex AI Feature Store是一个集中式的特征管理服务，用于存储、组织和服务ML特征。它支持特征的版本控制、血缘追踪，确保训练和推理使用一致的特征，是MLOps的重要组件。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q21",
+      "domain": 3,
+      "question": "什么是AI透明度？",
+      "options": {
+        "A": "AI系统的视觉外观",
+        "B": "公开AI系统的工作方式、限制和决策依据",
+        "C": "AI硬件的透明材料",
+        "D": "数据传输的加密方式"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "AI透明度指公开披露AI系统的工作原理、训练数据、限制、潜在风险和决策依据。透明度有助于建立信任，让用户了解AI的能力边界，做出知情决策。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q22",
+      "domain": 3,
+      "question": "版权问题在生成式AI中如何体现？",
+      "options": {
+        "A": "生成式AI不涉及版权问题",
+        "B": "AI生成内容的版权归属和训练数据的版权使用都是重要问题",
+        "C": "版权只影响图像AI",
+        "D": "所有AI生成内容自动获得版权"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "生成式AI涉及多个版权问题：训练数据可能包含受版权保护的内容、AI生成内容的版权归属尚不明确、生成内容可能与原创作品相似等。企业需要了解相关法律风险。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q23",
+      "domain": 3,
+      "question": "什么是AI模型卡（Model Card）？",
+      "options": {
+        "A": "AI系统的物理卡片",
+        "B": "记录模型性能、预期用途、限制和伦理考量的文档",
+        "C": "AI训练的信用卡支付",
+        "D": "硬件规格说明书"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "模型卡是一种标准化的文档格式，用于描述ML模型的关键信息，包括：模型用途、训练数据、性能指标、公平性评估、限制和伦理考量等。它是负责任AI披露的重要工具。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q24",
+      "domain": 3,
+      "question": "如何评估生成式AI输出的公平性？",
+      "options": {
+        "A": "不需要评估",
+        "B": "测试模型在不同人口群体上的表现是否一致，检查输出是否存在偏见",
+        "C": "只看生成速度",
+        "D": "仅评估成本"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "评估AI公平性需要：测试模型在不同人口统计群体（性别、种族、年龄等）上的表现差异、检查输出是否包含刻板印象或歧视性内容、使用公平性指标量化偏差、建立持续监控机制。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q25",
+      "domain": 3,
+      "question": "什么是提示注入攻击？",
+      "options": {
+        "A": "物理注入攻击",
+        "B": "通过恶意设计的输入欺骗AI执行非预期行为",
+        "C": "SQL注入攻击",
+        "D": "病毒注入"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "提示注入是一种针对LLM的攻击方式，攻击者通过在输入中嵌入恶意指令，试图覆盖系统提示或诱导模型执行非预期行为，如泄露敏感信息或生成有害内容。防护措施包括输入过滤和输出验证。",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q26",
+      "domain": 3,
+      "question": "企业如何确保AI使用符合监管要求？",
+      "options": {
+        "A": "忽略监管要求",
+        "B": "建立AI治理框架，进行合规性评估，保持文档记录和审计追踪",
+        "C": "只关注技术性能",
+        "D": "等待被监管机构检查"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "确保AI合规需要：建立AI治理框架和政策、进行风险评估和影响分析、保持完整的文档记录和审计追踪、定期审查和更新合规措施、与法务和合规团队协作。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q27",
+      "domain": 3,
+      "question": "什么是人类在环（Human-in-the-Loop）？",
+      "options": {
+        "A": "人类被AI系统物理包围",
+        "B": "在AI决策过程中保持人类参与、监督和干预的机制",
+        "C": "人类进行循环训练",
+        "D": "一种运动方式"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "人类在环是指在AI系统的决策和操作过程中保持人类参与的设计理念。人类负责监督AI输出、纠正错误、做出关键决策，确保AI行为符合预期和伦理标准。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q28",
+      "domain": 3,
+      "question": "AI系统的安全性包括哪些方面？",
+      "options": {
+        "A": "只包括物理安全",
+        "B": "数据安全、模型安全、推理安全和访问控制等多个方面",
+        "C": "只包括网络安全",
+        "D": "不需要考虑安全性"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "AI安全性是多维度的：数据安全（保护训练和推理数据）、模型安全（防止模型被窃取或篡改）、推理安全（防止对抗攻击和提示注入）、访问控制（限制谁可以使用AI系统）。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q29",
+      "domain": 3,
+      "question": "什么是AI的可持续性考量？",
+      "options": {
+        "A": "AI系统的运行时间",
+        "B": "考虑AI训练和推理的能源消耗和环境影响",
+        "C": "AI公司的盈利能力",
+        "D": "AI模型的大小"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "AI可持续性关注AI系统的环境影响，包括：训练大型模型所需的大量能源和碳排放、数据中心的资源消耗、选择更高效的模型架构和硬件、优化推理效率等。负责任的AI需要考虑环境成本。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q30",
+      "domain": 3,
+      "question": "如何建立AI使用的问责制？",
+      "options": {
+        "A": "无人负责",
+        "B": "明确角色和责任、建立审计追踪、定义升级流程和纠错机制",
+        "C": "完全依赖AI自我管理",
+        "D": "只追究最终用户责任"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "AI问责制需要：明确开发、部署和使用各阶段的责任人、建立完整的审计追踪记录、定义问题升级和响应流程、建立纠错和补救机制、定期评审和更新责任分配。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q31",
+      "domain": 4,
+      "question": "识别高价值AI用例的标准是什么？",
+      "options": {
+        "A": "选择最复杂的问题",
+        "B": "考虑业务影响、可行性、数据可用性和风险水平",
+        "C": "随机选择",
+        "D": "只看技术难度"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "识别高价值AI用例应评估：业务影响（ROI、效率提升）、技术可行性（是否有成熟的AI解决方案）、数据可用性（是否有足够的高质量数据）、风险水平（失败的影响、合规要求）。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q32",
+      "domain": 4,
+      "question": "生成式AI在软件开发中的应用包括什么？",
+      "options": {
+        "A": "只能写文档",
+        "B": "代码生成、代码审查、测试生成、文档编写和bug修复",
+        "C": "只能运行程序",
+        "D": "仅用于项目管理"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "生成式AI在软件开发中的应用广泛：自动生成代码和函数、辅助代码审查发现问题、生成单元测试和测试用例、自动生成技术文档、帮助识别和修复bug、代码解释和重构建议等。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q33",
+      "domain": 4,
+      "question": "AI项目的概念验证（PoC）阶段应该关注什么？",
+      "options": {
+        "A": "立即大规模部署",
+        "B": "验证技术可行性、评估数据质量、确定初步ROI",
+        "C": "跳过验证直接上线",
+        "D": "只关注美观的演示"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "AI PoC阶段应该：验证所选技术能否解决业务问题、评估现有数据的质量和适用性、估算潜在ROI和实施成本、识别技术和组织挑战、获取关键利益相关者的反馈。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q34",
+      "domain": 4,
+      "question": "如何评估企业的AI成熟度？",
+      "options": {
+        "A": "只看使用的AI工具数量",
+        "B": "评估数据基础设施、人才能力、治理流程和AI集成程度",
+        "C": "只看IT预算",
+        "D": "不需要评估"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "AI成熟度评估包括：数据基础设施（数据质量、可访问性）、人才和技能（数据科学家、ML工程师）、AI治理（政策、伦理、合规）、技术集成（AI融入业务流程的程度）、文化和领导力支持。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q35",
+      "domain": 4,
+      "question": "生成式AI在营销中的应用场景是什么？",
+      "options": {
+        "A": "只能分析数据",
+        "B": "个性化内容生成、广告文案创作、客户洞察分析、营销自动化",
+        "C": "完全取代营销团队",
+        "D": "只能发送邮件"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "生成式AI在营销中可以：生成个性化的营销内容和邮件、创作广告文案和社交媒体帖子、分析客户数据获取洞察、自动化A/B测试内容生成、创建产品描述和SEO内容等。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q36",
+      "domain": 4,
+      "question": "企业AI战略应该包含哪些要素？",
+      "options": {
+        "A": "只需要购买AI工具",
+        "B": "愿景目标、用例优先级、资源规划、治理框架和路线图",
+        "C": "只关注短期收益",
+        "D": "仅由IT部门制定"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "全面的AI战略应包括：清晰的AI愿景和目标、优先级排序的用例列表、人才和技术资源规划、AI治理和伦理框架、实施路线图和里程碑、成功指标和评估方法、变革管理计划。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q37",
+      "domain": 4,
+      "question": "AI项目失败的常见原因是什么？",
+      "options": {
+        "A": "AI技术不成熟",
+        "B": "数据问题、缺乏明确目标、组织准备不足、期望不切实际",
+        "C": "AI总是会失败",
+        "D": "只是运气不好"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "AI项目失败的常见原因包括：数据质量差或数据不足、业务目标不明确、缺乏高层支持、技术团队与业务脱节、期望过高、缺乏MLOps实践、忽视变革管理、低估实施复杂性。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q38",
+      "domain": 4,
+      "question": "如何在组织中推广AI采用？",
+      "options": {
+        "A": "强制所有员工使用",
+        "B": "培训教育、展示成功案例、从小项目开始、获得领导支持",
+        "C": "不需要推广",
+        "D": "只让技术团队使用"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "推广AI采用需要：提供培训和教育提高AI素养、展示早期成功案例建立信心、从低风险小项目开始积累经验、获得领导层的支持和倡导、创建AI冠军网络推动变革、解决员工顾虑。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q39",
+      "domain": 4,
+      "question": "什么是AI的总拥有成本（TCO）？",
+      "options": {
+        "A": "只包括软件许可费",
+        "B": "包括基础设施、人才、运维、培训和机会成本的全部费用",
+        "C": "只包括硬件成本",
+        "D": "只包括开发成本"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "AI TCO包括：基础设施成本（计算、存储、网络）、人才成本（招聘、培训、薪资）、软件和工具费用、数据获取和处理成本、运维和监控成本、合规和安全投入、机会成本和生产力影响。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q40",
+      "domain": 4,
+      "question": "企业如何从AI投资中获得长期价值？",
+      "options": {
+        "A": "只做一次性项目",
+        "B": "建立可扩展的AI平台、培养内部能力、持续优化和创新",
+        "C": "完全外包",
+        "D": "尽快放弃AI投资"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "获得长期AI价值需要：建立可扩展的AI/ML平台和基础设施、投资培养内部AI人才和能力、建立MLOps实践确保持续优化、创建可复用的组件和最佳实践、持续探索新用例和创新机会。",
+      "difficulty": "medium"
+    }
+  ]
+}

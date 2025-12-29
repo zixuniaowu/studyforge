@@ -1,0 +1,643 @@
+{
+  "exam": {
+    "id": "aws-mla-c01-set1-ja",
+    "name": "AWS MLA-C01 模擬試験 #1",
+    "code": "MLA-C01",
+    "provider": "AWS",
+    "language": "ja",
+    "description": "AWS認定 機械学習エンジニア - アソシエイト模擬試験 - セット1",
+    "totalQuestions": 40,
+    "passingScore": 70,
+    "examTime": 170,
+    "domains": [
+      {
+        "id": 1,
+        "name": "ML用データ準備",
+        "weight": 28
+      },
+      {
+        "id": 2,
+        "name": "MLモデル開発",
+        "weight": 26
+      },
+      {
+        "id": 3,
+        "name": "MLモデルのデプロイとオーケストレーション",
+        "weight": 22
+      },
+      {
+        "id": 4,
+        "name": "MLソリューションの監視とメンテナンス",
+        "weight": 24
+      }
+    ],
+    "tags": [
+      "AWS",
+      "機械学習",
+      "SageMaker",
+      "アソシエイト"
+    ]
+  },
+  "questions": [
+    {
+      "id": "q1",
+      "domain": 1,
+      "question": "データサイエンティストが、Amazon S3に保存された大規模データセットを機械学習用に準備する必要があります。データセットには欠損値があり、特徴量エンジニアリングが必要です。スケーラブルなデータ変換にはどのAWSサービスを使用すべきですか？",
+      "options": {
+        "A": "Amazon SageMaker Data Wrangler",
+        "B": "Amazon Redshift",
+        "C": "Amazon DynamoDB",
+        "D": "Amazon ElastiCache"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Amazon SageMaker Data Wranglerは、データ準備と特徴量エンジニアリングのためのビジュアルインターフェースを提供します：\n- S3を含む様々なソースからデータをインポート\n- 欠損値と外れ値を処理\n- 特徴量変換を実行\n- データ準備ワークフローをエクスポート\n\nRedshift (B)はデータウェアハウスです。DynamoDB (C)はNoSQLデータベースです。ElastiCache (D)はキャッシュ用です。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q2",
+      "domain": 1,
+      "question": "機械学習エンジニアが、複数のMLモデル間で特徴量を共有するためのフィーチャーストアを作成する必要があります。この機能を提供するAWSサービスはどれですか？",
+      "options": {
+        "A": "Amazon S3",
+        "B": "Amazon SageMaker Feature Store",
+        "C": "Amazon RDS",
+        "D": "AWS Glue Data Catalog"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Amazon SageMaker Feature Storeは、ML特徴量のフルマネージドリポジトリです：\n- 特徴量の一元的な保存と管理\n- チームとモデル間での特徴量共有\n- オンライン（低レイテンシー）とオフライン（バッチ）の両方でアクセス可能\n- 特徴量のバージョニングとリネージ追跡\n\nS3 (A)はオブジェクトストレージです。RDS (C)はリレーショナルデータベースです。Glue Data Catalog (D)はメタデータ用です。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q3",
+      "domain": 1,
+      "question": "データエンジニアが、MLモデルのトレーニングに使用される前に、ストリーミングパイプラインでデータ品質の問題を検出して処理する必要があります。最も適切なアプローチはどれですか？",
+      "options": {
+        "A": "Amazon Kinesis Data FirehoseとAWS Lambdaを使用してデータ検証を行う",
+        "B": "すべてのデータをS3に保存して手動でレビューする",
+        "C": "Amazon SQSを使用してデータを後で処理するためにキューに入れる",
+        "D": "スループットを向上させるためにデータ品質チェックを無効にする"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Kinesis Data FirehoseとLambdaの組み合わせにより、リアルタイムのデータ検証が可能です：\n- Lambda関数でストリーミングデータを検証・変換\n- 無効なレコードをフィルタリングまたはリダイレクト\n- データ品質を確保しながらスループットを維持\n- ストレージ用のS3とシームレスに統合\n\n手動レビュー (B)はスケールしません。SQS (C)は単にデータをキューに入れるだけです。チェックを無効にする (D)はモデル品質の低下につながります。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q4",
+      "domain": 1,
+      "question": "企業が、MLプロジェクト用に組織全体でデータセットをカタログ化して発見したいと考えています。どのサービスを使用すべきですか？",
+      "options": {
+        "A": "AWS Glue Data Catalog",
+        "B": "Amazon S3 Inventory",
+        "C": "Amazon CloudWatch",
+        "D": "AWS Config"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "AWS Glue Data Catalogは、中央集中型のメタデータ管理を提供します：\n- データソースを自動的にクロールしてカタログ化\n- スキーマ情報と統計を維持\n- 組織全体でのデータ発見を可能に\n- SageMakerやその他の分析サービスと統合\n\nS3 Inventory (B)はS3オブジェクトのリストのみです。CloudWatch (C)は監視用です。Config (D)はAWSリソース構成を追跡します。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q5",
+      "domain": 1,
+      "question": "機械学習チームが、コンピュータービジョンプロジェクト用の大規模画像データセットにラベルを付ける必要があります。コストを最小限に抑えながら人間のラベラーを使用したいと考えています。どのAWSサービスを使用すべきですか？",
+      "options": {
+        "A": "Amazon Rekognition Custom Labels",
+        "B": "Amazon SageMaker Ground Truth",
+        "C": "Amazon Mechanical Turkを直接使用",
+        "D": "Amazon Comprehend"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Amazon SageMaker Ground Truthは、データラベリング用に設計されています：\n- 組み込みのラベリングワークフローを提供\n- 自動ラベリングを使用して人間によるラベリングの必要性を削減\n- Mechanical Turk、プライベート、ベンダーワークフォースと統合\n- 品質管理メカニズムを含む\n\nRekognition (A)は推論用です。直接MTurk (C)はより多くのセットアップが必要です。Comprehend (D)はNLP用です。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q6",
+      "domain": 1,
+      "question": "データサイエンティストが、分類モデル用にカテゴリ特徴量を数値表現に変換する必要があります。高カーディナリティのカテゴリ変数にはどの技術を使用すべきですか？",
+      "options": {
+        "A": "ワンホットエンコーディング",
+        "B": "ターゲットエンコーディング",
+        "C": "バイナリエンコーディング",
+        "D": "ラベルエンコーディング"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "ターゲットエンコーディングは、高カーディナリティのカテゴリ変数に最適です：\n- カテゴリをターゲット変数の平均値で置き換え\n- 次元数を大幅に増加させない\n- 多くのユニーク値を持つカテゴリに適している\n- データ漏洩を防ぐための慎重な処理が必要\n\nワンホットエンコーディング (A)は特徴量が多すぎます。バイナリ (C)とラベル (D)エンコーディングは関係性をうまく捉えられない場合があります。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q7",
+      "domain": 1,
+      "question": "企業が、MLトレーニング用にペタバイト規模のデータを処理・変換する必要があります。変換ロジックは複雑で複数のステップを含みます。最も適したAWSサービスはどれですか？",
+      "options": {
+        "A": "AWS Glue ETL",
+        "B": "Amazon Kinesis Data Analytics",
+        "C": "AWS Lambda",
+        "D": "Amazon SQS"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "AWS Glue ETLは、大規模データ変換用に設計されています：\n- サーバーレスのSparkベース処理\n- ペタバイト規模のデータを処理\n- 複雑な変換ロジックをサポート\n- S3、Redshift、その他のデータストアと統合\n\nKinesis (B)はストリーミング用です。Lambda (C)は実行制限があります。SQS (D)はメッセージキューです。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q8",
+      "domain": 1,
+      "question": "データサイエンティストが、MLモデルをトレーニングする前に数値特徴量の外れ値を検出する必要があります。外れ値検出に一般的に使用される統計的手法はどれですか？",
+      "options": {
+        "A": "IQR（四分位範囲）法",
+        "B": "主成分分析",
+        "C": "K-meansクラスタリング",
+        "D": "勾配降下法"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "IQR法は、外れ値検出のための堅牢な統計的アプローチです：\n- Q1（25パーセンタイル）とQ3（75パーセンタイル）を計算\n- IQR = Q3 - Q1\n- Q1 - 1.5*IQR未満またはQ3 + 1.5*IQRを超える値が外れ値\n- 極端な値の検出に適している\n\nPCA (B)は次元削減用です。K-means (C)はクラスタリング用です。勾配降下法 (D)は最適化アルゴリズムです。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q9",
+      "domain": 1,
+      "question": "機械学習エンジニアが、モデルのトレーニングと検証のために時系列データセットを分割する必要があります。どのアプローチを使用すべきですか？",
+      "options": {
+        "A": "ランダムサンプリングでトレーニング/テストセットを作成",
+        "B": "トレーニングデータがテストデータより前になる時間ベースの分割",
+        "C": "ターゲット値に基づく層化サンプリング",
+        "D": "ランダムフォールドによるK分割交差検証"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "時間ベースの分割は、時系列データに不可欠です：\n- 観測の時間順序を保持\n- 未来から過去へのデータ漏洩を防止\n- トレーニングデータは早い時間期間から\n- テストデータは後の時間期間から\n\nランダムサンプリング (A)とK分割 (D)は時間的関係を壊します。層化サンプリング (C)は時間依存性に対応しません。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q10",
+      "domain": 1,
+      "question": "データサイエンティストが、分類データセットの不均衡なクラスを処理する必要があります。データ準備中にこの問題に対処するのに役立つ技術はどれですか？",
+      "options": {
+        "A": "SMOTE（合成少数派オーバーサンプリング技術）",
+        "B": "主成分分析",
+        "C": "特徴量スケーリング",
+        "D": "ワンホットエンコーディング"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "SMOTEは、クラス不均衡を処理するための人気のある技術です：\n- 少数派クラスの合成サンプルを作成\n- 特徴空間の補間に基づいて新しいサンプルを生成\n- 多数派クラスへのモデルバイアスを防ぐのに役立つ\n- アンダーサンプリング技術と組み合わせ可能\n\nPCA (B)は次元削減です。特徴量スケーリング (C)は値を正規化します。ワンホットエンコーディング (D)はカテゴリ変数を処理します。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q11",
+      "domain": 2,
+      "question": "機械学習エンジニアが、大規模データセットでカスタムディープラーニングモデルをトレーニングする必要があります。分散トレーニングに最適なパフォーマンスを提供するSageMakerトレーニングオプションはどれですか？",
+      "options": {
+        "A": "複数のGPUインスタンスを使用したSageMaker Training",
+        "B": "SageMaker Autopilot",
+        "C": "SageMaker Studioノートブック",
+        "D": "SageMaker Serverless Inference"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "複数のGPUインスタンスを使用したSageMaker Trainingは、分散トレーニングを可能にします：\n- データ並列処理とモデル並列処理をサポート\n- インスタンス間での自動モデルとデータ分散\n- ディープラーニングフレームワーク向けに最適化\n- 大規模モデルでほぼ線形スケーリングを提供\n\nAutopilot (B)はAutoML用です。ノートブック (C)は開発用です。Serverless Inference (D)はデプロイメント用です。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q12",
+      "domain": 2,
+      "question": "データサイエンティストが、大量のコードを書かずに複数のMLモデルを素早く構築して比較したいと考えています。どのAWSサービスを使用すべきですか？",
+      "options": {
+        "A": "Amazon SageMaker Autopilot",
+        "B": "Amazon Comprehend",
+        "C": "AWS Lambda",
+        "D": "Amazon EC2"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "SageMaker Autopilotは、自動機械学習を提供します：\n- 複数のアルゴリズムを自動的に探索\n- ハイパーパラメータ最適化を実行\n- トレーニングコード付きのノートブックを生成\n- モデルの説明可能性を提供\n\nComprehend (B)は事前構築されたNLPサービスです。Lambda (C)はサーバーレスコンピュート用です。EC2 (D)は手動セットアップが必要です。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q13",
+      "domain": 2,
+      "question": "機械学習エンジニアが、XGBoostモデルのハイパーパラメータを最適化する必要があります。どのSageMaker機能を使用すべきですか？",
+      "options": {
+        "A": "SageMaker Automatic Model Tuning（ハイパーパラメータ最適化）",
+        "B": "SageMaker Model Monitor",
+        "C": "SageMaker Clarify",
+        "D": "SageMaker Debugger"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "SageMaker Automatic Model Tuning (HPO)は、ハイパーパラメータを最適化します：\n- ベイジアン最適化とランダム検索をサポート\n- 複数のトレーニングジョブを並列実行\n- 最適なハイパーパラメータの組み合わせを自動的に見つける\n- 組み込みアルゴリズムとカスタムアルゴリズムで動作\n\nModel Monitor (B)はデプロイされたモデルを監視します。Clarify (C)はバイアスを分析します。Debugger (D)はトレーニングの問題をデバッグします。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q14",
+      "domain": 2,
+      "question": "データサイエンティストが、MLモデルとデータセットのバイアスを分析する必要があります。この機能を提供するAWSサービスはどれですか？",
+      "options": {
+        "A": "Amazon SageMaker Clarify",
+        "B": "Amazon Rekognition",
+        "C": "Amazon Forecast",
+        "D": "Amazon Personalize"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "SageMaker Clarifyは、バイアス検出と説明可能性を提供します：\n- トレーニング前とトレーニング後のバイアスを検出\n- 特徴量重要度分析を提供\n- 説明可能性レポートを生成\n- 様々なバイアスメトリクス（DPL、KLなど）をサポート\n\nRekognition (B)はコンピュータービジョン用です。Forecast (C)は時系列予測用です。Personalize (D)はレコメンデーション用です。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q15",
+      "domain": 2,
+      "question": "機械学習チームが、実験を追跡し、モデルバージョンを比較し、MLライフサイクルを管理したいと考えています。どの機能を使用すべきですか？",
+      "options": {
+        "A": "SageMaker ExperimentsとModel Registry",
+        "B": "AWS CloudTrail",
+        "C": "Amazon S3バージョニング",
+        "D": "AWS CodeCommit"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "SageMaker ExperimentsとModel Registryは、MLライフサイクル管理を提供します：\n- トレーニング実行とハイパーパラメータを追跡\n- 実験間でモデルメトリクスを比較\n- トレーニング済みモデルのバージョン管理とカタログ化\n- モデル承認ワークフローを管理\n\nCloudTrail (B)はAPI呼び出しをログします。S3バージョニング (C)はオブジェクトバージョニング用です。CodeCommit (D)はコードバージョニング用です。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q16",
+      "domain": 2,
+      "question": "データサイエンティストが、勾配消失などのニューラルネットワークモデルのトレーニング問題をデバッグする必要があります。これに役立つSageMaker機能はどれですか？",
+      "options": {
+        "A": "SageMaker Debugger",
+        "B": "SageMaker Profiler",
+        "C": "SageMaker Model Monitor",
+        "D": "SageMaker Autopilot"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "SageMaker Debuggerは、トレーニング問題の特定に役立ちます：\n- トレーニング中にテンソルをキャプチャ\n- 勾配消失、過学習などの問題を検出\n- 一般的な問題に対する組み込みルールを提供\n- トレーニングジョブのリアルタイムデバッグを可能に\n\nProfiler (B)はハードウェア使用率に焦点を当てています。Model Monitor (C)はデプロイされたモデル用です。Autopilot (D)はAutoML用です。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q17",
+      "domain": 2,
+      "question": "企業が、転移学習を使用してテキスト分類モデルを構築したいと考えています。最も効率的なアプローチはどれですか？",
+      "options": {
+        "A": "SageMakerでHugging Faceの事前学習済みBERTモデルをファインチューニング",
+        "B": "シンプルなニューラルネットワークを使用してモデルをゼロからトレーニング",
+        "C": "Amazon Comprehendカスタム分類を使用",
+        "D": "ルールベースの分類システムを構築"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "事前学習済みトランスフォーマーモデルのファインチューニングが最も効率的です：\n- 学習済みの言語表現を活用\n- 少ないトレーニングデータで済む\n- より短時間で高い精度を達成\n- SageMakerはHugging Faceモデルをネイティブサポート\n\nゼロからのトレーニング (B)は、より多くのデータと時間が必要です。Comprehend (C)はサポートされているユースケースに限定されます。ルールベース (D)は汎化が困難です。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q18",
+      "domain": 2,
+      "question": "機械学習エンジニアが、エッジデプロイメント用にトレーニング済みニューラルネットワークモデルのサイズを削減する必要があります。どの技術を使用すべきですか？",
+      "options": {
+        "A": "モデル量子化",
+        "B": "データ拡張",
+        "C": "特徴量エンジニアリング",
+        "D": "ハイパーパラメータチューニング"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "モデル量子化は、モデルサイズを削減し推論速度を向上させます：\n- 32ビット浮動小数点をより低い精度（8ビット整数）に変換\n- モデルサイズを大幅に削減\n- エッジデバイスでの推論速度を向上\n- 精度への影響は最小限\n\nデータ拡張 (B)はトレーニングデータを増やします。特徴量エンジニアリング (C)は特徴量を改善します。HPO (D)はトレーニングパラメータを最適化します。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q19",
+      "domain": 2,
+      "question": "データサイエンティストが、MLモデルの最も重要な特徴量を選択する必要があります。特徴量選択に役立つSageMaker機能はどれですか？",
+      "options": {
+        "A": "SageMaker Clarify特徴量重要度",
+        "B": "SageMaker Ground Truth",
+        "C": "SageMaker Experiments",
+        "D": "SageMaker Pipelines"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "SageMaker Clarifyは、特徴量重要度分析を提供します：\n- SHAP値を使用して特徴量の寄与を説明\n- どの特徴量が予測に最も影響を与えるかを特定\n- 特徴量選択の決定に役立つ\n- 様々なモデルタイプで動作\n\nGround Truth (B)はラベリング用です。Experiments (C)はトレーニング実行を追跡します。Pipelines (D)はワークフローをオーケストレーションします。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q20",
+      "domain": 2,
+      "question": "企業が、データを移動せずに複数のAWSアカウントからのデータを使用してMLモデルをトレーニングしたいと考えています。これを可能にするSageMaker機能はどれですか？",
+      "options": {
+        "A": "クロスアカウントS3アクセスを使用したSageMaker",
+        "B": "SageMaker Ground Truth",
+        "C": "SageMaker Canvas",
+        "D": "SageMaker JumpStart"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "SageMakerは、IAMポリシーを使用してアカウント間でデータにアクセスできます：\n- クロスアカウントS3バケットポリシーを設定\n- 適切な権限を持つIAMロールを使用\n- データは元のアカウントに残る\n- トレーニングジョブは安全にデータにアクセス\n\nGround Truth (B)はラベリング用です。Canvas (C)はノーコードMLです。JumpStart (D)は事前構築されたソリューションを提供します。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q21",
+      "domain": 3,
+      "question": "企業が、最小限のインフラ管理で可変トラフィックを処理できるMLモデルをデプロイする必要があります。最適なデプロイメントオプションはどれですか？",
+      "options": {
+        "A": "SageMaker Serverless Inference",
+        "B": "固定インスタンスを使用したSageMaker Real-Time Inference",
+        "C": "自己管理のEC2インスタンス",
+        "D": "手動スケーリングを使用したAmazon ECS"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "SageMaker Serverless Inferenceは、可変トラフィックに最適です：\n- 使用していないときは自動的にゼロにスケール\n- 需要に応じてスケールアップ\n- インフラ管理不要\n- 実際の使用量に対してのみ支払い\n\nReal-Time Inference (B)は容量計画が必要です。EC2 (C)とECS (D)はより多くの管理が必要です。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q22",
+      "domain": 3,
+      "question": "機械学習エンジニアが、A/Bテストを実行するために単一のエンドポイントの背後に複数のMLモデルをデプロイする必要があります。どのSageMaker機能を使用すべきですか？",
+      "options": {
+        "A": "SageMaker Multi-Model Endpoints",
+        "B": "SageMaker Inference Pipelines",
+        "C": "SageMaker Production Variants",
+        "D": "SageMaker Batch Transform"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "SageMaker Production Variantsは、A/Bテストを可能にします：\n- 同じエンドポイントに複数のモデルバージョンをデプロイ\n- バリアント間のトラフィック分配を制御\n- 本番環境でモデルパフォーマンスを比較\n- より良いパフォーマンスのモデルに徐々にトラフィックをシフト\n\nMulti-Model (A)は効率のために複数のモデルをホストします。Inference Pipelines (B)は処理ステップをチェーンします。Batch Transform (D)はバッチ推論用です。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q23",
+      "domain": 3,
+      "question": "企業が、S3に保存された大量のデータに対してML推論を実行する必要があります。最も適切なSageMaker機能はどれですか？",
+      "options": {
+        "A": "SageMaker Batch Transform",
+        "B": "SageMaker Real-Time Inference",
+        "C": "SageMaker Serverless Inference",
+        "D": "SageMaker Asynchronous Inference"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "SageMaker Batch Transformは、バッチ推論用に設計されています：\n- S3に保存された大規模データセットを処理\n- コンピュートリソースを起動し、推論を実行し、シャットダウン\n- 非リアルタイムシナリオにコスト効率が良い\n- 並列処理をサポート\n\nReal-Time (B)とServerless (C)は同期リクエスト用です。Asynchronous (D)はキューイングを使用した大きなペイロード用です。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q24",
+      "domain": 3,
+      "question": "機械学習エンジニアが、データ準備、トレーニング、デプロイメントを含む自動化されたMLワークフローを作成する必要があります。どのSageMaker機能を使用すべきですか？",
+      "options": {
+        "A": "SageMaker Pipelines",
+        "B": "SageMaker Studio",
+        "C": "SageMaker Experiments",
+        "D": "SageMaker Ground Truth"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "SageMaker Pipelinesは、MLワークフローオーケストレーションを提供します：\n- エンドツーエンドのMLワークフローをコードとして定義\n- データ準備、トレーニング、デプロイメントを自動化\n- リネージとアーティファクトを追跡\n- CI/CDシステムと統合\n\nStudio (B)はIDEです。Experiments (C)はトレーニング実行を追跡します。Ground Truth (D)はラベリング用です。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q25",
+      "domain": 3,
+      "question": "企業が、限られたコンピュートリソースを持つエッジデバイスにコンピュータービジョンモデルをデプロイしたいと考えています。どのAWSサービスを使用すべきですか？",
+      "options": {
+        "A": "SageMaker Neoを使用したAWS IoT Greengrass",
+        "B": "Amazon Rekognition",
+        "C": "Amazon SageMaker Real-Time Inference",
+        "D": "AWS Lambda"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "SageMaker Neoを使用したIoT Greengrassは、エッジMLデプロイメントを可能にします：\n- Neoは特定のハードウェア向けにモデルを最適化\n- Greengrassはエッジデバイスにモデルをデプロイして実行\n- オフライン推論をサポート\n- 限られたコンピュートリソースで動作\n\nRekognition (B)はクラウドベースです。SageMaker Real-Time (C)はクラウド接続が必要です。Lambda (D)はクラウドサーバーレスです。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q26",
+      "domain": 3,
+      "question": "機械学習エンジニアが、モデル推論の前に入力データを前処理する必要があります。前処理とモデル推論をチェーンできるSageMaker機能はどれですか？",
+      "options": {
+        "A": "SageMaker Inference Pipelines",
+        "B": "SageMaker Feature Store",
+        "C": "SageMaker Experiments",
+        "D": "SageMaker Debugger"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "SageMaker Inference Pipelinesは、複数のコンテナをチェーンします：\n- 前処理、推論、後処理ステップを定義\n- 単一のエンドポイントとしてデプロイ\n- 各ステップは独自のコンテナで実行\n- 各ステップで異なるフレームワークをサポート\n\nFeature Store (B)は特徴量を保存します。Experiments (C)はトレーニングを追跡します。Debugger (D)はトレーニングをデバッグします。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q27",
+      "domain": 3,
+      "question": "企業が、数百のMLモデルをコスト効率よくデプロイする必要があります。各モデルは頻繁でないリクエストを受け取ります。最も適切なデプロイメントオプションはどれですか？",
+      "options": {
+        "A": "SageMaker Multi-Model Endpoints",
+        "B": "各モデル用の個別のSageMakerエンドポイント",
+        "C": "S3からモデルをロードするAWS Lambda",
+        "D": "すべてのモデルをロードしたAmazon EC2インスタンス"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Multi-Model Endpointsは、スパースなトラフィックを持つ多くのモデルに適しています：\n- 共有インフラストラクチャで数千のモデルをホスト\n- トラフィックに基づいてモデルが動的にロード/アンロード\n- 個別のエンドポイントと比較してコスト効率が良い\n- 自動スケーリングをサポート\n\n個別のエンドポイント (B)は高コストです。Lambda (C)はサイズ制限があります。EC2 (D)は手動管理が必要です。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q28",
+      "domain": 3,
+      "question": "機械学習エンジニアが、SageMakerデプロイメント用にカスタム推論スクリプトをコンテナ化する必要があります。どのアプローチを使用すべきですか？",
+      "options": {
+        "A": "SageMaker Bring Your Own Container (BYOC)を使用",
+        "B": "AWS Lambdaを使用",
+        "C": "Amazon EKSを使用",
+        "D": "AWS Batchを使用"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "SageMaker BYOCは、推論用のカスタムコンテナを可能にします：\n- カスタム依存関係を持つDockerコンテナを作成\n- 推論スクリプトとモデルアーティファクトを含める\n- SageMakerのマネージドインフラストラクチャを使用してデプロイ\n- 任意のフレームワークまたは言語をサポート\n\nLambda (B)はデプロイメントパッケージサイズ制限があります。EKS (C)はより多くの管理が必要です。Batch (D)はバッチ処理用です。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q29",
+      "domain": 3,
+      "question": "企業が、ダウンタイムを最小限に抑えるためにMLモデルのブルー/グリーンデプロイメントを実装する必要があります。SageMakerでどのアプローチを使用すべきですか？",
+      "options": {
+        "A": "デプロイメント設定を使用して新しいモデルでエンドポイントを更新",
+        "B": "古いエンドポイントを削除して新しいものを作成",
+        "C": "Lambda関数を使用してトラフィックをルーティング",
+        "D": "DNSレコードを手動で切り替え"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "SageMakerは、ブルー/グリーンデプロイメントをネイティブにサポートしています：\n- 新しいモデルでエンドポイント設定を更新\n- SageMakerは切り替え前に新しいインスタンスをプロビジョニング\n- 失敗時の自動ロールバック\n- ゼロダウンタイムデプロイメント\n\nエンドポイントの削除 (B)はダウンタイムを引き起こします。Lambdaルーティング (C)は複雑さを追加します。DNS切り替え (D)は手動で遅いです。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q30",
+      "domain": 3,
+      "question": "機械学習エンジニアが、大きな入力ペイロード（最大1GB）を非同期で処理する必要があります。どのSageMaker推論オプションが適切ですか？",
+      "options": {
+        "A": "SageMaker Asynchronous Inference",
+        "B": "SageMaker Real-Time Inference",
+        "C": "SageMaker Serverless Inference",
+        "D": "SageMaker Batch Transform"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "SageMaker Asynchronous Inferenceは、大きなペイロードを処理します：\n- 最大1GBのペイロードをサポート\n- 入力はS3に保存され、結果はS3に返される\n- 可変レイテンシーのキューベース処理\n- アイドル時はゼロにスケール\n\nReal-Time (B)は6MBの制限があります。Serverless (C)は同様の制限があります。Batch Transform (D)はバッチ処理用です。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q31",
+      "domain": 4,
+      "question": "機械学習エンジニアが、データドリフトによりデプロイされたモデルの予測が劣化し始めた時を検出する必要があります。どのSageMaker機能を使用すべきですか？",
+      "options": {
+        "A": "SageMaker Model Monitor",
+        "B": "SageMaker Debugger",
+        "C": "SageMaker Experiments",
+        "D": "SageMaker Clarify"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "SageMaker Model Monitorは、データとモデル品質の問題を検出します：\n- 入力データ分布のドリフトを監視\n- モデル品質の劣化を検出\n- 異常に対するアラートを生成\n- 可視化ダッシュボードを提供\n\nDebugger (B)はトレーニング用です。Experiments (C)はトレーニング実行を追跡します。Clarify (D)はバイアスを分析します。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q32",
+      "domain": 4,
+      "question": "企業が、トレーニングに使用されたデータセットとコードを含むMLモデルのリネージを追跡する必要があります。どの機能がこれを提供しますか？",
+      "options": {
+        "A": "SageMaker ML Lineage Tracking",
+        "B": "AWS CloudTrail",
+        "C": "Amazon S3バージョニング",
+        "D": "AWS Config"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "SageMaker ML Lineage Trackingは、エンドツーエンドのML追跡可能性を提供します：\n- アーティファクト、実験、モデルを自動的に追跡\n- データセット、トレーニングジョブ、モデル間の関係を表示\n- 再現性を可能に\n- ガバナンス要件をサポート\n\nCloudTrail (B)はAPI呼び出しをログします。S3バージョニング (C)はオブジェクトをバージョン管理します。Config (D)はAWSリソースを追跡します。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q33",
+      "domain": 4,
+      "question": "機械学習エンジニアが、モデルのレイテンシーが大幅に増加したことに気づきました。ボトルネックを特定するためにどのツールを使用すべきですか？",
+      "options": {
+        "A": "Amazon CloudWatchメトリクスとSageMakerエンドポイントログ",
+        "B": "AWS X-Ray",
+        "C": "AWS Config",
+        "D": "Amazon Inspector"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "CloudWatchとSageMakerログは、推論のボトルネックの特定に役立ちます：\n- ModelLatencyとOverheadLatencyメトリクスを監視\n- エラーのエンドポイントログを分析\n- CPU/GPU使用率を確認\n- リソース制約を特定\n\nX-Ray (B)は分散トレーシング用です。Config (C)は構成を追跡します。Inspector (D)はセキュリティ評価用です。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q34",
+      "domain": 4,
+      "question": "企業のMLモデルが、特徴量とターゲット間の関係が変化したコンセプトドリフトを経験しています。どのアクションを取るべきですか？",
+      "options": {
+        "A": "最新のデータでモデルを再トレーニング",
+        "B": "推論インスタンスの数を増やす",
+        "C": "モデルにより多くの特徴量を追加",
+        "D": "モデルの複雑さを減らす"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "コンセプトドリフトには、最新のデータでのモデル再トレーニングが必要です：\n- コンセプトドリフトは基礎となるパターンが変化したことを意味します\n- 過去のトレーニングデータは現在のパターンを反映していない\n- 新しい関係を捉えるために最新のデータで再トレーニング\n- 継続的なドリフトに対応するための継続的トレーニングパイプラインを設定\n\nスケーリング (B)はドリフトを修正しません。特徴量の追加 (C)や複雑さの軽減 (D)はコンセプトの変化に対処しません。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q35",
+      "domain": 4,
+      "question": "機械学習エンジニアが、データドリフトが検出されたときに自動的にモデルを再トレーニングする必要があります。どのアーキテクチャを実装すべきですか？",
+      "options": {
+        "A": "EventBridgeでSageMaker PipelinesをトリガーするSageMaker Model Monitor",
+        "B": "月次再トレーニングを伴う手動監視",
+        "C": "メール通知を伴うCloudWatchアラーム",
+        "D": "毎日モデル精度をチェックするLambda関数"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Model MonitorとPipelinesによる自動再トレーニング：\n- Model Monitorがドリフトを検出し、EventBridgeにイベントを送信\n- EventBridgeが再トレーニング用のSageMaker Pipelineをトリガー\n- Pipelineがデータ準備、トレーニング、デプロイメントを処理\n- 最小限の人間の介入で完全に自動化\n\n手動監視 (B)は遅いです。メールアラート (C)は手動アクションが必要です。Lambdaチェック (D)は手動パイプライントリガーが必要です。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q36",
+      "domain": 4,
+      "question": "企業が、モデルの説明可能性に関する規制要件にMLモデルが準拠していることを確認する必要があります。これに役立つAWSサービスはどれですか？",
+      "options": {
+        "A": "Amazon SageMaker Clarify",
+        "B": "AWS Audit Manager",
+        "C": "Amazon Detective",
+        "D": "AWS Security Hub"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "SageMaker Clarifyは、コンプライアンスのためのモデル説明可能性を提供します：\n- 特徴量重要度レポートを生成\n- 個々の予測の説明を提供\n- 解釈可能性のためにSHAP値を使用\n- 規制文書要件をサポート\n\nAudit Manager (B)は一般的なコンプライアンス用です。Detective (C)とSecurity Hub (D)はセキュリティ用です。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q37",
+      "domain": 4,
+      "question": "機械学習チームが、モデル推論レイテンシーが許容しきい値を超えた場合のアラートを設定する必要があります。何を設定すべきですか？",
+      "options": {
+        "A": "SageMakerエンドポイントのModelLatencyメトリクスに対するCloudWatchアラーム",
+        "B": "SageMaker Debuggerアラート",
+        "C": "AWS Configルール",
+        "D": "S3イベント通知"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "CloudWatchアラームは、SageMakerエンドポイントメトリクスを監視します：\n- ModelLatencyメトリクスは推論時間を表示\n- 許容レイテンシーのアラームしきい値を設定\n- アラート用のSNS通知を設定\n- インシデント管理システムと統合\n\nDebugger (B)はトレーニング用です。Config (C)はリソースを追跡します。S3イベント (D)はオブジェクト変更用です。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q38",
+      "domain": 4,
+      "question": "企業が、異なるプロジェクトとチーム間でMLワークロードのコストを追跡したいと考えています。どのアプローチを使用すべきですか？",
+      "options": {
+        "A": "リソースタグを使用したAWS Cost Explorer",
+        "B": "各チーム用に個別のAWSアカウントを作成",
+        "C": "CloudWatchメトリクスのみを監視",
+        "D": "SageMaker Experimentsを使用"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "タグを使用したCost Explorerは、コスト配分を可能にします：\n- プロジェクト/チームごとにSageMakerリソースにタグ付け\n- Cost Explorerを使用してタグ別にコストを分析\n- コスト配分レポートを作成\n- 予算とアラートを設定\n\n個別のアカウント (B)は複雑です。CloudWatch (C)はコストを表示しません。Experiments (D)はMLメトリクスを追跡し、コストではありません。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q39",
+      "domain": 4,
+      "question": "機械学習エンジニアが、週次でモデル再トレーニングジョブをスケジュールする必要があります。どのAWSサービスを使用すべきですか？",
+      "options": {
+        "A": "SageMaker Pipelinesを使用したAmazon EventBridge Scheduler",
+        "B": "AWS Step Functionsのみ",
+        "C": "手動ジョブ送信",
+        "D": "EC2 cronジョブ"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "EventBridge Schedulerは、マネージドスケジューリングを提供します：\n- cron式で定期的なイベントをスケジュール\n- SageMaker Pipelineの実行をトリガー\n- フルマネージド、メンテナンスするインフラなし\n- 複雑なスケジューリングパターンをサポート\n\nStep Functions単独 (B)はトリガーが必要です。手動 (C)はスケールしません。EC2 cron (D)はメンテナンスが必要です。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q40",
+      "domain": 4,
+      "question": "企業が、ML推論エンドポイントが突然のトラフィックスパイクを処理できることを確認する必要があります。どの設定を実装すべきですか？",
+      "options": {
+        "A": "InvocationsPerInstanceに基づくSageMakerエンドポイント自動スケーリング",
+        "B": "ピークトラフィックに基づく固定数のインスタンス",
+        "C": "営業時間中の手動スケーリング",
+        "D": "サーバーレス推論のみ"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "自動スケーリングは、トラフィックスパイクを効率的に処理します：\n- メトリクスに基づいてスケーリングポリシーを設定\n- InvocationsPerInstanceはMLエンドポイントの重要なメトリクス\n- スパイク時に自動的にインスタンスを追加\n- トラフィックが少ないときはスケールダウンしてコストを節約\n\n固定容量 (B)は高コストです。手動スケーリング (C)は遅すぎます。サーバーレス (D)はコールドスタートにレイテンシーがあります。",
+      "difficulty": "medium"
+    }
+  ]
+}

@@ -1,0 +1,654 @@
+{
+  "exam": {
+    "id": "aws-scs-c02-set1",
+    "name": "AWS SCS-C02 Security Specialty Practice Exam #1",
+    "code": "SCS-C02",
+    "provider": "AWS",
+    "language": "en",
+    "description": "AWS Certified Security Specialty Practice Exam - Set 1",
+    "totalQuestions": 40,
+    "passingScore": 75,
+    "examTime": 170,
+    "domains": [
+      {
+        "id": 1,
+        "name": "Threat Detection and Incident Response",
+        "weight": 14
+      },
+      {
+        "id": 2,
+        "name": "Security Logging and Monitoring",
+        "weight": 18
+      },
+      {
+        "id": 3,
+        "name": "Infrastructure Security",
+        "weight": 20
+      },
+      {
+        "id": 4,
+        "name": "Identity and Access Management",
+        "weight": 16
+      },
+      {
+        "id": 5,
+        "name": "Data Protection",
+        "weight": 18
+      },
+      {
+        "id": 6,
+        "name": "Management and Security Governance",
+        "weight": 14
+      }
+    ],
+    "tags": [
+      "AWS",
+      "Security",
+      "Specialty",
+      "SCS-C02",
+      "Certification"
+    ]
+  },
+  "questions": [
+    {
+      "id": "q1",
+      "domain": 1,
+      "question": "A security team discovers that an EC2 instance has been compromised. The instance is part of an Auto Scaling group behind an Application Load Balancer. What should be the FIRST step in the incident response?",
+      "options": {
+        "A": "Terminate the instance immediately",
+        "B": "Isolate the instance by changing its security group to deny all traffic",
+        "C": "Take a snapshot of the EBS volumes for forensic analysis",
+        "D": "Detach the instance from the Auto Scaling group and load balancer, then isolate it"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "The correct first step is to detach the instance from the Auto Scaling group and load balancer to prevent further damage while preserving evidence. Then isolate it by modifying security groups. Terminating immediately would destroy evidence. Taking a snapshot is important but should come after isolation.",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q2",
+      "domain": 1,
+      "question": "Amazon GuardDuty has detected a high-severity finding indicating that an EC2 instance is communicating with a known command and control server. What automated remediation can be implemented?",
+      "options": {
+        "A": "Configure GuardDuty to automatically terminate the instance",
+        "B": "Use EventBridge to trigger a Lambda function that isolates the instance",
+        "C": "Configure AWS Config to automatically remediate the finding",
+        "D": "Use CloudWatch Alarms to stop the instance"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "GuardDuty findings can be sent to EventBridge, which can trigger a Lambda function to perform automated remediation such as isolating the instance by modifying security groups. GuardDuty itself does not have built-in remediation capabilities. AWS Config is for compliance, not real-time threat response.",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q3",
+      "domain": 1,
+      "question": "A company wants to detect when IAM credentials are being used from an unusual geographic location. Which AWS service should be used?",
+      "options": {
+        "A": "AWS CloudTrail",
+        "B": "Amazon GuardDuty",
+        "C": "AWS Config",
+        "D": "Amazon Inspector"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Amazon GuardDuty uses machine learning to analyze CloudTrail, VPC Flow Logs, and DNS logs to detect anomalous behavior, including credentials being used from unusual locations. It has built-in threat intelligence and can identify geographic anomalies. CloudTrail only logs events but doesn't analyze them.",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q4",
+      "domain": 2,
+      "question": "A company needs to aggregate security logs from multiple AWS accounts and regions into a central location for analysis. What is the MOST efficient approach?",
+      "options": {
+        "A": "Configure CloudTrail in each account to send logs to a central S3 bucket",
+        "B": "Use AWS Organizations with a delegated administrator for CloudTrail organization trail",
+        "C": "Create Lambda functions to copy logs between accounts",
+        "D": "Use Amazon Kinesis to stream logs from each account"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "An organization trail in AWS CloudTrail automatically logs events for all accounts in the organization to a central S3 bucket. Using a delegated administrator allows security teams to manage trails without accessing the management account. This is more efficient than configuring individual trails.",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q5",
+      "domain": 2,
+      "question": "A security engineer needs to ensure that all API calls across the organization are logged and the logs are tamper-proof. What combination of services should be used?",
+      "options": {
+        "A": "CloudTrail with S3 Object Lock and CloudTrail log file integrity validation",
+        "B": "CloudWatch Logs with encryption enabled",
+        "C": "VPC Flow Logs with S3 versioning",
+        "D": "AWS Config with S3 encryption"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "CloudTrail logs API calls. Log file integrity validation creates a hash for each log file. S3 Object Lock (in compliance mode) prevents logs from being deleted or modified. This combination ensures comprehensive logging and tamper-proof storage. CloudWatch Logs doesn't provide integrity validation.",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q6",
+      "domain": 2,
+      "question": "What is the purpose of VPC Flow Logs and where can they be published?",
+      "options": {
+        "A": "Log DNS queries; can be published to Route 53",
+        "B": "Log IP traffic metadata; can be published to CloudWatch Logs, S3, or Kinesis Data Firehose",
+        "C": "Log application errors; can be published to CloudWatch Logs only",
+        "D": "Log security group changes; can be published to AWS Config"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "VPC Flow Logs capture information about IP traffic going to and from network interfaces in a VPC. They log metadata (source/destination IPs, ports, protocols, bytes, packets) but not packet contents. They can be published to CloudWatch Logs, S3, or Kinesis Data Firehose.",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q7",
+      "domain": 2,
+      "question": "A company wants to receive real-time alerts when specific CloudTrail events occur, such as root account usage. What is the BEST approach?",
+      "options": {
+        "A": "Configure CloudTrail to send logs to CloudWatch Logs and create metric filters and alarms",
+        "B": "Query CloudTrail logs in S3 using Athena on a schedule",
+        "C": "Use AWS Config rules to detect root account usage",
+        "D": "Enable CloudTrail Insights to detect anomalies"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Sending CloudTrail logs to CloudWatch Logs allows you to create metric filters that match specific events (like root account sign-in) and trigger CloudWatch Alarms for real-time notifications. Athena queries are not real-time. Config rules are for compliance. Insights detects anomalies but is not for specific event alerting.",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q8",
+      "domain": 3,
+      "question": "A web application running on EC2 needs to be protected from SQL injection and cross-site scripting attacks. Which AWS service provides this protection?",
+      "options": {
+        "A": "AWS Shield",
+        "B": "AWS WAF",
+        "C": "Amazon GuardDuty",
+        "D": "Security Groups"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "AWS WAF (Web Application Firewall) provides protection against common web exploits like SQL injection and XSS. It can be attached to CloudFront, ALB, API Gateway, and AppSync. AWS Shield protects against DDoS. GuardDuty detects threats but doesn't block traffic. Security groups only filter by IP/port.",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q9",
+      "domain": 3,
+      "question": "A company wants to enforce that all EC2 instances are launched only from approved AMIs. What is the MOST effective approach?",
+      "options": {
+        "A": "Use IAM policies to restrict ec2:RunInstances to specific AMI IDs",
+        "B": "Create a Service Control Policy (SCP) to restrict AMI usage",
+        "C": "Use AWS Config rules to detect non-compliant instances after launch",
+        "D": "Both A and B can be used, with SCP for organization-wide enforcement"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "IAM policies can restrict ec2:RunInstances with conditions on specific AMI IDs. SCPs can enforce this across all accounts in an organization. Using both provides defense in depth - IAM for account-level control and SCP for organization-wide enforcement. Config rules are detective, not preventive.",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q10",
+      "domain": 3,
+      "question": "What is the purpose of AWS PrivateLink and when should it be used?",
+      "options": {
+        "A": "To create VPN connections between VPCs",
+        "B": "To access AWS services or third-party services privately without traversing the internet",
+        "C": "To encrypt data in transit between EC2 instances",
+        "D": "To create private DNS zones"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "AWS PrivateLink provides private connectivity between VPCs, AWS services, and on-premises applications without exposing traffic to the public internet. It uses interface VPC endpoints. This is useful for accessing services like S3, DynamoDB, or third-party SaaS applications privately.",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q11",
+      "domain": 3,
+      "question": "A company needs to ensure that data transferred between their on-premises data center and AWS is encrypted. They are using AWS Direct Connect. What should they implement?",
+      "options": {
+        "A": "Direct Connect encryption is automatic, no action needed",
+        "B": "Use a VPN connection over the Direct Connect connection",
+        "C": "Enable TLS on the Direct Connect link",
+        "D": "Use AWS PrivateLink over Direct Connect"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Direct Connect provides a dedicated network connection but does not encrypt traffic by default. To encrypt data in transit, you should create a VPN connection that runs over the Direct Connect connection (using a public virtual interface). This provides the low latency of Direct Connect with encryption.",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q12",
+      "domain": 3,
+      "question": "Which AWS service should be used to protect against DDoS attacks at the network and transport layers (Layer 3 and 4)?",
+      "options": {
+        "A": "AWS WAF",
+        "B": "AWS Shield Standard",
+        "C": "Amazon GuardDuty",
+        "D": "Network ACLs"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "AWS Shield Standard provides automatic protection against DDoS attacks at layers 3 and 4 for all AWS customers at no additional cost. It protects against SYN/UDP floods and reflection attacks. WAF operates at layer 7. Shield Advanced provides additional protections and DDoS response team access.",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q13",
+      "domain": 4,
+      "question": "A company wants to grant temporary access to a third-party auditor to review specific S3 buckets. What is the MOST secure approach?",
+      "options": {
+        "A": "Create an IAM user with long-term credentials for the auditor",
+        "B": "Create an IAM role with the required permissions and establish cross-account trust",
+        "C": "Share the root account credentials with the auditor",
+        "D": "Make the S3 buckets public during the audit period"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Creating an IAM role with cross-account trust allows the auditor to assume the role from their AWS account and receive temporary credentials. This follows the principle of least privilege and eliminates the need to manage long-term credentials. The role can be scoped to specific S3 buckets and have a maximum session duration.",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q14",
+      "domain": 4,
+      "question": "What is the purpose of IAM permission boundaries?",
+      "options": {
+        "A": "To define the maximum permissions that identity-based policies can grant to an IAM entity",
+        "B": "To define network boundaries for IAM users",
+        "C": "To limit the regions where IAM users can operate",
+        "D": "To set password policies for IAM users"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Permission boundaries set the maximum permissions that an identity-based policy can grant to an IAM entity (user or role). The effective permissions are the intersection of identity-based policies and the permission boundary. This is useful for delegating user creation while limiting what permissions can be granted.",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q15",
+      "domain": 4,
+      "question": "A company uses federated access with an external identity provider (IdP). They want to ensure users can only access resources during business hours. How can this be implemented?",
+      "options": {
+        "A": "Configure the IdP to only authenticate during business hours",
+        "B": "Use IAM policy conditions with aws:CurrentTime to restrict access",
+        "C": "Create separate IAM roles for different times of day",
+        "D": "Use AWS Organizations SCPs to restrict access times"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "IAM policies support condition keys like aws:CurrentTime that can be used to restrict access based on time. This can be applied to the role's trust policy or permission policy. For example: 'Condition': {'DateGreaterThan': {'aws:CurrentTime': '2023-01-01T08:00:00Z'}}",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q16",
+      "domain": 4,
+      "question": "An application running on EC2 needs to access an S3 bucket. What is the MOST secure way to provide access?",
+      "options": {
+        "A": "Store AWS access keys in the application configuration file",
+        "B": "Store AWS access keys in AWS Secrets Manager and retrieve them at runtime",
+        "C": "Attach an IAM role to the EC2 instance with the required S3 permissions",
+        "D": "Use the root account credentials"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "Using an IAM role attached to the EC2 instance is the most secure approach. The EC2 instance receives temporary credentials automatically through the instance metadata service. No long-term credentials need to be stored or managed. The credentials are automatically rotated.",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q17",
+      "domain": 4,
+      "question": "What is the difference between an SCP (Service Control Policy) and an IAM policy?",
+      "options": {
+        "A": "SCPs grant permissions; IAM policies only deny permissions",
+        "B": "SCPs set maximum permissions for accounts in an organization; IAM policies grant actual permissions to identities",
+        "C": "SCPs apply only to the root user; IAM policies apply to all users",
+        "D": "SCPs and IAM policies are identical in function"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "SCPs define the maximum available permissions for accounts in an AWS Organization. They don't grant permissions; they only restrict what permissions can be granted by IAM policies. IAM policies grant actual permissions to users, groups, and roles. Effective permissions are the intersection of SCPs and IAM policies.",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q18",
+      "domain": 5,
+      "question": "A company needs to encrypt data at rest in S3 and maintain full control over the encryption keys. Which encryption option should they use?",
+      "options": {
+        "A": "SSE-S3 (Server-Side Encryption with S3 Managed Keys)",
+        "B": "SSE-KMS (Server-Side Encryption with AWS KMS)",
+        "C": "SSE-C (Server-Side Encryption with Customer-Provided Keys)",
+        "D": "Client-side encryption with customer-managed keys"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "For full control over encryption keys, client-side encryption with customer-managed keys provides the most control. The keys never leave the customer's environment. SSE-C requires sending keys with each request. SSE-KMS stores keys in AWS KMS. SSE-S3 uses AWS-managed keys with no customer control.",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q19",
+      "domain": 5,
+      "question": "How can a company ensure that data in an S3 bucket can only be accessed over HTTPS?",
+      "options": {
+        "A": "Enable S3 Transfer Acceleration",
+        "B": "Use a bucket policy with the condition aws:SecureTransport set to false to deny requests",
+        "C": "Enable versioning on the bucket",
+        "D": "Use S3 Object Lock"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "A bucket policy with the condition 'aws:SecureTransport': 'false' and effect 'Deny' will deny any requests not made over HTTPS. This ensures all data in transit is encrypted using TLS. Example: Deny all actions when SecureTransport is false.",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q20",
+      "domain": 5,
+      "question": "What is the purpose of AWS KMS key rotation, and how does it work for customer managed keys?",
+      "options": {
+        "A": "It generates a new key and re-encrypts all data automatically",
+        "B": "It generates new key material annually while keeping the same key ID; old data remains encrypted with old material",
+        "C": "It deletes old keys and requires manual re-encryption",
+        "D": "It only rotates AWS managed keys, not customer managed keys"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "When automatic key rotation is enabled for a customer managed KMS key, AWS generates new cryptographic material annually. The key ID remains the same. KMS keeps all previous key material so it can decrypt data encrypted with older versions. New encryption uses the latest material. No re-encryption is needed.",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q21",
+      "domain": 5,
+      "question": "A company stores sensitive data in RDS. They need to encrypt an existing unencrypted database. What is the process?",
+      "options": {
+        "A": "Enable encryption on the existing database directly",
+        "B": "Create an encrypted snapshot of the database and restore from it",
+        "C": "Use AWS DMS to migrate to an encrypted database",
+        "D": "B or C, as you cannot enable encryption on an existing unencrypted RDS instance"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "You cannot enable encryption on an existing unencrypted RDS instance. You must create a snapshot, copy the snapshot with encryption enabled, and restore from the encrypted snapshot. Alternatively, use AWS DMS to migrate data to a new encrypted instance. Both approaches work.",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q22",
+      "domain": 5,
+      "question": "What is AWS Secrets Manager and how does it differ from AWS Systems Manager Parameter Store?",
+      "options": {
+        "A": "They are identical services with different names",
+        "B": "Secrets Manager provides automatic rotation and is designed for credentials; Parameter Store is for general configuration",
+        "C": "Parameter Store provides automatic rotation; Secrets Manager does not",
+        "D": "Secrets Manager is free; Parameter Store has costs"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Secrets Manager is specifically designed for managing secrets like database credentials and API keys, with built-in automatic rotation. Parameter Store is for general configuration data and supports both plain text and encrypted parameters (SecureString). Secrets Manager has a cost per secret; Parameter Store standard tier is free.",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q23",
+      "domain": 5,
+      "question": "A company needs to classify sensitive data stored in S3 buckets across multiple accounts. Which AWS service should they use?",
+      "options": {
+        "A": "Amazon Inspector",
+        "B": "Amazon Macie",
+        "C": "AWS Config",
+        "D": "Amazon GuardDuty"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Amazon Macie uses machine learning to automatically discover, classify, and protect sensitive data stored in S3. It can identify PII, financial data, and other sensitive information. It can be deployed across multiple accounts using AWS Organizations. Inspector is for EC2 vulnerabilities. GuardDuty is for threat detection.",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q24",
+      "domain": 6,
+      "question": "A company wants to enforce security standards across all AWS accounts in their organization. Which combination provides the MOST comprehensive approach?",
+      "options": {
+        "A": "AWS Config rules only",
+        "B": "Service Control Policies (SCPs) only",
+        "C": "SCPs for preventive controls, AWS Config for detective controls, and Security Hub for centralized visibility",
+        "D": "IAM policies in each account"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "A comprehensive security governance approach uses SCPs for preventive controls (blocking non-compliant actions), AWS Config rules for detective controls (identifying non-compliant resources), and Security Hub for centralized visibility and aggregation of security findings across accounts.",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q25",
+      "domain": 6,
+      "question": "What is AWS Security Hub and what does it provide?",
+      "options": {
+        "A": "A firewall service for protecting AWS resources",
+        "B": "A central place to aggregate, organize, and prioritize security findings from multiple AWS services and third-party tools",
+        "C": "A service for managing IAM users and roles",
+        "D": "A logging service for security events"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "AWS Security Hub provides a comprehensive view of security alerts and compliance status across AWS accounts. It aggregates findings from GuardDuty, Inspector, Macie, IAM Access Analyzer, Firewall Manager, and third-party tools. It also runs automated compliance checks against security standards like CIS and PCI DSS.",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q26",
+      "domain": 6,
+      "question": "A company needs to ensure all new resources across all accounts comply with their security baseline before creation. Which approach should they use?",
+      "options": {
+        "A": "AWS Config rules with auto-remediation",
+        "B": "Service Control Policies (SCPs) with deny statements for non-compliant configurations",
+        "C": "Amazon Inspector scheduled scans",
+        "D": "AWS Trusted Advisor recommendations"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "SCPs can prevent non-compliant resources from being created by denying specific API actions or requiring specific conditions. This is a preventive control that stops non-compliance before it occurs. AWS Config is detective (finds non-compliance after creation). Inspector scans existing resources.",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q27",
+      "domain": 1,
+      "question": "During an incident investigation, a security analyst needs to determine what actions were taken by a compromised IAM user over the past 90 days. What is the MOST efficient way to obtain this information?",
+      "options": {
+        "A": "Review CloudWatch Logs",
+        "B": "Use CloudTrail Lake to query historical events",
+        "C": "Check VPC Flow Logs",
+        "D": "Review AWS Config resource timeline"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "CloudTrail Lake allows you to run SQL-based queries on CloudTrail events for up to 7 years. You can query by user identity to find all actions taken by the compromised user. This is more efficient than manually searching through log files. CloudTrail event history in the console only shows 90 days.",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q28",
+      "domain": 2,
+      "question": "A company needs to ensure all changes to security groups are logged and can trigger alerts. What should they implement?",
+      "options": {
+        "A": "VPC Flow Logs",
+        "B": "CloudTrail with CloudWatch Logs integration and metric filters",
+        "C": "Amazon Inspector",
+        "D": "AWS Trusted Advisor"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "CloudTrail logs all API calls including security group changes (AuthorizeSecurityGroupIngress, RevokeSecurityGroupIngress, etc.). By sending CloudTrail logs to CloudWatch Logs, you can create metric filters to match these events and trigger CloudWatch Alarms for immediate notification.",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q29",
+      "domain": 3,
+      "question": "A company wants to restrict internet access for EC2 instances while still allowing them to access AWS services. What should they implement?",
+      "options": {
+        "A": "Internet Gateway with restrictive security groups",
+        "B": "NAT Gateway for outbound internet access",
+        "C": "VPC endpoints (Gateway and Interface) for required AWS services",
+        "D": "AWS Direct Connect"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "VPC endpoints allow EC2 instances in private subnets to access AWS services without requiring internet access. Gateway endpoints are available for S3 and DynamoDB. Interface endpoints (powered by PrivateLink) are available for most other AWS services. This keeps traffic within the AWS network.",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q30",
+      "domain": 3,
+      "question": "What is the difference between a security group and a network ACL?",
+      "options": {
+        "A": "Security groups are stateful and operate at instance level; Network ACLs are stateless and operate at subnet level",
+        "B": "Security groups are stateless; Network ACLs are stateful",
+        "C": "Both operate at the instance level",
+        "D": "Network ACLs can only deny traffic; security groups can only allow traffic"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Security groups are stateful (return traffic is automatically allowed), operate at the instance/ENI level, and only support allow rules. Network ACLs are stateless (return traffic must be explicitly allowed), operate at the subnet level, and support both allow and deny rules.",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q31",
+      "domain": 4,
+      "question": "A company is implementing a least privilege access model. They want to analyze IAM policies to identify overly permissive policies. Which AWS service should they use?",
+      "options": {
+        "A": "AWS Config",
+        "B": "IAM Access Analyzer",
+        "C": "Amazon GuardDuty",
+        "D": "AWS Trusted Advisor"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "IAM Access Analyzer helps identify resources that are shared with external entities and validates IAM policies against best practices. It can analyze policies for unused access and excessive permissions. It also validates policies during creation to prevent overly permissive policies.",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q32",
+      "domain": 4,
+      "question": "How can a company enforce MFA for all IAM users when accessing the AWS Management Console?",
+      "options": {
+        "A": "It is automatically enforced for all users",
+        "B": "Use an IAM policy that denies all actions except IAM self-service unless MFA is present",
+        "C": "Configure the root account to require MFA for all users",
+        "D": "Use AWS Config to detect users without MFA"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Create an IAM policy that denies all actions unless the aws:MultiFactorAuthPresent condition key is true, except for actions needed to set up MFA (IAM self-service). Attach this policy to all users or via a group. AWS Config can detect users without MFA but cannot enforce it.",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q33",
+      "domain": 5,
+      "question": "A company needs to implement a solution where encryption keys are stored and managed entirely outside of AWS. Which approach should they use?",
+      "options": {
+        "A": "AWS KMS with customer managed keys",
+        "B": "AWS KMS with imported key material",
+        "C": "AWS CloudHSM",
+        "D": "External Key Store (XKS) with AWS KMS"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "AWS KMS External Key Store (XKS) allows you to use KMS keys backed by cryptographic keys stored and managed outside of AWS, in an external key manager you control. This provides full control over keys while still using KMS APIs. CloudHSM keys are in AWS-managed hardware but customer-controlled.",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q34",
+      "domain": 5,
+      "question": "How can a company prevent accidental deletion of critical S3 objects?",
+      "options": {
+        "A": "Enable S3 versioning only",
+        "B": "Enable S3 versioning with MFA Delete",
+        "C": "Use S3 Object Lock in compliance mode",
+        "D": "All of the above provide different levels of protection"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "Versioning preserves deleted objects as delete markers. MFA Delete requires MFA to permanently delete versions. Object Lock in compliance mode prevents anyone (including root) from deleting objects until the retention period expires. Each provides different protection levels for different requirements.",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q35",
+      "domain": 6,
+      "question": "A company needs to automatically remediate non-compliant resources detected by AWS Config. What should they implement?",
+      "options": {
+        "A": "Manual remediation based on Config notifications",
+        "B": "AWS Config rules with automatic remediation using SSM Automation documents",
+        "C": "Lambda functions triggered by CloudWatch Events",
+        "D": "Both B and C are valid approaches"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "AWS Config supports automatic remediation using SSM Automation documents when rules detect non-compliance. Alternatively, Config can send events to EventBridge to trigger Lambda functions for custom remediation logic. Both approaches enable automated compliance enforcement.",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q36",
+      "domain": 1,
+      "question": "Amazon GuardDuty has identified cryptocurrency mining activity on an EC2 instance. What type of finding is this?",
+      "options": {
+        "A": "Recon finding",
+        "B": "Unauthorized access finding",
+        "C": "Crypto finding",
+        "D": "Trojan finding"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "GuardDuty categorizes findings by threat purpose. CryptoCurrency findings indicate that EC2 instances are being used for cryptocurrency mining. Other categories include Backdoor, Behavior, CredentialAccess, DefenseEvasion, Discovery, Exfiltration, Impact, InitialAccess, Persistence, Policy, PrivilegeEscalation, Recon, Stealth, Trojan, and UnauthorizedAccess.",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q37",
+      "domain": 2,
+      "question": "A company wants to detect when S3 bucket policies are changed to allow public access. What combination of services should they use?",
+      "options": {
+        "A": "Amazon Macie",
+        "B": "AWS Config with the s3-bucket-public-read-prohibited rule",
+        "C": "Amazon S3 Block Public Access",
+        "D": "Both B and C, with Config for detection and Block Public Access for prevention"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "S3 Block Public Access provides preventive control by blocking public access configurations at the account or bucket level. AWS Config rule s3-bucket-public-read-prohibited provides detective control by identifying buckets that allow public access. Using both provides defense in depth.",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q38",
+      "domain": 3,
+      "question": "A company needs to implement a bastion host solution for SSH access to EC2 instances in private subnets. What is the MOST secure approach?",
+      "options": {
+        "A": "Deploy a bastion host in a public subnet with SSH open to 0.0.0.0/0",
+        "B": "Use AWS Systems Manager Session Manager instead of bastion hosts",
+        "C": "Deploy bastion hosts in each private subnet",
+        "D": "Use a NAT Gateway for SSH access"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "AWS Systems Manager Session Manager provides secure shell access without opening inbound ports or managing bastion hosts. It uses IAM for access control, logs all commands to CloudTrail and S3, and works through the SSM agent. This eliminates the attack surface of bastion hosts.",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q39",
+      "domain": 4,
+      "question": "A company wants to implement single sign-on (SSO) for their AWS accounts using their existing corporate identity provider. Which AWS service should they use?",
+      "options": {
+        "A": "AWS IAM",
+        "B": "AWS IAM Identity Center (formerly AWS SSO)",
+        "C": "Amazon Cognito",
+        "D": "AWS Directory Service"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "AWS IAM Identity Center provides SSO access to multiple AWS accounts and business applications. It integrates with SAML 2.0 identity providers like Active Directory, Okta, and Azure AD. It allows centralized management of user access to all AWS accounts in an organization.",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q40",
+      "domain": 5,
+      "question": "A company needs to generate and store RSA keys for signing documents, with the requirement that keys must be stored in FIPS 140-2 Level 3 validated hardware. Which AWS service should they use?",
+      "options": {
+        "A": "AWS KMS",
+        "B": "AWS Secrets Manager",
+        "C": "AWS CloudHSM",
+        "D": "AWS Certificate Manager"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "AWS CloudHSM provides FIPS 140-2 Level 3 validated hardware security modules. KMS HSMs are FIPS 140-2 Level 2 validated (with Level 3 for some aspects). For strict Level 3 requirements, CloudHSM is required. CloudHSM gives you full control over the HSMs and supports custom cryptographic operations.",
+      "difficulty": "medium"
+    }
+  ]
+}

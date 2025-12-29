@@ -1,0 +1,645 @@
+{
+  "exam": {
+    "id": "azure-sc-900-set2-ja",
+    "name": "Azure SC-900 模擬試験 #2",
+    "code": "SC-900",
+    "provider": "Azure",
+    "language": "ja",
+    "description": "Microsoft Security, Compliance, and Identity Fundamentals 認定試験模擬問題 - 第2セット",
+    "totalQuestions": 40,
+    "passingScore": 70,
+    "examTime": 60,
+    "domains": [
+      {
+        "id": 1,
+        "name": "セキュリティ、コンプライアンス、アイデンティティの概念",
+        "weight": 25
+      },
+      {
+        "id": 2,
+        "name": "Microsoft Entraの機能",
+        "weight": 25
+      },
+      {
+        "id": 3,
+        "name": "Microsoftセキュリティソリューション",
+        "weight": 25
+      },
+      {
+        "id": 4,
+        "name": "Microsoftコンプライアンスソリューション",
+        "weight": 25
+      }
+    ],
+    "tags": [
+      "Azure",
+      "Security",
+      "Compliance",
+      "Identity",
+      "Microsoft",
+      "認定試験"
+    ]
+  },
+  "questions": [
+    {
+      "id": "q1",
+      "domain": 1,
+      "question": "ゼロトラストモデルにおいて、「侵害を想定する」原則は何を意味しますか？",
+      "options": {
+        "A": "すべてのデータが公開されていると仮定する",
+        "B": "攻撃者がすでにネットワーク内にいると仮定し、影響範囲を最小化する",
+        "C": "すべてのユーザーが悪意を持っていると仮定する",
+        "D": "ファイアウォールが常に有効であると仮定する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "「侵害を想定する」原則：\n- 攻撃者がすでに環境内にいる可能性を想定\n- 影響範囲を制限するためにセグメンテーションを実装\n- エンドツーエンドの暗号化\n- 分析を使用した脅威検出\n- 対応能力の向上",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q2",
+      "domain": 1,
+      "question": "以下のうち、「多層防御」戦略のアプリケーション層セキュリティ対策はどれですか？",
+      "options": {
+        "A": "物理的アクセス制御",
+        "B": "入力検証とSQLインジェクション対策",
+        "C": "ネットワークセグメンテーション",
+        "D": "データセンターの監視"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "アプリケーション層のセキュリティ対策：\n- 入力検証\n- SQLインジェクション対策\n- クロスサイトスクリプティング（XSS）対策\n- セキュアコーディング実践\n- Webアプリケーションファイアウォール（WAF）",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q3",
+      "domain": 1,
+      "question": "「ソーシャルエンジニアリング」攻撃とは何ですか？",
+      "options": {
+        "A": "ソフトウェアの脆弱性を悪用する攻撃",
+        "B": "人を操って情報やアクセス権を取得する攻撃",
+        "C": "ネットワークインフラストラクチャへの攻撃",
+        "D": "自動化されたボット攻撃"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "ソーシャルエンジニアリング攻撃：\n- 人間の心理的弱点を利用\n- フィッシングが最も一般的な形式\n- 信頼できる実体を装う\n- ユーザーを騙して機密情報を漏洩させる\n- ユーザー教育が最善の防御",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q4",
+      "domain": 1,
+      "question": "GDPRとは何ですか？",
+      "options": {
+        "A": "アメリカのプライバシー規制",
+        "B": "EUのデータ保護およびプライバシー規制",
+        "C": "中国のサイバーセキュリティ法",
+        "D": "グローバルデータ転送プロトコル"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "GDPR（一般データ保護規則）：\n- EUのデータ保護規制\n- 個人データのプライバシーを保護\n- EU居住者のデータを処理する組織に適用\n- データ処理の透明性を要求\n- データ主体の権利を規定",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q5",
+      "domain": 1,
+      "question": "対称暗号化と非対称暗号化の主な違いは何ですか？",
+      "options": {
+        "A": "対称暗号化の方が安全",
+        "B": "対称暗号化は同じ鍵で暗号化と復号化を行い、非対称暗号化は公開鍵と秘密鍵のペアを使用",
+        "C": "非対称暗号化の方が高速",
+        "D": "対称暗号化はデータ保存にのみ使用"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "暗号化タイプの比較：\n- 対称暗号化：同じ鍵で暗号化と復号化、高速\n- 非対称暗号化：公開鍵で暗号化、秘密鍵で復号化、より安全だが低速\n- 通常は組み合わせて使用：非対称で対称鍵を交換",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q6",
+      "domain": 1,
+      "question": "「データ主権」とは何ですか？",
+      "options": {
+        "A": "データはどこにでも保存できる",
+        "B": "データは物理的に保存されている国の法律の管轄を受ける",
+        "C": "データ所有者が絶対的な権力を持つ",
+        "D": "データは自由に国境を越えて転送できる"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "データ主権：\n- データは保存場所の法律に従う\n- クラウドサービスのリージョン選択に影響\n- コンプライアンス要件がデータの場所を制限する可能性\n- Azureは複数のリージョンオプションを提供\n- ソブリンクラウドが特別な要件を満たす",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q7",
+      "domain": 1,
+      "question": "「Identity as a Service」（IDaaS）とは何ですか？",
+      "options": {
+        "A": "オンプレミスのID管理",
+        "B": "クラウドでホストされるIDおよびアクセス管理サービス",
+        "C": "ハードウェアセキュリティモジュール",
+        "D": "物理的なIDカードシステム"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "IDaaS（Identity as a Service）：\n- クラウドベースのID管理\n- オンプレミスインフラストラクチャが不要\n- SSO、MFAなどの機能を含む\n- Microsoft Entra IDはIDaaS\n- サブスクリプションベースの料金",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q8",
+      "domain": 1,
+      "question": "「ラテラルムーブメント」攻撃とは何ですか？",
+      "options": {
+        "A": "攻撃者が物理的にデバイスを移動させる",
+        "B": "攻撃者が初期アクセスを取得した後、ネットワーク内を移動してより多くのリソースにアクセスする",
+        "C": "正当なユーザーが異なる部門間を移動する",
+        "D": "データがストレージデバイス間で移動する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "ラテラルムーブメント：\n- 攻撃者が最初の侵入後にネットワークを探索\n- より価値の高いターゲットを探す\n- 盗んだ資格情報を使用して移動\n- ネットワークセグメンテーションでラテラルムーブメントを制限可能\n- ゼロトラストがこの種の行動の検出に役立つ",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q9",
+      "domain": 1,
+      "question": "以下のうち、マルウェアの種類はどれですか？",
+      "options": {
+        "A": "ファイアウォール",
+        "B": "ランサムウェア",
+        "C": "暗号化ソフトウェア",
+        "D": "アンチウイルスソフトウェア"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "マルウェアの種類：\n- ランサムウェア：データを暗号化して身代金を要求\n- ウイルス：自己複製する悪意のあるコード\n- トロイの木馬：正規のソフトウェアを装う\n- ワーム：自動的に拡散する悪意のあるプログラム\n- スパイウェア：情報を盗む",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q10",
+      "domain": 1,
+      "question": "SOC（セキュリティオペレーションセンター）とは何ですか？",
+      "options": {
+        "A": "ソフトウェア開発センター",
+        "B": "セキュリティ脅威を監視し対応する専門チームと施設",
+        "C": "データストレージセンター",
+        "D": "カスタマーサービスセンター"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "セキュリティオペレーションセンター（SOC）：\n- 24時間365日セキュリティイベントを監視\n- 脅威を分析し対応\n- SIEMなどのツールを使用\n- インシデント対応を調整\n- Microsoft SentinelがSOC運用をサポート",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q11",
+      "domain": 2,
+      "question": "Microsoft Entra IDの「テナント」とは何ですか？",
+      "options": {
+        "A": "物理サーバー",
+        "B": "組織専用のMicrosoft Entra IDインスタンス",
+        "C": "ストレージアカウント",
+        "D": "ネットワークサブネット"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Microsoft Entra IDテナント：\n- 組織専用のディレクトリインスタンス\n- ユーザー、グループ、アプリケーションを含む\n- Azureサブスクリプションに関連付け\n- セキュリティ境界\n- 複数のドメイン名を持つことが可能",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q12",
+      "domain": 2,
+      "question": "Microsoft Entra IDの動的グループとは何ですか？",
+      "options": {
+        "A": "手動でメンバーを追加する必要があるグループ",
+        "B": "ユーザー属性ルールに基づいてメンバーを自動的に更新するグループ",
+        "C": "一時的に作成されたグループ",
+        "D": "デバイスのみを含むグループ"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "動的グループ：\n- 属性ルールに基づいてメンバーを自動的に追加/削除\n- 例：部門=営業のすべてのユーザー\n- ユーザーとデバイスをサポート\n- 手動管理を削減\n- P1またはP2ライセンスが必要",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q13",
+      "domain": 2,
+      "question": "セルフサービスパスワードリセット（SSPR）の主なメリットは何ですか？",
+      "options": {
+        "A": "IT作業量の増加",
+        "B": "ヘルプデスクへの問い合わせを削減し、ユーザーが自分でパスワードをリセットできる",
+        "C": "パスワード使用の無効化",
+        "D": "ユーザーのパスワードを自動的に作成"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "セルフサービスパスワードリセット（SSPR）：\n- ユーザーがヘルプデスクに連絡せずにパスワードをリセット可能\n- ITサポートコストを削減\n- ユーザーの生産性を向上\n- 複数の検証方法\n- オンプレミスADと同期可能",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q14",
+      "domain": 2,
+      "question": "Microsoft Entra Connectとは何ですか？",
+      "options": {
+        "A": "ネットワーク接続ツール",
+        "B": "オンプレミスADをMicrosoft Entra IDと同期するツール",
+        "C": "VPNクライアント",
+        "D": "ファイル共有ツール"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Microsoft Entra Connect：\n- ハイブリッドIDソリューション\n- オンプレミスADをクラウドに同期\n- パスワードハッシュ同期をサポート\n- パススルー認証をサポート\n- フェデレーション認証をサポート",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q15",
+      "domain": 2,
+      "question": "パススルー認証（PTA）とは何ですか？",
+      "options": {
+        "A": "パスワードがクラウドに保存される",
+        "B": "ユーザー資格情報がオンプレミスADで検証され、クラウドに保存されない",
+        "C": "認証をスキップする",
+        "D": "サードパーティの検証を使用"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "パススルー認証（PTA）：\n- パスワードはオンプレミスADで検証\n- 資格情報はクラウドに保存されない\n- オンプレミスエージェントのインストールが必要\n- オンプレミスのパスワードポリシーを即時に適用\n- 厳格なパスワード要件を持つ組織に適している",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q16",
+      "domain": 2,
+      "question": "Microsoft Entra IDのアクセスレビューは何に使用されますか？",
+      "options": {
+        "A": "コード品質のレビュー",
+        "B": "ユーザーのアクセス権限を定期的に審査し検証",
+        "C": "ネットワークパフォーマンスのレビュー",
+        "D": "ハードウェア状態のレビュー"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "アクセスレビュー：\n- ユーザーがまだアクセス権を必要としているかを定期的に検証\n- グループメンバーシップのレビュー\n- アプリケーションアクセスのレビュー\n- ロール割り当てのレビュー\n- 最小特権の原則を確保",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q17",
+      "domain": 2,
+      "question": "エンタイトルメント管理（Entitlement Management）とは何ですか？",
+      "options": {
+        "A": "ユーザー権限を管理するツール",
+        "B": "アクセス要求、承認、ライフサイクル管理の自動化",
+        "C": "ソフトウェアライセンスの管理",
+        "D": "ネットワーク帯域幅の管理"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "エンタイトルメント管理：\n- アクセスパッケージ：関連リソースをバンドル\n- アクセス要求と承認の自動化\n- アクセスの有効期限と更新\n- 職務の分離\n- 外部ユーザーアクセスの管理に適している",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q18",
+      "domain": 2,
+      "question": "パスワードレス認証にはどのような方法が含まれますか？",
+      "options": {
+        "A": "パスワードのみ",
+        "B": "Windows Hello、FIDO2キー、Microsoft Authenticator",
+        "C": "SMS認証のみ",
+        "D": "メール認証のみ"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Microsoftパスワードレスオプション：\n- Windows Hello for Business：生体認証またはPIN\n- FIDO2セキュリティキー：物理デバイス\n- Microsoft Authenticator：プッシュ通知またはワンタイムパスワード\n- より安全で、より良いユーザーエクスペリエンス",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q19",
+      "domain": 2,
+      "question": "条件付きアクセスポリシーの「許可コントロール」とは何ですか？",
+      "options": {
+        "A": "誰がポリシーを作成できるかを定義",
+        "B": "アクセス条件が満たされた後に必要な追加の検証または制限",
+        "C": "ネットワーク帯域幅制御",
+        "D": "データベースアクセス制御"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "許可コントロールには以下が含まれます：\n- MFAを要求\n- デバイスのコンプライアンスを要求\n- ハイブリッドAzure AD参加を要求\n- 承認されたクライアントアプリを要求\n- アクセスをブロックまたは許可",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q20",
+      "domain": 2,
+      "question": "Microsoft Entra ID Governanceの主な目的は何ですか？",
+      "options": {
+        "A": "ネットワークルーティングの管理",
+        "B": "IDライフサイクルとアクセス権の管理",
+        "C": "ストレージスペースの管理",
+        "D": "コンピューティングリソースの管理"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Microsoft Entra ID Governance：\n- IDライフサイクル管理\n- アクセスライフサイクル管理\n- 特権アクセス管理\n- エンタイトルメント管理、アクセスレビュー、PIMなどを含む\n- 適切な人が適切なアクセス権を持つことを確保",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q21",
+      "domain": 3,
+      "question": "Microsoft Defender for Identityは何を保護しますか？",
+      "options": {
+        "A": "メール",
+        "B": "オンプレミスActive Directory ID",
+        "C": "ネットワークデバイス",
+        "D": "ストレージアカウント"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Microsoft Defender for Identity：\n- オンプレミスAD IDを保護\n- ID脅威を検出\n- 疑わしいアクティビティを識別\n- ラテラルムーブメントを検出\n- Microsoft 365 Defenderと統合",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q22",
+      "domain": 3,
+      "question": "Microsoft Defender for Cloud Apps（MCAS）とは何ですか？",
+      "options": {
+        "A": "アンチウイルスソフトウェア",
+        "B": "クラウドアクセスセキュリティブローカー（CASB）サービス",
+        "C": "コード開発ツール",
+        "D": "データベース管理ツール"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Microsoft Defender for Cloud Apps：\n- クラウドアクセスセキュリティブローカー（CASB）\n- シャドーITを発見し制御\n- クラウドアプリ内の機密情報を保護\n- 異常な動作を検出\n- クラウドアプリのコンプライアンスを評価",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q23",
+      "domain": 3,
+      "question": "Azure Webアプリケーションファイアウォール（WAF）はどのような種類の攻撃から保護しますか？",
+      "options": {
+        "A": "DDoS攻撃",
+        "B": "SQLインジェクションやクロスサイトスクリプティング（XSS）などのWeb攻撃",
+        "C": "ネットワーク層攻撃",
+        "D": "物理的攻撃"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure WAFが保護するもの：\n- SQLインジェクション\n- クロスサイトスクリプティング（XSS）\n- コマンドインジェクション\n- HTTPプロトコル違反\n- OWASPコアルールセットに基づく",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q24",
+      "domain": 3,
+      "question": "Microsoft Sentinelの「Playbook」とは何ですか？",
+      "options": {
+        "A": "ゲームアプリケーション",
+        "B": "自動化されたセキュリティ対応ワークフロー",
+        "C": "ユーザーマニュアル",
+        "D": "トレーニング資料"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Sentinel Playbook：\n- Logic Appsに基づく自動化\n- セキュリティインシデントに自動的に対応\n- デバイスの隔離、IPのブロックなどの操作をトリガー可能\n- 対応時間を短縮\n- インシデント対応を標準化",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q25",
+      "domain": 3,
+      "question": "Azure Private Linkの主な用途は何ですか？",
+      "options": {
+        "A": "インターネットアクセスの高速化",
+        "B": "プライベートエンドポイントを通じてAzureサービスに安全にアクセスし、パブリックインターネットを経由しない",
+        "C": "ファイルの共有",
+        "D": "メールの送信"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure Private Link：\n- Azureサービスへのプライベート接続\n- トラフィックがパブリックインターネットを経由しない\n- データ漏洩リスクを軽減\n- Azure PaaSサービスをサポート\n- 独自のサービスをサポート",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q26",
+      "domain": 3,
+      "question": "Azure Defender（現在はDefender for Cloudの一部）はどのような種類の保護を提供しますか？",
+      "options": {
+        "A": "ネットワーク保護のみ",
+        "B": "サーバー、データベース、コンテナ、ストレージなどの脅威保護",
+        "C": "メール保護のみ",
+        "D": "物理的保護のみ"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Defender for Cloudワークロード保護：\n- サーバー（Windows/Linux）\n- SQLおよびその他のデータベース\n- コンテナとKubernetes\n- ストレージアカウント\n- Key Vault\n- App Service",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q27",
+      "domain": 3,
+      "question": "Just-In-Time（JIT）VMアクセスとは何ですか？",
+      "options": {
+        "A": "VMポートを永続的に開放",
+        "B": "必要な場合にのみVM管理ポートを一時的に開放",
+        "C": "VMを自動的に作成",
+        "D": "VMを自動的にバックアップ"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "JIT VMアクセス：\n- 管理ポートはデフォルトで閉じている\n- 必要に応じて一時的なアクセスを要求\n- 時間とソースIPを制限\n- 攻撃対象領域を削減\n- Microsoft Defender for Cloudがこの機能を提供",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q28",
+      "domain": 3,
+      "question": "Azure Sentinelのデータコネクタは何に使用されますか？",
+      "options": {
+        "A": "プリンターの接続",
+        "B": "さまざまなソースからセキュリティデータを収集",
+        "C": "モニターの接続",
+        "D": "キーボードの接続"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Sentinelデータコネクタ：\n- Microsoftソリューションに接続\n- サードパーティのセキュリティ製品に接続\n- ログとアラートを収集\n- 複数のフォーマット（CEF、Syslogなど）をサポート\n- 統合されたセキュリティビューを実現",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q29",
+      "domain": 3,
+      "question": "Microsoft Defender for Office 365は何を保護しますか？",
+      "options": {
+        "A": "オンプレミスサーバーのみ",
+        "B": "メール、Teams、SharePointなどのコラボレーションツール",
+        "C": "ネットワークデバイスのみ",
+        "D": "ストレージのみ"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Defender for Office 365が保護するもの：\n- メール（Exchange Online）\n- Microsoft Teams\n- SharePointとOneDrive\n- フィッシング攻撃からの保護\n- 悪意のある添付ファイルの検出",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q30",
+      "domain": 3,
+      "question": "攻撃シミュレーショントレーニングとは何ですか？",
+      "options": {
+        "A": "実際に会社のネットワークを攻撃する",
+        "B": "模擬フィッシング攻撃を使用して従業員をテストし訓練する",
+        "C": "競合他社を攻撃する",
+        "D": "マルウェアを開発する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "攻撃シミュレーショントレーニング：\n- フィッシングやその他のソーシャルエンジニアリング攻撃をシミュレート\n- 従業員のセキュリティ意識をテスト\n- 自動トレーニングを提供\n- 改善の進捗を追跡\n- Microsoft Defender for Office 365がこの機能を提供",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q31",
+      "domain": 4,
+      "question": "Microsoft Purviewのデータ分類は何に使用されますか？",
+      "options": {
+        "A": "フォルダーの整理",
+        "B": "機密データタイプを識別してラベル付け",
+        "C": "データの圧縮",
+        "D": "データの削除"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "データ分類機能：\n- 機密情報タイプを識別\n- トレーニング可能な分類子\n- 機密データを自動的に発見\n- データガバナンスをサポート\n- コンプライアンス要件を満たすのに役立つ",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q32",
+      "domain": 4,
+      "question": "トレーニング可能な分類子とは何ですか？",
+      "options": {
+        "A": "人間が訓練したセキュリティ担当者",
+        "B": "機械学習を使用して特定のコンテンツタイプを識別する分類子",
+        "C": "ハードウェアデバイス",
+        "D": "ネットワーク分類子"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "トレーニング可能な分類子：\n- 機械学習を使用\n- 複雑なコンテンツパターンを識別可能\n- 事前構築された分類子（履歴書、ソースコードなど）\n- カスタム分類子を作成可能\n- DLPと保持ポリシーに使用",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q33",
+      "domain": 4,
+      "question": "コミュニケーションコンプライアンス（Communication Compliance）は何に使用されますか？",
+      "options": {
+        "A": "電話料金の管理",
+        "B": "組織のコミュニケーションにおける不適切なコンテンツを検出し対応",
+        "C": "通信の暗号化",
+        "D": "通信の高速化"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "コミュニケーションコンプライアンス：\n- 不適切なメッセージを検出\n- ハラスメント、差別などのコンテンツを識別\n- 金融規制のコンプライアンスを監視\n- 調査と修復\n- Teams、Exchange、Yammerに適用",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q34",
+      "domain": 4,
+      "question": "法的保持（Legal Hold）とは何ですか？",
+      "options": {
+        "A": "法的訴訟を一時停止",
+        "B": "法的案件に関連するデータを保持し、削除や変更を防止",
+        "C": "法的トレーニング",
+        "D": "法的コンサルティング"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "法的保持：\n- 訴訟に関連するデータを保護\n- データの削除や変更を防止\n- 通常の保持ポリシーをオーバーライド\n- 電子情報開示に適用\n- 法的義務を満たす",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q35",
+      "domain": 4,
+      "question": "Microsoft Purviewデータライフサイクル管理には何が含まれますか？",
+      "options": {
+        "A": "データ作成のみ",
+        "B": "保持ポリシー、保持ラベル、レコード管理",
+        "C": "データ削除のみ",
+        "D": "データ転送のみ"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "データライフサイクル管理：\n- 保持ポリシー：自動保持または削除\n- 保持ラベル：ユーザーが適用できるラベル\n- レコード管理：レコードの宣言と管理\n- 規制要件を満たす\n- リスクを軽減",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q36",
+      "domain": 4,
+      "question": "「データ主体要求」（Data Subject Request）とは何ですか？",
+      "options": {
+        "A": "より多くのストレージスペースの要求",
+        "B": "個人が自分の個人データにアクセス、変更、または削除を要求",
+        "C": "ネットワーク帯域幅の要求",
+        "D": "ソフトウェアアップデートの要求"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "データ主体要求（DSR）：\n- 個人のデータに対する権利\n- 自分のデータにアクセス\n- 不正確なデータを修正\n- データを削除（忘れられる権利）\n- Microsoft PurviewがDSRの管理を支援",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q37",
+      "domain": 4,
+      "question": "Azure PolicyとAzure Blueprintsの関係は何ですか？",
+      "options": {
+        "A": "それらは完全に同じ",
+        "B": "BlueprintsはPolicyをコンポーネントとして含むことができる",
+        "C": "それらは互いに無関係",
+        "D": "PolicyはBlueprintsを含む"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure BlueprintsとPolicy：\n- Blueprintsは環境定義のコンテナ\n- Policy、ロール割り当て、ARMテンプレートを含むことができる\n- Policyは単一のルールを強制\n- Blueprintsは複数のコンポーネントを組み合わせる\n- コンプライアンス環境を迅速にデプロイするために使用",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q38",
+      "domain": 4,
+      "question": "リソースロック（Resource Locks）とは何ですか？",
+      "options": {
+        "A": "サーバーを物理的にロック",
+        "B": "Azureリソースの偶発的な削除や変更を防止",
+        "C": "リソースの暗号化",
+        "D": "リソースのバックアップ"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "リソースロック：\n- CanNotDelete：削除を防止、変更は許可\n- ReadOnly：削除と変更を防止\n- サブスクリプション、リソースグループ、またはリソースに適用\n- RBAC権限をオーバーライド\n- 重要なリソースを保護",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q39",
+      "domain": 4,
+      "question": "Microsoft Privaの主な用途は何ですか？",
+      "options": {
+        "A": "仮想マシンの管理",
+        "B": "組織が個人データを保護し、プライバシーリスクを管理するのを支援",
+        "C": "ネットワークの管理",
+        "D": "ストレージの管理"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Microsoft Priva：\n- 個人データリスクを識別\n- プライバシー運用を自動化\n- データ主体要求を管理\n- プライバシーリスク管理\n- GDPRなどの規制への準拠を支援",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q40",
+      "domain": 4,
+      "question": "コンテンツ検索（Content Search）とは何ですか？",
+      "options": {
+        "A": "インターネットコンテンツの検索",
+        "B": "Microsoft 365のメール、ドキュメント、チャットコンテンツを検索",
+        "C": "商品価格の検索",
+        "D": "従業員情報の検索"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "コンテンツ検索：\n- Exchangeメールボックスを検索\n- SharePointとOneDriveを検索\n- Teamsメッセージを検索\n- キーワードと条件をサポート\n- 電子情報開示の基本ツール",
+      "difficulty": "medium"
+    }
+  ]
+}
