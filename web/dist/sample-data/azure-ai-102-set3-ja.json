@@ -1,0 +1,803 @@
+{
+  "exam": {
+    "id": "azure-ai-102-set3-ja",
+    "name": "Azure AI-102 模擬試験 #3",
+    "code": "AI-102",
+    "provider": "Azure",
+    "language": "ja",
+    "description": "Azure认证考试模擬問題",
+    "totalQuestions": 50,
+    "passingScore": 70,
+    "examTime": 100,
+    "domains": [
+      {
+        "id": 1,
+        "name": "計画と管理 an Azure AI solution",
+        "weight": 25
+      },
+      {
+        "id": 2,
+        "name": "実装 意思決定支援 solutions",
+        "weight": 17
+      },
+      {
+        "id": 3,
+        "name": "実装 Azure AI ビジョンソリューション",
+        "weight": 25
+      },
+      {
+        "id": 4,
+        "name": "実装 自然言語処理 solutions",
+        "weight": 40
+      },
+      {
+        "id": 5,
+        "name": "実装 ナレッジマイニング and ドキュメントインテリジェンス solutions",
+        "weight": 17
+      },
+      {
+        "id": 6,
+        "name": "実装 生成AI solutions",
+        "weight": 17
+      }
+    ],
+    "tags": [
+      "Azure",
+      "AI",
+      "ML",
+      "認定試験"
+    ]
+  },
+  "questions": [
+    {
+      "id": "q1",
+      "domain": 1,
+      "question": "在调用Azure AIサービス时，以下のどのような方法提供最適な的開発体验和类型セキュリティ？",
+      "options": {
+        "A": "REST API直接调用",
+        "B": "使用する官方SDK（如Azure.AI.TextAnalytics）",
+        "C": "使用するcurl命令",
+        "D": "使用するPostman"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "官方SDK优势：\n- 类型セキュリティ\n- 自动重试和間違い処理\n- 简化认证\n- IntelliSense支持\n- バージョン兼容性管理\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q2",
+      "domain": 1,
+      "question": "ある企業必要があります确保Azure AIサービス在区域故障时仍可用。すべきですどのように设计？",
+      "options": {
+        "A": "在单一区域デプロイ",
+        "B": "在多个区域デプロイリソース，設定故障转移",
+        "C": "使用するオンプレミスコンテナ",
+        "D": "增加实例数量"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "灾难恢复设计：\n- 在配对区域デプロイ\n- 使用するTraffic Manager或Front Door\n- 設定自动故障转移\n- 定期テスト恢复流程\n---",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q3",
+      "domain": 2,
+      "question": "Azure Metrics Advisor的主要機能是何？",
+      "options": {
+        "A": "画像分析",
+        "B": "时间序列异常検出和根因分析",
+        "C": "テキスト翻訳",
+        "D": "音声認識"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Metrics Advisor：\n- 多维度时间序列モニタリング\n- 自动异常検出\n- 智能アラート\n- 根因分析\n- 适合业务指标モニタリング\n---",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q4",
+      "domain": 3,
+      "question": "ある企業したいと考えています为上传的图片自动生成altテキスト以提高网站可访问性。を使用するすべきです何？",
+      "options": {
+        "A": "对象検出",
+        "B": "画像标题生成 (Image Captioning)",
+        "C": "OCR",
+        "D": "人脸検出"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "画像标题生成：\n- 生成自然言語描述\n- 适合Altテキスト\n- 辅助视障用户\n- Image Analysis API的Caption機能\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q5",
+      "domain": 3,
+      "question": "在Custom Vision中，选择\"Compact\"域モデル与\"General\"域的主要区别是何？",
+      "options": {
+        "A": "Compact更准确",
+        "B": "Compact可以导出到エッジ设备运行",
+        "C": "General可以导出",
+        "D": "没有区别"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "域选择：\n- General：クラウド运行，更准确\n- Compact：可导出（ONNX, TensorFlow, Docker）\n- エッジデプロイ必须使用するCompact域\n- Compact牺牲一些准确性换取可移植性\n---",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q6",
+      "domain": 3,
+      "question": "一家セキュリティ企業したいと考えています在データ库中找到与给定人脸最相似的人脸。を使用するすべきですFace API的何機能？",
+      "options": {
+        "A": "Detect",
+        "B": "Find Similar",
+        "C": "Verify",
+        "D": "Group"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Face API機能：\n- Detect：検出人脸\n- Find Similar：查找相似人脸（1:N検索）\n- Verify：検証两张是否同一人（1:1）\n- Identify：在Person Group中認識身份\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q7",
+      "domain": 4,
+      "question": "一家医院したいと考えています从临床笔记中提取医学エンティティ（如药物、剂量、诊断）。を使用するすべきです何？",
+      "options": {
+        "A": "通用NER",
+        "B": "Text Analytics for Health",
+        "C": "感情分析",
+        "D": "关键词提取"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Text Analytics for Health：\n- 专门针对医疗テキスト\n- 認識医学エンティティ\n- 理解医学关系\n- 符合HIPAA\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q8",
+      "domain": 4,
+      "question": "どのように持续改进已デプロイ的CLUモデル？",
+      "options": {
+        "A": "不必要があります改进",
+        "B": "使用する活动学习审核予測并添加到訓練データ",
+        "C": "删除并重建",
+        "D": "只增加訓練データ量"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "活动学习流程：\n1. 审核モデル予測\n2. 修正間違い予測\n3. 添加到訓練データ\n4. 重新訓練\n5. デプロイ新バージョン\n---",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q9",
+      "domain": 4,
+      "question": "ある企業したいと考えています使用する音声唤醒设备（如\"Hey Assistant\"）。を使用するすべきです何機能？",
+      "options": {
+        "A": "音声转テキスト",
+        "B": "自定义关键字 (Custom Keyword)",
+        "C": "说话人認識",
+        "D": "テキスト转音声"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "自定义关键字：\n- 作成唤醒词\n- 低功耗検出\n- エッジ设备运行\n- 唤醒后再进行音声認識\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q10",
+      "domain": 4,
+      "question": "ある企業したいと考えています作成品牌专属的音声合成声音。を使用するすべきです何？",
+      "options": {
+        "A": "标准音声",
+        "B": "自定义神经音声 (Custom Neural Voice)",
+        "C": "预构建神经音声",
+        "D": "SSML"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "自定义神经音声：\n- 訓練独特的品牌声音\n- 必要があります录制音声データ\n- 高质量自然音声\n- 有道德使用する要求\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q11",
+      "domain": 4,
+      "question": "どのように让Bot主动向用户发送消息（而不是等待用户输入）？",
+      "options": {
+        "A": "使用する轮询",
+        "B": "使用する主动消息 (Proactive Messages)",
+        "C": "作成多个Bot",
+        "D": "使用するWebhook"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "主动消息：\n- 保存conversation reference\n- 后台トリガー时发送消息\n- 必要があります用户先与Bot交互过\n- 适合通知、提醒\n---",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q12",
+      "domain": 5,
+      "question": "ある企業したいと考えています从身份证件中提取信息。を使用するすべきですDocument Intelligence的何モデル？",
+      "options": {
+        "A": "发票モデル",
+        "B": "IDドキュメントモデル",
+        "C": "自定义モデル",
+        "D": "布局モデル"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "IDドキュメントモデル支持：\n- 护照\n- 驾照\n- 身份证\n- 提取姓名、出生日期、证件号等\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q13",
+      "domain": 5,
+      "question": "Azure AI Searchインデックス器运行失败。どのように诊断问题？",
+      "options": {
+        "A": "删除并重建",
+        "B": "查看インデックス器执行历史和間違い详情",
+        "C": "增加分区",
+        "D": "更换データ源"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "诊断インデックス器问题：\n- 查看执行历史\n- 检查間違い消息\n- 查看跳过的ドキュメント\n- 查看警告\n- 使用するDebug Sessions\n---",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q14",
+      "domain": 6,
+      "question": "Azure OpenAI Studio的Chat Playground用于何？",
+      "options": {
+        "A": "訓練モデル",
+        "B": "テスト和调整提示词",
+        "C": "デプロイモデル",
+        "D": "モニタリングコスト"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Chat Playground機能：\n- 交互式テスト\n- 调整系统消息\n- 修改参数（temperature等）\n- 导出代码\n- 設定データ源\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q15",
+      "domain": 6,
+      "question": "ある企業したいと考えています让開発人员使用するAzure OpenAI进行テスト，但不能查看或修改デプロイ設定。すべきです分配何角色？",
+      "options": {
+        "A": "Cognitive Services OpenAI Contributor",
+        "B": "Cognitive Services OpenAI User",
+        "C": "Owner",
+        "D": "Reader"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure OpenAI RBAC角色：\n- Contributor：管理リソース和デプロイ\n- User：只能调用API\n- 最小权限原则\n---",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q16",
+      "domain": 1,
+      "question": "一家欧洲企業必要があります确保データ処理符合GDPR。在选择Azure AIサービス区域时すべきです考虑何？",
+      "options": {
+        "A": "选择最便宜的区域",
+        "B": "选择欧洲区域以满足データ驻留要求",
+        "C": "随机选择",
+        "D": "只选择美国区域"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "データ驻留考虑：\n- GDPR要求データ在欧盟処理\n- 选择西欧、北欧等区域\n- 检查サービス可用性\n- 审查データ传输政策\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q17",
+      "domain": 3,
+      "question": "Video Indexer可以生成何类型的时间线？",
+      "options": {
+        "A": "只有音频时间线",
+        "B": "视觉和音频时间线（场景、说话人、关键词）",
+        "C": "只有视觉时间线",
+        "D": "不支持时间线"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Video Indexer时间线包括：\n- 场景/镜头切换\n- 说话人发言时间\n- 关键词出现时间\n- 情感变化\n- 人脸出现时间\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q18",
+      "domain": 4,
+      "question": "链接エンティティ認識(Entity Linking)与固有表現認識(NER)的主要区别是何？",
+      "options": {
+        "A": "没有区别",
+        "B": "Entity Linking将エンティティ链接到ナレッジベース（如Wikipedia）",
+        "C": "NER更快",
+        "D": "Entity Linking只認識人名"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Entity Linking：\n- 認識エンティティ并链接到ナレッジベース\n- 提供Wikipedia/Bing链接\n- 消除歧义（如\"Apple\"是企業还是水果）\n- NER只認識类型，不链接\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q19",
+      "domain": 4,
+      "question": "在Bot Framework中，どのように在多轮対話中保持状态？",
+      "options": {
+        "A": "使用する全局变量",
+        "B": "使用する状态管理（UserState, ConversationState）",
+        "C": "每次重新开始",
+        "D": "ストレージ在文件"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Bot状态管理：\n- UserState：用户级别，跨対話保持\n- ConversationState：対話级别\n- PrivateConversationState：用户+対話\n- 可ストレージ在Memory、Blob、CosmosDB\n---",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q20",
+      "domain": 5,
+      "question": "ある企業必要があります从美国W-2税务表格中提取データ。を使用するすべきです何モデル？",
+      "options": {
+        "A": "自定义モデル",
+        "B": "预构建W-2モデル",
+        "C": "发票モデル",
+        "D": "通用ドキュメント"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Document Intelligence预构建モデル包括：\n- W-2税务表\n- 1099表格\n- 发票\n- 收据\n- 身份证\n- 名片\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q21",
+      "domain": 5,
+      "question": "在Azure AI Search中，どのように正しい処理中文テキスト検索？",
+      "options": {
+        "A": "使用する默认分析器",
+        "B": "使用する中文语言分析器（zh-Hans或zh-Hant）",
+        "C": "不必要があります設定",
+        "D": "只使用する英文"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "语言分析器：\n- 正しい分词（中文没有空格）\n- 処理语言特性\n- 提高検索质量\n- 在インデックス字段定义中設定\n---",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q22",
+      "domain": 6,
+      "question": "当Azure OpenAI的回答不够具体或缺少上下文时，すべきです怎么做？",
+      "options": {
+        "A": "使用する更大的モデル",
+        "B": "在系统消息或用户消息中提供更多上下文",
+        "C": "增加temperature",
+        "D": "减少max_tokens"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "改善回答质量：\n- 在System message中定义角色和背景\n- 在User message中提供具体上下文\n- 使用する少量示例（Few-shot）\n- 明确指定输出格式\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q23",
+      "domain": 6,
+      "question": "どのように估算发送到Azure OpenAI的请求将消耗多少tokens？",
+      "options": {
+        "A": "字数等于token数",
+        "B": "使用するtokenizer库（如tiktoken）",
+        "C": "API自动计算不必要があります关心",
+        "D": "每个字符一个token"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Token估算：\n- 使用するtiktoken（OpenAI的tokenizer）\n- 英文约4字符=1token\n- 中文约1-2字符=1-2tokens\n- 影响计费和上下文限制\n---",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q24",
+      "domain": 1,
+      "question": "どのように按项目或团队跟踪Azure AIサービス的コスト？",
+      "options": {
+        "A": "作成单独的订阅",
+        "B": "使用するリソース标签(Tags)",
+        "C": "手动记录",
+        "D": "不可能"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "リソース标签：\n- 添加键值对标签（如Project:ChatBot）\n- 在Cost Management中按标签筛选\n- 作成コスト报告\n- 设置预算アラート\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q25",
+      "domain": 3,
+      "question": "一家零售店したいと考えています计算进入商店的人数。を使用するすべきです何？",
+      "options": {
+        "A": "人脸認識",
+        "B": "空间分析 - 人员计数",
+        "C": "对象検出",
+        "D": "画像分類"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "空间分析人员计数：\n- 计算进入/离开的人数\n- リアルタイム分析\n- 必要がありますエッジ设备\n- 不認識身份（プライバシー友好）\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q26",
+      "domain": 4,
+      "question": "Azureドキュメント翻訳支持哪些文件格式？",
+      "options": {
+        "A": "只有TXT",
+        "B": "DOCX, PDF, PPTX, XLSX, HTML等",
+        "C": "只有PDF",
+        "D": "只有Word"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "支持的格式：\n- Microsoft Office（Word, Excel, PowerPoint）\n- PDF\n- HTML\n- 纯テキスト\n- Markdown\n- 保持原始格式\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q27",
+      "domain": 4,
+      "question": "ある企業したいと考えています让Bot使用する用户的Microsoft 365身份执行操作。を使用するすべきです何？",
+      "options": {
+        "A": "硬编码凭据",
+        "B": "Bot Framework OAuth连接",
+        "C": "APIキー",
+        "D": "匿名访问"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Bot OAuth：\n- 在Bot注册中設定OAuth连接\n- 用户授权\n- 获取访问令牌\n- 代表用户调用API（Graph API等）\n---",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q28",
+      "domain": 5,
+      "question": "ある企業したいと考えています在検索框中提供自动补全建议。すべきです設定何？",
+      "options": {
+        "A": "分面导航",
+        "B": "建议器(Suggester)",
+        "C": "同义词",
+        "D": "评分設定"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "建议器設定：\n- 在インデックス上定义建议器\n- 指定source字段\n- 选择模式（analyzingInfixMatching等）\n- 调用Suggest或Autocomplete API\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q29",
+      "domain": 6,
+      "question": "どのように使Azure OpenAI API返回流式响应（边生成边返回）？",
+      "options": {
+        "A": "使用する更小的max_tokens",
+        "B": "设置stream=true",
+        "C": "使用する不同的エンドポイント",
+        "D": "不支持"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "流式响应：\n- 设置stream: true\n- 使用するServer-Sent Events\n- 边生成边返回\n- 改善用户体验\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q30",
+      "domain": 6,
+      "question": "どのように防止用户通过提示注入绕过Azure OpenAI应用的セキュリティ限制？",
+      "options": {
+        "A": "不必要があります防护",
+        "B": "输入検証、使用する系统消息强化规则、内容过滤",
+        "C": "只限制输出长度",
+        "D": "使用する更小的モデル"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "防护措施：\n- 検証和清理用户输入\n- 系统消息中强调限制\n- 分离用户输入和系统指令\n- 使用する内容过滤\n- モニタリング异常模式\n---",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q31",
+      "domain": 1,
+      "question": "ある企業在东亚有大量用户。为了最小化レイテンシ，すべきです将Azure AIサービスデプロイ在哪里？",
+      "options": {
+        "A": "美国西部",
+        "B": "东亚或东南亚区域",
+        "C": "欧洲西部",
+        "D": "随机选择"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "区域选择考虑：\n- 用户地理位置\n- レイテンシ要求\n- サービス可用性\n- コンプライアンス要求\n- コスト差异\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q32",
+      "domain": 3,
+      "question": "在使用するFace API时，以下の哪项是コンプライアンス使用する的要求？",
+      "options": {
+        "A": "不必要があります任何同意",
+        "B": "获取用户同意、明确告知用途、遵守プライバシー法规",
+        "C": "只必要があります技术实现",
+        "D": "只必要があります内部批准"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Face APIコンプライアンス要求：\n- 获取知情同意\n- 透明告知用途\n- データ保护措施\n- 遵守GDPR等法规\n- 定期审核使用する\n---",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q33",
+      "domain": 4,
+      "question": "抽取式要約(Extractive Summarization)和抽象式要約(Abstractive Summarization)的区别是何？",
+      "options": {
+        "A": "没有区别",
+        "B": "抽取式选择原文句子，抽象式生成新テキスト",
+        "C": "抽象式更快",
+        "D": "抽取式只用于英文"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "要約类型：\n- 抽取式：从原文选择关键句子\n- 抽象式：生成新的要約テキスト\n- 抽取式更可靠（不会编造）\n- 抽象式更流畅自然\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q34",
+      "domain": 4,
+      "question": "ある企業したいと考えています从会议录音中認識不同发言者。を使用するすべきです何機能？",
+      "options": {
+        "A": "标准转录",
+        "B": "说话人分离(Diarization)",
+        "C": "关键词検出",
+        "D": "翻訳"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "说话人分离：\n- 認識不同说话人\n- 标记每段话的说话人\n- 支持リアルタイム和バッチ\n- 适合会议、电话录音\n---",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q35",
+      "domain": 5,
+      "question": "Document Intelligence的Read API与Computer Vision的OCR有何区别？",
+      "options": {
+        "A": "完全相同",
+        "B": "Read API针对ドキュメント优化，支持更多格式和更好的表格認識",
+        "C": "OCR更准确",
+        "D": "Read只支持打印テキスト"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Document Intelligence Read优势：\n- 针对ドキュメント优化\n- 更好的表格認識\n- 支持PDF（多页）\n- 段落结构認識\n- 读取顺序検出\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q36",
+      "domain": 6,
+      "question": "在Azure OpenAI中，\"stop sequences\"参数的作用是何？",
+      "options": {
+        "A": "限制输入长度",
+        "B": "指定遇到特定字符串时停止生成",
+        "C": "停止APIサービス",
+        "D": "限制并发"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Stop sequences：\n- 遇到指定字符串停止\n- 控制输出格式\n- 例如：遇到\"\\n\\n\"停止\n- 防止无限生成\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q37",
+      "domain": 1,
+      "question": "Azure AIサービス的SLA通常是多少？",
+      "options": {
+        "A": "100%",
+        "B": "99.9%（大多数サービス）",
+        "C": "50%",
+        "D": "没有SLA"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure SLA：\n- 大多数AIサービス99.9%\n- 必要があります合理設定\n- 读取官方SLAドキュメント\n- 可能因区域和サービス而异\n---",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q38",
+      "domain": 3,
+      "question": "在Custom Vision中，何是\"负样本(Negative Samples)\"，なぜ重要？",
+      "options": {
+        "A": "质量差的图片",
+        "B": "不属于任何类别的画像，帮助モデル学习\"何不是\"",
+        "C": "黑白图片",
+        "D": "小尺寸图片"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "负样本：\n- 不包含目标对象的画像\n- 帮助减少误报\n- 特别对对象検出重要\n- 标记为\"Negative\"标签\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q39",
+      "domain": 4,
+      "question": "Azure Translatorどのように処理翻訳中的不雅词汇？",
+      "options": {
+        "A": "总是保留",
+        "B": "可設定：保留、删除或标记",
+        "C": "总是删除",
+        "D": "总是替换为***"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "不雅内容処理选项：\n- NoAction：保留原样\n- Deleted：删除\n- Marked：用标签标记\n- 根据应用需求选择\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q40",
+      "domain": 5,
+      "question": "どのように避免每次重建インデックス时重新运行耗时的技能集？",
+      "options": {
+        "A": "无法避免",
+        "B": "启用增量拡張和技能集缓存",
+        "C": "使用する更快的技能",
+        "D": "减少技能数量"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "增量拡張：\n- 缓存技能输出\n- 只処理更改的ドキュメント\n- 减少API调用コスト\n- 加快インデックス时间\n---",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q41",
+      "domain": 6,
+      "question": "Azure OpenAI的\"seed\"参数用于何？",
+      "options": {
+        "A": "生成随机数",
+        "B": "使输出更可重现（相同输入相同输出）",
+        "C": "加速生成",
+        "D": "减少コスト"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Seed参数：\n- 增加输出可重现性\n- 相同seed+输入倾向于产生相同输出\n- テスト和调试有用\n- 不是100%确定性\n---",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q42",
+      "domain": 2,
+      "question": "在Personalizer中，\"exploration\"设置控制何？",
+      "options": {
+        "A": "用户可以访问的内容",
+        "B": "モデル尝试新选择而非已知最优选择的比例",
+        "C": "API响应时间",
+        "D": "データ保留期"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "探索vs利用：\n- 利用：选择已知最適な选项\n- 探索：尝试其他选项以发现更好的\n- 平衡两者才能持续学习\n- 通过设置控制探索比例\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q43",
+      "domain": 3,
+      "question": "どのように让Video Indexer認識企業特定的品牌名称？",
+      "options": {
+        "A": "自动認識所有品牌",
+        "B": "作成自定义品牌モデル",
+        "C": "无法認識自定义品牌",
+        "D": "使用する不同的サービス"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "自定义品牌モデル：\n- 添加品牌名称和描述\n- 可以包含/排除特定品牌\n- 在转录和视觉中検出\n- 账户级别設定\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q44",
+      "domain": 4,
+      "question": "どのように在一个应用中组合多个CLU项目？",
+      "options": {
+        "A": "无法组合",
+        "B": "使用するオーケストレーション项目(オーケストレーション)",
+        "C": "合并为一个项目",
+        "D": "使用する多个エンドポイント"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "オーケストレーションワークフロー程：\n- 作成オーケストレーション项目\n- 连接多个CLU和QnA项目\n- 自动路由到正しい的子项目\n- 统一的入口点\n---",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q45",
+      "domain": 5,
+      "question": "Azure AI Search的Debug Sessions機能用于何？",
+      "options": {
+        "A": "代码调试",
+        "B": "可视化调试技能集処理流程",
+        "C": "パフォーマンステスト",
+        "D": "コスト分析"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Debug Sessions：\n- 交互式技能集调试\n- 查看每个技能的输入/输出\n- 修改技能定义并テスト\n- 诊断拡張问题\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q46",
+      "domain": 6,
+      "question": "Azure OpenAI的滥用モニタリングどのように工作？",
+      "options": {
+        "A": "不モニタリング",
+        "B": "自动検出并记录潜在滥用，可トリガー审核",
+        "C": "完全手动",
+        "D": "只モニタリングコスト"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "滥用モニタリング：\n- 自动検出违规内容\n- 记录用于审核（可选择退出部分）\n- 严重违规可能暂停账户\n- 符合責任あるAI原则\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q47",
+      "domain": 1,
+      "question": "当Azure AIサービス返回429間違い时，すべきですどのように処理？",
+      "options": {
+        "A": "立即重试",
+        "B": "实现指数退避重试",
+        "C": "放弃请求",
+        "D": "换一个账户"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "429 Too Many Requests処理：\n- 等待后重试\n- 指数退避（逐渐增加等待时间）\n- 检查Retry-After头\n- 考虑申请更高配额\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q48",
+      "domain": 4,
+      "question": "Azure Speech Service的Conversation Transcription用于何场景？",
+      "options": {
+        "A": "单人独白",
+        "B": "多人会议的リアルタイム转录和说话人認識",
+        "C": "テキスト转音声",
+        "D": "翻訳"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Conversation Transcription：\n- 多人対話场景\n- リアルタイム转录\n- 说话人分离\n- 适合会议、电话会议\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q49",
+      "domain": 5,
+      "question": "どのように提高Document Intelligence自定义モデル的准确性？",
+      "options": {
+        "A": "使用する更少的訓練ドキュメント",
+        "B": "增加多样化的訓練样本，确保标签准确",
+        "C": "只使用する一种类型的ドキュメント",
+        "D": "降低置信度阈值"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "提高准确性：\n- 增加訓練样本（最少5个，推荐更多）\n- 样本多样性（不同质量、布局）\n- 准确一致的标签\n- 包含边界情况\n---",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q50",
+      "domain": 6,
+      "question": "以下の哪项是Azure OpenAI責任ある使用する的最適な实践？",
+      "options": {
+        "A": "不必要があります任何限制",
+        "B": "实施用户认证、内容过滤、人工审核、使用するモニタリング",
+        "C": "只限制调用次数",
+        "D": "只用于内部テスト"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "責任ある使用する实践：\n- 用户认证和授权\n- 内容过滤（输入和输出）\n- 人工审核高风险场景\n- モニタリング使用する模式\n- 明确AI使用する的透明性\n- 有反馈和投诉渠道",
+      "difficulty": "hard"
+    }
+  ]
+}

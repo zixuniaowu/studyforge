@@ -1,0 +1,644 @@
+{
+  "exam": {
+    "id": "azure-az-305-set1-ja",
+    "name": "Azure AZ-305 ソリューションアーキテクト模擬試験 #1",
+    "code": "AZ-305",
+    "provider": "Azure",
+    "language": "ja",
+    "description": "Microsoft Azure Solutions Architect Expert認定試験の模擬問題です。ID、ガバナンス、監視ソリューションの設計、データストレージソリューションの設計、ビジネス継続性ソリューションの設計、インフラストラクチャソリューションの設計などのコア領域をカバーしています。",
+    "totalQuestions": 40,
+    "passingScore": 70,
+    "examTime": 120,
+    "domains": [
+      {
+        "id": 1,
+        "name": "ID、ガバナンス、監視ソリューションの設計 (Design identity, governance, and monitoring solutions)",
+        "weight": 28
+      },
+      {
+        "id": 2,
+        "name": "データストレージソリューションの設計 (Design data storage solutions)",
+        "weight": 27
+      },
+      {
+        "id": 3,
+        "name": "ビジネス継続性ソリューションの設計 (Design business continuity solutions)",
+        "weight": 13
+      },
+      {
+        "id": 4,
+        "name": "インフラストラクチャソリューションの設計 (Design infrastructure solutions)",
+        "weight": 32
+      }
+    ],
+    "tags": [
+      "Azure",
+      "AZ-305",
+      "ソリューションアーキテクト",
+      "認定試験",
+      "クラウドコンピューティング"
+    ]
+  },
+  "questions": [
+    {
+      "id": "q1",
+      "domain": 1,
+      "question": "ある企業がオンプレミスアプリケーションをAzureに移行しています。ユーザーが既存のActive Directory資格情報を使用してクラウドリソースにアクセスできるようにしながら、オンプレミスADとの同期を維持する必要があります。どのソリューションを推奨すべきですか？",
+      "options": {
+        "A": "Azure AD B2Cのみを使用する",
+        "B": "Azure AD Connectを構成し、パスワードハッシュ同期を有効にする",
+        "C": "Azure AD B2Bコラボレーションのみを使用する",
+        "D": "独立したAzure ADテナントを作成し、ユーザーを手動で管理する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure AD Connectはハイブリッドアイデンティティシナリオを実現するための最適な選択です。パスワードハッシュ同期（PHS）を使用すると、ユーザーは同じ資格情報でオンプレミスとクラウドリソースの両方にアクセスできます。これにより、シームレスなシングルサインオン体験が提供され、オンプレミスADが権威あるソースとしての位置を維持します。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q2",
+      "domain": 1,
+      "question": "ある企業がAzure環境に統一されたガバナンスポリシーを実装する必要があり、すべてのサブスクリプション内の仮想マシンに特定の監視エージェントをインストールし、すべてのストレージアカウントで暗号化を有効にすることを要求しています。どの方法を使用すべきですか？",
+      "options": {
+        "A": "各サブスクリプションレベルで手動で設定を構成する",
+        "B": "Azure BlueprintsとAzure Policyを組み合わせて使用する",
+        "C": "Azure Advisorの推奨事項のみを使用する",
+        "D": "ARMテンプレートを使用してすべてのリソースをデプロイする"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure Blueprintsを使用すると、ロール割り当て、ポリシー割り当て、ARMテンプレート、リソースグループを含む再利用可能な環境定義を定義できます。Azure Policyと組み合わせることで、監視エージェントのインストールの強制やストレージ暗号化の有効化など、すべてのリソースが組織の標準に準拠していることを確保できます。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q3",
+      "domain": 1,
+      "question": "ある企業が特権アイデンティティ管理（PIM）ポリシーを実装する必要があり、管理者が必要な時のみ特権ロールをアクティブ化でき、すべてのアクティブ化に承認が必要です。何を構成すべきですか？",
+      "options": {
+        "A": "Azure AD条件付きアクセスポリシー",
+        "B": "Azure AD Privileged Identity Managementを構成し、承認ワークフローを設定する",
+        "C": "Azure AD Identity Protection",
+        "D": "Azure ADアクセスレビュー"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure AD Privileged Identity Management（PIM）は、ジャストインタイム（JIT）の特権アクセスを提供し、承認ワークフローの構成、アクティブ化時間の制限、すべての特権操作の監査を可能にします。これは最小権限の原則に従い、永続的な特権アクセスのリスクを軽減します。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q4",
+      "domain": 1,
+      "question": "ある組織が複数のAzureサブスクリプションと管理グループにわたるコンプライアンス状態を一元管理し、詳細なコンプライアンスレポートを生成する必要があります。どのサービスを使用すべきですか？",
+      "options": {
+        "A": "Azure Security Center（現在のMicrosoft Defender for Cloud）",
+        "B": "Azure Advisor",
+        "C": "Azure Service Health",
+        "D": "Azure Cost Management"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Microsoft Defender for Cloud（旧Azure Security Center）は、統合されたセキュリティ管理と高度な脅威保護を提供します。サブスクリプション全体でコンプライアンス状態を評価し、Azure Policyと統合し、詳細なコンプライアンスレポートとセキュリティの推奨事項を生成できます。\n---",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q5",
+      "domain": 1,
+      "question": "ある企業がAzureリソース、オンプレミスサーバー、他のクラウドプロバイダーからのログとメトリクスを収集できる監視ソリューションを実装する必要があります。どのアーキテクチャを推奨すべきですか？",
+      "options": {
+        "A": "Application Insightsのみを使用する",
+        "B": "Azure MonitorとLog Analyticsワークスペースを集中型ログストレージとして使用する",
+        "C": "リソースタイプごとに別々の監視ソリューションを作成する",
+        "D": "サードパーティの監視ツールのみを使用する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure MonitorとLog Analyticsワークスペースを組み合わせることで、統一された監視プラットフォームが提供されます。Log Analyticsは、Azureリソース（診断設定経由）、オンプレミスサーバー（エージェント経由）、他のクラウド（APIまたはエージェント経由）からのログとメトリクスを収集でき、集中型の監視と分析を実現します。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q6",
+      "domain": 2,
+      "question": "あるEコマース企業がグローバルに分散したデータベースソリューションを設計する必要があり、複数の地理的リージョンで10ミリ秒未満の読み取りレイテンシを提供し、複数の一貫性レベルをサポートする必要があります。どのサービスを推奨すべきですか？",
+      "options": {
+        "A": "Azure SQL Database",
+        "B": "Azure Cosmos DB",
+        "C": "Azure Database for PostgreSQL",
+        "D": "Azure Table Storage"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure Cosmos DBは、グローバルに分散されたマルチモデルデータベースサービスであり、1桁ミリ秒のレイテンシと99.999%の可用性を提供します。5つの一貫性レベル（強い一貫性から最終的な一貫性まで）をサポートし、アプリケーションの要件に応じて一貫性とパフォーマンスのバランスを取ることができます。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q7",
+      "domain": 2,
+      "question": "ある企業がリレーショナルデータベースワークロードをAzureに移行する必要があります。データベースは高可用性、自動バックアップ、読み取りレプリカをサポートし、管理オーバーヘッドを最小限に抑える必要があります。どのサービス層を選択すべきですか？",
+      "options": {
+        "A": "Azure SQL Database Basicティア",
+        "B": "Azure SQL Database Business Criticalサービスティア",
+        "C": "Azure VM上でSQL Serverを自己管理する",
+        "D": "Azure SQL Database Serverless"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure SQL Database Business Criticalサービスティアは、組み込みの高可用性（Always On可用性グループ）、無料の読み取りレプリカ、自動バックアップ、高速データベース復旧を提供します。PaaSサービスとして、管理オーバーヘッドを大幅に削減しながら、エンタープライズグレードの機能を提供します。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q8",
+      "domain": 2,
+      "question": "ある企業が大量の非構造化データ（ドキュメント、画像、ビデオなど）を保存する必要があり、データが複数のデータセンター間で自動的に複製されて高可用性を実現する必要があります。どのストレージ構成を使用すべきですか？",
+      "options": {
+        "A": "Azure Blob Storageをローカル冗長ストレージ（LRS）で構成する",
+        "B": "Azure Blob Storageを地理冗長ストレージ（GRS）で構成する",
+        "C": "Azure FilesをLRSで構成する",
+        "D": "Azure Queue Storage"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure Blob Storageは非構造化データを保存するための理想的な選択です。地理冗長ストレージ（GRS）として構成すると、データはプライマリリージョン内で3回複製され、数百マイル離れたペアリージョンに非同期で複製され、99.99999999999999%（16個の9）の耐久性を提供します。\n---",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q9",
+      "domain": 2,
+      "question": "ある企業がデータレイクソリューションを設計する必要があり、大規模なデータ分析、きめ細かいアクセス制御、Azure分析サービスとのシームレスな統合をサポートする必要があります。何を推奨すべきですか？",
+      "options": {
+        "A": "Azure Blob Storage",
+        "B": "Azure Data Lake Storage Gen2",
+        "C": "Azure Files",
+        "D": "Azure Table Storage"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure Data Lake Storage Gen2は、Azure Blob Storageのスケールとコスト効率とAzure Data Lake Storage Gen1の階層的ファイルシステム機能を組み合わせています。ACLとPOSIXパーミッションをサポートしてきめ細かいアクセス制御を実現し、Azure Synapse Analytics、Azure Databricksなどの分析サービスとシームレスに統合されます。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q10",
+      "domain": 2,
+      "question": "ある企業がAzure SQLデータベースのデータ暗号化ポリシーを実装する必要があり、データが静止時と転送中の両方で暗号化され、暗号化キーを自社で管理する必要があります。どのように構成すべきですか？",
+      "options": {
+        "A": "サービス管理キーによる透過的データ暗号化（TDE）のみを使用する",
+        "B": "カスタマー管理キー（CMK）とAzure Key VaultでTDEを使用し、TLS接続を強制する",
+        "C": "Always Encryptedのみを使用する",
+        "D": "パフォーマンス向上のためすべての暗号化を無効にする"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "透過的データ暗号化（TDE）にカスタマー管理キー（Azure Key Vaultに保存）を使用すると、静止時のデータ暗号化とキーの完全な制御を実現できます。TLS接続の強制と組み合わせることで、転送中のデータも暗号化されます。これにより、エンドツーエンドの暗号化保護が提供されます。\n---",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q11",
+      "domain": 2,
+      "question": "ある企業がアプリケーションのセッション状態データを保存するソリューションを設計する必要があります。高パフォーマンス、低レイテンシ、自動データ有効期限切れをサポートする必要があります。どのサービスを使用すべきですか？",
+      "options": {
+        "A": "Azure SQL Database",
+        "B": "Azure Cache for Redis",
+        "C": "Azure Cosmos DB",
+        "D": "Azure Table Storage"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure Cache for Redisは、フルマネージドのRedisサービスであり、サブミリ秒のレイテンシを提供します。セッション状態の保存に最適であり、データの自動有効期限切れ（TTL）をサポートし、組み込みの高可用性オプションを提供します。一時的で高パフォーマンスのキーバリューストレージのニーズには、Redisが最適な選択です。\n---",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q12",
+      "domain": 3,
+      "question": "ある企業が災害復旧ソリューションを設計する必要があり、リージョン障害が発生した場合に15分以内にクリティカルなビジネスアプリケーションを復旧できる必要があります。どの戦略を実装すべきですか？",
+      "options": {
+        "A": "Azureリージョン内の可用性ゾーンのみに依存する",
+        "B": "Azure Site Recoveryでクロスリージョンレプリケーションを構成し、定期的なフェイルオーバー訓練を実施する",
+        "C": "地理的に離れたストレージへの毎日のバックアップのみを使用する",
+        "D": "単一リージョン内に冗長サーバーをデプロイする"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure Site Recoveryは、継続的なレプリケーションと自動化された災害復旧オーケストレーションを提供します。クロスリージョンレプリケーションを構成することで、ほぼゼロのデータ損失（RPO）と数分以内の復旧時間（RTO）を実現できます。定期的なフェイルオーバー訓練により、復旧計画の有効性を検証し、15分以内の復旧目標を確保できます。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q13",
+      "domain": 3,
+      "question": "ある企業がAzure仮想マシンが単一のデータセンター障害時にも利用可能であることを確保する必要があります。どのAzure機能を使用すべきですか？",
+      "options": {
+        "A": "可用性セット（Availability Sets）",
+        "B": "可用性ゾーン（Availability Zones）",
+        "C": "仮想マシンスケールセット",
+        "D": "Azureロードバランサー"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "可用性ゾーンは、Azureリージョン内の独立したデータセンターであり、独立した電源、冷却、ネットワークを備えています。異なる可用性ゾーンにVMをデプロイすることで、データセンター全体の障害によるサービス中断を防ぎ、99.99%のSLAを提供します。可用性セットは単一のデータセンター内でのみ障害ドメインと更新ドメインの保護を提供します。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q14",
+      "domain": 3,
+      "question": "ある企業がバックアップ戦略を設計する必要があり、毎日のバックアップを30日間、毎週のバックアップを12週間、毎月のバックアップを12か月間保持する必要があります。どのサービスと構成を使用すべきですか？",
+      "options": {
+        "A": "カスタムバックアップポリシーでAzure Backupを構成する",
+        "B": "Azure Storageスナップショットのみを使用する",
+        "C": "サードパーティのバックアップソリューション",
+        "D": "別のストレージアカウントへの手動コピー"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Azure Backupは、カスタムバックアップポリシーをサポートし、複数の保持ルール（毎日、毎週、毎月、毎年）を構成できます。アプリケーション整合性のあるバックアップ、増分バックアップ、クロスリージョン復元、論理削除保護を提供します。これは、エンタープライズグレードのバックアップと保持ポリシーを実現するための最適な選択です。\n---",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q15",
+      "domain": 3,
+      "question": "ある企業が99.99%のSLAを必要とするクリティカルなアプリケーションを運用しています。アプリケーションは複数のリージョン間で自動フェイルオーバーを実現する必要があります。どのアーキテクチャを設計すべきですか？",
+      "options": {
+        "A": "可用性ゾーンを使用した単一リージョンデプロイメント",
+        "B": "Azure Traffic ManagerまたはAzure Front Doorを使用したマルチリージョンアクティブ-アクティブデプロイメント",
+        "C": "Azure Site Recoveryを使用した単一リージョンデプロイメント",
+        "D": "読み取りレプリカを使用した単一リージョンデプロイメント"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "99.99%のSLAを達成し、自動リージョンフェイルオーバーをサポートするには、マルチリージョンアクティブ-アクティブデプロイメントが必要です。Azure Traffic ManagerまたはAzure Front Doorは、リージョン間でトラフィック分散とヘルスチェックを実行でき、1つのリージョンが利用できなくなった場合に自動的にトラフィックを他のリージョンにルーティングします。このアーキテクチャは最高レベルの可用性を提供します。\n---",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q16",
+      "domain": 4,
+      "question": "ある企業がネットワークアーキテクチャを設計する必要があり、本番環境と開発環境を分離しながら、必要に応じて2つの環境間の安全な通信を許可する必要があります。どのソリューションを推奨すべきですか？",
+      "options": {
+        "A": "すべてのリソースを同じ仮想ネットワークの異なるサブネットに配置する",
+        "B": "独立した仮想ネットワークを使用し、VNetピアリングとネットワークセキュリティグループを構成する",
+        "C": "同じ仮想ネットワークで異なるリソースグループを使用する",
+        "D": "ネットワークセグメンテーションなしでAzure Firewallを使用する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "独立した仮想ネットワークを使用することで、完全なネットワーク分離を実現できます。VNetピアリングにより、必要に応じて安全な通信が可能になり、ネットワークセキュリティグループ（NSG）により許可されるトラフィックをきめ細かく制御できます。この方法は最小権限の原則に従いながら、必要な接続性を維持します。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q17",
+      "domain": 4,
+      "question": "ある企業がオンプレミスデータセンターとAzure間の専用、低レイテンシ、高帯域幅接続を必要としており、トラフィックが公共インターネットを経由しないようにする必要があります。どのサービスを使用すべきですか？",
+      "options": {
+        "A": "Azure VPNゲートウェイ（サイト間VPN）",
+        "B": "Azure ExpressRoute",
+        "C": "Azure Virtual WAN",
+        "D": "Azure Application Gateway"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure ExpressRouteは、接続プロバイダーを介したAzureへの専用プライベート接続を提供します。公共インターネットを経由せず、より低いレイテンシ、より高い帯域幅（最大100 Gbps）、より信頼性の高い接続を提供します。専用接続を必要とするエンタープライズグレードのワークロードには、ExpressRouteが最適な選択です。\n---",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q18",
+      "domain": 4,
+      "question": "ある企業がWebアプリケーションの負荷分散ソリューションを設計する必要があります。SSLオフロード、URLパスベースのルーティング、Webアプリケーションファイアウォール（WAF）をサポートする必要があります。どのサービスを使用すべきですか？",
+      "options": {
+        "A": "Azure Load Balancer",
+        "B": "Azure Application Gateway",
+        "C": "Azure Traffic Manager",
+        "D": "Azure Front Door"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure Application Gatewayは、アプリケーション層（レイヤー7）のロードバランサーであり、SSLオフロード、URLパスベースのルーティング、セッションアフィニティ、統合Webアプリケーションファイアウォール（WAF）を提供します。HTTP/HTTPSワークロード向けに設計されており、Webアプリケーショントラフィックの保護と分散に最適な選択です。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q19",
+      "domain": 4,
+      "question": "ある企業がコンテナ化されたマイクロサービスアーキテクチャを設計しています。自動スケーリング、サービスディスカバリ、ローリングアップデート、Azure DevOpsとの統合をサポートする必要があります。どのプラットフォームを推奨すべきですか？",
+      "options": {
+        "A": "Azure Container Instances",
+        "B": "Azure Kubernetes Service（AKS）",
+        "C": "Azure App Service",
+        "D": "Azure Functions"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure Kubernetes Service（AKS）は、フルマネージドのKubernetesサービスであり、自動スケーリング（HPAとクラスターオートスケーラー）、組み込みサービスディスカバリ、ローリングアップデート、Azure DevOpsとのシームレスな統合を提供します。複雑なマイクロサービスアーキテクチャには、AKSがエンタープライズグレードのオーケストレーション機能を提供します。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q20",
+      "domain": 4,
+      "question": "ある企業がサーバーレスAPIバックエンドをデプロイする必要があり、実際の実行時間に基づく課金、ゼロへの自動スケーリング、Azure API Managementとの統合が必要です。どのサービスを使用すべきですか？",
+      "options": {
+        "A": "Azure App Service",
+        "B": "Azure Functions（従量課金プラン）",
+        "C": "Azure Container Instances",
+        "D": "Azure Spring Apps"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure Functions従量課金プランは、真のサーバーレス体験を提供します：コードが実行されている時のみ課金、ゼロへの自動スケーリング（トラフィックがない場合は費用なし）、Azure API Managementとのシームレスな統合によるAPI公開と管理。イベント駆動型のAPIバックエンドには、これが最もコスト効率の良い選択です。\n---",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q21",
+      "domain": 1,
+      "question": "ある企業が条件付きアクセスポリシーを実装する必要があり、ユーザーが信頼されていない場所またはデバイスからアクセスする場合に多要素認証を要求する必要があります。何を構成すべきですか？",
+      "options": {
+        "A": "Azure ADセキュリティの既定値",
+        "B": "Azure AD条件付きアクセスポリシーと名前付きの場所およびデバイスコンプライアンスチェックを構成する",
+        "C": "Azure AD Identity Protection",
+        "D": "Azure ADパスワード保護"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure AD条件付きアクセスポリシーを使用すると、ユーザー、場所、デバイスの状態、アプリケーションなどのシグナルに基づいてアクセスルールを作成できます。名前付きの場所（信頼されたネットワークを定義）とデバイスコンプライアンスチェックを構成することで、信頼されていない条件が検出された場合にMFAを強制できます。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q22",
+      "domain": 1,
+      "question": "ある企業がAzure ADで不審なサインインアクティビティとアイデンティティリスクを自動的に検出して対応する必要があります。どのサービスを使用すべきですか？",
+      "options": {
+        "A": "Azure AD Privileged Identity Management",
+        "B": "Azure AD Identity Protection",
+        "C": "Azure ADアクセスレビュー",
+        "D": "Azure AD条件付きアクセス"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure AD Identity Protectionは、機械学習を使用して、漏洩した資格情報や匿名IPアドレスからのサインインなどの不審なアクティビティを自動的に検出します。ユーザーとサインインのリスクレベルを計算し、パスワード変更の強制やアクセスのブロックなどの修復アクションを自動的にトリガーできます。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q23",
+      "domain": 2,
+      "question": "ある企業がオンプレミスストレージからAzureに大量の履歴データを移行する必要があり、総データ量は約100TBです。ネットワーク帯域幅が限られており、合理的な時間内にオンライン転送を完了できません。どのソリューションを推奨すべきですか？",
+      "options": {
+        "A": "AzCopyを使用してインターネット経由で転送する",
+        "B": "Azure Data Boxを使用してオフラインデータ転送を行う",
+        "C": "Azure ExpressRouteを使用する",
+        "D": "Azure Storage Explorerを使用する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure Data Boxは、ネットワーク帯域幅が限られている場合に大量のデータをAzureに転送するための物理デバイスソリューションです。100TBのデータの場合、Data Boxは転送時間を大幅に短縮し、コストを削減できます。デバイスはオンプレミスでデータをロードした後、Azureデータセンターに送られてインポートされます。\n---",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q24",
+      "domain": 2,
+      "question": "ある企業がAzure SQL DatabaseとAzure Synapse Analytics間でほぼリアルタイムのデータ同期を実現し、リアルタイム分析レポートをサポートする必要があります。どの方法を使用すべきですか？",
+      "options": {
+        "A": "AzCopyを使用して定期的にデータをコピーする",
+        "B": "Azure Synapse Link for Azure SQLを使用する",
+        "C": "毎日完全なデータベースバックアップと復元を実行する",
+        "D": "手動のETLスクリプトを使用する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure Synapse Link for Azure SQLは、複雑なETLパイプラインを構成することなく、ほぼリアルタイムの変更データレプリケーションを提供します。SQLデータベースの変更を自動的にキャプチャし、Synapse Analyticsの専用SQLプールに同期することで、運用データベースのパフォーマンスに影響を与えずにリアルタイム分析をサポートします。\n---",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q25",
+      "domain": 2,
+      "question": "ある企業が機密性の高い顧客データを保存する必要があり、データがストレージ、転送、処理中に暗号化されたままで、クラウド管理者でさえプレーンテキストデータにアクセスできないようにする必要があります。どの技術を実装すべきですか？",
+      "options": {
+        "A": "透過的データ暗号化（TDE）のみを使用する",
+        "B": "セキュアエンクレーブを使用したAzure SQL Always Encryptedを使用する",
+        "C": "ストレージサービス暗号化のみを使用する",
+        "D": "クライアントサイド暗号化ライブラリを使用する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Always Encryptedとセキュアエンクレーブ（Secure Enclaves）を組み合わせることで、エンドツーエンドの暗号化保護が提供されます。データはクライアント側で暗号化され、転送中およびストレージ中も暗号化されたままであり、キーを持つクライアントアプリケーションのみがデータを復号化できます。セキュアエンクレーブにより、暗号化されたデータに対して限定的な計算操作が可能です。\n---",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q26",
+      "domain": 3,
+      "question": "ある企業がAzure Cosmos DBデータベースの災害復旧を構成する必要があります。リージョン障害時に自動フェイルオーバーができ、データ損失を最小限に抑える必要があります。どのように構成すべきですか？",
+      "options": {
+        "A": "単一リージョンデプロイメントとバックアップを構成する",
+        "B": "マルチリージョン書き込みを構成し、自動フェイルオーバーを有効にする",
+        "C": "Azure Site Recoveryを使用する",
+        "D": "手動でデータレプリケーションを実行する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure Cosmos DBのマルチリージョン書き込みにより、複数のリージョンで同時に書き込み操作を実行でき、書き込みレイテンシを排除できます。自動フェイルオーバーを有効にすると、プライマリリージョンが利用できなくなった場合、Cosmos DBは自動的にトラフィックを他のリージョンにルーティングします。これにより、最高レベルの可用性と最小限のデータ損失が実現されます。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q27",
+      "domain": 3,
+      "question": "ある企業がクリティカルなアプリケーションのRTO（復旧時間目標）を4時間、RPO（復旧ポイント目標）を1時間にする必要があります。どのバックアップと復旧戦略を選択すべきですか？",
+      "options": {
+        "A": "毎日の完全バックアップ",
+        "B": "毎時の増分バックアップを使用したAzure BackupとAzure Site Recoveryのホットスタンバイ",
+        "C": "ストレージスナップショットのみを使用する",
+        "D": "毎週の完全バックアップと毎日の差分バックアップ"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "1時間のRPOを達成するには、毎時のバックアップが必要です。Azure Backupは頻繁な増分バックアップをサポートしています。4時間のRTOを達成するには、Azure Site Recoveryでホットスタンバイレプリカを維持し、迅速なフェイルオーバーを可能にする必要があります。この組み合わせにより、厳格な復旧目標を満たすために必要な保護レベルが提供されます。\n---",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q28",
+      "domain": 4,
+      "question": "ある企業がグローバルに分散されたWebアプリケーションアーキテクチャを設計する必要があり、ユーザーが最も近いエッジロケーションからコンテンツを取得でき、アプリケーションをDDoS攻撃から保護する必要があります。どのサービスの組み合わせを使用すべきですか？",
+      "options": {
+        "A": "Azure Load BalancerとAzure DDoS Protection",
+        "B": "Azure Front DoorとAzure WAFおよびAzure DDoS Protection Standard",
+        "C": "Azure Traffic ManagerとAzure Firewall",
+        "D": "Azure Application GatewayとNSG"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure Front Doorは、CDN、負荷分散、アプリケーションアクセラレーションを提供するグローバル分散エッジサービスです。Azure WAFを統合することで、Webアプリケーションを攻撃から保護できます。Azure DDoS Protection Standardは、高度なDDoS緩和を提供します。この組み合わせにより、包括的なパフォーマンスとセキュリティ保護が提供されます。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q29",
+      "domain": 4,
+      "question": "ある企業がハブスポーク型（Hub-Spoke）ネットワークアーキテクチャを設計する必要があり、複数のスポーク仮想ネットワークがハブ仮想ネットワークを介して共有サービスとオンプレミスネットワークにアクセスする必要があります。どの構成を使用すべきですか？",
+      "options": {
+        "A": "各スポークVNetがオンプレミスと直接VPN接続を確立する",
+        "B": "Azure Virtual WANを使用するか、VNetピアリングを構成し、Hub VNetにAzure FirewallとVPN Gatewayをデプロイする",
+        "C": "すべてのリソースを単一の大きなVNetに配置する",
+        "D": "Azure Private Linkを使用してすべてのVNetを接続する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "ハブスポーク型アーキテクチャは、VNetピアリングを使用してスポークVNetをハブVNetに接続します。ハブVNetには、Azure Firewall（セキュリティ用）やVPN Gateway/ExpressRoute（オンプレミス接続用）などの共有サービスが含まれます。Azure Virtual WANは、大規模なデプロイメントの管理を簡素化できます。\n---",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q30",
+      "domain": 4,
+      "question": "ある企業がAPI管理ソリューションをデプロイする必要があり、API呼び出しのレート制限、リクエスト/レスポンス形式の変換、開発者ポータルの提供が必要です。どのサービスを使用すべきですか？",
+      "options": {
+        "A": "Azure Functions",
+        "B": "Azure API Management",
+        "C": "Azure Application Gateway",
+        "D": "Azure Logic Apps"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure API Managementは、完全なAPI管理プラットフォームであり、ポリシーエンジン（レート制限、クォータ、変換などに使用）、開発者ポータル（APIドキュメントとサブスクリプション用）、分析ダッシュボード、セキュリティ機能を提供します。これは、APIの構築、公開、管理のためのワンストップソリューションです。\n---",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q31",
+      "domain": 1,
+      "question": "ある企業がログ集約戦略を実装する必要があり、Azureアクティビティログ、リソース診断ログ、カスタムアプリケーションログを単一の場所に送信して分析と長期保持を行う必要があります。どのアーキテクチャを設計すべきですか？",
+      "options": {
+        "A": "すべてのログを直接Azure Blob Storageに送信する",
+        "B": "診断設定を構成してログをLog Analyticsワークスペースに送信し、Storage Accountへの長期アーカイブを構成する",
+        "C": "Application Insightsのみを使用する",
+        "D": "Event Hubsを使用してログを直接保存する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Log Analyticsワークスペースは、Azure Monitorログの中央リポジトリであり、強力なKQLクエリと分析をサポートしています。診断設定を使用すると、さまざまなログソースを同じワークスペースに送信できます。長期保持には、Storage Accountへのデータエクスポートを構成することで、コスト効率の高いアーカイブを実現できます。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q32",
+      "domain": 2,
+      "question": "ある企業がAzure SQLデータベースのバックアップをホストするストレージソリューションを設計する必要があり、コンプライアンス要件を満たすためにバックアップを7年間保持し、ストレージコストを最適化する必要があります。どのストレージ層を使用すべきですか？",
+      "options": {
+        "A": "Azure Blob Storageホットティア",
+        "B": "Azure Blob Storageアーカイブティアとライフサイクル管理ポリシー",
+        "C": "Azure Blob Storageクールティア",
+        "D": "Azure Premium Files"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "長期保持（7年）には、Azure Blob Storageアーカイブティアが最もコスト効率の高いストレージを提供します。ライフサイクル管理ポリシーを使用すると、古いバックアップをホットティアからクールティアへ、最終的にアーカイブティアへ自動的に移動できます。これにより、コンプライアンスに必要なデータ保持を維持しながらコストを最適化できます。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q33",
+      "domain": 4,
+      "question": "ある企業がセキュアなアプリケーションアーキテクチャを設計する必要があり、Azure App ServiceがAzure SQL Databaseに安全にアクセスでき、アプリケーションコードに接続文字列やパスワードを保存しないようにする必要があります。どの方法を使用すべきですか？",
+      "options": {
+        "A": "アプリケーション設定に接続文字列を保存する",
+        "B": "マネージドIDとAzure Key Vault参照を使用する",
+        "C": "コードに資格情報をハードコードする",
+        "D": "環境変数を使用してパスワードを保存する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "マネージドIDにより、AzureリソースはAzure ADで資格情報を管理することなくIDを持つことができます。App ServiceはそのマネージドIDを使用してKey Vaultからシークレットを取得するか、SQL Databaseに直接認証（Azure AD認証を使用）できます。これにより、コードに資格情報を保存する必要がなくなります。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q34",
+      "domain": 4,
+      "question": "ある企業がハイブリッドクラウドアーキテクチャを設計する必要があり、オンプレミスアプリケーションがAzureのPaaSサービス（Azure SQL DatabaseやAzure Storageなど）に公共インターネットを経由せずに安全にアクセスできる必要があります。どのサービスを使用すべきですか？",
+      "options": {
+        "A": "Azure VPNゲートウェイとサービスエンドポイント",
+        "B": "Azure ExpressRouteとプライベートエンドポイント（Private Endpoints）",
+        "C": "公共IPとファイアウォールルールのみを使用する",
+        "D": "Azure Virtual WAN"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure ExpressRouteは、Azureへの専用プライベート接続を提供します。プライベートエンドポイントはAzure PaaSサービスを仮想ネットワークに持ち込み、プライベートIPアドレスを割り当てます。これらを組み合わせて使用すると、オンプレミスアプリケーションはExpressRoute経由でAzure VNetに接続し、プライベートエンドポイント経由でPaaSサービスにアクセスでき、公共インターネットを完全に回避できます。\n---",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q35",
+      "domain": 1,
+      "question": "ある企業が、デバイスコンプライアンスチェックに合格した会社のデバイスのみがAzureリソースにアクセスできるようにする必要があります。どのソリューションを実装すべきですか？",
+      "options": {
+        "A": "MFAのみを使用する",
+        "B": "Azure AD条件付きアクセスポリシーとMicrosoft Intuneデバイスコンプライアンス",
+        "C": "Azure ADパスワードポリシー",
+        "D": "ネットワークセキュリティグループルール"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Microsoft Intuneは、デバイスのコンプライアンス（暗号化状態、OSバージョン、ウイルス対策状態など）を評価できます。Azure AD条件付きアクセスは、デバイスのコンプライアンス状態をアクセス条件として使用し、コンプライアンスを満たすデバイスのみがリソースにアクセスできるようにします。これにより、デバイスレベルのゼロトラストセキュリティ制御が提供されます。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q36",
+      "domain": 2,
+      "question": "ある企業がAzure Cosmos DBのパフォーマンスを最適化するためのデータパーティショニング戦略を設計する必要があります。データベースはユーザー注文を保存し、各ユーザーには複数の注文があり、クエリは主にユーザーIDで実行されます。どのパーティションキーを選択すべきですか？",
+      "options": {
+        "A": "注文ID",
+        "B": "ユーザーID",
+        "C": "注文日",
+        "D": "製品カテゴリ"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "パーティションキーは、最も頻繁に使用されるクエリパターンに基づいて選択する必要があります。クエリが主にユーザーIDで実行されるため、ユーザーIDをパーティションキーとして使用すると、同じユーザーのすべての注文が同じ論理パーティションに配置され、効率的な単一パーティションクエリが可能になります。また、ユーザー数が通常多いため、良好なデータ分散も実現できます。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q37",
+      "domain": 3,
+      "question": "ある企業がAzure Kubernetes Serviceクラスターがノード障害時に自動的に復旧し、アプリケーションの可用性を維持できることを確保する必要があります。何を構成すべきですか？",
+      "options": {
+        "A": "手動監視を使用した単一ノードプール",
+        "B": "可用性ゾーンにまたがる複数のノードプールとPod中断予算（PDB）およびレプリカセット",
+        "C": "Azure Monitorアラートのみを使用する",
+        "D": "定期的な手動ノードスナップショット作成"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "可用性ゾーンにまたがってノードプールをデプロイすることで、単一のデータセンター障害を防ぐことができます。レプリカセットにより、アプリケーションに複数のPodレプリカがあることが保証されます。Pod中断予算（PDB）は、ノードメンテナンス中に同時に利用できないPodの数を制限します。この組み合わせにより、強力な自己修復機能と高可用性が提供されます。\n---",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q38",
+      "domain": 4,
+      "question": "ある企業がメッセージングアーキテクチャを設計する必要があり、大規模なイベントストリーミング、リアルタイム処理、長期イベント保存をサポートする必要があります。どのサービスを使用すべきですか？",
+      "options": {
+        "A": "Azure Service Busキュー",
+        "B": "Azure Event HubsとCapture機能",
+        "C": "Azure Queue Storage",
+        "D": "Azure Notification Hubs"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure Event Hubsは、大規模なイベントストリーミング用に設計されており、毎秒数百万のイベントを受信できます。Capture機能により、イベントストリームをBlob StorageまたはData Lake Storageに自動的に保存し、長期保持とバッチ処理分析を実現できます。Azure Stream Analyticsなどのリアルタイム処理サービスとシームレスに統合されます。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q39",
+      "domain": 1,
+      "question": "ある企業がAzureリソースへのユーザーアクセス権限を定期的にレビューし、アクセスが必要なユーザーのみが権限を保持していることを確認する必要があります。どの機能を使用すべきですか？",
+      "options": {
+        "A": "Azure AD条件付きアクセス",
+        "B": "Azure ADアクセスレビュー（Access Reviews）",
+        "C": "Azure Policy",
+        "D": "Azure AD Privileged Identity Management"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure ADアクセスレビューを使用すると、リソース、グループメンバーシップ、ロール割り当てへのユーザーアクセスを定期的にレビューできます。自動レビュースケジュールを構成し、リソースオーナーまたはユーザー自身にアクセスがまだ必要かどうかを確認するように要求できます。応答がないか拒否されたレビューは、アクセス権を自動的に削除できます。\n---",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q40",
+      "domain": 4,
+      "question": "ある企業がスケーラブルなWebアプリケーションアーキテクチャを設計する必要があり、CPU使用率に基づいてインスタンス数を自動的にスケーリングし、コスト効率を維持する必要があります。どのAzure機能を使用すべきですか？",
+      "options": {
+        "A": "App Serviceプランを手動でスケーリングする",
+        "B": "CPUメトリクスに基づくAzure App Service自動スケールルール",
+        "C": "固定インスタンス数",
+        "D": "より大きなVMサイズのみを使用する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure App Service自動スケールを使用すると、メトリクス（CPU、メモリ、カスタムメトリクスなど）に基づいてスケールルールを定義できます。CPUがしきい値を超えると自動的にインスタンスを増やし、CPUが下がるとインスタンスを減らします。これにより、レスポンシブなスケーリング機能が提供され、低負荷時にインスタンスを減らすことでコストを最適化できます。\n---",
+      "difficulty": "easy"
+    }
+  ]
+}

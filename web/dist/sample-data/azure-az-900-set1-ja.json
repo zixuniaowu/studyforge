@@ -1,0 +1,788 @@
+{
+  "exam": {
+    "id": "azure-az-900-set1-ja",
+    "name": "Azure AZ-900 基礎模擬試験 #1",
+    "code": "AZ-900",
+    "provider": "Azure",
+    "language": "ja",
+    "description": "Microsoft Azure Fundamentals 認定試験模擬問題 - 第1セット",
+    "totalQuestions": 50,
+    "passingScore": 70,
+    "examTime": 85,
+    "domains": [
+      {
+        "id": 1,
+        "name": "Cloud Concepts",
+        "weight": 25
+      },
+      {
+        "id": 2,
+        "name": "Azure Architecture and Services",
+        "weight": 40
+      },
+      {
+        "id": 3,
+        "name": "Azure Management and Governance",
+        "weight": 35
+      }
+    ],
+    "tags": [
+      "Azure",
+      "Cloud",
+      "Microsoft",
+      "認定試験"
+    ]
+  },
+  "questions": [
+    {
+      "id": "q1",
+      "domain": 1,
+      "question": "クラウドコンピューティングのどのサービスモデルでは、顧客がオペレーティングシステム、ミドルウェア、アプリケーションを管理し、クラウドプロバイダーが基盤となるインフラストラクチャを管理しますか？",
+      "options": {
+        "A": "Software as a Service (SaaS)",
+        "B": "Platform as a Service (PaaS)",
+        "C": "Infrastructure as a Service (IaaS)",
+        "D": "Desktop as a Service (DaaS)"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "IaaS（Infrastructure as a Service）：\n- 顧客が管理：オペレーティングシステム、ミドルウェア、ランタイム、データ、アプリケーション\n- プロバイダーが管理：サーバー、ストレージ、ネットワーク、仮想化\n\nPaaS：プロバイダーがOSとミドルウェアも管理\nSaaS：プロバイダーがすべてを管理、顧客はソフトウェアを利用するのみ",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q2",
+      "domain": 1,
+      "question": "パブリッククラウドの主な特徴はどれですか？",
+      "options": {
+        "A": "単一の組織専用のリソース",
+        "B": "組織が自社のオンプレミスデータセンターで運用",
+        "C": "複数の組織が共有するクラウドインフラストラクチャ",
+        "D": "インターネット経由でアクセスできない"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "パブリッククラウドの特徴：\n- マルチテナントで共有されるインフラストラクチャ\n- インターネット経由で公開利用可能\n- 従量課金制\n- クラウドプロバイダーが管理\n\nプライベートクラウドは単一の組織専用です。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q3",
+      "domain": 1,
+      "question": "ある企業が、オンプレミスのインフラストラクチャを維持しながら、一部のワークロードをAzureに移行したいと考えています。このクラウドデプロイメントモデルは何と呼ばれますか？",
+      "options": {
+        "A": "パブリッククラウド",
+        "B": "プライベートクラウド",
+        "C": "ハイブリッドクラウド",
+        "D": "コミュニティクラウド"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "ハイブリッドクラウドは以下を組み合わせます：\n- オンプレミス（プライベート）インフラストラクチャ\n- パブリッククラウドリソース\n- 両者間でデータとアプリケーションを共有可能\n- 柔軟性とより多くのデプロイメントオプションを提供",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q4",
+      "domain": 1,
+      "question": "クラウドコンピューティングの資本的支出（CapEx）と運用支出（OpEx）について正しい説明はどれですか？",
+      "options": {
+        "A": "クラウドコンピューティングには多額のCapEx投資が必要",
+        "B": "クラウドコンピューティングはCapExをOpExに変換する",
+        "C": "クラウドコンピューティングはすべての支出を排除する",
+        "D": "クラウドではCapExとOpExは同じ"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "クラウドコンピューティングの経済モデル：\n- CapEx：事前の資本投資（サーバー、データセンターの購入）\n- OpEx：運用費用（従量課金）\n- クラウドコンピューティング：大規模な事前投資不要、必要に応じて支払い\n- 固定費を変動費に変換",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q5",
+      "domain": 1,
+      "question": "Azureが提供する「オンデマンドセルフサービス」は、クラウドコンピューティングのどの特性ですか？",
+      "options": {
+        "A": "高可用性",
+        "B": "弾力性",
+        "C": "俊敏性",
+        "D": "災害復旧"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "俊敏性（Agility）：\n- リソースの迅速なデプロイと構成\n- オンデマンドセルフサービス\n- ハードウェア調達を待つ必要がない\n- ビジネスニーズの変化に迅速に対応\n\n弾力性は自動スケーリング能力、高可用性は運用継続性です。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q6",
+      "domain": 1,
+      "question": "アプリケーションの需要が増加するとAzureが自動的にリソースを追加し、需要が減少すると自動的にリソースを削減する能力は何と呼ばれますか？",
+      "options": {
+        "A": "高可用性",
+        "B": "弾力性（Elasticity）",
+        "C": "フォールトトレランス",
+        "D": "災害復旧"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "弾力性（Elasticity）：\n- 需要に応じて自動的にスケールアップ・ダウン\n- 水平スケーリング：インスタンス数の増減\n- 垂直スケーリング：単一リソースのサイズ増減\n- コストを最適化し、使用した分だけ支払い",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q7",
+      "domain": 1,
+      "question": "Azureが99.99%のSLAを約束するとはどういう意味ですか？",
+      "options": {
+        "A": "サービスは決して中断しない",
+        "B": "年間最大約52分のダウンタイム",
+        "C": "月間最大約4分のダウンタイム",
+        "D": "1日最大約1時間のダウンタイム"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "99.99% SLAの計算：\n- 年間許容ダウンタイム = 365日 × 24時間 × 60分 × 0.01% ≈ 52.56分\n- これは「フォーナイン」の可用性\n- 99.9% = 年間約8.76時間のダウンタイム",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q8",
+      "domain": 1,
+      "question": "SaaSモデルの使用に最も適したシナリオはどれですか？",
+      "options": {
+        "A": "カスタム仮想マシン環境の構築",
+        "B": "Microsoft 365を使用した日常業務",
+        "C": "カスタムWebアプリケーションの開発",
+        "D": "エンタープライズデータセンターの管理"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "SaaSの適用シナリオ：\n- 既製のソフトウェアを直接使用（M365、Salesforceなど）\n- 基盤となるインフラストラクチャを管理する必要なし\n- サブスクリプションで支払い利用\n\nVM構築はIaaS、アプリ開発はPaaSを使用。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q9",
+      "domain": 1,
+      "question": "Azureが世界中に分散している物理データセンターの場所は何と呼ばれますか？",
+      "options": {
+        "A": "可用性ゾーン（Availability Zones）",
+        "B": "リージョン（Regions）",
+        "C": "リソースグループ（Resource Groups）",
+        "D": "サブスクリプション（Subscriptions）"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azureのリージョン階層：\n- Region（リージョン）：地理的な場所（East US、Japan Eastなど）\n- Availability Zone：リージョン内の独立したデータセンター\n- データセンター：物理施設\n\nリージョンはデータの保存場所とレイテンシを決定します。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q10",
+      "domain": 1,
+      "question": "従量課金モデル（Consumption-based Model）の主な利点は何ですか？",
+      "options": {
+        "A": "多額の初期投資が必要",
+        "B": "使用量に関係なく固定月額料金",
+        "C": "実際に使用したリソースに対してのみ支払い",
+        "D": "一度購入すれば永久に使用可能"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "従量課金モデルの利点：\n- 使用量に応じた支払い\n- 初期コストなし\n- 使用しなければ支払いなし\n- 弾力的なスケーリングコスト\n- CapExをOpExに変換",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q11",
+      "domain": 1,
+      "question": "共有責任モデルにおいて、Azure仮想マシンの場合、顧客は何に責任を負いますか？",
+      "options": {
+        "A": "物理ホストのセキュリティ",
+        "B": "オペレーティングシステムのパッチと更新",
+        "C": "データセンターネットワーク",
+        "D": "仮想化レイヤーの管理"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "IaaSの共有責任：\n- Azureの責任：物理セキュリティ、ネットワークインフラ、仮想化レイヤー\n- 顧客の責任：OSパッチ、アプリケーション、データ、アクセス制御\n\n責任はサービスモデルにより変化（IaaS > PaaS > SaaSで顧客責任が減少）",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q12",
+      "domain": 1,
+      "question": "「スケーラビリティ（Scalability）」とは何ですか？",
+      "options": {
+        "A": "障害時にシステムが動作し続ける能力",
+        "B": "システムがより多くの負荷を処理するために容量を増やす能力",
+        "C": "システムが障害から回復する能力",
+        "D": "システムがデータを暗号化する能力"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "スケーラビリティの種類：\n- 垂直スケーリング（Scale Up）：単一リソースの能力を増加（より大きなVM）\n- 水平スケーリング（Scale Out）：より多くのインスタンスを追加\n\n弾力性は自動スケーリング、スケーラビリティはスケーリングできる能力です。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q13",
+      "domain": 2,
+      "question": "仮想マシンを作成するためのAzureサービスはどれですか？",
+      "options": {
+        "A": "Azure App Service",
+        "B": "Azure Virtual Machines",
+        "C": "Azure Functions",
+        "D": "Azure Container Instances"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azureコンピューティングサービスの比較：\n- Virtual Machines：IaaS、完全に制御可能なVM\n- App Service：PaaS、マネージドWebアプリ\n- Functions：サーバーレス、イベント駆動\n- Container Instances：コンテナの実行",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q14",
+      "domain": 2,
+      "question": "Azure仮想マシンスケールセット（Virtual Machine Scale Sets）の主な用途は何ですか？",
+      "options": {
+        "A": "仮想マシンのバックアップ",
+        "B": "同一のVMグループを自動的に作成・管理",
+        "C": "仮想マシンディスクの暗号化",
+        "D": "仮想マシンをオンプレミスネットワークに接続"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "VMスケールセットの機能：\n- 同一のVMグループを作成・管理\n- 需要に応じて自動スケーリング\n- ロードバランシングサポート\n- 高可用性構成\n- 大規模ワークロードに適合",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q15",
+      "domain": 2,
+      "question": "Azure App Serviceはどのクラウドサービスモデルに属しますか？",
+      "options": {
+        "A": "IaaS",
+        "B": "PaaS",
+        "C": "SaaS",
+        "D": "FaaS"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure App ServiceはPaaSです：\n- Webアプリ、API、モバイルバックエンドのホスティング\n- Azureがインフラストラクチャを管理\n- 自動スケーリングとロードバランシング\n- 複数の言語をサポート（.NET、Java、Node.jsなど）",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q16",
+      "domain": 2,
+      "question": "Azure Functionsが最も適しているシナリオはどれですか？",
+      "options": {
+        "A": "24時間365日オンラインが必要な大規模アプリケーションの実行",
+        "B": "イベント駆動の短期タスク処理",
+        "C": "リレーショナルデータベースのホスティング",
+        "D": "Windowsデスクトップアプリケーションの実行"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure Functions（サーバーレス）：\n- イベント駆動型実行\n- 実行回数と時間に応じた課金\n- 短期タスク（タイムアウト制限あり）\n- ゼロへの自動スケーリング\n- 適用例：API、データ処理、自動化タスク",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q17",
+      "domain": 2,
+      "question": "Azure Blob Storageはどのタイプのデータを保存するのに最も適していますか？",
+      "options": {
+        "A": "リレーショナルデータテーブル",
+        "B": "画像、動画、ログなどの非構造化データ",
+        "C": "リアルタイムストリーミングデータ",
+        "D": "メッセージキュー"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Blob Storageの用途：\n- 非構造化データ（画像、動画、ドキュメント、バックアップ）\n- 3種類のBlob：Block、Append、Page\n- アクセス層：Hot、Cool、Archive\n- 大規模にスケーラブルなオブジェクトストレージ",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q18",
+      "domain": 2,
+      "question": "Azureストレージアカウントで、頻繁にアクセスされるデータに適したアクセス層はどれですか？",
+      "options": {
+        "A": "Archive（アーカイブ層）",
+        "B": "Cool（クール層）",
+        "C": "Hot（ホット層）",
+        "D": "Cold（コールド層）"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "Azureストレージアクセス層：\n- Hot：頻繁なアクセス、ストレージコスト高、アクセスコスト低\n- Cool：アクセス頻度低（30日以上）、ストレージコスト低、アクセスコスト高\n- Archive：極めてアクセス頻度低、最低ストレージコスト、最高アクセスコストとレイテンシ",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q19",
+      "domain": 2,
+      "question": "Azure SQL Databaseはどのサービスモデルに属しますか？",
+      "options": {
+        "A": "IaaS",
+        "B": "PaaS",
+        "C": "SaaS",
+        "D": "オンプレミス"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure SQL DatabaseはPaaSです：\n- フルマネージドのリレーショナルデータベース\n- 自動パッチ、バックアップ、高可用性\n- 基盤インフラストラクチャの管理不要\n- 組み込みのインテリジェントパフォーマンスチューニング",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q20",
+      "domain": 2,
+      "question": "次のうち、NoSQLデータベースであるAzureサービスはどれですか？",
+      "options": {
+        "A": "Azure SQL Database",
+        "B": "Azure Cosmos DB",
+        "C": "Azure Database for MySQL",
+        "D": "Azure Database for PostgreSQL"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure Cosmos DB：\n- グローバル分散型マルチモデルNoSQLデータベース\n- 複数のAPI対応（SQL、MongoDB、Cassandraなど）\n- ミリ秒レベルのレイテンシ\n- 99.999%の可用性SLA\n- 弾力的なスケーリング",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q21",
+      "domain": 2,
+      "question": "Azure仮想ネットワーク（VNet）の主な用途は何ですか？",
+      "options": {
+        "A": "バックアップデータの保存",
+        "B": "Azure内に分離されたプライベートネットワークを作成",
+        "C": "ユーザーIDの管理",
+        "D": "アプリケーションパフォーマンスの監視"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure VNetの機能：\n- 分離されたプライベートネットワークの作成\n- IPアドレス範囲とサブネットの定義\n- Azureリソースの接続\n- VPN/ExpressRouteでオンプレミスに接続\n- ネットワークセキュリティグループでトラフィック制御",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q22",
+      "domain": 2,
+      "question": "オンプレミスネットワークをAzureに安全に接続するためのサービスはどれですか？",
+      "options": {
+        "A": "Azure Load Balancer",
+        "B": "Azure VPN Gateway",
+        "C": "Azure CDN",
+        "D": "Azure Traffic Manager"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure VPN Gateway：\n- サイト間VPN接続\n- ポイント対サイトVPN接続\n- 暗号化されたインターネット接続\n- ハイブリッドクラウドシナリオに必須\n\nExpressRouteは専用線接続（インターネット経由ではない）を提供",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q23",
+      "domain": 2,
+      "question": "Azure ExpressRouteとVPN Gatewayの主な違いは何ですか？",
+      "options": {
+        "A": "ExpressRouteの方が安価",
+        "B": "ExpressRouteは公衆インターネットではなく専用線を使用",
+        "C": "VPN Gatewayの方が高速",
+        "D": "両者の機能は完全に同じ"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "ExpressRoute vs VPN Gateway：\n- ExpressRoute：専用プライベート接続、より高い帯域幅、より低いレイテンシ、より高い信頼性\n- VPN Gateway：インターネット経由の暗号化接続\n\nExpressRouteは高帯域幅、低レイテンシが必要な企業に適しています。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q24",
+      "domain": 2,
+      "question": "Azure Load Balancerの主な機能は何ですか？",
+      "options": {
+        "A": "データの保存",
+        "B": "受信トラフィックを複数のバックエンドリソースに分散",
+        "C": "DNSレコードの管理",
+        "D": "データ転送の暗号化"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure Load Balancer：\n- 複数のVM間でトラフィックを分散\n- アプリケーションの可用性を向上\n- インバウンドとアウトバウンドのシナリオをサポート\n- L4ロードバランシング（TCP/UDP）\n\nApplication GatewayはL7ロードバランシングです。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q25",
+      "domain": 2,
+      "question": "Azure可用性ゾーン（Availability Zones）とは何ですか？",
+      "options": {
+        "A": "異なる国のAzureリージョン",
+        "B": "同一リージョン内の物理的に分離されたデータセンター",
+        "C": "Azureの価格ゾーン",
+        "D": "Azureサポートチームのタイムゾーン"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "可用性ゾーン：\n- 同一リージョン内の独立した物理的な場所\n- 独立した電源、冷却、ネットワーク\n- 少なくとも3つのゾーンで構成\n- データセンター障害からアプリを保護\n- 99.99% SLAを実現",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q26",
+      "domain": 2,
+      "question": "Azure Active Directory（現Microsoft Entra ID）の主な用途は何ですか？",
+      "options": {
+        "A": "ファイルストレージサービス",
+        "B": "IDとアクセス管理サービス",
+        "C": "仮想マシン管理",
+        "D": "ネットワークファイアウォール"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Microsoft Entra ID（旧Azure AD）：\n- クラウドIDとアクセス管理\n- シングルサインオン（SSO）\n- 多要素認証（MFA）\n- 条件付きアクセスポリシー\n- B2BおよびB2C ID管理",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q27",
+      "domain": 2,
+      "question": "AzureでAPIキーや証明書などの機密情報を保存するサービスはどれですか？",
+      "options": {
+        "A": "Azure Storage Account",
+        "B": "Azure Key Vault",
+        "C": "Azure Blob Storage",
+        "D": "Azure Active Directory"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure Key Vault：\n- シークレット（パスワード、APIキー）の安全な保存\n- 暗号化キーの管理\n- SSL/TLS証明書の保存\n- ハードウェアセキュリティモジュール（HSM）サポート\n- アクセスログの監査",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q28",
+      "domain": 2,
+      "question": "Azure Kubernetes Service（AKS）の主な用途は何ですか？",
+      "options": {
+        "A": "リレーショナルデータベースのホスティング",
+        "B": "コンテナ化されたアプリケーションのホスティング",
+        "C": "非構造化データの保存",
+        "D": "仮想デスクトップの管理"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "AKSの機能：\n- マネージドKubernetesクラスター\n- 自動化されたコンテナオーケストレーション\n- スケーリング、更新、自己修復\n- Azure DevOpsとの統合\n- コントロールプレーンの管理不要",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q29",
+      "domain": 2,
+      "question": "Azure Content Delivery Network（CDN）の主な利点は何ですか？",
+      "options": {
+        "A": "ストレージコストの削減",
+        "B": "コンテンツをグローバルエッジノードにキャッシュしてレイテンシを削減",
+        "C": "データ暗号化の強化",
+        "D": "データの自動バックアップ"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure CDN：\n- コンテンツをグローバルエッジロケーションにキャッシュ\n- ユーザーアクセスのレイテンシを削減\n- オリジンサーバーの負荷を軽減\n- 静的コンテンツ、メディアストリーミングに適合\n- ユーザーエクスペリエンスの向上",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q30",
+      "domain": 2,
+      "question": "Azure Filesはどのタイプのストレージを提供しますか？",
+      "options": {
+        "A": "オブジェクトストレージ",
+        "B": "ブロックストレージ",
+        "C": "SMB/NFSファイル共有",
+        "D": "キューストレージ"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "Azure Files：\n- マネージドファイル共有サービス\n- SMBおよびNFSプロトコルをサポート\n- クラウドとオンプレミスからアクセス可能\n- 従来のファイルサーバーの代替\n- Azure File Syncでオンプレミスと同期可能",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q31",
+      "domain": 2,
+      "question": "Azureリソースのデプロイと管理を自動化するためのサービスはどれですか？",
+      "options": {
+        "A": "Azure Blob Storage",
+        "B": "Azure Resource Manager（ARM）",
+        "C": "Azure Traffic Manager",
+        "D": "Azure Load Balancer"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure Resource Manager：\n- Azureのデプロイと管理サービス\n- ARMテンプレートによるInfrastructure as Code\n- リソースグループの管理\n- 一貫した管理レイヤーを提供\n- RBACとタグをサポート",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q32",
+      "domain": 2,
+      "question": "Azureリージョンペア（Region Pairs）とは何ですか？",
+      "options": {
+        "A": "2つの隣接する可用性ゾーン",
+        "B": "同じ地理的地域内で災害復旧のためにペアリングされた2つのリージョン",
+        "C": "同じ価格の2つのリージョン",
+        "D": "管理者アカウントのペアリング"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "リージョンペアの特徴：\n- 同じ地理的地域内の2つのリージョン\n- 少なくとも300マイルの距離\n- 一部のサービスで自動レプリケーション\n- 計画メンテナンスは順番に実施\n- 災害復旧時は優先的に復旧",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q33",
+      "domain": 3,
+      "question": "Azureコスト管理と課金ツールの主な機能は何ですか？",
+      "options": {
+        "A": "仮想マシンのデプロイ",
+        "B": "Azureコストの分析と最適化",
+        "C": "ユーザーIDの管理",
+        "D": "アプリケーションパフォーマンスの監視"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azureコスト管理の機能：\n- 現在の支出の分析\n- 将来のコスト予測\n- 予算とアラートの設定\n- コスト最適化の推奨事項\n- 部門/プロジェクトへのコスト配分",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q34",
+      "domain": 3,
+      "question": "Azureサービスのコストを見積もるためのツールはどれですか？",
+      "options": {
+        "A": "Azure Advisor",
+        "B": "Azure Pricing Calculator",
+        "C": "Azure Monitor",
+        "D": "Azure Policy"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure料金計算ツール：\n- Azureサービスのコストを見積もり\n- さまざまなシナリオを構成\n- 料金オプションを比較\n- 見積もりのエクスポートと保存\n\nTCO計算ツールはオンプレミスvsクラウドのコスト比較に使用。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q35",
+      "domain": 3,
+      "question": "Azure予約インスタンス（Reserved Instances）の主な利点は何ですか？",
+      "options": {
+        "A": "より高いパフォーマンス",
+        "B": "1〜3年の使用をコミットすることで大幅な割引を取得",
+        "C": "より多くのストレージスペース",
+        "D": "より良いセキュリティ"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure予約インスタンス：\n- 1年または3年の使用をコミット\n- 従量課金と比較して最大72%の節約\n- 予測可能なワークロードに適合\n- VM、SQL DB、Cosmos DBなどをサポート\n- 交換または払い戻し可能（条件あり）",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q36",
+      "domain": 3,
+      "question": "Azureリソースグループ（Resource Groups）の役割は何ですか？",
+      "options": {
+        "A": "ユーザーパスワードの保存",
+        "B": "関連するAzureリソースの論理コンテナとして機能",
+        "C": "データ転送の暗号化",
+        "D": "ネットワーク分離の提供"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "リソースグループ：\n- 関連リソースを整理する論理コンテナ\n- ライフサイクルを統一管理\n- RBACアクセス許可を適用\n- 1つのリソースは1つのリソースグループにのみ所属可能\n- リソースグループを削除するとその中のすべてのリソースが削除される",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q37",
+      "domain": 3,
+      "question": "Azure Policyの主な用途は何ですか？",
+      "options": {
+        "A": "ユーザーパスワードの管理",
+        "B": "組織の標準を強制し、コンプライアンスを評価",
+        "C": "仮想マシンのバックアップ",
+        "D": "ネットワークトラフィックの監視"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure Policy：\n- ポリシールールの作成と割り当て\n- リソースのコンプライアンスを強制\n- 既存リソースを評価\n- 非準拠リソースを自動修復\n- 例：特定のVMサイズの禁止、タグの要求",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q38",
+      "domain": 3,
+      "question": "Azureブループリント（Blueprints）とARMテンプレートの違いは何ですか？",
+      "options": {
+        "A": "ブループリントはVMのみデプロイ可能",
+        "B": "ブループリントはポリシー、ロール割り当て、ARMテンプレートの組み合わせを含めることができる",
+        "C": "ARMテンプレートの方がより包括的",
+        "D": "両者は完全に同じ"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure Blueprints：\n- ARMテンプレート、ポリシー、RBACを組み合わせ\n- 繰り返し可能な環境を定義\n- バージョン管理\n- デプロイメント関係を追跡\n- 規範に準拠した環境を迅速にセットアップ",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q39",
+      "domain": 3,
+      "question": "Azure RBAC（ロールベースのアクセス制御）で、「Owner」ロールにはどのような権限がありますか？",
+      "options": {
+        "A": "リソースの表示のみ可能",
+        "B": "リソースを完全に制御し、アクセス権限を割り当て可能",
+        "C": "リソースの作成のみ可能",
+        "D": "リソースの削除のみ可能"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure組み込みロール：\n- Owner：完全な制御 + アクセス権限の管理\n- Contributor：完全な制御、アクセス権限の管理は不可\n- Reader：読み取り専用アクセス\n- User Access Administrator：アクセス権限の管理のみ",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q40",
+      "domain": 3,
+      "question": "Azure Monitorの主な機能は何ですか？",
+      "options": {
+        "A": "アプリケーションのデプロイ",
+        "B": "テレメトリデータの収集、分析、対応",
+        "C": "ユーザーアカウントの管理",
+        "D": "バックアップデータの保存"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure Monitor：\n- メトリクスとログの収集\n- データの分析と可視化\n- アラートの設定\n- 自動応答\n- Application Insights（アプリケーションパフォーマンス）\n- Log Analytics（ログクエリ）",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q41",
+      "domain": 3,
+      "question": "Azure Advisorはどのタイプの推奨事項を提供しますか？",
+      "options": {
+        "A": "セキュリティの推奨事項のみ",
+        "B": "信頼性、セキュリティ、パフォーマンス、コスト、オペレーショナルエクセレンスの推奨事項",
+        "C": "コストの推奨事項のみ",
+        "D": "パフォーマンスの推奨事項のみ"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure Advisorの5つの推奨カテゴリ：\n- 信頼性：アプリケーションの可用性向上\n- セキュリティ：セキュリティのベストプラクティス\n- パフォーマンス：リソースパフォーマンスの最適化\n- コスト：支出の削減\n- オペレーショナルエクセレンス：効率の向上",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q42",
+      "domain": 3,
+      "question": "Azureリソースのセキュリティ推奨事項と脅威保護を提供するサービスはどれですか？",
+      "options": {
+        "A": "Azure Advisor",
+        "B": "Microsoft Defender for Cloud",
+        "C": "Azure Monitor",
+        "D": "Azure Cost Management"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Microsoft Defender for Cloud：\n- セキュリティ態勢管理\n- 脅威の検出と対応\n- コンプライアンス評価\n- セキュリティ推奨事項\n- クロスクラウドセキュリティ（Azure、AWS、GCP）",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q43",
+      "domain": 3,
+      "question": "Azureの「タグ（Tags）」の用途は何ですか？",
+      "options": {
+        "A": "リソースの暗号化",
+        "B": "コスト管理と管理のためにリソースを整理・分類",
+        "C": "リソースのパフォーマンス向上",
+        "D": "リソースのバックアップ"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azureタグの用途：\n- リソースの整理と分類\n- コストの配分と追跡\n- 自動化管理\n- 形式：名前と値のペア\n- 例：Environment=Production、Owner=IT",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q44",
+      "domain": 3,
+      "question": "Azureサブスクリプション（Subscription）の役割は何ですか？",
+      "options": {
+        "A": "データを保存するコンテナ",
+        "B": "Azureサービスの課金とアクセス制御の境界",
+        "C": "ネットワークセキュリティの境界",
+        "D": "ユーザー認証サービス"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azureサブスクリプション：\n- 課金境界：独立した請求書\n- アクセス制御境界：権限管理\n- リソース制限境界\n- 1つのテナントに複数のサブスクリプションを持つことが可能\n- 環境、部門、プロジェクトの分離に使用",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q45",
+      "domain": 3,
+      "question": "Azure管理グループ（Management Groups）の用途は何ですか？",
+      "options": {
+        "A": "個別のリソースの管理",
+        "B": "複数のサブスクリプション間でガバナンスを整理・適用",
+        "C": "ログデータの保存",
+        "D": "ネットワークトラフィックの管理"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "管理グループの階層構造：\n- ルート管理グループ → 管理グループ → サブスクリプション → リソースグループ → リソース\n- 複数のサブスクリプションを統一管理\n- ポリシーとRBACを継承\n- エンタープライズレベルのガバナンス\n- 最大6レベルのネスト",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q46",
+      "domain": 3,
+      "question": "Azure Service Healthの主な機能は何ですか？",
+      "options": {
+        "A": "リソースコストの最適化",
+        "B": "Azureサービスの状態と計画メンテナンスのパーソナライズされたビューを提供",
+        "C": "ユーザー権限の管理",
+        "D": "データの暗号化"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure Service Health：\n- リソースに影響するAzureの問題を追跡\n- 計画メンテナンスの通知\n- ヘルスアドバイザリ\n- パーソナライズされたダッシュボード\n- 過去のイベントの表示",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q47",
+      "domain": 3,
+      "question": "Azureリソースのコマンドライン操作を管理するツールはどれですか？",
+      "options": {
+        "A": "Azure Portal",
+        "B": "Azure CLIとAzure PowerShell",
+        "C": "Azure Mobile App",
+        "D": "Azure Advisor"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure管理ツール：\n- Azure Portal：グラフィカルインターフェース\n- Azure CLI：クロスプラットフォームコマンドライン\n- Azure PowerShell：Windows PowerShellモジュール\n- Cloud Shell：ブラウザ内コマンドライン\n- ARMテンプレート：Infrastructure as Code",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q48",
+      "domain": 3,
+      "question": "Azure Arcの主な用途は何ですか？",
+      "options": {
+        "A": "Azure仮想マシンのみの管理",
+        "B": "Azure管理を非Azure環境（オンプレミス、他のクラウド）に拡張",
+        "C": "ネットワーク接続の高速化",
+        "D": "ストレージデータの圧縮"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure Arc：\n- Azure管理を任意のインフラストラクチャに拡張\n- オンプレミス、マルチクラウド、エッジサーバーの管理\n- 統一された管理とガバナンス\n- Azure PolicyとRBACを適用\n- ハイブリッドクラウド管理",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q49",
+      "domain": 3,
+      "question": "Microsoft Purviewの主な機能は何ですか？",
+      "options": {
+        "A": "仮想マシンの管理",
+        "B": "統合されたデータガバナンスとコンプライアンス管理",
+        "C": "ビッグデータの保存",
+        "D": "ネットワークセキュリティの管理"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Microsoft Purview：\n- データカタログと検出\n- データの分類とラベル付け\n- データリネージの追跡\n- コンプライアンスとリスク管理\n- オンプレミス、クラウド、SaaS全体のデータガバナンス",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q50",
+      "domain": 3,
+      "question": "Azureのコスト削減に最も役立つのはどれですか？",
+      "options": {
+        "A": "最大サイズの仮想マシンを使用",
+        "B": "Azure予約インスタンス、リソースの適切なサイズ調整、未使用リソースの停止を組み合わせて使用",
+        "C": "より多くのリソースをデプロイ",
+        "D": "Azure Advisorの推奨事項を無視"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azureコスト削減戦略：\n- 予約インスタンス（1〜3年のコミットメント）\n- リソースの適切なサイズ調整\n- 未使用リソースの停止または削除\n- Azure Hybrid Benefitの使用\n- 適切なストレージ層の選択\n- Advisorのコスト推奨事項に従う",
+      "difficulty": "medium"
+    }
+  ]
+}

@@ -1,0 +1,798 @@
+{
+  "exam": {
+    "id": "gcp-ace-set3-ja",
+    "name": "GCP Associate Cloud Engineer 模擬試験 #3",
+    "code": "ACE",
+    "provider": "GCP",
+    "language": "ja",
+    "description": "Google Cloud Associate Cloud Engineer認定試験の模擬問題集 - 第3セット",
+    "totalQuestions": 50,
+    "passingScore": 70,
+    "examTime": 120,
+    "domains": [
+      {
+        "id": 1,
+        "name": "クラウドソリューション環境の設定",
+        "weight": 20
+      },
+      {
+        "id": 2,
+        "name": "クラウドソリューションの計画と構成",
+        "weight": 20
+      },
+      {
+        "id": 3,
+        "name": "クラウドソリューションのデプロイと実装",
+        "weight": 25
+      },
+      {
+        "id": 4,
+        "name": "クラウドソリューションの正常な運用の確保",
+        "weight": 20
+      },
+      {
+        "id": 5,
+        "name": "アクセスとセキュリティの構成",
+        "weight": 15
+      }
+    ],
+    "tags": [
+      "GCP",
+      "Cloud",
+      "ACE",
+      "認定試験"
+    ]
+  },
+  "questions": [
+    {
+      "id": "q1",
+      "domain": 1,
+      "question": "スタートアップ企業のGCP環境を設定しています。会社は単一の請求アカウントで複数のプロジェクトの費用を管理したいと考えています。どのように構成すればよいですか？",
+      "options": {
+        "A": "各プロジェクトには独立した請求アカウントが必要です",
+        "B": "Cloud Billingで複数のプロジェクトを同じ請求アカウントに関連付けます",
+        "C": "Cloud Loggingを使用してすべてのプロジェクトの費用を集約します",
+        "D": "請求を共有するには組織ノードを使用する必要があります"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "1つの請求アカウントに複数のプロジェクトを関連付けることができます。Cloud Billing コンソールで、プロジェクトを請求アカウントに関連付けたり、関連付けを解除したりできます。これにより、プロジェクトリソースの分離を維持しながら、費用を一元管理できます。組織ノードがなくても請求の共有は可能です。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q2",
+      "domain": 1,
+      "question": "チームは異なる環境（開発、テスト、本番）で異なるgcloud構成を使用する必要があります。これらの構成を効率的に管理するにはどうすればよいですか？",
+      "options": {
+        "A": "環境を切り替えるたびにgcloud initを再実行します",
+        "B": "gcloud config configurationsコマンドを使用して複数の名前付き構成を管理します",
+        "C": "各環境に個別のgcloud SDKをインストールします",
+        "D": "環境変数にプロジェクトIDを格納します"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "gcloud config configurationsを使用すると、複数の名前付き構成セットを作成できます。gcloud config configurations create NAMEで新しい構成を作成し、gcloud config configurations activate NAMEで構成をアクティブ化します。各構成には、異なるプロジェクト、アカウント、リージョンなどの設定を含めることができます。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q3",
+      "domain": 1,
+      "question": "現在のGCPプロジェクトで有効になっているすべてのAPIを表示する必要があります。どのコマンドを使用すればよいですか？",
+      "options": {
+        "A": "gcloud services list --enabled",
+        "B": "gcloud api list",
+        "C": "gcloud projects describe --apis",
+        "D": "gcloud config list apis"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "gcloud services list --enabledコマンドは、現在のプロジェクトで有効になっているすべてのAPIを表示します。--enabledパラメータを指定しない場合は、利用可能なすべてのAPIが表示されます。gcloud services list --availableを使用して、有効化可能だがまだ有効になっていないAPIを確認することもできます。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q4",
+      "domain": 1,
+      "question": "会社はAWSからGCPに移行中です。チームメンバーはGCPリソース階層に不慣れです。次のうち、正しい説明はどれですか？",
+      "options": {
+        "A": "リソースは1つのプロジェクトにのみ属し、プロジェクトは1つの組織にのみ属することができます",
+        "B": "リソースは同時に複数のプロジェクトに属することができます",
+        "C": "組織はオプションですが、フォルダは必須です",
+        "D": "プロジェクトは他のプロジェクトを直接含めることができます"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "GCPリソース階層：組織（オプション）> フォルダ（オプション、ネスト可能）> プロジェクト > リソース。各リソースは1つのプロジェクトにのみ属し、プロジェクトは1つの親ノード（組織またはフォルダ）にのみ属することができます。この階層構造はIAMポリシーの継承をサポートしています。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q5",
+      "domain": 1,
+      "question": "プロジェクトの請求レポートをエクスポートして、外部システムで分析する必要があります。最適な方法は何ですか？",
+      "options": {
+        "A": "Cloud Consoleから手動でCSVファイルをダウンロードします",
+        "B": "BigQueryへの請求データエクスポートを構成します",
+        "C": "Cloud Loggingを使用して請求情報をエクスポートします",
+        "D": "カスタムCloud Functionを作成して請求データを取得します"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Cloud Billingは詳細な請求データをBigQueryに自動エクスポートすることをサポートしています。エクスポート後、SQLクエリを使用して費用トレンドの分析、サービス別の分類、カスタムレポートの作成ができます。Cloud Storage（CSV形式）にもエクスポートできますが、BigQueryは分析に適しています。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q6",
+      "domain": 1,
+      "question": "チームメンバーが協力できるように、共有のCloud Shell環境を設定する必要があります。これは可能ですか？",
+      "options": {
+        "A": "はい、共有Cloud Shellインスタンスを作成できます",
+        "B": "いいえ、Cloud Shellは個人環境ですが、内蔵のWebプレビュー機能を使用してアプリケーションを共有できます",
+        "C": "VPNを介してCloud Shellを共有できます",
+        "D": "共有するにはエンタープライズ版の購入が必要です"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Cloud Shellは個人環境であり、各ユーザーは独自のインスタンスと5GBの永続ストレージを持っています。Shell自体を共有することはできませんが、Cloud ShellはWebプレビュー機能を提供しており、Cloud Shell内で実行されているWebアプリケーションを一時的に他の人がアクセスできるように共有できます。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q7",
+      "domain": 1,
+      "question": "予期しない超過支出を防ぐためにプロジェクトの割り当てを設定しています。割り当て管理はどこで完了しますか？",
+      "options": {
+        "A": "Cloud Billing",
+        "B": "IAM & Admin > Quotas",
+        "C": "Cloud Monitoring",
+        "D": "Resource Manager"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "割り当て（Quotas）は「IAM & Admin > Quotas」ページで管理されます。割り当ては、作成できるリソースの数（CPUコア数、IPアドレス数など）を制限します。現在の使用量を確認したり、割り当ての増加をリクエストしたりできます。割り当ては予算とは異なり、予算はCloud Billingで管理されます。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q8",
+      "domain": 1,
+      "question": "Cloud Shellで構成ファイルを編集する必要があります。Cloud Shellはどのような内蔵エディタを提供していますか？",
+      "options": {
+        "A": "vimのみサポート",
+        "B": "nanoのみサポート",
+        "C": "vim、nano、Cloud Shell Editor（VS Codeベース）をサポート",
+        "D": "エディタは提供されず、gsutilを使用してダウンロードして編集する必要があります"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "Cloud Shellには、vim、nano、emacsなどのコマンドラインエディタがプリインストールされています。さらに、Cloud Shell Editorも提供されており、これはTheia（VS Codeに類似）をベースにしたグラフィカルエディタで、シンタックスハイライト、IntelliSenseなどの機能をサポートしています。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q9",
+      "domain": 1,
+      "question": "組織がGCP組織ノードを作成したばかりです。デフォルトで誰が組織管理者権限を持っていますか？",
+      "options": {
+        "A": "すべてのプロジェクトオーナー",
+        "B": "Google WorkspaceまたはCloud Identityのスーパー管理者",
+        "C": "最初にプロジェクトを作成したユーザー",
+        "D": "デフォルトの管理者はなく、手動で割り当てる必要があります"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "組織ノードが作成されると、Google WorkspaceまたはCloud Identityのスーパー管理者は自動的に組織管理者（Organization Administrator）ロールを取得します。彼らは他の管理者ロールの割り当てと組織ポリシーの設定を担当します。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q10",
+      "domain": 1,
+      "question": "使用しなくなったAPIを無効にして、潜在的なセキュリティリスクを軽減する必要があります。どのコマンドを使用すればよいですか？",
+      "options": {
+        "A": "gcloud services disable SERVICE_NAME",
+        "B": "gcloud api remove SERVICE_NAME",
+        "C": "gcloud services delete SERVICE_NAME",
+        "D": "gcloud config unset api SERVICE_NAME"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "gcloud services disable SERVICE_NAMEコマンドはAPIを無効にするために使用されます。APIを無効にすると、そのAPIへの呼び出しは拒否されます。注意：APIを無効にすると、そのAPIに依存するリソースに影響を与える可能性があります。--forceパラメータを使用して強制的に無効にできます。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q11",
+      "domain": 2,
+      "question": "トラフィックの変動が大きいWebアプリケーションのアーキテクチャを設計しています。アプリケーションは低トラフィック時にコストを最小化し、高トラフィック時に自動的にスケールする必要があります。最適な選択肢は何ですか？",
+      "options": {
+        "A": "予約インスタンス（Reserved Instances）を使用したCompute Engine",
+        "B": "Cloud Runまたは自動スケーリングを備えたマネージドインスタンスグループを使用",
+        "C": "単一の大型仮想マシンを使用",
+        "D": "すべてのリクエストをCloud Functionsで処理"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Cloud Runはゼロまで自動スケールでき、リクエストごとの課金となるため、トラフィックが変動するアプリケーションに非常に適しています。マネージドインスタンスグループ（MIG）とオートスケーラーの組み合わせも、トラフィックに応じてインスタンス数を調整できます。予約インスタンスは安価ですが、柔軟性に欠けます。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q12",
+      "domain": 2,
+      "question": "ユーザーセッションデータを保存するためのデータベースソリューションを設計する必要があります。低レイテンシの読み書きと自動期限切れ機能が必要です。最適な選択肢は何ですか？",
+      "options": {
+        "A": "Cloud SQL MySQL",
+        "B": "Cloud Memorystore for Redis",
+        "C": "Cloud Spanner",
+        "D": "Cloud Bigtable"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Cloud Memorystore for Redisは完全マネージド型のRedisサービスです：サブミリ秒のレイテンシ、組み込みのTTL（有効期限）による自動期限切れ、セッションストレージパターンのサポート。キャッシュとセッション管理に非常に適しています。リレーショナルデータベースより高速で、Bigtableよりシンプルです。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q13",
+      "domain": 2,
+      "question": "複数のマイクロサービスのネットワークアーキテクチャを設計する必要があります。サービス間はプライベート通信が必要ですが、一部のサービスはパブリックアクセスが必要です。どのように設計すればよいですか？",
+      "options": {
+        "A": "各サービスに個別のVPCを作成します",
+        "B": "単一のVPCを使用し、公開サービスはパブリックサブネットに、内部サービスはプライベートサブネットと内部ロードバランサーを使用します",
+        "C": "すべてのサービスにパブリックIPを使用します",
+        "D": "Cloud NATを使用してすべてのサービスにアウトバウンドアクセスを提供します"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "ベストプラクティスは、単一のVPCを使用し、異なるサブネットを構成することです：公開サービスには外部ロードバランサーを使用し、内部サービスにはパブリックIPなしで内部ロードバランサーを使用します。ファイアウォールルールでトラフィックを制御します。これにより、セキュアな分離を実現しながらネットワーク管理を簡素化できます。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q14",
+      "domain": 2,
+      "question": "適切なCompute Engineディスクタイプを選択する必要があります。ワークロードはデータベースサーバーで、高IOPSと低レイテンシが必要です。最適な選択肢は何ですか？",
+      "options": {
+        "A": "標準永続ディスク（pd-standard）",
+        "B": "SSD永続ディスク（pd-ssd）",
+        "C": "ローカルSSD",
+        "D": "バランス永続ディスク（pd-balanced）"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "ローカルSSDは物理ホストに直接接続されているため、最高のIOPSと最低のレイテンシを提供します。ただし、データは永続化されません（インスタンスが停止するとデータは失われます）。永続化が必要な高性能ニーズにはpd-ssdを使用します。pd-balancedはコストパフォーマンスの良いオプションです。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q15",
+      "domain": 2,
+      "question": "災害復旧戦略を計画しています。異なるリージョンでCloud SQLデータベースを複製する必要があります。どの機能を使用すればよいですか？",
+      "options": {
+        "A": "手動でデータをエクスポートおよびインポートします",
+        "B": "クロスリージョン読み取りレプリカを構成します",
+        "C": "Cloud Storageバックアップを使用します",
+        "D": "複数の独立したCloud SQLインスタンスを作成します"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Cloud SQLはクロスリージョン読み取りレプリカをサポートしています：データは他のリージョンに非同期で複製されます。災害時にはプライマリインスタンスに昇格できます。読み取りスケーリングと地理的冗長性を提供します。これはCloud SQLがネイティブにサポートする災害復旧ソリューションで、手動バックアップリストアより高速です。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q16",
+      "domain": 2,
+      "question": "イベント駆動型のデータ処理パイプラインを設計する必要があります。IoTデバイスからリアルタイムでデータが流入し、処理後に保存する必要があります。推奨されるアーキテクチャは何ですか？",
+      "options": {
+        "A": "IoTデバイス > Cloud Storage > Cloud Functions > BigQuery",
+        "B": "IoTデバイス > Pub/Sub > Dataflow > BigQuery",
+        "C": "IoTデバイス > Compute Engine > Cloud SQL",
+        "D": "IoTデバイス > Cloud Endpoints > App Engine"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "推奨アーキテクチャ：Pub/Subがストリーミングデータを受信（デカップリング、バッファリング）、Dataflowがリアルタイム処理（ウィンドウ処理、集約、変換）、BigQueryが保存と分析。これはGCP推奨のストリーミングデータ処理パターンで、自動スケーリングとexactly-onceセマンティクスをサポートしています。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q17",
+      "domain": 2,
+      "question": "アプリケーションでは、ユーザーがファイルをアップロードした後に自動的に処理をトリガーする必要があります。サーバー管理は不要です。最適なソリューションは何ですか？",
+      "options": {
+        "A": "Compute EngineでCloud Storageをポーリングします",
+        "B": "Cloud FunctionsとCloud Storageトリガーを使用します",
+        "C": "App Engineの定期タスクを使用します",
+        "D": "Cloud Schedulerで定期的に新しいファイルをチェックします"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Cloud FunctionsはCloud Storageトリガーを構成できます：オブジェクトの作成、削除、アーカイブ、またはメタデータ更新時に関数を自動実行します。これはイベント駆動型のサーバーレスソリューションで、サーバー管理やポーリングが不要で、実行回数ごとの課金です。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q18",
+      "domain": 2,
+      "question": "グローバルユーザー向けに静的Webサイトホスティングを提供する必要があります。低レイテンシと高可用性が必要です。最適なソリューションは何ですか？",
+      "options": {
+        "A": "単一リージョンのCompute Engineを使用",
+        "B": "Cloud Storage静的Webサイトホスティングとcloud CDNを使用",
+        "C": "Cloud Runで静的ファイルをデプロイ",
+        "D": "App Engine Standard環境を使用"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Cloud Storageで直接静的Webサイトをホストできます：バケットをパブリック読み取りに設定し、ホームページと404ページを設定します。Cloud CDNと組み合わせることで、コンテンツをグローバルエッジノードにキャッシュし、低レイテンシアクセスを実現します。これは最も経済的でスケーラブルな静的Webサイトホスティングソリューションです。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q19",
+      "domain": 2,
+      "question": "アプリケーションは大量のバッチ処理ジョブを処理する必要があり、ジョブの継続時間は不確定で、数分から数時間かかる可能性があります。コストが最優先事項です。何を選択すべきですか？",
+      "options": {
+        "A": "標準Compute Engineインスタンス",
+        "B": "Spot VM（旧プリエンプティブVM）",
+        "C": "Cloud Functions",
+        "D": "予約インスタンス"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Spot VM（旧プリエンプティブVM）は標準VMより60〜91%安価です。フォールトトレラントなバッチ処理ジョブに適しています。プリエンプト（24時間以内またはキャパシティ不足時）される可能性がありますが、中断して再試行できるバッチタスクには最も経済的な選択肢です。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q20",
+      "domain": 2,
+      "question": "水平スケーリングをサポートするステートレスWebアプリケーションを設計する必要があります。アプリケーションのセッションデータはどこに保存すべきですか？",
+      "options": {
+        "A": "ローカルファイルシステム",
+        "B": "インスタンスメモリ",
+        "C": "Cloud MemorystoreやCloud Firestoreなどの外部ストレージ",
+        "D": "永続ディスク"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "ステートレスアプリケーションのセッションデータは外部に保存する必要があります：Cloud Memorystore（Redis）は高性能セッションストレージに適しており、Cloud Firestoreは永続化が必要なセッションに適しています。これにより、任意のインスタンスが任意のリクエストを処理でき、自動スケーリングとインスタンス置換をサポートします。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q21",
+      "domain": 3,
+      "question": "マネージドインスタンスグループで使用するためのCompute Engineインスタンステンプレートを作成する必要があります。正しいコマンドはどれですか？",
+      "options": {
+        "A": "gcloud compute instance-templates create my-template --machine-type=e2-medium --image-family=debian-11 --image-project=debian-cloud",
+        "B": "gcloud compute templates create my-template --type=e2-medium",
+        "C": "gcloud compute instances create-template my-template",
+        "D": "gcloud compute mig create-template my-template"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "gcloud compute instance-templates createコマンドでインスタンステンプレートを作成します。テンプレートはマシンタイプ、イメージ、ネットワークなどの構成を定義します。テンプレートは不変であり、構成を更新するには新しいテンプレートを作成する必要があります。マネージドインスタンスグループはテンプレートを使用して同一のインスタンスグループを作成・管理します。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q22",
+      "domain": 3,
+      "question": "GKEでDeploymentを作成し、Serviceとして公開する必要があります。正しいkubectlコマンドの組み合わせはどれですか？",
+      "options": {
+        "A": "kubectl create deployment nginx --image=nginx && kubectl expose deployment nginx --port=80 --type=LoadBalancer",
+        "B": "kubectl run nginx --expose --port=80",
+        "C": "kubectl deploy nginx --image=nginx --service-type=LoadBalancer",
+        "D": "kubectl create service nginx --deployment=nginx"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Deploymentの作成：kubectl create deployment NAME --image=IMAGE。Serviceとして公開：kubectl expose deployment NAME --port=PORT --type=TYPE。typeはClusterIP（内部）、NodePort、またはLoadBalancer（外部）を指定できます。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q23",
+      "domain": 3,
+      "question": "Cloud BuildでDockerイメージを自動的にビルドしてプッシュするように構成する必要があります。構成ファイルの名前は何にすべきですか？",
+      "options": {
+        "A": "Dockerfile",
+        "B": "cloudbuild.yaml",
+        "C": "buildspec.yml",
+        "D": "pipeline.yaml"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Cloud Buildはcloudbuild.yaml構成ファイルを使用してビルドステップを定義します。ファイルにはstepsリストが含まれ、各stepはビルダーイメージとパラメータを指定します。変数置換、条件付き実行、並列ステップをサポートしています。JSON形式も使用できます。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q24",
+      "domain": 3,
+      "question": "ローカルディレクトリをCloud Storageバケットに再帰的に同期し、変更されたファイルのみをアップロードする必要があります。どのコマンドを使用すべきですか？",
+      "options": {
+        "A": "gsutil cp -r local-dir gs://my-bucket/",
+        "B": "gsutil rsync -r local-dir gs://my-bucket/",
+        "C": "gcloud storage sync local-dir gs://my-bucket/",
+        "D": "gsutil upload -r local-dir gs://my-bucket/"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "gsutil rsync -rコマンドはディレクトリを再帰的に同期します：変更されたファイルのみを転送（サイズとmtimeに基づく）、-dオプションはソースに存在しないターゲット内のファイルを削除、-nオプションは変更をプレビュー。cpは毎回すべてのファイルを転送します。gcloud storage rsyncは新しい代替コマンドです。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q25",
+      "domain": 3,
+      "question": "Cloud SQLで読み取りスケーリング用のデータベースレプリカを作成する必要があります。正しいコマンドはどれですか？",
+      "options": {
+        "A": "gcloud sql instances create replica-instance --master-instance-name=main-instance",
+        "B": "gcloud sql replicas create replica-instance --master=main-instance",
+        "C": "gcloud sql instances clone main-instance replica-instance",
+        "D": "gcloud sql instances create replica-instance --source-instance=main-instance"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "読み取りレプリカを作成するには、gcloud sql instances createコマンドと--master-instance-nameパラメータを使用します。レプリカはプライマリインスタンスのデータを自動的に同期し、読み取り分散に使用できます。--regionパラメータを追加してクロスリージョンレプリカを作成できます。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q26",
+      "domain": 3,
+      "question": "TerraformでGCPリソースをデプロイする必要があります。チームコラボレーションをサポートするためにTerraform状態ファイルはどこに保存すべきですか？",
+      "options": {
+        "A": "ローカルファイルシステム",
+        "B": "Gitリポジトリ",
+        "C": "Cloud Storageバックエンド",
+        "D": "Compute Engineインスタンス"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "Terraform状態ファイルはチームコラボレーションをサポートするためにリモートバックエンドに保存する必要があります：Cloud Storageは状態ロック（オブジェクトロックを使用）、バージョン管理、チーム共有を提供します。backend \"gcs\"ブロックでバケットを指定して構成します。状態ファイルをGitに保存することは避けてください（機密情報が含まれています）。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q27",
+      "domain": 3,
+      "question": "Cloud Runサービスの環境変数を設定する必要があります。正しい方法はどれですか？",
+      "options": {
+        "A": "DockerfileでENV命令を使用する方法のみ",
+        "B": "gcloud run deploy --set-env-vars KEY=VALUEを使用",
+        "C": "環境変数はCloud Consoleでのみ設定可能",
+        "D": "Cloud Runは環境変数をサポートしていません"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Cloud Runは環境変数を設定する複数の方法をサポートしています：デプロイ時に--set-env-vars KEY=VALUEを使用、--env-vars-fileでYAMLファイルから読み込み、Cloud Consoleで構成、Secret Managerで機密値を参照。これらはDockerfileのENVをオーバーライドします。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q28",
+      "domain": 3,
+      "question": "App Engine上にPythonアプリケーションをデプロイする必要があります。アプリケーションの依存関係はどのファイルで定義すべきですか？",
+      "options": {
+        "A": "package.json",
+        "B": "requirements.txt",
+        "C": "dependencies.yaml",
+        "D": "app.yaml"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "PythonアプリケーションをApp Engineにデプロイする際、依存関係はrequirements.txtファイルで定義します。App Engineはこれらの依存関係を自動的にインストールします。app.yamlはランタイム構成を定義しますが、依存関係は定義しません。Node.jsアプリケーションの場合はpackage.jsonを使用します。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q29",
+      "domain": 3,
+      "question": "GKEクラスタでGPUを必要とする機械学習ワークロードをデプロイする必要があります。どのように構成すべきですか？",
+      "options": {
+        "A": "Pod仕様にresources.limits: nvidia.com/gpu: 1を追加",
+        "B": "GPUはすべてのPodに自動的に割り当てられます",
+        "C": "GPUワークロードにはCompute Engine VMのみを使用できます",
+        "D": "特別なGKE GPUクラスタタイプを使用します"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "GKEでGPUを使用するには：まずGPUノードを含むノードプールを作成、NVIDIAデバイスドライバをインストール（自動インストール可能）、Pod仕様でGPUリソースをリクエスト：resources.limits.nvidia.com/gpu: 1。KubernetesスケジューラはPodをGPUを持つノードにスケジュールします。",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q30",
+      "domain": 3,
+      "question": "Cloud Pub/Subでトピックを作成してサブスクライブする必要があります。正しいコマンドシーケンスはどれですか？",
+      "options": {
+        "A": "gcloud pubsub topics create my-topic && gcloud pubsub subscriptions create my-sub --topic=my-topic",
+        "B": "gcloud pubsub create topic my-topic && gcloud pubsub create subscription my-sub",
+        "C": "gcloud messaging topics create my-topic",
+        "D": "gcloud pubsub topics new my-topic"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Pub/Subリソースの作成：gcloud pubsub topics create TOPIC_NAMEでトピックを作成、gcloud pubsub subscriptions create SUB_NAME --topic=TOPIC_NAMEでサブスクリプションを作成。サブスクリプションはトピックに関連付ける必要があります。--push-endpointを追加してプッシュサブスクリプションを構成できます。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q31",
+      "domain": 3,
+      "question": "オブジェクト作成後30日で自動的に削除するようにCloud Storageバケットのライフサイクルルールを構成する必要があります。どのように構成すべきですか？",
+      "options": {
+        "A": "gsutil lifecycle setコマンドでJSONルールファイルを構成",
+        "B": "Cloud Schedulerタスクを作成して定期的に削除",
+        "C": "Cloud Functionsで古いオブジェクトを監視して削除",
+        "D": "ライフサイクル管理はバージョン化されたオブジェクトのみを削除できます"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "ライフサイクルルールの構成：JSONファイルでルールを定義（action: Delete, condition: age: 30）、gsutil lifecycle set lifecycle.json gs://bucket-nameでルールを適用。Consoleでも構成できます。削除、ストレージクラスの変換などの操作をサポートしています。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q32",
+      "domain": 3,
+      "question": "VPCネットワークを作成してカスタムサブネットを追加する必要があります。正しいコマンドシーケンスはどれですか？",
+      "options": {
+        "A": "gcloud compute networks create my-vpc --subnet-mode=custom && gcloud compute networks subnets create my-subnet --network=my-vpc --region=us-central1 --range=10.0.0.0/24",
+        "B": "gcloud networks create my-vpc && gcloud subnets add my-subnet",
+        "C": "gcloud vpc create my-vpc --subnet=10.0.0.0/24",
+        "D": "gcloud compute networks create my-vpc --auto-create-subnetworks"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "カスタムモードVPCの作成：gcloud compute networks create NAME --subnet-mode=custom（サブネットを自動作成しない）、次に手動でサブネットを作成：gcloud compute networks subnets createでネットワーク、リージョン、IP範囲を指定。--subnet-mode=autoはサブネットを自動作成します。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q33",
+      "domain": 3,
+      "question": "クエリパフォーマンスとコストを最適化するために、BigQueryデータセットにパーティションテーブルを構成する必要があります。どのタイプのパーティションを使用すべきですか？",
+      "options": {
+        "A": "日付によるパーティションのみサポート",
+        "B": "タイムスタンプ、日付、または整数範囲によるパーティションをサポート",
+        "C": "BigQueryはパーティションをサポートしていません",
+        "D": "パーティションはテーブル作成後にのみ追加できます"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "BigQueryは複数のパーティションタイプをサポートしています：時間単位カラムパーティション（TIMESTAMP、DATE、またはDATETIMEカラムによる）、取り込み時間パーティション（_PARTITIONTIME）、整数範囲パーティション。パーティションはスキャンするデータ量を削減し、コストを低減できます。テーブル作成時に--time_partitioning_fieldでパーティションカラムを指定します。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q34",
+      "domain": 4,
+      "question": "VMのCPU使用率が5分間連続で80%を超えたときに通知を送信するCloud Monitoringアラートを設定する必要があります。何を構成すべきですか？",
+      "options": {
+        "A": "ログベースの指標を作成",
+        "B": "アラートポリシーを作成し、CPU使用率>80%、持続時間5分を条件として設定",
+        "C": "Cloud Schedulerを使用して定期的にCPUをチェック",
+        "D": "VMにカスタム監視エージェントをインストール"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "アラートポリシーの作成：指標を選択（compute.googleapis.com/instance/cpu/utilization）、しきい値条件を設定（>0.8）、持続時間を構成（5分）、通知チャネルを追加（メール、SMS、PagerDutyなど）。条件が満たされるとアラートがトリガーされます。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q35",
+      "domain": 4,
+      "question": "GKEクラスタ内でPodが継続的に再起動しています。問題を診断するにはどうすればよいですか？（2つ選択）",
+      "options": {
+        "A": "kubectl describe pod POD_NAMEを実行してイベントとステータスを確認",
+        "B": "kubectl logs POD_NAME --previousを実行して前のコンテナのログを確認",
+        "C": "クラスタ全体を再デプロイ",
+        "D": "Podを削除して再作成"
+      },
+      "answer": ["A", "B"],
+      "answerType": "multiple",
+      "explanation": "診断手順：kubectl describe podはPodイベント、ステータス、再起動理由（OOMKilled、CrashLoopBackOffなど）を表示します。kubectl logs --previousはクラッシュ前のログを表示します。これら2つのコマンドを組み合わせることで、問題を迅速に特定できます。盲目的に削除再作成は行わないでください。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q36",
+      "domain": 4,
+      "question": "Cloud SQLインスタンスの自動バックアップを構成する必要があります。バックアップの保持ポリシーはどのように設定しますか？",
+      "options": {
+        "A": "バックアップは永久に保持され、削除できません",
+        "B": "インスタンス設定でバックアップ保持日数を構成（1〜365日）",
+        "C": "古いバックアップは手動で削除する必要があります",
+        "D": "バックアップは7日間のみ保持され、変更できません"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Cloud SQL自動バックアップの構成：自動バックアップを有効化、バックアップ時間ウィンドウを設定、保持日数を構成（最大365日）。gcloud sql instances patch --backup-start-timeと--retained-backups-countで構成します。オンデマンドバックアップも作成できます。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q37",
+      "domain": 4,
+      "question": "レイテンシの問題を診断するために、アプリケーションの分散トレーシング情報を分析する必要があります。どのサービスを使用すべきですか？",
+      "options": {
+        "A": "Cloud Logging",
+        "B": "Cloud Monitoring",
+        "C": "Cloud Trace",
+        "D": "Cloud Profiler"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "Cloud Traceは分散トレーシングに使用されます：リクエストのエンドツーエンドのレイテンシデータを収集、各サービス間でのリクエストの流れを表示、パフォーマンスのボトルネックを特定。Cloud ProfilerはCPUとメモリ分析に使用されます。Cloud Monitoringは指標に、Cloud Loggingはログに使用されます。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q38",
+      "domain": 4,
+      "question": "基盤となるハードウェア障害時にCompute Engineインスタンスが自動的に再起動されるようにする必要があります。何を構成すべきですか？",
+      "options": {
+        "A": "ライブマイグレーションを有効化",
+        "B": "自動再起動を構成（automaticRestart: true）",
+        "C": "マネージドインスタンスグループを使用",
+        "D": "Cloud Schedulerタスクを作成してインスタンスを監視"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "インスタンス可用性ポリシーには2つのオプションがあります：onHostMaintenance（メンテナンス時にマイグレーションまたは終了）、automaticRestart（ハードウェア障害時に自動再起動）。自動再起動はデフォルトで有効です。インスタンス作成時または後でgcloud compute instances set-schedulingを使用して構成できます。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q39",
+      "domain": 4,
+      "question": "Cloud Runサービスの応答時間が長くなっています。パフォーマンスのボトルネックをどのように分析しますか？",
+      "options": {
+        "A": "リクエストログのみ表示可能",
+        "B": "Cloud Monitoringを使用して組み込み指標（レイテンシ、同時実行数、CPU使用率など）を確認",
+        "C": "Cloud Runはパフォーマンス監視を提供していません",
+        "D": "コードにカスタム指標を追加する必要があります"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Cloud Runは豊富な指標を自動的に提供します：リクエストレイテンシ（p50、p95、p99）、同時リクエスト数、コンテナインスタンス数、CPUとメモリ使用率、コールドスタートレイテンシ。Cloud Monitoringでこれらの指標を表示すると、パフォーマンスの問題を迅速に特定できます。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q40",
+      "domain": 4,
+      "question": "マネージドインスタンスグループ内のインスタンスを新しいインスタンステンプレートを使用するように更新する必要があります。最小ダウンタイムでローリングアップデートを実現するにはどうすればよいですか？",
+      "options": {
+        "A": "インスタンスグループを削除して再作成",
+        "B": "gcloud compute instance-groups managed rolling-action start-updateコマンドを使用",
+        "C": "インスタンスを手動で1つずつ置換",
+        "D": "インスタンステンプレートを更新すると、インスタンスは自動的に更新されます"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "ローリングアップデートコマンド：gcloud compute instance-groups managed rolling-action start-update GROUP_NAME --version=template=NEW_TEMPLATE。構成パラメータ：--max-surge（最大追加インスタンス数）、--max-unavailable（最大使用不可インスタンス数）。ゼロダウンタイムデプロイを実現します。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q41",
+      "domain": 4,
+      "question": "複数のサービスの指標を可視化するためのカスタムCloud Monitoringダッシュボードを作成する必要があります。どのように操作すべきですか？",
+      "options": {
+        "A": "ダッシュボードは事前定義された指標のみを表示できます",
+        "B": "Cloud Monitoringでダッシュボードを作成し、チャートウィジェットを追加して表示する指標を選択",
+        "C": "Grafanaなどのサードパーティツールを使用する必要があります",
+        "D": "ダッシュボードはAPIを通じてのみ作成できます"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Cloud Monitoringダッシュボード：Consoleでカスタムダッシュボードを作成、さまざまなウィジェット（折れ線グラフ、ゲージ、ヒートマップなど）を追加、組み込みまたはカスタム指標を選択、フィルターと集計を構成。APIまたはTerraformでもダッシュボードを管理できます。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q42",
+      "domain": 4,
+      "question": "アプリケーションは定期的にバッチ処理タスクを実行する必要があります（毎日午前2時）。最も簡単な方法は何ですか？",
+      "options": {
+        "A": "Cloud SchedulerでCloud FunctionsまたはCloud Runジョブをトリガー",
+        "B": "VM上でcronタスクを構成",
+        "C": "毎日手動で実行",
+        "D": "App Engineの定期タスクを使用（非推奨）"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Cloud Schedulerは完全マネージド型のcronジョブサービスです：cron式を構成（0 2 * * *は毎日午前2時を意味）、ターゲットをトリガー（HTTP、Pub/Sub、App Engine）。Cloud FunctionsまたはCloud Runジョブと組み合わせて、サーバーレスの定期タスクを実現します。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q43",
+      "domain": 4,
+      "question": "過去24時間に発生したセキュリティイベントを調査する必要があります。監査ログはどこに保存されていますか？",
+      "options": {
+        "A": "Cloud Loggingの監査ログ",
+        "B": "Cloud Storageのセキュリティレポート",
+        "C": "Security Command Centerのイベントページ",
+        "D": "IAMのアクティビティ履歴"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "監査ログはCloud Loggingに保存されます：管理アクティビティログ（API呼び出しを記録）、データアクセスログ（データ読み取りを記録）、システムイベントログ。ログエクスプローラーを使用してクエリし、リソース、時間、操作タイプでフィルタリングできます。一部の監査ログは明示的に有効化する必要があります。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q44",
+      "domain": 5,
+      "question": "チームメンバーに権限を割り当て、特定のプロジェクト内のCloud Storageオブジェクトのみを表示でき、削除はできないようにする必要があります。どのロールを割り当てるべきですか？",
+      "options": {
+        "A": "roles/storage.admin",
+        "B": "roles/storage.objectViewer",
+        "C": "roles/storage.objectAdmin",
+        "D": "roles/viewer"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Storage IAMロール：objectViewerはオブジェクトの読み取りとリストのみ可能、objectCreatorは作成可能だが削除不可、objectAdminはオブジェクトを完全に管理可能、adminはバケット設定を管理可能。最小権限の原則に従ってobjectViewerを選択します。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q45",
+      "domain": 5,
+      "question": "アプリケーションはSecret Managerに保存されているデータベースパスワードにアクセスする必要があります。ベストプラクティスは何ですか？",
+      "options": {
+        "A": "パスワードをコードにハードコーディング",
+        "B": "サービスアカウントにsecretAccessorロールを付与し、アプリケーションがクライアントライブラリを使用してシークレットにアクセス",
+        "C": "パスワードを環境変数に格納",
+        "D": "パスワードをCloud Storageの公開バケットに格納"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Secret Managerのベストプラクティス：機密情報をSecretバージョンとして保存、アプリケーションのサービスアカウントにroles/secretmanager.secretAccessorを付与、クライアントライブラリを使用して実行時にシークレット値を取得。自動ローテーションとバージョン管理をサポートしています。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q46",
+      "domain": 5,
+      "question": "機密データサービスを保護するためにVPC Service Controlsを構成する必要があります。VPC Service Controlsの主な機能は何ですか？",
+      "options": {
+        "A": "ネットワークトラフィックの暗号化",
+        "B": "セキュリティ境界を作成し、保護されたGCPサービスからのデータ漏洩を防止",
+        "C": "ファイアウォールルールの管理",
+        "D": "ネットワークトラフィックの監視"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "VPC Service Controlsはセキュリティ境界を作成します：サービス境界を定義してプロジェクトとサービスを含む、境界内のリソースにアクセスできるIDを制御、データ漏洩を防止（境界外のバケットへのデータコピーをブロックなど）、BigQuery、Cloud Storageなどのサービスをサポート。",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q47",
+      "domain": 5,
+      "question": "GKEワークロードのアイデンティティを構成して、PodがGCPサービスに安全にアクセスできるようにする必要があります。最適な方法は何ですか？",
+      "options": {
+        "A": "Pod内にサービスアカウントキーファイルを保存",
+        "B": "Workload Identityを使用してKubernetesサービスアカウントをGCPサービスアカウントにマッピング",
+        "C": "ノードのデフォルトサービスアカウントを使用",
+        "D": "環境変数で認証情報を渡す"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Workload IdentityはGKE推奨のアイデンティティソリューションです：KubernetesサービスアカウントをGCPサービスアカウントに関連付け、Podは自動的に認証情報を取得（キー管理不要）、最小権限の原則をサポート、ノードサービスアカウントより安全（異なるワークロードの権限を分離）。",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q48",
+      "domain": 5,
+      "question": "会社のVPNからのリクエストのみがCloud Consoleにアクセスできるようにする必要があります。何を構成すべきですか？",
+      "options": {
+        "A": "VPCファイアウォールルール",
+        "B": "IAM条件（Conditions）でIPアドレスベースの制限",
+        "C": "Cloud Armorセキュリティポリシー",
+        "D": "Access Context ManagerとBeyondCorp Enterprise"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "Access Context Managerはアクセスレベル（IP、デバイス状態などに基づく）を定義し、BeyondCorp Enterpriseはゼロトラストアクセス制御を実装します。Cloud Consoleへのアクセスを特定のIP範囲またはマネージドデバイスからのみに制限できます。IAM条件もIPベースの制限が可能ですが、専用のソリューションほど包括的ではありません。",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q49",
+      "domain": 5,
+      "question": "プロジェクト内のすべてのIAMポリシー変更を監査する必要があります。どのログを確認すべきですか？",
+      "options": {
+        "A": "データアクセスログ",
+        "B": "管理アクティビティログ",
+        "C": "システムイベントログ",
+        "D": "ポリシー拒否ログ"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "管理アクティビティログ（Admin Activity logs）はIAMポリシーの変更を含むリソース構成の変更を記録します。これらのログはデフォルトで有効であり、無効にできません。Cloud Loggingでフィルターを使用：protoPayload.methodName=\"SetIamPolicy\"でIAM変更をクエリします。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q50",
+      "domain": 5,
+      "question": "組織は新しく作成されるすべてのCompute Engineインスタンスでセキュアブート（Secure Boot）が有効になっていることを確認する必要があります。何を使用すべきですか？",
+      "options": {
+        "A": "各プロジェクトでインスタンステンプレートを構成",
+        "B": "組織ポリシー制約を作成して、セキュアブートでないインスタンスの作成を制限",
+        "C": "Cloud Functionsを使用して非準拠インスタンスを確認して終了",
+        "D": "チームがドキュメントに従うことに依存"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "組織ポリシーはセキュリティ要件を強制できます：constraints/compute.requireShieldedVm制約を使用して、すべてのVMがShielded VM機能（セキュアブートを含む）を有効にすることを要求。組織またはフォルダレベルで設定し、すべての子リソースに自動的に適用されます。ポリシーに違反する作成リクエストは拒否されます。",
+      "difficulty": "hard"
+    }
+  ]
+}

@@ -1,0 +1,649 @@
+{
+  "exam": {
+    "id": "gcp-pcdev-set2-ja",
+    "name": "GCP クラウド デベロッパー認定模擬試験 #2",
+    "code": "PCDEV",
+    "provider": "GCP",
+    "language": "ja",
+    "description": "Google Cloud Professional Cloud Developer 認定試験模擬問題",
+    "totalQuestions": 40,
+    "passingScore": 70,
+    "examTime": 120,
+    "domains": [
+      {
+        "id": 1,
+        "name": "スケーラブルで可用性の高いクラウドネイティブアプリケーションの設計",
+        "weight": 25
+      },
+      {
+        "id": 2,
+        "name": "アプリケーションの構築とテスト",
+        "weight": 25
+      },
+      {
+        "id": 3,
+        "name": "アプリケーションのデプロイ",
+        "weight": 20
+      },
+      {
+        "id": 4,
+        "name": "Google Cloud サービスの統合",
+        "weight": 20
+      },
+      {
+        "id": 5,
+        "name": "アプリケーションパフォーマンス監視の管理",
+        "weight": 10
+      }
+    ],
+    "tags": [
+      "GCP",
+      "Cloud Developer",
+      "Cloud Run",
+      "GKE",
+      "認定試験"
+    ]
+  },
+  "questions": [
+    {
+      "id": "q1",
+      "domain": 1,
+      "question": "アプリケーションがバーストトラフィックを処理する必要があり、通常は低トラフィックですが、時々大量のリクエストがあります。最もコスト効率の良いアーキテクチャはどれですか？",
+      "options": {
+        "A": "大型の予約インスタンスを使用する",
+        "B": "Cloud Run または Cloud Functions の自動スケーリングを使用する",
+        "C": "Compute Engine インスタンスを手動でスケールする",
+        "D": "専用サーバーを使用する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "サーバーレスアーキテクチャはバーストトラフィックに適しています：\n- Cloud Run/Functions が自動スケーリング\n- ゼロにスケールダウン時は料金が発生しない\n- 使用量に応じた課金\n- 容量の見積もりや予約が不要",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q2",
+      "domain": 1,
+      "question": "マイクロサービスアーキテクチャでサービスディスカバリを実装するにはどうすればよいですか？",
+      "options": {
+        "A": "サービスアドレスをハードコードする",
+        "B": "Kubernetes Services または Cloud Service Directory を使用する",
+        "C": "IP ホワイトリストを使用する",
+        "D": "サービスリストを手動で管理する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "サービスディスカバリソリューション：\n- Kubernetes Services：DNS 名を Pod に解決\n- Cloud Service Directory：マネージドサービスレジストリ\n- ヘルスチェックとロードバランシングをサポート\n- コード変更なしで動的に更新",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q3",
+      "domain": 1,
+      "question": "API を設計する際、後方互換性をどのように処理すべきですか？",
+      "options": {
+        "A": "更新ごとに新しい API を作成する",
+        "B": "API バージョニングを使用する（例：/v1/、/v2/）",
+        "C": "すべてのクライアントに即座のアップグレードを強制する",
+        "D": "互換性を考慮しない"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "API バージョニング戦略：\n- URL パスバージョニング（/v1/、/v2/）\n- リクエストヘッダーバージョニング\n- 複数バージョンの並行運用をサポート\n- クライアントに移行時間を与える\n- 古いバージョンを段階的に廃止",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q4",
+      "domain": 1,
+      "question": "Saga パターンとは何ですか？どのような問題を解決しますか？",
+      "options": {
+        "A": "データ暗号化",
+        "B": "分散トランザクションにおけるサービス間のデータ一貫性",
+        "C": "サービスディスカバリ",
+        "D": "ロードバランシング"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Saga パターン：\n- 長いトランザクションを一連のローカルトランザクションに分割\n- 各ステップに対応する補償操作がある\n- オーケストレーション型とコレオグラフィ型の2つの実装方式\n- 結果整合性を保証\n- マイクロサービスアーキテクチャに適している",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q5",
+      "domain": 1,
+      "question": "マルチテナント SaaS アプリケーションをどのように設計しますか？",
+      "options": {
+        "A": "各テナントに独立したアプリケーションをデプロイする",
+        "B": "共有インフラストラクチャを使用し、テナント ID でデータを分離する",
+        "C": "分離を行わない",
+        "D": "物理サーバーで分離する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "マルチテナント設計パターン：\n- 共有インフラストラクチャでコスト削減\n- データベースの行レベルまたはテーブルレベルの分離\n- テナントコンテキストを使用した権限制御\n- テナントごとのクォータとレート制限\n- データ暗号化とコンプライアンス要件を考慮",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q6",
+      "domain": 1,
+      "question": "CQRS（コマンドクエリ責務分離）パターンの利点は何ですか？",
+      "options": {
+        "A": "コード量の削減",
+        "B": "読み書きモデルを分離し、独立して最適化とスケーリングが可能",
+        "C": "データベース設計の簡素化",
+        "D": "ネットワークレイテンシの削減"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "CQRS の利点：\n- 読み書きモデルの独立した進化\n- 読み取り側で異なるストレージを使用してクエリを最適化\n- 書き込み側はビジネスロジックと一貫性に集中\n- 異なるスケーリング戦略をサポート\n- イベントソーシングと組み合わせて使用されることが多い",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q7",
+      "domain": 1,
+      "question": "アプリケーションのヘルスチェックをどのように実装しますか？",
+      "options": {
+        "A": "ヘルスチェックは不要",
+        "B": "/health エンドポイントを提供し、アプリケーションと依存関係のステータスを返す",
+        "C": "プロセスが実行中かどうかのみをチェック",
+        "D": "手動でチェック"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "ヘルスチェックのベストプラクティス：\n- Liveness probe：アプリケーションが生存しているかをチェック\n- Readiness probe：トラフィックを受け入れる準備ができているかをチェック\n- データベース、キャッシュなどの依存関係の接続をチェック\n- 診断のための詳細なステータス情報を返す",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q8",
+      "domain": 1,
+      "question": "イベント駆動システムを設計する際、メッセージの順序をどのように処理しますか？",
+      "options": {
+        "A": "メッセージは常に順序どおりと仮定する",
+        "B": "メッセージパーティションキーを使用して、同じエンティティのメッセージを順番に処理する",
+        "C": "順序の問題を無視する",
+        "D": "グローバルロックを使用する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "メッセージ順序処理：\n- Pub/Sub ordering key で同じキーのメッセージを順序付け\n- Kafka はパーティション内の順序を保証\n- 重複メッセージに対応するため冪等プロセッサを設計\n- 厳密な順序が本当に必要かを検討",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q9",
+      "domain": 2,
+      "question": "テストピラミッドとは何ですか？最下層にはどのタイプのテストを含めるべきですか？",
+      "options": {
+        "A": "エンドツーエンドテスト",
+        "B": "ユニットテスト",
+        "C": "パフォーマンステスト",
+        "D": "セキュリティテスト"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "テストピラミッド：\n- 最下層：大量のユニットテスト（高速、低コスト）\n- 中間層：適量のインテグレーションテスト\n- 最上層：少量のエンドツーエンドテスト（遅い、高コスト）\n- ユニットテストは境界ケースとビジネスロジックをカバー",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q10",
+      "domain": 2,
+      "question": "Cloud Build で複数のビルドステップを並行して実行するにはどうすればよいですか？",
+      "options": {
+        "A": "並行実行できない",
+        "B": "waitFor フィールドを使用して依存関係を指定する",
+        "C": "複数の cloudbuild.yaml を作成する",
+        "D": "複数のトリガーを使用する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Cloud Build の並行実行：\n- waitFor を使用して前提ステップを指定\n- waitFor: ['-'] は即座に開始を意味\n- 依存関係のないステップは並行実行可能\n- ビルド時間を最適化",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q11",
+      "domain": 2,
+      "question": "コントラクトテストとは何ですか？",
+      "options": {
+        "A": "ユーザーインターフェースのテスト",
+        "B": "サービス間の API コントラクトが正しく実装されているかを検証する",
+        "C": "データベースパフォーマンスのテスト",
+        "D": "ネットワーク接続のテスト"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "コントラクトテスト：\n- サービス間の API コントラクトを検証\n- コンシューマーが期待を定義し、プロバイダーが実装を検証\n- インターフェースの非互換性を早期に発見\n- 独立したデプロイをサポート\n- Pact などのツールがコントラクトテストをサポート",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q12",
+      "domain": 2,
+      "question": "skaffold を使用してローカル Kubernetes 開発を行うにはどうすればよいですか？",
+      "options": {
+        "A": "本番デプロイにのみ使用できる",
+        "B": "自動的にビルド、プッシュし、ローカル K8s クラスターにデプロイ、ホットリロードをサポート",
+        "C": "ログツールにすぎない",
+        "D": "データベース管理に使用"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Skaffold の機能：\n- ローカル K8s 開発ワークフローを自動化\n- コード変更を検出して自動的に再ビルドとデプロイ\n- 複数のビルドツールとデプロイ方法をサポート\n- minikube、kind などのローカルクラスターと統合\n- 開発からデプロイまでのサイクルを簡素化",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q13",
+      "domain": 2,
+      "question": "GCP で GitOps ワークフローを実装するにはどうすればよいですか？",
+      "options": {
+        "A": "すべての変更を手動でデプロイする",
+        "B": "Config Sync を使用して Git リポジトリから GKE に設定を同期する",
+        "C": "バージョン管理を使用しない",
+        "D": "本番環境を直接変更する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "GCP GitOps：\n- Config Sync が Git から K8s 設定を同期\n- Git が唯一の真実の情報源\n- 宣言的な構成管理\n- 自動ドリフト検出と修正\n- 監査とロールバック機能",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q14",
+      "domain": 2,
+      "question": "イミュータブルインフラストラクチャとは何ですか？",
+      "options": {
+        "A": "インフラストラクチャが決して変更されない",
+        "B": "新しいバージョンをデプロイする際、既存のリソースを変更せずに新しいリソースを作成する",
+        "C": "物理サーバーを使用する",
+        "D": "サーバーを手動で構成する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "イミュータブルインフラストラクチャ：\n- サーバーは一度作成されると変更されない\n- 更新時に新しいインスタンスを作成して古いものを置き換え\n- 構成ドリフトを回避\n- ロールバックを簡素化\n- コンテナと仮想マシンイメージが実現方法",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q15",
+      "domain": 2,
+      "question": "コードレビューのベストプラクティスは何ですか？（2つ選択）",
+      "options": {
+        "A": "デリバリーを加速するためにコードレビューをスキップする",
+        "B": "コードロジック、セキュリティ、パフォーマンスの問題をチェックする",
+        "C": "レビュー範囲を小さく集中させる",
+        "D": "シニアエンジニアのみがレビューする"
+      },
+      "answer": ["B", "C"],
+      "answerType": "multiple",
+      "explanation": "コードレビューのベストプラクティス：\n- 小さく頻繁な変更はレビューしやすい\n- 機能、セキュリティ、パフォーマンス、保守性をチェック\n- 自動化ツールを補助として使用\n- 建設的なフィードバック\n- チームメンバー全員がレビューに参加",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q16",
+      "domain": 2,
+      "question": "フィーチャーフラグとは何ですか？",
+      "options": {
+        "A": "ハードウェアスイッチ",
+        "B": "ランタイムで機能を有効/無効にする設定",
+        "C": "ネットワークファイアウォールルール",
+        "D": "データベースインデックス"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "フィーチャーフラグの利点：\n- デプロイなしで機能を有効/無効化\n- 段階的リリースをサポート\n- A/B テスト\n- 問題のある機能の迅速なロールバック\n- デプロイとリリースを分離",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q17",
+      "domain": 3,
+      "question": "GKE Autopilot と Standard モードの違いは何ですか？",
+      "options": {
+        "A": "違いはない",
+        "B": "Autopilot はノードを自動管理し Pod リソースで課金、Standard はノード管理が必要",
+        "C": "Standard の方が安い",
+        "D": "Autopilot はステートフルアプリケーションをサポートしない"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "GKE モードの比較：\n- Autopilot：Google がノードを管理、Pod 単位で課金\n- Standard：ユーザーがノードプールを管理、ノード単位で課金\n- Autopilot は運用負担を軽減\n- Standard はより多くのカスタマイズが可能",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q18",
+      "domain": 3,
+      "question": "Cloud Run で長時間実行タスクを処理するにはどうすればよいですか？",
+      "options": {
+        "A": "Cloud Run は長いタスクをサポートしない",
+        "B": "Cloud Run Jobs を使用するか、リクエストタイムアウトを増やす",
+        "C": "同期 HTTP 呼び出しを使用する",
+        "D": "タスク処理量を減らす"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Cloud Run 長時間タスク処理：\n- Cloud Run Jobs：バックグラウンドタスクに適している\n- サービスリクエストタイムアウトは最大 60 分\n- Cloud Tasks を使用した非同期処理が可能\n- タスクの分割と並列化を検討",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q19",
+      "domain": 3,
+      "question": "Pod Disruption Budget (PDB) とは何ですか？",
+      "options": {
+        "A": "Pod のコスト予算",
+        "B": "自発的な中断時に同時に利用不可になる Pod 数を制限する",
+        "C": "ネットワーク帯域幅制限",
+        "D": "ストレージクォータ"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Pod Disruption Budget：\n- 高可用性を保証するポリシー\n- 自発的な中断（ノードアップグレードなど）時に利用不可の Pod 数を制限\n- minAvailable または maxUnavailable を指定\n- すべての Pod が同時に退避されることを防止",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q20",
+      "domain": 3,
+      "question": "GKE で Pod のアンチアフィニティを実装するにはどうすればよいですか？",
+      "options": {
+        "A": "実装できない",
+        "B": "podAntiAffinity 設定を使用して Pod が異なるノードに分散されるようにする",
+        "C": "Pod レプリカ数を増やす",
+        "D": "単一ノードを使用する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Pod アンチアフィニティ：\n- Pod が異なるノード/ゾーンに分散されることを確保\n- 可用性を向上\n- 単一障害点を回避\n- ハード（required）またはソフト（preferred）要件として設定可能",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q21",
+      "domain": 3,
+      "question": "App Engine Standard 環境と Flexible 環境の違いは何ですか？",
+      "options": {
+        "A": "違いはない",
+        "B": "Standard はサンドボックスランタイムを使用、Flexible はコンテナで実行しカスタムランタイムをサポート",
+        "C": "Flexible は自動スケーリングをサポートしない",
+        "D": "Standard の方が高価"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "App Engine 環境の比較：\n- Standard：サンドボックスランタイム、ミリ秒単位のスケーリング、ゼロへのスケールダウンをサポート\n- Flexible：Docker コンテナ、分単位のスケーリング、カスタムランタイム\n- Standard は高速スケーリングの Web アプリに適している\n- Flexible はカスタム依存関係が必要なアプリに適している",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q22",
+      "domain": 3,
+      "question": "Kubernetes でステートフルアプリケーションのストレージを管理するにはどうすればよいですか？",
+      "options": {
+        "A": "永続ストレージを使用しない",
+        "B": "StatefulSet と PersistentVolumeClaim を使用する",
+        "C": "一時ストレージを使用する",
+        "D": "Pod メモリに保存する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "ステートフルアプリケーションのストレージ：\n- StatefulSet が安定したネットワーク ID とストレージを提供\n- PersistentVolumeClaim で永続ストレージを要求\n- GKE は複数のストレージタイプをサポート（SSD、標準ディスク）\n- 動的ボリュームプロビジョニングをサポート",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q23",
+      "domain": 3,
+      "question": "Deployment の recreate 戦略とは何ですか？",
+      "options": {
+        "A": "ローリングアップデート",
+        "B": "すべての古い Pod を削除してから新しい Pod を作成する",
+        "C": "1つの古い Pod を維持する",
+        "D": "ランダムに更新する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Recreate 戦略：\n- まずすべての既存 Pod を終了\n- 次に新バージョンの Pod を作成\n- 短時間のダウンタイムが発生\n- 複数バージョンの同時実行ができないアプリに適している\n- ローリングアップデートより単純",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q24",
+      "domain": 3,
+      "question": "Pod のリソース使用量を制限するにはどうすればよいですか？",
+      "options": {
+        "A": "制限できない",
+        "B": "Pod 仕様で resources.requests と resources.limits を設定する",
+        "C": "外部監視を使用する",
+        "D": "制限を超えた Pod を手動で終了する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Pod リソース管理：\n- requests：スケジューリング時に考慮されるリソース量\n- limits：リソース使用量の上限\n- CPU 制限はスロットリングを引き起こす\n- メモリ制限超過は OOM Kill につながる可能性\n- LimitRange を使用してデフォルト値を設定",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q25",
+      "domain": 4,
+      "question": "Cloud Functions を使用してリアルタイムファイル処理を行うにはどうすればよいですか？",
+      "options": {
+        "A": "ファイルシステムをポーリングする",
+        "B": "Cloud Storage トリガーを使用してファイルアップロード時に関数を自動実行する",
+        "C": "関数を手動で呼び出す",
+        "D": "スケジュールタスクを使用する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Cloud Functions リアルタイム処理：\n- Cloud Storage イベントをリッスン\n- ファイルのアップロード/変更/削除時にトリガー\n- 画像処理、データ変換によく使用される\n- Vision AI、Speech-to-Text などとの統合",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q26",
+      "domain": 4,
+      "question": "Eventarc の主な機能は何ですか？",
+      "options": {
+        "A": "データストレージ",
+        "B": "統一されたイベントルーティングサービスで、GCP イベントをターゲットサービスにルーティング",
+        "C": "ロードバランシング",
+        "D": "ID 認証"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Eventarc：\n- 統一されたイベントルーティング\n- Cloud Audit Logs、Pub/Sub、サードパーティイベントをサポート\n- Cloud Run、GKE、Workflows にイベントをルーティング\n- イベント駆動アーキテクチャを簡素化",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q27",
+      "domain": 4,
+      "question": "アプリケーションで Vision AI API を使用して画像分析を行うにはどうすればよいですか？",
+      "options": {
+        "A": "統合できない",
+        "B": "クライアントライブラリを使用して API を呼び出し、画像を渡してラベル、テキストなどを取得する",
+        "C": "コンソールでのみ使用可能",
+        "D": "モデルを自分でトレーニングする必要がある"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Vision AI の統合：\n- 公式クライアントライブラリを使用\n- ラベル検出、OCR、顔検出などをサポート\n- Cloud Storage URI または base64 画像を渡せる\n- API 呼び出しごとに課金",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q28",
+      "domain": 4,
+      "question": "Cloud Workflows の用途は何ですか？",
+      "options": {
+        "A": "リアルタイムデータ処理",
+        "B": "複数の HTTP サービスと GCP API をオーケストレーションするサーバーレスワークフロー",
+        "C": "コンテナオーケストレーション",
+        "D": "データベース管理"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Cloud Workflows：\n- サーバーレスワークフローオーケストレーション\n- YAML でステップを定義\n- 条件、ループ、エラーハンドリングをサポート\n- HTTP エンドポイントと GCP サービスを呼び出し\n- 実行ステップごとに課金",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q29",
+      "domain": 4,
+      "question": "BigQuery クライアントライブラリを使用してクエリを実行するにはどうすればよいですか？",
+      "options": {
+        "A": "コンソールでのみ使用可能",
+        "B": "クライアントライブラリを使用してクエリジョブを送信し結果を取得する",
+        "C": "REST API を使用する必要がある",
+        "D": "同期クエリのみサポート"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "BigQuery クライアントライブラリ：\n- 複数の言語をサポート（Python、Java、Go など）\n- クエリを送信して結果を反復処理\n- パラメータ化クエリをサポート\n- 大きな結果セットのページングを処理\n- 非同期と同期モードをサポート",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q30",
+      "domain": 4,
+      "question": "Cloud Run サービス間で安全に通信するにはどうすればよいですか？",
+      "options": {
+        "A": "パブリックエンドポイントを使用する",
+        "B": "IAM 権限を設定し、サービス ID トークンで認証する",
+        "C": "認証は不要",
+        "D": "ハードコードされたキーを使用する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Cloud Run サービス間認証：\n- サービスを「認証が必要」に設定\n- 呼び出し元サービスアカウントに Cloud Run Invoker ロールが必要\n- ID トークンを使用してリクエストを認証\n- OIDC 認証をサポート",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q31",
+      "domain": 4,
+      "question": "Apigee と Cloud Endpoints の違いは何ですか？",
+      "options": {
+        "A": "違いはない",
+        "B": "Apigee はエンタープライズ級の API 管理プラットフォームで機能が豊富、Endpoints は軽量ソリューション",
+        "C": "Endpoints の方が機能が多い",
+        "D": "Apigee は内部 API のみをサポート"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Apigee vs Endpoints：\n- Apigee：完全な API ライフサイクル管理\n- 開発者ポータル、収益化、高度な分析を含む\n- Endpoints：軽量 API ゲートウェイ\n- 基本的な認証と監視\n- Apigee は大企業に適している",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q32",
+      "domain": 4,
+      "question": "Cloud Spanner クライアントライブラリを使用してトランザクションを実装するにはどうすればよいですか？",
+      "options": {
+        "A": "Spanner はトランザクションをサポートしない",
+        "B": "読み書きトランザクション API を使用して、トランザクション内で複数の操作を実行する",
+        "C": "単一行操作のみサポート",
+        "D": "外部トランザクションマネージャーを使用する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Cloud Spanner トランザクション：\n- 読み書きトランザクションと読み取り専用トランザクションをサポート\n- ロックと競合を自動的に処理\n- テーブル間およびリージョン間のトランザクションをサポート\n- 強い一貫性を保証\n- Mutation を使用したバッチ書き込み",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q33",
+      "domain": 5,
+      "question": "Cloud Profiler を使用してアプリケーションパフォーマンスを最適化するにはどうすればよいですか？",
+      "options": {
+        "A": "ログの表示のみ可能",
+        "B": "CPU とメモリ使用データを収集し、ホットスポット関数を特定する",
+        "C": "ネットワークレイテンシのみをテスト",
+        "D": "コードを手動で分析する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Cloud Profiler：\n- 本番ワークロードを継続的に分析\n- CPU、ヒープメモリ、スレッド分析\n- フレームグラフによる可視化\n- 低オーバーヘッド（5%未満）\n- パフォーマンスボトルネックの発見を支援",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q34",
+      "domain": 5,
+      "question": "OpenTelemetry とは何ですか？GCP とどのように統合しますか？",
+      "options": {
+        "A": "プログラミング言語",
+        "B": "オープンソースの可観測性フレームワークで、Cloud Trace と Monitoring にデータをエクスポートできる",
+        "C": "データベースツール",
+        "D": "ネットワークプロトコル"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "OpenTelemetry：\n- ベンダー中立の可観測性標準\n- 統一された traces、metrics、logs API\n- GCP がエクスポーターを提供\n- ベンダーロックインを軽減\n- 複数の言語をサポート",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q35",
+      "domain": 5,
+      "question": "Cloud Logging でログルーティングを作成するにはどうすればよいですか？",
+      "options": {
+        "A": "ログをルーティングできない",
+        "B": "ログシンクを作成して BigQuery、Cloud Storage、Pub/Sub にログをエクスポートする",
+        "C": "ログの表示のみ可能",
+        "D": "ログを手動でコピーする"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "ログルーティング：\n- Sink を作成してログフィルターと宛先を定義\n- BigQuery にエクスポートして分析\n- Cloud Storage にエクスポートしてアーカイブ\n- Pub/Sub にエクスポートしてリアルタイム処理\n- 除外フィルターをサポートしてストレージを削減",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q36",
+      "domain": 5,
+      "question": "Cloud Run のカスタムドメインを設定するにはどうすればよいですか？",
+      "options": {
+        "A": "設定できない",
+        "B": "Cloud Run でドメインをマッピングし、DNS を設定する",
+        "C": "デフォルトドメインのみ使用可能",
+        "D": "サードパーティサービスを使用する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Cloud Run カスタムドメイン：\n- コンソールでドメインマッピングを追加\n- Google が自動的に SSL 証明書を設定\n- DNS レコードを更新して Cloud Run を指す\n- ワイルドカードドメインをサポート\n- グローバルロードバランサーを使用するとより多くの機能が利用可能",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q37",
+      "domain": 5,
+      "question": "構造化ログとは何ですか？なぜ重要ですか？",
+      "options": {
+        "A": "ログ形式は重要ではない",
+        "B": "JSON 形式でログを記録し、クエリと分析を容易にする",
+        "C": "プレーンテキストのみを使用する",
+        "D": "ログ量を減らす"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "構造化ログ：\n- JSON 形式はパースしやすい\n- 豊富なクエリフィルタリングをサポート\n- Cloud Logging とネイティブに統合\n- ラベルとフィールドを抽出可能\n- メトリクスとアラートの作成が容易",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q38",
+      "domain": 5,
+      "question": "Cloud Monitoring でカスタムダッシュボードを作成するにはどうすればよいですか？",
+      "options": {
+        "A": "定義済みダッシュボードのみ使用可能",
+        "B": "チャートを追加し、メトリクスとフィルター条件を選択し、レイアウトをカスタマイズする",
+        "C": "作成できない",
+        "D": "コードを書く必要がある"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "カスタムダッシュボード：\n- 複数のチャートタイプを追加\n- GCP またはカスタムメトリクスを選択\n- フィルターと集計を設定\n- 変数とテンプレートをサポート\n- 共有とエクスポートが可能",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q39",
+      "domain": 1,
+      "question": "Bulkhead パターンとは何ですか？",
+      "options": {
+        "A": "ネットワーク暗号化",
+        "B": "システムを分離されたコンポーネントに分割し、障害の伝播を防ぐ",
+        "C": "データ圧縮",
+        "D": "キャッシュ戦略"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Bulkhead パターン：\n- 船の隔壁からインスピレーションを受けた\n- 異なる接続プールまたはスレッドプールを分離\n- 1つのコンポーネントの障害が他に影響しない\n- サーキットブレーカーと組み合わせて使用\n- システムの弾力性を向上",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q40",
+      "domain": 2,
+      "question": "CI/CD で脆弱性スキャンを実装するにはどうすればよいですか？",
+      "options": {
+        "A": "セキュリティチェックをスキップする",
+        "B": "Container Analysis を使用してコンテナイメージの既知の脆弱性をスキャンする",
+        "C": "コードを手動でチェックする",
+        "D": "本番環境でのみスキャンする"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "CI/CD セキュリティスキャン：\n- Container Analysis が OS とパッケージの脆弱性をスキャン\n- Artifact Registry と統合\n- スキャンポリシーを設定\n- Binary Authorization でスキャン済みイメージのみをデプロイ\n- Cloud Build にスキャンステップを統合",
+      "difficulty": "medium"
+    }
+  ]
+}

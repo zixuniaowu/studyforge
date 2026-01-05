@@ -1,0 +1,663 @@
+{
+  "exam": {
+    "id": "gcp-pdevops-set3",
+    "name": "Professional Cloud DevOps Engineer 练习题 Set 3",
+    "code": "PDevOps",
+    "provider": "Google Cloud",
+    "language": "zh-CN",
+    "description": "Google Cloud Professional Cloud DevOps Engineer 认证模拟练习题第三套",
+    "totalQuestions": 40,
+    "passingScore": 70,
+    "examTime": 120,
+    "domains": [
+      "应用开发和服务可靠性",
+      "构建和部署管道",
+      "服务监控和日志",
+      "事件管理",
+      "Google Kubernetes Engine 管理"
+    ],
+    "tags": ["Google Cloud", "DevOps", "SRE", "Professional"]
+  },
+  "questions": [
+    {
+      "id": "gcp-pdevops-set3-q1",
+      "examId": "gcp-pdevops-set3",
+      "setNumber": 3,
+      "domain": "应用开发和服务可靠性",
+      "question": "您的团队正在定义 SLO。对于一个面向用户的 API 服务，以下哪个是好的可用性 SLI？",
+      "options": {
+        "A": "后端服务器的 CPU 使用率",
+        "B": "成功响应的请求占总请求的百分比",
+        "C": "部署频率",
+        "D": "代码覆盖率"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "好的可用性 SLI 应该直接反映用户体验。成功响应的请求百分比直接衡量了用户是否能够成功使用服务。CPU 使用率是内部指标，不直接反映用户体验。部署频率和代码覆盖率是开发指标，而非可靠性指标。"
+    },
+    {
+      "id": "gcp-pdevops-set3-q2",
+      "examId": "gcp-pdevops-set3",
+      "setNumber": 3,
+      "domain": "构建和部署管道",
+      "question": "您需要使用 Infrastructure as Code（IaC）管理 Google Cloud 资源。应该使用哪个工具？",
+      "options": {
+        "A": "Cloud Console UI",
+        "B": "Terraform 或 Deployment Manager",
+        "C": "手动命令行脚本",
+        "D": "电子表格"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Terraform 和 Deployment Manager 都是 IaC 工具，允许您以声明式的方式定义和管理云资源。它们提供版本控制、可重复部署和状态管理功能。Terraform 是多云工具，Deployment Manager 是 Google Cloud 原生工具。"
+    },
+    {
+      "id": "gcp-pdevops-set3-q3",
+      "examId": "gcp-pdevops-set3",
+      "setNumber": 3,
+      "domain": "服务监控和日志",
+      "question": "您需要在 Cloud Monitoring 中创建告警，当服务在过去 5 分钟内没有收到任何请求时触发。应该使用什么类型的条件？",
+      "options": {
+        "A": "阈值条件",
+        "B": "指标缺失条件（Metric Absence）",
+        "C": "比率条件",
+        "D": "进程健康条件"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "指标缺失条件专门用于检测预期应该存在但没有数据的情况。当服务停止接收请求时，相关指标将不再有数据点。使用指标缺失条件可以检测到这种情况，而阈值条件需要有数据才能评估。"
+    },
+    {
+      "id": "gcp-pdevops-set3-q4",
+      "examId": "gcp-pdevops-set3",
+      "setNumber": 3,
+      "domain": "Google Kubernetes Engine 管理",
+      "question": "您需要在 GKE 中实现 Pod 的存活探针（Liveness Probe），当应用程序死锁时自动重启 Pod。探针应该如何配置？",
+      "options": {
+        "A": "检查 Pod 是否正在运行",
+        "B": "调用应用程序的健康检查端点验证其是否正常响应",
+        "C": "只检查内存使用率",
+        "D": "禁用所有探针"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "存活探针应该检查应用程序是否真正能够响应请求。简单的 HTTP 健康检查端点可以验证应用程序是否能够处理请求。如果应用程序死锁，健康检查将超时，kubelet 将重启 Pod。"
+    },
+    {
+      "id": "gcp-pdevops-set3-q5",
+      "examId": "gcp-pdevops-set3",
+      "setNumber": 3,
+      "domain": "事件管理",
+      "question": "您正在处理一个生产事件，发现问题是由最近的部署引起的。第一步应该是什么？",
+      "options": {
+        "A": "调查代码变更的详细内容",
+        "B": "立即回滚到之前的版本",
+        "C": "通知开发团队",
+        "D": "编写详细报告"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "在事件响应中，恢复服务是第一优先级。如果已经确定问题是由最近的部署引起的，立即回滚是最快的恢复方法。详细的调查和根本原因分析可以在服务恢复后进行。"
+    },
+    {
+      "id": "gcp-pdevops-set3-q6",
+      "examId": "gcp-pdevops-set3",
+      "setNumber": 3,
+      "domain": "应用开发和服务可靠性",
+      "question": "您需要设计一个能够处理部分故障的微服务架构。应该遵循什么原则？",
+      "options": {
+        "A": "所有服务共享同一个数据库",
+        "B": "每个服务应该能够优雅降级，使用超时、重试和断路器",
+        "C": "紧密耦合所有服务",
+        "D": "使用同步调用链处理所有请求"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "微服务架构中，每个服务应该能够独立处理依赖服务的故障。实施超时限制等待时间，使用重试处理临时故障，使用断路器防止级联失败，准备降级响应。这些模式共同提高了系统的整体弹性。"
+    },
+    {
+      "id": "gcp-pdevops-set3-q7",
+      "examId": "gcp-pdevops-set3",
+      "setNumber": 3,
+      "domain": "构建和部署管道",
+      "question": "您需要在 Cloud Build 中运行需要特权的 Docker 操作（如构建 Docker 镜像）。应该如何配置？",
+      "options": {
+        "A": "使用默认配置",
+        "B": "配置 Cloud Build 使用特权模式或使用 Kaniko",
+        "C": "禁用所有安全功能",
+        "D": "在本地构建镜像"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Cloud Build 在容器中运行构建步骤，默认不能运行特权 Docker 操作。有两种解决方案：使用 Kaniko（一个不需要 Docker daemon 的镜像构建工具），或者配置 Cloud Build 使用特权模式（但这会降低安全性）。Kaniko 是推荐的方法。"
+    },
+    {
+      "id": "gcp-pdevops-set3-q8",
+      "examId": "gcp-pdevops-set3",
+      "setNumber": 3,
+      "domain": "服务监控和日志",
+      "question": "您需要在应用程序中实现结构化日志，以便在 Cloud Logging 中进行高效查询。应该如何格式化日志？",
+      "options": {
+        "A": "纯文本格式",
+        "B": "JSON 格式，包含标准字段如 severity 和 message",
+        "C": "XML 格式",
+        "D": "CSV 格式"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Cloud Logging 能够自动解析 JSON 格式的日志，将字段提取为可搜索的标签。使用标准字段名（如 severity、message、httpRequest）可以启用 Cloud Logging 的高级功能，如自动严重性检测和 HTTP 请求日志的聚合。"
+    },
+    {
+      "id": "gcp-pdevops-set3-q9",
+      "examId": "gcp-pdevops-set3",
+      "setNumber": 3,
+      "domain": "Google Kubernetes Engine 管理",
+      "question": "您需要确保 GKE 集群在节点故障时能够自动替换节点。应该使用什么功能？",
+      "options": {
+        "A": "手动监控节点",
+        "B": "节点自动修复和节点池自动扩展",
+        "C": "禁用所有自动化",
+        "D": "使用单节点集群"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "节点自动修复会自动检测不健康的节点并尝试修复（通过重启或重新创建）。节点池自动扩展会在需要时自动添加节点。这两个功能结合可以确保集群在节点故障时自动恢复，保持工作负载的可用性。"
+    },
+    {
+      "id": "gcp-pdevops-set3-q10",
+      "examId": "gcp-pdevops-set3",
+      "setNumber": 3,
+      "domain": "事件管理",
+      "question": "事后分析揭示了多个可以改进的领域。如何优先处理这些改进项目？",
+      "options": {
+        "A": "随机选择",
+        "B": "根据影响大小和实施难度进行优先级排序",
+        "C": "只做最简单的",
+        "D": "忽略所有改进"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "改进项目应该根据其潜在影响（能够防止多少未来事件或减少多少影响）和实施成本/难度进行优先级排序。高影响、低成本的改进应该优先处理。这确保了有限的工程资源被用于最有价值的改进。"
+    },
+    {
+      "id": "gcp-pdevops-set3-q11",
+      "examId": "gcp-pdevops-set3",
+      "setNumber": 3,
+      "domain": "应用开发和服务可靠性",
+      "question": "您需要测量 API 服务的延迟 SLI。应该测量哪个延迟百分位？",
+      "options": {
+        "A": "仅平均延迟",
+        "B": "P50、P95 和 P99 延迟",
+        "C": "最小延迟",
+        "D": "仅最大延迟"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "延迟 SLI 通常使用多个百分位来捕获完整的延迟分布。P50（中位数）代表典型用户体验，P95 代表大多数用户的体验，P99 代表尾部延迟。平均值可能被极端值扭曲，不能准确反映用户体验。"
+    },
+    {
+      "id": "gcp-pdevops-set3-q12",
+      "examId": "gcp-pdevops-set3",
+      "setNumber": 3,
+      "domain": "构建和部署管道",
+      "question": "您需要在 Cloud Deploy 中实现自动回滚，当部署验证失败时自动回滚到之前的版本。应该配置什么？",
+      "options": {
+        "A": "手动监控并回滚",
+        "B": "部署后验证配合自动回滚策略",
+        "C": "禁用回滚功能",
+        "D": "不部署任何更新"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Cloud Deploy 支持部署后验证，可以在部署完成后运行验证测试。如果验证失败，可以配置自动回滚策略，将服务恢复到之前的已知良好版本。这减少了故障检测和恢复的时间。"
+    },
+    {
+      "id": "gcp-pdevops-set3-q13",
+      "examId": "gcp-pdevops-set3",
+      "setNumber": 3,
+      "domain": "服务监控和日志",
+      "question": "您需要将 Cloud Logging 的日志长期保存到低成本存储中以满足合规要求。应该使用什么方法？",
+      "options": {
+        "A": "增加 Cloud Logging 的保留期",
+        "B": "创建日志接收器将日志导出到 Cloud Storage",
+        "C": "手动下载日志",
+        "D": "删除旧日志"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "日志接收器可以将匹配特定过滤条件的日志自动导出到 Cloud Storage。Cloud Storage 提供多种存储类别（如 Coldline、Archive），可以以很低的成本长期存储日志。这比增加 Cloud Logging 的保留期更经济。"
+    },
+    {
+      "id": "gcp-pdevops-set3-q14",
+      "examId": "gcp-pdevops-set3",
+      "setNumber": 3,
+      "domain": "Google Kubernetes Engine 管理",
+      "question": "您需要在 GKE 中实现服务网格以获得高级流量管理和可观测性。应该使用什么？",
+      "options": {
+        "A": "传统负载均衡器",
+        "B": "Anthos Service Mesh（ASM）或 Istio",
+        "C": "仅使用 Kubernetes Service",
+        "D": "禁用所有网络功能"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Anthos Service Mesh 是 Google 管理的服务网格，基于 Istio 构建。它提供高级流量管理（如金丝雀部署、流量镜像）、安全功能（如 mTLS）和丰富的可观测性（分布式追踪、指标）。这对于复杂的微服务架构非常有价值。"
+    },
+    {
+      "id": "gcp-pdevops-set3-q15",
+      "examId": "gcp-pdevops-set3",
+      "setNumber": 3,
+      "domain": "事件管理",
+      "question": "您的团队需要进行定期的灾难恢复演练。演练应该多久进行一次？",
+      "options": {
+        "A": "只在真正灾难发生时",
+        "B": "定期进行（如每季度），并持续改进流程",
+        "C": "每天进行",
+        "D": "永不进行"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "定期的灾难恢复演练确保流程是有效的，团队熟悉操作步骤，并且发现潜在的问题。演练频率取决于系统的关键性，通常每季度或每半年进行一次。每次演练后应该评估结果并改进流程。"
+    },
+    {
+      "id": "gcp-pdevops-set3-q16",
+      "examId": "gcp-pdevops-set3",
+      "setNumber": 3,
+      "domain": "应用开发和服务可靠性",
+      "question": "您需要实现应用程序的优雅关闭，确保在 Pod 终止时不丢失正在处理的请求。应该如何实现？",
+      "options": {
+        "A": "立即终止所有连接",
+        "B": "处理 SIGTERM 信号，完成进行中的请求后再退出",
+        "C": "忽略终止信号",
+        "D": "使用强制终止"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "优雅关闭要求应用程序在收到 SIGTERM 信号后：停止接受新请求、完成正在处理的请求、释放资源、然后退出。Kubernetes 提供 terminationGracePeriodSeconds 参数来控制优雅关闭的等待时间。"
+    },
+    {
+      "id": "gcp-pdevops-set3-q17",
+      "examId": "gcp-pdevops-set3",
+      "setNumber": 3,
+      "domain": "构建和部署管道",
+      "question": "您需要在 CI/CD 管道中实现安全扫描，检测代码中的安全漏洞。应该使用什么工具？",
+      "options": {
+        "A": "只进行功能测试",
+        "B": "集成 SAST（静态应用程序安全测试）工具",
+        "C": "跳过安全检查以加快构建",
+        "D": "只在生产环境中扫描"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "SAST 工具在构建时分析源代码，检测潜在的安全漏洞（如 SQL 注入、XSS）。将安全扫描集成到 CI/CD 管道中可以在早期发现问题，遵循\"左移安全\"原则。常见工具包括 SonarQube、Snyk 等。"
+    },
+    {
+      "id": "gcp-pdevops-set3-q18",
+      "examId": "gcp-pdevops-set3",
+      "setNumber": 3,
+      "domain": "服务监控和日志",
+      "question": "您需要为复杂查询创建自定义 Cloud Monitoring 仪表板。仪表板应该包含什么类型的图表？",
+      "options": {
+        "A": "只使用文本",
+        "B": "时间序列图、热图、SLO 状态指示器等多种可视化",
+        "C": "只使用数字显示",
+        "D": "只使用饼图"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "有效的仪表板应该使用多种可视化类型来展示不同类型的数据：时间序列图显示趋势，热图显示分布，SLO 状态指示器显示当前健康状况，数字显示关键指标的当前值。选择正确的可视化类型有助于快速理解数据。"
+    },
+    {
+      "id": "gcp-pdevops-set3-q19",
+      "examId": "gcp-pdevops-set3",
+      "setNumber": 3,
+      "domain": "Google Kubernetes Engine 管理",
+      "question": "您需要在 GKE 中运行 GPU 工作负载。应该如何配置？",
+      "options": {
+        "A": "使用标准节点",
+        "B": "创建带有 GPU 的节点池，并在 Pod 中请求 GPU 资源",
+        "C": "在 Pod 中安装 GPU 驱动",
+        "D": "使用 Preemptible VMs"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "在 GKE 中运行 GPU 工作负载需要：1) 创建附加 GPU 的节点池，2) 安装 NVIDIA GPU 驱动（GKE 可以自动安装），3) 在 Pod 规格中使用 nvidia.com/gpu 资源请求 GPU。GKE 会将 Pod 调度到具有 GPU 的节点上。"
+    },
+    {
+      "id": "gcp-pdevops-set3-q20",
+      "examId": "gcp-pdevops-set3",
+      "setNumber": 3,
+      "domain": "事件管理",
+      "question": "您的团队发现某些告警经常在非工作时间触发，但实际上不需要立即处理。应该如何优化？",
+      "options": {
+        "A": "禁用所有非工作时间告警",
+        "B": "实施告警分级，低优先级告警只在工作时间通知",
+        "C": "增加所有告警的阈值",
+        "D": "忽略所有告警"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "告警分级允许您根据告警的紧急程度配置不同的通知策略。真正紧急的告警（如服务中断）应该立即通知，而非紧急的告警可以延迟到工作时间处理或聚合后发送。这减少了值班人员的疲劳。"
+    },
+    {
+      "id": "gcp-pdevops-set3-q21",
+      "examId": "gcp-pdevops-set3",
+      "setNumber": 3,
+      "domain": "应用开发和服务可靠性",
+      "question": "您需要确保数据库变更不会导致服务中断。应该采用什么策略？",
+      "options": {
+        "A": "直接在生产环境修改模式",
+        "B": "使用在线模式变更和向后兼容的迁移",
+        "C": "停止服务后再变更",
+        "D": "不做任何数据库变更"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "零停机数据库变更需要仔细规划：使用在线模式变更工具（如 pt-online-schema-change、gh-ost），确保变更向后兼容（新旧代码都能工作），分阶段执行变更（先添加新列，部署新代码，然后删除旧列）。"
+    },
+    {
+      "id": "gcp-pdevops-set3-q22",
+      "examId": "gcp-pdevops-set3",
+      "setNumber": 3,
+      "domain": "构建和部署管道",
+      "question": "您需要管理多个环境（开发、测试、生产）的 Kubernetes 配置。应该使用什么工具？",
+      "options": {
+        "A": "为每个环境维护独立的配置文件副本",
+        "B": "使用 Kustomize 或 Helm 进行配置管理",
+        "C": "手动修改每个环境的配置",
+        "D": "所有环境使用相同配置"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Kustomize 和 Helm 是 Kubernetes 配置管理工具。Kustomize 使用覆盖层方式，允许基于基础配置创建环境特定的变体。Helm 使用模板化方法，通过值文件进行参数化。两者都避免了配置重复和手动同步的问题。"
+    },
+    {
+      "id": "gcp-pdevops-set3-q23",
+      "examId": "gcp-pdevops-set3",
+      "setNumber": 3,
+      "domain": "服务监控和日志",
+      "question": "您需要监控应用程序的用户定义业务指标（如订单数量、收入）。应该如何实现？",
+      "options": {
+        "A": "只监控系统指标",
+        "B": "使用 Cloud Monitoring 自定义指标 API 发送业务指标",
+        "C": "将业务指标存储在电子表格中",
+        "D": "不监控业务指标"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Cloud Monitoring 支持自定义指标，允许您发送应用程序特定的指标数据。使用 Cloud Monitoring API 或客户端库，您可以收集和可视化任何业务相关的指标，并基于这些指标创建告警。"
+    },
+    {
+      "id": "gcp-pdevops-set3-q24",
+      "examId": "gcp-pdevops-set3",
+      "setNumber": 3,
+      "domain": "Google Kubernetes Engine 管理",
+      "question": "您需要在 GKE 中实现 Pod 安全策略，限制容器以 root 用户运行。应该使用什么？",
+      "options": {
+        "A": "PodSecurityPolicy（已弃用）",
+        "B": "Pod Security Admission 或 OPA Gatekeeper",
+        "C": "不实施任何安全策略",
+        "D": "在每个容器中手动配置"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "PodSecurityPolicy 已在 Kubernetes 1.25 中弃用。推荐使用 Pod Security Admission（内置的准入控制器）或 OPA Gatekeeper（更灵活的策略引擎）来实施 Pod 安全策略。这些工具可以强制执行最佳实践，如禁止特权容器、限制 root 用户等。"
+    },
+    {
+      "id": "gcp-pdevops-set3-q25",
+      "examId": "gcp-pdevops-set3",
+      "setNumber": 3,
+      "domain": "事件管理",
+      "question": "您的服务经历了一次重大中断，影响了大量用户。事后分析应该在何时进行？",
+      "options": {
+        "A": "立即在事件解决期间进行",
+        "B": "在事件解决后几天内，当细节还清晰时进行",
+        "C": "几个月后进行",
+        "D": "永不进行"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "事后分析应该在事件解决后尽快进行（通常在几天内），这时相关人员对事件的记忆还清晰。但也不应该在事件解决期间进行，因为团队应该专注于恢复服务。事后分析会议应该有足够的准备时间来收集数据和时间线。"
+    },
+    {
+      "id": "gcp-pdevops-set3-q26",
+      "examId": "gcp-pdevops-set3",
+      "setNumber": 3,
+      "domain": "应用开发和服务可靠性",
+      "question": "您需要设计一个能够处理不同工作负载优先级的系统，确保关键任务在资源紧张时获得优先处理。应该使用什么模式？",
+      "options": {
+        "A": "先进先出（FIFO）队列",
+        "B": "优先级队列和资源预留",
+        "C": "随机处理",
+        "D": "单一队列"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "优先级队列允许根据任务的重要性进行排序处理。配合资源预留可以确保关键任务始终有足够的资源。在 Kubernetes 中，可以使用 PriorityClass 为 Pod 设置调度优先级，确保高优先级工作负载优先获得资源。"
+    },
+    {
+      "id": "gcp-pdevops-set3-q27",
+      "examId": "gcp-pdevops-set3",
+      "setNumber": 3,
+      "domain": "构建和部署管道",
+      "question": "您需要确保 Cloud Build 只能被授权的用户或服务账户触发。应该如何配置？",
+      "options": {
+        "A": "允许所有人触发构建",
+        "B": "使用 IAM 角色控制 Cloud Build 的访问权限",
+        "C": "禁用所有自动触发",
+        "D": "不使用任何访问控制"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "使用 IAM 角色和权限可以控制谁可以创建、查看和触发 Cloud Build。例如，roles/cloudbuild.builds.editor 角色允许创建和取消构建，而 roles/cloudbuild.builds.viewer 只允许查看。这遵循最小权限原则。"
+    },
+    {
+      "id": "gcp-pdevops-set3-q28",
+      "examId": "gcp-pdevops-set3",
+      "setNumber": 3,
+      "domain": "服务监控和日志",
+      "question": "您需要在多个项目之间聚合和监控指标。应该使用什么功能？",
+      "options": {
+        "A": "在每个项目中单独查看指标",
+        "B": "使用 Cloud Monitoring 的多项目监控范围",
+        "C": "导出所有指标到电子表格",
+        "D": "禁用多项目监控"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Cloud Monitoring 支持创建监控范围（Metrics Scope），可以在单个仪表板中聚合来自多个 Google Cloud 项目的指标。这对于管理跨多个项目的服务非常有用，提供了统一的可观测性视图。"
+    },
+    {
+      "id": "gcp-pdevops-set3-q29",
+      "examId": "gcp-pdevops-set3",
+      "setNumber": 3,
+      "domain": "Google Kubernetes Engine 管理",
+      "question": "您需要在 GKE 中实现自动扩展节点池以响应工作负载需求。应该使用什么功能？",
+      "options": {
+        "A": "手动添加节点",
+        "B": "Cluster Autoscaler",
+        "C": "Horizontal Pod Autoscaler",
+        "D": "Vertical Pod Autoscaler"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Cluster Autoscaler 自动调整节点池的节点数量。当 Pod 因资源不足无法调度时添加节点，当节点利用率低且 Pod 可以调度到其他节点时删除节点。这与 HPA（Pod 级别）配合工作，实现完整的自动扩展解决方案。"
+    },
+    {
+      "id": "gcp-pdevops-set3-q30",
+      "examId": "gcp-pdevops-set3",
+      "setNumber": 3,
+      "domain": "事件管理",
+      "question": "您的组织希望衡量 SRE 实践的成熟度。应该关注哪些关键领域？",
+      "options": {
+        "A": "只关注技术指标",
+        "B": "SLO 定义和遵守、告警质量、事后分析文化、自动化程度",
+        "C": "只关注部署频率",
+        "D": "只关注团队规模"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "SRE 成熟度涵盖多个方面：是否有明确的 SLO 及其遵守情况、告警是否有效且可操作、是否有健康的事后分析文化、运维任务的自动化程度、以及团队如何平衡可靠性工作和新功能开发。"
+    },
+    {
+      "id": "gcp-pdevops-set3-q31",
+      "examId": "gcp-pdevops-set3",
+      "setNumber": 3,
+      "domain": "应用开发和服务可靠性",
+      "question": "您需要设计一个支持多租户的应用程序，确保租户之间的数据隔离。应该采用什么架构？",
+      "options": {
+        "A": "所有租户共享同一个数据库模式，无隔离",
+        "B": "使用行级安全、独立数据库或命名空间隔离",
+        "C": "为每个租户部署独立的应用实例",
+        "D": "不实施任何隔离"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "多租户隔离可以通过多种方式实现：行级安全（在同一数据库中使用租户 ID 过滤）、独立数据库/模式（每个租户有自己的数据库）、或命名空间隔离（在 Kubernetes 中）。选择取决于安全要求、成本和运维复杂性的权衡。"
+    },
+    {
+      "id": "gcp-pdevops-set3-q32",
+      "examId": "gcp-pdevops-set3",
+      "setNumber": 3,
+      "domain": "构建和部署管道",
+      "question": "您需要在部署管道中实现蓝绿部署，确保可以快速回滚。Cloud Deploy 应该如何配置？",
+      "options": {
+        "A": "使用单一目标部署",
+        "B": "配置两个目标（蓝和绿），使用流量切换进行发布",
+        "C": "禁用回滚功能",
+        "D": "手动管理部署"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "蓝绿部署在 Cloud Deploy 中可以通过配置多个目标和使用流量切换来实现。新版本部署到非活动环境（绿），验证后将流量切换到绿环境。如果出现问题，可以立即将流量切回蓝环境，实现快速回滚。"
+    },
+    {
+      "id": "gcp-pdevops-set3-q33",
+      "examId": "gcp-pdevops-set3",
+      "setNumber": 3,
+      "domain": "服务监控和日志",
+      "question": "您需要设置告警，在服务错误预算即将耗尽时提前通知团队。应该使用什么策略？",
+      "options": {
+        "A": "只在 SLO 被违反后告警",
+        "B": "基于错误预算燃尽率设置多级告警",
+        "C": "不设置任何 SLO 相关告警",
+        "D": "只关注单个指标"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "基于错误预算燃尽率的多级告警可以提供早期预警。例如：当 1 小时燃尽率超过阈值时发送页面告警，当 6 小时燃尽率超过阈值时发送票证。这允许团队在 SLO 被违反之前采取措施。"
+    },
+    {
+      "id": "gcp-pdevops-set3-q34",
+      "examId": "gcp-pdevops-set3",
+      "setNumber": 3,
+      "domain": "Google Kubernetes Engine 管理",
+      "question": "您需要在 GKE 中实现跨区域的高可用性部署。应该采用什么架构？",
+      "options": {
+        "A": "单区域部署",
+        "B": "多区域集群配合全球负载均衡",
+        "C": "仅使用单个节点",
+        "D": "禁用自动故障转移"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "跨区域高可用性需要在多个区域部署 GKE 集群（或使用区域级集群分布在多个可用区），配合全球 HTTP(S) 负载均衡器进行流量分发。负载均衡器可以自动检测不健康的后端并将流量路由到健康的区域。"
+    },
+    {
+      "id": "gcp-pdevops-set3-q35",
+      "examId": "gcp-pdevops-set3",
+      "setNumber": 3,
+      "domain": "事件管理",
+      "question": "您需要建立一个持续改进的反馈循环。SRE 推荐哪种方法？",
+      "options": {
+        "A": "只在重大事件后进行改进",
+        "B": "定期审查 SLO、告警、事件和运维负担，持续优化",
+        "C": "保持所有流程不变",
+        "D": "只关注新功能开发"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "持续改进需要定期审查各个方面：SLO 是否仍然相关和适当、告警是否有效、事件响应流程是否可以改进、以及运维负担是否在可接受范围内。这不仅限于事件后，而是一个持续的过程。"
+    },
+    {
+      "id": "gcp-pdevops-set3-q36",
+      "examId": "gcp-pdevops-set3",
+      "setNumber": 3,
+      "domain": "应用开发和服务可靠性",
+      "question": "您的服务依赖于外部 API，需要处理 API 速率限制。应该采用什么策略？",
+      "options": {
+        "A": "忽略速率限制",
+        "B": "实施指数退避重试和请求队列",
+        "C": "发送尽可能多的请求",
+        "D": "停止使用外部 API"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "处理外部 API 速率限制的最佳实践包括：实施指数退避重试（遇到限制时等待越来越长的时间再重试）、使用请求队列平滑流量、缓存响应减少请求数量、以及监控 API 使用量避免接近限制。"
+    },
+    {
+      "id": "gcp-pdevops-set3-q37",
+      "examId": "gcp-pdevops-set3",
+      "setNumber": 3,
+      "domain": "构建和部署管道",
+      "question": "您需要在 Cloud Build 中缓存构建依赖项以加快后续构建。应该使用什么方法？",
+      "options": {
+        "A": "每次都重新下载依赖",
+        "B": "使用 Cloud Build 的构建缓存或 Kaniko 缓存",
+        "C": "将依赖项包含在源代码中",
+        "D": "禁用依赖管理"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Cloud Build 支持多种缓存策略：使用 Cloud Storage 存储缓存、利用 Docker 层缓存、或使用 Kaniko 的缓存功能。缓存依赖项（如 npm 包、Maven 依赖）可以显著减少构建时间，特别是对于大型项目。"
+    },
+    {
+      "id": "gcp-pdevops-set3-q38",
+      "examId": "gcp-pdevops-set3",
+      "setNumber": 3,
+      "domain": "服务监控和日志",
+      "question": "您需要在应用程序代码中实现分布式追踪。应该使用什么库？",
+      "options": {
+        "A": "自定义日志语句",
+        "B": "OpenTelemetry 或 Cloud Trace 客户端库",
+        "C": "打印语句",
+        "D": "不实施任何追踪"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "OpenTelemetry 是一个厂商中立的可观测性框架，支持追踪、指标和日志。Cloud Trace 客户端库与 OpenTelemetry 兼容，可以自动收集追踪数据并发送到 Cloud Trace。使用这些库可以在服务之间传播追踪上下文，实现完整的请求追踪。"
+    },
+    {
+      "id": "gcp-pdevops-set3-q39",
+      "examId": "gcp-pdevops-set3",
+      "setNumber": 3,
+      "domain": "Google Kubernetes Engine 管理",
+      "question": "您需要在 GKE 中为不同团队提供隔离的环境，同时共享集群基础设施。应该使用什么？",
+      "options": {
+        "A": "为每个团队创建独立的集群",
+        "B": "使用命名空间配合 RBAC 和资源配额",
+        "C": "所有团队共享同一个命名空间",
+        "D": "不实施任何隔离"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "命名空间提供逻辑隔离，允许在同一集群中分离不同团队的资源。配合 RBAC 可以控制每个团队只能访问自己的命名空间，资源配额可以限制每个命名空间使用的资源量。这比为每个团队创建独立集群更经济。"
+    },
+    {
+      "id": "gcp-pdevops-set3-q40",
+      "examId": "gcp-pdevops-set3",
+      "setNumber": 3,
+      "domain": "事件管理",
+      "question": "您的团队需要减少人工干预的运维工作（toil）。根据 SRE 原则，应该如何优先处理？",
+      "options": {
+        "A": "接受所有手工工作",
+        "B": "识别重复性、可自动化的任务并逐步自动化",
+        "C": "雇佣更多人来处理手工工作",
+        "D": "忽略运维负担"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "SRE 原则建议将至少 50% 的工程时间用于改进和自动化，而不是手工运维工作。识别 toil（手动、重复、可自动化、无持久价值的工作）并逐步将其自动化，可以释放团队时间用于更有价值的工作。"
+    }
+  ]
+}

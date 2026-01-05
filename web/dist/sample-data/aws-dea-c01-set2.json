@@ -1,0 +1,542 @@
+{
+  "exam": {
+    "id": "aws-dea-c01-set2",
+    "name": "AWS DEA-C01 模拟考试 #2",
+    "code": "DEA-C01",
+    "provider": "AWS",
+    "language": "zh-CN",
+    "description": "AWS数据工程师助理认证考试模拟题 - 第2套",
+    "totalQuestions": 40,
+    "passingScore": 72,
+    "examTime": 130,
+    "domains": [
+      {"id": 1, "name": "Data Ingestion and Transformation", "weight": 34},
+      {"id": 2, "name": "Data Store Management", "weight": 26},
+      {"id": 3, "name": "Data Operations and Support", "weight": 22},
+      {"id": 4, "name": "Data Security and Governance", "weight": 18}
+    ],
+    "tags": ["AWS", "数据工程", "DEA", "认证考试"]
+  },
+  "questions": [
+    {
+      "id": "q1",
+      "domain": 1,
+      "question": "公司需要从本地数据中心批量迁移100TB数据到S3。网络带宽有限，需要在一周内完成。最佳方案是？",
+      "options": {
+        "A": "使用AWS Direct Connect",
+        "B": "使用AWS Snowball Edge",
+        "C": "使用S3 Transfer Acceleration",
+        "D": "使用多线程上传到S3"
+      },
+      "answer": "B",
+      "explanation": "对于100TB数据且时间紧迫的情况，Snowball Edge是最佳选择。它是物理设备，可以在本地加载数据后寄送给AWS，避免网络带宽限制。"
+    },
+    {
+      "id": "q2",
+      "domain": 1,
+      "question": "使用Glue进行ETL时，需要处理嵌套JSON数据并扁平化。应该使用什么转换？",
+      "options": {
+        "A": "Filter转换",
+        "B": "Relationalize转换",
+        "C": "Map转换",
+        "D": "Join转换"
+      },
+      "answer": "B",
+      "explanation": "Glue的Relationalize转换可以将嵌套的JSON结构扁平化为关系型表格式，自动处理数组和嵌套对象。"
+    },
+    {
+      "id": "q3",
+      "domain": 1,
+      "question": "Kinesis Data Streams接收的数据需要精确一次(exactly-once)语义处理。如何实现？",
+      "options": {
+        "A": "使用Kinesis Client Library (KCL)的内置去重",
+        "B": "结合DynamoDB实现幂等性检查",
+        "C": "增加分片数量",
+        "D": "使用Kinesis Data Firehose"
+      },
+      "answer": "B",
+      "explanation": "Kinesis本身提供至少一次语义。要实现精确一次，需要在消费者端实现幂等性，通常使用DynamoDB存储已处理的序列号或消息ID。"
+    },
+    {
+      "id": "q4",
+      "domain": 1,
+      "question": "需要将MySQL数据库的变更实时同步到Amazon Elasticsearch。最佳方案是？",
+      "options": {
+        "A": "定时全量导出",
+        "B": "AWS DMS + Kinesis Data Streams + Lambda",
+        "C": "使用JDBC直接查询",
+        "D": "手动导出变更日志"
+      },
+      "answer": "B",
+      "explanation": "DMS可以捕获MySQL的CDC变更，通过Kinesis Data Streams传输，Lambda处理后写入Elasticsearch，实现近实时同步。"
+    },
+    {
+      "id": "q5",
+      "domain": 1,
+      "question": "Glue Crawler发现的表schema与预期不符。如何自定义分类器？",
+      "options": {
+        "A": "修改Data Catalog中的表定义",
+        "B": "创建自定义Classifier并关联到Crawler",
+        "C": "使用不同的数据源",
+        "D": "手动创建所有表"
+      },
+      "answer": "B",
+      "explanation": "可以创建自定义Classifier（如Grok、JSON、CSV分类器），指定数据格式的解析规则，并将其关联到Crawler以正确识别schema。"
+    },
+    {
+      "id": "q6",
+      "domain": 2,
+      "question": "S3数据湖需要支持UPSERT操作（更新或插入）。应该使用什么技术？",
+      "options": {
+        "A": "S3 Object Lock",
+        "B": "Apache Hudi",
+        "C": "S3 Versioning",
+        "D": "S3 Lifecycle Policies"
+      },
+      "answer": "B",
+      "explanation": "Apache Hudi是一个数据湖框架，支持UPSERT、DELETE等操作，可以在S3上实现增量数据处理和记录级别的更新。"
+    },
+    {
+      "id": "q7",
+      "domain": 2,
+      "question": "Redshift集群的磁盘空间使用率持续增长。如何释放空间？",
+      "options": {
+        "A": "增加节点",
+        "B": "运行VACUUM命令",
+        "C": "重启集群",
+        "D": "创建快照"
+      },
+      "answer": "B",
+      "explanation": "Redshift删除操作只是标记删除，VACUUM命令可以回收已删除行的空间，重新排序数据，并更新统计信息。"
+    },
+    {
+      "id": "q8",
+      "domain": 2,
+      "question": "需要在DynamoDB中查询最近24小时内的所有事件。表使用事件ID作为分区键。如何优化？",
+      "options": {
+        "A": "扫描整个表并过滤",
+        "B": "创建GSI，使用日期作为分区键",
+        "C": "使用Query操作",
+        "D": "增加RCU"
+      },
+      "answer": "B",
+      "explanation": "原表设计不支持按时间查询。创建GSI（全局二级索引），使用日期/时间相关的属性作为分区键，可以高效查询特定时间范围的数据。"
+    },
+    {
+      "id": "q9",
+      "domain": 2,
+      "question": "数据湖使用Glue Data Catalog管理元数据。如何确保catalog与实际数据保持同步？",
+      "options": {
+        "A": "手动更新catalog",
+        "B": "定期运行Glue Crawler",
+        "C": "使用S3事件通知",
+        "D": "重新创建catalog"
+      },
+      "answer": "B",
+      "explanation": "定期运行Glue Crawler可以自动发现新数据和schema变更，更新Data Catalog。也可以使用EventBridge触发Crawler运行。"
+    },
+    {
+      "id": "q10",
+      "domain": 2,
+      "question": "Athena查询返回大量结果需要分页。如何实现？",
+      "options": {
+        "A": "使用LIMIT和OFFSET",
+        "B": "使用Athena分页token (NextToken)",
+        "C": "多次运行查询",
+        "D": "使用客户端分页"
+      },
+      "answer": "B",
+      "explanation": "Athena API支持分页，使用NextToken可以获取下一页结果。避免使用OFFSET，因为对于大数据集效率低下。"
+    },
+    {
+      "id": "q11",
+      "domain": 3,
+      "question": "Glue ETL作业需要访问互联网上的外部API。如何配置？",
+      "options": {
+        "A": "Glue作业默认可以访问互联网",
+        "B": "在VPC中配置NAT Gateway，并配置Glue Connection",
+        "C": "使用公共子网",
+        "D": "禁用VPC配置"
+      },
+      "answer": "B",
+      "explanation": "如果Glue作业配置了VPC访问（用于访问VPC内资源），需要通过NAT Gateway访问互联网。未配置VPC的Glue作业默认可以访问互联网。"
+    },
+    {
+      "id": "q12",
+      "domain": 3,
+      "question": "EMR集群需要处理敏感数据，要求集群终止后数据不可恢复。应该如何配置？",
+      "options": {
+        "A": "使用默认EBS配置",
+        "B": "使用EBS加密和临时存储，配置集群终止时删除EBS卷",
+        "C": "使用S3存储所有数据",
+        "D": "使用实例存储"
+      },
+      "answer": "B",
+      "explanation": "配置EBS加密确保静态数据安全，配置集群终止时自动删除EBS卷确保数据不可恢复。对于临时数据可使用实例存储（ephemeral storage）。"
+    },
+    {
+      "id": "q13",
+      "domain": 3,
+      "question": "Step Functions工作流执行时间超过预期。如何诊断问题？",
+      "options": {
+        "A": "查看CloudWatch Logs",
+        "B": "使用Step Functions执行历史和X-Ray追踪",
+        "C": "增加Lambda超时",
+        "D": "重新运行工作流"
+      },
+      "answer": "B",
+      "explanation": "Step Functions提供详细的执行历史，可以看到每个状态的开始和结束时间。启用X-Ray可以进一步追踪跨服务调用的延迟。"
+    },
+    {
+      "id": "q14",
+      "domain": 3,
+      "question": "数据管道需要在特定时间窗口内完成。如何监控SLA合规性？",
+      "options": {
+        "A": "手动检查完成时间",
+        "B": "使用CloudWatch Metrics和告警监控作业持续时间",
+        "C": "发送完成通知邮件",
+        "D": "使用更大的资源"
+      },
+      "answer": "B",
+      "explanation": "配置CloudWatch告警监控Glue作业或Step Functions执行时间，当接近或超过SLA阈值时触发告警，实现自动化SLA监控。"
+    },
+    {
+      "id": "q15",
+      "domain": 3,
+      "question": "Glue作业处理过程中内存不足失败。如何解决？",
+      "options": {
+        "A": "增加DPU数量或使用G.2X worker类型",
+        "B": "减少输入数据量",
+        "C": "使用Python Shell作业",
+        "D": "禁用作业书签"
+      },
+      "answer": "A",
+      "explanation": "G.2X worker类型提供更多内存（16GB vs 标准的4GB）。也可以增加DPU数量来分布处理负载，减少单个executor的内存压力。"
+    },
+    {
+      "id": "q16",
+      "domain": 4,
+      "question": "需要对数据湖实施数据分类标签以支持访问控制。应该使用什么？",
+      "options": {
+        "A": "S3对象标签",
+        "B": "Lake Formation标签(LF-Tags)",
+        "C": "Glue Data Catalog属性",
+        "D": "IAM标签"
+      },
+      "answer": "B",
+      "explanation": "Lake Formation LF-Tags允许基于标签的访问控制(TBAC)，可以将标签附加到数据库、表、列，然后基于标签定义权限，简化大规模权限管理。"
+    },
+    {
+      "id": "q17",
+      "domain": 4,
+      "question": "Redshift需要限制某些用户只能查看特定行的数据。如何实现？",
+      "options": {
+        "A": "创建不同的表",
+        "B": "使用行级安全(Row Level Security)策略",
+        "C": "使用视图",
+        "D": "使用不同的schema"
+      },
+      "answer": "B",
+      "explanation": "Redshift支持Row Level Security (RLS)，可以创建策略限制用户基于其属性只能访问特定行的数据，实现细粒度的行级访问控制。"
+    },
+    {
+      "id": "q18",
+      "domain": 4,
+      "question": "数据工程师需要临时访问生产S3存储桶进行故障排查。如何安全地授予访问权限？",
+      "options": {
+        "A": "共享IAM用户凭证",
+        "B": "使用IAM角色和临时凭证(STS AssumeRole)",
+        "C": "创建永久访问密钥",
+        "D": "公开存储桶"
+      },
+      "answer": "B",
+      "explanation": "使用IAM角色和STS临时凭证是最佳实践，凭证自动过期，可以设置会话持续时间，避免长期凭证的安全风险。"
+    },
+    {
+      "id": "q19",
+      "domain": 4,
+      "question": "需要加密Kinesis Data Streams中的数据。应该如何配置？",
+      "options": {
+        "A": "Kinesis不支持加密",
+        "B": "启用服务器端加密(SSE)使用KMS",
+        "C": "使用HTTPS端点",
+        "D": "在生产者端手动加密"
+      },
+      "answer": "B",
+      "explanation": "Kinesis Data Streams支持服务器端加密(SSE)，使用KMS密钥加密静态数据。可以使用AWS托管密钥或客户托管密钥。"
+    },
+    {
+      "id": "q20",
+      "domain": 4,
+      "question": "如何确保Glue Data Catalog中的表定义变更被审计？",
+      "options": {
+        "A": "定期备份catalog",
+        "B": "启用CloudTrail记录Glue API调用",
+        "C": "使用版本控制",
+        "D": "手动记录变更"
+      },
+      "answer": "B",
+      "explanation": "CloudTrail自动记录所有Glue API调用，包括CreateTable、UpdateTable等操作，提供完整的审计日志。"
+    },
+    {
+      "id": "q21",
+      "domain": 1,
+      "question": "使用AWS Glue处理半结构化数据时，如何处理schema不一致的记录？",
+      "options": {
+        "A": "丢弃不一致的记录",
+        "B": "使用DynamicFrame的ResolveChoice转换",
+        "C": "强制使用固定schema",
+        "D": "使用RDD处理"
+      },
+      "answer": "B",
+      "explanation": "DynamicFrame的ResolveChoice转换可以处理schema冲突，支持多种策略如cast、make_struct、project等，灵活处理不一致的数据类型。"
+    },
+    {
+      "id": "q22",
+      "domain": 1,
+      "question": "需要从Kafka集群摄取数据到S3。最简单的AWS原生方案是？",
+      "options": {
+        "A": "使用EC2运行Kafka Consumer",
+        "B": "使用Amazon MSK Connect",
+        "C": "使用Lambda订阅Kafka",
+        "D": "使用Kinesis Data Firehose"
+      },
+      "answer": "B",
+      "explanation": "Amazon MSK Connect是托管的Kafka Connect服务，可以轻松部署S3 Sink Connector，将Kafka数据自动传送到S3，无需管理基础设施。"
+    },
+    {
+      "id": "q23",
+      "domain": 1,
+      "question": "AWS Glue作业需要处理包含数百万个小文件的S3路径。如何优化读取性能？",
+      "options": {
+        "A": "增加DPU数量",
+        "B": "使用groupFiles参数启用文件分组",
+        "C": "使用Python Shell作业",
+        "D": "分批处理文件"
+      },
+      "answer": "B",
+      "explanation": "groupFiles参数允许Glue将多个小文件分组到单个Spark分区中处理，减少任务开销和S3 API调用，显著提高处理效率。"
+    },
+    {
+      "id": "q24",
+      "domain": 2,
+      "question": "Redshift Serverless工作组需要限制最大容量以控制成本。应该配置什么？",
+      "options": {
+        "A": "节点数量",
+        "B": "最大RPU（Redshift Processing Units）",
+        "C": "并发连接数",
+        "D": "查询超时"
+      },
+      "answer": "B",
+      "explanation": "Redshift Serverless使用RPU作为计算容量单位，可以设置最大RPU来限制自动扩展的上限，从而控制成本。"
+    },
+    {
+      "id": "q25",
+      "domain": 2,
+      "question": "数据湖中的Parquet文件需要支持schema演进（添加新列）。如何配置？",
+      "options": {
+        "A": "重写所有现有文件",
+        "B": "使用mergeSchema选项读取数据",
+        "C": "创建新表",
+        "D": "不支持schema演进"
+      },
+      "answer": "B",
+      "explanation": "Spark/Glue读取Parquet时可以使用mergeSchema选项合并不同文件的schema，支持向后兼容的schema演进如添加新列。"
+    },
+    {
+      "id": "q26",
+      "domain": 2,
+      "question": "需要在Athena中创建表但不使用Glue Crawler。如何定义表？",
+      "options": {
+        "A": "使用Athena DDL语句创建外部表",
+        "B": "Athena只能使用Crawler创建表",
+        "C": "使用S3控制台创建",
+        "D": "使用CloudFormation"
+      },
+      "answer": "A",
+      "explanation": "可以在Athena中使用CREATE EXTERNAL TABLE DDL语句直接定义表，指定S3位置、文件格式、schema等，无需使用Crawler。"
+    },
+    {
+      "id": "q27",
+      "domain": 3,
+      "question": "Glue ETL作业需要访问secrets（如数据库密码）。安全的做法是？",
+      "options": {
+        "A": "硬编码在脚本中",
+        "B": "使用AWS Secrets Manager并在作业中调用API",
+        "C": "存储在S3文件中",
+        "D": "通过环境变量传递"
+      },
+      "answer": "B",
+      "explanation": "AWS Secrets Manager安全存储和管理敏感信息，Glue作业可以通过API获取secrets，支持自动轮换，是安全最佳实践。"
+    },
+    {
+      "id": "q28",
+      "domain": 3,
+      "question": "数据质量检查发现某批次数据存在问题。如何在不影响生产的情况下调查？",
+      "options": {
+        "A": "直接修改生产数据",
+        "B": "使用数据版本控制回滚或创建数据快照分析",
+        "C": "忽略问题数据",
+        "D": "停止所有数据管道"
+      },
+      "answer": "B",
+      "explanation": "使用Apache Iceberg/Hudi的时间旅行功能可以访问历史版本数据进行分析，或者创建S3数据快照进行隔离调查，不影响生产环境。"
+    },
+    {
+      "id": "q29",
+      "domain": 3,
+      "question": "EMR集群上运行的Spark作业需要持久化中间结果以便失败恢复。应该使用什么？",
+      "options": {
+        "A": "RDD cache",
+        "B": "Spark Checkpointing到S3",
+        "C": "增加executor内存",
+        "D": "使用广播变量"
+      },
+      "answer": "B",
+      "explanation": "Spark Checkpointing将RDD/DataFrame持久化到可靠存储(如S3)，可以从checkpoint恢复而不是重新计算，适合长时间运行或迭代计算的作业。"
+    },
+    {
+      "id": "q30",
+      "domain": 3,
+      "question": "需要自动触发Glue作业在S3数据到达后运行。如何实现？",
+      "options": {
+        "A": "使用固定时间调度",
+        "B": "使用S3事件通知触发EventBridge规则启动Glue作业",
+        "C": "手动运行作业",
+        "D": "使用Glue Crawler触发"
+      },
+      "answer": "B",
+      "explanation": "配置S3事件通知发送到EventBridge，创建规则匹配特定事件（如PutObject），目标设置为启动Glue作业，实现事件驱动的ETL。"
+    },
+    {
+      "id": "q31",
+      "domain": 4,
+      "question": "需要防止意外删除S3数据湖中的关键数据。应该配置什么？",
+      "options": {
+        "A": "S3 Object Lock（治理模式或合规模式）",
+        "B": "S3 Versioning仅",
+        "C": "存储桶策略",
+        "D": "IAM策略"
+      },
+      "answer": "A",
+      "explanation": "S3 Object Lock可以防止对象被删除或覆盖。治理模式允许特权用户覆盖，合规模式在保留期内任何人都无法删除，满足合规要求。"
+    },
+    {
+      "id": "q32",
+      "domain": 4,
+      "question": "Lake Formation权限模型相比传统IAM策略有什么优势？",
+      "options": {
+        "A": "更快的性能",
+        "B": "集中化的细粒度数据权限管理",
+        "C": "更低的成本",
+        "D": "更好的加密"
+      },
+      "answer": "B",
+      "explanation": "Lake Formation提供集中化的权限管理界面，支持表级、列级、行级权限控制，简化了复杂的S3存储桶策略和IAM策略管理。"
+    },
+    {
+      "id": "q33",
+      "domain": 1,
+      "question": "处理JSON数据时发现某些字段包含null值影响下游分析。如何在Glue中处理？",
+      "options": {
+        "A": "忽略包含null的记录",
+        "B": "使用FillMissingValues或DropNullFields转换",
+        "C": "转换为字符串\"null\"",
+        "D": "不处理null值"
+      },
+      "answer": "B",
+      "explanation": "Glue提供FillMissingValues转换可以用默认值替换null，DropNullFields可以移除null字段，根据业务需求选择合适的处理策略。"
+    },
+    {
+      "id": "q34",
+      "domain": 1,
+      "question": "使用Kinesis Data Analytics处理流数据时，需要与历史数据关联。如何实现？",
+      "options": {
+        "A": "在流中包含所有历史数据",
+        "B": "使用参考数据表(Reference Data)从S3加载",
+        "C": "不支持关联历史数据",
+        "D": "使用Lambda预处理"
+      },
+      "answer": "B",
+      "explanation": "Kinesis Data Analytics支持参考数据表，可以从S3加载静态或周期性更新的参考数据，与流数据进行JOIN操作。"
+    },
+    {
+      "id": "q35",
+      "domain": 2,
+      "question": "Redshift中的大表查询性能差，EXPLAIN显示全表扫描。如何优化？",
+      "options": {
+        "A": "增加集群大小",
+        "B": "根据查询条件添加排序键(Sort Key)",
+        "C": "减少查询列",
+        "D": "使用LIMIT"
+      },
+      "answer": "B",
+      "explanation": "排序键允许Redshift使用zone map跳过不相关的数据块。选择查询WHERE条件常用的列作为排序键可以显著减少数据扫描量。"
+    },
+    {
+      "id": "q36",
+      "domain": 2,
+      "question": "需要构建实时数据仪表板，数据源是Kinesis Data Streams。最佳架构是？",
+      "options": {
+        "A": "Kinesis → S3 → Athena → QuickSight",
+        "B": "Kinesis → OpenSearch Service → OpenSearch Dashboards",
+        "C": "Kinesis → Redshift → QuickSight",
+        "D": "Kinesis → RDS → 自定义仪表板"
+      },
+      "answer": "B",
+      "explanation": "OpenSearch Service(原Elasticsearch)专为近实时搜索和分析设计，可以直接从Kinesis摄取数据，OpenSearch Dashboards(原Kibana)提供实时可视化。"
+    },
+    {
+      "id": "q37",
+      "domain": 3,
+      "question": "Glue工作流(Workflow)和Step Functions的选择标准是什么？",
+      "options": {
+        "A": "它们功能完全相同",
+        "B": "Glue Workflow适合纯ETL编排，Step Functions适合复杂的多服务编排",
+        "C": "Step Functions只能编排Lambda",
+        "D": "Glue Workflow性能更好"
+      },
+      "answer": "B",
+      "explanation": "Glue Workflow专为Glue作业和Crawler编排设计，配置简单。Step Functions支持更复杂的逻辑和多种AWS服务集成，适合复杂的数据管道。"
+    },
+    {
+      "id": "q38",
+      "domain": 3,
+      "question": "数据管道需要在开发、测试、生产环境间迁移。如何实现基础设施即代码？",
+      "options": {
+        "A": "手动在每个环境配置",
+        "B": "使用AWS CDK或CloudFormation定义所有资源",
+        "C": "使用控制台截图文档",
+        "D": "复制AWS账户"
+      },
+      "answer": "B",
+      "explanation": "AWS CDK或CloudFormation将Glue作业、Step Functions、IAM角色等定义为代码，可以版本控制、代码审查，并可重复部署到不同环境。"
+    },
+    {
+      "id": "q39",
+      "domain": 4,
+      "question": "数据湖需要满足数据驻留要求，确保数据不离开特定区域。如何实现？",
+      "options": {
+        "A": "使用跨区域复制",
+        "B": "使用S3存储桶区域锁定和服务控制策略(SCP)",
+        "C": "加密数据",
+        "D": "使用VPC Endpoint"
+      },
+      "answer": "B",
+      "explanation": "在特定区域创建S3存储桶，使用SCP或IAM策略限制跨区域操作，确保数据始终驻留在指定区域，满足合规要求。"
+    },
+    {
+      "id": "q40",
+      "domain": 4,
+      "question": "需要实现数据血缘追踪，了解数据从源到目标的完整流程。应该使用什么？",
+      "options": {
+        "A": "CloudWatch Logs",
+        "B": "AWS Glue Data Catalog结合第三方数据血缘工具或自定义追踪",
+        "C": "S3访问日志",
+        "D": "X-Ray追踪"
+      },
+      "answer": "B",
+      "explanation": "Glue Data Catalog提供元数据基础，可以结合AWS合作伙伴工具（如Alation、Collibra）或开源方案（如Apache Atlas）实现完整的数据血缘追踪。"
+    }
+  ]
+}

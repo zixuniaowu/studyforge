@@ -1,0 +1,643 @@
+{
+  "exam": {
+    "id": "aws-dva-c02-set3-ja",
+    "name": "AWS DVA-C02 模擬試験 #3",
+    "code": "DVA-C02",
+    "provider": "AWS",
+    "language": "ja",
+    "description": "AWS認定デベロッパーアソシエイト試験模擬問題 - 第3套",
+    "totalQuestions": 40,
+    "passingScore": 72,
+    "examTime": 130,
+    "domains": [
+      {
+        "id": 1,
+        "name": "AWSサービスによる開発",
+        "weight": 32
+      },
+      {
+        "id": 2,
+        "name": "セキュリティ",
+        "weight": 26
+      },
+      {
+        "id": 3,
+        "name": "デプロイ",
+        "weight": 24
+      },
+      {
+        "id": 4,
+        "name": "トラブルシューティングと最適化",
+        "weight": 18
+      }
+    ],
+    "tags": [
+      "AWS",
+      "Developer",
+      "Lambda",
+      "認定試験"
+    ]
+  },
+  "questions": [
+    {
+      "id": "q1",
+      "domain": 1,
+      "question": "開発者が注文を処理するサーバーレスアプリケーションを構築しています。アプリケーションはエラー処理とリトライロジックを備えた特定のシーケンスで実行する必要がある複数のLambda関数を調整する必要があります。どのAWSサービスを使用すべきですか？",
+      "options": {
+        "A": "Amazon SQS",
+        "B": "AWS Step Functions",
+        "C": "Amazon SNS",
+        "D": "Amazon EventBridge"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "AWS Step Functionsはサーバーレスワークフローのオーケストレーション用に設計されています：\n- ビジュアルワークフローデザイナー\n- 組み込みのエラー処理とリトライロジック\n- シーケンシャル、パラレル、条件付き実行のサポート\n- 複数のAWSサービスとの統合\n\nSQS(A)はメッセージキューイング用です。SNS(C)はパブ/サブメッセージング用です。EventBridge(D)はイベントルーティング用です。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q2",
+      "domain": 1,
+      "question": "開発者が複数のLambda関数呼び出し間でアクセス可能なユーザーセッションデータを保存する必要があります。データは30分間の非アクティブ後に自動的に期限切れになる必要があります。最も適切なソリューションはどれですか？",
+      "options": {
+        "A": "Lambda環境変数にセッションデータを保存する",
+        "B": "TTL付きのAmazon ElastiCacheにセッションデータを保存する",
+        "C": "Amazon S3にセッションデータを保存する",
+        "D": "Lambda関数メモリにセッションデータを保存する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Amazon ElastiCacheはセッションストレージに理想的です：\n- 低レイテンシーアクセス\n- 自動期限切れのための組み込みTTLサポート\n- 複数のLambda呼び出しからアクセス可能\n- RedisまたはMemcachedのサポート\n\nLambda環境変数(A)とメモリ(D)は呼び出し間で共有されません。S3(C)には組み込みTTLがありません。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q3",
+      "domain": 1,
+      "question": "開発者がDynamoDBを使用しており、特定の属性値を持つアイテムがまだ存在しない場合にのみ書き込み操作が成功することを確認する必要があります。どのDynamoDB機能を使用すべきですか？",
+      "options": {
+        "A": "楽観的ロック",
+        "B": "attribute_not_existsを使用した条件式",
+        "C": "DynamoDBトランザクション",
+        "D": "強力な整合性のある読み取り"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "attribute_not_existsを使用した条件式は重複アイテムを防止します：\n- 書き込み前に属性が存在するかチェック\n- 条件が満たされない場合、書き込みは失敗\n- アトミック操作\n- 追加のAPI呼び出し不要\n\n楽観的ロック(A)はバージョン番号を使用します。トランザクション(C)はマルチアイテム操作用です。整合性のある読み取り(D)は読み取り操作に影響します。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q4",
+      "domain": 1,
+      "question": "開発者がAPI GatewayとLambdaを使用してREST APIを作成しています。APIはWebアプリケーションのCORSをサポートする必要があります。CORSはどこで設定すべきですか？",
+      "options": {
+        "A": "Lambda関数コードのみ",
+        "B": "API Gatewayメソッドレスポンスと統合レスポンス",
+        "C": "クライアント側のJavaScriptコード",
+        "D": "Amazon CloudFrontディストリビューション設定"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "API GatewayでのCORS設定には以下が含まれます：\n- API Gatewayリソースで CORSを有効化\n- メソッドレスポンスでAccess-Control-Allow-*ヘッダーを設定\n- プリフライトリクエスト用のOPTIONSメソッドを設定\n- API Gatewayは自動的にCORSを設定可能\n\nLambda(A)はプリフライト以外のリクエストにCORSヘッダーを返す必要があります。クライアント側(C)ではCORSを設定できません。CloudFront(D)はCORSサポートが限定的です。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q5",
+      "domain": 1,
+      "question": "開発者がDynamoDBから大量のレコードのバッチを処理して計算を実行する必要があります。タイムアウトの問題を避けるために、どのアプローチを使用すべきですか？",
+      "options": {
+        "A": "Lambdaタイムアウトを最大15分に増やす",
+        "B": "LambdaでDynamoDB Streamsを使用する",
+        "C": "並列処理のためにStep Functions Map状態を使用する",
+        "D": "同期Lambda呼び出しを使用する"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "Step Functions Map状態はバッチ処理に理想的です：\n- アイテムの並列実行\n- 各アイテムは個別のLambda呼び出しで処理\n- 結果の自動集約\n- アイテムごとの組み込みエラー処理\n\n最大タイムアウト(A)は大きなバッチには十分でない可能性があります。Streams(B)はリアルタイム変更用です。同期呼び出し(D)は同じタイムアウト制限があります。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q6",
+      "domain": 1,
+      "question": "開発者がリアルタイムチャットアプリケーションを実装しています。メッセージは接続されたクライアントに即座にプッシュする必要があります。最も適切なAWSサービスの組み合わせはどれですか？",
+      "options": {
+        "A": "API Gateway REST APIとLambda",
+        "B": "API Gateway WebSocket APIとLambda",
+        "C": "Amazon SQSとLambdaポーリング",
+        "D": "Amazon SNSとHTTPエンドポイント"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "API Gateway WebSocket APIはリアルタイム双方向通信を可能にします：\n- クライアントとサーバー間の永続的な接続\n- サーバーは接続されたクライアントにメッセージをプッシュ可能\n- メッセージコンテンツに基づくルーティングのサポート\n- $connect、$disconnectルートによる接続管理\n\nREST API(A)はポーリングが必要です。SQS(C)とSNS(D)はクライアント接続を維持しません。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q7",
+      "domain": 2,
+      "question": "開発者がAPI Gateway REST APIエンドポイントが会社のVPC内からのみアクセス可能であることを確認する必要があります。どの設定を使用すべきですか？",
+      "options": {
+        "A": "WAFルール付きのリージョナルAPI",
+        "B": "VPCエンドポイント付きのプライベートAPI",
+        "C": "CloudFront付きのエッジ最適化API",
+        "D": "IAM認可付きのリージョナルAPI"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "プライベートAPIはVPC内からのみアクセス可能です：\n- API Gateway用のVPCエンドポイントが必要\n- パブリックインターネットからはアクセス不可\n- リソースポリシーでどのVPCがアクセスできるかを制御\n- 内部APIのセキュリティ強化\n\nWAF(A)はトラフィックをフィルタリングしますが、VPCに制限しません。エッジ最適化(C)はCloudFrontエッジロケーションを使用します。IAM(D)は認証を提供しますが、ネットワーク分離は提供しません。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q8",
+      "domain": 2,
+      "question": "開発者がモバイルアプリケーションの認証を実装しています。ユーザーはソーシャルメディアアカウント（Google、Facebook）でサインインし、AWSリソースにアクセスできる必要があります。どのアプローチが推奨されますか？",
+      "options": {
+        "A": "各モバイルアプリユーザーにIAMユーザーを作成する",
+        "B": "認証にCognitoユーザープールを使用し、AWS認証情報にIDプールを使用する",
+        "C": "モバイルアプリケーションにAWSアクセスキーを保存する",
+        "D": "認証にAPI Gateway APIキーを使用する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Cognitoは完全なIDソリューションを提供します：\n- ユーザープール：ソーシャルサインインを含むユーザー認証を管理\n- IDプール：トークンを一時的なAWS認証情報と交換\n- IAMロールによるきめ細かいアクセス制御\n- 安全、スケーラブル、マネージド\n\nIAMユーザー(A)はモバイルアプリにはスケールしません。キーの保存(C)は安全ではありません。APIキー(D)はユーザーではなくクライアントを識別します。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q9",
+      "domain": 2,
+      "question": "Lambda関数が2つの異なるAWSアカウントのリソースにアクセスする必要があります。これを実装する最も安全な方法は何ですか？",
+      "options": {
+        "A": "両方のアカウントのアクセスキーを環境変数に保存する",
+        "B": "STSを使用したクロスアカウントIAMロールの引き受け",
+        "C": "両方のアカウントで権限を持つ単一のIAMユーザーを使用する",
+        "D": "認証情報をSecrets Managerに保存する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "クロスアカウントロールの引き受けはAWSのベストプラクティスです：\n- Lambda関数のロールは他のアカウントのロールを引き受ける権限を持つ\n- ターゲットアカウントはソースアカウントを信頼するロールを作成\n- STS AssumeRoleを使用して一時的な認証情報を取得\n- 認証情報は自動ローテーション、監査可能\n\nアクセスキーの保存(A,C,D)はセキュリティと管理の課題を生み出します。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q10",
+      "domain": 2,
+      "question": "開発者がカスタマー管理キーを使用してS3バケットの保存データを暗号化する必要があります。キーは毎年自動的にローテーションする必要があります。開発者は何を設定すべきですか？",
+      "options": {
+        "A": "S3管理キー（SSE-S3）",
+        "B": "自動キーローテーションを有効にしたAWS KMS",
+        "C": "自己管理キーによるクライアント側暗号化",
+        "D": "S3バケットのバージョニング"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "カスタマー管理キー付きのAWS KMSは自動ローテーションをサポートします：\n- KMSで自動キーローテーションを有効化\n- キーは毎年ローテーション\n- 復号用に以前のキーバージョンを保持\n- コード変更不要\n\nSSE-S3(A)はカスタマー管理キーを提供しません。クライアント側(C)は手動ローテーションが必要です。バージョニング(D)は暗号化と無関係です。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q11",
+      "domain": 2,
+      "question": "開発者が外部IDプロバイダーによって発行されたJWTトークンを検証する必要があるアプリケーションを構築しています。トークンはLambda関数に到達する前にAPI Gatewayで検証される必要があります。何を設定すべきですか？",
+      "options": {
+        "A": "JWTを検証するLambdaオーソライザー",
+        "B": "IAM認可",
+        "C": "Cognitoユーザープールオーソライザー",
+        "D": "APIキー検証"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "外部JWT検証にはLambdaオーソライザーが必要です：\n- 任意のプロバイダーからのトークンに対するカスタム検証ロジック\n- JWT署名、クレーム、有効期限を検証可能\n- アクセスを許可または拒否するIAMポリシーを返す\n- Lambda呼び出しを削減するキャッシュサポート\n\nCognitoオーソライザー(C)はCognitoトークンでのみ動作します。IAM(B)はAWS署名が必要です。APIキー(D)はトークンを検証しません。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q12",
+      "domain": 2,
+      "question": "開発者が悪用を防ぐためにAPIのレート制限を実装する必要があります。異なる顧客には異なるレート制限を設定する必要があります。これをどのように実装すべきですか？",
+      "options": {
+        "A": "Lambda関数を使用してリクエストを追跡・制限する",
+        "B": "APIキー付きのAPI Gateway使用量プランを使用する",
+        "C": "AWS WAFレートベースルールを使用する",
+        "D": "CloudFrontオリジンリクエストポリシーを使用する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "API Gateway使用量プランは顧客固有のレート制限を提供します：\n- 異なるスロットルとクォータ設定で使用量プランを作成\n- APIキーを使用量プランに関連付け\n- 各顧客は一意のAPIキーを取得\n- カスタムコードなしで組み込みの適用\n\nLambda(A)は複雑さを追加します。WAF(C)はレート制限のカスタマイズが限定的です。CloudFront(D)は顧客ごとの制限を提供しません。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q13",
+      "domain": 3,
+      "question": "開発者がAWS SAMを使用してサーバーレスアプリケーションをデプロイしています。アプリケーションは環境固有の設定（dev、staging、production）が必要です。推奨されるアプローチは何ですか？",
+      "options": {
+        "A": "各環境に個別のSAMテンプレートを作成する",
+        "B": "samconfig.tomlでSAMパラメータオーバーライドを使用する",
+        "C": "Lambda関数に設定をハードコーディングする",
+        "D": "同一のテンプレートで個別のAWSアカウントを使用する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "SAMパラメータオーバーライドは環境固有の設定を提供します：\n- パラメータ付きの単一テンプレート\n- samconfig.tomlに環境固有の値を保存\n- 異なるプロファイルでデプロイ：sam deploy --config-env dev\n- コードの重複を削減\n\n個別テンプレート(A)はメンテナンスを増やします。ハードコーディング(C)はコード変更が必要です。個別アカウント(D)は有効ですが、単純な設定には過剰です。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q14",
+      "domain": 3,
+      "question": "開発チームがLambda関数のカナリアデプロイを実装したいと考えています。完全デプロイ前に10分間、トラフィックの10%を新しいバージョンに送信する必要があります。どのCodeDeploy設定を使用すべきですか？",
+      "options": {
+        "A": "AllAtOnce",
+        "B": "Linear10PercentEvery10Minutes",
+        "C": "Canary10Percent10Minutes",
+        "D": "Linear10PercentEvery1Minute"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "Canary10Percent10Minutesは要件に一致します：\n- 即座に新しいバージョンに10%のトラフィック\n- 監視のために10分間待機\n- 成功した場合、残りの90%を移行\n- CloudWatchアラームがトリガーされた場合、自動ロールバック\n\nAllAtOnce(A)は即座にすべてのトラフィックを移行します。Linear オプション(B,D)は固定割合のテストではなく、時間とともに段階的に割合を増やします。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q15",
+      "domain": 3,
+      "question": "開発者が組織内の複数のAWSアカウント間でLambdaレイヤーを共有する必要があります。正しいアプローチは何ですか？",
+      "options": {
+        "A": "各アカウントにレイヤーを手動でコピーする",
+        "B": "Lambdaレイヤーバージョンの権限を使用して組織にアクセスを付与する",
+        "C": "S3にレイヤーを保存し、各アカウントから参照する",
+        "D": "AWS RAMを使用してレイヤーを共有する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Lambdaレイヤーバージョンの権限はクロスアカウント共有を可能にします：\n- OrganizationId条件で権限を追加\n- 組織内のすべてのアカウントがレイヤーを使用可能\n- 単一の信頼できるソース\n- コピーや手動管理不要\n\n手動コピー(A)はメンテナンスの負担を生み出します。S3参照(C)はレイヤーでは機能しません。RAM(D)はLambdaレイヤーをサポートしていません。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q16",
+      "domain": 3,
+      "question": "開発者がCloudFormationを使用してリソースをデプロイしています。テンプレートはプロビジョニングに15分かかるRDSデータベースを作成します。後続のリソースはデータベースに依存しています。開発者はどのように適切な順序を確保できますか？",
+      "options": {
+        "A": "DependsOn属性を使用する",
+        "B": "RefまたはGetAttを使用して暗黙的な依存関係を作成する",
+        "C": "待機条件を追加する",
+        "D": "AとBの両方が正しい"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "両方の方法でリソースの依存関係を確立できます：\n- DependsOn：明示的な依存関係の宣言\n- Ref/GetAtt：リソース属性を参照する際の暗黙的な依存関係\n- CloudFormationは自動的に作成順序を決定\n- 依存リソースが完了するまで待機\n\n値が必要な場合は暗黙的な依存関係が推奨されます。DependsOnは属性参照がないが順序が必要な場合に便利です。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q17",
+      "domain": 3,
+      "question": "開発者がCloudFormationの変更を本番環境に適用する前にテストしたいと考えています。どの機能を使用すべきですか？",
+      "options": {
+        "A": "スタックポリシー",
+        "B": "変更セット",
+        "C": "ドリフト検出",
+        "D": "ネストされたスタック"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "変更セットは実行前にCloudFormationの変更をプレビューします：\n- どのリソースが追加、変更、削除されるかを表示\n- 適用前に変更を確認\n- 意図しない変更を防止\n- 実行またはキャンセル可能\n\nスタックポリシー(A)は更新からリソースを保護します。ドリフト検出(C)は手動変更を表示します。ネストされたスタック(D)はモジュール化用です。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q18",
+      "domain": 3,
+      "question": "開発者がコンテナ化されたアプリケーションのビルドとAmazon ECSへのデプロイを自動化する必要があります。どのサービスの組み合わせを使用すべきですか？",
+      "options": {
+        "A": "ビルドにCodeBuild、デプロイにCodeDeploy",
+        "B": "ビルドにCodeBuild、オーケストレーションにCodePipeline、ECSデプロイアクション",
+        "C": "ビルドにCodeCommit、デプロイにCodeDeploy",
+        "D": "ビルドにEC2、デプロイにLambda"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "CodePipelineとCodeBuildとECSは自動化されたコンテナデプロイを提供します：\n- CodeBuild：Dockerイメージをビルドし、ECRにプッシュ\n- CodePipeline：ワークフローをオーケストレート\n- ECSデプロイアクション：新しいイメージでECSサービスを更新\n- 完全に自動化されたCI/CD\n\nCodeDeploy(A)はネイティブECSデプロイと比較してECSサポートが限定的です。CodeCommit(C)はビルドではなくソースコントロールです。EC2/Lambda(D)はマネージドソリューションではありません。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q19",
+      "domain": 4,
+      "question": "Lambda関数がRDSデータベースに接続する際に高いレイテンシーを経験しています。データベースはVPC内にあり、Lambda関数はVPCアクセスが設定されています。パフォーマンスを改善するために何ができますか？",
+      "options": {
+        "A": "Lambdaメモリを増やす",
+        "B": "接続プーリングにRDS Proxyを使用する",
+        "C": "データベースをVPCの外に移動する",
+        "D": "データベースインスタンスサイズを増やす"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "RDS ProxyはLambda-RDS接続を改善します：\n- 接続プーリングで接続オーバーヘッドを削減\n- 接続管理を処理\n- データベース接続の枯渇を削減\n- データベース接続のLambdaコールドスタート時間を改善\n\nメモリ(A)は接続の問題に役立ちません。VPC外への移動(C)は安全ではありません。インスタンスサイズ(D)は接続プーリングの問題を解決しません。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q20",
+      "domain": 4,
+      "question": "開発者がLambda関数のCloudWatchログが表示されないことに気づきました。関数は正常に実行されます。最も可能性の高い原因は何ですか？",
+      "options": {
+        "A": "CloudWatch Logsが停止している",
+        "B": "Lambda実行ロールにCloudWatch Logsへの書き込み権限がない",
+        "C": "関数のタイムアウトが短すぎる",
+        "D": "関数のメモリが低すぎる"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Lambdaはログを書き込むために特定の権限が必要です：\n- logs:CreateLogGroup\n- logs:CreateLogStream\n- logs:PutLogEvents\n\n実行ロールにこれらの権限がない場合、関数は実行されますがログは表示されません。これはAWSLambdaBasicExecutionRoleポリシーなしでカスタムロールを作成した場合の一般的な問題です。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q21",
+      "domain": 4,
+      "question": "開発者がX-Rayを使用してサーバーレスアプリケーション全体のリクエストをトレースしています。トレースはLambda関数で高いレイテンシーを示していますが、関数コードは最適化されているように見えます。開発者は次に何をチェックすべきですか？",
+      "options": {
+        "A": "Lambda関数のメモリ割り当て",
+        "B": "API Gatewayキャッシュ設定",
+        "C": "X-Rayサンプリングルール",
+        "D": "CloudWatchログ保持"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Lambdaメモリ割り当てはCPUパフォーマンスに影響します：\n- CPUはメモリに比例して割り当てられる\n- 低メモリ = 低CPU = 遅い実行\n- メモリを増やすと実行時間が短縮される可能性\n- メモリ価格が高くてもコストが削減される可能性\n\nAPI Gatewayキャッシュ(B)はLambdaではなくAPIレイテンシーに影響します。サンプリングルール(C)はどのトレースが記録されるかに影響します。ログ保持(D)はパフォーマンスと無関係です。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q22",
+      "domain": 4,
+      "question": "開発者が「Lambda実行ロールにSQSキューへのアクセス権限がありません」というエラーを受け取りました。ロールには正しいポリシーがアタッチされています。問題は何でしょうか？",
+      "options": {
+        "A": "SQSキューにアクセスを拒否するリソースポリシーがある",
+        "B": "Lambda関数はSQSにアクセスできない",
+        "C": "ポリシーが伝播するのに時間が必要",
+        "D": "SQSは暗号化を有効にする必要がある"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "SQSリソースポリシーはIAM権限を上書きできます：\n- キューポリシーがLambdaロールを明示的に拒否している可能性\n- IAMポリシーとリソースポリシーの両方がアクセスを許可する必要がある\n- キューアクセスポリシーのDenyステートメントを確認\n- クロスアカウントアクセスには両方のポリシーが許可する必要がある\n\nLambdaはSQSにアクセスできます(B)。IAMの伝播は高速です(C)。暗号化は権限に影響しません(D)。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q23",
+      "domain": 4,
+      "question": "開発者がS3イベントを処理するLambda関数のトラブルシューティングをしています。一部のイベントが複数回処理されているようです。最も可能性の高い原因は何ですか？",
+      "options": {
+        "A": "S3イベントは正確に1回配信されることが保証されている",
+        "B": "S3イベント通知は重複イベントを配信する可能性がある",
+        "C": "Lambda関数にバグがある",
+        "D": "S3バケットでバージョニングが有効になっている"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "S3イベント通知は最低1回の配信を提供します：\n- イベントは複数回配信される可能性がある\n- アプリケーションは冪等性を実装すべき\n- 処理済みイベントを追跡するために一意の識別子を使用\n- DynamoDBなどに処理状態を保存\n\nS3は正確に1回の配信を保証しません(A)。これは予期される動作であり、必ずしもバグではありません(C)。バージョニング(D)はバージョンごとに個別のイベントを作成しますが、重複ではありません。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q24",
+      "domain": 4,
+      "question": "開発者がどのDynamoDBクエリが最も読み取り容量を消費しているかを特定する必要があります。どのツールを使用すべきですか？",
+      "options": {
+        "A": "DynamoDB用のCloudWatch Metrics",
+        "B": "DynamoDB Contributor Insights",
+        "C": "AWS X-Ray",
+        "D": "CloudWatch Logs Insights"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "DynamoDB Contributor Insightsは高消費クエリを特定します：\n- 最もアクセスされたパーティションキーを表示\n- ホットキーとアクセスパターンを特定\n- 読み取り/書き込みパターンへのリアルタイム可視性\n- テーブル設計の最適化に役立つ\n\nCloudWatch Metrics(A)は集約消費を表示します。X-Ray(C)はリクエストをトレースしますが、キーレベルのパターンは表示しません。Logs Insights(D)はカスタムロギングが必要です。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q25",
+      "domain": 1,
+      "question": "開発者がメールを送信する必要があるアプリケーションを構築しています。メールはメインアプリケーションフローをブロックせずに非同期で送信する必要があります。最も適切なアーキテクチャはどれですか？",
+      "options": {
+        "A": "アプリケーションから直接Amazon SESを呼び出す",
+        "B": "SQSキューにメッセージを送信し、LambdaがSES経由で処理・送信する",
+        "C": "Step Functionsを使用してメール送信をオーケストレートする",
+        "D": "SNSを使用して直接メールを送信する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "SQSとLambdaは非同期メール処理を提供します：\n- アプリケーションはキューにメッセージを送信して続行\n- LambdaがメッセージをProcessし、SES経由でメールを送信\n- 送信失敗時の自動リトライ\n- 分離されたアーキテクチャ\n\n直接SES(A)はアプリケーションをブロックします。Step Functions(C)は単純なメールには過剰です。SNSメール(D)はフォーマットオプションが限定的です。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q26",
+      "domain": 1,
+      "question": "開発者がElastiCacheに保存されたデータのキャッシュ無効化戦略を実装する必要があります。DynamoDBのデータが変更されたとき、キャッシュを更新する必要があります。最適なアプローチは何ですか？",
+      "options": {
+        "A": "キャッシュアイテムにTTLのみを使用する",
+        "B": "DynamoDB StreamsとLambdaを使用してキャッシュを更新する",
+        "C": "すべてのリクエストでDynamoDBをクエリする",
+        "D": "DynamoDB更新時に手動でキャッシュを無効化する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "DynamoDB StreamsとLambdaは自動キャッシュ無効化を提供します：\n- StreamがDynamoDBへのすべての変更をキャプチャ\n- Lambda関数が変更時にトリガー\n- Lambdaがキャッシュを更新または無効化\n- ほぼリアルタイムのキャッシュ整合性\n\nTTLのみ(A)は古いデータにつながります。常にDynamoDBをクエリ(C)はキャッシュの目的を無効にします。手動無効化(D)はエラーが発生しやすいです。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q27",
+      "domain": 1,
+      "question": "開発者がAmazon Kinesis Data Streamsを使用してリアルタイムデータを取り込んでいます。複数のLambda関数が同じデータを独立して処理する必要があります。開発者は何を設定すべきですか？",
+      "options": {
+        "A": "複数のハンドラーを持つ単一のLambda関数",
+        "B": "同じイベントソースマッピングを持つ複数のLambda関数",
+        "C": "拡張ファンアウトコンシューマーを持つ複数のLambda関数",
+        "D": "他の関数を呼び出す単一のLambda関数"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "拡張ファンアウトは独立したコンシューマースループットを提供します：\n- 各コンシューマーはシャードごとに2 MB/sの専用スループットを取得\n- 複数のLambda関数が同じストリームを独立して消費可能\n- コンシューマー間でスループット共有なし\n- 低レイテンシーのプッシュベース配信\n\n同じイベントソースマッピング(B)はスループットを共有します。単一関数アプローチ(A,D)は独立した処理を提供しません。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q28",
+      "domain": 1,
+      "question": "開発者がコードを再デプロイせずに機能を有効/無効にできるフィーチャーフラグシステムを実装する必要があります。最も適したAWSサービスはどれですか？",
+      "options": {
+        "A": "Lambda環境変数",
+        "B": "AWS AppConfig",
+        "C": "S3設定ファイル",
+        "D": "DynamoDBテーブル"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "AWS AppConfigはフィーチャーフラグと設定用に設計されています：\n- コードデプロイなしで設定変更をデプロイ\n- デプロイ戦略による段階的ロールアウト\n- デプロイ前の検証\n- 組み込みのロールバック機能\n\n環境変数(A)は再デプロイが必要です。S3(C)はデプロイ戦略がありません。DynamoDB(D)はカスタム実装が必要です。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q29",
+      "domain": 2,
+      "question": "開発者がコンプライアンス目的ですべてのLambda関数呼び出しがログに記録されることを確認する必要があります。ログは不変で7年間保持される必要があります。開発者は何を設定すべきですか？",
+      "options": {
+        "A": "7年保持のCloudWatch Logs",
+        "B": "オブジェクトロック付きS3にエクスポートされたCloudWatch Logs",
+        "C": "DynamoDBにログを保存する",
+        "D": "Kinesis Data Firehoseにログを送信する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "オブジェクトロック付きS3は不変のログストレージを提供します：\n- CloudWatch LogsをS3にエクスポート\n- コンプライアンスモードでオブジェクトロックを有効化\n- ログは削除または変更不可\n- 費用対効果の高い長期ストレージ\n\nCloudWatch Logs(A)は最大10年保持ですが、より高価です。DynamoDB(C)はログストレージには高価です。Firehose(D)は不変性を持つ宛先が必要です。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q30",
+      "domain": 2,
+      "question": "開発者がLambda統合でAPI Gatewayを実装しています。Lambda関数はCloudWatch Logsにログ記録すべきでない機密データを返します。開発者はどのように機密データがログに表示されるのを防ぐことができますか？",
+      "options": {
+        "A": "API GatewayのCloudWatch Logsを無効にする",
+        "B": "API Gatewayでデータマスキングを使用する",
+        "C": "Lambdaがレスポンスをログに記録しないように設定する",
+        "D": "返す前にLambdaレスポンスから機密データを削除する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "API Gatewayはデータマスキングをサポートしています：\n- データマスキング付きのアクセスログを設定\n- ログ内の機密フィールドをマスク\n- データを保護しながらデバッグ用のログを保持\n- リクエストとレスポンスデータの両方で動作\n\nログの無効化(A)はデバッグ機能を失います。Lambdaログ制御(C)はAPI Gatewayログに影響しません。データの削除(D)はクライアントへのレスポンスに影響します。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q31",
+      "domain": 3,
+      "question": "開発者がAWS CDKを使用してインフラストラクチャを定義しています。開発者は特定のリソースが誤って削除されないようにしたいと考えています。どのコンストラクトを使用すべきですか？",
+      "options": {
+        "A": "CfnDeletionPolicy",
+        "B": "RemovalPolicy.RETAIN",
+        "C": "スタック終了保護",
+        "D": "リソースベースポリシー"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "RemovalPolicy.RETAINはリソースの削除を防止します：\n- コンストラクトに適用してスタック削除時にリソースを保持\n- CloudFormation DeletionPolicy: Retainにマッピング\n- データベースなどの重要なリソースを保護\n- リソースは残りますが、CloudFormationによる管理は終了\n\n終了保護(C)はスタック削除自体を完全に防止します。リソースベースポリシー(D)は削除ではなくアクセスを制御します。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q32",
+      "domain": 3,
+      "question": "開発者が災害復旧のために同じアプリケーションを複数のAWSリージョンにデプロイする必要があります。Infrastructure as Codeを使用した最も効率的なアプローチは何ですか？",
+      "options": {
+        "A": "各リージョンで手動でCloudFormationをデプロイする",
+        "B": "マルチリージョンデプロイでCloudFormation StackSetsを使用する",
+        "C": "各リージョンに個別のテンプレートを作成する",
+        "D": "Lambdaを使用して各リージョンにリソースをデプロイする"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "CloudFormation StackSetsはマルチリージョンデプロイを可能にします：\n- 単一テンプレート、複数リージョン\n- 集中管理\n- リージョン間の自動更新\n- 並列または順次デプロイのサポート\n\n手動デプロイ(A)はエラーが発生しやすいです。個別テンプレート(C)はメンテナンスを増やします。Lambdaデプロイ(D)は既存の機能を再発明します。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q33",
+      "domain": 3,
+      "question": "開発者がElastic Beanstalkで実行されているアプリケーションのブルー/グリーンデプロイを実装したいと考えています。どの機能を使用すべきですか？",
+      "options": {
+        "A": "ローリングデプロイ",
+        "B": "環境URLのスワップ",
+        "C": "インプレースデプロイ",
+        "D": "イミュータブルデプロイ"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "URLスワップはElastic Beanstalkでブルー/グリーンデプロイを提供します：\n- 新しいバージョンで新しい環境を作成（グリーン）\n- 新しい環境をテスト\n- 環境間でURLをスワップ\n- スワップバックによる即時ロールバック\n\nローリング(A)とイミュータブル(D)は既存の環境を変更します。インプレース(C)はインスタンスを直接更新します。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q34",
+      "domain": 3,
+      "question": "開発者がCodePipelineを使用しており、ステージング環境へのデプロイ後に統合テストを実行する必要があります。実行時間を短縮するためにテストは並列で実行する必要があります。何を設定すべきですか？",
+      "options": {
+        "A": "複数の順次CodeBuildプロジェクト",
+        "B": "バッチビルドを持つ単一のCodeBuildプロジェクト",
+        "C": "同じステージ内の複数の並列アクション",
+        "D": "テストオーケストレーション用のStep Functions"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "CodePipelineはステージ内の並列アクションをサポートします：\n- 同じrunOrderで複数のテストアクションを追加\n- アクションは並列で実行\n- すべてのアクションが完了するとステージが完了\n- パイプライン合計時間を短縮\n\n順次プロジェクト(A)は時間を増やします。バッチビルド(B)は複数のアーティファクトのビルド用です。Step Functions(D)は不要な複雑さを追加します。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q35",
+      "domain": 4,
+      "question": "開発者がAPI Gateway REST APIに高いレイテンシーがあることに気づきました。X-Rayトレースは統合レイテンシーが低いが全体のレイテンシーが高いことを示しています。何を調査すべきですか？",
+      "options": {
+        "A": "Lambdaコールドスタート",
+        "B": "API Gatewayスロットリング",
+        "C": "Lambdaオーソライザーの実行時間",
+        "D": "DynamoDB読み取りレイテンシー"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "LambdaオーソライザーはAPI合計レイテンシーに追加されます：\n- オーソライザーは統合前に実行される\n- 遅いオーソライザーは全体のレイテンシーを増加させる\n- X-Rayでオーソライザーの実行時間を確認\n- パフォーマンス改善のためにオーソライザーキャッシュを有効化\n\nLambdaコールドスタート(A)は統合レイテンシーに表示されます。スロットリング(B)はレイテンシーではなくエラーを引き起こします。DynamoDB(D)は統合レイテンシーに表示されます。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q36",
+      "domain": 4,
+      "question": "Lambda関数が断続的に「Task timed out」エラーを経験しています。関数は外部APIへのHTTP呼び出しを行います。開発者は最初に何をチェックすべきですか？",
+      "options": {
+        "A": "Lambdaメモリ設定",
+        "B": "HTTPクライアントのタイムアウト設定",
+        "C": "Lambdaタイムアウト設定",
+        "D": "VPC NATゲートウェイの帯域幅"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "HTTPクライアントのタイムアウトはLambda実行に影響します：\n- サーバーが応答しない場合、外部API呼び出しがハングする可能性\n- HTTPクライアントのタイムアウトはLambdaタイムアウトより短くすべき\n- HTTP呼び出しに接続と読み取りタイムアウトを追加\n- タイムアウト例外を適切に処理\n\nLambdaタイムアウト(C)は症状であり、原因ではありません。メモリ(A)はネットワークではなくCPUに影響します。NAT帯域幅(D)が完全なタイムアウトを引き起こすことはまれです。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q37",
+      "domain": 4,
+      "question": "開発者がCloudWatch Logs Insightsを使用してLambda関数ログを分析しています。開発者は実行時間が5秒を超えたすべての呼び出しを見つけたいと考えています。どのクエリを使用すべきですか？",
+      "options": {
+        "A": "fields @timestamp, @duration | filter @duration > 5000",
+        "B": "SELECT * FROM logs WHERE duration > 5000",
+        "C": "filter @type = 'REPORT' | filter @duration > 5000",
+        "D": "stats count(*) by bin(5s)"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "REPORTログタイプとdurationをフィルタリングすると遅い呼び出しが見つかります：\n- @type = 'REPORT'はLambda呼び出しサマリーを選択\n- @durationはミリ秒単位\n- 5000 ms = 5秒\n- しきい値を超えるすべての呼び出しを返す\n\nオプションAはREPORTタイプでフィルタリングしません。オプションBはLogs InsightsでサポートされていないSQL構文を使用しています。オプションDはカウントを集計し、特定の呼び出しを見つけません。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q38",
+      "domain": 4,
+      "question": "開発者がSQSメッセージが処理されているがキューから削除されない問題をデバッグしています。Lambda関数は正常に完了します。最も可能性の高い原因は何ですか？",
+      "options": {
+        "A": "Lambda関数にメッセージを削除する権限がない",
+        "B": "関数が未処理の例外をスローしている",
+        "C": "可視性タイムアウトが長すぎる",
+        "D": "関数が失敗したバッチアイテムレスポンスを返している"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "Lambda SQS統合は部分的なバッチ失敗をサポートします：\n- 関数はbatchItemFailuresを返すことができる\n- batchItemFailures内のメッセージは削除されない\n- 成功したアイテムは自動的に削除される\n- 失敗したアイテムの関数の戻り値を確認\n\n権限(A)はエラーを引き起こします。未処理の例外(B)は失敗として表示されます。可視性タイムアウト(C)は削除を防止しません。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q39",
+      "domain": 1,
+      "question": "開発者が複数のマイクロサービスからデータを集約するGraphQL APIを実装する必要があります。最も適切なAWSサービスはどれですか？",
+      "options": {
+        "A": "API Gateway REST API",
+        "B": "AWS AppSync",
+        "C": "API Gateway HTTP API",
+        "D": "Application Load Balancer"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "AWS AppSyncはマネージドGraphQLサービスです：\n- ネイティブGraphQLサポート\n- リゾルバーは複数のデータソースから集約可能\n- 組み込みキャッシュ\n- リアルタイムサブスクリプション\n- DynamoDB、Lambda、HTTPとの直接統合\n\nAPI Gateway(A,C)はカスタムGraphQL実装が必要です。ALB(D)はGraphQLではなくロードバランシング用です。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q40",
+      "domain": 1,
+      "question": "開発者がファジーマッチングと関連性スコアリングで製品説明を検索できる検索機能を実装する必要があります。どのAWSサービスを使用すべきですか？",
+      "options": {
+        "A": "フィルター付きDynamoDB Scan",
+        "B": "Amazon OpenSearch Service",
+        "C": "LIKEクエリ付きAmazon RDS",
+        "D": "S3 Select付きAmazon S3"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Amazon OpenSearch Serviceは全文検索機能を提供します：\n- タイプミス許容のためのファジーマッチング\n- 関連性スコアリング\n- 大規模データセット全体での高速検索\n- 複雑なクエリのサポート\n- リアルタイムインデックス作成\n\nDynamoDB Scan(A)は遅く、ファジーマッチングをサポートしません。RDS LIKE(C)は遅く、関連性スコアリングがありません。S3 Select(D)は構造化データクエリ用です。",
+      "difficulty": "medium"
+    }
+  ]
+}

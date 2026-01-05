@@ -1,0 +1,649 @@
+{
+  "exam": {
+    "id": "gcp-pcdev-set1",
+    "name": "GCP 云开发工程师认证模拟考试 #1",
+    "code": "PCDEV",
+    "provider": "GCP",
+    "language": "zh-CN",
+    "description": "Google Cloud Professional Cloud Developer 认证考试模拟题",
+    "totalQuestions": 40,
+    "passingScore": 70,
+    "examTime": 120,
+    "domains": [
+      {
+        "id": 1,
+        "name": "Designing highly scalable, available, and reliable cloud-native applications",
+        "weight": 25
+      },
+      {
+        "id": 2,
+        "name": "Building and testing applications",
+        "weight": 25
+      },
+      {
+        "id": 3,
+        "name": "Deploying applications",
+        "weight": 20
+      },
+      {
+        "id": 4,
+        "name": "Integrating Google Cloud services",
+        "weight": 20
+      },
+      {
+        "id": 5,
+        "name": "Managing application performance monitoring",
+        "weight": 10
+      }
+    ],
+    "tags": [
+      "GCP",
+      "Cloud Developer",
+      "Cloud Run",
+      "GKE",
+      "认证考试"
+    ]
+  },
+  "questions": [
+    {
+      "id": "q1",
+      "domain": 1,
+      "question": "一家公司正在设计一个云原生应用，需要自动根据请求量进行扩展，并且希望最小化基础设施管理。应该选择哪个平台？",
+      "options": {
+        "A": "Compute Engine",
+        "B": "Cloud Run",
+        "C": "Bare Metal Solution",
+        "D": "Cloud SQL"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Cloud Run 是完全托管的无服务器平台：\n- 自动扩缩容，包括缩容到零\n- 按请求计费\n- 支持任何容器化应用\n- 无需管理基础设施\n- 与 Cloud Build、Artifact Registry 集成",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q2",
+      "domain": 1,
+      "question": "在设计微服务架构时，如何实现服务之间的松耦合通信？",
+      "options": {
+        "A": "使用直接的 HTTP 同步调用",
+        "B": "使用 Cloud Pub/Sub 进行异步消息传递",
+        "C": "在同一个数据库中共享数据",
+        "D": "使用共享文件系统"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Cloud Pub/Sub 实现松耦合：\n- 发布者和订阅者解耦\n- 异步消息传递\n- 支持多对多通信\n- 自动扩展\n- 消息持久化保证可靠性",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q3",
+      "domain": 1,
+      "question": "一个应用需要存储用户会话数据，要求亚毫秒级延迟和自动过期。最佳选择是什么？",
+      "options": {
+        "A": "Cloud SQL",
+        "B": "BigQuery",
+        "C": "Memorystore for Redis",
+        "D": "Cloud Storage"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "Memorystore for Redis 适合会话存储：\n- 内存存储，亚毫秒延迟\n- 支持 TTL 自动过期\n- 高可用配置\n- 与 GKE、Cloud Run 等服务集成",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q4",
+      "domain": 1,
+      "question": "如何设计一个能够承受单个区域故障的高可用应用？",
+      "options": {
+        "A": "在单个区域的多个可用区部署",
+        "B": "使用全局负载均衡和多区域部署",
+        "C": "增加单个实例的资源",
+        "D": "使用更大的虚拟机"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "多区域高可用设计：\n- 全局 HTTP(S) 负载均衡\n- 跨区域部署应用实例\n- 使用 Cloud Spanner 或多区域 Cloud SQL\n- 配置健康检查和故障转移",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q5",
+      "domain": 1,
+      "question": "在云原生应用中，12-Factor App 方法论建议如何处理配置？",
+      "options": {
+        "A": "将配置硬编码在代码中",
+        "B": "使用配置文件打包在应用中",
+        "C": "通过环境变量注入配置",
+        "D": "在数据库中存储所有配置"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "12-Factor App 配置原则：\n- 配置存储在环境变量中\n- 代码与配置分离\n- 同一代码可部署到不同环境\n- GCP 中可使用 Secret Manager 管理敏感配置",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q6",
+      "domain": 1,
+      "question": "一家公司需要实现 API 限流以保护后端服务。应该使用什么？",
+      "options": {
+        "A": "Cloud CDN",
+        "B": "Cloud Armor 和 API Gateway",
+        "C": "Cloud DNS",
+        "D": "Cloud NAT"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "API 限流解决方案：\n- Cloud Armor：支持速率限制规则\n- API Gateway / Apigee：完整的 API 管理和配额\n- 可以基于 IP、用户或 API 密钥限流\n- 保护后端免受过载",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q7",
+      "domain": 1,
+      "question": "设计事件驱动架构时，如何确保事件处理的幂等性？",
+      "options": {
+        "A": "增加重试次数",
+        "B": "使用唯一事件 ID 进行去重处理",
+        "C": "禁用重试机制",
+        "D": "减少并发处理"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "幂等性设计：\n- 为每个事件分配唯一 ID\n- 在处理前检查事件是否已处理\n- 使用数据库唯一约束或分布式锁\n- 确保重复处理产生相同结果",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q8",
+      "domain": 1,
+      "question": "如何实现应用的优雅关闭（Graceful Shutdown）？",
+      "options": {
+        "A": "立即终止所有连接",
+        "B": "捕获 SIGTERM 信号，完成进行中的请求后再退出",
+        "C": "忽略关闭信号",
+        "D": "强制重启应用"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "优雅关闭最佳实践：\n- 监听 SIGTERM 信号\n- 停止接受新请求\n- 完成正在处理的请求\n- 关闭数据库连接等资源\n- 在超时时间内退出",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q9",
+      "domain": 2,
+      "question": "在 GCP 中构建 CI/CD 管道，哪个服务用于构建容器镜像？",
+      "options": {
+        "A": "Cloud Scheduler",
+        "B": "Cloud Build",
+        "C": "Cloud Composer",
+        "D": "Cloud Tasks"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Cloud Build：\n- 托管的 CI/CD 平台\n- 支持构建、测试、部署\n- 与 GitHub、GitLab 等集成\n- 支持自定义构建步骤\n- 与 Artifact Registry 集成存储镜像",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q10",
+      "domain": 2,
+      "question": "如何在 Cloud Build 中存储和使用敏感的构建凭证？",
+      "options": {
+        "A": "硬编码在 cloudbuild.yaml 中",
+        "B": "使用 Secret Manager 并在构建时注入",
+        "C": "存储在公开的 Git 仓库中",
+        "D": "使用环境变量明文传递"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Cloud Build 密钥管理：\n- 使用 Secret Manager 存储敏感信息\n- 在 cloudbuild.yaml 中引用 secrets\n- 授予 Cloud Build 服务账号访问权限\n- 密钥在构建时安全注入",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q11",
+      "domain": 2,
+      "question": "什么是容器镜像的多阶段构建（Multi-stage Build）的优势？",
+      "options": {
+        "A": "增加镜像大小",
+        "B": "减少最终镜像大小，分离构建和运行时依赖",
+        "C": "增加构建时间",
+        "D": "简化 Dockerfile"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "多阶段构建优势：\n- 减少最终镜像大小\n- 构建工具不包含在运行时镜像中\n- 减少攻击面\n- 加快部署速度\n- 降低存储和带宽成本",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q12",
+      "domain": 2,
+      "question": "在测试策略中，什么是集成测试的主要目的？",
+      "options": {
+        "A": "测试单个函数的逻辑",
+        "B": "测试多个组件之间的交互",
+        "C": "测试用户界面",
+        "D": "测试系统性能"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "集成测试：\n- 验证组件之间的交互\n- 测试 API 端点\n- 测试数据库操作\n- 测试外部服务集成\n- 通常比单元测试慢但更接近真实场景",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q13",
+      "domain": 2,
+      "question": "Artifact Registry 相比 Container Registry 的优势是什么？（选择两项）",
+      "options": {
+        "A": "仅支持 Docker 镜像",
+        "B": "支持多种制品格式（Docker、Maven、npm 等）",
+        "C": "区域级存储提供更好的性能",
+        "D": "不支持 IAM 权限控制"
+      },
+      "answer": ["B", "C"],
+      "answerType": "multiple",
+      "explanation": "Artifact Registry 优势：\n- 支持多种制品格式\n- 区域级存储\n- 更细粒度的 IAM 权限\n- 漏洞扫描集成\n- 是 Container Registry 的推荐替代",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q14",
+      "domain": 2,
+      "question": "如何在本地开发环境中模拟 GCP 服务进行测试？",
+      "options": {
+        "A": "始终使用生产环境",
+        "B": "使用模拟器（如 Pub/Sub、Firestore 模拟器）",
+        "C": "不进行本地测试",
+        "D": "手动模拟所有 API 响应"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "GCP 本地模拟器：\n- Pub/Sub 模拟器\n- Firestore 模拟器\n- Bigtable 模拟器\n- Spanner 模拟器\n- 无需真实 GCP 资源即可测试",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q15",
+      "domain": 2,
+      "question": "什么是基础设施即代码（IaC）的好处？",
+      "options": {
+        "A": "手动配置更灵活",
+        "B": "版本控制、可重复性和自动化部署",
+        "C": "减少文档需求",
+        "D": "降低学习成本"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "基础设施即代码好处：\n- 版本控制基础设施变更\n- 可重复和一致的部署\n- 自动化减少人为错误\n- 支持代码审查\n- GCP 支持 Terraform 和 Deployment Manager",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q16",
+      "domain": 2,
+      "question": "在 Cloud Build 中，如何实现只有在所有测试通过后才部署到生产环境？",
+      "options": {
+        "A": "手动检查测试结果",
+        "B": "在 cloudbuild.yaml 中定义步骤依赖，测试步骤失败则构建失败",
+        "C": "并行运行测试和部署",
+        "D": "跳过测试步骤"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Cloud Build 步骤控制：\n- 步骤按顺序执行\n- 任何步骤失败则构建失败\n- 可以使用 waitFor 控制并行和依赖\n- 支持条件构建触发器",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q17",
+      "domain": 3,
+      "question": "在 GKE 中进行滚动更新时，如何确保零停机？",
+      "options": {
+        "A": "同时删除所有旧 Pod",
+        "B": "配置适当的 maxSurge 和 maxUnavailable，使用就绪探针",
+        "C": "不使用探针",
+        "D": "手动逐个更新 Pod"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "GKE 零停机部署：\n- 配置 RollingUpdate 策略\n- maxSurge：允许超出期望副本数的数量\n- maxUnavailable：更新期间允许不可用的数量\n- 使用 readinessProbe 确保新 Pod 就绪\n- 使用 preStop hook 优雅关闭",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q18",
+      "domain": 3,
+      "question": "Cloud Run 和 GKE 的主要区别是什么？",
+      "options": {
+        "A": "没有区别",
+        "B": "Cloud Run 是无服务器按请求计费，GKE 需要管理集群但更灵活",
+        "C": "GKE 不支持容器",
+        "D": "Cloud Run 不支持自动扩展"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Cloud Run vs GKE：\n- Cloud Run：无服务器，按请求计费，自动管理\n- GKE：完整 Kubernetes，更多控制和灵活性\n- Cloud Run：适合无状态 HTTP 服务\n- GKE：适合复杂的有状态应用和自定义需求",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q19",
+      "domain": 3,
+      "question": "什么是蓝绿部署（Blue-Green Deployment）？",
+      "options": {
+        "A": "逐步更新实例",
+        "B": "维护两个相同环境，切换流量到新版本",
+        "C": "随机分配流量",
+        "D": "只在夜间部署"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "蓝绿部署：\n- 维护两个完整的生产环境\n- 新版本部署到非活跃环境\n- 测试通过后切换流量\n- 支持快速回滚\n- 需要双倍资源",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q20",
+      "domain": 3,
+      "question": "如何在 Cloud Run 中配置最小实例数以减少冷启动？",
+      "options": {
+        "A": "无法配置",
+        "B": "设置 min-instances 参数保持最少数量的实例预热",
+        "C": "增加内存配置",
+        "D": "使用更大的容器镜像"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Cloud Run 冷启动优化：\n- 设置 min-instances 保持实例预热\n- 权衡成本和延迟\n- 优化容器启动时间\n- 减少依赖加载时间\n- 使用 CPU always allocated 模式",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q21",
+      "domain": 3,
+      "question": "在 GKE 中，ConfigMap 和 Secret 的区别是什么？",
+      "options": {
+        "A": "没有区别",
+        "B": "Secret 用于敏感数据并进行 base64 编码，ConfigMap 用于非敏感配置",
+        "C": "ConfigMap 更安全",
+        "D": "Secret 不支持挂载为文件"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "ConfigMap vs Secret：\n- ConfigMap：非敏感配置数据\n- Secret：敏感数据（密码、密钥等）\n- Secret 数据 base64 编码存储\n- 两者都可以作为环境变量或卷挂载\n- Secret 可以与外部密钥管理系统集成",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q22",
+      "domain": 3,
+      "question": "什么是金丝雀部署（Canary Deployment）？",
+      "options": {
+        "A": "将所有流量切换到新版本",
+        "B": "将一小部分流量路由到新版本进行验证",
+        "C": "只在测试环境部署",
+        "D": "部署到所有区域"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "金丝雀部署：\n- 逐步将流量切换到新版本\n- 先将少量流量（如 5%）路由到新版本\n- 监控错误率和性能\n- 逐步增加流量比例\n- 出现问题可快速回滚",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q23",
+      "domain": 3,
+      "question": "如何在 GKE 中实现 Pod 的水平自动扩展？",
+      "options": {
+        "A": "手动调整副本数",
+        "B": "使用 Horizontal Pod Autoscaler (HPA) 基于 CPU/内存或自定义指标",
+        "C": "增加节点数量",
+        "D": "使用更大的 Pod 资源"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Horizontal Pod Autoscaler：\n- 基于 CPU/内存利用率自动扩缩\n- 支持自定义指标\n- 配置最小和最大副本数\n- 可以与 Vertical Pod Autoscaler 配合使用",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q24",
+      "domain": 3,
+      "question": "在部署到 App Engine 时，如何控制流量分配？",
+      "options": {
+        "A": "无法控制",
+        "B": "使用版本和流量分割功能",
+        "C": "只能使用负载均衡器",
+        "D": "手动重定向用户"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "App Engine 流量管理：\n- 支持多版本并存\n- 可以按百分比分配流量\n- 支持基于 Cookie 的用户粘性\n- 适合 A/B 测试和金丝雀发布",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q25",
+      "domain": 4,
+      "question": "如何使用 Cloud Functions 响应 Cloud Storage 事件？",
+      "options": {
+        "A": "轮询 Cloud Storage",
+        "B": "配置事件触发器监听存储桶事件",
+        "C": "手动调用函数",
+        "D": "使用定时任务"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Cloud Functions 存储触发器：\n- 支持对象创建、删除、归档等事件\n- 自动触发函数执行\n- 事件包含对象元数据\n- 适合图像处理、数据验证等场景",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q26",
+      "domain": 4,
+      "question": "在应用中访问 GCP 服务时，推荐的身份认证方式是什么？",
+      "options": {
+        "A": "在代码中硬编码服务账号密钥",
+        "B": "使用应用默认凭据（ADC）和服务账号",
+        "C": "使用用户的个人账号",
+        "D": "禁用认证"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "GCP 认证最佳实践：\n- 使用应用默认凭据（ADC）\n- 在 GCP 环境中自动使用元数据服务\n- 本地开发使用 gcloud auth application-default login\n- 避免下载和分发服务账号密钥",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q27",
+      "domain": 4,
+      "question": "Cloud Tasks 和 Cloud Pub/Sub 的主要区别是什么？",
+      "options": {
+        "A": "没有区别",
+        "B": "Cloud Tasks 用于任务队列和显式送达，Pub/Sub 用于消息广播",
+        "C": "Pub/Sub 不支持重试",
+        "D": "Cloud Tasks 不支持延迟执行"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Cloud Tasks vs Pub/Sub：\n- Cloud Tasks：任务队列，显式目标，支持延迟和速率限制\n- Pub/Sub：发布订阅，多订阅者，实时消息传递\n- Cloud Tasks 适合异步任务处理\n- Pub/Sub 适合事件驱动架构",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q28",
+      "domain": 4,
+      "question": "如何在应用中安全地存储和访问 API 密钥？",
+      "options": {
+        "A": "存储在代码仓库中",
+        "B": "使用 Secret Manager 并通过 IAM 控制访问",
+        "C": "存储在环境变量的明文中",
+        "D": "存储在公开的配置文件中"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Secret Manager：\n- 集中管理敏感信息\n- 版本控制和审计日志\n- IAM 细粒度访问控制\n- 自动轮换支持\n- 与 Cloud Run、GKE、Cloud Functions 集成",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q29",
+      "domain": 4,
+      "question": "Firestore 的两种模式（Native 和 Datastore 模式）的区别是什么？",
+      "options": {
+        "A": "没有区别",
+        "B": "Native 模式支持实时监听和移动 SDK，Datastore 模式兼容旧 Datastore API",
+        "C": "Datastore 模式更快",
+        "D": "Native 模式不支持查询"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Firestore 模式：\n- Native 模式：实时监听，移动/Web SDK，子集合\n- Datastore 模式：兼容旧 API，服务器端应用\n- 模式一旦选择无法更改\n- 新项目推荐 Native 模式",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q30",
+      "domain": 4,
+      "question": "如何使用 Cloud Scheduler 定期触发 Cloud Run 服务？",
+      "options": {
+        "A": "无法实现",
+        "B": "创建 HTTP 目标的调度作业调用 Cloud Run URL",
+        "C": "使用 cron 作业在 VM 上",
+        "D": "手动触发"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Cloud Scheduler 集成：\n- 支持 HTTP、Pub/Sub、App Engine 目标\n- 使用 cron 表达式定义调度\n- 可以配置 OIDC 认证调用私有服务\n- 支持重试策略",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q31",
+      "domain": 4,
+      "question": "在 GKE 中，如何使用 Workload Identity 访问 GCP 服务？",
+      "options": {
+        "A": "在 Pod 中挂载服务账号密钥文件",
+        "B": "将 Kubernetes 服务账号绑定到 GCP 服务账号",
+        "C": "使用节点的服务账号",
+        "D": "禁用服务账号"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Workload Identity：\n- 将 K8s 服务账号映射到 GCP 服务账号\n- 无需管理密钥文件\n- 更安全的身份认证方式\n- 支持细粒度权限控制",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q32",
+      "domain": 4,
+      "question": "Cloud Endpoints 的主要功能是什么？",
+      "options": {
+        "A": "数据存储",
+        "B": "API 管理、认证、监控和限流",
+        "C": "负载均衡",
+        "D": "容器编排"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Cloud Endpoints：\n- OpenAPI 规范支持\n- API 密钥和 JWT 认证\n- 配额和速率限制\n- API 监控和日志\n- 支持 gRPC 和 REST",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q33",
+      "domain": 5,
+      "question": "Cloud Logging 中，如何创建基于日志的指标？",
+      "options": {
+        "A": "无法创建",
+        "B": "定义日志过滤器并创建计数器或分布指标",
+        "C": "只能使用预定义指标",
+        "D": "手动计算"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "基于日志的指标：\n- 从日志条目创建自定义指标\n- 支持计数器和分布类型\n- 可以提取标签用于分组\n- 在 Cloud Monitoring 中使用\n- 适合监控错误率、特定事件等",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q34",
+      "domain": 5,
+      "question": "如何在分布式应用中追踪跨服务的请求？",
+      "options": {
+        "A": "查看每个服务的独立日志",
+        "B": "使用 Cloud Trace 进行分布式追踪",
+        "C": "不进行追踪",
+        "D": "使用时间戳关联"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Cloud Trace：\n- 自动追踪延迟数据\n- 可视化请求在服务间的流转\n- 识别性能瓶颈\n- 与 OpenTelemetry 集成\n- 分析请求延迟分布",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q35",
+      "domain": 5,
+      "question": "Error Reporting 的主要功能是什么？",
+      "options": {
+        "A": "只显示日志",
+        "B": "聚合和分析应用错误，提供通知和趋势分析",
+        "C": "代码审查",
+        "D": "性能测试"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Error Reporting：\n- 自动聚合相似错误\n- 显示错误数量趋势\n- 提供堆栈跟踪\n- 支持邮件/移动通知\n- 与多种语言和框架集成",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q36",
+      "domain": 5,
+      "question": "如何设置当 CPU 使用率超过阈值时发送告警？",
+      "options": {
+        "A": "手动监控",
+        "B": "在 Cloud Monitoring 中创建告警策略",
+        "C": "只能查看仪表板",
+        "D": "编写自定义监控脚本"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Cloud Monitoring 告警：\n- 基于指标阈值创建策略\n- 支持多种通知渠道（邮件、短信、PagerDuty等）\n- 可配置告警条件和持续时间\n- 支持组合多个条件",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q37",
+      "domain": 5,
+      "question": "什么是 SLI、SLO 和 SLA？",
+      "options": {
+        "A": "都是相同的概念",
+        "B": "SLI 是指标，SLO 是目标，SLA 是与客户的协议",
+        "C": "只有 SLA 重要",
+        "D": "与监控无关"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "SRE 概念：\n- SLI（Service Level Indicator）：服务质量指标\n- SLO（Service Level Objective）：内部目标\n- SLA（Service Level Agreement）：客户协议\n- Cloud Monitoring 支持定义和监控 SLO",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q38",
+      "domain": 5,
+      "question": "如何在 Cloud Run 服务中查看请求延迟和错误率？",
+      "options": {
+        "A": "无法查看",
+        "B": "在 Cloud Run 控制台或 Cloud Monitoring 中查看内置指标",
+        "C": "需要自己实现",
+        "D": "只能查看日志"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Cloud Run 监控：\n- 自动收集请求指标\n- 延迟分布和百分位数\n- 请求数量和错误率\n- 实例数量和资源使用\n- 可创建自定义仪表板",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q39",
+      "domain": 1,
+      "question": "什么是断路器模式（Circuit Breaker Pattern）？",
+      "options": {
+        "A": "增加网络带宽",
+        "B": "当下游服务失败时快速失败，防止级联故障",
+        "C": "增加重试次数",
+        "D": "减少服务数量"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "断路器模式：\n- 检测下游服务失败\n- 达到阈值后打开断路器\n- 快速返回失败而非等待超时\n- 防止级联故障\n- 定期尝试恢复（半开状态）",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q40",
+      "domain": 2,
+      "question": "如何在 Cloud Build 中实现构建缓存以加速构建？",
+      "options": {
+        "A": "无法实现缓存",
+        "B": "使用 kaniko 缓存层或将依赖存储到 Cloud Storage",
+        "C": "每次从头构建",
+        "D": "减少构建步骤"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Cloud Build 缓存策略：\n- 使用 kaniko 进行分层缓存\n- 将依赖缓存到 Cloud Storage\n- 使用 --cache-from 指定缓存镜像\n- 优化 Dockerfile 层顺序\n- 减少构建时间和成本",
+      "difficulty": "hard"
+    }
+  ]
+}

@@ -1,0 +1,644 @@
+{
+  "exam": {
+    "id": "azure-az-305-set1",
+    "name": "Azure AZ-305 解决方案架构师模拟考试 #1",
+    "code": "AZ-305",
+    "provider": "Azure",
+    "language": "zh-CN",
+    "description": "Microsoft Azure Solutions Architect Expert认证考试模拟题，涵盖身份、治理和监视解决方案设计、数据存储解决方案设计、业务连续性解决方案设计和基础结构解决方案设计等核心领域",
+    "totalQuestions": 40,
+    "passingScore": 70,
+    "examTime": 120,
+    "domains": [
+      {
+        "id": 1,
+        "name": "设计身份、治理和监视解决方案 (Design identity, governance, and monitoring solutions)",
+        "weight": 28
+      },
+      {
+        "id": 2,
+        "name": "设计数据存储解决方案 (Design data storage solutions)",
+        "weight": 27
+      },
+      {
+        "id": 3,
+        "name": "设计业务连续性解决方案 (Design business continuity solutions)",
+        "weight": 13
+      },
+      {
+        "id": 4,
+        "name": "设计基础结构解决方案 (Design infrastructure solutions)",
+        "weight": 32
+      }
+    ],
+    "tags": [
+      "Azure",
+      "AZ-305",
+      "解决方案架构师",
+      "认证考试",
+      "云计算"
+    ]
+  },
+  "questions": [
+    {
+      "id": "q1",
+      "domain": 1,
+      "question": "一家公司正在将其本地应用程序迁移到Azure。该公司需要确保用户可以使用其现有的Active Directory凭据访问云资源，同时保持与本地AD的同步。应该推荐什么解决方案？",
+      "options": {
+        "A": "仅使用Azure AD B2C",
+        "B": "配置Azure AD Connect并启用密码哈希同步",
+        "C": "仅使用Azure AD B2B协作",
+        "D": "创建独立的Azure AD租户，手动管理用户"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure AD Connect是实现混合身份方案的最佳选择。通过密码哈希同步(PHS)，用户可以使用相同的凭据访问本地和云资源。这提供了无缝的单点登录体验，同时保持了本地AD作为权威源的地位。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q2",
+      "domain": 1,
+      "question": "一家企业需要为其Azure环境实施统一的治理策略，要求所有订阅中的虚拟机必须安装特定的监控代理，且所有存储账户必须启用加密。应该使用什么方法？",
+      "options": {
+        "A": "在每个订阅级别手动配置设置",
+        "B": "使用Azure Blueprints结合Azure Policy",
+        "C": "仅使用Azure Advisor建议",
+        "D": "使用ARM模板部署所有资源"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure Blueprints允许定义可重复使用的环境定义，包含角色分配、策略分配、ARM模板和资源组。结合Azure Policy，可以确保所有资源都符合组织标准，如强制安装监控代理和启用存储加密。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q3",
+      "domain": 1,
+      "question": "一家公司需要实施特权身份管理(PIM)策略，要求管理员仅在需要时才能激活其特权角色，且所有激活必须经过审批。应该配置什么？",
+      "options": {
+        "A": "Azure AD条件访问策略",
+        "B": "Azure AD Privileged Identity Management并配置审批工作流",
+        "C": "Azure AD Identity Protection",
+        "D": "Azure AD访问评审"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure AD Privileged Identity Management(PIM)提供即时(JIT)特权访问，允许配置审批工作流、限制激活时间和审计所有特权操作。这符合最小权限原则，减少了持久特权访问的风险。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q4",
+      "domain": 1,
+      "question": "一家组织需要集中管理跨多个Azure订阅和管理组的合规性状态，并生成详细的合规性报告。应该使用什么服务？",
+      "options": {
+        "A": "Azure Security Center（现Microsoft Defender for Cloud）",
+        "B": "Azure Advisor",
+        "C": "Azure Service Health",
+        "D": "Azure Cost Management"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Microsoft Defender for Cloud（以前的Azure Security Center）提供统一的安全管理和高级威胁防护。它可以跨订阅评估合规性状态，与Azure Policy集成，并生成详细的合规性报告和安全建议。\n---",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q5",
+      "domain": 1,
+      "question": "一家公司需要实施监控解决方案，能够收集来自Azure资源、本地服务器和其他云提供商的日志和指标。应该推荐什么架构？",
+      "options": {
+        "A": "仅使用Application Insights",
+        "B": "使用Azure Monitor结合Log Analytics工作区作为集中式日志存储",
+        "C": "为每个资源类型创建单独的监控解决方案",
+        "D": "仅使用第三方监控工具"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure Monitor与Log Analytics工作区结合提供了统一的监控平台。Log Analytics可以收集来自Azure资源（通过诊断设置）、本地服务器（通过代理）和其他云（通过API或代理）的日志和指标，实现集中式监控和分析。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q6",
+      "domain": 2,
+      "question": "一家电商公司需要设计一个全球分布式数据库解决方案，要求在多个地理区域提供低于10毫秒的读取延迟，并支持多种一致性级别。应该推荐什么服务？",
+      "options": {
+        "A": "Azure SQL Database",
+        "B": "Azure Cosmos DB",
+        "C": "Azure Database for PostgreSQL",
+        "D": "Azure Table Storage"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure Cosmos DB是全球分布式、多模型数据库服务，提供个位数毫秒级延迟和99.999%的可用性。它支持五种一致性级别（从强一致性到最终一致性），允许根据应用需求平衡一致性和性能。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q7",
+      "domain": 2,
+      "question": "一家公司需要迁移其关系型数据库工作负载到Azure。数据库需要支持高可用性、自动备份和读取副本，同时最小化管理开销。应该选择什么服务层？",
+      "options": {
+        "A": "Azure SQL Database Basic层",
+        "B": "Azure SQL Database Business Critical服务层",
+        "C": "在Azure VM上自行管理SQL Server",
+        "D": "Azure SQL Database Serverless"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure SQL Database Business Critical服务层提供内置高可用性（Always On可用性组）、免费的读取副本、自动备份和快速数据库恢复。作为PaaS服务，它大大减少了管理开销，同时提供企业级功能。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q8",
+      "domain": 2,
+      "question": "一家公司需要存储大量非结构化数据（如文档、图像和视频），并要求数据在多个数据中心之间自动复制以实现高可用性。应该使用什么存储配置？",
+      "options": {
+        "A": "Azure Blob Storage配置为本地冗余存储(LRS)",
+        "B": "Azure Blob Storage配置为地理冗余存储(GRS)",
+        "C": "Azure Files配置为LRS",
+        "D": "Azure Queue Storage"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure Blob Storage是存储非结构化数据的理想选择。配置为地理冗余存储(GRS)时，数据会在主区域内复制三份，并异步复制到数百英里外的配对区域，提供99.99999999999999%(16个9)的持久性。\n---",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q9",
+      "domain": 2,
+      "question": "一家公司正在设计数据湖解决方案，需要支持大规模数据分析、细粒度访问控制和与Azure分析服务的无缝集成。应该推荐什么？",
+      "options": {
+        "A": "Azure Blob Storage",
+        "B": "Azure Data Lake Storage Gen2",
+        "C": "Azure Files",
+        "D": "Azure Table Storage"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure Data Lake Storage Gen2结合了Azure Blob Storage的大规模和成本效益与Azure Data Lake Storage Gen1的分层文件系统功能。它支持ACL和POSIX权限实现细粒度访问控制，并与Azure Synapse Analytics、Azure Databricks等分析服务无缝集成。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q10",
+      "domain": 2,
+      "question": "一家公司需要为其Azure SQL数据库实施数据加密策略，要求数据在静态和传输中都要加密，同时需要自行管理加密密钥。应该如何配置？",
+      "options": {
+        "A": "仅使用服务管理的密钥进行透明数据加密(TDE)",
+        "B": "使用客户管理的密钥(CMK)配合Azure Key Vault进行TDE，并强制使用TLS连接",
+        "C": "仅使用Always Encrypted",
+        "D": "禁用所有加密以提高性能"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "透明数据加密(TDE)使用客户管理的密钥(存储在Azure Key Vault中)可以实现静态数据加密并保持对密钥的完全控制。结合强制TLS连接，可以确保传输中的数据也是加密的。这提供了端到端的加密保护。\n---",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q11",
+      "domain": 2,
+      "question": "一家公司需要设计一个解决方案来存储应用程序的会话状态数据。要求高性能、低延迟，并支持自动数据过期。应该使用什么服务？",
+      "options": {
+        "A": "Azure SQL Database",
+        "B": "Azure Cache for Redis",
+        "C": "Azure Cosmos DB",
+        "D": "Azure Table Storage"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure Cache for Redis是完全托管的Redis服务，提供亚毫秒级延迟。它非常适合存储会话状态，支持数据自动过期(TTL)，并提供内置的高可用性选项。对于临时性、高性能的键值存储需求，Redis是最佳选择。\n---",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q12",
+      "domain": 3,
+      "question": "一家公司需要设计灾难恢复解决方案，要求在发生区域性故障时能够在15分钟内恢复关键业务应用程序。应该实施什么策略？",
+      "options": {
+        "A": "仅依赖Azure区域内的可用性区域",
+        "B": "使用Azure Site Recovery配置跨区域复制并定期进行故障转移演练",
+        "C": "仅使用每日备份到异地存储",
+        "D": "在单个区域内部署冗余服务器"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure Site Recovery提供持续的复制和自动化的灾难恢复编排。通过配置跨区域复制，可以实现接近零的数据丢失(RPO)和几分钟内的恢复时间(RTO)。定期进行故障转移演练可以验证恢复计划的有效性，确保15分钟内恢复的目标。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q13",
+      "domain": 3,
+      "question": "一家公司需要确保其Azure虚拟机在单个数据中心故障时仍然可用。应该使用什么Azure功能？",
+      "options": {
+        "A": "可用性集(Availability Sets)",
+        "B": "可用性区域(Availability Zones)",
+        "C": "虚拟机规模集",
+        "D": "Azure负载均衡器"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "可用性区域是Azure区域内的独立数据中心，具有独立的电源、冷却和网络。将VM部署在不同的可用性区域可以防止整个数据中心故障导致的服务中断，提供99.99%的SLA。可用性集仅在单个数据中心内提供故障域和更新域保护。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q14",
+      "domain": 3,
+      "question": "一家公司需要设计备份策略，要求保留每日备份30天、每周备份12周、每月备份12个月。应该使用什么服务和配置？",
+      "options": {
+        "A": "Azure Backup配合自定义备份策略",
+        "B": "仅使用Azure存储快照",
+        "C": "第三方备份解决方案",
+        "D": "手动复制到另一个存储账户"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Azure Backup支持自定义备份策略，可以配置多种保留规则（每日、每周、每月、每年）。它提供应用程序一致的备份、增量备份、跨区域还原和软删除保护。这是实现企业级备份和保留策略的最佳选择。\n---",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q15",
+      "domain": 3,
+      "question": "一家公司运行着一个需要99.99% SLA的关键应用程序。应用程序需要在多个区域之间实现自动故障转移。应该设计什么架构？",
+      "options": {
+        "A": "单区域部署配合可用性区域",
+        "B": "多区域主动-主动部署配合Azure Traffic Manager或Azure Front Door",
+        "C": "单区域部署配合Azure Site Recovery",
+        "D": "使用只读副本的单区域部署"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "要实现99.99%的SLA并支持自动区域故障转移，需要多区域主动-主动部署。Azure Traffic Manager或Azure Front Door可以在区域之间进行流量分配和健康检查，当一个区域不可用时自动将流量路由到其他区域。这种架构提供了最高级别的可用性。\n---",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q16",
+      "domain": 4,
+      "question": "一家公司需要设计网络架构，要求将生产环境与开发环境隔离，同时允许必要时两个环境之间的安全通信。应该推荐什么方案？",
+      "options": {
+        "A": "将所有资源放在同一个虚拟网络的不同子网中",
+        "B": "使用独立的虚拟网络并配置VNet对等互连和网络安全组",
+        "C": "使用相同的虚拟网络但不同的资源组",
+        "D": "使用Azure防火墙而不进行网络分段"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "使用独立的虚拟网络可以实现完整的网络隔离。VNet对等互连允许在需要时进行安全通信，而网络安全组(NSG)可以精细控制允许的流量。这种方法遵循最小权限原则，同时保持必要的连接性。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q17",
+      "domain": 4,
+      "question": "一家公司需要将其本地数据中心与Azure进行专用、低延迟、高带宽连接，同时避免流量经过公共互联网。应该使用什么服务？",
+      "options": {
+        "A": "Azure VPN网关（站点到站点VPN）",
+        "B": "Azure ExpressRoute",
+        "C": "Azure虚拟WAN",
+        "D": "Azure Application Gateway"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure ExpressRoute提供通过连接提供商的专用私有连接到Azure。它不经过公共互联网，提供更低的延迟、更高的带宽（最高100 Gbps）和更可靠的连接。对于需要专用连接的企业级工作负载，ExpressRoute是最佳选择。\n---",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q18",
+      "domain": 4,
+      "question": "一家公司需要为其Web应用程序设计负载均衡解决方案。要求支持SSL卸载、基于URL路径的路由和Web应用程序防火墙(WAF)。应该使用什么服务？",
+      "options": {
+        "A": "Azure Load Balancer",
+        "B": "Azure Application Gateway",
+        "C": "Azure Traffic Manager",
+        "D": "Azure Front Door"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure Application Gateway是应用层(第7层)负载均衡器，提供SSL卸载、基于URL路径的路由、会话亲和性和集成的Web应用程序防火墙(WAF)。它专为HTTP/HTTPS工作负载设计，是保护和分发Web应用程序流量的理想选择。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q19",
+      "domain": 4,
+      "question": "一家公司正在设计容器化微服务架构。需要支持自动扩展、服务发现、滚动更新和与Azure DevOps的集成。应该推荐什么平台？",
+      "options": {
+        "A": "Azure Container Instances",
+        "B": "Azure Kubernetes Service (AKS)",
+        "C": "Azure App Service",
+        "D": "Azure Functions"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure Kubernetes Service (AKS)是完全托管的Kubernetes服务，提供自动扩展（HPA和集群自动缩放器）、内置服务发现、滚动更新和与Azure DevOps的无缝集成。对于复杂的微服务架构，AKS提供了企业级的编排能力。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q20",
+      "domain": 4,
+      "question": "一家公司需要部署无服务器API后端，要求按实际执行时间付费、自动扩展到零以及与Azure API Management集成。应该使用什么服务？",
+      "options": {
+        "A": "Azure App Service",
+        "B": "Azure Functions (消耗计划)",
+        "C": "Azure Container Instances",
+        "D": "Azure Spring Apps"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure Functions消耗计划提供真正的无服务器体验：仅在代码运行时付费，自动扩展到零（无流量时不产生费用），并与Azure API Management无缝集成以实现API发布和管理。对于事件驱动的API后端，这是最具成本效益的选择。\n---",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q21",
+      "domain": 1,
+      "question": "一家公司需要实施条件访问策略，要求当用户从不受信任的位置或设备访问时必须进行多因素身份验证。应该配置什么？",
+      "options": {
+        "A": "Azure AD安全默认值",
+        "B": "Azure AD条件访问策略配合命名位置和设备合规性检查",
+        "C": "Azure AD Identity Protection",
+        "D": "Azure AD密码保护"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure AD条件访问策略允许基于用户、位置、设备状态和应用程序等信号创建访问规则。通过配置命名位置（定义可信网络）和设备合规性检查，可以在检测到不受信任的条件时强制执行MFA。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q22",
+      "domain": 1,
+      "question": "一家公司需要自动检测和响应Azure AD中的可疑登录活动和身份风险。应该使用什么服务？",
+      "options": {
+        "A": "Azure AD Privileged Identity Management",
+        "B": "Azure AD Identity Protection",
+        "C": "Azure AD访问评审",
+        "D": "Azure AD条件访问"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure AD Identity Protection使用机器学习自动检测可疑活动，如泄露的凭据、从匿名IP地址登录等。它可以计算用户和登录风险级别，并自动触发补救操作（如强制密码更改或阻止访问）。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q23",
+      "domain": 2,
+      "question": "一家公司需要将大量历史数据从本地存储迁移到Azure，总数据量约为100TB。网络带宽有限，无法在合理时间内完成在线传输。应该推荐什么方案？",
+      "options": {
+        "A": "使用AzCopy通过互联网传输",
+        "B": "使用Azure Data Box进行离线数据传输",
+        "C": "使用Azure ExpressRoute",
+        "D": "使用Azure Storage Explorer"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure Data Box是物理设备解决方案，用于在网络带宽有限时将大量数据传输到Azure。对于100TB数据，Data Box可以显著减少传输时间并降低成本。设备在本地加载数据后发送到Azure数据中心进行导入。\n---",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q24",
+      "domain": 2,
+      "question": "一家公司需要在Azure SQL数据库和Azure Synapse Analytics之间实现近实时数据同步，以支持实时分析报告。应该使用什么方法？",
+      "options": {
+        "A": "定期使用AzCopy复制数据",
+        "B": "使用Azure Synapse Link for Azure SQL",
+        "C": "每天进行完整数据库备份和还原",
+        "D": "使用手动ETL脚本"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure Synapse Link for Azure SQL提供近实时的变更数据复制，无需配置复杂的ETL管道。它自动捕获SQL数据库中的更改并将其同步到Synapse Analytics中的专用SQL池，支持实时分析而不影响操作性数据库的性能。\n---",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q25",
+      "domain": 2,
+      "question": "一家公司需要存储敏感的客户数据，要求数据在存储、传输和处理过程中都保持加密，即使云管理员也无法访问明文数据。应该实施什么技术？",
+      "options": {
+        "A": "仅使用透明数据加密(TDE)",
+        "B": "使用Azure SQL Always Encrypted配合安全飞地",
+        "C": "仅使用存储服务加密",
+        "D": "使用客户端加密库"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Always Encrypted配合安全飞地(Secure Enclaves)提供端到端加密保护。数据在客户端加密，在传输和存储中保持加密状态，只有拥有密钥的客户端应用程序才能解密。安全飞地允许在加密数据上进行有限的计算操作。\n---",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q26",
+      "domain": 3,
+      "question": "一家公司需要为其Azure Cosmos DB数据库配置灾难恢复。要求在区域故障时能够自动故障转移，同时保持最小的数据丢失。应该如何配置？",
+      "options": {
+        "A": "配置单区域部署并使用备份",
+        "B": "配置多区域写入并启用自动故障转移",
+        "C": "使用Azure Site Recovery",
+        "D": "手动进行数据复制"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure Cosmos DB的多区域写入允许在多个区域同时进行写入操作，消除了写入延迟。启用自动故障转移后，当主区域不可用时，Cosmos DB会自动将流量路由到其他区域。这提供了最高级别的可用性和最小的数据丢失。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q27",
+      "domain": 3,
+      "question": "一家公司需要确保其关键应用程序的RTO（恢复时间目标）为4小时，RPO（恢复点目标）为1小时。应该选择什么备份和恢复策略？",
+      "options": {
+        "A": "每日完整备份",
+        "B": "Azure Backup配合每小时增量备份和Azure Site Recovery热备用",
+        "C": "仅使用存储快照",
+        "D": "每周完整备份配合每日差异备份"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "要实现1小时RPO，需要每小时进行备份。Azure Backup支持频繁的增量备份。要实现4小时RTO，需要Azure Site Recovery来维护热备用副本，允许快速故障转移。这种组合提供了满足严格恢复目标所需的保护级别。\n---",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q28",
+      "domain": 4,
+      "question": "一家公司需要设计全球分布式Web应用程序架构，要求用户能够从最近的边缘位置获取内容，同时保护应用程序免受DDoS攻击。应该使用什么服务组合？",
+      "options": {
+        "A": "Azure Load Balancer和Azure DDoS Protection",
+        "B": "Azure Front Door配合Azure WAF和Azure DDoS Protection Standard",
+        "C": "Azure Traffic Manager和Azure Firewall",
+        "D": "Azure Application Gateway和NSG"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure Front Door是全球分布式边缘服务，提供CDN、负载均衡和应用程序加速。集成Azure WAF可以保护应用程序免受Web攻击。Azure DDoS Protection Standard提供高级DDoS缓解。这种组合提供了全面的性能和安全保护。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q29",
+      "domain": 4,
+      "question": "一家公司需要设计中心辐射型(Hub-Spoke)网络架构，其中多个分支虚拟网络需要通过中心虚拟网络访问共享服务和本地网络。应该使用什么配置？",
+      "options": {
+        "A": "每个分支VNet直接与本地建立VPN连接",
+        "B": "使用Azure Virtual WAN或配置VNet对等互连，在Hub VNet部署Azure Firewall和VPN Gateway",
+        "C": "将所有资源放在单个大型VNet中",
+        "D": "使用Azure Private Link连接所有VNet"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "中心辐射型架构使用VNet对等互连将分支VNet连接到中心VNet。中心VNet包含共享服务，如Azure Firewall（用于安全）和VPN Gateway/ExpressRoute（用于本地连接）。Azure Virtual WAN可以简化大规模部署的管理。\n---",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q30",
+      "domain": 4,
+      "question": "一家公司需要部署API管理解决方案，要求能够限制API调用速率、转换请求/响应格式以及提供开发者门户。应该使用什么服务？",
+      "options": {
+        "A": "Azure Functions",
+        "B": "Azure API Management",
+        "C": "Azure Application Gateway",
+        "D": "Azure Logic Apps"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure API Management是完整的API管理平台，提供策略引擎（用于速率限制、配额、转换等）、开发者门户（用于API文档和订阅）、分析仪表板和安全功能。它是构建、发布和管理API的一站式解决方案。\n---",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q31",
+      "domain": 1,
+      "question": "一家公司需要实施日志聚合策略，要求将来自Azure活动日志、资源诊断日志和自定义应用程序日志发送到单一位置进行分析和长期保留。应该设计什么架构？",
+      "options": {
+        "A": "将所有日志直接发送到Azure Blob Storage",
+        "B": "配置诊断设置将日志发送到Log Analytics工作区，并配置长期存档到Storage Account",
+        "C": "仅使用Application Insights",
+        "D": "使用Event Hubs直接存储日志"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Log Analytics工作区是Azure Monitor日志的中央存储库，支持强大的KQL查询和分析。通过诊断设置，可以将各种日志源发送到同一工作区。对于长期保留，可以配置数据导出到Storage Account，实现成本效益的归档。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q32",
+      "domain": 2,
+      "question": "一家公司需要设计存储解决方案以托管Azure SQL数据库的备份，要求备份保留7年以满足合规性要求，同时优化存储成本。应该使用什么存储层？",
+      "options": {
+        "A": "Azure Blob Storage热层",
+        "B": "Azure Blob Storage归档层配合生命周期管理策略",
+        "C": "Azure Blob Storage冷层",
+        "D": "Azure Premium Files"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "对于长期保留（7年），Azure Blob Storage归档层提供最低的存储成本。生命周期管理策略可以自动将较旧的备份从热层移动到冷层，最终移动到归档层。这优化了成本，同时保持了合规性所需的数据保留。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q33",
+      "domain": 4,
+      "question": "一家公司需要设计安全的应用程序架构，要求Azure App Service能够安全地访问Azure SQL数据库，而无需在应用程序代码中存储连接字符串或密码。应该使用什么方法？",
+      "options": {
+        "A": "在应用程序设置中存储连接字符串",
+        "B": "使用托管标识和Azure Key Vault引用",
+        "C": "在代码中硬编码凭据",
+        "D": "使用环境变量存储密码"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "托管标识允许Azure资源在Azure AD中拥有身份，无需管理凭据。App Service可以使用其托管标识从Key Vault检索机密，或直接对SQL数据库进行身份验证（使用Azure AD身份验证）。这消除了代码中存储凭据的需要。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q34",
+      "domain": 4,
+      "question": "一家公司需要设计混合云架构，要求本地应用程序能够安全地访问Azure中的PaaS服务（如Azure SQL Database和Azure Storage），而不通过公共互联网。应该使用什么服务？",
+      "options": {
+        "A": "Azure VPN Gateway配合服务终结点",
+        "B": "Azure ExpressRoute配合私有终结点(Private Endpoints)",
+        "C": "仅使用公共IP和防火墙规则",
+        "D": "Azure Virtual WAN"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure ExpressRoute提供与Azure的专用私有连接。私有终结点将Azure PaaS服务带入虚拟网络，分配私有IP地址。组合使用时，本地应用程序通过ExpressRoute连接到Azure VNet，然后通过私有终结点访问PaaS服务，完全避免公共互联网。\n---",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q35",
+      "domain": 1,
+      "question": "一家公司需要确保只有通过设备合规性检查的公司设备才能访问Azure资源。应该实施什么解决方案？",
+      "options": {
+        "A": "仅使用MFA",
+        "B": "Azure AD条件访问策略配合Microsoft Intune设备合规性",
+        "C": "Azure AD密码策略",
+        "D": "网络安全组规则"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Microsoft Intune可以评估设备合规性（如加密状态、操作系统版本、防病毒状态等）。Azure AD条件访问可以使用设备合规性状态作为访问条件，只允许合规设备访问资源。这提供了设备级别的零信任安全控制。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q36",
+      "domain": 2,
+      "question": "一家公司需要设计数据分区策略以优化Azure Cosmos DB的性能。数据库存储用户订单，每个用户有多个订单，查询主要按用户ID进行。应该选择什么分区键？",
+      "options": {
+        "A": "订单ID",
+        "B": "用户ID",
+        "C": "订单日期",
+        "D": "产品类别"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "分区键应该基于最常用的查询模式选择。由于查询主要按用户ID进行，使用用户ID作为分区键可以确保同一用户的所有订单都在同一逻辑分区中，允许高效的单分区查询。这也提供了良好的数据分布，因为用户数量通常很大。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q37",
+      "domain": 3,
+      "question": "一家公司需要确保其Azure Kubernetes Service集群能够在节点故障时自动恢复，同时保持应用程序可用性。应该配置什么？",
+      "options": {
+        "A": "单节点池配合手动监控",
+        "B": "多节点池跨可用性区域配合Pod中断预算(PDB)和副本集",
+        "C": "仅使用Azure Monitor告警",
+        "D": "定期手动创建节点快照"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "跨可用性区域部署节点池可以防止单个数据中心故障。副本集确保应用程序有多个Pod副本。Pod中断预算(PDB)在节点维护期间限制同时不可用的Pod数量。这种组合提供了强大的自愈能力和高可用性。\n---",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q38",
+      "domain": 4,
+      "question": "一家公司需要设计消息传递架构，要求支持大规模事件流、实时处理和长期事件存储。应该使用什么服务？",
+      "options": {
+        "A": "Azure Service Bus队列",
+        "B": "Azure Event Hubs配合Capture功能",
+        "C": "Azure Queue Storage",
+        "D": "Azure Notification Hubs"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure Event Hubs专为大规模事件流设计，可以每秒接收数百万事件。Capture功能可以自动将事件流存储到Blob Storage或Data Lake Storage，实现长期保留和批处理分析。它与Azure Stream Analytics等实时处理服务无缝集成。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q39",
+      "domain": 1,
+      "question": "一家公司需要定期审查用户对Azure资源的访问权限，确保只有仍然需要访问的用户保持其权限。应该使用什么功能？",
+      "options": {
+        "A": "Azure AD条件访问",
+        "B": "Azure AD访问评审(Access Reviews)",
+        "C": "Azure Policy",
+        "D": "Azure AD Privileged Identity Management"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure AD访问评审允许定期审查用户对资源、组成员身份和角色分配的访问权限。可以配置自动评审计划，要求资源所有者或用户自己确认是否仍需要访问。未响应或拒绝的评审可以自动删除访问权限。\n---",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q40",
+      "domain": 4,
+      "question": "一家公司需要设计可扩展的Web应用程序架构，要求根据CPU使用率自动扩展实例数量，同时保持成本效益。应该使用什么Azure功能？",
+      "options": {
+        "A": "手动扩展App Service计划",
+        "B": "Azure App Service自动缩放规则基于CPU指标",
+        "C": "固定实例数量",
+        "D": "仅使用更大的VM大小"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure App Service自动缩放允许基于指标（如CPU、内存或自定义指标）定义扩展规则。当CPU超过阈值时自动增加实例，当CPU下降时减少实例。这提供了响应式扩展能力，同时通过在低负载时减少实例来优化成本。\n---",
+      "difficulty": "easy"
+    }
+  ]
+}

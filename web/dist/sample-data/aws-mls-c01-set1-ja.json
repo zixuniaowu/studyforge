@@ -1,0 +1,794 @@
+{
+  "exam": {
+    "id": "aws-mls-c01-set1-ja",
+    "name": "AWS MLS-C01 機械学習専門家模擬試験 #1",
+    "code": "MLS-C01",
+    "provider": "AWS",
+    "language": "ja",
+    "description": "AWS認定機械学習専門家試験模擬問題 - 第1セット",
+    "totalQuestions": 50,
+    "passingScore": 75,
+    "examTime": 180,
+    "domains": [
+      {
+        "id": 1,
+        "name": "Data Engineering",
+        "weight": 20
+      },
+      {
+        "id": 2,
+        "name": "Exploratory Data Analysis",
+        "weight": 24
+      },
+      {
+        "id": 3,
+        "name": "Modeling",
+        "weight": 36
+      },
+      {
+        "id": 4,
+        "name": "Machine Learning Implementation and Operations",
+        "weight": 20
+      }
+    ],
+    "tags": [
+      "AWS",
+      "Machine Learning",
+      "SageMaker",
+      "認定試験",
+      "専門家"
+    ]
+  },
+  "questions": [
+    {
+      "id": "q1",
+      "domain": 1,
+      "question": "ある企業は、大量のCSV形式の履歴データを機械学習トレーニングに適した形式に変換する必要があります。データはAmazon S3に保存されており、クレンジングと変換が必要です。このシナリオに最適なAWSサービスの組み合わせはどれですか？",
+      "options": {
+        "A": "Amazon Kinesis Data Streams + Amazon Redshift",
+        "B": "AWS Glue + Amazon S3",
+        "C": "Amazon EMR + Amazon DynamoDB",
+        "D": "AWS Lambda + Amazon RDS"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "AWS Glueは完全マネージド型のETLサービスです：\n- データの自動検出と分類\n- 組み込みの変換機能\n- S3とのネイティブ統合\n- データカタログ管理のサポート\n\nKinesisはリアルタイムストリーミングデータ用であり、バッチ履歴データ処理には適していません。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q2",
+      "domain": 1,
+      "question": "ある企業がリアルタイム不正検出システムを構築しており、ミリ秒レベルでトランザクションデータを処理する必要があります。データはリアルタイム特徴エンジニアリングを実行した後、SageMakerエンドポイントに送信される必要があります。どのデータ取り込みソリューションを使用すべきですか？",
+      "options": {
+        "A": "Amazon S3 + AWS Glue",
+        "B": "Amazon Kinesis Data Streams + AWS Lambda",
+        "C": "Amazon SQS + Amazon EC2",
+        "D": "AWS Data Pipeline + Amazon Redshift"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "リアルタイムデータ処理に必要なもの：\n- Kinesis Data Streams：ミリ秒レベルのレイテンシでのデータストリーム取り込み\n- Lambda：サーバーレスのリアルタイム特徴計算\n- この組み合わせにより、低レイテンシ、高スループットのリアルタイム処理機能を提供\n\nS3/Glueはバッチ処理に適しており、ミリ秒レベルの要件を満たしません。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q3",
+      "domain": 1,
+      "question": "機械学習チームは、複数のソースからのデータを統一されたデータレイクに統合し、データバージョン管理とACIDトランザクションのサポートを実現する必要があります。どのソリューションを使用すべきですか？",
+      "options": {
+        "A": "Amazon S3 + AWS Glue Data Catalog",
+        "B": "Amazon S3 + Apache Hudi / Delta Lake",
+        "C": "Amazon Redshift + Amazon S3",
+        "D": "Amazon DynamoDB + DAX"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Apache HudiとDelta Lakeが提供する機能：\n- ACIDトランザクションのサポート\n- データバージョン管理とタイムトラベル\n- 増分データ処理\n- スキーマ進化\n\nネイティブS3はACIDトランザクションをサポートしていません。Redshiftはデータウェアハウスであり、データレイクではありません。",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q4",
+      "domain": 1,
+      "question": "企業はIoTデバイスから生成される時系列データをほぼリアルタイムで分析する必要があり、毎秒数百万レコードがあります。データは異常検出モデルに使用するため、集計とウィンドウ計算を行う必要があります。最適なソリューションは何ですか？",
+      "options": {
+        "A": "Amazon Kinesis Data Analytics + Amazon S3",
+        "B": "AWS Glue Streaming + Amazon Redshift",
+        "C": "Amazon EMR + Apache Kafka",
+        "D": "AWS Lambda + Amazon DynamoDB"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Kinesis Data Analytics：\n- SQLを使用したリアルタイムストリーム分析\n- 組み込みのウィンドウ関数（スライディングウィンドウ、タンブリングウィンドウ）\n- 時系列集計のネイティブサポート\n- S3またはリアルタイムエンドポイントへの直接出力が可能\n\n毎秒数百万レコードには専用のストリーム処理エンジンが必要です。",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q5",
+      "domain": 1,
+      "question": "ある企業がSageMakerを使用してモデルトレーニングを行っており、トレーニングデータはS3に保存されています。トレーニングのパフォーマンスを向上させるために、どのデータ入力モードを使用すべきですか？",
+      "options": {
+        "A": "Fileモード、すべてのデータをトレーニングインスタンスにダウンロード",
+        "B": "Pipeモード、S3からデータをストリーミング",
+        "C": "FastFileモード",
+        "D": "BとCの両方が可能、データサイズによって異なる"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "SageMakerのデータ入力モード：\n- Fileモード：ダウンロード後にトレーニング、小さなデータセットに適している\n- Pipeモード：ストリーム転送、起動時間を短縮\n- FastFileモード：POSIXインターフェースでS3にアクセス、両方の利点を組み合わせ\n\n大きなデータセットには、待機時間を短縮するためにPipeまたはFastFileモードを推奨します。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q6",
+      "domain": 1,
+      "question": "企業は複数のソースシステムからS3データレイクにデータを抽出するETLジョブを定期的に実行する必要があります。ジョブは依存関係に従ってオーケストレーションされ、失敗時に自動的にリトライする必要があります。どのサービスを使用すべきですか？",
+      "options": {
+        "A": "AWS Step Functions",
+        "B": "Amazon MWAA (Managed Workflows for Apache Airflow)",
+        "C": "AWS Glue Workflows",
+        "D": "上記すべてが可能"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "3つのサービスすべてがETLオーケストレーションをサポートしています：\n- Step Functions：AWSネイティブサービスのオーケストレーションに適している\n- MWAA：複雑なDAGワークフロー、既にAirflowの経験がある場合\n- Glue Workflows：Glueジョブ間の依存関係管理\n\n選択はチームの技術スタックと具体的な要件によって異なります。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q7",
+      "domain": 1,
+      "question": "機械学習プロジェクトでは、構造化データと非構造化データを統一して保存し、SQLクエリと機械学習ワークロードの両方をサポートする必要があります。どのアーキテクチャを採用すべきですか？",
+      "options": {
+        "A": "Amazon Redshiftをメインストレージとして使用",
+        "B": "Amazon S3データレイク + AWS Lake Formation + Amazon Athena",
+        "C": "Amazon DynamoDB + ElastiCache",
+        "D": "Amazon RDS + S3"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "モダンデータレイクアーキテクチャ：\n- S3：あらゆる種類のデータを統一ストレージ\n- Lake Formation：データガバナンスと権限管理\n- Athena：サーバーレスSQLクエリ\n- SageMakerから直接トレーニングにアクセス可能\n\nRedshiftは構造化データウェアハウスに適しており、非構造化データには適していません。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q8",
+      "domain": 1,
+      "question": "データエンジニアはS3に保存された10TBのParquetファイルを処理し、モデルトレーニング用にデータを変換する必要があります。コストとパフォーマンスを考慮すると、どのソリューションを選択すべきですか？",
+      "options": {
+        "A": "Amazon EC2 + Python pandas",
+        "B": "AWS Glue (Spark)",
+        "C": "Amazon Athena CTAS",
+        "D": "BとCの両方が合理的な選択"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "10TBデータの処理：\n- Glue Spark：分散処理、複雑な変換\n- Athena CTAS：シンプルな変換、クエリごとの課金\n\nEC2 + pandasはこれほど大きなデータを処理できません（メモリ制限）。選択は変換の複雑さと使用頻度によって異なります。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q9",
+      "domain": 1,
+      "question": "企業のMLパイプラインでは、データがS3に到着したら自動的に前処理ジョブをトリガーする必要があります。どのメカニズムを使用すべきですか？",
+      "options": {
+        "A": "S3 Event Notifications + Lambda + Step Functions",
+        "B": "CloudWatch Eventsのスケジュールトリガー",
+        "C": "手動でAWS Glueジョブをトリガー",
+        "D": "Amazon SNSポーリング"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "イベント駆動型アーキテクチャ：\n- S3 Event Notifications：新しいファイルの到着を検出\n- Lambda：イベントを処理し、ワークフローを開始\n- Step Functions：後続の処理ステップをオーケストレーション\n\nこれはAWSが推奨するイベント駆動型データ処理パターンです。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q10",
+      "domain": 1,
+      "question": "データサイエンスチームは、機密性の高いPIIデータを使用して機械学習トレーニングを行う必要があります。データは使用前に匿名化処理を行う必要があります。どの方法を使用すべきですか？",
+      "options": {
+        "A": "AWS Glue DataBrewを使用してデータを匿名化",
+        "B": "Amazon ComprehendでPIIを識別した後、手動で削除",
+        "C": "Amazon Macieでスキャン後、機密データを削除",
+        "D": "AとBの両方が可能"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "PIIデータの処理：\n- Glue DataBrew：組み込みのPII検出と匿名化変換\n- Comprehend：NLPでPIIエンティティを識別\n- Macie：機密データの発見に使用、変換は行わない\n\n実際の匿名化にはDataBrewまたはカスタム変換ロジックが必要です。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q11",
+      "domain": 2,
+      "question": "データサイエンティストが、データセットの30%の値が欠損していることを発見しました。処理方法を決定する前に、まず何をすべきですか？",
+      "options": {
+        "A": "欠損値を含む行を直接削除する",
+        "B": "すべての欠損値を平均値で埋める",
+        "C": "欠損値のパターンを分析する（ランダム欠損か非ランダム欠損か）",
+        "D": "KNNアルゴリズムで埋める"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "欠損値分析のステップ：\n1. 欠損パターンを分析：\n   - MCAR（完全ランダム欠損）\n   - MAR（ランダム欠損）\n   - MNAR（非ランダム欠損）\n2. パターンに基づいて処理方法を選択\n3. 非ランダム欠損は特別な処理が必要\n\n無差別に削除または埋めることはバイアスを導入する可能性があります。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q12",
+      "domain": 2,
+      "question": "探索的データ分析で、ある特徴の分布が強い右偏（正の歪度）であることがわかりました。正規分布に近づけるために、どの変換を使用すべきですか？",
+      "options": {
+        "A": "対数変換 (Log Transformation)",
+        "B": "標準化 (Standardization)",
+        "C": "正規化 (Min-Max Normalization)",
+        "D": "ワンホットエンコーディング (One-Hot Encoding)"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "偏った分布の処理：\n- 右偏（正の歪度）：対数変換、平方根変換\n- 左偏（負の歪度）：二乗変換、指数変換\n- Box-Cox変換：最適なパラメータを自動選択\n\n標準化と正規化は分布の形状を変えません。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q13",
+      "domain": 2,
+      "question": "データセットに1000の特徴が含まれており、データサイエンティストは最も重要な特徴サブセットを特定したいと考えています。初期スクリーニングとして最も適した方法はどれですか？",
+      "options": {
+        "A": "主成分分析 (PCA)",
+        "B": "相関分析 + 分散分析",
+        "C": "再帰的特徴消去 (RFE)",
+        "D": "LASSO回帰"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "初期特徴スクリーニング：\n- 相関分析：ターゲットと相関のある特徴を特定\n- 分散分析：低分散の特徴を除去\n- 高速で計算コストが低い\n\nPCAは特徴空間を変更します。RFEとLASSOはモデルのトレーニングが必要でコストが高くなります。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q14",
+      "domain": 2,
+      "question": "顧客取引データを分析していると、一部の特徴間に多重共線性が存在することがわかりました。これはどのような問題を引き起こす可能性がありますか？どのように検出しますか？",
+      "options": {
+        "A": "モデルがトレーニングできなくなる；PCAで検出",
+        "B": "係数が不安定になり解釈性が低下する；VIFで検出",
+        "C": "過学習を引き起こす；クロスバリデーションで検出",
+        "D": "問題は発生しない"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "多重共線性の影響：\n- 係数推定が不安定\n- 標準誤差の増大\n- 解釈性の低下\n\n検出方法：\n- VIF（分散膨張係数）：VIF > 5または10は共線性の存在を示す\n- 相関行列ヒートマップ\n\n対処法：冗長な特徴を削除するか正則化を使用。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q15",
+      "domain": 2,
+      "question": "データセット内のカテゴリ変数に100を超えるカテゴリがあります。ワンホットエンコーディングを使用すると次元爆発が発生します。どの代替方法を使用すべきですか？",
+      "options": {
+        "A": "ラベルエンコーディング (Label Encoding)",
+        "B": "ターゲットエンコーディング (Target Encoding)",
+        "C": "頻度エンコーディング (Frequency Encoding)",
+        "D": "BとCの両方が可能"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "高カーディナリティのカテゴリ変数の処理：\n- ターゲットエンコーディング：カテゴリをターゲット変数の平均値で置換\n- 頻度エンコーディング：カテゴリを出現頻度で置換\n- 埋め込みエンコーディング：ディープラーニング用\n\nラベルエンコーディングは誤った順序関係を導入します。ワンホットエンコーディングは100以上の列を生成します。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q16",
+      "domain": 2,
+      "question": "時系列データにおいて、トレンドと季節性成分をどのように検出し処理しますか？",
+      "options": {
+        "A": "移動平均またはSTL分解を使用",
+        "B": "生データをそのままモデルトレーニングに使用",
+        "C": "タイムスタンプ特徴を削除",
+        "D": "ワンホットエンコーディングで日付を処理"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "時系列分解：\n- トレンド：移動平均、差分\n- 季節性：STL分解\n- 残差：トレンドと季節性を除去した後の部分\n\n分解後にできること：\n- 各成分を個別にモデリング\n- ARIMAのためにデータを定常化\n- MLモデル用の時間特徴を作成",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q17",
+      "domain": 2,
+      "question": "データサイエンティストが、トレーニングデータの正例と負例の比率が1:100であることを発見しました。このようなクラス不均衡はどのような問題を引き起こしますか？どのように対処すべきですか？",
+      "options": {
+        "A": "問題はない、そのままトレーニングすればよい",
+        "B": "モデルが多数クラスに偏る；SMOTEオーバーサンプリングまたはアンダーサンプリングを使用",
+        "C": "モデルが少数クラスに偏る；トレーニング回数を増やす",
+        "D": "モデルが収束しなくなる；より大きな学習率を使用"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "クラス不均衡の対処法：\n- SMOTE：少数クラスのサンプルを合成\n- アンダーサンプリング：多数クラスのサンプルを削減\n- クラス重み：損失関数の重みを調整\n- しきい値調整：決定しきい値を最適化\n\n対処しないと、モデルは常に多数クラスを予測します。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q18",
+      "domain": 2,
+      "question": "データ可視化プロセスで、複数の特徴とターゲット変数間の関係を最も効果的に表示するにはどうすればよいですか？",
+      "options": {
+        "A": "散布図行列 (Pairplot)",
+        "B": "箱ひげ図",
+        "C": "ヒストグラム",
+        "D": "円グラフ"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "散布図行列：\n- 複数の変数間の関係を同時に表示\n- ターゲット変数で色分け可能\n- 相関性とパターンを素早く特定\n- 潜在的な非線形関係を発見\n\n箱ひげ図は単変量分布に適しており、円グラフは連続変数には適していません。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q19",
+      "domain": 2,
+      "question": "データセットに外れ値（異常値）があります。処理方法を決定する前に、何を考慮すべきですか？",
+      "options": {
+        "A": "常にすべての外れ値を削除する",
+        "B": "常にすべての外れ値を保持する",
+        "C": "外れ値がデータエラーか真の極値かを分析し、ビジネスコンテキストに基づいて決定する",
+        "D": "すべての外れ値を平均値で置換する"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "外れ値処理の原則：\n- データ入力エラー → 削除または修正\n- 測定エラー → 削除\n- 真の極値 → 保持する可能性あり（例：不正検出）\n- ビジネスシナリオとモデル目標を考慮\n\n無差別に削除すると重要な情報が失われる可能性があります。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q20",
+      "domain": 2,
+      "question": "Amazon SageMaker Data Wranglerを使用して完了できるデータ分析タスクはどれですか？（該当するものをすべて選択）",
+      "options": {
+        "A": "データ可視化と統計分析",
+        "B": "特徴変換と作成",
+        "C": "モデルトレーニングとデプロイ",
+        "D": "AとB"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "SageMaker Data Wranglerの機能：\n- データインポート（S3、Redshift、Athenaなど）\n- データ可視化と統計分析\n- 300以上の組み込みデータ変換\n- 特徴エンジニアリング\n- SageMaker PipelineまたはNotebookへのエクスポート\n\nモデルトレーニングはSageMakerの他のコンポーネントの機能です。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q21",
+      "domain": 2,
+      "question": "特徴エンジニアリングにおいて、交互作用特徴（2つの特徴の積など）を作成することの効果は何ですか？",
+      "options": {
+        "A": "モデルの複雑さを軽減",
+        "B": "特徴間の非線形関係をキャプチャ",
+        "C": "モデルトレーニングを高速化",
+        "D": "過学習を軽減"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "交互作用特徴：\n- 特徴間の共同効果をキャプチャ\n- 線形モデルが非線形関係を学習するのに役立つ\n- 例：収入×教育レベルは、個別の特徴よりも予測力が高い可能性がある\n\n注意：特徴数が増加し、過学習を引き起こす可能性があります。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q22",
+      "domain": 2,
+      "question": "PCAで次元削減を行う際、保持する主成分の数をどのように決定しますか？",
+      "options": {
+        "A": "常に最初の3つの主成分を保持",
+        "B": "累積説明分散に基づいて（例：95%の分散を保持）",
+        "C": "すべての主成分を保持",
+        "D": "ランダムに選択"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "PCA主成分数の決定：\n- 累積説明分散法：80-95%の分散を説明する成分を保持\n- エルボー法：説明分散の変曲点を見る\n- カイザー基準：固有値>1の成分を保持\n\n具体的なしきい値はタスク要件とデータ特性によって異なります。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q23",
+      "domain": 3,
+      "question": "企業は顧客離反を予測するモデルを構築する必要があります。データセットには顧客の使用行動と履歴取引記録が含まれています。どのタイプのアルゴリズムを選択すべきですか？",
+      "options": {
+        "A": "線形回帰",
+        "B": "K-Meansクラスタリング",
+        "C": "XGBoost分類器",
+        "D": "主成分分析"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "顧客離反予測：\n- 二値分類問題（離反/非離反）\n- XGBoostの利点：\n  - 不均衡データの処理\n  - 特徴重要度の解釈可能性\n  - 欠損値の処理\n  - 通常、従来のアルゴリズムより優れている\n\n線形回帰は連続値の予測に使用。K-Meansは教師なしクラスタリング。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q24",
+      "domain": 3,
+      "question": "SageMakerでXGBoostモデルをトレーニングする際、過学習を防ぐために最も効果的なハイパーパラメータはどれですか？",
+      "options": {
+        "A": "num_round（ブースティングラウンド数）",
+        "B": "eta（学習率）+ max_depth（最大深度）",
+        "C": "objective（目的関数）",
+        "D": "num_class（クラス数）"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "XGBoostの過学習を防ぐ主要なパラメータ：\n- eta（学習率）：学習率を下げて汎化を向上\n- max_depth：ツリーの深さを制限\n- min_child_weight：リーフノードの最小重み\n- subsample：行サンプリング比率\n- colsample_bytree：列サンプリング比率\n\nnum_roundを増やすと過学習を引き起こす可能性があります。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q25",
+      "domain": 3,
+      "question": "画像分類タスクで、少量のラベル付きデータ（各クラス100枚の画像）からトレーニングを開始する必要があります。最適な戦略は何ですか？",
+      "options": {
+        "A": "深層CNNをゼロからトレーニング",
+        "B": "事前学習済みモデル（ResNetなど）を使用して転移学習",
+        "C": "シンプルなロジスティック回帰を使用",
+        "D": "K-Meansクラスタリングを使用"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "小さなデータセットでの画像分類：\n- 転移学習は事前学習済みの知識を活用\n- 下層を凍結し、上層を微調整\n- 過学習のリスクを軽減\n- トレーニング時間を大幅に短縮\n\n深層CNNをゼロからトレーニングするには大量のデータが必要で、そうでなければ深刻な過学習が発生します。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q26",
+      "domain": 3,
+      "question": "NLPタスクで、SageMaker組み込みのBlazingTextアルゴリズムを使用してどのタスクを完了できますか？",
+      "options": {
+        "A": "画像分類のみ",
+        "B": "テキスト分類と単語ベクトルトレーニング",
+        "C": "音声認識のみ",
+        "D": "時系列予測のみ"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "BlazingTextの機能：\n- 教師ありテキスト分類（マルチクラスとマルチラベル）\n- 教師なし単語ベクトル学習（Word2Vec）\n- 高度に最適化され、高速トレーニング\n- 分散トレーニングのサポート\n\nSageMaker組み込みNLPアルゴリズムの最初の選択肢です。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q27",
+      "domain": 3,
+      "question": "企業は商品の販売量（連続値）を予測する必要があります。履歴販売データと複数の特徴があります。SageMaker組み込みアルゴリズムを使用する場合、どれを選択すべきですか？",
+      "options": {
+        "A": "Image Classification",
+        "B": "XGBoost",
+        "C": "K-Means",
+        "D": "Semantic Segmentation"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "販売量予測は回帰問題です：\n- XGBoostは回帰をサポート（objective: reg:linear）\n- 表形式データの処理に優れている\n- 特徴重要度分析\n- 組み込みの欠損値処理\n\nK-Meansはクラスタリングアルゴリズムであり、予測には適していません。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q28",
+      "domain": 3,
+      "question": "SageMaker自動モデルチューニング（HPO）を使用する際、最も効率的に最適なハイパーパラメータを見つけるために、検索空間をどのように定義しますか？",
+      "options": {
+        "A": "すべてのパラメータに最大範囲を使用",
+        "B": "パラメータの特性に応じて適切な分布を選択（連続/離散/対数スケール）",
+        "C": "1つのパラメータのみをチューニング",
+        "D": "検索空間を定義する必要はない"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "HPO検索空間の定義：\n- 学習率：対数スケール（0.001-0.1）\n- 層数：整数離散値（1-10）\n- Dropout：連続一様分布（0.1-0.5）\n\n合理的な検索空間により：\n- 検索を高速化\n- 無効な領域を回避\n- 最適解を見つける確率を向上",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q29",
+      "domain": 3,
+      "question": "深層学習モデルを構築する際、活性化関数をどのように選択しますか？",
+      "options": {
+        "A": "常にSigmoidを使用",
+        "B": "隠れ層にはReLU、出力層はタスクに応じて選択（分類にはSoftmax、回帰にはLinear）",
+        "C": "常にTanhを使用",
+        "D": "活性化関数は重要ではない"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "活性化関数の選択：\n- 隠れ層：ReLU（およびその変種LeakyReLU、ELU）\n- 二値分類出力：Sigmoid\n- 多クラス分類出力：Softmax\n- 回帰出力：Linear（活性化なし）\n\nSigmoidは深層ネットワークで勾配消失問題があります。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q30",
+      "domain": 3,
+      "question": "モデルがトレーニングセットで非常に良い性能（98%精度）を示していますが、バリデーションセットでは性能が悪い（70%精度）です。これはどのような問題ですか？どのように解決しますか？",
+      "options": {
+        "A": "アンダーフィッティング；モデルの複雑さを増す",
+        "B": "オーバーフィッティング；正則化、Dropout、早期停止を使用",
+        "C": "データ不足；より多くのデータを収集",
+        "D": "学習率が低すぎる；学習率を上げる"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "トレーニングは良いがバリデーションが悪い = オーバーフィッティング\n\n解決方法：\n- L1/L2正則化\n- Dropout\n- 早期停止（Early Stopping）\n- データ拡張\n- モデルの複雑さを軽減\n- より多くのデータを収集",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q31",
+      "domain": 3,
+      "question": "SageMakerで分散トレーニングを使用する場合、データ並列（Data Parallelism）に適した戦略はどれですか？",
+      "options": {
+        "A": "モデルが大きすぎて単一のGPUに収まらない",
+        "B": "データ量が多く、モデルは単一のGPUに収まる",
+        "C": "単一のインスタンスでのトレーニングのみ必要",
+        "D": "リアルタイム推論が必要"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "分散トレーニング戦略：\n- データ並列：モデルのコピーが複数のGPUに、それぞれ異なるデータバッチを処理\n- モデル並列：モデルを複数のGPUに分割（超大規模モデル用）\n\nSageMakerデータ並列ライブラリは勾配同期を最適化し、大規模データセットのトレーニングに適しています。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q32",
+      "domain": 3,
+      "question": "二値分類モデルを評価する際、偽陰性（見逃し）を減らすことが偽陽性を減らすことよりも重要な場合、どの指標を最適化すべきですか？",
+      "options": {
+        "A": "適合率 (Precision)",
+        "B": "再現率 (Recall)",
+        "C": "正解率 (Accuracy)",
+        "D": "特異度 (Specificity)"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "指標の選択：\n- 偽陰性（FN）を減らす → 再現率を最適化\n- 例：疾患検出で見逃しは許されない\n- Recall = TP / (TP + FN)\n\n偽陽性（FP）を減らす → 適合率を最適化\n例：スパムメール分類で正常なメールを誤判定してはいけない",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q33",
+      "domain": 3,
+      "question": "SageMakerのObject Detectionアルゴリズムを使用する場合、どの形式のアノテーションデータが必要ですか？",
+      "options": {
+        "A": "CSVファイル",
+        "B": "RecordIO形式またはJSON行アノテーションファイル",
+        "C": "プレーンテキストファイル",
+        "D": "Excelファイル"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "SageMaker Object Detectionがサポートする形式：\n- RecordIO形式（推奨、効率的）\n- 画像ファイル + JSON行アノテーション（各行に画像パスとバウンディングボックスを含む）\n\nアノテーション形式には以下が含まれます：\n- 画像パス\n- バウンディングボックス座標（左上隅、幅、高さ）\n- クラスラベル",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q34",
+      "domain": 3,
+      "question": "時系列予測タスクでSageMaker DeepARアルゴリズムを使用する場合、どのタイプの入力データが必要ですか？",
+      "options": {
+        "A": "単一の時系列",
+        "B": "複数の関連する時系列（系列間のパターンを学習可能）",
+        "C": "画像データのみ",
+        "D": "テキストデータのみ"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "DeepARの特徴：\n- 複数の関連する時系列をサポート\n- 系列間のグローバルパターンを学習\n- 欠損値の処理\n- 確率的予測を生成（分位数）\n\n従来のARIMAとは異なり、DeepARは複数系列の情報を活用できます。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q35",
+      "domain": 3,
+      "question": "SageMakerでモデルをトレーニングする際、予期しない中断による進捗の損失を防ぐにはどうすればよいですか？",
+      "options": {
+        "A": "より小さなデータセットを使用",
+        "B": "S3へのチェックポイント保存を有効化",
+        "C": "より大きなインスタンスを使用",
+        "D": "トレーニングラウンド数を減らす"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "SageMakerチェックポイント：\n- トレーニング状態を定期的にS3に保存\n- Spotインスタンス中断後に再開可能\n- マネージドSpotトレーニングをサポート（最大90%のコスト削減）\n- checkpoint_s3_uriパラメータを設定",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q36",
+      "domain": 3,
+      "question": "SageMaker Autopilotを使用すると、どのタスクが自動的に完了しますか？",
+      "options": {
+        "A": "データ前処理のみ",
+        "B": "データ分析、特徴エンジニアリング、モデル選択、ハイパーパラメータチューニング",
+        "C": "モデルデプロイのみ",
+        "D": "予測生成のみ"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "SageMaker Autopilotの自動化：\n- データ探索と分析\n- 特徴エンジニアリング\n- アルゴリズム選択\n- ハイパーパラメータチューニング\n- 解釈可能なNotebookの生成\n- 複数の候補モデルの評価\n\nAutoMLの完全な実装です。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q37",
+      "domain": 3,
+      "question": "レコメンデーションシステムを構築する際、SageMakerのFactorization Machinesアルゴリズムはどのシナリオに最適ですか？",
+      "options": {
+        "A": "画像分類",
+        "B": "高次元スパースデータの予測（クリック率予測など）",
+        "C": "音声認識",
+        "D": "ドキュメントクラスタリング"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Factorization Machinesが適している用途：\n- 高次元スパースデータ\n- レコメンデーションシステム（ユーザー-アイテムインタラクション）\n- クリック率予測\n- 広告ランキング\n\n分解により特徴インタラクションをキャプチャし、スパース行列を効率的に処理します。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q38",
+      "domain": 3,
+      "question": "モデルアンサンブル（Ensemble）の主な目的は何ですか？",
+      "options": {
+        "A": "トレーニング時間を短縮",
+        "B": "複数のモデルを組み合わせて予測性能とロバスト性を向上",
+        "C": "モデルデプロイを簡素化",
+        "D": "データ要件を削減"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "モデルアンサンブル手法：\n- Bagging：分散を軽減（例：ランダムフォレスト）\n- Boosting：バイアスを軽減（例：XGBoost）\n- Stacking：メタ学習器を使用して組み合わせ\n\nアンサンブルは通常、単一モデルより優れていますが、計算コストが増加します。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q39",
+      "domain": 4,
+      "question": "SageMakerでリアルタイム推論用にモデルをデプロイする際、突発的なトラフィックにどのように対処しますか？",
+      "options": {
+        "A": "インスタンス数を手動で増やす",
+        "B": "オートスケーリングポリシーを設定",
+        "C": "より大きな単一インスタンスを使用",
+        "D": "リクエスト数を制限"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "SageMakerオートスケーリング：\n- CloudWatchメトリクス（InvocationsPerInstanceなど）に基づく\n- ターゲット追跡スケーリングポリシーを設定\n- 最小/最大インスタンス数を定義\n- 負荷の変化に自動的に対応\n\nサービスの高可用性を確保しながらコストを最適化します。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q40",
+      "domain": 4,
+      "question": "SageMaker Model Monitorを使用してどのような問題を検出できますか？",
+      "options": {
+        "A": "モデルトレーニングエラーのみ",
+        "B": "データドリフト、モデルドリフト、バイアス検出、特徴帰属の変化",
+        "C": "ネットワークレイテンシのみ",
+        "D": "ストレージ容量のみ"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "SageMaker Model Monitorの機能：\n- データ品質モニタリング（データドリフト）\n- モデル品質モニタリング（予測ドリフト）\n- バイアス検出（Clarifyとの統合）\n- 特徴帰属ドリフト\n\n本番モデルの健全性を継続的にモニタリングします。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q41",
+      "domain": 4,
+      "question": "企業はエッジデバイスでMLモデルをデプロイしてリアルタイム推論を行う必要があります。どのAWSサービスを使用すべきですか？",
+      "options": {
+        "A": "Amazon SageMakerエンドポイント",
+        "B": "AWS IoT Greengrass + SageMaker Neo",
+        "C": "Amazon EC2",
+        "D": "AWS Lambda"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "エッジデプロイソリューション：\n- SageMaker Neo：モデルコンパイル最適化\n- IoT Greengrass：エッジランタイム\n- ローカル推論、低レイテンシ\n- さまざまなエッジハードウェアをサポート\n\nSageMakerエンドポイントはクラウドサービスであり、エッジには適していません。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q42",
+      "domain": 4,
+      "question": "SageMakerで新しいモデルのA/Bテストを実装する最適な方法は何ですか？",
+      "options": {
+        "A": "古いモデルを完全に置き換える",
+        "B": "本番バリアント（Production Variants）を使用してトラフィックを分配",
+        "C": "異なるアカウントにデプロイ",
+        "D": "異なるリージョンを使用"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "SageMaker Production Variants：\n- 同じエンドポイントで複数のモデルバージョンをホスト\n- 重みに応じてトラフィックを分配（例：90%旧モデル、10%新モデル）\n- カナリアリリースをサポート\n- 新モデルへのトラフィックを徐々に増加\n\n新モデルの性能を安全に検証します。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q43",
+      "domain": 4,
+      "question": "SageMaker Pipelinesを使用してMLワークフローを構築する主な利点は何ですか？",
+      "options": {
+        "A": "データストレージのみに使用",
+        "B": "自動化、バージョン管理、再現可能なMLワークフロー",
+        "C": "モデル推論のみに使用",
+        "D": "データ可視化のみに使用"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "SageMaker Pipelinesの利点：\n- 再現可能なMLワークフローを定義\n- ステップ間の依存関係管理\n- モデルレジストリとの統合\n- バージョン管理と監査追跡\n- CI/CD統合のサポート\n\nMLOps自動化を実現します。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q44",
+      "domain": 4,
+      "question": "デプロイされたSageMakerモデルの推論レイテンシを削減する必要があります。最も効果的な方法はどれですか？",
+      "options": {
+        "A": "より大きなモデルを使用",
+        "B": "SageMaker Neoでモデルをコンパイル + GPUインスタンス",
+        "C": "バッチサイズを増加",
+        "D": "より多くの特徴を使用"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "推論レイテンシを下げる方法：\n- SageMaker Neo：コンパイル最適化、2倍の高速化が可能\n- GPUインスタンス：行列演算を加速\n- モデル量子化：精度を下げて速度を上げる\n- 適切なインスタンスタイプの選択\n\nより大きなモデルとより多くの特徴はレイテンシを増加させます。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q45",
+      "domain": 4,
+      "question": "SageMakerで複数のモデルバージョンを管理し、どのバージョンを本番環境で使用するかをどのように制御しますか？",
+      "options": {
+        "A": "モデルファイルを手動でリネーム",
+        "B": "SageMaker Model Registryを使用",
+        "C": "異なるS3バケットを作成",
+        "D": "異なるAWSアカウントを使用"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "SageMaker Model Registry：\n- モデルバージョン管理\n- モデル承認ワークフロー\n- モデルステータス追跡（承認待ち、承認済み、却下）\n- Pipelinesとの統合\n- モデル系統追跡のサポート",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q46",
+      "domain": 4,
+      "question": "本番環境で、MLモデルの説明可能性と監査追跡をどのように確保しますか？",
+      "options": {
+        "A": "最終予測結果のみを記録",
+        "B": "SageMaker Clarifyで説明を生成 + CloudTrailでAPIコールを記録",
+        "C": "情報を記録する必要はない",
+        "D": "モデルコードのみを保存"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "MLの説明可能性と監査：\n- Clarify：特徴帰属、バイアスレポート\n- CloudTrail：APIコールログ\n- CloudWatch：メトリクスとログ\n- Model Monitor：継続的なモニタリング\n\nコンプライアンスとガバナンスの要件を満たします。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q47",
+      "domain": 4,
+      "question": "SageMaker Serverless Inferenceはどのシナリオに適していますか？",
+      "options": {
+        "A": "継続的な高トラフィックのリアルタイムアプリケーション",
+        "B": "トラフィックが予測不可能で、断続的なワークロード",
+        "C": "GPUが必要な大規模モデル",
+        "D": "ミリ秒レベルのレイテンシ要件"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Serverless Inferenceの特徴：\n- ゼロまで自動スケーリング（トラフィックがない場合は課金なし）\n- 断続的なワークロードに適している\n- インスタンス管理が不要\n- コールドスタートレイテンシあり\n\n継続的な高トラフィックには標準エンドポイントの方が経済的。GPUはサポートされていません。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q48",
+      "domain": 4,
+      "question": "SageMakerで機密設定（データベースパスワードなど）を安全に保存して使用するにはどうすればよいですか？",
+      "options": {
+        "A": "トレーニングスクリプトにハードコード",
+        "B": "AWS Secrets Managerを使用し、実行時に取得",
+        "C": "S3パブリックバケットに保存",
+        "D": "環境変数で平文のまま渡す"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "機密情報の安全な管理：\n- Secrets Manager：暗号化ストレージと自動ローテーション\n- IAMロール：アクセス権限の制御\n- 実行時に取得：コードに公開しない\n\nパスワードをハードコードしたり、平文で渡すことは決してしないでください。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q49",
+      "domain": 4,
+      "question": "SageMakerでバッチ推論リクエスト（毎日数百万レコードを処理するなど）をどのように処理しますか？",
+      "options": {
+        "A": "リアルタイム推論エンドポイントを使用",
+        "B": "SageMaker Batch Transformを使用",
+        "C": "手動でループ呼び出し",
+        "D": "Lambda関数を使用"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "SageMaker Batch Transform：\n- 大規模オフラインバッチ推論\n- エンドポイントの維持が不要\n- 複数のインスタンスに自動分配\n- 処理完了後にリソースを解放\n- 継続的に実行するエンドポイントよりコストが低い",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q50",
+      "domain": 4,
+      "question": "企業はSageMakerトレーニングジョブのVPC分離とネットワークセキュリティを確保する必要があります。何を設定すべきですか？",
+      "options": {
+        "A": "パブリックサブネットを使用",
+        "B": "VPC、プライベートサブネット、セキュリティグループを設定",
+        "C": "ネットワーク設定は不要",
+        "D": "インターネットゲートウェイを使用"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "SageMakerネットワークセキュリティ：\n- VPC：ネットワーク分離\n- プライベートサブネット：パブリックアクセスなし\n- セキュリティグループ：インバウンド/アウトバウンドトラフィックの制御\n- VPCエンドポイント：AWSサービスへのプライベートアクセス\n- ネットワーク分離モードの有効化\n\n企業のセキュリティとコンプライアンス要件を満たします。",
+      "difficulty": "medium"
+    }
+  ]
+}

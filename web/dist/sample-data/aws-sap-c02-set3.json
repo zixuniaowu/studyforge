@@ -1,0 +1,622 @@
+{
+  "exam": {
+    "id": "aws-sap-c02-set3",
+    "name": "AWS SAP-C02 模拟考试 #3",
+    "code": "SAP-C02",
+    "provider": "AWS",
+    "language": "zh-CN",
+    "description": "AWS Solutions Architect Professional (SAP-C02) 认证模拟考试第三套，涵盖混合云架构、数据湖与分析、机器学习集成、高可用性设计、性能优化和安全最佳实践。",
+    "totalQuestions": 40,
+    "passingScore": 75,
+    "examTime": 180,
+    "domains": [
+      {"id": 1, "name": "复杂组织的解决方案设计", "weight": 26},
+      {"id": 2, "name": "新解决方案设计", "weight": 29},
+      {"id": 3, "name": "持续改进现有解决方案", "weight": 25},
+      {"id": 4, "name": "加速工作负载迁移和现代化", "weight": 20}
+    ],
+    "tags": ["AWS", "SAP-C02", "Professional", "Architecture"]
+  },
+  "questions": [
+    {
+      "id": 1,
+      "domain": 1,
+      "question": "一家企业正在构建混合云架构，需要将本地数据中心与多个 AWS 区域连接。要求实现高可用性连接，当主连接失败时能自动故障转移。最佳解决方案是什么？",
+      "options": {
+        "A": "在每个区域设置独立的 Site-to-Site VPN 连接",
+        "B": "使用具有多个虚拟接口的 Direct Connect 网关，配合 VPN 作为备份",
+        "C": "使用 Transit Gateway 与 Direct Connect 和 VPN 集成，配置 BGP 路由实现自动故障转移",
+        "D": "在每个区域部署 EC2 实例运行 VPN 软件"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "Transit Gateway 可以连接多个 VPC 和本地网络，通过 Direct Connect 和 VPN 双路径提供冗余。BGP 动态路由能够检测链路故障并自动切换流量。这是实现高可用混合云连接的最佳架构。",
+      "difficulty": "hard"
+    },
+    {
+      "id": 2,
+      "domain": 1,
+      "question": "公司需要为其 AWS 多账户环境实施集中式安全监控。安全团队需要实时检测威胁、分析安全事件，并能够自动响应安全问题。最佳方案是什么？",
+      "options": {
+        "A": "在每个账户中启用 CloudTrail，手动分析日志",
+        "B": "使用 Amazon GuardDuty 配合 Security Hub 聚合发现，使用 EventBridge 触发 Lambda 进行自动修复",
+        "C": "部署第三方 SIEM 解决方案",
+        "D": "使用 CloudWatch Logs Insights 分析安全日志"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "GuardDuty 提供智能威胁检测，Security Hub 聚合来自多个 AWS 服务的安全发现并提供统一视图。EventBridge 可以在检测到特定威胁时触发 Lambda 函数执行自动修复操作。这是 AWS 原生的安全运营中心 (SOC) 解决方案。",
+      "difficulty": "medium"
+    },
+    {
+      "id": 3,
+      "domain": 2,
+      "question": "一家零售公司需要构建一个数据湖，用于存储来自销售系统、库存管理和客户行为的数据。数据需要支持实时分析和机器学习模型训练。最佳架构是什么？",
+      "options": {
+        "A": "使用 RDS 存储所有数据，配置只读副本进行分析",
+        "B": "使用 S3 作为数据湖存储，AWS Glue 进行 ETL，Lake Formation 管理权限，Athena/Redshift Spectrum 进行查询",
+        "C": "将所有数据存储在 DynamoDB 中",
+        "D": "使用 ElastiCache 缓存所有数据进行分析"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "S3 是构建数据湖的最佳存储选择，提供高耐久性和低成本存储。AWS Glue 提供无服务器 ETL 和数据目录。Lake Formation 简化了数据湖的安全和权限管理。Athena 和 Redshift Spectrum 可以直接在 S3 上运行 SQL 查询，支持分析和 ML 工作负载。",
+      "difficulty": "medium"
+    },
+    {
+      "id": 4,
+      "domain": 2,
+      "question": "公司需要实现一个事件驱动架构，处理来自多个微服务的事件。系统需要支持事件重放、事件过滤，并确保事件按顺序处理。最佳解决方案是什么？",
+      "options": {
+        "A": "使用 SQS FIFO 队列进行所有事件处理",
+        "B": "使用 Amazon EventBridge 结合事件归档和重放功能",
+        "C": "使用 SNS 进行发布/订阅",
+        "D": "使用 Kinesis Data Streams 配合 Lambda 消费者"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "EventBridge 是 AWS 的现代事件总线服务，支持高级事件过滤规则、事件归档和重放功能。它可以集成超过 100 个 AWS 服务和第三方 SaaS 应用。事件归档允许存储事件并在需要时重放，非常适合事件溯源架构。",
+      "difficulty": "medium"
+    },
+    {
+      "id": 5,
+      "domain": 3,
+      "question": "一个运行在 EKS 上的应用程序需要动态扩展以应对流量变化。当前使用 Cluster Autoscaler，但节点扩展速度太慢，无法及时处理突发流量。如何优化？",
+      "options": {
+        "A": "增加 Cluster Autoscaler 的扫描间隔",
+        "B": "使用 Karpenter 替代 Cluster Autoscaler 以实现更快的节点预置",
+        "C": "预先创建大量节点以应对峰值",
+        "D": "迁移到 ECS Fargate"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Karpenter 是 AWS 开源的 Kubernetes 节点自动预置器，可以在几秒内启动新节点，比 Cluster Autoscaler 快得多。它直接根据 Pod 需求选择最优实例类型，无需配置节点组。这对于处理突发流量特别有效。",
+      "difficulty": "hard"
+    },
+    {
+      "id": 6,
+      "domain": 4,
+      "question": "公司有一个遗留的三层 Web 应用程序运行在本地虚拟机上，使用 MySQL 数据库。计划迁移到 AWS 并在迁移过程中实现现代化。最佳迁移策略是什么？",
+      "options": {
+        "A": "使用 Lift-and-Shift 将所有组件直接迁移到 EC2",
+        "B": "分阶段迁移：先将 Web 层容器化部署到 ECS，数据库迁移到 Aurora MySQL Serverless，后续逐步重构业务逻辑层",
+        "C": "完全重写应用程序为无服务器架构",
+        "D": "在 AWS 上创建与本地完全相同的环境"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "分阶段迁移是最佳策略。首先将 Web 层容器化可以获得更好的可移植性和扩展性。使用 Aurora MySQL Serverless 替代自管理 MySQL 可以减少运维负担并获得自动扩展能力。逐步重构可以降低风险并持续交付价值。",
+      "difficulty": "hard"
+    },
+    {
+      "id": 7,
+      "domain": 1,
+      "question": "公司需要在 AWS 上部署一个需要 GPU 加速的机器学习推理工作负载。工作负载有明显的峰谷特征，峰值时需要大量 GPU 资源。如何设计最具成本效益的解决方案？",
+      "options": {
+        "A": "使用 GPU EC2 实例并配置 Auto Scaling",
+        "B": "使用 SageMaker 多模型端点配合 GPU 实例和 Auto Scaling 策略",
+        "C": "购买足够的 GPU 预留实例以满足峰值需求",
+        "D": "使用 AWS Batch 配合 Spot 实例"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "SageMaker 多模型端点可以在单个端点上托管多个模型，高效利用 GPU 资源。配合 Auto Scaling 策略可以根据负载自动调整实例数量。这比为每个模型单独部署端点更具成本效益，特别适合有峰谷特征的工作负载。",
+      "difficulty": "hard"
+    },
+    {
+      "id": 8,
+      "domain": 2,
+      "question": "公司需要构建一个实时欺诈检测系统。系统需要在 100 毫秒内分析交易并返回风险评分。每秒处理超过 10,000 笔交易。最佳架构是什么？",
+      "options": {
+        "A": "API Gateway -> Lambda -> DynamoDB 查询历史模式",
+        "B": "Kinesis Data Streams -> Lambda (调用 SageMaker 端点) -> DynamoDB/ElastiCache",
+        "C": "SQS -> EC2 批处理",
+        "D": "直接调用 SageMaker 批量转换"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Kinesis Data Streams 可以处理高吞吐量的实时数据流。Lambda 可以为每个事务调用 SageMaker 实时推理端点进行欺诈检测。使用 ElastiCache 缓存用户的历史行为模式可以加速检测。DynamoDB 存储交易记录和检测结果。这个架构可以满足低延迟和高吞吐量要求。",
+      "difficulty": "hard"
+    },
+    {
+      "id": 9,
+      "domain": 3,
+      "question": "一个应用程序使用 ElastiCache Redis 集群进行会话管理。最近发现缓存命中率下降，延迟增加。集群 CPU 利用率约为 70%，内存使用率约为 85%。如何诊断和解决？（选择两项）",
+      "options": {
+        "A": "启用 Redis 慢日志分析耗时操作",
+        "B": "立即扩展到更大的实例类型",
+        "C": "分析热键和大键，优化数据结构或分片策略",
+        "D": "迁移到 DynamoDB"
+      },
+      "answer": ["A", "C"],
+      "answerType": "multiple",
+      "explanation": "首先应该分析问题根因：Redis 慢日志可以识别耗时操作，热键分析可以发现是否存在访问倾斜。内存使用率 85% 可能导致键淘汰。优化可能包括：重新设计热键分布、拆分大键、调整 TTL 策略，或者考虑水平分片。盲目扩展可能无法解决根本问题。",
+      "difficulty": "hard"
+    },
+    {
+      "id": 10,
+      "domain": 4,
+      "question": "公司正在将 SAP HANA 工作负载迁移到 AWS。SAP HANA 需要大量内存和高 I/O 性能。推荐的方案是什么？",
+      "options": {
+        "A": "使用通用型 EC2 实例配合 GP3 EBS 卷",
+        "B": "使用 SAP 认证的高内存 EC2 实例 (如 X2idn) 配合实例存储或 io2 Block Express",
+        "C": "使用 AWS Outposts 在本地运行",
+        "D": "使用 Aurora 替代 SAP HANA"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "SAP HANA 是内存数据库，需要大量 RAM 和高性能存储。X2idn 等高内存实例是 SAP 认证的实例类型，专为 SAP HANA 工作负载优化。实例存储提供最低延迟，io2 Block Express 提供高 IOPS 和吞吐量。AWS 提供 SAP HANA 的参考架构和 AWS Launch Wizard for SAP 简化部署。",
+      "difficulty": "medium"
+    },
+    {
+      "id": 11,
+      "domain": 1,
+      "question": "一家跨国公司需要确保敏感数据不会离开特定的 AWS 区域（数据主权要求）。如何在多账户环境中强制执行？",
+      "options": {
+        "A": "通过培训教育员工只在允许的区域创建资源",
+        "B": "使用 SCP 限制特定区域之外的 API 操作",
+        "C": "使用 IAM 策略限制每个用户可以使用的区域",
+        "D": "使用 AWS Config 检测区域合规性"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Service Control Policies (SCPs) 可以在 AWS Organizations 级别限制允许的 AWS 区域。使用 aws:RequestedRegion 条件键可以阻止在未授权区域创建资源。这是强制执行数据主权要求的最有效方法，因为它在 API 级别就阻止了不合规操作。",
+      "difficulty": "medium"
+    },
+    {
+      "id": 12,
+      "domain": 2,
+      "question": "公司需要构建一个文档处理管道，自动从 PDF 和图像中提取文本、表格和表单数据。最佳架构是什么？",
+      "options": {
+        "A": "使用 EC2 运行 OCR 软件",
+        "B": "S3 事件触发 Lambda，Lambda 调用 Amazon Textract 进行文档分析，结果存储到 S3/DynamoDB",
+        "C": "使用 Amazon Comprehend 直接处理 PDF",
+        "D": "将 PDF 转换为文本后使用 Athena 分析"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Amazon Textract 专门用于从文档中提取文本、表格和表单数据，支持 PDF 和图像。它使用机器学习自动识别文档结构。S3 事件触发 Lambda 实现自动化处理管道。处理结果可以存储到 S3 或 DynamoDB 供后续使用。这是完全托管的无服务器解决方案。",
+      "difficulty": "medium"
+    },
+    {
+      "id": 13,
+      "domain": 3,
+      "question": "一个使用 CloudFront 分发的静态网站最近加载速度变慢。分析发现许多请求未命中缓存（缓存命中率低）。如何优化？（选择两项）",
+      "options": {
+        "A": "减少 CloudFront 边缘站点数量",
+        "B": "增加缓存 TTL 并配置适当的缓存键策略",
+        "C": "使用 CloudFront Origin Shield 减少源站请求",
+        "D": "禁用 CloudFront 压缩"
+      },
+      "answer": ["B", "C"],
+      "answerType": "multiple",
+      "explanation": "增加 TTL 可以让内容在边缘缓存更长时间。优化缓存键策略（只包含必要的查询字符串/头部）可以避免不必要的缓存分片。Origin Shield 作为额外的缓存层，可以减少对源站的请求，特别适合有多个边缘站点的场景。这些措施可以显著提高缓存命中率。",
+      "difficulty": "medium"
+    },
+    {
+      "id": 14,
+      "domain": 4,
+      "question": "公司计划将 50TB 的历史数据从 Oracle 数据仓库迁移到 Amazon Redshift。数据需要在迁移过程中进行转换和清洗。最佳迁移策略是什么？",
+      "options": {
+        "A": "使用 Oracle 导出工具导出数据，手动导入 Redshift",
+        "B": "使用 AWS DMS 配合 AWS SCT 进行模式转换，DMS 持续复制数据到 Redshift",
+        "C": "将所有数据先导入 S3，然后使用 COPY 命令加载到 Redshift",
+        "D": "使用 Snowball Edge 传输数据"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "AWS Schema Conversion Tool (SCT) 可以将 Oracle 模式转换为 Redshift 模式，包括存储过程转换。DMS 支持从 Oracle 持续复制数据到 Redshift，可以在迁移过程中进行数据转换。这种方法支持近零停机迁移，并且可以验证数据一致性。",
+      "difficulty": "medium"
+    },
+    {
+      "id": 15,
+      "domain": 1,
+      "question": "公司需要实现跨多个 AWS 账户的 VPC 网络分段和安全控制。需要集中管理安全规则，同时允许各业务部门管理自己的资源。最佳方案是什么？",
+      "options": {
+        "A": "在每个账户中独立管理安全组",
+        "B": "使用 AWS Firewall Manager 集中管理安全组和 WAF 规则，配合 VPC 分段",
+        "C": "在所有账户之间建立 VPC Peering",
+        "D": "使用 Network ACL 进行所有安全控制"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "AWS Firewall Manager 允许在 AWS Organizations 中集中配置和管理安全组、WAF 规则、Shield Advanced 和网络防火墙规则。它可以自动将安全策略应用到新账户和资源，同时允许业务部门在基线规则之上添加自己的规则。这实现了集中治理和分散管理的平衡。",
+      "difficulty": "hard"
+    },
+    {
+      "id": 16,
+      "domain": 2,
+      "question": "公司需要为其 SaaS 应用实现 API 版本管理和流量灰度发布功能。最佳解决方案是什么？",
+      "options": {
+        "A": "为每个 API 版本创建单独的 API Gateway",
+        "B": "使用 API Gateway 的阶段变量配合 Lambda 别名和权重路由",
+        "C": "在应用代码中实现版本路由逻辑",
+        "D": "使用 CloudFront 进行流量分发"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "API Gateway 阶段变量可以指向不同的 Lambda 别名。Lambda 别名支持权重路由，可以将一定百分比的流量路由到新版本进行金丝雀发布。这种方法支持逐步发布、快速回滚，无需修改 API 端点或客户端代码。",
+      "difficulty": "medium"
+    },
+    {
+      "id": 17,
+      "domain": 3,
+      "question": "一个批处理系统使用 AWS Batch 运行 ETL 作业。最近作业运行时间增加了 50%。CloudWatch 指标显示 EC2 实例 CPU 利用率正常，但磁盘 I/O 等待时间增加。如何优化？",
+      "options": {
+        "A": "增加 EC2 实例的 CPU 核心数",
+        "B": "将 EBS 卷从 GP2 升级到 GP3 或 io2，并增加预置 IOPS",
+        "C": "增加 AWS Batch 计算环境的最大 vCPU",
+        "D": "使用 Spot 实例降低成本"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "高磁盘 I/O 等待时间表明存储是瓶颈。GP3 允许独立配置 IOPS 和吞吐量，比 GP2 更灵活。io2 提供更高的 IOPS（最高 64,000）。如果是临时数据处理，也可以考虑使用实例存储（NVMe SSD）获得更低延迟。增加 CPU 或计算环境规模无法解决存储瓶颈。",
+      "difficulty": "medium"
+    },
+    {
+      "id": 18,
+      "domain": 4,
+      "question": "公司正在将微服务从 Kubernetes (自管理) 迁移到 AWS。团队希望减少集群管理开销，同时保持与现有工具和流程的兼容性。推荐的方案是什么？",
+      "options": {
+        "A": "将所有微服务迁移到 Lambda",
+        "B": "使用 Amazon EKS 配合托管节点组或 Fargate",
+        "C": "在 EC2 上继续运行自管理 Kubernetes",
+        "D": "使用 AWS App Runner 运行所有服务"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Amazon EKS 提供托管的 Kubernetes 控制平面，减少了集群管理开销。托管节点组自动处理节点的供应和更新。EKS Fargate 进一步消除了节点管理。EKS 与 Kubernetes 完全兼容，现有的 kubectl 命令、Helm charts 和 CI/CD 流程可以继续使用。",
+      "difficulty": "medium"
+    },
+    {
+      "id": 19,
+      "domain": 1,
+      "question": "公司需要为其 AWS 工作负载实施灾难恢复策略，RPO = 4 小时，RTO = 1 小时。工作负载包括 Web 应用和 RDS 数据库。最具成本效益的 DR 策略是什么？",
+      "options": {
+        "A": "多站点活跃-活跃部署",
+        "B": "热备份（Hot Standby）在备用区域运行完整副本",
+        "C": "温备份（Warm Standby）在备用区域运行最小规模副本，配合 RDS 跨区域只读副本",
+        "D": "冷备份，仅保存 AMI 和数据库快照"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "温备份策略在备用区域运行最小规模的功能性系统。RDS 跨区域只读副本提供接近实时的数据复制（满足 4 小时 RPO）。发生灾难时，可以快速扩展备用系统并将只读副本提升为主数据库（满足 1 小时 RTO）。这比热备份成本更低，比冷备份恢复更快。",
+      "difficulty": "hard"
+    },
+    {
+      "id": 20,
+      "domain": 2,
+      "question": "公司需要构建一个日志分析平台，每天摄入 10TB 日志数据，需要支持近实时搜索和 7 年数据保留。最佳架构是什么？",
+      "options": {
+        "A": "CloudWatch Logs 配合 Logs Insights",
+        "B": "Kinesis Data Firehose -> OpenSearch Service (近期数据) + S3 (归档) + Athena (历史查询)",
+        "C": "将所有日志存储在 RDS 中",
+        "D": "使用 DynamoDB 存储日志"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Kinesis Data Firehose 可以将日志数据流式传输到多个目标。OpenSearch Service 提供近实时搜索和可视化能力，适合最近的热数据。S3 用于长期归档，成本低廉，可以使用生命周期策略将老数据转移到 Glacier。Athena 可以直接在 S3 上查询历史数据。这个分层架构平衡了性能和成本。",
+      "difficulty": "hard"
+    },
+    {
+      "id": 21,
+      "domain": 3,
+      "question": "一个 Lambda 函数从 SQS 队列消费消息并处理。最近发现有大量消息被发送到死信队列。CloudWatch 日志显示 Lambda 函数处理成功，但消息仍然被重复处理。可能的原因是什么？",
+      "options": {
+        "A": "Lambda 函数处理时间超过 SQS 可见性超时",
+        "B": "SQS 队列配置了过短的消息保留期",
+        "C": "Lambda 并发限制太低",
+        "D": "死信队列配置错误"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "如果 Lambda 处理时间超过 SQS 可见性超时，消息会重新变为可见，被另一个 Lambda 实例再次接收。当消息接收次数超过最大接收计数时，会被发送到死信队列。解决方案是增加可见性超时时间（至少是 Lambda 超时时间的 6 倍）或优化 Lambda 处理时间。",
+      "difficulty": "hard"
+    },
+    {
+      "id": 22,
+      "domain": 4,
+      "question": "公司需要将运行在 WebLogic 上的 Java EE 应用程序迁移到 AWS。应用程序使用 EJB、JMS 和复杂的 JDBC 连接池。最佳迁移策略是什么？",
+      "options": {
+        "A": "使用 App2Container 将应用容器化并部署到 ECS",
+        "B": "在 EC2 上安装 WebLogic 并直接迁移",
+        "C": "重写应用程序为 Spring Boot 微服务",
+        "D": "使用 AWS Lambda 运行 Java 应用"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "AWS App2Container 可以分析现有 Java 应用程序，自动生成容器镜像、ECS/EKS 任务定义和 CI/CD 管道。对于使用 WebLogic 等应用服务器的传统 Java EE 应用，容器化可以保留现有代码投资，同时获得云原生的可扩展性和管理简便性。完全重写风险高且耗时长。",
+      "difficulty": "hard"
+    },
+    {
+      "id": 23,
+      "domain": 1,
+      "question": "公司需要实现对 S3 存储桶中敏感数据的自动发现和分类。需要识别 PII（个人身份信息）并确保合规性。最佳方案是什么？",
+      "options": {
+        "A": "使用 Lambda 函数定期扫描 S3 对象内容",
+        "B": "使用 Amazon Macie 自动发现和分类敏感数据",
+        "C": "使用 S3 对象标签手动分类数据",
+        "D": "使用 AWS Config 规则检查 S3 存储桶配置"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Amazon Macie 使用机器学习和模式匹配自动发现 S3 中的敏感数据，包括 PII、财务信息和凭证。它可以生成详细的发现报告并集成 EventBridge 进行自动化响应。Macie 还可以评估 S3 存储桶的安全和访问控制配置。这是数据安全和合规性的最佳选择。",
+      "difficulty": "medium"
+    },
+    {
+      "id": 24,
+      "domain": 2,
+      "question": "公司需要为其物联网平台实现设备影子功能，允许应用程序与离线设备通信。当设备上线时，需要同步最新状态。最佳解决方案是什么？",
+      "options": {
+        "A": "使用 DynamoDB 存储设备状态",
+        "B": "使用 AWS IoT Core 设备影子服务",
+        "C": "使用 SQS 队列存储待同步的消息",
+        "D": "使用 ElastiCache 缓存设备状态"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "AWS IoT Core 设备影子是一个 JSON 文档，用于存储设备的当前状态和期望状态。即使设备离线，应用程序也可以更新期望状态。当设备重新连接时，IoT Core 自动将期望状态与设备同步。这是 IoT 场景下设备状态管理的最佳实践。",
+      "difficulty": "medium"
+    },
+    {
+      "id": 25,
+      "domain": 3,
+      "question": "一个 Aurora MySQL 数据库的写入性能下降。分析发现主实例的 CPU 使用率正常，但写入延迟增加。Performance Insights 显示等待事件主要是 'io/aurora_redo_log_flush'。如何优化？",
+      "options": {
+        "A": "添加更多只读副本",
+        "B": "升级到更大的实例类型以获得更多内存",
+        "C": "将数据库升级到 Aurora I/O-Optimized 配置以获得更好的写入性能",
+        "D": "启用 Aurora 并行查询"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "'aurora_redo_log_flush' 等待事件表明存储 I/O 是瓶颈。Aurora I/O-Optimized 配置专为写入密集型工作负载设计，提供更高的 I/O 吞吐量和更低的延迟。虽然 I/O 成本包含在实例费用中（无额外 I/O 费用），但对于高 I/O 工作负载可能更具成本效益。只读副本不会帮助写入性能。",
+      "difficulty": "hard"
+    },
+    {
+      "id": 26,
+      "domain": 4,
+      "question": "公司正在将大型机 COBOL 应用程序迁移到 AWS。应用程序有数百万行代码和复杂的批处理作业。推荐的迁移方法是什么？",
+      "options": {
+        "A": "直接重写为 Java 微服务",
+        "B": "使用 AWS Mainframe Modernization 服务的自动重构或重新平台化选项",
+        "C": "在 EC2 上运行大型机模拟器",
+        "D": "保持大型机并通过 API Gateway 集成"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "AWS Mainframe Modernization 提供两种迁移模式：1) 重新平台化 (Replatform) 使用 Micro Focus 或 Blu Age 在 AWS 上运行 COBOL 应用程序；2) 自动重构 (Refactor) 使用 Blu Age 将 COBOL 自动转换为 Java。这两种方法都比完全手动重写更快、风险更低，同时保留了业务逻辑。",
+      "difficulty": "hard"
+    },
+    {
+      "id": 27,
+      "domain": 1,
+      "question": "公司需要确保跨多个 AWS 账户的 EC2 实例使用经过批准的 AMI。如何强制执行？",
+      "options": {
+        "A": "使用 IAM 策略限制 ec2:RunInstances 操作只能使用特定 AMI ID",
+        "B": "使用 AWS Config 规则检测不合规实例并发送警报",
+        "C": "使用 EC2 Image Builder 创建标准 AMI",
+        "D": "使用 AWS License Manager 主机资源组"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "通过 IAM 策略中的条件键 ec2:ImageId 可以限制用户只能使用特定的、经过批准的 AMI 启动实例。这是预防性控制，在实例启动时就阻止不合规操作。可以在 SCP 或 IAM 策略中实现。AWS Config 只能检测但不能阻止不合规资源的创建。",
+      "difficulty": "medium"
+    },
+    {
+      "id": 28,
+      "domain": 2,
+      "question": "公司需要实现一个多区域、活跃-活跃的 Web 应用架构。应用使用 DynamoDB 作为数据库。如何设计数据层以确保一致性和可用性？",
+      "options": {
+        "A": "在每个区域独立部署 DynamoDB 表，应用层处理同步",
+        "B": "使用 DynamoDB 全局表实现多区域复制，配合 Route 53 延迟路由",
+        "C": "使用单区域 DynamoDB 配合 Global Accelerator",
+        "D": "使用 Aurora Global Database 替代 DynamoDB"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "DynamoDB 全局表提供跨区域的自动复制，数据更新在几秒内同步到所有区域。配合 Route 53 延迟路由，用户请求被路由到最近的区域，获得最低延迟。全局表使用最后写入者获胜的冲突解决策略，适合大多数用例。这是实现活跃-活跃架构的最佳选择。",
+      "difficulty": "hard"
+    },
+    {
+      "id": 29,
+      "domain": 3,
+      "question": "一个使用 Step Functions 编排的工作流程经常因下游服务超时而失败。如何提高工作流的弹性？（选择两项）",
+      "options": {
+        "A": "为每个任务配置适当的重试策略（指数退避）",
+        "B": "使用 Step Functions Express 工作流替代标准工作流",
+        "C": "使用 Catch 块实现错误处理和备用路径",
+        "D": "增加下游服务的实例数量"
+      },
+      "answer": ["A", "C"],
+      "answerType": "multiple",
+      "explanation": "Step Functions 内置的重试策略支持指数退避、最大重试次数和抖动，可以优雅地处理临时故障。Catch 块允许在发生特定错误时执行备用路径，例如发送通知或写入 DLQ。这两种机制结合提供了完善的容错能力。Express 工作流适合高吞吐量短时任务，不是为了提高弹性。",
+      "difficulty": "medium"
+    },
+    {
+      "id": 30,
+      "domain": 4,
+      "question": "公司正在评估将分析工作负载从 Hadoop 集群迁移到 AWS。工作负载包括 Spark 作业、Hive 查询和机器学习训练。推荐的目标架构是什么？",
+      "options": {
+        "A": "在 EC2 上部署自管理 Hadoop 集群",
+        "B": "使用 Amazon EMR 配合 S3 数据湖，EMR Serverless 运行 Spark 作业",
+        "C": "将所有工作负载迁移到 Redshift",
+        "D": "使用 AWS Batch 运行所有分析作业"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Amazon EMR 完全兼容 Hadoop 生态系统（Spark、Hive、Presto 等）。使用 S3 作为存储实现计算与存储分离，提高灵活性和成本效益。EMR Serverless 可以自动扩展 Spark 和 Hive 作业，无需管理集群。这个架构保持了与现有工作负载的兼容性，同时获得了云原生的弹性和效率。",
+      "difficulty": "medium"
+    },
+    {
+      "id": 31,
+      "domain": 1,
+      "question": "公司需要在 AWS 和本地数据中心之间传输大量数据，要求加密传输且带宽可预测。数据传输每天约 500GB。最佳解决方案是什么？",
+      "options": {
+        "A": "使用 Site-to-Site VPN",
+        "B": "使用 AWS Direct Connect 配合 MACsec 加密",
+        "C": "使用公共互联网配合应用层加密",
+        "D": "使用 AWS DataSync 通过互联网"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Direct Connect 提供专用网络连接，带宽稳定可预测，不受公共互联网拥塞影响。MACsec（MAC Security）在第二层提供高速加密，保护数据传输安全。对于每天 500GB 的持续数据传输，Direct Connect 比 VPN 更可靠，成本也更可预测。",
+      "difficulty": "medium"
+    },
+    {
+      "id": 32,
+      "domain": 2,
+      "question": "公司需要构建一个推荐系统，实时为用户提供个性化推荐。系统需要处理用户点击流数据并更新推荐模型。最佳架构是什么？",
+      "options": {
+        "A": "定期批处理用户数据，每天更新推荐",
+        "B": "Kinesis Data Streams 收集点击流 -> Lambda 处理 -> Amazon Personalize 实时推荐",
+        "C": "使用 ElastiCache 缓存静态推荐",
+        "D": "使用 DynamoDB 存储用户偏好，应用层实现规则基础的推荐"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Amazon Personalize 是托管的机器学习推荐服务，支持实时推荐和增量模型更新。Kinesis Data Streams 可以实时捕获用户交互数据。Lambda 可以处理事件并调用 Personalize API 记录用户交互，使推荐模型持续学习和改进。这是实现实时个性化推荐的最佳架构。",
+      "difficulty": "hard"
+    },
+    {
+      "id": 33,
+      "domain": 3,
+      "question": "公司的 API Gateway REST API 在高流量期间出现 429 (Too Many Requests) 错误。API 后端是 Lambda 函数。如何解决？（选择两项）",
+      "options": {
+        "A": "增加 API Gateway 的节流限制和突发容量",
+        "B": "为 Lambda 函数增加预留并发",
+        "C": "将 REST API 迁移到 HTTP API",
+        "D": "启用 API Gateway 缓存减少后端调用"
+      },
+      "answer": ["A", "D"],
+      "answerType": "multiple",
+      "explanation": "API Gateway 默认有 10,000 RPS 的账户级别限制，可以请求增加。启用 API 缓存可以对 GET 请求的响应进行缓存，减少对 Lambda 的调用。对于重复的相同请求，缓存可以直接返回响应，不计入节流限制。这两种方法结合可以有效处理高流量。",
+      "difficulty": "medium"
+    },
+    {
+      "id": 34,
+      "domain": 4,
+      "question": "公司正在将本地 Windows 文件服务器迁移到 AWS。需要保持与现有 Active Directory 的集成，并支持数百个并发用户访问。推荐的解决方案是什么？",
+      "options": {
+        "A": "在 EC2 上设置 Windows 文件服务器",
+        "B": "使用 Amazon FSx for Windows File Server 配合 AWS Directory Service",
+        "C": "使用 Amazon EFS",
+        "D": "使用 S3 配合 Storage Gateway 文件网关"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Amazon FSx for Windows File Server 提供完全托管的 Windows 文件存储，原生支持 SMB 协议和 NTFS。它可以与现有的本地 AD 或 AWS Managed Microsoft AD 集成，支持 DFS 命名空间、影子副本等 Windows 文件服务器功能。对于需要完整 Windows 文件服务器功能的场景，这是最佳选择。",
+      "difficulty": "easy"
+    },
+    {
+      "id": 35,
+      "domain": 1,
+      "question": "公司需要对 AWS 账户中的特权操作实施额外的安全控制。希望在执行敏感操作（如删除 RDS 实例）时需要多人批准。如何实现？",
+      "options": {
+        "A": "使用 IAM 策略中的 MFA 条件",
+        "B": "使用 AWS Systems Manager Change Manager 配合变更模板和审批工作流",
+        "C": "使用 SCP 阻止所有删除操作",
+        "D": "使用 CloudTrail 监控并手动审查"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "AWS Systems Manager Change Manager 提供变更管理框架，可以定义变更模板、审批工作流和执行自动化。对于敏感操作，可以配置需要多个审批者批准后才能执行。这实现了职责分离和变更控制，符合合规要求。变更执行通过 SSM Automation 文档进行，确保一致性和可审计性。",
+      "difficulty": "hard"
+    },
+    {
+      "id": 36,
+      "domain": 2,
+      "question": "公司需要构建一个视频转码管道，将上传的视频转换为多种格式和分辨率。需要支持自动扩展和按需付费。最佳解决方案是什么？",
+      "options": {
+        "A": "使用 EC2 实例运行 FFmpeg，配置 Auto Scaling",
+        "B": "S3 事件触发 Lambda，Lambda 提交作业到 AWS Elemental MediaConvert",
+        "C": "使用 AWS Batch 运行转码容器",
+        "D": "使用 Elastic Transcoder"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "AWS Elemental MediaConvert 是完全托管的视频转码服务，支持广播级质量输出。它按处理的分钟数计费，自动扩展以处理任何工作负载。S3 事件可以自动触发 Lambda，Lambda 调用 MediaConvert API 创建转码作业。这是无服务器的、高度可扩展的视频处理管道。",
+      "difficulty": "medium"
+    },
+    {
+      "id": 37,
+      "domain": 3,
+      "question": "一个使用 Aurora PostgreSQL 的应用程序偶尔遇到数据库连接超时。应用程序运行在多个 ECS 任务中，每个任务直接连接数据库。连接数经常接近 Aurora 的最大连接数限制。如何优化？",
+      "options": {
+        "A": "升级到更大的 Aurora 实例类型",
+        "B": "使用 RDS Proxy 管理连接池",
+        "C": "减少 ECS 任务数量",
+        "D": "在应用代码中增加连接超时时间"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "RDS Proxy 位于应用程序和数据库之间，提供连接池和多路复用。它可以将数千个应用程序连接多路复用到少量数据库连接，大大减少数据库连接压力。RDS Proxy 还提供自动故障转移和 IAM 身份验证支持。这是解决连接数问题的最佳方案，无需修改应用代码。",
+      "difficulty": "medium"
+    },
+    {
+      "id": 38,
+      "domain": 4,
+      "question": "公司正在将传统的 ETL 作业从本地 Informatica 迁移到 AWS。作业处理结构化和半结构化数据。推荐的迁移策略是什么？",
+      "options": {
+        "A": "在 EC2 上安装 Informatica",
+        "B": "使用 AWS Glue 无服务器 ETL 重写作业，使用 Glue Studio 可视化设计",
+        "C": "使用 Lambda 函数处理所有数据转换",
+        "D": "使用 Amazon EMR 运行自定义 Spark 作业"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "AWS Glue 是完全托管的无服务器 ETL 服务，支持结构化和半结构化数据。Glue Studio 提供可视化界面设计 ETL 作业，降低了迁移复杂度。Glue 数据目录提供集中的元数据管理。对于 Informatica 迁移，Glue 提供了相似的功能集，同时消除了基础设施管理负担。",
+      "difficulty": "medium"
+    },
+    {
+      "id": 39,
+      "domain": 1,
+      "question": "公司的开发团队需要在本地开发环境中访问 AWS 服务。需要安全地管理开发人员的临时凭证，避免长期凭证泄露风险。最佳实践是什么？",
+      "options": {
+        "A": "为每个开发人员创建 IAM 用户并分发访问密钥",
+        "B": "使用 AWS IAM Identity Center 配合 AWS CLI v2 的 SSO 登录功能",
+        "C": "在开发机器上存储根账户凭证",
+        "D": "使用共享的 IAM 用户凭证"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "IAM Identity Center（原 AWS SSO）提供集中的身份管理和临时凭证。AWS CLI v2 支持 'aws sso login' 命令，开发人员通过浏览器完成身份验证后获得短期凭证。凭证自动刷新，无需手动管理访问密钥。这消除了长期凭证泄露风险，同时提供了更好的用户体验和审计能力。",
+      "difficulty": "medium"
+    },
+    {
+      "id": 40,
+      "domain": 2,
+      "question": "公司需要为其 GraphQL API 实现身份验证和授权。API 使用 AWS AppSync，需要支持多种身份验证方式（API Key、Cognito、IAM）。如何设计？",
+      "options": {
+        "A": "只使用 API Key 进行身份验证",
+        "B": "配置 AppSync 多重身份验证模式，在解析器中使用 $ctx.identity 进行细粒度授权",
+        "C": "在 Lambda 解析器中实现自定义身份验证",
+        "D": "将 AppSync 放在 API Gateway 后面进行身份验证"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "AppSync 支持多重身份验证模式，可以同时配置默认模式和额外的身份验证提供者。在 GraphQL 模式中可以使用 @auth 指令或在解析器中使用 $ctx.identity 对象实现细粒度的字段级授权。这种方法灵活且与 AppSync 原生集成，不需要额外的基础设施或自定义代码。",
+      "difficulty": "hard"
+    }
+  ]
+}

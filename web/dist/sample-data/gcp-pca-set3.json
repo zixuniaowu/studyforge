@@ -1,0 +1,205 @@
+{
+  "exam": {
+    "id": "gcp-pca-set3",
+    "name": "GCP Professional Cloud Architect Practice Exam #3",
+    "code": "PCA",
+    "provider": "GCP",
+    "language": "en",
+    "description": "Google Cloud Professional Cloud Architect certification practice questions",
+    "totalQuestions": 10,
+    "passingScore": 70,
+    "examTime": 120,
+    "domains": [
+      {
+        "id": 1,
+        "name": "Design and plan cloud solutions",
+        "weight": 24
+      },
+      {
+        "id": 2,
+        "name": "Manage and provision cloud infrastructure",
+        "weight": 15
+      },
+      {
+        "id": 3,
+        "name": "Design for security and compliance",
+        "weight": 18
+      },
+      {
+        "id": 4,
+        "name": "Analyze and optimize technical and business processes",
+        "weight": 18
+      },
+      {
+        "id": 5,
+        "name": "Manage implementation",
+        "weight": 11
+      },
+      {
+        "id": 6,
+        "name": "Ensure solution and operations reliability",
+        "weight": 14
+      }
+    ],
+    "tags": [
+      "GCP",
+      "Cloud",
+      "PCA",
+      "Professional",
+      "Architect",
+      "Certification"
+    ]
+  },
+  "questions": [
+    {
+      "id": "q1",
+      "domain": 1,
+      "question": "A healthcare company needs to build a data analytics platform that processes sensitive patient data. The solution must comply with HIPAA regulations and ensure data is encrypted both at rest and in transit. Which architecture best meets these requirements?",
+      "options": {
+        "A": "Store data in Cloud Storage with default encryption and access via public endpoints",
+        "B": "Use BigQuery with customer-managed encryption keys (CMEK), VPC Service Controls, and Private Google Access",
+        "C": "Deploy a self-managed Hadoop cluster on Compute Engine with custom encryption",
+        "D": "Use Cloud SQL with SSL connections and standard Google-managed encryption"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "BigQuery with CMEK provides customer-controlled encryption keys for compliance requirements. VPC Service Controls create a security perimeter to prevent data exfiltration. Private Google Access ensures traffic to Google APIs doesn't traverse the public internet. This combination provides comprehensive protection for sensitive healthcare data while maintaining analytics capabilities.",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q2",
+      "domain": 1,
+      "question": "A company is designing a global mobile gaming backend that needs to handle millions of concurrent users with sub-10ms latency for player state updates. Which database solution is most appropriate?",
+      "options": {
+        "A": "Cloud SQL with read replicas in multiple regions",
+        "B": "Cloud Spanner with a multi-regional configuration",
+        "C": "Memorystore for Redis with regional clusters",
+        "D": "Cloud Firestore in Native mode"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "Memorystore for Redis provides sub-millisecond latency, which is essential for real-time gaming state updates. Its in-memory architecture is ideal for frequently accessed, rapidly changing data like player states. While Cloud Spanner offers global consistency, its latency (typically 10-100ms) may not meet the sub-10ms requirement for gaming workloads.",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q3",
+      "domain": 2,
+      "question": "Your organization wants to implement a hub-and-spoke network topology where multiple VPCs in different projects can communicate through a central hub VPC. What is the recommended approach?",
+      "options": {
+        "A": "Create VPC peering between each spoke VPC and all other spoke VPCs",
+        "B": "Use Shared VPC with the hub as the host project and spokes as service projects",
+        "C": "Deploy Cloud VPN tunnels between all VPCs",
+        "D": "Use VPC peering from each spoke to the hub, and enable transitive routing via Cloud Router"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Shared VPC is the recommended approach for hub-and-spoke topologies in Google Cloud. The hub project becomes the host project containing the shared network, while spoke projects become service projects that can use resources in the shared network. This provides centralized network administration while allowing resource separation across projects.",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q4",
+      "domain": 2,
+      "question": "You need to configure DNS resolution so that resources in your VPC can resolve private hostnames for Cloud SQL instances without exposing them to the public internet. What should you configure?",
+      "options": {
+        "A": "Create a public DNS zone in Cloud DNS",
+        "B": "Configure Private Service Connect for Cloud SQL",
+        "C": "Enable Private IP for Cloud SQL and use Cloud DNS private zones",
+        "D": "Set up a DNS forwarding zone to on-premises DNS servers"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "Enabling Private IP for Cloud SQL assigns an internal IP address to the instance, making it accessible only within the VPC. Cloud DNS private zones allow you to create custom DNS records that are only resolvable from within specified VPC networks. This combination provides secure, private DNS resolution for Cloud SQL instances.",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q5",
+      "domain": 3,
+      "question": "Your security team requires that all API calls to Google Cloud services from your organization must originate from corporate-managed devices or the corporate network. How can you enforce this requirement?",
+      "options": {
+        "A": "Configure firewall rules to block external access",
+        "B": "Use VPC Service Controls with access levels based on device and IP",
+        "C": "Implement custom authentication middleware",
+        "D": "Restrict IAM permissions to specific service accounts"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "VPC Service Controls access levels allow you to define conditions based on IP address ranges (corporate network), device attributes (corporate-managed devices via BeyondCorp Enterprise), and other factors. Combined with service perimeters, this enforces that only requests meeting these conditions can access protected Google Cloud resources.",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q6",
+      "domain": 3,
+      "question": "A financial services company needs to implement data loss prevention for BigQuery datasets containing PII. The solution should automatically detect and mask sensitive data in query results. What should you use?",
+      "options": {
+        "A": "BigQuery column-level security with IAM",
+        "B": "Cloud Data Loss Prevention (DLP) API integrated with BigQuery",
+        "C": "BigQuery authorized views with CASE statements",
+        "D": "Customer-managed encryption keys (CMEK) for BigQuery"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Cloud DLP API provides automatic detection and classification of sensitive data types like PII. It integrates with BigQuery to scan datasets and can apply de-identification transformations such as masking, tokenization, and redaction. This provides comprehensive, automated data protection without requiring manual identification of sensitive fields.",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q7",
+      "domain": 4,
+      "question": "Your team manages multiple GKE clusters across different environments (dev, staging, production). You want to ensure consistent configuration and policy enforcement across all clusters. What is the recommended approach?",
+      "options": {
+        "A": "Manually apply kubectl commands to each cluster",
+        "B": "Use Anthos Config Management with Policy Controller",
+        "C": "Create Terraform modules for cluster configuration",
+        "D": "Export and import YAML manifests between clusters"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Anthos Config Management enables GitOps-style configuration management across multiple Kubernetes clusters. It automatically syncs configurations from a Git repository to all managed clusters. Policy Controller (based on Open Policy Agent) allows you to define and enforce policies across clusters, ensuring compliance and consistency.",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q8",
+      "domain": 4,
+      "question": "A data engineering team needs to orchestrate complex data pipelines that include BigQuery jobs, Dataflow processing, and Cloud Functions. The pipelines have dependencies and require retry logic. What service should they use?",
+      "options": {
+        "A": "Cloud Scheduler with Pub/Sub triggers",
+        "B": "Cloud Composer (managed Apache Airflow)",
+        "C": "Cloud Tasks for job queuing",
+        "D": "Workflows for serverless orchestration"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Cloud Composer is a fully managed Apache Airflow service designed for complex workflow orchestration. It provides visual DAG representation, dependency management, retry logic, and native integration with Google Cloud services including BigQuery, Dataflow, and Cloud Functions. It's ideal for data engineering pipelines with complex dependencies.",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q9",
+      "domain": 5,
+      "question": "Your development team wants to implement a GitOps workflow where infrastructure changes are automatically applied when merged to the main branch. The infrastructure is defined using Terraform. What is the recommended setup?",
+      "options": {
+        "A": "Run Terraform commands manually after each merge",
+        "B": "Use Cloud Build triggers with Terraform Cloud backend",
+        "C": "Deploy Jenkins on GKE for Terraform automation",
+        "D": "Use Cloud Functions triggered by repository events"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Cloud Build triggers can automatically execute Terraform plans and applies when code is merged to specific branches. Using Terraform Cloud (or Cloud Storage) as a remote backend ensures state locking and collaboration. This provides a fully automated, auditable GitOps workflow for infrastructure management on Google Cloud.",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q10",
+      "domain": 6,
+      "question": "You need to design a disaster recovery strategy for a critical application with RPO of 1 hour and RTO of 4 hours. The application uses Cloud SQL, GKE, and Cloud Storage. Which approach best meets these requirements?",
+      "options": {
+        "A": "Use automated backups for all services and restore manually when needed",
+        "B": "Deploy a warm standby in another region with Cloud SQL cross-region replicas and GKE cluster",
+        "C": "Rely on Google's built-in redundancy within a single region",
+        "D": "Use only Cloud Storage multi-regional buckets for data redundancy"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "A warm standby approach with cross-region Cloud SQL replicas provides continuous replication (meeting RPO < 1 hour). A pre-provisioned GKE cluster in the DR region can be scaled up quickly during failover. This architecture balances cost with recovery objectives, allowing you to meet both the 1-hour RPO and 4-hour RTO requirements.",
+      "difficulty": "hard"
+    }
+  ]
+}

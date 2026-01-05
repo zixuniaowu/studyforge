@@ -1,0 +1,663 @@
+{
+  "exam": {
+    "id": "azure-sc-200-set2-ja",
+    "name": "Security Operations Analyst 練習問題 Set 2",
+    "code": "SC-200",
+    "provider": "Microsoft",
+    "language": "ja",
+    "description": "Microsoft Security Operations Analyst 認定練習問題第2セット。Microsoft Defender、Microsoft Sentinel、セキュリティオペレーションセンターに関する知識をカバーしています。",
+    "totalQuestions": 40,
+    "passingScore": 70,
+    "examTime": 120,
+    "domains": [
+      "Microsoft Defender for Endpoint を使用した脅威の軽減",
+      "Microsoft 365 Defender を使用した脅威の軽減",
+      "Microsoft Defender for Cloud を使用した脅威の軽減",
+      "Microsoft Sentinel の構成と管理",
+      "Microsoft Sentinel を使用した脅威の検出と対応"
+    ],
+    "tags": ["Microsoft", "Azure", "Security", "SC-200", "Sentinel", "Defender"]
+  },
+  "questions": [
+    {
+      "id": "sc200-s2-ja-q1",
+      "examId": "azure-sc-200-set2-ja",
+      "setNumber": 2,
+      "domain": "Microsoft Defender for Endpoint を使用した脅威の軽減",
+      "question": "Microsoft Defender for Endpoint でカスタム検出ルールを作成して特定の悪意のある動作を検出する必要があります。どのクエリ言語を使用すべきですか？",
+      "options": {
+        "A": "SQL",
+        "B": "Kusto クエリ言語 (KQL)",
+        "C": "PowerShell",
+        "D": "Python"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Microsoft Defender for Endpoint は、Kusto クエリ言語 (KQL) を使用してカスタム検出ルールを作成し、高度な検索クエリを実行します。KQL は大規模なデータ分析のために設計されたクエリ言語です。"
+    },
+    {
+      "id": "sc200-s2-ja-q2",
+      "examId": "azure-sc-200-set2-ja",
+      "setNumber": 2,
+      "domain": "Microsoft Defender for Endpoint を使用した脅威の軽減",
+      "question": "デバイスが侵害されていることが判明し、ネットワーク内の他のデバイスとの通信を即座にブロックする必要があります。どの機能を使用すべきですか？",
+      "options": {
+        "A": "デバイスの分離",
+        "B": "ウイルス対策スキャンの実行",
+        "C": "調査パッケージの収集",
+        "D": "自動調査の開始"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "デバイスの分離機能は、感染したデバイスをネットワークから即座に切断しますが、Defender for Endpoint サービスへの接続は維持されます。これにより、脅威の横移動を防ぎながら、デバイスの監視を続けることができます。"
+    },
+    {
+      "id": "sc200-s2-ja-q3",
+      "examId": "azure-sc-200-set2-ja",
+      "setNumber": 2,
+      "domain": "Microsoft Defender for Endpoint を使用した脅威の軽減",
+      "question": "Defender for Endpoint の高度な検索で、プロセス作成イベントのデータを含むテーブルはどれですか？",
+      "options": {
+        "A": "DeviceNetworkEvents",
+        "B": "DeviceProcessEvents",
+        "C": "DeviceFileEvents",
+        "D": "DeviceLogonEvents"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "DeviceProcessEvents テーブルには、プロセスの作成と関連イベントに関する情報が含まれています。これには、プロセスのコマンドライン、親プロセス情報などが含まれます。悪意のあるプロセス活動を分析するための主要なデータソースです。"
+    },
+    {
+      "id": "sc200-s2-ja-q4",
+      "examId": "azure-sc-200-set2-ja",
+      "setNumber": 2,
+      "domain": "Microsoft Defender for Endpoint を使用した脅威の軽減",
+      "question": "組織全体で既知の悪意のあるファイルハッシュをブロックする必要があります。どの機能を使用すべきですか？",
+      "options": {
+        "A": "カスタム検出ルール",
+        "B": "インジケーター（ファイルのブロック）",
+        "C": "攻撃面の縮小ルール",
+        "D": "Web コンテンツフィルタリング"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "インジケーター機能を使用すると、ファイルハッシュ、IP アドレス、URL、または証明書に基づいて許可またはブロックのポリシーを作成できます。ファイルインジケーターを使用して、組織全体で特定の悪意のあるファイルをブロックできます。"
+    },
+    {
+      "id": "sc200-s2-ja-q5",
+      "examId": "azure-sc-200-set2-ja",
+      "setNumber": 2,
+      "domain": "Microsoft Defender for Endpoint を使用した脅威の軽減",
+      "question": "自動調査と修復を構成する際、すべてのフォルダーに対して自動的に修復を実行できる自動化レベルはどれですか？",
+      "options": {
+        "A": "自動応答なし",
+        "B": "半自動 - すべての修復に承認が必要",
+        "C": "半自動 - 一時フォルダー以外に承認が必要",
+        "D": "完全自動 - 脅威を自動的に修復"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "完全自動化レベルでは、検出されたすべての脅威を管理者の承認なしに自動的に修復します。これは最速の応答時間を実現したい組織に適していますが、自動化機能への十分な信頼が必要です。"
+    },
+    {
+      "id": "sc200-s2-ja-q6",
+      "examId": "azure-sc-200-set2-ja",
+      "setNumber": 2,
+      "domain": "Microsoft Defender for Endpoint を使用した脅威の軽減",
+      "question": "組織内の脆弱性を持つデバイスを特定する必要があります。Defender for Endpoint のどの機能を使用すべきですか？",
+      "options": {
+        "A": "脅威分析",
+        "B": "脆弱性管理",
+        "C": "セキュリティベースライン",
+        "D": "デバイスインベントリ"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "脆弱性管理（Threat and Vulnerability Management）は、リスクベースの脆弱性の発見、優先順位付け、修復機能を提供し、デバイス上のソフトウェアの脆弱性と構成の問題を特定できます。"
+    },
+    {
+      "id": "sc200-s2-ja-q7",
+      "examId": "azure-sc-200-set2-ja",
+      "setNumber": 2,
+      "domain": "Microsoft Defender for Endpoint を使用した脅威の軽減",
+      "question": "リアルタイムで検出された脅威に対応する際、影響を受けたデバイスで PowerShell スクリプトをリモートで実行する必要があります。どの機能を使用すべきですか？",
+      "options": {
+        "A": "自動調査",
+        "B": "ライブ応答",
+        "C": "デバイスの分離",
+        "D": "高度な検索"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "ライブ応答を使用すると、セキュリティチームはリモートシェル接続を介してデバイスに即座にアクセスし、PowerShell スクリプトの実行やフォレンジックデータの収集などの詳細な調査作業を実行できます。"
+    },
+    {
+      "id": "sc200-s2-ja-q8",
+      "examId": "azure-sc-200-set2-ja",
+      "setNumber": 2,
+      "domain": "Microsoft Defender for Endpoint を使用した脅威の軽減",
+      "question": "すべての Office アプリケーションが子プロセスを作成することをブロックするルールを構成する必要があります。これはどの種類の保護に該当しますか？",
+      "options": {
+        "A": "ネットワーク保護",
+        "B": "制御されたフォルダーアクセス",
+        "C": "攻撃面の縮小ルール",
+        "D": "エクスプロイト保護"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "攻撃面の縮小 (ASR) ルールは、Office アプリケーションからの子プロセスの作成をブロックするなど、一般的な攻撃技術をブロックできます。これにより、Office マクロを利用したマルウェアの実行を防ぐことができます。"
+    },
+    {
+      "id": "sc200-s2-ja-q9",
+      "examId": "azure-sc-200-set2-ja",
+      "setNumber": 2,
+      "domain": "Microsoft 365 Defender を使用した脅威の軽減",
+      "question": "Microsoft 365 Defender で、複数のセキュリティ製品からのアラートを自動的に関連付ける機能はどれですか？",
+      "options": {
+        "A": "高度な検索",
+        "B": "インシデント",
+        "C": "脅威分析",
+        "D": "セキュリティスコア"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Microsoft 365 Defender のインシデント機能は、Defender for Endpoint、Defender for Office 365、Defender for Identity、Defender for Cloud Apps からの関連アラートを自動的に関連付け、攻撃の完全なビューを提供します。"
+    },
+    {
+      "id": "sc200-s2-ja-q10",
+      "examId": "azure-sc-200-set2-ja",
+      "setNumber": 2,
+      "domain": "Microsoft 365 Defender を使用した脅威の軽減",
+      "question": "フィッシングメール攻撃の影響範囲を調査する必要があります。同じ悪意のあるメールを受信したすべてのユーザーを特定するのに役立つツールはどれですか？",
+      "options": {
+        "A": "脅威エクスプローラー",
+        "B": "アラートキュー",
+        "C": "セキュリティスコア",
+        "D": "コンプライアンスセンター"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "脅威エクスプローラー（Threat Explorer）を使用すると、セキュリティチームはメール脅威を調査および分析できます。特定の悪意のあるメールを受信したすべての受信者を検索し、メール配信状態を追跡できます。"
+    },
+    {
+      "id": "sc200-s2-ja-q11",
+      "examId": "azure-sc-200-set2-ja",
+      "setNumber": 2,
+      "domain": "Microsoft 365 Defender を使用した脅威の軽減",
+      "question": "Microsoft Defender for Identity は主にどの環境を監視して脅威を検出しますか？",
+      "options": {
+        "A": "Azure AD クラウド ID",
+        "B": "オンプレミス Active Directory",
+        "C": "Microsoft 365 アプリケーション",
+        "D": "エンドポイントデバイス"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Microsoft Defender for Identity は、オンプレミスの Active Directory 環境を保護するために特別に設計されており、ドメインコントローラーのトラフィックを分析して高度な脅威、侵害された ID、および悪意のある内部者の操作を検出します。"
+    },
+    {
+      "id": "sc200-s2-ja-q12",
+      "examId": "azure-sc-200-set2-ja",
+      "setNumber": 2,
+      "domain": "Microsoft 365 Defender を使用した脅威の軽減",
+      "question": "Microsoft Defender for Cloud Apps で、ユーザーが機密データを未承認のクラウドストレージサービスにアップロードすることをブロックする必要があります。何を構成すべきですか？",
+      "options": {
+        "A": "アプリコネクタ",
+        "B": "セッションポリシー",
+        "C": "アクティビティポリシー",
+        "D": "異常検出ポリシー"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "セッションポリシーは条件付きアクセスアプリ制御と連携して、ユーザーセッションをリアルタイムで監視および制御し、未承認のクラウドアプリケーションへの機密データのアップロードをブロックできます。"
+    },
+    {
+      "id": "sc200-s2-ja-q13",
+      "examId": "azure-sc-200-set2-ja",
+      "setNumber": 2,
+      "domain": "Microsoft 365 Defender を使用した脅威の軽減",
+      "question": "ユーザーアカウントが侵害された可能性があることを検出しました。Microsoft 365 Defender でリスクを即座に軽減するにはどの操作を実行できますか？",
+      "options": {
+        "A": "自動調査を開始する",
+        "B": "ユーザーを侵害済みとして確認する",
+        "C": "抑制ルールを作成する",
+        "D": "許可リストに追加する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "ユーザーを侵害済みとして確認すると、対応する自動修復アクションがトリガーされます。これには、パスワードのリセット要求、更新トークンの取り消しなどが含まれ、アカウントが悪用されるリスクを即座に軽減できます。"
+    },
+    {
+      "id": "sc200-s2-ja-q14",
+      "examId": "azure-sc-200-set2-ja",
+      "setNumber": 2,
+      "domain": "Microsoft 365 Defender を使用した脅威の軽減",
+      "question": "Microsoft Defender for Office 365 を構成する際、安全な添付ファイル機能はどのような操作を実行するように構成できますか？",
+      "options": {
+        "A": "機密メールを暗号化する",
+        "B": "サンドボックス環境で添付ファイルを開いて分析する",
+        "C": "大きな添付ファイルを圧縮する",
+        "D": "すべての外部添付ファイルをブロックする"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "安全な添付ファイル機能は、メールの添付ファイルをサンドボックス環境で開いてその動作を分析し、マルウェアを検出します。これにより、従来のシグネチャスキャンでは検出できない新しい脅威を発見できます。"
+    },
+    {
+      "id": "sc200-s2-ja-q15",
+      "examId": "azure-sc-200-set2-ja",
+      "setNumber": 2,
+      "domain": "Microsoft 365 Defender を使用した脅威の軽減",
+      "question": "組織全体のセキュリティ体制の改善状況を追跡する必要があります。どの機能を使用すべきですか？",
+      "options": {
+        "A": "脅威分析レポート",
+        "B": "Microsoft セキュリティスコア",
+        "C": "高度な検索",
+        "D": "インシデントキュー"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Microsoft セキュリティスコアは、組織のセキュリティ体制の定量的な指標を提供します。改善の推奨事項、履歴の傾向、類似の組織との比較が含まれ、セキュリティ改善の進捗状況を追跡するのに役立ちます。"
+    },
+    {
+      "id": "sc200-s2-ja-q16",
+      "examId": "azure-sc-200-set2-ja",
+      "setNumber": 2,
+      "domain": "Microsoft 365 Defender を使用した脅威の軽減",
+      "question": "Defender for Identity が検出できる横移動攻撃はどれですか？",
+      "options": {
+        "A": "SQL インジェクション",
+        "B": "Pass-the-Hash",
+        "C": "クロスサイトスクリプティング (XSS)",
+        "D": "バッファオーバーフロー"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Defender for Identity は、Pass-the-Hash、Pass-the-Ticket、Overpass-the-Hash などの資格情報ベースの攻撃技術を含む、複数の横移動攻撃を検出できます。"
+    },
+    {
+      "id": "sc200-s2-ja-q17",
+      "examId": "azure-sc-200-set2-ja",
+      "setNumber": 2,
+      "domain": "Microsoft Defender for Cloud を使用した脅威の軽減",
+      "question": "Microsoft Defender for Cloud のセキュリティアラートの重大度レベルは何ですか？",
+      "options": {
+        "A": "低、中、高",
+        "B": "情報、低、中、高",
+        "C": "P1、P2、P3、P4",
+        "D": "緑、黄、赤"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Defender for Cloud のセキュリティアラートには、情報、低、中、高の4つの重大度レベルがあります。これにより、セキュリティチームは重大度に基づいてアラートの優先順位付けと対応を行うことができます。"
+    },
+    {
+      "id": "sc200-s2-ja-q18",
+      "examId": "azure-sc-200-set2-ja",
+      "setNumber": 2,
+      "domain": "Microsoft Defender for Cloud を使用した脅威の軽減",
+      "question": "Azure の SQL データベースを SQL インジェクション攻撃から保護する必要があります。どの Defender プランを有効にすべきですか？",
+      "options": {
+        "A": "Defender for Servers",
+        "B": "Defender for Storage",
+        "C": "Defender for SQL",
+        "D": "Defender for App Service"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "Microsoft Defender for SQL は、SQL データベースに対する潜在的な脅威を検出し対応する高度な脅威保護機能を提供します。これには、SQL インジェクション攻撃や異常なデータベースアクティビティが含まれます。"
+    },
+    {
+      "id": "sc200-s2-ja-q19",
+      "examId": "azure-sc-200-set2-ja",
+      "setNumber": 2,
+      "domain": "Microsoft Defender for Cloud を使用した脅威の軽減",
+      "question": "Defender for Cloud のセキュリティベンチマーク評価はどの標準に基づいていますか？",
+      "options": {
+        "A": "NIST 800-53",
+        "B": "Microsoft クラウドセキュリティベンチマーク (MCSB)",
+        "C": "ISO 27001",
+        "D": "PCI DSS"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Defender for Cloud はデフォルトで Microsoft クラウドセキュリティベンチマーク (MCSB) を使用してセキュリティ体制を評価します。MCSB は、クラウド環境向けに設計された包括的なセキュリティコントロールとベストプラクティスのセットです。"
+    },
+    {
+      "id": "sc200-s2-ja-q20",
+      "examId": "azure-sc-200-set2-ja",
+      "setNumber": 2,
+      "domain": "Microsoft Defender for Cloud を使用した脅威の軽減",
+      "question": "コンテナワークロードの疑わしいアクティビティを監視する必要があります。どの Defender プランを有効にすべきですか？",
+      "options": {
+        "A": "Defender for Servers",
+        "B": "Defender for Containers",
+        "C": "Defender for App Service",
+        "D": "Defender for Key Vault"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Microsoft Defender for Containers は、Kubernetes クラスターとコンテナワークロードにランタイム保護を提供し、疑わしいアクティビティ、脆弱性、構成の問題を検出できます。"
+    },
+    {
+      "id": "sc200-s2-ja-q21",
+      "examId": "azure-sc-200-set2-ja",
+      "setNumber": 2,
+      "domain": "Microsoft Defender for Cloud を使用した脅威の軽減",
+      "question": "Defender for Cloud で、過剰な権限を持つ ID を特定するのに役立つ機能はどれですか？",
+      "options": {
+        "A": "脆弱性評価",
+        "B": "アクセス許可管理 (Permissions Management)",
+        "C": "セキュリティアラート",
+        "D": "ネットワークマップ"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "アクセス許可管理（統合された Microsoft Entra Permissions Management）は、マルチクラウド環境でのアクセス許可リスクを発見、修復、監視し、過剰な権限を持つ ID を特定できます。"
+    },
+    {
+      "id": "sc200-s2-ja-q22",
+      "examId": "azure-sc-200-set2-ja",
+      "setNumber": 2,
+      "domain": "Microsoft Defender for Cloud を使用した脅威の軽減",
+      "question": "Defender for Cloud は、どのリソースタイプに対して Just-In-Time (JIT) VM アクセスポリシーを生成できますか？",
+      "options": {
+        "A": "Windows VM のみ",
+        "B": "Linux VM のみ",
+        "C": "Azure VM と AWS EC2 インスタンス",
+        "D": "Azure VM のみ"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "JIT VM アクセスは、Azure 仮想マシンと AWS EC2 インスタンスに適用でき、必要な時に一時的に管理ポートを開くことで攻撃面を減らします。"
+    },
+    {
+      "id": "sc200-s2-ja-q23",
+      "examId": "azure-sc-200-set2-ja",
+      "setNumber": 2,
+      "domain": "Microsoft Defender for Cloud を使用した脅威の軽減",
+      "question": "Defender for Cloud のアラートをサードパーティの SIEM ソリューションに転送する必要があります。どの方法を使用すべきですか？",
+      "options": {
+        "A": "直接 API 統合",
+        "B": "継続的エクスポート",
+        "C": "手動エクスポート",
+        "D": "メール通知"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "継続的エクスポート機能を使用すると、Defender for Cloud のアラートと推奨事項を Log Analytics ワークスペースまたは Event Hubs に継続的にエクスポートし、サードパーティの SIEM ソリューションと統合できます。"
+    },
+    {
+      "id": "sc200-s2-ja-q24",
+      "examId": "azure-sc-200-set2-ja",
+      "setNumber": 2,
+      "domain": "Microsoft Defender for Cloud を使用した脅威の軽減",
+      "question": "マルチクラウド環境で、Defender for Cloud はどのクラウドプラットフォームのリソースを保護できますか？",
+      "options": {
+        "A": "Azure のみ",
+        "B": "Azure と AWS",
+        "C": "Azure、AWS、GCP",
+        "D": "Azure とオンプレミスデータセンター"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "Microsoft Defender for Cloud はマルチクラウド保護をサポートしており、Azure、Amazon Web Services (AWS)、Google Cloud Platform (GCP) のリソースを接続して保護できます。"
+    },
+    {
+      "id": "sc200-s2-ja-q25",
+      "examId": "azure-sc-200-set2-ja",
+      "setNumber": 2,
+      "domain": "Microsoft Sentinel の構成と管理",
+      "question": "Microsoft Sentinel を構成する際、最初に作成する必要があるリソースは何ですか？",
+      "options": {
+        "A": "データコネクタ",
+        "B": "Log Analytics ワークスペース",
+        "C": "分析ルール",
+        "D": "ワークブック"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Microsoft Sentinel は Log Analytics ワークスペース上に構築されているため、Sentinel を有効にする前に、セキュリティデータを保存するための Log Analytics ワークスペースを作成または選択する必要があります。"
+    },
+    {
+      "id": "sc200-s2-ja-q26",
+      "examId": "azure-sc-200-set2-ja",
+      "setNumber": 2,
+      "domain": "Microsoft Sentinel の構成と管理",
+      "question": "Azure Active Directory からサインインログを Microsoft Sentinel に収集する必要があります。何を構成すべきですか？",
+      "options": {
+        "A": "カスタムログコネクタ",
+        "B": "Azure AD データコネクタ",
+        "C": "CEF コネクタ",
+        "D": "Syslog コネクタ"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure AD（Microsoft Entra ID）データコネクタは組み込みコネクタであり、Azure AD サインインログ、監査ログ、プロビジョニングログを Microsoft Sentinel に直接取り込むことができます。"
+    },
+    {
+      "id": "sc200-s2-ja-q27",
+      "examId": "azure-sc-200-set2-ja",
+      "setNumber": 2,
+      "domain": "Microsoft Sentinel の構成と管理",
+      "question": "Microsoft Sentinel で、Windows セキュリティイベントからのデータを格納するテーブルはどれですか？",
+      "options": {
+        "A": "CommonSecurityLog",
+        "B": "SecurityEvent",
+        "C": "Syslog",
+        "D": "AzureActivity"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "SecurityEvent テーブルは、Windows デバイスから収集されたセキュリティイベントを格納します。これには、ログオンイベント、特権の使用、プロセスの作成などのセキュリティ関連のアクティビティが含まれます。"
+    },
+    {
+      "id": "sc200-s2-ja-q28",
+      "examId": "azure-sc-200-set2-ja",
+      "setNumber": 2,
+      "domain": "Microsoft Sentinel の構成と管理",
+      "question": "オンプレミスファイアウォールのログを Microsoft Sentinel に送信する必要があります。ファイアウォールは CEF 形式をサポートしています。どのように構成すべきですか？",
+      "options": {
+        "A": "Sentinel エンドポイントに直接ログを送信する",
+        "B": "Azure Monitor Agent を使用して直接収集する",
+        "C": "ログフォワーダーを介して CEF ログを Syslog サーバーに送信し、Sentinel に転送する",
+        "D": "Azure Functions カスタムコネクタを使用する"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "CEF 形式のログの場合、通常はログフォワーダー（Linux サーバー）をセットアップして CEF ログを受信し、Azure Monitor Agent を使用してログを Microsoft Sentinel に転送する必要があります。"
+    },
+    {
+      "id": "sc200-s2-ja-q29",
+      "examId": "azure-sc-200-set2-ja",
+      "setNumber": 2,
+      "domain": "Microsoft Sentinel の構成と管理",
+      "question": "Microsoft Sentinel のコストを管理する際、課金に最も影響を与える要因は何ですか？",
+      "options": {
+        "A": "作成した分析ルールの数",
+        "B": "データ取り込み量",
+        "C": "ユーザー数",
+        "D": "ワークブックの数"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Microsoft Sentinel の課金は、主に Log Analytics ワークスペースに取り込まれるデータ量に基づいています。コスト管理の鍵は、データ取り込み量を制御し最適化することです。"
+    },
+    {
+      "id": "sc200-s2-ja-q30",
+      "examId": "azure-sc-200-set2-ja",
+      "setNumber": 2,
+      "domain": "Microsoft Sentinel の構成と管理",
+      "question": "セキュリティチーム向けにセキュリティイベントを監視する視覚化ダッシュボードを作成する必要があります。Sentinel のどの機能を使用すべきですか？",
+      "options": {
+        "A": "ハンティングクエリ",
+        "B": "ワークブック",
+        "C": "ノートブック",
+        "D": "分析ルール"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "ワークブックは、対話型の視覚化ダッシュボード機能を提供し、セキュリティデータを監視および分析するためのカスタムビューを作成できます。様々な視覚化タイプと対話型フィルタリングをサポートしています。"
+    },
+    {
+      "id": "sc200-s2-ja-q31",
+      "examId": "azure-sc-200-set2-ja",
+      "setNumber": 2,
+      "domain": "Microsoft Sentinel の構成と管理",
+      "question": "Microsoft Sentinel でウォッチリストの主な用途は何ですか？",
+      "options": {
+        "A": "分析ルールの構成を保存する",
+        "B": "外部データをインポートして KQL クエリの相関に使用する",
+        "C": "データ保持ポリシーを構成する",
+        "D": "ユーザー権限を管理する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "ウォッチリストを使用すると、外部データ（IP アドレスリスト、ユーザーリストなど）をインポートし、KQL クエリでこれらのデータを参照して相関分析を行い、脅威検出能力を向上させることができます。"
+    },
+    {
+      "id": "sc200-s2-ja-q32",
+      "examId": "azure-sc-200-set2-ja",
+      "setNumber": 2,
+      "domain": "Microsoft Sentinel の構成と管理",
+      "question": "特定のユーザーが自分の部門に関連するインシデントのみを表示できるように制限する必要があります。どの機能を使用すべきですか？",
+      "options": {
+        "A": "ワークスペースレベル RBAC",
+        "B": "リソースレベル RBAC",
+        "C": "テーブルレベル RBAC",
+        "D": "条件付きアクセスポリシー"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "リソースレベル RBAC（リソースコンテキスト RBAC）を使用すると、ユーザーがアクセス権を持つ Azure リソースに基づいてデータアクセスを制限できるため、ユーザーは自分が管理するリソースに関連するデータのみを表示できます。"
+    },
+    {
+      "id": "sc200-s2-ja-q33",
+      "examId": "azure-sc-200-set2-ja",
+      "setNumber": 2,
+      "domain": "Microsoft Sentinel を使用した脅威の検出と対応",
+      "question": "Microsoft Sentinel で、機械学習を使用して異常な動作を検出できる分析ルールのタイプはどれですか？",
+      "options": {
+        "A": "スケジュールルール",
+        "B": "NRT（準リアルタイム）ルール",
+        "C": "異常ルール",
+        "D": "フュージョンルール"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "異常ルールは機械学習アルゴリズムを使用して正常な動作のベースラインを確立し、そのベースラインから逸脱する異常なアクティビティを検出します。これらのルールは、従来のルールでは見逃される可能性のある脅威を発見できます。"
+    },
+    {
+      "id": "sc200-s2-ja-q34",
+      "examId": "azure-sc-200-set2-ja",
+      "setNumber": 2,
+      "domain": "Microsoft Sentinel を使用した脅威の検出と対応",
+      "question": "ブルートフォース攻撃を検出する分析ルールを作成しました。ルールがトリガーされたときに攻撃者の IP アドレスを自動的にブロックしたいです。何を構成すべきですか？",
+      "options": {
+        "A": "ワークブック",
+        "B": "ハンティングクエリ",
+        "C": "プレイブック（自動化ルール）",
+        "D": "ウォッチリスト"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "プレイブックは Azure Logic Apps に基づいた自動化ワークフローで、分析ルールがトリガーされたときに IP アドレスのブロック、通知の送信、デバイスの分離などの応答アクションを自動的に実行できます。"
+    },
+    {
+      "id": "sc200-s2-ja-q35",
+      "examId": "azure-sc-200-set2-ja",
+      "setNumber": 2,
+      "domain": "Microsoft Sentinel を使用した脅威の検出と対応",
+      "question": "Sentinel インシデントを調査する際、エンティティ行動分析 (UEBA) は何を特定するのに役立ちますか？",
+      "options": {
+        "A": "ネットワークトポロジー構造",
+        "B": "ユーザーとエンティティの異常なアクティビティパターン",
+        "C": "データ分類ラベル",
+        "D": "コンプライアンス違反"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "ユーザーとエンティティの行動分析 (UEBA) は、機械学習を使用してユーザー、ホスト、その他のエンティティの行動を分析し、異常なアクティビティパターンを特定して、内部脅威や侵害されたアカウントの発見に役立てます。"
+    },
+    {
+      "id": "sc200-s2-ja-q36",
+      "examId": "azure-sc-200-set2-ja",
+      "setNumber": 2,
+      "domain": "Microsoft Sentinel を使用した脅威の検出と対応",
+      "question": "Microsoft Sentinel で、まだアラートをトリガーしていない潜在的な脅威を事前に検索する必要があります。どの機能を使用すべきですか？",
+      "options": {
+        "A": "分析ルール",
+        "B": "ハンティング（Hunting）",
+        "C": "データコネクタ",
+        "D": "ワークブック"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "ハンティング機能は、事前定義およびカスタムの KQL クエリを提供し、セキュリティアナリストがアラートがトリガーされるのを待たずに、ログデータ内の脅威指標や疑わしいアクティビティをプロアクティブに検索できるようにします。"
+    },
+    {
+      "id": "sc200-s2-ja-q37",
+      "examId": "azure-sc-200-set2-ja",
+      "setNumber": 2,
+      "domain": "Microsoft Sentinel を使用した脅威の検出と対応",
+      "question": "Sentinel のセキュリティデータを強化するために脅威インテリジェンスを使用する必要があります。外部の脅威インテリジェンスソースをインポートする方法はどれですか？",
+      "options": {
+        "A": "カスタム分析ルールを作成する",
+        "B": "脅威インテリジェンスデータコネクタを構成する",
+        "C": "ワークブックの視覚化を使用する",
+        "D": "ウォッチリストを設定する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "脅威インテリジェンスデータコネクタを使用すると、TAXII サーバー、脅威インテリジェンスプラットフォーム、または Microsoft の脅威インテリジェンスから脅威インジケーター (IoC) をインポートし、脅威の照合と検出に使用できます。"
+    },
+    {
+      "id": "sc200-s2-ja-q38",
+      "examId": "azure-sc-200-set2-ja",
+      "setNumber": 2,
+      "domain": "Microsoft Sentinel を使用した脅威の検出と対応",
+      "question": "Sentinel インシデントを処理する際、これが誤検知であると判断しました。インシデントのステータスを何に変更すべきですか？",
+      "options": {
+        "A": "新規",
+        "B": "アクティブ",
+        "C": "クローズ済み - 誤検知",
+        "D": "クローズ済み - 真陽性"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "インシデントが誤検知であると判断された場合は、適切な分類でクローズする必要があります。「クローズ済み - 誤検知」は、アラートが良性のアクティビティによってトリガーされたことを示し、検出ルールの精度を追跡するのに役立ちます。"
+    },
+    {
+      "id": "sc200-s2-ja-q39",
+      "examId": "azure-sc-200-set2-ja",
+      "setNumber": 2,
+      "domain": "Microsoft Sentinel を使用した脅威の検出と対応",
+      "question": "ユーザーが複数の異なる国/地域からログインしたときにアラートをトリガーする分析ルールを作成する必要があります。どのタイプのルールを使用すべきですか？",
+      "options": {
+        "A": "Microsoft セキュリティルール",
+        "B": "フュージョンルール",
+        "C": "スケジュールクエリルール",
+        "D": "ML 行動分析ルール"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "スケジュールクエリルールを使用すると、疑わしい地理的位置のログインパターンなど、特定のセキュリティシナリオを検出するためのカスタム KQL クエリを記述できます。トリガー条件とアラートの詳細を定義できます。"
+    },
+    {
+      "id": "sc200-s2-ja-q40",
+      "examId": "azure-sc-200-set2-ja",
+      "setNumber": 2,
+      "domain": "Microsoft Sentinel を使用した脅威の検出と対応",
+      "question": "インシデント調査中、調査グラフはどのような情報を表示できますか？",
+      "options": {
+        "A": "生のログデータのみを表示する",
+        "B": "アラート、エンティティ、およびそれらの間の関係",
+        "C": "ネットワーク接続のみを表示する",
+        "D": "ユーザー情報のみを表示する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "調査グラフは、インシデント内のアラート、関連エンティティ（ユーザー、IP、ホストなど）およびそれらの関係を表示する対話型の視覚化を提供し、アナリストが攻撃の範囲と影響を迅速に理解するのに役立ちます。"
+    }
+  ]
+}

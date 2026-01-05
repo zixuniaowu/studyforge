@@ -1,0 +1,194 @@
+{
+  "exam": {
+    "id": "azure-az-305-set3",
+    "name": "Azure AZ-305 Solutions Architect Practice Exam #3",
+    "code": "AZ-305",
+    "provider": "Azure",
+    "language": "en",
+    "description": "Practice questions for Microsoft Azure Solutions Architect Expert certification exam, covering core domains including design identity, governance, and monitoring solutions, design data storage solutions, design business continuity solutions, and design infrastructure solutions.",
+    "totalQuestions": 10,
+    "passingScore": 70,
+    "examTime": 120,
+    "domains": [
+      {
+        "id": 1,
+        "name": "Design identity, governance, and monitoring solutions",
+        "weight": 28
+      },
+      {
+        "id": 2,
+        "name": "Design data storage solutions",
+        "weight": 27
+      },
+      {
+        "id": 3,
+        "name": "Design business continuity solutions",
+        "weight": 13
+      },
+      {
+        "id": 4,
+        "name": "Design infrastructure solutions",
+        "weight": 32
+      }
+    ],
+    "tags": [
+      "Azure",
+      "AZ-305",
+      "Solutions Architect",
+      "Certification Exam",
+      "Cloud Computing"
+    ]
+  },
+  "questions": [
+    {
+      "id": "q1",
+      "domain": 1,
+      "question": "A company needs to implement a governance solution that automatically remediates non-compliant resources. When a storage account is created without HTTPS-only traffic enabled, the policy should automatically enable it. Which Azure Policy effect should be used?",
+      "options": {
+        "A": "Deny",
+        "B": "Audit",
+        "C": "DeployIfNotExists",
+        "D": "Disabled"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "The DeployIfNotExists effect allows Azure Policy to automatically deploy a remediation task when a non-compliant resource is detected. This can automatically enable HTTPS-only traffic on storage accounts that don't have it enabled. The Deny effect would block creation, while Audit only reports non-compliance without remediation.\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q2",
+      "domain": 1,
+      "question": "A company is implementing Microsoft Entra ID (formerly Azure AD) for their multi-cloud environment. They need to provide single sign-on access to AWS and GCP consoles for their users. What should they configure?",
+      "options": {
+        "A": "Azure AD B2C custom policies",
+        "B": "Enterprise applications with SAML-based SSO",
+        "C": "Azure AD Application Proxy",
+        "D": "Azure AD Domain Services"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Enterprise applications in Microsoft Entra ID support SAML-based single sign-on, which is the standard protocol for federating with AWS and GCP consoles. Both AWS and GCP have pre-configured gallery applications in Entra ID that can be configured for SSO using SAML federation.\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q3",
+      "domain": 2,
+      "question": "A company needs to design a data storage solution for a machine learning workload. The solution must support storing large binary files (models and datasets), provide high throughput for parallel reads, and integrate with Azure Machine Learning. What should you recommend?",
+      "options": {
+        "A": "Azure SQL Database",
+        "B": "Azure Data Lake Storage Gen2",
+        "C": "Azure Table Storage",
+        "D": "Azure Queue Storage"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure Data Lake Storage Gen2 is optimized for big data analytics and machine learning workloads. It provides hierarchical namespace for efficient data organization, high throughput for parallel processing, and native integration with Azure Machine Learning for storing datasets and model artifacts.\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q4",
+      "domain": 2,
+      "question": "A company needs to implement a caching strategy for their e-commerce application. The cache must support data persistence, geo-replication for disaster recovery, and clustering for high availability. Which Azure Cache for Redis tier should they choose?",
+      "options": {
+        "A": "Basic tier",
+        "B": "Standard tier",
+        "C": "Premium tier",
+        "D": "Enterprise tier"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "Azure Cache for Redis Premium tier provides data persistence (RDB/AOF snapshots), geo-replication for disaster recovery, and Redis clustering for horizontal scaling and high availability. Basic tier is for development only, Standard adds replication but not persistence, and Enterprise is for specialized Redis modules.\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q5",
+      "domain": 3,
+      "question": "A company needs to design a disaster recovery solution for their Azure SQL Database. The solution must provide automatic failover with zero data loss (RPO=0) and support readable secondary replicas. What should you configure?",
+      "options": {
+        "A": "Geo-restore from automated backups",
+        "B": "Active geo-replication",
+        "C": "Auto-failover groups with synchronous replication",
+        "D": "Long-term backup retention"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "Auto-failover groups provide automatic failover capability with synchronous replication to achieve RPO=0 (zero data loss). They also support readable secondary replicas for read scale-out. Active geo-replication requires manual failover, while geo-restore from backups has RPO measured in hours.\n---",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q6",
+      "domain": 3,
+      "question": "A company is planning their Azure backup strategy. They need to protect Azure VMs, Azure Files, and SQL databases running on Azure VMs with a single backup solution. What should they use?",
+      "options": {
+        "A": "Azure Blob Storage snapshots",
+        "B": "Azure Recovery Services vault",
+        "C": "Azure managed disk snapshots",
+        "D": "SQL Server native backup to Azure Blob"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure Recovery Services vault provides a unified backup solution for multiple Azure workloads including Azure VMs, Azure Files, and SQL Server on Azure VMs. It offers centralized management, policy-based backup scheduling, and cross-region restore capabilities for all these workload types.\n---",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q7",
+      "domain": 4,
+      "question": "A company needs to deploy a globally distributed web application with automatic traffic distribution based on endpoint performance. The solution should route users to the endpoint with the lowest latency. Which Azure service and routing method should be used?",
+      "options": {
+        "A": "Azure Load Balancer with round-robin",
+        "B": "Azure Traffic Manager with Performance routing",
+        "C": "Azure Application Gateway with path-based routing",
+        "D": "Azure Front Door with weighted routing"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure Traffic Manager with Performance routing method measures network latency from the client to each endpoint and routes traffic to the endpoint with the lowest latency. This provides optimal user experience for globally distributed applications by directing users to the geographically closest healthy endpoint.\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q8",
+      "domain": 4,
+      "question": "A company is designing a microservices architecture on Azure Kubernetes Service (AKS). They need to implement service-to-service authentication without managing certificates manually. What should they use?",
+      "options": {
+        "A": "Kubernetes Secrets for storing certificates",
+        "B": "Azure Key Vault with CSI driver",
+        "C": "Workload Identity with Microsoft Entra ID",
+        "D": "Self-signed certificates in ConfigMaps"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "Workload Identity allows Kubernetes pods to authenticate to Azure services and other workloads using Microsoft Entra ID tokens. This eliminates the need to manage certificates or secrets manually. Pods can use their workload identity to authenticate to other services that trust Entra ID tokens.\n---",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q9",
+      "domain": 4,
+      "question": "A company needs to implement a content delivery solution for their static website assets. The solution must support custom domain with HTTPS, automatic certificate management, and integration with Azure Blob Storage. What should they use?",
+      "options": {
+        "A": "Azure Application Gateway",
+        "B": "Azure CDN with managed certificates",
+        "C": "Azure Traffic Manager",
+        "D": "Azure Load Balancer"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure CDN supports custom domains with HTTPS and provides managed certificates that are automatically provisioned and renewed. It integrates natively with Azure Blob Storage as an origin, caching static content at edge locations globally for improved performance and reduced latency.\n---",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q10",
+      "domain": 1,
+      "question": "A company needs to implement centralized logging for compliance requirements. Logs from Azure resources, on-premises servers, and third-party applications must be retained for 7 years with immutable storage. What architecture should be designed?",
+      "options": {
+        "A": "Log Analytics workspace with 7-year retention",
+        "B": "Log Analytics workspace with data export to immutable Blob Storage",
+        "C": "Event Hubs with Capture to standard Blob Storage",
+        "D": "Application Insights with continuous export"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Log Analytics workspace supports log collection from multiple sources but has a maximum retention of 2 years. For 7-year retention with immutability, configure data export to Azure Blob Storage with immutable storage policies (WORM). This provides compliance-grade log retention while maintaining query capabilities in Log Analytics for recent data.\n---",
+      "difficulty": "hard"
+    }
+  ]
+}

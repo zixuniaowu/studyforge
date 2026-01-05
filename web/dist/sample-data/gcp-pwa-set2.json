@@ -1,0 +1,663 @@
+{
+  "exam": {
+    "id": "gcp-pwa-set2",
+    "name": "Professional Google Workspace Administrator 练习题 Set 2",
+    "code": "PWA",
+    "provider": "Google Cloud",
+    "language": "zh-CN",
+    "description": "Google Cloud Professional Google Workspace Administrator 认证练习题第二套",
+    "totalQuestions": 40,
+    "passingScore": 70,
+    "examTime": 120,
+    "domains": [
+      "管理对象",
+      "配置服务",
+      "管理终端节点",
+      "监控组织运营",
+      "支持业务转型"
+    ],
+    "tags": ["Google Cloud", "Workspace", "Professional", "Administration"]
+  },
+  "questions": [
+    {
+      "id": "gcp-pwa-set2-q1",
+      "examId": "gcp-pwa-set2",
+      "setNumber": 2,
+      "domain": "管理对象",
+      "question": "您的组织正在进行重组，需要将大量用户从一个组织单位移动到另一个组织单位。最佳方法是什么？",
+      "options": {
+        "A": "逐个在管理控制台中移动用户",
+        "B": "使用批量更新功能或Admin SDK API",
+        "C": "删除用户并在新OU中重新创建",
+        "D": "使用GCDS重新同步"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "管理控制台支持批量选择用户并移动到不同的组织单位。对于大量用户，也可以使用Admin SDK Directory API编写脚本自动化此过程。删除重建会丢失数据和设置，GCDS用于外部目录同步，不适合组织内部移动。"
+    },
+    {
+      "id": "gcp-pwa-set2-q2",
+      "examId": "gcp-pwa-set2",
+      "setNumber": 2,
+      "domain": "配置服务",
+      "question": "组织需要确保敏感的HR文件只能由HR部门访问，其他员工即使获得链接也无法访问。应该如何配置？",
+      "options": {
+        "A": "将文件存储在HR部门的共享云端硬盘中并配置访问权限",
+        "B": "使用DLP规则阻止共享",
+        "C": "配置信息权限管理（IRM）",
+        "D": "禁用链接共享"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "共享云端硬盘（Shared Drive）提供团队级别的文件存储和访问控制。将HR文件存储在专用的共享云端硬盘中，只授予HR群组成员访问权限，其他人无法访问这些文件，即使他们有链接。这是实现部门数据隔离的最佳方法。"
+    },
+    {
+      "id": "gcp-pwa-set2-q3",
+      "examId": "gcp-pwa-set2",
+      "setNumber": 2,
+      "domain": "管理终端节点",
+      "question": "用户报告他们的Android设备上工作配置文件消失了。最可能的原因是什么？",
+      "options": {
+        "A": "用户卸载了工作应用",
+        "B": "设备不符合合规策略被远程擦除",
+        "C": "Google Play服务更新",
+        "D": "网络连接问题"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "当设备不符合配置的合规策略（如密码要求、操作系统版本、安全补丁等）时，如果启用了自动操作，系统可能会自动擦除工作配置文件。检查设备管理日志可以确认是否是合规强制执行导致的。用户无法自行删除工作配置文件而不影响整个MDM注册。"
+    },
+    {
+      "id": "gcp-pwa-set2-q4",
+      "examId": "gcp-pwa-set2",
+      "setNumber": 2,
+      "domain": "监控组织运营",
+      "question": "您需要识别组织中哪些用户在过去30天内没有登录。应该使用什么报告？",
+      "options": {
+        "A": "用户报告中的活动状态",
+        "B": "审核日志中的登录活动",
+        "C": "安全调查工具",
+        "D": "账号报告中的上次登录时间"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "账号报告显示每个用户的上次登录时间，可以导出并筛选出超过指定天数未登录的用户。这对于识别不活跃账号、清理许可证或发现潜在安全问题很有用。审核日志可以查看特定用户的登录历史，但不适合批量识别不活跃用户。"
+    },
+    {
+      "id": "gcp-pwa-set2-q5",
+      "examId": "gcp-pwa-set2",
+      "setNumber": 2,
+      "domain": "支持业务转型",
+      "question": "公司希望让用户可以在Gmail中使用AI功能来帮助撰写邮件。需要启用什么功能？",
+      "options": {
+        "A": "Gmail Labs",
+        "B": "Duet AI / Gemini for Workspace",
+        "C": "智能撰写",
+        "D": "Gmail API"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Duet AI（现在称为Gemini for Workspace）是Google的AI助手功能，可以帮助用户在Gmail、Docs等应用中撰写、改进和总结内容。需要在管理控制台中为用户或OU启用此功能。智能撰写是基本的自动完成功能，功能较为有限。"
+    },
+    {
+      "id": "gcp-pwa-set2-q6",
+      "examId": "gcp-pwa-set2",
+      "setNumber": 2,
+      "domain": "管理对象",
+      "question": "您需要创建一个动态群组，自动包含所有职位为'经理'的用户。应该使用什么功能？",
+      "options": {
+        "A": "Google群组的成员设置",
+        "B": "使用自定义属性和动态群组查询",
+        "C": "GCDS群组同步",
+        "D": "手动维护群组成员"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "动态群组允许基于用户属性自动填充成员。可以使用Cloud Identity Groups API或管理控制台创建动态群组，定义查询条件（如user.job_title=='经理'）。当用户属性变化时，成员资格自动更新。这比手动维护更高效且准确。"
+    },
+    {
+      "id": "gcp-pwa-set2-q7",
+      "examId": "gcp-pwa-set2",
+      "setNumber": 2,
+      "domain": "配置服务",
+      "question": "组织需要在Google Meet会议中启用实时字幕功能以支持听障员工。应该在哪里配置？",
+      "options": {
+        "A": "Meet服务设置",
+        "B": "无障碍设置",
+        "C": "视频设置",
+        "D": "用户自行启用"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "Google Meet的实时字幕功能由参会者自己在会议中启用，管理员无法强制启用或禁用（目前）。管理员可以通过沟通和培训让员工知道如何使用此功能。Meet服务设置主要控制谁可以创建会议、录制等功能。"
+    },
+    {
+      "id": "gcp-pwa-set2-q8",
+      "examId": "gcp-pwa-set2",
+      "setNumber": 2,
+      "domain": "管理终端节点",
+      "question": "您需要为公司配发的Android设备配置Kiosk模式，只允许运行一个应用。应该如何配置？",
+      "options": {
+        "A": "在高级移动管理中启用Kiosk模式",
+        "B": "使用Android企业专用设备（COSU）模式",
+        "C": "限制可安装的应用列表",
+        "D": "使用Chrome设备管理"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Android企业专用设备（Corporate-Owned Single-Use, COSU）模式允许将设备锁定为仅运行指定的应用。这适用于零售终端、数字标牌等场景。需要在设备注册时选择专用设备模式，然后配置允许的应用。Kiosk模式是Chrome设备的功能。"
+    },
+    {
+      "id": "gcp-pwa-set2-q9",
+      "examId": "gcp-pwa-set2",
+      "setNumber": 2,
+      "domain": "监控组织运营",
+      "question": "Alert Center显示'政府支持的攻击者'警报。这意味着什么，应该如何响应？",
+      "options": {
+        "A": "这是误报，可以忽略",
+        "B": "Google检测到可能来自国家级攻击者的活动，应立即调查并加强安全措施",
+        "C": "用户访问了政府网站",
+        "D": "需要联系执法部门"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "政府支持的攻击者警报表示Google安全团队检测到可能来自国家支持的攻击者针对您用户的活动。应立即调查受影响账号，重置凭据，检查账号活动，启用额外安全措施（如安全密钥）。这是高严重性警报，不应忽视。"
+    },
+    {
+      "id": "gcp-pwa-set2-q10",
+      "examId": "gcp-pwa-set2",
+      "setNumber": 2,
+      "domain": "支持业务转型",
+      "question": "公司希望使用Google Forms收集敏感的员工反馈，但需要确保回复是匿名的。应该如何配置？",
+      "options": {
+        "A": "在表单设置中禁用收集邮箱地址",
+        "B": "使用外部表单服务",
+        "C": "配置表单权限",
+        "D": "使用DLP规则"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "在Google Forms设置中，可以选择不收集回复者的电子邮件地址，这样回复就是匿名的。还应确保表单不要求登录即可提交（如果需要完全匿名）。对于组织内部的匿名反馈，可以要求登录但不记录邮箱地址。"
+    },
+    {
+      "id": "gcp-pwa-set2-q11",
+      "examId": "gcp-pwa-set2",
+      "setNumber": 2,
+      "domain": "管理对象",
+      "question": "您需要配置用户密码策略，要求密码长度至少12个字符且包含数字和特殊字符。应该在哪里配置？",
+      "options": {
+        "A": "用户账号设置",
+        "B": "安全 > 密码管理",
+        "C": "安全 > 身份验证",
+        "D": "组织单位设置"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "在管理控制台的安全 > 密码管理中，可以配置密码强度要求、最小长度、复杂度要求（大小写、数字、特殊字符）以及密码过期策略。这些设置可以应用到整个组织或特定OU。用户账号设置是个别用户的配置。"
+    },
+    {
+      "id": "gcp-pwa-set2-q12",
+      "examId": "gcp-pwa-set2",
+      "setNumber": 2,
+      "domain": "配置服务",
+      "question": "组织需要配置Gmail以接受来自外部邮件服务器的邮件，该服务器用于发送系统通知。应该配置什么？",
+      "options": {
+        "A": "入站网关",
+        "B": "SMTP中继服务",
+        "C": "IP白名单",
+        "D": "邮件路由"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "将外部邮件服务器的IP地址添加到Gmail的IP白名单（电子邮件白名单）中，可以确保来自该服务器的邮件不会被垃圾邮件过滤器拦截。这适用于受信任的内部系统发送的通知邮件。入站网关用于整合外部过滤服务，SMTP中继用于发送邮件。"
+    },
+    {
+      "id": "gcp-pwa-set2-q13",
+      "examId": "gcp-pwa-set2",
+      "setNumber": 2,
+      "domain": "管理终端节点",
+      "question": "您需要阻止用户在托管的Chrome浏览器中安装未经批准的扩展程序。应该如何配置？",
+      "options": {
+        "A": "禁用所有扩展程序",
+        "B": "配置扩展程序黑白名单",
+        "C": "使用网站过滤",
+        "D": "禁用Chrome Web Store"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "在Chrome管理设置中，可以配置扩展程序策略：允许列表（白名单）、阻止列表（黑名单）和强制安装的扩展。这允许管理员控制哪些扩展可以安装，同时允许批准的扩展使用。完全禁用扩展可能影响工作效率。"
+    },
+    {
+      "id": "gcp-pwa-set2-q14",
+      "examId": "gcp-pwa-set2",
+      "setNumber": 2,
+      "domain": "监控组织运营",
+      "question": "您需要设置警报，当用户的Google Drive存储使用量超过配额的90%时通知管理员。应该使用什么功能？",
+      "options": {
+        "A": "自定义警报规则",
+        "B": "存储管理报告",
+        "C": "安全调查工具",
+        "D": "Drive审核日志"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "在Alert Center中可以创建自定义警报规则，基于特定条件触发通知。虽然存储相关的预定义警报有限，但可以使用API或结合BigQuery导出数据创建自定义监控。存储报告显示使用情况但不提供主动警报功能。"
+    },
+    {
+      "id": "gcp-pwa-set2-q15",
+      "examId": "gcp-pwa-set2",
+      "setNumber": 2,
+      "domain": "支持业务转型",
+      "question": "公司希望创建一个公司内部知识库，允许员工贡献和搜索内容。最合适的Google Workspace工具是什么？",
+      "options": {
+        "A": "Google Sites",
+        "B": "共享云端硬盘",
+        "C": "Google Keep",
+        "D": "Google Currents"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Google Sites是创建内部网站和知识库的理想工具。可以创建结构化的页面、嵌入文档和视频、设置搜索功能，并轻松与组织成员共享。支持协作编辑和版本控制。共享云端硬盘适合文件存储，Keep用于个人笔记，Currents用于社交互动。"
+    },
+    {
+      "id": "gcp-pwa-set2-q16",
+      "examId": "gcp-pwa-set2",
+      "setNumber": 2,
+      "domain": "管理对象",
+      "question": "公司被收购，需要将所有用户的主域名从oldcompany.com更改为newcompany.com。应该如何处理？",
+      "options": {
+        "A": "直接更改用户的邮箱地址",
+        "B": "添加新域名为主域名，为用户添加别名或更改主地址",
+        "C": "创建新的Workspace账号并迁移数据",
+        "D": "联系Google更改域名"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "首先添加并验证newcompany.com域名，可以将其设置为主域名。然后可以为用户添加新域名的邮箱别名（保留旧地址接收邮件），或更改用户的主邮箱地址。建议先添加别名确保过渡期邮件正常，然后再更改主地址。无需重新创建账号或迁移数据。"
+    },
+    {
+      "id": "gcp-pwa-set2-q17",
+      "examId": "gcp-pwa-set2",
+      "setNumber": 2,
+      "domain": "配置服务",
+      "question": "用户抱怨他们无法在Google Docs中使用评论功能与外部协作者交流。可能的原因是什么？",
+      "options": {
+        "A": "评论功能被禁用",
+        "B": "外部共享被限制为仅查看权限",
+        "C": "用户没有正确的许可证",
+        "D": "Drive服务被禁用"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "如果管理员配置了外部共享限制为'仅查看'权限，则外部用户无法添加评论。评论需要'评论者'或更高权限。检查Drive和Docs的共享设置，确保允许外部用户获得评论权限。这是常见的安全配置导致的功能限制。"
+    },
+    {
+      "id": "gcp-pwa-set2-q18",
+      "examId": "gcp-pwa-set2",
+      "setNumber": 2,
+      "domain": "管理终端节点",
+      "question": "公司发放的移动设备丢失，员工请求远程擦除。在执行擦除之前应该确认什么？",
+      "options": {
+        "A": "设备的最后位置",
+        "B": "设备上是否有个人数据",
+        "C": "员工是否确定设备无法找回",
+        "D": "以上所有"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "远程擦除是不可逆的操作，应该谨慎执行。应确认：1) 设备位置（可能只是放错地方）；2) 是否是公司设备还是BYOD（BYOD只应擦除工作数据）；3) 员工确认设备确实丢失或被盗。完成确认后才执行擦除操作。"
+    },
+    {
+      "id": "gcp-pwa-set2-q19",
+      "examId": "gcp-pwa-set2",
+      "setNumber": 2,
+      "domain": "监控组织运营",
+      "question": "您需要调查最近一周内特定用户的所有Gmail活动，包括发送、接收和删除的邮件。应该使用什么工具？",
+      "options": {
+        "A": "Gmail日志搜索",
+        "B": "安全调查工具",
+        "C": "Gmail审核日志",
+        "D": "Google Vault"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "安全调查工具提供对Gmail、Drive等服务的深度调查能力。可以搜索特定用户的邮件活动，查看邮件内容（如有权限），并执行操作如删除恶意邮件。Gmail日志搜索主要显示投递状态，审核日志显示设置更改，Vault用于电子发现。"
+    },
+    {
+      "id": "gcp-pwa-set2-q20",
+      "examId": "gcp-pwa-set2",
+      "setNumber": 2,
+      "domain": "支持业务转型",
+      "question": "公司希望启用Google Workspace Labs功能让用户试用新特性。这些功能的特点是什么？",
+      "options": {
+        "A": "稳定且已全面测试",
+        "B": "实验性功能，可能不稳定或被移除",
+        "C": "付费附加功能",
+        "D": "仅限管理员使用"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Labs功能是实验性的新特性，允许用户试用即将发布或正在测试的功能。这些功能可能不稳定，随时可能被修改或移除，不应用于关键业务流程。管理员可以选择是否允许用户启用Labs功能。"
+    },
+    {
+      "id": "gcp-pwa-set2-q21",
+      "examId": "gcp-pwa-set2",
+      "setNumber": 2,
+      "domain": "管理对象",
+      "question": "您需要确保某些管理员只能管理特定组织单位的用户。应该如何配置？",
+      "options": {
+        "A": "创建超级管理员账号",
+        "B": "分配限定范围的管理员角色",
+        "C": "使用群组委派权限",
+        "D": "为每个OU创建单独的Workspace账号"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "分配管理员角色时，可以限定角色的范围到特定的组织单位。例如，可以分配'用户管理管理员'角色，但范围限定到'销售部门'OU。这样管理员只能管理该OU及其子单位的用户，无法访问其他部门。这实现了管理权限的委派和隔离。"
+    },
+    {
+      "id": "gcp-pwa-set2-q22",
+      "examId": "gcp-pwa-set2",
+      "setNumber": 2,
+      "domain": "配置服务",
+      "question": "组织需要配置Gmail，使特定部门发送的所有外部邮件都经过法务部门审核。应该配置什么？",
+      "options": {
+        "A": "邮件转发规则",
+        "B": "内容合规规则配合审核操作",
+        "C": "DLP规则",
+        "D": "邮件网关"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "内容合规规则可以配置为：当发件人属于特定OU且收件人是外部地址时，将邮件路由到审核队列。审核人可以批准或拒绝邮件发送。这实现了基于部门的外发邮件审核流程。DLP主要用于敏感内容检测，不是审核工作流。"
+    },
+    {
+      "id": "gcp-pwa-set2-q23",
+      "examId": "gcp-pwa-set2",
+      "setNumber": 2,
+      "domain": "管理终端节点",
+      "question": "用户报告他们的公司iOS设备收到'此iPhone由您的组织管理'的提示，但他们无法访问某些应用。可能的原因是什么？",
+      "options": {
+        "A": "设备未正确注册MDM",
+        "B": "管理应用列表中缺少这些应用",
+        "C": "设备存储空间不足",
+        "D": "iOS版本不兼容"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "如果启用了应用管理，只有添加到管理应用列表中的应用才能安装和使用。用户看到的'由组织管理'提示说明MDM注册正确，但应用访问受限于管理员配置的应用列表。检查并添加所需应用到白名单可以解决问题。"
+    },
+    {
+      "id": "gcp-pwa-set2-q24",
+      "examId": "gcp-pwa-set2",
+      "setNumber": 2,
+      "domain": "监控组织运营",
+      "question": "您需要确保组织符合GDPR数据保护要求。Google Workspace提供什么工具来帮助管理数据主体访问请求？",
+      "options": {
+        "A": "Google Vault导出",
+        "B": "数据导出工具（Admin Console）",
+        "C": "Google Takeout（用户自助）",
+        "D": "所有以上选项都可用于不同场景"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "处理数据主体访问请求时：1) 用户可以使用Google Takeout自行导出自己的数据；2) 管理员可以使用管理控制台的数据导出工具为特定用户导出数据；3) Vault可以搜索和导出特定数据用于合规目的。根据具体需求选择合适的工具。"
+    },
+    {
+      "id": "gcp-pwa-set2-q25",
+      "examId": "gcp-pwa-set2",
+      "setNumber": 2,
+      "domain": "支持业务转型",
+      "question": "公司决定实施混合工作模式，员工可以在家和办公室之间灵活切换。Google Workspace如何支持这种工作模式？",
+      "options": {
+        "A": "仅在办公室网络可访问",
+        "B": "云原生应用，任何地点、任何设备可访问",
+        "C": "需要VPN访问",
+        "D": "需要额外许可证支持远程工作"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Google Workspace是云原生的生产力套件，用户可以从任何地点、任何设备通过浏览器或移动应用访问。不需要VPN或额外许可证。配合上下文感知访问可以根据设备和网络位置调整安全策略，同时保持灵活性。"
+    },
+    {
+      "id": "gcp-pwa-set2-q26",
+      "examId": "gcp-pwa-set2",
+      "setNumber": 2,
+      "domain": "管理对象",
+      "question": "您需要创建一个群组，用于管理对特定Google Cloud项目的访问权限。应该创建什么类型的群组？",
+      "options": {
+        "A": "Google群组（用于通讯）",
+        "B": "安全群组",
+        "C": "访问群组",
+        "D": "协作收件箱"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "安全群组专门用于管理对Google Cloud资源和其他服务的访问权限。它们可以在IAM策略中使用，授予成员对云项目、文件夹或组织的访问权限。与普通群组不同，安全群组不用于邮件通讯，专注于访问控制。"
+    },
+    {
+      "id": "gcp-pwa-set2-q27",
+      "examId": "gcp-pwa-set2",
+      "setNumber": 2,
+      "domain": "配置服务",
+      "question": "组织希望用户可以使用第三方OAuth应用，但只允许管理员批准的应用。应该如何配置？",
+      "options": {
+        "A": "禁用所有OAuth访问",
+        "B": "配置OAuth应用访问控制，仅允许信任的应用",
+        "C": "使用防火墙阻止未知应用",
+        "D": "教育用户不要使用未批准的应用"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "在安全 > API控制中，可以配置第三方应用的访问策略。设置为'仅限信任的应用'后，用户只能授权管理员预先批准的应用访问其Google数据。未批准的应用请求会被阻止。这平衡了安全性和用户对第三方应用的合理需求。"
+    },
+    {
+      "id": "gcp-pwa-set2-q28",
+      "examId": "gcp-pwa-set2",
+      "setNumber": 2,
+      "domain": "管理终端节点",
+      "question": "您需要配置Chromebook在启动时自动登录到访客会话，用于公共展示用途。应该使用什么设置？",
+      "options": {
+        "A": "托管访客会话模式",
+        "B": "Kiosk应用模式",
+        "C": "公共会话模式",
+        "D": "访客模式"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "托管访客会话模式允许配置Chromebook自动启动到一个受管控的访客会话，适合公共终端、图书馆或展示用途。会话可以限时，退出后自动清除数据。Kiosk模式运行单个应用，访客模式是用户自行启动的临时会话。"
+    },
+    {
+      "id": "gcp-pwa-set2-q29",
+      "examId": "gcp-pwa-set2",
+      "setNumber": 2,
+      "domain": "监控组织运营",
+      "question": "您需要生成一份报告，显示组织中所有启用两步验证的用户比例。应该查看什么？",
+      "options": {
+        "A": "安全中心的安全状况",
+        "B": "用户报告",
+        "C": "审核日志",
+        "D": "账号报告中的2SV状态"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "账号报告显示每个用户的2SV注册状态。可以导出此报告并计算启用2SV的用户比例。安全中心的安全状况显示整体的2SV采用率摘要，但账号报告提供详细的用户级数据。这对于跟踪2SV推广进度很有用。"
+    },
+    {
+      "id": "gcp-pwa-set2-q30",
+      "examId": "gcp-pwa-set2",
+      "setNumber": 2,
+      "domain": "支持业务转型",
+      "question": "公司正在评估Google Workspace的企业版功能。Enterprise Plus相比Enterprise Standard提供的主要增强功能是什么？",
+      "options": {
+        "A": "更多用户数限制",
+        "B": "高级安全功能、更大存储和更多管理控制",
+        "C": "更好的客户支持",
+        "D": "更便宜的价格"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Enterprise Plus相比Enterprise Standard提供：S/MIME加密、数据区域（Data Regions）控制、高级DLP、安全沙箱、5TB存储（vs Enterprise Standard的5TB池化）、高级端点管理、增强的安全调查工具等。这些功能满足大型企业的高级安全和合规需求。"
+    },
+    {
+      "id": "gcp-pwa-set2-q31",
+      "examId": "gcp-pwa-set2",
+      "setNumber": 2,
+      "domain": "管理对象",
+      "question": "用户意外删除了重要的共享云端硬盘文件。如何恢复？",
+      "options": {
+        "A": "从用户的回收站恢复",
+        "B": "由共享云端硬盘管理员从共享云端硬盘回收站恢复",
+        "C": "联系Google支持恢复",
+        "D": "无法恢复"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "共享云端硬盘有自己的回收站，删除的文件会在回收站保留约25天。共享云端硬盘的管理员或内容管理员可以从回收站恢复文件。用户个人的回收站只包含他们自己My Drive中删除的文件，不包含共享云端硬盘的文件。"
+    },
+    {
+      "id": "gcp-pwa-set2-q32",
+      "examId": "gcp-pwa-set2",
+      "setNumber": 2,
+      "domain": "配置服务",
+      "question": "您需要配置Gmail使其能够接收大于25MB的附件（通过Google Drive链接）。需要配置什么？",
+      "options": {
+        "A": "修改附件大小限制",
+        "B": "无需配置，Gmail自动将大文件转换为Drive链接",
+        "C": "启用Drive集成",
+        "D": "配置SMTP设置"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Gmail默认支持将大文件作为Google Drive链接发送。当附件超过25MB时，系统会自动上传到Drive并在邮件中插入链接。用户也可以选择直接插入Drive文件链接。这是内置功能，无需额外配置。接收方可以通过链接下载文件。"
+    },
+    {
+      "id": "gcp-pwa-set2-q33",
+      "examId": "gcp-pwa-set2",
+      "setNumber": 2,
+      "domain": "管理终端节点",
+      "question": "您正在为组织部署Windows设备的Google凭据提供程序（GCPW）。这个工具的主要功能是什么？",
+      "options": {
+        "A": "允许使用Google账号登录Windows设备",
+        "B": "管理Windows更新",
+        "C": "加密Windows硬盘",
+        "D": "安装Chrome浏览器"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Google凭据提供程序for Windows（GCPW）允许用户使用Google Workspace凭据登录Windows设备。这简化了用户体验（一个密码），并允许管理员配置设备注册和政策。GCPW与端点验证结合可以提供设备管理和合规检查功能。"
+    },
+    {
+      "id": "gcp-pwa-set2-q34",
+      "examId": "gcp-pwa-set2",
+      "setNumber": 2,
+      "domain": "监控组织运营",
+      "question": "您发现某个用户的账号在非工作时间从异常地理位置登录。应该首先采取什么行动？",
+      "options": {
+        "A": "立即删除该用户账号",
+        "B": "联系用户确认是否是本人操作，同时临时挂起账号",
+        "C": "忽略，可能是VPN",
+        "D": "等待更多可疑活动再行动"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "异常登录可能表示账号被盗用，但也可能是用户出差或使用VPN。最佳做法是：1) 临时挂起账号防止潜在损害；2) 联系用户确认是否是本人；3) 如果是盗用，重置密码和令牌。不应忽视可疑活动，也不应直接删除账号。"
+    },
+    {
+      "id": "gcp-pwa-set2-q35",
+      "examId": "gcp-pwa-set2",
+      "setNumber": 2,
+      "domain": "支持业务转型",
+      "question": "公司希望将Google Workspace与Salesforce集成，实现单点登录。应该使用什么方法？",
+      "options": {
+        "A": "在Google管理控制台配置Salesforce为SAML应用",
+        "B": "在Salesforce配置Google为SAML IdP",
+        "C": "两者都需要配置",
+        "D": "使用API集成"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "实现SAML SSO需要在两端配置：1) 在Google管理控制台添加Salesforce作为SAML应用，配置属性映射；2) 在Salesforce配置Google为身份提供者，添加证书和SSO URL。双方配置完成后，用户可以使用Google凭据登录Salesforce。"
+    },
+    {
+      "id": "gcp-pwa-set2-q36",
+      "examId": "gcp-pwa-set2",
+      "setNumber": 2,
+      "domain": "管理对象",
+      "question": "组织有300个用户需要临时访问特定的Google Cloud资源。访问权限应在项目结束后自动撤销。最佳方法是什么？",
+      "options": {
+        "A": "手动在项目结束时删除权限",
+        "B": "使用有时间限制的IAM条件",
+        "C": "创建临时用户账号",
+        "D": "使用服务账号"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "IAM条件允许设置访问权限的时间限制。可以为群组或用户授予权限时添加条件，指定权限的有效期。到期后权限自动失效，无需手动操作。这比手动管理更可靠，也避免了创建临时账号的复杂性。"
+    },
+    {
+      "id": "gcp-pwa-set2-q37",
+      "examId": "gcp-pwa-set2",
+      "setNumber": 2,
+      "domain": "配置服务",
+      "question": "用户报告Google Meet会议质量差，视频经常卡顿。管理员应该检查什么？",
+      "options": {
+        "A": "Meet服务设置",
+        "B": "Meet质量工具和网络报告",
+        "C": "用户的Gmail设置",
+        "D": "Chrome浏览器版本"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Meet质量工具提供会议的详细质量报告，包括网络状况、丢包率、延迟等指标。管理员可以查看特定会议或用户的质量数据，识别是网络问题、设备问题还是其他原因导致的质量下降。这有助于有针对性地解决问题。"
+    },
+    {
+      "id": "gcp-pwa-set2-q38",
+      "examId": "gcp-pwa-set2",
+      "setNumber": 2,
+      "domain": "管理终端节点",
+      "question": "您需要确保用户只能从公司批准的设备访问Google Workspace。应该如何实现？",
+      "options": {
+        "A": "禁用所有移动设备访问",
+        "B": "使用设备证书配合上下文感知访问",
+        "C": "要求所有用户使用VPN",
+        "D": "仅允许Chrome浏览器访问"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "设备证书与上下文感知访问结合可以确保只有安装了公司证书的设备才能访问Workspace应用。公司设备部署证书，访问策略检查证书存在，未安装证书的个人设备被拒绝访问。这提供了强设备认证而不影响用户体验。"
+    },
+    {
+      "id": "gcp-pwa-set2-q39",
+      "examId": "gcp-pwa-set2",
+      "setNumber": 2,
+      "domain": "监控组织运营",
+      "question": "法务部门需要保留特定员工的所有电子邮件和文件，直到诉讼结束。应该使用什么功能？",
+      "options": {
+        "A": "Google Vault保留规则",
+        "B": "Google Vault法律保留",
+        "C": "备份到Cloud Storage",
+        "D": "导出数据并离线存储"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Google Vault的法律保留功能专门用于诉讼或调查场景。将用户添加到法律保留后，其所有邮件、文件和聊天记录会被无限期保留，不受保留规则或用户删除的影响。诉讼结束后可以移除法律保留。这确保相关数据不会被意外删除。"
+    },
+    {
+      "id": "gcp-pwa-set2-q40",
+      "examId": "gcp-pwa-set2",
+      "setNumber": 2,
+      "domain": "支持业务转型",
+      "question": "公司正在制定Google Workspace采用策略。为确保成功采用，最重要的因素是什么？",
+      "options": {
+        "A": "购买最高级别的许可证",
+        "B": "制定培训和变更管理计划",
+        "C": "立即禁用旧系统",
+        "D": "仅让IT部门使用"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "成功采用新工具的关键是用户接受度。制定全面的培训计划、提供资源和支持、识别变更倡导者、循序渐进地推广，这些变更管理措施对成功采用至关重要。仅靠技术部署无法确保用户实际使用和获得价值。"
+    }
+  ]
+}

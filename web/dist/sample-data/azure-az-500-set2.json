@@ -1,0 +1,644 @@
+{
+  "exam": {
+    "id": "azure-az-500-set2",
+    "name": "Azure AZ-500 安全工程师认证模拟考试 #2",
+    "code": "AZ-500",
+    "provider": "Azure",
+    "language": "zh-CN",
+    "description": "Microsoft Azure安全工程师认证考试模拟题，涵盖身份和访问管理、平台保护、安全操作以及数据和应用程序安全等核心领域",
+    "totalQuestions": 40,
+    "passingScore": 70,
+    "examTime": 120,
+    "domains": [
+      {
+        "id": 1,
+        "name": "管理身份和访问 (Manage identity and access)",
+        "weight": 28
+      },
+      {
+        "id": 2,
+        "name": "实现平台保护 (Implement platform protection)",
+        "weight": 22
+      },
+      {
+        "id": 3,
+        "name": "管理安全操作 (Manage security operations)",
+        "weight": 28
+      },
+      {
+        "id": 4,
+        "name": "保护数据和应用程序 (Secure data and applications)",
+        "weight": 22
+      }
+    ],
+    "tags": [
+      "Azure",
+      "AZ-500",
+      "安全工程师",
+      "认证考试",
+      "云安全"
+    ]
+  },
+  "questions": [
+    {
+      "id": "q1",
+      "domain": 1,
+      "question": "一家公司需要配置条件访问策略，要求从非托管设备访问时需要使用批准的客户端应用程序。应该配置什么条件？",
+      "options": {
+        "A": "位置条件",
+        "B": "设备平台条件",
+        "C": "客户端应用条件和授予控制",
+        "D": "用户风险条件"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "条件访问策略可以使用客户端应用条件来检测访问来源，并使用授予控制来要求使用批准的客户端应用程序或应用保护策略。这允许您在非托管设备上强制使用特定的移动应用程序。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q2",
+      "domain": 1,
+      "question": "一家公司需要配置Azure AD，使得当用户被标记为高风险时，他们必须重置密码才能登录。应该使用什么？",
+      "options": {
+        "A": "登录风险策略",
+        "B": "用户风险策略",
+        "C": "MFA注册策略",
+        "D": "条件访问命名位置"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure AD Identity Protection的用户风险策略可以在检测到用户风险（如凭据泄露）时强制执行密码重置。当用户风险达到指定级别时，策略会阻止访问直到用户通过自助密码重置完成修正。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q3",
+      "domain": 1,
+      "question": "一家公司需要为Azure AD中的来宾用户配置自动过期，以确保外部用户访问权限在一定时间后被撤销。应该使用什么？",
+      "options": {
+        "A": "Azure AD访问评审",
+        "B": "Azure AD权利管理访问包",
+        "C": "Azure AD B2B设置",
+        "D": "条件访问策略"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure AD权利管理中的访问包可以配置分配的到期时间。当您创建包含对资源访问权限的访问包时，可以设置分配在特定时间后过期，确保来宾用户的访问权限不会无限期延续。\n---",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q4",
+      "domain": 1,
+      "question": "一家公司希望允许用户自助注册MFA，而不需要管理员为每个用户单独配置。应该使用什么？",
+      "options": {
+        "A": "Azure AD安全默认值",
+        "B": "Azure AD Identity Protection MFA注册策略",
+        "C": "条件访问策略",
+        "D": "Azure AD用户设置"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure AD Identity Protection的MFA注册策略允许您要求用户在下次登录时注册MFA。此策略可以针对所有用户或特定组，并可以设置在特定天数内完成注册。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q5",
+      "domain": 1,
+      "question": "一家公司需要配置应用程序，使其可以代表已登录用户访问Microsoft Graph API。应该使用什么权限类型？",
+      "options": {
+        "A": "应用程序权限",
+        "B": "委托权限",
+        "C": "管理员同意",
+        "D": "用户分配"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "委托权限用于当应用程序需要代表已登录用户访问资源时。应用程序以登录用户的权限级别运行，只能访问用户有权访问的内容。这与应用程序权限不同，后者是应用程序以自己的身份运行。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q6",
+      "domain": 1,
+      "question": "一家公司需要配置Azure AD PIM，要求用户在激活全局管理员角色时提供业务理由。应该在PIM中配置什么设置？",
+      "options": {
+        "A": "角色设置中启用理由要求",
+        "B": "分配设置中的审批流程",
+        "C": "MFA激活要求",
+        "D": "通知设置"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "在Azure AD PIM的角色设置中，您可以启用\"激活时需要理由\"选项。这要求用户在请求激活特权角色时必须提供业务理由，为审核目的提供文档记录。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q7",
+      "domain": 1,
+      "question": "一家公司需要阻止用户从Azure门户中删除其多重身份验证方法。应该配置什么？",
+      "options": {
+        "A": "身份验证方法策略",
+        "B": "条件访问策略",
+        "C": "安全信息注册策略",
+        "D": "Azure AD用户设置"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Azure AD身份验证方法策略允许您配置用户可以使用哪些身份验证方法，以及用户是否可以注册和管理某些方法。您可以限制用户删除特定的身份验证方法以确保合规性。\n---",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q8",
+      "domain": 1,
+      "question": "一家公司使用Azure AD Connect将本地Active Directory与Azure AD同步。他们希望阻止特定的本地安全组同步到云端。应该如何配置？",
+      "options": {
+        "A": "在Azure AD Connect中配置范围筛选",
+        "B": "在Azure AD中删除同步的组",
+        "C": "使用Azure AD条件访问",
+        "D": "配置Azure AD B2B设置"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Azure AD Connect的范围筛选允许您根据属性值（如组成员身份或OU）来包含或排除要同步的对象。您可以配置筛选规则以排除特定的安全组，使其不会同步到Azure AD。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q9",
+      "domain": 1,
+      "question": "一家公司需要配置Azure AD，以便用户只能从经过IT部门批准的设备访问公司应用程序。应该使用什么条件访问控制？",
+      "options": {
+        "A": "要求混合Azure AD加入的设备",
+        "B": "要求批准的客户端应用程序",
+        "C": "要求应用保护策略",
+        "D": "要求密码更改"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "条件访问策略可以要求设备为混合Azure AD加入或符合Intune合规性策略。混合Azure AD加入确保设备同时加入本地AD和Azure AD，这意味着设备已由IT管理。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q10",
+      "domain": 1,
+      "question": "一家公司需要配置一个紧急访问账户，即使条件访问策略阻止了常规访问也能登录Azure门户。应该如何配置？",
+      "options": {
+        "A": "从所有条件访问策略中排除紧急访问账户",
+        "B": "为紧急账户禁用MFA",
+        "C": "使用本地管理员账户",
+        "D": "配置Azure AD B2B访问"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "紧急访问账户应该从所有条件访问策略中排除，以确保在策略配置错误或Azure AD出现问题时仍能访问。这些账户应该有强密码，并受到严格监控和保护。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q11",
+      "domain": 2,
+      "question": "一家公司需要配置Azure防火墙以允许出站HTTPS流量到特定的FQDN（完全限定域名）。应该使用什么类型的规则？",
+      "options": {
+        "A": "网络规则",
+        "B": "应用程序规则",
+        "C": "NAT规则",
+        "D": "DNAT规则"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure防火墙的应用程序规则用于基于FQDN过滤出站HTTP/HTTPS流量。您可以指定目标FQDN，防火墙将检查TLS SNI或HTTP Host头来确定目标，而无需知道IP地址。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q12",
+      "domain": 2,
+      "question": "一家公司需要配置网络安全组(NSG)以允许从Azure负载均衡器到后端虚拟机的流量。应该使用什么服务标记作为源？",
+      "options": {
+        "A": "Internet",
+        "B": "VirtualNetwork",
+        "C": "AzureLoadBalancer",
+        "D": "AzureTrafficManager"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "AzureLoadBalancer服务标记代表Azure负载均衡器的健康探测IP地址。在NSG规则中使用此标记作为源，可以允许负载均衡器的健康探测流量到达后端虚拟机。\n---",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q13",
+      "domain": 2,
+      "question": "一家公司需要配置Azure防火墙策略，以便在多个Azure区域的防火墙之间共享规则。应该使用什么？",
+      "options": {
+        "A": "Azure防火墙管理器",
+        "B": "Azure Policy",
+        "C": "Azure Blueprints",
+        "D": "ARM模板"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Azure防火墙管理器允许您创建防火墙策略并将其应用于多个Azure防火墙实例。策略支持层次结构，可以在不同区域的防火墙之间共享基本规则，同时允许本地自定义。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q14",
+      "domain": 2,
+      "question": "一家公司需要配置Azure Application Gateway以保护后端Web服务器的IP地址不被客户端发现。应该使用什么功能？",
+      "options": {
+        "A": "URL路由",
+        "B": "SSL终止",
+        "C": "后端池配置",
+        "D": "cookie关联"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "通过将Application Gateway配置为后端池，客户端只能看到网关的公共IP地址。网关作为反向代理，将请求转发到后端服务器，后端服务器可以使用私有IP地址，不会暴露给客户端。\n---",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q15",
+      "domain": 2,
+      "question": "一家公司需要确保Azure Container Registry中的容器映像不包含已知漏洞。应该使用什么功能？",
+      "options": {
+        "A": "Azure Policy",
+        "B": "Microsoft Defender for Containers",
+        "C": "Azure AD RBAC",
+        "D": "内容信任"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Microsoft Defender for Containers可以扫描Azure Container Registry中的容器映像，检测已知漏洞。它使用Qualys扫描器来识别安全问题，并提供修复建议和漏洞报告。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q16",
+      "domain": 2,
+      "question": "一家公司需要配置Azure Kubernetes Service(AKS)集群以使用Azure AD进行身份验证。应该使用什么功能？",
+      "options": {
+        "A": "Azure AD集成",
+        "B": "托管标识",
+        "C": "服务主体",
+        "D": "本地账户"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "AKS的Azure AD集成允许用户使用其Azure AD凭据通过kubectl访问集群。启用后，您可以使用Azure RBAC或Kubernetes RBAC根据Azure AD用户和组分配权限。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q17",
+      "domain": 2,
+      "question": "一家公司需要限制可以部署到Azure的虚拟机SKU。应该使用什么？",
+      "options": {
+        "A": "Azure RBAC",
+        "B": "Azure Policy - 允许的虚拟机SKU",
+        "C": "Azure Advisor",
+        "D": "成本管理"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure Policy的'允许的虚拟机大小SKU'策略可以限制可以在订阅或资源组中部署的VM大小。这可以用于强制使用特定的安全加强型SKU或限制成本高昂的大型VM。\n---",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q18",
+      "domain": 2,
+      "question": "一家公司需要在Azure Kubernetes Service中实现Pod安全策略，以防止容器以root用户身份运行。应该使用什么？",
+      "options": {
+        "A": "网络策略",
+        "B": "Azure Policy for AKS",
+        "C": "Kubernetes密钥",
+        "D": "服务网格"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure Policy for AKS（Azure Policy的Kubernetes附加组件）可以强制执行Pod安全标准。您可以应用策略来拒绝以root身份运行的Pod，阻止特权容器，并强制执行其他安全配置。\n---",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q19",
+      "domain": 2,
+      "question": "一家公司需要配置虚拟网络之间的安全通信，同时集中管理流量检查。应该使用什么网络拓扑？",
+      "options": {
+        "A": "对等互连的VNet",
+        "B": "中心辐射型(Hub-Spoke)架构与Azure防火墙",
+        "C": "VPN网关",
+        "D": "ExpressRoute"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "中心辐射型架构将Azure防火墙部署在中心VNet中，所有分支VNet的流量都通过中心路由。这允许集中管理安全策略和流量检查，同时保持网络分段。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q20",
+      "domain": 2,
+      "question": "一家公司需要配置Azure VM以自动应用操作系统安全更新。应该使用什么功能？",
+      "options": {
+        "A": "Azure Automation更新管理",
+        "B": "Azure Policy",
+        "C": "Microsoft Defender for Cloud",
+        "D": "Azure Advisor"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Azure Automation更新管理可以评估和安排Azure VM的操作系统更新。它支持Windows和Linux VM，可以配置维护窗口和更新部署计划，确保安全补丁及时应用。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q21",
+      "domain": 3,
+      "question": "一家公司需要在Microsoft Sentinel中配置威胁情报源，以增强检测能力。应该使用什么功能？",
+      "options": {
+        "A": "数据连接器",
+        "B": "威胁情报连接器",
+        "C": "分析规则",
+        "D": "工作簿"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Microsoft Sentinel的威胁情报连接器允许您导入来自各种源的威胁指标（IOC）。这些指标可以与您的日志数据关联，以检测已知恶意IP地址、域名或文件哈希的活动。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q22",
+      "domain": 3,
+      "question": "一家公司需要配置Microsoft Sentinel以自动将相关警报分组为单个事件。应该使用什么功能？",
+      "options": {
+        "A": "分析规则中的事件分组",
+        "B": "剧本",
+        "C": "工作簿",
+        "D": "搜寻查询"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "在Microsoft Sentinel分析规则中，事件设置部分允许您配置警报分组。您可以基于共同字段（如用户、IP地址）将多个警报分组为单个事件，减少警报疲劳并便于调查。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q23",
+      "domain": 3,
+      "question": "一家公司需要使用Kusto查询语言(KQL)在Microsoft Sentinel中搜索过去24小时内的失败登录尝试。应该查询哪个表？",
+      "options": {
+        "A": "SecurityEvent",
+        "B": "SigninLogs",
+        "C": "AzureActivity",
+        "D": "Heartbeat"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "SigninLogs表包含Azure AD登录事件，包括成功和失败的登录尝试。您可以使用KQL查询此表，筛选ResultType字段以查找失败的登录（非零值表示失败）。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q24",
+      "domain": 3,
+      "question": "一家公司需要配置Azure活动日志以将事件流式传输到第三方SIEM解决方案。应该将活动日志发送到哪个目标？",
+      "options": {
+        "A": "存储账户",
+        "B": "Log Analytics工作区",
+        "C": "事件中心",
+        "D": "Azure Functions"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "事件中心是用于将Azure日志流式传输到外部系统的推荐目标。第三方SIEM解决方案可以从事件中心订阅者处接收实时事件流，实现近实时的日志摄取。\n---",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q25",
+      "domain": 3,
+      "question": "一家公司需要配置Microsoft Defender for Cloud以生成关于订阅中发现的安全漏洞的每周报告。应该使用什么功能？",
+      "options": {
+        "A": "安全警报",
+        "B": "安全建议导出",
+        "C": "连续导出",
+        "D": "工作流自动化"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "连续导出功能允许您将Microsoft Defender for Cloud的安全建议和警报定期导出到Log Analytics工作区或事件中心。然后可以使用Power BI或其他工具生成定期报告。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q26",
+      "domain": 3,
+      "question": "一家公司需要在检测到Azure资源配置更改时触发通知。应该监控什么类型的日志？",
+      "options": {
+        "A": "资源日志",
+        "B": "活动日志",
+        "C": "Azure AD日志",
+        "D": "指标"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure活动日志记录所有订阅级别的操作，包括资源创建、修改和删除。您可以创建活动日志警报，在检测到特定操作（如策略分配更改或角色分配更改）时发送通知。\n---",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q27",
+      "domain": 3,
+      "question": "一家公司需要使用Microsoft Sentinel调查可能的数据泄露事件。调查人员需要可视化用户、IP地址和资源之间的关系。应该使用什么功能？",
+      "options": {
+        "A": "工作簿",
+        "B": "调查图",
+        "C": "搜寻查询",
+        "D": "实体行为"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Microsoft Sentinel的调查图提供事件中涉及的实体（用户、IP、主机等）之间关系的可视化表示。分析师可以扩展实体以发现相关警报和活动，帮助了解攻击范围。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q28",
+      "domain": 3,
+      "question": "一家公司需要配置Microsoft Defender for Cloud以在发现高严重性警报时自动发送电子邮件通知。应该配置什么？",
+      "options": {
+        "A": "工作流自动化",
+        "B": "安全策略",
+        "C": "电子邮件通知设置",
+        "D": "Azure Monitor操作组"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "Microsoft Defender for Cloud的电子邮件通知设置允许您配置当检测到安全警报时向谁发送通知。您可以指定严重性阈值和接收者的电子邮件地址。\n---",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q29",
+      "domain": 3,
+      "question": "一家公司需要评估其Azure订阅是否符合HIPAA合规性要求。应该使用什么？",
+      "options": {
+        "A": "Azure Policy",
+        "B": "Microsoft Defender for Cloud法规合规性",
+        "C": "Azure Advisor",
+        "D": "Azure Blueprints"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Microsoft Defender for Cloud的法规合规性仪表板提供HIPAA、PCI DSS、SOC 2等标准的内置评估。它显示您当前的合规状态，并提供改进建议以满足特定控制要求。\n---",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q30",
+      "domain": 3,
+      "question": "一家公司需要配置Microsoft Sentinel中的用户和实体行为分析(UEBA)以检测异常用户活动。应该首先做什么？",
+      "options": {
+        "A": "启用UEBA功能",
+        "B": "创建分析规则",
+        "C": "配置数据连接器",
+        "D": "部署剧本"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "要使用UEBA功能，您需要首先在Microsoft Sentinel设置中启用它。启用后，Sentinel将开始分析用户和实体的行为模式，并在检测到异常活动时生成见解和警报。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q31",
+      "domain": 4,
+      "question": "一家公司需要配置Azure SQL数据库以自动检测和阻止潜在的SQL注入攻击。应该启用什么功能？",
+      "options": {
+        "A": "透明数据加密",
+        "B": "高级威胁防护",
+        "C": "动态数据掩码",
+        "D": "Azure AD身份验证"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure SQL的高级威胁防护可以检测异常活动，包括潜在的SQL注入攻击、暴力攻击和异常数据访问模式。它提供安全警报并可以配置发送电子邮件通知。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q32",
+      "domain": 4,
+      "question": "一家公司需要配置Azure存储账户以使用Azure AD身份验证而不是共享密钥。应该在存储账户上配置什么？",
+      "options": {
+        "A": "禁用共享密钥访问",
+        "B": "启用静态网站",
+        "C": "配置网络规则",
+        "D": "启用版本控制"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "通过在存储账户上禁用共享密钥访问，您可以强制使用Azure AD身份验证。这消除了使用存储账户密钥或SAS令牌的能力，所有访问必须通过Azure AD RBAC授权。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q33",
+      "domain": 4,
+      "question": "一家公司需要确保Azure Key Vault中的密钥不能被删除，即使是Key Vault管理员也不行。应该启用什么功能？",
+      "options": {
+        "A": "软删除",
+        "B": "清除保护",
+        "C": "访问策略",
+        "D": "防火墙规则"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "清除保护与软删除一起使用，防止在保留期间强制删除密钥、机密和证书。启用清除保护后，即使有管理权限，也无法清除已删除的对象，直到保留期结束。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q34",
+      "domain": 4,
+      "question": "一家公司需要配置Azure SQL数据库以确保特定用户只能看到他们自己创建的数据行。应该使用什么功能？",
+      "options": {
+        "A": "Always Encrypted",
+        "B": "动态数据掩码",
+        "C": "行级安全性(RLS)",
+        "D": "透明数据加密"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "行级安全性(RLS)使用安全策略来过滤用户可以访问的行。您可以创建基于用户身份的筛选谓词，确保用户只能看到与其关联的数据，实现多租户应用程序中的数据隔离。\n---",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q35",
+      "domain": 4,
+      "question": "一家公司需要配置Azure Web应用以使用Azure Key Vault中存储的连接字符串，而无需在应用配置中硬编码机密引用。应该使用什么功能？",
+      "options": {
+        "A": "应用设置中的Key Vault引用",
+        "B": "托管标识",
+        "C": "服务主体",
+        "D": "环境变量"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Azure App Service支持在应用设置中使用Key Vault引用，格式为@Microsoft.KeyVault(...)。运行时会自动从Key Vault获取机密值，应用程序可以像使用普通环境变量一样访问它。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q36",
+      "domain": 4,
+      "question": "一家公司需要配置Azure Cosmos DB以使用客户管理的密钥进行加密。应该首先配置什么？",
+      "options": {
+        "A": "在Key Vault中创建密钥",
+        "B": "启用Cosmos DB防火墙",
+        "C": "配置虚拟网络服务终结点",
+        "D": "启用多区域写入"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "要在Cosmos DB中使用客户管理的密钥，您需要首先在Azure Key Vault中创建或导入RSA密钥。然后，您需要为Cosmos DB账户创建托管标识并授予其访问密钥的权限。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q37",
+      "domain": 4,
+      "question": "一家公司需要配置Azure存储账户以防止通过公共终结点访问blob数据。应该配置什么？",
+      "options": {
+        "A": "将网络访问默认规则设置为\"拒绝\"",
+        "B": "启用Blob软删除",
+        "C": "配置生命周期管理",
+        "D": "启用版本控制"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "通过在存储账户防火墙中将默认网络访问规则设置为\"拒绝\"，您可以阻止所有公共互联网访问。然后可以添加例外规则以允许特定的虚拟网络或IP地址范围访问。\n---",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q38",
+      "domain": 4,
+      "question": "一家公司需要使用Azure Policy确保所有新创建的存储账户都启用了HTTPS传输。应该使用什么策略效果？",
+      "options": {
+        "A": "Audit",
+        "B": "Deny",
+        "C": "DeployIfNotExists",
+        "D": "AuditIfNotExists"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Deny效果会在资源创建或更新时评估策略条件，如果不符合（例如未启用HTTPS），则阻止操作。这确保了所有新存储账户必须启用安全传输。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q39",
+      "domain": 4,
+      "question": "一家公司需要配置Azure API管理以验证入站请求中的JWT令牌。应该使用什么策略？",
+      "options": {
+        "A": "rate-limit",
+        "B": "validate-jwt",
+        "C": "set-header",
+        "D": "cors"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "validate-jwt策略可以验证入站请求中的JWT令牌。您可以配置策略来验证令牌签名、颁发者、受众和过期时间，确保只有持有有效令牌的请求才能访问后端API。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q40",
+      "domain": 4,
+      "question": "一家公司需要配置Azure Disk Encryption以加密Azure虚拟机的操作系统和数据磁盘。加密密钥应该存储在哪里？",
+      "options": {
+        "A": "Azure存储账户",
+        "B": "Azure Key Vault",
+        "C": "Azure AD",
+        "D": "虚拟机本地"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure Disk Encryption使用Azure Key Vault来存储和管理磁盘加密密钥和机密。Key Vault提供密钥的安全存储、访问控制和审核日志，确保加密密钥的保护。\n---",
+      "difficulty": "easy"
+    }
+  ]
+}

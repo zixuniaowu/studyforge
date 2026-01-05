@@ -1,0 +1,649 @@
+{
+  "exam": {
+    "id": "azure-az-204-set2-ja",
+    "name": "Azure AZ-204 開発者模擬試験 #2",
+    "code": "AZ-204",
+    "provider": "Azure",
+    "language": "ja",
+    "description": "Microsoft Azure Developer Associate 認定試験の模擬問題です。Azure コンピューティングソリューション、ストレージソリューション、セキュリティ、監視と最適化、サードパーティサービス統合などのコア開発領域をカバーしています。",
+    "totalQuestions": 40,
+    "passingScore": 70,
+    "examTime": 120,
+    "domains": [
+      {
+        "id": 1,
+        "name": "Azure コンピューティングソリューションの開発 (Develop Azure compute solutions)",
+        "weight": 28
+      },
+      {
+        "id": 2,
+        "name": "Azure ストレージソリューションの開発 (Develop for Azure storage)",
+        "weight": 17
+      },
+      {
+        "id": 3,
+        "name": "Azure セキュリティの実装 (Implement Azure security)",
+        "weight": 22
+      },
+      {
+        "id": 4,
+        "name": "監視、トラブルシューティング、最適化 (Monitor, troubleshoot, and optimize)",
+        "weight": 18
+      },
+      {
+        "id": 5,
+        "name": "Azure およびサードパーティサービスへの接続と利用 (Connect to and consume Azure and third-party services)",
+        "weight": 15
+      }
+    ],
+    "tags": [
+      "Azure",
+      "AZ-204",
+      "開発者",
+      "認定試験",
+      "クラウド開発"
+    ]
+  },
+  "questions": [
+    {
+      "id": "q1",
+      "domain": 1,
+      "question": "Azure SQL Database にアクセスする必要がある Azure Function を開発しています。資格情報を保存せずに認証したいです。何を使用すべきですか？",
+      "options": {
+        "A": "SQL 認証",
+        "B": "Azure AD 統合認証とマネージド ID",
+        "C": "接続文字列にユーザー名とパスワードを含める",
+        "D": "証明書認証"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "マネージド ID と Azure AD 統合認証の使用は、Azure SQL Database へのパスワードレスアクセスのベストプラクティスです。Azure Function のマネージド ID に SQL データベースへのアクセス権を付与でき、コードや構成に資格情報を保存する必要がありません。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q2",
+      "domain": 1,
+      "question": "Azure App Service デプロイスロットを使用してブルーグリーンデプロイを行っています。本番トラフィックを新しいバージョンに徐々に切り替える必要があります。どの機能を使用すべきですか？",
+      "options": {
+        "A": "自動スワップ",
+        "B": "トラフィックルーティング",
+        "C": "手動スワップ",
+        "D": "スロット設定"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "トラフィックルーティング機能を使用すると、一定の割合のトラフィックをデプロイスロットにルーティングできます。これはカナリアリリースや A/B テストに非常に便利で、パフォーマンスとエラー率を監視しながら新バージョンのトラフィック割合を徐々に増やすことができます。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q3",
+      "domain": 1,
+      "question": "Blob Storage トリガーによってアクティブ化される Azure Function を開発しています。関数が特定のコンテナ内の新しい Blob のみを処理するようにする必要があります。トリガーをどのように構成すべきですか？",
+      "options": {
+        "A": "path 属性を使用してコンテナ名を指定する",
+        "B": "filter 属性を使用して Blob をフィルタリングする",
+        "C": "関数コードでコンテナ名をチェックする",
+        "D": "複数の関数を作成する"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Blob トリガーのバインディングで、path 属性を使用してコンテナ名と Blob パターンを指定します（例：'mycontainer/{name}'）。これにより、指定されたコンテナに新しい Blob が作成されたときにのみ関数がトリガーされます。\n---",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q4",
+      "domain": 1,
+      "question": "Azure Container Apps で環境変数を構成する必要があります。これらの変数は実行時に利用可能で、機密値を安全に保存できる必要があります。何を使用すべきですか？",
+      "options": {
+        "A": "Dockerfile の ENV ディレクティブ",
+        "B": "コンテナアプリのシークレットと環境変数",
+        "C": "Azure App Configuration",
+        "D": "Azure Blob Storage"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure Container Apps はシークレット（secrets）を使用して機密値を保存し、環境変数を使用して構成を渡すことをサポートしています。シークレットは Azure Key Vault から参照するか直接定義できます。環境変数はシークレット値を参照でき、機密データのセキュリティを確保します。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q5",
+      "domain": 1,
+      "question": "Durable Functions を使用して長時間実行されるワークフローを実装しています。ワークフローは完了後に通知を送信する必要がありますが、中間状態は永続化する必要がありません。どの永続性オプションを使用すべきですか？",
+      "options": {
+        "A": "Azure Storage",
+        "B": "Netherite (Azure Event Hubs)",
+        "C": "MSSQL",
+        "D": "In-memory (テストのみ)"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Azure Storage は Durable Functions のデフォルトストレージプロバイダーで、ほとんどの本番シナリオに適しています。Netherite は非常に高いスループットが必要なシナリオ用、MSSQL は SQL Server が必要なエンタープライズ環境用です。In-memory はテスト専用で、状態を永続化しません。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q6",
+      "domain": 1,
+      "question": "アプリケーションをコンテナ化して Azure Container Instances にデプロイしています。アプリケーションには 2 つの CPU コアと 4 GB のメモリが必要です。リソースをどのように指定すべきですか？",
+      "options": {
+        "A": "Dockerfile で指定する",
+        "B": "コンテナグループ定義で CPU とメモリリクエストを指定する",
+        "C": "アプリケーションコードで構成する",
+        "D": "環境変数を使用する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure Container Instances では、コンテナグループ定義で CPU とメモリリソースを指定できます。ARM テンプレート、Azure CLI、または Azure Portal を使用してコンテナグループを作成する際に、各コンテナの cpu と memoryInGB プロパティを指定できます。\n---",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q7",
+      "domain": 1,
+      "question": "大量の同時リクエストを処理する必要がある Azure Function を開発しています。関数が水平方向にスケーリングできるようにする必要があります。どのホスティングプランを選択すべきですか？",
+      "options": {
+        "A": "従量課金プラン",
+        "B": "専用プラン (Basic 層)",
+        "C": "専用プラン (Free 層)",
+        "D": "Flex 従量課金プラン"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "従量課金プランは自動水平スケーリングを提供し、受信イベント数に基づいて関数インスタンスを動的に追加します。これは可変負荷を処理するのに理想的な選択です。専用プランの Basic と Free 層はスケーリング能力が限られています。Flex 従量課金プランは新しいオプションで、より多くの制御を提供します。\n---",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q8",
+      "domain": 1,
+      "question": "Azure App Service の WebJobs を使用してバックグラウンドタスクを実行しています。キューメッセージを処理するために継続的に実行されるジョブが必要です。どのタイプの WebJob を作成すべきですか？",
+      "options": {
+        "A": "トリガー式 WebJob",
+        "B": "継続的 WebJob",
+        "C": "スケジュール WebJob",
+        "D": "オンデマンド WebJob"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "継続的 WebJob は継続的に実行され、キューメッセージの監視など、継続的な処理が必要なシナリオに適しています。WebJobs SDK を使用すると、Azure Storage キューとの統合が簡素化されます。トリガー式 WebJob はイベントに応答して実行され、スケジュール WebJob は CRON スケジュールで実行されます。\n---",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q9",
+      "domain": 2,
+      "question": "Azure Blob Storage の不変ストレージ機能を使用しています。Blob が保持期間中に変更または削除されないようにする必要があります。何を構成すべきですか？",
+      "options": {
+        "A": "論理的な削除",
+        "B": "時間ベースの保持ポリシー",
+        "C": "訴訟ホールド",
+        "D": "バージョン管理"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "時間ベースの保持ポリシーはコンテナレベルで構成でき、指定された保持期間中に Blob が変更または削除されるのを防ぎます。これはコンプライアンス要件に非常に重要です。訴訟ホールドは無期限保持用、論理的な削除は削除された Blob の回復を許可し、バージョン管理は履歴バージョンを保持します。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q10",
+      "domain": 2,
+      "question": "Azure Cosmos DB を使用しており、オプティミスティック同時実行制御を実装する必要があります。何を使用すべきですか？",
+      "options": {
+        "A": "パーティションキー",
+        "B": "ETag と条件付きリクエスト",
+        "C": "ストアドプロシージャ",
+        "D": "トリガー"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Cosmos DB はオプティミスティック同時実行制御のために ETag（エンティティタグ）を使用します。各ドキュメントには _etag プロパティがあり、更新時に条件付きリクエスト（If-Match ヘッダー）を使用して、ドキュメントが他のプロセスによって変更されていないことを確認できます。ETag が一致しない場合、更新は失敗します。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q11",
+      "domain": 2,
+      "question": "Azure Blob Storage から別のストレージアカウントにデータをコピーする必要があります。ソースと宛先は同じリージョンにあります。最高のパフォーマンスを得るには何を使用すべきですか？",
+      "options": {
+        "A": "AzCopy 非同期コピー",
+        "B": "Put Blob From URL",
+        "C": "ダウンロードしてアップロード",
+        "D": "Azure Data Factory"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Put Blob From URL 操作はサーバー側コピーを許可し、データはクライアントを経由せずに Azure ストレージサービス間で直接転送されます。これはダウンロード後にアップロードするよりもはるかに高速で、ローカル帯域幅を消費しません。AzCopy もクロスアカウントコピーにこの API を使用します。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q12",
+      "domain": 2,
+      "question": "Azure Cosmos DB の SQL API を使用しています。複数の操作が 1 つのアトミック単位として成功または失敗する必要があるトランザクションを実行する必要があります。何を使用すべきですか？",
+      "options": {
+        "A": "バルクエグゼキューター",
+        "B": "トランザクションバッチ",
+        "C": "ストアドプロシージャ",
+        "D": "変更フィードプロセッサ"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "トランザクションバッチを使用すると、同じパーティションキー内で複数の操作を単一のトランザクションとして実行できます。すべての操作が成功するか、すべてが失敗するかのどちらかです。これはアトミック性が必要なシナリオに適しています。ストアドプロシージャもトランザクションをサポートしますが、トランザクションバッチの方がシンプルで使いやすいです。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q13",
+      "domain": 2,
+      "question": "Azure Blob Storage のアクセス層を構成しています。データは最初の 30 日間は頻繁にアクセスされ、その後はほとんどアクセスされません。どの戦略を使用すべきですか？",
+      "options": {
+        "A": "常にホットストレージ層を使用する",
+        "B": "常にクールストレージ層を使用する",
+        "C": "ライフサイクル管理ポリシーを使用して自動的に移行する",
+        "D": "アクセス層を手動で変更する"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "ライフサイクル管理ポリシーは、Blob の経過時間に基づいてホットストレージからクールストレージまたはアーカイブストレージに自動的に移行できます。これにより、パフォーマンスを犠牲にせずにストレージコストを最適化できます。30 日後に Blob をクールストレージ層に移動するルールを構成します。\n---",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q14",
+      "domain": 2,
+      "question": "Azure Cosmos DB を使用しており、複数のパーティションにわたるデータをクエリする必要があります。パフォーマンスに関して何に注意すべきですか？",
+      "options": {
+        "A": "クロスパーティションクエリは自動的に最適化される",
+        "B": "クロスパーティションクエリはより多くの RU を消費し、レイテンシが高くなる",
+        "C": "クロスパーティションクエリは禁止されている",
+        "D": "クロスパーティションクエリと単一パーティションクエリのパフォーマンスは同じ"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "クロスパーティションクエリは複数のパーティションにリクエストを送信し、結果をマージする必要があるため、より多くのリクエストユニット (RU) を消費し、レイテンシが高くなります。最高のパフォーマンスを得るには、クエリにパーティションキーを含めて単一パーティションをターゲットにするようにクエリを設計する必要があります。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q15",
+      "domain": 3,
+      "question": "Azure AD を使用して Web API を保護し、特定のアプリケーションのみがアクセスできるようにする必要があります。トークンで何を検証すべきですか？",
+      "options": {
+        "A": "scope クレーム",
+        "B": "appid または azp クレーム",
+        "C": "name クレーム",
+        "D": "email クレーム"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "appid（v1.0 トークン）または azp（v2.0 トークン）クレームには、呼び出し元アプリケーションのクライアント ID が含まれています。このクレームを検証することで、特定の承認されたアプリケーションのみが API にアクセスできることを確認できます。scope クレームは委任されたアクセス許可の検証に使用されます。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q16",
+      "domain": 3,
+      "question": "複数のアプリケーションがアクセスできるように Azure Key Vault を構成しています。最小権限の原則に従う必要があります。アクセス許可をどのように構成すべきですか？",
+      "options": {
+        "A": "すべてのアプリケーションを同じアクセスポリシーに追加する",
+        "B": "各アプリケーションに必要なアクセス許可のみを付与する個別のアクセスポリシーを作成する",
+        "C": "管理者アクセスポリシーを使用する",
+        "D": "アクセスポリシーを無効にし、ファイアウォールルールを使用する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "最小権限の原則では、各アプリケーションは必要な最小限のアクセス許可のみを取得する必要があります。各アプリケーションに必要なアクセス許可のみを付与する個別のアクセスポリシーを作成します（一部のアプリケーションはシークレットの読み取りのみが必要で、他のアプリケーションはキーの管理が必要な場合があります）。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q17",
+      "domain": 3,
+      "question": "デーモンアプリケーションが API にアクセスできるように OAuth 2.0 クライアント資格情報フローを実装しています。アプリケーションはユーザーに代わって動作しません。どのタイプのトークンをリクエストすべきですか？",
+      "options": {
+        "A": "ID トークン",
+        "B": "リフレッシュトークン",
+        "C": "アプリケーションアクセス許可を持つアクセストークン",
+        "D": "委任されたアクセス許可を持つアクセストークン"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "クライアント資格情報フローは、ユーザーを介さないサービス間認証に使用されます。アプリケーションは、アプリケーションアクセス許可（委任されたアクセス許可ではなく）を持つアクセストークンをリクエストします。アプリケーションアクセス許可は Azure AD アプリ登録で構成され、管理者の同意が必要です。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q18",
+      "domain": 3,
+      "question": "アプリケーションは暗号化キーを安全に保存および取得する必要があります。キーがセキュリティ境界を離れないようにする必要があります。どの Azure Key Vault 機能を使用すべきですか？",
+      "options": {
+        "A": "論理的な削除",
+        "B": "HSM バックのキー",
+        "C": "キーローテーション",
+        "D": "アクセスポリシー"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure Key Vault の HSM（ハードウェアセキュリティモジュール）バックのキーは、キーが FIPS 140-2 検証済みのハードウェアに保存され、キーマテリアルが HSM 境界を離れないことを保証します。これは最高レベルのキー保護を提供します。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q19",
+      "domain": 3,
+      "question": "Azure App Service の認証を構成しています。一部のエンドポイントへの匿名アクセスを許可しながら、他のエンドポイントを保護する必要があります。どのように構成すべきですか？",
+      "options": {
+        "A": "認証を有効にし、「認証されていないリクエストを許可する」を設定する",
+        "B": "App Service 認証を無効にする",
+        "C": "エンドポイントごとに別々の App Service を作成する",
+        "D": "IP 制限を使用する"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "App Service 認証を構成する際、「認証されていないリクエストを許可する」オプションを選択します。これにより、認証されていないリクエストは通過しますが、認証されたリクエストに対してはトークン検証が行われます。その後、保護が必要なエンドポイントについてはアプリケーションコードで認可チェックを行います。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q20",
+      "domain": 3,
+      "question": "Azure Key Vault のネットワークセキュリティを構成し、特定の仮想ネットワーク内のリソースのみがアクセスできるようにする必要があります。何を構成すべきですか？",
+      "options": {
+        "A": "アクセスポリシー",
+        "B": "サービスエンドポイントとファイアウォールルール",
+        "C": "マネージド ID",
+        "D": "論理的な削除"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Key Vault ファイアウォールと仮想ネットワークルールを構成することで、特定の仮想ネットワークサブネット内のリソースのみが Key Vault にアクセスできるように制限できます。まずサブネットでサービスエンドポイントを有効にし、次に Key Vault に仮想ネットワークルールを追加します。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q21",
+      "domain": 4,
+      "question": "Application Insights でカスタムアラートを作成し、アプリケーションの応答時間が 5 秒を超えたときにトリガーする必要があります。何を使用すべきですか？",
+      "options": {
+        "A": "可用性アラート",
+        "B": "メトリックアラート",
+        "C": "ログアラート",
+        "D": "スマート検出"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "メトリックアラートは、プラットフォームメトリックに基づいてアラートルールを作成します。応答時間メトリックがしきい値を超えたときにアラートをトリガーするように構成できます。ログアラートはログクエリに基づき、可用性アラートは URL ping テスト用、スマート検出は自動異常検出です。\n---",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q22",
+      "domain": 4,
+      "question": "Azure Redis Cache を使用しており、キャッシュ効率を評価するためにキャッシュヒット率を監視する必要があります。どのメトリックを確認すべきですか？",
+      "options": {
+        "A": "使用メモリ",
+        "B": "キャッシュヒット数とキャッシュミス数",
+        "C": "接続クライアント数",
+        "D": "サーバー負荷"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "キャッシュヒット率 = キャッシュヒット数 / (キャッシュヒット数 + キャッシュミス数)。高いヒット率はキャッシュが効果的で、ほとんどのリクエストがキャッシュから返されていることを示します。低いヒット率は、キャッシュ戦略や TTL 設定の調整が必要なことを示している可能性があります。\n---",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q23",
+      "domain": 4,
+      "question": "Application Insights を構成してテレメトリデータをサンプリングし、代表的なデータを維持しながらコストを削減する必要があります。どのタイプのサンプリングを使用すべきですか？",
+      "options": {
+        "A": "固定レートサンプリング",
+        "B": "アダプティブサンプリング",
+        "C": "インジェストサンプリング",
+        "D": "サンプリングを無効にする"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "アダプティブサンプリングはサンプリングレートを自動的に調整し、テレメトリ量を目標範囲内に維持します。高トラフィック期間にはサンプリングを増やし、低トラフィック期間には減らします。これにより、コストを制御しながら代表的なデータを確保できます。固定レートサンプリングは一定の割合を使用します。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q24",
+      "domain": 4,
+      "question": "Azure CDN を使用しており、コンテンツのキャッシュ状態を理解する必要があります。レスポンスのどのヘッダーを確認すべきですか？",
+      "options": {
+        "A": "Content-Type",
+        "B": "X-Cache",
+        "C": "Cache-Control",
+        "D": "ETag"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "X-Cache ヘッダーは、レスポンスが CDN エッジキャッシュから返されたか（HIT）、オリジンサーバーから取得されたか（MISS）を示します。これは CDN キャッシュが正常に機能しているかを検証するのに非常に便利です。Cache-Control はキャッシュポリシーを定義し、ETag は検証に使用されます。\n---",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q25",
+      "domain": 4,
+      "question": "Application Insights で複数のサービスからの分散トレースを関連付ける必要があります。何を確保すべきですか？",
+      "options": {
+        "A": "すべてのサービスが同じ Instrumentation Key を使用する",
+        "B": "すべてのサービスが W3C Trace Context ヘッダーを伝播する",
+        "C": "すべてのサービスが同じリージョンにある",
+        "D": "すべてのサービスが同じプログラミング言語を使用する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "W3C Trace Context 標準は、分散システムでトレースコンテキストを伝播するための traceparent と tracestate ヘッダーを定義しています。すべてのサービスがこれらのヘッダーを伝播することで、Application Insights でサービス間のリクエストを自動的に関連付けることができます。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q26",
+      "domain": 4,
+      "question": "Azure Cosmos DB のパフォーマンスを最適化しています。一部のクエリが大量の RU を消費していることに気づきました。クエリパフォーマンスを分析するには何を使用すべきですか？",
+      "options": {
+        "A": "Azure Monitor",
+        "B": "クエリ実行メトリック",
+        "C": "Application Insights",
+        "D": "Azure Advisor"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Cosmos DB SDK は各リクエストの実行メトリックを返します。これにはリクエストチャージ（RU 消費）、実行時間、ドキュメント数が含まれます。Azure Portal の Data Explorer でクエリを実行すると、クエリ統計も表示されます。これは高コストクエリを特定して最適化するのに役立ちます。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q27",
+      "domain": 5,
+      "question": "Azure Service Bus トピックを使用してメッセージを発行しています。複数のサブスクライバーが同じメッセージを受信できるようにする必要があります。何を作成すべきですか？",
+      "options": {
+        "A": "複数のキュー",
+        "B": "1 つのトピックと複数のサブスクリプション",
+        "C": "複数のトピック",
+        "D": "1 つのキューと複数のコンシューマー"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Service Bus トピックは発行/サブスクライブパターンをサポートしています。トピックに送信されたメッセージはすべてのサブスクリプションに複製されます。各サブスクリプションは独立してメッセージを消費し、独自のフィルタールールを持つことができます。これはキューとは異なり、キューでは各メッセージは 1 つのコンシューマーのみが処理します。\n---",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q28",
+      "domain": 5,
+      "question": "Azure Event Grid を使用しており、イベントが順番に配信されることを確保する必要があります。何に注意すべきですか？",
+      "options": {
+        "A": "Event Grid はグローバル順序を保証する",
+        "B": "Event Grid はイベントの順序を保証しない",
+        "C": "Event Grid はトピック内で順序を保証する",
+        "D": "Event Grid はサブスクリプション内で順序を保証する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure Event Grid はイベントの順序付き配信を保証しません。高スループットと低レイテンシの配信に最適化されています。順序付き処理が必要な場合は、アプリケーションでソートロジックを実装するか、Service Bus セッションなど FIFO をサポートするサービスを使用する必要があります。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q29",
+      "domain": 5,
+      "question": "Azure API Management でリクエスト制限を実装し、単一のクライアントが過剰なリソースを消費するのを防ぐ必要があります。どのポリシーを使用すべきですか？",
+      "options": {
+        "A": "rate-limit",
+        "B": "rate-limit-by-key",
+        "C": "quota",
+        "D": "ip-filter"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "rate-limit-by-key ポリシーは、任意の式（サブスクリプションキー、IP アドレス、ユーザー ID など）に基づいてリクエストレートを制限できます。これは単一のクライアントによる API の過剰使用を防ぐのに非常に効果的です。rate-limit ポリシーはすべての呼び出し元に適用されます。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q30",
+      "domain": 5,
+      "question": "Azure Queue Storage を使用しており、メッセージの遅延処理を実装する必要があります。どの機能を使用すべきですか？",
+      "options": {
+        "A": "メッセージ TTL",
+        "B": "可視性タイムアウト",
+        "C": "メッセージ追加時に初期非表示時間を指定する",
+        "D": "デッドレターキュー"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "Azure Queue Storage では、メッセージを追加する際に初期不可視時間（visibilityTimeout）を指定できます。これにより、指定された時間までメッセージはどのコンシューマーにも表示されず、遅延処理を実現できます。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q31",
+      "domain": 5,
+      "question": "Azure Event Hubs を使用してストリーミングデータをストレージにキャプチャしています。後で分析するためにデータを Avro 形式で保存する必要があります。どの機能を有効にすべきですか？",
+      "options": {
+        "A": "Event Hubs アーカイブ",
+        "B": "Event Hubs Capture",
+        "C": "Azure Stream Analytics",
+        "D": "Azure Data Factory"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Event Hubs Capture はストリーミングデータを Azure Blob Storage または Azure Data Lake Storage に Avro 形式で自動的にキャプチャします。これにより、追加のコードを記述することなく、バッチ処理や分析のために元のイベントデータを保持できます。\n---",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q32",
+      "domain": 5,
+      "question": "Azure API Management を使用してレガシー SOAP サービスを REST API として公開する必要があります。どの機能を使用すべきですか？",
+      "options": {
+        "A": "API バージョン",
+        "B": "SOAP から REST への変換ポリシー",
+        "C": "バックエンドサービス",
+        "D": "GraphQL API"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure API Management は WSDL 仕様をインポートし、SOAP パススルー API または SOAP から REST API を作成できます。ポリシーを使用して SOAP リクエスト/レスポンスを RESTful JSON 形式に変換でき、モダンなクライアントがレガシーサービスを使用できるようになります。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q33",
+      "domain": 1,
+      "question": "Azure Functions の入力バインディングを使用して Cosmos DB からデータを読み取っています。HTTP リクエストのパラメータに基づいて特定のドキュメントをクエリする必要があります。バインディングをどのように構成すべきですか？",
+      "options": {
+        "A": "静的 ID でバインディングを構成する",
+        "B": "バインディング式を使用してルートパラメータを参照する",
+        "C": "関数コードでクエリを実行する",
+        "D": "出力バインディングを使用する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure Functions のバインディング式を使用すると、バインディング構成で動的な値を使用できます。例えば、{id} を使用して HTTP ルートパラメータを参照し、特定のドキュメントをクエリできます。これによりコードが簡素化され、バインディングの宣言的な性質を活用できます。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q34",
+      "domain": 1,
+      "question": "Azure Function を開発しており、関数の起動時に初期化コード（依存性注入の構成など）を実行する必要があります。このコードをどこに配置すべきですか？",
+      "options": {
+        "A": "関数メソッドの先頭",
+        "B": "Startup クラス",
+        "C": "host.json",
+        "D": "function.json"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure Functions は Startup クラスを使用して依存性注入やその他の初期化ロジックを構成することをサポートしています。FunctionsStartup を継承するクラスを作成し、[assembly: FunctionsStartup] 属性を使用して登録します。これは関数ホストの起動時に実行されます。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q35",
+      "domain": 2,
+      "question": "Azure Cosmos DB で全文検索機能を実装する必要があります。何を使用すべきですか？",
+      "options": {
+        "A": "Cosmos DB 組み込みの CONTAINS 関数",
+        "B": "Azure Cognitive Search と Cosmos DB の統合",
+        "C": "Cosmos DB ストアドプロシージャ",
+        "D": "Cosmos DB トリガー"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure Cognitive Search は強力な全文検索機能を提供し、Cosmos DB と統合できます。インデクサーを構成して Cosmos DB データを検索インデックスに自動的に同期し、検索 API を使用して複雑な全文検索を実行します。CONTAINS 関数は基本的な文字列包含チェックのみをサポートします。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q36",
+      "domain": 3,
+      "question": "Azure App Service のカスタムドメインを構成し、HTTPS を有効にする必要があります。どのタイプの証明書を使用すべきですか？",
+      "options": {
+        "A": "自己署名証明書",
+        "B": "App Service マネージド証明書",
+        "C": "IP SSL 証明書",
+        "D": "ワイルドカード証明書は手動でアップロードする必要がある"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "App Service マネージド証明書は Azure によって自動的に作成および更新される無料の SSL/TLS 証明書です。カスタムドメインの標準的な HTTPS 要件に適しています。ワイルドカード証明書などの高度な要件には、App Service 証明書を購入するか、独自の証明書をインポートできます。\n---",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q37",
+      "domain": 4,
+      "question": "Azure Monitor を使用して複数の Azure リソースのメトリックを可視化するワークブックを作成する必要があります。ワークブックはチームと共有できる必要があります。どのように構成すべきですか？",
+      "options": {
+        "A": "プライベートワークブックを作成する",
+        "B": "共有ワークブックを作成する",
+        "C": "JSON としてエクスポートする",
+        "D": "Power BI を使用する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure Monitor ワークブックは共有ワークブックとして保存でき、リソースグループに格納されます。チームメンバーは表示および編集できます。共有ワークブックはコラボレーションとバージョン管理をサポートします。プライベートワークブックは作成者のみに表示されます。\n---",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q38",
+      "domain": 5,
+      "question": "Azure API Management を使用しており、バックエンドにリクエストを送信する前にリクエストヘッダーを変更する必要があります。どのポリシーセクションを使用すべきですか？",
+      "options": {
+        "A": "inbound",
+        "B": "outbound",
+        "C": "backend",
+        "D": "on-error"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "API Management ポリシーは 4 つのセクションに分かれています：inbound（インバウンド）は受信リクエストを処理し、backend（バックエンド）はリクエストがバックエンドに送信される前に適用され、outbound（アウトバウンド）はレスポンスを処理し、on-error はエラーを処理します。リクエストヘッダーの変更は inbound セクションで行う必要があります。\n---",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q39",
+      "domain": 1,
+      "question": "Azure Container Apps を使用しており、トラフィックがゼロのときにゼロインスタンスにスケールダウンするようにアプリケーションを構成する必要があります。何を構成すべきですか？",
+      "options": {
+        "A": "最小レプリカ数を 0 に設定する",
+        "B": "自動スケーリングを無効にする",
+        "C": "従量課金プランを使用する",
+        "D": "CPU スケーリングルールを構成する"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Azure Container Apps では、最小レプリカ数を 0 に構成できます。これにより、トラフィックがないときにアプリケーションがゼロインスタンスにスケールダウンし、コストを節約できます。新しいリクエストが到着すると、アプリケーションは自動的にスケールアップします。これはコンテナアプリの従量課金モデルです。\n---",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q40",
+      "domain": 2,
+      "question": "Azure Blob Storage を使用しており、Blob を別のリージョンに非同期でコピーするためにオブジェクトレプリケーションを有効にする必要があります。どの前提条件を満たす必要がありますか？（2 つ選択）",
+      "options": {
+        "A": "ソースと宛先のストレージアカウントでバージョン管理を有効にする",
+        "B": "ソースと宛先のストレージアカウントで変更フィードを有効にする",
+        "C": "ソースと宛先のストレージアカウントが同じサブスクリプション内にある",
+        "D": "Premium パフォーマンス層を使用する"
+      },
+      "answer": ["A", "B"],
+      "answerType": "multiple",
+      "explanation": "Azure Blob Storage オブジェクトレプリケーションでは、ソースと宛先の両方のストレージアカウントで Blob バージョン管理と変更フィードを有効にする必要があります。バージョン管理は Blob の変更を追跡し、変更フィードは変更ログを提供します。ストレージアカウントは異なるサブスクリプションやリージョンにあっても構いません。\n---",
+      "difficulty": "medium"
+    }
+  ]
+}

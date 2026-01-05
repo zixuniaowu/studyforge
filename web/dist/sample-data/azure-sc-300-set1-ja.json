@@ -1,0 +1,662 @@
+{
+  "exam": {
+    "id": "azure-sc-300-set1-ja",
+    "name": "Identity and Access Administrator 練習問題 Set 1",
+    "code": "SC-300",
+    "provider": "Microsoft",
+    "language": "ja",
+    "description": "Microsoft Identity and Access Administrator 認定練習問題第1セット。Microsoft Entra ID の ID 管理、認証、アクセス管理、ID ガバナンスに関する知識をカバーしています。",
+    "totalQuestions": 40,
+    "passingScore": 70,
+    "examTime": 120,
+    "domains": [
+      "Microsoft Entra ID での ID の実装",
+      "認証とアクセス管理の実装",
+      "アプリケーションのアクセス管理の実装",
+      "Microsoft Entra ID での ID ガバナンスの計画と実装"
+    ],
+    "tags": ["Microsoft", "Azure", "Security", "SC-300", "Identity", "Entra ID"]
+  },
+  "questions": [
+    {
+      "id": "sc300-s1-ja-q1",
+      "examId": "azure-sc-300-set1-ja",
+      "setNumber": 1,
+      "domain": "Microsoft Entra ID での ID の実装",
+      "question": "オンプレミスの Active Directory から Microsoft Entra ID にユーザーを同期するように構成する必要があります。どのツールを使用すべきですか？",
+      "options": {
+        "A": "Azure AD Application Proxy",
+        "B": "Microsoft Entra Connect",
+        "C": "Azure AD B2C",
+        "D": "Microsoft Graph API"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Microsoft Entra Connect（以前は Azure AD Connect）は、オンプレミスの Active Directory を Microsoft Entra ID と同期するための公式ツールで、パスワードハッシュ同期、パススルー認証、フェデレーション認証をサポートしています。"
+    },
+    {
+      "id": "sc300-s1-ja-q2",
+      "examId": "azure-sc-300-set1-ja",
+      "setNumber": 1,
+      "domain": "Microsoft Entra ID での ID の実装",
+      "question": "Microsoft Entra ID で、Microsoft 365 ライセンスを割り当てるために使用できるグループの種類はどれですか？",
+      "options": {
+        "A": "セキュリティグループのみ",
+        "B": "Microsoft 365 グループのみ",
+        "C": "セキュリティグループと Microsoft 365 グループ",
+        "D": "配布リスト"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "セキュリティグループと Microsoft 365 グループの両方をグループベースのライセンス割り当てに使用できます。配布リストはメール配信専用であるため、この目的には使用できません。"
+    },
+    {
+      "id": "sc300-s1-ja-q3",
+      "examId": "azure-sc-300-set1-ja",
+      "setNumber": 1,
+      "domain": "Microsoft Entra ID での ID の実装",
+      "question": "部門が「営業」のすべてのユーザーを自動的に含む動的グループを作成する必要があります。どの種類のルールを使用すべきですか？",
+      "options": {
+        "A": "静的メンバーシップルール",
+        "B": "動的メンバーシップルール",
+        "C": "ネストされたグループルール",
+        "D": "条件付きアクセスルール"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "動的メンバーシップルールを使用すると、ユーザーまたはデバイスの属性（部門、役職、場所など）に基づいてグループメンバーシップを自動的に管理できます。ユーザー属性が変更されると、グループメンバーシップが自動的に更新されます。"
+    },
+    {
+      "id": "sc300-s1-ja-q4",
+      "examId": "azure-sc-300-set1-ja",
+      "setNumber": 1,
+      "domain": "Microsoft Entra ID での ID の実装",
+      "question": "Microsoft Entra ID の管理単位の主な目的は何ですか？",
+      "options": {
+        "A": "ユーザーパスワードを保存する",
+        "B": "特定のユーザーとグループのサブセットに管理権限を委任する",
+        "C": "条件付きアクセスポリシーを構成する",
+        "D": "アプリケーション登録を管理する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "管理単位は、ユーザー、グループ、デバイスを論理的な単位に整理するために使用されます。特定の管理者に管理権限を委任し、その単位内のリソースのみを管理できるようにすることができます。"
+    },
+    {
+      "id": "sc300-s1-ja-q5",
+      "examId": "azure-sc-300-set1-ja",
+      "setNumber": 1,
+      "domain": "Microsoft Entra ID での ID の実装",
+      "question": "Microsoft Entra Connect を構成する際、パスワードハッシュのハッシュ値をクラウドに同期する同期方法はどれですか？",
+      "options": {
+        "A": "パススルー認証",
+        "B": "パスワードハッシュ同期",
+        "C": "フェデレーション認証",
+        "D": "証明書認証"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "パスワードハッシュ同期 (PHS) は、オンプレミス AD パスワードハッシュのハッシュ値を Microsoft Entra ID に同期し、ユーザーが同じパスワードでクラウドサービスにサインインできるようにしながら、セキュリティを維持します。"
+    },
+    {
+      "id": "sc300-s1-ja-q6",
+      "examId": "azure-sc-300-set1-ja",
+      "setNumber": 1,
+      "domain": "Microsoft Entra ID での ID の実装",
+      "question": "パートナー組織のユーザーがアプリケーションにアクセスできるようにする必要があります。どの機能を使用すべきですか？",
+      "options": {
+        "A": "Microsoft Entra B2C",
+        "B": "Microsoft Entra B2B",
+        "C": "Microsoft Entra Domain Services",
+        "D": "アプリケーションプロキシ"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Microsoft Entra B2B（Business-to-Business）コラボレーションを使用すると、外部ユーザーをゲストユーザーとして招待し、自分の組織の資格情報を使用して認証しながら、リソースにアクセスできるようにすることができます。"
+    },
+    {
+      "id": "sc300-s1-ja-q7",
+      "examId": "azure-sc-300-set1-ja",
+      "setNumber": 1,
+      "domain": "Microsoft Entra ID での ID の実装",
+      "question": "カスタムドメイン名を Microsoft Entra ID に追加した後、そのドメインを使用するために何を行う必要がありますか？",
+      "options": {
+        "A": "新しいユーザーを作成する",
+        "B": "ドメインの所有権を確認する",
+        "C": "条件付きアクセスを構成する",
+        "D": "MFA を有効にする"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "カスタムドメイン名を追加した後、DNS に TXT または MX レコードを追加してドメインの所有権を確認する必要があります。確認後のみ、Microsoft Entra ID でそのドメイン名を使用できます。"
+    },
+    {
+      "id": "sc300-s1-ja-q8",
+      "examId": "azure-sc-300-set1-ja",
+      "setNumber": 1,
+      "domain": "Microsoft Entra ID での ID の実装",
+      "question": "Microsoft Entra ID で、他の管理者を含むすべての側面を管理する完全な権限を持つロールはどれですか？",
+      "options": {
+        "A": "ユーザー管理者",
+        "B": "グローバル管理者",
+        "C": "セキュリティ管理者",
+        "D": "特権ロール管理者"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "グローバル管理者は、Microsoft Entra ID とすべての Microsoft 365 サービスへの完全なアクセス権を持ち、他の管理者ロールを管理する機能も含まれます。これは最も高い権限を持つロールです。"
+    },
+    {
+      "id": "sc300-s1-ja-q9",
+      "examId": "azure-sc-300-set1-ja",
+      "setNumber": 1,
+      "domain": "認証とアクセス管理の実装",
+      "question": "ユーザーがサインイン時に追加の確認要素を提供するように要求する必要があります。何を構成すべきですか？",
+      "options": {
+        "A": "条件付きアクセス",
+        "B": "パスワードポリシー",
+        "C": "多要素認証 (MFA)",
+        "D": "シングルサインオン"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "多要素認証 (MFA) は、ユーザーに複数の確認方法（パスワードに加えて電話確認や認証アプリなど）を提供するように要求し、アカウントを保護するための追加のセキュリティ層を提供します。"
+    },
+    {
+      "id": "sc300-s1-ja-q10",
+      "examId": "azure-sc-300-set1-ja",
+      "setNumber": 1,
+      "domain": "認証とアクセス管理の実装",
+      "question": "条件付きアクセスポリシーはどのような条件に基づいてアクセスを制御できますか？",
+      "options": {
+        "A": "ユーザーの場所のみ",
+        "B": "デバイスプラットフォームのみ",
+        "C": "ユーザー、場所、デバイス、アプリケーション、リスクレベルの組み合わせ",
+        "D": "ユーザーのグループメンバーシップのみ"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "条件付きアクセスポリシーは、ユーザーまたはグループ、場所、デバイスプラットフォームと状態、クライアントアプリケーション、サインインリスクとユーザーリスクレベルなど、複数のシグナルに基づいて決定を行うことができます。"
+    },
+    {
+      "id": "sc300-s1-ja-q11",
+      "examId": "azure-sc-300-set1-ja",
+      "setNumber": 1,
+      "domain": "認証とアクセス管理の実装",
+      "question": "セルフサービスパスワードリセット (SSPR) を構成する際、使用できる認証方法はどれですか？",
+      "options": {
+        "A": "メールのみ",
+        "B": "携帯電話のみ",
+        "C": "メール、携帯電話、セキュリティの質問、Microsoft Authenticator アプリ",
+        "D": "セキュリティの質問のみ"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "SSPR は複数の認証方法をサポートしています。携帯電話（SMS または通話）、代替メール、Microsoft Authenticator アプリ、セキュリティの質問などが含まれます。管理者は必要な方法の数を構成できます。"
+    },
+    {
+      "id": "sc300-s1-ja-q12",
+      "examId": "azure-sc-300-set1-ja",
+      "setNumber": 1,
+      "domain": "認証とアクセス管理の実装",
+      "question": "Microsoft Entra ID のパスワード保護機能は、ユーザーがどのような種類のパスワードを使用することを防止できますか？",
+      "options": {
+        "A": "数字を含むすべてのパスワード",
+        "B": "一般的な弱いパスワードと組織固有の用語を含むパスワード",
+        "C": "20文字未満のパスワード",
+        "D": "特殊文字を含むパスワード"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Microsoft Entra ID パスワード保護は、グローバル禁止パスワードリストを使用して一般的な弱いパスワードをブロックし、カスタム禁止パスワードリストを構成して組織固有の用語を含むパスワードをブロックすることもできます。"
+    },
+    {
+      "id": "sc300-s1-ja-q13",
+      "examId": "azure-sc-300-set1-ja",
+      "setNumber": 1,
+      "domain": "認証とアクセス管理の実装",
+      "question": "パスワードレス認証を実装する必要があります。以下のどの方法がパスワードレスですか？",
+      "options": {
+        "A": "パスワード + SMS 確認コード",
+        "B": "Windows Hello for Business",
+        "C": "パスワード + Microsoft Authenticator",
+        "D": "パスワード + セキュリティキー"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Windows Hello for Business は、生体認証（顔認識または指紋）または PIN を使用してユーザー ID を確認するパスワードレス認証方法で、従来のパスワードを入力する必要がありません。"
+    },
+    {
+      "id": "sc300-s1-ja-q14",
+      "examId": "azure-sc-300-set1-ja",
+      "setNumber": 1,
+      "domain": "認証とアクセス管理の実装",
+      "question": "条件付きアクセスポリシーで、「許可」コントロールは何を要求できますか？",
+      "options": {
+        "A": "アクセスのブロックまたはアクセスの許可（条件を満たす必要がある場合あり）",
+        "B": "アクセスのブロックのみ",
+        "C": "アクセスの許可のみ",
+        "D": "すべての要求を自動的に承認"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "許可コントロールは、アクセスをブロックするか、アクセスを許可することができます。アクセスを許可する場合、MFA、準拠デバイス、ハイブリッド Azure AD 参加デバイス、承認されたクライアントアプリなど、1つ以上の条件を満たすことを要求できます。"
+    },
+    {
+      "id": "sc300-s1-ja-q15",
+      "examId": "azure-sc-300-set1-ja",
+      "setNumber": 1,
+      "domain": "認証とアクセス管理の実装",
+      "question": "Microsoft Entra ID Protection はどのような種類のリスクを検出できますか？",
+      "options": {
+        "A": "ユーザーリスクのみ",
+        "B": "サインインリスクのみ",
+        "C": "ユーザーリスクとサインインリスク",
+        "D": "デバイスリスクのみ"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "Microsoft Entra ID Protection は、2 種類のリスクを検出できます：サインインリスク（匿名 IP アドレス、非典型的な場所など）とユーザーリスク（資格情報の漏洩、異常なユーザーアクティビティなど）。"
+    },
+    {
+      "id": "sc300-s1-ja-q16",
+      "examId": "azure-sc-300-set1-ja",
+      "setNumber": 1,
+      "domain": "認証とアクセス管理の実装",
+      "question": "パススルー認証 (PTA) はパスワードハッシュ同期 (PHS) と比較してどのような特徴がありますか？",
+      "options": {
+        "A": "PTA はパスワードをクラウドに保存する",
+        "B": "PTA はオンプレミスでパスワードを検証し、パスワードハッシュをクラウドに保存しない",
+        "C": "PTA には AD FS サーバーが必要",
+        "D": "PTA は MFA をサポートしない"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "パススルー認証は、オンプレミスの Active Directory でユーザーパスワードを検証し、パスワードまたはパスワードハッシュはクラウドに保存されません。これは、厳格なデータ所在地要件を持つ組織に役立ちます。"
+    },
+    {
+      "id": "sc300-s1-ja-q17",
+      "examId": "azure-sc-300-set1-ja",
+      "setNumber": 1,
+      "domain": "アプリケーションのアクセス管理の実装",
+      "question": "ユーザーが VPN を使用せずにシングルサインオンで内部ネットワークでホストされている Web アプリケーションにアクセスできるようにする必要があります。何を使用すべきですか？",
+      "options": {
+        "A": "Microsoft Entra B2B",
+        "B": "Microsoft Entra アプリケーションプロキシ",
+        "C": "Microsoft Entra B2C",
+        "D": "Microsoft Entra Domain Services"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Microsoft Entra アプリケーションプロキシを使用すると、ユーザーは VPN なしでどこからでもオンプレミスの Web アプリケーションに安全にアクセスできます。クラウドサービスを介して接続をプロキシし、SSO と条件付きアクセスの統合を提供します。"
+    },
+    {
+      "id": "sc300-s1-ja-q18",
+      "examId": "azure-sc-300-set1-ja",
+      "setNumber": 1,
+      "domain": "アプリケーションのアクセス管理の実装",
+      "question": "エンタープライズアプリケーションのシングルサインオンを構成する際、SAML は何に基づいて認証しますか？",
+      "options": {
+        "A": "OAuth トークン",
+        "B": "SAML アサーション（クレームを含む XML ドキュメント）",
+        "C": "Kerberos チケット",
+        "D": "NTLM 資格情報"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "SAML（Security Assertion Markup Language）は、ID プロバイダーとサービスプロバイダー間で認証および承認データを交換するために XML 形式のアサーションを使用し、ユーザー ID に関するクレームを含みます。"
+    },
+    {
+      "id": "sc300-s1-ja-q19",
+      "examId": "azure-sc-300-set1-ja",
+      "setNumber": 1,
+      "domain": "アプリケーションのアクセス管理の実装",
+      "question": "Microsoft Entra ID でアプリケーションを登録する際、クライアントシークレットの目的は何ですか？",
+      "options": {
+        "A": "ユーザーデータを暗号化する",
+        "B": "アプリケーションが Microsoft Entra ID に対して身元を証明する",
+        "C": "ユーザーサインイン時の第 2 要素",
+        "D": "ユーザーパスワードを保存する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "クライアントシークレット（またはクライアント証明書）は、機密クライアントアプリケーションが Microsoft Entra ID に対して身元を証明し、アクセストークンを取得するために使用されます。これは OAuth 2.0 クライアント資格情報フローの一部です。"
+    },
+    {
+      "id": "sc300-s1-ja-q20",
+      "examId": "azure-sc-300-set1-ja",
+      "setNumber": 1,
+      "domain": "アプリケーションのアクセス管理の実装",
+      "question": "アプリケーションがユーザーデータへのアクセス許可を要求する際、ユーザーが見る同意エクスペリエンスは何と呼ばれますか？",
+      "options": {
+        "A": "承認",
+        "B": "ユーザー同意",
+        "C": "認証",
+        "D": "トークン発行"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "ユーザー同意は、アプリケーションがユーザーデータへのアクセス許可を要求する際に、ユーザーがこれらの許可要求を確認して承認（または拒否）するプロセスです。管理者も組織に代わって同意を行うことができます。"
+    },
+    {
+      "id": "sc300-s1-ja-q21",
+      "examId": "azure-sc-300-set1-ja",
+      "setNumber": 1,
+      "domain": "アプリケーションのアクセス管理の実装",
+      "question": "OAuth 2.0 承認コードフローは主にどのタイプのアプリケーションに使用されますか？",
+      "options": {
+        "A": "モバイルアプリケーションとシングルページアプリケーション",
+        "B": "サーバーバックエンドを持つ Web アプリケーション",
+        "C": "バックグラウンドデーモンサービス",
+        "D": "デスクトップアプリケーション"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "承認コードフローは、サーバーバックエンドを持つ Web アプリケーションに最適です。クライアントシークレットを安全に保存し、サーバー側で承認コードをトークンと交換できるためです。"
+    },
+    {
+      "id": "sc300-s1-ja-q22",
+      "examId": "azure-sc-300-set1-ja",
+      "setNumber": 1,
+      "domain": "アプリケーションのアクセス管理の実装",
+      "question": "特定のユーザーまたはグループによるエンタープライズアプリケーションへのアクセスを制限する必要があります。何を構成すべきですか？",
+      "options": {
+        "A": "アプリケーションロール",
+        "B": "ユーザー割り当て",
+        "C": "API アクセス許可",
+        "D": "API の公開"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "エンタープライズアプリケーションで「ユーザー割り当てを必要とする」を有効にすると、アプリケーションに割り当てられたユーザーまたはグループのみがアクセスできます。これにより、アプリケーションを使用できるユーザーを制御できます。"
+    },
+    {
+      "id": "sc300-s1-ja-q23",
+      "examId": "azure-sc-300-set1-ja",
+      "setNumber": 1,
+      "domain": "アプリケーションのアクセス管理の実装",
+      "question": "Microsoft Identity Platform で、アクセストークンと ID トークンの違いは何ですか？",
+      "options": {
+        "A": "両者は同じ",
+        "B": "アクセストークンは API へのアクセスを承認するために使用され、ID トークンはユーザー ID 情報を含む",
+        "C": "ID トークンは API へのアクセスを承認するために使用され、アクセストークンはユーザー ID 情報を含む",
+        "D": "両者は認証にのみ使用される"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "アクセストークンは、クライアントが保護されたリソース（API など）にアクセスすることを承認するために使用されます。ID トークンは OpenID Connect の一部であり、認証されたユーザーに関する ID 情報（クレーム）を含みます。"
+    },
+    {
+      "id": "sc300-s1-ja-q24",
+      "examId": "azure-sc-300-set1-ja",
+      "setNumber": 1,
+      "domain": "アプリケーションのアクセス管理の実装",
+      "question": "アプリケーションの API アクセス許可を構成する際、「委任されたアクセス許可」と「アプリケーションのアクセス許可」の違いは何ですか？",
+      "options": {
+        "A": "違いはない",
+        "B": "委任されたアクセス許可はサインインしているユーザーに代わって動作し、アプリケーションのアクセス許可はアプリケーション自体として動作する",
+        "C": "アプリケーションのアクセス許可はサインインしているユーザーに代わって動作し、委任されたアクセス許可はアプリケーション自体として動作する",
+        "D": "両方ともユーザーのサインインが必要"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "委任されたアクセス許可は、サインインしているユーザーがいるアプリケーションによって使用され、ユーザーの ID で API にアクセスします（ユーザーのアクセス許可によって制限されます）。アプリケーションのアクセス許可は、サインインしているユーザーがいないアプリケーション（バックグラウンドサービスなど）によって使用され、アプリケーション自体の ID で動作します。"
+    },
+    {
+      "id": "sc300-s1-ja-q25",
+      "examId": "azure-sc-300-set1-ja",
+      "setNumber": 1,
+      "domain": "Microsoft Entra ID での ID ガバナンスの計画と実装",
+      "question": "Microsoft Entra ID ガバナンスのアクセスレビュー機能の主な目的は何ですか？",
+      "options": {
+        "A": "ユーザーアカウントを自動的に作成する",
+        "B": "リソースへのユーザーアクセス権を定期的にレビューして検証する",
+        "C": "サインインアクティビティを監視する",
+        "D": "ユーザーデータを暗号化する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "アクセスレビューを使用すると、組織はグループ、アプリケーション、ロールへのユーザーアクセス権を定期的にレビューし、アクセス権が必要なユーザーのみがアクセス権を保持するようにして、コンプライアンス要件を満たすことができます。"
+    },
+    {
+      "id": "sc300-s1-ja-q26",
+      "examId": "azure-sc-300-set1-ja",
+      "setNumber": 1,
+      "domain": "Microsoft Entra ID での ID ガバナンスの計画と実装",
+      "question": "Privileged Identity Management (PIM) の「ジャストインタイム」(JIT) アクセス機能では、ユーザーは何ができますか？",
+      "options": {
+        "A": "特権ロールを永続的に持つ",
+        "B": "必要なときに特権ロールをアクティブ化し、アクティブ化後は時間制限がある",
+        "C": "すべてのロールを自動的に取得する",
+        "D": "承認なしでリソースにアクセスする"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "PIM の JIT アクセスにより、ユーザーは必要なときに特権ロールをアクティブ化でき、永続的に持つ必要はありません。アクティブ化には時間制限を設定でき、承認と MFA を要求することができ、特権アクセスのリスクを軽減します。"
+    },
+    {
+      "id": "sc300-s1-ja-q27",
+      "examId": "azure-sc-300-set1-ja",
+      "setNumber": 1,
+      "domain": "Microsoft Entra ID での ID ガバナンスの計画と実装",
+      "question": "エンタイトルメント管理のアクセスパッケージには何が含まれますか？",
+      "options": {
+        "A": "ユーザーアカウントのみ",
+        "B": "ユーザーがアクセスを要求できるリソースのセットとポリシー",
+        "C": "アプリケーションのみ",
+        "D": "セキュリティグループのみ"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "アクセスパッケージは、エンタイトルメント管理の中心的な概念であり、ユーザーがアクセスを要求できるリソースのコレクション（グループ、アプリケーション、SharePoint サイトなど）と、誰が要求でき、誰が承認し、アクセスがいつ期限切れになるかを制御するポリシーが含まれます。"
+    },
+    {
+      "id": "sc300-s1-ja-q28",
+      "examId": "azure-sc-300-set1-ja",
+      "setNumber": 1,
+      "domain": "Microsoft Entra ID での ID ガバナンスの計画と実装",
+      "question": "Microsoft Entra ID のライフサイクルワークフローは、いつタスクを自動的に実行できますか？",
+      "options": {
+        "A": "ユーザーが作成されたときのみ",
+        "B": "ユーザーの入社、異動、退職のライフサイクル全体を通じて",
+        "C": "ユーザーが組織を離れるときのみ",
+        "D": "ユーザーがパスワードを変更するときのみ"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "ライフサイクルワークフローは、従業員ライフサイクルの重要なポイントでタスクを自動的に実行できます：入社（組織への参加）、異動（役割の変更）、退職（組織からの離脱）。ウェルカムメールの送信、ライセンスの割り当て、アクセス権の削除などが含まれます。"
+    },
+    {
+      "id": "sc300-s1-ja-q29",
+      "examId": "azure-sc-300-set1-ja",
+      "setNumber": 1,
+      "domain": "Microsoft Entra ID での ID ガバナンスの計画と実装",
+      "question": "PIM で特権ロールに対してどのような種類の割り当てを構成できますか？",
+      "options": {
+        "A": "永続的な割り当てのみ",
+        "B": "資格のある割り当てのみ",
+        "C": "資格のある割り当てとアクティブな割り当て",
+        "D": "一時的な割り当てのみ"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "PIM は 2 種類の割り当てをサポートしています：資格のある割り当て（ユーザーはロールを使用するためにアクティブ化が必要）とアクティブな割り当て（ユーザーはアクティブ化なしでロールを使用可能）。両方に開始日と終了日を設定できます。"
+    },
+    {
+      "id": "sc300-s1-ja-q30",
+      "examId": "azure-sc-300-set1-ja",
+      "setNumber": 1,
+      "domain": "Microsoft Entra ID での ID ガバナンスの計画と実装",
+      "question": "利用規約（Terms of Use）機能では、組織は何ができますか？",
+      "options": {
+        "A": "ユーザーを自動的に削除する",
+        "B": "リソースにアクセスする前にユーザーに利用規約を受け入れるよう要求する",
+        "C": "すべてのデータを暗号化する",
+        "D": "ネットワークトラフィックを監視する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "利用規約機能により、組織はアプリケーションやリソースにアクセスする前に、ユーザーに利用規約、プライバシーポリシー、その他の法的免責事項を受け入れるよう要求できます。条件付きアクセスと組み合わせて強制できます。"
+    },
+    {
+      "id": "sc300-s1-ja-q31",
+      "examId": "azure-sc-300-set1-ja",
+      "setNumber": 1,
+      "domain": "Microsoft Entra ID での ID ガバナンスの計画と実装",
+      "question": "アクセスレビューが完了した後、どのようなアクションを自動的に実行できますか？",
+      "options": {
+        "A": "レポートの送信のみ",
+        "B": "拒否されたアクセス権を自動的に削除する",
+        "C": "より多くの権限を自動的に付与する",
+        "D": "ユーザーパスワードをリセットする"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "アクセスレビューは、レビュー完了後に結果を自動的に適用するように構成でき、拒否されたアクセス権を削除することも含まれます。これにより、レビュー結果が単にレポートを生成するだけでなく、確実に実行されます。"
+    },
+    {
+      "id": "sc300-s1-ja-q32",
+      "examId": "azure-sc-300-set1-ja",
+      "setNumber": 1,
+      "domain": "Microsoft Entra ID での ID ガバナンスの計画と実装",
+      "question": "エンタイトルメント管理を構成する際、「カタログ」の役割は何ですか？",
+      "options": {
+        "A": "ユーザーパスワードを保存する",
+        "B": "アクセスパッケージとそのリソースを整理および管理するコンテナ",
+        "C": "監査ログを保存する",
+        "D": "MFA 設定を構成する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "カタログは、エンタイトルメント管理でリソースとアクセスパッケージを整理するためのコンテナです。関連するリソースをグループ化し、カタログ所有者に管理権限を委任できます。"
+    },
+    {
+      "id": "sc300-s1-ja-q33",
+      "examId": "azure-sc-300-set1-ja",
+      "setNumber": 1,
+      "domain": "Microsoft Entra ID での ID の実装",
+      "question": "Microsoft Entra ID テナントと Azure サブスクリプションの関係は何ですか？",
+      "options": {
+        "A": "1 つのテナントには 1 つのサブスクリプションのみ",
+        "B": "1 つのサブスクリプションには 1 つのテナントのみだが、1 つのテナントには複数のサブスクリプションを関連付けられる",
+        "C": "テナントとサブスクリプションは同じ",
+        "D": "関係はない"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure サブスクリプションは 1 つの Microsoft Entra ID テナントに関連付ける必要がありますが、1 つのテナントは複数のサブスクリプションに関連付けることができます。テナントは ID とアクセス管理を提供し、サブスクリプションはリソース管理と課金の境界を提供します。"
+    },
+    {
+      "id": "sc300-s1-ja-q34",
+      "examId": "azure-sc-300-set1-ja",
+      "setNumber": 1,
+      "domain": "Microsoft Entra ID での ID の実装",
+      "question": "論理削除されたユーザーは、完全に削除される前にどのくらいの期間復元できますか？",
+      "options": {
+        "A": "7 日",
+        "B": "14 日",
+        "C": "30 日",
+        "D": "90 日"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "ユーザーが Microsoft Entra ID で削除されると、最初に論理削除状態になります。30 日以内にユーザーとそのすべての属性を復元できます。30 日後、ユーザーは完全に削除されます。"
+    },
+    {
+      "id": "sc300-s1-ja-q35",
+      "examId": "azure-sc-300-set1-ja",
+      "setNumber": 1,
+      "domain": "認証とアクセス管理の実装",
+      "question": "Microsoft Authenticator アプリはどのようなパスワードレスサインイン方法をサポートしていますか？",
+      "options": {
+        "A": "プッシュ通知のみ",
+        "B": "ワンタイムパスワードのみ",
+        "C": "プッシュ通知、パスワードレス電話サインイン、TOTP",
+        "D": "生体認証のみ"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "Microsoft Authenticator は複数の機能をサポートしています：プッシュ通知（サインイン要求の承認/拒否）、パスワードレス電話サインイン（デバイス資格情報を使用してサインイン）、時間ベースのワンタイムパスワード (TOTP) コード、および生体認証/PIN 保護。"
+    },
+    {
+      "id": "sc300-s1-ja-q36",
+      "examId": "azure-sc-300-set1-ja",
+      "setNumber": 1,
+      "domain": "認証とアクセス管理の実装",
+      "question": "条件付きアクセスポリシーで、「セッション」コントロールは何を構成できますか？",
+      "options": {
+        "A": "ユーザーが使用する必要がある認証方法",
+        "B": "サインイン頻度と永続的なブラウザーセッション",
+        "C": "ユーザーのグループメンバーシップ",
+        "D": "アプリケーションの API アクセス許可"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "条件付きアクセスのセッションコントロールを使用すると、サインイン頻度（ユーザーが再認証する必要がある頻度）と永続的なブラウザーセッション（ブラウザーを閉じた後もサインイン状態を維持するかどうか）を構成できます。"
+    },
+    {
+      "id": "sc300-s1-ja-q37",
+      "examId": "azure-sc-300-set1-ja",
+      "setNumber": 1,
+      "domain": "アプリケーションのアクセス管理の実装",
+      "question": "Microsoft Entra ID で、サービスプリンシパルとアプリケーション登録の関係は何ですか？",
+      "options": {
+        "A": "同じオブジェクトである",
+        "B": "サービスプリンシパルは特定のテナントにおけるアプリケーションのインスタンス",
+        "C": "アプリケーション登録はサービスプリンシパルのサブセット",
+        "D": "関係はない"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "アプリケーション登録はアプリケーションのグローバル定義であり、サービスプリンシパルは特定の Microsoft Entra ID テナントにおけるそのアプリケーションのローカルインスタンスです。1 つのアプリケーションは複数のテナントに複数のサービスプリンシパルを持つことができます。"
+    },
+    {
+      "id": "sc300-s1-ja-q38",
+      "examId": "azure-sc-300-set1-ja",
+      "setNumber": 1,
+      "domain": "アプリケーションのアクセス管理の実装",
+      "question": "SaaS アプリケーションへのユーザープロビジョニングはどのプロトコル標準を使用しますか？",
+      "options": {
+        "A": "SAML",
+        "B": "SCIM (System for Cross-domain Identity Management)",
+        "C": "OAuth",
+        "D": "Kerberos"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "SCIM（クロスドメイン ID 管理システム）は、ユーザープロビジョニングを自動化するためのオープンスタンダードです。Microsoft Entra ID は SCIM 2.0 を使用して、Microsoft Entra ID と SCIM をサポートする SaaS アプリケーション間でユーザーを自動的に作成、更新、削除します。"
+    },
+    {
+      "id": "sc300-s1-ja-q39",
+      "examId": "azure-sc-300-set1-ja",
+      "setNumber": 1,
+      "domain": "Microsoft Entra ID での ID ガバナンスの計画と実装",
+      "question": "Privileged Identity Management で、緊急アクセスアカウントはどのように構成すべきですか？",
+      "options": {
+        "A": "資格のあるロール割り当てとして",
+        "B": "永続的にアクティブな割り当てとして、PIM ポリシーから除外",
+        "C": "完全に無効化",
+        "D": "パスワードのみでサインインするように構成"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "緊急アクセスアカウント（ブレークグラスアカウント）は、永続的にアクティブなグローバル管理者として構成し、条件付きアクセスと PIM ポリシーから除外して、緊急時に常にテナントにアクセスできるようにする必要があります。"
+    },
+    {
+      "id": "sc300-s1-ja-q40",
+      "examId": "azure-sc-300-set1-ja",
+      "setNumber": 1,
+      "domain": "Microsoft Entra ID での ID ガバナンスの計画と実装",
+      "question": "Microsoft Entra のライセンス管理は何を自動的に実行できますか？",
+      "options": {
+        "A": "ライセンスを自動的に購入する",
+        "B": "グループメンバーシップに基づいてライセンスを自動的に割り当ておよび削除する",
+        "C": "ユーザーアカウントを自動的に作成する",
+        "D": "アプリケーションを自動的に構成する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "グループベースのライセンス割り当てにより、セキュリティグループまたは Microsoft 365 グループにライセンスを割り当てることができます。ユーザーがグループに参加するとライセンスが自動的に付与され、グループから離れるとライセンスが自動的に削除されます。"
+    }
+  ]
+}

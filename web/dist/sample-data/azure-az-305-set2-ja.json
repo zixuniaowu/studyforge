@@ -1,0 +1,194 @@
+{
+  "exam": {
+    "id": "azure-az-305-set2-ja",
+    "name": "Azure AZ-305 ソリューションアーキテクト模擬試験 #2",
+    "code": "AZ-305",
+    "provider": "Azure",
+    "language": "ja",
+    "description": "Microsoft Azure Solutions Architect Expert認定試験の模擬問題です。ID、ガバナンス、監視ソリューションの設計、データストレージソリューションの設計、ビジネス継続性ソリューションの設計、インフラストラクチャソリューションの設計などのコア領域をカバーしています。",
+    "totalQuestions": 10,
+    "passingScore": 70,
+    "examTime": 120,
+    "domains": [
+      {
+        "id": 1,
+        "name": "ID、ガバナンス、監視ソリューションの設計 (Design identity, governance, and monitoring solutions)",
+        "weight": 28
+      },
+      {
+        "id": 2,
+        "name": "データストレージソリューションの設計 (Design data storage solutions)",
+        "weight": 27
+      },
+      {
+        "id": 3,
+        "name": "ビジネス継続性ソリューションの設計 (Design business continuity solutions)",
+        "weight": 13
+      },
+      {
+        "id": 4,
+        "name": "インフラストラクチャソリューションの設計 (Design infrastructure solutions)",
+        "weight": 32
+      }
+    ],
+    "tags": [
+      "Azure",
+      "AZ-305",
+      "ソリューションアーキテクト",
+      "認定試験",
+      "クラウドコンピューティング"
+    ]
+  },
+  "questions": [
+    {
+      "id": "q1",
+      "domain": 1,
+      "question": "ある企業がゼロトラストセキュリティモデルを実装しています。リクエストがネットワーク内部からか外部からかに関係なく、すべてのアクセスリクエストが検証されることを確保する必要があります。どの組み合わせ戦略を使用すべきですか？",
+      "options": {
+        "A": "ネットワークセキュリティグループ（NSG）のみを使用する",
+        "B": "Azure AD条件付きアクセス、Microsoft Defender for Cloud、マネージドIDを使用する",
+        "C": "Azure Firewallのみを使用する",
+        "D": "VPNゲートウェイのみを使用する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "ゼロトラストモデルは「決して信頼せず、常に検証する」ことを要求します。Azure AD条件付きアクセスは各アクセスリクエストのIDとデバイス状態を検証し、Microsoft Defender for Cloudは継続的なセキュリティ評価を提供し、マネージドIDは資格情報管理の必要性を排除します。この組み合わせにより、包括的なゼロトラストアーキテクチャが実現されます。\n---",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q2",
+      "domain": 1,
+      "question": "ある企業がコスト管理戦略を実装する必要があり、Azure支出の予測、予算アラートの設定、コスト最適化の機会の特定が必要です。どのサービスを使用すべきですか？",
+      "options": {
+        "A": "Azure Monitor",
+        "B": "Azure Cost Management + Billing",
+        "C": "Azure Advisor",
+        "D": "Azure Policy"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure Cost Management + Billingは、包括的なコスト分析、予算作成、アラート構成、支出予測機能を提供します。履歴の支出パターンを分析し、将来のコストを予測し、最適化の推奨事項を提供できます。これはAzureネイティブのコスト管理ソリューションです。\n---",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q3",
+      "domain": 2,
+      "question": "ある金融会社がデータベースソリューションを設計する必要があり、トランザクションの一貫性、複雑なクエリのサポート、行レベルのセキュリティ、動的データマスキングが必要です。どのサービスを選択すべきですか？",
+      "options": {
+        "A": "Azure Cosmos DB",
+        "B": "Azure SQL Databaseと高度なセキュリティ機能",
+        "C": "Azure Database for MySQL",
+        "D": "Azure Table Storage"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure SQL Databaseは、ACIDトランザクション、複雑なSQLクエリ、高度なセキュリティ機能をサポートするフルマネージドのリレーショナルデータベースサービスです。行レベルセキュリティ（RLS）はユーザーがアクセスできる行を制限し、動的データマスキングはクエリ結果で機密データを隠します。これにより、金融アプリケーションのすべての要件が満たされます。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q4",
+      "domain": 2,
+      "question": "ある企業がAzure Blob Storageのコールドデータをアーカイブしてストレージコストを削減する必要がありますが、必要に応じてデータにアクセスできる状態を維持する必要があります。何を構成すべきですか？",
+      "options": {
+        "A": "古いデータを削除する",
+        "B": "Blobストレージライフサイクル管理ポリシーを構成し、データをアーカイブティアに移動する",
+        "C": "ファイルを手動で別のストレージアカウントに移動する",
+        "D": "すべてのデータをホットティアに保持する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Blobストレージライフサイクル管理ポリシーは、最終更新日に基づいてBlobをクールティアまたはアーカイブティアに自動的に移動できます。アーカイブティアは最も低いストレージコストを提供し、取得に時間がかかる（リハイドレーション）ものの、データは引き続きアクセス可能です。これにより、データの可用性を維持しながらコストが最適化されます。\n---",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q5",
+      "domain": 2,
+      "question": "ある企業がIoTソリューションを設計しており、数百万のデバイスからのリアルタイム遠隔測定データを処理する必要があります。データは低レイテンシで保存され、時系列クエリをサポートする必要があります。どのサービスを使用すべきですか？",
+      "options": {
+        "A": "Azure SQL Database",
+        "B": "Azure Time Series InsightsまたはAzure Data Explorer",
+        "C": "Azure Blob Storage",
+        "D": "Azure Queue Storage"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure Time Series InsightsとAzure Data Explorerは、どちらも時系列データ用に設計されています。高速なデータ取り込み、専用の時系列クエリ言語、低レイテンシ分析を提供します。Azure Data Explorerは、大規模な遠隔測定データの処理に特に適しており、ほぼリアルタイムの分析機能を提供します。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q6",
+      "domain": 3,
+      "question": "ある企業がハイブリッドクラウドバックアップ戦略を設計し、オンプレミスサーバーをAzureにバックアップする必要があります。バックアップは暗号化され、本番ネットワークへの影響を避けるために帯域幅制限をサポートする必要があります。何を使用すべきですか？",
+      "options": {
+        "A": "ファイルを手動でAzure Blob Storageにコピーする",
+        "B": "Microsoft Azure Recovery Services（MARS）エージェント",
+        "C": "Azure Data Box",
+        "D": "Azure Storage Explorer"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Microsoft Azure Recovery Services（MARS）エージェントを使用すると、オンプレミスのWindowsサーバーのファイルとフォルダーをAzure Recovery Servicesコンテナーにバックアップできます。AES-256暗号化、バックアップ圧縮、ネットワーク帯域幅制限、柔軟なバックアップスケジュールをサポートしています。これはハイブリッドバックアップシナリオに最適なソリューションです。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q7",
+      "domain": 3,
+      "question": "ある企業が複数のAzureリージョンにまたがるアプリケーションを運用しています。プライマリリージョンが利用できなくなった場合に、自動的にトラフィックをセカンダリリージョンにルーティングするDNSフェイルオーバーを構成する必要があります。どのサービスと構成を使用すべきですか？",
+      "options": {
+        "A": "Azure DNSとAレコード",
+        "B": "Azure Traffic Managerと優先度ルーティング方式およびヘルスプローブ",
+        "C": "Azure Load Balancer",
+        "D": "Azure Application Gateway"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure Traffic Managerは、DNSベースのロードバランサーであり、リージョン間でトラフィックをルーティングできます。優先度ルーティング方式を使用すると、トラフィックは最初に最高優先度（最も低い数値）のエンドポイントにルーティングされます。ヘルスプローブと組み合わせると、プライマリリージョンが失敗した場合に自動的に次の優先度のエンドポイントにルーティングされます。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q8",
+      "domain": 4,
+      "question": "ある企業がセキュアな送信ネットワークトラフィックソリューションを設計する必要があり、すべての仮想ネットワークからの送信トラフィックが集中型のセキュリティチェックポイントを通過する必要があります。どのアーキテクチャを使用すべきですか？",
+      "options": {
+        "A": "各VNetに個別のNATゲートウェイを使用する",
+        "B": "ハブVNetにAzure Firewallをデプロイし、UDRを構成してすべての送信トラフィックをファイアウォール経由に強制する",
+        "C": "NSGルールのみを使用する",
+        "D": "すべてのVNetがインターネットに直接アクセスすることを許可する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "ハブVNetにAzure Firewallをデプロイすることで、集中型の送信セキュリティチェックポイントとして機能できます。スポークVNetでユーザー定義ルート（UDR）を構成することで、すべての送信トラフィック（0.0.0.0/0）をAzure Firewallにルーティングできます。ファイアウォールはアプリケーションルール、ネットワークルール、脅威インテリジェンスフィルタリングを適用できます。\n---",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q9",
+      "domain": 4,
+      "question": "ある企業が既存のアプリケーションコードを変更せずに、Web APIにレート制限とOAuth検証機能を追加する必要があります。どの方法を使用すべきですか？",
+      "options": {
+        "A": "アプリケーションコードを変更してこれらの機能を追加する",
+        "B": "バックエンドAPIの前にAzure API Managementをデプロイし、ポリシーを構成する",
+        "C": "Azure Load Balancerを使用する",
+        "D": "Azure CDNを使用する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure API ManagementはAPIのフロントエンドゲートウェイとして機能し、バックエンドコードを変更せずに機能を追加できます。インバウンドポリシーを使用して、レート制限（rate-limit）とOAuth検証（validate-jwt）を構成できます。この方法により、横断的関心事がアプリケーションロジックから分離されます。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q10",
+      "domain": 4,
+      "question": "ある企業が仮想ネットワークにAzure PaaSサービス（Azure SQL Databaseなど）をデプロイし、プライベートIPアドレスを持ち、パブリックインターネットに公開されないようにする必要があります。どの機能を使用すべきですか？",
+      "options": {
+        "A": "サービスエンドポイント",
+        "B": "プライベートエンドポイント（Private Endpoints）",
+        "C": "パブリックIPとファイアウォールルール",
+        "D": "Azure ExpressRoute"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "プライベートエンドポイントはAzure Private Linkを使用して、Azure PaaSサービスのプライベートインスタンスを仮想ネットワークに持ち込みます。サービスはVNetサブネット内のプライベートIPアドレスを取得し、VNet、ピアリングされたVNet、オンプレミス（VPN/ExpressRoute経由）からアクセスできます。パブリックエンドポイントを無効にすることで、パブリック公開を完全に排除できます。\n---",
+      "difficulty": "medium"
+    }
+  ]
+}

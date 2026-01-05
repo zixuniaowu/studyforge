@@ -1,0 +1,798 @@
+{
+  "exam": {
+    "id": "aws-aif-c01-set1-ja",
+    "name": "AWS AIF-C01 模擬試験 #1",
+    "code": "AIF-C01",
+    "provider": "AWS",
+    "language": "ja",
+    "description": "AWS認定AIプラクティショナー試験模擬問題 - 第1套",
+    "totalQuestions": 50,
+    "passingScore": 70,
+    "examTime": 90,
+    "domains": [
+      {
+        "id": 1,
+        "name": "AIとMLの基礎",
+        "weight": 20
+      },
+      {
+        "id": 2,
+        "name": "生成AIの基礎",
+        "weight": 24
+      },
+      {
+        "id": 3,
+        "name": "基盤モデルのアプリケーション",
+        "weight": 28
+      },
+      {
+        "id": 4,
+        "name": "責任あるAIのガイドライン",
+        "weight": 14
+      },
+      {
+        "id": 5,
+        "name": "セキュリティ、コンプライアンス、ガバナンス",
+        "weight": 14
+      }
+    ],
+    "tags": [
+      "AWS",
+      "AI",
+      "ML",
+      "認定試験"
+    ]
+  },
+  "questions": [
+    {
+      "id": "q1",
+      "domain": 1,
+      "question": "ある企業が運用を最適化するために四半期ごとに予測を行っています。企業はこれらの予測にMLモデルを使用しています。AIプラクティショナーは、会社の利害関係者に透明性と説明可能性を提供するため、訓練されたMLモデルに関するレポートを作成しています。透明性と説明可能性の要件を満たすために、レポートに何を含めるべきですか？",
+      "options": {
+        "A": "モデル訓練コード",
+        "B": "部分依存プロット（PDPs）",
+        "C": "訓練サンプルデータ",
+        "D": "モデル収束表"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "部分依存プロット（Partial Dependence Plots、PDPs）は機械学習の説明可能性における重要なツールです：\n- 特徴量が予測結果に与える限界効果を示す\n- モデルの意思決定プロセスを理解するのに役立つ\n- 非技術者の利害関係者に直感的な説明を提供\n\n他の選択肢：コード(A)、サンプルデータ(C)、収束表(D)はモデルの動作を直接説明しません。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q2",
+      "domain": 1,
+      "question": "ある企業がヒト遺伝子を20のカテゴリに分類したいと考えています。企業はモデルの内部メカニズムが出力にどのように影響するかを記録するMLアルゴリズムを必要としています。これらの要件を満たすMLアルゴリズムはどれですか？",
+      "options": {
+        "A": "決定木（Decision trees）",
+        "B": "線形回帰（Linear regression）",
+        "C": "ロジスティック回帰（Logistic regression）",
+        "D": "ニューラルネットワーク（Neural networks）"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "決定木は最も説明可能なMLアルゴリズムです：\n- 意思決定プロセス全体を可視化できる\n- 各ノードに明確なルールがある\n- 完全な意思決定パスを追跡可能\n- 「ホワイトボックス」モデルに属する\n\nニューラルネットワーク(D)は「ブラックボックス」であり、内部メカニズムの説明が困難です。線形/ロジスティック回帰は回帰または二値分類に使用され、20クラス分類には適していません。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q3",
+      "domain": 1,
+      "question": "ある企業が植物の葉の写真から植物の病気を予測する画像分類モデルを構築しました。企業はモデルが正しく分類した画像の数を評価したいと考えています。モデルのパフォーマンスを測定するためにどの評価指標を使用すべきですか？",
+      "options": {
+        "A": "R二乗スコア（R² score）",
+        "B": "正解率（Accuracy）",
+        "C": "二乗平均平方根誤差（RMSE）",
+        "D": "学習率（Learning rate）"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "- Accuracy（正解率） = 正しい予測数 / 総予測数\n- 「正しく分類した数」を直接測定\n- R²とRMSEは回帰指標であり、分類には適していない\n- Learning rateは訓練パラメータであり、評価指標ではない",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q4",
+      "domain": 1,
+      "question": "ある企業がドメイン固有のモデルを使用しています。企業は新しいモデルをゼロから作成することを避け、新しい関連タスク用のモデルを作成するために事前訓練済みモデルを調整したいと考えています。これらの要件を満たすML戦略はどれですか？",
+      "options": {
+        "A": "エポック数を増やす",
+        "B": "転移学習（Transfer learning）を使用する",
+        "C": "エポック数を減らす",
+        "D": "教師なし学習を使用する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "転移学習は事前訓練済みモデルの知識を新しいタスクに転用します：\n- ゼロから始める必要がない\n- 既存の知識を活用\n- 時間とリソースを節約\n- 少量の新しいデータで新しいタスクに適応可能",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q5",
+      "domain": 1,
+      "question": "機械学習において、モデルが訓練データでは良好に動作するが、新しいデータではパフォーマンスが悪い。この現象は何と呼ばれますか？",
+      "options": {
+        "A": "未学習（Underfitting）",
+        "B": "過学習（Overfitting）",
+        "C": "データドリフト（Data drift）",
+        "D": "モデルバイアス（Model bias）"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "過学習の特徴：\n- 訓練セットで良好なパフォーマンス\n- 新しいデータ/テストセットでパフォーマンスが悪い\n- モデルがパターンを学習する代わりに訓練データを「暗記」している\n\n未学習(A)は両方でパフォーマンスが悪い。データドリフト(C)は本番データの分布変化。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q6",
+      "domain": 1,
+      "question": "以下のどの学習タイプがラベル付きデータを使用して訓練しますか？",
+      "options": {
+        "A": "強化学習（Reinforcement Learning）",
+        "B": "教師なし学習（Unsupervised Learning）",
+        "C": "教師あり学習（Supervised Learning）",
+        "D": "自己教師あり学習（Self-supervised Learning）"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "- 教師あり学習：ラベル付きデータ（入力-出力ペア）\n- 教師なし学習：ラベルなしデータ、パターンを発見\n- 強化学習：報酬信号を通じて学習\n- 自己教師あり学習：データ自体からラベルを生成",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q7",
+      "domain": 1,
+      "question": "住宅価格を予測することは、どのタイプのML問題に属しますか？",
+      "options": {
+        "A": "分類（Classification）",
+        "B": "回帰（Regression）",
+        "C": "クラスタリング（Clustering）",
+        "D": "次元削減（Dimensionality Reduction）"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "- 回帰：連続的な数値を予測（価格、温度、売上）\n- 分類：離散的なカテゴリを予測（はい/いいえ、A/B/C）\n- 住宅価格は連続的な数値 → 回帰問題",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q8",
+      "domain": 1,
+      "question": "ある企業が顧客の特徴に基づいて顧客を異なるグループに分けたいと考えていますが、事前定義されたラベルがありません。どのML手法を使用すべきですか？",
+      "options": {
+        "A": "教師あり学習 - 分類",
+        "B": "教師あり学習 - 回帰",
+        "C": "教師なし学習 - クラスタリング",
+        "D": "強化学習"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "事前定義されたラベルがなく、グループ分けが必要 → クラスタリング（教師なし学習）\n- K-means\n- 階層的クラスタリング\n- DBSCAN\n\n教師あり学習にはラベルが必要ですが、ここにはラベルがありません。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q9",
+      "domain": 1,
+      "question": "ニューラルネットワークにおいて「Epoch」とは何ですか？",
+      "options": {
+        "A": "モデルの層の数",
+        "B": "訓練データを完全に1回通過すること",
+        "C": "ニューラルネットワークのタイプ",
+        "D": "学習率の値"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "- Epoch：データセット全体を1回通過\n- Batch：1回の更新に使用するサンプル数\n- Iteration：1回のバッチ訓練\n\n例：1000サンプル、batch=100の場合、1 epoch = 10 iterations",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q10",
+      "domain": 2,
+      "question": "以下のうち、過学習を防ぐ方法ではないものはどれですか？",
+      "options": {
+        "A": "訓練データを増やす",
+        "B": "正則化を使用する（Regularization）",
+        "C": "モデルの複雑さを増やす",
+        "D": "Dropoutを使用する"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "モデルの複雑さを増やすと過学習が悪化します！\n\n過学習を防ぐ方法：\n- ✅ 訓練データを増やす\n- ✅ 正則化（L1, L2）\n- ✅ Dropout\n- ✅ 早期停止（Early Stopping）\n- ✅ データ拡張\n- ❌ 複雑さを増やす（過学習を悪化させる）",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q11",
+      "domain": 1,
+      "question": "ある企業が事前訓練済みの大規模言語モデル（LLM）を使用して製品推薦チャットボットを構築しています。企業はLLMの出力を短く、特定の言語で書かれるようにする必要があります。LLMの応答品質を企業の期待に合わせるためのソリューションはどれですか？",
+      "options": {
+        "A": "プロンプトを調整する（Adjust the prompt）",
+        "B": "異なるサイズのLLMを選択する",
+        "C": "temperatureを上げる",
+        "D": "Top K値を上げる"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "プロンプトエンジニアリングはLLMの出力を制御する最も直接的な方法です：\n- 長さを指定：「50文字以内で回答してください」\n- 言語を指定：「日本語で回答してください」\n- 形式とスタイルを指定\n\ntemperatureを上げると出力がよりランダムになり、長さや言語を制御する方法ではありません。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q12",
+      "domain": 1,
+      "question": "生成AIにおいて「temperature」パラメータの役割は何ですか？",
+      "options": {
+        "A": "モデルの訓練速度を制御する",
+        "B": "出力のランダム性/創造性を制御する",
+        "C": "モデルが使用するGPUの数を制御する",
+        "D": "入力テキストの最大長を制御する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Temperatureパラメータ：\n- 温度=0：最も確定的、最も保守的、最も一貫性がある\n- 温度=0.5-0.7：創造性と一貫性のバランス\n- 温度=1：標準サンプリング\n- 温度>1：非常にランダム、より創造的",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q13",
+      "domain": 1,
+      "question": "大規模言語モデルがもっともらしく見えるが実際には不正確または架空の情報を生成する。この現象は何と呼ばれますか？",
+      "options": {
+        "A": "過学習（Overfitting）",
+        "B": "ハルシネーション（Hallucination）",
+        "C": "バイアス（Bias）",
+        "D": "ドリフト（Drift）"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "LLMのハルシネーションとは：\n- もっともらしく見えるが誤った情報を生成\n- 存在しない事実、引用、データを捏造\n- 不確実なことについて自信を持って発言\n\nハルシネーションを減らす方法：RAG、Grounding、temperatureを下げる",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q14",
+      "domain": 1,
+      "question": "RAG（Retrieval-Augmented Generation）の主な利点は何ですか？",
+      "options": {
+        "A": "モデルの訓練時間を短縮する",
+        "B": "モデルが最新の外部知識にアクセスできるようにする",
+        "C": "モデルの推論速度を向上させる",
+        "D": "モデルのパラメータ数を削減する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "RAG（検索拡張生成）：\n1. ナレッジベースから関連情報を検索\n2. 情報をクエリと一緒にLLMに提供\n3. LLMがコンテキストに基づいて回答を生成\n\n利点：最新情報へのアクセス、ハルシネーションの削減、再訓練不要。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q15",
+      "domain": 1,
+      "question": "Amazon Bedrockにおいて「continued pre-training」と「fine-tuning」の主な違いは何ですか？",
+      "options": {
+        "A": "Continued pre-trainingはラベル付きデータを使用し、fine-tuningはラベルなしデータを使用する",
+        "B": "Continued pre-trainingはラベルなしデータを使用し、fine-tuningはラベル付きデータを使用する",
+        "C": "両者は完全に同じ",
+        "D": "Fine-tuningはモデルの重みを変更しない"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "| 方法 | データタイプ | 目的 |\n|:-----|:---------|:-----|\n| Continued Pre-training | ラベルなしデータ | モデルにドメイン知識を習得させる |\n| Fine-tuning | ラベル付きデータ（入力-出力ペア） | 特定タスクのパフォーマンスを最適化 |",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q16",
+      "domain": 1,
+      "question": "大規模言語モデルにおける「Token」の意味は何ですか？",
+      "options": {
+        "A": "認証資格情報",
+        "B": "モデルがテキストを処理する基本単位",
+        "C": "APIキー",
+        "D": "課金通貨"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Tokenは以下のようなものです：\n- 完全な単語\n- サブワード（例：「playing」→「play」+「ing」）\n- 文字\n- 英単語は約1-2トークン\n- 日本語の1文字は約1-2トークン",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q17",
+      "domain": 1,
+      "question": "LLMの出力をより確定的で一貫性のあるものにしたい場合、temperatureパラメータをどのように調整すべきですか？",
+      "options": {
+        "A": "temperatureを上げる",
+        "B": "temperatureを下げる",
+        "C": "temperatureを1に設定する",
+        "D": "Temperatureは出力の一貫性とは無関係"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "- 低温度（0-0.3） → 出力がより確定的、より一貫性がある、より保守的\n- 高温度（0.7-1+） → 出力がよりランダム、より多様、より創造的",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q18",
+      "domain": 1,
+      "question": "以下のどのPrompt技術が複雑な推論タスクに最も適していますか？",
+      "options": {
+        "A": "Zero-shot prompting",
+        "B": "Chain-of-thought prompting",
+        "C": "One-shot prompting",
+        "D": "Completion prompting"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "思考の連鎖プロンプト（Chain-of-thought）：\n- モデルに段階的な推論を促す\n- 数学、論理、多段階推論タスクに適している\n- プロンプト内で推論プロセスを示す\n- 例：「ステップバイステップで考えてみましょう...」",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q19",
+      "domain": 1,
+      "question": "「コンテキストウィンドウ（Context Window）」とは何ですか？",
+      "options": {
+        "A": "モデルの訓練時間",
+        "B": "モデルが処理できる最大トークン数",
+        "C": "モデルの層数",
+        "D": "モデルのパラメータ数"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "コンテキストウィンドウの制限：\n- 入力 + 出力の合計トークン数\n- モデルによって異なる制限（4K、8K、32K、128Kなど）\n- 処理できるドキュメントの長さに影響\n- 制限を超えるコンテンツは切り捨てられる",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q20",
+      "domain": 1,
+      "question": "以下のうち、LLMのハルシネーション問題を最も効果的に減らすものはどれですか？",
+      "options": {
+        "A": "モデルサイズを増やす",
+        "B": "RAGを使用して関連コンテキストを提供する",
+        "C": "temperatureを上げる",
+        "D": "訓練データを減らす"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "ハルシネーションを減らす方法：\n- ✅ RAGで真実の関連情報を提供\n- ✅ temperatureを下げる\n- ✅ 明確なプロンプト\n- ✅ 信頼できるソースにGrounding\n- ❌ temperatureを上げるとハルシネーションが悪化",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q21",
+      "domain": 1,
+      "question": "Amazon Titanとは何ですか？",
+      "options": {
+        "A": "AWSのサーバーハードウェア",
+        "B": "Amazonの基盤モデルシリーズ",
+        "C": "データベースサービス",
+        "D": "コンテナサービス"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Amazon Titanには以下が含まれます：\n- Titan Text（テキスト生成）\n- Titan Embeddings（ベクトル化）\n- Titan Image Generator（画像生成）\n- Titan Multimodal Embeddings\n- Amazon Bedrockを通じてアクセス",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q22",
+      "domain": 3,
+      "question": "Few-shot promptingにおいて「few-shot」とは何を指しますか？",
+      "options": {
+        "A": "非常に少ない訓練データを使用すること",
+        "B": "プロンプト内で少数の例を提供すること",
+        "C": "モデルが非常に短い回答しか生成できないこと",
+        "D": "高速推論モード"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "- Zero-shot：例を提供せず、直接質問\n- One-shot：1つの例を提供\n- Few-shot：2-5個の例を提供\n- 例はモデルがタスクの形式と期待される出力を理解するのに役立つ",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q23",
+      "domain": 1,
+      "question": "ある法律事務所が大規模言語モデル（LLM）を使用してAIアプリケーションを構築したいと考えています。このアプリケーションは法的文書を読み、文書から重要なポイントを抽出します。どのソリューションがこれらの要件を満たしますか？",
+      "options": {
+        "A": "自動名前付きエンティティ認識システムを構築する",
+        "B": "レコメンデーションエンジンを作成する",
+        "C": "要約チャットボットを開発する",
+        "D": "多言語翻訳システムを開発する"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "文書を読む + 重要なポイントを抽出する = 要約タスク\n- 名前付きエンティティ認識はエンティティ名のみを識別し、重要なポイントを抽出しない\n- レコメンデーションエンジンはコンテンツを推薦するためのもの\n- 翻訳システムは言語変換のみを行う",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q24",
+      "domain": 1,
+      "question": "ある企業がAmazon Bedrock上の基盤モデル（FM）を使用してチャットボットを作成したいと考えています。FMはAmazon S3バケットに保存された暗号化データにアクセスする必要があります。FMがS3データにアクセスしようとすると失敗が発生しています。最も可能性の高い原因は何ですか？",
+      "options": {
+        "A": "S3データの形式が正しくない",
+        "B": "Bedrockのロールに復号化権限がない",
+        "C": "プロンプトがうまく書かれていない",
+        "D": "モデルが小さすぎる"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "暗号化されたS3データにアクセスするには：\n- S3読み取り権限（s3:GetObject）\n- KMS復号化権限（kms:Decrypt）\n- これはIAM権限設定の問題であり、データ形式やモデルの問題ではない",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q25",
+      "domain": 1,
+      "question": "ある企業がAmazon SageMakerを本番環境のMLパイプラインとして使用しています。企業には最大1GBの大規模な入力データと最大1時間の処理時間があります。企業はほぼリアルタイムのレイテンシを必要としています。どのSageMaker推論オプションがこれらの要件を満たしますか？",
+      "options": {
+        "A": "リアルタイム推論（Real-time inference）",
+        "B": "サーバーレス推論（Serverless inference）",
+        "C": "非同期推論（Asynchronous inference）",
+        "D": "バッチ変換（Batch transform）"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "| オプション | 入力サイズ | 処理時間 | レイテンシ |\n|:-----|:---------|:---------|:-----|\n| リアルタイム推論 | <6MB | <60秒 | ミリ秒レベル |\n| サーバーレス推論 | <4MB | <60秒 | コールドスタートあり |\n| 非同期推論 | 最大1GB | 最大1時間 | ほぼリアルタイム |\n| バッチ変換 | 大 | 長い | 非リアルタイム |",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q26",
+      "domain": 1,
+      "question": "ある企業がエッジデバイス上で言語モデルを使用して推論アプリケーションを作成したいと考えています。推論は可能な限り低いレイテンシである必要があります。どのソリューションがこれらの要件を満たしますか？",
+      "options": {
+        "A": "エッジデバイス上に最適化された小規模言語モデル（SLM）をデプロイする",
+        "B": "エッジデバイス上に最適化された大規模言語モデル（LLM）をデプロイする",
+        "C": "集中型APIを使用して非同期通信する",
+        "D": "クラウド上の大規模モデルをリアルタイムで呼び出す"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "最低レイテンシには：\n- ローカルデプロイメント（ネットワークレイテンシなし）\n- 小規模モデル（推論が速く、リソース消費が少ない）\n- 最適化されたSLMが最良の選択\n\nLLMは大きすぎて、エッジデバイスのリソースでは実行できない。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q27",
+      "domain": 1,
+      "question": "ある企業が保護メガネの画像ラベリングを生成するソリューションを構築しています。ソリューションは高い精度を持ち、誤ったアノテーションのリスクを最小化する必要があります。どのソリューションがこれらの要件を満たしますか？",
+      "options": {
+        "A": "Amazon SageMaker Ground Truth Plusを使用してhuman-in-the-loop検証を行う",
+        "B": "Amazon Bedrockナレッジベースを使用してデータ拡張を行う",
+        "C": "Amazon Rekognitionを使用して画像認識を行う",
+        "D": "Amazon QuickSight Qを使用してデータ要約を行う"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Ground Truth Plusは：\n- マネージドデータラベリングサービス\n- 専門家チームによるレビュー\n- human-in-the-loop検証で高精度を確保\n- 誤ったラベリングを最小化",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q28",
+      "domain": 1,
+      "question": "ある企業が製品画像からテキスト情報を抽出したいと考えています。どのAWSサービスを使用すべきですか？",
+      "options": {
+        "A": "Amazon Rekognition",
+        "B": "Amazon Textract",
+        "C": "Amazon Comprehend",
+        "D": "Amazon Polly"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "AWSサービス比較：\n- Textract：画像/PDFテキスト抽出（OCR）← 正解\n- Rekognition：画像/動画分析（顔、物体検出）\n- Comprehend：テキスト分析（感情、エンティティ）\n- Polly：テキスト読み上げ",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q29",
+      "domain": 1,
+      "question": "ある企業が顧客レビューの感情（ポジティブ/ネガティブ/ニュートラル）を分析したいと考えています。どのAWSサービスを使用すべきですか？",
+      "options": {
+        "A": "Amazon Lex",
+        "B": "Amazon Comprehend",
+        "C": "Amazon Transcribe",
+        "D": "Amazon Translate"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "ComprehendはNLPサービスです：\n- ✅ 感情分析（ポジティブ/ネガティブ/ニュートラル/混合）\n- ✅ 名前付きエンティティ認識\n- ✅ キーワード抽出\n- ✅ 言語検出\n- ✅ トピックモデリング",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q30",
+      "domain": 1,
+      "question": "ある企業がカスタマーサービスの電話録音をテキストに変換したいと考えています。どのAWSサービスを使用すべきですか？",
+      "options": {
+        "A": "Amazon Polly",
+        "B": "Amazon Transcribe",
+        "C": "Amazon Comprehend",
+        "D": "Amazon Textract"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "- Transcribe：音声→テキスト（ASR/STT）← 正解\n- Polly：テキスト→音声（TTS）\n- 両者の機能は逆です！\n\n覚え方：Transcribe = 転写 = 聞いたことを書き留める",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q31",
+      "domain": 1,
+      "question": "ある企業がスマート検索機能を構築し、ユーザーが自然言語で内部ドキュメントを検索できるようにしたいと考えています。どのAWSサービスを使用すべきですか？",
+      "options": {
+        "A": "Amazon OpenSearch",
+        "B": "Amazon Kendra",
+        "C": "Amazon S3",
+        "D": "Amazon DynamoDB"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Kendraはインテリジェントエンタープライズ検索です：\n- 自然言語クエリの意図を理解\n- リンクだけでなく回答を提供\n- エンタープライズドキュメント検索向けに設計\n- 複数のデータソース接続をサポート\n\nOpenSearchは全文検索エンジンで、自然言語を理解しません。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q32",
+      "domain": 1,
+      "question": "あるEコマース企業がユーザーにパーソナライズされた製品推薦を提供したいと考えています。どのAWSサービスを使用すべきですか？",
+      "options": {
+        "A": "Amazon Comprehend",
+        "B": "Amazon Personalize",
+        "C": "Amazon Forecast",
+        "D": "Amazon Lex"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Personalizeは以下に使用されます：\n- パーソナライズされた製品推薦\n- ユーザー行動に基づく学習\n- Eコマース、コンテンツ推薦、マーケティングに適している\n\nForecastは時系列予測（売上予測）に使用され、推薦ではありません。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q33",
+      "domain": 1,
+      "question": "Amazon BedrockとAmazon SageMakerの主な違いは何ですか？",
+      "options": {
+        "A": "Bedrockはデータストレージに使用され、SageMakerは計算に使用される",
+        "B": "Bedrockは事前訓練済み基盤モデルを提供し、SageMakerはカスタムモデルの構築に使用される",
+        "C": "両者の機能は完全に同じ",
+        "D": "Bedrockはテキストのみをサポートし、SageMakerは画像のみをサポート"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "- Bedrock：事前訓練済み基盤モデルAPI、インフラ管理不要、迅速に使用可能\n- SageMaker：完全なMLプラットフォーム、カスタムモデルの構築・訓練・デプロイ、より多くの制御",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q34",
+      "domain": 1,
+      "question": "企業が顧客の意図を理解できるチャットボットを構築したいと考えています。どのAWSサービスを使用すべきですか？",
+      "options": {
+        "A": "Amazon Rekognition",
+        "B": "Amazon Lex",
+        "C": "Amazon Transcribe",
+        "D": "Amazon Polly"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Lexは会話型AIの構築に使用されます：\n- 自然言語理解（NLU）\n- 意図認識\n- スロットフィリング\n- 対話管理\n- チャットボットの第一選択サービス",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q35",
+      "domain": 1,
+      "question": "生成AIにおける「ベクトルデータベース（Vector Database）」の主な役割は何ですか？",
+      "options": {
+        "A": "リレーショナルデータを保存する",
+        "B": "セマンティック検索をサポートするためにテキスト埋め込みベクトルを保存する",
+        "C": "SQLクエリを実行する",
+        "D": "ユーザー権限を管理する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "生成AIにおけるベクトルデータベース：\n- 埋め込みベクトル（embeddings）を保存\n- セマンティック類似度検索をサポート\n- RAGシステムのコアコンポーネント\n- 例：Amazon OpenSearch Serverless Vector Engine",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q36",
+      "domain": 4,
+      "question": "Amazon Qの主な用途は何ですか？",
+      "options": {
+        "A": "従来のデータベースクエリ",
+        "B": "AIアシスタント、質問への回答とワークタスクの支援",
+        "C": "画像生成",
+        "D": "音声合成"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Amazon Q：\n- Q Business：エンタープライズナレッジQ&Aアシスタント\n- Q Developer：プログラミング支援（GitHub Copilotに類似）\n- 企業データに基づいて質問に回答\n- エンタープライズ版AIアシスタントに類似",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q37",
+      "domain": 1,
+      "question": "以下のうち、責任あるAI（Responsible AI）のコア原則はどれですか？",
+      "options": {
+        "A": "モデル精度の最大化",
+        "B": "計算コストの削減",
+        "C": "公平性、透明性、説明可能性の確保",
+        "D": "最新のモデルアーキテクチャの使用"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "責任あるAIのコア原則：\n- 公平性（Fairness）\n- 透明性（Transparency）\n- 説明可能性（Explainability）\n- プライバシー保護（Privacy）\n- セキュリティ（Security）\n- アカウンタビリティ（Accountability）",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q38",
+      "domain": 1,
+      "question": "AIにおける「バイアス（Bias）」とは何を指しますか？",
+      "options": {
+        "A": "モデルの訓練速度が遅すぎる",
+        "B": "特定のグループに対する不公平な扱いをもたらすシステム的なエラー",
+        "C": "モデルが大量のデータを処理できない",
+        "D": "モデルが多すぎる計算リソースを必要とする"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "AIバイアス：\n- 特定のグループ（性別、人種、年齢など）に対する不公平\n- 訓練データ内の歴史的バイアスに起因する可能性がある\n- 不均一なデータサンプリングに起因する可能性がある\n- SageMaker Clarifyを使用して検出する必要がある",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q39",
+      "domain": 1,
+      "question": "Amazon SageMaker Clarifyの主な機能は何ですか？",
+      "options": {
+        "A": "モデル訓練速度の最適化",
+        "B": "機械学習モデルのバイアスを検出し、説明可能性を提供する",
+        "C": "モデルを本番環境に自動デプロイする",
+        "D": "ML実験のバージョンを管理する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "SageMaker Clarify：\n- バイアス検出（訓練前と訓練後）\n- 説明可能性（SHAP値、特徴量重要度）\n- 公平性モニタリング\n- バイアスレポートの生成",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q40",
+      "domain": 1,
+      "question": "Amazon Bedrock Guardrailsの主な用途は何ですか？",
+      "options": {
+        "A": "モデル推論速度の最適化",
+        "B": "安全でないまたは不適切なコンテンツのフィルタリングとブロック",
+        "C": "AWS請求の管理",
+        "D": "モデル訓練の自動化"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Bedrock Guardrails：\n- コンテンツフィルタリング（有害、暴力、ヘイトコンテンツ）\n- PII検出とマスキング\n- トピック制限（特定のトピックのブロック）\n- 語彙フィルタリング\n- アプリケーション層でモデル出力を保護",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q41",
+      "domain": 1,
+      "question": "あるデータサイエンスチームが、ローン承認モデルが女性申請者の承認率が男性よりも明らかに低いことを発見しました。これはどのような問題ですか？",
+      "options": {
+        "A": "過学習",
+        "B": "未学習",
+        "C": "モデルバイアス",
+        "D": "データ漏洩"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "女性の承認率が男性より低い = ジェンダーバイアス\n- 特定のグループに対するシステム的な不公平\n- 歴史的データのバイアスに起因する可能性がある\n- データとモデルの調査が必要\n- Clarifyを使用して検出",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q42",
+      "domain": 1,
+      "question": "AIアプリケーションにおいて、ユーザーのプライバシーを最もよく保護する方法は何ですか？",
+      "options": {
+        "A": "最も強力なモデルを使用する",
+        "B": "個人識別情報（PII）のデータマスキングまたは匿名化",
+        "C": "訓練データ量を増やす",
+        "D": "モデル精度を向上させる"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "プライバシー保護の方法：\n- データマスキング/匿名化\n- データ最小化（必要なデータのみ収集）\n- 差分プライバシー\n- 連合学習\n- 暗号化処理",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q43",
+      "domain": 5,
+      "question": "Amazon Bedrockを使用する際、モデルが会社で禁止されているトピックについて議論しないようにするにはどうすればよいですか？",
+      "options": {
+        "A": "モデルの重みを調整する",
+        "B": "Bedrock Guardrailsを使用してトピックフィルタリングを設定する",
+        "C": "モデルを再訓練する",
+        "D": "異なるモデルに切り替える"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Guardrailsでは：\n- 「拒否するトピック」リストを設定\n- 特定のトピックの議論をブロック\n- モデルを変更する必要がない\n- アプリケーション層で制御を実現",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q44",
+      "domain": 1,
+      "question": "AWS上でAIモデルデータを保護するベストプラクティスは何ですか？",
+      "options": {
+        "A": "すべてのデータを公開アクセス可能にする",
+        "B": "AWS KMSを使用して静止データを暗号化し、TLSを使用して転送中のデータを暗号化する",
+        "C": "すべてのデータをオンプレミスサーバーに保存する",
+        "D": "パフォーマンスを向上させるために暗号化を使用しない"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "AWSデータセキュリティのベストプラクティス：\n- 静止時の暗号化：AWS KMSでキーを管理\n- 転送時の暗号化：TLS/SSL\n- アクセス制御：IAM最小権限\n- 監査ログ：CloudTrail",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q45",
+      "domain": 1,
+      "question": "AWS共有責任モデル（Shared Responsibility Model）において、顧客が責任を負うのは何ですか？",
+      "options": {
+        "A": "物理データセンターのセキュリティ",
+        "B": "データの暗号化とアクセス制御",
+        "C": "ネットワークインフラストラクチャのハードウェア",
+        "D": "AWSサービスの可用性"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "共有責任モデル：\n- AWSの責任：物理セキュリティ、インフラストラクチャ、ネットワークハードウェア\n- 顧客の責任：データ暗号化、アクセス制御、アプリケーションセキュリティ、IAM設定",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q46",
+      "domain": 1,
+      "question": "AI/MLリソースへのアクセス権限を管理するために使用されるAWSサービスはどれですか？",
+      "options": {
+        "A": "Amazon S3",
+        "B": "AWS IAM（Identity and Access Management）",
+        "C": "Amazon SageMaker",
+        "D": "Amazon Bedrock"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "IAMは以下に使用されます：\n- ユーザーとロールの管理\n- 権限ポリシーの定義\n- 最小権限の原則\n- 多要素認証（MFA）\n- 誰がどのAWSリソースにアクセスできるかを制御",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q47",
+      "domain": 1,
+      "question": "AIガバナンスにおけるAWS CloudTrailの役割は何ですか？",
+      "options": {
+        "A": "機械学習モデルを訓練する",
+        "B": "監査のためにAWS API呼び出しを記録・監視する",
+        "C": "訓練データを保存する",
+        "D": "モデル推論パフォーマンスを最適化する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "CloudTrailは以下を提供します：\n- すべてのAWS API呼び出しを記録\n- 誰がいつ何をしたか\n- コンプライアンス監査のサポート\n- セキュリティ分析とトラブルシューティング",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q48",
+      "domain": 1,
+      "question": "あるMLモデルが個人健康情報を含むデータセットを使用して訓練されました。HIPAAコンプライアンス要件に従って、どのような措置を講じるべきですか？",
+      "options": {
+        "A": "追加の措置は不要",
+        "B": "データ暗号化、アクセス制御を確保し、ビジネスアソシエイト契約（BAA）に署名する",
+        "C": "データを非AWSサーバーに移動する",
+        "D": "透明性を高めるためにデータを公開する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "HIPAAコンプライアンス要件：\n- データ暗号化（静止時と転送時）\n- 厳格なアクセス制御\n- 監査ログ\n- AWSとBAA（ビジネスアソシエイト契約）に署名\n- HIPAAコンプライアンスのAWSサービスを使用",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q49",
+      "domain": 1,
+      "question": "Amazon Macieの主な機能は何ですか？",
+      "options": {
+        "A": "機械学習モデルを訓練する",
+        "B": "機密データ（PIIなど）を自動的に発見、分類、保護する",
+        "C": "コンテナデプロイメントを管理する",
+        "D": "データベースパフォーマンスを最適化する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Amazon Macie：\n- S3内の機密データを自動スキャン\n- PIIを識別（名前、住所、クレジットカード番号など）\n- データの機密レベルを分類\n- セキュリティ発見レポートを生成",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q50",
+      "domain": 1,
+      "question": "あるMLモデルがテストセットで95%の精度を達成しましたが、本番環境ではパフォーマンスが悪いです。考えられる原因は何ですか？",
+      "options": {
+        "A": "モデルがシンプルすぎる",
+        "B": "訓練データと本番データの分布が異なる（データドリフト）",
+        "C": "評価指標が間違っている",
+        "D": "テストセットが大きすぎる"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "データドリフト（Data Drift）：\n- 訓練データの分布 ≠ 本番データの分布\n- ユーザー行動の変化\n- 季節的な変化\n- SageMaker Model Monitorを使用して監視が必要\n- モデルの再訓練が必要な場合がある",
+      "difficulty": "medium"
+    }
+  ]
+}

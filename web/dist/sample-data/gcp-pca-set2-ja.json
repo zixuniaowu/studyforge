@@ -1,0 +1,205 @@
+{
+  "exam": {
+    "id": "gcp-pca-set2-ja",
+    "name": "GCP Professional Cloud Architect 模擬試験 #2",
+    "code": "PCA",
+    "provider": "GCP",
+    "language": "ja",
+    "description": "Google Cloud Professional Cloud Architect認定試験の模擬問題集",
+    "totalQuestions": 10,
+    "passingScore": 70,
+    "examTime": 120,
+    "domains": [
+      {
+        "id": 1,
+        "name": "クラウドソリューションアーキテクチャの設計と計画",
+        "weight": 24
+      },
+      {
+        "id": 2,
+        "name": "ソリューションインフラストラクチャの管理と構成",
+        "weight": 15
+      },
+      {
+        "id": 3,
+        "name": "セキュリティとコンプライアンスの設計",
+        "weight": 18
+      },
+      {
+        "id": 4,
+        "name": "技術およびビジネスプロセスの分析と最適化",
+        "weight": 18
+      },
+      {
+        "id": 5,
+        "name": "実装の管理",
+        "weight": 11
+      },
+      {
+        "id": 6,
+        "name": "ソリューションと運用の信頼性確保",
+        "weight": 14
+      }
+    ],
+    "tags": [
+      "GCP",
+      "Cloud",
+      "PCA",
+      "Professional",
+      "Architect",
+      "認定試験"
+    ]
+  },
+  "questions": [
+    {
+      "id": "q1",
+      "domain": 1,
+      "question": "eコマース企業が突発的なトラフィックを処理できるアーキテクチャを設計する必要があります。プロモーション期間中、トラフィックが10倍に増加する可能性があります。アプリケーションは負荷を処理するために自動的にスケールする必要があります。最適なアーキテクチャソリューションは何ですか？",
+      "options": {
+        "A": "固定数の高スペックCompute Engineインスタンスを使用",
+        "B": "マネージドインスタンスグループとCPU使用率ベースのスケーリングポリシーによる自動スケーリングを使用",
+        "C": "最大インスタンス数制限付きのCloud Runを使用",
+        "D": "予約VMインスタンスを使用してキャパシティを確保"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "マネージドインスタンスグループ（MIG）と自動スケーリング機能により、CPU使用率、ロードバランサーキャパシティ、またはカスタムメトリクスに基づいてインスタンス数を自動調整できます。これは突発的なトラフィックを処理する最適なソリューションであり、需要が増加したときに迅速にスケールアップし、需要が減少したときにスケールダウンしてコストを節約できます。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q2",
+      "domain": 1,
+      "question": "サーバーレスのイベント駆動型アーキテクチャを設計する必要があります。ユーザーがCloud Storageに画像をアップロードしたときに、サムネイルを自動生成する必要があります。最適なソリューションはどれですか？",
+      "options": {
+        "A": "Compute Engineを使用してCloud Storageの新規ファイルをポーリング",
+        "B": "Cloud StorageトリガーでCloud Functionsを呼び出す",
+        "C": "App Engine Standardを使用してバケットを定期的にチェック",
+        "D": "GKEに画像処理サービスをデプロイ"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Cloud Storageは、オブジェクトの作成、削除、またはアーカイブ時にCloud Functionsをトリガーするように構成できます。これはサーバーレスイベント駆動型アーキテクチャの典型的なパターンであり、インフラストラクチャを管理する必要がなく、呼び出しごとに課金され、大量の同時アップロードを処理するために自動的にスケールできます。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q3",
+      "domain": 1,
+      "question": "メディア会社がグローバルな視聴者にビデオストリーミングサービスを提供する必要があります。ビデオコンテンツはCloud Storageに保存されています。グローバルユーザーのアクセス体験を最適化するにはどうすればよいですか？",
+      "options": {
+        "A": "各リージョンのCloud Storageバケットにビデオをコピー",
+        "B": "Cloud CDNとCloud Storageを組み合わせて使用",
+        "C": "各リージョンにCompute Engineインスタンスをデプロイしてビデオを配信",
+        "D": "マルチリージョンCloud Storageバケットを使用"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Cloud CDNはCloud Storageのコンテンツをグローバルなエッジロケーションにキャッシュでき、レイテンシを大幅に削減しスループットを向上させます。これはグローバルコンテンツ配信を提供するベストプラクティスであり、手動でデータをコピーするよりも効率的でコスト効率が高いです。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q4",
+      "domain": 2,
+      "question": "GKEクラスタを構成する必要があります。ノードには外部IPアドレスを持たせませんが、Podはインターネットにアクセスしてソフトウェアパッケージをダウンロードできる必要があります。どのように構成すべきですか？",
+      "options": {
+        "A": "パブリックGKEクラスタを使用",
+        "B": "プライベートGKEクラスタを構成し、Cloud NATを有効化",
+        "C": "プライベートGKEクラスタとVPNを構成",
+        "D": "各ノードにプロキシサーバーを手動で構成"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "プライベートGKEクラスタのノードは外部IPアドレスを持たず、より良いセキュリティを提供します。Cloud NATにより、これらのプライベートノードはNATゲートウェイを介してインターネットにアクセスでき、コンテナイメージやソフトウェアパッケージのダウンロードに使用できます。同時に、インバウンドトラフィックの分離を維持します。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q5",
+      "domain": 2,
+      "question": "組織には中央共有VPCがあり、サービスプロジェクトのリソースが共有VPCのサブネットを使用できるようにする必要があります。どのように構成すべきですか？",
+      "options": {
+        "A": "VPC Peeringを使用してプロジェクトを接続",
+        "B": "Shared VPCを構成し、サービスプロジェクトをホストプロジェクトにアタッチ",
+        "C": "各プロジェクトに同じサブネットを作成",
+        "D": "Cloud VPNを使用してプロジェクトを接続"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Shared VPCにより、組織は中央ネットワーク（ホストプロジェクト）を作成し、他のプロジェクト（サービスプロジェクト）をそれにアタッチできます。サービスプロジェクトのリソースはホストプロジェクトのサブネットを使用でき、リソースと課金は分離されたままです。これは大規模組織がネットワークを管理するための推奨パターンです。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q6",
+      "domain": 3,
+      "question": "組織のユーザーがセキュリティ基準に準拠したリソースのみを作成できるようにする必要があります。例えば、パブリックIPを持つ仮想マシンの作成を禁止します。何を使用すべきですか？",
+      "options": {
+        "A": "IAMロールを使用してユーザー権限を制限",
+        "B": "組織ポリシー（Organization Policies）を使用して制約を設定",
+        "C": "スクリプトを作成して定期的に非準拠リソースをチェックして削除",
+        "D": "Cloud Monitoringアラートを使用"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "組織ポリシーにより、組織、フォルダ、またはプロジェクトレベルで制約を設定できます。例えば、VMの外部IPの使用禁止、リソースロケーションの制限などです。これは予防的コントロールであり、リソース作成時に非準拠の構成をブロックするため、事後検出よりも効果的です。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q7",
+      "domain": 3,
+      "question": "Cloud Storageに保存される機密データを保護する必要があります。データは顧客管理の暗号化キー（CMEK）で暗号化する必要があります。キーを管理するためにどのサービスを使用すべきですか？",
+      "options": {
+        "A": "Cloud KMS",
+        "B": "Secret Manager",
+        "C": "Cloud HSM",
+        "D": "Data Loss Prevention"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Cloud KMS（鍵管理サービス）は暗号化キーを作成、管理、使用するためのサービスです。CMEKにより、Cloud KMSのキーを使用してCloud Storageオブジェクトを暗号化できます。Secret Managerはパスワードなどのシークレットを保存するため、Cloud HSMはハードウェアセキュリティモジュール、DLPはデータのマスキングに使用されます。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q8",
+      "domain": 4,
+      "question": "Cloud Storageのコストが増加し続けています。分析の結果、アクセス頻度の低い大量のデータがまだStandardストレージクラスに保存されていることがわかりました。コストを最適化するにはどうすればよいですか？",
+      "options": {
+        "A": "古いデータをArchiveストレージクラスに手動で移動",
+        "B": "オブジェクトライフサイクル管理ポリシーを構成",
+        "C": "すべてのデータを圧縮",
+        "D": "不要なデータを削除"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "オブジェクトライフサイクル管理により、オブジェクトの経過時間やその他の条件に基づいて、オブジェクトを低コストのストレージクラス（Nearline、Coldline、Archiveなど）に自動変換したり、期限切れのオブジェクトを削除したりできます。これは手動介入なしでCloud Storageコストを最適化する最も効果的な方法です。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q9",
+      "domain": 5,
+      "question": "開発チームはCI/CDパイプラインを実装したいと考えています。コードはCloud Source Repositoriesに保存されています。ビルドとデプロイにどのサービスを使用すべきですか？",
+      "options": {
+        "A": "gcloudコマンドを手動で実行",
+        "B": "Cloud Build",
+        "C": "Compute Engine上のJenkins",
+        "D": "Cloud Scheduler"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Cloud BuildはGoogle CloudのCI/CDプラットフォームであり、Cloud Source Repositoriesとネイティブに統合されています。ビルドの自動トリガー、テストの実行、コンテナイメージの作成、GKE、Cloud Run、またはその他のターゲットへのデプロイができます。サーバーレスで、使用量に応じて課金されます。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q10",
+      "domain": 6,
+      "question": "Compute EngineインスタンスのCPU使用率が5分間連続で80%を超えた場合に運用チームに通知するアラートを構成する必要があります。どのように構成すべきですか？",
+      "options": {
+        "A": "Cloud Loggingを使用してログメトリクスを作成",
+        "B": "Cloud Monitoringでアラートポリシーを作成",
+        "C": "スクリプトを作成してCPU使用率を定期的にチェック",
+        "D": "Cloud Schedulerを使用してチェックをトリガー"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Cloud Monitoringのアラートポリシーにより、メトリクス（CPU使用率など）に基づいてしきい値と条件（持続時間など）を設定し、通知チャネル（メール、PagerDuty、Slackなど）を構成できます。これは監視とアラートの標準的な方法です。",
+      "difficulty": "easy"
+    }
+  ]
+}

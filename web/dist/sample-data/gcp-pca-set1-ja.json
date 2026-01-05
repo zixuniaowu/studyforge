@@ -1,0 +1,655 @@
+{
+  "exam": {
+    "id": "gcp-pca-set1-ja",
+    "name": "GCP Professional Cloud Architect 模擬試験 #1",
+    "code": "PCA",
+    "provider": "GCP",
+    "language": "ja",
+    "description": "Google Cloud Professional Cloud Architect認定試験の模擬問題集",
+    "totalQuestions": 40,
+    "passingScore": 70,
+    "examTime": 120,
+    "domains": [
+      {
+        "id": 1,
+        "name": "クラウドソリューションアーキテクチャの設計と計画",
+        "weight": 24
+      },
+      {
+        "id": 2,
+        "name": "ソリューションインフラストラクチャの管理と構成",
+        "weight": 15
+      },
+      {
+        "id": 3,
+        "name": "セキュリティとコンプライアンスの設計",
+        "weight": 18
+      },
+      {
+        "id": 4,
+        "name": "技術およびビジネスプロセスの分析と最適化",
+        "weight": 18
+      },
+      {
+        "id": 5,
+        "name": "実装の管理",
+        "weight": 11
+      },
+      {
+        "id": 6,
+        "name": "ソリューションと運用の信頼性確保",
+        "weight": 14
+      }
+    ],
+    "tags": [
+      "GCP",
+      "Cloud",
+      "PCA",
+      "Professional",
+      "Architect",
+      "認定試験"
+    ]
+  },
+  "questions": [
+    {
+      "id": "q1",
+      "domain": 1,
+      "question": "多国籍小売企業がeコマースプラットフォームをGoogle Cloudに移行したいと考えています。プラットフォームはグローバルユーザーアクセスをサポートし、ピーク時に大量の同時リクエストを処理する必要があります。最適なアーキテクチャはどれですか？",
+      "options": {
+        "A": "単一リージョンにすべてのリソースをデプロイし、Cloud CDNでグローバルアクセスを高速化",
+        "B": "グローバル外部HTTP(S)ロードバランサーを使用し、複数リージョンにバックエンドインスタンスグループをデプロイ",
+        "C": "各主要市場リージョンに独立したアプリケーションインスタンスをデプロイし、DNSラウンドロビンでトラフィックを分散",
+        "D": "単一ゾーンのCompute Engineインスタンスを使用し、自動スケーリングを構成"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "グローバル外部HTTP(S)ロードバランサーはグローバルエニーキャストIPアドレスを提供し、ユーザートラフィックを最も近い正常なバックエンドにインテリジェントにルーティングできます。マルチリージョンのマネージドインスタンスグループと組み合わせることで、低レイテンシ、高可用性、自動スケーリングを実現できます。これがグローバルトラフィックを処理するベストプラクティスアーキテクチャです。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q2",
+      "domain": 1,
+      "question": "大量のIoTデバイスデータを処理するアーキテクチャを設計しています。データはリアルタイム分析が必要で、履歴分析のために保存する必要もあります。最適な組み合わせはどれですか？",
+      "options": {
+        "A": "Cloud IoT Core → Cloud Pub/Sub → Dataflow → BigQuery",
+        "B": "Cloud IoT Core → Cloud Storage → BigQuery",
+        "C": "データを直接Cloud SQLに送信して保存と分析",
+        "D": "Cloud IoT Core → Cloud Functions → Cloud Firestore"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "これは典型的なIoTデータ処理パイプラインです。Cloud IoT Coreがデバイス接続を管理し、Pub/Subが信頼性の高いメッセージングを提供し、Dataflowがリアルタイムストリーム処理と変換を行い、BigQueryが大規模データウェアハウスと分析に使用されます。このアーキテクチャはリアルタイムとバッチ分析の両方のニーズをサポートします。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q3",
+      "domain": 1,
+      "question": "金融サービス会社がGoogle Cloud上でコア取引システムを実行する必要があります。システムは極めて低いレイテンシと99.999%の可用性が必要です。どのデプロイ戦略を採用すべきですか？",
+      "options": {
+        "A": "単一ゾーンにデプロイし、スナップショットでバックアップ",
+        "B": "単一リージョンの複数ゾーンにデプロイし、リージョンマネージドインスタンスグループを使用",
+        "C": "複数リージョンにデプロイし、グローバルロードバランシングとアクティブ-アクティブ構成を使用",
+        "D": "Cloud Runを使用してコンテナ化されたアプリをデプロイ"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "99.999%の可用性（年間ダウンタイム約5分）にはマルチリージョン冗長デプロイが必要です。アクティブ-アクティブ構成により、リージョン全体が障害を起こしてもシステムは利用可能な状態を維持します。グローバルロードバランシングは自動的にトラフィックを正常なリージョンにルーティングできます。重要な金融システムにはこのアーキテクチャが必要です。",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q4",
+      "domain": 1,
+      "question": "マイクロサービスアーキテクチャのソリューションを設計する必要があります。チームはKubernetesを使用したいですが、クラスタインフラストラクチャを管理したくありません。同時にステートフルとステートレスの両方のワークロードをサポートする必要があります。最適な選択肢は何ですか？",
+      "options": {
+        "A": "Compute Engine上でKubernetesクラスタを自分でデプロイ",
+        "B": "GKE Standardモードを使用",
+        "C": "Cloud Runでフルマネージドコンテナを使用",
+        "D": "App Engine Flexible環境を使用"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "GKE Standardモードは完全にマネージドなKubernetesコントロールプレーンを提供しながら、ステートフルワークロード（PersistentVolumesとStatefulSetsを介して）とステートレスワークロードの両方をサポートします。運用負荷を軽減しつつ、Kubernetesの完全な機能を保持します。Cloud Runはステートフルワークロードをサポートしていません。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q5",
+      "domain": 1,
+      "question": "医療機関が患者の医療画像データを保存する必要があります。データは長期保持（7年以上）が必要ですが、アクセス頻度は非常に低いです。最もコスト効率の良いストレージソリューションはどれですか？",
+      "options": {
+        "A": "Cloud Storage Standardクラス",
+        "B": "Cloud Storage Nearlineクラス",
+        "C": "Cloud Storage Archiveクラス",
+        "D": "Persistent Disk SSD"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "Cloud Storage Archiveクラスは長期保存でアクセス頻度が非常に低いデータ向けに設計されています。最も低いストレージコストを提供しますが、取得時間と料金が高くなります。7年以上の保持が必要でほとんどアクセスされない医療画像データには、Archiveクラスが最も経済的な選択です。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q6",
+      "domain": 1,
+      "question": "大規模なデータ分析を行うシステムを設計しています。データは複数のソースから来て、ETL処理後にデータウェアハウスにロードする必要があります。最適な組み合わせはどれですか？",
+      "options": {
+        "A": "Cloud Storage → Cloud Functions → Cloud SQL",
+        "B": "Cloud Storage → Dataflow → BigQuery",
+        "C": "Cloud Pub/Sub → Cloud Run → Cloud Spanner",
+        "D": "Cloud Storage → Compute Engine → Cloud Bigtable"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Cloud Storageは生データの保存に使用され、DataflowはマネージドApache Beamサービスでバッチおよびストリーム処理のETLワークロードに最適です。BigQueryはGoogle Cloudのエンタープライズデータウェアハウスで、大規模分析向けに設計されています。これはETLからデータウェアハウスへの標準的なアーキテクチャパターンです。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q7",
+      "domain": 1,
+      "question": "ゲーム会社がリアルタイムリーダーボードシステムを設計する必要があります。システムは毎秒数百万回の読み書き操作をサポートし、ミリ秒レベルのレイテンシが必要です。最適なデータベースの選択肢は何ですか？",
+      "options": {
+        "A": "Cloud SQL with read replicas",
+        "B": "Cloud Spanner",
+        "C": "Cloud Bigtable",
+        "D": "Memorystore for Redis"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "Memorystore for Redisはマネージドなインメモリデータストアでサブミリ秒のレイテンシを提供し、リーダーボードなどの高速読み書きが必要なユースケースに最適です。Redisのソート済みセット（Sorted Sets）データ構造はリーダーボード機能の実装に特に適しています。Bigtableも高速ですが、Redisがこの特定のシナリオにはより適しています。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q8",
+      "domain": 1,
+      "question": "強整合性を持つグローバル分散データベースが必要なアプリケーションを設計する必要があります。SQLクエリをサポートし、リージョン間レプリケーションを自動的に処理する必要があります。どのサービスを選択すべきですか？",
+      "options": {
+        "A": "Cloud SQL with replicas",
+        "B": "Cloud Spanner",
+        "C": "Cloud Firestore",
+        "D": "BigQuery"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Cloud Spannerは強整合性、グローバル分散、自動レプリケーション、完全なSQLサポートを提供する唯一のデータベースサービスです。リレーショナルデータベースのACIDトランザクションとNoSQLデータベースの水平スケーラビリティを組み合わせており、グローバルな一貫性が必要な重要なビジネスアプリケーションに最適です。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q9",
+      "domain": 1,
+      "question": "メディア会社がビデオトランスコーディングプラットフォームを構築する必要があります。ビデオがアップロードされた後、複数のフォーマットと解像度に自動変換する必要があります。最適なアーキテクチャパターンはどれですか？",
+      "options": {
+        "A": "同期処理：アップロードAPIがトランスコードサービスを直接呼び出す",
+        "B": "Cloud Tasksキューを使用してトランスコードタスクを処理",
+        "C": "Cloud Pub/SubでCloud Functionsをトリガーしてトランスコード",
+        "D": "Transcoder APIを使用し、Pub/Subで完了通知を受信"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "Transcoder APIはGoogle Cloudのビデオトランスコーディング専用のマネージドサービスで、ビデオを複数のフォーマットに自動変換できます。Pub/Subで完了通知を受信することで非同期処理パターンを実現し、これは時間のかかるトランスコードタスクのベストプラクティスです。この方法は効率的でスケーラブルです。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q10",
+      "domain": 1,
+      "question": "あなたの会社はクラウド移行を行っています。既存のオンプレミスデータセンターには大量の仮想マシンをGoogle Cloudに移行する必要があります。大規模なVM移行に最適な移行方法はどれですか？",
+      "options": {
+        "A": "GCP上ですべてのVMを手動で再作成",
+        "B": "Migrate to Virtual Machines（旧Migrate for Compute Engine）を使用",
+        "C": "すべてのアプリケーションをコンテナ化してGKEにデプロイ",
+        "D": "Transfer Applianceを使用してデータを転送"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Migrate to Virtual Machines（旧Migrate for Compute Engine、現在はMigration Centerの一部）は、オンプレミスまたは他のクラウドからGoogle CloudへのVM移行専用ツールです。ライブマイグレーションをサポートし、ダウンタイムを最小化できるため、大規模なVM移行プロジェクトに適しています。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q11",
+      "domain": 2,
+      "question": "Google Cloud上でカスタムVPCネットワークを作成する必要があります。このネットワークは複数のリージョンにサブネットをデプロイする必要があります。次のうち正しい説明はどれですか？",
+      "options": {
+        "A": "VPCネットワークはリージョンリソースであり、各リージョンに個別のVPCを作成する必要がある",
+        "B": "サブネットはグローバルリソースであり、複数のリージョンにまたがることができる",
+        "C": "VPCネットワークはグローバルリソースであり、サブネットはリージョンリソース",
+        "D": "VPCとサブネットはどちらもグローバルリソース"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "Google Cloudでは、VPCネットワークはグローバルリソースであり、任意のリージョンからのサブネットを含むことができます。サブネットはリージョンリソースであり、各サブネットは特定のリージョンに属します。これはAWSとは異なり、AWSのVPCはリージョン単位です。この設計により、同じVPC内でリージョン間のリソースが通信できます。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q12",
+      "domain": 2,
+      "question": "異なるプロジェクトにある2つのVPCネットワーク間でプライベート通信を構成する必要があります。トラフィックをパブリックインターネット経由でルーティングしたくありません。最適なソリューションは何ですか？",
+      "options": {
+        "A": "2つのVPC間にCloud VPNを設定",
+        "B": "VPC Network Peeringを使用",
+        "C": "2つのプロジェクトを1つに統合",
+        "D": "Cloud NATを使用"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "VPC Network Peeringにより、異なるプロジェクト（または同じプロジェクト）のVPCネットワーク間でプライベート通信が可能になります。トラフィックは完全にGoogleのネットワーク内でルーティングされ、パブリックインターネットを経由しません。低レイテンシ、高帯域幅の接続を提供し、VPNのオーバーヘッドがありません。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q13",
+      "domain": 2,
+      "question": "アプリケーションはCloud SQLインスタンスにアクセスする必要がありますが、セキュリティ上の理由からSQLインスタンスにパブリックIPアドレスを持たせたくありません。GKEクラスタからCloud SQLに安全に接続するにはどうすればよいですか？",
+      "options": {
+        "A": "Cloud SQL Auth Proxyを使用",
+        "B": "すべてのトラフィックを許可するVPCファイアウォールルールを構成",
+        "C": "Cloud NATを使用",
+        "D": "Cloud SQLにパブリックIPを構成してSSLを使用"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Cloud SQL Auth Proxyはパブリックを必要としない安全な接続方法を提供します。GKE PodのサイドカーコンテナとしてSQLし、IAMで認証を行い、SSL暗号化を自動的に処理します。これがプライベートCloud SQLインスタンスに接続する推奨方法です。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q14",
+      "domain": 2,
+      "question": "グローバル分散アプリケーションのロードバランシングを構成する必要があります。アプリケーションはリアルタイム通信にWebSocketを使用しています。どのロードバランサーを選択すべきですか？",
+      "options": {
+        "A": "TCP/UDPネットワークロードバランサー",
+        "B": "外部HTTP(S)ロードバランサー（クラシック）",
+        "C": "グローバル外部HTTP(S)ロードバランサー（アドバンスド）",
+        "D": "内部TCP/UDPロードバランサー"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "グローバル外部HTTP(S)ロードバランサー（アドバンスド）はWebSocket接続をサポートし、グローバルロードバランシング、自動SSL管理、CDN統合を提供します。Webアプリケーション、特にリアルタイム通信機能を必要とするアプリケーションに最適です。アドバンスド版はより多くのトラフィック管理機能を提供します。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q15",
+      "domain": 2,
+      "question": "組織はオンプレミスデータセンターとGoogle Cloud間に専用の高速接続を確立する必要があります。安定した帯域幅と低レイテンシが保証される必要があります。何を選択すべきですか？",
+      "options": {
+        "A": "Cloud VPN",
+        "B": "Cloud Interconnect - Dedicated",
+        "C": "Cloud Interconnect - Partner",
+        "D": "Carrier Peering"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Dedicated Interconnectは10Gbpsまたは100Gbpsの専用物理接続を提供し、Googleのネットワークに直接接続します。最低のレイテンシと最高の帯域幅保証を提供し、大量のデータ転送が必要な企業に適しています。Googleのコロケーション施設に直接アクセスできない場合は、Partner Interconnectを検討できます。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q16",
+      "domain": 2,
+      "question": "GKEクラスタを構成していますが、PodがパブリックインターネットではなくプライベートIPアドレスを使用してGoogle APIとサービスにアクセスできるようにする必要があります。どのように構成すべきですか？",
+      "options": {
+        "A": "VPCネイティブクラスタを使用し、Private Google Accessを構成",
+        "B": "Cloud NATを構成",
+        "C": "パブリックGKEクラスタを使用",
+        "D": "Google APIエンドポイントへのCloud VPNを構成"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "VPCネイティブGKEクラスタはエイリアスIPを使用してPodにアドレスを割り当てます。Private Google Accessを有効にすると、外部IPを持たないPodが内部ルーティングを介してGoogle APIとサービスにアクセスできます。トラフィックがGoogleのネットワークから離れないため、より良いセキュリティを提供します。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q17",
+      "domain": 3,
+      "question": "会社は特定のサービスアカウントのみがCloud Storageバケット内の機密データにアクセスできるようにする必要があります。最小権限の原則を実装するために何を使用すべきですか？",
+      "options": {
+        "A": "均一なバケットレベルアクセス（Uniform bucket-level access）を使用し、IAMポリシーで認可",
+        "B": "ACLを使用して各オブジェクトに権限を設定",
+        "C": "バケットを公開にして署名付きURLを使用",
+        "D": "プロジェクトレベルでStorage Admin役割を付与"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "均一なバケットレベルアクセスは推奨される権限管理方法であり、権限管理を簡素化し、ACLとIAM間の競合を排除します。IAMポリシーにより、バケットとその内容にアクセスできるユーザーを正確に制御でき、最小権限の原則を実装できます。プロジェクトレベルの広範な権限の使用を避けてください。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q18",
+      "domain": 3,
+      "question": "GKEで実行されるアプリケーションのサービスアカウントを構成する必要があります。アプリケーションはCloud Storage内のデータを読み取る必要があります。最も安全な方法は何ですか？",
+      "options": {
+        "A": "ノードのデフォルトサービスアカウントを使用",
+        "B": "Pod内にサービスアカウントキーをハードコード",
+        "C": "Workload Identityを使用",
+        "D": "環境変数でサービスアカウントキーを渡す"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "Workload IdentityはGKEの推奨認証方法です。KubernetesサービスアカウントをGoogle Cloudサービスアカウントに関連付けることができ、キー管理が不要です。Podは必要な権限を自動的に取得し、キーがクラスタ内に公開されないため、最も安全な方法です。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q19",
+      "domain": 3,
+      "question": "組織はデータレジデンシー要件を満たし、すべての顧客データが特定の国/地域にのみ保存されるようにする必要があります。Google Cloudでどのように実現しますか？",
+      "options": {
+        "A": "Google Cloudでは実現不可能",
+        "B": "リソースロケーション制限組織ポリシーを使用",
+        "C": "各リソースのリージョンを手動で選択",
+        "D": "Cloud Storageのデュアルリージョン構成のみを使用"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "リソースロケーション制限（Resource Location Restriction）は組織ポリシー制約であり、リソースを指定された場所でのみ作成できるように制限できます。これはデータレジデンシーコンプライアンス要件を満たす効果的な方法であり、組織、フォルダ、またはプロジェクトレベルで適用されます。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q20",
+      "domain": 3,
+      "question": "Cloud Storageに保存される機密データを保護する必要があります。データは顧客管理の暗号化キー（CMEK）で暗号化する必要があります。キーを管理するためにどのサービスを使用すべきですか？",
+      "options": {
+        "A": "Cloud KMS",
+        "B": "Secret Manager",
+        "C": "Cloud HSM",
+        "D": "Data Loss Prevention"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Cloud KMS（鍵管理サービス）は暗号化キーを作成、管理、使用するためのサービスです。CMEKにより、Cloud KMSのキーを使用してCloud Storageオブジェクトを暗号化できます。Secret Managerはパスワードなどのシークレットを保存するため、Cloud HSMはハードウェアセキュリティモジュール、DLPはデータのマスキングに使用されます。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q21",
+      "domain": 3,
+      "question": "未承認のIPアドレスがCloud SQLインスタンスにアクセスしようとしていることを発見しました。特定のIP範囲のみがアクセスを許可されるように構成するにはどうすればよいですか？",
+      "options": {
+        "A": "VPCファイアウォールルールを構成",
+        "B": "Cloud SQLインスタンスで承認済みネットワークを構成",
+        "C": "Cloud Armor WAFを使用",
+        "D": "IAM条件付きポリシーを構成"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Cloud SQLの承認済みネットワーク（Authorized Networks）機能により、インスタンスに接続できるIPアドレスまたはCIDR範囲を指定できます。これはCloud SQLのネットワークアクセスを制御する主要な方法です。より高いセキュリティのためには、プライベートIPとVPCの使用を推奨します。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q22",
+      "domain": 3,
+      "question": "WebアプリケーションがDDoS攻撃とSQLインジェクションの脅威に直面しています。グローバルロードバランサーの背後にあるバックエンドサービスを保護する必要があります。何を使用すべきですか？",
+      "options": {
+        "A": "Cloud Firewallルール",
+        "B": "Cloud Armor",
+        "C": "Cloud IDS",
+        "D": "VPC Service Controls"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Cloud ArmorはGoogle CloudのWebアプリケーションファイアウォール（WAF）サービスで、グローバルHTTP(S)ロードバランサーと統合されます。DDoS保護、事前構成されたWAFルール（OWASP Top 10保護など）、および地理的位置アクセス制御を提供します。一般的な攻撃からWebアプリケーションを保護するのに最適です。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q23",
+      "domain": 3,
+      "question": "組織はセキュリティ制御を実装し、VPC内のサービスから機密データが外部に漏洩するのを防ぐ必要があります。何を使用すべきですか？",
+      "options": {
+        "A": "Cloud NAT",
+        "B": "VPC Service Controls",
+        "C": "Private Google Access",
+        "D": "Cloud VPN"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "VPC Service Controlsはセキュリティ境界を定義し、Google Cloudサービス間のデータ移動を制限できます。ユーザーがデータにアクセスする権限を持っていても、保護されたプロジェクトからのデータ漏洩を防ぐことができます。これはデータセキュリティとコンプライアンス要件を満たすために重要です。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q24",
+      "domain": 4,
+      "question": "BigQueryデータウェアハウスのクエリコストが増加し続けています。分析の結果、複数のチームが類似の大規模クエリを実行していることがわかりました。コストを最適化するにはどうすればよいですか？",
+      "options": {
+        "A": "BigQuery Enterprise Editionにアップグレード",
+        "B": "マテリアライズドビューを使用して頻繁なクエリ結果をキャッシュ",
+        "C": "データをCloud SQLに移行",
+        "D": "ユーザーのクエリ権限を制限"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "マテリアライズドビュー（Materialized Views）はクエリ結果を事前計算してキャッシュし、基になるデータが更新されると自動的に更新されます。BigQueryはクエリがビューを直接参照しなくても、マテリアライズドビューをインテリジェントに使用してクエリに応答できます。これにより、スキャンされるデータ量とコストを大幅に削減できます。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q25",
+      "domain": 4,
+      "question": "Compute Engineインスタンスはほとんどの時間アイドル状態ですが、ビジネスのピーク時には迅速な応答が必要です。コストを最適化しながら応答性を維持するにはどうすればよいですか？",
+      "options": {
+        "A": "プリエンプティブルVMを使用",
+        "B": "常にオンデマンドインスタンスを使用",
+        "C": "確約利用割引（CUD）を購入",
+        "D": "自動スケーリンググループを構成し、最小インスタンス数を0に設定"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "自動スケーリンググループは負荷に基づいてインスタンス数を自動調整できます。最小インスタンス数を0に設定すると、アイドル時にすべてのインスタンスがシャットダウンされ、必要なときに迅速にスケールアップされます。これはプリエンプティブルVMより信頼性が高く、CUDよりも柔軟です。不規則なワークロードに最適なコスト最適化方法です。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q26",
+      "domain": 4,
+      "question": "アプリケーションのパフォーマンスボトルネックを分析する必要があります。アプリケーションは複数のマイクロサービスに分散しています。サービス間のリクエストレイテンシを追跡するのに最適なツールはどれですか？",
+      "options": {
+        "A": "Cloud Monitoring",
+        "B": "Cloud Logging",
+        "C": "Cloud Trace",
+        "D": "Cloud Profiler"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "Cloud Traceは分散トレーシングシステムで、リクエストが複数のサービス間を伝播するのを追跡できます。各サービスのレイテンシを表示し、パフォーマンスボトルネックの特定に役立ちます。Cloud ProfilerはCPUとメモリ分析用、Monitoringはメトリクス監視用、Loggingはログ管理用です。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q27",
+      "domain": 4,
+      "question": "既存の自己管理KafkaクラスタをGoogle Cloudのマネージドサービスに移行すべきかどうかを評価しています。主な考慮事項は運用負荷の軽減です。何を選択すべきですか？",
+      "options": {
+        "A": "Compute Engine上でKafkaを実行",
+        "B": "Cloud Pub/SubでKafkaを置き換え",
+        "C": "Managed Service for Apache Kafkaを使用",
+        "D": "GKE上でKafkaを実行"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "Managed Service for Apache Kafka（以前はConfluent Cloudとの統合として知られていた）は、Google Cloudが提供するフルマネージドKafkaサービスです。Kafkaの互換性を維持し、既存のアプリケーションへの変更を最小限に抑える必要がある場合、これが最適な選択です。Pub/Subはマネージドですが、APIがKafkaと互換性がありません。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q28",
+      "domain": 4,
+      "question": "データ分析チームはBigQueryでPBスケールのデータを処理する必要があります。データ量が増えるにつれてクエリパフォーマンスが低下しています。クエリパフォーマンスを最適化するにはどうすればよいですか？",
+      "options": {
+        "A": "より多くの並行スロットを追加",
+        "B": "パーティションテーブルとクラスタリングテーブルを使用",
+        "C": "データをCloud SQLに移行",
+        "D": "より小さいデータ型を使用"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "パーティションテーブルは日付やタイムスタンプ列でデータをパーティション化し、クエリがスキャンするデータ量を削減します。クラスタリングテーブルは指定された列でデータを物理的にソートし、フィルタリング効率を向上させます。これら2つの技術を組み合わせることで、大規模データセットのクエリパフォーマンスを大幅に改善できます。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q29",
+      "domain": 4,
+      "question": "データ準備からモデルデプロイまでを自動化する機械学習パイプラインを構築する必要があります。最適なGoogle Cloudサービスはどれですか？",
+      "options": {
+        "A": "Cloud Composer",
+        "B": "Vertex AI Pipelines",
+        "C": "Cloud Scheduler + Cloud Functions",
+        "D": "Dataflow"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Vertex AI Pipelinesは機械学習ワークフロー向けに設計されたマネージドサービスで、Kubeflow Pipelinesに基づいています。データ準備、モデルトレーニング、評価、デプロイを含むML全体のライフサイクルをサポートします。Cloud Composerは汎用ワークフローオーケストレーションにより適しています。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q30",
+      "domain": 4,
+      "question": "チームはInfrastructure as Code（IaC）を実装してGoogle Cloudリソースを管理したいと考えています。Google Cloudが推奨するネイティブソリューションはどれですか？",
+      "options": {
+        "A": "gcloudコマンドラインスクリプトを使用",
+        "B": "Cloud Consoleを通じて手動でリソースを作成",
+        "C": "TerraformまたはDeployment Managerを使用",
+        "D": "REST API呼び出しを使用"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "TerraformとCloud Deployment Managerはどちらもインフラストラクチャをコードとしてサポートしています。Terraformは業界標準のマルチクラウドIaCツールであり、Deployment ManagerはGoogle CloudネイティブのIaCサービスです。両方とも宣言的構成、バージョン管理、再現可能なデプロイをサポートしています。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q31",
+      "domain": 5,
+      "question": "開発チームはCI/CDパイプラインを実装したいと考えています。コードはCloud Source Repositoriesに保存されています。ビルドとデプロイにどのサービスを使用すべきですか？",
+      "options": {
+        "A": "gcloudコマンドを手動で実行",
+        "B": "Cloud Build",
+        "C": "Compute Engine上のJenkins",
+        "D": "Cloud Scheduler"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Cloud BuildはGoogle CloudのCI/CDプラットフォームであり、Cloud Source Repositoriesとネイティブに統合されています。ビルドの自動トリガー、テストの実行、コンテナイメージの作成、GKE、Cloud Run、またはその他のターゲットへのデプロイができます。サーバーレスで、使用量に応じて課金されます。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q32",
+      "domain": 5,
+      "question": "モノリシックアプリケーションをマイクロサービスアーキテクチャに段階的に移行する必要があります。移行期間中、新旧システムが共存する必要があります。最適なパターンはどれですか？",
+      "options": {
+        "A": "すべてのコードを一度に完全に書き直す",
+        "B": "Strangler Figパターン",
+        "C": "モノリスアプリケーションを直接コンテナ化",
+        "D": "2つの完全に独立したシステムを並行して実行"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Strangler Figパターンにより、モノリスアプリケーションの機能をマイクロサービスに段階的に移行できます。APIゲートウェイまたはロードバランサーを使用して、リクエストを新しいサービスまたは旧システムにルーティングします。時間の経過とともに、より多くのトラフィックが新しいサービスに移行し、最終的に旧システムが完全に「絞め殺され」（置き換えられ）ます。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q33",
+      "domain": 5,
+      "question": "チームはAnthosを使用してワークロードを複数の環境（Google Cloud、オンプレミス、その他のクラウド）にデプロイしています。構成の一貫性を確保するにはどうすればよいですか？",
+      "options": {
+        "A": "各環境で手動で構成",
+        "B": "Anthos Config Managementを使用",
+        "C": "SSHスクリプトを使用して構成を同期",
+        "D": "YAMLファイルをエクスポートしてインポート"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Anthos Config Managementにより、GitリポジトリからすべてのAnthosクラスタに構成を自動同期できます。どこで実行されていても同様です。GitOpsパターンを実装し、すべての環境の構成の一貫性と監査可能性を確保します。Policy Controllerはコンプライアンスポリシーを強制できます。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q34",
+      "domain": 5,
+      "question": "ダウンタイムなしで本番環境のアプリケーションを更新する必要があります。アプリケーションはGKE上で実行されています。最も安全なデプロイ戦略はどれですか？",
+      "options": {
+        "A": "すべてのPodを直接置き換え",
+        "B": "ローリングアップデート",
+        "C": "ブルーグリーンデプロイまたはカナリアリリース",
+        "D": "サービスを停止し、更新後に再起動"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "ブルーグリーンデプロイとカナリアリリースは最も安全なデプロイ戦略です。ブルーグリーンデプロイは2つの完全な環境を実行し、迅速なロールバックが可能です。カナリアリリースは古いバージョンから新しいバージョンへトラフィックを段階的に移行し、問題がすべてのユーザーに影響を与える前に発見できます。Kubernetesはこれらの戦略をネイティブにサポートしています。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q35",
+      "domain": 6,
+      "question": "GKE上で実行されているアプリケーションの健全性を監視する必要があります。コンテナがクラッシュしたときに自動的に再起動し、ノード障害時に自動的に再スケジュールする必要があります。どのように構成すべきですか？",
+      "options": {
+        "A": "外部監視ツールを使用して手動で再起動を確認",
+        "B": "Kubernetesのlivenessプローブとreadinessプローブを構成",
+        "C": "Cloud Monitoringアラートを使用",
+        "D": "プロセス状態を確認するカスタムスクリプトを作成"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Kubernetesのlivenessプローブはコンテナが正常かどうかを検出し、失敗した場合はコンテナを再起動します。readinessプローブはコンテナがトラフィックを受け入れる準備ができているかどうかを検出します。これらはKubernetes組み込みの自己修復メカニズムであり、GKEのノード自動修復と組み合わせて包括的な信頼性保証を提供します。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q36",
+      "domain": 6,
+      "question": "重要なビジネスアプリケーションは99.95%の可用性SLOが必要です。Cloud Monitoringを構成して追跡とアラートを行うにはどうすればよいですか？",
+      "options": {
+        "A": "カスタムダッシュボードを作成してメトリクスを表示",
+        "B": "SLOモニタリングとエラーバジェットアラートを構成",
+        "C": "Cloud Loggingでエラーログのみを表示",
+        "D": "サードパーティの監視ツールを使用"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Cloud MonitoringのSLO機能により、サービスレベル目標を定義して自動的に追跡できます。エラーバジェット（Error Budget）は許容されるダウンタイムの残りを表示します。エラーバジェットの消費が速すぎるとアラートをトリガーします。これはSREプラクティスにおける信頼性管理の最良の方法です。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q37",
+      "domain": 6,
+      "question": "Cloud SQLインスタンスがピーク時にパフォーマンスの問題を経験しています。問題の原因を分析する必要があります。最も役立つツールはどれですか？",
+      "options": {
+        "A": "Cloud Logging",
+        "B": "Cloud SQL Insights",
+        "C": "Cloud Trace",
+        "D": "BigQuery監査ログ"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Cloud SQL Insightsはデータベースパフォーマンス診断機能を提供し、クエリ統計、ロック待機分析、リソース使用状況などを含みます。スロークエリの識別、クエリプランの分析、パフォーマンス問題の特定と解決に役立ちます。これはCloud SQL組み込みのパフォーマンス分析ツールです。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q38",
+      "domain": 6,
+      "question": "災害復旧プランを設計する必要があります。リージョン全体が障害を起こした場合、アプリケーションが別のリージョンで復旧できるようにします。RPO要件は15分未満です。Cloud SQLにはどの構成を使用すべきですか？",
+      "options": {
+        "A": "定期的に手動でバックアップ",
+        "B": "クロスリージョンリードレプリカ",
+        "C": "シングルリージョン高可用性構成",
+        "D": "自動バックアップのみを使用"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "クロスリージョンリードレプリカは継続的なレプリケーションによりデータを同期し、非常に低いRPO（通常数分以内）を実現できます。プライマリリージョンが障害を起こした場合、レプリカをプライマリインスタンスに昇格できます。これはバックアップからの復元よりもはるかに高速で、厳格なRPO要件により適しています。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q39",
+      "domain": 6,
+      "question": "アプリケーションログが複数のGKEクラスタとCloud Runサービスに分散しています。これらのログを一元的に分析して関連付ける必要があります。何を使用すべきですか？",
+      "options": {
+        "A": "各サービスで独立したログファイルを構成",
+        "B": "Cloud Loggingとログ分析を使用",
+        "C": "すべてのログをBigQueryに送信",
+        "D": "SSHで各インスタンスにログインしてログを表示"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Cloud LoggingはGoogle Cloudの一元化されたログ管理サービスで、GKEとCloud Runからログを自動収集します。Log Analytics機能はSQLを使用してログを分析し、異なるサービスのイベントを関連付けることをサポートします。ログメトリクスとアラートを作成でき、Cloud Monitoringと統合されます。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q40",
+      "domain": 6,
+      "question": "アプリケーションの信頼性を確保しながら、チームが合理的な速度で新機能をリリースできるようにする必要があります。信頼性とイノベーション速度のバランスを取るにはどうすればよいですか？",
+      "options": {
+        "A": "問題が解決されるまですべての変更を禁止",
+        "B": "エラーバジェットと変更フリーズ戦略を使用",
+        "C": "常に新機能のリリースを優先",
+        "D": "より多くの運用担当者を雇用"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "エラーバジェットはSREのコアコンセプトです。システムの信頼性がSLOを上回っている場合、チームは変更を行い新機能をリリースできます。エラーバジェットが枯渇した場合、チームは信頼性の向上に集中すべきです。このメカニズムは信頼性とイノベーション速度の間に合理的なバランスを確立します。",
+      "difficulty": "medium"
+    }
+  ]
+}

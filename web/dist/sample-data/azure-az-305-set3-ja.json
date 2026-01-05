@@ -1,0 +1,194 @@
+{
+  "exam": {
+    "id": "azure-az-305-set3-ja",
+    "name": "Azure AZ-305 ソリューションアーキテクト模擬試験 #3",
+    "code": "AZ-305",
+    "provider": "Azure",
+    "language": "ja",
+    "description": "Microsoft Azure Solutions Architect Expert認定試験の模擬問題です。ID、ガバナンス、監視ソリューションの設計、データストレージソリューションの設計、ビジネス継続性ソリューションの設計、インフラストラクチャソリューションの設計などのコア領域をカバーしています。",
+    "totalQuestions": 10,
+    "passingScore": 70,
+    "examTime": 120,
+    "domains": [
+      {
+        "id": 1,
+        "name": "ID、ガバナンス、監視ソリューションの設計 (Design identity, governance, and monitoring solutions)",
+        "weight": 28
+      },
+      {
+        "id": 2,
+        "name": "データストレージソリューションの設計 (Design data storage solutions)",
+        "weight": 27
+      },
+      {
+        "id": 3,
+        "name": "ビジネス継続性ソリューションの設計 (Design business continuity solutions)",
+        "weight": 13
+      },
+      {
+        "id": 4,
+        "name": "インフラストラクチャソリューションの設計 (Design infrastructure solutions)",
+        "weight": 32
+      }
+    ],
+    "tags": [
+      "Azure",
+      "AZ-305",
+      "ソリューションアーキテクト",
+      "認定試験",
+      "クラウドコンピューティング"
+    ]
+  },
+  "questions": [
+    {
+      "id": "q1",
+      "domain": 1,
+      "question": "ある企業が非準拠リソースを自動的に修復するガバナンスソリューションを実装する必要があります。HTTPSのみのトラフィックが有効になっていないストレージアカウントが作成された場合、ポリシーが自動的に有効にする必要があります。どのAzure Policy効果を使用すべきですか？",
+      "options": {
+        "A": "Deny",
+        "B": "Audit",
+        "C": "DeployIfNotExists",
+        "D": "Disabled"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "DeployIfNotExists効果により、Azure Policyは非準拠リソースが検出されたときに自動的に修復タスクをデプロイできます。これにより、HTTPSのみのトラフィックが有効になっていないストレージアカウントで自動的に有効にできます。Deny効果は作成をブロックし、Auditは修復なしで非準拠を報告するのみです。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q2",
+      "domain": 1,
+      "question": "ある企業がマルチクラウド環境にMicrosoft Entra ID（旧Azure AD）を実装しています。ユーザーにAWSとGCPコンソールへのシングルサインオンアクセスを提供する必要があります。何を構成すべきですか？",
+      "options": {
+        "A": "Azure AD B2Cカスタムポリシー",
+        "B": "SAMLベースのSSOを使用したエンタープライズアプリケーション",
+        "C": "Azure ADアプリケーションプロキシ",
+        "D": "Azure AD Domain Services"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Microsoft Entra IDのエンタープライズアプリケーションは、SAMLベースのシングルサインオンをサポートしており、これはAWSおよびGCPコンソールとのフェデレーションの標準プロトコルです。AWSとGCPの両方には、SAMLフェデレーションを使用してSSOを構成できるEntra ID内の事前構成されたギャラリーアプリケーションがあります。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q3",
+      "domain": 2,
+      "question": "ある企業が機械学習ワークロード用のデータストレージソリューションを設計する必要があります。ソリューションは大きなバイナリファイル（モデルとデータセット）の保存をサポートし、並列読み取りの高スループットを提供し、Azure Machine Learningと統合する必要があります。何を推奨すべきですか？",
+      "options": {
+        "A": "Azure SQL Database",
+        "B": "Azure Data Lake Storage Gen2",
+        "C": "Azure Table Storage",
+        "D": "Azure Queue Storage"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure Data Lake Storage Gen2は、ビッグデータ分析と機械学習ワークロード向けに最適化されています。効率的なデータ編成のための階層名前空間、並列処理のための高スループット、データセットとモデルアーティファクトを保存するためのAzure Machine Learningとのネイティブ統合を提供します。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q4",
+      "domain": 2,
+      "question": "ある企業がEコマースアプリケーション用のキャッシュ戦略を実装する必要があります。キャッシュはデータの永続化、災害復旧のための地理レプリケーション、高可用性のためのクラスタリングをサポートする必要があります。どのAzure Cache for Redisティアを選択すべきですか？",
+      "options": {
+        "A": "Basicティア",
+        "B": "Standardティア",
+        "C": "Premiumティア",
+        "D": "Enterpriseティア"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "Azure Cache for Redis Premiumティアは、データの永続化（RDB/AOFスナップショット）、災害復旧のための地理レプリケーション、水平スケーリングと高可用性のためのRedisクラスタリングを提供します。Basicティアは開発専用、Standardはレプリケーションを追加しますが永続化はなし、Enterpriseは特殊なRedisモジュール用です。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q5",
+      "domain": 3,
+      "question": "ある企業がAzure SQL Databaseの災害復旧ソリューションを設計する必要があります。ソリューションはデータ損失ゼロ（RPO=0）での自動フェイルオーバーを提供し、読み取り可能なセカンダリレプリカをサポートする必要があります。何を構成すべきですか？",
+      "options": {
+        "A": "自動バックアップからの地理復元",
+        "B": "アクティブ地理レプリケーション",
+        "C": "同期レプリケーションを使用した自動フェイルオーバーグループ",
+        "D": "長期バックアップ保持"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "自動フェイルオーバーグループは、RPO=0（データ損失ゼロ）を達成するための同期レプリケーションによる自動フェイルオーバー機能を提供します。また、読み取りスケールアウト用の読み取り可能なセカンダリレプリカもサポートしています。アクティブ地理レプリケーションは手動フェイルオーバーが必要であり、バックアップからの地理復元はRPOが時間単位で測定されます。\n---",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q6",
+      "domain": 3,
+      "question": "ある企業がAzureバックアップ戦略を計画しています。Azure VM、Azure Files、およびAzure VM上で実行されているSQLデータベースを単一のバックアップソリューションで保護する必要があります。何を使用すべきですか？",
+      "options": {
+        "A": "Azure Blob Storageスナップショット",
+        "B": "Azure Recovery Servicesコンテナー",
+        "C": "Azureマネージドディスクスナップショット",
+        "D": "Azure BlobへのSQL Serverネイティブバックアップ"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure Recovery Servicesコンテナーは、Azure VM、Azure Files、Azure VM上のSQL Serverなど、複数のAzureワークロードに対する統一されたバックアップソリューションを提供します。これらすべてのワークロードタイプに対して、集中管理、ポリシーベースのバックアップスケジュール、クロスリージョン復元機能を提供します。\n---",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q7",
+      "domain": 4,
+      "question": "ある企業がエンドポイントのパフォーマンスに基づいて自動トラフィック分散を行うグローバル分散Webアプリケーションをデプロイする必要があります。ソリューションはユーザーを最も低いレイテンシのエンドポイントにルーティングする必要があります。どのAzureサービスとルーティング方式を使用すべきですか？",
+      "options": {
+        "A": "ラウンドロビンを使用したAzure Load Balancer",
+        "B": "パフォーマンスルーティングを使用したAzure Traffic Manager",
+        "C": "パスベースルーティングを使用したAzure Application Gateway",
+        "D": "加重ルーティングを使用したAzure Front Door"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "パフォーマンスルーティング方式を使用したAzure Traffic Managerは、クライアントから各エンドポイントへのネットワークレイテンシを測定し、最も低いレイテンシのエンドポイントにトラフィックをルーティングします。これにより、地理的に最も近い正常なエンドポイントにユーザーを誘導することで、グローバル分散アプリケーションに最適なユーザーエクスペリエンスを提供します。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q8",
+      "domain": 4,
+      "question": "ある企業がAzure Kubernetes Service（AKS）上でマイクロサービスアーキテクチャを設計しています。証明書を手動で管理せずにサービス間認証を実装する必要があります。何を使用すべきですか？",
+      "options": {
+        "A": "証明書を保存するためのKubernetes Secrets",
+        "B": "CSIドライバーを使用したAzure Key Vault",
+        "C": "Microsoft Entra IDを使用したワークロードID",
+        "D": "ConfigMaps内の自己署名証明書"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "ワークロードIDにより、KubernetesポッドはMicrosoft Entra IDトークンを使用してAzureサービスや他のワークロードに認証できます。これにより、証明書やシークレットを手動で管理する必要がなくなります。ポッドはワークロードIDを使用して、Entra IDトークンを信頼する他のサービスに認証できます。\n---",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q9",
+      "domain": 4,
+      "question": "ある企業が静的Webサイトアセット用のコンテンツ配信ソリューションを実装する必要があります。ソリューションはHTTPSを使用したカスタムドメイン、自動証明書管理、Azure Blob Storageとの統合をサポートする必要があります。何を使用すべきですか？",
+      "options": {
+        "A": "Azure Application Gateway",
+        "B": "マネージド証明書を使用したAzure CDN",
+        "C": "Azure Traffic Manager",
+        "D": "Azure Load Balancer"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure CDNは、HTTPSを使用したカスタムドメインをサポートし、自動的にプロビジョニングおよび更新されるマネージド証明書を提供します。オリジンとしてAzure Blob Storageとネイティブに統合され、静的コンテンツをグローバルなエッジロケーションにキャッシュすることで、パフォーマンスの向上とレイテンシの削減を実現します。\n---",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q10",
+      "domain": 1,
+      "question": "ある企業がコンプライアンス要件のために集中型ログを実装する必要があります。Azureリソース、オンプレミスサーバー、サードパーティアプリケーションからのログは、不変ストレージで7年間保持する必要があります。どのアーキテクチャを設計すべきですか？",
+      "options": {
+        "A": "7年間の保持を設定したLog Analyticsワークスペース",
+        "B": "不変Blob Storageへのデータエクスポートを設定したLog Analyticsワークスペース",
+        "C": "標準Blob Storageへのキャプチャを使用したEvent Hubs",
+        "D": "連続エクスポートを使用したApplication Insights"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Log Analyticsワークスペースは複数のソースからのログ収集をサポートしていますが、最大保持期間は2年です。不変性を備えた7年間の保持には、不変ストレージポリシー（WORM）を使用してAzure Blob Storageへのデータエクスポートを構成します。これにより、最近のデータに対するLog Analyticsでのクエリ機能を維持しながら、コンプライアンスグレードのログ保持が提供されます。\n---",
+      "difficulty": "hard"
+    }
+  ]
+}

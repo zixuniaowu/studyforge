@@ -1,0 +1,542 @@
+{
+  "exam": {
+    "id": "aws-dea-c01-set3",
+    "name": "AWS DEA-C01 模拟考试 #3",
+    "code": "DEA-C01",
+    "provider": "AWS",
+    "language": "zh-CN",
+    "description": "AWS数据工程师助理认证考试模拟题 - 第3套",
+    "totalQuestions": 40,
+    "passingScore": 72,
+    "examTime": 130,
+    "domains": [
+      {"id": 1, "name": "Data Ingestion and Transformation", "weight": 34},
+      {"id": 2, "name": "Data Store Management", "weight": 26},
+      {"id": 3, "name": "Data Operations and Support", "weight": 22},
+      {"id": 4, "name": "Data Security and Governance", "weight": 18}
+    ],
+    "tags": ["AWS", "数据工程", "DEA", "认证考试"]
+  },
+  "questions": [
+    {
+      "id": "q1",
+      "domain": 1,
+      "question": "公司需要将多个AWS账户的CloudTrail日志集中到一个数据湖进行分析。最佳架构是？",
+      "options": {
+        "A": "每个账户独立分析CloudTrail",
+        "B": "使用组织级CloudTrail，配置S3存储桶收集所有日志",
+        "C": "手动复制日志文件",
+        "D": "使用Lambda逐个读取日志"
+      },
+      "answer": "B",
+      "explanation": "AWS Organizations支持组织级CloudTrail，可以将所有成员账户的日志自动发送到中央S3存储桶，然后使用Athena或Glue进行分析。"
+    },
+    {
+      "id": "q2",
+      "domain": 1,
+      "question": "使用Glue Studio可视化编辑器创建ETL作业有什么优势？",
+      "options": {
+        "A": "生成的代码性能更好",
+        "B": "无需编写代码即可创建复杂的ETL流程",
+        "C": "支持更多数据源",
+        "D": "成本更低"
+      },
+      "answer": "B",
+      "explanation": "Glue Studio提供可视化拖放界面，可以创建、运行和监控ETL作业，适合不熟悉编程的用户快速构建数据管道。"
+    },
+    {
+      "id": "q3",
+      "domain": 1,
+      "question": "Kinesis Data Firehose传送数据到S3时，如何确保数据按业务日期分区而非传送时间？",
+      "options": {
+        "A": "使用Firehose默认分区",
+        "B": "使用动态分区功能基于数据内容提取分区键",
+        "C": "在S3使用生命周期策略移动文件",
+        "D": "使用Lambda后处理重新组织文件"
+      },
+      "answer": "B",
+      "explanation": "Firehose动态分区功能可以从数据记录中提取字段（如业务日期）作为分区键，按业务逻辑组织S3数据，而非默认的传送时间分区。"
+    },
+    {
+      "id": "q4",
+      "domain": 1,
+      "question": "数据源是流式和批式混合的。如何设计统一的数据处理架构？",
+      "options": {
+        "A": "分别建立两套独立的管道",
+        "B": "使用Lambda架构或Kappa架构",
+        "C": "只使用批处理",
+        "D": "只使用流处理"
+      },
+      "answer": "B",
+      "explanation": "Lambda架构结合批处理层和速度层处理不同需求。Kappa架构简化为仅使用流处理层，将批数据作为流的特例处理。两者都是处理混合数据的成熟模式。"
+    },
+    {
+      "id": "q5",
+      "domain": 1,
+      "question": "AWS Glue ETL作业失败，错误显示\"Out of memory\"。除了增加DPU，还有什么优化方法？",
+      "options": {
+        "A": "减少输出分区数",
+        "B": "使用pushDownPredicate减少读取数据量",
+        "C": "禁用作业书签",
+        "D": "使用同步执行"
+      },
+      "answer": "B",
+      "explanation": "pushDownPredicate可以在读取时就过滤数据，减少内存使用。其他方法包括增加分区数分散数据、避免collect()等会收集所有数据到driver的操作。"
+    },
+    {
+      "id": "q6",
+      "domain": 2,
+      "question": "需要存储和查询地理空间数据（如用户位置、地图信息）。最适合的AWS服务是？",
+      "options": {
+        "A": "Amazon DynamoDB",
+        "B": "Amazon RDS for PostgreSQL with PostGIS",
+        "C": "Amazon S3 + Athena",
+        "D": "Amazon Redshift"
+      },
+      "answer": "B",
+      "explanation": "PostgreSQL的PostGIS扩展专门支持地理空间数据类型和查询，如距离计算、地理围栏、空间索引等。RDS for PostgreSQL完全支持PostGIS。"
+    },
+    {
+      "id": "q7",
+      "domain": 2,
+      "question": "数据仓库需要支持多租户隔离，每个租户只能看到自己的数据。Redshift如何实现？",
+      "options": {
+        "A": "每个租户使用不同的集群",
+        "B": "使用行级安全(RLS)策略基于租户ID过滤",
+        "C": "使用不同的数据库",
+        "D": "使用应用层过滤"
+      },
+      "answer": "B",
+      "explanation": "Redshift RLS可以创建策略，根据用户的会话变量（如租户ID）自动过滤数据，实现透明的多租户隔离而无需修改查询。"
+    },
+    {
+      "id": "q8",
+      "domain": 2,
+      "question": "S3数据湖中的历史数据需要支持时间旅行查询（查询某一时刻的数据快照）。应该使用什么？",
+      "options": {
+        "A": "S3 Versioning",
+        "B": "Apache Iceberg表格式",
+        "C": "Glue Data Catalog历史",
+        "D": "S3 Object Lock"
+      },
+      "answer": "B",
+      "explanation": "Apache Iceberg支持时间旅行查询，可以查询表在任意时间点的快照，无需复制数据。S3 Versioning是对象级别的，不支持表级别的一致性快照。"
+    },
+    {
+      "id": "q9",
+      "domain": 2,
+      "question": "Athena查询优化：表使用日期分区，但查询仍然扫描所有分区。原因可能是？",
+      "options": {
+        "A": "分区键没有在WHERE子句中使用",
+        "B": "Athena不支持分区",
+        "C": "数据文件太大",
+        "D": "使用了错误的文件格式"
+      },
+      "answer": "A",
+      "explanation": "Athena的分区裁剪需要在WHERE子句中明确使用分区键。如果查询没有过滤分区键，或使用函数处理分区键，则无法进行分区裁剪。"
+    },
+    {
+      "id": "q10",
+      "domain": 2,
+      "question": "DynamoDB表的读取容量单位(RCU)频繁达到限制。如何优化？",
+      "options": {
+        "A": "增加WCU",
+        "B": "启用DAX缓存层",
+        "C": "减少写入频率",
+        "D": "删除GSI"
+      },
+      "answer": "B",
+      "explanation": "DynamoDB Accelerator (DAX)是完全托管的内存缓存，可以将读取延迟从毫秒降低到微秒，并减少对基础表的读取请求，降低RCU消耗。"
+    },
+    {
+      "id": "q11",
+      "domain": 3,
+      "question": "Glue Crawler运行后创建的表名不符合命名规范。如何自定义？",
+      "options": {
+        "A": "Crawler自动生成，无法更改",
+        "B": "在Crawler配置中设置表前缀，或使用Crawler后触发Lambda修改",
+        "C": "手动重命名表",
+        "D": "使用不同的数据源路径"
+      },
+      "answer": "B",
+      "explanation": "Crawler支持配置表名前缀。对于更复杂的命名需求，可以使用EventBridge检测Crawler完成事件，触发Lambda通过API修改表名。"
+    },
+    {
+      "id": "q12",
+      "domain": 3,
+      "question": "Step Functions执行超过25000个历史事件导致失败。如何处理长时间运行的工作流？",
+      "options": {
+        "A": "增加事件限制",
+        "B": "使用嵌套工作流(Nested Workflows)或Continue As New模式",
+        "C": "使用Express工作流",
+        "D": "减少状态数量"
+      },
+      "answer": "B",
+      "explanation": "可以使用嵌套工作流将大工作流拆分为子工作流，或使用Continue As New模式开始新执行继续处理，避免单个执行的事件限制。"
+    },
+    {
+      "id": "q13",
+      "domain": 3,
+      "question": "数据管道需要处理背压(backpressure)情况，即下游处理速度跟不上上游。如何处理？",
+      "options": {
+        "A": "丢弃多余数据",
+        "B": "使用SQS作为缓冲队列",
+        "C": "加快下游处理速度",
+        "D": "减慢上游速度"
+      },
+      "answer": "B",
+      "explanation": "SQS可以作为缓冲层，暂存上游产生的消息。下游消费者按自己的速度处理，SQS的消息保留期（最长14天）提供了充足的缓冲时间。"
+    },
+    {
+      "id": "q14",
+      "domain": 3,
+      "question": "EMR集群运行Spark作业，需要在作业完成后自动终止集群以节省成本。如何配置？",
+      "options": {
+        "A": "手动终止集群",
+        "B": "使用EMR瞬态集群(Transient Cluster)模式",
+        "C": "设置定时终止",
+        "D": "使用最小集群大小"
+      },
+      "answer": "B",
+      "explanation": "EMR瞬态集群在所有步骤完成后自动终止，非常适合批处理作业。也可以使用Step Functions编排EMR步骤并在完成后终止集群。"
+    },
+    {
+      "id": "q15",
+      "domain": 3,
+      "question": "Glue作业需要在运行时动态获取配置参数。最佳实践是？",
+      "options": {
+        "A": "硬编码在脚本中",
+        "B": "使用作业参数(Job Parameters)或SSM Parameter Store",
+        "C": "从S3文件读取",
+        "D": "使用环境变量"
+      },
+      "answer": "B",
+      "explanation": "Glue作业参数可以在运行时传递配置。对于敏感信息或需要集中管理的配置，使用SSM Parameter Store或Secrets Manager更安全。"
+    },
+    {
+      "id": "q16",
+      "domain": 4,
+      "question": "数据湖中存储的数据需要满足7年保留要求，且保留期内不可删除。如何实现？",
+      "options": {
+        "A": "使用S3 Lifecycle规则",
+        "B": "使用S3 Object Lock合规模式(Compliance Mode)",
+        "C": "使用IAM策略禁止删除",
+        "D": "定期备份"
+      },
+      "answer": "B",
+      "explanation": "S3 Object Lock合规模式在保留期内任何人（包括root用户）都无法删除或修改对象，满足严格的合规保留要求。"
+    },
+    {
+      "id": "q17",
+      "domain": 4,
+      "question": "需要检测和防止数据湖中的数据泄露。应该使用什么？",
+      "options": {
+        "A": "S3访问日志",
+        "B": "Amazon Macie + GuardDuty",
+        "C": "CloudWatch Metrics",
+        "D": "VPC Flow Logs"
+      },
+      "answer": "B",
+      "explanation": "Macie可以发现敏感数据并监控访问模式，GuardDuty可以检测异常的S3访问行为（如大量下载）。两者结合提供全面的数据泄露防护。"
+    },
+    {
+      "id": "q18",
+      "domain": 4,
+      "question": "Redshift集群需要与外部合作伙伴安全共享数据。如何实现？",
+      "options": {
+        "A": "导出数据发送给合作伙伴",
+        "B": "使用Redshift数据共享(Data Sharing)",
+        "C": "创建公共端点",
+        "D": "共享集群凭证"
+      },
+      "answer": "B",
+      "explanation": "Redshift Data Sharing允许跨集群、跨账户安全共享数据，无需复制数据。可以控制共享的数据库、schema、表，并支持细粒度权限。"
+    },
+    {
+      "id": "q19",
+      "domain": 4,
+      "question": "数据工程师需要知道哪些用户有权访问特定的Lake Formation表。如何查询？",
+      "options": {
+        "A": "检查S3存储桶策略",
+        "B": "使用Lake Formation权限API或控制台查看表权限",
+        "C": "查看IAM策略",
+        "D": "检查VPC安全组"
+      },
+      "answer": "B",
+      "explanation": "Lake Formation提供集中的权限管理界面，可以在控制台或通过API查看特定资源（数据库、表、列）的权限授予情况。"
+    },
+    {
+      "id": "q20",
+      "domain": 4,
+      "question": "VPC内的Glue作业需要访问公共AWS API（如S3 API）。应该如何配置？",
+      "options": {
+        "A": "使用Internet Gateway",
+        "B": "配置VPC Endpoint for S3",
+        "C": "使用公共子网",
+        "D": "禁用VPC配置"
+      },
+      "answer": "B",
+      "explanation": "VPC Endpoint允许VPC内的资源私密访问AWS服务，流量不经过互联网。S3 Gateway Endpoint是免费的，适合Glue作业访问S3。"
+    },
+    {
+      "id": "q21",
+      "domain": 1,
+      "question": "需要从Oracle数据库全量迁移到S3，包括存储过程和触发器的逻辑。应该如何处理？",
+      "options": {
+        "A": "DMS可以直接迁移存储过程",
+        "B": "使用DMS迁移数据，使用AWS SCT转换存储过程逻辑",
+        "C": "手动重写所有逻辑",
+        "D": "存储过程无法迁移"
+      },
+      "answer": "B",
+      "explanation": "AWS Schema Conversion Tool (SCT)可以帮助转换存储过程、触发器等数据库代码到目标平台。DMS专注于数据迁移，SCT专注于schema和代码转换。"
+    },
+    {
+      "id": "q22",
+      "domain": 1,
+      "question": "Glue ETL需要根据业务规则合并重复记录。应该使用什么方法？",
+      "options": {
+        "A": "使用SQL DISTINCT",
+        "B": "使用Glue FindMatches ML转换或自定义去重逻辑",
+        "C": "在源系统去重",
+        "D": "忽略重复记录"
+      },
+      "answer": "B",
+      "explanation": "Glue FindMatches使用机器学习识别重复记录，即使记录不完全相同也能匹配。对于简单去重，可以使用DataFrame的dropDuplicates或自定义规则。"
+    },
+    {
+      "id": "q23",
+      "domain": 1,
+      "question": "实时数据管道需要exactly-once处理语义。使用Kinesis时如何保证？",
+      "options": {
+        "A": "Kinesis原生支持exactly-once",
+        "B": "使用事务性写入和幂等消费者设计",
+        "C": "增加重试次数",
+        "D": "使用同步API"
+      },
+      "answer": "B",
+      "explanation": "Kinesis提供at-least-once语义。要实现exactly-once，需要消费者端实现幂等性（如使用事务ID去重），结合事务性写入到目标系统。"
+    },
+    {
+      "id": "q24",
+      "domain": 2,
+      "question": "Redshift RA3节点类型相比DC2的主要优势是什么？",
+      "options": {
+        "A": "更低的成本",
+        "B": "计算和存储分离，可独立扩展",
+        "C": "更快的查询速度",
+        "D": "更大的内存"
+      },
+      "answer": "B",
+      "explanation": "RA3节点将计算和存储分离，使用托管存储(RMS)，可以独立扩展存储而不增加计算节点，更灵活且对大数据量更经济。"
+    },
+    {
+      "id": "q25",
+      "domain": 2,
+      "question": "S3数据湖需要支持多个数据消费者并发读写同一表。如何避免冲突？",
+      "options": {
+        "A": "使用S3 Object Lock",
+        "B": "使用表格式（Iceberg/Delta/Hudi）的并发控制",
+        "C": "限制为单写入者",
+        "D": "使用S3 Versioning"
+      },
+      "answer": "B",
+      "explanation": "Iceberg、Delta Lake、Hudi都提供ACID事务和并发控制，使用乐观并发机制处理多个写入者，保证数据一致性。"
+    },
+    {
+      "id": "q26",
+      "domain": 2,
+      "question": "数据仓库中的维度表需要追踪历史变化（SCD Type 2）。如何在Redshift中实现？",
+      "options": {
+        "A": "直接更新记录",
+        "B": "使用有效日期范围和当前标志列",
+        "C": "创建历史表副本",
+        "D": "使用触发器"
+      },
+      "answer": "B",
+      "explanation": "SCD Type 2通过添加有效开始日期、结束日期和当前记录标志来保留历史版本。更新时将当前记录标记为过期，插入新记录作为当前版本。"
+    },
+    {
+      "id": "q27",
+      "domain": 3,
+      "question": "Glue作业需要处理超过内存容量的大数据集。应该使用什么策略？",
+      "options": {
+        "A": "增加内存",
+        "B": "使用分区处理和溢出到磁盘（Spark的shuffle spill）",
+        "C": "减少数据量",
+        "D": "使用同步处理"
+      },
+      "answer": "B",
+      "explanation": "Spark/Glue会自动将超出内存的数据溢出到磁盘。可以优化分区策略减少shuffle，使用G.2X worker类型获取更多内存和磁盘空间。"
+    },
+    {
+      "id": "q28",
+      "domain": 3,
+      "question": "数据管道需要支持A/B测试新的ETL逻辑。如何实现？",
+      "options": {
+        "A": "直接替换生产管道",
+        "B": "使用特性标志控制流向新旧逻辑，并行运行比较结果",
+        "C": "在开发环境测试后直接上线",
+        "D": "使用不同的数据源"
+      },
+      "answer": "B",
+      "explanation": "可以使用特性标志或流量分割将部分数据同时通过新旧管道处理，比较结果验证新逻辑正确性，然后逐步迁移。"
+    },
+    {
+      "id": "q29",
+      "domain": 3,
+      "question": "EMR上运行的Spark作业需要共享中间计算结果。最佳方案是？",
+      "options": {
+        "A": "使用本地磁盘",
+        "B": "使用EMRFS（S3）存储检查点和中间结果",
+        "C": "增加executor内存",
+        "D": "使用RDD cache"
+      },
+      "answer": "B",
+      "explanation": "EMRFS允许Spark作业使用S3作为持久存储，中间结果可以被多个作业共享，且在节点故障时不会丢失。"
+    },
+    {
+      "id": "q30",
+      "domain": 3,
+      "question": "需要自动检测Glue Crawler发现的schema变化并通知团队。如何实现？",
+      "options": {
+        "A": "手动检查Data Catalog",
+        "B": "使用EventBridge检测Glue事件，触发SNS通知",
+        "C": "定期运行比较脚本",
+        "D": "使用CloudWatch Logs"
+      },
+      "answer": "B",
+      "explanation": "Glue发送事件到EventBridge，包括Crawler状态变化和表变更。可以创建规则匹配这些事件并触发SNS通知、Lambda处理等。"
+    },
+    {
+      "id": "q31",
+      "domain": 4,
+      "question": "需要确保数据湖中的数据在创建后不被修改（不可变性）。如何实现？",
+      "options": {
+        "A": "使用IAM策略限制PutObject",
+        "B": "使用S3 Object Lock写入一次读取多次(WORM)配置",
+        "C": "使用只读存储桶策略",
+        "D": "使用S3 Glacier"
+      },
+      "answer": "B",
+      "explanation": "S3 Object Lock的WORM配置确保对象写入后不能被修改或删除直到保留期结束，是数据不可变性的最强保证。"
+    },
+    {
+      "id": "q32",
+      "domain": 4,
+      "question": "Lake Formation与现有IAM策略如何协同工作？",
+      "options": {
+        "A": "Lake Formation完全替代IAM",
+        "B": "访问需要同时满足IAM和Lake Formation权限",
+        "C": "只使用IAM权限",
+        "D": "Lake Formation自动覆盖IAM"
+      },
+      "answer": "B",
+      "explanation": "Lake Formation采用权限叠加模型，用户必须同时拥有IAM权限（如glue:GetTable）和Lake Formation权限（对该表的SELECT）才能访问数据。"
+    },
+    {
+      "id": "q33",
+      "domain": 1,
+      "question": "使用MSK(Managed Streaming for Apache Kafka)摄取数据时，如何确保消息顺序？",
+      "options": {
+        "A": "Kafka不保证顺序",
+        "B": "在同一分区内消息保持顺序，使用正确的分区键",
+        "C": "使用事务",
+        "D": "增加副本数"
+      },
+      "answer": "B",
+      "explanation": "Kafka保证单个分区内的消息顺序。通过选择合适的分区键（如用户ID），确保相关消息发送到同一分区，从而保持顺序。"
+    },
+    {
+      "id": "q34",
+      "domain": 1,
+      "question": "需要将Kinesis Data Streams的数据同时发送到S3和Redshift。如何实现？",
+      "options": {
+        "A": "创建两个独立的Kinesis流",
+        "B": "使用两个Kinesis Data Firehose传送流，都从同一Kinesis流读取",
+        "C": "在消费者中写入两个目标",
+        "D": "使用Lambda复制数据"
+      },
+      "answer": "B",
+      "explanation": "可以配置多个Firehose传送流从同一个Kinesis Data Streams读取，每个Firehose配置不同的目标（S3、Redshift等），实现数据扇出。"
+    },
+    {
+      "id": "q35",
+      "domain": 2,
+      "question": "Athena查询结果需要导出到S3特定位置供下游使用。如何配置？",
+      "options": {
+        "A": "Athena自动选择输出位置",
+        "B": "使用CTAS或INSERT INTO将结果写入指定表/位置",
+        "C": "复制查询结果文件",
+        "D": "使用默认输出位置"
+      },
+      "answer": "B",
+      "explanation": "CREATE TABLE AS SELECT (CTAS)或INSERT INTO可以将查询结果写入指定的S3位置，支持指定格式、分区和压缩，便于下游处理。"
+    },
+    {
+      "id": "q36",
+      "domain": 2,
+      "question": "需要对Redshift中的PII数据进行动态脱敏，不同用户看到不同的脱敏级别。如何实现？",
+      "options": {
+        "A": "创建多个脱敏表",
+        "B": "使用动态数据脱敏(DDM)功能",
+        "C": "在应用层脱敏",
+        "D": "使用视图"
+      },
+      "answer": "B",
+      "explanation": "Redshift Dynamic Data Masking (DDM)允许定义脱敏策略，根据用户角色自动对敏感列应用不同的脱敏规则，无需修改查询或创建多个视图。"
+    },
+    {
+      "id": "q37",
+      "domain": 3,
+      "question": "数据质量规则需要作为ETL管道的一部分执行。AWS原生方案是？",
+      "options": {
+        "A": "手动检查数据",
+        "B": "使用AWS Glue Data Quality",
+        "C": "使用Lambda自定义验证",
+        "D": "在目标数据库验证"
+      },
+      "answer": "B",
+      "explanation": "AWS Glue Data Quality允许在Glue作业中定义数据质量规则（如完整性、唯一性、范围检查），自动验证数据并生成质量报告。"
+    },
+    {
+      "id": "q38",
+      "domain": 3,
+      "question": "需要版本控制Glue ETL脚本并实现CI/CD。应该使用什么方法？",
+      "options": {
+        "A": "在Glue控制台编辑脚本",
+        "B": "将脚本存储在Git，使用CodePipeline部署",
+        "C": "使用S3版本控制",
+        "D": "手动复制脚本"
+      },
+      "answer": "B",
+      "explanation": "将Glue脚本和CloudFormation/CDK模板存储在Git仓库，使用CodePipeline/CodeBuild实现自动化测试和部署，是ETL CI/CD最佳实践。"
+    },
+    {
+      "id": "q39",
+      "domain": 4,
+      "question": "需要追踪数据从源系统到报表的完整血缘。哪些AWS服务可以帮助？",
+      "options": {
+        "A": "只有CloudTrail",
+        "B": "Glue Data Catalog、Lake Formation和第三方血缘工具的组合",
+        "C": "S3访问日志",
+        "D": "VPC Flow Logs"
+      },
+      "answer": "B",
+      "explanation": "Glue Data Catalog存储元数据，Lake Formation管理权限和提供基本血缘信息。完整的端到端血缘通常需要结合AWS合作伙伴工具如Alation、Collibra。"
+    },
+    {
+      "id": "q40",
+      "domain": 4,
+      "question": "跨账户数据共享时，如何确保接收方只能访问特定的数据子集？",
+      "options": {
+        "A": "共享整个数据集然后依赖接收方过滤",
+        "B": "使用Lake Formation细粒度权限控制共享的表、列、行",
+        "C": "复制数据子集到接收方账户",
+        "D": "使用S3存储桶策略"
+      },
+      "answer": "B",
+      "explanation": "Lake Formation支持跨账户共享时的细粒度权限控制，可以精确指定共享的数据库、表、列，甚至使用行级过滤器限制数据范围。"
+    }
+  ]
+}

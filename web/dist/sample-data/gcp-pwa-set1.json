@@ -1,0 +1,663 @@
+{
+  "exam": {
+    "id": "gcp-pwa-set1",
+    "name": "Professional Google Workspace Administrator 练习题 Set 1",
+    "code": "PWA",
+    "provider": "Google Cloud",
+    "language": "zh-CN",
+    "description": "Google Cloud Professional Google Workspace Administrator 认证练习题第一套",
+    "totalQuestions": 40,
+    "passingScore": 70,
+    "examTime": 120,
+    "domains": [
+      "管理对象",
+      "配置服务",
+      "管理终端节点",
+      "监控组织运营",
+      "支持业务转型"
+    ],
+    "tags": ["Google Cloud", "Workspace", "Professional", "Administration"]
+  },
+  "questions": [
+    {
+      "id": "gcp-pwa-set1-q1",
+      "examId": "gcp-pwa-set1",
+      "setNumber": 1,
+      "domain": "管理对象",
+      "question": "您需要为新员工批量创建用户账号。公司有1000名员工需要在一周内完成账号创建。最高效的方法是什么？",
+      "options": {
+        "A": "在管理控制台中逐个创建用户",
+        "B": "使用CSV文件批量上传用户",
+        "C": "使用Google Cloud Directory Sync（GCDS）从现有目录同步",
+        "D": "使用Admin SDK API编写脚本创建用户"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "对于一次性批量创建用户，CSV文件上传是最高效的方法。管理控制台支持通过CSV文件批量添加用户，每次最多可上传数千个用户。GCDS适用于持续同步场景，API脚本需要开发工作。对于简单的一次性批量操作，CSV上传最为简便。"
+    },
+    {
+      "id": "gcp-pwa-set1-q2",
+      "examId": "gcp-pwa-set1",
+      "setNumber": 1,
+      "domain": "配置服务",
+      "question": "您的组织需要确保所有员工的Gmail邮件都被存档以满足合规要求。应该配置哪个功能？",
+      "options": {
+        "A": "Gmail日志搜索",
+        "B": "Google Vault保留规则",
+        "C": "邮件路由规则",
+        "D": "DLP规则"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Google Vault是Workspace的电子发现和归档解决方案。通过配置Vault保留规则，可以自动保留所有Gmail邮件，满足合规和法律保留要求。Vault还支持搜索、导出和法律保留功能。Gmail日志搜索用于故障排查，DLP用于数据泄露防护。"
+    },
+    {
+      "id": "gcp-pwa-set1-q3",
+      "examId": "gcp-pwa-set1",
+      "setNumber": 1,
+      "domain": "管理终端节点",
+      "question": "公司需要管理员工的移动设备，要求能够远程擦除丢失设备上的公司数据。应该启用什么功能？",
+      "options": {
+        "A": "基本移动管理",
+        "B": "高级移动管理",
+        "C": "端点验证",
+        "D": "设备证书"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "高级移动管理提供远程擦除设备或账号数据的能力，还包括强制密码策略、应用管理、设备批准等功能。基本移动管理功能有限，不支持远程擦除。端点验证用于访问控制决策，设备证书用于身份验证。"
+    },
+    {
+      "id": "gcp-pwa-set1-q4",
+      "examId": "gcp-pwa-set1",
+      "setNumber": 1,
+      "domain": "监控组织运营",
+      "question": "您需要调查一个安全事件，查看过去7天内特定用户的所有管理员操作和登录活动。应该使用哪个工具？",
+      "options": {
+        "A": "安全调查工具",
+        "B": "审核日志",
+        "C": "Alert Center",
+        "D": "报告仪表板"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "审核日志记录了管理控制台中的所有管理员活动以及用户的登录活动。可以按用户、日期范围和活动类型筛选，查看详细的操作记录。安全调查工具用于更深入的安全分析，Alert Center用于查看安全警报，报告仪表板提供汇总统计。"
+    },
+    {
+      "id": "gcp-pwa-set1-q5",
+      "examId": "gcp-pwa-set1",
+      "setNumber": 1,
+      "domain": "支持业务转型",
+      "question": "您的公司正在从Microsoft 365迁移到Google Workspace。需要迁移用户的邮件、日历和联系人数据。应该使用什么工具？",
+      "options": {
+        "A": "Google Takeout",
+        "B": "数据迁移服务",
+        "C": "IMAP迁移",
+        "D": "Transfer应用"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Google Workspace数据迁移服务支持从Microsoft 365、Exchange和其他邮件系统迁移邮件、日历和联系人数据。它提供管理控制台集成、进度跟踪和错误报告。IMAP迁移仅支持邮件，功能有限。Takeout用于导出数据，不用于迁移入。"
+    },
+    {
+      "id": "gcp-pwa-set1-q6",
+      "examId": "gcp-pwa-set1",
+      "setNumber": 1,
+      "domain": "管理对象",
+      "question": "您需要创建组织结构来管理不同部门的用户，并能够为每个部门应用不同的策略和服务设置。应该使用什么？",
+      "options": {
+        "A": "Google群组",
+        "B": "组织单位（OU）",
+        "C": "访问群组",
+        "D": "安全群组"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "组织单位（OU）用于创建层级结构来组织用户，并为不同单位应用不同的服务设置和策略。每个用户只能属于一个OU，设置会继承到子单位。Google群组用于通信和共享，不适合用于策略管理。访问群组和安全群组用于访问控制，不用于服务配置。"
+    },
+    {
+      "id": "gcp-pwa-set1-q7",
+      "examId": "gcp-pwa-set1",
+      "setNumber": 1,
+      "domain": "配置服务",
+      "question": "组织要求外部用户不能直接向员工发送邮件，所有外部邮件必须经过审核。应该配置什么？",
+      "options": {
+        "A": "入站网关",
+        "B": "邮件白名单",
+        "C": "内容合规规则",
+        "D": "受限投递"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "内容合规规则可以配置为将来自外部发件人的邮件路由到指定审核人进行审批，然后再投递给收件人。可以基于发件人、收件人、内容等条件触发审核流程。入站网关用于垃圾邮件过滤，白名单用于允许特定发件人，受限投递限制投递范围。"
+    },
+    {
+      "id": "gcp-pwa-set1-q8",
+      "examId": "gcp-pwa-set1",
+      "setNumber": 1,
+      "domain": "管理终端节点",
+      "question": "您需要确保只有安装了最新操作系统版本的公司设备才能访问Google Workspace应用。应该使用什么功能？",
+      "options": {
+        "A": "设备管理策略",
+        "B": "上下文感知访问",
+        "C": "设备证书",
+        "D": "移动应用管理"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "上下文感知访问允许基于设备属性（如操作系统版本、加密状态、屏幕锁定等）创建访问策略。可以配置规则，只允许满足特定条件的设备访问Workspace应用。设备管理策略用于强制设备设置，设备证书用于身份验证，MAM用于应用管理。"
+    },
+    {
+      "id": "gcp-pwa-set1-q9",
+      "examId": "gcp-pwa-set1",
+      "setNumber": 1,
+      "domain": "监控组织运营",
+      "question": "您注意到组织中有大量用户报告收到钓鱼邮件。您需要快速识别和删除所有相关的钓鱼邮件。应该使用什么工具？",
+      "options": {
+        "A": "Gmail日志搜索",
+        "B": "安全调查工具",
+        "C": "邮件隔离",
+        "D": "Alert Center"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "安全调查工具允许管理员搜索组织中的邮件，并可以批量删除恶意邮件。可以基于发件人、主题、时间范围等条件搜索，然后执行删除或移动到垃圾邮件等操作。这是处理钓鱼攻击的最有效工具。Gmail日志搜索用于查看投递状态，Alert Center显示警报但不能直接操作邮件。"
+    },
+    {
+      "id": "gcp-pwa-set1-q10",
+      "examId": "gcp-pwa-set1",
+      "setNumber": 1,
+      "domain": "支持业务转型",
+      "question": "公司希望使用Google Meet进行大型全员会议，参与人数可能超过500人。应该如何配置？",
+      "options": {
+        "A": "启用大型会议功能",
+        "B": "使用Meet直播",
+        "C": "创建多个分组会议",
+        "D": "升级到Enterprise Plus许可证"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Google Meet直播功能允许最多100,000人观看直播（取决于许可证类型）。适合大型全员会议、公告等场景。标准Meet会议有参与者限制（最多500人取决于版本），直播则大大扩展了观众容量。观众可以观看和提问，但不能直接参与视频通话。"
+    },
+    {
+      "id": "gcp-pwa-set1-q11",
+      "examId": "gcp-pwa-set1",
+      "setNumber": 1,
+      "domain": "管理对象",
+      "question": "您需要为临时项目创建一个协作群组，允许外部合作伙伴参与讨论和共享文件。应该配置什么类型的群组？",
+      "options": {
+        "A": "内部群组",
+        "B": "外部群组",
+        "C": "协作收件箱群组",
+        "D": "安全群组"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "外部群组允许组织外的成员加入，适合与外部合作伙伴协作。配置时需要在群组设置中允许外部成员，并设置适当的访问权限。内部群组仅限组织内成员，协作收件箱用于共享邮件管理，安全群组用于访问控制。"
+    },
+    {
+      "id": "gcp-pwa-set1-q12",
+      "examId": "gcp-pwa-set1",
+      "setNumber": 1,
+      "domain": "配置服务",
+      "question": "公司要求所有外发邮件都必须包含法律免责声明。应该配置什么？",
+      "options": {
+        "A": "邮件签名",
+        "B": "邮件脚注",
+        "C": "路由规则",
+        "D": "合规规则"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "管理控制台中的邮件脚注设置可以自动为所有外发邮件添加标准化的文本内容，如法律免责声明。可以为整个组织或特定OU配置不同的脚注。用户签名由用户个人控制，路由规则用于邮件路由，合规规则用于内容扫描和操作。"
+    },
+    {
+      "id": "gcp-pwa-set1-q13",
+      "examId": "gcp-pwa-set1",
+      "setNumber": 1,
+      "domain": "管理终端节点",
+      "question": "您需要部署Chrome浏览器配置策略到组织中所有使用Chrome的设备。应该使用什么方法？",
+      "options": {
+        "A": "Google管理控制台的Chrome管理",
+        "B": "Chrome企业版安装程序",
+        "C": "组策略（GPO）",
+        "D": "用户配置文件同步"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Google管理控制台提供Chrome浏览器管理功能，可以配置和部署浏览器策略，如主页设置、书签、扩展程序白名单/黑名单、安全设置等。这些策略可以应用到使用托管账号登录Chrome的所有设备。GPO仅适用于Windows域环境，Chrome企业版安装程序用于安装，不用于策略管理。"
+    },
+    {
+      "id": "gcp-pwa-set1-q14",
+      "examId": "gcp-pwa-set1",
+      "setNumber": 1,
+      "domain": "监控组织运营",
+      "question": "您需要监控组织中Google Drive的存储使用情况，并在存储即将用尽时收到警报。应该使用什么？",
+      "options": {
+        "A": "Drive审核日志",
+        "B": "存储报告和警报",
+        "C": "安全仪表板",
+        "D": "使用情况报告"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "管理控制台中的存储报告显示组织和用户级别的存储使用情况。可以设置警报在存储达到特定阈值时通知管理员。这有助于主动管理存储配额，避免用户无法存储新文件。审核日志用于活动追踪，安全仪表板用于安全概览，使用情况报告提供应用使用统计。"
+    },
+    {
+      "id": "gcp-pwa-set1-q15",
+      "examId": "gcp-pwa-set1",
+      "setNumber": 1,
+      "domain": "支持业务转型",
+      "question": "公司决定为所有用户启用两步验证（2SV）。为确保平稳过渡，应该采取什么策略？",
+      "options": {
+        "A": "立即强制所有用户启用2SV",
+        "B": "设置宽限期，允许用户在截止日期前完成设置",
+        "C": "仅要求管理员启用2SV",
+        "D": "等待用户自愿启用2SV"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "设置2SV强制执行时应配置宽限期（通常2-4周），让用户有时间完成设置。可以先发送通知，然后逐步强制执行。立即强制可能导致用户被锁定和支持请求激增。建议先在IT部门试点，然后逐步推广到全组织。"
+    },
+    {
+      "id": "gcp-pwa-set1-q16",
+      "examId": "gcp-pwa-set1",
+      "setNumber": 1,
+      "domain": "管理对象",
+      "question": "员工离职后，您需要将其Google Drive中的文件转移给其经理。应该如何操作？",
+      "options": {
+        "A": "使用数据迁移服务",
+        "B": "使用转移所有权功能",
+        "C": "共享文件给经理",
+        "D": "导出文件后重新上传"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "在删除用户账号时，管理控制台提供转移所有权选项，可以将用户的Drive文件、日历和其他数据转移给另一个用户。这是处理离职员工数据的标准做法，确保重要文件不会丢失。共享只授予访问权限，不转移所有权。数据迁移服务用于外部系统迁移。"
+    },
+    {
+      "id": "gcp-pwa-set1-q17",
+      "examId": "gcp-pwa-set1",
+      "setNumber": 1,
+      "domain": "配置服务",
+      "question": "组织需要防止敏感财务数据通过Gmail外发。应该配置什么功能？",
+      "options": {
+        "A": "邮件白名单",
+        "B": "DLP（数据丢失防护）规则",
+        "C": "内容合规规则",
+        "D": "垃圾邮件过滤器"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "DLP（数据丢失防护）规则可以扫描外发邮件中的敏感内容（如信用卡号、社保号、财务数据等），并根据策略阻止、隔离或警告。可以使用预定义的检测器或自定义关键词。内容合规规则主要用于邮件路由和操作，不专注于敏感数据检测。"
+    },
+    {
+      "id": "gcp-pwa-set1-q18",
+      "examId": "gcp-pwa-set1",
+      "setNumber": 1,
+      "domain": "管理终端节点",
+      "question": "您需要为公司配发的Chromebook配置自动更新策略和设备限制。应该使用什么？",
+      "options": {
+        "A": "Chrome浏览器管理",
+        "B": "Chrome设备管理（Chrome Enterprise Upgrade）",
+        "C": "端点管理",
+        "D": "移动设备管理"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Chrome设备管理（需要Chrome Enterprise Upgrade许可证）提供对Chromebook的全面管理，包括自动更新策略、设备限制、强制注册、Kiosk模式等。Chrome浏览器管理用于管理浏览器策略，不是设备管理。端点管理和MDM用于其他类型的设备。"
+    },
+    {
+      "id": "gcp-pwa-set1-q19",
+      "examId": "gcp-pwa-set1",
+      "setNumber": 1,
+      "domain": "监控组织运营",
+      "question": "管理控制台显示组织的安全评分较低。您需要了解具体需要改进的安全设置。应该查看什么？",
+      "options": {
+        "A": "审核日志",
+        "B": "安全中心的安全状况",
+        "C": "Alert Center",
+        "D": "使用情况报告"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "安全中心的安全状况页面显示组织的安全评分，并提供具体的改进建议。它评估各种安全设置（如2SV、DLP、移动管理等），指出哪些设置低于推荐水平，并提供直接链接进行配置。这是提高组织安全态势的最佳起点。"
+    },
+    {
+      "id": "gcp-pwa-set1-q20",
+      "examId": "gcp-pwa-set1",
+      "setNumber": 1,
+      "domain": "支持业务转型",
+      "question": "公司正在部署Google Chat作为主要即时通讯工具。为促进采用，需要配置什么以允许与外部组织通信？",
+      "options": {
+        "A": "启用Chat外部访问",
+        "B": "创建外部聊天室",
+        "C": "配置Chat联合",
+        "D": "启用访客访问"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "在管理控制台中启用Chat外部访问后，用户可以与组织外的Google Chat用户（使用Workspace或个人账号）进行一对一聊天。这对于与客户、合作伙伴沟通很重要。可以选择允许所有外部用户或仅限受信任的域。聊天室共享需要单独配置。"
+    },
+    {
+      "id": "gcp-pwa-set1-q21",
+      "examId": "gcp-pwa-set1",
+      "setNumber": 1,
+      "domain": "管理对象",
+      "question": "您需要将现有的LDAP目录与Google Workspace同步，确保用户和群组信息保持一致。应该使用什么工具？",
+      "options": {
+        "A": "Admin SDK Directory API",
+        "B": "Google Cloud Directory Sync（GCDS）",
+        "C": "数据迁移服务",
+        "D": "LDAP连接器"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Google Cloud Directory Sync（GCDS）是官方工具，用于将LDAP目录（如Active Directory）中的用户、群组和其他数据同步到Google Workspace。它支持计划同步、属性映射和冲突解决。API适合自定义集成，数据迁移服务用于邮件迁移，LDAP连接器用于LDAP认证。"
+    },
+    {
+      "id": "gcp-pwa-set1-q22",
+      "examId": "gcp-pwa-set1",
+      "setNumber": 1,
+      "domain": "配置服务",
+      "question": "组织要求所有Google Drive文件默认只能在组织内部共享，禁止与外部用户共享。应该配置什么？",
+      "options": {
+        "A": "共享设置 - 仅限内部",
+        "B": "DLP规则",
+        "C": "访问控制列表",
+        "D": "文件所有权规则"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "在管理控制台的Drive和文档共享设置中，可以将默认共享选项设置为'仅限您的组织'，阻止用户与外部用户共享文件。这是组织级别的设置，可以应用到整个组织或特定OU。DLP用于内容检测，ACL是文件级设置。"
+    },
+    {
+      "id": "gcp-pwa-set1-q23",
+      "examId": "gcp-pwa-set1",
+      "setNumber": 1,
+      "domain": "管理终端节点",
+      "question": "用户报告他们的iOS设备上无法安装公司的内部应用。您已启用了高级移动管理。可能的原因是什么？",
+      "options": {
+        "A": "设备未注册MDM",
+        "B": "未配置Apple推送证书",
+        "C": "应用未添加到管理应用列表",
+        "D": "以上都可能"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "iOS设备管理可能因多种原因失败：1) 设备需要注册到MDM才能接收策略；2) Apple推送证书是iOS设备管理的必要条件；3) 要推送应用，需要先将其添加到管理应用列表。检查这三个方面可以解决大多数iOS设备管理问题。"
+    },
+    {
+      "id": "gcp-pwa-set1-q24",
+      "examId": "gcp-pwa-set1",
+      "setNumber": 1,
+      "domain": "监控组织运营",
+      "question": "您收到Alert Center的通知，显示多个用户账号可能被盗用。应该首先采取什么行动？",
+      "options": {
+        "A": "删除受影响的用户账号",
+        "B": "重置受影响用户的密码并撤销访问令牌",
+        "C": "联系Google支持",
+        "D": "等待更多信息再行动"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "账号被盗用时，应立即重置密码和撤销所有访问令牌（OAuth令牌），阻止攻击者继续访问。然后检查账号活动，确定被盗用的范围。删除账号会导致数据丢失，不是首选。等待会增加风险。联系Google支持可以在采取紧急措施后进行。"
+    },
+    {
+      "id": "gcp-pwa-set1-q25",
+      "examId": "gcp-pwa-set1",
+      "setNumber": 1,
+      "domain": "支持业务转型",
+      "question": "公司希望使用Google Workspace作为单点登录（SSO）提供者，让用户使用Workspace凭据登录第三方应用。应该配置什么？",
+      "options": {
+        "A": "SAML应用集成",
+        "B": "OAuth应用白名单",
+        "C": "LDAP身份验证",
+        "D": "API访问控制"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "通过在管理控制台配置SAML应用，Google Workspace可以作为身份提供者（IdP），让用户使用Workspace凭据登录第三方SaaS应用。需要配置SAML设置并在第三方应用中设置Google为IdP。OAuth用于授权API访问，不是SSO。"
+    },
+    {
+      "id": "gcp-pwa-set1-q26",
+      "examId": "gcp-pwa-set1",
+      "setNumber": 1,
+      "domain": "管理对象",
+      "question": "您需要委派部分管理权限给IT团队成员，但不希望他们拥有超级管理员的所有权限。应该如何操作？",
+      "options": {
+        "A": "创建新的超级管理员账号",
+        "B": "分配预定义或自定义管理员角色",
+        "C": "共享超级管理员密码",
+        "D": "使用群组委派权限"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Google Workspace提供预定义管理员角色（如用户管理管理员、群组管理员、帮助台管理员等）和自定义角色功能。可以根据需要分配特定权限，遵循最小权限原则。这比授予超级管理员权限更安全，也比共享密码更合规。"
+    },
+    {
+      "id": "gcp-pwa-set1-q27",
+      "examId": "gcp-pwa-set1",
+      "setNumber": 1,
+      "domain": "配置服务",
+      "question": "用户需要在Gmail中使用公司的另一个域名发送邮件。您已添加了该域名。接下来应该配置什么？",
+      "options": {
+        "A": "为用户添加域别名",
+        "B": "为用户添加邮件别名",
+        "C": "配置邮件路由",
+        "D": "配置发件人地址"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "邮件别名允许用户使用不同的邮件地址发送和接收邮件。可以在用户账号设置中添加别名，用户就可以在Gmail中选择使用该别名地址发送邮件。域别名是自动将整个域的邮件映射到主域，发件人地址设置是用户个人配置。"
+    },
+    {
+      "id": "gcp-pwa-set1-q28",
+      "examId": "gcp-pwa-set1",
+      "setNumber": 1,
+      "domain": "管理终端节点",
+      "question": "公司要求所有Windows设备都必须启用BitLocker加密才能访问公司数据。应该如何强制执行？",
+      "options": {
+        "A": "设备管理策略",
+        "B": "上下文感知访问",
+        "C": "Windows设备管理",
+        "D": "端点验证配合访问策略"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "端点验证可以收集设备属性信息（包括加密状态），然后通过上下文感知访问策略强制要求设备启用磁盘加密才能访问Workspace应用。这提供了基于设备合规性的访问控制。设备管理策略无法检测现有的BitLocker状态。"
+    },
+    {
+      "id": "gcp-pwa-set1-q29",
+      "examId": "gcp-pwa-set1",
+      "setNumber": 1,
+      "domain": "监控组织运营",
+      "question": "您需要定期向管理层提供Google Workspace使用情况报告，包括活跃用户数、存储使用量等。最佳方法是什么？",
+      "options": {
+        "A": "手动从管理控制台导出报告",
+        "B": "配置定期邮件报告",
+        "C": "使用Reports API创建自动化报告",
+        "D": "使用BigQuery导出分析"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "管理控制台支持配置定期邮件报告，可以设置每日、每周或每月自动发送使用情况报告到指定邮箱。这是最简单的方法，适合定期向管理层汇报。API和BigQuery适合需要自定义分析的场景，手动导出效率低。"
+    },
+    {
+      "id": "gcp-pwa-set1-q30",
+      "examId": "gcp-pwa-set1",
+      "setNumber": 1,
+      "domain": "支持业务转型",
+      "question": "公司正在评估是否从Business Starter升级到Business Standard。主要考虑因素是什么？",
+      "options": {
+        "A": "用户数量限制",
+        "B": "存储容量和高级功能",
+        "C": "价格差异",
+        "D": "以上都是"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "升级Workspace版本时需要考虑多个因素：存储容量（Business Standard提供2TB/用户vs Starter的30GB）、高级功能（如录制Meet、共享驱动器等）、用户数量需求和价格预算。应根据组织的实际需求进行成本效益分析。"
+    },
+    {
+      "id": "gcp-pwa-set1-q31",
+      "examId": "gcp-pwa-set1",
+      "setNumber": 1,
+      "domain": "管理对象",
+      "question": "您需要为整个销售部门创建一个共享的Gmail收件箱，多人可以查看和回复邮件。应该使用什么？",
+      "options": {
+        "A": "邮件委派",
+        "B": "协作收件箱群组",
+        "C": "共享邮箱用户",
+        "D": "邮件转发规则"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "协作收件箱群组允许多个用户共同管理发送到群组地址的邮件。成员可以查看、回复、分配和标记邮件。适合客服、销售等团队使用。邮件委派是个人授权，共享邮箱用户不是Workspace概念，转发只是复制邮件。"
+    },
+    {
+      "id": "gcp-pwa-set1-q32",
+      "examId": "gcp-pwa-set1",
+      "setNumber": 1,
+      "domain": "配置服务",
+      "question": "您需要配置Google Calendar，使员工可以查看其他同事的日历可用性，但不能查看会议详情。应该设置什么？",
+      "options": {
+        "A": "日历共享设置 - 仅查看忙/闲状态",
+        "B": "日历访问控制列表",
+        "C": "日历资源设置",
+        "D": "日历互操作性"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "在管理控制台的日历共享设置中，可以配置内部共享选项为'仅忙/闲信息（隐藏事件详情）'。这允许用户查看同事何时忙碌以便安排会议，但保护会议的具体内容隐私。ACL是个人日历设置，资源设置用于会议室。"
+    },
+    {
+      "id": "gcp-pwa-set1-q33",
+      "examId": "gcp-pwa-set1",
+      "setNumber": 1,
+      "domain": "管理终端节点",
+      "question": "公司需要管理自带设备（BYOD）上的公司应用和数据，但不想完全控制个人设备。应该启用什么？",
+      "options": {
+        "A": "完全设备管理",
+        "B": "工作配置文件（Android）/ 托管Apple ID（iOS）",
+        "C": "基本移动管理",
+        "D": "端点验证"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "工作配置文件（Android Enterprise）和托管Apple ID允许在个人设备上创建单独的工作容器，管理员只能管理工作数据和应用，不影响个人数据。这是BYOD场景的最佳选择，平衡了安全需求和用户隐私。完全设备管理控制整个设备，不适合BYOD。"
+    },
+    {
+      "id": "gcp-pwa-set1-q34",
+      "examId": "gcp-pwa-set1",
+      "setNumber": 1,
+      "domain": "监控组织运营",
+      "question": "审核日志显示有管理员频繁修改安全设置。您需要调查这些更改是否合规。应该关注哪些信息？",
+      "options": {
+        "A": "更改的时间戳和IP地址",
+        "B": "执行操作的管理员身份",
+        "C": "更改的具体内容和原因",
+        "D": "以上所有"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "调查管理员活动时需要全面了解：谁（管理员身份）、何时（时间戳）、在哪里（IP地址/位置）、做了什么（具体更改）。审核日志提供所有这些信息。这有助于判断操作是否合规、是否授权，以及是否存在账号被盗用的风险。"
+    },
+    {
+      "id": "gcp-pwa-set1-q35",
+      "examId": "gcp-pwa-set1",
+      "setNumber": 1,
+      "domain": "支持业务转型",
+      "question": "公司正在实施远程办公政策，需要确保远程员工可以安全地协作。应该启用哪些功能？",
+      "options": {
+        "A": "Google Meet、Chat和Drive共享",
+        "B": "VPN和本地服务器访问",
+        "C": "仅允许公司网络访问",
+        "D": "外部文件共享"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Google Workspace本身就是为云协作设计的。Meet提供视频会议，Chat提供即时通讯，Drive提供文件共享和协作。这些服务原生支持远程工作，无需VPN。可以配合上下文感知访问确保安全性。限制网络访问会阻碍远程工作。"
+    },
+    {
+      "id": "gcp-pwa-set1-q36",
+      "examId": "gcp-pwa-set1",
+      "setNumber": 1,
+      "domain": "管理对象",
+      "question": "您需要为1000个会议室创建日历资源。最高效的方法是什么？",
+      "options": {
+        "A": "在管理控制台中逐个创建",
+        "B": "使用CSV文件批量上传资源",
+        "C": "使用Calendar Resource API",
+        "D": "让用户自行创建"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "管理控制台支持通过CSV文件批量上传日历资源（如会议室、设备等）。这是管理大量资源的最高效方法。CSV文件可以包含资源名称、容量、功能、位置等信息。API适合编程集成，逐个创建效率太低，用户不应创建组织资源。"
+    },
+    {
+      "id": "gcp-pwa-set1-q37",
+      "examId": "gcp-pwa-set1",
+      "setNumber": 1,
+      "domain": "配置服务",
+      "question": "组织需要使用第三方邮件归档系统。应该配置什么来将Gmail邮件副本发送到该系统？",
+      "options": {
+        "A": "邮件转发",
+        "B": "BCC合规规则",
+        "C": "邮件日志",
+        "D": "SMTP中继"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "BCC合规规则（也称为密件抄送归档）可以自动将所有入站/出站邮件的副本发送到指定地址（如第三方归档系统）。这是实现邮件归档合规的标准方法。邮件转发会改变投递目标，日志仅记录元数据，SMTP中继用于发送邮件。"
+    },
+    {
+      "id": "gcp-pwa-set1-q38",
+      "examId": "gcp-pwa-set1",
+      "setNumber": 1,
+      "domain": "管理终端节点",
+      "question": "您需要确保用户在登录移动设备上的Google应用时使用公司账号而非个人账号。应该配置什么？",
+      "options": {
+        "A": "账号限制策略",
+        "B": "设备注册要求",
+        "C": "应用访问控制",
+        "D": "登录挑战"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "在Android设备管理中，可以配置账号限制策略，要求在工作配置文件或托管设备上只能使用指定域的账号。这防止用户在工作设备/应用中使用个人账号，确保工作数据通过正确的账号访问和管理。"
+    },
+    {
+      "id": "gcp-pwa-set1-q39",
+      "examId": "gcp-pwa-set1",
+      "setNumber": 1,
+      "domain": "监控组织运营",
+      "question": "您需要验证组织的电子发现设置是否正确，能够在需要时检索所有相关数据。应该进行什么测试？",
+      "options": {
+        "A": "创建测试保留规则",
+        "B": "创建测试法律保留",
+        "C": "执行测试搜索和导出",
+        "D": "以上所有"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "验证电子发现设置应该全面测试：1) 保留规则是否按预期保留数据；2) 法律保留是否正确应用到相关用户；3) 搜索功能是否能找到预期数据；4) 导出功能是否正常工作。这确保在实际法律需求时系统能够正常运作。"
+    },
+    {
+      "id": "gcp-pwa-set1-q40",
+      "examId": "gcp-pwa-set1",
+      "setNumber": 1,
+      "domain": "支持业务转型",
+      "question": "公司决定启用Google Workspace的附加产品（如AppSheet）。在推广之前应该考虑什么？",
+      "options": {
+        "A": "许可证成本和用户培训",
+        "B": "与现有系统的集成",
+        "C": "数据安全和合规要求",
+        "D": "以上所有"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "启用新产品需要全面评估：1) 许可证成本（是否包含在现有计划中或需要额外付费）和用户培训需求；2) 与现有系统和工作流程的集成；3) 数据安全和合规影响（数据存储位置、访问控制等）。这确保新产品能够成功采用并创造价值。"
+    }
+  ]
+}

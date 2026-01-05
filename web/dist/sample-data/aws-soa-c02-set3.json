@@ -1,0 +1,544 @@
+{
+  "exam": {
+    "id": "aws-soa-c02-set3",
+    "name": "AWS SOA-C02 模拟考试 #3",
+    "code": "SOA-C02",
+    "provider": "AWS",
+    "language": "zh-CN",
+    "description": "AWS系统运维管理员助理认证考试模拟题 - 第3套",
+    "totalQuestions": 40,
+    "passingScore": 72,
+    "examTime": 130,
+    "domains": [
+      {"id": 1, "name": "Monitoring, Logging, and Remediation", "weight": 20},
+      {"id": 2, "name": "Reliability and Business Continuity", "weight": 16},
+      {"id": 3, "name": "Deployment, Provisioning, and Automation", "weight": 18},
+      {"id": 4, "name": "Security and Compliance", "weight": 16},
+      {"id": 5, "name": "Networking and Content Delivery", "weight": 18},
+      {"id": 6, "name": "Cost and Performance Optimization", "weight": 12}
+    ],
+    "tags": ["AWS", "SysOps", "SOA", "认证考试", "运维"]
+  },
+  "questions": [
+    {
+      "id": "q1",
+      "domain": 1,
+      "question": "运维团队需要将来自多个AWS服务的指标汇总到单个视图中进行关联分析。CloudWatch仪表板显示的指标来自不同的AWS账户。应该使用什么功能？",
+      "options": {
+        "A": "CloudWatch跨区域仪表板",
+        "B": "CloudWatch跨账户观测",
+        "C": "CloudWatch Container Insights",
+        "D": "CloudWatch Metric Math"
+      },
+      "answer": "B",
+      "explanation": "CloudWatch跨账户观测允许在一个中央账户中收集和查看来自多个AWS账户的指标、日志和追踪数据，提供统一的可观测性视图。"
+    },
+    {
+      "id": "q2",
+      "domain": 1,
+      "question": "团队需要检测CloudWatch日志中的异常模式，如错误率突然增加。手动创建告警阈值不切实际。应该使用什么功能？",
+      "options": {
+        "A": "CloudWatch Metric Filters",
+        "B": "CloudWatch Anomaly Detection",
+        "C": "CloudWatch Logs Insights",
+        "D": "CloudWatch Contributor Insights"
+      },
+      "answer": "B",
+      "explanation": "CloudWatch Anomaly Detection使用机器学习分析历史数据，自动确定正常范围并检测异常。无需手动设置静态阈值，系统会根据历史模式自动调整。"
+    },
+    {
+      "id": "q3",
+      "domain": 1,
+      "question": "公司需要确保CloudTrail日志的完整性，防止日志被篡改或删除。应该启用什么功能？",
+      "options": {
+        "A": "CloudTrail日志加密",
+        "B": "CloudTrail日志文件验证",
+        "C": "S3对象锁定",
+        "D": "S3版本控制"
+      },
+      "answer": "B",
+      "explanation": "CloudTrail日志文件验证使用数字签名来验证日志文件的完整性。可以检测日志是否被修改、删除或是否是伪造的，确保审计跟踪的可靠性。"
+    },
+    {
+      "id": "q4",
+      "domain": 1,
+      "question": "运维团队发现EC2实例的CPU使用率指标在CloudWatch中显示为不连续。实例正在正常运行。可能的原因是什么？",
+      "options": {
+        "A": "实例类型不支持CloudWatch",
+        "B": "CloudWatch代理配置错误",
+        "C": "基本监控每5分钟收集一次数据",
+        "D": "实例没有IAM角色"
+      },
+      "answer": "C",
+      "explanation": "EC2基本监控每5分钟收集一次指标数据，这可能导致图表看起来不连续。启用详细监控可以每1分钟收集一次数据，提供更精细的视图。"
+    },
+    {
+      "id": "q5",
+      "domain": 1,
+      "question": "团队需要实时分析VPC Flow Logs以检测网络异常。日志量很大，需要成本效益的解决方案。应该使用什么架构？",
+      "options": {
+        "A": "将Flow Logs发送到S3，使用Athena查询",
+        "B": "将Flow Logs发送到CloudWatch Logs Insights",
+        "C": "将Flow Logs发送到Kinesis Data Streams进行实时处理",
+        "D": "将Flow Logs发送到ElasticSearch"
+      },
+      "answer": "C",
+      "explanation": "对于实时分析大量VPC Flow Logs，Kinesis Data Streams是理想选择。可以实时处理和分析流量数据，配合Lambda或Kinesis Data Analytics检测异常。"
+    },
+    {
+      "id": "q6",
+      "domain": 1,
+      "question": "CloudWatch告警状态显示INSUFFICIENT_DATA。最可能的原因是什么？",
+      "options": {
+        "A": "指标阈值设置过高",
+        "B": "指标在评估期间没有数据点",
+        "C": "告警配置错误",
+        "D": "SNS主题未配置"
+      },
+      "answer": "B",
+      "explanation": "INSUFFICIENT_DATA状态表示在评估期间没有足够的数据点来确定告警状态。这可能是因为实例停止、指标发布延迟或指标名称配置错误。"
+    },
+    {
+      "id": "q7",
+      "domain": 1,
+      "question": "运维团队需要将EC2实例的系统事件（如计划的维护事件）集成到监控系统中。应该使用什么服务？",
+      "options": {
+        "A": "CloudWatch Events",
+        "B": "AWS Health Dashboard和EventBridge",
+        "C": "CloudTrail",
+        "D": "Systems Manager OpsCenter"
+      },
+      "answer": "B",
+      "explanation": "AWS Health Dashboard提供影响AWS服务和资源的事件信息，包括计划的维护事件。通过EventBridge集成，可以自动触发响应操作或通知。"
+    },
+    {
+      "id": "q8",
+      "domain": 2,
+      "question": "公司需要确保在EC2实例被意外终止时可以快速恢复。实例使用实例存储。应该采取什么措施？",
+      "options": {
+        "A": "启用实例终止保护",
+        "B": "定期创建AMI备份",
+        "C": "使用Auto Scaling",
+        "D": "将数据迁移到EBS"
+      },
+      "answer": "B",
+      "explanation": "实例存储是临时存储，实例终止后数据会丢失。定期创建AMI可以备份实例配置和根卷数据。对于实例存储数据，还需要额外的备份策略。"
+    },
+    {
+      "id": "q9",
+      "domain": 2,
+      "question": "ELB目标组的健康检查持续失败，但应用程序在实例上正常运行。最可能的原因是什么？",
+      "options": {
+        "A": "健康检查端口与应用程序端口不匹配",
+        "B": "实例内存不足",
+        "C": "ELB子网配置错误",
+        "D": "SSL证书过期"
+      },
+      "answer": "A",
+      "explanation": "健康检查失败最常见的原因是配置不匹配。如果健康检查配置的端口或路径与应用程序实际监听的不同，即使应用程序正常运行，健康检查也会失败。"
+    },
+    {
+      "id": "q10",
+      "domain": 2,
+      "question": "Auto Scaling组配置了多个实例类型以使用Spot实例。如何确保组始终有足够的容量？",
+      "options": {
+        "A": "只使用按需实例",
+        "B": "配置混合实例策略和多个实例类型",
+        "C": "增加最大容量",
+        "D": "使用预留实例"
+      },
+      "answer": "B",
+      "explanation": "混合实例策略允许配置多种实例类型和购买选项（按需+Spot）。当某些Spot实例类型不可用时，Auto Scaling可以从其他配置的实例类型启动实例。"
+    },
+    {
+      "id": "q11",
+      "domain": 2,
+      "question": "公司使用Route 53进行DNS故障转移。主要端点在us-east-1，备用端点在eu-west-1。当主要端点故障时，DNS故障转移需要多长时间？",
+      "options": {
+        "A": "立即",
+        "B": "取决于健康检查间隔和TTL",
+        "C": "固定30秒",
+        "D": "固定60秒"
+      },
+      "answer": "B",
+      "explanation": "DNS故障转移时间取决于健康检查检测故障的时间（检查间隔×失败阈值）加上DNS记录TTL。较短的健康检查间隔和较低的TTL可以减少故障转移时间。"
+    },
+    {
+      "id": "q12",
+      "domain": 2,
+      "question": "运维团队需要测试RDS数据库的故障转移。如何安全地触发Multi-AZ故障转移？",
+      "options": {
+        "A": "停止主数据库实例",
+        "B": "使用RDS控制台的重启选项并勾选故障转移",
+        "C": "删除主实例的安全组",
+        "D": "手动修改DNS记录"
+      },
+      "answer": "B",
+      "explanation": "RDS提供了安全触发故障转移的方法：在重启数据库时选择"Reboot with failover"选项。这会触发到备用实例的故障转移，用于测试目的。"
+    },
+    {
+      "id": "q13",
+      "domain": 2,
+      "question": "公司需要自动化EBS快照的创建和生命周期管理。应该使用什么服务？",
+      "options": {
+        "A": "AWS Backup",
+        "B": "Amazon Data Lifecycle Manager",
+        "C": "CloudWatch Events with Lambda",
+        "D": "Systems Manager Automation"
+      },
+      "answer": "B",
+      "explanation": "Amazon Data Lifecycle Manager（DLM）专门用于自动化EBS快照和EBS-backed AMI的创建、保留和删除。可以定义策略来管理快照生命周期。"
+    },
+    {
+      "id": "q14",
+      "domain": 3,
+      "question": "CloudFormation堆栈更新期间，某个资源更新失败导致整个更新回滚。如何在不影响其他资源的情况下重试失败的资源？",
+      "options": {
+        "A": "删除堆栈并重新创建",
+        "B": "使用继续更新回滚功能跳过失败资源",
+        "C": "手动修复失败资源后重新更新",
+        "D": "使用变更集分析问题"
+      },
+      "answer": "B",
+      "explanation": "CloudFormation的继续更新回滚（Continue Update Rollback）功能允许在解决问题后继续回滚，或跳过无法回滚的资源继续完成操作。"
+    },
+    {
+      "id": "q15",
+      "domain": 3,
+      "question": "运维团队需要在EC2实例启动后自动等待应用程序完全就绪，然后才将实例添加到ELB。应该使用什么CloudFormation功能？",
+      "options": {
+        "A": "DependsOn",
+        "B": "CreationPolicy和cfn-signal",
+        "C": "WaitCondition",
+        "D": "UpdatePolicy"
+      },
+      "answer": "B",
+      "explanation": "CreationPolicy与cfn-signal配合使用，允许CloudFormation等待实例发送成功信号后才认为资源创建完成。这确保应用程序完全启动后才继续下一步操作。"
+    },
+    {
+      "id": "q16",
+      "domain": 3,
+      "question": "团队需要使用Systems Manager Session Manager连接到私有子网中的EC2实例。实例没有SSM代理的互联网访问。需要什么配置？",
+      "options": {
+        "A": "为实例分配公网IP",
+        "B": "配置NAT Gateway",
+        "C": "配置VPC端点（ssm, ssmmessages, ec2messages）",
+        "D": "使用EC2 Instance Connect"
+      },
+      "answer": "C",
+      "explanation": "Session Manager需要SSM代理与Systems Manager服务通信。在没有互联网访问的情况下，需要配置VPC Interface端点（ssm, ssmmessages, ec2messages）以支持私有连接。"
+    },
+    {
+      "id": "q17",
+      "domain": 3,
+      "question": "公司需要使用相同的CloudFormation模板在多个AWS区域部署基础设施。某些资源（如AMI ID）在不同区域有不同的值。如何处理？",
+      "options": {
+        "A": "为每个区域创建单独的模板",
+        "B": "使用CloudFormation Mappings按区域定义值",
+        "C": "使用嵌套堆栈",
+        "D": "在参数中硬编码所有值"
+      },
+      "answer": "B",
+      "explanation": "CloudFormation Mappings允许定义键值对映射，可以根据区域或其他条件查找不同的值。Fn::FindInMap函数可以根据当前区域获取对应的AMI ID。"
+    },
+    {
+      "id": "q18",
+      "domain": 3,
+      "question": "运维团队需要为Auto Scaling组中的实例配置启动后的预热时间，在此期间新实例不参与扩展指标计算。应该配置什么？",
+      "options": {
+        "A": "健康检查宽限期",
+        "B": "默认实例预热时间",
+        "C": "冷却期",
+        "D": "生命周期钩子"
+      },
+      "answer": "B",
+      "explanation": "默认实例预热时间（Default Instance Warmup）指定新实例启动后需要多长时间才能对扩展策略的指标产生影响。这防止了在实例完全就绪前触发不必要的扩展。"
+    },
+    {
+      "id": "q19",
+      "domain": 3,
+      "question": "Systems Manager Patch Manager显示某些实例的补丁合规性为非合规。但维护窗口已经执行过。可能的原因是什么？",
+      "options": {
+        "A": "补丁基线配置错误",
+        "B": "实例在维护窗口期间处于停止状态",
+        "C": "SSM代理版本过旧",
+        "D": "以上都可能"
+      },
+      "answer": "D",
+      "explanation": "补丁合规性问题可能有多种原因：补丁基线可能排除了某些补丁、实例可能在维护窗口期间未运行、或SSM代理可能需要更新才能正确执行补丁操作。"
+    },
+    {
+      "id": "q20",
+      "domain": 3,
+      "question": "团队需要使用CloudFormation部署Lambda函数。函数代码存储在S3中。更新代码后，CloudFormation更新没有部署新代码。可能的原因是什么？",
+      "options": {
+        "A": "S3存储桶策略限制访问",
+        "B": "S3对象的Key没有改变",
+        "C": "Lambda函数超时",
+        "D": "IAM权限不足"
+      },
+      "answer": "B",
+      "explanation": "CloudFormation通过检测资源属性的变化来决定是否更新。如果S3对象的Key保持不变（即使内容改变），CloudFormation认为没有变化。应该使用版本化的S3 Key或使用S3ObjectVersion属性。"
+    },
+    {
+      "id": "q21",
+      "domain": 4,
+      "question": "运维团队需要识别AWS账户中可能公开暴露的S3存储桶。应该使用什么服务？",
+      "options": {
+        "A": "AWS Config",
+        "B": "IAM Access Analyzer",
+        "C": "Amazon Macie",
+        "D": "AWS Trusted Advisor"
+      },
+      "answer": "B",
+      "explanation": "IAM Access Analyzer可以分析资源策略并识别与外部实体共享的资源，包括公开的S3存储桶。它提供发现和建议来帮助保护资源。"
+    },
+    {
+      "id": "q22",
+      "domain": 4,
+      "question": "公司需要在不轮换凭证的情况下临时禁用IAM用户的访问密钥。应该如何操作？",
+      "options": {
+        "A": "删除访问密钥",
+        "B": "将访问密钥状态设置为Inactive",
+        "C": "修改IAM策略拒绝所有操作",
+        "D": "删除IAM用户"
+      },
+      "answer": "B",
+      "explanation": "将访问密钥状态设置为Inactive可以临时禁用密钥，而不需要删除它。稍后可以将状态改回Active来恢复访问，无需生成新的密钥。"
+    },
+    {
+      "id": "q23",
+      "domain": 4,
+      "question": "Security Hub需要启用特定的安全标准来检查合规性。公司必须符合PCI DSS要求。应该启用什么标准？",
+      "options": {
+        "A": "AWS基础安全最佳实践",
+        "B": "CIS AWS Foundations Benchmark",
+        "C": "PCI DSS v3.2.1",
+        "D": "以上全部"
+      },
+      "answer": "C",
+      "explanation": "对于PCI DSS合规性，应该启用PCI DSS v3.2.1标准。Security Hub会根据该标准的控制项检查资源配置，并报告合规状态。"
+    },
+    {
+      "id": "q24",
+      "domain": 4,
+      "question": "运维团队需要对EC2实例上的操作进行会话记录和审计。所有会话活动需要记录到S3和CloudWatch Logs。应该使用什么功能？",
+      "options": {
+        "A": "EC2 Instance Connect",
+        "B": "Systems Manager Session Manager日志记录",
+        "C": "CloudTrail数据事件",
+        "D": "VPC Flow Logs"
+      },
+      "answer": "B",
+      "explanation": "Session Manager支持会话日志记录，可以将所有会话活动（包括命令和输出）记录到S3和CloudWatch Logs，提供完整的审计跟踪。"
+    },
+    {
+      "id": "q25",
+      "domain": 4,
+      "question": "公司需要使用AWS Organizations为成员账户强制执行安全策略，阻止成员账户禁用CloudTrail。应该使用什么？",
+      "options": {
+        "A": "IAM策略",
+        "B": "Service Control Policies (SCP)",
+        "C": "AWS Config规则",
+        "D": "CloudWatch告警"
+      },
+      "answer": "B",
+      "explanation": "Service Control Policies是Organizations的功能，可以为组织单元或账户设置权限边界。SCP可以阻止特定API操作（如StopLogging），防止成员账户禁用CloudTrail。"
+    },
+    {
+      "id": "q26",
+      "domain": 4,
+      "question": "GuardDuty发现类型显示EC2实例正在进行加密货币挖矿活动。这属于哪种发现类型？",
+      "options": {
+        "A": "Recon发现",
+        "B": "Backdoor发现",
+        "C": "CryptoCurrency发现",
+        "D": "Trojan发现"
+      },
+      "answer": "C",
+      "explanation": "GuardDuty有专门的CryptoCurrency发现类型，用于检测与加密货币相关的活动，如挖矿。这些发现表明实例可能已被入侵并用于挖矿。"
+    },
+    {
+      "id": "q27",
+      "domain": 5,
+      "question": "公司需要在VPC中配置DNS，使EC2实例可以解析自定义域名。应该使用什么服务？",
+      "options": {
+        "A": "Route 53公有托管区域",
+        "B": "Route 53私有托管区域",
+        "C": "Amazon VPC DNS",
+        "D": "第三方DNS服务器"
+      },
+      "answer": "B",
+      "explanation": "Route 53私有托管区域允许为VPC内的资源配置自定义DNS名称解析。只有关联的VPC中的资源可以查询这些DNS记录。"
+    },
+    {
+      "id": "q28",
+      "domain": 5,
+      "question": "运维团队需要配置Site-to-Site VPN连接到本地数据中心。需要什么组件？",
+      "options": {
+        "A": "Internet Gateway和NAT Gateway",
+        "B": "Virtual Private Gateway和Customer Gateway",
+        "C": "Transit Gateway和Direct Connect",
+        "D": "VPC Endpoint和NAT Gateway"
+      },
+      "answer": "B",
+      "explanation": "Site-to-Site VPN需要Virtual Private Gateway（AWS端）和Customer Gateway（代表本地VPN设备）。两者之间建立加密的VPN隧道。"
+    },
+    {
+      "id": "q29",
+      "domain": 5,
+      "question": "CloudFront分发的源是S3存储桶。需要确保用户只能通过CloudFront访问内容，不能直接访问S3 URL。应该使用什么？",
+      "options": {
+        "A": "S3存储桶策略阻止所有访问",
+        "B": "Origin Access Control (OAC)",
+        "C": "CloudFront签名URL",
+        "D": "S3阻止公共访问"
+      },
+      "answer": "B",
+      "explanation": "Origin Access Control（替代Origin Access Identity）允许CloudFront使用签名请求访问S3源。结合S3存储桶策略，可以只允许来自CloudFront的访问。"
+    },
+    {
+      "id": "q30",
+      "domain": 5,
+      "question": "公司的Direct Connect连接需要实现高可用性。当前只有一个连接到一个Direct Connect位置。应该如何改进？",
+      "options": {
+        "A": "增加连接带宽",
+        "B": "添加第二个连接到不同的Direct Connect位置",
+        "C": "启用BFD",
+        "D": "使用更大的VLAN"
+      },
+      "answer": "B",
+      "explanation": "为了高可用性，建议在不同的Direct Connect位置建立多个连接。这确保即使一个位置发生故障，另一个连接仍然可用。还可以配置备用VPN连接。"
+    },
+    {
+      "id": "q31",
+      "domain": 5,
+      "question": "VPC中的Lambda函数需要访问互联网以调用外部API。Lambda配置在私有子网中。需要什么网络配置？",
+      "options": {
+        "A": "Internet Gateway",
+        "B": "NAT Gateway在公有子网中",
+        "C": "VPC端点",
+        "D": "弹性IP"
+      },
+      "answer": "B",
+      "explanation": "在VPC中的Lambda函数使用私有IP，不能直接访问互联网。需要NAT Gateway（在公有子网中）允许私有子网中的Lambda通过NAT访问互联网。"
+    },
+    {
+      "id": "q32",
+      "domain": 5,
+      "question": "运维团队需要排查ALB返回的502 Bad Gateway错误。应该首先检查什么？",
+      "options": {
+        "A": "ALB安全组规则",
+        "B": "目标实例的应用程序是否正在运行",
+        "C": "ALB证书配置",
+        "D": "Route 53记录"
+      },
+      "answer": "B",
+      "explanation": "502错误表示ALB无法从目标获得有效响应。应首先检查目标应用程序是否运行、是否在正确端口监听、以及应用程序是否返回有效的HTTP响应。"
+    },
+    {
+      "id": "q33",
+      "domain": 6,
+      "question": "公司需要为即将到期的Reserved Instances续约或购买新的预留。如何分析当前RI的使用情况？",
+      "options": {
+        "A": "使用Cost Explorer的RI利用率报告",
+        "B": "使用AWS Budgets",
+        "C": "使用CloudWatch指标",
+        "D": "使用Trusted Advisor"
+      },
+      "answer": "A",
+      "explanation": "Cost Explorer提供Reserved Instance利用率和覆盖率报告，显示RI的使用情况、未使用的RI容量以及按需使用情况，帮助做出续约决策。"
+    },
+    {
+      "id": "q34",
+      "domain": 6,
+      "question": "运维团队发现数据传输成本很高。需要确定数据传输的来源。应该使用什么工具？",
+      "options": {
+        "A": "VPC Flow Logs",
+        "B": "Cost Explorer按使用类型筛选",
+        "C": "CloudWatch网络指标",
+        "D": "AWS Pricing Calculator"
+      },
+      "answer": "B",
+      "explanation": "Cost Explorer可以按使用类型（如DataTransfer-Out-Bytes）筛选和分组成本，显示不同类型数据传输的成本，帮助识别高成本的数据传输来源。"
+    },
+    {
+      "id": "q35",
+      "domain": 6,
+      "question": "公司的S3存储桶中有大量对象，其中很多很少被访问。如何自动优化存储成本？",
+      "options": {
+        "A": "手动将对象移动到Glacier",
+        "B": "使用S3 Intelligent-Tiering",
+        "C": "删除旧对象",
+        "D": "使用S3 Transfer Acceleration"
+      },
+      "answer": "B",
+      "explanation": "S3 Intelligent-Tiering自动监控访问模式，将对象在频繁访问和不频繁访问层之间移动。无需手动管理，也不会产生检索费用（在频繁访问层）。"
+    },
+    {
+      "id": "q36",
+      "domain": 6,
+      "question": "Compute Optimizer建议将当前的m5.xlarge实例更改为t3.large。这意味着什么？",
+      "options": {
+        "A": "需要更多计算资源",
+        "B": "当前实例过度配置，可以使用更小的可突增实例",
+        "C": "需要更多网络带宽",
+        "D": "需要更多内存"
+      },
+      "answer": "B",
+      "explanation": "Compute Optimizer建议从m5.xlarge降到t3.large表明工作负载利用率低，可以使用更小的可突增实例（T系列）来满足需求，同时节省成本。"
+    },
+    {
+      "id": "q37",
+      "domain": 6,
+      "question": "团队需要识别未使用的弹性IP地址。未附加的弹性IP地址会产生费用。应该如何查找？",
+      "options": {
+        "A": "使用EC2控制台筛选弹性IP",
+        "B": "使用Trusted Advisor成本优化检查",
+        "C": "使用Cost Explorer",
+        "D": "使用CloudWatch指标"
+      },
+      "answer": "B",
+      "explanation": "Trusted Advisor的成本优化检查包括未使用的弹性IP地址检查，可以识别未附加到运行实例的弹性IP，这些IP会产生每小时费用。"
+    },
+    {
+      "id": "q38",
+      "domain": 6,
+      "question": "运维团队需要比较不同EC2实例类型的价格和性能。应该使用什么工具？",
+      "options": {
+        "A": "AWS Pricing Calculator",
+        "B": "Cost Explorer",
+        "C": "Compute Optimizer",
+        "D": "EC2 Instance Selector"
+      },
+      "answer": "A",
+      "explanation": "AWS Pricing Calculator允许比较不同AWS服务和实例类型的价格，帮助估算成本。可以配置不同的实例类型来比较每月预估成本。"
+    },
+    {
+      "id": "q39",
+      "domain": 1,
+      "question": "团队需要创建一个CloudWatch仪表板来显示多个EC2实例的平均CPU使用率。应该使用什么统计量？",
+      "options": {
+        "A": "Sum",
+        "B": "Average",
+        "C": "Maximum",
+        "D": "SampleCount"
+      },
+      "answer": "B",
+      "explanation": "要显示多个实例的平均CPU使用率，应该使用Average统计量。这会计算所有数据点的平均值，给出实例组的整体CPU利用率情况。"
+    },
+    {
+      "id": "q40",
+      "domain": 2,
+      "question": "公司需要确保S3存储桶的数据在某个区域完全不可用时仍然可以访问。应该使用什么功能？",
+      "options": {
+        "A": "S3版本控制",
+        "B": "S3跨区域复制",
+        "C": "S3对象锁定",
+        "D": "S3传输加速"
+      },
+      "answer": "B",
+      "explanation": "S3跨区域复制（CRR）自动将对象复制到不同AWS区域的目标存储桶。如果源区域不可用，可以从目标区域访问数据，提供区域级别的灾难恢复。"
+    }
+  ]
+}

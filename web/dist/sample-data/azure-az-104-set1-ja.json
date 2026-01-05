@@ -1,0 +1,799 @@
+{
+  "exam": {
+    "id": "azure-az-104-set1-ja",
+    "name": "Azure AZ-104 管理者模擬試験 #1",
+    "code": "AZ-104",
+    "provider": "Azure",
+    "language": "ja",
+    "description": "Microsoft Azure管理者認定試験の模擬問題です。Azureの ID とガバナンス、ストレージ、コンピューティングリソース、仮想ネットワーク、リソース監視などのコア領域をカバーしています。",
+    "totalQuestions": 50,
+    "passingScore": 70,
+    "examTime": 150,
+    "domains": [
+      {
+        "id": 1,
+        "name": "Azure ID とガバナンスの管理 (Manage Azure identities and governance)",
+        "weight": 25
+      },
+      {
+        "id": 2,
+        "name": "ストレージの実装と管理 (Implement and manage storage)",
+        "weight": 20
+      },
+      {
+        "id": 3,
+        "name": "Azure コンピューティングリソースのデプロイと管理 (Deploy and manage Azure compute resources)",
+        "weight": 25
+      },
+      {
+        "id": 4,
+        "name": "仮想ネットワークの実装と管理 (Implement and manage virtual networking)",
+        "weight": 20
+      },
+      {
+        "id": 5,
+        "name": "Azure リソースの監視と保守 (Monitor and maintain Azure resources)",
+        "weight": 10
+      }
+    ],
+    "tags": [
+      "Azure",
+      "AZ-104",
+      "管理者",
+      "認定試験",
+      "クラウドコンピューティング"
+    ]
+  },
+  "questions": [
+    {
+      "id": "q1",
+      "domain": 1,
+      "question": "ある企業が新しい Azure AD ユーザーを作成し、そのユーザーが特定のリソースグループにのみアクセスできるようにする必要があります。この目標を達成するにはどの方法を使用すべきですか？",
+      "options": {
+        "A": "Azure AD でユーザーを作成し、グローバル管理者ロールを割り当てる",
+        "B": "Azure AD でユーザーを作成し、リソースグループレベルで RBAC ロールを割り当てる",
+        "C": "Azure AD でユーザーを作成し、すべてのセキュリティグループに追加する",
+        "D": "Azure AD でユーザーを作成し、サブスクリプション所有者ロールを割り当てる"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure RBAC（ロールベースのアクセス制御）は、異なるスコープレベルで権限を割り当てることができます。ユーザーを特定のリソースグループにのみアクセスさせるには、そのリソースグループレベルで適切な RBAC ロール（共同作成者や閲覧者など）を割り当てる必要があります。これは最小権限の原則に従っています。\n---",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q2",
+      "domain": 1,
+      "question": "ある企業が、新しく作成されるすべてのリソースに特定のタグが必須となるようにしたいと考えています。どの Azure 機能を使用すべきですか？",
+      "options": {
+        "A": "Azure Advisor",
+        "B": "Azure Policy",
+        "C": "Azure Blueprints",
+        "D": "Azure Monitor"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure Policy を使用すると、組織の標準を強制するためのポリシー定義を作成できます。「タグを必須とする」ポリシーを作成することで、すべての新しいリソースが作成時に指定されたタグを含む必要があり、含まない場合はデプロイが拒否されます。\n---",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q3",
+      "domain": 1,
+      "question": "ある企業が複数の Azure サブスクリプションを持っており、ポリシーとアクセス制御を統一的に管理するためにそれらを組織化する必要があります。何を使用すべきですか？",
+      "options": {
+        "A": "リソースグループ",
+        "B": "管理グループ (Management Groups)",
+        "C": "Azure AD テナント",
+        "D": "タグ"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "管理グループはサブスクリプションの上位コンテナであり、複数のサブスクリプションを組織化できます。管理グループレベルでポリシーと RBAC を適用でき、これらの設定はその管理グループ配下のすべてのサブスクリプションに自動的に継承されます。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q4",
+      "domain": 1,
+      "question": "ある企業が、ユーザーが企業の認証情報を使用して Azure にログインできるようにしながら、オンプレミスの Active Directory で ID 管理を維持する必要があります。何を構成すべきですか？",
+      "options": {
+        "A": "Azure AD B2C",
+        "B": "Azure AD B2B",
+        "C": "Azure AD Connect",
+        "D": "Azure AD Domain Services"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "Azure AD Connect は、オンプレミスの Active Directory を Azure AD と同期し、ハイブリッド ID 管理を実現します。ユーザーは同じ認証情報を使用してオンプレミスリソースと Azure リソースの両方にログインでき、パスワードハッシュ同期、パススルー認証、またはフェデレーション認証をサポートしています。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q5",
+      "domain": 1,
+      "question": "ある企業が、リソースの削除などの高権限操作に対して追加の認証ステップを追加したいと考えています。何を使用すべきですか？",
+      "options": {
+        "A": "条件付きアクセスポリシー",
+        "B": "Azure AD Privileged Identity Management (PIM)",
+        "C": "Azure AD Identity Protection",
+        "D": "Azure AD 多要素認証 (MFA)"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure AD PIM は、ジャストインタイム（JIT）アクセス管理を実現し、ユーザーが高権限ロールをアクティブ化する際に MFA や承認プロセスなどの追加検証を要求します。これにより、特権アカウントが悪用されるリスクが軽減されます。\n---",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q6",
+      "domain": 1,
+      "question": "ある企業が、Azure サブスクリプションで作成できるリソースの種類を制限する必要があります。何を使用すべきですか？",
+      "options": {
+        "A": "Azure Policy - 許可されたリソースの種類",
+        "B": "Azure RBAC",
+        "C": "ネットワークセキュリティグループ",
+        "D": "Azure Defender"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Azure Policy の「許可されたリソースの種類」組み込みポリシーは、サブスクリプションまたはリソースグループで作成できる Azure リソースの種類を制限できます。たとえば、仮想マシンとストレージアカウントの作成のみを許可し、他の種類のリソースの作成をブロックできます。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q7",
+      "domain": 1,
+      "question": "ある企業が、新しく作成される Azure サブスクリプションに特定の構成とポリシーを自動的に適用したいと考えています。何を使用すべきですか？",
+      "options": {
+        "A": "Azure Resource Manager テンプレート",
+        "B": "Azure Blueprints",
+        "C": "Azure Automation",
+        "D": "Azure DevOps"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure Blueprints は、繰り返し使用可能な Azure リソース、ポリシー、およびロール割り当てのセットを定義できます。ブループリントを新しいサブスクリプションに割り当てると、定義されたすべてのコンポーネントが自動的にデプロイされ、環境が組織の標準に準拠することが保証されます。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q8",
+      "domain": 1,
+      "question": "ある企業が、誰がいつ Azure リソースにどのような変更を加えたかを確認する必要があります。何を使用すべきですか？",
+      "options": {
+        "A": "Azure Monitor メトリック",
+        "B": "Azure アクティビティログ (Activity Log)",
+        "C": "Azure 診断ログ",
+        "D": "Azure Security Center"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure アクティビティログは、サブスクリプションレベルの操作を記録します。誰がいつどのリソースに対して何の操作を実行したかが含まれます。これは Azure リソースの変更を監査するための主要なツールであり、ログは 90 日間保持されます。\n---",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q9",
+      "domain": 1,
+      "question": "ある企業が、外部パートナーに新しい Azure AD アカウントを作成せずに Azure リソースへのアクセスを許可したいと考えています。何を使用すべきですか？",
+      "options": {
+        "A": "Azure AD B2C",
+        "B": "Azure AD B2B コラボレーション",
+        "C": "Azure AD Domain Services",
+        "D": "Azure AD Connect"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure AD B2B を使用すると、外部ユーザーをゲストユーザーとして Azure リソースへのアクセスに招待できます。ゲストユーザーは自分の組織の認証情報を使用して認証し、RBAC を通じてアクセス権限を制御できます。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q10",
+      "domain": 1,
+      "question": "ある企業が、特定のリソースが誤って削除されないようにする必要があります。何を適用すべきですか？",
+      "options": {
+        "A": "Azure Policy",
+        "B": "リソースロック - 削除ロック",
+        "C": "RBAC 読み取り専用ロール",
+        "D": "Azure Backup"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "リソースロックは、リソースが誤って変更または削除されるのを防ぎます。削除ロック（CanNotDelete）は削除を防ぎますが変更は許可し、読み取り専用ロック（ReadOnly）はすべての変更を防ぎます。ロックはサブスクリプション、リソースグループ、またはリソースレベルで適用できます。\n---",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q11",
+      "domain": 2,
+      "question": "ある企業が、頻繁にアクセスされるデータを格納するための高性能ストレージソリューションを必要としています。どの Azure ストレージアクセス層を選択すべきですか？",
+      "options": {
+        "A": "ホットアクセス層 (Hot)",
+        "B": "クールアクセス層 (Cool)",
+        "C": "アーカイブアクセス層 (Archive)",
+        "D": "プレミアムアクセス層 (Premium)"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "ホットアクセス層は、頻繁にアクセスされるデータ向けに最適化されており、ストレージコストは高くなりますがアクセスコストは低くなります。クールアクセス層はあまりアクセスされないデータ（少なくとも 30 日間保存）に適しており、アーカイブ層はほとんどアクセスされないデータ（少なくとも 180 日間保存）に適しています。\n---",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q12",
+      "domain": 2,
+      "question": "ある企業が、災害復旧のためにストレージアカウントのデータを別の Azure リージョンにレプリケートする必要があります。どのレプリケーションオプションを選択すべきですか？",
+      "options": {
+        "A": "ローカル冗長ストレージ (LRS)",
+        "B": "ゾーン冗長ストレージ (ZRS)",
+        "C": "geo 冗長ストレージ (GRS)",
+        "D": "Premium ストレージ"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "geo 冗長ストレージ (GRS) は、データをプライマリリージョンの 3 つのコピーに同期的にレプリケートし、その後ペアリージョンの 3 つのコピーに非同期的にレプリケートします。これにより、リージョン間の災害復旧機能が提供されます。セカンダリリージョンのデータを読み取る必要がある場合は、RA-GRS を選択できます。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q13",
+      "domain": 2,
+      "question": "ある企業が、オンプレミスのファイルサーバーを Azure に移行し、SMB プロトコルアクセスを維持する必要があります。どの Azure サービスを使用すべきですか？",
+      "options": {
+        "A": "Azure Blob ストレージ",
+        "B": "Azure Files",
+        "C": "Azure Queue ストレージ",
+        "D": "Azure Table ストレージ"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure Files は、SMB または NFS プロトコルでアクセスできるフルマネージドのクラウドファイル共有を提供します。オンプレミスのファイルサーバーを直接置き換えることができ、Azure File Sync でハイブリッドシナリオをサポートします。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q14",
+      "domain": 2,
+      "question": "ある企業が Azure ストレージアカウントを使用して機密データを保存しており、データが転送中に暗号化されることを確保する必要があります。何を構成すべきですか？",
+      "options": {
+        "A": "ストレージサービス暗号化 (SSE) を有効にする",
+        "B": "安全な転送を必須にする (HTTPS)",
+        "C": "カスタマー マネージド キーを構成する",
+        "D": "論理的な削除を有効にする"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "「安全な転送を必須にする」オプションは、ストレージアカウントへのすべてのリクエストに HTTPS の使用を強制し、データが転送中に暗号化されることを保証します。SSE は保存データの暗号化を担当し、両方を有効にして完全な保護を得る必要があります。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q15",
+      "domain": 2,
+      "question": "ある企業が、ストレージアカウントへのアクセスを制限し、特定の仮想ネットワーク内のリソースからのみアクセスを許可する必要があります。何を構成すべきですか？",
+      "options": {
+        "A": "共有アクセス署名 (SAS)",
+        "B": "ストレージアカウントファイアウォールと仮想ネットワーク規則",
+        "C": "Azure AD 認証",
+        "D": "アクセスキーのローテーション"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "ストレージアカウントファイアウォールでは、アクセスを許可する IP アドレス範囲と仮想ネットワークを構成できます。「選択したネットワーク」を選択し、仮想ネットワーク規則を追加することで、指定した VNet 内のリソースのみがストレージアカウントにアクセスできるよう制限できます。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q16",
+      "domain": 2,
+      "question": "ある企業が、ストレージアカウント内の BLOB に対して自動ライフサイクル管理を設定し、30 日間アクセスされていないデータをクール層に移動する必要があります。何を使用すべきですか？",
+      "options": {
+        "A": "Azure Automation",
+        "B": "ストレージ ライフサイクル管理ポリシー",
+        "C": "Azure Logic Apps",
+        "D": "Azure Functions"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "ストレージ ライフサイクル管理ポリシーは、ルールに基づいて BLOB のライフサイクルを自動的に管理できます：BLOB をよりクールなアクセス層に移動する、期限切れの BLOB を削除する、最終変更日または最終アクセス日に基づいて操作を実行するなど。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q17",
+      "domain": 2,
+      "question": "ある企業が Azure ポータルから 100GB を超えるファイルを Blob ストレージにアップロードする必要があります。どの方法を使用すべきですか？",
+      "options": {
+        "A": "ポータルから直接アップロード",
+        "B": "AzCopy ツールを使用",
+        "C": "REST API を使用",
+        "D": "Azure CLI を使用"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "AzCopy は、Azure ストレージアカウント間で大量のデータをコピーするために設計されたコマンドラインツールです。大きなファイルのアップロード、中断時の再開、並列転送をサポートしており、大きなファイルをアップロードするための推奨方法です。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q18",
+      "domain": 2,
+      "question": "ある企業が Azure ストレージアカウントで誤って削除された BLOB の復元機能を提供する必要があります。どの機能を有効にすべきですか？",
+      "options": {
+        "A": "バージョン管理",
+        "B": "論理的な削除",
+        "C": "不変ストレージ",
+        "D": "オブジェクトレプリケーション"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "BLOB の論理的な削除は、指定された保持期間内に削除された BLOB とスナップショットを復元できます。有効にすると、削除されたデータは指定された日数間保持され、その期間中に復元できます。\n---",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q19",
+      "domain": 2,
+      "question": "ある企業が、サードパーティアプリケーションにストレージアカウント内の特定のコンテナーへの一時的なアクセス権を付与する必要があります。何を使用すべきですか？",
+      "options": {
+        "A": "ストレージアカウントアクセスキー",
+        "B": "共有アクセス署名 (SAS)",
+        "C": "Azure AD サービスプリンシパル",
+        "D": "匿名アクセス"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "共有アクセス署名 (SAS) は、ストレージリソースへの委任アクセスを提供し、許可する権限、有効な時間範囲、IP アドレス制限を指定できます。サービス SAS を使用すると、特定のコンテナーへのアクセスを制限できます。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q20",
+      "domain": 2,
+      "question": "ある企業が Azure File Sync を使用してオンプレミスのファイルサーバーを Azure と同期しています。オンプレミスのストレージ容量が不足した場合、どの機能を有効にすべきですか？",
+      "options": {
+        "A": "オンプレミスのストレージ容量を増やす",
+        "B": "クラウド階層化 (Cloud Tiering)",
+        "C": "古いファイルを削除する",
+        "D": "ファイルを圧縮する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "クラウド階層化機能は、あまりアクセスされないファイルを Azure ファイル共有に自動的に移動し、ローカルにはプレースホルダーのみを保持します。ユーザーがこれらのファイルにアクセスすると、クラウドから自動的にダウンロードされます。これにより、ローカルストレージ容量の問題を効果的に解決できます。\n---",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q21",
+      "domain": 3,
+      "question": "ある企業が高可用性の Web アプリケーションをデプロイする必要があり、同じリージョン内の異なるデータセンターで複数のインスタンスを実行することを要件としています。何を使用すべきですか？",
+      "options": {
+        "A": "可用性ゾーンで構成された仮想マシン スケール セット",
+        "B": "単一の仮想マシン",
+        "C": "可用性セット",
+        "D": "オンプレミスでのデプロイ"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "可用性ゾーンは、リージョン内の物理的に独立したデータセンターです。仮想マシン スケール セットを可用性ゾーン間にデプロイするよう構成することで、アプリケーションをデータセンター障害から保護し、99.99% の SLA を提供できます。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q22",
+      "domain": 3,
+      "question": "ある企業がコンテナー化された Web アプリケーションをデプロイする必要があり、基盤インフラストラクチャを管理したくないと考えています。どのサービスを使用すべきですか？",
+      "options": {
+        "A": "Azure Virtual Machines",
+        "B": "Azure Kubernetes Service (AKS)",
+        "C": "Azure Container Instances (ACI)",
+        "D": "Azure App Service"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "Azure App Service は、コンテナー化されたアプリケーションのデプロイをサポートするフルマネージドプラットフォームであり、インフラストラクチャを管理する必要がありません。より多くの制御とコンテナーオーケストレーション機能が必要な場合は AKS を選択でき、単一のコンテナーをすばやく実行するだけでよい場合は ACI を選択できます。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q23",
+      "domain": 3,
+      "question": "ある企業が CPU 使用率に基づいて仮想マシンの数を自動的に増減する必要があります。何を構成すべきですか？",
+      "options": {
+        "A": "手動スケーリング",
+        "B": "仮想マシン スケール セットの自動スケール規則",
+        "C": "Azure Advisor",
+        "D": "Azure Monitor アラート"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "仮想マシン スケール セットは、メトリック（CPU、メモリなど）またはスケジュールに基づく自動スケーリングをサポートしています。CPU がしきい値を超えたときにインスタンスを増やし、しきい値を下回ったときにインスタンスを減らすルールを定義して、コスト最適化を実現できます。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q24",
+      "domain": 3,
+      "question": "ある企業が既存の仮想マシンをあるリソースグループから別のリソースグループに移動する必要があります。これは可能ですか？",
+      "options": {
+        "A": "不可能、仮想マシンを再作成する必要がある",
+        "B": "可能、リソース移動機能を使用する",
+        "C": "マネージド ディスクのみ移動できる",
+        "D": "最初に仮想マシンを削除する必要がある"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure は、リソースをあるリソースグループから別のリソースグループに移動することをサポートしています。仮想マシンを移動する際、関連するリソース（ディスク、NIC、パブリック IP など）も一緒に移動する必要があります。一部のリソースタイプには移動の制限がある場合があります。\n---",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q25",
+      "domain": 3,
+      "question": "ある企業が ARM テンプレートを使用して Azure リソースのデプロイを自動化したいと考えています。既存のリソースの構成をどのようにエクスポートすべきですか？",
+      "options": {
+        "A": "ARM テンプレートを手動で作成する",
+        "B": "リソースグループからテンプレートをエクスポートする",
+        "C": "Azure CLI を使用してテンプレートを作成する",
+        "D": "Azure ポータルの設定をコピーする"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure ポータルのリソースグループから既存のリソースの ARM テンプレートをエクスポートできます。これにより、リソースグループ内のすべてのリソースの構成を記述した JSON テンプレートが生成され、自動デプロイの開始点として使用できます。\n---",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q26",
+      "domain": 3,
+      "question": "ある企業が仮想マシンにカスタム拡張機能を構成してソフトウェアを自動インストールする必要があります。何を使用すべきですか？",
+      "options": {
+        "A": "リモートデスクトップ接続",
+        "B": "仮想マシン拡張機能 (VM Extension)",
+        "C": "Azure Bastion",
+        "D": "SSH 接続"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "仮想マシン拡張機能は、デプロイ後にソフトウェアのインストール、スクリプトの実行、または監視の構成などのタスクを自動的に実行できます。一般的な拡張機能には、Custom Script Extension、DSC Extension などがあります。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q27",
+      "domain": 3,
+      "question": "ある企業が GPU を必要とする機械学習ワークロードを実行する必要があります。どのタイプの仮想マシンを選択すべきですか？",
+      "options": {
+        "A": "B シリーズ",
+        "B": "D シリーズ",
+        "C": "N シリーズ",
+        "D": "F シリーズ"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "Azure N シリーズ仮想マシンには NVIDIA GPU が搭載されており、機械学習トレーニング、グラフィックスレンダリング、ビデオエンコーディングなどの GPU 集約型ワークロード向けに設計されています。NC、ND、NV シリーズが含まれます。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q28",
+      "domain": 3,
+      "question": "ある企業がパブリック IP アドレスを公開せずに Azure 仮想マシンに安全に接続する必要があります。何を使用すべきですか？",
+      "options": {
+        "A": "RDP ポートを開く",
+        "B": "Azure Bastion",
+        "C": "パブリック IP アドレス",
+        "D": "ネットワークセキュリティグループ"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure Bastion は、Azure ポータル経由で仮想マシンへの安全な RDP/SSH アクセスを提供し、仮想マシンにパブリック IP アドレスを構成する必要がありません。トラフィックは HTTPS で転送され、より高いセキュリティを提供します。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q29",
+      "domain": 3,
+      "question": "ある企業が仮想マシンのオペレーティングシステム ディスクのバックアップがあることを確保する必要があります。どのサービスを使用すべきですか？",
+      "options": {
+        "A": "Azure Site Recovery",
+        "B": "Azure Backup",
+        "C": "Azure Blob レプリケーション",
+        "D": "マネージド ディスク スナップショット"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure Backup は、シンプルで信頼性の高い仮想マシンバックアップソリューションを提供します。バックアップポリシー（毎日、毎週など）と保持期間を構成でき、必要に応じて仮想マシン全体または個々のファイルを復元できます。\n---",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q30",
+      "domain": 3,
+      "question": "ある企業が Web アプリケーションにブルーグリーンデプロイ戦略を構成する必要があります。Azure App Service のどの機能を使用すべきですか？",
+      "options": {
+        "A": "自動スケーリング",
+        "B": "デプロイスロット (Deployment Slots)",
+        "C": "バックアップと復元",
+        "D": "カスタムドメイン"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "デプロイスロットを使用すると、運用スロット以外にステージング環境を作成できます。まずスロットに新しいバージョンをデプロイしてテストし、その後スワップ操作でトラフィックを新しいバージョンに切り替えて、ダウンタイムなしのデプロイを実現できます。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q31",
+      "domain": 4,
+      "question": "ある企業が異なる Azure リージョンにある 2 つの仮想ネットワーク間の接続を作成する必要があります。何を使用すべきですか？",
+      "options": {
+        "A": "VNet ピアリング (グローバル)",
+        "B": "サブネット",
+        "C": "ネットワークセキュリティグループ",
+        "D": "アプリケーションセキュリティグループ"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "グローバル VNet ピアリングを使用すると、異なる Azure リージョンの仮想ネットワーク間でプライベート接続を確立できます。トラフィックは Azure バックボーンネットワーク経由で転送され、低遅延と高帯域幅を提供します。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q32",
+      "domain": 4,
+      "question": "ある企業が仮想マシンに入ってくるネットワークトラフィックを制御し、特定のポートへのアクセスのみを許可する必要があります。何を使用すべきですか？",
+      "options": {
+        "A": "Azure Firewall",
+        "B": "ネットワークセキュリティグループ (NSG)",
+        "C": "ユーザー定義ルート",
+        "D": "サービスエンドポイント"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "ネットワークセキュリティグループには、受信および送信ネットワークトラフィックを許可または拒否するためのセキュリティ規則が含まれています。ソース IP、宛先 IP、ポート、およびプロトコルに基づいてルールを作成し、NSG をサブネットまたは NIC に関連付けることができます。\n---",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q33",
+      "domain": 4,
+      "question": "ある企業が暗号化されたインターネット接続を使用してオンプレミスネットワークを Azure 仮想ネットワークに安全に接続する必要があります。何を使用すべきですか？",
+      "options": {
+        "A": "ExpressRoute",
+        "B": "サイト間 VPN",
+        "C": "VNet ピアリング",
+        "D": "Azure CDN"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "サイト間 VPN は、暗号化された IPsec/IKE トンネルを介してオンプレミスネットワークを Azure 仮想ネットワークに接続します。これはインターネット経由で安全な接続を確立するためのコスト効果の高い選択肢です。プライベート専用線接続が必要な場合は、ExpressRoute を選択できます。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q34",
+      "domain": 4,
+      "question": "ある企業が Azure 仮想ネットワークの DNS 解決を構成する必要があります。カスタム DNS を構成しない場合、何が使用されますか？",
+      "options": {
+        "A": "オンプレミス DNS サーバー",
+        "B": "Azure 提供の DNS (168.63.129.16)",
+        "C": "Google DNS",
+        "D": "DNS を解決できない"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "カスタム DNS が構成されていない場合、Azure 仮想ネットワークはデフォルトで Azure 提供の DNS サービスを使用します。この DNS サーバーは、Azure リソース名とパブリック DNS 名を解決できます。\n---",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q35",
+      "domain": 4,
+      "question": "ある企業が複数の仮想マシン間で受信ネットワークトラフィックを分散する必要があります。何を使用すべきですか？",
+      "options": {
+        "A": "Azure Load Balancer",
+        "B": "ネットワークセキュリティグループ",
+        "C": "仮想ネットワークゲートウェイ",
+        "D": "Azure Firewall"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Azure Load Balancer は、バックエンドプール内の複数の仮想マシン間で受信トラフィックを分散します。レイヤー 4（TCP/UDP）の負荷分散をサポートし、正常でないバックエンドインスタンスを検出するためのヘルスプローブを構成できます。\n---",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q36",
+      "domain": 4,
+      "question": "ある企業が URL パスに基づいてトラフィックを異なるバックエンドプールにルーティングする必要があります。何を使用すべきですか？",
+      "options": {
+        "A": "Azure Load Balancer",
+        "B": "Azure Application Gateway",
+        "C": "Azure Front Door",
+        "D": "Azure Traffic Manager"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Application Gateway はレイヤー 7（HTTP/HTTPS）のロードバランサーであり、URL パスベースのルーティング、SSL 終端、Web アプリケーションファイアウォールなどの機能をサポートしています。/images/* をイメージサーバーに、/api/* を API サーバーにルーティングできます。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q37",
+      "domain": 4,
+      "question": "ある企業が Azure 仮想ネットワーク経由で、パブリックインターネットを経由せずに Azure ストレージアカウントに安全にアクセスする必要があります。何を構成すべきですか？",
+      "options": {
+        "A": "パブリックエンドポイント",
+        "B": "サービスエンドポイントまたはプライベートエンドポイント",
+        "C": "ネットワークセキュリティグループ",
+        "D": "Azure Firewall"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "サービスエンドポイントは、Azure サービスへの VNet トラフィックを Azure バックボーンネットワーク上に保持したままルーティングします。プライベートエンドポイントは VNet 内にプライベート IP アドレスを作成し、トラフィックは完全にパブリックインターネットを経由しません。どちらもセキュリティを向上させることができます。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q38",
+      "domain": 4,
+      "question": "ある企業がトラフィックを強制的にネットワーク仮想アプライアンス（ファイアウォールなど）経由で検査させる必要があります。何を構成すべきですか？",
+      "options": {
+        "A": "ネットワークセキュリティグループ",
+        "B": "ユーザー定義ルート (UDR)",
+        "C": "サービスエンドポイント",
+        "D": "VNet ピアリング"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "ユーザー定義ルートを使用すると、ネットワークトラフィックのルーティングパスをカスタマイズできます。ルートテーブルを作成して、特定のトラフィック（0.0.0.0/0 インターネットトラフィックなど）の次ホップをネットワーク仮想アプライアンスの IP アドレスに設定できます。\n---",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q39",
+      "domain": 4,
+      "question": "ある企業が仮想マシンに常に変わらないパブリック IP アドレスを構成する必要があります。どの SKU を選択すべきですか？",
+      "options": {
+        "A": "動的パブリック IP",
+        "B": "静的パブリック IP",
+        "C": "Standard Load Balancer IP",
+        "D": "プライベート IP"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "静的パブリック IP アドレスは、仮想マシンが停止または再起動しても、作成後に変更されません。動的パブリック IP は、仮想マシンが停止すると変更される可能性があります。固定 IP が必要なシナリオ（DNS レコードなど）では、静的 IP を選択する必要があります。\n---",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q40",
+      "domain": 4,
+      "question": "ある企業が複数の Web アプリケーションに対してリージョン間のトラフィック分散とフェールオーバーを構成する必要があります。何を使用すべきですか？",
+      "options": {
+        "A": "Azure Load Balancer",
+        "B": "Application Gateway",
+        "C": "Azure Traffic Manager",
+        "D": "VPN Gateway"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "Azure Traffic Manager は、DNS ベースのトラフィック ロード バランサーであり、グローバル Azure リージョン間でトラフィックを分散できます。複数のルーティング方法（優先度、加重、地理的位置、パフォーマンス）をサポートし、自動フェールオーバーを提供します。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q41",
+      "domain": 5,
+      "question": "ある企業が仮想マシンの CPU 使用率が 80% を超えたときに電子メール通知を受け取る必要があります。何を構成すべきですか？",
+      "options": {
+        "A": "Azure Advisor",
+        "B": "Azure Monitor アラート",
+        "C": "アクティビティログ",
+        "D": "診断ログ"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure Monitor アラートは、メトリック条件に基づいて通知をトリガーできます。CPU パーセンテージが 80% を超えたときにトリガーするメトリックアラートを作成し、電子メール通知を送信するアクショングループを構成できます。\n---",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q42",
+      "domain": 5,
+      "question": "ある企業がコンプライアンス要件を満たすために Azure アクティビティログを長期保持する必要があります。ログをどこに送信すべきですか？",
+      "options": {
+        "A": "Azure Monitor ログ (Log Analytics)",
+        "B": "Azure ストレージアカウント",
+        "C": "Azure Event Hubs",
+        "D": "上記すべてが可能"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "Azure アクティビティログは複数の宛先に送信できます：Log Analytics はクエリ分析用（最大 2 年間保持）、ストレージアカウントは長期アーカイブ用、Event Hubs は外部システムへのストリーミング用。複数の宛先を同時に構成できます。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q43",
+      "domain": 5,
+      "question": "ある企業が、コスト、セキュリティ、パフォーマンスを含む Azure リソースの最適化推奨事項を取得したいと考えています。どのサービスを使用すべきですか？",
+      "options": {
+        "A": "Azure Monitor",
+        "B": "Azure Advisor",
+        "C": "Azure Security Center",
+        "D": "Azure Cost Management"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure Advisor は、リソースの構成と使用状況を分析し、コストの最適化、信頼性の向上、セキュリティの強化、パフォーマンスの改善のためのパーソナライズされた推奨事項を提供します。推奨事項は無料です。\n---",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q44",
+      "domain": 5,
+      "question": "ある企業が仮想マシンの詳細なパフォーマンスデータをクエリおよび分析する必要があります。何を使用すべきですか？",
+      "options": {
+        "A": "Azure ポータル ダッシュボード",
+        "B": "Log Analytics ワークスペースと KQL クエリ",
+        "C": "Azure Advisor",
+        "D": "アクティビティログ"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Log Analytics ワークスペースは、Azure リソースからのログとメトリックデータを収集して保存します。Kusto クエリ言語 (KQL) を使用して複雑なクエリを記述し、パフォーマンスデータを分析し、可視化を作成し、アラートを設定できます。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q45",
+      "domain": 5,
+      "question": "ある企業が Azure 仮想マシンのオペレーティングシステムレベルのパフォーマンスメトリック（詳細なディスク I/O など）を監視する必要があります。何をインストールすべきですか？",
+      "options": {
+        "A": "Azure Monitor Agent",
+        "B": "Azure Backup Agent",
+        "C": "Site Recovery Agent",
+        "D": "Dependency Agent"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Azure Monitor Agent (AMA) は、ゲストオペレーティングシステムから詳細なパフォーマンスデータとログを収集します。これは、VM 内部のメトリック（詳細なディスク I/O、メモリ使用量、プロセス情報など）を収集するために必要です。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q46",
+      "domain": 5,
+      "question": "ある企業がプライマリ Azure リージョンで障害が発生した場合に仮想マシンを別のリージョンにフェールオーバーする必要があります。何を構成すべきですか？",
+      "options": {
+        "A": "Azure Backup",
+        "B": "Azure Site Recovery",
+        "C": "可用性ゾーン",
+        "D": "可用性セット"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure Site Recovery は、リージョン間の災害復旧機能を提供します。仮想マシンを継続的にセカンダリリージョンにレプリケートし、プライマリリージョンで障害が発生した場合に迅速にフェールオーバーして、ビジネス継続性を実現できます。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q47",
+      "domain": 5,
+      "question": "ある企業が Azure リソースの全体的な正常性ステータスとサービス停止情報を可視化する必要があります。何を確認すべきですか？",
+      "options": {
+        "A": "Azure Monitor",
+        "B": "Azure Service Health",
+        "C": "Azure Advisor",
+        "D": "リソース正常性"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure Service Health は、計画メンテナンス、サービスの問題、正常性アドバイザリを含む Azure サービスの正常性ステータス情報を提供します。リソースに影響するサービスの問題が発生したときに通知を受け取るようにアラートを構成できます。\n---",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q48",
+      "domain": 5,
+      "question": "ある企業が仮想マシンの起動や停止などのメンテナンスタスクを定期的に自動実行する必要があります。何を使用すべきですか？",
+      "options": {
+        "A": "Azure Functions",
+        "B": "Azure Automation Runbook",
+        "C": "Azure Logic Apps",
+        "D": "上記すべてが可能"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "すべてのオプションがタスクの自動化に使用できます：Azure Automation Runbook は PowerShell/Python スクリプトの実行を提供し、Azure Functions はイベント駆動型のコード実行を提供し、Logic Apps はワークフロー自動化を提供します。選択は具体的なニーズによって異なります。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q49",
+      "domain": 5,
+      "question": "ある企業が仮想マシンの Windows Update が自動的に適用されるようにする必要があります。どの Azure 機能を使用すべきですか？",
+      "options": {
+        "A": "Azure Automation Update Management",
+        "B": "手動 Windows Update",
+        "C": "Azure Policy",
+        "D": "Azure Backup"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Azure Automation Update Management は、仮想マシンの更新ステータスを評価し、更新のデプロイをスケジュールし、メンテナンス期間内に更新を自動的にインストールできます。Windows と Linux の両方の仮想マシンをサポートし、複数の VM の更新を一元管理できます。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q50",
+      "domain": 5,
+      "question": "ある企業が単一の Azure リソース（仮想マシンなど）がプラットフォームの問題の影響を受けているかどうかを確認する必要があります。何を確認すべきですか？",
+      "options": {
+        "A": "Azure Service Health",
+        "B": "リソース正常性 (Resource Health)",
+        "C": "Azure Monitor メトリック",
+        "D": "アクティビティログ"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "リソース正常性は、特定の Azure リソースの現在と過去の正常性ステータスを提供します。リソースが利用可能かどうか、Azure プラットフォームの問題の影響を受けているかどうか、問題の根本原因分析を表示します。\n---",
+      "difficulty": "easy"
+    }
+  ]
+}

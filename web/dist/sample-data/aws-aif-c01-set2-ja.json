@@ -1,0 +1,798 @@
+{
+  "exam": {
+    "id": "aws-aif-c01-set2-ja",
+    "name": "AWS AIF-C01 模擬試験 #2",
+    "code": "AIF-C01",
+    "provider": "AWS",
+    "language": "ja",
+    "description": "AWS認定AIプラクティショナー試験模擬問題 - 第2套",
+    "totalQuestions": 50,
+    "passingScore": 70,
+    "examTime": 90,
+    "domains": [
+      {
+        "id": 1,
+        "name": "AIとMLの基礎",
+        "weight": 20
+      },
+      {
+        "id": 2,
+        "name": "生成AIの基礎",
+        "weight": 24
+      },
+      {
+        "id": 3,
+        "name": "基盤モデルのアプリケーション",
+        "weight": 28
+      },
+      {
+        "id": 4,
+        "name": "責任あるAIのガイドライン",
+        "weight": 14
+      },
+      {
+        "id": 5,
+        "name": "セキュリティ、コンプライアンス、ガバナンス",
+        "weight": 14
+      }
+    ],
+    "tags": [
+      "AWS",
+      "AI",
+      "ML",
+      "認定試験"
+    ]
+  },
+  "questions": [
+    {
+      "id": "q1",
+      "domain": 1,
+      "question": "ある研究ラボがモデルの訓練データでの精度は高いが、テストデータでの精度が低いことを発見しました。この状況の最も可能性の高い原因は何ですか？",
+      "options": {
+        "A": "訓練時間が不足",
+        "B": "過学習（Overfitting）",
+        "C": "学習率が低すぎる",
+        "D": "特徴量の数が不足"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "訓練精度が高い + テスト精度が低い = 過学習の典型的な特徴です。モデルが訓練データのノイズを過度に学習し、新しいデータに汎化できていません。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q2",
+      "domain": 1,
+      "question": "ある企業が過去の販売データに基づいて将来の製品需要を予測したいと考えています。これはどのタイプの機械学習問題ですか？",
+      "options": {
+        "A": "分類",
+        "B": "クラスタリング",
+        "C": "回帰",
+        "D": "強化学習"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "将来の需要（連続値）を予測する = 回帰問題です。Amazon Forecastサービスを使用して時系列予測を行うことができます。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q3",
+      "domain": 1,
+      "question": "以下のどのアルゴリズムがクレジットカード詐欺取引の検出（正常取引が詐欺取引よりもはるかに多い）に最も適していますか？",
+      "options": {
+        "A": "線形回帰",
+        "B": "K-meansクラスタリング",
+        "C": "異常検出（Anomaly Detection）",
+        "D": "単純な決定木"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "詐欺検出は極端なクラス不均衡シナリオ（正常>>詐欺）に属し、異常検出は稀なイベントの識別を専門としています。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q4",
+      "domain": 1,
+      "question": "ある企業がAmazon SageMakerをMLモデル開発に使用しています。チームは特徴セットを保存し、チーム間で共有するソリューションが必要です。どのSageMaker機能を使用すべきですか？",
+      "options": {
+        "A": "Amazon SageMaker Data Wrangler",
+        "B": "Amazon SageMaker Feature Store",
+        "C": "Amazon SageMaker Clarify",
+        "D": "Amazon SageMaker Model Registry"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Feature Storeは特徴の保存、管理、チーム間共有に使用され、特徴の一貫性と再利用性を確保します。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q5",
+      "domain": 1,
+      "question": "ニューラルネットワークの訓練において、「勾配消失（Vanishing Gradient）」問題はどのような状況で最も頻繁に発生しますか？",
+      "options": {
+        "A": "ネットワークの層数が少なすぎる",
+        "B": "ネットワークの層数が多すぎる",
+        "C": "学習率が高すぎる",
+        "D": "バッチサイズが大きすぎる"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "深いネットワークでは、勾配がバックプロパゲーション中に非常に小さく（ほぼ0に）なり、浅い層が効果的に学習できなくなる可能性があります。解決策にはReLU活性化関数、バッチ正規化などがあります。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q6",
+      "domain": 1,
+      "question": "以下のどの指標がクラス不均衡データセットの分類モデル評価に最も適していますか？",
+      "options": {
+        "A": "正解率（Accuracy）",
+        "B": "F1スコア（F1 Score）",
+        "C": "平均二乗誤差（MSE）",
+        "D": "R²スコア"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "F1スコアは適合率と再現率の調和平均であり、クラス不均衡時に正解率よりも意味があります。例えば、99%正常+1%詐欺のデータでは、すべてを正常と予測しても99%の正解率がありますが、F1は非常に低くなります。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q7",
+      "domain": 1,
+      "question": "ある企業が顧客が今後30日以内に離脱するかどうかを予測したいと考えています。これはどのタイプの問題ですか？",
+      "options": {
+        "A": "回帰問題",
+        "B": "二値分類問題",
+        "C": "多クラス分類問題",
+        "D": "クラスタリング問題"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "離脱する/離脱しない = 2つのクラス = 二値分類問題です。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q8",
+      "domain": 1,
+      "question": "「特徴スケーリング（Feature Scaling）」の主な目的は何ですか？",
+      "options": {
+        "A": "特徴の数を減らす",
+        "B": "異なるスケールの特徴を比較可能にする",
+        "C": "モデルの複雑さを増やす",
+        "D": "データ収集速度を上げる"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "例えば、年齢（0-100）と収入（0-1000000）は同じ範囲にスケーリングする必要があります。そうしないと収入がモデルを支配します。一般的な方法：標準化（Z-score）、正規化（Min-Max）。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q9",
+      "domain": 1,
+      "question": "あるMLモデルの適合率（Precision）が90%、再現率（Recall）が60%です。これは何を意味しますか？",
+      "options": {
+        "A": "モデルは偽陽性をほとんど生成しないが、多くの真陽性を見逃す",
+        "B": "モデルは真陽性をほとんど見逃さないが、多くの偽陽性を生成する",
+        "C": "モデルはすべての面で良好に動作している",
+        "D": "モデルにはより多くの訓練データが必要"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "- 高い適合率（90%）：陽性と予測したもののほとんどが本当に陽性（偽陽性が少ない）\n- 低い再現率（60%）：実際の陽性の40%を見逃している（偽陰性が多い）",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q10",
+      "domain": 2,
+      "question": "以下のどの方法が最も重要な特徴の選択に役立ちますか？",
+      "options": {
+        "A": "データ拡張",
+        "B": "特徴重要度分析",
+        "C": "訓練エポック数の増加",
+        "D": "バッチサイズの削減"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "どの特徴がモデルの予測に最も影響を与えるかを分析して重要な特徴を選択します。決定木の特徴重要度、SHAP値などの方法を使用できます。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q11",
+      "domain": 1,
+      "question": "ある企業がLLMを使用してマーケティングコピーを生成したいと考えています。出力をより多様で創造的にするために、パラメータをどのように調整すべきですか？",
+      "options": {
+        "A": "temperatureを下げる",
+        "B": "temperatureを上げる",
+        "C": "max_tokensを減らす",
+        "D": "top_kを1に増やす"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "高い温度 = よりランダムで創造的な出力。低い温度 = より確定的で保守的な出力。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q12",
+      "domain": 1,
+      "question": "NLPにおける「Embedding」とは何を意味しますか？",
+      "options": {
+        "A": "モデルを本番環境にデプロイする",
+        "B": "テキストを数値ベクトル表現に変換する",
+        "C": "モデルサイズを圧縮する",
+        "D": "機密データを暗号化する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "EmbeddingはNLPの基礎であり、テキスト（単語、文、文書）をモデルが処理できる数値ベクトルに変換し、意味情報を捕捉します。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q13",
+      "domain": 1,
+      "question": "ある企業がLLMに会社の内部ドキュメントに基づいて質問に回答させたいが、モデルを再訓練する必要はありません。最も適切な技術は何ですか？",
+      "options": {
+        "A": "ゼロから新しいモデルを訓練する",
+        "B": "ファインチューニング",
+        "C": "RAG（検索拡張生成）",
+        "D": "モデルのパラメータを増やす"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "RAGはモデルを再訓練せずに外部ドキュメントに基づいて質問に回答できます。関連ドキュメントを検索 → モデルにコンテキストとして提供 → 回答を生成。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q14",
+      "domain": 1,
+      "question": "Amazon Bedrockにおいて、限られた予算で長期的なコミットメントを必要としない企業に最も適した価格モデルはどれですか？",
+      "options": {
+        "A": "オンデマンド（On-Demand）",
+        "B": "プロビジョンドスループット（Provisioned Throughput）",
+        "C": "モデルカスタマイゼーション",
+        "D": "予約キャパシティ"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "オンデマンド価格は柔軟で、長期的なコミットメントがなく、使用した分だけ支払うため、予算が限られているか使用量が不確定なシナリオに適しています。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q15",
+      "domain": 1,
+      "question": "以下のうち、大規模言語モデルの一般的な制限ではないものはどれですか？",
+      "options": {
+        "A": "ハルシネーションを生成する可能性がある",
+        "B": "知識にはカットオフ日がある",
+        "C": "テキスト入力を処理できない",
+        "D": "バイアスのある出力を生成する可能性がある"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "LLMはテキスト入力を専門的に処理するため、これは制限ではありません！実際の制限には、ハルシネーション、知識のカットオフ、バイアス、コンテキストウィンドウの制限などがあります。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q16",
+      "domain": 1,
+      "question": "「Zero-shot Learning」とは何ですか？",
+      "options": {
+        "A": "モデルが訓練を必要としない",
+        "B": "モデルが特定のタスク例なしでタスクを実行する",
+        "C": "モデルが1つのタスクのみを実行できる",
+        "D": "モデルがGPUを使用せずに訓練される"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Zero-shot = 例を提供せずに、モデルに直接タスクを実行させます。モデルの事前訓練知識に依存してタスクを理解します。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q17",
+      "domain": 1,
+      "question": "ある転写会社がAmazon Bedrockにデプロイされた基盤モデルのテキスト生成パフォーマンスを評価したいと考えています。どの評価指標を使用すべきですか？",
+      "options": {
+        "A": "BLEUスコア",
+        "B": "平均二乗誤差",
+        "C": "R²スコア",
+        "D": "正解率"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "BLEU（Bilingual Evaluation Understudy）はテキスト生成品質を評価する標準的な指標であり、生成テキストと参照テキストのn-gram重複を比較します。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q18",
+      "domain": 1,
+      "question": "「Prompt Injection」攻撃とは何ですか？",
+      "options": {
+        "A": "モデルに新しい訓練データを注入する",
+        "B": "悪意のあるユーザーが特別なプロンプトでモデルのセキュリティ制限をバイパスする",
+        "C": "モデルの推論速度を向上させる技術",
+        "D": "モデル圧縮の方法"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Prompt Injectionはセキュリティの脅威であり、攻撃者がセキュリティ制限をバイパスしようとする特別なプロンプトを構築します。Guardrailsなどのツールで防御する必要があります。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q19",
+      "domain": 1,
+      "question": "以下のどのモデルタイプが画像生成に最も適していますか？",
+      "options": {
+        "A": "BERT",
+        "B": "GPT",
+        "C": "Diffusionモデル",
+        "D": "LSTM"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "Stable Diffusion、DALL-E 3、Midjourneyなどはすべて画像生成用のDiffusionベースのモデルです。BERT/GPTはテキストモデル、LSTMはシーケンスモデルです。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q20",
+      "domain": 1,
+      "question": "「マルチモーダルモデル（Multi-modal Model）」とは何ですか？",
+      "options": {
+        "A": "テキストのみを処理できるモデル",
+        "B": "複数のタイプの入力（テキスト、画像など）を処理できるモデル",
+        "C": "複数の出力層を持つモデル",
+        "D": "複数のリージョンにデプロイされたモデル"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "GPT-4V、Claude 3などのマルチモーダルモデルは、テキスト、画像などの複数の入力タイプを同時に処理できます。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q21",
+      "domain": 1,
+      "question": "ある企業がAmazon Bedrockを使用しており、監査のためにすべてのモデル呼び出しを追跡したいと考えています。どの機能を有効にすべきですか？",
+      "options": {
+        "A": "Amazon CloudWatch Metrics",
+        "B": "Model Invocation Logging",
+        "C": "AWS X-Ray",
+        "D": "Amazon Inspector"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Model Invocation Loggingを有効にして、監査とコンプライアンスのためにすべてのBedrock API呼び出しの入力と出力を記録します。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q22",
+      "domain": 3,
+      "question": "「Semantic Search」と従来のキーワード検索の主な違いは何ですか？",
+      "options": {
+        "A": "より高速な検索速度",
+        "B": "キーワードを単にマッチングするのではなく、クエリの意味を理解する",
+        "C": "より多くの言語をサポート",
+        "D": "より低いコスト"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "セマンティック検索は埋め込みベクトルを使用してクエリの意図を理解し、単純なキーワードマッチングではありません。例えば、「車」を検索すると「セダン」や「SUV」に関連するコンテンツも見つかります。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q23",
+      "domain": 1,
+      "question": "ある国際航空会社がマーケティング資料の背景画像を生成するために事前訓練済みの生成AIモデルを使用したいと考えています。会社にはMLの専門知識がなく、モデルをホストしたくありません。どのサービスを使用すべきですか？",
+      "options": {
+        "A": "Amazon SageMaker",
+        "B": "Amazon Bedrock",
+        "C": "Amazon EC2",
+        "D": "AWS Lambda"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "BedrockはML専門知識を必要とせず、インフラストラクチャをホストする必要もなく、APIを通じて画像生成モデルを使用できる事前訓練済みモデルAPIを提供します。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q24",
+      "domain": 1,
+      "question": "あるメディア企業が視聴者の行動を分析し、パーソナライズされたコンテンツ推奨を提供したいと考えています。また、モデルの品質が時間とともにドリフトしているかどうかを監視したいと考えています。どのAWSサービスまたは機能を使用すべきですか？",
+      "options": {
+        "A": "Amazon Rekognition",
+        "B": "Amazon SageMaker Clarify",
+        "C": "Amazon Comprehend",
+        "D": "Amazon SageMaker Model Monitor"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "Model Monitorはモデル品質のドリフトとデータドリフトの監視を専門とし、本番環境でのモデルパフォーマンスの低下を検出できます。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q25",
+      "domain": 1,
+      "question": "ある美術オークション会社がAmazon SageMakerをMLモデル開発に使用しています。会社は、想定される用途、リスク評価、訓練詳細、評価結果を含むモデルの情報レコードを作成したいと考えています。どの機能を使用すべきですか？",
+      "options": {
+        "A": "SageMaker Experiments",
+        "B": "SageMaker Model Cards",
+        "C": "SageMaker Debugger",
+        "D": "SageMaker Pipelines"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Model Cardsはモデルのドキュメントレコードを作成するために使用され、用途、リスク、訓練詳細、評価結果などを含み、モデルガバナンスと透明性をサポートします。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q26",
+      "domain": 1,
+      "question": "ある銀行がオープンソースの基盤モデルを使用して、信用契約がコンプライアンスルールに準拠しているかどうかを評価し、手動監査作業を削減したいと考えています。最も適切な方法はどれですか？",
+      "options": {
+        "A": "Amazon Rekognitionを使用",
+        "B": "SageMaker JumpStartとRAGを使用",
+        "C": "Amazon Translateを使用",
+        "D": "Amazon Pollyを使用"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "JumpStartは事前訓練済みのオープンソースモデルを提供し、RAGはコンプライアンスルールドキュメントを参照でき、モデルがルールに基づいて契約を評価できます。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q27",
+      "domain": 1,
+      "question": "ある企業が、会社のPDFドキュメント、CSVファイル、抽出された画像テキストに基づいて質問に回答できる内部ナレッジAIアシスタントを作成したいと考えています。運用オーバーヘッドが最小のソリューションはどれですか？",
+      "options": {
+        "A": "SageMakerでカスタムモデルを訓練",
+        "B": "Amazon Bedrock Knowledge Basesを使用",
+        "C": "Amazon Comprehendを使用",
+        "D": "Amazon Rekognitionを使用"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Knowledge Basesはノーコード/ローコードのRAGソリューションを提供し、ドキュメントの取り込み、ベクトル化、検索を自動的に処理し、運用オーバーヘッドが最小です。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q28",
+      "domain": 1,
+      "question": "Amazon Bedrockで感情分析を行う際、単一のプロンプトにどれだけの情報を含めることができるかを決定する要素は何ですか？",
+      "options": {
+        "A": "モデルのパラメータ数",
+        "B": "コンテキストウィンドウ（Context Window）",
+        "C": "モデルの訓練データ量",
+        "D": "AWSリージョン"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "コンテキストウィンドウはモデルが一度に処理できる最大トークン数を決定し、入力+出力の合計長さを制限します。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q29",
+      "domain": 1,
+      "question": "ある医療企業が診断目的で基盤モデルをカスタマイズしています。会社は規制要件を満たすためにモデルを透明で説明可能にする必要があります。どのソリューションを使用すべきですか？",
+      "options": {
+        "A": "Amazon Inspectorでセキュリティコンプライアンスを設定",
+        "B": "Amazon SageMaker Clarifyでレポートと説明を生成",
+        "C": "Amazon Macieで訓練データを暗号化",
+        "D": "Amazon Rekognitionでカスタムラベルを追加"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Clarifyはモデルの説明可能性（SHAP値、特徴重要度）とバイアス検出を提供し、透明性に対する規制要件を満たします。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q30",
+      "domain": 1,
+      "question": "ある企業がAmazon Bedrockで対話型チャットボットをデプロイしたいと考えており、複数の規制フレームワークに準拠する必要があります。AWSがコンプライアンスを証明するのに役立つ機能はどれですか？",
+      "options": {
+        "A": "AWS Artifactがコンプライアンスレポートとドキュメントを提供",
+        "B": "Amazon Rekognitionがコンプライアンス認証を提供",
+        "C": "AWSはコンプライアンスを支援できない",
+        "D": "サードパーティ監査のみで可能"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "ArtifactはAWSコンプライアンスレポートを取得する公式チャンネルであり、SOC、ISO、HIPAA、PCI DSSなどのレポートが含まれます。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q31",
+      "domain": 1,
+      "question": "ある企業が基盤モデルを使用したいが、データが会社のVPCを離れないようにする必要があります。どの設定を使用すべきですか？",
+      "options": {
+        "A": "パブリックエンドポイント",
+        "B": "PrivateLink / VPCエンドポイント",
+        "C": "インターネットゲートウェイ",
+        "D": "NATゲートウェイ"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "VPCエンドポイント（PrivateLink）はトラフィックがパブリックインターネットを経由しないようにし、データをAWSプライベートネットワーク内に保持します。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q32",
+      "domain": 1,
+      "question": "AIプラクティショナーがAmazon Bedrockで機密データを含む訓練データセットでカスタムモデルを訓練しました。機密データに基づいて推論応答を生成しないようにするにはどうすればよいですか？",
+      "options": {
+        "A": "モデルを削除し、訓練データセットから機密データを削除し、再訓練する",
+        "B": "動的データマスキングで推論応答の機密データをマスクする",
+        "C": "SageMakerで推論応答の機密データを暗号化する",
+        "D": "AWS KMSでモデル内の機密データを暗号化する"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "モデルはすでに機密データのパターンを学習しており、暗号化やマスキングではモデルがこの情報を「記憶」することを防げません。唯一の解決策は機密データを削除して再訓練することです。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q33",
+      "domain": 1,
+      "question": "ある企業がAmazon Pollyを使用してテキストを音声に変換したいと考えています。以下のうち、Amazon Pollyの正しい用途はどれですか？",
+      "options": {
+        "A": "音声からテキストへの変換",
+        "B": "テキストから音声への変換",
+        "C": "感情分析",
+        "D": "画像認識"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Polly = Text-to-Speech（TTS）、テキストを自然な音声に変換します。Transcribeが Speech-to-Textです。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q34",
+      "domain": 1,
+      "question": "Amazon SageMaker Canvasの主なターゲットユーザーは誰ですか？",
+      "options": {
+        "A": "深層学習研究者",
+        "B": "コーディング経験のないビジネスアナリスト",
+        "C": "DevOpsエンジニア",
+        "D": "データベース管理者"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Canvasはノーコードのツールであり、非技術ユーザー（ビジネスアナリスト）向けに設計されており、ビジュアルインターフェースでMLモデルを構築できます。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q35",
+      "domain": 1,
+      "question": "ある企業が動画内の不適切なコンテンツを検出したいと考えています。どのAWSサービスを使用すべきですか？",
+      "options": {
+        "A": "Amazon Transcribe",
+        "B": "Amazon Rekognition Content Moderation",
+        "C": "Amazon Comprehend",
+        "D": "Amazon Textract"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Rekognitionはコンテンツモデレーション機能を提供し、画像や動画内の不適切、暴力的、成人向けコンテンツを検出できます。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q36",
+      "domain": 4,
+      "question": "Amazon SageMaker JumpStartの主な利点は何ですか？",
+      "options": {
+        "A": "無制限の計算リソースを提供",
+        "B": "事前構築されたソリューションと事前訓練済みモデルを提供し、MLプロジェクトを迅速に開始できる",
+        "C": "すべてのコードを自動的に書く",
+        "D": "すべての機能を無料で使用可能"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "JumpStartは事前訓練済みモデル、事前構築されたソリューション、サンプルノートブックを提供し、ユーザーがゼロから構築することなくMLプロジェクトを迅速に開始できます。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q37",
+      "domain": 1,
+      "question": "ある企業が採用用のAIシステムを開発しています。以下のうち、責任あるAIの「公平性」原則を最もよく体現しているのはどれですか？",
+      "options": {
+        "A": "モデルをより高速に実行する",
+        "B": "異なる人々のグループへの影響が同じかどうかを評価する",
+        "C": "モデルのコストを削減する",
+        "D": "モデルの精度を上げる"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "公平性はAIシステムがいかなるグループ（性別、人種、年齢など）に対しても差別的な影響を与えないことを要求し、各グループの結果の違いを評価する必要があります。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q38",
+      "domain": 1,
+      "question": "以下のどの実践がAIシステムの透明性を向上させるのに役立ちますか？",
+      "options": {
+        "A": "より複雑なモデルを使用する",
+        "B": "モデルの決定の説明とドキュメントを提供する",
+        "C": "訓練データ量を増やす",
+        "D": "より多くのGPUを使用する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "透明性 = 人々がAIがどのように機能し、なぜ特定の決定を下したかを理解できるようにすること。ドキュメント、説明、開示が必要です。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q39",
+      "domain": 1,
+      "question": "ある企業がAIモデルが特定の地理的地域のユーザーに対してパフォーマンスが悪いことを発見しました。これはどのタイプのバイアスですか？",
+      "options": {
+        "A": "歴史的バイアス",
+        "B": "サンプリングバイアス",
+        "C": "確認バイアス",
+        "D": "アルゴリズムバイアス"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "訓練データが特定の地域を十分に代表していない可能性があり（不均一なサンプリング）、これらの地域のユーザーに対するモデルのパフォーマンスが低下します。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q40",
+      "domain": 1,
+      "question": "Amazon Bedrockを使用する際、モデルが有害または不適切なコンテンツを生成するのを防ぐにはどうすればよいですか？",
+      "options": {
+        "A": "より大きなモデルを使用する",
+        "B": "Bedrock Guardrailsを設定する",
+        "C": "temperatureを上げる",
+        "D": "より多くの訓練データを使用する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Guardrailsはコンテンツフィルタリングを提供し、有害、不適切、機密コンテンツの生成をブロックできます。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q41",
+      "domain": 1,
+      "question": "以下のうち、AI説明可能性（Explainability）の主な目的はどれですか？",
+      "options": {
+        "A": "モデルの精度を向上させる",
+        "B": "ユーザーと利害関係者がモデルがどのように決定を下すかを理解できるようにする",
+        "C": "モデルの訓練時間を短縮する",
+        "D": "計算コストを削減する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "説明可能性は信頼の構築、規制要件の遵守、問題の発見、デバッグのサポートに役立ちます。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q42",
+      "domain": 1,
+      "question": "ある金融会社がAIをローン承認に使用しています。規制当局は会社がすべての拒否決定を説明できることを要求しています。何を使用すべきですか？",
+      "options": {
+        "A": "より複雑な深層学習モデル",
+        "B": "説明可能なMLモデルまたは説明ツール（SHAPなど）",
+        "C": "より多くの訓練データ",
+        "D": "より高速な推論速度"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "規制が決定の説明を要求する場合、説明可能な方法（決定木、線形モデル）または説明ツール（SHAP、LIME）を使用する必要があります。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q43",
+      "domain": 5,
+      "question": "責任あるAIにおいて、「アカウンタビリティ（Accountability）」とは何を意味しますか？",
+      "options": {
+        "A": "モデルがより高速に実行される",
+        "B": "AIシステムの決定に対する責任の帰属を明確にする",
+        "C": "より少ない計算リソースを使用する",
+        "D": "モデルの出力がより正確になる"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "アカウンタビリティは、開発者、運営者、組織を含め、誰かがAIシステムの行動と決定に責任を持つことを保証します。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q44",
+      "domain": 1,
+      "question": "ある企業がAmazon BedrockアプリケーションがGDPR要件に準拠していることを確認したいと考えています。以下のうち、必要なものはどれですか？",
+      "options": {
+        "A": "最大のモデルを使用する",
+        "B": "データ最小化とユーザー同意を含むデータ保護措置を実施する",
+        "C": "無料利用枠を使用する",
+        "D": "すべてのAWSリージョンにデプロイする"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "GDPRはデータ保護、ユーザー同意、データ最小化、忘れられる権利、データポータビリティなどを要求します。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q45",
+      "domain": 1,
+      "question": "AWS Artifactの主な用途は何ですか？",
+      "options": {
+        "A": "訓練データを保存する",
+        "B": "AWSコンプライアンスレポートとセキュリティドキュメントを提供する",
+        "C": "MLモデルを訓練する",
+        "D": "モデルのパフォーマンスを監視する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "ArtifactはAWSコンプライアンスレポート（SOC、ISO、HIPAA、PCI DSSなど）とセキュリティドキュメントを取得するサービスです。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q46",
+      "domain": 1,
+      "question": "ある企業が特定のユーザーが特定のAmazon Bedrockモデルのみにアクセスできるように制限したいと考えています。何を使用すべきですか？",
+      "options": {
+        "A": "Amazon S3バケットポリシー",
+        "B": "AWS IAMポリシー",
+        "C": "Amazon VPC",
+        "D": "AWS CloudFormation"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "IAMポリシーは誰がどのAWSリソースにアクセスできるかを制御し、特定のBedrockモデルへのアクセス権限を細かく制御できます。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q47",
+      "domain": 1,
+      "question": "以下のうち、転送中のデータを最も保護するものはどれですか？",
+      "options": {
+        "A": "AWS KMS",
+        "B": "TLS/SSL暗号化",
+        "C": "Amazon S3暗号化",
+        "D": "AWS Secrets Manager"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "TLS/SSLは転送中のデータ（ネットワーク上を移動するデータ）を保護します。KMSとS3暗号化は静止データ用です。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q48",
+      "domain": 1,
+      "question": "ある企業が機密の顧客データを使用してMLモデルを訓練しています。データガバナンスのために、最初に何をすべきですか？",
+      "options": {
+        "A": "すぐに訓練を開始する",
+        "B": "データを分類し、機密レベルをラベル付けする",
+        "C": "最大のモデルを使用する",
+        "D": "本番環境にデプロイする"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "データガバナンスの最初のステップは、どのようなデータがあり、どの程度機密性が高いかを理解し、適切な保護措置を適用することです。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q49",
+      "domain": 1,
+      "question": "AI/ML環境におけるAmazon Inspectorの役割は何ですか？",
+      "options": {
+        "A": "モデルを訓練する",
+        "B": "ワークロードをスキャンしてセキュリティ脆弱性を発見する",
+        "C": "データを保存する",
+        "D": "レポートを生成する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "InspectorはEC2、Lambda、コンテナなどのワークロードを自動的にスキャンし、ソフトウェアの脆弱性と設定の問題を発見します。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q50",
+      "domain": 1,
+      "question": "ある企業がAIシステムがSOC 2標準に準拠していることを証明する必要があります。どのリソースを使用すべきですか？",
+      "options": {
+        "A": "Amazon SageMaker",
+        "B": "AWS Artifactでコンプライアンスレポートを取得",
+        "C": "Amazon Bedrock",
+        "D": "AWS Lambda"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "SOC 2レポートはAWS Artifactからダウンロードでき、AWSサービスがSOC 2セキュリティおよびプライバシー基準に準拠していることを証明します。",
+      "difficulty": "medium"
+    }
+  ]
+}

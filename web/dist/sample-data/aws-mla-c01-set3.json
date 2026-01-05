@@ -1,0 +1,643 @@
+{
+  "exam": {
+    "id": "aws-mla-c01-set3",
+    "name": "AWS MLA-C01 Practice Exam #3",
+    "code": "MLA-C01",
+    "provider": "AWS",
+    "language": "en",
+    "description": "AWS Certified Machine Learning Engineer - Associate Practice Exam - Set 3",
+    "totalQuestions": 40,
+    "passingScore": 70,
+    "examTime": 170,
+    "domains": [
+      {
+        "id": 1,
+        "name": "Data Preparation for ML",
+        "weight": 28
+      },
+      {
+        "id": 2,
+        "name": "ML Model Development",
+        "weight": 26
+      },
+      {
+        "id": 3,
+        "name": "ML Model Deployment and Orchestration",
+        "weight": 22
+      },
+      {
+        "id": 4,
+        "name": "ML Solution Monitoring and Maintenance",
+        "weight": 24
+      }
+    ],
+    "tags": [
+      "AWS",
+      "Machine Learning",
+      "SageMaker",
+      "Associate"
+    ]
+  },
+  "questions": [
+    {
+      "id": "q1",
+      "domain": 1,
+      "question": "A company needs to perform near real-time feature engineering on streaming data from IoT devices. Which AWS service combination should they use?",
+      "options": {
+        "A": "Amazon Kinesis Data Streams with AWS Lambda",
+        "B": "Amazon S3 with AWS Batch",
+        "C": "Amazon RDS with scheduled queries",
+        "D": "Amazon DynamoDB with triggers"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Kinesis Data Streams with Lambda enables real-time feature engineering:\n- Kinesis ingests streaming data\n- Lambda processes and transforms data in real-time\n- Features can be stored in Feature Store Online\n- Low latency processing\n\nS3 with Batch (B) is for batch processing. RDS (C) is not for streaming. DynamoDB triggers (D) are event-based.",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q2",
+      "domain": 1,
+      "question": "A data scientist needs to handle text data for an NLP model. Which preprocessing step converts text into numerical vectors?",
+      "options": {
+        "A": "Tokenization and embedding",
+        "B": "One-hot encoding",
+        "C": "Standard scaling",
+        "D": "Binning"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Tokenization and embedding convert text to numerical representations:\n- Tokenization splits text into tokens\n- Embeddings map tokens to dense vectors\n- Captures semantic relationships\n- Pre-trained embeddings like Word2Vec, BERT available\n\nOne-hot (B) is for categorical features. Standard scaling (C) normalizes numbers. Binning (D) discretizes continuous values.",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q3",
+      "domain": 1,
+      "question": "A machine learning team wants to use active learning to reduce labeling costs. What is the key principle of active learning?",
+      "options": {
+        "A": "Model selects the most informative samples for human labeling",
+        "B": "Model labels all data automatically",
+        "C": "All data is labeled randomly",
+        "D": "No labeling is required"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Active learning strategically selects samples for labeling:\n- Model identifies uncertain or informative samples\n- Humans label only selected samples\n- Reduces overall labeling effort\n- SageMaker Ground Truth supports active learning\n\nAutomatic labeling (B) may have errors. Random (C) is inefficient. No labeling (D) is unsupervised.",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q4",
+      "domain": 1,
+      "question": "A data engineer needs to ensure that features used for training match features used for inference. What is this problem called?",
+      "options": {
+        "A": "Training-serving skew",
+        "B": "Data leakage",
+        "C": "Concept drift",
+        "D": "Model decay"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Training-serving skew occurs when features differ between training and inference:\n- Different preprocessing logic\n- Different data sources\n- Feature Store helps prevent this\n- Use same transformation code\n\nData leakage (B) is information from test set. Concept drift (C) is changing patterns. Model decay (D) is performance degradation.",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q5",
+      "domain": 1,
+      "question": "A company needs to aggregate features from multiple tables for ML training. Which SQL operation is most commonly used?",
+      "options": {
+        "A": "JOIN operations to combine tables",
+        "B": "DELETE operations to remove data",
+        "C": "TRUNCATE operations to clear tables",
+        "D": "GRANT operations to set permissions"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "JOIN operations combine data from multiple tables:\n- Merge customer, transaction, product data\n- Create comprehensive feature sets\n- Support various join types (INNER, LEFT, etc.)\n- Foundation for feature engineering\n\nDELETE (B) removes data. TRUNCATE (C) clears tables. GRANT (D) manages permissions.",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q6",
+      "domain": 1,
+      "question": "A data scientist needs to encode ordinal categorical variables where order matters (e.g., low, medium, high). Which encoding should they use?",
+      "options": {
+        "A": "Integer encoding preserving order",
+        "B": "One-hot encoding",
+        "C": "Target encoding",
+        "D": "Binary encoding"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Integer encoding preserves ordinal relationships:\n- Assign ordered integers (low=1, medium=2, high=3)\n- Maintains natural ordering\n- Suitable for algorithms that use order\n- Simpler than one-hot for ordinal data\n\nOne-hot (B) loses order information. Target (C) uses target variable. Binary (D) is for high cardinality.",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q7",
+      "domain": 1,
+      "question": "A machine learning engineer needs to sample a large dataset while maintaining class distribution. Which sampling technique should they use?",
+      "options": {
+        "A": "Stratified sampling",
+        "B": "Random sampling",
+        "C": "Systematic sampling",
+        "D": "Cluster sampling"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Stratified sampling maintains class proportions:\n- Samples from each class proportionally\n- Preserves original class distribution\n- Important for imbalanced datasets\n- Ensures representative sample\n\nRandom (B) may not preserve proportions. Systematic (C) uses fixed intervals. Cluster (D) samples whole groups.",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q8",
+      "domain": 1,
+      "question": "A data scientist needs to create interaction features between two categorical variables. What technique should they use?",
+      "options": {
+        "A": "Feature crossing",
+        "B": "Feature scaling",
+        "C": "Feature selection",
+        "D": "Feature extraction"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Feature crossing creates interaction features:\n- Combine categorical features\n- Creates new feature representing combination\n- Example: city + device_type = city_device\n- Captures interaction effects\n\nScaling (B) normalizes values. Selection (C) chooses features. Extraction (D) reduces dimensions.",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q9",
+      "domain": 1,
+      "question": "A company stores raw data in S3 and needs to transform it for ML. They want a visual, no-code solution. Which service should they use?",
+      "options": {
+        "A": "AWS Glue DataBrew",
+        "B": "Amazon EMR",
+        "C": "AWS Lambda",
+        "D": "Amazon EC2"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "AWS Glue DataBrew is a no-code data preparation tool:\n- Visual interface for data transformation\n- 250+ built-in transformations\n- Data profiling capabilities\n- Outputs to S3 for ML training\n\nEMR (B) requires coding. Lambda (C) needs code. EC2 (D) requires setup and coding.",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q10",
+      "domain": 1,
+      "question": "A data engineer needs to detect and remove duplicate records from a dataset. Which approach is most effective for large datasets?",
+      "options": {
+        "A": "Use Spark or Glue with deduplication logic",
+        "B": "Manually review all records",
+        "C": "Keep all duplicates",
+        "D": "Random sampling"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Spark/Glue provides scalable deduplication:\n- Handle large datasets efficiently\n- Use groupBy and aggregate functions\n- Define deduplication keys\n- Automated and reproducible\n\nManual review (B) doesn't scale. Keeping duplicates (C) affects training. Random sampling (D) doesn't remove duplicates.",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q11",
+      "domain": 2,
+      "question": "A data scientist is building a recommendation system using collaborative filtering. Which SageMaker built-in algorithm is designed for this?",
+      "options": {
+        "A": "Factorization Machines",
+        "B": "XGBoost",
+        "C": "Linear Learner",
+        "D": "K-Means"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Factorization Machines are ideal for recommendation systems:\n- Captures user-item interactions\n- Handles sparse data well\n- Supports click prediction and recommendations\n- Optimized for SageMaker\n\nXGBoost (B) is gradient boosting. Linear Learner (C) is for linear models. K-Means (D) is for clustering.",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q12",
+      "domain": 2,
+      "question": "A machine learning team needs to fine-tune a pre-trained large language model for a specific domain. What is this process called?",
+      "options": {
+        "A": "Transfer learning / Fine-tuning",
+        "B": "Training from scratch",
+        "C": "Ensemble learning",
+        "D": "Reinforcement learning"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Transfer learning / Fine-tuning adapts pre-trained models:\n- Start with pre-trained model weights\n- Update weights with domain-specific data\n- Requires less data than training from scratch\n- Faster convergence\n\nFrom scratch (B) ignores pre-training. Ensemble (C) combines models. RL (D) uses rewards.",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q13",
+      "domain": 2,
+      "question": "A data scientist wants to use early stopping to prevent overfitting. What does early stopping monitor?",
+      "options": {
+        "A": "Validation loss or metric",
+        "B": "Training time",
+        "C": "Model size",
+        "D": "Number of features"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Early stopping monitors validation performance:\n- Stops when validation metric stops improving\n- Prevents overfitting to training data\n- Uses patience parameter for tolerance\n- Common in neural network training\n\nTraining time (B), model size (C), and features (D) don't indicate overfitting.",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q14",
+      "domain": 2,
+      "question": "A company wants to explain why their ML model makes specific predictions to customers. Which technique provides human-interpretable explanations?",
+      "options": {
+        "A": "SHAP (SHapley Additive exPlanations)",
+        "B": "Gradient descent",
+        "C": "Batch normalization",
+        "D": "Dropout"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "SHAP provides interpretable feature contributions:\n- Based on game theory\n- Shows contribution of each feature to prediction\n- Model-agnostic\n- SageMaker Clarify uses SHAP\n\nGradient descent (B) is optimization. Batch norm (C) normalizes activations. Dropout (D) prevents overfitting.",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q15",
+      "domain": 2,
+      "question": "A machine learning engineer needs to reduce model training time for a large neural network. Which technique parallelizes training across multiple GPUs?",
+      "options": {
+        "A": "Data parallelism",
+        "B": "Early stopping",
+        "C": "Dropout",
+        "D": "Feature selection"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Data parallelism distributes training across GPUs:\n- Split data batches across GPUs\n- Each GPU computes gradients\n- Gradients are synchronized\n- Near-linear speedup possible\n\nEarly stopping (B) stops training. Dropout (C) regularizes. Feature selection (D) reduces features.",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q16",
+      "domain": 2,
+      "question": "A data scientist needs to choose a loss function for a multi-class classification problem. Which loss function is appropriate?",
+      "options": {
+        "A": "Categorical cross-entropy",
+        "B": "Mean squared error",
+        "C": "Mean absolute error",
+        "D": "Huber loss"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Categorical cross-entropy is standard for multi-class classification:\n- Measures difference between predicted and actual class probabilities\n- Works with softmax activation\n- Penalizes confident wrong predictions heavily\n- Standard for neural network classification\n\nMSE (B), MAE (C), and Huber (D) are for regression.",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q17",
+      "domain": 2,
+      "question": "A machine learning team wants to combine predictions from multiple models to improve accuracy. What is this technique called?",
+      "options": {
+        "A": "Ensemble learning",
+        "B": "Transfer learning",
+        "C": "Active learning",
+        "D": "Reinforcement learning"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Ensemble learning combines multiple models:\n- Voting, averaging, or stacking predictions\n- Reduces variance and improves accuracy\n- Common methods: bagging, boosting\n- Often outperforms single models\n\nTransfer (B) uses pre-trained models. Active (C) selects samples for labeling. RL (D) uses rewards.",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q18",
+      "domain": 2,
+      "question": "A data scientist needs to handle sequences of variable length for an NLP model. Which neural network architecture is specifically designed for sequential data?",
+      "options": {
+        "A": "Recurrent Neural Network (RNN) / LSTM",
+        "B": "Convolutional Neural Network (CNN)",
+        "C": "Fully Connected Network",
+        "D": "Autoencoder"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "RNN/LSTM architectures handle sequential data:\n- Process sequences of variable length\n- Maintain memory of previous inputs\n- LSTM handles long-term dependencies\n- Standard for NLP before transformers\n\nCNN (B) is for images/local patterns. Fully connected (C) requires fixed input. Autoencoder (D) is for compression.",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q19",
+      "domain": 2,
+      "question": "A machine learning engineer needs to use L2 regularization to prevent overfitting. What does L2 regularization add to the loss function?",
+      "options": {
+        "A": "Sum of squared weights",
+        "B": "Sum of absolute weights",
+        "C": "Number of non-zero weights",
+        "D": "Training time"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "L2 regularization adds squared weight penalty:\n- Adds lambda * sum(weights^2) to loss\n- Encourages smaller weights\n- Prevents overfitting\n- Also called weight decay\n\nSum of absolute (B) is L1 regularization. Non-zero count (C) is L0. Training time (D) is not a penalty.",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q20",
+      "domain": 2,
+      "question": "A data scientist needs to evaluate a regression model. Which metric measures the average prediction error?",
+      "options": {
+        "A": "Mean Absolute Error (MAE)",
+        "B": "Accuracy",
+        "C": "Precision",
+        "D": "Recall"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "MAE measures average absolute prediction error:\n- Average of |predicted - actual|\n- Interpretable in same units as target\n- Robust to outliers\n- Common regression metric\n\nAccuracy (B), Precision (C), and Recall (D) are classification metrics.",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q21",
+      "domain": 3,
+      "question": "A company needs to deploy an ML model that processes requests in the background and notifies when complete. Which deployment pattern is appropriate?",
+      "options": {
+        "A": "Asynchronous inference",
+        "B": "Synchronous real-time inference",
+        "C": "Batch transform",
+        "D": "Edge deployment"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Asynchronous inference handles background processing:\n- Request returns immediately with job ID\n- Results delivered when complete\n- Supports large payloads\n- Good for variable latency workloads\n\nSynchronous (B) waits for response. Batch (C) is for scheduled jobs. Edge (D) runs on devices.",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q22",
+      "domain": 3,
+      "question": "A machine learning engineer wants to test infrastructure changes without deploying a new model. Which SageMaker feature allows this?",
+      "options": {
+        "A": "Inference component updates",
+        "B": "Model retraining",
+        "C": "Data preprocessing",
+        "D": "Feature engineering"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Inference components allow infrastructure updates independently:\n- Separate model from infrastructure configuration\n- Update instance types without model changes\n- Scale components independently\n- Reduce deployment complexity\n\nRetraining (B) changes the model. Preprocessing (C) and feature engineering (D) are data preparation.",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q23",
+      "domain": 3,
+      "question": "A company wants to ensure their ML pipeline runs automatically when code is pushed to the repository. Which integration enables this?",
+      "options": {
+        "A": "CodePipeline with SageMaker Pipeline trigger",
+        "B": "Manual pipeline execution",
+        "C": "Scheduled CloudWatch events only",
+        "D": "Direct S3 upload"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "CodePipeline integration enables CI/CD for ML:\n- Trigger on code commits\n- Automatically run SageMaker Pipeline\n- Include testing and validation stages\n- End-to-end automation\n\nManual execution (B) requires human action. Scheduled (C) is time-based. S3 upload (D) is data only.",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q24",
+      "domain": 3,
+      "question": "A machine learning team needs to deploy a model that serves different customers with different model configurations. Which approach is best?",
+      "options": {
+        "A": "Multi-Model Endpoints with customer-specific models",
+        "B": "Single model for all customers",
+        "C": "Manual model switching",
+        "D": "Different AWS accounts per customer"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Multi-Model Endpoints support customer-specific models:\n- Host multiple model variants\n- Route requests to appropriate model\n- Shared infrastructure for cost savings\n- Dynamic model loading\n\nSingle model (B) lacks customization. Manual switching (C) is slow. Separate accounts (D) is complex.",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q25",
+      "domain": 3,
+      "question": "A company needs to run inference jobs on a schedule, processing data accumulated overnight. Which SageMaker capability is best?",
+      "options": {
+        "A": "SageMaker Batch Transform with EventBridge scheduling",
+        "B": "Real-time endpoints",
+        "C": "Serverless inference",
+        "D": "Asynchronous inference"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Batch Transform with scheduling is ideal for periodic batch jobs:\n- EventBridge triggers at scheduled times\n- Batch Transform processes accumulated data\n- No infrastructure running between jobs\n- Cost-effective for periodic workloads\n\nReal-time (B) is for immediate responses. Serverless (C) is for variable load. Async (D) is request-based.",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q26",
+      "domain": 3,
+      "question": "A machine learning engineer needs to implement model versioning for production deployments. Which service provides this capability?",
+      "options": {
+        "A": "SageMaker Model Registry",
+        "B": "Amazon S3",
+        "C": "AWS CodeCommit",
+        "D": "Amazon ECR"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Model Registry provides comprehensive model versioning:\n- Catalog model versions\n- Track metadata and metrics\n- Manage approval workflows\n- Link to artifacts and lineage\n\nS3 (B) stores files. CodeCommit (C) versions code. ECR (D) stores container images.",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q27",
+      "domain": 3,
+      "question": "A company wants to reduce cold start latency for their serverless inference endpoint. What configuration helps with this?",
+      "options": {
+        "A": "Provisioned concurrency",
+        "B": "Larger memory allocation only",
+        "C": "Smaller model size only",
+        "D": "VPC configuration"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Provisioned concurrency keeps instances warm:\n- Pre-initialized execution environments\n- Eliminates cold start latency\n- Guaranteed capacity\n- Higher cost but consistent performance\n\nMemory (B) affects execution speed. Model size (C) affects load time. VPC (D) may add latency.",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q28",
+      "domain": 3,
+      "question": "A machine learning team needs to log all inference requests and responses for debugging. Which SageMaker feature provides this?",
+      "options": {
+        "A": "Data capture for endpoints",
+        "B": "CloudWatch Logs only",
+        "C": "S3 access logs",
+        "D": "CloudTrail"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Data capture logs inference request/response data:\n- Captures input and output data\n- Stores to S3 for analysis\n- Used for monitoring and debugging\n- Supports Model Monitor integration\n\nCloudWatch (B) logs are operational. S3 logs (C) track access. CloudTrail (D) logs API calls.",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q29",
+      "domain": 3,
+      "question": "A company needs to deploy an ML model to AWS Outposts in their on-premises data center. Which service enables this?",
+      "options": {
+        "A": "SageMaker Edge Manager",
+        "B": "SageMaker Real-Time Inference only",
+        "C": "AWS Lambda",
+        "D": "Amazon EC2"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "SageMaker Edge Manager supports edge and on-premises deployment:\n- Deploy models to Outposts\n- Manage edge deployments centrally\n- Monitor edge model performance\n- Works with IoT Greengrass\n\nReal-time inference (B) is cloud-based. Lambda (C) is cloud serverless. EC2 (D) requires manual management.",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q30",
+      "domain": 3,
+      "question": "A machine learning engineer needs to implement rollback capability for model deployments. Which approach is best?",
+      "options": {
+        "A": "Use Model Registry versions with blue-green deployment",
+        "B": "Delete old models after deployment",
+        "C": "Manual model file management",
+        "D": "Keep only latest model"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Model Registry with blue-green enables safe rollbacks:\n- Keep previous model versions\n- Blue-green allows instant switching\n- Rollback to previous version if issues\n- Automated through deployment pipelines\n\nDeleting old models (B) prevents rollback. Manual (C) is error-prone. Latest only (D) has no history.",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q31",
+      "domain": 4,
+      "question": "A machine learning team notices their model performs well on average but poorly for specific customer segments. What type of analysis should they perform?",
+      "options": {
+        "A": "Slice-based evaluation / Fairness analysis",
+        "B": "Overall accuracy check",
+        "C": "Training data review only",
+        "D": "Infrastructure monitoring"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Slice-based evaluation reveals segment-specific issues:\n- Analyze performance across data subgroups\n- Identify underperforming segments\n- Check for fairness issues\n- SageMaker Clarify supports this\n\nOverall accuracy (B) hides segment issues. Training data (C) is one aspect. Infrastructure (D) monitors resources.",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q32",
+      "domain": 4,
+      "question": "A company's ML model is making predictions based on a feature that will be deprecated next month. What should they do?",
+      "options": {
+        "A": "Retrain model without the feature before deprecation",
+        "B": "Wait for the feature to be deprecated",
+        "C": "Ignore the deprecation",
+        "D": "Keep using the old model"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Proactive retraining prevents model failure:\n- Train new model without deprecated feature\n- Validate performance before deployment\n- Deploy before feature is removed\n- Avoid production failures\n\nWaiting (B) causes failure. Ignoring (C) risks errors. Old model (D) will break.",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q33",
+      "domain": 4,
+      "question": "A machine learning engineer needs to track the end-to-end journey of a model from training to deployment. Which concept describes this?",
+      "options": {
+        "A": "Model lineage",
+        "B": "Model accuracy",
+        "C": "Model latency",
+        "D": "Model size"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Model lineage tracks the complete model journey:\n- Data sources used for training\n- Code and parameters\n- Training job details\n- Deployment history\n\nAccuracy (B) measures performance. Latency (C) measures speed. Size (D) measures storage.",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q34",
+      "domain": 4,
+      "question": "A company needs to ensure their ML operations follow best practices. What framework provides guidance for ML systems?",
+      "options": {
+        "A": "AWS Well-Architected Framework Machine Learning Lens",
+        "B": "General AWS documentation only",
+        "C": "Third-party frameworks only",
+        "D": "Internal guidelines only"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "ML Lens provides structured ML best practices:\n- Six pillars applied to ML workloads\n- Design principles for ML systems\n- Best practices for security, reliability\n- Review questions and guidance\n\nGeneral docs (B) lack ML focus. Third-party (C) may not align with AWS. Internal (D) may be incomplete.",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q35",
+      "domain": 4,
+      "question": "A deployed model's predictions are becoming increasingly biased against certain groups. What monitoring would detect this?",
+      "options": {
+        "A": "Bias drift monitoring with SageMaker Clarify",
+        "B": "CPU utilization monitoring",
+        "C": "Network throughput monitoring",
+        "D": "Storage capacity monitoring"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Bias drift monitoring detects fairness changes:\n- Continuous monitoring for bias metrics\n- Compares current to baseline fairness\n- Alerts on significant drift\n- Supports compliance requirements\n\nCPU (B), network (C), and storage (D) are infrastructure metrics.",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q36",
+      "domain": 4,
+      "question": "A machine learning team needs to optimize their model serving costs while maintaining performance SLAs. What should they analyze?",
+      "options": {
+        "A": "Right-sizing instances based on utilization metrics",
+        "B": "Always use largest instances",
+        "C": "Always use smallest instances",
+        "D": "Ignore cost considerations"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Right-sizing optimizes cost-performance balance:\n- Analyze CPU, memory, GPU utilization\n- Match instance size to actual needs\n- Consider auto-scaling policies\n- Use SageMaker inference recommendations\n\nLargest (B) wastes money. Smallest (C) may hurt performance. Ignoring costs (D) is wasteful.",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q37",
+      "domain": 4,
+      "question": "A company wants to implement human review for low-confidence model predictions. Which approach supports this?",
+      "options": {
+        "A": "SageMaker Augmented AI (A2I) for human review workflows",
+        "B": "Automatic approval of all predictions",
+        "C": "Reject all low-confidence predictions",
+        "D": "Retrain model for every prediction"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Augmented AI enables human-in-the-loop workflows:\n- Route low-confidence predictions to humans\n- Define confidence thresholds\n- Integrate with Amazon Mechanical Turk or private workforce\n- Improve model quality over time\n\nAuto-approve (B) ignores uncertainty. Reject all (C) loses predictions. Retrain (D) is impractical.",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q38",
+      "domain": 4,
+      "question": "A machine learning engineer needs to document model behavior for regulatory compliance. What should they include?",
+      "options": {
+        "A": "Model card with intended use, limitations, and performance metrics",
+        "B": "Only the model file",
+        "C": "Only training data",
+        "D": "Only deployment scripts"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Model cards provide comprehensive documentation:\n- Intended use cases\n- Limitations and ethical considerations\n- Performance metrics across segments\n- Training data characteristics\n\nModel file (B), training data (C), and scripts (D) alone are insufficient for compliance.",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q39",
+      "domain": 4,
+      "question": "A company discovers their model performs differently in production than in testing. What is the likely cause?",
+      "options": {
+        "A": "Distribution shift between test and production data",
+        "B": "Same data in both environments",
+        "C": "Identical infrastructure",
+        "D": "Same preprocessing"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Distribution shift causes production-test differences:\n- Production data may differ from test data\n- Concept drift or data drift\n- Requires ongoing monitoring\n- Model Monitor helps detect\n\nSame data (B), infrastructure (C), and preprocessing (D) would give similar results.",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q40",
+      "domain": 4,
+      "question": "A machine learning team wants to ensure their model retraining pipeline is triggered only when data quality meets standards. Which pattern should they implement?",
+      "options": {
+        "A": "Data quality gates in the pipeline",
+        "B": "Retrain regardless of data quality",
+        "C": "Manual data quality checks only",
+        "D": "Skip data quality validation"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Data quality gates ensure training on valid data:\n- Check data quality before training\n- Block pipeline if quality fails\n- Use AWS Glue Data Quality or custom checks\n- Prevent training on bad data\n\nRetraining regardless (B) may use bad data. Manual only (C) doesn't scale. Skipping (D) risks poor models.",
+      "difficulty": "medium"
+    }
+  ]
+}

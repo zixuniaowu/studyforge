@@ -1,0 +1,672 @@
+{
+  "exam": {
+    "id": "aws-clf-c02-set2",
+    "name": "AWS CLF-C02 模拟考试 #2",
+    "code": "CLF-C02",
+    "provider": "AWS",
+    "language": "zh-CN",
+    "description": "AWS云从业者认证考试模拟题 - 第2套",
+    "totalQuestions": 50,
+    "passingScore": 70,
+    "examTime": 90,
+    "domains": [
+      {"id": 1, "name": "Cloud Concepts", "weight": 24},
+      {"id": 2, "name": "Security and Compliance", "weight": 30},
+      {"id": 3, "name": "Cloud Technology and Services", "weight": 34},
+      {"id": 4, "name": "Billing, Pricing, and Support", "weight": 12}
+    ],
+    "tags": ["AWS", "Cloud", "基础", "认证考试"]
+  },
+  "questions": [
+    {
+      "id": "q1",
+      "domain": 1,
+      "question": "与传统本地数据中心相比，AWS云计算的主要财务优势是什么？",
+      "options": {
+        "A": "需要签订长期合同",
+        "B": "将资本支出转换为运营支出",
+        "C": "需要预先购买硬件",
+        "D": "固定的月度费用结构"
+      },
+      "answer": "B",
+      "explanation": "AWS云计算允许企业将传统的资本支出（CapEx）转换为运营支出（OpEx），无需大量前期投资即可开始使用IT资源，按使用量付费。"
+    },
+    {
+      "id": "q2",
+      "domain": 1,
+      "question": "AWS全球基础设施中，可用区（Availability Zone）之间的关系是什么？",
+      "options": {
+        "A": "可用区之间完全相同且共享故障域",
+        "B": "可用区在同一区域内物理隔离但通过低延迟链路连接",
+        "C": "每个区域只有一个可用区",
+        "D": "可用区之间无法通信"
+      },
+      "answer": "B",
+      "explanation": "一个AWS区域内包含多个可用区，每个可用区由一个或多个独立的数据中心组成，相互物理隔离但通过高带宽、低延迟的网络连接。"
+    },
+    {
+      "id": "q3",
+      "domain": 1,
+      "question": "以下哪个是AWS Well-Architected Framework的支柱之一？",
+      "options": {
+        "A": "速度优化",
+        "B": "可持续性",
+        "C": "扩展性",
+        "D": "自动化"
+      },
+      "answer": "B",
+      "explanation": "AWS Well-Architected Framework包含六个支柱：卓越运营、安全性、可靠性、性能效率、成本优化和可持续性。可持续性是2021年新增的第六个支柱。"
+    },
+    {
+      "id": "q4",
+      "domain": 1,
+      "question": "在AWS责任共担模型中，以下哪项属于AWS的责任？",
+      "options": {
+        "A": "客户数据加密",
+        "B": "操作系统配置",
+        "C": "物理数据中心的安全",
+        "D": "应用程序防火墙规则"
+      },
+      "answer": "C",
+      "explanation": "在责任共担模型中，AWS负责\"云的安全\"，包括物理基础设施、全球网络、硬件和AWS托管服务的软件。客户负责\"云中的安全\"。"
+    },
+    {
+      "id": "q5",
+      "domain": 1,
+      "question": "什么是AWS Local Zones的主要用途？",
+      "options": {
+        "A": "提供免费的计算资源",
+        "B": "将AWS服务扩展到更靠近最终用户的位置以降低延迟",
+        "C": "替代标准AWS区域",
+        "D": "专门用于数据存储"
+      },
+      "answer": "B",
+      "explanation": "AWS Local Zones是一种基础设施部署类型，将计算、存储和数据库等AWS服务放置在靠近大型人口中心的位置，以实现个位数毫秒级延迟。"
+    },
+    {
+      "id": "q6",
+      "domain": 1,
+      "question": "云计算的\"广泛网络访问\"特征意味着什么？",
+      "options": {
+        "A": "只能通过专有网络访问服务",
+        "B": "服务可通过网络使用标准机制访问",
+        "C": "必须使用VPN连接",
+        "D": "需要专用硬件设备"
+      },
+      "answer": "B",
+      "explanation": "广泛网络访问是云计算的基本特征之一，意味着云服务可以通过网络使用标准机制访问，支持各种客户端平台如手机、平板电脑和笔记本电脑。"
+    },
+    {
+      "id": "q7",
+      "domain": 2,
+      "question": "哪个AWS服务可以自动评估资源配置是否符合安全最佳实践？",
+      "options": {
+        "A": "Amazon CloudWatch",
+        "B": "AWS Config",
+        "C": "Amazon VPC",
+        "D": "AWS CloudFormation"
+      },
+      "answer": "B",
+      "explanation": "AWS Config是一项服务，可以评估、审计和评估AWS资源的配置。它可以持续监控和记录资源配置，并允许自动化评估是否符合所需配置。"
+    },
+    {
+      "id": "q8",
+      "domain": 2,
+      "question": "IAM角色（Role）与IAM用户（User）的主要区别是什么？",
+      "options": {
+        "A": "角色只能由AWS服务使用",
+        "B": "角色没有长期凭证，通过临时凭证进行身份验证",
+        "C": "用户比角色拥有更多权限",
+        "D": "角色不能附加策略"
+      },
+      "answer": "B",
+      "explanation": "IAM角色是一种AWS身份，没有与之关联的长期密码或访问密钥。角色使用临时安全凭证，可以被用户、应用程序或AWS服务担任。"
+    },
+    {
+      "id": "q9",
+      "domain": 2,
+      "question": "AWS KMS（Key Management Service）的主要功能是什么？",
+      "options": {
+        "A": "管理网络流量",
+        "B": "创建和管理加密密钥",
+        "C": "监控应用程序性能",
+        "D": "自动扩展资源"
+      },
+      "answer": "B",
+      "explanation": "AWS KMS是一项托管服务，可轻松创建和控制用于加密数据的加密密钥。KMS与其他AWS服务集成，可以加密存储在这些服务中的数据。"
+    },
+    {
+      "id": "q10",
+      "domain": 2,
+      "question": "AWS账户根用户应该如何保护？",
+      "options": {
+        "A": "与多个管理员共享凭证",
+        "B": "启用MFA并避免日常使用",
+        "C": "禁用所有安全功能以方便访问",
+        "D": "定期更改账户邮箱"
+      },
+      "answer": "B",
+      "explanation": "根用户具有对账户的完全访问权限。最佳实践是启用MFA保护根用户，不要使用根用户进行日常任务，而是创建具有适当权限的IAM用户。"
+    },
+    {
+      "id": "q11",
+      "domain": 2,
+      "question": "Amazon Inspector用于什么目的？",
+      "options": {
+        "A": "检查S3存储桶权限",
+        "B": "扫描工作负载中的软件漏洞",
+        "C": "管理DNS记录",
+        "D": "优化数据库性能"
+      },
+      "answer": "B",
+      "explanation": "Amazon Inspector是一种自动化漏洞管理服务，持续扫描AWS工作负载中的软件漏洞和意外网络暴露。"
+    },
+    {
+      "id": "q12",
+      "domain": 2,
+      "question": "什么是IAM权限边界（Permission Boundary）？",
+      "options": {
+        "A": "物理安全屏障",
+        "B": "限制IAM实体最大权限的高级功能",
+        "C": "网络安全组规则",
+        "D": "数据加密标准"
+      },
+      "answer": "B",
+      "explanation": "权限边界是一项高级功能，用于设置IAM实体（用户或角色）可以拥有的最大权限。即使策略授予更多权限，权限边界也会限制有效权限。"
+    },
+    {
+      "id": "q13",
+      "domain": 2,
+      "question": "AWS Security Hub提供什么功能？",
+      "options": {
+        "A": "物理安全监控",
+        "B": "集中查看安全状况并自动化安全检查",
+        "C": "用户身份验证",
+        "D": "网络速度测试"
+      },
+      "answer": "B",
+      "explanation": "AWS Security Hub是一项云安全态势管理服务，可自动执行安全最佳实践检查，聚合安全警报，并提供对安全状态的集中视图。"
+    },
+    {
+      "id": "q14",
+      "domain": 2,
+      "question": "在VPC中，什么是Internet网关（Internet Gateway）的作用？",
+      "options": {
+        "A": "加密VPC内的数据",
+        "B": "允许VPC与Internet之间的通信",
+        "C": "监控网络流量",
+        "D": "存储静态网站文件"
+      },
+      "answer": "B",
+      "explanation": "Internet网关是一种水平扩展、冗余且高度可用的VPC组件，允许VPC与Internet之间进行通信。它是公共子网连接Internet的必要组件。"
+    },
+    {
+      "id": "q15",
+      "domain": 2,
+      "question": "AWS Certificate Manager的主要用途是什么？",
+      "options": {
+        "A": "管理用户认证",
+        "B": "预置、管理和部署SSL/TLS证书",
+        "C": "创建虚拟服务器",
+        "D": "配置DNS设置"
+      },
+      "answer": "B",
+      "explanation": "AWS Certificate Manager (ACM) 是一项服务，可以轻松预置、管理和部署公有和私有SSL/TLS证书，用于保护网站和应用程序。"
+    },
+    {
+      "id": "q16",
+      "domain": 3,
+      "question": "Amazon EC2实例类型中，\"m5.large\"表示什么？",
+      "options": {
+        "A": "m5是实例族，large是实例大小",
+        "B": "m5是存储容量，large是网络带宽",
+        "C": "m5是区域代码，large是可用区",
+        "D": "m5是操作系统，large是内存大小"
+      },
+      "answer": "A",
+      "explanation": "EC2实例类型格式为[实例族][代数].[大小]。m5.large中，m表示通用型实例族，5是代数，large表示实例大小（CPU、内存配置）。"
+    },
+    {
+      "id": "q17",
+      "domain": 3,
+      "question": "Amazon S3的对象存储最大单个对象大小是多少？",
+      "options": {
+        "A": "5 GB",
+        "B": "5 TB",
+        "C": "50 TB",
+        "D": "无限制"
+      },
+      "answer": "B",
+      "explanation": "Amazon S3中单个对象的最大大小为5TB。对于大于5GB的对象，必须使用分段上传功能。"
+    },
+    {
+      "id": "q18",
+      "domain": 3,
+      "question": "哪个AWS服务可以用于自动构建、测试和部署应用程序？",
+      "options": {
+        "A": "AWS Lambda",
+        "B": "AWS CodePipeline",
+        "C": "Amazon EC2",
+        "D": "Amazon RDS"
+      },
+      "answer": "B",
+      "explanation": "AWS CodePipeline是一项完全托管的持续交付服务，可帮助自动化发布管道，实现快速、可靠的应用程序和基础设施更新。"
+    },
+    {
+      "id": "q19",
+      "domain": 3,
+      "question": "Amazon Aurora相比传统MySQL的优势是什么？",
+      "options": {
+        "A": "仅支持更少的数据类型",
+        "B": "性能提升高达5倍且具有更高可用性",
+        "C": "只能在单个可用区运行",
+        "D": "不支持自动备份"
+      },
+      "answer": "B",
+      "explanation": "Amazon Aurora是一种与MySQL和PostgreSQL兼容的关系数据库，其性能和可用性可与商业数据库相媲美，成本只有商业数据库的十分之一。"
+    },
+    {
+      "id": "q20",
+      "domain": 3,
+      "question": "AWS Fargate的主要特点是什么？",
+      "options": {
+        "A": "需要管理EC2实例",
+        "B": "无服务器容器计算引擎",
+        "C": "仅用于机器学习",
+        "D": "专门用于数据存储"
+      },
+      "answer": "B",
+      "explanation": "AWS Fargate是一种无服务器容器计算引擎，可与Amazon ECS和EKS配合使用，无需预置或管理服务器即可运行容器。"
+    },
+    {
+      "id": "q21",
+      "domain": 3,
+      "question": "Amazon EBS卷的特点是什么？",
+      "options": {
+        "A": "只能附加到一个EC2实例，持久化块存储",
+        "B": "对象存储服务",
+        "C": "共享文件系统",
+        "D": "临时存储，实例停止后数据丢失"
+      },
+      "answer": "A",
+      "explanation": "Amazon EBS提供持久化块存储卷，可以附加到EC2实例。数据在实例停止后仍然保留。EBS卷通常只能附加到同一可用区的一个实例。"
+    },
+    {
+      "id": "q22",
+      "domain": 3,
+      "question": "Amazon CloudWatch的主要功能是什么？",
+      "options": {
+        "A": "管理用户权限",
+        "B": "监控AWS资源和应用程序",
+        "C": "分发静态内容",
+        "D": "管理数据库"
+      },
+      "answer": "B",
+      "explanation": "Amazon CloudWatch是一项监控和可观测性服务，可收集监控和操作数据（指标、日志、事件），提供对AWS资源、应用程序的统一视图。"
+    },
+    {
+      "id": "q23",
+      "domain": 3,
+      "question": "AWS Step Functions用于什么？",
+      "options": {
+        "A": "存储静态文件",
+        "B": "编排分布式应用程序和微服务",
+        "C": "管理DNS记录",
+        "D": "加密数据"
+      },
+      "answer": "B",
+      "explanation": "AWS Step Functions是一项无服务器编排服务，可让您将AWS Lambda函数和其他AWS服务组合成业务关键型应用程序的可视化工作流。"
+    },
+    {
+      "id": "q24",
+      "domain": 3,
+      "question": "Amazon EFS与Amazon EBS的主要区别是什么？",
+      "options": {
+        "A": "EFS是块存储，EBS是文件存储",
+        "B": "EFS可被多个EC2实例同时访问，EBS通常只能被一个实例访问",
+        "C": "EBS支持跨区域复制，EFS不支持",
+        "D": "EFS只能存储对象"
+      },
+      "answer": "B",
+      "explanation": "Amazon EFS是完全托管的弹性文件系统，可以被多个EC2实例同时挂载和访问。EBS卷通常只能附加到单个EC2实例。"
+    },
+    {
+      "id": "q25",
+      "domain": 3,
+      "question": "AWS Global Accelerator的作用是什么？",
+      "options": {
+        "A": "加速数据库查询",
+        "B": "通过AWS全球网络提高应用程序可用性和性能",
+        "C": "压缩存储数据",
+        "D": "管理DNS解析"
+      },
+      "answer": "B",
+      "explanation": "AWS Global Accelerator是一项网络服务，通过AWS全球网络将用户流量发送到AWS区域中的应用程序端点，提高互联网应用程序的可用性和性能。"
+    },
+    {
+      "id": "q26",
+      "domain": 3,
+      "question": "Amazon API Gateway的主要用途是什么？",
+      "options": {
+        "A": "存储API代码",
+        "B": "创建、发布和管理API",
+        "C": "监控网络流量",
+        "D": "管理数据库连接"
+      },
+      "answer": "B",
+      "explanation": "Amazon API Gateway是一项完全托管的服务，可让开发人员轻松创建、发布、维护、监控和保护任意规模的API。"
+    },
+    {
+      "id": "q27",
+      "domain": 3,
+      "question": "哪个服务适合用于实时数据湖分析？",
+      "options": {
+        "A": "Amazon RDS",
+        "B": "Amazon Athena",
+        "C": "Amazon DynamoDB",
+        "D": "Amazon ElastiCache"
+      },
+      "answer": "B",
+      "explanation": "Amazon Athena是一种交互式查询服务，可以使用标准SQL直接分析Amazon S3中的数据，无需加载数据或管理基础设施，非常适合数据湖分析。"
+    },
+    {
+      "id": "q28",
+      "domain": 3,
+      "question": "AWS Glue的主要功能是什么？",
+      "options": {
+        "A": "虚拟机管理",
+        "B": "无服务器数据集成服务（ETL）",
+        "C": "网络安全",
+        "D": "用户认证"
+      },
+      "answer": "B",
+      "explanation": "AWS Glue是一项完全托管的无服务器数据集成服务，可以轻松发现、准备和组合数据以进行分析、机器学习和应用程序开发。"
+    },
+    {
+      "id": "q29",
+      "domain": 3,
+      "question": "Amazon SageMaker的主要用途是什么？",
+      "options": {
+        "A": "管理容器",
+        "B": "构建、训练和部署机器学习模型",
+        "C": "存储对象数据",
+        "D": "监控网络流量"
+      },
+      "answer": "B",
+      "explanation": "Amazon SageMaker是一项完全托管的机器学习服务，使开发人员和数据科学家能够快速、轻松地构建、训练和部署机器学习模型。"
+    },
+    {
+      "id": "q30",
+      "domain": 3,
+      "question": "AWS Transit Gateway解决什么问题？",
+      "options": {
+        "A": "数据加密",
+        "B": "简化多个VPC和本地网络之间的连接",
+        "C": "自动扩展EC2实例",
+        "D": "管理数据库"
+      },
+      "answer": "B",
+      "explanation": "AWS Transit Gateway是一项服务，可让您将多个VPC和本地网络连接到单个网关，简化网络架构并集中管理网络路由。"
+    },
+    {
+      "id": "q31",
+      "domain": 3,
+      "question": "Amazon DocumentDB与哪个数据库兼容？",
+      "options": {
+        "A": "MySQL",
+        "B": "MongoDB",
+        "C": "PostgreSQL",
+        "D": "Oracle"
+      },
+      "answer": "B",
+      "explanation": "Amazon DocumentDB是一种快速、可扩展、高度可用的完全托管的文档数据库服务，支持MongoDB工作负载，与MongoDB兼容。"
+    },
+    {
+      "id": "q32",
+      "domain": 3,
+      "question": "AWS Wavelength的主要用途是什么？",
+      "options": {
+        "A": "音频处理",
+        "B": "将AWS计算和存储嵌入5G网络边缘",
+        "C": "视频会议",
+        "D": "文档存储"
+      },
+      "answer": "B",
+      "explanation": "AWS Wavelength将AWS计算和存储服务嵌入到电信运营商的5G网络边缘，为移动设备和用户提供超低延迟应用程序。"
+    },
+    {
+      "id": "q33",
+      "domain": 4,
+      "question": "AWS预留实例（Reserved Instances）相比按需实例最多可节省多少费用？",
+      "options": {
+        "A": "最高30%",
+        "B": "最高50%",
+        "C": "最高72%",
+        "D": "最高90%"
+      },
+      "answer": "C",
+      "explanation": "与按需实例定价相比，预留实例可提供高达72%的折扣。折扣幅度取决于预付方式和合同期限（1年或3年）。"
+    },
+    {
+      "id": "q34",
+      "domain": 4,
+      "question": "AWS Savings Plans的灵活性体现在哪里？",
+      "options": {
+        "A": "只适用于EC2",
+        "B": "可跨实例类型、区域和计算服务使用",
+        "C": "需要选择特定的实例类型",
+        "D": "只能在一个区域使用"
+      },
+      "answer": "B",
+      "explanation": "Compute Savings Plans提供最大灵活性，可自动应用于任何EC2实例（不考虑区域、实例类型、操作系统），以及Fargate和Lambda使用。"
+    },
+    {
+      "id": "q35",
+      "domain": 4,
+      "question": "哪个AWS服务可以帮助识别未使用或利用率低的资源？",
+      "options": {
+        "A": "AWS CloudTrail",
+        "B": "AWS Trusted Advisor",
+        "C": "Amazon Inspector",
+        "D": "AWS Config"
+      },
+      "answer": "B",
+      "explanation": "AWS Trusted Advisor检查您的AWS环境，并提供成本优化、性能、安全性和容错建议，包括识别空闲和利用率低的资源。"
+    },
+    {
+      "id": "q36",
+      "domain": 4,
+      "question": "AWS数据传输定价中，以下哪项是免费的？",
+      "options": {
+        "A": "从EC2传输数据到Internet",
+        "B": "从Internet传入AWS的数据",
+        "C": "跨区域数据传输",
+        "D": "从S3传输到CloudFront"
+      },
+      "answer": "B",
+      "explanation": "从Internet传入AWS的数据通常是免费的。而从AWS传出到Internet的数据会产生费用，费用因区域而异。"
+    },
+    {
+      "id": "q37",
+      "domain": 4,
+      "question": "什么是AWS Enterprise Support的主要特点？",
+      "options": {
+        "A": "仅提供电子邮件支持",
+        "B": "提供技术客户经理（TAM）",
+        "C": "响应时间超过24小时",
+        "D": "不包括架构指导"
+      },
+      "answer": "B",
+      "explanation": "Enterprise Support提供指定的技术客户经理（TAM），为您提供主动指导，帮助优化AWS环境、规划活动并获得战略建议。"
+    },
+    {
+      "id": "q38",
+      "domain": 4,
+      "question": "AWS Cost Anomaly Detection的功能是什么？",
+      "options": {
+        "A": "预测未来容量需求",
+        "B": "使用机器学习检测异常的云支出",
+        "C": "自动优化资源配置",
+        "D": "管理预留实例"
+      },
+      "answer": "B",
+      "explanation": "AWS Cost Anomaly Detection使用机器学习来持续监控您的成本和使用情况，检测异常支出，并在发现问题时发送警报。"
+    },
+    {
+      "id": "q39",
+      "domain": 4,
+      "question": "使用AWS的\"统一计费\"功能有什么好处？",
+      "options": {
+        "A": "每个账户单独计费",
+        "B": "合并账单可能获得批量折扣",
+        "C": "增加管理复杂性",
+        "D": "降低安全性"
+      },
+      "answer": "B",
+      "explanation": "通过AWS Organizations的统一计费功能，多个账户的使用量可以合并计算，从而可能获得批量定价折扣，如S3和EC2的批量折扣。"
+    },
+    {
+      "id": "q40",
+      "domain": 4,
+      "question": "S3 Glacier Deep Archive的主要特点是什么？",
+      "options": {
+        "A": "最快的检索速度",
+        "B": "最低成本的长期归档存储",
+        "C": "实时访问数据",
+        "D": "仅用于数据库备份"
+      },
+      "answer": "B",
+      "explanation": "S3 Glacier Deep Archive是S3最低成本的存储类，专为需要保留7-10年或更长时间的数据归档设计，检索时间为12小时内。"
+    },
+    {
+      "id": "q41",
+      "domain": 1,
+      "question": "以下哪项描述了\"规模经济\"如何使AWS客户受益？",
+      "options": {
+        "A": "客户必须购买更多资源才能获得折扣",
+        "B": "AWS大规模运营降低了成本并将节省传递给客户",
+        "C": "客户需要签订长期合同",
+        "D": "价格永远不会改变"
+      },
+      "answer": "B",
+      "explanation": "由于AWS服务于数百万客户，其大规模运营带来的规模经济效益使AWS能够持续降低价格，这些节省会传递给所有客户。"
+    },
+    {
+      "id": "q42",
+      "domain": 1,
+      "question": "AWS Outposts是什么？",
+      "options": {
+        "A": "AWS的数据中心冷却系统",
+        "B": "将AWS基础设施和服务扩展到客户本地的服务",
+        "C": "一种新型存储设备",
+        "D": "网络安全工具"
+      },
+      "answer": "B",
+      "explanation": "AWS Outposts是一种完全托管的服务，将AWS基础设施、服务、API和工具扩展到几乎任何本地或边缘位置，实现真正的混合云体验。"
+    },
+    {
+      "id": "q43",
+      "domain": 2,
+      "question": "什么是最小权限原则？",
+      "options": {
+        "A": "给予用户最大可能的权限",
+        "B": "仅授予完成任务所需的最小权限",
+        "C": "不授予任何权限",
+        "D": "所有用户共享相同的权限"
+      },
+      "answer": "B",
+      "explanation": "最小权限原则是安全最佳实践，意味着只授予用户或服务完成其工作所需的确切权限，不多也不少，以减少潜在的安全风险。"
+    },
+    {
+      "id": "q44",
+      "domain": 2,
+      "question": "AWS Organizations中的服务控制策略（SCP）的作用是什么？",
+      "options": {
+        "A": "自动创建AWS资源",
+        "B": "定义组织成员账户的最大可用权限",
+        "C": "监控网络流量",
+        "D": "管理数据库连接"
+      },
+      "answer": "B",
+      "explanation": "服务控制策略（SCP）是组织策略，用于管理组织中的权限。SCP定义了组织成员账户可以使用的最大权限边界。"
+    },
+    {
+      "id": "q45",
+      "domain": 2,
+      "question": "AWS Directory Service的用途是什么？",
+      "options": {
+        "A": "文件存储",
+        "B": "在AWS中设置和运行Microsoft Active Directory",
+        "C": "视频转码",
+        "D": "容器编排"
+      },
+      "answer": "B",
+      "explanation": "AWS Directory Service提供多种方式在AWS中使用Microsoft Active Directory，包括完全托管的Active Directory或与现有本地AD的连接。"
+    },
+    {
+      "id": "q46",
+      "domain": 3,
+      "question": "Amazon EventBridge的主要用途是什么？",
+      "options": {
+        "A": "数据存储",
+        "B": "无服务器事件总线，用于构建事件驱动架构",
+        "C": "用户认证",
+        "D": "视频流媒体"
+      },
+      "answer": "B",
+      "explanation": "Amazon EventBridge是一种无服务器事件总线服务，可以轻松地将应用程序与来自各种来源的数据连接起来，用于构建事件驱动的架构。"
+    },
+    {
+      "id": "q47",
+      "domain": 3,
+      "question": "AWS CloudFormation的主要功能是什么？",
+      "options": {
+        "A": "监控应用程序",
+        "B": "使用模板进行基础设施即代码",
+        "C": "管理用户权限",
+        "D": "数据备份"
+      },
+      "answer": "B",
+      "explanation": "AWS CloudFormation是一项服务，使用模板文件（JSON或YAML）以可预测、可重复的方式创建和管理AWS资源集合，实现基础设施即代码。"
+    },
+    {
+      "id": "q48",
+      "domain": 3,
+      "question": "Amazon Connect是什么类型的服务？",
+      "options": {
+        "A": "VPN服务",
+        "B": "云联络中心服务",
+        "C": "数据库服务",
+        "D": "存储服务"
+      },
+      "answer": "B",
+      "explanation": "Amazon Connect是一种易于使用的全渠道云联络中心服务，可帮助企业以较低的成本提供卓越的客户服务体验。"
+    },
+    {
+      "id": "q49",
+      "domain": 4,
+      "question": "AWS免费套餐的类型有哪些？",
+      "options": {
+        "A": "仅12个月免费",
+        "B": "永久免费、12个月免费和短期试用",
+        "C": "仅短期试用",
+        "D": "仅永久免费"
+      },
+      "answer": "B",
+      "explanation": "AWS免费套餐包含三种类型：永久免费（Always Free）提供特定服务的永久免费使用量；12个月免费适用于新账户；短期试用提供特定服务的免费试用期。"
+    },
+    {
+      "id": "q50",
+      "domain": 4,
+      "question": "什么是AWS成本分配标签的用途？",
+      "options": {
+        "A": "加密资源",
+        "B": "组织和跟踪AWS成本按业务维度",
+        "C": "自动扩展资源",
+        "D": "管理用户权限"
+      },
+      "answer": "B",
+      "explanation": "成本分配标签是用户定义的标签，可以附加到AWS资源上，用于按项目、部门、环境等维度组织和跟踪AWS成本，便于成本分析和归属。"
+    }
+  ]
+}

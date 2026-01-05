@@ -1,0 +1,663 @@
+{
+  "exam": {
+    "id": "azure-sc-200-set3",
+    "name": "Security Operations Analyst 练习题 Set 3",
+    "code": "SC-200",
+    "provider": "Microsoft",
+    "language": "zh-CN",
+    "description": "Microsoft Security Operations Analyst 认证练习题第三套，涵盖 Microsoft Defender、Microsoft Sentinel 和安全运营中心相关知识。",
+    "totalQuestions": 40,
+    "passingScore": 70,
+    "examTime": 120,
+    "domains": [
+      "使用 Microsoft Defender for Endpoint 缓解威胁",
+      "使用 Microsoft 365 Defender 缓解威胁",
+      "使用 Microsoft Defender for Cloud 缓解威胁",
+      "配置和管理 Microsoft Sentinel",
+      "使用 Microsoft Sentinel 进行威胁检测和响应"
+    ],
+    "tags": ["Microsoft", "Azure", "Security", "SC-200", "Sentinel", "Defender"]
+  },
+  "questions": [
+    {
+      "id": "sc200-s3-q1",
+      "examId": "azure-sc-200-set3",
+      "setNumber": 3,
+      "domain": "使用 Microsoft Defender for Endpoint 缓解威胁",
+      "question": "在 Defender for Endpoint 中，您需要配置设备组以便对不同部门的设备应用不同的修正级别。哪个设置决定了设备属于哪个组？",
+      "options": {
+        "A": "设备标记",
+        "B": "设备名称",
+        "C": "操作系统版本",
+        "D": "用户的部门"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "设备标记是 Defender for Endpoint 中用于组织设备的主要方法。您可以基于标记创建设备组，然后为每个组配置不同的自动化级别和权限。"
+    },
+    {
+      "id": "sc200-s3-q2",
+      "examId": "azure-sc-200-set3",
+      "setNumber": 3,
+      "domain": "使用 Microsoft Defender for Endpoint 缓解威胁",
+      "question": "您需要分析一个可疑文件而不在生产环境中执行它。Defender for Endpoint 提供什么功能来实现这一目的？",
+      "options": {
+        "A": "实时响应",
+        "B": "深度分析（沙盒引爆）",
+        "C": "高级搜寻",
+        "D": "自动调查"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "深度分析功能可以将可疑文件提交到云端沙盒环境中执行和分析，观察其行为，而不会影响生产环境。"
+    },
+    {
+      "id": "sc200-s3-q3",
+      "examId": "azure-sc-200-set3",
+      "setNumber": 3,
+      "domain": "使用 Microsoft Defender for Endpoint 缓解威胁",
+      "question": "在高级搜寻查询中，您需要找到过去24小时内下载到设备的所有可执行文件。哪个操作符用于限制时间范围？",
+      "options": {
+        "A": "where TimeGenerated > ago(24h)",
+        "B": "where Timestamp > ago(24h)",
+        "C": "filter TimeGenerated > -24h",
+        "D": "time > last(24h)"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "在 Defender for Endpoint 的高级搜寻中，使用 Timestamp 字段和 ago() 函数来筛选时间范围。正确的语法是 'where Timestamp > ago(24h)'。"
+    },
+    {
+      "id": "sc200-s3-q4",
+      "examId": "azure-sc-200-set3",
+      "setNumber": 3,
+      "domain": "使用 Microsoft Defender for Endpoint 缓解威胁",
+      "question": "您需要确保特定的合法应用程序不会被 Defender for Endpoint 阻止。应该创建什么类型的指示器？",
+      "options": {
+        "A": "阻止指示器",
+        "B": "允许指示器",
+        "C": "警告指示器",
+        "D": "审核指示器"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "允许指示器可以将特定的文件哈希、证书或路径添加到允许列表，确保合法应用程序不会被错误地检测或阻止。"
+    },
+    {
+      "id": "sc200-s3-q5",
+      "examId": "azure-sc-200-set3",
+      "setNumber": 3,
+      "domain": "使用 Microsoft Defender for Endpoint 缓解威胁",
+      "question": "设备风险评分在 Defender for Endpoint 中基于什么计算？",
+      "options": {
+        "A": "仅基于活动警报数量",
+        "B": "基于警报严重性和活动威胁的综合评估",
+        "C": "仅基于设备的漏洞数量",
+        "D": "基于用户行为分析"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "设备风险评分是基于多个因素的综合评估，包括活动警报的类型和严重性、正在进行的威胁活动以及设备的暴露程度。"
+    },
+    {
+      "id": "sc200-s3-q6",
+      "examId": "azure-sc-200-set3",
+      "setNumber": 3,
+      "domain": "使用 Microsoft Defender for Endpoint 缓解威胁",
+      "question": "在配置受控文件夹访问时，哪些文件夹默认受到保护？",
+      "options": {
+        "A": "所有文件夹",
+        "B": "系统文件夹和常用用户文件夹（如文档、图片）",
+        "C": "仅 Windows 系统文件夹",
+        "D": "没有默认保护的文件夹"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "受控文件夹访问默认保护系统文件夹和常用用户文件夹，如文档、图片、视频和桌面。这有助于防止勒索软件加密重要文件。"
+    },
+    {
+      "id": "sc200-s3-q7",
+      "examId": "azure-sc-200-set3",
+      "setNumber": 3,
+      "domain": "使用 Microsoft Defender for Endpoint 缓解威胁",
+      "question": "在实时响应会话中，您可以执行以下哪种操作？",
+      "options": {
+        "A": "重新映像设备",
+        "B": "从设备收集取证文件",
+        "C": "更改设备的网络配置",
+        "D": "安装第三方软件"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "实时响应允许您连接到设备并执行各种取证操作，包括收集文件、运行基本脚本和检索系统信息，但不能进行破坏性操作或安装软件。"
+    },
+    {
+      "id": "sc200-s3-q8",
+      "examId": "azure-sc-200-set3",
+      "setNumber": 3,
+      "domain": "使用 Microsoft Defender for Endpoint 缓解威胁",
+      "question": "威胁分析报告在 Defender for Endpoint 中提供什么信息？",
+      "options": {
+        "A": "仅显示组织的安全分数",
+        "B": "关于新兴威胁的详细信息和组织的暴露情况",
+        "C": "设备合规性状态",
+        "D": "用户行为分析结果"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "威胁分析提供关于新兴威胁、活动攻击活动和安全漏洞的详细情报报告，包括组织是否受到影响以及建议的缓解措施。"
+    },
+    {
+      "id": "sc200-s3-q9",
+      "examId": "azure-sc-200-set3",
+      "setNumber": 3,
+      "domain": "使用 Microsoft 365 Defender 缓解威胁",
+      "question": "Microsoft 365 Defender 门户中的统一搜索功能允许您同时查询哪些数据？",
+      "options": {
+        "A": "仅终结点数据",
+        "B": "终结点、电子邮件、身份和云应用数据",
+        "C": "仅 Azure 资源数据",
+        "D": "仅电子邮件数据"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Microsoft 365 Defender 的高级搜寻提供跨产品查询能力，可以同时搜索来自 Defender for Endpoint、Office 365、Identity 和 Cloud Apps 的数据。"
+    },
+    {
+      "id": "sc200-s3-q10",
+      "examId": "azure-sc-200-set3",
+      "setNumber": 3,
+      "domain": "使用 Microsoft 365 Defender 缓解威胁",
+      "question": "在调查可能的钓鱼攻击时，您需要清除组织中所有邮箱中的恶意邮件。应该使用什么操作？",
+      "options": {
+        "A": "软删除",
+        "B": "硬删除",
+        "C": "移至垃圾邮件",
+        "D": "添加到阻止列表"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "硬删除操作会从所有邮箱中永久删除恶意邮件，防止用户意外访问。软删除只是将邮件移到已删除项目，用户仍可能恢复。"
+    },
+    {
+      "id": "sc200-s3-q11",
+      "examId": "azure-sc-200-set3",
+      "setNumber": 3,
+      "domain": "使用 Microsoft 365 Defender 缓解威胁",
+      "question": "Microsoft Defender for Identity 传感器安装在哪里？",
+      "options": {
+        "A": "Azure 云中",
+        "B": "域控制器或 AD FS 服务器上",
+        "C": "每个终端用户工作站上",
+        "D": "网络边缘防火墙上"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Defender for Identity 传感器直接安装在域控制器或 AD FS 服务器上，以便监控 Active Directory 流量并检测高级身份威胁。"
+    },
+    {
+      "id": "sc200-s3-q12",
+      "examId": "azure-sc-200-set3",
+      "setNumber": 3,
+      "domain": "使用 Microsoft 365 Defender 缓解威胁",
+      "question": "在 Defender for Cloud Apps 中，影子 IT 发现功能的主要用途是什么？",
+      "options": {
+        "A": "检测恶意软件",
+        "B": "发现组织中使用的未经批准的云应用",
+        "C": "监控用户登录行为",
+        "D": "加密敏感数据"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "影子 IT 发现功能分析网络流量日志，识别组织中正在使用的所有云应用程序，包括未经 IT 部门批准的应用，帮助管理云应用风险。"
+    },
+    {
+      "id": "sc200-s3-q13",
+      "examId": "azure-sc-200-set3",
+      "setNumber": 3,
+      "domain": "使用 Microsoft 365 Defender 缓解威胁",
+      "question": "融合攻击检测在 Microsoft 365 Defender 中使用什么技术来检测复杂的多阶段攻击？",
+      "options": {
+        "A": "基于签名的检测",
+        "B": "机器学习和信号关联",
+        "C": "静态代码分析",
+        "D": "沙盒分析"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "融合检测使用机器学习和高级信号关联技术，将来自多个安全产品的低保真度信号组合起来，识别复杂的多阶段攻击。"
+    },
+    {
+      "id": "sc200-s3-q14",
+      "examId": "azure-sc-200-set3",
+      "setNumber": 3,
+      "domain": "使用 Microsoft 365 Defender 缓解威胁",
+      "question": "在配置安全链接策略时，'实时 URL 扫描' 功能执行什么操作？",
+      "options": {
+        "A": "在用户点击链接之前扫描链接",
+        "B": "在用户点击链接时实时检查 URL 是否恶意",
+        "C": "阻止所有外部链接",
+        "D": "加密邮件中的所有链接"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "实时 URL 扫描在用户点击链接的那一刻检查 URL 是否恶意，这可以防止延时攻击（攻击者在邮件发送后将良性 URL 更改为恶意 URL）。"
+    },
+    {
+      "id": "sc200-s3-q15",
+      "examId": "azure-sc-200-set3",
+      "setNumber": 3,
+      "domain": "使用 Microsoft 365 Defender 缓解威胁",
+      "question": "当 Defender for Identity 检测到可疑的 DCSync 攻击时，攻击者正在尝试做什么？",
+      "options": {
+        "A": "拒绝服务攻击",
+        "B": "复制 Active Directory 数据以获取密码哈希",
+        "C": "删除用户账户",
+        "D": "修改组策略"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "DCSync 攻击是指攻击者模拟域控制器来请求密码哈希复制。这是一种严重的攻击，可以让攻击者获取所有域用户的密码哈希。"
+    },
+    {
+      "id": "sc200-s3-q16",
+      "examId": "azure-sc-200-set3",
+      "setNumber": 3,
+      "domain": "使用 Microsoft 365 Defender 缓解威胁",
+      "question": "在 Microsoft 365 Defender 中，自动化调查完成后，修正操作的状态可能是什么？",
+      "options": {
+        "A": "仅 '已完成' 或 '失败'",
+        "B": "'待审批'、'已批准'、'已拒绝' 或 '已完成'",
+        "C": "仅 '成功' 或 '错误'",
+        "D": "'活动' 或 '非活动'"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "根据配置的自动化级别，修正操作可能需要批准（待审批），或自动执行（已完成）。管理员也可以批准或拒绝待处理的操作。"
+    },
+    {
+      "id": "sc200-s3-q17",
+      "examId": "azure-sc-200-set3",
+      "setNumber": 3,
+      "domain": "使用 Microsoft Defender for Cloud 缓解威胁",
+      "question": "在 Defender for Cloud 中，攻击路径分析功能帮助您识别什么？",
+      "options": {
+        "A": "历史攻击事件",
+        "B": "攻击者可能利用的资源间漏洞链",
+        "C": "用户登录模式",
+        "D": "网络带宽使用情况"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "攻击路径分析使用图形算法识别环境中可能被攻击者利用的漏洞组合路径，帮助优先修复最关键的安全问题。"
+    },
+    {
+      "id": "sc200-s3-q18",
+      "examId": "azure-sc-200-set3",
+      "setNumber": 3,
+      "domain": "使用 Microsoft Defender for Cloud 缓解威胁",
+      "question": "您需要监控 Azure Key Vault 中的可疑访问模式。应该启用哪个 Defender 计划？",
+      "options": {
+        "A": "Defender for Servers",
+        "B": "Defender for Storage",
+        "C": "Defender for Key Vault",
+        "D": "Defender for Resource Manager"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "Microsoft Defender for Key Vault 提供针对密钥保管库的高级威胁防护，可以检测异常访问模式、可疑操作和潜在的凭据泄露尝试。"
+    },
+    {
+      "id": "sc200-s3-q19",
+      "examId": "azure-sc-200-set3",
+      "setNumber": 3,
+      "domain": "使用 Microsoft Defender for Cloud 缓解威胁",
+      "question": "Defender for Cloud 中的云安全态势管理 (CSPM) 功能提供什么？",
+      "options": {
+        "A": "实时威胁检测",
+        "B": "安全配置评估和合规性监控",
+        "C": "网络流量加密",
+        "D": "身份验证服务"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "CSPM 提供持续的安全配置评估，检查资源是否符合安全最佳实践和合规性要求，并提供改进建议和安全分数。"
+    },
+    {
+      "id": "sc200-s3-q20",
+      "examId": "azure-sc-200-set3",
+      "setNumber": 3,
+      "domain": "使用 Microsoft Defender for Cloud 缓解威胁",
+      "question": "在连接 AWS 账户到 Defender for Cloud 时，需要使用什么身份验证方法？",
+      "options": {
+        "A": "AWS 访问密钥",
+        "B": "IAM 角色和 OIDC",
+        "C": "用户名和密码",
+        "D": "SSH 密钥"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Defender for Cloud 使用 AWS IAM 角色和 OpenID Connect (OIDC) 进行跨账户访问，这是一种安全的无密钥身份验证方法。"
+    },
+    {
+      "id": "sc200-s3-q21",
+      "examId": "azure-sc-200-set3",
+      "setNumber": 3,
+      "domain": "使用 Microsoft Defender for Cloud 缓解威胁",
+      "question": "Defender for Servers 计划 2 相比计划 1 额外提供什么功能？",
+      "options": {
+        "A": "基本安全警报",
+        "B": "漏洞评估、文件完整性监控和自适应应用程序控制",
+        "C": "网络连接监控",
+        "D": "用户行为分析"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Defender for Servers 计划 2 包含计划 1 的所有功能，并额外提供漏洞评估、文件完整性监控 (FIM)、自适应应用程序控制和 JIT VM 访问等高级功能。"
+    },
+    {
+      "id": "sc200-s3-q22",
+      "examId": "azure-sc-200-set3",
+      "setNumber": 3,
+      "domain": "使用 Microsoft Defender for Cloud 缓解威胁",
+      "question": "在 Defender for Cloud 中，您需要免除某个资源的特定安全建议。应该使用什么功能？",
+      "options": {
+        "A": "禁用 Defender 计划",
+        "B": "创建豁免",
+        "C": "删除资源",
+        "D": "修改安全策略"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "豁免功能允许您将特定资源从安全建议中排除，例如当存在补偿控制或建议不适用于特定场景时，而不影响其他资源的评估。"
+    },
+    {
+      "id": "sc200-s3-q23",
+      "examId": "azure-sc-200-set3",
+      "setNumber": 3,
+      "domain": "使用 Microsoft Defender for Cloud 缓解威胁",
+      "question": "自适应网络强化在 Defender for Cloud 中执行什么操作？",
+      "options": {
+        "A": "自动加密网络流量",
+        "B": "分析流量模式并推荐更严格的 NSG 规则",
+        "C": "配置负载均衡",
+        "D": "部署 WAF"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "自适应网络强化通过分析实际网络流量模式，与 NSG 规则进行比较，推荐可以进一步限制的规则，以减少攻击面。"
+    },
+    {
+      "id": "sc200-s3-q24",
+      "examId": "azure-sc-200-set3",
+      "setNumber": 3,
+      "domain": "使用 Microsoft Defender for Cloud 缓解威胁",
+      "question": "在配置治理规则时，您可以自动执行什么操作？",
+      "options": {
+        "A": "删除不合规的资源",
+        "B": "分配所有者和设置修正截止日期",
+        "C": "自动修复所有漏洞",
+        "D": "生成合规性报告"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "治理规则可以自动为安全建议分配所有者、设置修正截止日期和发送通知，帮助确保安全问题得到及时处理。"
+    },
+    {
+      "id": "sc200-s3-q25",
+      "examId": "azure-sc-200-set3",
+      "setNumber": 3,
+      "domain": "配置和管理 Microsoft Sentinel",
+      "question": "在 Microsoft Sentinel 中，内容中心的主要用途是什么？",
+      "options": {
+        "A": "存储原始日志数据",
+        "B": "发现和部署开箱即用的安全内容",
+        "C": "管理用户权限",
+        "D": "配置数据保留策略"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "内容中心是一个集中式目录，用于发现、安装和管理 Sentinel 的开箱即用内容，包括数据连接器、分析规则、工作簿、Playbook 等。"
+    },
+    {
+      "id": "sc200-s3-q26",
+      "examId": "azure-sc-200-set3",
+      "setNumber": 3,
+      "domain": "配置和管理 Microsoft Sentinel",
+      "question": "您需要从使用 Syslog 格式的 Linux 服务器收集日志。应该使用什么代理？",
+      "options": {
+        "A": "Microsoft Monitoring Agent (MMA)",
+        "B": "Azure Monitor Agent (AMA)",
+        "C": "Log Analytics Agent",
+        "D": "Defender for Endpoint 传感器"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure Monitor Agent (AMA) 是收集 Linux Syslog 数据的推荐代理。它取代了传统的 Log Analytics Agent，提供更好的性能和更多功能。"
+    },
+    {
+      "id": "sc200-s3-q27",
+      "examId": "azure-sc-200-set3",
+      "setNumber": 3,
+      "domain": "配置和管理 Microsoft Sentinel",
+      "question": "在配置数据收集规则 (DCR) 时，您可以控制什么？",
+      "options": {
+        "A": "用户身份验证方式",
+        "B": "要收集的数据类型和目标工作区",
+        "C": "Sentinel 许可证类型",
+        "D": "分析规则触发条件"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "数据收集规则 (DCR) 允许您精确控制要收集的数据类型、应用的转换以及数据的目标工作区，这有助于优化数据引入和控制成本。"
+    },
+    {
+      "id": "sc200-s3-q28",
+      "examId": "azure-sc-200-set3",
+      "setNumber": 3,
+      "domain": "配置和管理 Microsoft Sentinel",
+      "question": "您需要将自定义应用程序日志发送到 Microsoft Sentinel。日志格式是 JSON。应该使用什么方法？",
+      "options": {
+        "A": "CEF 连接器",
+        "B": "日志引入 API",
+        "C": "Syslog 连接器",
+        "D": "Azure Monitor Agent"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "日志引入 API 允许您将自定义格式的日志（包括 JSON）发送到 Log Analytics 工作区中的自定义表，这是引入自定义应用程序日志的推荐方法。"
+    },
+    {
+      "id": "sc200-s3-q29",
+      "examId": "azure-sc-200-set3",
+      "setNumber": 3,
+      "domain": "配置和管理 Microsoft Sentinel",
+      "question": "在管理 Microsoft Sentinel 时，存档数据与交互式数据的主要区别是什么？",
+      "options": {
+        "A": "存档数据成本更高",
+        "B": "存档数据需要还原才能查询",
+        "C": "存档数据更新更频繁",
+        "D": "存档数据只能保留30天"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "存档数据是低成本的长期存储选项，但需要先还原到交互式保留期才能运行查询。交互式数据可以直接查询但成本较高。"
+    },
+    {
+      "id": "sc200-s3-q30",
+      "examId": "azure-sc-200-set3",
+      "setNumber": 3,
+      "domain": "配置和管理 Microsoft Sentinel",
+      "question": "您需要配置多个 Sentinel 工作区来支持不同的地理区域，同时保持统一的事件视图。应该使用什么功能？",
+      "options": {
+        "A": "数据连接器",
+        "B": "多工作区视图",
+        "C": "工作簿",
+        "D": "监视列表"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "多工作区视图允许安全分析师从单一视图管理和查看多个 Sentinel 工作区中的事件和警报，简化了跨地区或跨租户的安全运营。"
+    },
+    {
+      "id": "sc200-s3-q31",
+      "examId": "azure-sc-200-set3",
+      "setNumber": 3,
+      "domain": "配置和管理 Microsoft Sentinel",
+      "question": "在为 Sentinel 配置角色时，哪个内置角色允许用户查看数据和事件但不能进行更改？",
+      "options": {
+        "A": "Microsoft Sentinel Contributor",
+        "B": "Microsoft Sentinel Reader",
+        "C": "Microsoft Sentinel Responder",
+        "D": "Microsoft Sentinel Automation Contributor"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Microsoft Sentinel Reader 角色提供只读访问权限，用户可以查看数据、事件、工作簿和其他 Sentinel 资源，但不能进行任何更改。"
+    },
+    {
+      "id": "sc200-s3-q32",
+      "examId": "azure-sc-200-set3",
+      "setNumber": 3,
+      "domain": "配置和管理 Microsoft Sentinel",
+      "question": "您需要配置 Sentinel 以满足数据驻留要求，确保数据存储在特定区域。应该在哪里进行此配置？",
+      "options": {
+        "A": "分析规则设置",
+        "B": "Log Analytics 工作区区域选择",
+        "C": "数据连接器配置",
+        "D": "Playbook 设置"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "数据驻留由 Log Analytics 工作区的区域决定。创建工作区时选择的 Azure 区域将确定数据的存储位置，以满足合规性要求。"
+    },
+    {
+      "id": "sc200-s3-q33",
+      "examId": "azure-sc-200-set3",
+      "setNumber": 3,
+      "domain": "使用 Microsoft Sentinel 进行威胁检测和响应",
+      "question": "NRT（近实时）分析规则与计划分析规则相比有什么优势？",
+      "options": {
+        "A": "支持更复杂的查询",
+        "B": "检测延迟更低（约1分钟）",
+        "C": "成本更低",
+        "D": "支持更多数据源"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "NRT 规则每分钟运行一次，提供接近实时的威胁检测，延迟约为1分钟。相比之下，计划规则通常每5分钟或更长时间运行一次。"
+    },
+    {
+      "id": "sc200-s3-q34",
+      "examId": "azure-sc-200-set3",
+      "setNumber": 3,
+      "domain": "使用 Microsoft Sentinel 进行威胁检测和响应",
+      "question": "在创建分析规则时，实体映射的作用是什么？",
+      "options": {
+        "A": "加密敏感数据",
+        "B": "将查询结果中的字段映射到标准实体类型以支持调查",
+        "C": "定义警报严重性",
+        "D": "配置规则运行频率"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "实体映射将 KQL 查询结果中的字段映射到标准实体类型（如账户、主机、IP 地址），使 Sentinel 能够在调查图和 UEBA 中正确显示和关联这些实体。"
+    },
+    {
+      "id": "sc200-s3-q35",
+      "examId": "azure-sc-200-set3",
+      "setNumber": 3,
+      "domain": "使用 Microsoft Sentinel 进行威胁检测和响应",
+      "question": "您需要创建一个 Playbook 来在检测到暴力破解攻击时自动禁用用户账户。Playbook 应该使用哪个 Logic Apps 连接器？",
+      "options": {
+        "A": "Office 365 连接器",
+        "B": "Azure AD（Microsoft Entra ID）连接器",
+        "C": "Azure Monitor 连接器",
+        "D": "HTTP 连接器"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure AD（Microsoft Entra ID）连接器提供用户管理操作，包括禁用用户账户。这是在响应身份威胁时自动执行修正操作的关键连接器。"
+    },
+    {
+      "id": "sc200-s3-q36",
+      "examId": "azure-sc-200-set3",
+      "setNumber": 3,
+      "domain": "使用 Microsoft Sentinel 进行威胁检测和响应",
+      "question": "在使用 Jupyter 笔记本进行威胁搜寻时，MSTIC 库（MSTICPy）提供什么功能？",
+      "options": {
+        "A": "数据可视化和报表",
+        "B": "安全调查工具和威胁情报查询",
+        "C": "自动化部署",
+        "D": "成本管理"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "MSTICPy 是 Microsoft 安全研究团队开发的 Python 库，提供安全调查工具、威胁情报查询、异常检测和数据可视化功能，专为安全分析师设计。"
+    },
+    {
+      "id": "sc200-s3-q37",
+      "examId": "azure-sc-200-set3",
+      "setNumber": 3,
+      "domain": "使用 Microsoft Sentinel 进行威胁检测和响应",
+      "question": "在配置自动化规则时，您可以配置以下哪种触发条件？",
+      "options": {
+        "A": "当创建特定类型的事件时",
+        "B": "按固定时间表",
+        "C": "当工作区存储达到阈值时",
+        "D": "当用户登录 Sentinel 时"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "自动化规则可以在创建或更新事件时触发，允许您基于事件的属性（如严重性、产品、战术等）自动执行操作，如分配所有者或运行 Playbook。"
+    },
+    {
+      "id": "sc200-s3-q38",
+      "examId": "azure-sc-200-set3",
+      "setNumber": 3,
+      "domain": "使用 Microsoft Sentinel 进行威胁检测和响应",
+      "question": "威胁情报指示器在 Microsoft Sentinel 中存储在哪个表中？",
+      "options": {
+        "A": "SecurityEvent",
+        "B": "ThreatIntelligenceIndicator",
+        "C": "CommonSecurityLog",
+        "D": "AzureActivity"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "ThreatIntelligenceIndicator 表存储导入的威胁情报指示器（IoC），包括恶意 IP、域名、文件哈希等，可用于威胁检测查询和匹配分析规则。"
+    },
+    {
+      "id": "sc200-s3-q39",
+      "examId": "azure-sc-200-set3",
+      "setNumber": 3,
+      "domain": "使用 Microsoft Sentinel 进行威胁检测和响应",
+      "question": "SOAR（安全编排、自动化和响应）在 Microsoft Sentinel 中通过什么实现？",
+      "options": {
+        "A": "工作簿",
+        "B": "数据连接器",
+        "C": "Playbook 和自动化规则",
+        "D": "搜寻查询"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "Microsoft Sentinel 的 SOAR 功能通过 Playbook（基于 Logic Apps）和自动化规则实现。它们可以自动执行响应操作、编排跨系统的工作流并简化安全运营。"
+    },
+    {
+      "id": "sc200-s3-q40",
+      "examId": "azure-sc-200-set3",
+      "setNumber": 3,
+      "domain": "使用 Microsoft Sentinel 进行威胁检测和响应",
+      "question": "您需要跟踪安全分析师处理事件的效率。应该查看 Sentinel 中的什么指标？",
+      "options": {
+        "A": "数据引入量",
+        "B": "平均解决时间 (MTTR) 和事件关闭率",
+        "C": "分析规则数量",
+        "D": "连接器健康状态"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "平均解决时间 (MTTR) 和事件关闭率是衡量 SOC 效率的关键指标。Sentinel 提供内置工作簿和报告来跟踪这些 SOC 运营指标。"
+    }
+  ]
+}

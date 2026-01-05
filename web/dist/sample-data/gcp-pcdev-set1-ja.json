@@ -1,0 +1,649 @@
+{
+  "exam": {
+    "id": "gcp-pcdev-set1-ja",
+    "name": "GCP クラウド デベロッパー認定模擬試験 #1",
+    "code": "PCDEV",
+    "provider": "GCP",
+    "language": "ja",
+    "description": "Google Cloud Professional Cloud Developer 認定試験模擬問題",
+    "totalQuestions": 40,
+    "passingScore": 70,
+    "examTime": 120,
+    "domains": [
+      {
+        "id": 1,
+        "name": "スケーラブルで可用性の高いクラウドネイティブアプリケーションの設計",
+        "weight": 25
+      },
+      {
+        "id": 2,
+        "name": "アプリケーションの構築とテスト",
+        "weight": 25
+      },
+      {
+        "id": 3,
+        "name": "アプリケーションのデプロイ",
+        "weight": 20
+      },
+      {
+        "id": 4,
+        "name": "Google Cloud サービスの統合",
+        "weight": 20
+      },
+      {
+        "id": 5,
+        "name": "アプリケーションパフォーマンス監視の管理",
+        "weight": 10
+      }
+    ],
+    "tags": [
+      "GCP",
+      "Cloud Developer",
+      "Cloud Run",
+      "GKE",
+      "認定試験"
+    ]
+  },
+  "questions": [
+    {
+      "id": "q1",
+      "domain": 1,
+      "question": "ある企業がクラウドネイティブアプリケーションを設計しており、リクエスト量に応じて自動的にスケールし、インフラ管理を最小限に抑えたいと考えています。どのプラットフォームを選択すべきですか？",
+      "options": {
+        "A": "Compute Engine",
+        "B": "Cloud Run",
+        "C": "Bare Metal Solution",
+        "D": "Cloud SQL"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Cloud Run はフルマネージドのサーバーレスプラットフォームです：\n- ゼロへのスケールダウンを含む自動スケーリング\n- リクエスト単位の課金\n- 任意のコンテナ化アプリケーションをサポート\n- インフラ管理不要\n- Cloud Build、Artifact Registry との統合",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q2",
+      "domain": 1,
+      "question": "マイクロサービスアーキテクチャを設計する際、サービス間の疎結合通信を実現するにはどうすればよいですか？",
+      "options": {
+        "A": "直接的な HTTP 同期呼び出しを使用する",
+        "B": "Cloud Pub/Sub を使用した非同期メッセージングを行う",
+        "C": "同じデータベースでデータを共有する",
+        "D": "共有ファイルシステムを使用する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Cloud Pub/Sub による疎結合の実現：\n- パブリッシャーとサブスクライバーの分離\n- 非同期メッセージング\n- 多対多の通信をサポート\n- 自動スケーリング\n- メッセージの永続化による信頼性確保",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q3",
+      "domain": 1,
+      "question": "アプリケーションでユーザーセッションデータを保存する必要があり、サブミリ秒のレイテンシと自動有効期限が必要です。最適な選択肢は何ですか？",
+      "options": {
+        "A": "Cloud SQL",
+        "B": "BigQuery",
+        "C": "Memorystore for Redis",
+        "D": "Cloud Storage"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "Memorystore for Redis はセッションストレージに最適です：\n- インメモリストレージでサブミリ秒のレイテンシ\n- TTL による自動有効期限をサポート\n- 高可用性構成\n- GKE、Cloud Run などのサービスとの統合",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q4",
+      "domain": 1,
+      "question": "単一リージョンの障害に耐えられる高可用性アプリケーションを設計するにはどうすればよいですか？",
+      "options": {
+        "A": "単一リージョンの複数のゾーンにデプロイする",
+        "B": "グローバルロードバランシングとマルチリージョンデプロイを使用する",
+        "C": "単一インスタンスのリソースを増やす",
+        "D": "より大きな仮想マシンを使用する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "マルチリージョン高可用性設計：\n- グローバル HTTP(S) ロードバランシング\n- リージョン間でアプリケーションインスタンスをデプロイ\n- Cloud Spanner またはマルチリージョン Cloud SQL を使用\n- ヘルスチェックとフェイルオーバーを構成",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q5",
+      "domain": 1,
+      "question": "クラウドネイティブアプリケーションにおいて、12-Factor App 方法論では設定をどのように扱うことを推奨していますか？",
+      "options": {
+        "A": "設定をコードにハードコードする",
+        "B": "アプリケーションにパッケージ化した設定ファイルを使用する",
+        "C": "環境変数を通じて設定を注入する",
+        "D": "すべての設定をデータベースに保存する"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "12-Factor App の設定原則：\n- 設定は環境変数に保存\n- コードと設定の分離\n- 同じコードを異なる環境にデプロイ可能\n- GCP では Secret Manager を使用して機密設定を管理可能",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q6",
+      "domain": 1,
+      "question": "ある企業がバックエンドサービスを保護するために API レート制限を実装する必要があります。何を使用すべきですか？",
+      "options": {
+        "A": "Cloud CDN",
+        "B": "Cloud Armor と API Gateway",
+        "C": "Cloud DNS",
+        "D": "Cloud NAT"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "API レート制限ソリューション：\n- Cloud Armor：レート制限ルールをサポート\n- API Gateway / Apigee：完全な API 管理とクォータ\n- IP、ユーザー、または API キーに基づく制限が可能\n- バックエンドを過負荷から保護",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q7",
+      "domain": 1,
+      "question": "イベント駆動アーキテクチャを設計する際、イベント処理の冪等性を確保するにはどうすればよいですか？",
+      "options": {
+        "A": "リトライ回数を増やす",
+        "B": "一意のイベント ID を使用して重複排除処理を行う",
+        "C": "リトライメカニズムを無効にする",
+        "D": "並行処理を減らす"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "冪等性の設計：\n- 各イベントに一意の ID を割り当てる\n- 処理前にイベントが処理済みかどうかを確認\n- データベースのユニーク制約または分散ロックを使用\n- 重複処理が同じ結果を生成することを確保",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q8",
+      "domain": 1,
+      "question": "アプリケーションのグレースフルシャットダウンを実装するにはどうすればよいですか？",
+      "options": {
+        "A": "すべての接続を即座に終了する",
+        "B": "SIGTERM シグナルをキャッチし、処理中のリクエストを完了してから終了する",
+        "C": "シャットダウンシグナルを無視する",
+        "D": "アプリケーションを強制再起動する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "グレースフルシャットダウンのベストプラクティス：\n- SIGTERM シグナルをリッスン\n- 新しいリクエストの受け入れを停止\n- 処理中のリクエストを完了\n- データベース接続などのリソースをクローズ\n- タイムアウト時間内に終了",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q9",
+      "domain": 2,
+      "question": "GCP で CI/CD パイプラインを構築する際、コンテナイメージを構築するためにどのサービスを使用しますか？",
+      "options": {
+        "A": "Cloud Scheduler",
+        "B": "Cloud Build",
+        "C": "Cloud Composer",
+        "D": "Cloud Tasks"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Cloud Build：\n- マネージド CI/CD プラットフォーム\n- ビルド、テスト、デプロイをサポート\n- GitHub、GitLab などと統合\n- カスタムビルドステップをサポート\n- Artifact Registry と統合してイメージを保存",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q10",
+      "domain": 2,
+      "question": "Cloud Build で機密性の高いビルド認証情報を保存して使用するにはどうすればよいですか？",
+      "options": {
+        "A": "cloudbuild.yaml にハードコードする",
+        "B": "Secret Manager を使用してビルド時に注入する",
+        "C": "公開 Git リポジトリに保存する",
+        "D": "環境変数で平文として渡す"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Cloud Build のシークレット管理：\n- Secret Manager を使用して機密情報を保存\n- cloudbuild.yaml で secrets を参照\n- Cloud Build サービスアカウントにアクセス権限を付与\n- シークレットはビルド時に安全に注入",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q11",
+      "domain": 2,
+      "question": "コンテナイメージのマルチステージビルドの利点は何ですか？",
+      "options": {
+        "A": "イメージサイズが増加する",
+        "B": "最終イメージサイズを削減し、ビルドとランタイムの依存関係を分離する",
+        "C": "ビルド時間が増加する",
+        "D": "Dockerfile が簡素化される"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "マルチステージビルドの利点：\n- 最終イメージサイズの削減\n- ビルドツールがランタイムイメージに含まれない\n- 攻撃対象領域の削減\n- デプロイの高速化\n- ストレージと帯域幅コストの削減",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q12",
+      "domain": 2,
+      "question": "テスト戦略において、インテグレーションテストの主な目的は何ですか？",
+      "options": {
+        "A": "個々の関数のロジックをテストする",
+        "B": "複数のコンポーネント間の相互作用をテストする",
+        "C": "ユーザーインターフェースをテストする",
+        "D": "システムパフォーマンスをテストする"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "インテグレーションテスト：\n- コンポーネント間の相互作用を検証\n- API エンドポイントをテスト\n- データベース操作をテスト\n- 外部サービス統合をテスト\n- 通常、ユニットテストより遅いが実際のシナリオに近い",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q13",
+      "domain": 2,
+      "question": "Artifact Registry の Container Registry に対する利点は何ですか？（2つ選択）",
+      "options": {
+        "A": "Docker イメージのみをサポート",
+        "B": "複数のアーティファクト形式をサポート（Docker、Maven、npm など）",
+        "C": "リージョンレベルのストレージでパフォーマンスが向上",
+        "D": "IAM 権限制御をサポートしない"
+      },
+      "answer": ["B", "C"],
+      "answerType": "multiple",
+      "explanation": "Artifact Registry の利点：\n- 複数のアーティファクト形式をサポート\n- リージョンレベルのストレージ\n- より細かい IAM 権限\n- 脆弱性スキャンの統合\n- Container Registry の推奨代替",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q14",
+      "domain": 2,
+      "question": "ローカル開発環境で GCP サービスをシミュレートしてテストするにはどうすればよいですか？",
+      "options": {
+        "A": "常に本番環境を使用する",
+        "B": "エミュレータを使用する（Pub/Sub、Firestore エミュレータなど）",
+        "C": "ローカルテストを行わない",
+        "D": "すべての API レスポンスを手動でモックする"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "GCP ローカルエミュレータ：\n- Pub/Sub エミュレータ\n- Firestore エミュレータ\n- Bigtable エミュレータ\n- Spanner エミュレータ\n- 実際の GCP リソースなしでテスト可能",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q15",
+      "domain": 2,
+      "question": "Infrastructure as Code（IaC）の利点は何ですか？",
+      "options": {
+        "A": "手動設定の方が柔軟",
+        "B": "バージョン管理、再現性、自動化されたデプロイ",
+        "C": "ドキュメントの必要性が減る",
+        "D": "学習コストが低い"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Infrastructure as Code の利点：\n- インフラ変更のバージョン管理\n- 再現可能で一貫したデプロイ\n- 自動化により人的エラーを削減\n- コードレビューをサポート\n- GCP は Terraform と Deployment Manager をサポート",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q16",
+      "domain": 2,
+      "question": "Cloud Build で、すべてのテストが通過した後にのみ本番環境にデプロイするにはどうすればよいですか？",
+      "options": {
+        "A": "テスト結果を手動で確認する",
+        "B": "cloudbuild.yaml でステップの依存関係を定義し、テストステップが失敗するとビルドが失敗する",
+        "C": "テストとデプロイを並行して実行する",
+        "D": "テストステップをスキップする"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Cloud Build のステップ制御：\n- ステップは順番に実行される\n- いずれかのステップが失敗するとビルドが失敗\n- waitFor を使用して並行と依存関係を制御可能\n- 条件付きビルドトリガーをサポート",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q17",
+      "domain": 3,
+      "question": "GKE でローリングアップデートを行う際、ダウンタイムゼロを確保するにはどうすればよいですか？",
+      "options": {
+        "A": "すべての古い Pod を同時に削除する",
+        "B": "適切な maxSurge と maxUnavailable を設定し、Readiness Probe を使用する",
+        "C": "Probe を使用しない",
+        "D": "手動で Pod を1つずつ更新する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "GKE ゼロダウンタイムデプロイ：\n- RollingUpdate 戦略を設定\n- maxSurge：希望するレプリカ数を超えて許可される数\n- maxUnavailable：更新中に利用不可を許可される数\n- readinessProbe を使用して新しい Pod の準備完了を確認\n- preStop フックを使用してグレースフルシャットダウン",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q18",
+      "domain": 3,
+      "question": "Cloud Run と GKE の主な違いは何ですか？",
+      "options": {
+        "A": "違いはない",
+        "B": "Cloud Run はサーバーレスでリクエスト単位課金、GKE はクラスタ管理が必要だがより柔軟",
+        "C": "GKE はコンテナをサポートしない",
+        "D": "Cloud Run は自動スケーリングをサポートしない"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Cloud Run vs GKE：\n- Cloud Run：サーバーレス、リクエスト単位課金、自動管理\n- GKE：完全な Kubernetes、より多くの制御と柔軟性\n- Cloud Run：ステートレス HTTP サービスに適している\n- GKE：複雑なステートフルアプリケーションとカスタムニーズに適している",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q19",
+      "domain": 3,
+      "question": "ブルーグリーンデプロイメントとは何ですか？",
+      "options": {
+        "A": "インスタンスを段階的に更新する",
+        "B": "2つの同一環境を維持し、新バージョンにトラフィックを切り替える",
+        "C": "トラフィックをランダムに割り当てる",
+        "D": "夜間にのみデプロイする"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "ブルーグリーンデプロイメント：\n- 2つの完全な本番環境を維持\n- 新バージョンを非アクティブな環境にデプロイ\n- テスト通過後にトラフィックを切り替え\n- 迅速なロールバックをサポート\n- 2倍のリソースが必要",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q20",
+      "domain": 3,
+      "question": "Cloud Run でコールドスタートを減らすために最小インスタンス数を設定するにはどうすればよいですか？",
+      "options": {
+        "A": "設定できない",
+        "B": "min-instances パラメータを設定して最小数のインスタンスをウォーム状態に保つ",
+        "C": "メモリ設定を増やす",
+        "D": "より大きなコンテナイメージを使用する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Cloud Run コールドスタートの最適化：\n- min-instances を設定してインスタンスをウォーム状態に保つ\n- コストとレイテンシのトレードオフ\n- コンテナ起動時間を最適化\n- 依存関係の読み込み時間を削減\n- CPU always allocated モードを使用",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q21",
+      "domain": 3,
+      "question": "GKE における ConfigMap と Secret の違いは何ですか？",
+      "options": {
+        "A": "違いはない",
+        "B": "Secret は機密データ用で base64 エンコードされ、ConfigMap は非機密設定用",
+        "C": "ConfigMap の方がより安全",
+        "D": "Secret はファイルとしてマウントできない"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "ConfigMap vs Secret：\n- ConfigMap：非機密設定データ\n- Secret：機密データ（パスワード、キーなど）\n- Secret データは base64 エンコードで保存\n- どちらも環境変数またはボリュームとしてマウント可能\n- Secret は外部キー管理システムと統合可能",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q22",
+      "domain": 3,
+      "question": "カナリアデプロイメントとは何ですか？",
+      "options": {
+        "A": "すべてのトラフィックを新バージョンに切り替える",
+        "B": "検証のために少量のトラフィックを新バージョンにルーティングする",
+        "C": "テスト環境にのみデプロイする",
+        "D": "すべてのリージョンにデプロイする"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "カナリアデプロイメント：\n- 新バージョンへのトラフィックを段階的に切り替え\n- まず少量のトラフィック（例：5%）を新バージョンにルーティング\n- エラー率とパフォーマンスを監視\n- トラフィック比率を段階的に増加\n- 問題が発生した場合は迅速にロールバック可能",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q23",
+      "domain": 3,
+      "question": "GKE で Pod の水平自動スケーリングを実装するにはどうすればよいですか？",
+      "options": {
+        "A": "レプリカ数を手動で調整する",
+        "B": "Horizontal Pod Autoscaler (HPA) を使用して CPU/メモリまたはカスタムメトリクスに基づく",
+        "C": "ノード数を増やす",
+        "D": "より大きな Pod リソースを使用する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Horizontal Pod Autoscaler：\n- CPU/メモリ使用率に基づく自動スケーリング\n- カスタムメトリクスをサポート\n- 最小と最大レプリカ数を設定\n- Vertical Pod Autoscaler と組み合わせて使用可能",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q24",
+      "domain": 3,
+      "question": "App Engine にデプロイする際、トラフィック配分を制御するにはどうすればよいですか？",
+      "options": {
+        "A": "制御できない",
+        "B": "バージョンとトラフィック分割機能を使用する",
+        "C": "ロードバランサーのみを使用できる",
+        "D": "ユーザーを手動でリダイレクトする"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "App Engine のトラフィック管理：\n- 複数バージョンの共存をサポート\n- パーセンテージでトラフィックを配分可能\n- Cookie ベースのユーザースティッキーをサポート\n- A/B テストとカナリアリリースに適している",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q25",
+      "domain": 4,
+      "question": "Cloud Functions を使用して Cloud Storage イベントに応答するにはどうすればよいですか？",
+      "options": {
+        "A": "Cloud Storage をポーリングする",
+        "B": "イベントトリガーを設定してバケットイベントをリッスンする",
+        "C": "関数を手動で呼び出す",
+        "D": "スケジュールタスクを使用する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Cloud Functions ストレージトリガー：\n- オブジェクトの作成、削除、アーカイブなどのイベントをサポート\n- 自動的に関数の実行をトリガー\n- イベントにはオブジェクトのメタデータが含まれる\n- 画像処理、データ検証などのシナリオに適している",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q26",
+      "domain": 4,
+      "question": "アプリケーションで GCP サービスにアクセスする際、推奨される認証方式は何ですか？",
+      "options": {
+        "A": "コードにサービスアカウントキーをハードコードする",
+        "B": "アプリケーションデフォルト認証情報（ADC）とサービスアカウントを使用する",
+        "C": "ユーザーの個人アカウントを使用する",
+        "D": "認証を無効にする"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "GCP 認証のベストプラクティス：\n- アプリケーションデフォルト認証情報（ADC）を使用\n- GCP 環境ではメタデータサービスを自動的に使用\n- ローカル開発では gcloud auth application-default login を使用\n- サービスアカウントキーのダウンロードと配布を避ける",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q27",
+      "domain": 4,
+      "question": "Cloud Tasks と Cloud Pub/Sub の主な違いは何ですか？",
+      "options": {
+        "A": "違いはない",
+        "B": "Cloud Tasks はタスクキューと明示的配信用、Pub/Sub はメッセージブロードキャスト用",
+        "C": "Pub/Sub はリトライをサポートしない",
+        "D": "Cloud Tasks は遅延実行をサポートしない"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Cloud Tasks vs Pub/Sub：\n- Cloud Tasks：タスクキュー、明示的ターゲット、遅延とレート制限をサポート\n- Pub/Sub：パブリッシュ/サブスクライブ、複数のサブスクライバー、リアルタイムメッセージング\n- Cloud Tasks は非同期タスク処理に適している\n- Pub/Sub はイベント駆動アーキテクチャに適している",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q28",
+      "domain": 4,
+      "question": "アプリケーションで API キーを安全に保存してアクセスするにはどうすればよいですか？",
+      "options": {
+        "A": "コードリポジトリに保存する",
+        "B": "Secret Manager を使用して IAM でアクセスを制御する",
+        "C": "環境変数に平文で保存する",
+        "D": "公開設定ファイルに保存する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Secret Manager：\n- 機密情報を一元管理\n- バージョン管理と監査ログ\n- IAM による細かいアクセス制御\n- 自動ローテーションをサポート\n- Cloud Run、GKE、Cloud Functions との統合",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q29",
+      "domain": 4,
+      "question": "Firestore の2つのモード（Native と Datastore モード）の違いは何ですか？",
+      "options": {
+        "A": "違いはない",
+        "B": "Native モードはリアルタイムリスニングとモバイル SDK をサポート、Datastore モードは旧 Datastore API と互換性がある",
+        "C": "Datastore モードの方が速い",
+        "D": "Native モードはクエリをサポートしない"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Firestore モード：\n- Native モード：リアルタイムリスニング、モバイル/Web SDK、サブコレクション\n- Datastore モード：旧 API との互換性、サーバーサイドアプリケーション\n- 一度選択したモードは変更不可\n- 新規プロジェクトには Native モードを推奨",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q30",
+      "domain": 4,
+      "question": "Cloud Scheduler を使用して Cloud Run サービスを定期的にトリガーするにはどうすればよいですか？",
+      "options": {
+        "A": "実現できない",
+        "B": "HTTP ターゲットのスケジュールジョブを作成して Cloud Run URL を呼び出す",
+        "C": "VM 上で cron ジョブを使用する",
+        "D": "手動でトリガーする"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Cloud Scheduler の統合：\n- HTTP、Pub/Sub、App Engine ターゲットをサポート\n- cron 式でスケジュールを定義\n- OIDC 認証を設定してプライベートサービスを呼び出し可能\n- リトライ戦略をサポート",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q31",
+      "domain": 4,
+      "question": "GKE で Workload Identity を使用して GCP サービスにアクセスするにはどうすればよいですか？",
+      "options": {
+        "A": "Pod にサービスアカウントキーファイルをマウントする",
+        "B": "Kubernetes サービスアカウントを GCP サービスアカウントにバインドする",
+        "C": "ノードのサービスアカウントを使用する",
+        "D": "サービスアカウントを無効にする"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Workload Identity：\n- K8s サービスアカウントを GCP サービスアカウントにマッピング\n- キーファイルの管理不要\n- より安全な認証方式\n- 細かい権限制御をサポート",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q32",
+      "domain": 4,
+      "question": "Cloud Endpoints の主な機能は何ですか？",
+      "options": {
+        "A": "データストレージ",
+        "B": "API 管理、認証、監視、レート制限",
+        "C": "ロードバランシング",
+        "D": "コンテナオーケストレーション"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Cloud Endpoints：\n- OpenAPI 仕様のサポート\n- API キーと JWT 認証\n- クォータとレート制限\n- API 監視とログ\n- gRPC と REST をサポート",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q33",
+      "domain": 5,
+      "question": "Cloud Logging でログベースのメトリクスを作成するにはどうすればよいですか？",
+      "options": {
+        "A": "作成できない",
+        "B": "ログフィルターを定義してカウンターまたは分布メトリクスを作成する",
+        "C": "事前定義されたメトリクスのみ使用可能",
+        "D": "手動で計算する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "ログベースのメトリクス：\n- ログエントリからカスタムメトリクスを作成\n- カウンターと分布タイプをサポート\n- グループ化用のラベルを抽出可能\n- Cloud Monitoring で使用\n- エラー率、特定イベントの監視に適している",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q34",
+      "domain": 5,
+      "question": "分散アプリケーションでサービス間のリクエストを追跡するにはどうすればよいですか？",
+      "options": {
+        "A": "各サービスの個別のログを確認する",
+        "B": "Cloud Trace を使用して分散トレーシングを行う",
+        "C": "追跡を行わない",
+        "D": "タイムスタンプで関連付ける"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Cloud Trace：\n- レイテンシデータの自動追跡\n- サービス間のリクエストフローを可視化\n- パフォーマンスボトルネックを特定\n- OpenTelemetry との統合\n- リクエストレイテンシ分布を分析",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q35",
+      "domain": 5,
+      "question": "Error Reporting の主な機能は何ですか？",
+      "options": {
+        "A": "ログの表示のみ",
+        "B": "アプリケーションエラーの集約と分析、通知とトレンド分析を提供",
+        "C": "コードレビュー",
+        "D": "パフォーマンステスト"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Error Reporting：\n- 類似エラーの自動集約\n- エラー数のトレンドを表示\n- スタックトレースを提供\n- メール/モバイル通知をサポート\n- 複数の言語とフレームワークと統合",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q36",
+      "domain": 5,
+      "question": "CPU 使用率が閾値を超えた時にアラートを送信するように設定するにはどうすればよいですか？",
+      "options": {
+        "A": "手動で監視する",
+        "B": "Cloud Monitoring でアラートポリシーを作成する",
+        "C": "ダッシュボードの表示のみ可能",
+        "D": "カスタム監視スクリプトを作成する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Cloud Monitoring アラート：\n- メトリクス閾値に基づくポリシーを作成\n- 複数の通知チャネルをサポート（メール、SMS、PagerDuty など）\n- アラート条件と持続時間を設定可能\n- 複数の条件の組み合わせをサポート",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q37",
+      "domain": 5,
+      "question": "SLI、SLO、SLA とは何ですか？",
+      "options": {
+        "A": "すべて同じ概念",
+        "B": "SLI は指標、SLO は目標、SLA は顧客との契約",
+        "C": "SLA のみが重要",
+        "D": "監視とは関係ない"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "SRE の概念：\n- SLI（Service Level Indicator）：サービス品質指標\n- SLO（Service Level Objective）：内部目標\n- SLA（Service Level Agreement）：顧客契約\n- Cloud Monitoring は SLO の定義と監視をサポート",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q38",
+      "domain": 5,
+      "question": "Cloud Run サービスでリクエストレイテンシとエラー率を確認するにはどうすればよいですか？",
+      "options": {
+        "A": "確認できない",
+        "B": "Cloud Run コンソールまたは Cloud Monitoring で組み込みメトリクスを確認する",
+        "C": "自分で実装する必要がある",
+        "D": "ログの確認のみ可能"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Cloud Run の監視：\n- リクエストメトリクスを自動収集\n- レイテンシ分布とパーセンタイル\n- リクエスト数とエラー率\n- インスタンス数とリソース使用量\n- カスタムダッシュボードを作成可能",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q39",
+      "domain": 1,
+      "question": "サーキットブレーカーパターンとは何ですか？",
+      "options": {
+        "A": "ネットワーク帯域幅を増やす",
+        "B": "ダウンストリームサービスが失敗した時に迅速に失敗し、カスケード障害を防ぐ",
+        "C": "リトライ回数を増やす",
+        "D": "サービス数を減らす"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "サーキットブレーカーパターン：\n- ダウンストリームサービスの障害を検出\n- 閾値に達したらサーキットブレーカーを開く\n- タイムアウトを待つ代わりに迅速に失敗を返す\n- カスケード障害を防止\n- 定期的に回復を試みる（ハーフオープン状態）",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q40",
+      "domain": 2,
+      "question": "Cloud Build でビルドキャッシュを実装してビルドを高速化するにはどうすればよいですか？",
+      "options": {
+        "A": "キャッシュを実装できない",
+        "B": "kaniko キャッシュレイヤーを使用するか、依存関係を Cloud Storage に保存する",
+        "C": "毎回ゼロからビルドする",
+        "D": "ビルドステップを減らす"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Cloud Build キャッシュ戦略：\n- kaniko を使用したレイヤーキャッシング\n- 依存関係を Cloud Storage にキャッシュ\n- --cache-from を使用してキャッシュイメージを指定\n- Dockerfile のレイヤー順序を最適化\n- ビルド時間とコストを削減",
+      "difficulty": "hard"
+    }
+  ]
+}

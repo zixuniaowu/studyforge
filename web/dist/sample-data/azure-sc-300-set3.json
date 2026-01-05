@@ -1,0 +1,662 @@
+{
+  "exam": {
+    "id": "azure-sc-300-set3",
+    "name": "Identity and Access Administrator 练习题 Set 3",
+    "code": "SC-300",
+    "provider": "Microsoft",
+    "language": "zh-CN",
+    "description": "Microsoft Identity and Access Administrator 认证练习题第三套，涵盖 Microsoft Entra ID 身份管理、身份验证、访问管理和身份治理相关知识。",
+    "totalQuestions": 40,
+    "passingScore": 70,
+    "examTime": 120,
+    "domains": [
+      "实现 Microsoft Entra ID 中的标识",
+      "实现身份验证和访问管理",
+      "实现应用程序的访问管理",
+      "规划和实现 Microsoft Entra ID 中的身份治理"
+    ],
+    "tags": ["Microsoft", "Azure", "Security", "SC-300", "Identity", "Entra ID"]
+  },
+  "questions": [
+    {
+      "id": "sc300-s3-q1",
+      "examId": "azure-sc-300-set3",
+      "setNumber": 3,
+      "domain": "实现 Microsoft Entra ID 中的标识",
+      "question": "在配置多林同步方案时，Microsoft Entra Connect 需要什么配置？",
+      "options": {
+        "A": "每个林单独的 Microsoft Entra Connect 实例",
+        "B": "单个 Microsoft Entra Connect 实例配置为连接到所有林",
+        "C": "不支持多林同步",
+        "D": "需要 AD FS 服务器"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Microsoft Entra Connect 支持多林拓扑，可以使用单个实例连接到多个本地 Active Directory 林，将它们的用户同步到单个 Microsoft Entra ID 租户。"
+    },
+    {
+      "id": "sc300-s3-q2",
+      "examId": "azure-sc-300-set3",
+      "setNumber": 3,
+      "domain": "实现 Microsoft Entra ID 中的标识",
+      "question": "用户主体名称 (UPN) 后缀在混合身份环境中的重要性是什么？",
+      "options": {
+        "A": "仅用于显示",
+        "B": "决定用户可以用来登录云服务的用户名",
+        "C": "仅用于电子邮件",
+        "D": "决定用户的密码策略"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "UPN 是用户登录云服务时使用的用户名。UPN 后缀必须是经过验证的域名才能实现无缝登录体验。如果后缀未验证，用户可能需要使用 onmicrosoft.com 域。"
+    },
+    {
+      "id": "sc300-s3-q3",
+      "examId": "azure-sc-300-set3",
+      "setNumber": 3,
+      "domain": "实现 Microsoft Entra ID 中的标识",
+      "question": "在 Microsoft Entra B2B 中，自助注册用户流允许什么？",
+      "options": {
+        "A": "内部用户自动注册",
+        "B": "外部用户无需邀请即可自行注册访问应用程序",
+        "C": "自动创建管理员账户",
+        "D": "禁用所有外部访问"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "自助注册用户流允许您创建注册体验，让外部用户无需显式邀请即可请求访问您的应用程序。您可以自定义注册表单并配置审批工作流。"
+    },
+    {
+      "id": "sc300-s3-q4",
+      "examId": "azure-sc-300-set3",
+      "setNumber": 3,
+      "domain": "实现 Microsoft Entra ID 中的标识",
+      "question": "跨租户同步功能的主要用途是什么？",
+      "options": {
+        "A": "同步本地 AD 到云",
+        "B": "在多个 Microsoft Entra ID 租户之间同步用户",
+        "C": "同步应用程序数据",
+        "D": "同步设备数据"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "跨租户同步允许组织在其拥有的多个 Microsoft Entra ID 租户之间自动同步用户。这对于合并、收购或有多个租户的大型组织非常有用。"
+    },
+    {
+      "id": "sc300-s3-q5",
+      "examId": "azure-sc-300-set3",
+      "setNumber": 3,
+      "domain": "实现 Microsoft Entra ID 中的标识",
+      "question": "Microsoft Entra Connect Health 的主要功能是什么？",
+      "options": {
+        "A": "同步用户密码",
+        "B": "监控和提供有关同步基础设施的见解和警报",
+        "C": "创建用户账户",
+        "D": "管理应用程序许可证"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Microsoft Entra Connect Health 提供对 AD FS 服务器、Microsoft Entra Connect 同步和 Active Directory 域服务的监控、警报和性能指标，帮助确保身份基础设施的健康。"
+    },
+    {
+      "id": "sc300-s3-q6",
+      "examId": "azure-sc-300-set3",
+      "setNumber": 3,
+      "domain": "实现 Microsoft Entra ID 中的标识",
+      "question": "在 Microsoft Entra B2C 中，用户流与自定义策略有什么区别？",
+      "options": {
+        "A": "没有区别",
+        "B": "用户流是预配置的，自定义策略允许完全自定义身份体验",
+        "C": "自定义策略不支持 MFA",
+        "D": "用户流不支持社交登录"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "用户流是预配置的策略，适合常见场景（注册、登录、密码重置）。自定义策略使用身份体验框架，允许完全自定义复杂的身份验证和注册流程。"
+    },
+    {
+      "id": "sc300-s3-q7",
+      "examId": "azure-sc-300-set3",
+      "setNumber": 3,
+      "domain": "实现 Microsoft Entra ID 中的标识",
+      "question": "删除同步范围内的用户在本地 AD 中会导致什么？",
+      "options": {
+        "A": "用户在云中立即永久删除",
+        "B": "用户在云中被软删除，可在 30 天内恢复",
+        "C": "没有影响",
+        "D": "用户的密码被重置"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "当在本地 AD 中删除同步用户时，Microsoft Entra Connect 会将其标记为在云中软删除。该用户在回收站中保留 30 天，可以恢复。30 天后永久删除。"
+    },
+    {
+      "id": "sc300-s3-q8",
+      "examId": "azure-sc-300-set3",
+      "setNumber": 3,
+      "domain": "实现 Microsoft Entra ID 中的标识",
+      "question": "在配置设备写回时，设备信息写回到本地 AD 的哪个位置？",
+      "options": {
+        "A": "用户 OU",
+        "B": "RegisteredDevices 容器",
+        "C": "计算机 OU",
+        "D": "任意指定的 OU"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "设备写回功能将 Microsoft Entra 注册的设备信息写回到本地 Active Directory 的 RegisteredDevices 容器中，以支持本地条件访问场景。"
+    },
+    {
+      "id": "sc300-s3-q9",
+      "examId": "azure-sc-300-set3",
+      "setNumber": 3,
+      "domain": "实现身份验证和访问管理",
+      "question": "在配置条件访问的合规性策略时，设备必须满足什么条件才能被视为合规？",
+      "options": {
+        "A": "设备必须已注册",
+        "B": "设备必须符合 Intune 合规性策略",
+        "C": "设备必须运行 Windows 10",
+        "D": "设备必须连接到公司网络"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "设备合规性由 Microsoft Intune 评估。设备必须满足定义的合规性策略（如 PIN 要求、加密、最低操作系统版本等）才能被标记为合规。"
+    },
+    {
+      "id": "sc300-s3-q10",
+      "examId": "azure-sc-300-set3",
+      "setNumber": 3,
+      "domain": "实现身份验证和访问管理",
+      "question": "无缝单一登录 (Seamless SSO) 的工作原理是什么？",
+      "options": {
+        "A": "使用 SAML 令牌",
+        "B": "使用 Kerberos 票据实现已加入域的设备的透明身份验证",
+        "C": "使用 OAuth 令牌",
+        "D": "使用证书身份验证"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "无缝 SSO 利用 Kerberos 票据为已加入域且连接到公司网络的 Windows 设备提供透明的单一登录体验，用户无需输入密码。"
+    },
+    {
+      "id": "sc300-s3-q11",
+      "examId": "azure-sc-300-set3",
+      "setNumber": 3,
+      "domain": "实现身份验证和访问管理",
+      "question": "在 ID Protection 中，"受损凭据"风险检测是如何工作的？",
+      "options": {
+        "A": "监控登录位置",
+        "B": "将用户凭据与暗网和公开泄露的凭据进行比较",
+        "C": "分析用户行为",
+        "D": "检查设备健康状态"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "受损凭据检测将用户的凭据与 Microsoft 在暗网、粘贴站点和其他来源发现的已泄露凭据数据库进行比较，以识别可能被入侵的账户。"
+    },
+    {
+      "id": "sc300-s3-q12",
+      "examId": "azure-sc-300-set3",
+      "setNumber": 3,
+      "domain": "实现身份验证和访问管理",
+      "question": "在条件访问中，"需要密码更改"访问控制何时使用？",
+      "options": {
+        "A": "每次登录",
+        "B": "当检测到用户风险时，强制用户更改密码",
+        "C": "每隔 30 天",
+        "D": "首次登录时"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "\"需要密码更改\"是与 ID Protection 集成的访问控制，当检测到用户风险（如凭据泄露）时，强制用户更改密码以修复风险。"
+    },
+    {
+      "id": "sc300-s3-q13",
+      "examId": "azure-sc-300-set3",
+      "setNumber": 3,
+      "domain": "实现身份验证和访问管理",
+      "question": "证书颁发机构 (CA) 信任在 Microsoft Entra ID 证书身份验证中的作用是什么？",
+      "options": {
+        "A": "存储用户密码",
+        "B": "验证用户证书是否由受信任的 CA 颁发",
+        "C": "加密网络流量",
+        "D": "管理设备注册"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "上传到 Microsoft Entra ID 的受信任 CA 证书用于验证用户提供的证书是否由组织信任的证书颁发机构签发，这是证书身份验证的关键部分。"
+    },
+    {
+      "id": "sc300-s3-q14",
+      "examId": "azure-sc-300-set3",
+      "setNumber": 3,
+      "domain": "实现身份验证和访问管理",
+      "question": "安全默认值 (Security Defaults) 启用时会自动执行什么？",
+      "options": {
+        "A": "禁用所有用户",
+        "B": "要求所有用户注册 MFA，阻止传统身份验证",
+        "C": "删除所有条件访问策略",
+        "D": "禁用单一登录"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "安全默认值是一组基本的安全设置，启用后会要求所有用户注册 MFA、阻止传统身份验证协议、在必要时要求 MFA 等，提供基础安全保护。"
+    },
+    {
+      "id": "sc300-s3-q15",
+      "examId": "azure-sc-300-set3",
+      "setNumber": 3,
+      "domain": "实现身份验证和访问管理",
+      "question": "在使用 Microsoft Authenticator 的数字匹配功能时，用户需要做什么？",
+      "options": {
+        "A": "输入完整密码",
+        "B": "在应用中输入登录屏幕上显示的数字",
+        "C": "扫描二维码",
+        "D": "回答安全问题"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "数字匹配是一种防钓鱼功能，登录时屏幕会显示一个数字，用户必须在 Microsoft Authenticator 应用中输入相同的数字来确认身份验证请求。"
+    },
+    {
+      "id": "sc300-s3-q16",
+      "examId": "azure-sc-300-set3",
+      "setNumber": 3,
+      "domain": "实现身份验证和访问管理",
+      "question": "在身份验证方法策略中，可以为不同用户组配置不同的方法吗？",
+      "options": {
+        "A": "不可以，所有用户必须使用相同的方法",
+        "B": "可以，可以为特定用户或组启用或禁用特定方法",
+        "C": "只能为管理员配置",
+        "D": "只能为来宾用户配置"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "身份验证方法策略允许管理员为特定用户或组启用或禁用特定的身份验证方法，提供灵活的控制。例如，可以只为管理员启用 FIDO2 密钥。"
+    },
+    {
+      "id": "sc300-s3-q17",
+      "examId": "azure-sc-300-set3",
+      "setNumber": 3,
+      "domain": "实现应用程序的访问管理",
+      "question": "在使用应用程序代理发布本地应用时，"预身份验证"选项有什么作用？",
+      "options": {
+        "A": "加密应用数据",
+        "B": "决定用户访问应用前是否需要通过 Microsoft Entra ID 进行身份验证",
+        "C": "压缩网络流量",
+        "D": "缓存应用响应"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "预身份验证决定是否在允许用户访问应用程序之前要求通过 Microsoft Entra ID 进行身份验证。可以设置为 Microsoft Entra ID（需要身份验证）或 Passthrough（直接访问）。"
+    },
+    {
+      "id": "sc300-s3-q18",
+      "examId": "azure-sc-300-set3",
+      "setNumber": 3,
+      "domain": "实现应用程序的访问管理",
+      "question": "在 SAML SSO 中，断言消费者服务 (ACS) URL 的作用是什么？",
+      "options": {
+        "A": "用户登录的页面",
+        "B": "服务提供者接收 SAML 响应的端点",
+        "C": "存储用户属性的位置",
+        "D": "身份提供者的登录页面"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "ACS URL（回复 URL）是服务提供者的端点，身份提供者在用户成功身份验证后将 SAML 响应（包含断言）发送到此 URL。"
+    },
+    {
+      "id": "sc300-s3-q19",
+      "examId": "azure-sc-300-set3",
+      "setNumber": 3,
+      "domain": "实现应用程序的访问管理",
+      "question": "OAuth 2.0 客户端凭据流适用于什么场景？",
+      "options": {
+        "A": "需要用户登录的移动应用",
+        "B": "无需用户交互的后台服务或守护程序",
+        "C": "单页应用程序",
+        "D": "需要刷新令牌的应用"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "客户端凭据流用于应用程序以其自己的身份（而不是代表用户）访问资源。这适用于后台服务、守护程序、定时作业等无用户交互的场景。"
+    },
+    {
+      "id": "sc300-s3-q20",
+      "examId": "azure-sc-300-set3",
+      "setNumber": 3,
+      "domain": "实现应用程序的访问管理",
+      "question": "在配置应用程序的用户预配时，范围筛选器的作用是什么？",
+      "options": {
+        "A": "定义同步的频率",
+        "B": "定义哪些用户符合预配条件",
+        "C": "加密用户数据",
+        "D": "设置用户密码"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "范围筛选器允许您定义哪些用户应该预配到目标应用程序。可以基于用户属性（如部门、职务）创建筛选条件，只预配符合条件的用户。"
+    },
+    {
+      "id": "sc300-s3-q21",
+      "examId": "azure-sc-300-set3",
+      "setNumber": 3,
+      "domain": "实现应用程序的访问管理",
+      "question": "在 OpenID Connect 中，"scope"参数的"openid"值表示什么？",
+      "options": {
+        "A": "请求用户的电子邮件",
+        "B": "请求身份验证并获取 ID 令牌",
+        "C": "请求用户的配置文件信息",
+        "D": "请求离线访问"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "在 OpenID Connect 中，\"openid\" scope 是必需的，表示这是一个身份验证请求，服务器应该返回包含用户身份信息的 ID 令牌。"
+    },
+    {
+      "id": "sc300-s3-q22",
+      "examId": "azure-sc-300-set3",
+      "setNumber": 3,
+      "domain": "实现应用程序的访问管理",
+      "question": "管理员同意工作流的作用是什么？",
+      "options": {
+        "A": "自动批准所有应用请求",
+        "B": "允许用户请求管理员批准应用程序的权限",
+        "C": "禁用所有应用程序",
+        "D": "删除未使用的应用程序"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "管理员同意工作流允许用户在应用程序需要他们无法自行授予的权限时，向管理员发送批准请求。管理员可以审查并决定是否授予权限。"
+    },
+    {
+      "id": "sc300-s3-q23",
+      "examId": "azure-sc-300-set3",
+      "setNumber": 3,
+      "domain": "实现应用程序的访问管理",
+      "question": "在 SAML 签名证书中，"签名响应和断言"选项意味着什么？",
+      "options": {
+        "A": "只签名断言",
+        "B": "对整个 SAML 响应和断言都进行数字签名",
+        "C": "不签名任何内容",
+        "D": "只加密断言"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "\"签名响应和断言\"表示身份提供者将对整个 SAML 响应消息和其中包含的断言都进行数字签名，提供最高级别的完整性验证。"
+    },
+    {
+      "id": "sc300-s3-q24",
+      "examId": "azure-sc-300-set3",
+      "setNumber": 3,
+      "domain": "实现应用程序的访问管理",
+      "question": "在配置 Kerberos 约束委派 (KCD) 用于应用程序代理时，需要什么？",
+      "options": {
+        "A": "用户的密码",
+        "B": "为连接器服务账户配置 SPN 和委派权限",
+        "C": "SAML 证书",
+        "D": "OAuth 客户端密码"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "使用 KCD 实现单一登录需要为应用程序代理连接器的服务账户配置服务主体名称 (SPN)，并在 Active Directory 中配置委派权限以代表用户获取 Kerberos 票据。"
+    },
+    {
+      "id": "sc300-s3-q25",
+      "examId": "azure-sc-300-set3",
+      "setNumber": 3,
+      "domain": "规划和实现 Microsoft Entra ID 中的身份治理",
+      "question": "在权利管理中，"自动分配策略"允许什么？",
+      "options": {
+        "A": "用户手动请求访问",
+        "B": "基于用户属性自动将访问包分配给符合条件的用户",
+        "C": "管理员手动分配",
+        "D": "禁用访问包"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "自动分配策略允许您基于规则（如部门、职务等属性）自动将访问包分配给符合条件的用户，无需用户请求或管理员手动分配。"
+    },
+    {
+      "id": "sc300-s3-q26",
+      "examId": "azure-sc-300-set3",
+      "setNumber": 3,
+      "domain": "规划和实现 Microsoft Entra ID 中的身份治理",
+      "question": "在 PIM 中，最大激活持续时间设置的作用是什么？",
+      "options": {
+        "A": "用户保持活动状态的最长时间",
+        "B": "角色激活后可以使用的最长时间",
+        "C": "审批请求的超时时间",
+        "D": "密码的有效期"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "最大激活持续时间定义了用户激活角色后可以使用该角色的最长时间。超过此时间后，用户必须重新激活角色才能继续使用特权访问。"
+    },
+    {
+      "id": "sc300-s3-q27",
+      "examId": "azure-sc-300-set3",
+      "setNumber": 3,
+      "domain": "规划和实现 Microsoft Entra ID 中的身份治理",
+      "question": "访问评审中的"多阶段评审"功能允许什么？",
+      "options": {
+        "A": "单个审阅者快速完成评审",
+        "B": "配置多个审阅阶段，每个阶段可有不同的审阅者",
+        "C": "自动批准所有访问",
+        "D": "跳过审阅流程"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "多阶段评审允许您配置多个连续的审阅阶段，每个阶段可以有不同的审阅者（如直接经理然后是安全团队），提供更全面的评审流程。"
+    },
+    {
+      "id": "sc300-s3-q28",
+      "examId": "azure-sc-300-set3",
+      "setNumber": 3,
+      "domain": "规划和实现 Microsoft Entra ID 中的身份治理",
+      "question": "在生命周期工作流中，"离职"工作流通常包含什么任务？",
+      "options": {
+        "A": "分配许可证",
+        "B": "删除组成员身份、撤销访问、禁用账户",
+        "C": "发送欢迎邮件",
+        "D": "创建新账户"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "离职工作流在员工离开组织时执行，通常包括删除组成员身份、撤销对应用程序和资源的访问、禁用用户账户、发送通知等清理任务。"
+    },
+    {
+      "id": "sc300-s3-q29",
+      "examId": "azure-sc-300-set3",
+      "setNumber": 3,
+      "domain": "规划和实现 Microsoft Entra ID 中的身份治理",
+      "question": "PIM 中的"激活理由"设置的作用是什么？",
+      "options": {
+        "A": "自动记录用户位置",
+        "B": "要求用户在激活角色时提供业务理由",
+        "C": "记录用户的 IP 地址",
+        "D": "设置密码策略"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "启用激活理由后，用户在激活特权角色时必须提供业务理由说明为什么需要该访问权限。这创建了审计跟踪并支持合规性要求。"
+    },
+    {
+      "id": "sc300-s3-q30",
+      "examId": "azure-sc-300-set3",
+      "setNumber": 3,
+      "domain": "规划和实现 Microsoft Entra ID 中的身份治理",
+      "question": "在权利管理中，资源角色的作用是什么？",
+      "options": {
+        "A": "定义用户的工作职位",
+        "B": "定义用户在资源（如组或应用）中获得的权限级别",
+        "C": "设置用户的薪资级别",
+        "D": "定义用户的物理位置"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "在访问包中添加资源时，需要选择资源角色，这定义了用户在该资源中获得的权限级别。例如，组的成员或所有者角色，应用的用户或管理员角色。"
+    },
+    {
+      "id": "sc300-s3-q31",
+      "examId": "azure-sc-300-set3",
+      "setNumber": 3,
+      "domain": "规划和实现 Microsoft Entra ID 中的身份治理",
+      "question": "身份治理仪表板显示什么信息？",
+      "options": {
+        "A": "仅用户列表",
+        "B": "访问权限、特权访问、身份治理任务的概览和洞察",
+        "C": "仅应用程序列表",
+        "D": "仅设备列表"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "身份治理仪表板提供组织身份治理状态的概览，包括待处理的访问评审、权利管理请求、PIM 激活、以及需要关注的治理任务和建议。"
+    },
+    {
+      "id": "sc300-s3-q32",
+      "examId": "azure-sc-300-set3",
+      "setNumber": 3,
+      "domain": "规划和实现 Microsoft Entra ID 中的身份治理",
+      "question": "在配置访问评审时，"评审者"可以是谁？",
+      "options": {
+        "A": "仅用户自己",
+        "B": "用户自己、经理、特定用户或组、应用所有者",
+        "C": "仅全局管理员",
+        "D": "仅外部审计员"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "访问评审支持多种评审者类型：用户自我评审、用户的经理、特定用户或组、组所有者或应用程序所有者。可以根据评审场景选择合适的评审者。"
+    },
+    {
+      "id": "sc300-s3-q33",
+      "examId": "azure-sc-300-set3",
+      "setNumber": 3,
+      "domain": "实现 Microsoft Entra ID 中的标识",
+      "question": "在 Microsoft Entra 外部 ID 中，外部用户协作设置可以控制什么？",
+      "options": {
+        "A": "仅内部用户的访问",
+        "B": "来宾用户邀请策略和来宾用户权限",
+        "C": "网络防火墙设置",
+        "D": "应用程序部署"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "外部协作设置控制谁可以邀请来宾用户、可以邀请到哪些域的用户、来宾用户的默认权限级别等，帮助管理 B2B 协作的安全性。"
+    },
+    {
+      "id": "sc300-s3-q34",
+      "examId": "azure-sc-300-set3",
+      "setNumber": 3,
+      "domain": "实现 Microsoft Entra ID 中的标识",
+      "question": "Microsoft Entra ID 的紧急访问账户应该如何配置？",
+      "options": {
+        "A": "使用联合身份验证",
+        "B": "排除在条件访问和 MFA 要求之外，使用强密码",
+        "C": "设置短期密码",
+        "D": "与普通用户相同的设置"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "紧急访问账户应该排除在所有条件访问策略和 MFA 要求之外，使用非常强的密码，并且只在紧急情况下使用。应该监控这些账户的登录活动。"
+    },
+    {
+      "id": "sc300-s3-q35",
+      "examId": "azure-sc-300-set3",
+      "setNumber": 3,
+      "domain": "实现身份验证和访问管理",
+      "question": "在条件访问中，"仅报告"模式的作用是什么？",
+      "options": {
+        "A": "完全阻止访问",
+        "B": "评估策略影响而不实际强制执行，用于测试",
+        "C": "自动批准所有请求",
+        "D": "删除现有策略"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "\"仅报告\"模式允许您在不实际强制执行策略的情况下评估其影响。登录日志会显示如果策略处于活动状态会发生什么，帮助在部署前验证策略。"
+    },
+    {
+      "id": "sc300-s3-q36",
+      "examId": "azure-sc-300-set3",
+      "setNumber": 3,
+      "domain": "实现身份验证和访问管理",
+      "question": "令牌保护（以前称为令牌绑定）的作用是什么？",
+      "options": {
+        "A": "加密所有令牌",
+        "B": "将令牌绑定到特定设备，防止令牌被盗用到其他设备",
+        "C": "延长令牌有效期",
+        "D": "压缩令牌大小"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "令牌保护将访问令牌和刷新令牌绑定到请求它们的特定设备。如果攻击者窃取令牌并尝试在不同设备上使用，令牌将被拒绝。"
+    },
+    {
+      "id": "sc300-s3-q37",
+      "examId": "azure-sc-300-set3",
+      "setNumber": 3,
+      "domain": "实现应用程序的访问管理",
+      "question": "基于标头的身份验证在应用程序代理中如何工作？",
+      "options": {
+        "A": "使用 SAML 令牌",
+        "B": "在 HTTP 标头中传递用户身份信息到后端应用程序",
+        "C": "使用 Kerberos 票据",
+        "D": "使用 OAuth 令牌"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "基于标头的身份验证允许应用程序代理在 HTTP 标头中将用户身份信息（如用户名、电子邮件）传递给无法使用现代身份验证协议的传统应用程序。"
+    },
+    {
+      "id": "sc300-s3-q38",
+      "examId": "azure-sc-300-set3",
+      "setNumber": 3,
+      "domain": "实现应用程序的访问管理",
+      "question": "在配置 API 权限时，".default"范围的特殊用途是什么？",
+      "options": {
+        "A": "请求所有可能的权限",
+        "B": "请求应用程序静态配置的所有权限",
+        "C": "请求管理员权限",
+        "D": "请求只读权限"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "\".default\" 范围在客户端凭据流中使用，请求应用程序注册中静态配置的所有应用程序权限。它简化了对多个权限的请求过程。"
+    },
+    {
+      "id": "sc300-s3-q39",
+      "examId": "azure-sc-300-set3",
+      "setNumber": 3,
+      "domain": "规划和实现 Microsoft Entra ID 中的身份治理",
+      "question": "PIM 中的"按需访问"和"时间限制访问"有什么区别？",
+      "options": {
+        "A": "没有区别",
+        "B": "按需访问需要用户激活，时间限制访问是始终活动但有到期日期",
+        "C": "时间限制访问需要激活",
+        "D": "两者都永不过期"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "符合条件的分配（按需访问）要求用户在需要时激活角色。活动分配可以是时间限制的，在指定期间内始终处于活动状态，无需激活，到期后自动失效。"
+    },
+    {
+      "id": "sc300-s3-q40",
+      "examId": "azure-sc-300-set3",
+      "setNumber": 3,
+      "domain": "规划和实现 Microsoft Entra ID 中的身份治理",
+      "question": "Microsoft Entra 权限管理（以前称为 CloudKnox）与 PIM 有什么区别？",
+      "options": {
+        "A": "它们功能相同",
+        "B": "权限管理专注于多云环境（Azure、AWS、GCP）的权限发现和修正，PIM 专注于 Microsoft Entra 角色",
+        "C": "权限管理仅用于本地",
+        "D": "PIM 用于多云环境"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Microsoft Entra 权限管理是云基础设施权利管理 (CIEM) 解决方案，用于发现、修正和监控 Azure、AWS 和 GCP 中的权限风险。PIM 专注于 Microsoft Entra ID 和 Azure 角色的特权访问管理。"
+    }
+  ]
+}

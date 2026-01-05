@@ -1,0 +1,663 @@
+{
+  "exam": {
+    "id": "gcp-adp-set3",
+    "name": "Associate Data Practitioner 练习题 Set 3",
+    "code": "ADP",
+    "provider": "Google Cloud",
+    "language": "zh-CN",
+    "description": "Google Cloud 数据从业者认证练习题第三套",
+    "totalQuestions": 40,
+    "passingScore": 70,
+    "examTime": 120,
+    "domains": [
+      "数据分析和探索",
+      "数据准备和集成",
+      "机器学习基础",
+      "商业智能和可视化",
+      "数据治理和安全"
+    ],
+    "tags": ["GCP", "Data", "BigQuery", "Looker", "Data Analytics"]
+  },
+  "questions": [
+    {
+      "id": "gcp-adp-s3-q1",
+      "examId": "gcp-adp-set3",
+      "setNumber": 3,
+      "domain": "数据分析和探索",
+      "question": "在 BigQuery 中，您需要对大型表进行近似去重计数以提高性能。应该使用什么函数？",
+      "options": {
+        "A": "COUNT(DISTINCT column)",
+        "B": "APPROX_COUNT_DISTINCT(column)",
+        "C": "UNIQUE_COUNT(column)",
+        "D": "DISTINCT_COUNT(column)"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "APPROX_COUNT_DISTINCT 使用 HyperLogLog++ 算法提供近似去重计数，比精确的 COUNT(DISTINCT) 快得多，特别是对于大型数据集。误差通常在 1% 以内，适用于不需要精确计数的场景。"
+    },
+    {
+      "id": "gcp-adp-s3-q2",
+      "examId": "gcp-adp-set3",
+      "setNumber": 3,
+      "domain": "数据准备和集成",
+      "question": "您需要将数据从 BigQuery 同步到 Google Sheets 进行协作分析。应该使用什么功能？",
+      "options": {
+        "A": "导出 CSV 后手动导入",
+        "B": "BigQuery Connected Sheets",
+        "C": "复制粘贴",
+        "D": "API 调用"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "BigQuery Connected Sheets 允许直接在 Google Sheets 中查询和分析 BigQuery 数据，无需导出。用户可以使用熟悉的电子表格界面，同时利用 BigQuery 的处理能力处理大规模数据。"
+    },
+    {
+      "id": "gcp-adp-s3-q3",
+      "examId": "gcp-adp-set3",
+      "setNumber": 3,
+      "domain": "机器学习基础",
+      "question": "在 BigQuery ML 中，如何导出训练好的模型用于在其他环境中部署？",
+      "options": {
+        "A": "无法导出",
+        "B": "使用 EXPORT MODEL 语句导出到 Cloud Storage",
+        "C": "复制模型代码",
+        "D": "截图保存"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "使用 EXPORT MODEL 语句可以将 BigQuery ML 模型导出到 Cloud Storage。导出的模型可以用于 Vertex AI 等其他平台，或使用 TensorFlow Serving 进行部署。"
+    },
+    {
+      "id": "gcp-adp-s3-q4",
+      "examId": "gcp-adp-set3",
+      "setNumber": 3,
+      "domain": "商业智能和可视化",
+      "question": "在 Looker 中，什么是 Derived Table（派生表）？",
+      "options": {
+        "A": "从其他数据库复制的表",
+        "B": "通过 SQL 查询动态创建的虚拟表",
+        "C": "加密的表",
+        "D": "压缩的表"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "派生表是在 LookML 中使用 SQL 查询定义的虚拟表。它可以是每次查询时动态计算的，或者是持久化存储的（PDT）。派生表用于创建复杂的数据转换或预聚合。"
+    },
+    {
+      "id": "gcp-adp-s3-q5",
+      "examId": "gcp-adp-set3",
+      "setNumber": 3,
+      "domain": "数据治理和安全",
+      "question": "您需要确保只有经过授权的应用程序才能访问 BigQuery API。应该使用什么？",
+      "options": {
+        "A": "API 密钥",
+        "B": "服务账号和 OAuth 2.0",
+        "C": "用户名密码",
+        "D": "IP 白名单"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "服务账号是用于应用程序身份验证的推荐方法。结合 OAuth 2.0 和 IAM 权限，可以精确控制哪些应用程序可以访问哪些 BigQuery 资源。API 密钥不提供足够的安全性。"
+    },
+    {
+      "id": "gcp-adp-s3-q6",
+      "examId": "gcp-adp-set3",
+      "setNumber": 3,
+      "domain": "数据分析和探索",
+      "question": "在 BigQuery 中，如何创建一个按日期分区并按客户 ID 聚簇的表？",
+      "options": {
+        "A": "使用 CREATE INDEX",
+        "B": "在 CREATE TABLE 中使用 PARTITION BY 和 CLUSTER BY",
+        "C": "使用 ALTER TABLE",
+        "D": "无法同时使用分区和聚簇"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "在 CREATE TABLE 语句中，可以同时使用 PARTITION BY（按日期分区）和 CLUSTER BY（按指定列聚簇）。例如：CREATE TABLE ... PARTITION BY DATE(timestamp) CLUSTER BY customer_id。"
+    },
+    {
+      "id": "gcp-adp-s3-q7",
+      "examId": "gcp-adp-set3",
+      "setNumber": 3,
+      "domain": "数据准备和集成",
+      "question": "您需要验证 BigQuery 表中的数据符合预期的格式和范围。应该使用什么工具？",
+      "options": {
+        "A": "Cloud Monitoring",
+        "B": "Dataplex 数据质量任务",
+        "C": "Cloud Logging",
+        "D": "Cloud Trace"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Dataplex 数据质量任务允许您定义规则来验证数据质量，如空值检查、范围验证、格式验证等。它可以自动运行并生成数据质量报告，帮助监控数据健康状况。"
+    },
+    {
+      "id": "gcp-adp-s3-q8",
+      "examId": "gcp-adp-set3",
+      "setNumber": 3,
+      "domain": "机器学习基础",
+      "question": "在 BigQuery ML 中创建推荐系统应该使用什么模型类型？",
+      "options": {
+        "A": "LINEAR_REG",
+        "B": "MATRIX_FACTORIZATION",
+        "C": "KMEANS",
+        "D": "LOGISTIC_REG"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "MATRIX_FACTORIZATION（矩阵分解）是用于构建推荐系统的模型类型。它通过分解用户-项目交互矩阵来发现潜在因素，可以预测用户对未交互项目的偏好。"
+    },
+    {
+      "id": "gcp-adp-s3-q9",
+      "examId": "gcp-adp-set3",
+      "setNumber": 3,
+      "domain": "商业智能和可视化",
+      "question": "在 Looker Studio 中，如何实现钻取功能，允许用户点击摘要数据查看详细数据？",
+      "options": {
+        "A": "使用参数",
+        "B": "配置图表交互和链接",
+        "C": "使用计算字段",
+        "D": "数据混合"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "通过配置图表交互，可以设置点击某个数据点时导航到另一个页面或报表，并传递筛选条件。这实现了从摘要到详细的钻取功能，帮助用户深入分析数据。"
+    },
+    {
+      "id": "gcp-adp-s3-q10",
+      "examId": "gcp-adp-set3",
+      "setNumber": 3,
+      "domain": "数据治理和安全",
+      "question": "您需要为 BigQuery 实施数据访问审批流程，要求敏感数据访问需要经理批准。应该使用什么？",
+      "options": {
+        "A": "IAM 条件",
+        "B": "Access Approval",
+        "C": "Cloud Armor",
+        "D": "Cloud NAT"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Access Approval 允许您要求对敏感资源的访问必须经过明确批准。当用户请求访问时，指定的审批者会收到通知并决定是否批准。这增加了对敏感数据访问的控制。"
+    },
+    {
+      "id": "gcp-adp-s3-q11",
+      "examId": "gcp-adp-set3",
+      "setNumber": 3,
+      "domain": "数据分析和探索",
+      "question": "在 BigQuery 中，您需要查询过去 7 天的数据快照。应该使用什么功能？",
+      "options": {
+        "A": "备份恢复",
+        "B": "时间旅行（Time Travel）",
+        "C": "版本控制",
+        "D": "增量快照"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "BigQuery 的时间旅行功能允许您查询过去最多 7 天内任意时间点的数据状态。使用 FOR SYSTEM_TIME AS OF 子句可以访问历史数据，即使数据已被更新或删除。"
+    },
+    {
+      "id": "gcp-adp-s3-q12",
+      "examId": "gcp-adp-set3",
+      "setNumber": 3,
+      "domain": "数据准备和集成",
+      "question": "您需要使用 Apache Spark 处理存储在 Cloud Storage 中的数据，然后将结果写入 BigQuery。应该使用什么服务？",
+      "options": {
+        "A": "Cloud Functions",
+        "B": "Dataproc",
+        "C": "App Engine",
+        "D": "Cloud Run"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Dataproc 是托管的 Apache Spark 和 Hadoop 服务。它可以快速创建集群来运行 Spark 作业，处理 Cloud Storage 中的数据，并使用 BigQuery 连接器将结果直接写入 BigQuery。"
+    },
+    {
+      "id": "gcp-adp-s3-q13",
+      "examId": "gcp-adp-set3",
+      "setNumber": 3,
+      "domain": "机器学习基础",
+      "question": "在机器学习中，什么是「偏差-方差权衡」？",
+      "options": {
+        "A": "数据大小与处理速度的权衡",
+        "B": "模型复杂度与泛化能力的权衡",
+        "C": "成本与性能的权衡",
+        "D": "存储与计算的权衡"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "偏差-方差权衡描述了模型复杂度与泛化能力之间的关系。高偏差（简单模型）可能欠拟合，高方差（复杂模型）可能过拟合。目标是找到平衡点，使总误差最小。"
+    },
+    {
+      "id": "gcp-adp-s3-q14",
+      "examId": "gcp-adp-set3",
+      "setNumber": 3,
+      "domain": "商业智能和可视化",
+      "question": "在 Looker 中，什么是 Look？",
+      "options": {
+        "A": "数据库连接",
+        "B": "保存的查询和可视化",
+        "C": "用户角色",
+        "D": "数据模型"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Look 是在 Looker 中保存的查询结果和可视化。用户可以在 Explore 中创建查询，然后保存为 Look 以便以后访问或与他人共享。Look 可以添加到仪表板中。"
+    },
+    {
+      "id": "gcp-adp-s3-q15",
+      "examId": "gcp-adp-set3",
+      "setNumber": 3,
+      "domain": "数据治理和安全",
+      "question": "您需要确保 BigQuery 中的个人数据可以被识别和跟踪以满足合规要求。应该使用什么？",
+      "options": {
+        "A": "Cloud Logging",
+        "B": "Data Catalog 标签和分类法",
+        "C": "Cloud Monitoring",
+        "D": "Cloud Trace"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Data Catalog 的标签和分类法功能允许您标记包含个人数据的列，创建数据分类（如 PII、敏感、公开），并跟踪敏感数据在整个组织中的位置，帮助满足 GDPR 等合规要求。"
+    },
+    {
+      "id": "gcp-adp-s3-q16",
+      "examId": "gcp-adp-set3",
+      "setNumber": 3,
+      "domain": "数据分析和探索",
+      "question": "在 BigQuery 中，如何计算用户会话，将同一用户在 30 分钟内的活动归为一个会话？",
+      "options": {
+        "A": "使用 GROUP BY 用户 ID",
+        "B": "使用窗口函数和条件逻辑识别会话边界",
+        "C": "使用 DISTINCT",
+        "D": "使用 UNION"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "计算会话需要使用窗口函数来比较连续事件之间的时间差。如果时间差超过 30 分钟，则开始新会话。使用 LAG 函数获取上一事件时间，然后用 SUM 累计会话 ID。"
+    },
+    {
+      "id": "gcp-adp-s3-q17",
+      "examId": "gcp-adp-set3",
+      "setNumber": 3,
+      "domain": "数据准备和集成",
+      "question": "您需要创建一个每天凌晨自动运行的 BigQuery 查询，将结果追加到目标表。应该使用什么？",
+      "options": {
+        "A": "Cloud Scheduler 调用 Cloud Functions",
+        "B": "BigQuery Scheduled Queries",
+        "C": "Cron 作业",
+        "D": "手动执行"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "BigQuery Scheduled Queries 是内置功能，允许您配置查询按计划自动运行。可以设置运行时间、目标表、写入模式（追加、覆盖、空表时写入）等，无需额外的基础设施。"
+    },
+    {
+      "id": "gcp-adp-s3-q18",
+      "examId": "gcp-adp-set3",
+      "setNumber": 3,
+      "domain": "机器学习基础",
+      "question": "在 BigQuery ML 中，如何处理类别不平衡的分类问题？",
+      "options": {
+        "A": "忽略不平衡",
+        "B": "使用 CLASS_WEIGHT 参数调整类别权重",
+        "C": "减少数据量",
+        "D": "只使用多数类"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "当正负样本比例严重不平衡时，可以在 CREATE MODEL 中使用 CLASS_WEIGHT 参数为少数类设置更高的权重，或使用 AUTO_CLASS_WEIGHT 让 BigQuery 自动平衡。这有助于模型更好地学习少数类。"
+    },
+    {
+      "id": "gcp-adp-s3-q19",
+      "examId": "gcp-adp-set3",
+      "setNumber": 3,
+      "domain": "商业智能和可视化",
+      "question": "在 Looker Studio 中，如何创建一个显示目标完成进度的仪表盘？",
+      "options": {
+        "A": "饼图",
+        "B": "仪表图（Gauge Chart）或进度条",
+        "C": "地图",
+        "D": "散点图"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "仪表图（Gauge Chart）或进度条是显示目标完成进度的最佳选择。它们可以直观地显示当前值与目标值的对比，使用颜色编码（如绿色表示达标，红色表示未达标）帮助快速理解状态。"
+    },
+    {
+      "id": "gcp-adp-s3-q20",
+      "examId": "gcp-adp-set3",
+      "setNumber": 3,
+      "domain": "数据治理和安全",
+      "question": "您需要加密 BigQuery 中存储的数据，但希望使用自己的密钥管理密钥轮换。应该使用什么？",
+      "options": {
+        "A": "默认 Google 管理的加密",
+        "B": "客户管理的加密密钥（CMEK）with Cloud KMS",
+        "C": "客户端加密",
+        "D": "不加密"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "CMEK（客户管理的加密密钥）允许您在 Cloud KMS 中创建和管理加密密钥。您可以控制密钥轮换策略、访问权限，并可以随时撤销密钥以使数据不可访问。这提供了比默认加密更多的控制。"
+    },
+    {
+      "id": "gcp-adp-s3-q21",
+      "examId": "gcp-adp-set3",
+      "setNumber": 3,
+      "domain": "数据分析和探索",
+      "question": "在 BigQuery 中，什么是最佳实践来避免处理超大型结果集？",
+      "options": {
+        "A": "不使用任何限制",
+        "B": "使用分页、LIMIT 子句或将结果写入表",
+        "C": "增加内存",
+        "D": "使用更大的 VM"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "处理大型结果集的最佳实践包括：使用 LIMIT 子句限制返回的行数、使用分页（OFFSET）分批处理、或将结果写入目标表而不是直接返回给客户端。这可以避免内存溢出和超时。"
+    },
+    {
+      "id": "gcp-adp-s3-q22",
+      "examId": "gcp-adp-set3",
+      "setNumber": 3,
+      "domain": "数据准备和集成",
+      "question": "您需要将 Google Analytics 4 数据导出到 BigQuery 进行高级分析。应该使用什么？",
+      "options": {
+        "A": "手动导出 CSV",
+        "B": "GA4 的 BigQuery 链接功能",
+        "C": "API 调用",
+        "D": "屏幕截图"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Google Analytics 4 提供内置的 BigQuery 链接功能，可以自动将原始事件数据导出到 BigQuery。这允许您对未经采样的完整数据进行高级分析，使用 SQL 创建自定义报告。"
+    },
+    {
+      "id": "gcp-adp-s3-q23",
+      "examId": "gcp-adp-set3",
+      "setNumber": 3,
+      "domain": "机器学习基础",
+      "question": "在使用 BigQuery ML 进行预测前，为什么需要进行特征缩放？",
+      "options": {
+        "A": "减少存储空间",
+        "B": "确保不同尺度的特征对模型的贡献相当",
+        "C": "加快数据导入",
+        "D": "满足安全要求"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "不同特征可能有不同的数值范围（如年龄 0-100，收入 0-1000000）。如果不进行缩放，大数值范围的特征会主导模型。标准化或归一化确保所有特征对模型的贡献相当。"
+    },
+    {
+      "id": "gcp-adp-s3-q24",
+      "examId": "gcp-adp-set3",
+      "setNumber": 3,
+      "domain": "商业智能和可视化",
+      "question": "在 Looker 中，如何确保不同时区的用户看到正确的本地时间数据？",
+      "options": {
+        "A": "手动转换时区",
+        "B": "在 LookML 中配置时区转换",
+        "C": "只显示 UTC 时间",
+        "D": "忽略时区差异"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Looker 支持在 LookML 中配置时区处理。可以设置用户属性来存储用户的时区，然后在模型中使用 convert_tz 参数将时间转换为用户的本地时区，确保每个用户看到正确的时间。"
+    },
+    {
+      "id": "gcp-adp-s3-q25",
+      "examId": "gcp-adp-set3",
+      "setNumber": 3,
+      "domain": "数据治理和安全",
+      "question": "您需要监控 BigQuery 的使用情况和成本，识别高消耗的查询和用户。应该使用什么？",
+      "options": {
+        "A": "Cloud Trace",
+        "B": "INFORMATION_SCHEMA 视图和 Cloud Billing",
+        "C": "Cloud Debugger",
+        "D": "Cloud Profiler"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "BigQuery 的 INFORMATION_SCHEMA 视图提供详细的作业历史记录，包括每个查询的字节扫描量、用户、运行时间等。结合 Cloud Billing 导出到 BigQuery，可以分析成本并识别优化机会。"
+    },
+    {
+      "id": "gcp-adp-s3-q26",
+      "examId": "gcp-adp-set3",
+      "setNumber": 3,
+      "domain": "数据分析和探索",
+      "question": "在 BigQuery 中，如何高效地查询嵌套的 REPEATED 字段？",
+      "options": {
+        "A": "使用 JOIN",
+        "B": "使用 UNNEST 并可选地使用 CROSS JOIN",
+        "C": "使用 UNION",
+        "D": "无法查询"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "UNNEST 函数用于将 REPEATED（数组）字段展开为行。通常与 CROSS JOIN 结合使用：FROM table CROSS JOIN UNNEST(array_column) AS item。这允许您像查询普通表一样查询嵌套数据。"
+    },
+    {
+      "id": "gcp-adp-s3-q27",
+      "examId": "gcp-adp-set3",
+      "setNumber": 3,
+      "domain": "数据准备和集成",
+      "question": "您需要处理半结构化的 JSON 日志数据，解析特定字段并加载到 BigQuery。应该使用什么方法？",
+      "options": {
+        "A": "手动编辑 JSON",
+        "B": "使用 Dataflow 和 JSON 解析函数",
+        "C": "直接加载不处理",
+        "D": "使用文本编辑器"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Dataflow 可以使用 Apache Beam 的 JSON 解析功能处理半结构化日志。您可以定义转换逻辑来提取特定字段、处理嵌套结构，并将结果写入 BigQuery 的结构化表中。"
+    },
+    {
+      "id": "gcp-adp-s3-q28",
+      "examId": "gcp-adp-set3",
+      "setNumber": 3,
+      "domain": "机器学习基础",
+      "question": "在 BigQuery ML 中，什么是 ML.GLOBAL_EXPLAIN 函数的用途？",
+      "options": {
+        "A": "解释单个预测结果",
+        "B": "提供模型级别的特征重要性解释",
+        "C": "导出模型",
+        "D": "评估模型性能"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "ML.GLOBAL_EXPLAIN 提供模型级别的特征重要性解释，显示每个特征对整体模型的贡献程度。这有助于理解模型决策依据，进行特征选择，以及向利益相关者解释模型。"
+    },
+    {
+      "id": "gcp-adp-s3-q29",
+      "examId": "gcp-adp-set3",
+      "setNumber": 3,
+      "domain": "商业智能和可视化",
+      "question": "在 Looker Studio 中，如何处理数据源字段名称更改导致的报表错误？",
+      "options": {
+        "A": "重新创建报表",
+        "B": "使用字段映射更新引用",
+        "C": "忽略错误",
+        "D": "删除相关图表"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "当数据源字段名称更改时，Looker Studio 提供字段映射功能来更新引用。您可以在数据源编辑界面中重新映射字段，而不需要重新创建整个报表。"
+    },
+    {
+      "id": "gcp-adp-s3-q30",
+      "examId": "gcp-adp-set3",
+      "setNumber": 3,
+      "domain": "数据治理和安全",
+      "question": "您需要确保 BigQuery 数据集只能从特定的 VPC 网络访问。应该使用什么？",
+      "options": {
+        "A": "IAM 权限",
+        "B": "VPC Service Controls",
+        "C": "Cloud NAT",
+        "D": "Cloud DNS"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "VPC Service Controls 创建安全边界，限制数据只能从授权的 VPC 网络访问。您可以配置访问级别，指定允许访问的 IP 范围或 VPC 网络，防止数据从不受信任的网络泄露。"
+    },
+    {
+      "id": "gcp-adp-s3-q31",
+      "examId": "gcp-adp-set3",
+      "setNumber": 3,
+      "domain": "数据分析和探索",
+      "question": "在 BigQuery 中，如何计算百分位数（如中位数）？",
+      "options": {
+        "A": "使用 AVG 函数",
+        "B": "使用 PERCENTILE_CONT 或 PERCENTILE_DISC 函数",
+        "C": "使用 SUM 函数",
+        "D": "使用 COUNT 函数"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "PERCENTILE_CONT（连续）和 PERCENTILE_DISC（离散）函数用于计算百分位数。例如，中位数是 PERCENTILE_CONT(column, 0.5)。CONT 返回插值结果，DISC 返回实际存在的值。"
+    },
+    {
+      "id": "gcp-adp-s3-q32",
+      "examId": "gcp-adp-set3",
+      "setNumber": 3,
+      "domain": "数据准备和集成",
+      "question": "您需要将流数据延迟几分钟后再处理，以便进行数据完整性检查。应该使用什么 Dataflow 功能？",
+      "options": {
+        "A": "立即处理",
+        "B": "窗口和水印（Windowing and Watermarks）",
+        "C": "批处理",
+        "D": "忽略延迟数据"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Dataflow 的窗口和水印功能允许您处理事件时间数据和延迟到达的数据。您可以设置允许的延迟时间，在此期间继续接收和处理迟到的数据，确保数据完整性。"
+    },
+    {
+      "id": "gcp-adp-s3-q33",
+      "examId": "gcp-adp-set3",
+      "setNumber": 3,
+      "domain": "机器学习基础",
+      "question": "在 BigQuery ML 中训练模型时，什么是正则化（Regularization）的作用？",
+      "options": {
+        "A": "加快训练速度",
+        "B": "防止过拟合，提高模型泛化能力",
+        "C": "增加模型复杂度",
+        "D": "减少存储需求"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "正则化（如 L1、L2）通过在损失函数中添加惩罚项来限制模型复杂度。这有助于防止过拟合，使模型在未见数据上表现更好。BigQuery ML 支持在模型选项中配置正则化参数。"
+    },
+    {
+      "id": "gcp-adp-s3-q34",
+      "examId": "gcp-adp-set3",
+      "setNumber": 3,
+      "domain": "商业智能和可视化",
+      "question": "在 Looker 中，什么是 Scheduled Delivery 功能？",
+      "options": {
+        "A": "数据导入调度",
+        "B": "按计划自动发送报表到邮箱或其他目标",
+        "C": "模型部署调度",
+        "D": "数据库备份调度"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Scheduled Delivery 允许用户设置 Look 或 Dashboard 按计划（如每天、每周）自动发送到邮箱、Slack、SFTP 或其他目标。这确保利益相关者定期收到最新的数据洞察。"
+    },
+    {
+      "id": "gcp-adp-s3-q35",
+      "examId": "gcp-adp-set3",
+      "setNumber": 3,
+      "domain": "数据治理和安全",
+      "question": "您需要确保敏感的 BigQuery 数据不会被复制到未授权的项目。应该使用什么？",
+      "options": {
+        "A": "仅使用 IAM",
+        "B": "组织政策约束结合 VPC Service Controls",
+        "C": "加密数据",
+        "D": "禁用所有访问"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "组织政策可以限制资源的创建位置，VPC Service Controls 可以防止数据外泄。结合使用这两者，可以确保数据只能存在于授权的项目中，并且无法被复制到边界外。"
+    },
+    {
+      "id": "gcp-adp-s3-q36",
+      "examId": "gcp-adp-set3",
+      "setNumber": 3,
+      "domain": "数据分析和探索",
+      "question": "BigQuery 支持哪些类型的通配符表查询？",
+      "options": {
+        "A": "只支持完全匹配",
+        "B": "使用表通配符（*）查询多个具有相似名称的表",
+        "C": "只支持正则表达式",
+        "D": "不支持通配符"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "BigQuery 支持表通配符（*）来查询多个表。例如，SELECT * FROM `project.dataset.events_*` 可以查询所有以 events_ 开头的表。结合 _TABLE_SUFFIX 伪列可以过滤特定的表。"
+    },
+    {
+      "id": "gcp-adp-s3-q37",
+      "examId": "gcp-adp-set3",
+      "setNumber": 3,
+      "domain": "数据准备和集成",
+      "question": "您需要对敏感数据进行脱敏处理后再加载到 BigQuery 用于分析。应该使用什么服务？",
+      "options": {
+        "A": "Cloud Composer",
+        "B": "Cloud DLP 结合 Dataflow",
+        "C": "Cloud Scheduler",
+        "D": "Cloud Tasks"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Cloud DLP 可以自动检测敏感数据并进行脱敏处理（如掩码、令牌化、加密）。在 Dataflow 管道中集成 Cloud DLP，可以在数据加载到 BigQuery 之前进行脱敏，保护敏感信息。"
+    },
+    {
+      "id": "gcp-adp-s3-q38",
+      "examId": "gcp-adp-set3",
+      "setNumber": 3,
+      "domain": "机器学习基础",
+      "question": "在 BigQuery ML 中，如何使用已训练的模型进行实时预测？",
+      "options": {
+        "A": "只能批量预测",
+        "B": "导出模型到 Vertex AI 并部署为端点",
+        "C": "使用存储过程",
+        "D": "手动计算"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "虽然 BigQuery ML 的 ML.PREDICT 适合批量预测，但对于实时预测，可以将模型导出到 Vertex AI，部署为在线端点，然后通过 API 进行实时推理。"
+    },
+    {
+      "id": "gcp-adp-s3-q39",
+      "examId": "gcp-adp-set3",
+      "setNumber": 3,
+      "domain": "商业智能和可视化",
+      "question": "在 Looker Studio 中，如何创建一个可以动态更改指标的报表（如切换销售额和数量）？",
+      "options": {
+        "A": "创建多个报表",
+        "B": "使用参数和 CASE 语句创建动态字段",
+        "C": "手动编辑数据",
+        "D": "无法实现"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "可以创建一个参数作为下拉控件，然后使用计算字段中的 CASE 语句根据参数值返回不同的指标。用户选择不同的参数值时，图表会显示相应的指标。"
+    },
+    {
+      "id": "gcp-adp-s3-q40",
+      "examId": "gcp-adp-set3",
+      "setNumber": 3,
+      "domain": "数据治理和安全",
+      "question": "您需要实施 BigQuery 数据的灾难恢复策略。应该使用什么方法？",
+      "options": {
+        "A": "依赖默认的区域冗余",
+        "B": "使用 BigQuery 跨区域复制或定期导出到其他区域的 Cloud Storage",
+        "C": "手动备份到本地",
+        "D": "不需要灾难恢复"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "虽然 BigQuery 在单个区域内有自动冗余，但对于跨区域灾难恢复，您需要使用 BigQuery 的跨区域数据集复制功能，或定期将数据导出到其他区域的 Cloud Storage。这确保了区域级故障时的数据可用性。"
+    }
+  ]
+}

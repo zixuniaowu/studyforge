@@ -1,0 +1,799 @@
+{
+  "exam": {
+    "id": "azure-az-104-set2-ja",
+    "name": "Azure AZ-104 管理者模擬試験 #2",
+    "code": "AZ-104",
+    "provider": "Azure",
+    "language": "ja",
+    "description": "Microsoft Azure管理者認定試験模擬問題 - 第2セット",
+    "totalQuestions": 50,
+    "passingScore": 70,
+    "examTime": 150,
+    "domains": [
+      {
+        "id": 1,
+        "name": "Azure IDとガバナンスの管理 (Manage Azure identities and governance)",
+        "weight": 25
+      },
+      {
+        "id": 2,
+        "name": "ストレージの実装と管理 (Implement and manage storage)",
+        "weight": 20
+      },
+      {
+        "id": 3,
+        "name": "Azureコンピューティングリソースのデプロイと管理 (Deploy and manage Azure compute resources)",
+        "weight": 25
+      },
+      {
+        "id": 4,
+        "name": "仮想ネットワークの実装と管理 (Implement and manage virtual networking)",
+        "weight": 20
+      },
+      {
+        "id": 5,
+        "name": "Azureリソースの監視と保守 (Monitor and maintain Azure resources)",
+        "weight": 10
+      }
+    ],
+    "tags": [
+      "Azure",
+      "AZ-104",
+      "管理者",
+      "認定試験",
+      "クラウドコンピューティング"
+    ]
+  },
+  "questions": [
+    {
+      "id": "q1",
+      "domain": 1,
+      "question": "ある企業がAzure ADのユーザーにセルフサービスパスワードリセット（SSPR）を設定する必要があります。ユーザーがパスワードをリセットできるようにするには、どのライセンスタイプが必要ですか？",
+      "options": {
+        "A": "Azure AD Free",
+        "B": "Azure AD Premium P1またはP2",
+        "C": "Microsoft 365 E1",
+        "D": "任意のAzureサブスクリプション"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure ADセルフサービスパスワードリセット（SSPR）機能にはAzure AD Premium P1またはP2ライセンスが必要です。Azure AD Free版ではSSPRはサポートされていません。SSPRを有効にすると、ユーザーは複数の認証方法（電話、メールなど）を使用して自分でパスワードをリセットできます。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q2",
+      "domain": 1,
+      "question": "ある企業が、ユーザーが社内ネットワーク外からログインする際に多要素認証（MFA）を必須とする条件付きアクセスポリシーを実装したいと考えています。条件で何を設定する必要がありますか？",
+      "options": {
+        "A": "デバイスプラットフォーム条件",
+        "B": "ネームドロケーション条件",
+        "C": "クライアントアプリ条件",
+        "D": "ユーザーリスク条件"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "ネームドロケーションを使用すると、信頼できるIPアドレス範囲や国・地域を定義できます。条件付きアクセスポリシーでネームドロケーション条件を使用することで、ユーザーのログイン場所に基づいてMFAを強制したり、アクセスをブロックしたりできます。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q3",
+      "domain": 1,
+      "question": "ある企業が100個のAzureサブスクリプションを持っており、すべてのサブスクリプションに同じセキュリティポリシーを適用する必要があります。最も効率的な方法は何ですか？",
+      "options": {
+        "A": "各サブスクリプションに個別にポリシーを割り当てる",
+        "B": "ルート管理グループにポリシーを割り当てる",
+        "C": "Azure Blueprintsを使用して各サブスクリプションにポリシーをデプロイする",
+        "D": "100個の同一のポリシー定義を作成する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "ルート管理グループまたはすべてのサブスクリプションを含む管理グループにポリシーを割り当てると、そのポリシーは自動的にすべての子サブスクリプションに継承されます。1回の割り当てですべてのサブスクリプションをカバーできるため、これが最も効率的な方法です。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q4",
+      "domain": 1,
+      "question": "ある企業がすべてのAzureリソースを特定のAzureリージョン内にデプロイすることを確実にする必要があります。どのタイプのAzure Policyエフェクトを使用すべきですか？",
+      "options": {
+        "A": "Audit",
+        "B": "Deny",
+        "C": "Append",
+        "D": "DeployIfNotExists"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Denyエフェクトは、ポリシーに準拠しないリソースの作成や変更をブロックします。「許可された場所」ポリシーとDenyエフェクトを使用することで、指定したリージョンでのみリソースを作成でき、他のリージョンへのデプロイ要求は拒否されます。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q5",
+      "domain": 1,
+      "question": "ある企業が一時的なプロジェクト用にユーザーグループを作成する必要があり、プロジェクト終了後にグループが自動的に削除されるようにしたいと考えています。どのタイプのグループを作成すべきですか？",
+      "options": {
+        "A": "セキュリティグループ",
+        "B": "Microsoft 365グループ",
+        "C": "有効期限ポリシー付きグループ",
+        "D": "動的メンバーシップグループ"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "Azure ADはMicrosoft 365グループに対して有効期限ポリシーの設定をサポートしています。グループが有効期限に達し更新されない場合、グループは自動的に削除されます。これは一時的なプロジェクトチームなどのシナリオに適しています。\n---",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q6",
+      "domain": 1,
+      "question": "ある企業がユーザーの部門属性に基づいて自動的にセキュリティグループにユーザーを追加したいと考えています。どの機能を使用すべきですか？",
+      "options": {
+        "A": "手動でメンバーを割り当てる",
+        "B": "動的メンバーシップルール",
+        "C": "Azure AD Connectグループ同期",
+        "D": "入れ子グループ"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "動的メンバーシップグループはルール式を使用して、ユーザー属性（部門、役職など）に基づいてグループメンバーを自動的に追加または削除します。ユーザー属性が変更されると、そのグループメンバーシップは自動的に更新されます。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q7",
+      "domain": 1,
+      "question": "ある企業がカスタムRBACロールを特定のリソースグループのスコープ内でのみ割り当て可能にする必要があります。ロール定義を作成する際にどのように設定すべきですか？",
+      "options": {
+        "A": "ロール定義のActionsで制限する",
+        "B": "ロール定義のAssignableScopesでリソースグループを指定する",
+        "C": "ロール定義のNotActionsで他のスコープを除外する",
+        "D": "割り当て時にスコープを選択する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "AssignableScopesプロパティは、ロールを割り当てることができるスコープを定義します。AssignableScopesで特定のリソースグループのリソースIDを指定することで、そのロールはそのリソースグループ内でのみ割り当てできるよう制限できます。\n---",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q8",
+      "domain": 1,
+      "question": "ある企業が開発者に仮想マシンの管理を許可しつつ、削除は許可しないようにする必要があります。カスタムロールをどのように設定すべきですか？",
+      "options": {
+        "A": "Actionsに読み取り権限のみを追加する",
+        "B": "ActionsにVM操作権限を追加し、NotActionsに削除権限を追加する",
+        "C": "組み込みの仮想マシン共同作成者ロールを使用する",
+        "D": "サブスクリプションレベルで読み取り専用ロールを割り当てる"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "カスタムロールではNotActionsを使用して特定の操作を除外できます。ActionsにMicrosoft.Compute/virtualMachines/*を追加し、NotActionsにMicrosoft.Compute/virtualMachines/deleteを追加することで、すべてのVM操作を許可しつつ削除をブロックできます。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q9",
+      "domain": 1,
+      "question": "ある企業がオンプレミスのActive DirectoryをAzure ADと同期しています。Azure ADでオンプレミスと異なるUPNサフィックスを使用する必要がある場合、どのように設定すべきですか？",
+      "options": {
+        "A": "オンプレミスADでユーザーのUPNを変更する",
+        "B": "Azure ADにカスタムドメインを追加し、Azure AD Connectで代替ログインIDを設定する",
+        "C": "実現不可能、UPNは同一でなければならない",
+        "D": "Azure AD ConnectでUPN同期を無効にする"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "オンプレミスのUPNサフィックスがルーティング不可または一致しない場合、Azure ADにカスタムドメインを追加し、Azure AD Connectで代替ログインID機能を使用して、メール属性や他の属性をAzure ADのログイン名として使用できます。\n---",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q10",
+      "domain": 1,
+      "question": "ある企業がAzure ADテナント内のすべてのサインインアクティビティを監査したいと考えています。どのレポートを確認すべきですか？",
+      "options": {
+        "A": "Azureアクティビティログ",
+        "B": "Azure ADサインインログ",
+        "C": "Azure Monitorメトリック",
+        "D": "Azure Security Center"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure ADサインインログは、すべてのユーザーとアプリケーションのサインイン試行（成功と失敗の両方）、サインイン場所、使用されたデバイスとアプリケーションなどの情報を記録します。これが認証アクティビティを監査するための主要なソースです。\n---",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q11",
+      "domain": 2,
+      "question": "ある企業が、規制要件に準拠するために変更や削除ができない監査ログを保存するストレージアカウントを作成する必要があります。何を設定すべきですか？",
+      "options": {
+        "A": "論理的削除",
+        "B": "不変ストレージポリシー",
+        "C": "バージョン管理",
+        "D": "暗号化"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "不変ストレージポリシー（時間ベースの保持ポリシーまたは訴訟ホールド）を使用すると、Blobを消去不可、変更不可の状態で保存できます。これはSEC 17a-4(f)、CFTC 1.31などのコンプライアンス要件に準拠しています。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q12",
+      "domain": 2,
+      "question": "ある企業がAzure Blobストレージ内のデータを別のストレージアカウントに自動的に複製してリージョン間バックアップを実現する必要があります。どの機能を使用すべきですか？",
+      "options": {
+        "A": "AzCopyスケジュールタスク",
+        "B": "オブジェクトレプリケーションポリシー",
+        "C": "Azure Data Factory",
+        "D": "ストレージライフサイクル管理"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "オブジェクトレプリケーションは、ブロックBlobをソースコンテナからターゲットコンテナに非同期で複製でき、ストレージアカウント間およびリージョン間のレプリケーションをサポートします。これは継続的なデータ複製のためのネイティブAzure機能です。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q13",
+      "domain": 2,
+      "question": "ある企業がAzure AD認証を使用してAzureファイル共有にアクセスする必要があります。何を設定すべきですか？",
+      "options": {
+        "A": "Shared Access Signature",
+        "B": "ストレージアカウントキー",
+        "C": "IDベースの認証",
+        "D": "匿名アクセス"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "Azureファイル共有はIDベースの認証をサポートしており、Azure ADドメインサービスまたはオンプレミスのActive Directoryドメインサービスを使用した認証が可能です。ユーザーはAD資格情報を使用してSMB経由でファイル共有にアクセスできます。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q14",
+      "domain": 2,
+      "question": "ある企業がMicrosoft管理キーではなくカスタム暗号化キーをストレージアカウントに設定する必要があります。何を使用すべきですか？",
+      "options": {
+        "A": "Azure Key Vaultのカスタマーマネージドキー",
+        "B": "HTTPS暗号化",
+        "C": "ストレージサービス暗号化（SSE）",
+        "D": "クライアント側暗号化"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Azure Key Vaultに保存されたカスタマーマネージドキー（CMK）を使用して、ストレージアカウント内のデータを暗号化できます。これにより、キーのローテーションやアクセス監査など、暗号化キーを完全に制御できます。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q15",
+      "domain": 2,
+      "question": "ある企業がストレージアカウントの静的Webサイトホスティングをカスタムドメイン名とHTTPSで使用するように設定する必要があります。どのサービスを使用すべきですか？",
+      "options": {
+        "A": "ストレージアカウントカスタムドメイン",
+        "B": "Azure CDNとストレージアカウント静的Webサイト",
+        "C": "Azure App Service",
+        "D": "Azure Front Door"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "ストレージアカウントの静的WebサイトはネイティブでカスタムドメインのHTTPSをサポートしていません。Azure CDNを設定し、ストレージの静的Webサイトエンドポイントと関連付けることで、カスタムドメイン名とマネージド証明書を使用したHTTPSアクセスを実現できます。\n---",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q16",
+      "domain": 2,
+      "question": "ある企業がストレージアカウントでNFSファイル共有を作成する必要があります。どのタイプのストレージアカウントを選択すべきですか？",
+      "options": {
+        "A": "汎用v2ストレージアカウント（Standard）",
+        "B": "汎用v2ストレージアカウント（Premiumファイル共有）",
+        "C": "Blobストレージアカウント",
+        "D": "Data Lake Storage Gen2"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "NFS Azureファイル共有にはFileStorageタイプのストレージアカウント（Premiumファイル共有）が必要であり、大容量ファイル共有が有効になっているストレージアカウントで設定する必要があります。Standardファイル共有はSMBプロトコルのみをサポートしています。\n---",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q17",
+      "domain": 2,
+      "question": "ある企業がストレージアカウントをAzureポータルからのみアクセス可能にし、他のすべてのアクセス方法をブロックする設定を行いたいと考えています。これは可能ですか？",
+      "options": {
+        "A": "はい、ストレージアカウントファイアウォールで実現可能",
+        "B": "はい、ストレージアカウントキーを無効にすることで実現可能",
+        "C": "いいえ、AzureポータルはI他のツールと同じAPIを使用します",
+        "D": "はい、RBACで実現可能"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "Azureポータルは、Azure CLI、PowerShell、REST APIと同じ管理およびデータプレーンAPIを使用してストレージアカウントにアクセスします。同じ基盤となるインターフェースを使用しているため、ポータルからのアクセスのみを許可するよう個別に制限することはできません。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q18",
+      "domain": 2,
+      "question": "ある企業がオンプレミスのデータをAzureストレージに一括移行する必要があり、データ量は50TBです。インターネット接続速度は限られています。どのサービスを使用すべきですか？",
+      "options": {
+        "A": "AzCopy",
+        "B": "Azure Data Box",
+        "C": "Azure Storage Explorer",
+        "D": "Azure Migrate"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure Data Boxは、ネットワークを使用せずに大量のデータをAzureに安全に転送するための物理デバイスです。ネットワーク帯域幅が限られている場合やデータ量が非常に大きい場合（10TB以上）に適しています。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q19",
+      "domain": 2,
+      "question": "ある企業がストレージアカウントのアクセス制御を設定し、特定のマネージドIDのみがアクセスできるようにする必要があります。どの方法を使用すべきですか？",
+      "options": {
+        "A": "ストレージアカウントキー",
+        "B": "Shared Access Signature",
+        "C": "Azure RBAC割り当て",
+        "D": "ストレージアカウントファイアウォール"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "Azure RBACを使用して、ストレージBlobデータ共同作成者やストレージBlobデータリーダーなどのロールをマネージドIDに割り当てることができます。これにより、ストレージアカウントキーを共有することなく、きめ細かい権限制御が可能になります。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q20",
+      "domain": 2,
+      "question": "ある企業が誤って削除されたストレージアカウントからデータを回復する必要があります。ストレージアカウントが14日以内に削除された場合、どうすべきですか？",
+      "options": {
+        "A": "Azure Backupから復元する",
+        "B": "ストレージアカウントの論理的削除を使用して回復する",
+        "C": "Azureサポートに連絡する",
+        "D": "回復不可能"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "ストレージアカウントの論理的削除（プレビュー機能）により、保持期間内に削除されたストレージアカウントとその内容を回復できます。この機能が有効になっている場合、Azureポータルで削除されたストレージアカウントを復元できます。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q21",
+      "domain": 3,
+      "question": "ある企業が仮想マシンをあるAzureリージョンから別のリージョンに移動する必要があります。どのサービスを使用すべきですか？",
+      "options": {
+        "A": "Azure Site Recovery",
+        "B": "リソース移動機能",
+        "C": "仮想マシンのエクスポート/インポート",
+        "D": "Azure Backupを別のリージョンに復元"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Azure Site Recoveryを使用して、仮想マシンを別のAzureリージョンにレプリケートし、フェールオーバーを実行してターゲットリージョンに新しいVMを作成できます。これはAzureが推奨するリージョン間VMマイグレーション方法です。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q22",
+      "domain": 3,
+      "question": "ある企業が仮想マシンスケールセットでアプリケーション更新時の高可用性を確保する必要があります。何を設定すべきですか？",
+      "options": {
+        "A": "手動アップグレードポリシー",
+        "B": "ローリングアップグレードポリシー",
+        "C": "自動アップグレードポリシー",
+        "D": "バッチアップグレードポリシー"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "ローリングアップグレードポリシーは、制御された方法でインスタンスをバッチごとに更新し、アップグレードプロセス中に最大可用容量を維持します。バッチサイズと一時停止時間を設定して、更新中も常に利用可能なインスタンスを確保できます。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q23",
+      "domain": 3,
+      "question": "ある企業が仮想マシンに複数のデータディスクを設定し、パフォーマンス向上のためにそれらを1つの論理ボリュームに統合する必要があります。VM内で何を設定すべきですか？",
+      "options": {
+        "A": "記憶域スペースを使用したRAID 0（ストライピング）",
+        "B": "RAID 1（ミラーリング）",
+        "C": "ダイナミックディスク",
+        "D": "各ディスクを個別にマウント"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Windows VMでは記憶域スペース、Linux VMではLVMを使用してストライピング構成を作成することで、複数のデータディスクを1つの論理ボリュームに統合し、並列I/OによってスループットとIOPSを向上させることができます。\n---",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q24",
+      "domain": 3,
+      "question": "ある企業が同じ設定の複数のVMを迅速にデプロイするために仮想マシンのカスタムイメージを作成する必要があります。イメージを作成する前に何を実行すべきですか？",
+      "options": {
+        "A": "仮想マシンを削除する",
+        "B": "VM内でSysprep（Windows）またはwaagent deprovision（Linux）を実行する",
+        "C": "ディスクスナップショットを作成する",
+        "D": "VM設定をエクスポートする"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "再利用可能なVMイメージを作成する前に、仮想マシンを一般化する必要があります。Windowsではマシン固有の情報を削除するためにSysprepを使用し、Linuxではwaagent -deprovisionを使用します。その後、一般化されたVMからイメージを作成できます。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q25",
+      "domain": 3,
+      "question": "ある企業が複数のAzureリージョン間で仮想マシンイメージを共有したいと考えています。どのサービスを使用すべきですか？",
+      "options": {
+        "A": "マネージドディスクスナップショット",
+        "B": "Azure共有イメージギャラリー（Azure Compute Gallery）",
+        "C": "Azureストレージアカウント",
+        "D": "Azure Container Registry"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure共有イメージギャラリー（現在はAzure Compute Galleryと呼ばれています）を使用すると、VMイメージを組織化、バージョン管理、およびリージョン間で複製できます。イメージは異なるサブスクリプションやテナントと共有できます。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q26",
+      "domain": 3,
+      "question": "ある企業がAKSクラスターでCPU使用率の変化に応じて自動的にPod数をスケーリングする必要があります。何を設定すべきですか？",
+      "options": {
+        "A": "クラスターオートスケーラー",
+        "B": "水平ポッドオートスケーラー（HPA）",
+        "C": "仮想ノード",
+        "D": "手動スケーリング"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "水平ポッドオートスケーラー（HPA）は、CPU使用率やその他のメトリックに基づいてPodレプリカ数を自動的に調整します。クラスターオートスケーラーはノード数を調整するために使用され、両者を組み合わせて使用できます。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q27",
+      "domain": 3,
+      "question": "ある企業がAzure App Serviceにカスタムドメイン名を設定する必要があります。DNSプロバイダーでどのタイプのレコードを作成すべきですか？",
+      "options": {
+        "A": "Aレコードのみ",
+        "B": "CNAMEレコードのみ",
+        "C": "サブドメインにはCNAMEレコード、ルートドメインにはAレコード",
+        "D": "MXレコード"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "サブドメイン（www.example.comなど）の場合は、App Serviceのデフォルトドメイン名を指すCNAMEレコードを作成します。ルートドメイン（ネイキッドドメイン）の場合は、App ServiceのIPアドレスを指すAレコードを作成し、検証用のTXTレコードも作成します。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q28",
+      "domain": 3,
+      "question": "ある企業がコスト管理のために仮想マシンのCPUとメモリリソースを制限する必要があります。どのように操作すべきですか？",
+      "options": {
+        "A": "オペレーティングシステムでリソース制限を設定する",
+        "B": "仮想マシンサイズ（VM Size）を調整する",
+        "C": "Azure Policyによる制限を使用する",
+        "D": "自動スケーリングルールを設定する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "仮想マシンサイズを調整することで、必要なvCPUとメモリ構成を持つVM SKUを選択できます。VMが停止している時にサイズを変更でき、場合によっては実行中に調整することも可能です。\n---",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q29",
+      "domain": 3,
+      "question": "ある企業がAzure仮想マシンでWindows Serverコンテナを実行する必要があります。どのVM構成を使用すべきですか？",
+      "options": {
+        "A": "任意のWindows Server VM",
+        "B": "Hyper-Vロールを有効にしたWindows Server VM",
+        "C": "DockerがインストールされたLinux VM",
+        "D": "Azure Container Instances"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Windows ServerコンテナはWindows Server 2016以降のどのVMでも実行でき、Dockerコンテナ機能を使用します。Hyper-V分離コンテナが必要な場合は、ネストされた仮想化をサポートするVMでHyper-Vを有効にする必要があります。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q30",
+      "domain": 3,
+      "question": "ある企業がBicepテンプレートを使用してAzureリソースをデプロイする必要があります。BicepとARMテンプレートの関係は何ですか？",
+      "options": {
+        "A": "BicepはARMテンプレートの代替品で、異なるエンジンを使用する",
+        "B": "BicepはARMテンプレートのドメイン固有言語で、ARMテンプレートJSONにコンパイルされる",
+        "C": "BicepはKubernetesデプロイメント専用",
+        "D": "BicepはAzure CLIの拡張機能"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Bicepはドメイン固有言語（DSL）であり、Azureリソースを定義するためのより簡潔な構文を提供します。Bicepファイルはデプロイ時に透過的にARMテンプレートJSONにコンパイルされるため、ARMテンプレートと機能的に同等です。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q31",
+      "domain": 4,
+      "question": "ある企業がAzure仮想ネットワーク内のサブネットに特定の送信ルートを設定する必要があります。デフォルトでは、Azureはサブネットトラフィックをどのように処理しますか？",
+      "options": {
+        "A": "すべてのトラフィックがブロックされる",
+        "B": "Azureはシステムルートを使用して自動的にトラフィックをルーティングする",
+        "C": "すべてのルートを手動で設定する必要がある",
+        "D": "トラフィックは同じサブネット内でのみ可能"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azureは、VNet内部トラフィック、インターネットへのトラフィック、その他のAzureサービスへのトラフィックを処理するためにシステムルートを自動的に作成します。ユーザー定義ルートを使用してデフォルトのルーティング動作をオーバーライドできます。\n---",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q32",
+      "domain": 4,
+      "question": "ある企業がAzure DNSを使用してパブリックドメイン名をホストする設定をする必要があります。ドメイン名レジストラで何を設定すべきですか？",
+      "options": {
+        "A": "Azure DNSを指すAレコード",
+        "B": "Azure DNSゾーンが提供するNSレコード",
+        "C": "Azureを指すCNAMEレコード",
+        "D": "MXレコード"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure DNSを使用してドメイン名をホストするには、ドメイン名レジストラでドメインのNS（ネームサーバー）レコードをAzure DNSゾーンが提供するネームサーバーアドレスに変更する必要があります。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q33",
+      "domain": 4,
+      "question": "ある企業がAzure仮想ネットワーク内のリソース名をプライベートDNSで解決する必要があります。どのサービスを使用すべきですか？",
+      "options": {
+        "A": "AzureパブリックDNS",
+        "B": "AzureプライベートDNSゾーン",
+        "C": "カスタムDNSサーバー",
+        "D": "Azure Traffic Manager"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "AzureプライベートDNSゾーンは、仮想ネットワークにDNS解決サービスを提供します。プライベートDNSゾーンをVNetにリンクすることで、VNet内のリソースがプライベートDNSレコードを解決できるようになります。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q34",
+      "domain": 4,
+      "question": "ある企業がVNetピアリングを設定しましたが、一方のVNetからピアリングされたVNet内のリソースにアクセスできないことがわかりました。最も可能性の高い原因は何ですか？",
+      "options": {
+        "A": "ピアリングの設定が完了していない（双方向の設定が必要）",
+        "B": "VNetが異なるリージョンにある",
+        "C": "VNetが異なるアドレス空間を使用している",
+        "D": "VPNゲートウェイが必要"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "VNetピアリングは両方向で作成する必要があります。VNet AでVNet Bへのピアリングのみを設定し、VNet BでVNet Aへのピアリングを設定していない場合、接続は機能しません。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q35",
+      "domain": 4,
+      "question": "ある企業がHTTPSトラフィックのSSL終端をサポートするようにAzureロードバランサーを設定する必要があります。どのタイプのロードバランサーを使用すべきですか？",
+      "options": {
+        "A": "Azure Basic Load Balancer",
+        "B": "Azure Standard Load Balancer",
+        "C": "Azure Application Gateway",
+        "D": "Azure Front Door"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "Azure Load Balancerはレイヤー4（TCP/UDP）ロードバランサーであり、SSL終端をサポートしていません。Application Gatewayはレイヤー7ロードバランサーであり、SSL終端、URLルーティング、Webアプリケーションファイアウォールなどの機能をサポートしています。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q36",
+      "domain": 4,
+      "question": "ある企業がネットワークセキュリティグループルールを設定して、任意のソースからWebサーバーサブネットへのHTTPトラフィックを許可する必要があります。どのルールを作成すべきですか？",
+      "options": {
+        "A": "受信ルール、ソース：Any、宛先ポート：80、アクション：許可",
+        "B": "送信ルール、ソース：Any、宛先ポート：80、アクション：許可",
+        "C": "受信ルール、ソース：VirtualNetwork、宛先ポート：80、アクション：許可",
+        "D": "受信ルール、ソース：Internet、宛先ポート：443、アクション：許可"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "外部HTTPトラフィックがWebサーバーに到達できるようにするには、受信NSGルールを作成し、ソースをAny（またはInternet）に設定し、宛先ポートを80に、アクションをAllowに設定します。優先度は適切な値に設定する必要があります。\n---",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q37",
+      "domain": 4,
+      "question": "ある企業がAzure Firewallを仮想ネットワークにデプロイする必要があります。Azure Firewallはどのタイプのサブネットにデプロイする必要がありますか？",
+      "options": {
+        "A": "任意のサブネット",
+        "B": "AzureFirewallSubnetという名前の専用サブネット",
+        "C": "GatewaySubnet",
+        "D": "デフォルトサブネット"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure Firewallは「AzureFirewallSubnet」という名前の専用サブネットにデプロイする必要があります。このサブネットは少なくとも/26サイズである必要があり、他のリソースを含めることはできません。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q38",
+      "domain": 4,
+      "question": "ある企業がポイント対サイトVPNを使用して、単一の開発者コンピューターをAzure仮想ネットワークに接続する必要があります。何を設定すべきですか？",
+      "options": {
+        "A": "ExpressRoute",
+        "B": "サイト対サイトVPN",
+        "C": "VPNゲートウェイとポイント対サイト接続",
+        "D": "VNetピアリング"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "ポイント対サイトVPNを使用すると、単一のクライアントコンピューターがVPNクライアントを介してAzure VNetに接続できます。VPNゲートウェイを設定し、クライアント証明書を生成するかAzure AD認証を設定する必要があります。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q39",
+      "domain": 4,
+      "question": "ある企業がAzure Application GatewayのWebアプリケーションファイアウォール（WAF）を設定しています。一般的なWeb攻撃から防御するためにWAFはどのルールセットを使用すべきですか？",
+      "options": {
+        "A": "カスタムルール",
+        "B": "OWASPコアルールセット（CRS）",
+        "C": "Azure DDoSルール",
+        "D": "NSGルール"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure WAFはOWASPコアルールセット（CRS）を使用して、SQLインジェクション、クロスサイトスクリプティングなどの一般的なWeb脆弱性から保護します。CRS 3.0、3.1、または3.2バージョンを選択できます。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q40",
+      "domain": 4,
+      "question": "ある企業がVNetピアリング内のトラフィックがピアリングされたVNet内の仮想ネットワークゲートウェイにアクセスできるようにする必要があります。どのオプションを有効にすべきですか？",
+      "options": {
+        "A": "ゲートウェイ転送を許可する",
+        "B": "リモートゲートウェイを使用する",
+        "C": "転送されたトラフィックを許可する",
+        "D": "AとBの両方が必要"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "VPNゲートウェイを共有するには、ゲートウェイを持つVNetで「ゲートウェイ転送を許可する」を有効にし、そのゲートウェイを使用する必要があるVNetで「リモートゲートウェイを使用する」を有効にします。両方のオプションを組み合わせて使用する必要があります。\n---",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q41",
+      "domain": 5,
+      "question": "ある企業が複数のリソースの主要なメトリックを表示するカスタムAzureダッシュボードを作成する必要があります。ダッシュボード作成後、デフォルトでは誰が閲覧できますか？",
+      "options": {
+        "A": "すべてのサブスクリプションユーザー",
+        "B": "作成者のみ",
+        "C": "すべてのAzure ADユーザー",
+        "D": "リソースグループの共同作成者"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "新しく作成されたAzureダッシュボードはデフォルトでプライベートであり、作成者のみが閲覧できます。ダッシュボードを共有ダッシュボードとして公開し、RBACを通じて他のユーザーのアクセス権を制御できます。\n---",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q42",
+      "domain": 5,
+      "question": "ある企業がAzure Monitorアクショングループを設定して、アラートがトリガーされた時に電子メールの送信とAzure Functionの起動を同時に行う必要があります。これは可能ですか？",
+      "options": {
+        "A": "不可能、アクショングループは1種類のアクションタイプのみをサポート",
+        "B": "可能、アクショングループは複数のアクションを含めることができる",
+        "C": "2つの個別のアラートを作成する必要がある",
+        "D": "Logic Appsでのみ実現可能"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure Monitorアクショングループは、電子メール、SMS、プッシュ通知、音声、Azure Function、Logic App、Webhook、ITSM、Automation Runbookなど、複数のアクションを含めることができます。1つのアラートがトリガーされると、複数のアクションを同時に実行できます。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q43",
+      "domain": 5,
+      "question": "ある企業がKusto Query Language（KQL）を使用してAzure Monitorログをクエリする必要があります。直近1時間のデータをフィルタリングするための正しいクエリ構文はどれですか？",
+      "options": {
+        "A": "SELECT * FROM Events WHERE TimeGenerated > now() - 1h",
+        "B": "Events | where TimeGenerated > ago(1h)",
+        "C": "GET Events FILTER TimeGenerated > 1hour",
+        "D": "Events.filter(TimeGenerated > 1h)"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "KQLはパイプ記号（|）を使用して演算子を連結します。where句はフィルタリングに使用され、ago()関数は現在時刻からの相対的な時間オフセットを返します。正しい構文は：テーブル名 | where 条件 です。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q44",
+      "domain": 5,
+      "question": "ある企業がApplication InsightsでWebアプリケーションの失敗したリクエスト率を監視する必要があります。どのメトリックを確認すべきですか？",
+      "options": {
+        "A": "サーバー応答時間",
+        "B": "失敗したリクエスト数または失敗率",
+        "C": "ページ読み込み時間",
+        "D": "アクティブユーザー数"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Application Insightsの「失敗したリクエスト」メトリックは、HTTPエラーコード（4xxおよび5xx）を返したリクエストの数を表示します。失敗率は、失敗したリクエストが総リクエストに占める割合であり、アプリケーションの健全性を監視するための重要なメトリックです。\n---",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q45",
+      "domain": 5,
+      "question": "ある企業がAzure Backupを設定して、週次バックアップを52週間、月次バックアップを60か月間保持する必要があります。何を設定すべきですか？",
+      "options": {
+        "A": "デフォルトバックアップポリシー",
+        "B": "長期保持を含むカスタムバックアップポリシー",
+        "C": "Azure Site Recovery",
+        "D": "手動バックアップ"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure Backupはカスタム保持ポリシーをサポートしており、日次、週次、月次、年次の保持ポイントを設定できます。長期のコンプライアンス要件を満たすために、週次保持を52週間、月次保持を60か月に設定できます。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q46",
+      "domain": 5,
+      "question": "ある企業がAzure Backupから仮想マシンを復元する必要がありますが、VM全体ではなく特定のファイルのみを復元する必要があります。どの復元オプションを使用すべきですか？",
+      "options": {
+        "A": "VM全体を復元してからファイルをコピー",
+        "B": "ファイル回復",
+        "C": "バックアップから新しいVMを作成",
+        "D": "既存のVMを置き換える"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure Backupのファイル回復機能を使用すると、バックアップ内のディスクを回復ポイントにマウントし、特定のファイルを参照してコピーできます。これはVM全体を復元するよりも高速で、リソース消費も少なくなります。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q47",
+      "domain": 5,
+      "question": "ある企業がAzure Monitorアラートを設定して、CPU使用率が5分間継続して90%を超えた場合にトリガーする必要があります。どの集計タイプを使用すべきですか？",
+      "options": {
+        "A": "最大値",
+        "B": "最小値",
+        "C": "平均値",
+        "D": "合計"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "平均値集計を使用すると、評価期間全体を通じてCPU使用率が継続してしきい値を超えた場合にアラートがトリガーされます。最大値は一時的なスパイクで誤ってトリガーされる可能性がありますが、平均値は継続的な高負荷状態をより適切に反映します。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q48",
+      "domain": 5,
+      "question": "ある企業がAzure Network Watcherを使用して仮想マシンのネットワーク接続問題を診断する必要があります。どの機能を使用すべきですか？",
+      "options": {
+        "A": "IP フロー検証",
+        "B": "次ホップ",
+        "C": "接続のトラブルシューティング",
+        "D": "上記すべてが診断に使用可能"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "Network Watcherは複数の診断ツールを提供しています：IP フロー検証はNSGルールを確認し、次ホップはルーティングを表示し、接続のトラブルシューティングはエンドツーエンドの接続をテストします。これらのツールを組み合わせて使用することで、ネットワーク問題を包括的に診断できます。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q49",
+      "domain": 5,
+      "question": "ある企業がAzureのコストを確認し、予算アラートを作成する必要があります。どのサービスを使用すべきですか？",
+      "options": {
+        "A": "Azure Monitor",
+        "B": "Azure Cost Management + Billing",
+        "C": "Azure Advisor",
+        "D": "Azure請求アカウント"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure Cost Management + Billingは、コスト分析、予算作成、アラート機能を提供します。リソースグループ、サービス、またはタグごとにコストを分析し、予算を作成して予算制限に近づいた時にアラートを送信できます。\n---",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q50",
+      "domain": 5,
+      "question": "ある企業がWindowsイベントログを収集するためにAzure仮想マシンの診断設定を設定する必要があります。何を設定すべきですか？",
+      "options": {
+        "A": "Azure Monitor Agentとデータ収集ルール",
+        "B": "アクティビティログ診断設定",
+        "C": "Azure Security Center",
+        "D": "Azure Sentinel"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Azure Monitor Agent（AMA）をデータ収集ルール（DCR）と組み合わせて使用すると、仮想マシンからWindowsイベントログ、パフォーマンスカウンターなどのゲストOSデータを収集できます。これは推奨される現代的なログ収集方法です。\n---",
+      "difficulty": "medium"
+    }
+  ]
+}

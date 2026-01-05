@@ -1,0 +1,622 @@
+{
+  "exam": {
+    "id": "aws-sap-c02-set2-ja",
+    "name": "AWS SAP-C02 模擬試験 #2",
+    "code": "SAP-C02",
+    "provider": "AWS",
+    "language": "ja",
+    "description": "AWS Solutions Architect Professional (SAP-C02) 認定模擬試験第2セット。複雑なアーキテクチャ設計、移行戦略、コスト最適化、組織の複雑性管理をカバーしています。",
+    "totalQuestions": 40,
+    "passingScore": 75,
+    "examTime": 180,
+    "domains": [
+      {"id": 1, "name": "複雑な組織向けソリューション設計", "weight": 26},
+      {"id": 2, "name": "新規ソリューション設計", "weight": 29},
+      {"id": 3, "name": "既存ソリューションの継続的改善", "weight": 25},
+      {"id": 4, "name": "ワークロード移行とモダナイゼーションの加速", "weight": 20}
+    ],
+    "tags": ["AWS", "SAP-C02", "Professional", "Architecture"]
+  },
+  "questions": [
+    {
+      "id": 1,
+      "domain": 1,
+      "question": "企業がAWS Organizationsを使用して150のアカウントを管理しています。以下のセキュリティ要件を実装する必要があります：1) 許可されていないリージョンでのリソース作成を禁止；2) すべてのEBSボリュームにKMS暗号化を強制；3) ユーザーがCloudTrailを無効化することをブロック。最小の管理オーバーヘッドでこれらの要件をどのように実現しますか？",
+      "options": {
+        "A": "各アカウントでAWS Configルールを使用して検出し、Lambdaで自動修復する",
+        "B": "AWS Control Towerを使用して予防的および検出的ガードレールをデプロイする",
+        "C": "ルートOUレベルでService Control Policies (SCPs)を適用してこれらの操作を制限する",
+        "D": "CloudFormation StackSetsを使用してすべてのアカウントにIAMポリシーをデプロイする"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "SCPsは組織レベルで権限境界を強制し、APIレベルで非準拠リソースの作成をブロックできます。これが最も直接的で低オーバーヘッドな方法です。SCPsはリージョン制限、暗号化強制、CloudTrail無効化のブロックなどの操作を制限できます。Control Towerも使用可能ですが、追加の複雑性をもたらします。",
+      "difficulty": "hard"
+    },
+    {
+      "id": 2,
+      "domain": 1,
+      "question": "企業がマルチアカウントネットワークアーキテクチャを設計しています。本番、開発、共有サービスの3つのVPCがあり、以下の要件を満たす必要があります：1) すべてのVPCが共有サービスにアクセスできる；2) 本番と開発VPC間の直接通信は不可；3) 将来100以上のVPCへの拡張をサポート。最適な設計は何ですか？",
+      "options": {
+        "A": "VPCピアリングを使用して各VPCを共有サービスVPCに接続する",
+        "B": "Transit Gatewayを使用し、ルートテーブルで本番と開発のトラフィックを分離する",
+        "C": "AWS PrivateLinkを使用して各VPCから共有サービスにアクセスする",
+        "D": "各VPCにVPNゲートウェイをデプロイして相互接続する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Transit Gatewayは100以上のVPCをサポートするスケーラブルなネットワークアーキテクチャを提供します。Transit Gatewayルートテーブルを通じて、VPC間のルーティングを正確に制御し、本番と開発の分離を実現できます。VPCピアリングはルートを転送できず、管理の複雑さはVPC数に比例して増加します。",
+      "difficulty": "hard"
+    },
+    {
+      "id": 3,
+      "domain": 2,
+      "question": "金融取引システムが2つのAWSリージョン間でアクティブ-アクティブデプロイメントを実装する必要があります。要件は書き込みレイテンシー < 50ms、データ整合性、および任意の単一リージョン障害時の自動フェイルオーバーです。PostgreSQLデータベースを使用しています。最適なソリューションは何ですか？",
+      "options": {
+        "A": "2つのリージョンにAurora PostgreSQLをデプロイし、アプリケーション層でデュアルライトロジックを使用する",
+        "B": "Aurora PostgreSQL Global Databaseを使用し、プライマリリージョンで書き込み、セカンダリリージョンに非同期レプリケーションする",
+        "C": "Amazon DynamoDB Global TablesをPostgreSQLの代わりに使用する",
+        "D": "2つのリージョンに独立したRDS PostgreSQLをデプロイし、AWS DMSで双方向レプリケーションする"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Aurora Global Databaseはクロスリージョンレプリケーションを提供し、レプリケーション遅延は通常1秒未満で、高速フェイルオーバーをサポートします。アクティブ-パッシブモデルですが、PostgreSQL互換性と低レイテンシーレプリケーションが必要なシナリオに最適です。真のアクティブ-アクティブはリレーショナルデータベースでは複雑な競合解決問題をもたらします。",
+      "difficulty": "hard"
+    },
+    {
+      "id": 4,
+      "domain": 2,
+      "question": "企業がイベント駆動型マイクロサービスアーキテクチャを構築する必要があり、毎秒50,000イベントを処理します。要件：1) サービス間のデカップリング；2) リプレイ用のイベント永続化；3) 同一顧客のイベントを順序通りに処理。最適なアーキテクチャは何ですか？",
+      "options": {
+        "A": "Amazon SNS -> SQS -> Lambda",
+        "B": "Amazon Kinesis Data Streams（パーティションキー使用） -> Lambda",
+        "C": "Amazon MSK (Kafka) -> ECSコンシューマー",
+        "D": "Amazon EventBridge -> Step Functions"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Kinesis Data Streamsは高スループット、イベント永続化（デフォルト24時間、最大365日まで延長可能）、順序付き処理をサポートします。顧客IDをパーティションキーとして使用することで、同じ顧客のイベントが同じシャードで処理され、順序が保証されます。MSKも使用可能ですが、管理オーバーヘッドが大きくなります。",
+      "difficulty": "medium"
+    },
+    {
+      "id": 5,
+      "domain": 3,
+      "question": "WebアプリケーションがCloudFront + ALB + EC2 Auto Scalingアーキテクチャを使用しています。ユーザーが断続的な504 Gateway Timeoutエラーを報告しています。CloudWatchはALBヘルスチェックが正常で、EC2インスタンスのCPUが30%未満であることを示しています。最初に何を確認すべきですか？",
+      "options": {
+        "A": "より多くのトラフィックを処理するためにEC2インスタンス数を増やす",
+        "B": "CloudFrontからALBへの接続タイムアウト設定とOrigin Response Timeoutを確認する",
+        "C": "EC2インスタンスタイプをアップグレードしてパフォーマンスを向上させる",
+        "D": "VPCセキュリティグループ設定を確認する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "504エラーはバックエンドの応答タイムアウトを示します。CPU使用率が低くヘルスチェックが正常なため、一部のリクエストの処理時間がCloudFrontのOrigin Response Timeout（デフォルト30秒）を超えている可能性が高いです。長時間実行リクエストを確認し、タイムアウト設定を適切に調整する必要があります。",
+      "difficulty": "medium"
+    },
+    {
+      "id": 6,
+      "domain": 4,
+      "question": "企業が様々なアプリケーションを実行する2000台のサーバーを持ち、AWSへの移行を計画しています。移行前にサーバーの依存関係、実行中のアプリケーション、リソース使用率を把握する必要があります。推奨される発見方法は何ですか？",
+      "options": {
+        "A": "各サーバーの設定情報を手動で収集する",
+        "B": "AWS Application Discovery Serviceのエージェントまたはエージェントレス発見を使用する",
+        "C": "AWS Migration Hubを使用して直接移行を開始する",
+        "D": "CloudWatch Agentを使用してメトリクスを収集する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "AWS Application Discovery Serviceは、オンプレミスサーバーの設定、パフォーマンスデータ、ネットワーク依存関係を発見するために特別に設計されています。エージェントモードはより詳細なデータ（プロセスとネットワーク接続を含む）を提供し、エージェントレスモードはVMware vCenterを使用して基本情報を収集します。このデータはMigration Hubにインポートして計画に使用できます。",
+      "difficulty": "easy"
+    },
+    {
+      "id": 7,
+      "domain": 1,
+      "question": "企業がアカウントレベルの予算管理を実装する必要があります。アカウントの支出が予算制限に近づいたとき、既存のリソースの実行に影響を与えずに新しいリソースの作成を自動的にブロックする必要があります。どのように実現しますか？",
+      "options": {
+        "A": "AWS BudgetsとBudgets Actionsを使用して、しきい値を超えたときに制限的なSCPを自動的に適用する",
+        "B": "AWS Cost Explorerを使用して支出を監視し、手動で介入する",
+        "C": "各アカウントでCloudWatchアラームを設定して通知を送信する",
+        "D": "AWS Organizationsのクォータ制限を使用する"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "AWS Budgets Actionsは、予算しきい値に達したときにカスタムIAMポリシーやSCPの適用を含む操作を自動的に実行できます。これにより、既存のリソースに影響を与えずに新しいリソースの作成をブロックできます。Cost Explorerは分析専用で、自動アクションは実行できません。",
+      "difficulty": "hard"
+    },
+    {
+      "id": 8,
+      "domain": 2,
+      "question": "コンテンツ管理システムが大量の画像アップロードを処理する必要があり、各画像に対して複数サイズのサムネイルを生成します。処理時間は最大5分かかる可能性があり、1日あたり約100,000枚の画像を処理します。最もコスト効率の良いアーキテクチャは何ですか？",
+      "options": {
+        "A": "EC2インスタンスで画像処理サービスを実行し、Auto Scalingを設定する",
+        "B": "S3イベントでLambdaをトリガーして処理する",
+        "C": "S3イベント -> SQS -> Lambda（またはFargate）で非同期処理する",
+        "D": "AWS Batchで画像を処理する"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "SQS + Lambda/Fargateの非同期モデルがこのシナリオに最適です。SQSはバッファリングと信頼性を提供し、Lambdaは並列処理が可能（5分は制限内）、Fargateはより長い時間が必要なタスクに使用できます。S3から直接Lambdaをトリガーすると、高並行性時に同時実行制限に達する可能性があります。",
+      "difficulty": "medium"
+    },
+    {
+      "id": 9,
+      "domain": 3,
+      "question": "企業の本番データベースがRDS MySQL Multi-AZで実行されています。DBAが毎週日曜日の早朝に約30分間データベースパフォーマンスが低下すると報告しています。分析の結果、これが自動バックアップウィンドウと重複していることがわかりました。どのように解決しますか？",
+      "options": {
+        "A": "自動バックアップ時間をビジネスの閑散期に調整する",
+        "B": "自動バックアップを無効にし、手動スナップショットに変更する",
+        "C": "Aurora MySQLに移行し、その連続バックアップメカニズムを活用する",
+        "D": "バックアップ中の追加負荷を処理するためにプロビジョンドIOPSを増やす"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "AuroraはS3への連続バックアップを使用し、RDS MySQLのようにバックアップ中にストレージI/Oの一時停止を引き起こしません。これが根本的な解決策です。バックアップウィンドウの調整は問題を先送りするだけで、バックアップの無効化は推奨されず、IOPSの増加はコストが高く効果が限定的です。",
+      "difficulty": "medium"
+    },
+    {
+      "id": 10,
+      "domain": 4,
+      "question": "企業がコアJavaアプリケーションをコンテナ化してAWSに移行することを決定しました。アプリケーションは現在OracleデータベースとRedisキャッシュを使用しています。チームはKubernetesの経験が限られています。推奨されるコンピューティングプラットフォームは何ですか？",
+      "options": {
+        "A": "Amazon ECS on Fargate",
+        "B": "Amazon EKS on EC2",
+        "C": "Amazon EKS on Fargate",
+        "D": "EC2上でDockerを自己管理する"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Kubernetes経験が限られたチームにとって、ECSはEKSより習得が容易です。Fargateはサーバー管理の必要性を排除します。ECSは十分なコンテナオーケストレーション機能を提供しながら、学習曲線が低くなっています。将来必要であれば、EKSに移行することもできます。",
+      "difficulty": "medium"
+    },
+    {
+      "id": 11,
+      "domain": 1,
+      "question": "多国籍企業がEUデータ保護規制の下で運営する必要があります。すべての欧州ユーザーデータは欧州リージョンに保存され、データアクセスを監査する必要があります。AWSでこれらの要件をどのように実現しますか？（2つ選択）",
+      "options": {
+        "A": "AWS Organizations SCPsを使用して欧州リージョン外でのデータストレージサービスの作成を制限する",
+        "B": "CloudTrailを有効にし、保護されたS3バケットにログを送信する",
+        "C": "Amazon Macieを使用して機密データを自動分類する",
+        "D": "すべてのデータをS3 Glacierに暗号化して保存する"
+      },
+      "answer": ["A", "B"],
+      "answerType": "multiple",
+      "explanation": "SCPsはデータ主権要件を強制し、欧州リージョン外でS3、RDSなどのサービスの作成をブロックできます。CloudTrailはすべてのAPI呼び出しを記録し、データアクセス監査を提供します。Macieは有用ですが必須ではなく、Glacierはストレージクラスであってコンプライアンス制御ではありません。",
+      "difficulty": "medium"
+    },
+    {
+      "id": 12,
+      "domain": 2,
+      "question": "Eコマースプラットフォームがパーソナライズされたレコメンデーションシステムを実装する必要があります。要件：1) リアルタイムレコメンデーション（レイテンシー < 200ms）；2) 新しいデータに基づいて毎日モデルを更新；3) 機械学習インフラストラクチャ管理の最小化。最適なソリューションは何ですか？",
+      "options": {
+        "A": "Amazon Personalizeマネージドサービスを使用する",
+        "B": "SageMakerでカスタムモデルをトレーニングし、リアルタイムエンドポイントにデプロイする",
+        "C": "EMRでSpark MLlibを実行してモデルをトレーニングし、EC2にデプロイする",
+        "D": "Lambda関数で簡単な協調フィルタリングアルゴリズムを実行する"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Amazon Personalizeは完全マネージドのレコメンデーションサービスで、リアルタイムレコメンデーション、自動モデル再トレーニング、API統合をサポートします。MLインフラストラクチャ管理作業を最小化します。SageMakerはより多くのML専門知識が必要で、EMR/EC2ソリューションは管理オーバーヘッドが最も大きくなります。",
+      "difficulty": "medium"
+    },
+    {
+      "id": 13,
+      "domain": 3,
+      "question": "アプリケーションがDynamoDBを使用してユーザーセッションデータを保存し、期限切れセッションを自動削除するためにTTLを設定しています。最近、削除操作に大幅な遅延があり、一部のアイテムが期限切れ後数日経っても削除されないことがわかりました。どのように改善しますか？",
+      "options": {
+        "A": "DynamoDBテーブルのプロビジョンド容量を増やす",
+        "B": "これはDynamoDB TTLの正常な動作であり、TTL削除はベストエフォートで即時ではない",
+        "C": "Lambdaを使用して期限切れアイテムを定期的にスキャンして削除する",
+        "D": "セッション管理のためにElastiCacheに移行する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "DynamoDB TTLはバックグラウンドプロセスであり、通常は期限切れ後48時間以内にアイテムを削除します。これは問題ではなく設計された動作です。アプリケーションが正確な期限切れ動作を必要とする場合は、読み取り時にタイムスタンプをチェックして期限切れデータをフィルタリングすべきであり、TTLの削除タイミングに依存すべきではありません。",
+      "difficulty": "medium"
+    },
+    {
+      "id": 14,
+      "domain": 4,
+      "question": "企業がメインフレームアプリケーションをモダナイズしています。アプリケーションには複雑なCOBOLビジネスロジックが含まれ、毎日数百万のトランザクションを処理しています。最もリスクの低い方法でモダナイズするにはどうすればよいですか？",
+      "options": {
+        "A": "AWS Mainframe Modernizationの自動リファクタリングモードを使用してCOBOLをJavaに変換する",
+        "B": "AWS Mainframe Modernizationのリプラットフォームモードを使用してAWS上で既存コードを実行する",
+        "C": "アプリケーションをクラウドネイティブマイクロサービスとして完全に書き直す",
+        "D": "メインフレームをそのまま維持し、周辺システムのみを移行する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "AWS Mainframe Modernizationのリプラットフォームモードにより、既存のメインフレームアプリケーションをAWSマネージドランタイム環境で実行でき、既存のコードロジックを保持できます。これが最もリスクの低い方法です。自動リファクタリングや完全な書き直しはリスクが高く、大量のテストが必要です。",
+      "difficulty": "hard"
+    },
+    {
+      "id": 15,
+      "domain": 1,
+      "question": "企業がAWS Organizationsを使用して50のアカウントを管理しています。セキュリティチームはすべてのアカウントでGuardDutyが有効になっており、検出結果がセキュリティアカウントに集中されていることを確認する必要があります。どのように実現しますか？",
+      "options": {
+        "A": "各アカウントで手動でGuardDutyを有効にする",
+        "B": "AWS Organizationsの委任管理者機能を使用して、セキュリティアカウントをGuardDuty管理者として指定する",
+        "C": "CloudFormation StackSetsを使用してすべてのアカウントにGuardDutyをデプロイする",
+        "D": "AWS Configルールを使用してGuardDutyが有効になっていないアカウントを検出する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "GuardDutyはOrganizations統合をサポートしており、委任管理者アカウントを指定できます。管理者アカウントはすべての組織メンバーアカウントでGuardDutyを自動的に有効にし、すべての検出結果を一元的に表示できます。これが最もシンプルで効果的な方法です。",
+      "difficulty": "medium"
+    },
+    {
+      "id": 16,
+      "domain": 2,
+      "question": "IoTプラットフォームが500万台のデバイスをサポートする必要があり、各デバイスは1分ごとにテレメトリデータを送信します。データは履歴分析のために2年間保存する必要があり、最新7日間のデータはリアルタイムクエリをサポートする必要があります。最適なストレージ戦略は何ですか？",
+      "options": {
+        "A": "すべてのデータをDynamoDBに保存する",
+        "B": "すべてのデータをAmazon Timestreamに保存する",
+        "C": "すべてのデータをS3に保存し、Athenaでクエリする",
+        "D": "最新7日間のデータをTimestreamに保存し、履歴データをS3に保存する"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "Amazon Timestreamは時系列データ用に設計されており、高速なクエリパフォーマンスを提供しますが、長期保存コストが高くなります。S3は履歴データの長期保存に適しています。Timestreamは古いデータをメモリストレージ、磁気ストレージに自動移行するよう設定できますが、より経済的なソリューションは履歴データをS3にエクスポートすることです。",
+      "difficulty": "hard"
+    },
+    {
+      "id": 17,
+      "domain": 3,
+      "question": "アプリケーションがEKSクラスター上で実行されており、CPUに基づいてHorizontal Pod Autoscaler (HPA)を使用してスケーリングしています。スケーリング応答が遅すぎて、トラフィックピーク時にユーザーエクスペリエンスが低下することがわかりました。どのように改善しますか？（2つ選択）",
+      "options": {
+        "A": "Cluster Autoscalerを設定してより迅速にノードを追加する",
+        "B": "KEDAを使用してカスタムメトリクス（キュー深度など）に基づいてスケーリングする",
+        "C": "各Podのリソース制限を増やす",
+        "D": "AWS Fargateを使用してEC2ノードを置き換える"
+      },
+      "answer": ["A", "B"],
+      "answerType": "multiple",
+      "explanation": "スケーリング遅延は通常2つの要因によって引き起こされます：1) ノード不足によりPodがpendingになる場合、Cluster Autoscalerを最適化する必要がある；2) CPUベースのリアクティブスケーリングが遅すぎる場合、KEDAを使用して予測的メトリクス（キュー深度など）に基づいて事前にスケーリングできます。Fargateはコールドスタートがより遅く、問題を解決しません。",
+      "difficulty": "hard"
+    },
+    {
+      "id": 18,
+      "domain": 4,
+      "question": "企業が100TBのNFSファイル共有をAWSに移行する必要があり、オンプレミスアプリケーションからの継続的なアクセスを維持します。移行完了後、すべてのアプリケーションはAWSに移行してAmazon EFSを使用します。推奨される移行戦略は何ですか？",
+      "options": {
+        "A": "AWS DataSyncを使用してデータをEFSにコピーし、その後アプリケーションを切り替える",
+        "B": "AWS Storage Gateway File Gatewayを使用してハイブリッドアクセスを提供し、その後段階的に移行する",
+        "C": "Snowball Edgeを使用してデータをS3に転送し、その後EFSにコピーする",
+        "D": "NFSマウントポイントを直接EFSにリダイレクトする"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Storage Gateway File Gatewayはオンプレミスでデータを保存しながらNFSインターフェースを提供しS3にデータを保存できます。これによりオンプレミスアプリケーションは継続的にアクセスでき、データはすでにAWSにあります。その後、DataSyncを使用してS3データをEFSに同期できます。これによりダウンタイムなしでスムーズな移行が可能になります。",
+      "difficulty": "medium"
+    },
+    {
+      "id": 19,
+      "domain": 1,
+      "question": "企業がAWS環境にZero Trustネットワークセキュリティモデルを実装する必要があります。以下のうち重要なコンポーネントはどれですか？（2つ選択）",
+      "options": {
+        "A": "VPC境界でAWS Network Firewallを使用する",
+        "B": "すべての内部トラフィックにVPCエンドポイントとPrivateLinkを使用する",
+        "C": "AWS Verified Accessを使用して各アクセスリクエストを検証する",
+        "D": "監視のためにすべてのリソースをパブリックサブネットにデプロイする"
+      },
+      "answer": ["B", "C"],
+      "answerType": "multiple",
+      "explanation": "Zero Trustの核心は「決して信頼せず、常に検証する」です。VPCエンドポイントとPrivateLinkはトラフィックがパブリックインターネットを経由しないことを保証します。AWS Verified Accessは各リクエストに対してIDとセキュリティ態勢の検証を行うことができます。Network Firewallは境界防御であり、Zero Trustの核心ではありません。",
+      "difficulty": "hard"
+    },
+    {
+      "id": 20,
+      "domain": 2,
+      "question": "ソーシャルメディアアプリケーションがユーザー生成コンテンツ（画像と動画）を保存・取得する必要があります。要件：1) メタデータクエリの低レイテンシー；2) 効率的なコンテンツ配信；3) タイムラインとタグによるクエリのサポート。最適なデータアーキテクチャは何ですか？",
+      "options": {
+        "A": "すべてのデータをAmazon RDSに保存する",
+        "B": "メタデータをDynamoDB（GSIで複数のクエリをサポート）に保存し、メディアをS3 + CloudFrontに保存する",
+        "C": "すべてのデータをMongoDB (DocumentDB)に保存する",
+        "D": "メタデータとメディアの両方をS3に保存する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "DynamoDBは低レイテンシーのメタデータクエリを提供し、GSI（グローバルセカンダリインデックス）は異なる属性によるクエリ（タイムライン、タグなど）をサポートします。S3は大きなメディアファイルの保存に適しており、CloudFrontはグローバルな低レイテンシー配信を提供します。これは典型的なソーシャルメディアアーキテクチャパターンです。",
+      "difficulty": "medium"
+    },
+    {
+      "id": 21,
+      "domain": 3,
+      "question": "Lambda関数がRDSデータベースに接続しており、高並行性時にデータベース接続枯渇エラーが発生しています。データベースのmax_connectionsは500に設定されていますが、Lambdaの同時実行は数千に達する可能性があります。どのように解決しますか？",
+      "options": {
+        "A": "より多くの接続をサポートするためにRDSインスタンスサイズを増やす",
+        "B": "Amazon RDS Proxyを使用してデータベース接続プールを管理する",
+        "C": "Lambda関数の予約済み同時実行を減らす",
+        "D": "Lambdaコード内で接続プールを実装する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "RDS ProxyはLambdaとRDSの接続問題を解決するために特別に設計されています。データベースへの接続プールを維持し、Lambdaの短命な接続を多重化します。これにより実際のデータベース接続数が大幅に削減され、高いLambda同時実行をサポートします。Lambdaコード内の接続プールはサーバーレス環境では効果が限定的です。",
+      "difficulty": "medium"
+    },
+    {
+      "id": 22,
+      "domain": 4,
+      "question": "企業がSAP HANAワークロードをAWSに移行するかどうかを評価しています。考慮すべき重要な要素は何ですか？（2つ選択）",
+      "options": {
+        "A": "必要なEC2インスタンスタイプがSAP認定を受けていることを確認する",
+        "B": "SAPはAWSの専用ホストでのみ実行可能",
+        "C": "AWS Launch Wizard for SAPを評価してデプロイを簡素化する",
+        "D": "SAPライセンスはAWSでは使用できない"
+      },
+      "answer": ["A", "C"],
+      "answerType": "multiple",
+      "explanation": "AWSでSAPを実行するには、SAP認定インスタンスタイプ（X1、X2idn、u-*高メモリインスタンスなど）を使用する必要があります。AWS Launch Wizard for SAPは自動化されたベストプラクティスデプロイメントを提供します。SAPは共有テナントインスタンスで実行でき（専用ホストは必須ではない）、ライセンスは移行可能（BYOL）です。",
+      "difficulty": "medium"
+    },
+    {
+      "id": 23,
+      "domain": 1,
+      "question": "企業のセキュリティポリシーでは、VPC間のすべてのトラフィックがセキュリティ検査を受ける必要があります。20のVPCが相互通信する必要があり、トラフィック検査が必要です。最適なネットワークアーキテクチャは何ですか？",
+      "options": {
+        "A": "各VPCペア間でVPCピアリングを使用する",
+        "B": "Transit GatewayとAWS Network Firewallを使用して、検査VPCで集中トラフィック検査を行う",
+        "C": "各VPCにネットワークアプライアンスをデプロイする",
+        "D": "VPC Flow Logsを使用してトラフィックを監視する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "これはTransit Gateway集中検査アーキテクチャです。すべてのVPCをTransit Gatewayに接続し、トラフィックをルーティングで検査VPCに送り、AWS Network Firewallで検査してから宛先にルーティングします。これにより、各VPCに分散デプロイするのではなく、集中管理と一貫したセキュリティポリシーが提供されます。",
+      "difficulty": "hard"
+    },
+    {
+      "id": 24,
+      "domain": 2,
+      "question": "データウェアハウスが毎晩10の異なるデータソースからデータをインポートし、変換後にRedshiftにロードする必要があります。データソースにはS3、RDS、DynamoDB、オンプレミスデータベースが含まれます。最適なETLソリューションは何ですか？",
+      "options": {
+        "A": "AWS Glue ETLジョブを使用してすべての変換を行う",
+        "B": "Lambda関数を使用してすべてのETLプロセスをオーケストレートする",
+        "C": "AWS GlueとGlue Workflowsを使用して複数のデータソースのETLをオーケストレートする",
+        "D": "Amazon EMRでSparkジョブを実行する"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "AWS Glueは複数のデータソース（S3、RDS、DynamoDBなど）をネイティブにサポートするサーバーレスETLサービスです。Glue Workflowsは複数のクローラーとジョブの実行順序と依存関係をオーケストレートできます。10のデータソースを持つ複雑なシナリオでは、Glue Workflowsが視覚的なプロセスオーケストレーションを提供します。",
+      "difficulty": "medium"
+    },
+    {
+      "id": 25,
+      "domain": 3,
+      "question": "アプリケーションがAWS Secrets Managerを使用してデータベース資格情報を保存しています。セキュリティ監査で資格情報のローテーションが一度も正常に実行されていないことが判明しました。どのようにトラブルシューティングして修正しますか？（2つ選択）",
+      "options": {
+        "A": "Secrets ManagerローテーションLambda関数のCloudWatch Logsを確認する",
+        "B": "ローテーションLambda関数がデータベースユーザーパスワードを更新する権限を持っていることを確認する",
+        "C": "Secretのバージョン保持数を増やす",
+        "D": "自動ローテーションをサポートするためにデータベースをAuroraに移行する"
+      },
+      "answer": ["A", "B"],
+      "answerType": "multiple",
+      "explanation": "Secrets ManagerはLambda関数を使用して資格情報のローテーションを実行します。一般的な問題には以下が含まれます：Lambda関数の実行エラー（CloudWatch Logsを確認）、Lambdaがデータベースにアクセスできない（ネットワーク設定）、Lambdaにデータベースパスワードを更新する権限がない。これらがトラブルシューティングの最初のステップです。",
+      "difficulty": "medium"
+    },
+    {
+      "id": 26,
+      "domain": 4,
+      "question": "企業がモノリシックアプリケーションをマイクロサービスにリファクタリングしています。チームはフロントエンドとしてAPI Gatewayを使用し、バックエンドサービスはECSで実行することを決定しました。サービス間通信はどのように設計すべきですか？",
+      "options": {
+        "A": "すべてのサービス間呼び出しをAPI Gateway経由で行う",
+        "B": "AWS App Meshを使用してサービス間通信を管理する",
+        "C": "サービスがECS Service Discovery経由で直接相互呼び出しする",
+        "D": "すべてのサービス間通信にSQSを使用する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "AWS App Meshはアプリケーションレベルのネットワーク（サービスメッシュ）を提供し、サービスディスカバリ、ロードバランシング、トラフィック管理、オブザーバビリティをサポートします。マイクロサービス間通信に最適な選択です。API Gatewayは内部サービス通信には適さず、純粋なSQSは非同期には適しますがすべてのシナリオには適していません。",
+      "difficulty": "medium"
+    },
+    {
+      "id": 27,
+      "domain": 1,
+      "question": "企業がAWSとオンプレミスデータセンター間に高可用性ネットワーク接続を確立する必要があります。要件は99.99%の可用性と最大10msのレイテンシーです。推奨されるアーキテクチャは何ですか？",
+      "options": {
+        "A": "2つのSite-to-Site VPN接続を使用する",
+        "B": "1つのDirect Connect接続と1つのVPNをバックアップとして使用する",
+        "C": "異なるロケーションの2つのDirect Connect接続とDirect Connect Gatewayを使用する",
+        "D": "単一の10 Gbps Direct Connect接続を使用する"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "99.99%の可用性を実現するために、AWSは異なるDirect Connectロケーションに2つの接続を確立して単一障害点を回避することを推奨しています。Direct Connect Gatewayにより、1つの接続から複数のリージョンのVPCにアクセスできます。単一の接続は帯域幅に関係なく、最高の可用性SLAを達成できません。",
+      "difficulty": "hard"
+    },
+    {
+      "id": 28,
+      "domain": 2,
+      "question": "GraphQL APIが複数のバックエンドサービス（REST API、DynamoDB、Aurora）からのデータを集約する必要があります。要件は低レイテンシーと簡素化されたクライアント開発です。最適な実装ソリューションは何ですか？",
+      "options": {
+        "A": "API Gatewayを使用して複数のRESTエンドポイントを作成する",
+        "B": "AWS AppSyncをGraphQL層として使用し、複数のデータソースリゾルバーを設定する",
+        "C": "EC2上にカスタムGraphQLサーバーをデプロイする",
+        "D": "LambdaをAPI Gatewayのバックエンドとして使用してデータを集約する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "AWS AppSyncは複数のデータソース（DynamoDB、Aurora、HTTPエンドポイントなど）をサポートするマネージドGraphQLサービスです。リゾルバーは異なるソースからデータを取得し、組み合わせてクライアントに返すことができます。これにより開発が簡素化され、キャッシング、リアルタイムサブスクリプションなどの機能が提供されます。",
+      "difficulty": "medium"
+    },
+    {
+      "id": 29,
+      "domain": 3,
+      "question": "EC2上で実行されているアプリケーションがインスタンスストア（Instance Store）を一時データストレージとして使用しています。運用チームがインスタンスの停止/起動後にデータが失われると報告しています。どのように解決しますか？",
+      "options": {
+        "A": "インスタンスストアをEBSボリュームに置き換える",
+        "B": "EBSスナップショットを使用してインスタンスストアをバックアップする",
+        "C": "データを定期的にS3に同期する",
+        "D": "より大きなインスタンスストアを使用する"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "インスタンスストアは一時的であり、インスタンスの停止、終了、またはハードウェア障害時にデータが失われます。永続化データが必要な場合は、EBSボリュームを使用すべきです。EBSはインスタンスのライフサイクルとは独立したブロックストレージです。S3同期は追加の複雑性をもたらし、ブロックストレージのニーズを直接置き換えることはできません。",
+      "difficulty": "easy"
+    },
+    {
+      "id": 30,
+      "domain": 4,
+      "question": "企業がデータセンターのVMware仮想マシンをAWSクラウドに拡張し、同じVMwareツールとプロセスを使用し続けたいと考えています。最適なソリューションは何ですか？",
+      "options": {
+        "A": "AWS Application Migration Serviceを使用して仮想マシンをEC2に移行する",
+        "B": "VMware Cloud on AWSを使用してAWS上でVMware SDDCを実行する",
+        "C": "AWS Outpostsを使用してオンプレミスでAWSサービスを実行する",
+        "D": "VM Import/Exportを使用して仮想マシンを変換する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "VMware Cloud on AWSはVMwareとAWSの共同サービスで、AWSベアメタルインフラストラクチャ上でVMwareソフトウェア定義データセンター（SDDC）を実行します。これにより、既存のVMwareツール、スキル、プロセスを使用しながら、AWSクラウドの利点を得ることができます。これは真のハイブリッドクラウド拡張ソリューションです。",
+      "difficulty": "medium"
+    },
+    {
+      "id": 31,
+      "domain": 1,
+      "question": "企業が複数のAWSアカウント間で一貫したセキュリティベースラインを確保する必要があります。ベースラインからの逸脱を自動的に検出してアラートを発する必要があります。どのように実現しますか？",
+      "options": {
+        "A": "各アカウントでセキュリティ設定を手動で監査する",
+        "B": "AWS Security HubとAWS Foundational Security Best Practices標準を使用し、クロスアカウント集約を有効にする",
+        "C": "AWS Trusted Advisorを使用して各アカウントをチェックする",
+        "D": "サードパーティのセキュリティスキャンツールをデプロイする"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "AWS Security Hubはセキュリティベストプラクティスチェック（AWS Foundational Security Best Practices、CIS AWS Foundations Benchmarkなど）を提供し、組織のすべてのアカウントにわたって検出結果を集約できます。GuardDuty、Inspector、Macieなどと統合し、集中的なセキュリティビューを提供します。",
+      "difficulty": "medium"
+    },
+    {
+      "id": 32,
+      "domain": 2,
+      "question": "バッチ処理ジョブがS3内の大量のファイルを処理する必要があり、各ファイルの処理には30分から2時間かかります。ジョブにはフォールトトレランスが必要で、失敗したファイルは再処理できる必要があります。最適なコンピューティングソリューションは何ですか？",
+      "options": {
+        "A": "Lambda関数を使用して各ファイルを処理する",
+        "B": "AWS BatchとSpotインスタンスを使用する",
+        "C": "EC2 Auto Scalingグループを使用する",
+        "D": "ECS Fargateタスクを使用する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "AWS Batchはバッチ処理ワークロード用に設計されており、コンピューティングリソースのプロビジョニングとスケーリングを自動的に管理します。Spotインスタンスはコストを大幅に削減できます。Batchはジョブキュー、依存関係管理、失敗したジョブの自動リトライ機能を提供します。30分から2時間の処理時間はLambdaの15分制限を超えています。",
+      "difficulty": "medium"
+    },
+    {
+      "id": 33,
+      "domain": 3,
+      "question": "APIがAPI Gateway + Lambdaアーキテクチャを使用しています。CloudWatchはLambda関数の平均持続時間が500msであることを示していますが、API Gatewayの平均レイテンシーは2秒です。レイテンシーの差異をどのように診断しますか？",
+      "options": {
+        "A": "Lambda関数にコールドスタートの問題がある",
+        "B": "API Gatewayの統合タイムアウト設定が高すぎる",
+        "C": "API GatewayとLambdaのX-Rayトレースを有効にしてレイテンシー分布を分析する",
+        "D": "API Gatewayをより高性能なレベルにアップグレードする"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "X-Rayはエンドツーエンドのリクエストトレースを提供し、API Gateway処理時間、Lambda初期化時間、関数実行時間、AWSサービス呼び出し時間を表示できます。これによりレイテンシーの原因（コールドスタート、ダウンストリームサービス呼び出し、その他の要因）を正確に特定できます。",
+      "difficulty": "medium"
+    },
+    {
+      "id": 34,
+      "domain": 4,
+      "question": "企業がオンプレミスからAWSにHadoopクラスターを移行する必要があります。クラスターはHDFS、Hive、Spark、Prestoワークロードを実行しています。再アーキテクト作業を最小化するにはどうすればよいですか？",
+      "options": {
+        "A": "Amazon EMRを使用して同じオープンソースコンポーネントを実行する",
+        "B": "すべてのワークロードをAWS Glueに移行する",
+        "C": "EC2インスタンスを使用してHadoopクラスターを自己管理する",
+        "D": "データをRedshiftに移行し、すべてのクエリを書き直す"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Amazon EMRはHadoop、Spark、Hive、Prestoなどのオープンソースフレームワークをサポートし、既存のジョブとクエリを最小限のコード変更で実行できます。EMRはHDFSの代わりにS3をストレージ層（EMRFS）として使用でき、互換性を維持しながらより良いスケーラビリティと耐久性を提供します。",
+      "difficulty": "easy"
+    },
+    {
+      "id": 35,
+      "domain": 1,
+      "question": "企業がAWS上で支払いカードデータを保存・処理する必要があり、PCI DSSコンプライアンス要件を満たす必要があります。以下のうち必要な対策はどれですか？（2つ選択）",
+      "options": {
+        "A": "VPCとセキュリティグループを使用して支払いシステムを専用ネットワークセグメントに分離する",
+        "B": "PCI DSSに準拠したAWSサービスのみを使用する",
+        "C": "すべてのEC2インスタンスは専用ホストを使用する必要がある",
+        "D": "AWS Artifactを使用してAWSのPCI DSSコンプライアンス証明を取得する"
+      },
+      "answer": ["A", "B"],
+      "answerType": "multiple",
+      "explanation": "PCI DSSはカード会員データ環境を分離するためのネットワークセグメンテーションを要求します。AWSのPCI DSS準拠サービスリストのサービスを使用する必要があります。AWS Artifactはコンプライアンスレポートを提供しますが、技術的制御ではありません。専用ホストはPCI DSSの必須要件ではありません（特定の状況では必要な場合もあります）。",
+      "difficulty": "hard"
+    },
+    {
+      "id": 36,
+      "domain": 2,
+      "question": "ゲームアプリケーションがリアルタイムリーダーボード機能を実装する必要があります。要件：1) グローバルプレイヤーランキングのリアルタイム更新；2) Top 100と特定のプレイヤーランキングのクエリをサポート；3) 毎秒数千回の書き込み。最適なデータストレージは何ですか？",
+      "options": {
+        "A": "Amazon DynamoDBとGlobal Tables",
+        "B": "Amazon ElastiCache for RedisでSorted Setsを使用",
+        "C": "Amazon Aurora PostgreSQL",
+        "D": "Amazon Neptune"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Redis Sorted Setsはリーダーボードシナリオ用に設計されています。O(log N)の挿入とO(log N + M)の範囲クエリパフォーマンスを提供します。ZADD、ZRANK、ZRANGEなどのコマンドはリーダーボードの要件に完全に一致します。ElastiCache for Redisはマネージドサービスとグローバルデータストアオプションを提供します。",
+      "difficulty": "medium"
+    },
+    {
+      "id": 37,
+      "domain": 3,
+      "question": "企業のAurora MySQLデータベースが特定のクエリを実行する際にパフォーマンスが低下しています。クエリは複数テーブルのJOINと複雑なフィルター条件を含みます。どのように診断して最適化しますか？（2つ選択）",
+      "options": {
+        "A": "AuroraのPerformance Insightsを使用して待機イベントとクエリ統計を分析する",
+        "B": "Auroraインスタンスサイズを増やす",
+        "C": "EXPLAINを使用してクエリ実行計画を分析し、適切なインデックスを追加する",
+        "D": "Aurora Serverlessに移行する"
+      },
+      "answer": ["A", "C"],
+      "answerType": "multiple",
+      "explanation": "Performance Insightsは問題のあるクエリと待機イベントを特定できます。EXPLAINはクエリ実行計画を表示し、欠落しているインデックスやフルテーブルスキャンなどの問題を特定するのに役立ちます。これはデータベースパフォーマンス最適化の標準的な方法です。インスタンスサイズを盲目的に増やしてもクエリ効率の問題は解決しません。",
+      "difficulty": "medium"
+    },
+    {
+      "id": 38,
+      "domain": 4,
+      "question": "企業がマルチクラウド戦略を採用し、AWSとGCP間でワークロードを分散することを決定しました。統一されたコンテナオーケストレーションプラットフォームが必要です。推奨されるソリューションは何ですか？",
+      "options": {
+        "A": "AWSではECSを使用し、GCPではCloud Runを使用する",
+        "B": "両方のクラウドでKubernetes（EKSとGKE）を使用する",
+        "C": "AWS Outpostsを使用してGCPにデプロイする",
+        "D": "AWS App Runnerを使用して両方のクラウドで実行する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Kubernetesはクラウドネイティブコンテナオーケストレーションのオープンスタンダードであり、AWS（EKS）とGCP（GKE）の両方でマネージドサービスがあります。同じKubernetes APIとツールを使用することで、クラウド間で一貫した運用体験を実現できます。これがマルチクラウド戦略のベストプラクティスです。",
+      "difficulty": "easy"
+    },
+    {
+      "id": 39,
+      "domain": 1,
+      "question": "企業が機密ワークロード用にハードウェアセキュリティモジュール（HSM）を実装して暗号化キーを管理する必要があります。キーはFIPS 140-2 Level 3認証デバイスで生成・保存される必要があります。推奨されるAWSサービスは何ですか？",
+      "options": {
+        "A": "AWS KMSでAWSマネージドキーを使用する",
+        "B": "AWS KMSでカスタマーマネージドキーを使用する",
+        "C": "AWS CloudHSM",
+        "D": "AWS Secrets Manager"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "AWS CloudHSMは専用のFIPS 140-2 Level 3認証ハードウェアセキュリティモジュールを提供し、お客様がキーを完全に制御できます。KMSのHSMはFIPS 140-2 Level 2認証（AWSマネージドHSMを使用）です。Level 3コンプライアンスが必要なシナリオでは、CloudHSMを使用する必要があります。",
+      "difficulty": "medium"
+    },
+    {
+      "id": 40,
+      "domain": 2,
+      "question": "機械学習チームが大規模な深層学習モデルをトレーニングする必要があり、データはS3に保存されています。トレーニングには複数のGPUインスタンスが協調して動作する必要があります。分散トレーニングを最も効果的に実行するにはどうすればよいですか？",
+      "options": {
+        "A": "複数のEC2 GPUインスタンスを使用して分散トレーニングを手動で設定する",
+        "B": "SageMaker分散トレーニングライブラリとマネージドトレーニングジョブを使用する",
+        "C": "AWS Batchを使用してGPUジョブを実行する",
+        "D": "Lambdaを使用してモデルトレーニングを行う"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "SageMaker分散トレーニングライブラリ（データ並列およびモデル並列ライブラリを含む）は、複数のGPUとインスタンス間のトレーニングを最適化します。マネージドトレーニングジョブはインフラストラクチャ管理を処理し、S3からデータを自動的にロードし、トレーニング完了後にリソースを解放します。これは手動で分散トレーニングを設定するよりもはるかに簡単です。",
+      "difficulty": "medium"
+    }
+  ]
+}

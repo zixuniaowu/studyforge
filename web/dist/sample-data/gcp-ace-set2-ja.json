@@ -1,0 +1,798 @@
+{
+  "exam": {
+    "id": "gcp-ace-set2-ja",
+    "name": "GCP Associate Cloud Engineer 模擬試験 #2",
+    "code": "ACE",
+    "provider": "GCP",
+    "language": "ja",
+    "description": "Google Cloud Associate Cloud Engineer認定試験模擬問題 - 第2セット",
+    "totalQuestions": 50,
+    "passingScore": 70,
+    "examTime": 120,
+    "domains": [
+      {
+        "id": 1,
+        "name": "クラウドソリューション環境の設定",
+        "weight": 20
+      },
+      {
+        "id": 2,
+        "name": "クラウドソリューションの計画と構成",
+        "weight": 20
+      },
+      {
+        "id": 3,
+        "name": "クラウドソリューションのデプロイと実装",
+        "weight": 25
+      },
+      {
+        "id": 4,
+        "name": "クラウドソリューションの正常な運用の確保",
+        "weight": 20
+      },
+      {
+        "id": 5,
+        "name": "アクセスとセキュリティの構成",
+        "weight": 15
+      }
+    ],
+    "tags": [
+      "GCP",
+      "Cloud",
+      "ACE",
+      "認定試験"
+    ]
+  },
+  "questions": [
+    {
+      "id": "q1",
+      "domain": 1,
+      "question": "チームが複数のGCPプロジェクトの構成を管理する必要があります。gcloudを使用する際、異なる環境間を素早く切り替えるために複数の名前付き構成をどのように管理しますか？",
+      "options": {
+        "A": "gcloud config configurations createコマンドを使用して新しい構成を作成する",
+        "B": "各プロジェクトに個別のサービスアカウントを作成する",
+        "C": "使用する度にgcloud initを再実行する",
+        "D": "環境変数に異なるプロジェクトIDを設定する"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "gcloud config configurationsを使用すると、複数の名前付き構成を作成・管理できます。gcloud config configurations createで新しい構成を作成し、gcloud config configurations activateで構成を切り替えます。各構成には異なるプロジェクト、アカウント、リージョンなどの設定を含めることができ、マルチ環境の管理に最適です。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q2",
+      "domain": 1,
+      "question": "新しく作成したプロジェクトに請求先アカウントをリンクする必要があります。次のうち、どのコマンドで実現できますか？",
+      "options": {
+        "A": "gcloud billing projects link PROJECT_ID --billing-account=BILLING_ACCOUNT_ID",
+        "B": "gcloud projects add-billing PROJECT_ID --account=BILLING_ACCOUNT_ID",
+        "C": "gcloud billing accounts link PROJECT_ID",
+        "D": "gcloud config set billing BILLING_ACCOUNT_ID"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "gcloud billing projects linkコマンドは、プロジェクトに請求先アカウントをリンクするために使用します。構文は：gcloud billing projects link PROJECT_ID --billing-account=BILLING_ACCOUNT_IDです。請求先アカウントが関連付けられていないプロジェクトは、ほとんどの有料サービスを使用できません。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q3",
+      "domain": 1,
+      "question": "組織が、ユーザーが特定のリージョンでのみリソースを作成できるように制限したいと考えています。最適な実装方法は何ですか？",
+      "options": {
+        "A": "各ユーザーのIAMロールを変更する",
+        "B": "組織レベルでリソースロケーション制限ポリシーを設定する",
+        "C": "各リージョンに個別のプロジェクトを作成する",
+        "D": "VPCネットワーク制限を使用する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "組織ポリシーのgcp.resourceLocations制約を使用すると、リソースを特定の場所でのみ作成できるように制限できます。このポリシーを組織またはフォルダレベルで設定すると、すべての子リソースがその制限を継承します。これはコンプライアンス要件を一元管理する最良の方法です。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q4",
+      "domain": 1,
+      "question": "現在のプロジェクトで有効になっているすべてのAPIサービスを表示する必要があります。どのコマンドを使用すべきですか？",
+      "options": {
+        "A": "gcloud services list --enabled",
+        "B": "gcloud apis list",
+        "C": "gcloud projects describe --apis",
+        "D": "gcloud compute apis list"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "gcloud services list --enabledコマンドは、現在のプロジェクトで有効になっているすべてのAPIサービスを表示します。--enabledフラグを付けないと、利用可能なすべてのAPIが表示されます。--availableを使用して、有効化可能なすべてのAPIを表示することもできます。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q5",
+      "domain": 1,
+      "question": "会社がすべてのプロジェクトのコストデータをBigQueryにエクスポートして分析する必要があります。どのように構成すべきですか？",
+      "options": {
+        "A": "Cloud Monitoringを使用してメトリクスをエクスポートする",
+        "B": "Cloud Billingで課金データをBigQueryにエクスポートするように構成する",
+        "C": "Cloud Loggingを使用してログをエクスポートする",
+        "D": "請求書を手動でダウンロードしてBigQueryにアップロードする"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Cloud Billingは詳細な課金データをBigQueryに自動エクスポートする機能をサポートしています。請求先アカウントの「課金エクスポート」設定で、標準使用コストと詳細使用コストのエクスポートを構成できます。これにより、SQLクエリを使用してコストトレンドを分析し、支出を最適化できます。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q6",
+      "domain": 2,
+      "question": "ECサイトのアーキテクチャを設計しています。サイトは突発的なトラフィックを処理しながら、コスト効率を維持する必要があります。最適なコンピューティングオプションは何ですか？",
+      "options": {
+        "A": "固定数のn1-standardインスタンスを使用する",
+        "B": "自動スケーリング付きのマネージドインスタンスグループを使用する",
+        "C": "単一の高性能インスタンスを使用する",
+        "D": "プリエンプティブルインスタンスを主要なコンピューティングリソースとして使用する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "マネージドインスタンスグループ（MIG）と自動スケーリングの組み合わせは、変動するトラフィックを処理する最良の選択です：需要に応じてインスタンス数を自動調整、低トラフィック時のコスト削減、高可用性とロードバランサー統合を提供します。プリエンプティブルインスタンスはいつでも終了される可能性があり、主要なコンピューティングリソースには適していません。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q7",
+      "domain": 2,
+      "question": "アプリケーションのセッションデータを保存する必要があります。低レイテンシの読み書きが必要で、データの損失は許容できます。最適なストレージの選択は何ですか？",
+      "options": {
+        "A": "Cloud SQL",
+        "B": "Cloud Memorystore for Redis",
+        "C": "Cloud Storage",
+        "D": "Cloud Firestore"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Cloud Memorystore for Redisは、サブミリ秒のレイテンシを提供するマネージドインメモリデータストアサービスです。セッションストレージやキャッシュなどのシナリオに非常に適しています。インメモリストレージであるため、障害時にデータが失われる可能性がありますが、セッションデータには許容できます。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q8",
+      "domain": 2,
+      "question": "Cloud Storageからファイルを読み取って変換を行うサーバーレスのデータ処理パイプラインを設計する必要があります。最適なサービスの組み合わせは何ですか？",
+      "options": {
+        "A": "Compute Engine + cronジョブ",
+        "B": "Cloud Functionsトリガー + Cloud Storage",
+        "C": "App Engine + Cloud Tasks",
+        "D": "GKE + CronJob"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Cloud FunctionsはCloud Storageトリガーを構成でき、オブジェクトの作成、削除、またはアーカイブ時に自動的に実行されます。これは真のサーバーレスソリューションです：インフラストラクチャ管理不要、実行ごとの課金、自動スケーリング。イベント駆動型のデータ処理に非常に適しています。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q9",
+      "domain": 2,
+      "question": "2つの異なるVPCネットワーク間でプライベート接続を確立する必要があります。2つのVPCのIP範囲は重複していません。最も簡単な方法は何ですか？",
+      "options": {
+        "A": "Cloud VPNを使用する",
+        "B": "VPCネットワークピアリング（VPC Peering）を使用する",
+        "C": "Cloud Interconnectを使用する",
+        "D": "2つのVPCを1つに統合する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "VPCネットワークピアリングは、2つのVPCネットワーク間で内部IPアドレスを使用したプライベート通信を可能にします。前提条件としてIP範囲が重複していないことが必要です。設定が簡単で、VPNゲートウェイは不要、トラフィックはGoogleの内部ネットワークを使用します。同じ組織内またはパートナーとのVPC接続に適しています。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q10",
+      "domain": 2,
+      "question": "ユーザードキュメントデータを保存するデータベースを選択する必要があります。データ構造は随時変更される可能性があり、モバイルアプリへのリアルタイム同期が必要です。最適な選択は何ですか？",
+      "options": {
+        "A": "Cloud SQL for PostgreSQL",
+        "B": "Cloud Firestore",
+        "C": "Cloud Bigtable",
+        "D": "Cloud Spanner"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Cloud Firestoreは柔軟なNoSQLドキュメントデータベースです：柔軟なデータモデル（事前定義スキーマ不要）をサポート、モバイルおよびWebアプリのリアルタイム同期用の組み込みリアルタイムリスナー、オフラインサポート、自動スケーリング。モバイルアプリのバックエンドに非常に適しています。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q11",
+      "domain": 3,
+      "question": "後続のVMデプロイメント用のカスタムイメージを作成する必要があります。正しい手順は何ですか？",
+      "options": {
+        "A": "実行中のインスタンスから直接イメージを作成する",
+        "B": "インスタンスを停止し、インスタンスのディスクからイメージを作成する",
+        "C": "インスタンスをCloud Storageにエクスポートし、イメージとしてインポートする",
+        "D": "マシンイメージ（Machine Image）を使用する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "カスタムイメージ作成のベストプラクティス：まずインスタンスを停止してディスクの整合性を確保します。gcloud compute images create --source-diskコマンドを使用してディスクからイメージを作成します。実行中のインスタンスからも作成できますが、データの不整合が発生する可能性があります。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q12",
+      "domain": 3,
+      "question": "GKEでCloud SQLにアクセスする必要があるアプリケーションをデプロイする必要があります。接続を安全に構成するにはどうすればよいですか？",
+      "options": {
+        "A": "Podにデータベースパスワードをハードコードする",
+        "B": "Kubernetes Secretを使用して認証情報を保存し、Cloud SQL Auth Proxyサイドカーを使用する",
+        "C": "パブリックIPを使用して直接接続する",
+        "D": "各ノードにデータベースクライアントをインストールする"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "GKEでCloud SQLに接続するベストプラクティス：Cloud SQL Auth Proxyをサイドカーコンテナとして使用、Kubernetes Secretで認証情報を管理、Workload Identityを有効にしてPodがサービスアカウントIDを使用できるようにします。これにより、SSL証明書を管理する必要がなく、IAMでアクセスを制御できます。",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q13",
+      "domain": 3,
+      "question": "既存のVMインスタンスを非マネージドインスタンスグループに追加する必要があります。次のうち、正しいコマンドはどれですか？",
+      "options": {
+        "A": "gcloud compute instance-groups unmanaged add-instances GROUP_NAME --instances=INSTANCE_NAME",
+        "B": "gcloud compute instances add-to-group INSTANCE_NAME --group=GROUP_NAME",
+        "C": "gcloud compute instance-groups managed add-instances GROUP_NAME --instances=INSTANCE_NAME",
+        "D": "gcloud compute groups add INSTANCE_NAME --to GROUP_NAME"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "非マネージドインスタンスグループでは、既存の異種インスタンスを追加できます。gcloud compute instance-groups unmanaged add-instancesコマンドを使用してインスタンスを追加します。インスタンスはグループと同じゾーンにある必要があります。非マネージドインスタンスグループは、自動スケーリングが不要なシナリオに適しています。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q14",
+      "domain": 3,
+      "question": "Cloud Runサービスでカスタムドメイン名を使用するように構成する必要があります。正しい手順の順序は何ですか？",
+      "options": {
+        "A": "DNSを構成 > サービスをデプロイ > ドメインをマッピング",
+        "B": "サービスをデプロイ > ドメイン所有権を確認 > ドメインをマッピング > DNSを構成",
+        "C": "ドメインをマッピング > サービスをデプロイ > DNSを構成",
+        "D": "SSL証明書を購入 > サービスをデプロイ > ドメインを構成"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Cloud Runカスタムドメイン構成の手順：まずサービスをデプロイ、Cloud Runコンソールでドメイン所有権を確認、ドメインをサービスにマッピング、最後にDNSプロバイダーでCNAMEまたはAレコードをCloud Runに向けて構成します。GoogleがSSL証明書を自動的に管理します。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q15",
+      "domain": 3,
+      "question": "Terraformを使用してGCPリソースをデプロイする必要があります。Terraformの状態ファイルはどこに保存すべきですか？",
+      "options": {
+        "A": "ローカルの作業ディレクトリ",
+        "B": "Gitリポジトリ",
+        "C": "Cloud Storageバケット（バックエンドとして構成）",
+        "D": "Compute Engineインスタンス"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "Terraformの状態ファイルはリモートバックエンドとしてCloud Storageに保存すべきです：チームコラボレーションのサポート、同時変更を防ぐ状態ロック、バージョン管理、セキュアなストレージ。terraform構成でbackend \"gcs\"ブロックを使用して構成します。ローカルやGitに保存することは避けてください。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q16",
+      "domain": 3,
+      "question": "Cloud BuildでDockerイメージをビルドし、Artifact Registryにプッシュする必要があります。cloudbuild.yamlでどのステップを使用すべきですか？",
+      "options": {
+        "A": "dockerコマンドを直接使用してビルドとプッシュを行う",
+        "B": "cloud-builders/dockerビルダーを使用してビルドし、Artifact Registryにプッシュする",
+        "C": "gcloud container builds submitを使用する",
+        "D": "kubectl applyを使用してデプロイする"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Cloud Buildはcloudbuild.yamlで定義されたビルドステップを使用します。gcr.io/cloud-builders/dockerビルダーを使用してdocker buildとdocker pushを実行します。Cloud Buildサービスアカウントには、Artifact Registryの書き込み権限が必要です。これはCI/CDパイプラインの標準的な方法です。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q17",
+      "domain": 3,
+      "question": "Dataflowバッチ処理ジョブでワーカーノードのマシンタイプを指定する必要があります。どのパラメータを使用すべきですか？",
+      "options": {
+        "A": "--worker-machine-type",
+        "B": "--machine-type",
+        "C": "--instance-type",
+        "D": "--compute-type"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Dataflowジョブでは--worker-machine-typeパラメータを使用してワーカーノードのマシンタイプ（n1-standard-4など）を指定します。その他の便利なパラメータには、--num-workers（初期ワーカーノード数）、--max-num-workers（最大ワーカーノード数）があります。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q18",
+      "domain": 3,
+      "question": "Cloud Storageバケットを静的ウェブサイトホスティング用に構成する必要があります。何を設定する必要がありますか？",
+      "options": {
+        "A": "HTMLファイルをアップロードするだけ",
+        "B": "バケットを公開に設定し、MainPageSuffixとNotFoundPageを構成する",
+        "C": "Cloud CDNを有効にする",
+        "D": "ロードバランサーを作成する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Cloud Storage静的ウェブサイトの構成：バケット名はドメイン名にする必要があります。公開読み取り権限を設定します。gsutil web setを使用してMainPageSuffix（index.htmlなど）とNotFoundPage（404.htmlなど）を構成します。DNS CNAMEレコードをc.storage.googleapis.comに向けて構成します。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q19",
+      "domain": 4,
+      "question": "GKEクラスターでPodが頻繁にエビクト（退去）されています。問題をどのように診断しますか？",
+      "options": {
+        "A": "Cloud LoggingでPodログを確認する",
+        "B": "kubectl describe podを使用してEventsとステータスを確認し、リソースリクエストと制限をチェックする",
+        "C": "クラスターを再起動する",
+        "D": "ノード数を増やす"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Podエビクションの診断手順：kubectl describe podでEventsを確認してエビクションの理由を把握します。Podのリソースリクエストと制限が適切かどうかを確認します。kubectl top nodes/podsを使用して実際のリソース使用量を確認します。考えられる原因には、ノードリソース不足、リソース制限が高すぎる、ノードプレッシャーなどがあります。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q20",
+      "domain": 4,
+      "question": "ログベースのメトリクスを作成して、アプリケーション内の特定のエラーの発生回数をカウントする必要があります。どこで構成すべきですか？",
+      "options": {
+        "A": "Cloud Monitoringメトリクスエクスプローラー",
+        "B": "Cloud Logging > ログルーティング > ログベースメトリクスの作成",
+        "C": "BigQuery",
+        "D": "Cloud Trace"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "ログベースメトリクス（Log-based metrics）はCloud Loggingで作成します：特定のログエントリに一致するフィルターを定義、カウンターまたはディストリビューションタイプを選択、作成後はCloud Monitoringでそのメトリクスを使用してチャートとアラートを作成できます。これはログと監視の統合の重要な機能です。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q21",
+      "domain": 4,
+      "question": "Compute Engineインスタンスが起動できず、カーネルパニックエラーが表示されています。最適なトラブルシューティング方法は何ですか？",
+      "options": {
+        "A": "インスタンスを削除して再作成する",
+        "B": "ブートディスクを別のインスタンスにアタッチして検査と修復を行う",
+        "C": "インスタンスが自動的に回復するのを待つ",
+        "D": "Googleサポートに連絡する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "カーネルパニックのトラブルシューティング：障害のあるインスタンスを停止します。ブートディスクをデタッチします。ディスクをデータディスクとして正常なインスタンスにアタッチします。ディスクをマウントしてログと構成ファイルを確認します。問題を修正した後、ブートディスクとして再アタッチします。これは標準的なディスクレベルの障害回復方法です。",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q22",
+      "domain": 4,
+      "question": "外部ウェブサイトの可用性を監視するためにアップタイムチェックを構成する必要があります。どのサービスを使用すべきですか？",
+      "options": {
+        "A": "Cloud Logging",
+        "B": "Cloud Monitoring Uptime Checks",
+        "C": "Cloud Trace",
+        "D": "Cloud Profiler"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Cloud Monitoring Uptime ChecksはURLエンドポイントの可用性を監視できます：HTTP/HTTPS/TCPチェックをサポート、複数のグローバルロケーションからチェック、チェック間隔を構成可能、チェック失敗時に通知するアラートポリシーを作成可能。ウェブサイトとAPIエンドポイントの監視に非常に適しています。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q23",
+      "domain": 4,
+      "question": "アプリケーションのパフォーマンスボトルネックを分析し、最もCPU時間を消費している関数を特定する必要があります。どのツールを使用すべきですか？",
+      "options": {
+        "A": "Cloud Logging",
+        "B": "Cloud Monitoring",
+        "C": "Cloud Profiler",
+        "D": "Cloud Trace"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "Cloud Profilerは継続的なパフォーマンス分析ツールです：低オーバーヘッドでCPUとヒープメモリのパフォーマンスデータを収集、関数コールスタックとリソース消費を表示するビジュアルフレームグラフ、ホットスポットコードの識別を支援、複数の言語をサポート。Cloud Traceは分散トレーシング用で、リクエストレイテンシに焦点を当てています。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q24",
+      "domain": 4,
+      "question": "Cloud SQLインスタンスのバックアップを自動化し、必要に応じて特定の時点に復元できるようにする必要があります。何を構成すべきですか？",
+      "options": {
+        "A": "手動でスナップショットを作成する",
+        "B": "自動バックアップとバイナリログ（MySQL用）またはWALログ（PostgreSQL用）を有効にする",
+        "C": "Cloud Storageを使用してデータエクスポートを保存する",
+        "D": "Deployment Managerを使用する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Cloud SQLポイントインタイムリカバリ（PITR）の構成：自動バックアップを有効にします（毎日のバックアップ）。バイナリログ（MySQL）またはアーカイブログ（PostgreSQL）を有効にします。これにより、バックアップ保持期間内の任意の時点に復元できます。自動バックアップはデフォルトで7日間保持されます。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q25",
+      "domain": 4,
+      "question": "アプリケーションが複数のリージョンにデプロイされており、エンドツーエンドのリクエストレイテンシを監視する必要があります。最も適切なツールは何ですか？",
+      "options": {
+        "A": "Cloud Logging",
+        "B": "Cloud Monitoring",
+        "C": "Cloud Trace",
+        "D": "Cloud Debugger"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "Cloud Traceは分散トレーシングに使用されます：サービス間のリクエストレイテンシデータを収集、リクエストパスと各サービスの所要時間を可視化、遅いリクエストとボトルネックを特定、GCPサービスおよびOpenTelemetryと統合。マイクロサービスアーキテクチャのパフォーマンス分析に適しています。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q26",
+      "domain": 5,
+      "question": "開発チームに特定のCloud Storageバケットへのフルコントロール権限を付与する必要がありますが、他のバケットにはアクセスさせたくありません。どのように構成すべきですか？",
+      "options": {
+        "A": "プロジェクトレベルでStorage Adminロールを付与する",
+        "B": "特定のバケットレベルでStorage Object Adminロールを付与する",
+        "C": "カスタムロールを作成する",
+        "D": "ACLを使用する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "IAM権限はリソースレベルで付与できます。特定のバケットでroles/storage.objectAdminロールを付与すると、ユーザーはそのバケット内のオブジェクトのみを管理できます。これは最小権限の原則に従い、プロジェクトレベルの承認よりも安全です。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q27",
+      "domain": 5,
+      "question": "Cloud FunctionsがSecret Manager内のシークレットにアクセスできるようにする必要があります。最適な構成方法は何ですか？",
+      "options": {
+        "A": "シークレットを関数コード内にハードコードする",
+        "B": "環境変数を使用してシークレットを保存する",
+        "C": "関数のサービスアカウントにSecret Manager Secret Accessorロールを付与する",
+        "D": "Cloud Storageを使用してシークレットを保存する"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "Cloud Functionsは実行時にサービスアカウントIDを使用します。そのサービスアカウントにroles/secretmanager.secretAccessorロールを付与すると、関数は実行時にSecret Manager APIを介してシークレットにアクセスできます。これは環境変数よりも安全で、シークレットはデプロイ構成に表示されません。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q28",
+      "domain": 5,
+      "question": "VPCファイアウォールルールを構成して、ロードバランサーからのトラフィックのみがバックエンドインスタンスに到達できるようにする必要があります。ソースをどのように構成すべきですか？",
+      "options": {
+        "A": "ロードバランサーのIPアドレスを使用する",
+        "B": "ヘルスチェックとプロキシのIP範囲（35.191.0.0/16と130.211.0.0/22）を使用する",
+        "C": "0.0.0.0/0を使用する",
+        "D": "VPC内部IP範囲を使用する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Google Cloudロードバランサーは、ヘルスチェックとプロキシトラフィックに特定のIP範囲を使用します。ファイアウォールルールでは、35.191.0.0/16と130.211.0.0/22をソースとして許可する必要があります。これにより、ロードバランサーを経由したトラフィックのみがバックエンドに到達でき、セキュリティが向上します。",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q29",
+      "domain": 5,
+      "question": "誰がいつCloud Storageバケット内の機密データにアクセスしたかを監査する必要があります。何を有効にすべきですか？",
+      "options": {
+        "A": "Cloud Monitoring",
+        "B": "データアクセス監査ログ（Data Access Audit Logs）",
+        "C": "Cloud Trace",
+        "D": "バケットのバージョニング"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "データアクセス監査ログは、リソースのメタデータまたは構成を読み取るAPI呼び出し（ADMIN_READ）とユーザーデータを読み取るAPI呼び出し（DATA_READ）を記録します。デフォルトでは無効になっており、IAM設定で明示的に有効にする必要があります。コンプライアンスとセキュリティ監査にとって非常に重要です。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q30",
+      "domain": 5,
+      "question": "セキュリティチームが、Cloud Storageにアップロードされるすべてのファイルが顧客管理の暗号化キー（CMEK）を使用することを要求しています。どのように構成すべきですか？",
+      "options": {
+        "A": "アップロードごとにキーを指定する",
+        "B": "バケットレベルでデフォルトCMEKを設定する",
+        "C": "クライアント側暗号化を使用する",
+        "D": "バケットロックを有効にする"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "バケットレベルでデフォルトの暗号化キーを設定できます。Cloud KMSでキーを作成し、バケット設定でデフォルト暗号化キーを構成します。そのバケットにアップロードされるすべてのオブジェクトは、指定されたCMEKで自動的に暗号化され、アップロードごとに指定する必要はありません。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q31",
+      "domain": 3,
+      "question": "Cloud RunでVPCアクセスが必要なサービスをデプロイして、内部リソースに接続する必要があります。どのように構成すべきですか？",
+      "options": {
+        "A": "Cloud RunはデフォルトでVPCにアクセスできる",
+        "B": "Serverless VPC Accessコネクタを構成する",
+        "C": "Cloud VPNを使用する",
+        "D": "パブリックエンドポイントを作成する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Cloud Runはサーバーレスプラットフォームで、デフォルトではGoogle管理ネットワークで実行されます。VPC内部リソースにアクセスするには、Serverless VPC Accessコネクタを作成し、Cloud Runサービス構成でそのコネクタを指定する必要があります。これにより、サービスはVPC内のMemorystore、Cloud SQLプライベートIPなどにアクセスできます。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q32",
+      "domain": 2,
+      "question": "アプリケーションがグローバルに静的コンテンツを配信する必要があります。最適なアーキテクチャは何ですか？",
+      "options": {
+        "A": "各リージョンにCompute Engineインスタンスをデプロイする",
+        "B": "Cloud StorageとCloud CDNを使用する",
+        "C": "単一リージョンのApp Engineを使用する",
+        "D": "Cloud Functionsを使用する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Cloud Storage + Cloud CDNは静的コンテンツ配信の最適な組み合わせです：Cloud Storageは高い耐久性のストレージを提供、Cloud CDNはグローバルエッジロケーションでコンテンツをキャッシュ、ユーザーは最も近いエッジロケーションからコンテンツを取得、レイテンシとオリジンサーバーの負荷を軽減します。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q33",
+      "domain": 3,
+      "question": "GKEで水平Pod自動スケーリング（HPA）を構成する必要があります。次のうち、正しいコマンドはどれですか？",
+      "options": {
+        "A": "kubectl autoscale deployment my-app --min=2 --max=10 --cpu-percent=80",
+        "B": "kubectl scale deployment my-app --replicas=auto",
+        "C": "gcloud container autoscale my-app",
+        "D": "kubectl set autoscale my-app"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "kubectl autoscaleコマンドはHorizontal Pod Autoscalerを作成します。パラメータの説明：--minは最小Pod数を設定、--maxは最大Pod数を設定、--cpu-percentはターゲットCPU使用率を設定します。HPAはターゲットメトリクスを維持するためにPodレプリカ数を自動調整します。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q34",
+      "domain": 4,
+      "question": "App Engineアプリケーションのリクエストレイテンシが2秒を超えた場合に通知を送信するアラートを設定する必要があります。どのように構成すべきですか？",
+      "options": {
+        "A": "App Engine設定で構成する",
+        "B": "Cloud Monitoringでリクエストレイテンシメトリクスを使用してアラートポリシーを作成する",
+        "C": "Cloud Loggingでログアラートを設定する",
+        "D": "Cloud Traceを使用する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Cloud MonitoringアラートポリシーはApp Engineメトリクスに基づいて作成できます。appengine.googleapis.com/http/server/response_latenciesメトリクスを選択し、しきい値条件を設定（2秒を超える）し、通知チャネルを構成します。これはアプリケーションパフォーマンスを監視する標準的な方法です。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q35",
+      "domain": 5,
+      "question": "サービスアカウントキーのダウンロード作成を防止する必要があります。何を使用すべきですか？",
+      "options": {
+        "A": "IAMロール制限",
+        "B": "組織ポリシー制約iam.disableServiceAccountKeyCreation",
+        "C": "VPC Service Controls",
+        "D": "Cloud Armor"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "組織ポリシー制約iam.disableServiceAccountKeyCreationは、組織またはプロジェクトでのサービスアカウントキーの作成を禁止できます。これはセキュリティのベストプラクティスで、Workload Identity Federationなどのより安全な認証方法の使用を強制し、キー漏洩のリスクを回避します。",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q36",
+      "domain": 1,
+      "question": "組織が部門とプロジェクトごとに支出を追跡できるコスト配分を設定する必要があります。最適な方法は何ですか？",
+      "options": {
+        "A": "各部門に個別の請求先アカウントを使用する",
+        "B": "リソースにラベルを付けて、課金レポートでラベルごとにグループ化する",
+        "C": "各部門のコストを手動で計算する",
+        "D": "Cloud Monitoringを使用する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "リソースラベルはコスト配分のベストプラクティスです：department、team、cost-centerなどのラベルをリソースに追加します。ラベルは課金データに表示されます。ラベルでコストレポートをフィルタリングおよびグループ化できます。BigQueryエクスポートと組み合わせて詳細な分析が可能です。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q37",
+      "domain": 2,
+      "question": "非同期メッセージ処理システムを設計する必要があります。メッセージは少なくとも1回処理されることが保証され、処理が失敗しても再試行できる必要があります。最適な選択は何ですか？",
+      "options": {
+        "A": "Cloud Tasks",
+        "B": "Cloud Pub/Sub",
+        "C": "Cloud Scheduler",
+        "D": "直接HTTP呼び出し"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Cloud Pub/Subは少なくとも1回の配信保証を提供します：メッセージは確認されるまで永続的に保存されます。未確認のメッセージは自動的に再試行されます。繰り返し失敗するメッセージを処理するためのデッドレターキューをサポートします。プロデューサーとコンシューマーを分離します。高いスケーラビリティ。非同期イベント処理に非常に適しています。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q38",
+      "domain": 3,
+      "question": "Compute Engineインスタンスの起動時にソフトウェアを自動インストールしてシステムを構成する必要があります。スタートアップスクリプト以外に何を使用できますか？",
+      "options": {
+        "A": "Cloud Deployment Manager",
+        "B": "OS Config エージェントとゲストポリシー",
+        "C": "Cloud Functions",
+        "D": "Cloud Run"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "OS Configはゲストポリシー（Guest Policies）機能を提供します：宣言的な構成管理、ソフトウェアパッケージの自動インストール、スクリプトの実行、構成コンプライアンスの継続的な確保。スタートアップスクリプトよりも大規模な構成管理に適しており、構成ドリフトの検出と自動修復をサポートします。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q39",
+      "domain": 4,
+      "question": "BigQueryクエリの実行が遅く、パフォーマンスを最適化する必要があります。次のうち、有効な最適化戦略はどれですか？（2つ選択）",
+      "options": {
+        "A": "SELECT *を使用してすべての列をクエリする",
+        "B": "パーティションテーブルとクラスタリングテーブルを使用する",
+        "C": "WHERE句でパーティション列をフィルタリングする",
+        "D": "スロットクォータを増やす"
+      },
+      "answer": ["B", "C"],
+      "answerType": "multiple",
+      "explanation": "BigQuery最適化のベストプラクティス：パーティションテーブルを使用して日付でパーティション分割し、スキャンするデータ量を削減します。クラスタリングテーブルを使用してフィルタリング効率を向上させます。WHEREでパーティション列をフィルタリングします。SELECT *を避けて必要な列のみを選択します。これらによりコストを大幅に削減し、クエリ速度を向上させることができます。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q40",
+      "domain": 5,
+      "question": "VPC Service Controlsを使用して機密APIを保護する必要があります。VPC Service Controlsはどのような機能を提供しますか？",
+      "options": {
+        "A": "ネットワーク層のファイアウォールのみ",
+        "B": "サービス境界を定義し、境界外からのデータへのアクセスとエクスポートを制限する",
+        "C": "ユーザー認証",
+        "D": "DDoS保護"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "VPC Service Controlsはセキュリティ境界を作成します：BigQuery、Cloud StorageなどのGoogle管理サービスへのアクセスを制限します。データ漏洩を防止します。信頼されたアクセスレベルとIDを定義します。IAMと組み合わせて使用します。高度に機密性の高いデータとサービスの保護に適しています。",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q41",
+      "domain": 2,
+      "question": "アプリケーションが長時間実行されるバックグラウンドタスク（1時間以上になる可能性あり）を実行する必要があります。最適なサーバーレスオプションは何ですか？",
+      "options": {
+        "A": "Cloud Functions（第1世代）",
+        "B": "Cloud Run Jobs",
+        "C": "Cloud Functions（第2世代）",
+        "D": "App Engine Standard環境"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Cloud Run Jobsは長時間実行されるタスクに適しています：最大実行時間24時間、複数のタスクを並行実行可能、実際の実行時間に応じた課金、リトライとタイムアウトの構成をサポート。Cloud Functionsは最大9分（第2世代）または60分（Cloud Functions for Firebase）です。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q42",
+      "domain": 3,
+      "question": "Cloud Schedulerを使用してCloud Functionを定期的にトリガーする必要があります。どのタイプのターゲットを構成すべきですか？",
+      "options": {
+        "A": "HTTPターゲット、関数のHTTPS URLを使用",
+        "B": "Pub/Subターゲット",
+        "C": "App Engine HTTPターゲット",
+        "D": "上記すべて可能"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "Cloud Schedulerは複数のターゲットをサポートします：HTTPターゲットはCloud FunctionのHTTPSエンドポイントを直接呼び出せます。Pub/Subターゲットはメッセージを発行し、Pub/Subトリガーの関数で処理できます。App EngineターゲットはApp Engineサービスを呼び出します。選択はアーキテクチャ要件に依存します。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q43",
+      "domain": 4,
+      "question": "ログルーティングを構成して、特定のログを複数の宛先に送信する必要があります。何を使用すべきですか？",
+      "options": {
+        "A": "複数のログシンク（sinks）を作成する",
+        "B": "単一のシンクで複数の宛先を構成する",
+        "C": "Cloud Pub/Subを使用して配布する",
+        "D": "ログは1つの宛先にのみ送信できる"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "同じログに対して複数のシンクを作成でき、各シンクは異なる宛先（Cloud Storage、BigQuery、Pub/Sub、他のプロジェクト）と異なるフィルター条件を持つことができます。包含フィルターと除外フィルターを使用して、どのログをどこに送信するかを正確に制御します。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q44",
+      "domain": 5,
+      "question": "承認されたコンテナイメージのみがGKEクラスターにデプロイできるようにする必要があります。何を使用すべきですか？",
+      "options": {
+        "A": "Kubernetesネットワークポリシー",
+        "B": "Binary Authorization",
+        "C": "Podセキュリティポリシー",
+        "D": "IAMロール"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Binary Authorizationはデプロイ時のセキュリティ制御です：署名および検証されたコンテナイメージのみを許可するポリシーを定義します。Container Analysisと統合して脆弱性スキャンを実行します。多段階の承認プロセスをサポートします。特定のイメージを免除できます。サプライチェーンセキュリティを強化します。",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q45",
+      "domain": 1,
+      "question": "新しく入社した開発者にGCP環境へのアクセスを設定する必要があります。ベストプラクティスは何ですか？",
+      "options": {
+        "A": "既存ユーザーの認証情報を共有する",
+        "B": "ユーザーをGoogle Cloud Identityグループに追加し、グループを通じてIAMロールを付与する",
+        "C": "各ユーザーにサービスアカウントを作成する",
+        "D": "ルートアカウントを使用してIAMポリシーを追加する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "グループを使用したIAM管理はベストプラクティスです：Cloud IdentityまたはGoogle Workspaceでグループを作成します。ユーザーを適切なグループに追加します。個々のユーザーではなくグループにIAMロールを付与します。これにより権限管理が簡素化され、ユーザーの入社・退社時にグループメンバーシップを調整するだけで済みます。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q46",
+      "domain": 2,
+      "question": "モバイルアプリにバックエンドAPIを提供する必要があり、低レイテンシと自動スケーリングが求められています。最適な選択は何ですか？",
+      "options": {
+        "A": "ロードバランサー付きのCompute Engine",
+        "B": "Cloud EndpointsとCloud Run",
+        "C": "App Engine Standard環境",
+        "D": "BとCの両方とも良い選択"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "モバイルバックエンドAPIのオプション：Cloud Runはコンテナ化されたデプロイメント、自動スケーリング、リクエストごとの課金を提供します。App Engine Standard環境はマネージドランタイム、自動スケーリング、高速コールドスタートを提供します。両方ともAPI管理用のCloud Endpointsをサポートしています。選択は技術スタックの好みに依存します。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q47",
+      "domain": 3,
+      "question": "オンプレミスのHadoopクラスターからGCPにデータを移行する必要があります。最適なターゲットストレージは何ですか？",
+      "options": {
+        "A": "Compute Engineローカルssd",
+        "B": "Cloud Storage",
+        "C": "永続ディスク",
+        "D": "Filestore"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Cloud StorageはHadoopデータ移行の最適なターゲットです：HDFSと互換性があります（Cloud Storageコネクタを使用）。無制限にスケール可能です。Dataprocとネイティブに統合されています。データ分析サービス（BigQuery、Dataflow）をサポートします。オンプレミスストレージよりも低コストです。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q48",
+      "domain": 4,
+      "question": "Cloud Functions関数の実行が失敗し、エラーコードが返されています。最も早くエラーの詳細を見つける方法は何ですか？",
+      "options": {
+        "A": "Cloud Monitoringメトリクスを確認する",
+        "B": "Cloud ConsoleのCloud Functionsページでログを表示する",
+        "C": "Cloud Debuggerを使用する",
+        "D": "IAM権限を確認する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Cloud Functionsのログはエラーのトラブルシューティングの第一選択です：コンソールの関数ページでログを直接表示できます。関数実行ログ、エラーメッセージ、スタックトレースが含まれています。Cloud Loggingでフィルターを使用して表示することもできます。ログは最も直接的なエラー情報を提供します。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q49",
+      "domain": 5,
+      "question": "Cloud Storageバケットを特定のサービスアカウントのみがアクセスでき、すべてのユーザーアカウントからのアクセスを禁止するように制限する必要があります。どのように構成すべきですか？",
+      "options": {
+        "A": "すべてのIAMポリシーを削除する",
+        "B": "特定のサービスアカウントにのみStorage Object Viewer/Adminロールを付与し、他のプリンシパルの権限を削除する",
+        "C": "署名付きURLを使用する",
+        "D": "バケットをプライベートに設定する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "IAMはバケットアクセスを制御します：指定されたサービスアカウントのみがバケットレベルのIAMロールを持つようにします。allUsers、allAuthenticatedUsers、および他のユーザー/グループの権限を削除します。均一なバケットレベルアクセスを無効にする場合は、オブジェクトACLを確認します。これにより、承認されたサービスのみがアクセスできるようになります。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q50",
+      "domain": 3,
+      "question": "オンプレミスから既存の仮想マシンをGCPに移行する必要があります。Googleが推奨する移行ツールは何ですか？",
+      "options": {
+        "A": "手動でイメージを作成してアップロードする",
+        "B": "Migrate to Virtual Machines（旧Migrate for Compute Engine）",
+        "C": "gcloud compute instances createを使用する",
+        "D": "サードパーティツールを使用する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Migrate to Virtual Machines（旧Migrate for Compute Engine）はGoogleの公式VM移行ツールです：VMware、AWS、Azure、物理サーバーからの移行をサポートします。オンライン移行でダウンタイムを最小化します。自動化されたテストとロールバックをサポートします。Cloud Consoleと統合されています。企業移行の推奨方法です。",
+      "difficulty": "medium"
+    }
+  ]
+}

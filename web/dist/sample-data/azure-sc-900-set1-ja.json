@@ -1,0 +1,645 @@
+{
+  "exam": {
+    "id": "azure-sc-900-set1-ja",
+    "name": "Azure SC-900 模擬試験 #1",
+    "code": "SC-900",
+    "provider": "Azure",
+    "language": "ja",
+    "description": "Microsoft Security, Compliance, and Identity Fundamentals 認定試験模擬問題 - 第1セット",
+    "totalQuestions": 40,
+    "passingScore": 70,
+    "examTime": 60,
+    "domains": [
+      {
+        "id": 1,
+        "name": "セキュリティ、コンプライアンス、アイデンティティの概念",
+        "weight": 25
+      },
+      {
+        "id": 2,
+        "name": "Microsoft Entraの機能",
+        "weight": 25
+      },
+      {
+        "id": 3,
+        "name": "Microsoftセキュリティソリューション",
+        "weight": 25
+      },
+      {
+        "id": 4,
+        "name": "Microsoftコンプライアンスソリューション",
+        "weight": 25
+      }
+    ],
+    "tags": [
+      "Azure",
+      "Security",
+      "Compliance",
+      "Identity",
+      "Microsoft",
+      "認定試験"
+    ]
+  },
+  "questions": [
+    {
+      "id": "q1",
+      "domain": 1,
+      "question": "「ゼロトラスト」セキュリティモデルの核心原則は何ですか？",
+      "options": {
+        "A": "内部ネットワーク内のすべてのユーザーとデバイスを信頼する",
+        "B": "決して信頼せず、常に検証する",
+        "C": "既知のIPアドレスのみを信頼する",
+        "D": "ファイアウォールを通過するすべてのトラフィックを信頼する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "ゼロトラストモデルの核心原則は「決して信頼せず、常に検証する」です：\n- ネットワークが既に侵害されていると仮定\n- すべてのリクエストを明示的に検証\n- 最小特権アクセスを使用\n- すべてのリソースがオープンネットワーク上にあると仮定",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q2",
+      "domain": 1,
+      "question": "共有責任モデルにおいて、SaaSサービスを使用する場合、以下のうち常に顧客が責任を負うものはどれですか？",
+      "options": {
+        "A": "物理データセンターのセキュリティ",
+        "B": "ネットワーク制御",
+        "C": "ユーザーアカウントとID管理",
+        "D": "オペレーティングシステムのパッチ"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "すべてのクラウドサービスモデルにおいて、顧客が常に責任を負うもの：\n- 情報とデータ\n- デバイス（モバイルとPC）\n- アカウントとID\n\nIaaS、PaaS、SaaSのいずれを使用しても、これらの責任はクラウドプロバイダーに移転しません。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q3",
+      "domain": 1,
+      "question": "多層防御セキュリティ戦略には複数のセキュリティ層が含まれます。以下のうち、典型的な多層防御の層ではないものはどれですか？",
+      "options": {
+        "A": "物理セキュリティ",
+        "B": "IDとアクセス",
+        "C": "単一パスワード保護",
+        "D": "ネットワークセキュリティ"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "多層防御の典型的な層：\n- 物理セキュリティ\n- IDとアクセス\n- 境界セキュリティ\n- ネットワーク\n- コンピューティング\n- アプリケーション\n- データ\n\n単一パスワード保護は多層防御の多層セキュリティの概念に適合しません。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q4",
+      "domain": 1,
+      "question": "CIAトライアドの「I」は何を表していますか？",
+      "options": {
+        "A": "アイデンティティ（Identity）",
+        "B": "完全性（Integrity）",
+        "C": "インフラストラクチャ（Infrastructure）",
+        "D": "統合（Integration）"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "CIAトライアドは情報セキュリティの基盤です：\n- C = 機密性（Confidentiality）：データを不正アクセスから保護\n- I = 完全性（Integrity）：データが改ざんされていないことを確保\n- A = 可用性（Availability）：承認されたユーザーがデータにアクセスできることを確保",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q5",
+      "domain": 1,
+      "question": "「最小特権の原則」とは何ですか？",
+      "options": {
+        "A": "すべてのユーザーが管理者権限を持つべき",
+        "B": "ユーザーは業務を遂行するために必要な最小限の権限のみを付与されるべき",
+        "C": "特権ユーザーはセキュリティポリシーに従う必要がない",
+        "D": "すべての権限は永久に付与されるべき"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "最小特権の原則（Least Privilege）：\n- ユーザーはタスクを完了するために必要な最小限の権限のみを取得\n- 攻撃対象領域を削減\n- 潜在的な被害範囲を制限\n- Just-In-TimeとJust-Enough-Accessは実装方法",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q6",
+      "domain": 1,
+      "question": "大量のリクエストを送信してサービスが通常のリクエストに応答できなくする攻撃タイプはどれですか？",
+      "options": {
+        "A": "フィッシング（Phishing）",
+        "B": "中間者攻撃（Man-in-the-Middle）",
+        "C": "サービス拒否攻撃（DDoS）",
+        "D": "SQLインジェクション"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "DDoS（分散型サービス拒否）攻撃：\n- 大量のリクエストでターゲットサービスを圧倒\n- 正当なユーザーがサービスにアクセスできなくなる\n- Azure DDoS Protectionでこの種の攻撃から保護可能\n- フィッシングはユーザーを騙して認証情報を取得する攻撃",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q7",
+      "domain": 1,
+      "question": "データ暗号化の2つの主な状態は何ですか？",
+      "options": {
+        "A": "公開と非公開",
+        "B": "保存データと転送中のデータ",
+        "C": "内部と外部",
+        "D": "オンプレミスとクラウド"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "データ暗号化の状態：\n- 保存データ（Data at Rest）：ディスクに保存されているデータ\n- 転送中のデータ（Data in Transit）：ネットワーク転送中のデータ\n- 使用中のデータ（Data in Use）：メモリ内で処理中のデータ\n\n各状態には異なる暗号化戦略が必要です。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q8",
+      "domain": 1,
+      "question": "「脅威モデリング」とは何ですか？",
+      "options": {
+        "A": "セキュリティソフトウェアを購入するプロセス",
+        "B": "アプリケーションのセキュリティリスクを識別、定量化、対処するプロセス",
+        "C": "ユーザーアカウントを作成するプロセス",
+        "D": "データをバックアップするプロセス"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "脅威モデリングは構造化されたアプローチです：\n- セキュリティの脅威と脆弱性を識別\n- リスクの重大度を評価\n- 緩和策の優先順位を決定\n- 開発の早期段階でセキュリティを考慮\n- STRIDEは一般的な脅威モデリングフレームワーク",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q9",
+      "domain": 1,
+      "question": "認証における「あなたが知っているもの」「あなたが持っているもの」「あなた自身」は何を表していますか？",
+      "options": {
+        "A": "3種類の異なるパスワードタイプ",
+        "B": "3つの認証要素",
+        "C": "3種類の暗号化アルゴリズム",
+        "D": "3種類のネットワークプロトコル"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "認証の3要素：\n- あなたが知っているもの（Something you know）：パスワード、PIN\n- あなたが持っているもの（Something you have）：スマートフォン、セキュリティキー\n- あなた自身（Something you are）：指紋、顔認識\n\n多要素認証は複数の要素を組み合わせてセキュリティを強化します。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q10",
+      "domain": 1,
+      "question": "SIEMシステムとは何ですか？",
+      "options": {
+        "A": "シンプルID管理システム",
+        "B": "セキュリティ情報およびイベント管理システム",
+        "C": "ソフトウェア統合管理システム",
+        "D": "システムインフラストラクチャ管理"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "SIEM（Security Information and Event Management）：\n- ログデータを収集・集約\n- リアルタイムでセキュリティイベントを分析\n- 脅威と異常を検出\n- セキュリティアラートを提供\n- Microsoft SentinelはAzureのSIEMソリューション",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q11",
+      "domain": 2,
+      "question": "Microsoft Entra ID（旧Azure AD）の主な機能は何ですか？",
+      "options": {
+        "A": "ファイルストレージサービス",
+        "B": "クラウドIDおよびアクセス管理サービス",
+        "C": "仮想マシン管理",
+        "D": "データベースサービス"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Microsoft Entra IDはクラウドIDプラットフォームです：\n- 認証と承認\n- シングルサインオン（SSO）\n- 多要素認証（MFA）\n- 条件付きアクセス\n- アプリケーションアクセス管理",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q12",
+      "domain": 2,
+      "question": "Microsoft Entra IDの「条件付きアクセス」とは何ですか？",
+      "options": {
+        "A": "自動バックアップ機能",
+        "B": "条件（場所、デバイスの状態など）に基づいてアクセスを制御するポリシー",
+        "C": "データ暗号化機能",
+        "D": "仮想ネットワークを作成する機能"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "条件付きアクセスはif-thenポリシーです：\n- シグナルに基づいてアクセス決定を行う\n- シグナルには：ユーザーの場所、デバイス、アプリケーション、リスクレベルが含まれる\n- MFAの要求、アクセスのブロック、アクセスの制限が可能\n- ゼロトラスト戦略の重要なコンポーネント",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q13",
+      "domain": 2,
+      "question": "Microsoft Entra IDのどのライセンスタイプが条件付きアクセス機能を提供しますか？",
+      "options": {
+        "A": "無料版のみ",
+        "B": "P1とP2",
+        "C": "Office 365版のみ",
+        "D": "すべてのバージョン"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Microsoft Entra IDライセンス：\n- 無料版：基本的なID管理\n- P1：条件付きアクセス、動的グループ、セルフサービスパスワードリセット\n- P2：ID保護、特権ID管理（PIM）\n- 条件付きアクセスにはP1以上が必要",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q14",
+      "domain": 2,
+      "question": "Microsoft Entra IDの「ID保護」とは何ですか？",
+      "options": {
+        "A": "ウイルス対策ソフトウェア",
+        "B": "IDベースのリスクを検出して対応するサービス",
+        "C": "ネットワークファイアウォール",
+        "D": "データ暗号化サービス"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Microsoft Entra ID Protection：\n- 疑わしいサインイン動作を検出\n- ユーザーリスクとサインインリスクを識別\n- 検出されたリスクに自動的に対応\n- リスクレポートと調査ツールを提供\n- P2ライセンスが必要",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q15",
+      "domain": 2,
+      "question": "特権ID管理（PIM）の主な用途は何ですか？",
+      "options": {
+        "A": "一般ユーザーアカウントの管理",
+        "B": "重要なリソースへの特権アクセスの管理、制御、監視",
+        "C": "ネットワーク接続の作成",
+        "D": "ユーザーパスワードの保存"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "特権ID管理（PIM）：\n- ジャストインタイム（JIT）特権アクセスを提供\n- 時間制限付きのアクセス権限\n- ロールをアクティブ化するには承認が必要\n- アクセス監査と履歴\n- 特権アカウントが攻撃されるリスクを軽減",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q16",
+      "domain": 2,
+      "question": "SSO（シングルサインオン）とは何ですか？",
+      "options": {
+        "A": "各アプリケーションに個別にログインする必要がある",
+        "B": "一度のログインで複数のアプリケーションにアクセスできる",
+        "C": "1つのアプリケーションにのみアクセスできる",
+        "D": "ログインが不要"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "シングルサインオン（SSO）：\n- 一度の認証で複数のアプリにアクセス\n- ユーザーエクスペリエンスの向上\n- パスワード疲れの軽減\n- ID管理の集中化\n- Microsoft Entra IDはSSOをサポート",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q17",
+      "domain": 2,
+      "question": "Microsoft Entra External IDはどのようなシナリオで使用されますか？",
+      "options": {
+        "A": "内部従業員のみを管理",
+        "B": "外部ユーザー（パートナーと顧客）のIDを管理",
+        "C": "サーバーの管理",
+        "D": "ネットワークデバイスの管理"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Microsoft Entra External ID：\n- B2Bコラボレーション：パートナーとリソースを共有\n- B2C：顧客向けアプリケーションのID管理\n- 外部ユーザーは自分のIDでサインイン\n- ソーシャルアカウント（Google、Facebookなど）をサポート",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q18",
+      "domain": 2,
+      "question": "パスワードハッシュ同期とは何ですか？",
+      "options": {
+        "A": "パスワードをプレーンテキストでクラウドに同期",
+        "B": "オンプレミスADパスワードハッシュをMicrosoft Entra IDに同期",
+        "C": "複数のデバイス間でパスワードを同期",
+        "D": "パスワードを自動的に変更"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "パスワードハッシュ同期（PHS）：\n- オンプレミスADパスワードハッシュをクラウドに同期\n- 実際のパスワードは同期されない\n- ハイブリッドIDシナリオをサポート\n- ユーザーは同じ資格情報でクラウドアプリにサインイン可能\n- Microsoft Entra Connectがこの機能を実装",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q19",
+      "domain": 2,
+      "question": "フェデレーション認証の主な特徴は何ですか？",
+      "options": {
+        "A": "すべての認証がクラウドで行われる",
+        "B": "認証は信頼された外部IDプロバイダーによって処理される",
+        "C": "認証が不要",
+        "D": "パスワードのみを使用して認証"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "フェデレーション認証：\n- 認証は信頼されたIdP（IDプロバイダー）によって処理\n- ユーザーはオンプレミスADで認証\n- 厳格なパスワードポリシー要件を持つ組織に適している\n- オンプレミスADFSまたはサードパーティIdPが必要\n- より多くの認証制御を提供",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q20",
+      "domain": 2,
+      "question": "Microsoft Entra Verified IDとは何ですか？",
+      "options": {
+        "A": "Webサイトの真正性を検証するサービス",
+        "B": "オープン標準に基づく分散型ID検証サービス",
+        "C": "メールアドレスを検証するサービス",
+        "D": "電話番号を検証するサービス"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Microsoft Entra Verified ID：\n- 分散型ID検証\n- オープン標準（W3C、DIF）に基づく\n- ユーザーが自分のID情報を制御\n- 検証可能な資格情報（学歴、雇用証明など）\n- プライバシー保護を強化",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q21",
+      "domain": 3,
+      "question": "Microsoft Defender for Cloudの主な機能は何ですか？",
+      "options": {
+        "A": "ウイルス対策保護のみを提供",
+        "B": "クラウドセキュリティ態勢管理と脅威保護",
+        "C": "ユーザーアカウントの管理のみ",
+        "D": "データバックアップのみを提供"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Microsoft Defender for Cloud：\n- クラウドセキュリティ態勢管理（CSPM）\n- クラウドワークロード保護（CWP）\n- セキュリティ推奨事項とコンプライアンス評価\n- 脅威検出とアラート\n- Azure、AWS、GCPをサポート",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q22",
+      "domain": 3,
+      "question": "Microsoft Sentinelはどのような種類のサービスですか？",
+      "options": {
+        "A": "ファイアウォールサービス",
+        "B": "クラウドネイティブSIEMおよびSOARサービス",
+        "C": "パスワード管理サービス",
+        "D": "ネットワーク監視サービス"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Microsoft Sentinel：\n- SIEM：セキュリティ情報およびイベント管理\n- SOAR：セキュリティオーケストレーション、自動化、および対応\n- すべてのユーザー、デバイス、アプリケーションのデータを収集\n- AIを活用した脅威検出\n- 自動化された調査と対応",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q23",
+      "domain": 3,
+      "question": "Microsoft 365 Defenderはどのワークロードを保護しますか？",
+      "options": {
+        "A": "メールのみ",
+        "B": "ID、エンドポイント、アプリケーション、メール",
+        "C": "ネットワークのみ",
+        "D": "データベースのみ"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Microsoft 365 Defenderのコンポーネント：\n- Defender for Identity：ID保護\n- Defender for Endpoint：エンドポイント保護\n- Defender for Office 365：メールとコラボレーション保護\n- Defender for Cloud Apps：SaaSアプリ保護\n- 統合されたXDRエクスペリエンスを提供",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q24",
+      "domain": 3,
+      "question": "Azure DDoS Protectionはどのレベルの保護を提供しますか？",
+      "options": {
+        "A": "アプリケーション層保護のみ",
+        "B": "ネットワーク層とアプリケーション層の保護",
+        "C": "データベース保護のみ",
+        "D": "ID保護のみ"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure DDoS Protection：\n- 基本層：Azureインフラストラクチャを自動的に保護\n- 標準層：仮想ネットワークに対する強化された保護\n- L3/L4攻撃（ネットワーク層）から保護\n- WAFと組み合わせてL7攻撃（アプリケーション層）から保護",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q25",
+      "domain": 3,
+      "question": "Azure Firewallはどのような種類のサービスですか？",
+      "options": {
+        "A": "ID管理サービス",
+        "B": "マネージドクラウドネイティブネットワークファイアウォールサービス",
+        "C": "データベースサービス",
+        "D": "ストレージサービス"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure Firewall：\n- マネージドステートフルファイアウォールサービス\n- 組み込みの高可用性\n- FQDNフィルタリングをサポート\n- 脅威インテリジェンス駆動のフィルタリング\n- ルールの一元的な作成と管理\n- 東西および南北のトラフィックフィルタリングをサポート",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q26",
+      "domain": 3,
+      "question": "ネットワークセキュリティグループ（NSG）は何に使用されますか？",
+      "options": {
+        "A": "データの暗号化",
+        "B": "Azureリソースへの送受信ネットワークトラフィックのフィルタリング",
+        "C": "ユーザーIDの管理",
+        "D": "仮想マシンのバックアップ"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "ネットワークセキュリティグループ（NSG）：\n- インバウンドとアウトバウンドのセキュリティルールを含む\n- 5タプルに基づいてトラフィックをフィルタリング\n- サブネットまたはNICに関連付け可能\n- サービスタグとアプリケーションセキュリティグループをサポート\n- Azureネットワークセキュリティの基盤",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q27",
+      "domain": 3,
+      "question": "Azure Bastionの主な用途は何ですか？",
+      "options": {
+        "A": "データの保存",
+        "B": "パブリックIPなしでVMへの安全なリモートアクセスを提供",
+        "C": "コンテナの実行",
+        "D": "データベースの管理"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure Bastion：\n- Azureポータル経由でVMに安全に接続\n- VMにパブリックIPが不要\n- SSL/TLSでRDP/SSHを保護\n- ポートスキャンを防止\n- 攻撃対象領域を削減",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q28",
+      "domain": 3,
+      "question": "Microsoft Defender for Endpointの主な機能は何ですか？",
+      "options": {
+        "A": "メールの管理",
+        "B": "エンドポイント検出と応答（EDR）",
+        "C": "ネットワークルーティング",
+        "D": "データベース管理"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Microsoft Defender for Endpoint：\n- エンドポイント検出と応答（EDR）\n- 脅威と脆弱性の管理\n- 攻撃対象領域の削減\n- 自動調査と修復\n- Windows、macOS、Linux、モバイルデバイスをサポート",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q29",
+      "domain": 3,
+      "question": "Azure Key Vaultは何を保存するために使用されますか？",
+      "options": {
+        "A": "ユーザーのアバター",
+        "B": "シークレット、キー、証明書",
+        "C": "ビデオファイル",
+        "D": "メール"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure Key Vaultが保存するもの：\n- シークレット（パスワード、接続文字列、APIキー）\n- 暗号化キー\n- 証明書（SSL/TLS）\n- HSM保護をサポート\n- アクセスの一元管理と監査",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q30",
+      "domain": 3,
+      "question": "セキュリティスコア（Secure Score）とは何ですか？",
+      "options": {
+        "A": "ユーザーの信用スコア",
+        "B": "組織のセキュリティ態勢を測定する指標",
+        "C": "ネットワーク速度のスコア",
+        "D": "ストレージ容量のスコア"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Microsoftセキュリティスコア：\n- 組織のセキュリティ態勢を測定\n- 改善の推奨事項を提供\n- セキュリティ改善の進捗を追跡\n- 同業他社との比較\n- Microsoft 365 Defenderで確認可能",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q31",
+      "domain": 4,
+      "question": "Microsoft Purviewの主な用途は何ですか？",
+      "options": {
+        "A": "仮想マシンの管理のみ",
+        "B": "データガバナンス、リスク、コンプライアンス管理",
+        "C": "ネットワークの管理のみ",
+        "D": "ストレージの管理のみ"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Microsoft Purview：\n- データカタログと発見\n- データ分類とラベル付け\n- データ損失防止（DLP）\n- 情報保護\n- 内部リスク管理\n- 電子情報開示と監査",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q32",
+      "domain": 4,
+      "question": "データ損失防止（DLP）とは何ですか？",
+      "options": {
+        "A": "データバックアップサービス",
+        "B": "機密データの偶発的または悪意のある漏洩を防止するポリシーとツール",
+        "C": "データ圧縮サービス",
+        "D": "データ高速化サービス"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "データ損失防止（DLP）：\n- 機密情報を識別\n- データ使用を監視\n- 不適切な共有をブロック\n- メール、ドキュメント、チャット内の機密データを保護\n- Microsoft Purview DLPは複数のサービスで動作",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q33",
+      "domain": 4,
+      "question": "機密度ラベル（Sensitivity Labels）は何に使用されますか？",
+      "options": {
+        "A": "サーバーの場所をマークする",
+        "B": "ドキュメントとメールを分類して保護する",
+        "C": "ネットワークポートをマークする",
+        "D": "ユーザーの場所をマークする"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "機密度ラベル：\n- コンテンツを分類（機密、社内、公開など）\n- 保護設定を適用（暗号化、透かし）\n- アクセス権限を制限\n- Microsoft 365アプリ全体で一貫して適用\n- 手動または自動で適用可能",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q34",
+      "domain": 4,
+      "question": "Microsoft Purviewコンプライアンスマネージャーの主な機能は何ですか？",
+      "options": {
+        "A": "従業員の勤怠管理",
+        "B": "組織のコンプライアンス要件の管理とコンプライアンス状態の評価を支援",
+        "C": "ネットワーク帯域幅の管理",
+        "D": "ストレージ容量の管理"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "コンプライアンスマネージャー：\n- 事前構築されたコンプライアンス評価テンプレート\n- コンプライアンススコアで進捗を測定\n- 改善の推奨事項\n- 複数の規制（GDPR、ISOなど）をサポート\n- コンプライアンス状態を追跡",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q35",
+      "domain": 4,
+      "question": "電子情報開示（eDiscovery）とは何ですか？",
+      "options": {
+        "A": "新しいデータを作成するプロセス",
+        "B": "法的案件のために電子情報を識別、収集、生成するプロセス",
+        "C": "データを削除するプロセス",
+        "D": "データを暗号化するプロセス"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "電子情報開示（eDiscovery）：\n- 関連データを識別して保持\n- メール、ドキュメント、チャットを検索\n- データを収集してエクスポート\n- 法的調査と訴訟に使用\n- Microsoft Purviewは電子情報開示ツールを提供",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q36",
+      "domain": 4,
+      "question": "保持ポリシー（Retention Policies）の主な目的は何ですか？",
+      "options": {
+        "A": "データアクセスの高速化",
+        "B": "データの保持と削除の時期を定義",
+        "C": "データの暗号化",
+        "D": "データの圧縮"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "保持ポリシー：\n- コンテンツの保持期間を定義\n- 保持期間後に自動削除\n- 規制要件を満たす\n- データライフサイクルを管理\n- メール、ドキュメント、チャットなどに適用",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q37",
+      "domain": 4,
+      "question": "内部リスク管理（Insider Risk Management）は何に使用されますか？",
+      "options": {
+        "A": "外部ハッカー攻撃の管理",
+        "B": "内部者の潜在的な悪意または無意識のリスク活動を検出して対応",
+        "C": "ネットワークルーティングの管理",
+        "D": "ハードウェア資産の管理"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "内部リスク管理：\n- 内部脅威を検出\n- データ窃盗リスク\n- セキュリティポリシー違反\n- 機械学習を使用してリスクを識別\n- ユーザーのプライバシーを保護しながら監視",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q38",
+      "domain": 4,
+      "question": "情報障壁（Information Barriers）とは何ですか？",
+      "options": {
+        "A": "物理的なセキュリティウォール",
+        "B": "特定のグループ間の通信を制限するポリシー",
+        "C": "ネットワークファイアウォール",
+        "D": "データ暗号化"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "情報障壁：\n- 特定のグループ間の通信を制限\n- 利益相反を防止\n- Teamsのチャットと会議に適用\n- コンプライアンス要件を満たす（金融業界など）\n- 機密情報を保護",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q39",
+      "domain": 4,
+      "question": "Microsoft Purview監査（Audit）の主な用途は何ですか？",
+      "options": {
+        "A": "データ処理の高速化",
+        "B": "ユーザーと管理者のアクティビティを記録して検索",
+        "C": "ログファイルの圧縮",
+        "D": "監査データの暗号化"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Microsoft Purview監査：\n- ユーザーと管理者のアクティビティを記録\n- 監査ログを検索してエクスポート\n- 複数のMicrosoft 365サービスをサポート\n- セキュリティインシデントを調査\n- コンプライアンス監査要件を満たす",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q40",
+      "domain": 4,
+      "question": "サービストラストポータル（Service Trust Portal）は何を提供しますか？",
+      "options": {
+        "A": "Microsoft製品の価格",
+        "B": "Microsoftクラウドサービスのセキュリティ、プライバシー、コンプライアンス情報",
+        "C": "テクニカルサポートサービス",
+        "D": "製品のダウンロード"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "サービストラストポータルが提供するもの：\n- 監査レポートと認証\n- コンプライアンスドキュメント\n- データ保護リソース\n- プライバシー情報\n- Microsoftがデータをどのように保護しているかを顧客が理解するのに役立つ",
+      "difficulty": "medium"
+    }
+  ]
+}

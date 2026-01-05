@@ -1,0 +1,803 @@
+{
+  "exam": {
+    "id": "azure-ai-102-set1-ja",
+    "name": "Azure AI-102 模擬試験 #1",
+    "code": "AI-102",
+    "provider": "Azure",
+    "language": "ja",
+    "description": "Azure认证考试模擬問題",
+    "totalQuestions": 50,
+    "passingScore": 70,
+    "examTime": 100,
+    "domains": [
+      {
+        "id": 1,
+        "name": "計画と管理 an Azure AI solution",
+        "weight": 25
+      },
+      {
+        "id": 2,
+        "name": "実装 意思決定支援 solutions",
+        "weight": 17
+      },
+      {
+        "id": 3,
+        "name": "実装 Azure AI ビジョンソリューション",
+        "weight": 25
+      },
+      {
+        "id": 4,
+        "name": "実装 自然言語処理 solutions",
+        "weight": 40
+      },
+      {
+        "id": 5,
+        "name": "実装 ナレッジマイニング and ドキュメントインテリジェンス solutions",
+        "weight": 17
+      },
+      {
+        "id": 6,
+        "name": "実装 生成AI solutions",
+        "weight": 17
+      }
+    ],
+    "tags": [
+      "Azure",
+      "AI",
+      "ML",
+      "認定試験"
+    ]
+  },
+  "questions": [
+    {
+      "id": "q1",
+      "domain": 1,
+      "question": "ある企業したいと考えています使用する单个エンドポイント和キー访问多个Azure AIサービス（如视觉、语言、音声）。すべきです作成どのような类型的リソース？",
+      "options": {
+        "A": "Computer Visionリソース",
+        "B": "Languageリソース",
+        "C": "Azure AI Services多サービスリソース",
+        "D": "每个サービス分别作成リソース"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "Azure AI Services多サービスリソース（以前称为Cognitive Services）提供单个エンドポイント和キー访问多个AIサービス，简化管理和计费。适合必要があります使用する多个AI機能的应用程序。\n---",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q2",
+      "domain": 1,
+      "question": "ある企業したいと考えています在オンプレミスデータ中心运行Azure AIサービス以满足データ驻留要求。を使用するすべきです何デプロイ方式？",
+      "options": {
+        "A": "使用する公共云エンドポイント",
+        "B": "デプロイAzure AIサービスコンテナ",
+        "C": "使用するAzure Functions",
+        "D": "使用するAzure Logic Apps"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure AIサービスコンテナ允许在オンプレミス或任何支持Docker的環境中运行AIサービス，满足データプライバシー和驻留要求。コンテナ仍必要があります连接Azure进行计费。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q3",
+      "domain": 1,
+      "question": "ある企業必要がありますモニタリング其Azure AIサービス的API调用和パフォーマンス。すべきです启用何機能？",
+      "options": {
+        "A": "Azure Monitor诊断ログ",
+        "B": "Azure Backup",
+        "C": "Azure Site Recovery",
+        "D": "Azure Traffic Manager"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Azure Monitor诊断ログ记录API调用、レイテンシ、間違い等信息，可发送到Log Analytics、ストレージ账户或Event Hub进行分析和モニタリング。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q4",
+      "domain": 1,
+      "question": "ある企業したいと考えています限制只有特定用户可以管理Azure AIサービスリソース，而其他用户只能调用API。を使用するすべきです何？",
+      "options": {
+        "A": "网络セキュリティ组",
+        "B": "Azure RBAC角色分配",
+        "C": "防火墙规则",
+        "D": "加密キー"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "RBAC（基于角色的访问控制）可以分配不同角色：\n- Cognitive Services Contributor：管理リソース\n- Cognitive Services User：只能调用API\n---",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q5",
+      "domain": 1,
+      "question": "ある企業したいと考えています确保Azure AIサービス的流量不经过公共互联网。すべきです設定何？",
+      "options": {
+        "A": "公共IP地址",
+        "B": "私有エンドポイント（Private Endpoint）",
+        "C": "ロードバランシング器",
+        "D": "CDN"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "私有エンドポイント在虚拟网络中作成私有IP地址，流量通过Azure骨干网络传输，不经过公共互联网，提高セキュリティ性。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q6",
+      "domain": 2,
+      "question": "ある企業したいと考えています検出IoT传感器データ中的异常。を使用するすべきですどのAzure AIサービス？",
+      "options": {
+        "A": "Computer Vision",
+        "B": "Anomaly Detector",
+        "C": "Language Understanding",
+        "D": "Text Analytics"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Anomaly Detector专门検出时间序列データ中的异常，适用于IoTモニタリング、业务指标モニタリング、欺诈検出等场景。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q7",
+      "domain": 2,
+      "question": "ある企業したいと考えています为用户提供个性化的内容推荐，并根据用户反馈不断优化。を使用するすべきですどのAzure AIサービス？",
+      "options": {
+        "A": "Content Moderator",
+        "B": "Personalizer",
+        "C": "QnA Maker",
+        "D": "Form Recognizer"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Personalizer使用する强化学习根据用户上下文和反馈提供个性化推荐，并不断优化モデル。适用于内容推荐、产品推荐等场景。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q8",
+      "domain": 2,
+      "question": "ある企業したいと考えています自动検出用户上传图片中的不当内容。を使用するすべきですどのAzure AIサービス？",
+      "options": {
+        "A": "Computer Vision",
+        "B": "Content Moderator",
+        "C": "Face API",
+        "D": "Custom Vision"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Content Moderator专门検出画像、テキスト和ビデオ中的不当、冒犯性或潜在有害内容，支持自定义审核列表。\n---",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q9",
+      "domain": 3,
+      "question": "ある企業したいと考えています自动为上传的图片生成描述性标签和标题。を使用するすべきですどのAzure AIサービス機能？",
+      "options": {
+        "A": "Face API",
+        "B": "Computer Vision - 画像分析",
+        "C": "Custom Vision",
+        "D": "Video Indexer"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Computer Vision的画像分析機能可以：\n- 生成画像描述和标签\n- 検出对象和品牌\n- 認識名人和地标\n- 生成智能裁剪缩略图\n---",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q10",
+      "domain": 3,
+      "question": "ある企業したいと考えています作成一个モデル来認識自家产品的不同类型。Azure中没有预构建的モデル可以認識这些产品。を使用するすべきです何？",
+      "options": {
+        "A": "Computer Vision API",
+        "B": "Custom Vision - 訓練自定义分類モデル",
+        "C": "Form Recognizer",
+        "D": "Language Understanding"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Custom Vision允许使用する自己的画像訓練自定义分類或对象検出モデル，适用于特定领域的视觉認識需求。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q11",
+      "domain": 3,
+      "question": "ある企業したいと考えています在画像中検出多个产品并标记它们的位置。を使用するすべきですCustom Vision的どのような项目类型？",
+      "options": {
+        "A": "分類 (Classification)",
+        "B": "对象検出 (Object Detection)",
+        "C": "多标签分類",
+        "D": "画像分割"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "- 分類：認識画像属于どの类别（整张图一个标签）\n- 对象検出：在画像中找到多个对象并标记位置（边界框）\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q12",
+      "domain": 3,
+      "question": "ある企業したいと考えています实现员工人脸認識打卡系统。を使用するすべきですFace API的どの機能？",
+      "options": {
+        "A": "人脸検出 (Face Detection)",
+        "B": "人脸検証 (Face Verification)",
+        "C": "人脸分组 (Face Grouping)",
+        "D": "情绪検出"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "- 人脸検出：找到画像中的人脸\n- 人脸検証：比较两张人脸是否为同一人（1:1比对）\n- 人脸認識：在人群中找到特定人（1:N比对）\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q13",
+      "domain": 3,
+      "question": "使用するFace API进行人脸認識时，必要があります先作成何来ストレージ已知人员的人脸データ？",
+      "options": {
+        "A": "Face List",
+        "B": "Person Group",
+        "C": "Blob Container",
+        "D": "Cosmos DB"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Person Group是用于ストレージ人员信息和人脸データ的コンテナ，ワークフロー程：\n1. 作成Person Group\n2. 添加Person（人员）\n3. 为每个Person添加人脸\n4. 訓練Person Group\n5. 使用するIdentify进行認識\n---",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q14",
+      "domain": 3,
+      "question": "ある企業したいと考えています从扫描的发票画像中提取文字。を使用するすべきですComputer Vision的どの機能？",
+      "options": {
+        "A": "Analyze Image",
+        "B": "Read API (OCR)",
+        "C": "Detect Objects",
+        "D": "Tag Image"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Read API是Azure的OCRサービス，可以从画像和PDF中提取打印和手写文字，支持多种语言，适用于ドキュメント処理场景。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q15",
+      "domain": 3,
+      "question": "ある企業したいと考えています自动从ビデオ中提取见解，包括说话人認識、感情分析和主题検出。を使用するすべきです何サービス？",
+      "options": {
+        "A": "Computer Vision",
+        "B": "Azure Video Indexer",
+        "C": "Azure Media Services",
+        "D": "Stream Analytics"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Video Indexer从ビデオ中提取丰富的见解：\n- 音声转录\n- 说话人認識\n- 人脸認識\n- 情感検出\n- 关键词和主题\n- 场景分割\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q16",
+      "domain": 4,
+      "question": "ある企業したいと考えています分析客户评论的情感倾向。を使用するすべきですAzure AI Language的どの機能？",
+      "options": {
+        "A": "固有表現認識",
+        "B": "感情分析",
+        "C": "关键词提取",
+        "D": "语言検出"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "感情分析返回：\n- ドキュメント级别情感（正面/负面/中性/ハイブリッド）\n- 句子级别情感\n- 置信度分数\n---",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q17",
+      "domain": 4,
+      "question": "ある企業したいと考えています从テキスト中自动提取人名、地点、组织等エンティティ。を使用するすべきです何機能？",
+      "options": {
+        "A": "感情分析",
+        "B": "固有表現認識 (NER)",
+        "C": "テキスト要約",
+        "D": "質問応答"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "固有表現認識 (NER) 認識テキスト中的エンティティ类别：\n- 人名、地点、组织\n- 日期、时间\n- 数量、货币\n- 电话、邮箱、URL\n---",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q18",
+      "domain": 4,
+      "question": "ある企業したいと考えています作成一个能够理解用户自然言語命令的チャットボット。を使用するすべきです何Azureサービス来訓練インテント認識？",
+      "options": {
+        "A": "QnA Maker",
+        "B": "Conversational Language Understanding (CLU)",
+        "C": "Text Analytics",
+        "D": "Translator"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "CLU（原LUIS）用于构建自然言語理解モデル：\n- 定义インテント (Intents)\n- 定义エンティティ (Entities)\n- 提供示例话语\n- 訓練和发布モデル\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q19",
+      "domain": 4,
+      "question": "在CLUモデル中，\"我想订2张明天下午3点去上海的机票\"这句话中，\"2张\"、\"明天下午3点\"、\"上海\"すべきです标记なぜ？",
+      "options": {
+        "A": "インテント (Intents)",
+        "B": "エンティティ (Entities)",
+        "C": "话语 (Utterances)",
+        "D": "特徴 (Features)"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "エンティティ是话语中必要があります提取的关键信息：\n- 数量エンティティ：2张\n- 日期时间エンティティ：明天下午3点\n- 地点エンティティ：上海\nインテント是用户的目的（如\"订机票\"）。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q20",
+      "domain": 4,
+      "question": "ある企業したいと考えています将网站内容翻訳成多种语言。を使用するすべきですどのAzureサービス？",
+      "options": {
+        "A": "Language Understanding",
+        "B": "Azure Translator",
+        "C": "Text Analytics",
+        "D": "Speech Service"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure Translator提供：\n- テキスト翻訳（支持100+语言）\n- ドキュメント翻訳\n- 自定义翻訳器（领域特定术语）\n- 字典クエリ\n---",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q21",
+      "domain": 4,
+      "question": "ある企業したいと考えています将客服电话录音转换为テキスト进行分析。を使用するすべきですSpeech Service的どの機能？",
+      "options": {
+        "A": "テキスト转音声 (TTS)",
+        "B": "音声转テキスト (STT)",
+        "C": "音声翻訳",
+        "D": "说话人認識"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "音声转テキスト (Speech-to-Text)：\n- リアルタイム转录\n- バッチ转录\n- 支持自定义モデル\n- 支持多种语言\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q22",
+      "domain": 4,
+      "question": "ある企業したいと考えています为其应用程序添加音声播报機能，使用する自然的人类声音。を使用するすべきです何？",
+      "options": {
+        "A": "音声转テキスト",
+        "B": "テキスト转音声 (TTS)",
+        "C": "音声翻訳",
+        "D": "关键词認識"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "テキスト转音声 (TTS)：\n- ニューラルネットワーク音声（最自然）\n- 自定义音声（訓練独特声音）\n- SSML控制（语速、音调、停顿）\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q23",
+      "domain": 4,
+      "question": "ある企業的音声認識精度较低，因为其行业有很多专业术语。すべきですどのように改进？",
+      "options": {
+        "A": "使用する更高的采样率",
+        "B": "訓練自定义音声モデル",
+        "C": "增加音频音量",
+        "D": "使用する更长的音频文件"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "自定义音声モデル可以：\n- 添加领域特定词汇\n- 使用する特定音频データ訓練\n- 提高专业术语認識精度\n---",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q24",
+      "domain": 4,
+      "question": "ある企業したいと考えています作成一个FAQ机器人，从现有ドキュメント自动回答常见问题。を使用するすべきです何？",
+      "options": {
+        "A": "Language Understanding",
+        "B": "自定义質問応答 (Custom Question Answering)",
+        "C": "Text Analytics",
+        "D": "Personalizer"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "自定义質問応答（原QnA Maker）：\n- 从ドキュメント、网页、FAQ自动提取質問応答对\n- 支持多轮対話\n- 可以手动添加和编辑\n- 与Bot Framework集成\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q25",
+      "domain": 4,
+      "question": "ある企業作成了一个Azure Bot，したいと考えています让用户可以通过Microsoft Teams和网站使用する。すべきですどのように設定？",
+      "options": {
+        "A": "作成多个Bot",
+        "B": "在Bot中設定多个通道 (Channels)",
+        "C": "使用する不同的语言モデル",
+        "D": "作成多个リソース组"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Bot Framework通道允许一个Bot连接到多个平台：\n- Microsoft Teams\n- Web Chat\n- Facebook Messenger\n- Slack\n- Line等\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q26",
+      "domain": 5,
+      "question": "ある企業したいと考えています从发票中自动提取供应商名称、金额、日期等信息。を使用するすべきですAzure AI Document Intelligence的どのモデル？",
+      "options": {
+        "A": "自定义モデル",
+        "B": "预构建发票モデル",
+        "C": "布局モデル",
+        "D": "通用ドキュメントモデル"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure AI Document Intelligence（原Form Recognizer）预构建モデル：\n- 发票：供应商、金额、行项目\n- 收据：商家、总额、日期\n- 身份证件：姓名、证件号\n- 名片：联系信息\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q27",
+      "domain": 5,
+      "question": "ある企業有特殊格式的内部表单，预构建モデル无法認識。すべきです怎么做？",
+      "options": {
+        "A": "使用する布局API",
+        "B": "訓練自定义モデル",
+        "C": "使用するOCR",
+        "D": "手动输入データ"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "自定义モデル訓練步骤：\n1. 收集样本ドキュメント（至少5个）\n2. 标记字段\n3. 訓練モデル\n4. テスト和优化\n5. デプロイ使用する\n---",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q28",
+      "domain": 5,
+      "question": "ある企業したいと考えています让用户能够検索ストレージ在Azure Blob中的PDFドキュメント内容。を使用するすべきです何サービス？",
+      "options": {
+        "A": "Azure SQL Search",
+        "B": "Azure AI Search",
+        "C": "Cosmos DB",
+        "D": "Azure Files"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure AI Search（原Cognitive Search）：\n- インデックス器自动抓取Blob中的ドキュメント\n- 内置技能提取テキスト、エンティティ、关键词\n- 支持全文検索\n- 支持分面导航和过滤\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q29",
+      "domain": 5,
+      "question": "在Azure AI Search中，したいと考えています在インデックス时自动从ドキュメント中提取关键短语和エンティティ。すべきです設定何？",
+      "options": {
+        "A": "インデックス器 (Indexer)",
+        "B": "技能集 (Skillset)",
+        "C": "インデックス (Index)",
+        "D": "データ源 (Data Source)"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "技能集是AI拡張的パイプライン：\n- 内置技能：OCR、关键短语、エンティティ認識、语言検出\n- 自定义技能：调用Azure Functions或其他API\n- 在インデックス时自动処理ドキュメント\n---",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q30",
+      "domain": 5,
+      "question": "Azure AI Search的知识挖掘パイプライン按何顺序処理？",
+      "options": {
+        "A": "インデックス → インデックス器 → 技能集 → データ源",
+        "B": "データ源 → インデックス器 → 技能集 → インデックス",
+        "C": "技能集 → データ源 → インデックス器 → インデックス",
+        "D": "データ源 → 技能集 → インデックス → インデックス器"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "知识挖掘パイプライン流程：\n1. データ源：指向原始データ（Blob、SQL等）\n2. インデックス器：抓取和解析データ\n3. 技能集：AI拡張処理\n4. インデックス：ストレージ可検索的内容\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q31",
+      "domain": 6,
+      "question": "ある企業したいと考えています使用するGPTモデル在Azure上构建生成AI应用。を使用するすべきです何サービス？",
+      "options": {
+        "A": "Azure Machine Learning",
+        "B": "Azure OpenAI Service",
+        "C": "Azure Bot Service",
+        "D": "Azure Cognitive Search"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure OpenAI Service提供：\n- GPT-4, GPT-4o, GPT-3.5-Turbo等モデル\n- DALL-E画像生成\n- 埋め込みモデル\n- Azure级别的セキュリティ和コンプライアンス\n---",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q32",
+      "domain": 6,
+      "question": "在使用するAzure OpenAI之前，必要があります先做何？",
+      "options": {
+        "A": "直接调用API",
+        "B": "作成デプロイ（Deployment）",
+        "C": "訓練モデル",
+        "D": "上传データ"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure OpenAI使用する流程：\n1. 作成Azure OpenAIリソース\n2. 作成モデルデプロイ（选择モデル和容量）\n3. 使用するエンドポイント和キー调用API\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q33",
+      "domain": 6,
+      "question": "以下のどのような提示工程技术最适合让モデル执行复杂推論任务？",
+      "options": {
+        "A": "Zero-shot prompting",
+        "B": "Few-shot prompting",
+        "C": "Chain-of-thought prompting",
+        "D": "简单指令"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "Chain-of-thought提示让モデル逐步推論：\n- 在提示中展示推論过程\n- 或使用する\"让我们一步一步思考\"\n- 适合数学、逻辑、多步骤问题\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q34",
+      "domain": 6,
+      "question": "ある企業したいと考えています实现语义検索，让用户可以用自然言語查找相关ドキュメント。を使用するすべきですAzure OpenAI的何機能？",
+      "options": {
+        "A": "Chat Completion",
+        "B": "Embeddings",
+        "C": "DALL-E",
+        "D": "Fine-tuning"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Embeddings将テキスト转换为ベクトル：\n- 语义相似的テキストベクトル接近\n- 用于语义検索、推荐\n- 是RAG系统的基础\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q35",
+      "domain": 6,
+      "question": "ある企業したいと考えています让GPTモデル基于企業内部ドキュメント回答问题。最適な实践是何？",
+      "options": {
+        "A": "将所有ドキュメント作为系统提示",
+        "B": "实现RAG（検索拡張生成）",
+        "C": "ファインチューニングモデル",
+        "D": "使用する更大的モデル"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "RAGワークフロー程：\n1. 将ドキュメント分块并生成埋め込みベクトル\n2. ストレージ到ベクトルデータ库\n3. 用户提问时検索相关块\n4. 将検索结果和问题一起给モデル\n5. モデル基于上下文生成答案\n---",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q36",
+      "domain": 6,
+      "question": "Azure OpenAI Service内置了何機能来防止生成有害内容？",
+      "options": {
+        "A": "网络防火墙",
+        "B": "内容过滤",
+        "C": "データ加密",
+        "D": "访问控制"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure OpenAI内容过滤：\n- 仇恨内容\n- 性内容\n- 暴力内容\n- 自残内容\n- 可設定严格程度\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q37",
+      "domain": 1,
+      "question": "ある企業したいと考えています从Azure Functionセキュリティ地调用Azure AIサービス，而不在代码中ストレージキー。を使用するすべきです何？",
+      "options": {
+        "A": "環境变量",
+        "B": "Azure Key Vault",
+        "C": "托管标识 (Managed Identity)",
+        "D": "硬编码キー"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "托管标识：\n- 自动管理身份検証\n- 无需管理凭据\n- 与Azure AD集成\n- 更セキュリティ的最適な实践\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q38",
+      "domain": 3,
+      "question": "一家零售企業したいと考えています分析店内顾客的移动模式和停留时间。を使用するすべきです何？",
+      "options": {
+        "A": "Face API",
+        "B": "Spatial Analysis",
+        "C": "Custom Vision",
+        "D": "Video Indexer"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Spatial Analysis（空间分析）：\n- 人员计数\n- 社交距离モニタリング\n- 进入/退出検出\n- 区域停留时间\n- 必要がありますデプロイ到エッジ设备\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q39",
+      "domain": 4,
+      "question": "ある企業必要があります在処理客户テキスト之前検出并屏蔽个人身份信息(PII)。を使用するすべきです何？",
+      "options": {
+        "A": "感情分析",
+        "B": "PII検出",
+        "C": "固有表現認識",
+        "D": "关键词提取"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "PII検出是Languageサービス的機能：\n- 認識姓名、地址、电话等\n- 可以自动编辑/屏蔽\n- 符合プライバシーコンプライアンス要求\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q40",
+      "domain": 4,
+      "question": "ある企業收到来自全球客户的消息，必要があります先确定消息使用する的语言再进行后续処理。を使用するすべきです何？",
+      "options": {
+        "A": "语言検出",
+        "B": "翻訳",
+        "C": "感情分析",
+        "D": "テキスト要約"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "语言検出返回：\n- 検出到的语言ISO代码\n- 置信度分数\n- 支持検出120+语言\n---",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q41",
+      "domain": 5,
+      "question": "在Azure AI Search中，したいと考えています将AI拡張的输出保存到Blobストレージ以供其他应用使用する。すべきです設定何？",
+      "options": {
+        "A": "インデックス",
+        "B": "知识ストレージ (Knowledge Store)",
+        "C": "データ源",
+        "D": "同义词映射"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "知识ストレージ将技能集的输出投影到：\n- Azure Blob Storage（ドキュメント、画像）\n- Azure Table Storage（表格データ）\n- 可供Power BI等工具使用する\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q42",
+      "domain": 6,
+      "question": "在Azure OpenAI中，どのように设置モデル的行为、角色和约束？",
+      "options": {
+        "A": "User message",
+        "B": "System message",
+        "C": "Assistant message",
+        "D": "Function message"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "System message用于：\n- 定义AI助手的角色\n- 设置回答的风格和格式\n- 添加约束和规则\n- 提供背景上下文\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q43",
+      "domain": 6,
+      "question": "何情况下すべきです考虑ファインチューニング(Fine-tuning) Azure OpenAIモデル？",
+      "options": {
+        "A": "必要がありますモデル遵循特定格式",
+        "B": "必要があります访问最新信息",
+        "C": "必要があります降低レイテンシ",
+        "D": "必要があります减少计算コスト"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "ファインチューニング适用于：\n- 必要があります特定的输出格式/风格\n- 必要があります学习特定领域的表达方式\n- 必要があります一致的行为模式\n不必要がありますファインチューニング的情况：\n- 最新信息 → 使用するRAG\n- 特定知识 → 使用するRAG\n---",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q44",
+      "domain": 1,
+      "question": "ある企業有稳定的Azure AIサービス使用する量。どのように降低コスト？",
+      "options": {
+        "A": "使用する按需付费",
+        "B": "使用する承诺层级 (Commitment Tier)",
+        "C": "减少API调用",
+        "D": "使用する更小的モデル"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "承诺层级：\n- 预付费一定使用する量\n- 获得折扣价格\n- 适合可予測的工作负载\n- 超出部分按标准价格计费\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q45",
+      "domain": 3,
+      "question": "ある企業訓練了Custom Visionモデル，したいと考えています在没有网络连接的设备上运行。すべきです怎么做？",
+      "options": {
+        "A": "使用する云エンドポイント",
+        "B": "导出为ONNX、TensorFlow或Docker格式",
+        "C": "使用するAzure IoT Hub",
+        "D": "使用するAzure Stack"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Custom Vision支持导出：\n- ONNX（通用格式）\n- TensorFlow\n- CoreML（iOS）\n- Dockerコンテナ\n- 导出后可オフライン运行\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q46",
+      "domain": 4,
+      "question": "ある企業したいと考えています自动生成长ドキュメント的要約。を使用するすべきですAzure AI Language的何機能？",
+      "options": {
+        "A": "关键词提取",
+        "B": "ドキュメント要約",
+        "C": "感情分析",
+        "D": "テキスト分類"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "ドキュメント要約機能：\n- 抽取式要約：提取关键句子\n- 抽象式要約：生成新的要約テキスト\n- 支持会议转录要約\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q47",
+      "domain": 5,
+      "question": "在Azure AI Search中，どのように提高検索结果的相关性，使其理解クエリ的语义インテント？",
+      "options": {
+        "A": "增加インデックス字段",
+        "B": "使用する语义排名 (Semantic Ranking)",
+        "C": "增加分区数",
+        "D": "使用する更多过滤器"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "语义排名：\n- 使用する機械学習理解クエリインテント\n- 重新排序検索结果\n- 提取语义答案\n- 生成标题要約\n---",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q48",
+      "domain": 6,
+      "question": "在Azure OpenAI中，どのように让モデル调用外部API或执行特定操作？",
+      "options": {
+        "A": "在提示中包含APIドキュメント",
+        "B": "使用するFunction Calling",
+        "C": "ファインチューニングモデル",
+        "D": "使用するRAG"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Function Calling：\n- 定义可用函数的schema\n- モデル决定何时调用どの函数\n- 返回函数参数\n- 開発者执行函数并返回结果\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q49",
+      "domain": 4,
+      "question": "ある企業したいと考えています实现リアルタイム音声翻訳，用户说中文可以リアルタイム翻訳成英语音声输出。を使用するすべきです何？",
+      "options": {
+        "A": "音声转テキスト + 翻訳 + テキスト转音声",
+        "B": "Speech Translationサービス",
+        "C": "只使用する翻訳サービス",
+        "D": "只使用する音声サービス"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Speech Translationサービス：\n- 端到端音声翻訳\n- リアルタイム或バッチ模式\n- 支持音声到音声翻訳\n- 比分步调用更高效\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q50",
+      "domain": 6,
+      "question": "使用するAzure OpenAI构建应用时，以下の哪项是責任あるAI的最適な实践？",
+      "options": {
+        "A": "允许所有类型的用户输入",
+        "B": "实施输入検証、内容过滤和人工审核",
+        "C": "只依赖モデル的内置セキュリティ性",
+        "D": "不限制モデル的输出长度"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "責任あるAI实践：\n- 输入検証和清理\n- 内容过滤（Azure OpenAI内置）\n- 人工审核机制\n- モニタリング和ログ记录\n- 透明性（告知用户在与AI交互）\n- 定期評価和更新",
+      "difficulty": "hard"
+    }
+  ]
+}

@@ -1,0 +1,794 @@
+{
+  "exam": {
+    "id": "azure-dp-100-set2",
+    "name": "Azure DP-100 数据科学家模拟考试 #2",
+    "code": "DP-100",
+    "provider": "Azure",
+    "language": "zh-CN",
+    "description": "Azure Data Scientist Associate认证考试模拟题 - 第2套",
+    "totalQuestions": 50,
+    "passingScore": 70,
+    "examTime": 150,
+    "domains": [
+      {
+        "id": 1,
+        "name": "Design and prepare a machine learning solution",
+        "weight": 25
+      },
+      {
+        "id": 2,
+        "name": "Explore data and train models",
+        "weight": 40
+      },
+      {
+        "id": 3,
+        "name": "Prepare a model for deployment",
+        "weight": 25
+      },
+      {
+        "id": 4,
+        "name": "Deploy and retrain a model",
+        "weight": 10
+      }
+    ],
+    "tags": [
+      "Azure",
+      "Machine Learning",
+      "Data Science",
+      "MLOps",
+      "认证考试"
+    ]
+  },
+  "questions": [
+    {
+      "id": "q1",
+      "domain": 1,
+      "question": "一家金融公司需要为其ML工作负载选择适当的计算资源。该团队需要运行大规模的GPU密集型深度学习训练作业。应该选择哪种计算选项？",
+      "options": {
+        "A": "计算实例 (Compute Instance)",
+        "B": "无服务器计算 (Serverless Compute)",
+        "C": "带有GPU SKU的计算集群 (Compute Cluster)",
+        "D": "Azure Container Instance"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "带有GPU SKU的计算集群最适合大规模深度学习训练：\n- 支持NVIDIA V100、A100等高端GPU\n- 可配置多个GPU节点进行分布式训练\n- 自动缩放功能可优化成本\n- 支持低优先级VM进一步降低成本\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q2",
+      "domain": 1,
+      "question": "一位数据科学家需要创建一个可重复使用的数据处理逻辑，该逻辑可以在多个实验中共享。应该使用Azure ML的哪个功能？",
+      "options": {
+        "A": "Environment",
+        "B": "Component",
+        "C": "Dataset",
+        "D": "Experiment"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Component（组件）是Azure ML v2中的核心概念：\n- 封装可重用的代码单元\n- 包含输入、输出和环境定义\n- 可以在管道中组合使用\n- 支持版本控制\n- 可在团队间共享\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q3",
+      "domain": 1,
+      "question": "一家医疗公司需要确保其ML工作区的数据不会离开特定区域。应该配置什么？",
+      "options": {
+        "A": "托管虚拟网络 (Managed VNet)",
+        "B": "数据加密",
+        "C": "RBAC角色",
+        "D": "服务主体"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "托管虚拟网络提供网络隔离：\n- 工作区资源在私有网络中运行\n- 数据不会通过公共互联网传输\n- 支持私有终结点连接\n- 符合数据驻留合规要求\n- 简化网络配置\n---",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q4",
+      "domain": 1,
+      "question": "在Azure ML中，如何确保敏感的连接字符串和API密钥安全存储？",
+      "options": {
+        "A": "存储在代码中",
+        "B": "使用Azure Key Vault",
+        "C": "存储在配置文件中",
+        "D": "使用环境变量"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure Key Vault集成：\n- 安全存储密钥、证书和机密\n- 与Azure ML工作区自动集成\n- 支持访问策略控制\n- 审计日志记录\n- 可在训练脚本中安全访问\n---",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q5",
+      "domain": 1,
+      "question": "一个团队需要限制谁可以在Azure ML工作区中创建计算资源。应该分配什么角色？",
+      "options": {
+        "A": "Owner",
+        "B": "Contributor",
+        "C": "AzureML Compute Operator",
+        "D": "Reader"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "AzureML Compute Operator角色：\n- 专门用于管理计算资源\n- 可以创建、更新、删除计算\n- 不能访问其他工作区资源\n- 遵循最小权限原则\n- 适合运维团队\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q6",
+      "domain": 1,
+      "question": "数据科学家需要在Azure ML中使用存储在Azure Data Lake Storage Gen2中的数据。首先应该做什么？",
+      "options": {
+        "A": "直接使用URI访问",
+        "B": "创建指向ADLS Gen2的数据存储",
+        "C": "将数据复制到Blob存储",
+        "D": "创建数据漂移监视器"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "访问ADLS Gen2数据的步骤：\n1. 创建数据存储（Datastore）连接到ADLS Gen2\n2. 配置身份验证（服务主体或托管标识）\n3. 创建数据资产（Data Asset）引用具体数据\n数据存储封装连接信息，不复制数据。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q7",
+      "domain": 1,
+      "question": "一家公司的ML团队需要跟踪实验的血统（lineage），包括使用的数据、代码和环境。Azure ML如何支持这一需求？",
+      "options": {
+        "A": "使用Git进行版本控制",
+        "B": "Job（作业）自动记录血统信息",
+        "C": "手动记录在文档中",
+        "D": "使用外部MLflow服务器"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure ML作业自动追踪：\n- 输入数据资产版本\n- 代码快照\n- 环境定义\n- 输出模型和指标\n- 执行时间和计算资源\n支持完整的可追溯性和可重复性。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q8",
+      "domain": 1,
+      "question": "一位数据科学家需要创建一个自定义的Docker镜像作为训练环境的基础。应该如何配置Environment？",
+      "options": {
+        "A": "只使用Conda文件",
+        "B": "指定自定义base_image",
+        "C": "使用策展环境",
+        "D": "使用pip requirements"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "自定义Docker环境配置：\n```python\nfrom azure.ai.ml.entities import Environment\nenv = Environment(\n    image='myregistry.azurecr.io/custom-image:v1',\n    name='custom-env'\n)\n```\n可以从Azure Container Registry拉取自定义镜像。\n---",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q9",
+      "domain": 1,
+      "question": "在设计ML解决方案时，需要考虑模型的公平性。Azure ML提供什么工具来评估模型公平性？",
+      "options": {
+        "A": "AutoML",
+        "B": "Responsible AI仪表板",
+        "C": "Model Profiler",
+        "D": "Data Drift Monitor"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Responsible AI仪表板提供：\n- 公平性评估（跨群组性能差异）\n- 模型可解释性\n- 错误分析\n- 因果推断\n- 反事实分析\n帮助构建负责任的AI系统。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q10",
+      "domain": 1,
+      "question": "一个ML项目需要使用Azure Machine Learning CLI v2。CLI v2相比v1有什么主要改进？",
+      "options": {
+        "A": "更慢的执行速度",
+        "B": "基于YAML的资产定义",
+        "C": "只支持Python",
+        "D": "不支持管道"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure ML CLI v2特点：\n- 基于YAML的声明式资产定义\n- 更简洁的命令结构\n- 与SDK v2对齐\n- 支持所有资产类型\n- 更好的GitOps集成\n- 可重复的配置\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q11",
+      "domain": 2,
+      "question": "数据科学家正在使用AutoML进行时间序列预测。如何指定预测的时间范围？",
+      "options": {
+        "A": "设置max_horizon参数",
+        "B": "设置forecast_horizon参数",
+        "C": "使用滑动窗口",
+        "D": "设置time_column参数"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "AutoML时间序列预测配置：\n- forecast_horizon：预测未来多少个时间点\n- time_column_name：时间戳列\n- target_lags：使用历史滞后特征\n- target_rolling_window_size：滚动窗口特征\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q12",
+      "domain": 2,
+      "question": "在AutoML分类任务中，数据科学家想要排除某些算法。应该使用什么配置？",
+      "options": {
+        "A": "primary_metric",
+        "B": "blocked_algorithms",
+        "C": "enable_voting_ensemble",
+        "D": "experiment_timeout_minutes"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "blocked_algorithms参数：\n- 指定不使用的算法列表\n- 例如：blocked_algorithms=['LightGBM', 'XGBoost']\n- 相反，allowed_algorithms指定只使用的算法\n- 可用于满足特定的模型要求\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q13",
+      "domain": 2,
+      "question": "使用AutoML时，如何启用深度学习模型进行图像分类？",
+      "options": {
+        "A": "设置task='classification'",
+        "B": "设置task='image_classification'",
+        "C": "使用Designer",
+        "D": "使用HyperDrive"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "AutoML图像任务类型：\n- image_classification：图像分类\n- image_classification_multilabel：多标签分类\n- image_object_detection：对象检测\n- image_instance_segmentation：实例分割\n自动使用预训练的深度学习模型。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q14",
+      "domain": 2,
+      "question": "数据科学家需要在训练过程中记录自定义图表和图像。应该使用什么方法？",
+      "options": {
+        "A": "mlflow.log_metric()",
+        "B": "mlflow.log_artifact()",
+        "C": "mlflow.log_param()",
+        "D": "print()"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "MLflow日志记录方法：\n- log_metric()：记录数值指标\n- log_param()：记录参数\n- log_artifact()：记录文件（图像、模型、数据）\n- log_figure()：记录matplotlib图表\n- log_image()：记录图像\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q15",
+      "domain": 2,
+      "question": "在使用SDK v2训练模型时，如何配置分布式PyTorch训练？",
+      "options": {
+        "A": "使用单节点计算",
+        "B": "配置PyTorchDistribution",
+        "C": "使用MPI",
+        "D": "使用TensorFlowDistribution"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "PyTorch分布式训练配置：\n```python\nfrom azure.ai.ml import command\nfrom azure.ai.ml.entities import PyTorchDistribution\n\njob = command(\n    code='./src',\n    command='python train.py',\n    distribution=PyTorchDistribution(process_count_per_instance=4),\n    instance_count=2\n)\n```\n支持数据并行和模型并行。\n---",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q16",
+      "domain": 2,
+      "question": "数据科学家想要使用Sweep功能进行超参数调优。如何定义连续型超参数的搜索空间？",
+      "options": {
+        "A": "choice(['a', 'b', 'c'])",
+        "B": "uniform(0.01, 0.1)",
+        "C": "randint(1, 10)",
+        "D": "normal(0, 1)"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "超参数搜索空间类型：\n- choice()：离散选择\n- uniform()：均匀分布（连续）\n- loguniform()：对数均匀分布\n- normal()：正态分布\n- randint()：随机整数\n- quniform()：量化均匀分布\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q17",
+      "domain": 2,
+      "question": "在HyperDrive/Sweep中，哪种早期终止策略最激进，会终止最多的运行？",
+      "options": {
+        "A": "BanditPolicy",
+        "B": "MedianStoppingPolicy",
+        "C": "TruncationSelectionPolicy",
+        "D": "NoTerminationPolicy"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "早期终止策略比较：\n- TruncationSelection：终止最差的X%运行，最激进\n- Bandit：基于最佳运行的松弛度\n- MedianStopping：低于中位数时终止\n- NoTermination：不终止任何运行\n选择取决于计算预算和探索需求。\n---",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q18",
+      "domain": 2,
+      "question": "数据科学家需要处理包含大量类别（>100）的类别特征。最适合使用什么编码方法？",
+      "options": {
+        "A": "One-Hot Encoding",
+        "B": "Target Encoding",
+        "C": "Label Encoding",
+        "D": "Binary Encoding"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "高基数类别特征处理：\n- Target Encoding：用目标变量均值替换类别\n- One-Hot：类别多时会导致维度爆炸\n- Embedding：深度学习中常用\n- Frequency Encoding：用出现频率替换\nTarget Encoding可以减少维度同时保留信息。\n---",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q19",
+      "domain": 2,
+      "question": "数据集中有严重的类别不平衡（正类只占1%）。在训练分类模型前应该考虑什么策略？",
+      "options": {
+        "A": "忽略不平衡",
+        "B": "使用SMOTE过采样少数类",
+        "C": "删除多数类样本",
+        "D": "使用回归模型"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "处理类别不平衡的方法：\n- SMOTE：合成少数类过采样\n- Class weights：调整类别权重\n- Undersampling：欠采样多数类\n- 集成方法：如BalancedRandomForest\n- 阈值调整：调整分类阈值\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q20",
+      "domain": 2,
+      "question": "在Azure ML Designer中，如何将连续的数值特征转换为离散的分箱？",
+      "options": {
+        "A": "Normalize Data",
+        "B": "Clip Values",
+        "C": "Group Data into Bins",
+        "D": "Apply Math Operation"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "Group Data into Bins模块：\n- 将连续值转换为离散区间\n- 支持等宽分箱和等频分箱\n- 支持自定义边界\n- 可生成分箱索引或边界值\n适合处理非线性关系。\n---",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q21",
+      "domain": 2,
+      "question": "数据科学家需要选择与目标变量相关性最高的特征。应该使用Designer中的哪个模块？",
+      "options": {
+        "A": "PCA",
+        "B": "Filter Based Feature Selection",
+        "C": "Remove Duplicate Rows",
+        "D": "Select Columns in Dataset"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Filter Based Feature Selection模块：\n- 计算特征与目标的相关性\n- 支持多种评分方法（Pearson、Chi-squared等）\n- 可选择Top N个特征\n- 适合快速特征筛选\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q22",
+      "domain": 2,
+      "question": "在训练梯度提升模型时，哪个超参数最能防止过拟合？",
+      "options": {
+        "A": "增加树的数量",
+        "B": "增加最大深度",
+        "C": "减小学习率并使用更多树",
+        "D": "增加叶节点最小样本数"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "防止梯度提升过拟合的策略：\n- 减小学习率（收敛更慢但更稳定）\n- 限制树的深度\n- 增加叶节点最小样本数\n- 使用正则化参数\n- 子采样（bagging fraction）\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q23",
+      "domain": 2,
+      "question": "数据科学家需要在Azure ML中使用预训练的Hugging Face模型。最简单的方法是什么？",
+      "options": {
+        "A": "手动下载模型文件",
+        "B": "使用Azure ML模型目录",
+        "C": "从头训练模型",
+        "D": "使用Azure Cognitive Services"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure ML模型目录（Model Catalog）：\n- 包含Hugging Face、Meta等预训练模型\n- 一键部署到托管终结点\n- 支持微调\n- 包含使用示例和文档\n- 定期更新模型\n---",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q24",
+      "domain": 2,
+      "question": "在创建ML管道时，如何确保某个步骤只在其输入数据发生变化时才重新运行？",
+      "options": {
+        "A": "手动控制",
+        "B": "使用cache功能",
+        "C": "每次都重新运行",
+        "D": "使用条件分支"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "管道步骤缓存：\n- 如果输入数据、代码和配置未变，跳过执行\n- 重用之前的输出\n- 显著加速管道执行\n- 可通过is_deterministic=True启用\n- 节省计算成本\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q25",
+      "domain": 2,
+      "question": "数据科学家需要在管道中实现条件逻辑，根据模型性能决定是否部署。应该使用什么？",
+      "options": {
+        "A": "串行执行所有步骤",
+        "B": "Pipeline control flow组件",
+        "C": "手动干预",
+        "D": "使用多个独立管道"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "管道控制流：\n- 条件分支：if-else逻辑\n- 循环：for-each迭代\n- 并行：parallel执行多个分支\n- 聚合：合并并行结果\n实现复杂的工作流逻辑。\n---",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q26",
+      "domain": 2,
+      "question": "在使用AutoML时，如何启用深度神经网络(DNN)特征化？",
+      "options": {
+        "A": "设置task='deep_learning'",
+        "B": "设置enable_dnn=True",
+        "C": "使用GPU计算",
+        "D": "选择神经网络算法"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "AutoML DNN特征化：\n- enable_dnn=True启用深度学习特征\n- 自动提取文本和图像特征\n- 使用预训练模型生成嵌入\n- 提高非结构化数据的性能\n- 需要GPU计算资源\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q27",
+      "domain": 2,
+      "question": "数据科学家需要在训练过程中定期保存模型检查点。应该使用什么？",
+      "options": {
+        "A": "mlflow.log_model()",
+        "B": "配置checkpointing",
+        "C": "每个epoch后注册模型",
+        "D": "使用AutoML"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "模型检查点功能：\n- 定期保存训练状态\n- 支持从中断点恢复\n- 防止长时间训练丢失进度\n- 可以选择最佳检查点\n- 深度学习训练的最佳实践\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q28",
+      "domain": 2,
+      "question": "在训练时间序列预测模型时，如何正确拆分数据以避免数据泄漏？",
+      "options": {
+        "A": "随机拆分",
+        "B": "按时间顺序拆分（时序分割）",
+        "C": "分层抽样",
+        "D": "K折交叉验证"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "时间序列数据拆分：\n- 必须按时间顺序拆分\n- 训练集使用历史数据\n- 验证集使用未来数据\n- 避免未来信息泄漏到训练中\n- 使用滚动窗口验证\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q29",
+      "domain": 2,
+      "question": "数据科学家想要比较多个模型在同一数据集上的性能。在Designer中应该如何做？",
+      "options": {
+        "A": "分别运行多个管道",
+        "B": "使用Evaluate Model模块连接多个Score Model输出",
+        "C": "只训练一个模型",
+        "D": "使用AutoML"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Designer中的模型比较：\n- Evaluate Model模块可接受两个Score Model输入\n- 并排显示两个模型的性能指标\n- 直观比较准确率、AUC等\n- 帮助选择最佳模型\n---",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q30",
+      "domain": 2,
+      "question": "数据科学家需要训练一个自然语言处理模型。AutoML支持哪种NLP任务？",
+      "options": {
+        "A": "情感分析",
+        "B": "文本分类",
+        "C": "命名实体识别",
+        "D": "以上所有"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "AutoML支持的NLP任务：\n- 文本分类（单标签和多标签）\n- 命名实体识别（NER）\n- 情感分析（作为分类任务）\n- 问答\n使用预训练的transformer模型。\n---",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q31",
+      "domain": 3,
+      "question": "在注册模型时，如何添加元数据标签以便后续查询和管理？",
+      "options": {
+        "A": "在模型文件中添加注释",
+        "B": "使用Model的tags参数",
+        "C": "创建单独的文档",
+        "D": "使用Git标签"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "模型标签功能：\n```python\nfrom azure.ai.ml.entities import Model\nmodel = Model(\n    path='./model',\n    name='my-model',\n    tags={'framework': 'sklearn', 'task': 'classification'}\n)\nml_client.models.create_or_update(model)\n```\n标签支持筛选和搜索。\n---",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q32",
+      "domain": 3,
+      "question": "数据科学家需要将scikit-learn模型转换为ONNX格式。应该使用什么工具？",
+      "options": {
+        "A": "torch.onnx.export()",
+        "B": "sklearn-onnx (skl2onnx)",
+        "C": "tf2onnx",
+        "D": "pickle"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "sklearn-onnx转换：\n```python\nfrom skl2onnx import convert_sklearn\nfrom skl2onnx.common.data_types import FloatTensorType\n\ninitial_type = [('float_input', FloatTensorType([None, 4]))]\nonnx_model = convert_sklearn(clf, initial_types=initial_type)\n```\n支持大多数sklearn模型。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q33",
+      "domain": 3,
+      "question": "在入口脚本（score.py）中，run()函数应该返回什么格式的数据？",
+      "options": {
+        "A": "必须返回字符串",
+        "B": "必须返回numpy数组",
+        "C": "返回JSON可序列化的数据",
+        "D": "返回pickle对象"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "run()函数返回值：\n- 必须是JSON可序列化的\n- 可以是dict、list、str、int、float\n- 通常返回预测结果的字典\n```python\ndef run(data):\n    result = model.predict(data)\n    return {'predictions': result.tolist()}\n```\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q34",
+      "domain": 3,
+      "question": "在部署模型前，如何验证入口脚本的init()和run()函数是否正确？",
+      "options": {
+        "A": "直接部署到生产",
+        "B": "使用MLflow模型本地测试",
+        "C": "只检查语法",
+        "D": "使用AutoML验证"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "本地测试方法：\n```python\nimport mlflow\nmodel = mlflow.pyfunc.load_model('./model')\ntest_data = pd.DataFrame(...)\npredictions = model.predict(test_data)\n```\n或使用Docker容器进行本地部署测试。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q35",
+      "domain": 3,
+      "question": "一家公司需要对模型进行A/B测试来比较两个版本的实际效果。应该使用什么部署策略？",
+      "options": {
+        "A": "创建两个独立的终结点",
+        "B": "在同一终结点配置流量分配",
+        "C": "使用批处理终结点",
+        "D": "手动切换部署"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "流量分配实现A/B测试：\n```python\nendpoint.traffic = {\n    'model-v1': 50,\n    'model-v2': 50\n}\nml_client.online_endpoints.begin_create_or_update(endpoint)\n```\n可以收集两个版本的性能数据进行比较。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q36",
+      "domain": 3,
+      "question": "在使用托管在线终结点时，如何配置自动缩放？",
+      "options": {
+        "A": "手动调整实例数",
+        "B": "配置scale_settings的scale_type为automatic",
+        "C": "使用Azure Functions",
+        "D": "不支持自动缩放"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "自动缩放配置：\n```python\nfrom azure.ai.ml.entities import ManagedOnlineDeployment\ndeployment = ManagedOnlineDeployment(\n    ...\n    scale_settings=DefaultScaleSettings(\n        scale_type='automatic',\n        min_instances=1,\n        max_instances=5\n    )\n)\n```\n根据负载自动调整实例数。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q37",
+      "domain": 3,
+      "question": "数据科学家需要部署一个需要GPU进行推理的深度学习模型。应该如何配置？",
+      "options": {
+        "A": "使用CPU SKU",
+        "B": "选择带有GPU的VM SKU（如Standard_NC系列）",
+        "C": "使用Azure Container Instance",
+        "D": "无法在终结点使用GPU"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "GPU推理配置：\n```python\ndeployment = ManagedOnlineDeployment(\n    ...\n    instance_type='Standard_NC6s_v3',\n    environment=env_with_cuda\n)\n```\n确保环境包含CUDA和相关驱动。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q38",
+      "domain": 3,
+      "question": "在准备部署时，如何确保模型的依赖项版本与训练时完全一致？",
+      "options": {
+        "A": "使用最新版本的包",
+        "B": "使用与训练相同的Environment定义",
+        "C": "不指定版本",
+        "D": "使用系统默认环境"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "环境一致性最佳实践：\n- 训练时记录环境定义\n- 使用conda.yaml锁定版本\n- 部署时引用相同环境\n- 或使用Docker镜像确保完全一致\n避免运行时版本不兼容问题。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q39",
+      "domain": 3,
+      "question": "一个MLflow模型需要部署为在线终结点。如何简化部署过程？",
+      "options": {
+        "A": "手动编写入口脚本",
+        "B": "使用MLflow模型的无代码部署",
+        "C": "转换为ONNX",
+        "D": "使用Designer"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "MLflow无代码部署：\n- MLflow模型包含模型和元数据\n- Azure ML自动生成入口脚本\n- 自动配置环境\n- 简化部署流程\n```python\ndeployment = ManagedOnlineDeployment(\n    model=mlflow_model\n)\n```\n---",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q40",
+      "domain": 3,
+      "question": "在部署模型时，如何配置请求超时和并发处理？",
+      "options": {
+        "A": "无法配置",
+        "B": "在部署的request_settings中配置",
+        "C": "在入口脚本中设置",
+        "D": "在模型文件中定义"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "请求设置配置：\n```python\nfrom azure.ai.ml.entities import OnlineRequestSettings\ndeployment = ManagedOnlineDeployment(\n    ...\n    request_settings=OnlineRequestSettings(\n        request_timeout_ms=60000,\n        max_concurrent_requests_per_instance=10\n    )\n)\n```\n根据模型复杂度调整。\n---",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q41",
+      "domain": 4,
+      "question": "部署的模型终结点需要进行身份验证。托管在线终结点支持哪种认证方式？",
+      "options": {
+        "A": "只支持密钥认证",
+        "B": "密钥认证和Azure AD令牌认证",
+        "C": "只支持Azure AD认证",
+        "D": "不需要认证"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "托管在线终结点认证选项：\n- 密钥认证（Key-based）：使用API密钥\n- Azure AD令牌认证：使用AAD令牌\n可在创建终结点时配置auth_mode：\n- auth_mode='key'\n- auth_mode='aad_token'\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q42",
+      "domain": 4,
+      "question": "数据科学家需要监控模型的输入数据分布变化。应该使用什么功能？",
+      "options": {
+        "A": "Application Insights",
+        "B": "数据漂移监视器（Model Monitor）",
+        "C": "Azure Monitor日志",
+        "D": "手动检查"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure ML Model Monitor：\n- 收集生产推理数据\n- 与训练数据基线比较\n- 检测数据漂移\n- 设置告警阈值\n- 触发重新训练管道\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q43",
+      "domain": 4,
+      "question": "如何配置ML管道按计划自动运行（如每周一次）？",
+      "options": {
+        "A": "手动触发",
+        "B": "使用Schedule创建定时任务",
+        "C": "使用Azure Functions",
+        "D": "使用Azure Logic Apps"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "管道计划运行：\n```python\nfrom azure.ai.ml.entities import Schedule, RecurrenceTrigger\nschedule = Schedule(\n    name='weekly-retrain',\n    trigger=RecurrenceTrigger(\n        frequency='week',\n        interval=1\n    ),\n    create_job=pipeline_job\n)\nml_client.schedules.begin_create_or_update(schedule)\n```\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q44",
+      "domain": 4,
+      "question": "一家公司需要实现GitOps流程来管理ML资产。应该使用什么工具？",
+      "options": {
+        "A": "只使用Azure Portal",
+        "B": "Azure ML CLI v2与GitHub Actions集成",
+        "C": "手动部署",
+        "D": "使用Jupyter Notebook"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "GitOps最佳实践：\n- 使用YAML文件定义ML资产\n- 将YAML存储在Git仓库\n- 使用GitHub Actions/Azure DevOps触发\n- CLI v2命令部署资产\n- 实现版本控制和审计\n---",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q45",
+      "domain": 4,
+      "question": "当模型性能下降时，如何设置自动告警？",
+      "options": {
+        "A": "手动监控指标",
+        "B": "配置Azure Monitor告警规则",
+        "C": "定期查看日志",
+        "D": "用户反馈"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure Monitor告警配置：\n- 创建指标告警规则\n- 设置阈值条件\n- 配置通知操作组\n- 集成Teams、邮件、短信通知\n- 可触发自动化操作\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q46",
+      "domain": 4,
+      "question": "批处理终结点完成评分后，如何获取输出结果？",
+      "options": {
+        "A": "实时返回结果",
+        "B": "结果保存到指定的输出数据存储",
+        "C": "通过API查询",
+        "D": "发送邮件通知"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "批处理终结点输出：\n- 结果异步保存到数据存储\n- 可指定输出路径\n- 支持Blob存储、ADLS等\n- 完成后可下载或处理结果\n- 适合大规模批量评分\n---",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q47",
+      "domain": 4,
+      "question": "如何确保模型部署符合公司的治理要求？",
+      "options": {
+        "A": "跳过治理检查",
+        "B": "使用Azure Policy和模型注册审批流程",
+        "C": "只依赖手动审查",
+        "D": "使用公共终结点"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "ML治理最佳实践：\n- Azure Policy强制合规\n- 模型注册审批流程\n- 资产标签和元数据\n- 访问控制（RBAC）\n- 审计日志\n- Responsible AI检查\n---",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q48",
+      "domain": 4,
+      "question": "部署到Kubernetes的模型需要横向扩展以处理高负载。应该如何配置？",
+      "options": {
+        "A": "增加VM大小",
+        "B": "配置Kubernetes HPA（Horizontal Pod Autoscaler）",
+        "C": "手动添加副本",
+        "D": "使用批处理终结点"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Kubernetes自动缩放：\n- HPA根据CPU/内存使用率自动调整Pod数量\n- 可配置最小和最大副本数\n- 响应流量变化\n- 确保服务可用性\n- 优化资源利用\n---",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q49",
+      "domain": 4,
+      "question": "如何查看在线终结点的实时日志以调试问题？",
+      "options": {
+        "A": "只能在Azure Portal查看",
+        "B": "使用ml_client.online_deployments.get_logs()",
+        "C": "无法查看日志",
+        "D": "只能使用Application Insights"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "查看部署日志：\n```python\nlogs = ml_client.online_deployments.get_logs(\n    name='my-deployment',\n    endpoint_name='my-endpoint',\n    lines=100\n)\nprint(logs)\n```\n也可通过Azure Portal或CLI查看。\n---",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q50",
+      "domain": 4,
+      "question": "一家公司需要在模型重新训练后自动比较新旧模型性能，只有性能提升时才部署。应该如何实现？",
+      "options": {
+        "A": "手动比较",
+        "B": "在管道中添加模型验证步骤",
+        "C": "总是部署新模型",
+        "D": "不进行比较"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "模型验证最佳实践：\n- 在管道中添加评估步骤\n- 比较新模型与注册的最佳模型\n- 设置性能阈值\n- 使用条件分支决定是否注册/部署\n- 记录比较结果\n实现CI/CD的模型质量门控。\n---",
+      "difficulty": "hard"
+    }
+  ]
+}

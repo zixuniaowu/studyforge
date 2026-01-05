@@ -1,0 +1,663 @@
+{
+  "exam": {
+    "id": "gcp-pwa-set3",
+    "name": "Professional Google Workspace Administrator 练习题 Set 3",
+    "code": "PWA",
+    "provider": "Google Cloud",
+    "language": "zh-CN",
+    "description": "Google Cloud Professional Google Workspace Administrator 认证练习题第三套",
+    "totalQuestions": 40,
+    "passingScore": 70,
+    "examTime": 120,
+    "domains": [
+      "管理对象",
+      "配置服务",
+      "管理终端节点",
+      "监控组织运营",
+      "支持业务转型"
+    ],
+    "tags": ["Google Cloud", "Workspace", "Professional", "Administration"]
+  },
+  "questions": [
+    {
+      "id": "gcp-pwa-set3-q1",
+      "examId": "gcp-pwa-set3",
+      "setNumber": 3,
+      "domain": "管理对象",
+      "question": "您的组织正在从另一个云身份提供商迁移到Google Cloud Identity。用户需要继续使用现有的公司邮箱地址。最佳迁移策略是什么？",
+      "options": {
+        "A": "创建新的Google账号并更改用户邮箱地址",
+        "B": "使用第三方身份联合保留现有邮箱地址",
+        "C": "添加公司域名到Google Workspace并创建用户账号",
+        "D": "使用Google Cloud Directory Sync"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "要让用户使用现有公司邮箱地址，需要将公司域名添加到Google Workspace并验证所有权。然后可以为用户创建账号，用户将使用相同的邮箱地址登录Google服务。这是从其他邮件系统迁移到Workspace的标准做法。身份联合不会创建Workspace邮箱。"
+    },
+    {
+      "id": "gcp-pwa-set3-q2",
+      "examId": "gcp-pwa-set3",
+      "setNumber": 3,
+      "domain": "配置服务",
+      "question": "组织需要确保所有Gmail邮件都使用TLS加密传输。对于不支持TLS的外部收件人，邮件应该被阻止。应该配置什么？",
+      "options": {
+        "A": "强制TLS设置",
+        "B": "S/MIME加密",
+        "C": "安全传输（MTA-STS）",
+        "D": "内容合规规则"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "在Gmail设置中可以配置强制TLS，要求所有外发邮件使用TLS加密。可以为特定域名配置TLS合规性要求，如果收件人的邮件服务器不支持TLS，邮件会被退回而不是以明文发送。这确保了传输中的邮件安全。S/MIME是端到端加密，MTA-STS是入站TLS策略。"
+    },
+    {
+      "id": "gcp-pwa-set3-q3",
+      "examId": "gcp-pwa-set3",
+      "setNumber": 3,
+      "domain": "管理终端节点",
+      "question": "公司希望在员工离开公司网络后自动锁定他们的移动设备访问权限。应该使用什么功能？",
+      "options": {
+        "A": "移动设备管理策略",
+        "B": "上下文感知访问",
+        "C": "网络访问控制",
+        "D": "设备密码策略"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "上下文感知访问可以基于网络位置（IP地址范围）配置访问策略。可以创建规则：只有当设备连接到公司网络（或受信任的网络）时才允许访问Workspace应用。离开这些网络后，访问会被阻止或受限。这实现了动态的、基于位置的访问控制。"
+    },
+    {
+      "id": "gcp-pwa-set3-q4",
+      "examId": "gcp-pwa-set3",
+      "setNumber": 3,
+      "domain": "监控组织运营",
+      "question": "您需要定期审查哪些第三方应用可以访问组织数据。应该查看什么？",
+      "options": {
+        "A": "OAuth应用活动报告",
+        "B": "审核日志",
+        "C": "安全中心的第三方应用访问",
+        "D": "Drive活动报告"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "安全中心的第三方应用访问页面显示所有已授权访问组织数据的第三方应用列表，包括访问的数据范围、用户数量等信息。管理员可以查看并撤销可疑或不需要的应用访问权限。这是管理OAuth应用风险的关键工具。"
+    },
+    {
+      "id": "gcp-pwa-set3-q5",
+      "examId": "gcp-pwa-set3",
+      "setNumber": 3,
+      "domain": "支持业务转型",
+      "question": "公司正在实施数据区域（Data Regions）政策，要求某些用户的数据只存储在欧洲。需要什么许可证和配置？",
+      "options": {
+        "A": "任何Workspace版本都支持",
+        "B": "Enterprise Plus许可证并配置数据区域策略",
+        "C": "创建单独的欧洲Workspace账号",
+        "D": "联系Google配置专用数据中心"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "数据区域（Data Regions）是Enterprise Plus的功能，允许管理员选择特定区域（如欧洲）存储用户的核心数据。可以为整个组织或特定OU配置数据区域策略。这对于满足数据主权和GDPR合规要求很重要。其他版本不提供此功能。"
+    },
+    {
+      "id": "gcp-pwa-set3-q6",
+      "examId": "gcp-pwa-set3",
+      "setNumber": 3,
+      "domain": "管理对象",
+      "question": "您需要确保离职员工的数据在删除账号后仍可保留一段时间以供参考。应该如何配置？",
+      "options": {
+        "A": "将数据转移给另一个用户后再删除账号",
+        "B": "使用Vault保留规则保留删除用户的数据",
+        "C": "暂停账号而不是删除",
+        "D": "所有选项都可以用于不同场景"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "保留离职员工数据有多种方法：1) 转移文件和邮件所有权给继任者或经理；2) 使用Vault设置保留规则，即使账号被删除数据仍被保留；3) 暂停账号（保留数据和许可证但禁止登录）。选择哪种方法取决于具体需求、合规要求和许可证成本考虑。"
+    },
+    {
+      "id": "gcp-pwa-set3-q7",
+      "examId": "gcp-pwa-set3",
+      "setNumber": 3,
+      "domain": "配置服务",
+      "question": "组织需要使用自己的域名发送Gmail邮件，但邮件实际由第三方营销平台代发。应该配置什么？",
+      "options": {
+        "A": "SMTP中继",
+        "B": "发件人地址重写",
+        "C": "SPF和DKIM配置以允许第三方发送",
+        "D": "邮件网关"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "要允许第三方服务（如营销平台）代表您的域名发送邮件，需要：1) 在SPF记录中添加第三方的发送服务器；2) 配置DKIM以便第三方可以签名邮件。这确保代发的邮件通过邮件验证，不被标记为垃圾邮件。SMTP中继用于出站邮件路由，不适用于此场景。"
+    },
+    {
+      "id": "gcp-pwa-set3-q8",
+      "examId": "gcp-pwa-set3",
+      "setNumber": 3,
+      "domain": "管理终端节点",
+      "question": "您需要为组织部署企业Android应用到托管设备。应用未在Google Play商店发布。应该如何分发？",
+      "options": {
+        "A": "让用户从网站下载APK",
+        "B": "使用私有Google Play应用托管",
+        "C": "通过邮件发送APK文件",
+        "D": "使用MDM侧载应用"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "私有Google Play允许组织上传和分发内部应用。应用可以设置为仅对组织用户可见，通过托管Google Play分发到设备。这是推荐的企业应用分发方式，比侧载APK更安全、更易管理。管理员可以控制哪些用户或设备可以安装特定应用。"
+    },
+    {
+      "id": "gcp-pwa-set3-q9",
+      "examId": "gcp-pwa-set3",
+      "setNumber": 3,
+      "domain": "监控组织运营",
+      "question": "安全团队报告收到大量有关可疑登录尝试的警报。您需要分析是否存在针对组织的凭据攻击。应该使用什么工具？",
+      "options": {
+        "A": "登录审核日志",
+        "B": "安全调查工具",
+        "C": "Alert Center分析",
+        "D": "以上所有结合使用"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "调查凭据攻击需要多个工具：1) Alert Center查看触发的安全警报和详情；2) 登录审核日志分析失败登录的模式（时间、来源IP、目标用户）；3) 安全调查工具进行深度分析和关联。结合这些工具可以全面了解攻击规模和特征，并采取相应措施。"
+    },
+    {
+      "id": "gcp-pwa-set3-q10",
+      "examId": "gcp-pwa-set3",
+      "setNumber": 3,
+      "domain": "支持业务转型",
+      "question": "公司希望使用Google Workspace Marketplace中的应用来增强功能。在批准安装前应该评估什么？",
+      "options": {
+        "A": "应用的评分和评论",
+        "B": "应用请求的数据访问权限范围",
+        "C": "应用开发者的信誉",
+        "D": "以上所有"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "评估Marketplace应用时应考虑：1) 评分和评论了解其他用户体验；2) 数据访问权限 - 应用是否请求过多权限；3) 开发者信誉 - 是否是知名、可信的公司；4) 隐私政策和服务条款；5) 是否通过Google安全审核。全面评估可降低安装恶意或低质量应用的风险。"
+    },
+    {
+      "id": "gcp-pwa-set3-q11",
+      "examId": "gcp-pwa-set3",
+      "setNumber": 3,
+      "domain": "管理对象",
+      "question": "组织需要实施最小权限原则，确保管理员只有执行工作所需的最少权限。如何实现？",
+      "options": {
+        "A": "为每个管理任务创建专门的管理员账号",
+        "B": "使用自定义管理员角色分配精确权限",
+        "C": "所有管理员使用超级管理员账号",
+        "D": "轮换管理员权限"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "自定义管理员角色允许创建包含特定权限的角色，只授予管理员执行其职责所需的确切权限。例如，帮助台只需重置密码权限，不需要修改安全设置权限。这比使用预定义角色或超级管理员更精确，符合最小权限原则。"
+    },
+    {
+      "id": "gcp-pwa-set3-q12",
+      "examId": "gcp-pwa-set3",
+      "setNumber": 3,
+      "domain": "配置服务",
+      "question": "公司需要在Google Calendar中为所有会议室配置自动接受会议请求的策略，但排除私人预订。应该如何配置？",
+      "options": {
+        "A": "为每个会议室单独配置",
+        "B": "在资源设置中配置自动接受策略",
+        "C": "使用日历共享设置",
+        "D": "使用Calendar API脚本"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "日历资源设置允许管理员配置会议室的预订策略，包括自动接受会议请求、预订时长限制、提前预订时间等。可以批量应用到所有资源或特定资源类型。对于复杂需求（如排除特定条件），可能需要结合API进行高级配置。"
+    },
+    {
+      "id": "gcp-pwa-set3-q13",
+      "examId": "gcp-pwa-set3",
+      "setNumber": 3,
+      "domain": "管理终端节点",
+      "question": "用户的Chromebook被盗。您已经远程禁用了设备。小偷尝试重置设备会发生什么？",
+      "options": {
+        "A": "设备可以正常重置和使用",
+        "B": "设备被永久锁定，无法使用",
+        "C": "设备重置后仍需要原账号登录",
+        "D": "设备可以使用但无法访问企业数据"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "注册到企业管理的Chromebook启用了强制重新注册功能。即使设备被恢复出厂设置，它仍然会要求使用原组织账号登录并重新注册。这防止被盗设备被他人使用。如果设备被禁用，即使用正确账号登录也无法使用。"
+    },
+    {
+      "id": "gcp-pwa-set3-q14",
+      "examId": "gcp-pwa-set3",
+      "setNumber": 3,
+      "domain": "监控组织运营",
+      "question": "您需要设置监控以检测异常的Drive文件下载活动（如单用户短时间内下载大量文件）。应该如何实现？",
+      "options": {
+        "A": "手动查看Drive审核日志",
+        "B": "配置BigQuery日志导出并创建自定义查询",
+        "C": "使用Alert Center的数据外泄警报",
+        "D": "以上都可以，但C最简单"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "Alert Center可以配置数据外泄检测警报，自动检测异常的下载行为并发出通知。这是最简单的方法。对于更复杂的自定义检测，可以将审核日志导出到BigQuery，编写查询识别特定模式。手动查看日志不可扩展，不适合持续监控。"
+    },
+    {
+      "id": "gcp-pwa-set3-q15",
+      "examId": "gcp-pwa-set3",
+      "setNumber": 3,
+      "domain": "支持业务转型",
+      "question": "公司希望使用Google Workspace的API开发自定义集成。开发人员需要什么才能开始？",
+      "options": {
+        "A": "超级管理员权限",
+        "B": "Google Cloud项目和适当的API启用",
+        "C": "企业版许可证",
+        "D": "开发者账号"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "使用Workspace API需要：1) 创建Google Cloud项目；2) 启用所需的API（如Directory API、Gmail API等）；3) 配置OAuth同意屏幕；4) 创建凭据（OAuth客户端ID或服务账号）。管理员需要在管理控制台授权应用访问组织数据。不需要特定许可证，但某些功能可能有版本限制。"
+    },
+    {
+      "id": "gcp-pwa-set3-q16",
+      "examId": "gcp-pwa-set3",
+      "setNumber": 3,
+      "domain": "管理对象",
+      "question": "您需要为承包商创建账号，他们应该能够访问Google Meet和Chat，但不能使用Gmail和Drive。应该如何配置？",
+      "options": {
+        "A": "购买受限许可证",
+        "B": "创建账号并在服务设置中禁用Gmail和Drive",
+        "C": "使用访客访问",
+        "D": "创建外部群组"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "可以为承包商创建完整的Workspace用户账号，然后将他们放在特定的组织单位中，在该OU的服务设置中关闭Gmail和Drive服务，只保留Meet和Chat。这样承包商可以使用公司身份参加会议和聊天，但无法访问邮件和文件存储。"
+    },
+    {
+      "id": "gcp-pwa-set3-q17",
+      "examId": "gcp-pwa-set3",
+      "setNumber": 3,
+      "domain": "配置服务",
+      "question": "组织的邮件域名被列入黑名单，导致外发邮件被其他服务器拒绝。应该如何解决？",
+      "options": {
+        "A": "联系Google支持",
+        "B": "检查SPF/DKIM/DMARC配置并请求从黑名单移除",
+        "C": "更换域名",
+        "D": "使用其他邮件服务发送"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "域名被列入黑名单通常因为：1) 邮件验证配置错误导致邮件被认为是伪造的；2) 账号被盗用发送垃圾邮件。解决步骤：检查并修复SPF/DKIM/DMARC配置，确保账号安全，然后联系黑名单运营商（如Spamhaus、Barracuda）请求移除。Google支持可以协助调查但不能直接移除外部黑名单。"
+    },
+    {
+      "id": "gcp-pwa-set3-q18",
+      "examId": "gcp-pwa-set3",
+      "setNumber": 3,
+      "domain": "管理终端节点",
+      "question": "公司希望收集Mac设备的库存信息并推送配置文件。Google Workspace提供什么功能？",
+      "options": {
+        "A": "与Windows设备相同的完整MDM功能",
+        "B": "通过端点验证收集基本设备信息，高级管理需要第三方工具",
+        "C": "不支持Mac设备管理",
+        "D": "仅支持Chrome浏览器管理"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Google Workspace对Mac设备的原生管理能力有限。端点验证可以收集基本设备信息（如操作系统版本、加密状态）用于上下文感知访问决策。但完整的MDM功能（配置文件推送、应用管理等）通常需要第三方工具（如Jamf）与Workspace集成使用。"
+    },
+    {
+      "id": "gcp-pwa-set3-q19",
+      "examId": "gcp-pwa-set3",
+      "setNumber": 3,
+      "domain": "监控组织运营",
+      "question": "审计员要求您提供过去90天内所有管理员操作的日志。应该如何导出？",
+      "options": {
+        "A": "从管理控制台导出审核日志",
+        "B": "使用Reports API导出",
+        "C": "联系Google获取日志",
+        "D": "从BigQuery导出（如果已配置）"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "管理控制台的审核日志页面允许筛选和导出日志数据。可以按日期范围、事件类型、管理员等条件筛选，然后导出为CSV格式。对于大量数据或自动化需求，可以使用Reports API。BigQuery导出需要提前配置，如果没有配置则无法使用。"
+    },
+    {
+      "id": "gcp-pwa-set3-q20",
+      "examId": "gcp-pwa-set3",
+      "setNumber": 3,
+      "domain": "支持业务转型",
+      "question": "公司正在评估Google Workspace与竞争对手产品的差异。Workspace的主要优势是什么？",
+      "options": {
+        "A": "更便宜",
+        "B": "云原生协作、实时编辑、与Google服务的深度集成",
+        "C": "更多功能",
+        "D": "更好的离线支持"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Google Workspace的核心优势包括：1) 真正的云原生架构，无需客户端软件；2) 实时协作编辑，多人同时编辑同一文档；3) 与Google搜索、AI（Gemini）和Google Cloud的深度集成；4) 简单的管理和部署；5) 跨设备无缝体验。价格和功能对比取决于具体版本和需求。"
+    },
+    {
+      "id": "gcp-pwa-set3-q21",
+      "examId": "gcp-pwa-set3",
+      "setNumber": 3,
+      "domain": "管理对象",
+      "question": "您需要实施账号生命周期管理，自动化新员工入职和离职流程。最佳方法是什么？",
+      "options": {
+        "A": "手动在管理控制台操作",
+        "B": "使用GCDS与HR系统同步",
+        "C": "使用Admin SDK API与HR系统集成",
+        "D": "B或C，取决于现有基础设施"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "自动化账号生命周期管理可以通过：1) GCDS - 如果HR系统可以将数据同步到LDAP目录，GCDS可以自动同步到Workspace；2) Admin SDK API - 直接与HR系统集成，通过API自动创建/暂停/删除账号。选择哪种方法取决于现有IT基础设施和集成能力。"
+    },
+    {
+      "id": "gcp-pwa-set3-q22",
+      "examId": "gcp-pwa-set3",
+      "setNumber": 3,
+      "domain": "配置服务",
+      "question": "组织需要防止员工使用Gmail将公司文件发送到个人邮箱。应该配置什么？",
+      "options": {
+        "A": "DLP规则检测并阻止",
+        "B": "内容合规规则阻止到外部的附件",
+        "C": "阻止所有外部邮件",
+        "D": "A或B，取决于具体需求"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "防止数据外泄可以使用：1) DLP规则 - 检测特定类型的敏感内容（如机密文档标记）并阻止或警告；2) 内容合规规则 - 基于发件人/收件人条件阻止所有附件到外部。DLP更精准但需要定义检测规则，合规规则更简单但可能影响正常业务通讯。"
+    },
+    {
+      "id": "gcp-pwa-set3-q23",
+      "examId": "gcp-pwa-set3",
+      "setNumber": 3,
+      "domain": "管理终端节点",
+      "question": "员工使用个人Android手机工作，公司希望保护工作数据但不想完全控制设备。最合适的管理模式是什么？",
+      "options": {
+        "A": "设备所有者模式",
+        "B": "工作配置文件模式",
+        "C": "基本移动管理",
+        "D": "无设备管理"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "工作配置文件模式是BYOD的理想选择。它在设备上创建隔离的工作容器，公司只管理工作配置文件中的应用和数据，不能访问个人应用、照片或数据。用户保持对个人空间的完全控制。设备所有者模式控制整个设备，不适合BYOD。"
+    },
+    {
+      "id": "gcp-pwa-set3-q24",
+      "examId": "gcp-pwa-set3",
+      "setNumber": 3,
+      "domain": "监控组织运营",
+      "question": "您需要确保组织满足ISO 27001安全认证要求。Google Workspace如何帮助实现合规？",
+      "options": {
+        "A": "自动符合所有ISO 27001要求",
+        "B": "Google已获得ISO 27001认证，并提供安全控制和审核能力",
+        "C": "需要购买额外的合规模块",
+        "D": "不支持ISO 27001"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Google Workspace本身已获得ISO 27001、SOC 2等多项认证。组织可以利用Workspace的安全功能（访问控制、加密、审核日志等）来满足合规要求。但最终合规责任在于组织，需要正确配置和使用这些功能。Google提供合规文档和报告来支持客户的审计需求。"
+    },
+    {
+      "id": "gcp-pwa-set3-q25",
+      "examId": "gcp-pwa-set3",
+      "setNumber": 3,
+      "domain": "支持业务转型",
+      "question": "公司决定为1000名现场员工部署Google Workspace，但这些员工没有公司邮箱且流动性高。最佳解决方案是什么？",
+      "options": {
+        "A": "为每个员工创建完整的Workspace账号",
+        "B": "使用Workspace Frontline许可证",
+        "C": "让员工使用个人Gmail账号",
+        "D": "不为现场员工部署Workspace"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Workspace Frontline是专为一线/现场员工设计的许可证，提供必要的通讯和协作工具（Chat、Meet、简化版Drive等）at lower cost。适合高流动性的员工群体，如零售、制造业员工。完整的Workspace许可证对这类用户来说可能功能过多且成本高。"
+    },
+    {
+      "id": "gcp-pwa-set3-q26",
+      "examId": "gcp-pwa-set3",
+      "setNumber": 3,
+      "domain": "管理对象",
+      "question": "您需要为临时项目创建多个临时用户账号，项目结束后账号应自动过期。应该如何配置？",
+      "options": {
+        "A": "手动记录并在到期日删除",
+        "B": "使用账号有效期设置",
+        "C": "使用动态群组",
+        "D": "使用Admin SDK API设置自动化"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "Google Workspace管理控制台没有内置的账号自动过期功能。实现自动过期需要使用Admin SDK API编写脚本：创建账号时记录预期过期日期，然后使用计划任务（如Cloud Scheduler + Cloud Functions）在到期日自动暂停或删除账号。这是实现账号自动生命周期管理的常见模式。"
+    },
+    {
+      "id": "gcp-pwa-set3-q27",
+      "examId": "gcp-pwa-set3",
+      "setNumber": 3,
+      "domain": "配置服务",
+      "question": "组织需要在Google Docs中实现文档水印功能，显示查看者的邮箱地址。应该如何实现？",
+      "options": {
+        "A": "在Docs设置中启用水印",
+        "B": "使用DLP配合IRM",
+        "C": "Workspace原生不支持动态水印，需要使用第三方工具",
+        "D": "使用Apps Script添加水印"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "Google Workspace原生不支持在文档上显示动态水印（如查看者邮箱）。要实现此功能，需要使用第三方DLP或文档安全工具（如Virtru、BetterCloud等）集成。某些企业版功能如IRM可以限制下载/打印，但不提供可见水印。"
+    },
+    {
+      "id": "gcp-pwa-set3-q28",
+      "examId": "gcp-pwa-set3",
+      "setNumber": 3,
+      "domain": "管理终端节点",
+      "question": "公司需要为特定部门的Chromebook配置不同的主页和书签。应该如何实现？",
+      "options": {
+        "A": "让用户自行配置",
+        "B": "在Chrome设备管理中为特定OU配置浏览器设置",
+        "C": "使用组策略",
+        "D": "为每个部门购买不同型号的Chromebook"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Chrome设备管理允许按组织单位配置浏览器设置。将不同部门的Chromebook放入不同的OU，然后为每个OU配置特定的主页、强制书签、应用等。这些设置会自动应用到该OU中的所有设备。这是管理企业Chromebook配置的标准方法。"
+    },
+    {
+      "id": "gcp-pwa-set3-q29",
+      "examId": "gcp-pwa-set3",
+      "setNumber": 3,
+      "domain": "监控组织运营",
+      "question": "您需要配置Alert Center将特定类型的警报通过邮件发送给安全团队。应该如何配置？",
+      "options": {
+        "A": "Alert Center不支持邮件通知",
+        "B": "配置警报规则并添加邮件通知接收者",
+        "C": "使用Cloud Monitoring",
+        "D": "使用第三方SIEM集成"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Alert Center允许配置邮件通知。可以创建通知规则，选择特定类型的警报（如安全警报、用户报告等），并指定接收通知的邮箱地址或群组。这样安全团队可以及时收到关键警报，不需要持续监控Alert Center界面。"
+    },
+    {
+      "id": "gcp-pwa-set3-q30",
+      "examId": "gcp-pwa-set3",
+      "setNumber": 3,
+      "domain": "支持业务转型",
+      "question": "公司希望创建一个员工入职培训流程，使用Google Workspace工具。最佳工具组合是什么？",
+      "options": {
+        "A": "仅使用Gmail发送培训材料",
+        "B": "Sites创建培训门户 + Forms创建测验 + Calendar安排培训课程",
+        "C": "仅使用Google Classroom",
+        "D": "购买第三方LMS"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Google Workspace提供完整的培训解决方案：1) Sites创建入职培训门户，组织资源和链接；2) Forms创建培训后测验，收集反馈；3) Calendar安排培训课程和提醒；4) Drive存储培训材料；5) Meet进行在线培训。这种组合不需要额外费用，充分利用现有工具。"
+    },
+    {
+      "id": "gcp-pwa-set3-q31",
+      "examId": "gcp-pwa-set3",
+      "setNumber": 3,
+      "domain": "管理对象",
+      "question": "您需要确保用户无法创建未经批准的Google群组。应该如何配置？",
+      "options": {
+        "A": "禁用所有群组创建",
+        "B": "在群组设置中限制群组创建权限给管理员",
+        "C": "使用审批工作流",
+        "D": "B是最常见的方法"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "在管理控制台的群组设置中，可以配置谁可以创建群组：所有用户、仅管理员、或特定群组的成员。对于需要控制群组创建的组织，常见做法是限制只有管理员或指定的群组管理员可以创建群组。如果需要用户请求新群组，需要建立手动审批流程。"
+    },
+    {
+      "id": "gcp-pwa-set3-q32",
+      "examId": "gcp-pwa-set3",
+      "setNumber": 3,
+      "domain": "配置服务",
+      "question": "用户报告他们无法从Gmail发送大于25MB的附件，即使使用Drive链接也失败。可能的原因是什么？",
+      "options": {
+        "A": "Gmail有硬性25MB限制",
+        "B": "收件人的邮件服务器拒绝大附件",
+        "C": "Drive共享被禁用或受限",
+        "D": "以上都可能"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "发送大文件失败可能有多种原因：1) Gmail附件限制25MB，超过需要用Drive链接；2) 即使用Drive链接，如果管理员禁用了外部共享，外部收件人无法访问；3) 收件人的邮件服务器可能对邮件大小有自己的限制；4) Drive存储已满。需要检查具体错误信息来确定原因。"
+    },
+    {
+      "id": "gcp-pwa-set3-q33",
+      "examId": "gcp-pwa-set3",
+      "setNumber": 3,
+      "domain": "管理终端节点",
+      "question": "您需要确保丢失的移动设备在24小时内未找回时自动擦除。应该如何配置？",
+      "options": {
+        "A": "配置设备不活动政策",
+        "B": "这需要手动操作，Workspace不支持自动擦除",
+        "C": "使用第三方MDM工具",
+        "D": "配置上下文感知访问超时"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Google Workspace的移动设备管理不支持基于时间的自动擦除（如设备离线X小时后自动擦除）。远程擦除需要管理员手动执行。如果需要自动化此流程，可能需要使用第三方MDM工具或结合API实现自定义逻辑。建议建立明确的设备丢失报告和响应流程。"
+    },
+    {
+      "id": "gcp-pwa-set3-q34",
+      "examId": "gcp-pwa-set3",
+      "setNumber": 3,
+      "domain": "监控组织运营",
+      "question": "您需要跟踪特定文件的所有访问和编辑活动，用于敏感项目的审计。最佳方法是什么？",
+      "options": {
+        "A": "查看文件的版本历史",
+        "B": "使用Drive审核日志按文件ID筛选",
+        "C": "使用安全调查工具",
+        "D": "以上都可以提供不同角度的信息"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "跟踪文件活动可以使用多种方法：1) 版本历史 - 查看编辑内容变化和编辑者；2) Drive审核日志 - 查看查看、下载、共享等所有活动；3) 安全调查工具 - 进行深度调查和导出数据。根据审计需求选择合适的工具，综合使用可以获得最完整的活动记录。"
+    },
+    {
+      "id": "gcp-pwa-set3-q35",
+      "examId": "gcp-pwa-set3",
+      "setNumber": 3,
+      "domain": "支持业务转型",
+      "question": "公司正在进行数字化转型，希望减少对本地基础设施的依赖。Google Workspace如何支持这一目标？",
+      "options": {
+        "A": "Workspace需要本地服务器",
+        "B": "完全云端运行，无需本地基础设施",
+        "C": "需要混合部署",
+        "D": "仅适用于小型企业"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Google Workspace是完全基于云的SaaS解决方案，不需要任何本地服务器或基础设施。所有服务（邮件、存储、协作工具等）都在Google的云端运行。这大大减少了IT运维负担，支持随时随地访问，是数字化转型和云优先战略的理想选择。某些集成场景可能需要GCDS等工具，但核心服务完全云端。"
+    },
+    {
+      "id": "gcp-pwa-set3-q36",
+      "examId": "gcp-pwa-set3",
+      "setNumber": 3,
+      "domain": "管理对象",
+      "question": "组织有多个子公司，每个子公司需要独立的品牌形象（不同的域名），但共享统一的IT管理。应该如何配置？",
+      "options": {
+        "A": "为每个子公司创建单独的Workspace账号",
+        "B": "在单个Workspace账号中添加多个域名",
+        "C": "使用Google Cloud Identity",
+        "D": "B是标准做法"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "Google Workspace支持在单个账号中添加多个域名（主域名 + 辅域名）。每个子公司可以使用自己的域名邮箱地址，同时所有用户由同一管理控制台管理。这保持了统一管理的同时支持不同的品牌身份。单独的账号会增加管理复杂性和成本。"
+    },
+    {
+      "id": "gcp-pwa-set3-q37",
+      "examId": "gcp-pwa-set3",
+      "setNumber": 3,
+      "domain": "配置服务",
+      "question": "您需要配置Gmail以支持BIMI（品牌指示器消息识别），在收件人邮箱中显示公司Logo。需要什么？",
+      "options": {
+        "A": "仅配置Gmail设置",
+        "B": "配置DMARC enforcement + BIMI DNS记录 + VMC证书",
+        "C": "联系Google启用",
+        "D": "购买Enterprise Plus许可证"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "实施BIMI需要：1) 配置DMARC并设置为p=quarantine或p=reject（强制执行模式）；2) 创建BIMI DNS记录，包含Logo URL；3) 获取VMC（验证标记证书）证明Logo所有权。这些配置在DNS和证书层面完成，Gmail会自动支持显示符合BIMI标准的发件人Logo。"
+    },
+    {
+      "id": "gcp-pwa-set3-q38",
+      "examId": "gcp-pwa-set3",
+      "setNumber": 3,
+      "domain": "管理终端节点",
+      "question": "公司需要为远程员工提供虚拟桌面访问公司应用。Google Workspace如何支持？",
+      "options": {
+        "A": "Workspace包含VDI功能",
+        "B": "使用Chrome远程桌面访问物理机器",
+        "C": "Workspace主要是SaaS，VDI需要Google Cloud或第三方解决方案",
+        "D": "Chromebook作为瘦客户端访问VDI"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "Google Workspace本身不提供VDI（虚拟桌面基础设施）功能。对于需要虚拟桌面的场景：1) 大多数Workspace应用可直接在浏览器中使用，无需VDI；2) 需要传统Windows应用可以使用Google Cloud VDI解决方案或第三方（如Citrix）；3) Chrome远程桌面可用于访问特定物理机器但不是企业VDI解决方案。"
+    },
+    {
+      "id": "gcp-pwa-set3-q39",
+      "examId": "gcp-pwa-set3",
+      "setNumber": 3,
+      "domain": "监控组织运营",
+      "question": "您需要确保组织保持良好的邮件发送信誉，监控邮件投递率。应该使用什么工具？",
+      "options": {
+        "A": "Gmail日志搜索",
+        "B": "Postmaster Tools和邮件日志",
+        "C": "Alert Center",
+        "D": "第三方邮件监控工具"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Google Postmaster Tools提供域名邮件发送的健康指标，包括发送信誉、垃圾邮件率、投递错误等。结合Gmail日志搜索可以查看特定邮件的投递状态和错误。这些工具帮助识别和解决邮件投递问题，维护域名声誉。是监控邮件健康的首选工具。"
+    },
+    {
+      "id": "gcp-pwa-set3-q40",
+      "examId": "gcp-pwa-set3",
+      "setNumber": 3,
+      "domain": "支持业务转型",
+      "question": "公司决定从Google Workspace迁移到另一个平台（假设场景）。应该如何安全地执行？",
+      "options": {
+        "A": "立即删除所有账号",
+        "B": "先使用Google Takeout或Data Export导出所有数据，验证后再迁移",
+        "C": "让用户自行备份数据",
+        "D": "数据会自动迁移"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "安全迁移离开Workspace应：1) 使用管理员数据导出工具或Google Takeout导出所有用户数据；2) 验证导出的数据完整性；3) 将数据导入新平台；4) 设置邮件转发过渡期；5) 确认所有数据成功迁移后再删除账号。切勿在数据备份前删除账号，这会导致数据永久丢失。"
+    }
+  ]
+}

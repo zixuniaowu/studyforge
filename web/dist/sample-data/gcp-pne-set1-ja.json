@@ -1,0 +1,663 @@
+{
+  "exam": {
+    "id": "gcp-pne-set1-ja",
+    "name": "Professional Cloud Network Engineer 練習問題 Set 1",
+    "code": "PNE",
+    "provider": "Google Cloud",
+    "language": "ja",
+    "description": "Google Cloud Professional Cloud Network Engineer 認定練習問題第1セット",
+    "totalQuestions": 40,
+    "passingScore": 70,
+    "examTime": 120,
+    "domains": [
+      "クラウドネットワークの設計と計画",
+      "VPCネットワークの実装",
+      "ネットワークサービスの構成",
+      "ハイブリッド相互接続の実装",
+      "ネットワーク運用の管理と監視"
+    ],
+    "tags": ["Google Cloud", "Network", "Professional"]
+  },
+  "questions": [
+    {
+      "id": "gcp-pne-set1-ja-q1",
+      "examId": "gcp-pne-set1-ja",
+      "setNumber": 1,
+      "domain": "クラウドネットワークの設計と計画",
+      "question": "あなたの会社は、複数のリージョンでアプリケーションをホストする必要があります。各リージョンには独自のサブネットがありますが、すべてのリソースは同じネットワーク内で通信できる必要があります。どのようなネットワーク設計を選択すべきですか？",
+      "options": {
+        "A": "各リージョンに独立したVPCを作成し、VPCピアリングで接続する",
+        "B": "単一のグローバルVPCを作成し、複数のリージョンにサブネットを配置する",
+        "C": "各リージョンにVPCを作成し、Cloud VPNで接続する",
+        "D": "各リージョンに独立したプロジェクトとVPCを作成する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "GCPのVPCはグローバルリソースであり、単一のVPC内で複数のリージョンにサブネットを作成できます。これにより、すべてのリソースが追加のネットワーク構成なしで相互に通信でき、管理が簡素化されます。VPCピアリングやVPNは異なるVPC間の接続に必要ですが、単一のグローバルVPCでは不要です。"
+    },
+    {
+      "id": "gcp-pne-set1-ja-q2",
+      "examId": "gcp-pne-set1-ja",
+      "setNumber": 1,
+      "domain": "VPCネットワークの実装",
+      "question": "VPCネットワークで、特定のVMインスタンスへの外部からのアクセスを許可する必要があります。他のすべてのVMは外部からのアクセスをブロックする必要があります。最も効率的な方法は何ですか？",
+      "options": {
+        "A": "すべてのVMに外部IPアドレスを割り当て、ファイアウォールルールで制御する",
+        "B": "許可するVMにネットワークタグを付け、そのタグを対象とした入力ファイアウォールルールを作成する",
+        "C": "各VMに個別のファイアウォールルールを作成する",
+        "D": "外部アクセスが必要なVMを別のサブネットに移動する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "ネットワークタグを使用することで、特定のVMグループに対してファイアウォールルールを効率的に適用できます。タグを対象としたファイアウォールルールを作成することで、許可されたVMのみが外部トラフィックを受信できます。これは個別のルール作成よりも管理しやすく、サブネットの変更も不要です。"
+    },
+    {
+      "id": "gcp-pne-set1-ja-q3",
+      "examId": "gcp-pne-set1-ja",
+      "setNumber": 1,
+      "domain": "ネットワークサービスの構成",
+      "question": "複数のリージョンにまたがるWebアプリケーションをデプロイしています。ユーザーを最も近いバックエンドに自動的にルーティングし、単一のグローバルIPアドレスを使用する必要があります。どのロードバランサーを選択すべきですか？",
+      "options": {
+        "A": "内部TCP/UDPロードバランサー",
+        "B": "外部TCP/UDPネットワークロードバランサー",
+        "C": "外部HTTP(S)ロードバランサー",
+        "D": "内部HTTP(S)ロードバランサー"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "外部HTTP(S)ロードバランサーは、単一のグローバルエニーキャストIPアドレスを提供し、Googleのグローバルネットワークを使用してユーザーを最も近い健全なバックエンドにルーティングします。これにより、低レイテンシと高可用性が実現されます。内部ロードバランサーは外部クライアントからアクセスできません。"
+    },
+    {
+      "id": "gcp-pne-set1-ja-q4",
+      "examId": "gcp-pne-set1-ja",
+      "setNumber": 1,
+      "domain": "ハイブリッド相互接続の実装",
+      "question": "オンプレミスのデータセンターをGoogle Cloudに接続する必要があります。接続は高帯域幅と低レイテンシを必要とし、公共のインターネットを経由してはいけません。最適な接続オプションは何ですか？",
+      "options": {
+        "A": "Cloud VPN",
+        "B": "Dedicated Interconnect",
+        "C": "Partner Interconnect",
+        "D": "Direct Peering"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Dedicated Interconnectは、オンプレミスネットワークとGoogleのネットワーク間に物理的な接続を提供し、高帯域幅（10Gbpsまたは100Gbps）と低レイテンシを実現します。トラフィックは公共のインターネットを経由せず、より信頼性が高くセキュアな接続が可能です。Cloud VPNはインターネット経由であり、Partner Interconnectはサービスプロバイダー経由です。"
+    },
+    {
+      "id": "gcp-pne-set1-ja-q5",
+      "examId": "gcp-pne-set1-ja",
+      "setNumber": 1,
+      "domain": "ネットワーク運用の管理と監視",
+      "question": "VPCネットワークのトラブルシューティングを行っています。2つのVM間でパケットがドロップされているかどうかを確認する必要があります。どのツールを使用すべきですか？",
+      "options": {
+        "A": "Cloud Monitoring",
+        "B": "VPCフローログ",
+        "C": "Network Intelligence Centerの接続テスト",
+        "D": "Cloud Trace"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "Network Intelligence Centerの接続テストは、エンドツーエンドのネットワークパスを分析し、パケットがドロップされる場所と理由を特定できます。ファイアウォールルール、ルート、その他の構成をチェックして、接続の問題を診断します。VPCフローログはトラフィックを記録しますが、接続の問題を直接診断するものではありません。"
+    },
+    {
+      "id": "gcp-pne-set1-ja-q6",
+      "examId": "gcp-pne-set1-ja",
+      "setNumber": 1,
+      "domain": "クラウドネットワークの設計と計画",
+      "question": "組織内の複数のチームがそれぞれのプロジェクトでリソースを管理していますが、共通のネットワークインフラストラクチャを使用する必要があります。最適なネットワーク設計は何ですか？",
+      "options": {
+        "A": "各チームが独自のVPCを作成し、VPCピアリングで接続する",
+        "B": "共有VPCを使用し、ホストプロジェクトでネットワークを管理する",
+        "C": "すべてのチームが同じプロジェクト内で作業する",
+        "D": "Cloud VPNを使用してチーム間の接続を確立する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "共有VPCを使用すると、中央のホストプロジェクトでネットワークリソースを管理しながら、サービスプロジェクトで各チームがコンピューティングリソースを独立して管理できます。これにより、ネットワーク管理の一元化と、プロジェクト間のリソース分離が実現されます。"
+    },
+    {
+      "id": "gcp-pne-set1-ja-q7",
+      "examId": "gcp-pne-set1-ja",
+      "setNumber": 1,
+      "domain": "VPCネットワークの実装",
+      "question": "プライベートIPアドレスのみを持つVMから、Google Cloud Storage APIにアクセスする必要があります。どのように構成すべきですか？",
+      "options": {
+        "A": "VMに外部IPアドレスを割り当てる",
+        "B": "Cloud NATを構成する",
+        "C": "サブネットでプライベートGoogleアクセスを有効にする",
+        "D": "VPNトンネルを介してアクセスする"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "プライベートGoogleアクセスを有効にすると、外部IPアドレスを持たないVMがGoogle APIとサービス（Cloud Storageを含む）にアクセスできます。トラフィックはGoogleの内部ネットワークを通過し、インターネットに出ることはありません。Cloud NATは一般的なインターネットアクセス用であり、Google APIへのアクセスには不要です。"
+    },
+    {
+      "id": "gcp-pne-set1-ja-q8",
+      "examId": "gcp-pne-set1-ja",
+      "setNumber": 1,
+      "domain": "ネットワークサービスの構成",
+      "question": "HTTP(S)ロードバランサーの背後にあるバックエンドサービスに、Cloud Armorセキュリティポリシーを適用する必要があります。主にDDoS攻撃からの保護を目的としています。どの機能を使用すべきですか？",
+      "options": {
+        "A": "Cloud Armorの事前構成ルール",
+        "B": "Cloud Armorのカスタムルール（IPアドレスによるブロック）",
+        "C": "Cloud Armorの適応型保護",
+        "D": "Cloud ArmorのWAFルール"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "Cloud Armorの適応型保護は、機械学習を使用してDDoS攻撃を検出し、自動的に保護ルールを提案します。これはアプリケーションレイヤー（レイヤー7）のDDoS攻撃から保護するために設計されています。事前構成ルールはOWASPトップ10などの既知の脆弱性用、カスタムルールは特定のIPブロック用です。"
+    },
+    {
+      "id": "gcp-pne-set1-ja-q9",
+      "examId": "gcp-pne-set1-ja",
+      "setNumber": 1,
+      "domain": "ハイブリッド相互接続の実装",
+      "question": "Cloud Routerを使用してオンプレミスネットワークとBGPセッションを確立しています。GCPからオンプレミスへ通知されるルートを制御する必要があります。どのように構成すべきですか？",
+      "options": {
+        "A": "VPCファイアウォールルールを使用する",
+        "B": "Cloud Routerでカスタムルート通知を構成する",
+        "C": "オンプレミスルーターでルートフィルタリングを構成する",
+        "D": "VPCルートの優先度を調整する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Cloud Routerのカスタムルート通知機能を使用すると、BGPピアに通知されるルートを制御できます。デフォルトですべてのサブネットルートを通知する代わりに、特定のサブネットのみを通知したり、カスタムIP範囲を追加したりできます。これにより、ルート集約や特定のルートの通知が可能になります。"
+    },
+    {
+      "id": "gcp-pne-set1-ja-q10",
+      "examId": "gcp-pne-set1-ja",
+      "setNumber": 1,
+      "domain": "ネットワーク運用の管理と監視",
+      "question": "VPCフローログを有効にして、ネットワークトラフィックを分析したいと考えています。しかし、ログの量が多くコストが懸念されます。どのようにコストを最適化すべきですか？",
+      "options": {
+        "A": "VPCフローログを無効にする",
+        "B": "サンプリングレートを調整し、集約間隔を長くする",
+        "C": "特定のVMにのみVPCフローログを有効にする",
+        "D": "ログをCloud Storageにのみエクスポートする"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "VPCフローログのサンプリングレートを下げる（例：100%から50%に）と、収集されるログの量が減少し、コストが削減されます。また、集約間隔を長くすると（例：5秒から15分に）、ログエントリが集約され、ストレージとクエリのコストが削減されます。これにより、可視性を維持しながらコストを最適化できます。"
+    },
+    {
+      "id": "gcp-pne-set1-ja-q11",
+      "examId": "gcp-pne-set1-ja",
+      "setNumber": 1,
+      "domain": "クラウドネットワークの設計と計画",
+      "question": "2つの異なるGoogle Cloudプロジェクト間でVPCネットワークを接続する必要があります。両方のVPCは同じ組織に属しており、低レイテンシの接続が必要です。最適な接続方法は何ですか？",
+      "options": {
+        "A": "Cloud VPN",
+        "B": "VPCピアリング",
+        "C": "共有VPC",
+        "D": "Cloud Interconnect"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "VPCピアリングは、2つのVPCネットワーク間にプライベートなRFC 1918接続を確立し、低レイテンシと高帯域幅を提供します。VPCピアリングは異なるプロジェクト間でも、異なる組織間でも機能します。Cloud VPNは暗号化オーバーヘッドがあり、共有VPCは既存のVPCの接続ではなく新しいネットワーク設計用です。"
+    },
+    {
+      "id": "gcp-pne-set1-ja-q12",
+      "examId": "gcp-pne-set1-ja",
+      "setNumber": 1,
+      "domain": "VPCネットワークの実装",
+      "question": "VPCファイアウォールルールで、特定のサービスアカウントで実行されているVM間の通信のみを許可する必要があります。どのようにルールを構成すべきですか？",
+      "options": {
+        "A": "ソースとターゲットにIPアドレス範囲を使用する",
+        "B": "ソースとターゲットにネットワークタグを使用する",
+        "C": "ソースとターゲットにサービスアカウントを使用する",
+        "D": "インスタンス名でルールを定義する"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "VPCファイアウォールルールでは、サービスアカウントをソースおよびターゲットとして使用できます。これにより、特定のサービスアカウントで実行されているVM間の通信を許可または拒否できます。サービスアカウントベースのルールは、ネットワークタグよりもセキュアで、IAMによって管理されます。"
+    },
+    {
+      "id": "gcp-pne-set1-ja-q13",
+      "examId": "gcp-pne-set1-ja",
+      "setNumber": 1,
+      "domain": "ネットワークサービスの構成",
+      "question": "Cloud CDNを使用してWebサイトのパフォーマンスを向上させています。特定のリクエストがキャッシュされないようにする必要があります。どのように構成すべきですか？",
+      "options": {
+        "A": "Cloud CDNを無効にする",
+        "B": "バックエンドサーバーでCache-Control: no-storeヘッダーを設定する",
+        "C": "CDNポリシーでネガティブキャッシングを有効にする",
+        "D": "URLマップで特定のパスを除外する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "バックエンドサーバーでCache-Control: no-storeまたはprivateヘッダーを設定すると、Cloud CDNはそのレスポンスをキャッシュしません。これにより、特定のコンテンツ（ユーザー固有のデータなど）がキャッシュされないようにできます。Cloud CDNはHTTPキャッシングヘッダーを尊重します。"
+    },
+    {
+      "id": "gcp-pne-set1-ja-q14",
+      "examId": "gcp-pne-set1-ja",
+      "setNumber": 1,
+      "domain": "ハイブリッド相互接続の実装",
+      "question": "HA VPNを使用してオンプレミスデータセンターをGoogle Cloudに接続しています。高可用性を確保するために、どのような構成が必要ですか？",
+      "options": {
+        "A": "1つのVPNトンネルを作成する",
+        "B": "2つの外部IPアドレスを持つHA VPNゲートウェイを作成し、オンプレミスの2つのエンドポイントに接続する",
+        "C": "クラシックVPNを使用する",
+        "D": "1つのCloud Routerで静的ルーティングを使用する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "HA VPNは99.99%のSLAを提供します。これを達成するには、2つのインターフェースを持つHA VPNゲートウェイを作成し、オンプレミス側の2つのVPNエンドポイントに接続します。各インターフェースから両方のオンプレミスエンドポイントにトンネルを作成し、合計4つのトンネルを構成します。BGPとCloud Routerを使用して動的ルーティングを構成します。"
+    },
+    {
+      "id": "gcp-pne-set1-ja-q15",
+      "examId": "gcp-pne-set1-ja",
+      "setNumber": 1,
+      "domain": "ネットワーク運用の管理と監視",
+      "question": "Network Intelligence Centerを使用してVPCネットワークの問題をトラブルシューティングしています。ファイアウォールルールが意図したとおりに機能しているかを確認したいと考えています。どの機能を使用すべきですか？",
+      "options": {
+        "A": "ネットワークトポロジ",
+        "B": "接続テスト",
+        "C": "ファイアウォールインサイト",
+        "D": "パフォーマンスダッシュボード"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "ファイアウォールインサイトは、ファイアウォールルールの使用状況とヒット数を分析し、使用されていないルール、シャドウされたルール（他のルールによって無効化されているルール）、および過度に許可的なルールを特定します。これにより、ファイアウォール構成を最適化し、セキュリティを向上させることができます。"
+    },
+    {
+      "id": "gcp-pne-set1-ja-q16",
+      "examId": "gcp-pne-set1-ja",
+      "setNumber": 1,
+      "domain": "クラウドネットワークの設計と計画",
+      "question": "企業のセキュリティポリシーにより、すべてのアウトバウンドトラフィックは中央のプロキシサーバーを経由する必要があります。GCPでこの要件をどのように実装すべきですか？",
+      "options": {
+        "A": "Cloud NATを使用する",
+        "B": "カスタムルートを作成し、プロキシVMを次のホップとして設定する",
+        "C": "VPCファイアウォールルールでアウトバウンドトラフィックをブロックする",
+        "D": "各VMに外部IPアドレスを割り当てる"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "カスタムルートを作成し、インターネット向けトラフィック（0.0.0.0/0）の次のホップをプロキシVMに設定することで、すべてのアウトバウンドトラフィックをプロキシ経由にできます。プロキシVMはトラフィックを検査し、ポリシーに基づいて許可または拒否します。高可用性のために、内部ロードバランサーを次のホップとして使用することも検討してください。"
+    },
+    {
+      "id": "gcp-pne-set1-ja-q17",
+      "examId": "gcp-pne-set1-ja",
+      "setNumber": 1,
+      "domain": "VPCネットワークの実装",
+      "question": "VPCネットワークで、既存のサブネットのIPアドレス範囲を拡張する必要があります。どのように実行すべきですか？",
+      "options": {
+        "A": "サブネットを削除して新しいサブネットを作成する",
+        "B": "gcloud compute networks subnets expandコマンドを使用する",
+        "C": "VPCを再作成する",
+        "D": "サブネットのIPアドレス範囲は変更できない"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "GCPでは、gcloud compute networks subnets expand-ip-rangeコマンドを使用して、既存のサブネットのIPアドレス範囲を拡張できます。ただし、拡張のみ可能で、縮小はできません。新しい範囲は既存の範囲を含み、他のサブネットと重複してはいけません。リソースのダウンタイムなしで拡張できます。"
+    },
+    {
+      "id": "gcp-pne-set1-ja-q18",
+      "examId": "gcp-pne-set1-ja",
+      "setNumber": 1,
+      "domain": "ネットワークサービスの構成",
+      "question": "内部HTTP(S)ロードバランサーを構成しています。ロードバランサーのIPアドレスに、VPCピアリングで接続された別のVPCからアクセスできるようにする必要があります。どのように構成すべきですか？",
+      "options": {
+        "A": "VPCピアリングでカスタムルートをエクスポートする",
+        "B": "内部HTTP(S)ロードバランサーでグローバルアクセスを有効にする",
+        "C": "外部HTTP(S)ロードバランサーを使用する",
+        "D": "Cloud VPNを使用してVPCを接続する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "内部HTTP(S)ロードバランサー（内部アプリケーションロードバランサー）でグローバルアクセスを有効にすると、同じVPC内の他のリージョンや、VPCピアリングで接続されたVPCからロードバランサーにアクセスできます。デフォルトでは、内部ロードバランサーは同じリージョンの同じVPCからのみアクセス可能です。"
+    },
+    {
+      "id": "gcp-pne-set1-ja-q19",
+      "examId": "gcp-pne-set1-ja",
+      "setNumber": 1,
+      "domain": "ハイブリッド相互接続の実装",
+      "question": "Partner Interconnectを使用してオンプレミスネットワークをGCPに接続しています。接続の帯域幅を増加させる必要があります。どのように実行すべきですか？",
+      "options": {
+        "A": "既存のVLANアタッチメントの容量を増加させる",
+        "B": "追加のVLANアタッチメントを作成し、ECMPで負荷分散する",
+        "C": "Dedicated Interconnectに移行する",
+        "D": "Cloud VPNを追加する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Partner Interconnectの帯域幅を増加させる最良の方法は、追加のVLANアタッチメントを作成することです。Cloud RouterとBGPを使用すると、ECMP（等コストマルチパスルーティング）が自動的に有効になり、複数のアタッチメント間でトラフィックが負荷分散されます。既存の接続を中断せずに容量を拡張できます。"
+    },
+    {
+      "id": "gcp-pne-set1-ja-q20",
+      "examId": "gcp-pne-set1-ja",
+      "setNumber": 1,
+      "domain": "ネットワーク運用の管理と監視",
+      "question": "Cloud Interconnect接続のステータスとパフォーマンスを監視する必要があります。どのツールを使用すべきですか？",
+      "options": {
+        "A": "VPCフローログ",
+        "B": "Cloud Monitoring",
+        "C": "Cloud Trace",
+        "D": "Cloud Profiler"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Cloud Monitoringは、Cloud Interconnect接続の詳細なメトリクスを提供します。これには、送受信バイト数、パケット数、リンクステータス、回線使用率などが含まれます。アラートポリシーを作成して、接続の問題や帯域幅のしきい値超過を通知することもできます。"
+    },
+    {
+      "id": "gcp-pne-set1-ja-q21",
+      "examId": "gcp-pne-set1-ja",
+      "setNumber": 1,
+      "domain": "クラウドネットワークの設計と計画",
+      "question": "GKEクラスターをデプロイする予定です。PodがVPCネットワーク内の他のリソースと直接通信できるようにする必要があります。どのようなクラスター設定を選択すべきですか？",
+      "options": {
+        "A": "ルートベースのクラスター",
+        "B": "VPCネイティブクラスター（別名IP使用）",
+        "C": "プライベートクラスター",
+        "D": "Autopilotクラスター"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "VPCネイティブクラスターでは、PodにVPCのサブネットから別名IP範囲のIPアドレスが割り当てられます。これにより、PodはVPC内の他のリソースとネイティブに通信でき、ファイアウォールルールでPod IPを直接参照できます。ルートベースのクラスターでは、PodIPはVPCのルーティングテーブルに追加されますが、VPCネイティブほど統合されていません。"
+    },
+    {
+      "id": "gcp-pne-set1-ja-q22",
+      "examId": "gcp-pne-set1-ja",
+      "setNumber": 1,
+      "domain": "VPCネットワークの実装",
+      "question": "組織ポリシーを使用して、すべてのVPCにデフォルトネットワークの作成を禁止する必要があります。どの制約を使用すべきですか？",
+      "options": {
+        "A": "compute.skipDefaultNetworkCreation",
+        "B": "compute.restrictVpcPeering",
+        "C": "compute.restrictSharedVpcSubnetworks",
+        "D": "compute.disableSerialPortAccess"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "compute.skipDefaultNetworkCreation組織ポリシー制約を有効にすると、新しいプロジェクトでデフォルトネットワークが自動的に作成されなくなります。これにより、組織のネットワーク標準に従ったVPCのみが作成されることを保証できます。デフォルトネットワークは、望ましくないファイアウォールルールや構成を持つことがあります。"
+    },
+    {
+      "id": "gcp-pne-set1-ja-q23",
+      "examId": "gcp-pne-set1-ja",
+      "setNumber": 1,
+      "domain": "ネットワークサービスの構成",
+      "question": "Cloud DNSでスプリットホライズンDNSを実装する必要があります。内部クライアントはプライベートIPに、外部クライアントはパブリックIPに解決されるようにします。どのように構成すべきですか？",
+      "options": {
+        "A": "2つのパブリックゾーンを作成し、異なるレコードを設定する",
+        "B": "1つのプライベートゾーンと1つのパブリックゾーンを同じドメイン名で作成する",
+        "C": "DNS転送ポリシーを使用してクエリをルーティングする",
+        "D": "Cloud DNSはスプリットホライズンをサポートしていない"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Cloud DNSでスプリットホライズンDNSを実装するには、同じドメイン名でプライベートゾーン（VPC内からのみ表示）とパブリックゾーン（インターネットから表示）を作成します。VPC内のクライアントはプライベートゾーンのレコードに解決され、外部クライアントはパブリックゾーンに解決されます。"
+    },
+    {
+      "id": "gcp-pne-set1-ja-q24",
+      "examId": "gcp-pne-set1-ja",
+      "setNumber": 1,
+      "domain": "ハイブリッド相互接続の実装",
+      "question": "Cloud RouterでBFD（双方向転送検出）を有効にする理由は何ですか？",
+      "options": {
+        "A": "BGPセッションを暗号化する",
+        "B": "ルートの通知を高速化する",
+        "C": "リンク障害の高速検出と高速フェイルオーバーを実現する",
+        "D": "帯域幅を増加させる"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "BFD（双方向転送検出）は、リンク障害をミリ秒単位で検出できる軽量プロトコルです。BGPのキープアライブタイマー（通常は秒単位）よりも高速に障害を検出でき、高速フェイルオーバーを実現します。これにより、Cloud VPNやCloud Interconnect接続の可用性が向上します。"
+    },
+    {
+      "id": "gcp-pne-set1-ja-q25",
+      "examId": "gcp-pne-set1-ja",
+      "setNumber": 1,
+      "domain": "ネットワーク運用の管理と監視",
+      "question": "セキュリティ監査のために、過去30日間のすべてのファイアウォールルール変更を確認する必要があります。どこでこの情報を見つけることができますか？",
+      "options": {
+        "A": "VPCフローログ",
+        "B": "Cloud Audit Logs（管理アクティビティログ）",
+        "C": "Cloud Monitoring",
+        "D": "Network Intelligence Center"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Cloud Audit Logsの管理アクティビティログは、ファイアウォールルールの作成、変更、削除などのすべての管理操作を記録します。これらのログはデフォルトで有効であり、400日間保持されます。ログエクスプローラでfilterを使用して、compute.firewalls関連の操作をクエリできます。"
+    },
+    {
+      "id": "gcp-pne-set1-ja-q26",
+      "examId": "gcp-pne-set1-ja",
+      "setNumber": 1,
+      "domain": "クラウドネットワークの設計と計画",
+      "question": "マルチテナントSaaSアプリケーションを構築しています。各テナントは独自のネットワーク環境を持ち、共有サービスにアクセスできる必要があります。最適なネットワーク設計は何ですか？",
+      "options": {
+        "A": "すべてのテナントを同じVPCの異なるサブネットに配置する",
+        "B": "各テナントに独自のVPCを作成し、共有サービスVPCとピアリングする",
+        "C": "Private Service Connectを使用して共有サービスをエンドポイントとして公開する",
+        "D": "すべてのテナントに外部IPアドレスを使用させる"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "Private Service Connectを使用すると、サービスプロバイダーは共有サービスをプライベートエンドポイントとして公開でき、各テナントは自分のVPCでそのエンドポイントに接続できます。これにより、ネットワークの分離を維持しながら、共有サービスへのプライベートアクセスが可能になります。VPCピアリングは、ピア数の制限やIPアドレスの重複問題があります。"
+    },
+    {
+      "id": "gcp-pne-set1-ja-q27",
+      "examId": "gcp-pne-set1-ja",
+      "setNumber": 1,
+      "domain": "VPCネットワークの実装",
+      "question": "VMインスタンスに複数のネットワークインターフェースを構成しています。各インターフェースは異なるVPCに接続されています。この構成の制限事項は何ですか？",
+      "options": {
+        "A": "各インターフェースは同じVPCに接続する必要がある",
+        "B": "各インターフェースは異なるVPCに接続する必要があり、VPCは重複するIPアドレス範囲を持つことができない",
+        "C": "ネットワークインターフェースは最大2つまで",
+        "D": "複数のネットワークインターフェースはサポートされていない"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "複数のネットワークインターフェース（マルチNIC）を持つVMでは、各インターフェースは異なるVPCネットワークに接続する必要があります。また、接続先のVPCは重複するIPアドレス範囲を持つことができません。インターフェースの最大数はマシンタイプによって異なります（通常は8つまで）。"
+    },
+    {
+      "id": "gcp-pne-set1-ja-q28",
+      "examId": "gcp-pne-set1-ja",
+      "setNumber": 1,
+      "domain": "ネットワークサービスの構成",
+      "question": "TCPプロキシロードバランサーを使用しています。クライアントの元のIPアドレスをバックエンドサーバーで取得する必要があります。どのように構成すべきですか？",
+      "options": {
+        "A": "X-Forwarded-Forヘッダーを確認する",
+        "B": "PROXYプロトコルを有効にする",
+        "C": "ソースIPを保持するオプションを有効にする",
+        "D": "TCPプロキシロードバランサーではクライアントIPを取得できない"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "TCPプロキシロードバランサーはレイヤー4で動作するため、HTTPヘッダー（X-Forwarded-For）は使用できません。代わりに、PROXYプロトコルを有効にすると、ロードバランサーは各接続の先頭にクライアントの元のIPアドレスを含むPROXYプロトコルヘッダーを追加します。バックエンドサーバーはこのヘッダーを解析してクライアントIPを取得できます。"
+    },
+    {
+      "id": "gcp-pne-set1-ja-q29",
+      "examId": "gcp-pne-set1-ja",
+      "setNumber": 1,
+      "domain": "ハイブリッド相互接続の実装",
+      "question": "オンプレミスネットワークからGCP内のプライベートGoogle APIにアクセスする必要があります。トラフィックは公共のインターネットを経由してはいけません。どのように構成すべきですか？",
+      "options": {
+        "A": "Cloud VPNを経由してpublic Google APIにアクセスする",
+        "B": "Cloud InterconnectまたはVPNを経由し、プライベートGoogleアクセスとrestricted.googleapis.comを使用する",
+        "C": "オンプレミスネットワークからは不可能",
+        "D": "Direct Peeringを使用する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "オンプレミスからプライベートGoogle APIにアクセスするには、Cloud InterconnectまたはCloud VPNでGCPに接続し、オンプレミスのDNSでrestricted.googleapis.com（または private.googleapis.com）へのクエリを199.36.153.4/30（または199.36.153.8/30）に解決するように構成します。VPC側ではプライベートGoogleアクセスを有効にし、適切なルートを通知します。"
+    },
+    {
+      "id": "gcp-pne-set1-ja-q30",
+      "examId": "gcp-pne-set1-ja",
+      "setNumber": 1,
+      "domain": "ネットワーク運用の管理と監視",
+      "question": "ネットワーク構成をInfrastructure as Code（IaC）として管理しています。構成変更を適用する前にプレビューし、変更の影響を確認したいと考えています。どのツールを使用すべきですか？",
+      "options": {
+        "A": "gcloud CLIのみ",
+        "B": "TerraformのplanコマンドまたはDeployment Managerのpreviewフラグ",
+        "C": "Cloud Console",
+        "D": "Cloud Shell"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Terraformのterraform planコマンドは、構成変更を適用せずにプレビューし、作成、更新、削除されるリソースを表示します。同様に、Deployment Managerでは--previewフラグを使用して変更をプレビューできます。これにより、意図しない変更や影響を事前に確認できます。"
+    },
+    {
+      "id": "gcp-pne-set1-ja-q31",
+      "examId": "gcp-pne-set1-ja",
+      "setNumber": 1,
+      "domain": "クラウドネットワークの設計と計画",
+      "question": "VPC Service Controlsを使用して、特定のGoogleサービスへのアクセスを制限しています。サービス境界内のリソースが境界外のCloud Storageバケットにアクセスする必要があります。どのように構成すべきですか？",
+      "options": {
+        "A": "サービス境界を削除する",
+        "B": "イングレスルールを構成してアクセスを許可する",
+        "C": "エグレスルールを構成してアクセスを許可する",
+        "D": "VPC Service Controlsではこのアクセスは不可能"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "VPC Service Controlsのエグレスルールを使用すると、サービス境界内のリソースから境界外のリソースへのアクセスを許可できます。エグレスルールでは、許可するID、プロジェクト、およびサービスを指定できます。これにより、セキュリティ境界を維持しながら、必要な外部アクセスを許可できます。"
+    },
+    {
+      "id": "gcp-pne-set1-ja-q32",
+      "examId": "gcp-pne-set1-ja",
+      "setNumber": 1,
+      "domain": "VPCネットワークの実装",
+      "question": "Cloud NATを構成して、プライベートIPアドレスのみを持つVMがインターネットにアクセスできるようにしています。特定のVMのみがNATを使用するように制限したいと考えています。どのように構成すべきですか？",
+      "options": {
+        "A": "Cloud NATは特定のVMを制限できない",
+        "B": "Cloud NATのソースサブネット設定でカスタムサブネットを選択する",
+        "C": "ファイアウォールルールでNATアクセスを制御する",
+        "D": "各VMに個別のCloud NATを作成する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Cloud NATの構成時に、NAT対象のソースサブネットを指定できます。「カスタム」を選択し、NATを使用させたいVMが存在するサブネットのみを選択します。選択されていないサブネットのVMはCloud NATを使用できません。これにより、特定のVMのみがNATを使用するように制限できます。"
+    },
+    {
+      "id": "gcp-pne-set1-ja-q33",
+      "examId": "gcp-pne-set1-ja",
+      "setNumber": 1,
+      "domain": "ネットワークサービスの構成",
+      "question": "外部HTTP(S)ロードバランサーを使用しています。特定のURLパスへのリクエストを別のバックエンドサービスにルーティングする必要があります。どのように構成すべきですか？",
+      "options": {
+        "A": "複数のロードバランサーを作成する",
+        "B": "URLマップでパスルールを構成する",
+        "C": "各バックエンドサービスに異なる外部IPアドレスを割り当てる",
+        "D": "Cloud Armorでパスベースのルーティングを構成する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "HTTP(S)ロードバランサーのURLマップを使用すると、URLパスに基づいてリクエストを異なるバックエンドサービスにルーティングできます。例えば、/api/*へのリクエストをAPIバックエンドに、/static/*へのリクエストを静的コンテンツバックエンドにルーティングできます。これはコンテンツベースのルーティングの標準的な方法です。"
+    },
+    {
+      "id": "gcp-pne-set1-ja-q34",
+      "examId": "gcp-pne-set1-ja",
+      "setNumber": 1,
+      "domain": "ハイブリッド相互接続の実装",
+      "question": "Cloud Interconnectの99.99% SLAを達成するために必要な構成は何ですか？",
+      "options": {
+        "A": "1つのメトロエリアに2つの相互接続",
+        "B": "2つの異なるメトロエリアにそれぞれ2つの相互接続（合計4つ）",
+        "C": "1つのメトロエリアに1つの相互接続",
+        "D": "VPNバックアップ付きの1つの相互接続"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Cloud Interconnectで99.99% SLAを達成するには、2つの異なるメトロエリア（エッジロケーション）にそれぞれ少なくとも2つの相互接続を構成する必要があります（合計4つ以上）。これにより、単一のメトロエリアの障害に対する耐性と、各メトロエリア内での冗長性が提供されます。1つのメトロエリアでの冗長構成は99.9% SLAです。"
+    },
+    {
+      "id": "gcp-pne-set1-ja-q35",
+      "examId": "gcp-pne-set1-ja",
+      "setNumber": 1,
+      "domain": "ネットワーク運用の管理と監視",
+      "question": "VPCネットワークのセキュリティ体制を評価し、推奨事項を得る必要があります。どのツールを使用すべきですか？",
+      "options": {
+        "A": "Cloud Security Scanner",
+        "B": "Security Command CenterのSecurity Health Analytics",
+        "C": "Cloud Armor",
+        "D": "Binary Authorization"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Security Command CenterのSecurity Health Analyticsは、GCPリソース（ネットワーク構成を含む）のセキュリティの脆弱性と構成ミスを自動的にスキャンします。過度に許可的なファイアウォールルール、公開されたIPアドレス、SSL未使用のロードバランサーなどの問題を特定し、修正の推奨事項を提供します。"
+    },
+    {
+      "id": "gcp-pne-set1-ja-q36",
+      "examId": "gcp-pne-set1-ja",
+      "setNumber": 1,
+      "domain": "クラウドネットワークの設計と計画",
+      "question": "アプリケーションのフロントエンドとバックエンド間のトラフィックを暗号化する必要があります。両方ともGCP内のVMで実行されています。最も効率的な方法は何ですか？",
+      "options": {
+        "A": "Cloud VPNを使用する",
+        "B": "各VMにSSL証明書をインストールしてHTTPSを使用する",
+        "C": "mTLS（相互TLS）を使用するサービスメッシュ（Anthos Service Mesh）をデプロイする",
+        "D": "VPCファイアウォールルールで暗号化を強制する"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "サービスメッシュ（Anthos Service Mesh）は、サービス間の通信を自動的にmTLSで暗号化します。証明書の管理、ローテーション、認証がサービスメッシュによって処理されるため、アプリケーションコードの変更は最小限で済みます。これは、マイクロサービスアーキテクチャでの東西トラフィック暗号化に最適なソリューションです。"
+    },
+    {
+      "id": "gcp-pne-set1-ja-q37",
+      "examId": "gcp-pne-set1-ja",
+      "setNumber": 1,
+      "domain": "VPCネットワークの実装",
+      "question": "VPCフローログを分析して、特定のIPアドレスへのトラフィックパターンを特定したいと考えています。大量のデータを効率的にクエリする必要があります。どのアプローチを選択すべきですか？",
+      "options": {
+        "A": "Cloud Loggingでログを直接クエリする",
+        "B": "VPCフローログをBigQueryにエクスポートしてSQLでクエリする",
+        "C": "Cloud Monitoringでカスタムダッシュボードを作成する",
+        "D": "ログをローカルにダウンロードして分析する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "VPCフローログをBigQueryにエクスポートすると、SQLを使用して大量のログデータを効率的にクエリできます。BigQueryは大規模データセットの分析に最適化されており、IPアドレス、ポート、プロトコルなどの属性でフィルタリングやグループ化を行い、トラフィックパターンを特定できます。Cloud Loggingは短期間のクエリには適していますが、大量の履歴データには制限があります。"
+    },
+    {
+      "id": "gcp-pne-set1-ja-q38",
+      "examId": "gcp-pne-set1-ja",
+      "setNumber": 1,
+      "domain": "ネットワークサービスの構成",
+      "question": "Cloud DNSで地理的位置ベースのルーティングを構成しています。ユーザーのロケーションに基づいて最も近いリージョンのIPアドレスを返す必要があります。どのルーティングポリシーを使用すべきですか？",
+      "options": {
+        "A": "重み付きラウンドロビン",
+        "B": "地理的位置ルーティングポリシー",
+        "C": "レイテンシベースルーティング",
+        "D": "フェイルオーバールーティング"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Cloud DNSの地理的位置ルーティングポリシーを使用すると、DNSクエリのソースロケーションに基づいて異なるIPアドレスを返すことができます。これにより、ユーザーを地理的に最も近いリージョンにルーティングでき、レイテンシを削減できます。ソースの地域ごとに異なるレコードセットを定義します。"
+    },
+    {
+      "id": "gcp-pne-set1-ja-q39",
+      "examId": "gcp-pne-set1-ja",
+      "setNumber": 1,
+      "domain": "ハイブリッド相互接続の実装",
+      "question": "オンプレミスのDNSサーバーからCloud DNSのプライベートゾーンを解決できるようにする必要があります。どのように構成すべきですか？",
+      "options": {
+        "A": "Cloud DNSでパブリックゾーンを作成する",
+        "B": "Cloud DNSインバウンド転送ポリシーを作成し、オンプレミスDNSをCloud DNSにフォワードするよう構成する",
+        "C": "オンプレミスDNSサーバーをVPCに移動する",
+        "D": "Cloud DNSはオンプレミスからの解決をサポートしていない"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Cloud DNSインバウンド転送ポリシーを作成すると、VPC内にインバウンドフォワーダーIPアドレスが作成されます。オンプレミスDNSサーバーを構成して、Cloud DNSプライベートゾーンのドメインへのクエリをこのIPアドレスにフォワードします。Cloud InterconnectまたはCloud VPN経由でオンプレミスからこのIPに到達できる必要があります。"
+    },
+    {
+      "id": "gcp-pne-set1-ja-q40",
+      "examId": "gcp-pne-set1-ja",
+      "setNumber": 1,
+      "domain": "ネットワーク運用の管理と監視",
+      "question": "ネットワークチームは、VPCルートの変更をリアルタイムで監視し、変更があった場合にアラートを受け取りたいと考えています。どのように実装すべきですか？",
+      "options": {
+        "A": "定期的にgcloudコマンドを実行してルートを確認する",
+        "B": "Cloud Audit Logsのログルーターを構成し、ルート変更をPub/Subに送信してアラートをトリガーする",
+        "C": "VPCフローログを有効にする",
+        "D": "Network Intelligence Centerのネットワークトポロジを監視する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Cloud Audit Logsにはすべての管理操作（ルートの作成、更新、削除を含む）が記録されます。ログルーターを構成してcompute.routes関連のログをフィルタリングし、Pub/Subトピックに送信します。Pub/Subサブスクリプションを使用してCloud FunctionsやCloud Runをトリガーし、アラート通知（メール、Slack等）を送信できます。"
+    }
+  ]
+}

@@ -1,0 +1,649 @@
+{
+  "exam": {
+    "id": "azure-az-700-set2-ja",
+    "name": "Azure AZ-700 ネットワークエンジニア認定模擬試験 #2",
+    "code": "AZ-700",
+    "provider": "Azure",
+    "language": "ja",
+    "description": "Microsoft Azureネットワークエンジニア認定試験の模擬問題。Azureコアネットワークインフラストラクチャ、ハイブリッドネットワーク、ルーティング、セキュリティ、プライベートアクセスなどの主要領域をカバー",
+    "totalQuestions": 40,
+    "passingScore": 70,
+    "examTime": 120,
+    "domains": [
+      {
+        "id": 1,
+        "name": "コアネットワークインフラストラクチャの設計と実装",
+        "weight": 25
+      },
+      {
+        "id": 2,
+        "name": "ルーティングの設計と実装",
+        "weight": 25
+      },
+      {
+        "id": 3,
+        "name": "Azureセキュリティサービスの設計と実装",
+        "weight": 25
+      },
+      {
+        "id": 4,
+        "name": "プライベートアクセスの設計と実装",
+        "weight": 15
+      },
+      {
+        "id": 5,
+        "name": "負荷分散の設計と実装",
+        "weight": 10
+      }
+    ],
+    "tags": [
+      "Azure",
+      "AZ-700",
+      "ネットワークエンジニア",
+      "認定試験",
+      "クラウドコンピューティング"
+    ]
+  },
+  "questions": [
+    {
+      "id": "q1",
+      "domain": 1,
+      "question": "ある企業がAzureでVPN接続をサポートするためのゲートウェイサブネットを作成する必要があります。ゲートウェイサブネットの最小推奨サイズは何ですか？",
+      "options": {
+        "A": "/29",
+        "B": "/28",
+        "C": "/27",
+        "D": "/26"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "/29が技術的な最小値ですが、Microsoftは将来の成長とExpressRouteの共存のために十分なIPアドレス空間を提供するため、/27以上のゲートウェイサブネットを推奨しています。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q2",
+      "domain": 1,
+      "question": "ある企業がVNetピアリングを構成しましたが、ピアリングされたネットワーク内の仮想マシンが通信できないことがわかりました。考えられる原因は何ですか？",
+      "options": {
+        "A": "VNetアドレス空間が重複している",
+        "B": "ピアリング状態が「接続済み」と表示されている",
+        "C": "2つのVNetが同じリージョンにある",
+        "D": "標準ロードバランサーを使用している"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "VNetピアリングでは、2つの仮想ネットワークのアドレス空間が重複していないことが必要です。アドレス空間に重複がある場合、ピアリングが正常に確立されないか、トラフィックが正しくルーティングされません。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q3",
+      "domain": 1,
+      "question": "ある企業が仮想ネットワークBを介して仮想ネットワークAから仮想ネットワークCにアクセスできるようにする必要があります。ただし、AとCの間には直接のピアリングはありません。どの設定を有効にすべきですか？",
+      "options": {
+        "A": "ゲートウェイ転送を許可",
+        "B": "転送されたトラフィックを許可",
+        "C": "リモートゲートウェイを使用",
+        "D": "仮想ネットワークアクセスを許可"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "VNetピアリングで「転送されたトラフィックを許可」オプションを有効にすると、ピアリングされたネットワークからのトラフィックを他のネットワークに転送できます。これはハブスポークトポロジでのトランジットルーティングに重要です。",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q4",
+      "domain": 1,
+      "question": "ある企業がAzure Virtual WANを使用して複数のブランチオフィスを接続したいと考えています。Azure Virtual WANハブはどのような機能を提供しますか？",
+      "options": {
+        "A": "仮想マシンホスティングのみ",
+        "B": "すべての接続の中心ルーティングポイントとして機能",
+        "C": "ストレージサービスのみ",
+        "D": "DNSサービスのみ"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure Virtual WANハブは、すべての接続（VPN、ExpressRoute、VNet）の中心ルーティングポイントとして機能するマネージドリージョンネットワークエンティティです。ルート伝播と接続を自動的に処理します。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q5",
+      "domain": 1,
+      "question": "ある企業が仮想ネットワーク内の名前解決をサポートするためにAzureプライベートDNSゾーンを構成する必要があります。DNSゾーンをVNetで使用可能にするには何をする必要がありますか？",
+      "options": {
+        "A": "DNSフォワーダーを作成",
+        "B": "DNSゾーンを仮想ネットワークにリンク",
+        "C": "パブリックDNSを構成",
+        "D": "DNSレコードを作成"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "プライベートDNSゾーンを仮想ネットワーク内のリソースで使用可能にするには、仮想ネットワークリンクを作成する必要があります。自動登録を有効にして、VMのDNSレコードを自動的に作成できます。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q6",
+      "domain": 1,
+      "question": "ある企業が仮想ネットワークにAzure Bastionをデプロイする必要があります。Azure Bastionサブネットの名前と最小サイズは何ですか？",
+      "options": {
+        "A": "BastionSubnet、/27",
+        "B": "AzureBastionSubnet、/26",
+        "C": "AzureBastionSubnet、/27",
+        "D": "BastionSubnet、/26"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure BastionはAzureBastionSubnetという名前のサブネットにデプロイする必要があり、最小サイズは/26（64 IPアドレス）です。これはAzureの必須要件です。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q7",
+      "domain": 1,
+      "question": "ある企業が複数の仮想ネットワークを中心の仮想ネットワークに接続し、中心ネットワークのVPNゲートウェイを介してオンプレミスに接続する必要があります。このトポロジは何と呼ばれますか？",
+      "options": {
+        "A": "メッシュトポロジ",
+        "B": "ハブスポークトポロジ",
+        "C": "リングトポロジ",
+        "D": "バストポロジ"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "ハブスポークトポロジは一般的なAzureネットワークアーキテクチャで、中心VNet（ハブ）に共有サービス（VPNゲートウェイなど）が含まれ、ブランチVNet（スポーク）がピアリング経由で中心に接続されます。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q8",
+      "domain": 1,
+      "question": "ある企業がAzure仮想ネットワークのDHCPオプションを構成する必要があります。Azure仮想ネットワークのDHCPは誰が管理しますか？",
+      "options": {
+        "A": "ユーザーが完全に管理",
+        "B": "Azureプラットフォームが自動的に管理",
+        "C": "サードパーティDHCPサーバーが必要",
+        "D": "各サブネットで個別に構成"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure仮想ネットワークのDHCPはAzureプラットフォームによって完全に自動管理されます。VMがサブネットに接続すると、AzureはIPアドレス、ゲートウェイ、DNS設定を自動的に割り当てます。ユーザーは独自のDHCPサーバーをデプロイできません。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q9",
+      "domain": 2,
+      "question": "ある企業がVNetピアリング経由で接続された複数の仮想ネットワークを持っています。すべてのVNet間でトランジットルーティングを有効にする必要がある場合、何を構成すべきですか？",
+      "options": {
+        "A": "各VNetで静的ルートを構成",
+        "B": "Azure Route Serverを使用",
+        "C": "Hub VNetにNVAをデプロイしてUDRを使用",
+        "D": "BとCの両方が可能"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "Azure Route ServerをHub VNetで使用してルートを自動的に交換するか、ネットワーク仮想アプライアンス（NVA）をデプロイしてユーザー定義ルート（UDR）でトランジットルーティングを手動で構成できます。両方の方法でトランジットルーティングを実現できます。",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q10",
+      "domain": 2,
+      "question": "ある企業がExpressRouteを使用してAzureに接続し、サイト間VPNをバックアップとして持っています。ExpressRouteが優先パスであることを確認するにはどうすればよいですか？",
+      "options": {
+        "A": "VPN接続を削除",
+        "B": "ExpressRouteはデフォルトでより高い優先度を持つ",
+        "C": "より高いBGPローカル優先度を構成",
+        "D": "静的ルートを使用"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "ExpressRouteとVPN接続の両方が存在する場合、Azureはそのルートがより高い優先度を持つため、デフォルトでExpressRouteを優先します。ExpressRouteが利用できない場合のみ、トラフィックはVPN経由で流れます。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q11",
+      "domain": 2,
+      "question": "ある企業がアクティブ-アクティブモードをサポートするためにAzure VPNゲートウェイを構成する必要があります。これには何が必要ですか？",
+      "options": {
+        "A": "1つのパブリックIPアドレス",
+        "B": "2つのパブリックIPアドレス",
+        "C": "3つのパブリックIPアドレス",
+        "D": "パブリックIPは不要"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "アクティブ-アクティブVPNゲートウェイ構成には、各ゲートウェイインスタンスに1つずつ、2つのパブリックIPアドレスが必要です。これにより、両方のトンネルが同時にアクティブになるため、より高い可用性が提供されます。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q12",
+      "domain": 2,
+      "question": "ある企業がAzure仮想マシンの送信トラフィックがオンプレミスファイアウォールを通過することを確認する必要があります。強制トンネリングに加えて、何に注意する必要がありますか？",
+      "options": {
+        "A": "Azureサービスのトラフィックは影響を受けない",
+        "B": "戻りルートを構成する必要がある",
+        "C": "サービスエンドポイントまたは除外ルートの構成が必要な場合がある",
+        "D": "上記すべて"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "強制トンネリングを構成する際は、戻りトラフィックに正しいルートがあることを確認し、一部のAzureサービス（Azure Backupなど）が正常に機能するためにサービスエンドポイントまたは特別なルートが必要な場合があります。",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q13",
+      "domain": 2,
+      "question": "ある企業がAzure Route ServerでBGPピアを構成しました。Route Serverは学習したルートを自動的にどこに伝播しますか？",
+      "options": {
+        "A": "同じサブネットにのみ伝播",
+        "B": "仮想ネットワーク全体に伝播",
+        "C": "すべてのAzureサブスクリプションに伝播",
+        "D": "手動で伝播する必要がある"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure Route Serverは、NVAから学習したBGPルートを仮想ネットワーク内のすべてのサブネットに自動的に伝播します。これにより、ユーザー定義ルートを手動で構成する必要がなくなります。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q14",
+      "domain": 2,
+      "question": "ある企業がExpressRoute Global Reachを使用して2つのオンプレミスネットワークを接続する必要があります。Global Reachには何が必要ですか？",
+      "options": {
+        "A": "同じピアリング場所にある2つのExpressRoute回線",
+        "B": "2つのExpressRoute回線は異なるピアリング場所にあってもよい",
+        "C": "1つのExpressRoute回線のみが必要",
+        "D": "バックアップとしてVPNが必要"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "ExpressRoute Global Reachを使用すると、異なるピアリング場所にある場合でも、Microsoftバックボーンネットワーク経由で2つの異なるExpressRoute回線を接続できます。これにより、オンプレミスネットワーク間で直接通信できます。",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q15",
+      "domain": 2,
+      "question": "ある企業が仮想ネットワーク内の有効なルートを確認する必要があります。どこで確認すべきですか？",
+      "options": {
+        "A": "仮想ネットワークの概要",
+        "B": "ルートテーブル設定",
+        "C": "ネットワークインターフェースの有効なルート",
+        "D": "Azure Monitor"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "仮想マシンのネットワークインターフェースの「有効なルート」セクションで、システムルートとユーザー定義ルートを含むすべての有効なルートを確認できます。これはトラブルシューティングに非常に役立ちます。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q16",
+      "domain": 2,
+      "question": "ある企業がユーザー定義ルートを構成しましたが、ルートが機能していないようです。考えられる原因は何ですか？",
+      "options": {
+        "A": "ルートテーブルがサブネットに関連付けられていない",
+        "B": "NVAでIP転送が有効になっていない",
+        "C": "NSGがトラフィックをブロックしている",
+        "D": "上記すべてが可能"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "UDRが機能しない理由は複数考えられます：ルートテーブルがサブネットに正しく関連付けられていない、NVAのネットワークインターフェースでIP転送が有効になっていない、またはNSGルールがトラフィックをブロックしている可能性があります。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q17",
+      "domain": 3,
+      "question": "ある企業がAzure Firewallを使用して複数の仮想ネットワークを保護する必要があります。最適なアーキテクチャをどのように実現しますか？",
+      "options": {
+        "A": "各VNetにAzure Firewallをデプロイ",
+        "B": "Hub VNetにAzure Firewallをデプロイし、Spoke VNetをピアリング経由で接続",
+        "C": "ネットワークセキュリティグループで代替",
+        "D": "各サブネットにファイアウォールをデプロイ"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "ベストプラクティスは、Hub VNetにAzure Firewallを集中デプロイし、Spoke VNetをピアリング経由でHubに接続することです。UDRを使用してSpokeからのトラフィックをHub内のファイアウォールにルーティングして検査します。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q18",
+      "domain": 3,
+      "question": "ある企業がWindows Updateへのアクセスを許可するようにAzure Firewallを構成する必要があります。何を使用すべきですか？",
+      "options": {
+        "A": "特定のIPを許可するネットワークルール",
+        "B": "FQDNタグを使用するアプリケーションルール",
+        "C": "NATルール",
+        "D": "インフラストラクチャルール"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure FirewallにはWindowsUpdateなどの組み込みFQDNタグが用意されており、関連するすべてのFQDNを手動で指定することなく、Windows Updateサービスへのアクセスを簡単に許可できます。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q19",
+      "domain": 3,
+      "question": "ある企業がAzure Firewall Standardをデプロイしました。侵入検知および防御システム（IDPS）機能が必要です。どうすべきですか？",
+      "options": {
+        "A": "StandardでIDPSを有効にする",
+        "B": "Azure Firewall Premiumにアップグレード",
+        "C": "サードパーティNVAをデプロイ",
+        "D": "ネットワークセキュリティグループを使用"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "IDPS（侵入検知および防御システム）はAzure Firewall Premiumの機能であり、Standardバージョンではサポートされていません。この機能を取得するにはPremiumにアップグレードする必要があります。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q20",
+      "domain": 3,
+      "question": "ある企業がAzure Firewallの脅威インテリジェンス機能を使用する必要があります。脅威インテリジェンスはどのモードに設定できますか？",
+      "options": {
+        "A": "アラートのみ",
+        "B": "アラートと拒否",
+        "C": "オフ、アラートのみ、アラートと拒否",
+        "D": "拒否のみ"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "Azure Firewallの脅威インテリジェンス機能は3つのモードをサポートしています：オフ（無効）、アラートのみ（ログに記録するがブロックしない）、アラートと拒否（悪意のあるトラフィックをログに記録してブロック）。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q21",
+      "domain": 3,
+      "question": "ある企業がAzureロードバランサーからのトラフィックを許可するためにネットワークセキュリティグループルールを構成する必要があります。どのサービスタグを使用すべきですか？",
+      "options": {
+        "A": "Internet",
+        "B": "AzureLoadBalancer",
+        "C": "VirtualNetwork",
+        "D": "AzureCloud"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "AzureLoadBalancerサービスタグは、Azureロードバランサーの正常性プローブのソースIPを表します。このタグからのインバウンドトラフィックをブロックすると、ロードバランサーの正常性プローブが失敗します。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q22",
+      "domain": 3,
+      "question": "ある企業がAzure DDoS Protectionを使用してパブリックIPアドレスを保護する必要があります。DDoS Protection Standardはどのレベルで構成する必要がありますか？",
+      "options": {
+        "A": "リソースレベル",
+        "B": "仮想ネットワークレベル",
+        "C": "サブスクリプションレベル",
+        "D": "管理グループレベル"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure DDoS Protection Standardは仮想ネットワークレベルで有効にする必要があり、そのVNet内のすべてのパブリックIPリソースを自動的に保護します。DDoS保護プランを作成してVNetに関連付けることができます。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q23",
+      "domain": 3,
+      "question": "ある企業がAzure Firewallポリシー階層を構成する必要があります。子ポリシーは親ポリシーのどの設定を上書きできますか？",
+      "options": {
+        "A": "すべての設定",
+        "B": "ルールコレクショングループ",
+        "C": "脅威インテリジェンス設定",
+        "D": "より高いルール優先度を持つルール"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure Firewallポリシー階層では、子ポリシーは親ポリシーの設定を継承しますが、独自のルールコレクショングループを追加できます。親ポリシーのルールはより高い優先度を持ち、子ポリシーのルールより先に評価されます。",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q24",
+      "domain": 3,
+      "question": "ある企業がAzure Application Gateway WAFのリクエストレートを制限する必要があります。どの機能を使用すべきですか？",
+      "options": {
+        "A": "カスタムルール",
+        "B": "マネージドルール",
+        "C": "除外ルール",
+        "D": "診断ログ"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "WAFカスタムルールでレート制限を構成して、単一のクライアントIPからのリクエストレートを制限できます。これにより、ブルートフォース攻撃やAPIの過度な使用を防ぐことができます。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q25",
+      "domain": 4,
+      "question": "ある企業がAzureストレージ用のプライベートエンドポイントを作成しました。プライベートエンドポイントのネットワークインターフェースはどこにありますか？",
+      "options": {
+        "A": "AzureストレージのVNet",
+        "B": "顧客の仮想ネットワークサブネット",
+        "C": "別の管理VNet",
+        "D": "Azureバックボーンネットワーク"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "プライベートエンドポイントを作成すると、指定された仮想ネットワークサブネット内にネットワークインターフェースが作成されます。このネットワークインターフェースはサブネットからプライベートIPアドレスを取得し、Azureサービスへの接続に使用されます。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q26",
+      "domain": 4,
+      "question": "ある企業がプライベートエンドポイントのDNS構成が正しいことを確認する必要があります。Azure SQL用に作成されるプライベートDNSゾーン名は何ですか？",
+      "options": {
+        "A": "privatelink.sql.azure.com",
+        "B": "privatelink.database.windows.net",
+        "C": "sql.privatelink.azure.com",
+        "D": "azure.sql.privatelink.net"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure SQLのプライベートDNSゾーン名はprivatelink.database.windows.netです。各Azureサービスには特定のプライベートDNSゾーン名があり、プライベートエンドポイントを解決するために正しく構成する必要があります。",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q27",
+      "domain": 4,
+      "question": "ある企業がサービスエンドポイントを使用してAzureストレージに接続しています。プライベートエンドポイントと比較して、サービスエンドポイントの1つの制限は何ですか？",
+      "options": {
+        "A": "コストが高い",
+        "B": "VPN/ExpressRoute経由でオンプレミスネットワークからのアクセスをサポートしていない",
+        "C": "パフォーマンスが低い",
+        "D": "Azureストレージをサポートしていない"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "サービスエンドポイントは、VPNまたはExpressRoute経由でオンプレミスネットワークからAzureサービスへのアクセスをサポートしていません。オンプレミスからAzureサービスへのプライベート接続が必要な場合は、プライベートエンドポイントを使用する必要があります。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q28",
+      "domain": 4,
+      "question": "ある企業がAzure Private Linkサービスを使用して、内部ロードバランサーの背後にあるサービスを公開する必要があります。Private Linkサービスはどのタイプのロードバランサーに関連付ける必要がありますか？",
+      "options": {
+        "A": "Basicロードバランサー",
+        "B": "Standardロードバランサー",
+        "C": "Application Gateway",
+        "D": "どのタイプでも可能"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure Private LinkサービスはStandardロードバランサーに関連付ける必要があります。BasicロードバランサーはPrivate Linkサービスをサポートしていません。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q29",
+      "domain": 4,
+      "question": "ある企業が複数のAzureサービスへのプライベートエンドポイントを作成しました。DNS管理を簡素化するにはどうすればよいですか？",
+      "options": {
+        "A": "各エンドポイントに個別のDNSゾーンを作成",
+        "B": "Azure Private DNSリゾルバーと集中プライベートDNSゾーンを使用",
+        "C": "パブリックDNSのみを使用",
+        "D": "各VMでhostsファイルを手動構成"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure Private DNSリゾルバーはプライベートDNSゾーンを集中管理し、オンプレミスネットワークとAzureからのDNSクエリの転送をサポートできます。これにより、大規模なプライベートエンドポイントデプロイのDNS管理が簡素化されます。",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q30",
+      "domain": 4,
+      "question": "ある企業がプライベートエンドポイント接続の状態を確認する必要があります。接続状態「保留中」は何を意味しますか？",
+      "options": {
+        "A": "接続が確立されている",
+        "B": "接続が拒否された",
+        "C": "サービスプロバイダーの承認を待っている",
+        "D": "接続が削除された"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "プライベートエンドポイント接続状態「保留中」は、接続要求がサービスプロバイダー（リソース所有者）の承認を待っていることを意味します。承認されると、状態は「承認済み」に変わります。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q31",
+      "domain": 5,
+      "question": "ある企業が高可用性シナリオを処理するためにAzure Load Balancerを構成する必要があります。どのSKUを選択すべきですか？",
+      "options": {
+        "A": "Basic SKU",
+        "B": "Standard SKU",
+        "C": "どちらでも可能",
+        "D": "Gateway SKU"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Standard Load Balancerは、より高い可用性保証（99.99% SLA）を提供し、可用性ゾーンをサポートし、より多くの高度な機能を提供します。本番ワークロードには、Standard SKUが推奨されます。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q32",
+      "domain": 5,
+      "question": "ある企業がWebSocket接続をサポートするためにAzure Application Gatewayを構成する必要があります。特別な構成が必要ですか？",
+      "options": {
+        "A": "はい、WebSocketサポートを有効にする必要がある",
+        "B": "いいえ、WebSocketはデフォルトでサポートされている",
+        "C": "WebSocketはサポートされていない",
+        "D": "Premium SKUが必要"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure Application GatewayはデフォルトでWebSocket接続をサポートしており、特別な構成は必要ありません。WebSocketトラフィックはApplication GatewayのHTTP/HTTPSリスナーを介して処理されます。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q33",
+      "domain": 5,
+      "question": "ある企業がAzure Load Balancerの正常性プローブを構成する必要があります。連続何回のプローブが失敗すると、バックエンドインスタンスは異常としてマークされますか？",
+      "options": {
+        "A": "1回",
+        "B": "2回（デフォルト）",
+        "C": "3回",
+        "D": "5回"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "デフォルトでは、連続2回の正常性プローブが失敗すると（異常しきい値）、Azure Load Balancerはバックエンドインスタンスを異常としてマークします。この値は構成可能です。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q34",
+      "domain": 5,
+      "question": "ある企業がグローバル負荷分散にAzure Front Doorを使用しています。Front Doorはどのプロトコルを使用してクライアント接続を終端しますか？",
+      "options": {
+        "A": "HTTPのみ",
+        "B": "HTTPSのみ",
+        "C": "HTTPとHTTPS",
+        "D": "TCP"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "Azure Front DoorはHTTPとHTTPSプロトコルの終端をサポートしています。HTTPまたはHTTPSトラフィックを受け入れるように構成でき、HTTPからHTTPSへのリダイレクトを構成できます。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q35",
+      "domain": 5,
+      "question": "ある企業がAzure Traffic Managerを使用してフェールオーバーを実現する必要があります。どのルーティング方法を使用すべきですか？",
+      "options": {
+        "A": "パフォーマンスルーティング",
+        "B": "地理的ルーティング",
+        "C": "優先度ルーティング",
+        "D": "加重ルーティング"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "優先度ルーティング方法はフェールオーバーシナリオに適しています。優先度順にエンドポイントにトラフィックをルーティングし、最高優先度のエンドポイントが利用できない場合は自動的に次のエンドポイントにフェールオーバーします。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q36",
+      "domain": 5,
+      "question": "ある企業がAzure Application GatewayでSSL証明書を構成する必要があります。どのタイプの証明書を使用すべきですか？",
+      "options": {
+        "A": "自己署名証明書のみ",
+        "B": "CA署名証明書のみ",
+        "C": "PFX形式の証明書",
+        "D": "PEM形式の証明書"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "Azure Application GatewayにはPFX（PKCS#12）形式の証明書（秘密鍵を含む）が必要です。Azure Key Vault統合を使用して証明書を管理できます。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q37",
+      "domain": 5,
+      "question": "ある企業がAzure Load Balancerのフローティングip機能を構成する必要があります。フローティングIPを有効にする必要があるのはどのような場合ですか？",
+      "options": {
+        "A": "常に必要",
+        "B": "SQL Server Always On可用性グループを構成する場合",
+        "C": "Basic SKUを使用する場合",
+        "D": "アウトバウンド接続を行う場合"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "フローティングIP（ダイレクトサーバーリターンとも呼ばれる）は、SQL Server Always On可用性グループや一部のフェールオーバークラスターシナリオを構成する際に有効にする必要があります。これにより、バックエンドサーバーがクライアントに直接応答できます。",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q38",
+      "domain": 5,
+      "question": "ある企業がAzure Application Gatewayの自動スケーリングを構成する必要があります。自動スケーリングはどのメトリックに基づいていますか？",
+      "options": {
+        "A": "CPU使用率のみ",
+        "B": "現在の接続数のみ",
+        "C": "計算ユニットを含む複数のメトリック",
+        "D": "リクエストレートのみ"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "Application Gatewayの自動スケーリングは、計算ユニット（CPU、接続、スループットを組み合わせたもの）を含む複数のメトリックに基づいています。最小および最大インスタンス数を構成してスケーリング範囲を制御できます。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q39",
+      "domain": 5,
+      "question": "ある企業がAzure Front Doorを使用しており、静的コンテンツをキャッシュする必要があります。キャッシュ動作はどこで構成しますか？",
+      "options": {
+        "A": "バックエンドプール",
+        "B": "ルーティングルール",
+        "C": "フロントエンドホスト",
+        "D": "正常性プローブ"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure Front Doorのキャッシュ動作はルーティングルールで構成します。各ルーティングルールでキャッシュを有効または無効にし、キャッシュ期間やクエリ文字列キャッシュ動作を構成できます。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q40",
+      "domain": 5,
+      "question": "ある企業がAzure Load Balancerで高可用性ポートを構成する必要があります。これは何を意味しますか？",
+      "options": {
+        "A": "特定のポートの負荷分散",
+        "B": "すべてのポートのすべてのトラフィックの負荷分散",
+        "C": "HTTP/HTTPSのみの負荷分散",
+        "D": "UDPトラフィックの負荷分散"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "高可用性ポートルールは、すべてのポートのすべてのTCPおよびUDPトラフィックをバックエンドプールに負荷分散します。これは、各ポートに個別のルールを作成する必要がないため、ネットワーク仮想アプライアンス（NVA）シナリオに特に役立ちます。",
+      "difficulty": "hard"
+    }
+  ]
+}

@@ -1,0 +1,799 @@
+{
+  "exam": {
+    "id": "gcp-pde-set2",
+    "name": "GCP Professional Data Engineer 模拟考试 #2",
+    "code": "PDE",
+    "provider": "GCP",
+    "language": "zh-CN",
+    "description": "Google Cloud Professional Data Engineer认证考试模拟题 - 第2套",
+    "totalQuestions": 50,
+    "passingScore": 70,
+    "examTime": 120,
+    "domains": [
+      {
+        "id": 1,
+        "name": "Designing Data Processing Systems",
+        "weight": 22
+      },
+      {
+        "id": 2,
+        "name": "Ingesting and Processing the Data",
+        "weight": 25
+      },
+      {
+        "id": 3,
+        "name": "Storing the Data",
+        "weight": 20
+      },
+      {
+        "id": 4,
+        "name": "Preparing and Using Data for Analysis",
+        "weight": 18
+      },
+      {
+        "id": 5,
+        "name": "Maintaining and Automating Data Workloads",
+        "weight": 15
+      }
+    ],
+    "tags": [
+      "GCP",
+      "Data Engineering",
+      "BigQuery",
+      "Dataflow",
+      "认证考试"
+    ]
+  },
+  "questions": [
+    {
+      "id": "q1",
+      "domain": 1,
+      "question": "一家媒体公司需要构建一个推荐系统，每天处理数十亿条用户行为日志，并在用户请求时提供毫秒级响应的个性化推荐。哪种架构最合适？",
+      "options": {
+        "A": "Cloud SQL 存储用户数据 → Dataproc 批处理生成推荐 → Cloud SQL 提供服务",
+        "B": "Pub/Sub 收集行为 → Dataflow 处理 → BigQuery 存储 → Vertex AI 训练模型 → Bigtable 提供低延迟推荐",
+        "C": "Cloud Storage 存储日志 → Cloud Functions 处理 → Firestore 提供服务",
+        "D": "Pub/Sub 收集行为 → Cloud SQL 存储 → App Engine 提供服务"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "推荐系统架构设计：\n- Pub/Sub：高吞吐量实时收集用户行为\n- Dataflow：实时/批处理用户行为数据\n- BigQuery：存储历史数据用于模型训练\n- Vertex AI：训练和部署推荐模型\n- Bigtable：提供毫秒级低延迟的推荐结果服务\n---",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q2",
+      "domain": 1,
+      "question": "一家零售公司正在设计数据仓库架构，需要支持复杂的 SQL 分析查询、数据共享给合作伙伴、以及与现有 BI 工具集成。最佳选择是什么？",
+      "options": {
+        "A": "Cloud Bigtable",
+        "B": "Cloud Spanner",
+        "C": "BigQuery",
+        "D": "Cloud SQL PostgreSQL"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "BigQuery 作为企业数据仓库：\n- 支持标准 SQL 和复杂分析查询\n- Analytics Hub 支持安全数据共享\n- 与 Looker、Tableau 等 BI 工具原生集成\n- 无服务器架构，无需管理基础设施\n- 支持 PB 级数据的高性能查询\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q3",
+      "domain": 1,
+      "question": "设计一个需要同时支持 OLTP 和 OLAP 工作负载的系统，如何在 GCP 上实现？",
+      "options": {
+        "A": "使用 Cloud SQL 同时处理两种工作负载",
+        "B": "使用 Cloud Spanner 处理 OLTP，通过 BigQuery 联邦查询或数据复制实现 OLAP",
+        "C": "使用 Bigtable 处理所有工作负载",
+        "D": "使用 Firestore 处理两种工作负载"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "HTAP（混合事务分析处理）架构：\n- Cloud Spanner：强一致性 OLTP，支持全球分布式事务\n- BigQuery：高性能 OLAP 分析\n- 使用 Datastream 实时同步或联邦查询连接\n- 各组件针对特定工作负载优化\n---",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q4",
+      "domain": 1,
+      "question": "一家保险公司需要设计一个系统来检测欺诈交易，要求在交易发生后 1 秒内给出风险评分。如何设计？",
+      "options": {
+        "A": "将交易数据批量加载到 BigQuery，定期运行分析",
+        "B": "使用 Pub/Sub 接收交易 → Dataflow 实时处理 → 调用 Vertex AI 在线预测端点",
+        "C": "将数据存储到 Cloud Storage，使用 Dataproc 定期处理",
+        "D": "使用 Cloud Functions 直接查询 Cloud SQL"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "实时欺诈检测架构：\n- Pub/Sub：接收实时交易事件\n- Dataflow：流处理，特征工程和数据增强\n- Vertex AI 在线预测：毫秒级响应的 ML 推理\n- 结果可写回 Pub/Sub 或直接触发下游操作\n---",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q5",
+      "domain": 1,
+      "question": "在设计跨区域数据管道时，如何最小化数据传输成本？",
+      "options": {
+        "A": "将所有处理集中在一个区域",
+        "B": "在每个区域进行本地处理和聚合，只传输聚合结果到中心区域",
+        "C": "使用更大的机器类型加速处理",
+        "D": "禁用数据压缩以加快传输速度"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "跨区域数据传输优化：\n- 在数据产生地进行预处理和聚合\n- 只传输必要的聚合数据\n- 使用数据压缩减少传输量\n- 考虑使用 CDN 缓存频繁访问的数据\n- 选择适当的网络层级（Premium vs Standard）\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q6",
+      "domain": 2,
+      "question": "一家游戏公司需要实时分析玩家行为，每秒处理超过 100 万条事件。如何确保数据摄取的可靠性？",
+      "options": {
+        "A": "直接将数据写入 BigQuery 流式插入",
+        "B": "使用 Pub/Sub 作为缓冲层，配置适当的确认机制和死信队列",
+        "C": "将数据先写入 Cloud SQL，再批量导入",
+        "D": "使用 Cloud Functions 直接处理每个事件"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "高吞吐量数据摄取最佳实践：\n- Pub/Sub 提供无限扩展的消息缓冲\n- 配置确认截止时间避免消息重复\n- 死信队列捕获处理失败的消息\n- 消息保留策略确保数据持久性\n- 后续使用 Dataflow 进行可靠处理\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q7",
+      "domain": 2,
+      "question": "使用 Dataflow 处理流数据时，如何处理数据倾斜（data skew）问题？",
+      "options": {
+        "A": "增加 worker 数量",
+        "B": "使用 Combine.perKey 进行预聚合，或使用热键处理策略",
+        "C": "减少窗口大小",
+        "D": "禁用自动扩展"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "数据倾斜处理策略：\n- 使用 Combine.perKey 进行预聚合减少数据量\n- 使用 withHotKeyFanout 分散热键处理\n- 添加随机后缀到键值进行二次聚合\n- 使用采样识别热键\n- 考虑重新设计键值分布策略\n---",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q8",
+      "domain": 2,
+      "question": "一家物流公司需要从遍布全国的 GPS 设备收集位置数据，设备使用 MQTT 协议。如何将数据接入 GCP？",
+      "options": {
+        "A": "直接连接到 BigQuery",
+        "B": "使用 Cloud IoT Core 或 MQTT 桥接到 Pub/Sub",
+        "C": "使用 Cloud Storage 接收数据",
+        "D": "使用 Cloud SQL 接收数据"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "IoT 数据接入方案：\n- Cloud IoT Core 原生支持 MQTT 协议\n- 自动与 Pub/Sub 集成\n- 设备认证和安全连接\n- 设备状态管理\n- 或使用第三方 MQTT broker 桥接到 Pub/Sub\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q9",
+      "domain": 2,
+      "question": "在 Dataflow 中，Trigger 的作用是什么？",
+      "options": {
+        "A": "定义数据来源",
+        "B": "决定何时输出窗口的计算结果",
+        "C": "定义数据输出目标",
+        "D": "控制 worker 数量"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Dataflow Trigger 类型：\n- Event Time Trigger：基于水印进度触发\n- Processing Time Trigger：基于处理时间触发\n- Data-driven Trigger：基于数据到达触发\n- Composite Trigger：组合多种触发条件\n- 支持累积模式（Accumulating）和丢弃模式（Discarding）\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q10",
+      "domain": 2,
+      "question": "如何使用 Datastream 进行 CDC（变更数据捕获）？",
+      "options": {
+        "A": "Datastream 不支持 CDC",
+        "B": "Datastream 从源数据库捕获变更，实时复制到 BigQuery 或 Cloud Storage",
+        "C": "需要手动编写 ETL 代码",
+        "D": "只支持全量复制"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Datastream CDC 特性：\n- 支持 Oracle、MySQL、PostgreSQL 等源数据库\n- 实时捕获 INSERT、UPDATE、DELETE 操作\n- 目标可以是 BigQuery、Cloud Storage、Cloud SQL\n- 支持初始快照 + 增量变更\n- 与 Dataflow 集成进行转换处理\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q11",
+      "domain": 2,
+      "question": "Pub/Sub Lite 和标准 Pub/Sub 的主要区别是什么？",
+      "options": {
+        "A": "功能完全相同",
+        "B": "Pub/Sub Lite 提供区域性、成本更低的选择，但需要预配置容量",
+        "C": "Pub/Sub Lite 性能更高",
+        "D": "Pub/Sub Lite 支持更多协议"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Pub/Sub Lite 特点：\n- 区域性服务（非全球分布）\n- 需要预配置存储和吞吐量\n- 成本比标准 Pub/Sub 低 80-90%\n- 适合预算敏感且可预测工作负载\n- 不支持某些高级功能如 Seek、Snapshot\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q12",
+      "domain": 2,
+      "question": "使用 Cloud Data Fusion 的主要优势是什么？",
+      "options": {
+        "A": "只支持代码开发",
+        "B": "提供可视化界面构建数据管道，支持 150+ 预构建连接器",
+        "C": "只能处理批数据",
+        "D": "不支持与其他 GCP 服务集成"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Cloud Data Fusion 优势：\n- 基于 CDAP 的可视化 ETL 工具\n- 150+ 预构建连接器\n- 支持批处理和实时管道\n- 拖拽式管道设计\n- 内置数据质量和 Wrangler 功能\n---",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q13",
+      "domain": 3,
+      "question": "一家金融科技公司需要存储每秒 100 万次交易查询请求的结果缓存，延迟要求在 10 毫秒以内。最佳选择是什么？",
+      "options": {
+        "A": "BigQuery",
+        "B": "Cloud Storage",
+        "C": "Memorystore for Redis 集群模式",
+        "D": "Cloud SQL"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "高性能缓存方案：\n- Memorystore for Redis 集群模式支持高吞吐\n- 亚毫秒级读取延迟\n- 自动分片和扩展\n- 内置复制和故障转移\n- 适合会话存储、缓存等场景\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q14",
+      "domain": 3,
+      "question": "BigQuery 中的 SEARCH 索引功能适用于什么场景？",
+      "options": {
+        "A": "加速所有类型的查询",
+        "B": "加速对大型文本字段的模糊搜索和精确匹配查询",
+        "C": "只能用于数值类型",
+        "D": "替代分区功能"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "BigQuery SEARCH 索引：\n- 加速 SEARCH 函数查询\n- 适合日志分析、文本搜索场景\n- 支持模糊匹配和精确匹配\n- 自动维护，无需手动更新\n- 对大型非结构化数据列特别有效\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q15",
+      "domain": 3,
+      "question": "Cloud Spanner 的分区（interleaved tables）功能有什么用途？",
+      "options": {
+        "A": "减少存储成本",
+        "B": "将父子表的相关行物理上存储在一起，提高联合查询性能",
+        "C": "增加并发写入能力",
+        "D": "简化数据模型"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Spanner 交错表（Interleaved Tables）：\n- 父子行数据物理上共同存储\n- 减少跨节点查询\n- 提高关联查询性能\n- 适合有层次关系的数据模型\n- 需要在表创建时定义关系\n---",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q16",
+      "domain": 3,
+      "question": "如何在 BigQuery 中实现数据脱敏？",
+      "options": {
+        "A": "BigQuery 不支持数据脱敏",
+        "B": "使用列级访问控制和数据脱敏规则（Data Masking）",
+        "C": "只能在数据加载时处理",
+        "D": "使用视图是唯一方法"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "BigQuery 数据脱敏方案：\n- 列级安全策略（Policy Tags）\n- 动态数据脱敏规则\n- 基于角色的访问控制\n- 支持哈希、隐藏、替换等脱敏方法\n- 与 Data Catalog 集成管理敏感数据\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q17",
+      "domain": 3,
+      "question": "Bigtable 的复制功能可以实现什么？",
+      "options": {
+        "A": "只能用于备份",
+        "B": "跨区域/跨集群复制，实现高可用、低延迟读取和灾难恢复",
+        "C": "增加存储容量",
+        "D": "提高写入性能"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Bigtable 复制功能：\n- 跨区域自动复制数据\n- 支持多区域读写\n- 区域故障自动故障转移\n- 就近读取降低延迟\n- 可配置复制策略和一致性级别\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q18",
+      "domain": 3,
+      "question": "Cloud Storage 的保留策略（Retention Policy）和对象锁定（Object Lock）有什么作用？",
+      "options": {
+        "A": "加速数据访问",
+        "B": "防止数据在指定保留期内被删除或修改，满足合规要求",
+        "C": "减少存储成本",
+        "D": "自动迁移存储类别"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "数据保留和合规：\n- 保留策略：设置最短保留期限\n- 对象锁定：WORM（Write Once Read Many）模式\n- 满足金融、医疗等行业合规要求\n- 防止意外或恶意删除\n- 可锁定保留策略防止修改\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q19",
+      "domain": 3,
+      "question": "什么场景适合使用 Filestore？",
+      "options": {
+        "A": "对象存储场景",
+        "B": "需要共享文件系统、支持 NFS 协议的工作负载如渲染、HPC、ML 训练",
+        "C": "时序数据存储",
+        "D": "替代 BigQuery 存储"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Filestore 适用场景：\n- 需要 POSIX 兼容文件系统\n- 多实例共享数据（如 GKE、Compute Engine）\n- 媒体渲染、游戏开发\n- HPC 和科学计算\n- ML 训练数据共享\n---",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q20",
+      "domain": 3,
+      "question": "BigQuery 的 BigLake 功能提供什么能力？",
+      "options": {
+        "A": "只是另一种存储选项",
+        "B": "统一治理 BigQuery 表和 Cloud Storage 中的数据湖数据，提供细粒度访问控制",
+        "C": "加速批量加载",
+        "D": "替代 Dataflow"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "BigLake 功能：\n- 统一数据湖和数据仓库治理\n- 对外部表提供行/列级访问控制\n- 支持 Cloud Storage 和 AWS S3 等多云数据\n- 性能优化的外部表访问\n- 统一元数据管理\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q21",
+      "domain": 4,
+      "question": "使用 BigQuery ML 训练模型时，如何选择合适的模型类型？（选择两项）",
+      "options": {
+        "A": "预测连续数值使用线性回归",
+        "B": "所有问题都用逻辑回归",
+        "C": "客户分群使用 K-means 聚类",
+        "D": "任何场景都用 AutoML Tables"
+      },
+      "answer": ["A", "C"],
+      "answerType": "multiple",
+      "explanation": "BigQuery ML 模型选择：\n- 线性回归：预测连续数值（如房价、销量）\n- 逻辑回归：二分类问题（如是否流失）\n- K-means：无监督聚类（如客户分群）\n- ARIMA_PLUS：时间序列预测\n- XGBoost/DNN：复杂非线性关系\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q22",
+      "domain": 4,
+      "question": "如何在 BigQuery 中优化包含多个 CTE（公用表表达式）的复杂查询？",
+      "options": {
+        "A": "CTE 会自动优化，无需干预",
+        "B": "将频繁使用的 CTE 物化为临时表或物化视图",
+        "C": "删除所有 CTE",
+        "D": "增加项目配额"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "CTE 优化策略：\n- BigQuery 会重复执行 CTE 多次\n- 将复用的 CTE 创建为临时表\n- 使用物化视图缓存频繁计算\n- 考虑使用 CREATE TEMP TABLE\n- 分析执行计划确定瓶颈\n---",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q23",
+      "domain": 4,
+      "question": "Vertex AI Feature Store 的主要用途是什么？",
+      "options": {
+        "A": "存储模型权重",
+        "B": "集中管理和服务 ML 特征，确保训练和预测使用一致的特征",
+        "C": "替代 BigQuery",
+        "D": "数据可视化"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Vertex AI Feature Store：\n- 统一特征管理和版本控制\n- 训练-服务一致性（避免 skew）\n- 低延迟在线特征服务\n- 批量特征导出用于训练\n- 特征共享和发现\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q24",
+      "domain": 4,
+      "question": "在 BigQuery 中，如何实现近似查询加速大规模数据的统计计算？",
+      "options": {
+        "A": "只能使用精确计算",
+        "B": "使用 APPROX_COUNT_DISTINCT、APPROX_QUANTILES 等近似聚合函数",
+        "C": "增加槽位数量",
+        "D": "使用更小的数据集"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "BigQuery 近似聚合：\n- APPROX_COUNT_DISTINCT：近似唯一值计数\n- APPROX_QUANTILES：近似分位数\n- APPROX_TOP_COUNT：近似 Top-N\n- 性能提升显著（10x+）\n- 误差在可接受范围内（通常 <1%）\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q25",
+      "domain": 4,
+      "question": "如何使用 Looker 创建语义模型层？",
+      "options": {
+        "A": "Looker 不支持语义模型",
+        "B": "使用 LookML 定义维度、度量和关系，创建一致的业务术语和指标",
+        "C": "直接编写 SQL",
+        "D": "只能使用拖拽界面"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "LookML 语义层：\n- 定义维度（Dimensions）和度量（Measures）\n- 统一业务术语和计算逻辑\n- 定义表之间的关系（Explores）\n- 版本控制和代码审查\n- 自助分析无需编写 SQL\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q26",
+      "domain": 4,
+      "question": "BigQuery 远程函数（Remote Functions）可以实现什么？",
+      "options": {
+        "A": "只能调用内部函数",
+        "B": "在 SQL 查询中调用 Cloud Functions 或 Cloud Run 服务执行自定义逻辑",
+        "C": "替代 UDF",
+        "D": "只支持 Python"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "BigQuery 远程函数：\n- 在 SQL 中调用外部服务\n- 支持 Cloud Functions 和 Cloud Run\n- 可使用任何编程语言\n- 适合调用 ML 模型、API、复杂计算\n- 自动并行调用和结果聚合\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q27",
+      "domain": 4,
+      "question": "如何在 BigQuery 中实现实时仪表板的数据更新？",
+      "options": {
+        "A": "BigQuery 不支持实时数据",
+        "B": "使用流式插入 + 物化视图 + BI Engine 实现近实时仪表板",
+        "C": "只能使用批量加载",
+        "D": "需要使用其他工具"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "实时仪表板架构：\n- 流式插入实现数据实时入库\n- 物化视图预计算常用聚合\n- BI Engine 内存加速层\n- Looker Studio 自动刷新\n- 结合使用实现秒级数据刷新\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q28",
+      "domain": 4,
+      "question": "Analytics Hub 的主要用途是什么？",
+      "options": {
+        "A": "数据存储",
+        "B": "安全地共享和交换数据集，包括内部团队、合作伙伴和公开市场",
+        "C": "数据转换",
+        "D": "报表生成"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Analytics Hub：\n- 创建数据交换（Exchange）\n- 发布数据列表（Listings）\n- 精细的访问控制\n- 无需复制数据即可共享\n- 支持私有和公开共享模式\n---",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q29",
+      "domain": 5,
+      "question": "使用 Cloud Composer 2 相比 Cloud Composer 1 的主要优势是什么？",
+      "options": {
+        "A": "功能完全相同",
+        "B": "自动扩展、更快启动、更低成本、使用 GKE Autopilot",
+        "C": "不支持 DAG",
+        "D": "不兼容 Airflow"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Cloud Composer 2 优势：\n- 基于 GKE Autopilot，自动扩展\n- 更快的环境创建和 DAG 解析\n- 成本更低（按实际使用计费）\n- 更好的隔离性和安全性\n- 支持最新 Airflow 版本\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q30",
+      "domain": 5,
+      "question": "如何为 BigQuery 设置自定义成本控制？",
+      "options": {
+        "A": "无法控制成本",
+        "B": "使用项目配额、用户配额、slot 预留和预算警报",
+        "C": "只能通过减少查询",
+        "D": "使用更少的表"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "BigQuery 成本控制：\n- 项目级和用户级查询配额（每日 TB 限制）\n- Slot 预留（Reservations）固定容量定价\n- 预算警报和通知\n- 使用 INFORMATION_SCHEMA 监控使用\n- 查询干运行估算成本\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q31",
+      "domain": 5,
+      "question": "Dataflow Prime 相比标准 Dataflow 的改进是什么？",
+      "options": {
+        "A": "没有区别",
+        "B": "智能自动扩展、右键调整、更好的资源优化和诊断能力",
+        "C": "不支持流处理",
+        "D": "使用不同的 API"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Dataflow Prime 特性：\n- Vertical Autoscaling：自动调整 worker 规格\n- Right Fitting：选择最优机器类型\n- 智能诊断和性能建议\n- 更好的内存管理\n- 无需代码修改即可使用\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q32",
+      "domain": 5,
+      "question": "如何实现 Dataproc 作业的 CI/CD？",
+      "options": {
+        "A": "只能手动部署",
+        "B": "使用 Cloud Build + Dataproc Workflow Templates + 版本化代码",
+        "C": "不支持 CI/CD",
+        "D": "只能使用 UI"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Dataproc CI/CD 最佳实践：\n- Git 版本控制 Spark/Hadoop 代码\n- Cloud Build 触发器自动构建\n- Workflow Templates 定义可重用管道\n- Cloud Storage 存储作业 JAR/脚本\n- 使用初始化脚本配置环境\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q33",
+      "domain": 5,
+      "question": "如何使用 BigQuery 脚本和存储过程自动化数据处理？",
+      "options": {
+        "A": "BigQuery 不支持脚本",
+        "B": "使用 DECLARE、SET、IF、LOOP 等语句和 CREATE PROCEDURE 创建可重用逻辑",
+        "C": "只能使用单条 SQL",
+        "D": "需要使用外部工具"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "BigQuery 脚本编程：\n- 变量声明和赋值\n- 控制流（IF、LOOP、WHILE）\n- 异常处理（BEGIN...EXCEPTION）\n- 存储过程封装业务逻辑\n- 定时调度执行\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q34",
+      "domain": 1,
+      "question": "一家电信公司需要设计网络日志分析系统，每天产生 50TB 日志，需要支持实时异常检测和历史趋势分析。如何设计？",
+      "options": {
+        "A": "所有数据存入 Cloud SQL",
+        "B": "热数据使用 Pub/Sub + Dataflow + Bigtable 进行实时处理，冷数据存入 Cloud Storage + BigQuery 进行历史分析",
+        "C": "只使用 BigQuery 存储所有数据",
+        "D": "使用 Firestore 存储所有日志"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "分层存储架构：\n- 热路径：Pub/Sub → Dataflow → Bigtable（实时告警）\n- 温路径：Pub/Sub → Dataflow → BigQuery（近实时分析）\n- 冷路径：Cloud Storage Archive（长期归档）\n- 使用生命周期策略自动迁移数据\n---",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q35",
+      "domain": 2,
+      "question": "在使用 Dataflow 时，如何实现 Session Windows 处理用户会话？",
+      "options": {
+        "A": "Session Windows 需要手动实现",
+        "B": "使用 Sessions.withGapDuration() 定义会话间隙，自动按用户分组会话",
+        "C": "只能使用固定窗口",
+        "D": "需要使用外部工具"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Dataflow Session Windows：\n- 按活动间隙自动划分会话\n- withGapDuration 设置最大间隙时间\n- 常用于用户行为分析\n- 支持自定义合并逻辑\n- 可与其他窗口类型组合使用\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q36",
+      "domain": 2,
+      "question": "如何使用 Pub/Sub Schema 确保消息格式一致性？",
+      "options": {
+        "A": "Pub/Sub 不支持 Schema",
+        "B": "创建 Avro 或 Protocol Buffer Schema，关联到 Topic 进行消息验证",
+        "C": "只能在客户端验证",
+        "D": "需要使用 Dataflow 验证"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Pub/Sub Schema 管理：\n- 支持 Avro 和 Protocol Buffer\n- Schema 版本控制\n- 发布时自动验证消息格式\n- 拒绝不符合 Schema 的消息\n- Schema Registry 集中管理\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q37",
+      "domain": 3,
+      "question": "Cloud Storage 的双区域（Dual-region）存储与多区域（Multi-region）存储的区别是什么？",
+      "options": {
+        "A": "功能完全相同",
+        "B": "双区域在指定的两个区域存储，提供更精确的位置控制；多区域在大洲范围内自动分布",
+        "C": "多区域性能更差",
+        "D": "双区域成本更高"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "存储位置选择：\n- 双区域：选择特定两个区域，可选 turbo 复制\n- 多区域：大洲级别分布（如 US、EU）\n- 双区域满足数据驻留和精确位置要求\n- 多区域提供最高可用性\n- 根据合规和性能需求选择\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q38",
+      "domain": 3,
+      "question": "AlloyDB 与 Cloud SQL PostgreSQL 的主要区别是什么？",
+      "options": {
+        "A": "功能完全相同",
+        "B": "AlloyDB 针对 OLTP 优化，性能更高，支持列存储加速分析查询",
+        "C": "AlloyDB 不兼容 PostgreSQL",
+        "D": "Cloud SQL 性能更好"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "AlloyDB 特性：\n- 与 PostgreSQL 完全兼容\n- 比 Cloud SQL 快 4x（OLTP），快 100x（分析）\n- 列存储引擎加速分析\n- 智能缓存和 AI 优化\n- 高可用性（99.99% SLA）\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q39",
+      "domain": 4,
+      "question": "如何使用 BigQuery 的 BQML.EVALUATE 评估机器学习模型？",
+      "options": {
+        "A": "不需要评估",
+        "B": "使用 ML.EVALUATE 函数获取模型性能指标如 ROC AUC、精确率、召回率",
+        "C": "只能手动计算",
+        "D": "需要导出到外部工具"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "BigQuery ML 模型评估：\n- ML.EVALUATE 返回评估指标\n- 分类模型：精确率、召回率、F1、ROC AUC\n- 回归模型：MAE、RMSE、R-squared\n- ML.CONFUSION_MATRIX 查看混淆矩阵\n- ML.ROC_CURVE 绘制 ROC 曲线\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q40",
+      "domain": 4,
+      "question": "BigQuery 中的 TABLESAMPLE 功能用于什么？",
+      "options": {
+        "A": "复制表",
+        "B": "从大表中高效采样数据用于探索性分析或模型开发",
+        "C": "分区数据",
+        "D": "压缩数据"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "TABLESAMPLE 采样：\n- TABLESAMPLE SYSTEM (x PERCENT)\n- 快速获取代表性数据样本\n- 降低探索性分析成本\n- 加速模型开发迭代\n- 支持按百分比或行数采样\n---",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q41",
+      "domain": 5,
+      "question": "如何使用 Workflows 编排多个 GCP 服务？",
+      "options": {
+        "A": "Workflows 只支持简单任务",
+        "B": "使用 YAML 定义工作流，调用 Cloud Functions、Cloud Run、BigQuery 等服务",
+        "C": "只能使用 Cloud Composer",
+        "D": "需要编写大量代码"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Cloud Workflows：\n- 无服务器工作流编排\n- YAML 定义步骤和逻辑\n- 内置连接器调用 GCP 服务\n- 支持条件、循环、并行执行\n- 比 Composer 更轻量、成本更低\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q42",
+      "domain": 5,
+      "question": "使用 Cloud Logging 和 Cloud Monitoring 如何为数据管道创建告警？（选择两项）",
+      "options": {
+        "A": "只能手动监控",
+        "B": "基于日志创建指标，设置告警策略",
+        "C": "使用 Cloud Monitoring 仪表板监控关键指标并配置通知",
+        "D": "告警功能需要额外付费"
+      },
+      "answer": ["B", "C"],
+      "answerType": "multiple",
+      "explanation": "数据管道监控告警：\n- 日志指标：从日志提取自定义指标\n- 告警策略：基于阈值或异常触发\n- 通知渠道：邮件、Slack、PagerDuty\n- 仪表板：可视化管道健康状态\n- 运行手册：告警触发时的处理步骤\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q43",
+      "domain": 1,
+      "question": "设计微批处理（Micro-batch）架构时，相比纯流处理有什么权衡？",
+      "options": {
+        "A": "微批处理始终更好",
+        "B": "微批处理延迟较高但更易调试和重处理，纯流处理延迟更低但复杂度更高",
+        "C": "纯流处理成本更低",
+        "D": "两者没有区别"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "微批处理 vs 纯流处理：\n- 微批处理：按小批次处理，延迟秒级\n- 纯流处理：逐条处理，延迟毫秒级\n- 微批更容易实现 exactly-once\n- 微批调试和重处理更简单\n- 根据延迟要求和复杂度选择\n---",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q44",
+      "domain": 2,
+      "question": "如何使用 Dataflow 的 FlexTemplates 实现参数化管道？",
+      "options": {
+        "A": "FlexTemplates 不支持参数",
+        "B": "将管道打包为容器镜像，运行时通过参数传递配置",
+        "C": "只能使用 Classic Templates",
+        "D": "需要每次修改代码"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Dataflow Flex Templates：\n- 打包为 Docker 容器\n- 运行时参数化配置\n- 支持任意语言和依赖\n- 更灵活的资源配置\n- 版本控制和 CI/CD 集成\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q45",
+      "domain": 3,
+      "question": "Cloud Spanner 的外部备份和恢复如何实现？",
+      "options": {
+        "A": "Spanner 不支持备份",
+        "B": "使用内置备份功能或 Dataflow 导出数据到 Cloud Storage",
+        "C": "只能手动复制数据",
+        "D": "需要停机备份"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Cloud Spanner 备份策略：\n- 内置备份：创建数据库备份\n- 自动备份调度\n- Dataflow 模板导出到 Cloud Storage\n- 跨实例恢复\n- PITR（时间点恢复）预览\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q46",
+      "domain": 4,
+      "question": "BigQuery 的 JSON 数据类型有什么优势？",
+      "options": {
+        "A": "与 STRING 存储 JSON 完全相同",
+        "B": "原生 JSON 类型支持更高效的存储、查询和索引，可直接使用 JSON 函数",
+        "C": "不支持嵌套查询",
+        "D": "性能更差"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "BigQuery JSON 数据类型：\n- 原生存储格式，空间效率更高\n- JSON_VALUE、JSON_QUERY 等函数\n- 支持 JSON 路径表达式\n- 可创建虚拟列和索引\n- 支持 Schema 推断\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q47",
+      "domain": 5,
+      "question": "如何使用 Terraform 管理 GCP 数据基础设施？",
+      "options": {
+        "A": "GCP 不支持 Terraform",
+        "B": "使用 Terraform Provider 定义 BigQuery、Dataflow、Pub/Sub 等资源，实现 IaC",
+        "C": "只能使用 Cloud Console",
+        "D": "需要使用专有工具"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Terraform GCP 数据基础设施：\n- Google Cloud Terraform Provider\n- 声明式资源定义\n- 版本控制和审计\n- 环境一致性\n- 支持所有主要数据服务\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q48",
+      "domain": 1,
+      "question": "一家医疗公司需要设计符合 HIPAA 的数据分析平台。必须考虑哪些安全措施？",
+      "options": {
+        "A": "使用公共数据集",
+        "B": "VPC Service Controls、CMEK 加密、审计日志、数据脱敏和访问控制",
+        "C": "只需要网络隔离",
+        "D": "只需要数据加密"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "HIPAA 合规数据平台：\n- VPC Service Controls 防止数据渗漏\n- CMEK 客户管理加密密钥\n- 审计日志追踪所有访问\n- 数据脱敏保护 PHI\n- IAM 最小权限访问控制\n---",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q49",
+      "domain": 2,
+      "question": "使用 Dataflow 处理有界和无界数据时，代码有什么区别？",
+      "options": {
+        "A": "需要完全不同的代码",
+        "B": "Apache Beam 统一模型允许相同代码处理批和流，主要区别在于窗口和触发器配置",
+        "C": "只能处理一种类型",
+        "D": "需要使用不同的 SDK"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Beam 统一编程模型：\n- PCollection 统一表示有界和无界数据\n- 相同的转换操作\n- 流处理需配置窗口和触发器\n- 批处理使用全局窗口\n- 运行时根据 Runner 优化执行\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q50",
+      "domain": 5,
+      "question": "如何实现 BigQuery 的增量数据处理和更新？",
+      "options": {
+        "A": "只能全量替换",
+        "B": "使用 MERGE 语句、表分区、增量物化视图或 Dataform 增量模型",
+        "C": "需要删除重建表",
+        "D": "不支持增量处理"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "BigQuery 增量处理策略：\n- MERGE 语句进行 upsert 操作\n- 按时间分区只处理新分区\n- 物化视图增量刷新\n- Dataform 增量模型\n- 使用 _PARTITIONTIME 过滤增量数据\n---",
+      "difficulty": "medium"
+    }
+  ]
+}

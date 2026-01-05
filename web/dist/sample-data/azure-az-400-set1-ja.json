@@ -1,0 +1,663 @@
+{
+  "exam": {
+    "id": "azure-az-400-set1-ja",
+    "name": "Azure DevOps Engineer Expert 練習問題 セット1",
+    "code": "AZ-400",
+    "provider": "Microsoft",
+    "language": "ja",
+    "description": "Microsoft Azure DevOps Engineer Expert 認定練習問題セット1",
+    "totalQuestions": 40,
+    "passingScore": 70,
+    "examTime": 150,
+    "domains": [
+      "プロセスとコミュニケーションの構成",
+      "ソースコード管理の設計と実装",
+      "ビルドとリリースパイプラインの設計と実装",
+      "セキュリティとコンプライアンス計画の開発",
+      "インストルメンテーション戦略の実装"
+    ],
+    "tags": ["Azure", "DevOps", "CI/CD", "クラウド", "自動化"]
+  },
+  "questions": [
+    {
+      "id": "az400-s1-ja-q1",
+      "examId": "azure-az-400-set1-ja",
+      "setNumber": 1,
+      "domain": "プロセスとコミュニケーションの構成",
+      "question": "Azure DevOps で複数のプロジェクトにわたって作業項目のトレーサビリティを維持する必要があります。どの機能を使用すべきですか？",
+      "options": {
+        "A": "作業項目のリンク",
+        "B": "分析ビュー",
+        "C": "ダッシュボード",
+        "D": "Wiki"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "作業項目のリンクを使用すると、異なるプロジェクト間の作業項目を関連付けることができます。これにより、要件から実装、テストまでの完全なトレーサビリティを維持できます。"
+    },
+    {
+      "id": "az400-s1-ja-q2",
+      "examId": "azure-az-400-set1-ja",
+      "setNumber": 1,
+      "domain": "ソースコード管理の設計と実装",
+      "question": "Git リポジトリでブランチ戦略を実装する必要があります。メインブランチを保護し、プルリクエストを通じてのみ変更を許可するにはどうすればよいですか？",
+      "options": {
+        "A": "ブランチポリシーを構成する",
+        "B": "ブランチロックを有効にする",
+        "C": "ブランチを削除する",
+        "D": "フォーク戦略を使用する"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "ブランチポリシーを使用すると、最小レビュー担当者数、ビルド検証、リンクされた作業項目のチェックなど、ブランチの保護ルールを定義できます。これにより、コード品質を維持しながらプルリクエストワークフローを強制できます。"
+    },
+    {
+      "id": "az400-s1-ja-q3",
+      "examId": "azure-az-400-set1-ja",
+      "setNumber": 1,
+      "domain": "ビルドとリリースパイプラインの設計と実装",
+      "question": "Azure Pipelines で YAML パイプラインを作成しています。特定のブランチへのプッシュ時にのみパイプラインをトリガーする必要があります。どの構成を使用すべきですか？",
+      "options": {
+        "A": "trigger セクション",
+        "B": "pr セクション",
+        "C": "schedules セクション",
+        "D": "resources セクション"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "YAML パイプラインの trigger セクションを使用すると、パイプラインをトリガーするブランチを指定できます。ブランチフィルター、パスフィルター、タグフィルターを定義できます。"
+    },
+    {
+      "id": "az400-s1-ja-q4",
+      "examId": "azure-az-400-set1-ja",
+      "setNumber": 1,
+      "domain": "セキュリティとコンプライアンス計画の開発",
+      "question": "Azure DevOps パイプラインでシークレットを安全に管理する必要があります。どの機能を使用すべきですか？",
+      "options": {
+        "A": "変数グループと Azure Key Vault の統合",
+        "B": "パイプライン変数（プレーンテキスト）",
+        "C": "環境変数",
+        "D": "設定ファイル"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "変数グループを Azure Key Vault にリンクすると、シークレットを安全に管理できます。Key Vault はシークレットの暗号化、アクセス制御、監査ログを提供し、パイプラインから安全にアクセスできます。"
+    },
+    {
+      "id": "az400-s1-ja-q5",
+      "examId": "azure-az-400-set1-ja",
+      "setNumber": 1,
+      "domain": "インストルメンテーション戦略の実装",
+      "question": "Azure Application Insights を使用してアプリケーションのパフォーマンスを監視しています。依存関係の失敗を特定するためにどの機能を使用すべきですか？",
+      "options": {
+        "A": "アプリケーションマップ",
+        "B": "メトリックエクスプローラー",
+        "C": "ログ分析",
+        "D": "スマート検出"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "アプリケーションマップは、アプリケーションコンポーネントとその依存関係を視覚化し、各コンポーネントの正常性と障害率を表示します。これにより、パフォーマンスのボトルネックや障害を迅速に特定できます。"
+    },
+    {
+      "id": "az400-s1-ja-q6",
+      "examId": "azure-az-400-set1-ja",
+      "setNumber": 1,
+      "domain": "プロセスとコミュニケーションの構成",
+      "question": "アジャイルチームのスプリント計画を Azure DevOps で管理しています。チームのキャパシティとスプリントバックログを追跡するためにどの機能を使用すべきですか？",
+      "options": {
+        "A": "スプリントボード",
+        "B": "バックログビュー",
+        "C": "クエリ",
+        "D": "ダッシュボードウィジェット"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "スプリントボードは、チームのキャパシティ設定、スプリントバックログの管理、タスクボードでの進捗追跡を一元的に行うことができます。バーンダウンチャートも提供されます。"
+    },
+    {
+      "id": "az400-s1-ja-q7",
+      "examId": "azure-az-400-set1-ja",
+      "setNumber": 1,
+      "domain": "ソースコード管理の設計と実装",
+      "question": "Azure Repos でプルリクエストテンプレートを使用して一貫したレビュープロセスを確保する必要があります。テンプレートをどこに配置すべきですか？",
+      "options": {
+        "A": ".azuredevops/pull_request_template.md",
+        "B": ".github/PULL_REQUEST_TEMPLATE.md",
+        "C": "ルートディレクトリの README.md",
+        "D": "docs/pr_template.md"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Azure Repos は、.azuredevops フォルダー内の pull_request_template.md ファイルをプルリクエストテンプレートとして認識します。このテンプレートは新しいプルリクエストの説明に自動的に適用されます。"
+    },
+    {
+      "id": "az400-s1-ja-q8",
+      "examId": "azure-az-400-set1-ja",
+      "setNumber": 1,
+      "domain": "ビルドとリリースパイプラインの設計と実装",
+      "question": "Azure Pipelines で複数のステージを持つ YAML パイプラインを作成しています。ステージ間で成果物を共有するためにどの機能を使用すべきですか？",
+      "options": {
+        "A": "Pipeline Artifacts",
+        "B": "共有変数",
+        "C": "サービス接続",
+        "D": "エージェントプール"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Pipeline Artifacts を使用すると、ビルドステージで公開した成果物を後続のステージでダウンロードして使用できます。publish タスクと download タスクを使用して成果物を管理します。"
+    },
+    {
+      "id": "az400-s1-ja-q9",
+      "examId": "azure-az-400-set1-ja",
+      "setNumber": 1,
+      "domain": "セキュリティとコンプライアンス計画の開発",
+      "question": "Azure DevOps でコードのセキュリティスキャンを実装する必要があります。静的アプリケーションセキュリティテスト（SAST）にどのツールを使用すべきですか？",
+      "options": {
+        "A": "SonarQube または Microsoft Security Code Analysis",
+        "B": "OWASP ZAP",
+        "C": "Selenium",
+        "D": "JMeter"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "SonarQube と Microsoft Security Code Analysis は静的コード分析ツールで、コードの脆弱性、バグ、コード品質の問題を検出します。OWASP ZAP は動的テスト（DAST）ツールです。"
+    },
+    {
+      "id": "az400-s1-ja-q10",
+      "examId": "azure-az-400-set1-ja",
+      "setNumber": 1,
+      "domain": "インストルメンテーション戦略の実装",
+      "question": "Azure DevOps リリースパイプラインで、デプロイ後に Application Insights のメトリックを監視し、問題が検出された場合にロールバックする必要があります。どの機能を使用すべきですか？",
+      "options": {
+        "A": "デプロイ後ゲート",
+        "B": "手動介入タスク",
+        "C": "承認",
+        "D": "条件"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "デプロイ後ゲートを使用すると、デプロイ後に Application Insights やその他のソースからメトリックを収集し、しきい値を評価できます。条件が満たされない場合、自動ロールバックをトリガーできます。"
+    },
+    {
+      "id": "az400-s1-ja-q11",
+      "examId": "azure-az-400-set1-ja",
+      "setNumber": 1,
+      "domain": "プロセスとコミュニケーションの構成",
+      "question": "Azure DevOps でテストケース管理を実装する必要があります。手動テストの実行と追跡にどのサービスを使用すべきですか？",
+      "options": {
+        "A": "Azure Test Plans",
+        "B": "Azure Boards",
+        "C": "Azure Pipelines",
+        "D": "Azure Repos"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Azure Test Plans は、テスト計画、テストスイート、テストケースの作成と管理、手動テストの実行、探索的テスト、バグのフィードバック収集を提供する包括的なテスト管理ソリューションです。"
+    },
+    {
+      "id": "az400-s1-ja-q12",
+      "examId": "azure-az-400-set1-ja",
+      "setNumber": 1,
+      "domain": "ソースコード管理の設計と実装",
+      "question": "Git リポジトリで誤って機密情報をコミットしてしまいました。履歴から完全に削除するためにどのコマンドを使用すべきですか？",
+      "options": {
+        "A": "git filter-branch または BFG Repo-Cleaner",
+        "B": "git reset --hard",
+        "C": "git revert",
+        "D": "git checkout"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "git filter-branch または BFG Repo-Cleaner を使用すると、Git の履歴を書き換えて機密データを完全に削除できます。git reset や revert は履歴を保持するため、機密データは依然としてアクセス可能です。"
+    },
+    {
+      "id": "az400-s1-ja-q13",
+      "examId": "azure-az-400-set1-ja",
+      "setNumber": 1,
+      "domain": "ビルドとリリースパイプラインの設計と実装",
+      "question": "Azure Pipelines でセルフホステッドエージェントを使用しています。エージェントの機能要件を管理するためにどの機能を使用すべきですか？",
+      "options": {
+        "A": "デマンド（要求）",
+        "B": "変数",
+        "C": "条件",
+        "D": "テンプレート"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "デマンド（要求）を使用すると、ジョブが実行されるエージェントが持つ必要がある機能を指定できます。エージェントの機能と一致するジョブのみがそのエージェントで実行されます。"
+    },
+    {
+      "id": "az400-s1-ja-q14",
+      "examId": "azure-az-400-set1-ja",
+      "setNumber": 1,
+      "domain": "セキュリティとコンプライアンス計画の開発",
+      "question": "Azure DevOps 組織のセキュリティを強化するために、条件付きアクセスポリシーを実装する必要があります。どのサービスと統合すべきですか？",
+      "options": {
+        "A": "Azure Active Directory",
+        "B": "Azure Key Vault",
+        "C": "Azure Security Center",
+        "D": "Azure Policy"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Azure DevOps を Azure Active Directory に接続すると、条件付きアクセスポリシー、多要素認証、ID 保護などの AAD セキュリティ機能を活用できます。"
+    },
+    {
+      "id": "az400-s1-ja-q15",
+      "examId": "azure-az-400-set1-ja",
+      "setNumber": 1,
+      "domain": "インストルメンテーション戦略の実装",
+      "question": "Azure で分散トレーシングを実装し、マイクロサービス間のリクエストを追跡する必要があります。どの機能を使用すべきですか？",
+      "options": {
+        "A": "Application Insights の分散トレース",
+        "B": "Azure Monitor ログ",
+        "C": "Azure Event Grid",
+        "D": "Azure Service Bus"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Application Insights の分散トレース機能を使用すると、マイクロサービスアーキテクチャ全体でリクエストを追跡できます。操作 ID を使用して、複数のサービスにまたがるトランザクションを関連付けます。"
+    },
+    {
+      "id": "az400-s1-ja-q16",
+      "examId": "azure-az-400-set1-ja",
+      "setNumber": 1,
+      "domain": "プロセスとコミュニケーションの構成",
+      "question": "Azure DevOps でカスタムプロセスを作成し、組織固有の作業項目タイプを定義する必要があります。どの機能を使用すべきですか？",
+      "options": {
+        "A": "継承プロセス",
+        "B": "クエリ",
+        "C": "ダッシュボード",
+        "D": "Wiki"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "継承プロセスを使用すると、既存のプロセス（Agile、Scrum、CMMI）を継承して、カスタムフィールド、作業項目タイプ、状態、ルールを追加できます。"
+    },
+    {
+      "id": "az400-s1-ja-q17",
+      "examId": "azure-az-400-set1-ja",
+      "setNumber": 1,
+      "domain": "ソースコード管理の設計と実装",
+      "question": "チームは GitFlow ワークフローを使用しています。リリースブランチを作成するタイミングはいつですか？",
+      "options": {
+        "A": "develop ブランチの機能が完成し、リリース準備が整ったとき",
+        "B": "新しい機能の開発を開始するとき",
+        "C": "本番環境でバグが発見されたとき",
+        "D": "コードレビューが必要なとき"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "GitFlow では、リリースブランチは develop ブランチから作成され、リリース候補の最終的なバグ修正とメタデータ更新を行います。機能開発は feature ブランチ、本番のバグ修正は hotfix ブランチで行います。"
+    },
+    {
+      "id": "az400-s1-ja-q18",
+      "examId": "azure-az-400-set1-ja",
+      "setNumber": 1,
+      "domain": "ビルドとリリースパイプラインの設計と実装",
+      "question": "Azure Pipelines で Docker イメージをビルドし、Azure Container Registry にプッシュする必要があります。どのタスクを使用すべきですか？",
+      "options": {
+        "A": "Docker@2 タスク",
+        "B": "AzureCLI@2 タスク",
+        "C": "Bash@3 タスク",
+        "D": "PowerShell@2 タスク"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Docker@2 タスクは、Docker イメージのビルド、プッシュ、その他の Docker 操作を実行するための専用タスクです。Azure Container Registry への認証とプッシュを簡単に構成できます。"
+    },
+    {
+      "id": "az400-s1-ja-q19",
+      "examId": "azure-az-400-set1-ja",
+      "setNumber": 1,
+      "domain": "セキュリティとコンプライアンス計画の開発",
+      "question": "Azure DevOps パイプラインで使用するサービス接続のセキュリティを強化する必要があります。どのベストプラクティスに従うべきですか？",
+      "options": {
+        "A": "サービス接続の使用を特定のパイプラインに制限する",
+        "B": "すべてのパイプラインでサービス接続を共有する",
+        "C": "サービス接続の詳細をコードにハードコードする",
+        "D": "サービス接続に管理者権限を付与する"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "サービス接続のセキュリティ設定で、使用を承認されたパイプラインのみに制限することがベストプラクティスです。これにより、不正なパイプラインからのアクセスを防止できます。"
+    },
+    {
+      "id": "az400-s1-ja-q20",
+      "examId": "azure-az-400-set1-ja",
+      "setNumber": 1,
+      "domain": "インストルメンテーション戦略の実装",
+      "question": "Azure Monitor でカスタムアラートルールを作成し、特定のログパターンが検出されたときに通知を送信する必要があります。どのアラートタイプを使用すべきですか？",
+      "options": {
+        "A": "ログアラート",
+        "B": "メトリックアラート",
+        "C": "アクティビティログアラート",
+        "D": "スマート検出"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "ログアラートを使用すると、Log Analytics または Application Insights のログクエリの結果に基づいてアラートをトリガーできます。カスタムログパターンの検出に最適です。"
+    },
+    {
+      "id": "az400-s1-ja-q21",
+      "examId": "azure-az-400-set1-ja",
+      "setNumber": 1,
+      "domain": "プロセスとコミュニケーションの構成",
+      "question": "Azure DevOps で開発チームと運用チーム間のコラボレーションを改善する必要があります。どのプラクティスを実装すべきですか？",
+      "options": {
+        "A": "共有ダッシュボードとリアルタイム通知",
+        "B": "別々のプロジェクトとリポジトリ",
+        "C": "メールベースのコミュニケーション",
+        "D": "定期的な対面ミーティングのみ"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "共有ダッシュボードとリアルタイム通知（サービスフック、Teams 統合など）により、チーム間の可視性と即時のコミュニケーションが向上し、DevOps 文化を促進します。"
+    },
+    {
+      "id": "az400-s1-ja-q22",
+      "examId": "azure-az-400-set1-ja",
+      "setNumber": 1,
+      "domain": "ソースコード管理の設計と実装",
+      "question": "Azure Repos で複数の関連リポジトリを管理する必要があります。すべてのリポジトリを一度にクローンするにはどうすればよいですか？",
+      "options": {
+        "A": "Git サブモジュールを使用する",
+        "B": "各リポジトリを個別にクローンする",
+        "C": "フォークを使用する",
+        "D": "ブランチを使用する"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Git サブモジュールを使用すると、他の Git リポジトリをサブディレクトリとして含めることができます。親リポジトリをクローンする際に --recurse-submodules フラグを使用すると、すべてのサブモジュールも一緒にクローンされます。"
+    },
+    {
+      "id": "az400-s1-ja-q23",
+      "examId": "azure-az-400-set1-ja",
+      "setNumber": 1,
+      "domain": "ビルドとリリースパイプラインの設計と実装",
+      "question": "Azure Pipelines で変数を使用して環境ごとに異なる構成を管理する必要があります。ステージ固有の変数を定義するにはどうすればよいですか？",
+      "options": {
+        "A": "ステージレベルで変数を定義する",
+        "B": "パイプラインレベルで変数を定義する",
+        "C": "ライブラリで変数グループを作成する",
+        "D": "環境変数を使用する"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "YAML パイプラインでは、ステージレベルで変数を定義することで、そのステージでのみ使用できる変数を設定できます。これにより、環境固有の構成を管理できます。"
+    },
+    {
+      "id": "az400-s1-ja-q24",
+      "examId": "azure-az-400-set1-ja",
+      "setNumber": 1,
+      "domain": "セキュリティとコンプライアンス計画の開発",
+      "question": "Azure DevOps でオープンソースの依存関係の脆弱性を検出する必要があります。どのツールを使用すべきですか？",
+      "options": {
+        "A": "Dependabot または WhiteSource",
+        "B": "SonarQube",
+        "C": "Selenium",
+        "D": "JMeter"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Dependabot と WhiteSource（現 Mend）は、プロジェクトの依存関係をスキャンし、既知の脆弱性を検出するツールです。自動的にセキュリティアップデートのプルリクエストを作成することもできます。"
+    },
+    {
+      "id": "az400-s1-ja-q25",
+      "examId": "azure-az-400-set1-ja",
+      "setNumber": 1,
+      "domain": "インストルメンテーション戦略の実装",
+      "question": "Azure Application Insights で可用性テストを設定し、Web アプリケーションの稼働状況を監視する必要があります。どのテストタイプを使用すべきですか？",
+      "options": {
+        "A": "URL ping テスト",
+        "B": "ロードテスト",
+        "C": "単体テスト",
+        "D": "統合テスト"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "URL ping テストは、Application Insights の可用性テストの一種で、指定した URL に定期的にリクエストを送信し、応答を確認します。複数の地域からテストを実行して、グローバルな可用性を監視できます。"
+    },
+    {
+      "id": "az400-s1-ja-q26",
+      "examId": "azure-az-400-set1-ja",
+      "setNumber": 1,
+      "domain": "プロセスとコミュニケーションの構成",
+      "question": "Azure DevOps で GitHub リポジトリとの統合を設定する必要があります。Azure Boards で GitHub のコミットと作業項目をリンクするにはどうすればよいですか？",
+      "options": {
+        "A": "Azure Boards の GitHub 接続を設定する",
+        "B": "Git サブモジュールを使用する",
+        "C": "手動でリンクを追加する",
+        "D": "Webhook を設定する"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Azure Boards の GitHub 接続機能を使用すると、GitHub リポジトリのコミット、プルリクエスト、イシューを Azure Boards の作業項目とリンクできます。コミットメッセージに作業項目 ID を含めると自動的にリンクされます。"
+    },
+    {
+      "id": "az400-s1-ja-q27",
+      "examId": "azure-az-400-set1-ja",
+      "setNumber": 1,
+      "domain": "ソースコード管理の設計と実装",
+      "question": "Git リポジトリで大きなバイナリファイルを効率的に管理する必要があります。どの機能を使用すべきですか？",
+      "options": {
+        "A": "Git LFS（Large File Storage）",
+        "B": "Git サブモジュール",
+        "C": ".gitignore",
+        "D": "Git アーカイブ"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Git LFS は大きなファイル（画像、動画、バイナリなど）をリポジトリ外に保存し、ポインタファイルに置き換えます。これにより、リポジトリのサイズを小さく保ちながら、大きなファイルをバージョン管理できます。"
+    },
+    {
+      "id": "az400-s1-ja-q28",
+      "examId": "azure-az-400-set1-ja",
+      "setNumber": 1,
+      "domain": "ビルドとリリースパイプラインの設計と実装",
+      "question": "Azure Pipelines でテンプレートを使用してパイプラインコードを再利用する必要があります。どのテンプレートタイプを使用してジョブを共有すべきですか？",
+      "options": {
+        "A": "ジョブテンプレート",
+        "B": "ステップテンプレート",
+        "C": "ステージテンプレート",
+        "D": "変数テンプレート"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "ジョブテンプレートを使用すると、ジョブ全体を再利用可能なテンプレートとして定義できます。テンプレートにはステップ、変数、条件などを含めることができ、複数のパイプラインで共有できます。"
+    },
+    {
+      "id": "az400-s1-ja-q29",
+      "examId": "azure-az-400-set1-ja",
+      "setNumber": 1,
+      "domain": "セキュリティとコンプライアンス計画の開発",
+      "question": "Azure DevOps で監査ログを有効にし、組織内のアクティビティを追跡する必要があります。監査ログはどこで確認できますか？",
+      "options": {
+        "A": "組織設定 > 監査",
+        "B": "プロジェクト設定 > セキュリティ",
+        "C": "Azure Portal",
+        "D": "Log Analytics"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Azure DevOps の監査機能は、組織設定の監査セクションで有効化し、確認できます。ユーザーアクション、権限の変更、セキュリティイベントなどが記録されます。"
+    },
+    {
+      "id": "az400-s1-ja-q30",
+      "examId": "azure-az-400-set1-ja",
+      "setNumber": 1,
+      "domain": "インストルメンテーション戦略の実装",
+      "question": "Azure Monitor でアプリケーションのカスタムメトリックを収集する必要があります。どの API を使用すべきですか？",
+      "options": {
+        "A": "Application Insights SDK の TelemetryClient",
+        "B": "Azure Storage API",
+        "C": "Azure Event Hubs API",
+        "D": "Azure Service Bus API"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Application Insights SDK の TelemetryClient クラスを使用すると、カスタムイベント、メトリック、依存関係、例外などのテレメトリを Application Insights に送信できます。TrackMetric メソッドでカスタムメトリックを記録します。"
+    },
+    {
+      "id": "az400-s1-ja-q31",
+      "examId": "azure-az-400-set1-ja",
+      "setNumber": 1,
+      "domain": "プロセスとコミュニケーションの構成",
+      "question": "Azure DevOps でチームの進捗を可視化するためのレポートを作成する必要があります。どの機能を使用すべきですか？",
+      "options": {
+        "A": "分析ビューと Power BI",
+        "B": "クエリのみ",
+        "C": "Excel エクスポート",
+        "D": "メール通知"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "分析ビューを使用すると、Azure DevOps データに対して Power BI でレポートを作成できます。バーンダウン、速度、サイクルタイムなどの高度な分析とカスタムレポートが可能です。"
+    },
+    {
+      "id": "az400-s1-ja-q32",
+      "examId": "azure-az-400-set1-ja",
+      "setNumber": 1,
+      "domain": "ソースコード管理の設計と実装",
+      "question": "Azure Repos でブランチの比較を行い、2つのブランチ間の差分を確認する必要があります。どの機能を使用すべきですか？",
+      "options": {
+        "A": "ブランチの比較機能",
+        "B": "プルリクエスト",
+        "C": "コミット履歴",
+        "D": "タグ"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Azure Repos のブランチの比較機能を使用すると、2つのブランチ間のファイルの差分、コミットの差分を視覚的に確認できます。これにより、マージ前の変更内容を理解できます。"
+    },
+    {
+      "id": "az400-s1-ja-q33",
+      "examId": "azure-az-400-set1-ja",
+      "setNumber": 1,
+      "domain": "ビルドとリリースパイプラインの設計と実装",
+      "question": "Azure Pipelines で Kubernetes クラスターにアプリケーションをデプロイする必要があります。どのタスクを使用すべきですか？",
+      "options": {
+        "A": "KubernetesManifest@0 または Kubectl@0",
+        "B": "AzureCLI@2",
+        "C": "Bash@3",
+        "D": "PowerShell@2"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "KubernetesManifest@0 タスクは、Kubernetes マニフェストのデプロイ、ベイク、キャナリー戦略などを簡単に実行できます。Kubectl@0 タスクは、kubectl コマンドを直接実行する場合に使用します。"
+    },
+    {
+      "id": "az400-s1-ja-q34",
+      "examId": "azure-az-400-set1-ja",
+      "setNumber": 1,
+      "domain": "セキュリティとコンプライアンス計画の開発",
+      "question": "Azure DevOps パイプラインで OWASP Top 10 の脆弱性をスキャンする必要があります。動的アプリケーションセキュリティテスト（DAST）にどのツールを使用すべきですか？",
+      "options": {
+        "A": "OWASP ZAP",
+        "B": "SonarQube",
+        "C": "Checkmarx",
+        "D": "npm audit"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "OWASP ZAP（Zed Attack Proxy）は、実行中のアプリケーションに対して動的セキュリティテストを実行する DAST ツールです。XSS、SQL インジェクションなどの脆弱性を検出できます。"
+    },
+    {
+      "id": "az400-s1-ja-q35",
+      "examId": "azure-az-400-set1-ja",
+      "setNumber": 1,
+      "domain": "インストルメンテーション戦略の実装",
+      "question": "Azure でコンテナ化されたアプリケーションを監視する必要があります。Azure Kubernetes Service のコンテナからログとメトリックを収集するにはどうすればよいですか？",
+      "options": {
+        "A": "Azure Monitor Container Insights",
+        "B": "Azure Storage",
+        "C": "Azure Event Grid",
+        "D": "Azure Functions"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Azure Monitor Container Insights は、AKS クラスター、ノード、コンテナからのパフォーマンスメトリック、ログ、正常性情報を収集します。Kubernetes 環境の包括的な監視を提供します。"
+    },
+    {
+      "id": "az400-s1-ja-q36",
+      "examId": "azure-az-400-set1-ja",
+      "setNumber": 1,
+      "domain": "プロセスとコミュニケーションの構成",
+      "question": "Azure DevOps で作業項目の一括更新を行う必要があります。どの方法を使用すべきですか？",
+      "options": {
+        "A": "クエリ結果からの一括編集",
+        "B": "個別に編集",
+        "C": "REST API のみ",
+        "D": "Excel インポート"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Azure Boards のクエリ結果ビューでは、複数の作業項目を選択して一括編集できます。フィールド値の変更、状態の更新、タグの追加などを一度に行えます。"
+    },
+    {
+      "id": "az400-s1-ja-q37",
+      "examId": "azure-az-400-set1-ja",
+      "setNumber": 1,
+      "domain": "ソースコード管理の設計と実装",
+      "question": "Azure Repos でコードオーナーを設定し、特定のファイルやフォルダの変更に対して自動的にレビュー担当者を割り当てる必要があります。どのファイルを使用すべきですか？",
+      "options": {
+        "A": "CODEOWNERS ファイル",
+        "B": ".gitattributes ファイル",
+        "C": ".gitignore ファイル",
+        "D": "README.md ファイル"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "CODEOWNERS ファイルを使用すると、リポジトリ内の特定のファイルやディレクトリに対するコードオーナーを定義できます。プルリクエストでこれらのファイルが変更されると、自動的にコードオーナーがレビュー担当者として追加されます。"
+    },
+    {
+      "id": "az400-s1-ja-q38",
+      "examId": "azure-az-400-set1-ja",
+      "setNumber": 1,
+      "domain": "ビルドとリリースパイプラインの設計と実装",
+      "question": "Azure Pipelines でビルドキャッシュを使用してビルド時間を短縮する必要があります。どのタスクを使用すべきですか？",
+      "options": {
+        "A": "Cache@2 タスク",
+        "B": "DownloadPipelineArtifact@2 タスク",
+        "C": "PublishPipelineArtifact@1 タスク",
+        "D": "CopyFiles@2 タスク"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Cache@2 タスクを使用すると、依存関係のフォルダ（node_modules、.m2、pip cache など）をキャッシュして、後続のビルドで再利用できます。キーに基づいてキャッシュの無効化を制御できます。"
+    },
+    {
+      "id": "az400-s1-ja-q39",
+      "examId": "azure-az-400-set1-ja",
+      "setNumber": 1,
+      "domain": "セキュリティとコンプライアンス計画の開発",
+      "question": "Azure DevOps でパイプラインの実行に必要な権限を最小限に制限する必要があります。どのベストプラクティスに従うべきですか？",
+      "options": {
+        "A": "最小権限の原則を適用し、ジョブ認可スコープを制限する",
+        "B": "すべてのパイプラインに管理者権限を付与する",
+        "C": "共有サービスアカウントを使用する",
+        "D": "権限チェックを無効にする"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "最小権限の原則に従い、パイプラインには必要な権限のみを付与します。ジョブ認可スコープを現在のプロジェクトに制限し、サービス接続やエージェントプールへのアクセスを制御します。"
+    },
+    {
+      "id": "az400-s1-ja-q40",
+      "examId": "azure-az-400-set1-ja",
+      "setNumber": 1,
+      "domain": "インストルメンテーション戦略の実装",
+      "question": "Azure でアプリケーションの障害を自動的に検出し、チームに通知する必要があります。どの機能を使用すべきですか？",
+      "options": {
+        "A": "Application Insights スマート検出",
+        "B": "Azure Policy",
+        "C": "Azure Advisor",
+        "D": "Azure Cost Management"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Application Insights のスマート検出機能は、機械学習を使用してアプリケーションの異常なパターン（障害率の急増、パフォーマンスの低下、メモリリークなど）を自動的に検出し、アラートを生成します。"
+    }
+  ]
+}

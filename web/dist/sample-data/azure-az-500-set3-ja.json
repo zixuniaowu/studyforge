@@ -1,0 +1,194 @@
+{
+  "exam": {
+    "id": "azure-az-500-set3-ja",
+    "name": "Azure AZ-500 セキュリティエンジニア模擬試験 #3",
+    "code": "AZ-500",
+    "provider": "Azure",
+    "language": "ja",
+    "description": "Microsoft Azureセキュリティエンジニア認定試験の模擬問題です。ID とアクセス管理、プラットフォーム保護、セキュリティ運用、データとアプリケーションのセキュリティをカバーしています。",
+    "totalQuestions": 40,
+    "passingScore": 70,
+    "examTime": 120,
+    "domains": [
+      {
+        "id": 1,
+        "name": "ID とアクセスの管理 (Manage identity and access)",
+        "weight": 28
+      },
+      {
+        "id": 2,
+        "name": "プラットフォーム保護の実装 (Implement platform protection)",
+        "weight": 22
+      },
+      {
+        "id": 3,
+        "name": "セキュリティ運用の管理 (Manage security operations)",
+        "weight": 28
+      },
+      {
+        "id": 4,
+        "name": "データとアプリケーションの保護 (Secure data and applications)",
+        "weight": 22
+      }
+    ],
+    "tags": [
+      "Azure",
+      "AZ-500",
+      "セキュリティエンジニア",
+      "認定試験",
+      "クラウドセキュリティ"
+    ]
+  },
+  "questions": [
+    {
+      "id": "q1",
+      "domain": 1,
+      "question": "ある企業が、ユーザーが見慣れない場所からログインしようとしたときに自動的にアクセスをブロックするように Azure AD を構成する必要があります。何を構成すべきですか？",
+      "options": {
+        "A": "Azure AD Identity Protection サインインリスクポリシー",
+        "B": "条件付きアクセスのネームドロケーション",
+        "C": "Azure AD PIM",
+        "D": "Azure AD パスワード保護"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Azure AD Identity Protection のサインインリスクポリシーは、見慣れない場所からのログイン試行を検出し、リスクレベルを計算できます。サインインリスクが中または高と評価された場合、ポリシーはアクセスをブロックするか、追加の認証を要求できます。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q2",
+      "domain": 1,
+      "question": "ある企業が、Azure AD のすべてのグローバル管理者が少なくとも2つの多要素認証方法を構成していることを確認する必要があります。この要件を強制するには何を使用すべきですか？",
+      "options": {
+        "A": "条件付きアクセスポリシー",
+        "B": "Azure AD 認証方法ポリシー",
+        "C": "Azure AD セキュリティの既定値群",
+        "D": "Azure AD PIM ロール設定"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure AD 認証方法ポリシーでは、ユーザーが登録する必要がある認証方法を構成できます。管理者グループに対して要件を設定し、冗長性とセキュリティを確保するために複数の MFA 方法の登録を強制できます。\n---",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q3",
+      "domain": 1,
+      "question": "ある企業が、アプリケーションがユーザーではなく自身の代わりに Microsoft Graph API にアクセスできるように Azure AD を構成する必要があります。アプリ登録で何を構成すべきですか？",
+      "options": {
+        "A": "委任されたアクセス許可",
+        "B": "アプリケーションのアクセス許可",
+        "C": "ユーザー割り当て",
+        "D": "リダイレクト URI"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "アプリケーションのアクセス許可を使用すると、アプリケーションはユーザーの代わりではなく、自身の ID で API を呼び出すことができます。これは通常、バックグラウンドサービスやデーモンで使用され、ユーザーの操作を必要としません。アプリケーションのアクセス許可は通常、管理者の同意が必要です。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q4",
+      "domain": 1,
+      "question": "ある企業が、ユーザーが共同作成者 (Contributor) ロールをアクティブ化する際に、指定された承認者からの承認が必要になるように Azure AD PIM を構成する必要があります。この設定はどこで構成すべきですか？",
+      "options": {
+        "A": "PIM ロール設定 - アクティブ化",
+        "B": "PIM ロール設定 - 割り当て",
+        "C": "条件付きアクセスポリシー",
+        "D": "Azure AD ユーザー設定"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Azure AD PIM のロール設定では、アクティブ化タブでロールをアクティブ化する際の要件（承認が必要かどうか、承認者の指定など）を構成できます。これにより、機密性の高いロールのアクティブ化が制御されます。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q5",
+      "domain": 1,
+      "question": "ある企業が、ユーザーがパスワードハッシュをクラウドに同期せずに、オンプレミスの Active Directory 資格情報を使用して Azure AD にサインインできるように、Azure AD Connect でパススルー認証 (PTA) を構成する必要があります。オンプレミスに何をデプロイする必要がありますか？",
+      "options": {
+        "A": "Azure AD アプリケーションプロキシコネクタ",
+        "B": "パススルー認証エージェント",
+        "C": "Azure AD Connect Health エージェント",
+        "D": "AD FS サーバー"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "パススルー認証には、オンプレミスに1つ以上の認証エージェントをデプロイする必要があります。これらのエージェントは Azure AD から認証リクエストを受け取り、オンプレミスの Active Directory に対して資格情報を検証します。パスワードハッシュをクラウドに保存する必要はありません。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q6",
+      "domain": 1,
+      "question": "ある企業が、匿名 VPN サービスからのアクセス試行をブロックする条件付きアクセスポリシーを構成する必要があります。どの条件を使用すべきですか？",
+      "options": {
+        "A": "デバイス状態条件",
+        "B": "場所条件とネームドロケーション（VPN としてマーク）",
+        "C": "クライアントアプリ条件",
+        "D": "サインインリスク条件"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "Azure AD Identity Protection は、VPN サービスを含む匿名 IP アドレスからのサインインを検出できます。条件付きアクセスポリシーでサインインリスク条件を使用することで、このようなリスクが検出されたときにアクセスをブロックするか、追加の検証を要求できます。\n---",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q7",
+      "domain": 1,
+      "question": "ある企業が、ゲストユーザーが明示的に招待されたアプリケーションのみにアクセスできるように Azure AD を構成する必要があります。何を構成すべきですか？",
+      "options": {
+        "A": "ゲストユーザーに対する条件付きアクセスポリシー",
+        "B": "Azure AD 外部コラボレーション設定",
+        "C": "アプリケーションのユーザー割り当て要件",
+        "D": "Azure AD B2B 招待設定"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "エンタープライズアプリケーションで「ユーザー割り当てが必要」オプションを有効にすることで、アプリケーションに明示的に割り当てられたユーザーのみがアクセスできるようになります。これはゲストユーザーと内部ユーザーの両方に適用されます。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q8",
+      "domain": 1,
+      "question": "ある企業が、ユーザーの資格情報が漏洩した可能性が検出されたときに自動的にユーザーアカウントを無効にするように Azure AD を構成する必要があります。何を構成すべきですか？",
+      "options": {
+        "A": "条件付きアクセスポリシー",
+        "B": "Azure AD Identity Protection ユーザーリスクポリシー",
+        "C": "Azure AD パスワード保護",
+        "D": "Azure AD アクセスレビュー"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure AD Identity Protection のユーザーリスクポリシーは、高いユーザーリスク（資格情報の漏洩など）が検出されたときにアクセスをブロックするように構成できます。これにより、ユーザーがパスワードをリセットするまで、侵害された可能性のあるアカウントを効果的にブロックします。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q9",
+      "domain": 1,
+      "question": "ある企業が、スマートフォンを使用できないユーザーに対して MFA を構成する必要があります。これらのユーザーは電話に応答することで MFA 検証を完了できるようにする必要があります。どの認証方法を有効にすべきですか？",
+      "options": {
+        "A": "Microsoft Authenticator アプリ",
+        "B": "音声通話",
+        "C": "FIDO2 セキュリティキー",
+        "D": "Windows Hello for Business"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "音声通話は MFA 方法の1つで、Azure AD がユーザーの登録済み電話番号に電話をかけ、ユーザーがキーを押して ID を確認します。スマートフォンアプリを使用できないユーザーにとって実行可能なオプションです。\n---",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q10",
+      "domain": 1,
+      "question": "ある企業が、アプリケーションがクライアントシークレットではなく証明書を使用して認証できるように Azure AD アプリ登録を構成する必要があります。アプリ登録で何を構成すべきですか？",
+      "options": {
+        "A": "API のアクセス許可",
+        "B": "証明書とシークレット - 証明書のアップロード",
+        "C": "ブランディング",
+        "D": "所有者"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "アプリ登録の「証明書とシークレット」セクションで、認証用の公開鍵証明書をアップロードできます。アプリケーションは対応する秘密鍵を使用してアサーショントークンに署名します。秘密鍵がアプリケーションから離れることがないため、クライアントシークレットよりも安全です。\n---",
+      "difficulty": "medium"
+    }
+  ]
+}

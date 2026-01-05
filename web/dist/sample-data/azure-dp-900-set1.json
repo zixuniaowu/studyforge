@@ -1,0 +1,638 @@
+{
+  "exam": {
+    "id": "azure-dp-900-set1",
+    "name": "Azure DP-900 模拟考试 #1",
+    "code": "DP-900",
+    "provider": "Azure",
+    "language": "zh-CN",
+    "description": "Azure 数据基础认证考试模拟题 - 第1套",
+    "totalQuestions": 40,
+    "passingScore": 70,
+    "examTime": 60,
+    "domains": [
+      {
+        "id": 1,
+        "name": "描述核心数据概念",
+        "weight": 28
+      },
+      {
+        "id": 2,
+        "name": "确定 Azure 上的关系数据注意事项",
+        "weight": 22
+      },
+      {
+        "id": 3,
+        "name": "描述 Azure 上非关系数据的注意事项",
+        "weight": 18
+      },
+      {
+        "id": 4,
+        "name": "描述 Azure 上的分析工作负载",
+        "weight": 32
+      }
+    ],
+    "tags": ["Azure", "数据", "基础认证", "DP-900"]
+  },
+  "questions": [
+    {
+      "id": "q1",
+      "domain": 1,
+      "question": "以下哪项最准确地描述了结构化数据？",
+      "options": {
+        "A": "没有预定义架构的数据",
+        "B": "存储在关系数据库表中并遵循固定架构的数据",
+        "C": "以自由格式文本存储的数据",
+        "D": "只能存储在云中的数据"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "结构化数据是指遵循固定架构的数据，通常存储在关系数据库的表中。数据具有明确定义的列和数据类型，使其易于查询和分析。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q2",
+      "domain": 1,
+      "question": "什么是半结构化数据的一个例子？",
+      "options": {
+        "A": "SQL Server 中的表",
+        "B": "JSON 文档",
+        "C": "MP3 音频文件",
+        "D": "JPEG 图像"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "JSON 文档是半结构化数据的典型例子。它具有一定的结构（键值对），但不需要遵循固定的架构。每个文档可以有不同的字段。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q3",
+      "domain": 1,
+      "question": "非结构化数据的典型示例包括什么？（选择两个）",
+      "options": {
+        "A": "视频文件",
+        "B": "关系数据库表",
+        "C": "图像文件",
+        "D": "CSV 文件"
+      },
+      "answer": ["A", "C"],
+      "answerType": "multiple",
+      "explanation": "视频文件和图像文件是非结构化数据的典型示例。它们没有预定义的数据模型，不能直接用传统的关系数据库查询方法处理。关系数据库表是结构化数据，CSV是半结构化数据。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q4",
+      "domain": 1,
+      "question": "在数据处理中，OLTP 代表什么？",
+      "options": {
+        "A": "Online Transaction Processing（联机事务处理）",
+        "B": "Online Transfer Protocol（在线传输协议）",
+        "C": "Offline Transaction Processing（脱机事务处理）",
+        "D": "Optimized Large-scale Transfer Processing（优化大规模传输处理）"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "OLTP 代表 Online Transaction Processing（联机事务处理）。它是一种数据处理类型，专注于处理大量的短期事务，如银行交易、订单处理等。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q5",
+      "domain": 1,
+      "question": "以下哪项最能描述 OLAP 系统的主要用途？",
+      "options": {
+        "A": "处理日常业务交易",
+        "B": "分析历史数据以支持决策制定",
+        "C": "存储实时传感器数据",
+        "D": "管理用户身份验证"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "OLAP（联机分析处理）系统主要用于分析历史数据以支持决策制定。它优化了复杂查询和数据聚合，而不是事务处理。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q6",
+      "domain": 1,
+      "question": "在数据仓库中，ETL 过程的正确顺序是什么？",
+      "options": {
+        "A": "加载、提取、转换",
+        "B": "提取、转换、加载",
+        "C": "转换、提取、加载",
+        "D": "提取、加载、转换"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "ETL 代表 Extract（提取）、Transform（转换）、Load（加载）。首先从源系统提取数据，然后将数据转换为目标格式，最后加载到目标系统中。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q7",
+      "domain": 1,
+      "question": "批处理和流处理之间的主要区别是什么？",
+      "options": {
+        "A": "批处理只能在云中运行",
+        "B": "流处理实时处理数据，而批处理按计划处理大量数据",
+        "C": "批处理比流处理更快",
+        "D": "流处理只能处理结构化数据"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "流处理实时或接近实时地处理数据，适用于需要即时响应的场景。批处理按计划运行，一次处理大量累积的数据，适用于不需要即时结果的场景。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q8",
+      "domain": 1,
+      "question": "哪种角色主要负责设计和实现数据存储解决方案？",
+      "options": {
+        "A": "数据分析师",
+        "B": "数据工程师",
+        "C": "数据库管理员",
+        "D": "数据科学家"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "数据工程师负责设计、实现和管理数据基础设施和管道。他们构建数据存储解决方案、ETL流程，确保数据可供分析师和科学家使用。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q9",
+      "domain": 1,
+      "question": "数据分析师的主要职责是什么？",
+      "options": {
+        "A": "设计机器学习模型",
+        "B": "管理数据库服务器",
+        "C": "探索和可视化数据以识别趋势和洞察",
+        "D": "编写 ETL 管道代码"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "数据分析师的主要职责是探索数据、创建可视化报告、识别趋势和洞察，以帮助业务决策。他们使用 Power BI 等工具创建仪表板和报告。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q10",
+      "domain": 1,
+      "question": "以下哪项是数据科学家的典型任务？",
+      "options": {
+        "A": "备份数据库",
+        "B": "创建预测模型",
+        "C": "配置网络安全",
+        "D": "设计用户界面"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "数据科学家使用统计学和机器学习技术来创建预测模型和高级分析解决方案。他们处理复杂的数据问题并提供数据驱动的洞察。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q11",
+      "domain": 2,
+      "question": "在关系数据库中，主键的作用是什么？",
+      "options": {
+        "A": "加密数据库中的所有数据",
+        "B": "唯一标识表中的每一行",
+        "C": "连接两个不同的数据库",
+        "D": "自动备份数据"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "主键是表中唯一标识每一行的列或列组合。它确保每行都有唯一的标识符，不允许空值，是建立表关系的基础。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q12",
+      "domain": 2,
+      "question": "外键在关系数据库中的作用是什么？",
+      "options": {
+        "A": "加密表中的数据",
+        "B": "定义表与表之间的关系",
+        "C": "自动生成唯一标识符",
+        "D": "限制表的大小"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "外键用于定义两个表之间的关系。它引用另一个表的主键，确保引用完整性，防止创建无效的引用。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q13",
+      "domain": 2,
+      "question": "Azure SQL Database 属于哪种云服务模型？",
+      "options": {
+        "A": "基础设施即服务 (IaaS)",
+        "B": "平台即服务 (PaaS)",
+        "C": "软件即服务 (SaaS)",
+        "D": "函数即服务 (FaaS)"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure SQL Database 是一个完全托管的平台即服务 (PaaS) 数据库引擎。Azure 管理基础设施、修补和备份，用户只需关注数据库和应用程序。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q14",
+      "domain": 2,
+      "question": "Azure SQL Managed Instance 相比 Azure SQL Database 的主要优势是什么？",
+      "options": {
+        "A": "更低的成本",
+        "B": "与本地 SQL Server 几乎 100% 的兼容性",
+        "C": "无需备份",
+        "D": "仅支持读取操作"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure SQL Managed Instance 提供与本地 SQL Server 几乎 100% 的兼容性，包括 SQL Server Agent、跨数据库查询等功能。它适合需要迁移现有 SQL Server 应用程序的场景。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q15",
+      "domain": 2,
+      "question": "哪种 SQL 语句用于从表中检索数据？",
+      "options": {
+        "A": "INSERT",
+        "B": "UPDATE",
+        "C": "SELECT",
+        "D": "DELETE"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "SELECT 语句用于从数据库表中检索数据。它是最常用的 SQL 语句，可以查询一个或多个表，并可以包含筛选条件、排序和聚合。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q16",
+      "domain": 2,
+      "question": "以下哪个 SQL 语句用于向表中添加新行？",
+      "options": {
+        "A": "SELECT",
+        "B": "INSERT",
+        "C": "UPDATE",
+        "D": "CREATE"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "INSERT 语句用于向表中添加新行。语法通常为 INSERT INTO table_name (columns) VALUES (values)。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q17",
+      "domain": 2,
+      "question": "数据库规范化的主要目的是什么？",
+      "options": {
+        "A": "增加数据冗余",
+        "B": "减少数据冗余并确保数据完整性",
+        "C": "使数据库运行更慢",
+        "D": "删除所有索引"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "数据库规范化是组织数据以减少冗余和依赖的过程。它通过将数据分解到多个相关表中，确保数据完整性并减少存储空间。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q18",
+      "domain": 2,
+      "question": "在 Azure SQL Database 中，什么是弹性池？",
+      "options": {
+        "A": "一种备份策略",
+        "B": "共享资源的多个数据库集合",
+        "C": "一种加密方法",
+        "D": "单个大型数据库"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "弹性池是一种成本效益高的解决方案，允许多个数据库共享一组资源。这对于具有不可预测使用模式的数据库特别有用，可以优化资源利用和成本。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q19",
+      "domain": 2,
+      "question": "什么是数据库视图？",
+      "options": {
+        "A": "物理存储数据的表",
+        "B": "基于查询的虚拟表",
+        "C": "数据库的备份副本",
+        "D": "用于加密的工具"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "视图是基于 SQL 查询的虚拟表。它不物理存储数据，而是在查询时动态生成结果。视图可以简化复杂查询、提供安全性和数据抽象。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q20",
+      "domain": 2,
+      "question": "Azure Database for PostgreSQL 适用于什么场景？",
+      "options": {
+        "A": "仅存储 JSON 文档",
+        "B": "需要开源关系数据库的应用程序",
+        "C": "仅用于 NoSQL 工作负载",
+        "D": "仅用于大数据分析"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure Database for PostgreSQL 是完全托管的 PostgreSQL 数据库服务，适用于需要开源关系数据库功能的应用程序。它支持 PostgreSQL 扩展、高可用性和自动备份。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q21",
+      "domain": 3,
+      "question": "Azure Cosmos DB 支持哪些 API？（选择两个）",
+      "options": {
+        "A": "SQL API",
+        "B": "FTP API",
+        "C": "MongoDB API",
+        "D": "SMTP API"
+      },
+      "answer": ["A", "C"],
+      "answerType": "multiple",
+      "explanation": "Azure Cosmos DB 支持多种 API，包括 SQL (Core) API、MongoDB API、Cassandra API、Gremlin API 和 Table API。这使得应用程序可以使用熟悉的接口与 Cosmos DB 交互。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q22",
+      "domain": 3,
+      "question": "Azure Cosmos DB 的主要优势之一是什么？",
+      "options": {
+        "A": "仅支持单一区域部署",
+        "B": "全球分布和多区域写入",
+        "C": "仅支持结构化数据",
+        "D": "不提供 SLA"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure Cosmos DB 的主要优势是全球分布能力，支持多区域写入。它可以在全球多个 Azure 区域透明复制数据，提供低延迟访问和高可用性。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q23",
+      "domain": 3,
+      "question": "Azure Blob Storage 中的 \"hot\" 访问层适用于什么类型的数据？",
+      "options": {
+        "A": "很少访问的归档数据",
+        "B": "频繁访问的数据",
+        "C": "需要删除的数据",
+        "D": "加密的数据"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Hot 访问层优化了频繁访问的数据。它具有较高的存储成本但较低的访问成本，适合活跃使用的数据，如网站内容、活动日志等。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q24",
+      "domain": 3,
+      "question": "Azure Blob Storage 的 \"archive\" 访问层的特点是什么？",
+      "options": {
+        "A": "即时数据访问",
+        "B": "最低存储成本，但检索延迟较高",
+        "C": "最高存储成本",
+        "D": "自动删除数据"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Archive 访问层提供最低的存储成本，但检索数据需要数小时。它适用于很少访问的长期归档数据，如合规性档案或历史备份。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q25",
+      "domain": 3,
+      "question": "Azure Table Storage 最适合存储什么类型的数据？",
+      "options": {
+        "A": "大型二进制文件",
+        "B": "结构化的 NoSQL 键值数据",
+        "C": "视频流",
+        "D": "关系数据库表"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure Table Storage 是一种 NoSQL 键值存储，适合存储结构化数据。它提供快速访问大量非关系数据，常用于 Web 应用程序的用户数据、设备信息等。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q26",
+      "domain": 3,
+      "question": "在 Cosmos DB 中，什么是分区键？",
+      "options": {
+        "A": "用于加密数据的密钥",
+        "B": "用于将数据分布到物理分区的属性",
+        "C": "用于删除数据的命令",
+        "D": "用于备份的标识符"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "分区键是用于将数据分布到不同物理分区的属性。选择正确的分区键对于性能和可扩展性至关重要，它决定了数据如何在 Cosmos DB 中分布。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q27",
+      "domain": 3,
+      "question": "Azure Data Lake Storage Gen2 结合了哪两种服务的功能？",
+      "options": {
+        "A": "Azure SQL Database 和 Cosmos DB",
+        "B": "Azure Blob Storage 和 Azure Data Lake Storage Gen1",
+        "C": "Azure Files 和 Azure Queue Storage",
+        "D": "Azure Table Storage 和 Redis Cache"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure Data Lake Storage Gen2 结合了 Azure Blob Storage 的低成本分层存储和 Azure Data Lake Storage Gen1 的大数据文件系统功能，包括分层命名空间。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q28",
+      "domain": 3,
+      "question": "什么类型的 NoSQL 数据库最适合存储社交网络关系？",
+      "options": {
+        "A": "键值存储",
+        "B": "文档数据库",
+        "C": "图形数据库",
+        "D": "列族数据库"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "图形数据库最适合存储和查询实体之间的复杂关系，如社交网络中的朋友关系。Cosmos DB 的 Gremlin API 提供图形数据库功能。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q29",
+      "domain": 3,
+      "question": "Azure Files 的主要用途是什么？",
+      "options": {
+        "A": "存储关系数据",
+        "B": "提供完全托管的文件共享",
+        "C": "运行虚拟机",
+        "D": "处理实时流数据"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure Files 提供完全托管的云文件共享，可通过 SMB 和 NFS 协议访问。它适用于文件共享场景，如应用程序共享配置文件或用户主目录。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q30",
+      "domain": 3,
+      "question": "Cosmos DB 中的一致性级别 \"Strong\" 意味着什么？",
+      "options": {
+        "A": "读取可能返回旧数据",
+        "B": "读取始终返回最新提交的写入",
+        "C": "数据不会被复制",
+        "D": "写入操作会失败"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Strong 一致性保证读取始终返回最新提交的写入版本。这提供了最高级别的数据一致性，但可能影响延迟和可用性。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q31",
+      "domain": 4,
+      "question": "Azure Synapse Analytics 的主要用途是什么？",
+      "options": {
+        "A": "托管网站",
+        "B": "企业数据仓库和大数据分析",
+        "C": "发送电子邮件",
+        "D": "管理虚拟机"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure Synapse Analytics 是一个统一的分析平台，结合了企业数据仓库和大数据分析功能。它支持 SQL 查询、Spark 处理和数据集成。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q32",
+      "domain": 4,
+      "question": "Power BI 的主要功能是什么？",
+      "options": {
+        "A": "存储大量数据",
+        "B": "创建交互式数据可视化和报告",
+        "C": "运行 ETL 作业",
+        "D": "管理数据库安全"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Power BI 是微软的商业智能工具，用于创建交互式数据可视化和报告。它可以连接各种数据源，创建仪表板，并与组织共享洞察。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q33",
+      "domain": 4,
+      "question": "在数据仓库中，星型架构的中心是什么？",
+      "options": {
+        "A": "维度表",
+        "B": "事实表",
+        "C": "暂存表",
+        "D": "日志表"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "在星型架构中，事实表位于中心，包含业务度量和指向维度表的外键。维度表围绕事实表，提供描述性属性用于分析和过滤。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q34",
+      "domain": 4,
+      "question": "Azure Data Factory 的主要用途是什么？",
+      "options": {
+        "A": "创建机器学习模型",
+        "B": "数据集成和 ETL/ELT 编排",
+        "C": "托管网站",
+        "D": "发送通知"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure Data Factory 是一种云数据集成服务，用于创建和编排数据管道。它支持 ETL/ELT 过程，可以从多个数据源提取、转换和加载数据。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q35",
+      "domain": 4,
+      "question": "Azure Databricks 主要基于什么技术？",
+      "options": {
+        "A": "Hadoop MapReduce",
+        "B": "Apache Spark",
+        "C": "Apache Kafka",
+        "D": "MongoDB"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure Databricks 是基于 Apache Spark 的统一分析平台。它提供优化的 Spark 环境，支持大数据处理、机器学习和协作工作区。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q36",
+      "domain": 4,
+      "question": "什么是数据仓库中的维度表？",
+      "options": {
+        "A": "包含业务度量的表",
+        "B": "包含描述性属性的表，用于过滤和分组数据",
+        "C": "存储原始数据的表",
+        "D": "存储日志的表"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "维度表包含描述性属性，用于过滤、分组和描述事实表中的度量。常见的维度包括时间、地点、产品和客户。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q37",
+      "domain": 4,
+      "question": "Azure Stream Analytics 主要用于什么？",
+      "options": {
+        "A": "批量数据处理",
+        "B": "实时数据流处理和分析",
+        "C": "文件存储",
+        "D": "数据库管理"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure Stream Analytics 是一种实时分析服务，用于处理来自 IoT 设备、事件中心等的流数据。它支持类 SQL 查询语言进行实时数据转换和分析。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q38",
+      "domain": 4,
+      "question": "ELT 与 ETL 的主要区别是什么？",
+      "options": {
+        "A": "ELT 不需要提取数据",
+        "B": "ELT 在目标系统中进行数据转换",
+        "C": "ETL 更快",
+        "D": "ELT 不支持云环境"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "ELT（提取、加载、转换）在将数据加载到目标系统后进行转换，而 ETL 在加载前转换。ELT 利用目标系统（如数据仓库）的强大计算能力进行转换。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q39",
+      "domain": 4,
+      "question": "Azure HDInsight 支持哪些开源框架？（选择两个）",
+      "options": {
+        "A": "Apache Hadoop",
+        "B": "Microsoft SQL Server",
+        "C": "Apache Kafka",
+        "D": "Oracle Database"
+      },
+      "answer": ["A", "C"],
+      "answerType": "multiple",
+      "explanation": "Azure HDInsight 是一种托管的开源分析服务，支持多种开源框架，包括 Apache Hadoop、Spark、Hive、Kafka 等。它提供企业级的大数据处理能力。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q40",
+      "domain": 4,
+      "question": "Power BI 中的仪表板和报告有什么区别？",
+      "options": {
+        "A": "仪表板只能包含一个可视化效果",
+        "B": "报告是单页的，仪表板是多页的",
+        "C": "仪表板包含来自一个或多个报告的可视化效果集合",
+        "D": "仪表板和报告完全相同"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "Power BI 仪表板是一个单页画布，包含来自一个或多个报告的可视化效果（称为磁贴）。报告可以是多页的，包含详细的数据分析。仪表板提供关键指标的概览。",
+      "difficulty": "medium"
+    }
+  ]
+}

@@ -1,0 +1,654 @@
+{
+  "exam": {
+    "id": "aws-scs-c02-set1-ja",
+    "name": "AWS SCS-C02 セキュリティ専門知識 模擬試験 #1",
+    "code": "SCS-C02",
+    "provider": "AWS",
+    "language": "ja",
+    "description": "AWS認定セキュリティ専門知識 模擬試験 - セット1",
+    "totalQuestions": 40,
+    "passingScore": 75,
+    "examTime": 170,
+    "domains": [
+      {
+        "id": 1,
+        "name": "脅威検出とインシデント対応",
+        "weight": 14
+      },
+      {
+        "id": 2,
+        "name": "セキュリティログとモニタリング",
+        "weight": 18
+      },
+      {
+        "id": 3,
+        "name": "インフラストラクチャセキュリティ",
+        "weight": 20
+      },
+      {
+        "id": 4,
+        "name": "IDとアクセス管理",
+        "weight": 16
+      },
+      {
+        "id": 5,
+        "name": "データ保護",
+        "weight": 18
+      },
+      {
+        "id": 6,
+        "name": "管理とセキュリティガバナンス",
+        "weight": 14
+      }
+    ],
+    "tags": [
+      "AWS",
+      "セキュリティ",
+      "専門知識",
+      "SCS-C02",
+      "認定試験"
+    ]
+  },
+  "questions": [
+    {
+      "id": "q1",
+      "domain": 1,
+      "question": "セキュリティチームが、EC2インスタンスが侵害されていることを発見しました。このインスタンスはApplication Load Balancerの背後にあるAuto Scalingグループの一部です。インシデント対応の最初のステップは何ですか？",
+      "options": {
+        "A": "インスタンスを即座に終了する",
+        "B": "セキュリティグループを変更して全トラフィックを拒否し、インスタンスを隔離する",
+        "C": "フォレンジック分析のためにEBSボリュームのスナップショットを取得する",
+        "D": "Auto ScalingグループとLoad Balancerからインスタンスをデタッチし、その後隔離する"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "正しい最初のステップは、さらなる被害を防ぎながら証拠を保全するために、Auto ScalingグループとLoad Balancerからインスタンスをデタッチすることです。その後、セキュリティグループを変更して隔離します。即座に終了すると証拠が破壊されます。スナップショットの取得は重要ですが、隔離の後に行うべきです。",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q2",
+      "domain": 1,
+      "question": "Amazon GuardDutyが、EC2インスタンスが既知のコマンド＆コントロールサーバーと通信していることを示す高重要度の検出結果を検出しました。どのような自動修復を実装できますか？",
+      "options": {
+        "A": "GuardDutyがインスタンスを自動的に終了するように設定する",
+        "B": "EventBridgeを使用してインスタンスを隔離するLambda関数をトリガーする",
+        "C": "AWS Configが検出結果を自動的に修復するように設定する",
+        "D": "CloudWatch Alarmsを使用してインスタンスを停止する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "GuardDutyの検出結果はEventBridgeに送信でき、セキュリティグループを変更してインスタンスを隔離するなどの自動修復を実行するLambda関数をトリガーできます。GuardDuty自体には組み込みの修復機能はありません。AWS Configはコンプライアンス用であり、リアルタイムの脅威対応には適していません。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q3",
+      "domain": 1,
+      "question": "企業がIAM認証情報が通常とは異なる地理的場所から使用されている場合を検出したいと考えています。どのAWSサービスを使用すべきですか？",
+      "options": {
+        "A": "AWS CloudTrail",
+        "B": "Amazon GuardDuty",
+        "C": "AWS Config",
+        "D": "Amazon Inspector"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Amazon GuardDutyは機械学習を使用してCloudTrail、VPC Flow Logs、DNSログを分析し、通常とは異なる場所からの認証情報の使用を含む異常な動作を検出します。組み込みの脅威インテリジェンスがあり、地理的な異常を識別できます。CloudTrailはイベントを記録するだけで、分析は行いません。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q4",
+      "domain": 2,
+      "question": "企業は複数のAWSアカウントとリージョンからのセキュリティログを分析のために中央の場所に集約する必要があります。最も効率的なアプローチは何ですか？",
+      "options": {
+        "A": "各アカウントでCloudTrailを設定して中央のS3バケットにログを送信する",
+        "B": "AWS Organizationsと組織トレイル用の委任管理者を使用する",
+        "C": "Lambda関数を作成してアカウント間でログをコピーする",
+        "D": "Amazon Kinesisを使用して各アカウントからログをストリーミングする"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "AWS CloudTrailの組織トレイルは、組織内のすべてのアカウントのイベントを中央のS3バケットに自動的に記録します。委任管理者を使用すると、管理アカウントにアクセスせずにセキュリティチームがトレイルを管理できます。これは個別のトレイルを設定するよりも効率的です。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q5",
+      "domain": 2,
+      "question": "セキュリティエンジニアは、組織全体のすべてのAPI呼び出しがログに記録され、ログが改ざんされないことを確認する必要があります。どのサービスの組み合わせを使用すべきですか？",
+      "options": {
+        "A": "CloudTrailとS3 Object LockおよびCloudTrailログファイル整合性検証",
+        "B": "暗号化を有効にしたCloudWatch Logs",
+        "C": "S3バージョニングを使用したVPC Flow Logs",
+        "D": "S3暗号化を使用したAWS Config"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "CloudTrailはAPI呼び出しを記録します。ログファイル整合性検証は各ログファイルのハッシュを作成します。S3 Object Lock（コンプライアンスモード）はログの削除や変更を防止します。この組み合わせにより、包括的なログ記録と改ざん防止ストレージが確保されます。CloudWatch Logsは整合性検証を提供しません。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q6",
+      "domain": 2,
+      "question": "VPC Flow Logsの目的は何ですか？また、どこに公開できますか？",
+      "options": {
+        "A": "DNSクエリを記録する；Route 53に公開できる",
+        "B": "IPトラフィックのメタデータを記録する；CloudWatch Logs、S3、またはKinesis Data Firehoseに公開できる",
+        "C": "アプリケーションエラーを記録する；CloudWatch Logsのみに公開できる",
+        "D": "セキュリティグループの変更を記録する；AWS Configに公開できる"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "VPC Flow LogsはVPC内のネットワークインターフェースへの出入りするIPトラフィックに関する情報をキャプチャします。メタデータ（送信元/宛先IP、ポート、プロトコル、バイト数、パケット数）を記録しますが、パケットの内容は記録しません。CloudWatch Logs、S3、またはKinesis Data Firehoseに公開できます。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q7",
+      "domain": 2,
+      "question": "企業は、ルートアカウントの使用など、特定のCloudTrailイベントが発生したときにリアルタイムでアラートを受け取りたいと考えています。最適なアプローチは何ですか？",
+      "options": {
+        "A": "CloudTrailがCloudWatch Logsにログを送信するように設定し、メトリクスフィルターとアラームを作成する",
+        "B": "スケジュールでAthenaを使用してS3のCloudTrailログをクエリする",
+        "C": "AWS Configルールを使用してルートアカウントの使用を検出する",
+        "D": "CloudTrail Insightsを有効にして異常を検出する"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "CloudTrailログをCloudWatch Logsに送信すると、特定のイベント（ルートアカウントのサインインなど）に一致するメトリクスフィルターを作成し、即時通知のためにCloudWatch Alarmsをトリガーできます。Athenaクエリはリアルタイムではありません。Configルールはコンプライアンス用です。Insightsは異常を検出しますが、特定のイベントアラート用ではありません。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q8",
+      "domain": 3,
+      "question": "EC2上で実行されているWebアプリケーションをSQLインジェクションやクロスサイトスクリプティング攻撃から保護する必要があります。どのAWSサービスがこの保護を提供しますか？",
+      "options": {
+        "A": "AWS Shield",
+        "B": "AWS WAF",
+        "C": "Amazon GuardDuty",
+        "D": "セキュリティグループ"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "AWS WAF（Web Application Firewall）は、SQLインジェクションやXSSなどの一般的なWebエクスプロイトに対する保護を提供します。CloudFront、ALB、API Gateway、AppSyncにアタッチできます。AWS ShieldはDDoSから保護します。GuardDutyは脅威を検出しますが、トラフィックをブロックしません。セキュリティグループはIP/ポートでのみフィルタリングします。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q9",
+      "domain": 3,
+      "question": "企業はすべてのEC2インスタンスが承認されたAMIからのみ起動されることを強制したいと考えています。最も効果的なアプローチは何ですか？",
+      "options": {
+        "A": "IAMポリシーを使用してec2:RunInstancesを特定のAMI IDに制限する",
+        "B": "Service Control Policy（SCP）を作成してAMIの使用を制限する",
+        "C": "AWS Configルールを使用して起動後に非準拠インスタンスを検出する",
+        "D": "AとBの両方を使用でき、SCPは組織全体の強制に使用する"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "IAMポリシーは特定のAMI IDの条件でec2:RunInstancesを制限できます。SCPは組織内のすべてのアカウントでこれを強制できます。両方を使用することで多層防御を提供します - アカウントレベルの制御にIAM、組織全体の強制にSCPです。Configルールは検出であり、予防ではありません。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q10",
+      "domain": 3,
+      "question": "AWS PrivateLinkの目的は何ですか？いつ使用すべきですか？",
+      "options": {
+        "A": "VPC間のVPN接続を作成する",
+        "B": "インターネットを経由せずにAWSサービスまたはサードパーティサービスにプライベートにアクセスする",
+        "C": "EC2インスタンス間の転送中データを暗号化する",
+        "D": "プライベートDNSゾーンを作成する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "AWS PrivateLinkは、パブリックインターネットにトラフィックを公開することなく、VPC、AWSサービス、およびオンプレミスアプリケーション間のプライベート接続を提供します。インターフェースVPCエンドポイントを使用します。これはS3、DynamoDB、またはサードパーティのSaaSアプリケーションにプライベートにアクセスするのに便利です。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q11",
+      "domain": 3,
+      "question": "企業はオンプレミスのデータセンターとAWS間で転送されるデータが暗号化されることを確認する必要があります。AWS Direct Connectを使用しています。何を実装すべきですか？",
+      "options": {
+        "A": "Direct Connectの暗号化は自動的で、アクションは不要",
+        "B": "Direct Connect接続上でVPN接続を使用する",
+        "C": "Direct ConnectリンクでTLSを有効にする",
+        "D": "Direct Connect上でAWS PrivateLinkを使用する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Direct Connectは専用のネットワーク接続を提供しますが、デフォルトではトラフィックを暗号化しません。転送中のデータを暗号化するには、Direct Connect接続上で実行されるVPN接続を作成する必要があります（パブリック仮想インターフェースを使用）。これにより、Direct Connectの低レイテンシーと暗号化が提供されます。",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q12",
+      "domain": 3,
+      "question": "ネットワーク層とトランスポート層（レイヤー3および4）でのDDoS攻撃から保護するために、どのAWSサービスを使用すべきですか？",
+      "options": {
+        "A": "AWS WAF",
+        "B": "AWS Shield Standard",
+        "C": "Amazon GuardDuty",
+        "D": "Network ACLs"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "AWS Shield Standardは、すべてのAWSカスタマーに追加料金なしでレイヤー3および4でのDDoS攻撃に対する自動保護を提供します。SYN/UDPフラッドやリフレクション攻撃から保護します。WAFはレイヤー7で動作します。Shield Advancedは追加の保護とDDoS対応チームへのアクセスを提供します。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q13",
+      "domain": 4,
+      "question": "企業はサードパーティの監査人に特定のS3バケットをレビューするための一時的なアクセスを付与したいと考えています。最も安全なアプローチは何ですか？",
+      "options": {
+        "A": "監査人用に長期認証情報を持つIAMユーザーを作成する",
+        "B": "必要な権限を持つIAMロールを作成し、クロスアカウント信頼を確立する",
+        "C": "ルートアカウントの認証情報を監査人と共有する",
+        "D": "監査期間中にS3バケットを公開する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "クロスアカウント信頼を持つIAMロールを作成すると、監査人は自分のAWSアカウントからロールを引き受け、一時的な認証情報を受け取ることができます。これは最小権限の原則に従い、長期認証情報を管理する必要がなくなります。ロールは特定のS3バケットにスコープでき、最大セッション期間を設定できます。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q14",
+      "domain": 4,
+      "question": "IAMアクセス許可の境界（Permission Boundaries）の目的は何ですか？",
+      "options": {
+        "A": "アイデンティティベースのポリシーがIAMエンティティに付与できる最大のアクセス許可を定義する",
+        "B": "IAMユーザーのネットワーク境界を定義する",
+        "C": "IAMユーザーが操作できるリージョンを制限する",
+        "D": "IAMユーザーのパスワードポリシーを設定する"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "アクセス許可の境界は、アイデンティティベースのポリシーがIAMエンティティ（ユーザーまたはロール）に付与できる最大のアクセス許可を設定します。有効なアクセス許可は、アイデンティティベースのポリシーとアクセス許可の境界の共通部分です。これはユーザー作成を委任しながら、付与できるアクセス許可を制限するのに便利です。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q15",
+      "domain": 4,
+      "question": "企業は外部IDプロバイダー（IdP）とのフェデレーテッドアクセスを使用しています。ユーザーが営業時間中のみリソースにアクセスできるようにしたいと考えています。どのように実装できますか？",
+      "options": {
+        "A": "IdPを営業時間中のみ認証するように設定する",
+        "B": "aws:CurrentTimeを使用したIAMポリシー条件でアクセスを制限する",
+        "C": "異なる時間帯用に別々のIAMロールを作成する",
+        "D": "AWS Organizations SCPを使用してアクセス時間を制限する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "IAMポリシーは、時間に基づいてアクセスを制限するために使用できるaws:CurrentTimeなどの条件キーをサポートしています。これはロールの信頼ポリシーまたはアクセス許可ポリシーに適用できます。例：'Condition': {'DateGreaterThan': {'aws:CurrentTime': '2023-01-01T08:00:00Z'}}",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q16",
+      "domain": 4,
+      "question": "EC2上で実行されているアプリケーションがS3バケットにアクセスする必要があります。アクセスを提供する最も安全な方法は何ですか？",
+      "options": {
+        "A": "AWSアクセスキーをアプリケーション構成ファイルに保存する",
+        "B": "AWSアクセスキーをAWS Secrets Managerに保存し、実行時に取得する",
+        "C": "必要なS3権限を持つIAMロールをEC2インスタンスにアタッチする",
+        "D": "ルートアカウントの認証情報を使用する"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "EC2インスタンスにアタッチされたIAMロールを使用することが最も安全なアプローチです。EC2インスタンスはインスタンスメタデータサービスを通じて一時的な認証情報を自動的に受け取ります。長期認証情報を保存または管理する必要はありません。認証情報は自動的にローテーションされます。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q17",
+      "domain": 4,
+      "question": "SCP（Service Control Policy）とIAMポリシーの違いは何ですか？",
+      "options": {
+        "A": "SCPはアクセス許可を付与する；IAMポリシーはアクセス許可を拒否するのみ",
+        "B": "SCPは組織内のアカウントの最大アクセス許可を設定する；IAMポリシーはアイデンティティに実際のアクセス許可を付与する",
+        "C": "SCPはルートユーザーにのみ適用される；IAMポリシーはすべてのユーザーに適用される",
+        "D": "SCPとIAMポリシーは機能的に同一である"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "SCPはAWS Organization内のアカウントの最大利用可能なアクセス許可を定義します。アクセス許可を付与するのではなく、IAMポリシーによって付与できるアクセス許可を制限するだけです。IAMポリシーはユーザー、グループ、ロールに実際のアクセス許可を付与します。有効なアクセス許可はSCPとIAMポリシーの共通部分です。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q18",
+      "domain": 5,
+      "question": "企業はS3の保存データを暗号化し、暗号化キーを完全に制御する必要があります。どの暗号化オプションを使用すべきですか？",
+      "options": {
+        "A": "SSE-S3（S3マネージドキーによるサーバー側暗号化）",
+        "B": "SSE-KMS（AWS KMSによるサーバー側暗号化）",
+        "C": "SSE-C（カスタマー提供キーによるサーバー側暗号化）",
+        "D": "カスタマー管理キーによるクライアント側暗号化"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "暗号化キーを完全に制御するには、カスタマー管理キーによるクライアント側暗号化が最も多くの制御を提供します。キーはカスタマーの環境を離れません。SSE-Cは各リクエストでキーを送信する必要があります。SSE-KMSはAWS KMSにキーを保存します。SSE-S3はカスタマー制御のないAWS管理キーを使用します。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q19",
+      "domain": 5,
+      "question": "企業はS3バケット内のデータにHTTPS経由でのみアクセスできることをどのように確認できますか？",
+      "options": {
+        "A": "S3 Transfer Accelerationを有効にする",
+        "B": "aws:SecureTransportをfalseに設定してリクエストを拒否する条件を持つバケットポリシーを使用する",
+        "C": "バケットでバージョニングを有効にする",
+        "D": "S3 Object Lockを使用する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "条件'aws:SecureTransport': 'false'と効果'Deny'を持つバケットポリシーは、HTTPS経由で行われていないすべてのリクエストを拒否します。これにより、転送中のすべてのデータがTLSを使用して暗号化されます。例：SecureTransportがfalseの場合、すべてのアクションを拒否します。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q20",
+      "domain": 5,
+      "question": "AWS KMSキーローテーションの目的は何ですか？カスタマー管理キーではどのように機能しますか？",
+      "options": {
+        "A": "新しいキーを生成し、すべてのデータを自動的に再暗号化する",
+        "B": "同じキーIDを保持しながら、新しいキーマテリアルを年次で生成する；古いデータは古いマテリアルで暗号化されたまま",
+        "C": "古いキーを削除し、手動での再暗号化を必要とする",
+        "D": "AWS管理キーのみをローテーションし、カスタマー管理キーはローテーションしない"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "カスタマー管理KMSキーの自動キーローテーションが有効になると、AWSは新しい暗号化マテリアルを年次で生成します。キーIDは同じままです。KMSは以前のキーマテリアルをすべて保持し、古いバージョンで暗号化されたデータを復号できます。新しい暗号化は最新のマテリアルを使用します。再暗号化は必要ありません。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q21",
+      "domain": 5,
+      "question": "企業はRDSに機密データを保存しています。既存の暗号化されていないデータベースを暗号化する必要があります。プロセスは何ですか？",
+      "options": {
+        "A": "既存のデータベースで直接暗号化を有効にする",
+        "B": "データベースの暗号化されたスナップショットを作成し、そこから復元する",
+        "C": "AWS DMSを使用して暗号化されたデータベースに移行する",
+        "D": "BまたはC、既存の暗号化されていないRDSインスタンスで暗号化を有効にすることはできないため"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "既存の暗号化されていないRDSインスタンスで暗号化を有効にすることはできません。スナップショットを作成し、暗号化を有効にしてスナップショットをコピーし、暗号化されたスナップショットから復元する必要があります。または、AWS DMSを使用して新しい暗号化されたインスタンスにデータを移行します。両方のアプローチが機能します。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q22",
+      "domain": 5,
+      "question": "AWS Secrets Managerとは何ですか？AWS Systems Manager Parameter Storeとどう違いますか？",
+      "options": {
+        "A": "異なる名前を持つ同一のサービス",
+        "B": "Secrets Managerは自動ローテーションを提供し、認証情報用に設計されている；Parameter Storeは一般的な構成用",
+        "C": "Parameter Storeは自動ローテーションを提供する；Secrets Managerは提供しない",
+        "D": "Secrets Managerは無料；Parameter Storeにはコストがかかる"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Secrets Managerは、データベース認証情報やAPIキーなどのシークレットを管理するために特別に設計されており、組み込みの自動ローテーション機能があります。Parameter Storeは一般的な構成データ用であり、プレーンテキストと暗号化されたパラメータ（SecureString）の両方をサポートしています。Secrets Managerにはシークレットごとのコストがあります；Parameter Storeの標準ティアは無料です。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q23",
+      "domain": 5,
+      "question": "企業は複数のアカウントにまたがるS3バケットに保存されている機密データを分類する必要があります。どのAWSサービスを使用すべきですか？",
+      "options": {
+        "A": "Amazon Inspector",
+        "B": "Amazon Macie",
+        "C": "AWS Config",
+        "D": "Amazon GuardDuty"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Amazon Macieは機械学習を使用して、S3に保存されている機密データを自動的に発見、分類、保護します。PII、財務データ、その他の機密情報を識別できます。AWS Organizationsを使用して複数のアカウントにデプロイできます。InspectorはEC2の脆弱性用です。GuardDutyは脅威検出用です。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q24",
+      "domain": 6,
+      "question": "企業は組織内のすべてのAWSアカウントにセキュリティ標準を強制したいと考えています。最も包括的なアプローチを提供する組み合わせはどれですか？",
+      "options": {
+        "A": "AWS Configルールのみ",
+        "B": "Service Control Policies（SCP）のみ",
+        "C": "予防的制御にSCP、検出的制御にAWS Config、一元的な可視性にSecurity Hub",
+        "D": "各アカウントでのIAMポリシー"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "包括的なセキュリティガバナンスアプローチは、予防的制御（非準拠アクションのブロック）にSCP、検出的制御（非準拠リソースの識別）にAWS Configルール、アカウント全体のセキュリティ検出結果の一元的な可視性と集約にSecurity Hubを使用します。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q25",
+      "domain": 6,
+      "question": "AWS Security Hubとは何ですか？何を提供しますか？",
+      "options": {
+        "A": "AWSリソースを保護するためのファイアウォールサービス",
+        "B": "複数のAWSサービスとサードパーティツールからのセキュリティ検出結果を集約、整理、優先順位付けするための中央の場所",
+        "C": "IAMユーザーとロールを管理するためのサービス",
+        "D": "セキュリティイベントのログサービス"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "AWS Security Hubは、AWSアカウント全体のセキュリティアラートとコンプライアンス状態の包括的なビューを提供します。GuardDuty、Inspector、Macie、IAM Access Analyzer、Firewall Manager、およびサードパーティツールからの検出結果を集約します。また、CISやPCI DSSなどのセキュリティ標準に対する自動コンプライアンスチェックも実行します。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q26",
+      "domain": 6,
+      "question": "企業はすべてのアカウントで新しいリソースが作成前にセキュリティベースラインに準拠することを確認する必要があります。どのアプローチを使用すべきですか？",
+      "options": {
+        "A": "自動修復を使用したAWS Configルール",
+        "B": "非準拠の構成に対する拒否ステートメントを持つService Control Policies（SCP）",
+        "C": "Amazon Inspectorスケジュールスキャン",
+        "D": "AWS Trusted Advisorの推奨事項"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "SCPは、特定のAPIアクションを拒否したり、特定の条件を要求したりすることで、非準拠リソースの作成を防止できます。これは非準拠が発生する前に停止する予防的制御です。AWS Configは検出的です（作成後に非準拠を発見します）。Inspectorは既存のリソースをスキャンします。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q27",
+      "domain": 1,
+      "question": "インシデント調査中、セキュリティアナリストは侵害されたIAMユーザーが過去90日間に行ったアクションを特定する必要があります。この情報を取得する最も効率的な方法は何ですか？",
+      "options": {
+        "A": "CloudWatch Logsを確認する",
+        "B": "CloudTrail Lakeを使用して過去のイベントをクエリする",
+        "C": "VPC Flow Logsを確認する",
+        "D": "AWS Configリソースタイムラインを確認する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "CloudTrail Lakeでは、最大7年間のCloudTrailイベントに対してSQLベースのクエリを実行できます。ユーザーアイデンティティでクエリして、侵害されたユーザーが行ったすべてのアクションを見つけることができます。これはログファイルを手動で検索するよりも効率的です。コンソールのCloudTrailイベント履歴は90日間のみ表示されます。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q28",
+      "domain": 2,
+      "question": "企業はセキュリティグループへのすべての変更がログに記録され、アラートをトリガーできることを確認する必要があります。何を実装すべきですか？",
+      "options": {
+        "A": "VPC Flow Logs",
+        "B": "CloudWatch Logs統合とメトリクスフィルターを使用したCloudTrail",
+        "C": "Amazon Inspector",
+        "D": "AWS Trusted Advisor"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "CloudTrailはセキュリティグループの変更を含むすべてのAPI呼び出し（AuthorizeSecurityGroupIngress、RevokeSecurityGroupIngressなど）を記録します。CloudTrailログをCloudWatch Logsに送信することで、これらのイベントに一致するメトリクスフィルターを作成し、即時通知のためにCloudWatch Alarmsをトリガーできます。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q29",
+      "domain": 3,
+      "question": "企業はEC2インスタンスのインターネットアクセスを制限しながら、AWSサービスへのアクセスを許可したいと考えています。何を実装すべきですか？",
+      "options": {
+        "A": "制限的なセキュリティグループを持つInternet Gateway",
+        "B": "アウトバウンドインターネットアクセス用のNAT Gateway",
+        "C": "必要なAWSサービス用のVPCエンドポイント（GatewayおよびInterface）",
+        "D": "AWS Direct Connect"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "VPCエンドポイントにより、プライベートサブネット内のEC2インスタンスはインターネットアクセスを必要とせずにAWSサービスにアクセスできます。GatewayエンドポイントはS3とDynamoDB用に利用可能です。Interfaceエンドポイント（PrivateLinkを使用）はほとんどの他のAWSサービス用に利用可能です。これによりトラフィックはAWSネットワーク内に保持されます。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q30",
+      "domain": 3,
+      "question": "セキュリティグループとNetwork ACLの違いは何ですか？",
+      "options": {
+        "A": "セキュリティグループはステートフルでインスタンスレベルで動作する；Network ACLsはステートレスでサブネットレベルで動作する",
+        "B": "セキュリティグループはステートレス；Network ACLsはステートフル",
+        "C": "両方ともインスタンスレベルで動作する",
+        "D": "Network ACLsはトラフィックを拒否のみできる；セキュリティグループは許可のみできる"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "セキュリティグループはステートフル（戻りトラフィックは自動的に許可される）で、インスタンス/ENIレベルで動作し、許可ルールのみをサポートします。Network ACLsはステートレス（戻りトラフィックは明示的に許可する必要がある）で、サブネットレベルで動作し、許可ルールと拒否ルールの両方をサポートします。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q31",
+      "domain": 4,
+      "question": "企業は最小権限アクセスモデルを実装しています。過度に許可されたポリシーを特定するためにIAMポリシーを分析したいと考えています。どのAWSサービスを使用すべきですか？",
+      "options": {
+        "A": "AWS Config",
+        "B": "IAM Access Analyzer",
+        "C": "Amazon GuardDuty",
+        "D": "AWS Trusted Advisor"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "IAM Access Analyzerは、外部エンティティと共有されているリソースを識別し、IAMポリシーをベストプラクティスに対して検証するのに役立ちます。未使用のアクセスや過剰な権限についてポリシーを分析できます。また、過度に許可されたポリシーを防ぐために、作成中にポリシーを検証します。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q32",
+      "domain": 4,
+      "question": "企業はすべてのIAMユーザーがAWS Management Consoleにアクセスする際にMFAを強制するにはどうすればよいですか？",
+      "options": {
+        "A": "すべてのユーザーに自動的に強制される",
+        "B": "MFAが存在しない限りIAMセルフサービス以外のすべてのアクションを拒否するIAMポリシーを使用する",
+        "C": "ルートアカウントを設定してすべてのユーザーにMFAを要求する",
+        "D": "AWS Configを使用してMFAなしのユーザーを検出する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "aws:MultiFactorAuthPresent条件キーがtrueでない限りすべてのアクションを拒否するIAMポリシーを作成します。ただし、MFAを設定するために必要なアクション（IAMセルフサービス）は除きます。このポリシーをすべてのユーザーまたはグループ経由でアタッチします。AWS ConfigはMFAなしのユーザーを検出できますが、強制はできません。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q33",
+      "domain": 5,
+      "question": "企業は暗号化キーが完全にAWSの外部に保存および管理されるソリューションを実装する必要があります。どのアプローチを使用すべきですか？",
+      "options": {
+        "A": "カスタマー管理キーを使用したAWS KMS",
+        "B": "インポートされたキーマテリアルを使用したAWS KMS",
+        "C": "AWS CloudHSM",
+        "D": "AWS KMSを使用したExternal Key Store（XKS）"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "AWS KMS External Key Store（XKS）により、AWSの外部、お客様が管理する外部キーマネージャーに保存および管理される暗号化キーによってバックアップされたKMSキーを使用できます。これにより、KMS APIを使用しながらキーの完全な制御が提供されます。CloudHSMキーはAWS管理のハードウェアにありますが、カスタマー制御です。",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q34",
+      "domain": 5,
+      "question": "企業は重要なS3オブジェクトの誤削除を防ぐにはどうすればよいですか？",
+      "options": {
+        "A": "S3バージョニングのみを有効にする",
+        "B": "MFA Deleteを使用したS3バージョニングを有効にする",
+        "C": "コンプライアンスモードでS3 Object Lockを使用する",
+        "D": "上記のすべてが異なるレベルの保護を提供する"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "バージョニングは削除されたオブジェクトを削除マーカーとして保持します。MFA Deleteはバージョンを完全に削除するためにMFAを必要とします。コンプライアンスモードのObject Lockは、保持期間が終了するまで誰も（ルートを含む）オブジェクトを削除できないようにします。それぞれが異なる要件に対して異なる保護レベルを提供します。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q35",
+      "domain": 6,
+      "question": "企業はAWS Configによって検出された非準拠リソースを自動的に修復する必要があります。何を実装すべきですか？",
+      "options": {
+        "A": "Configの通知に基づく手動修復",
+        "B": "SSM Automationドキュメントを使用した自動修復を持つAWS Configルール",
+        "C": "CloudWatch Eventsによってトリガーされるlambda関数",
+        "D": "BとCの両方が有効なアプローチ"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "AWS Configは、ルールが非準拠を検出したときにSSM Automationドキュメントを使用した自動修復をサポートしています。または、Configがイベントを EventBridgeに送信して、カスタム修復ロジック用のLambda関数をトリガーすることもできます。両方のアプローチで自動コンプライアンス強制が可能です。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q36",
+      "domain": 1,
+      "question": "Amazon GuardDutyがEC2インスタンスでの仮想通貨マイニングアクティビティを特定しました。これはどのタイプの検出結果ですか？",
+      "options": {
+        "A": "Recon検出結果",
+        "B": "Unauthorized access検出結果",
+        "C": "Crypto検出結果",
+        "D": "Trojan検出結果"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "GuardDutyは脅威の目的によって検出結果を分類します。CryptoCurrency検出結果は、EC2インスタンスが仮想通貨マイニングに使用されていることを示します。その他のカテゴリには、Backdoor、Behavior、CredentialAccess、DefenseEvasion、Discovery、Exfiltration、Impact、InitialAccess、Persistence、Policy、PrivilegeEscalation、Recon、Stealth、Trojan、UnauthorizedAccessがあります。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q37",
+      "domain": 2,
+      "question": "企業はS3バケットポリシーがパブリックアクセスを許可するように変更されたことを検出したいと考えています。どのサービスの組み合わせを使用すべきですか？",
+      "options": {
+        "A": "Amazon Macie",
+        "B": "s3-bucket-public-read-prohibitedルールを使用したAWS Config",
+        "C": "Amazon S3 Block Public Access",
+        "D": "BとCの両方、Configは検出用、Block Public Accessは予防用"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "S3 Block Public Accessは、アカウントまたはバケットレベルでパブリックアクセス構成をブロックすることで予防的制御を提供します。AWS Configルールs3-bucket-public-read-prohibitedは、パブリックアクセスを許可するバケットを識別することで検出的制御を提供します。両方を使用することで多層防御が提供されます。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q38",
+      "domain": 3,
+      "question": "企業はプライベートサブネット内のEC2インスタンスへのSSHアクセス用にバスティオンホストソリューションを実装する必要があります。最も安全なアプローチは何ですか？",
+      "options": {
+        "A": "SSHを0.0.0.0/0に開いたパブリックサブネットにバスティオンホストをデプロイする",
+        "B": "バスティオンホストの代わりにAWS Systems Manager Session Managerを使用する",
+        "C": "各プライベートサブネットにバスティオンホストをデプロイする",
+        "D": "SSHアクセス用にNAT Gatewayを使用する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "AWS Systems Manager Session Managerは、インバウンドポートを開いたりバスティオンホストを管理したりせずに安全なシェルアクセスを提供します。アクセス制御にIAMを使用し、すべてのコマンドをCloudTrailとS3に記録し、SSMエージェントを通じて動作します。これによりバスティオンホストの攻撃面が排除されます。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q39",
+      "domain": 4,
+      "question": "企業は既存の企業IDプロバイダーを使用してAWSアカウントのシングルサインオン（SSO）を実装したいと考えています。どのAWSサービスを使用すべきですか？",
+      "options": {
+        "A": "AWS IAM",
+        "B": "AWS IAM Identity Center（旧AWS SSO）",
+        "C": "Amazon Cognito",
+        "D": "AWS Directory Service"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "AWS IAM Identity Centerは、複数のAWSアカウントとビジネスアプリケーションへのSSOアクセスを提供します。Active Directory、Okta、Azure ADなどのSAML 2.0 IDプロバイダーと統合されます。組織内のすべてのAWSアカウントへのユーザーアクセスの一元管理が可能です。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q40",
+      "domain": 5,
+      "question": "企業はドキュメントに署名するためのRSAキーを生成および保存する必要があり、キーはFIPS 140-2 Level 3で検証されたハードウェアに保存される必要があります。どのAWSサービスを使用すべきですか？",
+      "options": {
+        "A": "AWS KMS",
+        "B": "AWS Secrets Manager",
+        "C": "AWS CloudHSM",
+        "D": "AWS Certificate Manager"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "AWS CloudHSMはFIPS 140-2 Level 3で検証されたハードウェアセキュリティモジュールを提供します。KMS HSMはFIPS 140-2 Level 2で検証されています（一部の側面ではLevel 3）。厳格なLevel 3要件の場合、CloudHSMが必要です。CloudHSMはHSMの完全な制御を提供し、カスタム暗号化操作をサポートします。",
+      "difficulty": "medium"
+    }
+  ]
+}

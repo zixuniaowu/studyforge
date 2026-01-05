@@ -1,0 +1,794 @@
+{
+  "exam": {
+    "id": "azure-dp-100-set1-ja",
+    "name": "Azure DP-100 データサイエンティスト模擬試験 #1",
+    "code": "DP-100",
+    "provider": "Azure",
+    "language": "ja",
+    "description": "Azure Data Scientist Associate認定試験の模擬問題です。Azure Machine Learning、AutoML、Designer、SDK、MLOpsなどの主要トピックを網羅しています。",
+    "totalQuestions": 50,
+    "passingScore": 70,
+    "examTime": 150,
+    "domains": [
+      {
+        "id": 1,
+        "name": "Design and prepare a machine learning solution",
+        "weight": 25
+      },
+      {
+        "id": 2,
+        "name": "Explore data and train models",
+        "weight": 40
+      },
+      {
+        "id": 3,
+        "name": "Prepare a model for deployment",
+        "weight": 25
+      },
+      {
+        "id": 4,
+        "name": "Deploy and retrain a model",
+        "weight": 10
+      }
+    ],
+    "tags": [
+      "Azure",
+      "Machine Learning",
+      "Data Science",
+      "MLOps",
+      "認定試験"
+    ]
+  },
+  "questions": [
+    {
+      "id": "q1",
+      "domain": 1,
+      "question": "ある企業がAzure上でデータ準備、モデル訓練、デプロイ、監視を含むエンドツーエンドの機械学習ソリューションを構築したいと考えています。どのサービスを使用すべきですか？",
+      "options": {
+        "A": "Azure Databricks",
+        "B": "Azure Machine Learning",
+        "C": "Azure Synapse Analytics",
+        "D": "Azure HDInsight"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure Machine Learningは、Microsoftが提供するエンドツーエンドの機械学習プラットフォームであり、以下の機能を含みます：\n- データ準備と探索\n- モデル訓練（SDK、AutoML、Designer）\n- モデル登録とバージョン管理\n- モデルデプロイ（リアルタイムとバッチ）\n- MLOpsと監視\n---",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q2",
+      "domain": 1,
+      "question": "Azure Machine Learningにおいて、データセット、モデル、環境、その他のアーティファクトを保存するために使用されるリソースはどれですか？",
+      "options": {
+        "A": "コンピューティングインスタンス (Compute Instance)",
+        "B": "ワークスペース (Workspace)",
+        "C": "コンピューティングクラスター (Compute Cluster)",
+        "D": "エンドポイント (Endpoint)"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure MLワークスペースは、機械学習アセットのトップレベルコンテナであり、以下を含みます：\n- データストアとデータセット\n- 実験と実行履歴\n- モデルレジストリ\n- 環境定義\n- コンピューティングリソース\n- エンドポイント\n---",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q3",
+      "domain": 1,
+      "question": "データサイエンティストがPythonコードをインタラクティブに開発およびテストする必要があります。Azure MLのどのコンピューティングリソースを使用すべきですか？",
+      "options": {
+        "A": "コンピューティングクラスター (Compute Cluster)",
+        "B": "コンピューティングインスタンス (Compute Instance)",
+        "C": "推論クラスター (Inference Cluster)",
+        "D": "アタッチされたコンピューティング (Attached Compute)"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "コンピューティングインスタンスは、マネージドクラウドワークステーションです：\n- Jupyter、VS CodeなどのIDEがプリインストール\n- MLライブラリ（scikit-learn、PyTorch、TensorFlow）がプリインストール\n- SSHアクセスをサポート\n- 開発とテストに最適\nコンピューティングクラスターは大規模な訓練ジョブに使用されます。\n---",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q4",
+      "domain": 1,
+      "question": "チームが大規模な分散訓練ジョブを実行する必要があり、使用していない時はコスト削減のために自動的にゼロノードにスケールダウンしたいと考えています。何を使用すべきですか？",
+      "options": {
+        "A": "コンピューティングインスタンス",
+        "B": "コンピューティングクラスター",
+        "C": "Kubernetesクラスター",
+        "D": "仮想マシン"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "コンピューティングクラスターの特徴：\n- 自動スケーリングをサポート（最小0ノード）\n- 複数ノードの分散訓練をサポート\n- 従量課金制\n- 低優先度VMの構成でコスト削減が可能\n- バッチ訓練ジョブに最適\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q5",
+      "domain": 1,
+      "question": "データサイエンティストがAzure Blob Storageに保存されているデータをAzure MLで使用したいと考えています。最初に何を作成する必要がありますか？",
+      "options": {
+        "A": "データセット (Dataset)",
+        "B": "データストア (Datastore)",
+        "C": "データパイプライン (Pipeline)",
+        "D": "データドリフトモニター"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "データアクセスの階層：\n1. データストア (Datastore)：Azureストレージサービスへの接続参照\n2. データセット (Dataset)：データストア内の特定のデータへの参照\nデータストアは接続情報（URL、認証情報）を保存し、データのコピーは行いません。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q6",
+      "domain": 1,
+      "question": "Azure MLにおいて、大量の画像やテキストファイルのコレクションを処理するのに最も適したデータセットタイプはどれですか？",
+      "options": {
+        "A": "表形式データセット (Tabular Dataset)",
+        "B": "ファイルデータセット (File Dataset)",
+        "C": "時系列データセット",
+        "D": "構造化データセット"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "データセットタイプ：\n- 表形式データセット：構造化データ（CSV、Parquet）\n- ファイルデータセット：非構造化データ（画像、テキスト、音声）\nファイルデータセットは元のファイル構造を保持し、ディープラーニングシナリオに適しています。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q7",
+      "domain": 1,
+      "question": "企業が機械学習実験の再現性を確保する必要があります。訓練コード、データバージョン、環境構成をキャプチャできるAzure MLの機能はどれですか？",
+      "options": {
+        "A": "パイプライン (Pipeline)",
+        "B": "実験 (Experiment)",
+        "C": "環境 (Environment)",
+        "D": "実行 (Run)"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "Runオブジェクトは完全な実験コンテキストを記録します：\n- コードスナップショット\n- データセットバージョン\n- 環境（依存パッケージ）\n- ハイパーパラメータ\n- メトリクスと出力\n- 実行ログ\n実験の再現と比較をサポートします。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q8",
+      "domain": 1,
+      "question": "データサイエンティストが訓練スクリプト内で精度と損失値を記録する必要があります。Azure ML SDKのどのメソッドを使用すべきですか？",
+      "options": {
+        "A": "run.log()",
+        "B": "run.save()",
+        "C": "run.upload()",
+        "D": "run.register()"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "run.log()メソッドはメトリクスの記録に使用されます：\n- run.log('accuracy', 0.95) # 単一値\n- run.log_list('losses', [0.5, 0.3, 0.1]) # リスト\n- run.log_row('metrics', accuracy=0.95, loss=0.1) # 行\n- run.log_table('results', df) # テーブル\n---",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q9",
+      "domain": 1,
+      "question": "データサイエンティストが異なる実行間で訓練環境の一貫性を確保したいと考えています。依存関係をどのように定義すべきですか？",
+      "options": {
+        "A": "各実行時に手動でインストール",
+        "B": "Azure ML Environmentを使用",
+        "C": "システムデフォルトのPythonを使用",
+        "D": "スクリプト内で動的にインストール"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure ML Environmentの定義内容：\n- Pythonバージョン\n- Conda/pip依存関係\n- Dockerベースイメージ\n- 環境変数\nカスタム環境を作成するか、キュレートされた環境（Curated Environment）を使用できます。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q10",
+      "domain": 1,
+      "question": "MLプロジェクトで複数のチームメンバーが協力する必要があり、同時にデータやモデルへのアクセスを制御する必要があります。何を使用すべきですか？",
+      "options": {
+        "A": "複数のワークスペースを作成",
+        "B": "Azure RBACロールを使用",
+        "C": "共有キー",
+        "D": "パブリックエンドポイントを使用"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure RBACロール：\n- 所有者：完全な制御\n- 共同作成者：リソースの作成と管理\n- 閲覧者：読み取り専用アクセス\n- データサイエンティスト：実験の実行、モデルのデプロイ\nワークスペース、リソースグループ、またはサブスクリプションレベルで割り当て可能です。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q11",
+      "domain": 2,
+      "question": "データサイエンティストがデータの予測可能性を評価するための初期モデルを素早く構築する必要がありますが、手動でコードを書きたくありません。何を使用すべきですか？",
+      "options": {
+        "A": "Azure ML SDK",
+        "B": "Azure ML Designer",
+        "C": "自動機械学習 (AutoML)",
+        "D": "Azure Databricks"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "AutoMLの自動化機能：\n- データ前処理\n- 特徴エンジニアリング\n- アルゴリズム選択\n- ハイパーパラメータチューニング\n- モデル選択\n迅速なプロトタイプ開発とベンチマークテストに最適です。\n---",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q12",
+      "domain": 2,
+      "question": "Azure AutoMLにおいて、以下のうちサポートされていないタスクタイプはどれですか？",
+      "options": {
+        "A": "分類 (Classification)",
+        "B": "回帰 (Regression)",
+        "C": "時系列予測 (Forecasting)",
+        "D": "強化学習 (Reinforcement Learning)"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "AutoMLがサポートするタスクタイプ：\n- 分類：カテゴリラベルの予測\n- 回帰：連続値の予測\n- 時系列予測：過去のデータに基づく将来の予測\n- 画像分類/物体検出（プレビュー）\n- NLPタスク（プレビュー）\n強化学習には他の方法を使用する必要があります。\n---",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q13",
+      "domain": 2,
+      "question": "AutoMLを使用して分類モデルを訓練する際、不均衡なデータセットを最適化するために使用すべき主要メトリクスはどれですか？",
+      "options": {
+        "A": "Accuracy",
+        "B": "AUC_weighted",
+        "C": "R2_score",
+        "D": "RMSE"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "不均衡データセットのメトリクス選択：\n- Accuracy：不均衡データには不適切\n- AUC_weighted：クラスの重みを考慮し、不均衡データに適切\n- Precision/Recall/F1：ビジネス要件に応じて選択\n- R2_score/RMSE：回帰タスク用\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q14",
+      "domain": 2,
+      "question": "Azure AutoMLにおいて、モデルの過学習を防ぎ、汎化能力を確保するにはどうすればよいですか？",
+      "options": {
+        "A": "全データを訓練に使用",
+        "B": "交差検証 (Cross-validation) を構成",
+        "C": "訓練時間を増加",
+        "D": "より複雑なモデルを使用"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "AutoMLの検証戦略：\n- 交差検証：データをk分割し、交互に検証\n- 訓練検証分割：検証セットの割合を指定\n- カスタム検証セット：別の検証データを提供\n交差検証はモデルの汎化能力の評価に役立ちます。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q15",
+      "domain": 2,
+      "question": "データサイエンティストがAutoMLモデルがなぜ特定の予測を行ったかを理解したいと考えています。何を確認すべきですか？",
+      "options": {
+        "A": "訓練ログ",
+        "B": "モデル説明可能性 (Model Explainability)",
+        "C": "実行メトリクス",
+        "D": "データプロファイル"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "AutoMLモデル説明可能性が提供する情報：\n- グローバル特徴量重要度\n- ローカル特徴量重要度（個別予測）\n- SHAP値\n- 特徴量依存グラフ\nモデルの意思決定プロセスの理解に役立ちます。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q16",
+      "domain": 2,
+      "question": "データサイエンティストがコードを書かずにドラッグアンドドロップインターフェースを使用してMLパイプラインを構築したいと考えています。何を使用すべきですか？",
+      "options": {
+        "A": "Azure ML SDK",
+        "B": "Azure ML Designer",
+        "C": "Jupyter Notebook",
+        "D": "Azure CLI"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure ML Designer：\n- 視覚的なドラッグアンドドロップインターフェース\n- 事前構築されたモジュール（データ処理、訓練、評価）\n- カスタムモジュールのサポート\n- コードパイプラインへの変換が可能\n迅速なプロトタイプ作成やノンプログラマーに最適です。\n---",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q17",
+      "domain": 2,
+      "question": "SDKを使用してモデルを訓練する際、訓練スクリプトと環境を指定する必要があります。どのオブジェクトを使用すべきですか？",
+      "options": {
+        "A": "Experiment",
+        "B": "ScriptRunConfig",
+        "C": "Pipeline",
+        "D": "Model"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "ScriptRunConfigの構成：\n- source_directory：スクリプトディレクトリ\n- script：エントリスクリプト\n- compute_target：コンピューティングターゲット\n- environment：実行環境\n- arguments：スクリプト引数\n訓練ジョブを送信する標準的な方法です。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q18",
+      "domain": 2,
+      "question": "データサイエンティストが最適なハイパーパラメータの組み合わせを体系的に探索する必要があります。何を使用すべきですか？",
+      "options": {
+        "A": "手動調整",
+        "B": "HyperDrive",
+        "C": "AutoML",
+        "D": "Designer"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "HyperDriveのサポート機能：\n- グリッドサーチ (Grid Sampling)\n- ランダムサーチ (Random Sampling)\n- ベイズ最適化 (Bayesian Sampling)\n- 早期終了ポリシー\n- 複数の試行の並列実行\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q19",
+      "domain": 2,
+      "question": "HyperDriveにおいて、次のハイパーパラメータセットをインテリジェントに選択するためにどのサンプリング方法を使用すべきですか？",
+      "options": {
+        "A": "GridParameterSampling",
+        "B": "RandomParameterSampling",
+        "C": "BayesianParameterSampling",
+        "D": "UniformSampling"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "サンプリング方法の比較：\n- Grid：すべての組み合わせを網羅、小さな探索空間に適切\n- Random：ランダムに選択、大きな探索空間に適切\n- Bayesian：過去の結果に基づいてインテリジェントに選択、より速く収束\nBayesianは過去の結果を使用して探索をガイドします。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q20",
+      "domain": 2,
+      "question": "HyperDriveにおいて、パフォーマンスの悪い実行を早期に終了してコンピューティングリソースを節約するにはどうすればよいですか？",
+      "options": {
+        "A": "並列度を増加",
+        "B": "早期終了ポリシー (Early Termination Policy) を使用",
+        "C": "ハイパーパラメータ範囲を縮小",
+        "D": "より小さなデータセットを使用"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "早期終了ポリシー：\n- BanditPolicy：最良の実行のslackに基づく\n- MedianStoppingPolicy：中央値パフォーマンスに基づく\n- TruncationSelectionPolicy：最悪のパーセンタイルを終了\nコンピューティングリソースを50%以上節約できます。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q21",
+      "domain": 2,
+      "question": "データサイエンティストがディープラーニングモデルを訓練する必要がありますが、データ量が多すぎて単一のGPUメモリに収まりません。どの技術を使用すべきですか？",
+      "options": {
+        "A": "バッチサイズを減少",
+        "B": "分散訓練",
+        "C": "CPUで訓練",
+        "D": "モデルのレイヤー数を減少"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "分散訓練戦略：\n- データ並列：各GPUが異なるデータバッチを処理\n- モデル並列：モデルを複数のGPUに分散\n- Horovod/DeepSpeed統合\nAzure MLはコンピューティングクラスター上での分散訓練の実行をサポートしています。\n---",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q22",
+      "domain": 2,
+      "question": "訓練スクリプトにおいて、Azure MLから渡されるコマンドライン引数を正しく処理するにはどうすればよいですか？",
+      "options": {
+        "A": "sys.argvを使用",
+        "B": "argparseを使用",
+        "C": "環境変数を使用",
+        "D": "値をハードコード"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "ベストプラクティスはargparseの使用です：\n```python\nimport argparse\nparser = argparse.ArgumentParser()\nparser.add_argument('--learning-rate', type=float)\nparser.add_argument('--epochs', type=int)\nargs = parser.parse_args()\n```\nこれにより、ScriptRunConfigでパラメータを渡すことができます。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q23",
+      "domain": 2,
+      "question": "データサイエンティストが訓練データに欠損値があることを発見しました。Azure ML Designerでどのモジュールを使用すべきですか？",
+      "options": {
+        "A": "Normalize Data",
+        "B": "Clean Missing Data",
+        "C": "Select Columns",
+        "D": "Split Data"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Clean Missing Dataモジュールのオプション：\n- 欠損値を含む行を削除\n- 平均/中央値/最頻値で置換\n- カスタム値で置換\n- MICEアルゴリズムで補完\nデータ前処理の重要なステップです。\n---",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q24",
+      "domain": 2,
+      "question": "回帰モデルを訓練する前に、データサイエンティストが数値特徴量を同じ範囲にスケーリングする必要があります。何を使用すべきですか？",
+      "options": {
+        "A": "One-Hot Encoding",
+        "B": "Normalize Data",
+        "C": "Feature Hashing",
+        "D": "PCA"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Normalize Dataモジュールのメソッド：\n- Min-Max：[0,1]にスケーリング\n- Z-Score：平均0、標準偏差1\n- Logistic：ロジスティック変換\n- LogNormal：対数正規変換\n勾配降下法アルゴリズムでは特に重要です。\n---",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q25",
+      "domain": 2,
+      "question": "データセットにカテゴリ特徴量（例：色：赤、緑、青）が含まれています。モデルで使用するために数値形式に変換するにはどうすればよいですか？",
+      "options": {
+        "A": "Normalize Data",
+        "B": "Convert to Indicator Values (One-Hot Encoding)",
+        "C": "Feature Scaling",
+        "D": "PCA"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "One-Hot Encoding：\n- カテゴリ変数をバイナリ列に変換\n- 赤 → [1,0,0]\n- 緑 → [0,1,0]\n- 青 → [0,0,1]\nモデルがカテゴリ間の数値関係を誤解するのを防ぎます。\n---",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q26",
+      "domain": 2,
+      "question": "データサイエンティストが高次元データの特徴量数を減らしながら、最も多くの情報を保持したいと考えています。何を使用すべきですか？",
+      "options": {
+        "A": "Feature Selection",
+        "B": "PCA (Principal Component Analysis)",
+        "C": "Normalize Data",
+        "D": "Filter Based Feature Selection"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "PCA（主成分分析）：\n- 特徴量を主成分に変換\n- 最も多くの分散を説明する成分を保持\n- 情報損失を最小化しながら次元を削減\n- 高次元データに適切\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q27",
+      "domain": 2,
+      "question": "分類モデルを訓練した後、テストデータでのモデルのパフォーマンスを評価するにはどうすればよいですか？",
+      "options": {
+        "A": "Train Modelモジュール",
+        "B": "Score Modelモジュール",
+        "C": "Evaluate Modelモジュール",
+        "D": "Split Dataモジュール"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "モデル評価のフロー：\n1. Split Data：訓練/テストセットに分割\n2. Train Model：モデルを訓練\n3. Score Model：テストセットをスコアリング\n4. Evaluate Model：パフォーマンスメトリクスを計算\nEvaluate Modelは混同行列、精度などを出力します。\n---",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q28",
+      "domain": 2,
+      "question": "Azure MLにおいて、再現可能な複数ステップのワークフローを実装するにはどうすればよいですか？",
+      "options": {
+        "A": "手動で順次実行",
+        "B": "MLパイプライン (Pipeline) を作成",
+        "C": "単一のスクリプトを使用",
+        "D": "AutoMLを使用"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "MLパイプラインの利点：\n- モジュール化されたステップ\n- 再利用可能なコンポーネント\n- スケジュール実行\n- ステップ間のデータ受け渡し\n- バージョン管理\n- CI/CD統合\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q29",
+      "domain": 2,
+      "question": "パイプラインにおいて、ステップ間で中間データを渡すにはどうすればよいですか？",
+      "options": {
+        "A": "グローバル変数を使用",
+        "B": "PipelineDataオブジェクトを使用",
+        "C": "ローカルファイルに保存",
+        "D": "データベースを使用"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "PipelineDataはステップ間のデータ受け渡しに使用されます：\n- データストアに一時的に保存\n- 前のステップの出力と次のステップの入力として機能\n- ライフサイクルを自動管理\n- コンピューティングターゲット間の受け渡しをサポート\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q30",
+      "domain": 2,
+      "question": "データサイエンティストがPyTorchを使用してディープラーニングモデルを訓練したいと考えています。環境をどのように構成すべきですか？",
+      "options": {
+        "A": "デフォルト環境を使用",
+        "B": "PyTorchキュレート環境を使用",
+        "C": "PyTorchを手動でインストール",
+        "D": "TensorFlow環境を使用"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "キュレート環境（Curated Environment）：\n- 事前構成されたMLフレームワーク環境\n- AzureML-PyTorch、AzureML-TensorFlowなど\n- 最適化されたDockerイメージ\n- 互換性テスト済み\n手動構成なしで直接使用できます。\n---",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q31",
+      "domain": 3,
+      "question": "訓練完了後、Azure MLでモデルを保存して後で使用およびデプロイするにはどうすればよいですか？",
+      "options": {
+        "A": "ローカルファイルに保存",
+        "B": "モデルレジストリに登録",
+        "C": "Gitに保存",
+        "D": "Blobストレージに保存"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "モデルレジストリの機能：\n- バージョン管理\n- メタデータタグ\n- リネージ追跡（データ、コード、環境）\n- デプロイ履歴\n- モデルガバナンス\nMLOpsの中核コンポーネントです。\n---",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q32",
+      "domain": 3,
+      "question": "訓練スクリプトでモデルファイルを出力ディレクトリに保存して自動アップロードするにはどうすればよいですか？",
+      "options": {
+        "A": "任意のディレクトリに保存",
+        "B": "./outputsディレクトリに保存",
+        "C": "./logsディレクトリに保存",
+        "D": "ルートディレクトリに保存"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure MLの特殊ディレクトリ：\n- ./outputs：実行履歴に自動アップロード\n- ./logs：ログファイルを自動アップロード\n例：model.save('./outputs/model.pkl')\nこれらのファイルは実行完了後にダウンロードできます。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q33",
+      "domain": 3,
+      "question": "モデルをデプロイする際、モデルの読み込み方法とリクエストの処理方法を定義する必要があります。このファイルは何と呼ばれますか？",
+      "options": {
+        "A": "config.py",
+        "B": "score.py（エントリスクリプト）",
+        "C": "train.py",
+        "D": "environment.yml"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "エントリスクリプト（score.py）に必要な関数：\n- init()：モデルを読み込む、起動時に一度呼び出し\n- run(data)：各リクエストを処理\n例：\n```python\ndef init():\n    global model\n    model = load_model()\n\ndef run(data):\n    return model.predict(data)\n```\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q34",
+      "domain": 3,
+      "question": "データサイエンティストがデプロイ前にエントリスクリプトが正しいかテストしたいと考えています。どのようにすべきですか？",
+      "options": {
+        "A": "本番環境に直接デプロイ",
+        "B": "ローカルデプロイでテスト",
+        "C": "コードロジックのみを確認",
+        "D": "AutoMLでテスト"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "ローカルデプロイテスト：\n- ローカルDockerコンテナで実行\n- init()とrun()関数を検証\n- 依存関係が正しいか確認\n- デバッグがより速く、クラウドデプロイを待つ必要なし\n問題を発見してからクラウドにデプロイします。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q35",
+      "domain": 3,
+      "question": "モデルのデプロイには必要なCPUとメモリリソースを指定する必要があります。どの構成を使用すべきですか？",
+      "options": {
+        "A": "EnvironmentConfig",
+        "B": "ResourceConfiguration",
+        "C": "ComputeConfig",
+        "D": "DeploymentConfig"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "DeploymentConfigの定義内容：\n- cpu_cores：CPUコア数\n- memory_gb：メモリサイズ\n- gpu_cores：GPU数\n- replica_count：インスタンス数\n- autoscale_enabled：自動スケーリング\nモデルの要件に応じて適切に構成します。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q36",
+      "domain": 3,
+      "question": "企業がより良い推論パフォーマンスを得るためにONNX形式でモデルをデプロイしたいと考えています。ONNX Runtimeの利点は何ですか？",
+      "options": {
+        "A": "Pythonのみサポート",
+        "B": "クロスフレームワーク互換性とハードウェアアクセラレーション",
+        "C": "Azureでのみ実行可能",
+        "D": "CPU推論のみサポート"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "ONNXの利点：\n- クロスフレームワーク：PyTorch、TensorFlow、scikit-learn\n- クロスプラットフォーム：Windows、Linux、エッジデバイス\n- ハードウェアアクセラレーション：CPU、GPU、FPGA\n- 最適化された推論パフォーマンス\n- より小さなモデルサイズ\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q37",
+      "domain": 3,
+      "question": "PyTorchモデルをONNX形式に変換するにはどうすればよいですか？",
+      "options": {
+        "A": "torch.save()を使用",
+        "B": "torch.onnx.export()を使用",
+        "C": "pickleを使用",
+        "D": "joblibを使用"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "PyTorchからONNXへの変換：\n```python\nimport torch.onnx\ntorch.onnx.export(\n    model,\n    dummy_input,\n    'model.onnx',\n    input_names=['input'],\n    output_names=['output']\n)\n```\nモデルグラフをトレースするためにサンプル入力を提供する必要があります。\n---",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q38",
+      "domain": 3,
+      "question": "データサイエンティストがモデルのパフォーマンスを分析し、推論遅延のボトルネックを特定したいと考えています。何を使用すべきですか？",
+      "options": {
+        "A": "モデル説明可能性",
+        "B": "モデルプロファイリング (Model Profiling)",
+        "C": "データドリフト監視",
+        "D": "A/Bテスト"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "モデルプロファイリングが提供する情報：\n- 推論遅延分析\n- CPU/GPU利用率\n- メモリ使用量\n- スループット測定\n- ボトルネック特定\nモデルパフォーマンスの最適化に役立ちます。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q39",
+      "domain": 3,
+      "question": "モデルのデプロイ準備において、本番環境でのモデルの動作が開発環境と一貫していることを確保するにはどうすればよいですか？",
+      "options": {
+        "A": "同じコードを使用",
+        "B": "同じEnvironment定義を使用",
+        "C": "同じハードウェアを使用",
+        "D": "同じデータを使用"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Environmentが確保する一貫性：\n- Pythonバージョン\n- 依存パッケージバージョン\n- Dockerベースイメージ\n訓練と推論で同じ環境定義を使用することで、「自分のマシンでは動作する」問題を回避できます。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q40",
+      "domain": 3,
+      "question": "企業が同じエンドポイントに複数のモデルをデプロイし、リクエストに応じて異なるモデルにルーティングする必要があります。何を使用すべきですか？",
+      "options": {
+        "A": "複数のエンドポイント",
+        "B": "マルチモデルデプロイ",
+        "C": "バッチエンドポイント",
+        "D": "シングルモデルデプロイ"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "マルチモデルデプロイ：\n- 同じエンドポイントを共有\n- モデルを動的に読み込み\n- リソースを節約\n- 管理を簡素化\n多数のモデルがあるシナリオに適しています。\n---",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q41",
+      "domain": 4,
+      "question": "企業がモデルを低遅延のリアルタイムAPIとしてデプロイする必要があります。どのタイプのエンドポイントを使用すべきですか？",
+      "options": {
+        "A": "バッチエンドポイント (Batch Endpoint)",
+        "B": "マネージドオンラインエンドポイント (Managed Online Endpoint)",
+        "C": "Kubernetesエンドポイント",
+        "D": "Azure Functions"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "マネージドオンラインエンドポイント：\n- リアルタイム推論（ミリ秒単位の遅延）\n- 自動スケーリング\n- ブルーグリーンデプロイ\n- 組み込み監視\n- Azureマネージド、インフラ管理不要\n---",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q42",
+      "domain": 4,
+      "question": "企業が毎晩大量のデータに対してバッチスコアリングを実行する必要があります。どのタイプのエンドポイントを使用すべきですか？",
+      "options": {
+        "A": "オンラインエンドポイント",
+        "B": "バッチエンドポイント (Batch Endpoint)",
+        "C": "リアルタイムエンドポイント",
+        "D": "REST API"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "バッチエンドポイントの特徴：\n- 大量データの処理\n- 非同期実行\n- コスト最適化（低優先度コンピューティングの使用が可能）\n- 自動並列処理\n- 結果をストレージに保存\n---",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q43",
+      "domain": 4,
+      "question": "新しいバージョンのモデルをデプロイする際、ダウンタイムなしで更新を実現するにはどうすればよいですか？",
+      "options": {
+        "A": "古いデプロイを削除してから新しいデプロイを作成",
+        "B": "ブルーグリーンデプロイ戦略を使用",
+        "C": "サービスを停止して更新",
+        "D": "新しいエンドポイントを作成"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "ブルーグリーンデプロイのフロー：\n1. 新しいデプロイ（ブルー）を作成\n2. 新しいデプロイをテスト\n3. 徐々にトラフィックを新しいデプロイに切り替え\n4. 完全に切り替え後、古いデプロイ（グリーン）を削除\nマネージドオンラインエンドポイントはトラフィック配分をネイティブでサポートしています。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q44",
+      "domain": 4,
+      "question": "データサイエンティストが新しいモデルバージョンをテストするために、10%のトラフィックを新しいバージョンに送信したいと考えています。どのように構成すべきですか？",
+      "options": {
+        "A": "A/Bテストを使用",
+        "B": "エンドポイントのトラフィック配分を構成",
+        "C": "異なるエンドポイントを使用",
+        "D": "ロードバランサーを使用"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "トラフィック配分の構成：\n```\nendpoint.traffic = {\n    'blue': 90,  # 旧バージョン90%\n    'green': 10  # 新バージョン10%\n}\n```\n新バージョンのトラフィックを徐々に増やすことができます。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q45",
+      "domain": 4,
+      "question": "デプロイ後、モデルが正常に動作しているかを監視し、問題を迅速に発見するにはどうすればよいですか？",
+      "options": {
+        "A": "ログを手動で確認",
+        "B": "Application Insightsを使用",
+        "C": "ユーザーフィードバック",
+        "D": "定期的に再訓練"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Application Insightsの監視機能：\n- リクエストレートと遅延\n- エラーレート\n- 依存関係の追跡\n- カスタムメトリクス\n- アラート設定\nAzure MLエンドポイントとネイティブに統合されています。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q46",
+      "domain": 4,
+      "question": "企業が本番データの分布が訓練データと異なることを発見しました。この現象は何と呼ばれますか？",
+      "options": {
+        "A": "モデルの過学習",
+        "B": "データドリフト (Data Drift)",
+        "C": "概念ドリフト",
+        "D": "モデルの劣化"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "データドリフトのタイプ：\n- データドリフト：入力データの分布の変化\n- 概念ドリフト：入力と出力の関係の変化\n- 上流データの変化：データソースの変更\nAzure MLはデータドリフトモニターを提供しています。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q47",
+      "domain": 4,
+      "question": "本番データにドリフトが発生しているかを自動的に検出するにはどうすればよいですか？",
+      "options": {
+        "A": "データを手動で比較",
+        "B": "データドリフトモニターを構成",
+        "C": "定期的に再訓練",
+        "D": "モデル精度を確認"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "データドリフトモニター：\n- ベースラインデータセット（訓練データ）\n- ターゲットデータセット（本番データ）\n- 分布を定期的に比較\n- しきい値を超えた場合にアラート\n- 再訓練パイプラインをトリガー可能\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q48",
+      "domain": 4,
+      "question": "モデルの自動再訓練を実装するにはどうすればよいですか？",
+      "options": {
+        "A": "訓練を手動でトリガー",
+        "B": "スケジュールトリガー付きのMLパイプラインを構成",
+        "C": "モデルが失敗するまで待つ",
+        "D": "より複雑なモデルを使用"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "自動再訓練のスキーム：\n- スケジュールトリガー（毎週/毎月）\n- データドリフトトリガー\n- パフォーマンス低下トリガー\n- 新データ到着トリガー\nMLパイプラインとスケジュール実行を使用して実装します。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q49",
+      "domain": 4,
+      "question": "企業がコードバージョン管理、自動テスト、デプロイを含む完全なMLOpsフローを実装したいと考えています。何を使用すべきですか？",
+      "options": {
+        "A": "手動デプロイ",
+        "B": "Azure DevOps/GitHub ActionsとAzure MLの統合",
+        "C": "Azure ML SDKのみを使用",
+        "D": "Jupyter Notebookを使用"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "MLOps CI/CDフロー：\n1. コードコミットがCIをトリガー\n2. ユニットテストと統合テスト\n3. 訓練パイプライン実行\n4. モデル検証\n5. モデル登録\n6. テスト/本番環境への自動デプロイ\n---",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q50",
+      "domain": 4,
+      "question": "データサイエンティストがエッジデバイス上でMLモデルを実行してリアルタイム推論を行う必要があります。何を使用すべきですか？",
+      "options": {
+        "A": "マネージドオンラインエンドポイント",
+        "B": "Azure IoT EdgeとONNX Runtime",
+        "C": "バッチエンドポイント",
+        "D": "Azure Functions"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "エッジデプロイのスキーム：\n- Azure IoT Edgeモジュール\n- ONNX Runtime（軽量推論エンジン）\n- コンテナ化されたモデル\n- ローカル推論、ネットワーク接続不要\n- 様々なエッジデバイスをサポート\n---",
+      "difficulty": "hard"
+    }
+  ]
+}

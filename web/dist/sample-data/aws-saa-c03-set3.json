@@ -1,0 +1,672 @@
+{
+  "exam": {
+    "id": "aws-saa-c03-set3",
+    "name": "AWS SAA-C03 解决方案架构师模拟考试 #3",
+    "code": "SAA-C03",
+    "provider": "AWS",
+    "language": "zh-CN",
+    "description": "AWS解决方案架构师助理级考试模拟题 - 第3套",
+    "totalQuestions": 50,
+    "passingScore": 72,
+    "examTime": 130,
+    "domains": [
+      {"id": 1, "name": "Design Secure Architectures", "weight": 30},
+      {"id": 2, "name": "Design Resilient Architectures", "weight": 26},
+      {"id": 3, "name": "Design High-Performing Architectures", "weight": 24},
+      {"id": 4, "name": "Design Cost-Optimized Architectures", "weight": 20}
+    ],
+    "tags": ["AWS", "架构", "SAA", "认证考试"]
+  },
+  "questions": [
+    {
+      "id": "q1",
+      "domain": 1,
+      "question": "一家金融公司需要确保所有EBS卷在创建时自动加密。应该如何实现这一要求？",
+      "options": {
+        "A": "创建IAM策略禁止创建未加密的EBS卷",
+        "B": "在账户级别启用EBS默认加密",
+        "C": "使用AWS Config规则检测未加密的EBS卷",
+        "D": "手动加密每个EBS卷"
+      },
+      "answer": "B",
+      "explanation": "在AWS账户级别启用EBS默认加密后，所有新创建的EBS卷和快照都会自动使用默认CMK进行加密，无需手动指定。这是确保合规性的最简单方法。"
+    },
+    {
+      "id": "q2",
+      "domain": 1,
+      "question": "公司需要允许第三方审计人员临时访问AWS账户以进行安全审计，但不能提供长期凭证。最佳解决方案是什么？",
+      "options": {
+        "A": "创建IAM用户并在审计后删除",
+        "B": "使用IAM角色与外部ID进行跨账户访问",
+        "C": "共享根账户凭证",
+        "D": "创建访问密钥并设置过期时间"
+      },
+      "answer": "B",
+      "explanation": "使用IAM角色进行跨账户访问是最安全的方式。外部ID（External ID）可以防止混淆代理问题，确保只有预期的第三方可以承担该角色，且无需共享长期凭证。"
+    },
+    {
+      "id": "q3",
+      "domain": 1,
+      "question": "一个应用程序运行在私有子网的EC2实例上，需要从S3下载软件更新，但公司政策禁止任何Internet流量。应该如何配置？",
+      "options": {
+        "A": "使用NAT Gateway访问S3",
+        "B": "将实例移到公有子网",
+        "C": "创建S3 Gateway VPC Endpoint",
+        "D": "使用AWS PrivateLink"
+      },
+      "answer": "C",
+      "explanation": "S3 Gateway VPC Endpoint允许私有子网的实例通过AWS内部网络访问S3，流量不会经过Internet。Gateway Endpoint是免费的，且专门用于S3和DynamoDB。"
+    },
+    {
+      "id": "q4",
+      "domain": 1,
+      "question": "公司需要检测EC2实例上的软件漏洞和网络暴露问题。应该使用什么服务？",
+      "options": {
+        "A": "AWS GuardDuty",
+        "B": "Amazon Inspector",
+        "C": "AWS Security Hub",
+        "D": "Amazon Detective"
+      },
+      "answer": "B",
+      "explanation": "Amazon Inspector是自动化漏洞管理服务，可以扫描EC2实例和容器镜像，检测软件漏洞和网络配置问题。GuardDuty用于威胁检测，不是漏洞扫描。"
+    },
+    {
+      "id": "q5",
+      "domain": 1,
+      "question": "一家医疗公司需要确保存储在S3中的患者数据符合HIPAA要求，包括访问日志记录。应该启用什么功能？",
+      "options": {
+        "A": "S3对象锁定",
+        "B": "S3服务器访问日志记录",
+        "C": "S3版本控制",
+        "D": "S3生命周期策略"
+      },
+      "answer": "B",
+      "explanation": "S3服务器访问日志记录提供对存储桶的所有请求的详细记录，包括请求者、请求时间、请求操作等，这对于HIPAA合规性审计至关重要。"
+    },
+    {
+      "id": "q6",
+      "domain": 1,
+      "question": "需要为Web应用程序防护DDoS攻击，同时需要实时可见性和24/7 DDoS响应团队支持。应该使用什么？",
+      "options": {
+        "A": "AWS Shield Standard",
+        "B": "AWS Shield Advanced",
+        "C": "AWS WAF",
+        "D": "Amazon CloudFront"
+      },
+      "answer": "B",
+      "explanation": "AWS Shield Advanced提供增强的DDoS防护，包括实时攻击可见性、24/7访问AWS DDoS响应团队(DRT)、成本保护以及更详细的攻击诊断。Shield Standard只提供基本防护。"
+    },
+    {
+      "id": "q7",
+      "domain": 1,
+      "question": "公司使用多个AWS账户，需要集中存储和分析所有账户的CloudTrail日志。最佳方案是什么？",
+      "options": {
+        "A": "在每个账户中创建独立的CloudTrail跟踪",
+        "B": "创建组织级CloudTrail跟踪，将日志发送到中央S3存储桶",
+        "C": "使用AWS Config聚合器",
+        "D": "手动复制日志到中央账户"
+      },
+      "answer": "B",
+      "explanation": "AWS Organizations允许创建组织级CloudTrail跟踪，自动为所有成员账户启用日志记录并集中存储到指定的S3存储桶，便于集中分析和审计。"
+    },
+    {
+      "id": "q8",
+      "domain": 1,
+      "question": "需要确保ALB只接受来自CloudFront的请求，阻止用户直接访问ALB。应该如何配置？",
+      "options": {
+        "A": "配置ALB安全组只允许CloudFront IP",
+        "B": "使用AWS WAF配合CloudFront自定义头部验证",
+        "C": "启用ALB的访问日志",
+        "D": "使用Route 53故障转移路由"
+      },
+      "answer": "B",
+      "explanation": "在CloudFront中配置自定义头部（如x-origin-verify），然后在ALB上配置AWS WAF规则验证该头部的存在和值。这比使用IP限制更安全，因为CloudFront IP范围会变化。"
+    },
+    {
+      "id": "q9",
+      "domain": 1,
+      "question": "公司需要在不修改应用程序代码的情况下为RDS MySQL数据库启用传输中加密。应该怎么做？",
+      "options": {
+        "A": "启用RDS存储加密",
+        "B": "强制SSL连接并使用AWS提供的SSL证书",
+        "C": "使用AWS KMS加密",
+        "D": "配置VPN连接到RDS"
+      },
+      "answer": "B",
+      "explanation": "RDS支持SSL/TLS连接加密。可以在参数组中设置require_secure_transport=ON强制所有连接使用SSL，并使用AWS提供的SSL证书。应用程序通常不需要修改即可支持SSL。"
+    },
+    {
+      "id": "q10",
+      "domain": 1,
+      "question": "需要实现基于属性的访问控制(ABAC)，允许开发人员只能访问带有特定标签的资源。应该使用什么？",
+      "options": {
+        "A": "IAM策略与资源标签条件",
+        "B": "SCP服务控制策略",
+        "C": "资源策略",
+        "D": "IAM权限边界"
+      },
+      "answer": "A",
+      "explanation": "ABAC使用IAM策略中的条件元素，通过资源标签（如aws:ResourceTag）来控制访问。这允许创建可扩展的权限模型，无需为每个新资源更新策略。"
+    },
+    {
+      "id": "q11",
+      "domain": 1,
+      "question": "公司需要确保Lambda函数只能被特定的API Gateway调用，不能被其他AWS服务或账户调用。应该如何配置？",
+      "options": {
+        "A": "配置Lambda VPC设置",
+        "B": "使用Lambda资源策略限制调用来源",
+        "C": "使用IAM角色",
+        "D": "启用Lambda函数URL"
+      },
+      "answer": "B",
+      "explanation": "Lambda资源策略可以精确控制谁可以调用函数。可以限制只允许特定API Gateway的ARN调用该函数，拒绝其他所有调用源。"
+    },
+    {
+      "id": "q12",
+      "domain": 1,
+      "question": "需要在VPC中部署一个需要访问互联网的应用程序，同时确保外部无法主动发起连接到该应用。应该如何配置网络？",
+      "options": {
+        "A": "将实例放在公有子网并使用安全组",
+        "B": "将实例放在私有子网并使用NAT Gateway",
+        "C": "使用Internet Gateway与弹性IP",
+        "D": "配置VPC对等连接"
+      },
+      "answer": "B",
+      "explanation": "私有子网配合NAT Gateway允许实例发起出站Internet连接，但外部无法主动发起入站连接。这提供了单向的Internet访问，增强了安全性。"
+    },
+    {
+      "id": "q13",
+      "domain": 1,
+      "question": "公司需要存储数据库凭证，要求自动轮换且应用程序无需重启即可获取新凭证。应该使用什么服务？",
+      "options": {
+        "A": "AWS Systems Manager Parameter Store",
+        "B": "AWS Secrets Manager",
+        "C": "AWS KMS",
+        "D": "AWS Certificate Manager"
+      },
+      "answer": "B",
+      "explanation": "AWS Secrets Manager专门用于存储和管理敏感凭证，支持与RDS、Redshift等服务的自动轮换。应用程序每次调用API获取凭证时会得到最新值，无需重启。"
+    },
+    {
+      "id": "q14",
+      "domain": 1,
+      "question": "需要对API Gateway实施速率限制以防止API滥用。应该使用什么功能？",
+      "options": {
+        "A": "API Gateway使用计划与API密钥",
+        "B": "AWS WAF速率规则",
+        "C": "Lambda授权方",
+        "D": "A和B都可以"
+      },
+      "answer": "D",
+      "explanation": "API Gateway使用计划可以为不同客户设置不同的请求配额和速率限制。AWS WAF速率规则可以在IP级别限制请求频率。两者可以配合使用提供多层保护。"
+    },
+    {
+      "id": "q15",
+      "domain": 1,
+      "question": "公司需要确保所有S3存储桶的公共访问都被阻止，即使存储桶策略意外配置为允许公共访问。应该如何实现？",
+      "options": {
+        "A": "使用IAM策略拒绝公共访问",
+        "B": "在账户级别启用S3 Block Public Access",
+        "C": "使用SCP限制S3权限",
+        "D": "启用S3对象锁定"
+      },
+      "answer": "B",
+      "explanation": "S3 Block Public Access可以在账户级别启用，覆盖所有存储桶。即使存储桶策略或ACL配置为允许公共访问，这些设置也会被阻止，提供了最终的保护层。"
+    },
+    {
+      "id": "q16",
+      "domain": 2,
+      "question": "一个Web应用程序使用Aurora MySQL数据库，需要实现读写分离以提高性能。写入操作应该路由到主实例，读取操作分发到副本。应该如何配置？",
+      "options": {
+        "A": "使用Route 53加权路由",
+        "B": "使用Aurora读取器端点和集群端点",
+        "C": "使用Application Load Balancer",
+        "D": "使用ElastiCache代理"
+      },
+      "answer": "B",
+      "explanation": "Aurora提供两种端点：集群端点（Cluster Endpoint）始终指向主实例用于写入，读取器端点（Reader Endpoint）在所有只读副本间自动负载均衡用于读取。"
+    },
+    {
+      "id": "q17",
+      "domain": 2,
+      "question": "应用程序需要处理大量图片上传，每张图片需要生成多种尺寸的缩略图。如何设计一个可扩展且解耦的架构？",
+      "options": {
+        "A": "在上传时同步生成缩略图",
+        "B": "S3事件触发SQS队列，Lambda消费队列生成缩略图",
+        "C": "使用EC2定时任务处理",
+        "D": "使用CloudFront Lambda@Edge"
+      },
+      "answer": "B",
+      "explanation": "S3事件通知发送到SQS队列，Lambda从队列消费消息处理图片。SQS提供缓冲和重试机制，Lambda自动扩展处理突发负载，实现了解耦和弹性。"
+    },
+    {
+      "id": "q18",
+      "domain": 2,
+      "question": "一个电商网站需要在黑色星期五销售活动期间处理10倍于正常流量的请求。如何确保Auto Scaling能够及时响应？",
+      "options": {
+        "A": "增加Auto Scaling的冷却时间",
+        "B": "使用预测性扩展和计划扩展",
+        "C": "仅依赖目标跟踪扩展策略",
+        "D": "手动增加实例数量"
+      },
+      "answer": "B",
+      "explanation": "预测性扩展使用机器学习预测流量模式并提前扩展。计划扩展可以在已知的高峰时间之前增加容量。两者结合可以确保在流量到来之前已准备好足够的资源。"
+    },
+    {
+      "id": "q19",
+      "domain": 2,
+      "question": "一个关键业务系统需要RPO=0（零数据丢失）的灾难恢复能力。数据存储在Aurora中。应该使用什么？",
+      "options": {
+        "A": "Aurora跨区域只读副本",
+        "B": "Aurora全局数据库",
+        "C": "Aurora Serverless",
+        "D": "Aurora备份到S3"
+      },
+      "answer": "B",
+      "explanation": "Aurora全局数据库使用专用基础设施进行跨区域复制，典型延迟小于1秒，在故障时可以提升次要区域为主区域。虽然不是严格的RPO=0，但它提供了最接近零数据丢失的选项。"
+    },
+    {
+      "id": "q20",
+      "domain": 2,
+      "question": "Lambda函数偶尔因并发限制导致请求被拒绝。如何确保重要请求不会丢失？",
+      "options": {
+        "A": "增加Lambda并发限制",
+        "B": "使用Lambda预配置并发",
+        "C": "在Lambda前使用SQS队列",
+        "D": "使用Lambda SnapStart"
+      },
+      "answer": "C",
+      "explanation": "将请求发送到SQS队列，Lambda作为队列消费者处理消息。即使Lambda达到并发限制，消息仍会保留在队列中，确保不会丢失，并在资源可用时处理。"
+    },
+    {
+      "id": "q21",
+      "domain": 2,
+      "question": "微服务架构中，一个服务需要调用多个下游服务，需要实现断路器模式防止级联故障。应该使用什么？",
+      "options": {
+        "A": "Application Load Balancer",
+        "B": "AWS App Mesh",
+        "C": "Amazon API Gateway",
+        "D": "AWS Step Functions"
+      },
+      "answer": "B",
+      "explanation": "AWS App Mesh是服务网格，提供断路器、重试、超时等弹性模式，无需修改应用程序代码。它使用Envoy代理来管理服务间通信和故障处理。"
+    },
+    {
+      "id": "q22",
+      "domain": 2,
+      "question": "一个应用需要处理可能失败的长时间运行工作流，需要自动处理重试、并行分支和错误处理。应该使用什么服务？",
+      "options": {
+        "A": "Amazon SQS",
+        "B": "AWS Step Functions",
+        "C": "Amazon EventBridge",
+        "D": "AWS Lambda"
+      },
+      "answer": "B",
+      "explanation": "AWS Step Functions是无服务器工作流编排服务，内置重试、错误处理、并行执行和条件分支功能。它可以协调多个AWS服务，并提供可视化的工作流状态。"
+    },
+    {
+      "id": "q23",
+      "domain": 2,
+      "question": "需要确保RDS数据库实例在维护窗口期间的可用性。已经启用了Multi-AZ。维护期间会发生什么？",
+      "options": {
+        "A": "数据库完全不可用",
+        "B": "AWS先更新备用实例，然后故障转移，再更新原主实例",
+        "C": "同时更新两个实例",
+        "D": "只更新主实例"
+      },
+      "answer": "B",
+      "explanation": "Multi-AZ部署中，AWS先在备用实例上应用维护更新，然后执行故障转移使其成为新的主实例，最后更新原主实例。这最大限度减少了停机时间。"
+    },
+    {
+      "id": "q24",
+      "domain": 2,
+      "question": "一个无状态应用需要处理任务队列，任务可能需要最多4小时完成。如果实例在处理过程中失败，任务应该被重新处理。应该如何设计？",
+      "options": {
+        "A": "使用SQS标准队列与较长的可见性超时",
+        "B": "使用SNS主题",
+        "C": "使用Kinesis Data Streams",
+        "D": "使用Amazon MQ"
+      },
+      "answer": "A",
+      "explanation": "SQS可见性超时可设置最长12小时。当消费者获取消息时，消息对其他消费者不可见。如果消费者未在超时内删除消息（表示处理失败），消息会重新变为可见供重新处理。"
+    },
+    {
+      "id": "q25",
+      "domain": 2,
+      "question": "需要在不同AWS区域之间复制DynamoDB表数据，实现多区域主动-主动架构。应该使用什么？",
+      "options": {
+        "A": "DynamoDB Streams与Lambda",
+        "B": "DynamoDB全局表",
+        "C": "AWS DataSync",
+        "D": "S3跨区域复制"
+      },
+      "answer": "B",
+      "explanation": "DynamoDB全局表提供完全托管的多区域、多主复制。任何区域的写入都会自动复制到其他区域，通常延迟在1秒内，支持主动-主动使用场景。"
+    },
+    {
+      "id": "q26",
+      "domain": 2,
+      "question": "应用程序需要在故障时自动切换到备用区域，DNS TTL应该尽可能短。Route 53健康检查应该如何配置？",
+      "options": {
+        "A": "使用30秒健康检查间隔，快速故障转移",
+        "B": "使用10秒健康检查间隔配合请求间隔",
+        "C": "只使用简单路由",
+        "D": "使用CloudWatch警报作为健康检查"
+      },
+      "answer": "B",
+      "explanation": "Route 53支持快速健康检查（10秒间隔），配合较低的评估阈值可以在30秒内检测到故障。配合低TTL（如60秒），可以实现快速DNS故障转移。"
+    },
+    {
+      "id": "q27",
+      "domain": 2,
+      "question": "一个订单处理系统需要确保每个订单只被处理一次，即使系统组件失败重试。应该如何设计？",
+      "options": {
+        "A": "使用SQS标准队列",
+        "B": "使用SQS FIFO队列配合消息去重ID",
+        "C": "使用SNS",
+        "D": "使用Kinesis"
+      },
+      "answer": "B",
+      "explanation": "SQS FIFO队列提供精确一次处理语义。消息去重ID在5分钟去重窗口内防止重复消息被接收，确保即使生产者重试发送，消息也只会被处理一次。"
+    },
+    {
+      "id": "q28",
+      "domain": 2,
+      "question": "需要将大量历史数据从本地数据中心迁移到S3，网络带宽有限，预计需要数月完成在线传输。如何加速迁移？",
+      "options": {
+        "A": "使用S3 Transfer Acceleration",
+        "B": "使用AWS Snow Family设备",
+        "C": "使用多线程上传",
+        "D": "增加网络带宽"
+      },
+      "answer": "B",
+      "explanation": "AWS Snow Family（Snowball、Snowball Edge、Snowmobile）允许物理传输大量数据。适用于网络带宽有限或传输时间过长的场景，可以显著减少迁移时间。"
+    },
+    {
+      "id": "q29",
+      "domain": 3,
+      "question": "一个实时游戏应用需要全球玩家之间的低延迟通信，服务器托管在单个AWS区域。如何优化全球延迟？",
+      "options": {
+        "A": "使用CloudFront",
+        "B": "使用AWS Global Accelerator",
+        "C": "使用Route 53地理位置路由",
+        "D": "使用VPN"
+      },
+      "answer": "B",
+      "explanation": "AWS Global Accelerator使用AWS全球网络优化用户到应用程序的路径，通过任播IP将用户路由到最近的AWS边缘位置，然后通过AWS骨干网络路由到应用程序，显著降低延迟和抖动。"
+    },
+    {
+      "id": "q30",
+      "domain": 3,
+      "question": "需要运行机器学习推理工作负载，要求高GPU性能和低延迟。应该使用什么EC2实例类型？",
+      "options": {
+        "A": "C5实例",
+        "B": "P4d或Inf2实例",
+        "C": "R5实例",
+        "D": "T3实例"
+      },
+      "answer": "B",
+      "explanation": "P4d实例配备NVIDIA A100 GPU，适合训练和推理。Inf2实例使用AWS Inferentia2芯片，专门为ML推理优化，提供高性能和低成本。两者都适合高性能ML工作负载。"
+    },
+    {
+      "id": "q31",
+      "domain": 3,
+      "question": "需要对S3中的日志数据运行临时查询分析，不想管理任何基础设施。最合适的服务是？",
+      "options": {
+        "A": "Amazon EMR",
+        "B": "Amazon Athena",
+        "C": "Amazon Redshift",
+        "D": "Amazon RDS"
+      },
+      "answer": "B",
+      "explanation": "Amazon Athena是无服务器交互式查询服务，可以直接对S3中的数据使用标准SQL查询，无需设置或管理基础设施。按扫描的数据量付费，适合临时分析。"
+    },
+    {
+      "id": "q32",
+      "domain": 3,
+      "question": "一个视频流应用需要自适应比特率流，根据用户网络条件提供不同质量的视频。应该使用什么服务？",
+      "options": {
+        "A": "Amazon CloudFront",
+        "B": "AWS Elemental MediaConvert配合CloudFront",
+        "C": "Amazon S3 Transfer Acceleration",
+        "D": "Amazon Kinesis Video Streams"
+      },
+      "answer": "B",
+      "explanation": "MediaConvert可以将视频转码为HLS或DASH格式的多种比特率版本。通过CloudFront分发，播放器可以根据网络条件自动选择合适的比特率，实现自适应流。"
+    },
+    {
+      "id": "q33",
+      "domain": 3,
+      "question": "需要实现API的响应缓存以减少后端负载，缓存应该根据请求参数区分。应该在哪里配置缓存？",
+      "options": {
+        "A": "CloudFront缓存",
+        "B": "API Gateway缓存",
+        "C": "ElastiCache",
+        "D": "DynamoDB DAX"
+      },
+      "answer": "B",
+      "explanation": "API Gateway内置缓存功能，可以缓存API响应。可以配置根据请求参数、头部或正文内容区分缓存键，减少对后端集成的调用，降低延迟和成本。"
+    },
+    {
+      "id": "q34",
+      "domain": 3,
+      "question": "需要运行Apache Spark作业处理PB级数据集，作业运行时间约4-6小时。最具成本效益的方案是？",
+      "options": {
+        "A": "使用EMR on EC2按需实例",
+        "B": "使用EMR on EC2竞价实例",
+        "C": "使用Glue",
+        "D": "使用Lambda"
+      },
+      "answer": "B",
+      "explanation": "EMR支持在任务节点上使用竞价实例，可节省高达90%的成本。对于批处理作业，即使部分节点被回收，EMR也能重新调度任务到其他节点，提供容错能力。"
+    },
+    {
+      "id": "q35",
+      "domain": 3,
+      "question": "一个物联网应用需要摄取每秒数百万条设备消息，并将数据存储到S3以供后续分析。应该使用什么架构？",
+      "options": {
+        "A": "直接写入S3",
+        "B": "Kinesis Data Streams + Kinesis Data Firehose到S3",
+        "C": "SQS队列到S3",
+        "D": "SNS到S3"
+      },
+      "answer": "B",
+      "explanation": "Kinesis Data Streams可以摄取高吞吐量的实时数据。Kinesis Data Firehose可以自动批量处理数据并交付到S3，还支持数据转换和压缩，是IoT数据摄取的理想架构。"
+    },
+    {
+      "id": "q36",
+      "domain": 3,
+      "question": "需要为移动应用提供GraphQL API，支持实时订阅功能。应该使用什么服务？",
+      "options": {
+        "A": "Amazon API Gateway REST API",
+        "B": "AWS AppSync",
+        "C": "Amazon API Gateway WebSocket API",
+        "D": "AWS Lambda函数URL"
+      },
+      "answer": "B",
+      "explanation": "AWS AppSync是托管的GraphQL服务，原生支持GraphQL订阅实现实时数据同步，可以直接连接DynamoDB、Lambda、RDS等数据源，非常适合移动应用。"
+    },
+    {
+      "id": "q37",
+      "domain": 3,
+      "question": "需要将现有的.NET应用程序容器化并部署到AWS，团队不熟悉Kubernetes。最简单的选择是？",
+      "options": {
+        "A": "Amazon EKS",
+        "B": "Amazon ECS with Fargate",
+        "C": "Amazon EC2",
+        "D": "AWS Elastic Beanstalk"
+      },
+      "answer": "B",
+      "explanation": "ECS是AWS原生容器编排服务，比Kubernetes简单易学。配合Fargate可以无需管理服务器。ECS支持.NET容器，并与AWS服务深度集成。"
+    },
+    {
+      "id": "q38",
+      "domain": 3,
+      "question": "数据库读取查询需要访问经常变化的参考数据表。如何最小化数据库负载同时确保数据新鲜度？",
+      "options": {
+        "A": "增加只读副本",
+        "B": "使用ElastiCache配合较短TTL",
+        "C": "使用DynamoDB DAX",
+        "D": "增加数据库实例大小"
+      },
+      "answer": "B",
+      "explanation": "ElastiCache（Redis/Memcached）作为缓存层，使用较短的TTL（如几秒到几分钟）可以在减少数据库负载的同时保持数据的合理新鲜度。TTL可根据业务需求调整。"
+    },
+    {
+      "id": "q39",
+      "domain": 3,
+      "question": "需要运行Windows Server工作负载，应用程序对许可证成本敏感。如何优化许可证成本？",
+      "options": {
+        "A": "使用AWS License Manager与BYOL",
+        "B": "使用Linux替代",
+        "C": "使用更小的实例",
+        "D": "使用竞价实例"
+      },
+      "answer": "A",
+      "explanation": "AWS License Manager支持自带许可证(BYOL)，允许使用现有的Windows Server许可证，可以显著降低许可证成本。还可以在专用主机上运行以最大化许可证利用率。"
+    },
+    {
+      "id": "q40",
+      "domain": 3,
+      "question": "一个Web应用需要执行复杂的搜索功能，包括全文搜索、模糊匹配和自动完成。应该使用什么服务？",
+      "options": {
+        "A": "Amazon RDS全文搜索",
+        "B": "Amazon OpenSearch Service",
+        "C": "Amazon DynamoDB",
+        "D": "Amazon Athena"
+      },
+      "answer": "B",
+      "explanation": "Amazon OpenSearch Service（前身ElasticSearch）专为搜索场景设计，支持全文搜索、模糊匹配、自动完成、分面搜索等高级搜索功能，性能优越。"
+    },
+    {
+      "id": "q41",
+      "domain": 4,
+      "question": "一个应用程序每天凌晨2点到4点运行批处理作业，其余时间不需要计算资源。如何最经济地运行这个工作负载？",
+      "options": {
+        "A": "使用预留实例",
+        "B": "使用竞价实例配合EventBridge计划任务",
+        "C": "使用按需实例",
+        "D": "使用Savings Plans"
+      },
+      "answer": "B",
+      "explanation": "对于可预测的短时间批处理作业，使用EventBridge触发竞价实例启动最经济。竞价实例可节省高达90%，EventBridge可精确控制运行时间。"
+    },
+    {
+      "id": "q42",
+      "domain": 4,
+      "question": "公司的数据湖中有大量不同访问模式的数据，难以预测哪些数据会被频繁访问。如何优化存储成本？",
+      "options": {
+        "A": "使用S3 Standard",
+        "B": "使用S3 Intelligent-Tiering",
+        "C": "使用S3 Glacier",
+        "D": "手动设置生命周期策略"
+      },
+      "answer": "B",
+      "explanation": "S3 Intelligent-Tiering自动分析对象访问模式，将对象移动到最合适的访问层（频繁、不频繁、归档、深度归档），无需手动管理，只有少量监控费用。"
+    },
+    {
+      "id": "q43",
+      "domain": 4,
+      "question": "需要了解AWS账单中哪些资源产生了最多成本，以便进行优化。应该使用什么工具？",
+      "options": {
+        "A": "AWS Budgets",
+        "B": "AWS Cost Explorer与成本分配标签",
+        "C": "AWS Pricing Calculator",
+        "D": "AWS Trusted Advisor"
+      },
+      "answer": "B",
+      "explanation": "AWS Cost Explorer提供成本可视化和分析功能。配合成本分配标签，可以按项目、团队、环境等维度分析成本，识别高成本资源进行优化。"
+    },
+    {
+      "id": "q44",
+      "domain": 4,
+      "question": "公司有多个团队使用不同的AWS服务，需要为每个团队设置独立的支出限制。应该如何实现？",
+      "options": {
+        "A": "使用AWS Budgets为每个团队创建预算",
+        "B": "使用AWS Organizations为每个团队创建独立账户",
+        "C": "使用IAM限制资源创建",
+        "D": "使用标签和Cost Explorer"
+      },
+      "answer": "B",
+      "explanation": "最佳实践是使用AWS Organizations为每个团队创建独立的AWS账户。这提供了真正的资源和账单隔离，配合合并账单可以保持批量折扣，同时便于管理和监控。"
+    },
+    {
+      "id": "q45",
+      "domain": 4,
+      "question": "数据分析团队需要频繁创建和销毁Redshift集群进行分析。如何降低成本同时保持灵活性？",
+      "options": {
+        "A": "使用Redshift预留节点",
+        "B": "使用Redshift Serverless",
+        "C": "使用更小的节点类型",
+        "D": "使用Athena替代"
+      },
+      "answer": "B",
+      "explanation": "Redshift Serverless按实际查询容量付费，无需管理集群。对于不连续的分析工作负载，Serverless避免了空闲集群的成本，按使用量计费更经济。"
+    },
+    {
+      "id": "q46",
+      "domain": 4,
+      "question": "Lambda函数每月被调用数百万次，每次执行时间约50毫秒。如何优化成本？",
+      "options": {
+        "A": "增加内存以减少执行时间",
+        "B": "使用Provisioned Concurrency",
+        "C": "优化代码减少执行时间",
+        "D": "使用ARM架构（Graviton2）"
+      },
+      "answer": "D",
+      "explanation": "Lambda支持ARM（Graviton2）架构，价格比x86低约20%，同时通常提供更好的性能。对于高调用量的函数，切换到ARM可以显著降低成本。"
+    },
+    {
+      "id": "q47",
+      "domain": 4,
+      "question": "公司需要每天备份RDS数据库，备份保留90天。自动备份只支持最多35天。如何以最低成本满足需求？",
+      "options": {
+        "A": "使用手动快照并手动删除过期快照",
+        "B": "使用AWS Backup设置90天保留策略",
+        "C": "导出数据到S3并使用生命周期策略",
+        "D": "使用第三方备份工具"
+      },
+      "answer": "B",
+      "explanation": "AWS Backup提供集中式备份管理，可以设置自定义保留策略（如90天），自动创建和删除备份。它比手动管理更可靠，且可以跨服务统一管理备份。"
+    },
+    {
+      "id": "q48",
+      "domain": 4,
+      "question": "一个静态网站托管在S3上，通过CloudFront分发。网站流量很大，主要成本来自CloudFront数据传输。如何降低成本？",
+      "options": {
+        "A": "使用S3直接提供内容",
+        "B": "使用CloudFront价格类别限制边缘位置",
+        "C": "启用压缩",
+        "D": "B和C都可以"
+      },
+      "answer": "D",
+      "explanation": "CloudFront价格类别可以限制使用较便宜区域的边缘位置（如只使用北美和欧洲）。启用压缩可以减少传输数据量。两者结合可以显著降低成本。"
+    },
+    {
+      "id": "q49",
+      "domain": 4,
+      "question": "EC2实例上运行的数据库需要高IOPS存储。当前使用io1 EBS卷，成本较高。如何优化？",
+      "options": {
+        "A": "切换到gp3卷",
+        "B": "切换到io2 Block Express",
+        "C": "使用实例存储",
+        "D": "减少IOPS配置"
+      },
+      "answer": "A",
+      "explanation": "gp3 EBS卷提供基础3000 IOPS和125 MB/s吞吐量，可独立配置更高IOPS。对于许多工作负载，gp3比io1更具成本效益，同时提供可预测的性能。"
+    },
+    {
+      "id": "q50",
+      "domain": 4,
+      "question": "开发团队在多个区域运行相同的测试环境，导致成本过高。如何优化？",
+      "options": {
+        "A": "使用更大的实例减少数量",
+        "B": "合并到单个区域，使用非工作时间自动停止实例",
+        "C": "使用预留实例",
+        "D": "使用专用主机"
+      },
+      "answer": "B",
+      "explanation": "测试环境通常不需要多区域部署。合并到单个区域减少资源重复。使用Instance Scheduler或Auto Scaling在非工作时间停止实例可以进一步节省约70%的成本。"
+    }
+  ]
+}

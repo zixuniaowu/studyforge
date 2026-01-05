@@ -1,0 +1,582 @@
+{
+  "exam": {
+    "id": "gcp-pdba-set2",
+    "name": "Professional Cloud Database Engineer 练习题 Set 2",
+    "code": "PDBA",
+    "provider": "Google Cloud",
+    "language": "zh-CN",
+    "description": "Google Cloud数据库工程师认证考试练习题集2",
+    "totalQuestions": 40,
+    "passingScore": 70,
+    "examTime": 120,
+    "domains": [
+      "设计可扩展且高可用的云数据库解决方案",
+      "管理数据解决方案",
+      "迁移数据解决方案",
+      "部署可扩展且高可用的云数据库"
+    ],
+    "tags": ["Google Cloud", "Database", "Professional", "Cloud SQL", "Spanner", "BigQuery"]
+  },
+  "questions": [
+    {
+      "id": "gcp-pdba-set2-q1",
+      "type": "single",
+      "domain": "设计可扩展且高可用的云数据库解决方案",
+      "question": "一家电子商务公司需要一个数据库来处理季节性流量高峰，流量可能增加10倍。最佳的数据库选择是什么？",
+      "options": {
+        "A": "固定大小的Cloud SQL实例",
+        "B": "Cloud Spanner（可动态扩展节点）",
+        "C": "本地MySQL服务器",
+        "D": "单节点BigQuery"
+      },
+      "answer": "B",
+      "explanation": "Cloud Spanner支持动态添加或删除节点，可以根据流量需求弹性扩展。在高峰期增加节点，低峰期减少节点，既保证性能又优化成本。Cloud SQL虽然也可以垂直扩展，但不如Spanner的水平扩展灵活。"
+    },
+    {
+      "id": "gcp-pdba-set2-q2",
+      "type": "single",
+      "domain": "管理数据解决方案",
+      "question": "您需要审计Cloud SQL中的所有数据库操作。应该启用什么功能？",
+      "options": {
+        "A": "只启用慢查询日志",
+        "B": "启用Cloud Audit Logs和数据库审计日志",
+        "C": "只使用Cloud Monitoring",
+        "D": "手动记录所有操作"
+      },
+      "answer": "B",
+      "explanation": "Cloud Audit Logs记录管理操作（如实例创建、配置更改），而数据库审计日志（如MySQL的审计插件或PostgreSQL的pgaudit）记录SQL操作。两者结合可以提供完整的审计跟踪。"
+    },
+    {
+      "id": "gcp-pdba-set2-q3",
+      "type": "single",
+      "domain": "迁移数据解决方案",
+      "question": "在使用Database Migration Service时，如何处理源数据库中的存储过程？",
+      "options": {
+        "A": "DMS自动迁移所有存储过程",
+        "B": "存储过程需要单独导出、转换（如有必要）并在目标数据库中重新创建",
+        "C": "存储过程无法迁移",
+        "D": "DMS会删除所有存储过程"
+      },
+      "answer": "B",
+      "explanation": "Database Migration Service主要迁移数据。存储过程、函数、触发器等数据库对象需要单独处理。应该从源数据库导出这些对象的定义，根据目标数据库语法进行必要的转换，然后在目标数据库中重新创建。"
+    },
+    {
+      "id": "gcp-pdba-set2-q4",
+      "type": "single",
+      "domain": "部署可扩展且高可用的云数据库",
+      "question": "Cloud SQL的维护窗口设置最佳实践是什么？",
+      "options": {
+        "A": "设置在业务高峰期以快速完成",
+        "B": "设置在业务低峰期，最小化对用户的影响",
+        "C": "禁用所有维护",
+        "D": "每天进行维护"
+      },
+      "answer": "B",
+      "explanation": "维护窗口应该设置在业务低峰期（如深夜或周末），以最小化维护操作对用户的影响。对于高可用性实例，维护会使用滚动更新，先更新备用节点，但仍建议在低峰期进行以减少任何潜在影响。"
+    },
+    {
+      "id": "gcp-pdba-set2-q5",
+      "type": "single",
+      "domain": "设计可扩展且高可用的云数据库解决方案",
+      "question": "您需要为机器学习工作负载选择一个数据存储，需要支持结构化和非结构化数据。最佳选择是什么？",
+      "options": {
+        "A": "Cloud SQL",
+        "B": "Cloud Spanner",
+        "C": "BigQuery with Cloud Storage",
+        "D": "Memorystore"
+      },
+      "answer": "C",
+      "explanation": "BigQuery可以处理结构化数据并支持BigQuery ML进行机器学习。结合Cloud Storage（用于存储非结构化数据如图像、视频）并使用BigQuery的外部表功能，可以创建一个统一的ML工作负载解决方案。"
+    },
+    {
+      "id": "gcp-pdba-set2-q6",
+      "type": "single",
+      "domain": "管理数据解决方案",
+      "question": "如何优化Cloud SQL的连接池管理？",
+      "options": {
+        "A": "为每个请求创建新连接",
+        "B": "使用应用程序级连接池或Cloud SQL Auth Proxy连接池",
+        "C": "无限制地增加最大连接数",
+        "D": "禁用连接超时"
+      },
+      "answer": "B",
+      "explanation": "使用连接池可以重用数据库连接，减少连接建立的开销。可以在应用程序级别使用连接池库（如HikariCP、PgBouncer），或者使用Cloud SQL Connector和Cloud SQL Auth Proxy提供的连接池功能。"
+    },
+    {
+      "id": "gcp-pdba-set2-q7",
+      "type": "single",
+      "domain": "迁移数据解决方案",
+      "question": "将本地SQL Server迁移到Cloud SQL for SQL Server时，需要注意的主要限制是什么？",
+      "options": {
+        "A": "Cloud SQL for SQL Server支持所有SQL Server功能",
+        "B": "某些功能（如FILESTREAM、Linked Servers、CLR）不受支持",
+        "C": "只支持SQL Server 2008",
+        "D": "不支持Windows身份验证"
+      },
+      "answer": "B",
+      "explanation": "Cloud SQL for SQL Server有一些功能限制，包括不支持FILESTREAM、Linked Servers、SQL Server Agent某些功能、CLR集成等。在迁移前需要评估应用程序对这些功能的依赖，并制定替代方案。"
+    },
+    {
+      "id": "gcp-pdba-set2-q8",
+      "type": "single",
+      "domain": "部署可扩展且高可用的云数据库",
+      "question": "Firestore Native模式和Datastore模式的主要区别是什么？",
+      "options": {
+        "A": "没有区别",
+        "B": "Native模式支持实时监听器和更好的移动/Web SDK支持",
+        "C": "Datastore模式更新，功能更多",
+        "D": "Native模式只支持关系型数据"
+      },
+      "answer": "B",
+      "explanation": "Firestore Native模式提供实时监听器、离线支持、更丰富的移动/Web SDK和更强的一致性保证。Datastore模式是为从Datastore迁移的应用程序设计的，保持API兼容性但缺少Native模式的一些功能。"
+    },
+    {
+      "id": "gcp-pdba-set2-q9",
+      "type": "single",
+      "domain": "设计可扩展且高可用的云数据库解决方案",
+      "question": "设计多租户数据库架构时，如何在Cloud Spanner中隔离租户数据？",
+      "options": {
+        "A": "为每个租户创建单独的数据库",
+        "B": "使用租户ID作为主键的一部分进行行级隔离",
+        "C": "为每个租户使用单独的Spanner实例",
+        "D": "使用不同的区域"
+      },
+      "answer": "B",
+      "explanation": "在Cloud Spanner中，推荐使用租户ID作为主键前缀实现行级多租户隔离。这样可以有效利用Spanner的分布式特性，同时通过交错表（interleaved tables）将相关数据物理上存储在一起，提高查询性能。"
+    },
+    {
+      "id": "gcp-pdba-set2-q10",
+      "type": "single",
+      "domain": "管理数据解决方案",
+      "question": "Cloud Spanner的backup功能与Cloud SQL有什么不同？",
+      "options": {
+        "A": "Spanner不支持备份",
+        "B": "Spanner备份是全局一致的，跨所有区域的数据在同一时间点",
+        "C": "Cloud SQL备份更快",
+        "D": "两者完全相同"
+      },
+      "answer": "B",
+      "explanation": "Cloud Spanner备份是全局一致的，这意味着在多区域配置中，备份包含所有区域在完全相同时间点的数据。这是Spanner外部一致性的体现。Cloud SQL备份是实例级别的，不涉及跨区域一致性。"
+    },
+    {
+      "id": "gcp-pdba-set2-q11",
+      "type": "single",
+      "domain": "迁移数据解决方案",
+      "question": "在进行异构数据库迁移（如Oracle到PostgreSQL）时，最具挑战性的方面是什么？",
+      "options": {
+        "A": "数据量",
+        "B": "PL/SQL到PL/pgSQL的存储过程转换和语法差异",
+        "C": "网络配置",
+        "D": "时区设置"
+      },
+      "answer": "B",
+      "explanation": "异构迁移中最具挑战性的是数据库特定语法的转换，特别是存储过程、函数和触发器。Oracle的PL/SQL与PostgreSQL的PL/pgSQL有显著差异，需要仔细测试和验证每个转换后的对象。"
+    },
+    {
+      "id": "gcp-pdba-set2-q12",
+      "type": "single",
+      "domain": "部署可扩展且高可用的云数据库",
+      "question": "BigQuery的槽位（slots）代表什么？",
+      "options": {
+        "A": "存储容量",
+        "B": "计算容量（虚拟CPU用于执行SQL查询）",
+        "C": "网络带宽",
+        "D": "并发查询数"
+      },
+      "answer": "B",
+      "explanation": "BigQuery槽位是计算资源的度量单位，代表虚拟CPU用于执行SQL查询。按需定价时，BigQuery根据查询大小动态分配槽位。使用容量定价时，可以购买专用槽位以获得可预测的性能和成本。"
+    },
+    {
+      "id": "gcp-pdba-set2-q13",
+      "type": "single",
+      "domain": "设计可扩展且高可用的云数据库解决方案",
+      "question": "为实时游戏排行榜选择数据库时，最重要的考虑因素是什么？",
+      "options": {
+        "A": "复杂JOIN查询能力",
+        "B": "低延迟读写和排序能力",
+        "C": "事务隔离级别",
+        "D": "存储成本"
+      },
+      "answer": "B",
+      "explanation": "实时游戏排行榜需要低延迟的读写操作和高效的排序/范围查询。Memorystore for Redis是理想选择，因为它提供亚毫秒级延迟和内置的有序集合（sorted set）数据结构，专门设计用于排行榜场景。"
+    },
+    {
+      "id": "gcp-pdba-set2-q14",
+      "type": "single",
+      "domain": "管理数据解决方案",
+      "question": "如何在Cloud SQL中实施数据加密密钥轮换？",
+      "options": {
+        "A": "需要重新创建实例",
+        "B": "使用CMEK时，在Cloud KMS中轮换密钥，Cloud SQL会自动使用新密钥版本",
+        "C": "不支持密钥轮换",
+        "D": "手动导出并重新导入数据"
+      },
+      "answer": "B",
+      "explanation": "使用客户管理加密密钥（CMEK）时，可以在Cloud KMS中轮换加密密钥。Cloud SQL会自动使用新的密钥版本加密新数据，而旧数据会在后台重新加密。这个过程对应用程序透明。"
+    },
+    {
+      "id": "gcp-pdba-set2-q15",
+      "type": "single",
+      "domain": "迁移数据解决方案",
+      "question": "评估迁移可行性时，Database Migration Assessment报告提供什么信息？",
+      "options": {
+        "A": "只提供数据大小",
+        "B": "兼容性问题、所需的转换、不受支持的功能和迁移复杂度评估",
+        "C": "只提供成本估算",
+        "D": "只提供性能预测"
+      },
+      "answer": "B",
+      "explanation": "Database Migration Assessment报告提供全面的迁移评估，包括：识别不兼容的功能、需要转换的语法、不受支持的数据类型、迁移复杂度评分，以及解决各种兼容性问题的建议。"
+    },
+    {
+      "id": "gcp-pdba-set2-q16",
+      "type": "single",
+      "domain": "部署可扩展且高可用的云数据库",
+      "question": "Cloud Bigtable中的垃圾回收策略有什么作用？",
+      "options": {
+        "A": "删除整个表",
+        "B": "根据版本数或时间戳自动清理旧的单元格版本",
+        "C": "压缩数据",
+        "D": "优化查询性能"
+      },
+      "answer": "B",
+      "explanation": "Bigtable的垃圾回收策略用于自动清理旧数据。可以基于版本数（保留最新N个版本）或时间戳（保留最近N天的数据）配置。这有助于控制存储成本和维护数据新鲜度。"
+    },
+    {
+      "id": "gcp-pdba-set2-q17",
+      "type": "single",
+      "domain": "设计可扩展且高可用的云数据库解决方案",
+      "question": "设计用于日志分析的数据库架构时，最适合的存储方式是什么？",
+      "options": {
+        "A": "行式存储（如Cloud SQL）",
+        "B": "列式存储（如BigQuery）",
+        "C": "键值存储",
+        "D": "图数据库"
+      },
+      "answer": "B",
+      "explanation": "日志分析通常涉及对大量数据进行聚合查询，只读取少数几列。列式存储（如BigQuery）非常适合这种工作负载，因为它只读取查询所需的列，并且列压缩率更高，可以显著提高查询性能和降低成本。"
+    },
+    {
+      "id": "gcp-pdba-set2-q18",
+      "type": "single",
+      "domain": "管理数据解决方案",
+      "question": "AlloyDB的Columnar Engine功能提供什么优势？",
+      "options": {
+        "A": "更快的事务处理",
+        "B": "自动将热数据缓存为列式格式，加速分析查询",
+        "C": "更便宜的存储",
+        "D": "更简单的管理"
+      },
+      "answer": "B",
+      "explanation": "AlloyDB的Columnar Engine是一个内置功能，自动将频繁访问的数据缓存为列式格式。这使得分析查询（如大规模聚合）可以直接从列式缓存读取，比传统行式存储快100倍以上，同时不影响OLTP性能。"
+    },
+    {
+      "id": "gcp-pdba-set2-q19",
+      "type": "single",
+      "domain": "迁移数据解决方案",
+      "question": "在进行生产数据库迁移之前，应该执行什么类型的测试？",
+      "options": {
+        "A": "只测试数据加载",
+        "B": "完整的迁移演练，包括数据验证、应用程序测试、性能测试和故障转移测试",
+        "C": "只测试连接",
+        "D": "不需要测试"
+      },
+      "answer": "B",
+      "explanation": "生产迁移前应进行完整的演练测试，包括：数据完整性验证（行数、校验和）、应用程序功能测试、性能基准对比、故障转移和回滚测试。这确保在实际迁移时可以顺利进行。"
+    },
+    {
+      "id": "gcp-pdba-set2-q20",
+      "type": "single",
+      "domain": "部署可扩展且高可用的云数据库",
+      "question": "Cloud SQL的存储自动扩展功能有什么限制？",
+      "options": {
+        "A": "没有限制",
+        "B": "存储只能增长，不能自动缩减",
+        "C": "每天只能扩展一次",
+        "D": "需要手动触发"
+      },
+      "answer": "B",
+      "explanation": "Cloud SQL的存储自动扩展会在存储空间接近上限时自动增加容量，但存储一旦扩展就不能自动或手动缩减。这是为了保护数据安全。如果需要减少存储，需要导出数据并创建新实例。"
+    },
+    {
+      "id": "gcp-pdba-set2-q21",
+      "type": "single",
+      "domain": "设计可扩展且高可用的云数据库解决方案",
+      "question": "选择Cloud Spanner的区域配置（regional）vs 多区域配置（multi-regional）时，主要考虑因素是什么？",
+      "options": {
+        "A": "只考虑成本",
+        "B": "可用性要求、延迟需求、合规要求和成本之间的权衡",
+        "C": "只考虑数据量",
+        "D": "只考虑查询类型"
+      },
+      "answer": "B",
+      "explanation": "选择配置时需要平衡多个因素：多区域提供更高可用性（99.999%）但成本更高且写入延迟更高；区域配置成本较低、写入延迟较低但可用性较低（99.99%）。还需考虑数据主权和合规要求。"
+    },
+    {
+      "id": "gcp-pdba-set2-q22",
+      "type": "single",
+      "domain": "管理数据解决方案",
+      "question": "如何诊断Cloud SQL实例的性能问题？",
+      "options": {
+        "A": "只查看错误日志",
+        "B": "使用Query Insights分析慢查询，Cloud Monitoring查看资源指标，检查索引使用情况",
+        "C": "重启实例",
+        "D": "增加机器规格"
+      },
+      "answer": "B",
+      "explanation": "性能诊断应该从多个角度进行：Query Insights可以识别慢查询和锁等待；Cloud Monitoring提供CPU、内存、磁盘、连接数等指标；检查缺失的索引和查询执行计划；分析等待事件以识别瓶颈。"
+    },
+    {
+      "id": "gcp-pdba-set2-q23",
+      "type": "single",
+      "domain": "迁移数据解决方案",
+      "question": "Datastream与Database Migration Service的主要区别是什么？",
+      "options": {
+        "A": "没有区别",
+        "B": "DMS用于一次性迁移到Cloud SQL/AlloyDB；Datastream用于持续的CDC复制到多种目标",
+        "C": "Datastream更便宜",
+        "D": "DMS支持更多源数据库"
+      },
+      "answer": "B",
+      "explanation": "Database Migration Service专注于将数据库迁移到Cloud SQL或AlloyDB的一次性或连续迁移场景。Datastream是一个独立的CDC服务，可以将变更数据复制到BigQuery、Cloud Storage、Cloud SQL等多种目标，用于实时分析、数据湖等场景。"
+    },
+    {
+      "id": "gcp-pdba-set2-q24",
+      "type": "single",
+      "domain": "部署可扩展且高可用的云数据库",
+      "question": "如何为AlloyDB配置跨区域灾难恢复？",
+      "options": {
+        "A": "AlloyDB不支持跨区域复制",
+        "B": "创建跨区域读取副本并配置故障转移",
+        "C": "只能使用备份恢复",
+        "D": "使用第三方工具"
+      },
+      "answer": "B",
+      "explanation": "AlloyDB支持创建跨区域读取副本用于灾难恢复。在主区域发生故障时，可以将跨区域副本提升为独立集群。这提供了地理冗余，保护业务免受区域级别故障的影响。"
+    },
+    {
+      "id": "gcp-pdba-set2-q25",
+      "type": "single",
+      "domain": "设计可扩展且高可用的云数据库解决方案",
+      "question": "为需要图遍历查询的社交网络应用选择数据库时，最佳选择是什么？",
+      "options": {
+        "A": "Cloud SQL",
+        "B": "Cloud Spanner配合图查询语言",
+        "C": "Cloud Bigtable",
+        "D": "使用JanusGraph或Neo4j在Compute Engine上"
+      },
+      "answer": "D",
+      "explanation": "对于需要复杂图遍历查询的应用（如社交网络的朋友推荐），专门的图数据库如JanusGraph或Neo4j是最佳选择。虽然Cloud Spanner支持图查询语法，但专用图数据库在图遍历性能上更优越。可以在Compute Engine或GKE上部署。"
+    },
+    {
+      "id": "gcp-pdba-set2-q26",
+      "type": "single",
+      "domain": "管理数据解决方案",
+      "question": "BigQuery的物化视图与普通视图有什么区别？",
+      "options": {
+        "A": "没有区别",
+        "B": "物化视图预计算并存储结果，定期刷新，查询更快",
+        "C": "物化视图不存储数据",
+        "D": "普通视图性能更好"
+      },
+      "answer": "B",
+      "explanation": "BigQuery物化视图预计算查询结果并存储，当基础表更新时自动增量刷新。查询物化视图比每次运行复杂聚合快得多。系统还可以智能地使用物化视图来加速相关查询，即使用户没有直接查询物化视图。"
+    },
+    {
+      "id": "gcp-pdba-set2-q27",
+      "type": "single",
+      "domain": "迁移数据解决方案",
+      "question": "在数据库迁移中，什么是\"影子运行\"（shadow running）策略？",
+      "options": {
+        "A": "在夜间运行迁移",
+        "B": "将生产流量同时发送到新旧数据库，比较结果但只使用旧数据库的响应",
+        "C": "使用影子服务器",
+        "D": "加密迁移过程"
+      },
+      "answer": "B",
+      "explanation": "影子运行是一种迁移验证策略，将生产流量同时复制到新数据库，比较新旧数据库的结果，但只向用户返回旧数据库的响应。这允许在不影响用户的情况下验证新数据库的正确性和性能。"
+    },
+    {
+      "id": "gcp-pdba-set2-q28",
+      "type": "single",
+      "domain": "部署可扩展且高可用的云数据库",
+      "question": "Cloud SQL实例克隆与备份恢复有什么区别？",
+      "options": {
+        "A": "没有区别",
+        "B": "克隆是近乎即时的写时复制，备份恢复需要传输和恢复数据",
+        "C": "备份恢复更快",
+        "D": "克隆需要停机"
+      },
+      "answer": "B",
+      "explanation": "Cloud SQL克隆使用写时复制（copy-on-write）技术，可以在几秒内创建实例的完整副本，非常适合测试和开发。备份恢复需要将备份数据传输到新实例并恢复，可能需要更长时间，取决于数据量。"
+    },
+    {
+      "id": "gcp-pdba-set2-q29",
+      "type": "single",
+      "domain": "设计可扩展且高可用的云数据库解决方案",
+      "question": "设计需要处理JSON文档的应用程序时，Cloud SQL和Firestore如何选择？",
+      "options": {
+        "A": "总是选择Firestore",
+        "B": "如果需要复杂查询和事务，选择支持JSON的Cloud SQL；如果需要实时同步和移动优先，选择Firestore",
+        "C": "总是选择Cloud SQL",
+        "D": "两者不支持JSON"
+      },
+      "answer": "B",
+      "explanation": "两者都支持JSON数据。Cloud SQL（PostgreSQL的JSONB，MySQL的JSON）提供SQL查询能力、索引和ACID事务，适合复杂业务逻辑。Firestore提供实时同步、离线支持、自动扩展，更适合移动/Web应用和实时协作场景。"
+    },
+    {
+      "id": "gcp-pdba-set2-q30",
+      "type": "single",
+      "domain": "管理数据解决方案",
+      "question": "Cloud Spanner的导入导出选项有哪些？",
+      "options": {
+        "A": "只支持CSV",
+        "B": "支持Avro格式的Dataflow导入导出、数据库备份恢复",
+        "C": "只支持SQL dump",
+        "D": "不支持导入导出"
+      },
+      "answer": "B",
+      "explanation": "Cloud Spanner支持多种导入导出方式：使用Dataflow模板以Avro格式批量导入导出数据；使用Spanner备份和恢复功能进行数据保护；使用Spanner客户端库进行程序化数据操作。Avro格式保留了数据类型信息，适合大规模数据移动。"
+    },
+    {
+      "id": "gcp-pdba-set2-q31",
+      "type": "single",
+      "domain": "迁移数据解决方案",
+      "question": "迁移大型数据库时，如何优化初始数据加载的性能？",
+      "options": {
+        "A": "逐行插入",
+        "B": "使用并行加载、批量插入、临时禁用索引和约束",
+        "C": "使用最小的实例规格",
+        "D": "在高峰期进行加载"
+      },
+      "answer": "B",
+      "explanation": "优化初始加载的策略包括：并行加载多个表、使用大批量插入、临时禁用外键约束和非唯一索引（加载后重建）、使用较大的实例规格、在低峰期进行加载以获得更多资源。Database Migration Service自动使用这些优化。"
+    },
+    {
+      "id": "gcp-pdba-set2-q32",
+      "type": "single",
+      "domain": "部署可扩展且高可用的云数据库",
+      "question": "Memorystore for Redis的高可用性配置提供什么保护？",
+      "options": {
+        "A": "没有高可用性选项",
+        "B": "自动故障检测和故障转移到备用节点",
+        "C": "只有数据备份",
+        "D": "只有跨区域复制"
+      },
+      "answer": "B",
+      "explanation": "Memorystore for Redis标准层提供高可用性配置，包括主节点和一个或多个备用节点。系统自动检测主节点故障，并在几秒内故障转移到备用节点。使用同步复制确保数据不丢失。"
+    },
+    {
+      "id": "gcp-pdba-set2-q33",
+      "type": "single",
+      "domain": "设计可扩展且高可用的云数据库解决方案",
+      "question": "为需要全文搜索功能的应用程序设计数据库架构时，最佳方法是什么？",
+      "options": {
+        "A": "只使用LIKE查询",
+        "B": "结合Cloud SQL（主数据存储）和Elasticsearch/OpenSearch（搜索引擎）",
+        "C": "将所有数据存储在搜索引擎中",
+        "D": "不实现搜索功能"
+      },
+      "answer": "B",
+      "explanation": "最佳实践是使用Cloud SQL作为主数据存储（确保数据一致性和事务），并将需要搜索的数据同步到专门的搜索引擎（如Elasticsearch/OpenSearch）。使用Datastream或应用程序级别的同步保持数据一致。PostgreSQL的全文搜索功能也是一个简单场景的选择。"
+    },
+    {
+      "id": "gcp-pdba-set2-q34",
+      "type": "single",
+      "domain": "管理数据解决方案",
+      "question": "如何限制Cloud SQL的连接数以防止过载？",
+      "options": {
+        "A": "无法限制",
+        "B": "配置max_connections参数，使用连接池，并监控连接使用情况",
+        "C": "增加实例规格",
+        "D": "使用更多的读取副本"
+      },
+      "answer": "B",
+      "explanation": "可以通过配置max_connections数据库参数来限制最大连接数。结合使用连接池来复用连接，并使用Cloud Monitoring监控连接数指标。当接近限制时设置告警，以便采取措施如增加实例规格或优化应用程序连接管理。"
+    },
+    {
+      "id": "gcp-pdba-set2-q35",
+      "type": "single",
+      "domain": "迁移数据解决方案",
+      "question": "在迁移过程中发现目标数据库性能不如源数据库时，应该如何处理？",
+      "options": {
+        "A": "立即迁移到更大的实例",
+        "B": "分析查询执行计划，检查索引使用，优化数据库配置参数",
+        "C": "取消迁移",
+        "D": "忽略性能问题"
+      },
+      "answer": "B",
+      "explanation": "应该系统地分析性能差异：比较查询执行计划、检查缺失或未使用的索引、对比数据库配置参数、分析资源使用情况。可能需要调整索引策略、优化查询、调整数据库参数或升级实例规格。"
+    },
+    {
+      "id": "gcp-pdba-set2-q36",
+      "type": "single",
+      "domain": "部署可扩展且高可用的云数据库",
+      "question": "BigQuery的流式插入与批量加载有什么区别？",
+      "options": {
+        "A": "没有区别",
+        "B": "流式插入实时可查询但有额外成本；批量加载免费但有延迟",
+        "C": "批量加载更快",
+        "D": "流式插入更便宜"
+      },
+      "answer": "B",
+      "explanation": "流式插入允许数据几秒内可查询，适合实时分析，但按插入的行数收费。批量加载（从Cloud Storage）是免费的，但数据需要等待加载作业完成才能查询。选择取决于延迟要求和成本考虑。"
+    },
+    {
+      "id": "gcp-pdba-set2-q37",
+      "type": "single",
+      "domain": "设计可扩展且高可用的云数据库解决方案",
+      "question": "设计需要支持多种一致性模型的应用程序时，哪个数据库提供最大的灵活性？",
+      "options": {
+        "A": "Cloud SQL（只有强一致性）",
+        "B": "Firestore（可配置强一致性或最终一致性的读取）",
+        "C": "BigQuery",
+        "D": "Memorystore"
+      },
+      "answer": "B",
+      "explanation": "Firestore允许在查询时选择一致性级别：使用强一致性读取（默认）获取最新数据，或使用最终一致性读取获得更低延迟。这种灵活性允许应用程序根据不同场景的需求平衡一致性和性能。"
+    },
+    {
+      "id": "gcp-pdba-set2-q38",
+      "type": "single",
+      "domain": "管理数据解决方案",
+      "question": "Cloud Bigtable的表设计中，列族（column family）的最佳实践是什么？",
+      "options": {
+        "A": "为每个列创建一个列族",
+        "B": "将经常一起访问的列放在同一列族，限制列族数量在100个以内",
+        "C": "只使用一个列族",
+        "D": "列族数量无限制"
+      },
+      "answer": "B",
+      "explanation": "列族设计的最佳实践是：将经常一起读取的列放在同一列族（因为读取是按列族进行的）；限制列族数量（推荐少于100个）；考虑不同的垃圾回收策略时分开列族。过多的列族会影响性能。"
+    },
+    {
+      "id": "gcp-pdba-set2-q39",
+      "type": "single",
+      "domain": "迁移数据解决方案",
+      "question": "使用Database Migration Service进行连续迁移时，如何监控复制延迟？",
+      "options": {
+        "A": "无法监控",
+        "B": "使用Cloud Monitoring查看复制延迟指标，设置告警",
+        "C": "手动比较源和目标",
+        "D": "依靠估计"
+      },
+      "answer": "B",
+      "explanation": "DMS与Cloud Monitoring集成，提供复制延迟等关键指标。可以创建告警策略，当延迟超过阈值时通知管理员。这对于计划割接时间至关重要，因为需要确保复制完全同步后才能切换。"
+    },
+    {
+      "id": "gcp-pdba-set2-q40",
+      "type": "single",
+      "domain": "部署可扩展且高可用的云数据库",
+      "question": "Cloud SQL企业版与企业Plus版有什么主要区别？",
+      "options": {
+        "A": "没有区别",
+        "B": "企业Plus版提供更高的可用性、更快的故障转移和数据缓存加速",
+        "C": "企业Plus版更便宜",
+        "D": "企业Plus版支持更少的功能"
+      },
+      "answer": "B",
+      "explanation": "Cloud SQL企业Plus版提供增强功能，包括：更高的可用性（近乎零的计划内停机时间）、更快的故障转移（小于10秒）、数据缓存加速（将热数据缓存在SSD上加速读取）、更高的CPU和内存限制。适合关键业务应用。"
+    }
+  ]
+}

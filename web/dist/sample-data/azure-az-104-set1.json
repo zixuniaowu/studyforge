@@ -1,0 +1,799 @@
+{
+  "exam": {
+    "id": "azure-az-104-set1",
+    "name": "Azure AZ-104 管理员认证模拟考试 #1",
+    "code": "AZ-104",
+    "provider": "Azure",
+    "language": "zh-CN",
+    "description": "Microsoft Azure管理员认证考试模拟题，涵盖Azure身份和治理、存储、计算资源、虚拟网络和资源监控等核心领域",
+    "totalQuestions": 50,
+    "passingScore": 70,
+    "examTime": 150,
+    "domains": [
+      {
+        "id": 1,
+        "name": "管理Azure身份和治理 (Manage Azure identities and governance)",
+        "weight": 25
+      },
+      {
+        "id": 2,
+        "name": "实施和管理存储 (Implement and manage storage)",
+        "weight": 20
+      },
+      {
+        "id": 3,
+        "name": "部署和管理Azure计算资源 (Deploy and manage Azure compute resources)",
+        "weight": 25
+      },
+      {
+        "id": 4,
+        "name": "实施和管理虚拟网络 (Implement and manage virtual networking)",
+        "weight": 20
+      },
+      {
+        "id": 5,
+        "name": "监视和维护Azure资源 (Monitor and maintain Azure resources)",
+        "weight": 10
+      }
+    ],
+    "tags": [
+      "Azure",
+      "AZ-104",
+      "管理员",
+      "认证考试",
+      "云计算"
+    ]
+  },
+  "questions": [
+    {
+      "id": "q1",
+      "domain": 1,
+      "question": "一家公司需要创建一个新的Azure AD用户，该用户只能访问特定的资源组。应该使用什么方法来实现这一目标？",
+      "options": {
+        "A": "在Azure AD中创建用户并分配全局管理员角色",
+        "B": "在Azure AD中创建用户并在资源组级别分配RBAC角色",
+        "C": "在Azure AD中创建用户并添加到所有安全组",
+        "D": "在Azure AD中创建用户并分配订阅所有者角色"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure RBAC（基于角色的访问控制）可以在不同范围级别分配权限。要限制用户只能访问特定资源组，应该在该资源组级别分配适当的RBAC角色，如参与者或读者角色。这遵循最小权限原则。\n---",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q2",
+      "domain": 1,
+      "question": "一家公司想要确保所有新创建的资源都必须具有特定的标签。应该使用什么Azure功能？",
+      "options": {
+        "A": "Azure Advisor",
+        "B": "Azure Policy",
+        "C": "Azure Blueprints",
+        "D": "Azure Monitor"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure Policy可以创建策略定义来强制执行组织标准。通过创建\"需要标签\"策略，可以确保所有新资源在创建时必须包含指定的标签，否则部署将被拒绝。\n---",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q3",
+      "domain": 1,
+      "question": "一家公司有多个Azure订阅，需要将它们组织在一起以便统一管理策略和访问控制。应该使用什么？",
+      "options": {
+        "A": "资源组",
+        "B": "管理组 (Management Groups)",
+        "C": "Azure AD租户",
+        "D": "标签"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "管理组是订阅之上的容器，允许您将多个订阅组织在一起。您可以在管理组级别应用策略和RBAC，这些设置会自动继承到该管理组下的所有订阅。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q4",
+      "domain": 1,
+      "question": "一家公司需要允许用户使用他们的企业凭据登录Azure，同时保持本地Active Directory的身份管理。应该配置什么？",
+      "options": {
+        "A": "Azure AD B2C",
+        "B": "Azure AD B2B",
+        "C": "Azure AD Connect",
+        "D": "Azure AD域服务"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "Azure AD Connect可以将本地Active Directory与Azure AD同步，实现混合身份管理。用户可以使用相同的凭据登录本地资源和Azure资源，支持密码哈希同步、直通身份验证或联合身份验证。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q5",
+      "domain": 1,
+      "question": "一家公司想要为高权限操作（如删除资源）添加额外的身份验证步骤。应该使用什么？",
+      "options": {
+        "A": "条件访问策略",
+        "B": "Azure AD Privileged Identity Management (PIM)",
+        "C": "Azure AD Identity Protection",
+        "D": "Azure AD多重身份验证 (MFA)"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure AD PIM可以实现即时（JIT）访问管理，要求用户在激活高权限角色时进行额外验证，如MFA或审批流程。这减少了特权帐户被滥用的风险。\n---",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q6",
+      "domain": 1,
+      "question": "一家公司需要限制可以在其Azure订阅中创建的资源类型。应该使用什么？",
+      "options": {
+        "A": "Azure Policy - 允许的资源类型",
+        "B": "Azure RBAC",
+        "C": "网络安全组",
+        "D": "Azure Defender"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Azure Policy的\"允许的资源类型\"内置策略可以限制可以在订阅或资源组中创建的Azure资源类型。例如，可以只允许创建虚拟机和存储账户，阻止创建其他类型的资源。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q7",
+      "domain": 1,
+      "question": "一家公司想要自动将特定的配置和策略应用于新创建的Azure订阅。应该使用什么？",
+      "options": {
+        "A": "Azure Resource Manager模板",
+        "B": "Azure Blueprints",
+        "C": "Azure Automation",
+        "D": "Azure DevOps"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure Blueprints可以定义一组可重复的Azure资源、策略和角色分配。当将蓝图分配给新订阅时，所有定义的组件会自动部署，确保环境符合组织标准。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q8",
+      "domain": 1,
+      "question": "一家公司需要查看谁在什么时间对Azure资源进行了什么更改。应该使用什么？",
+      "options": {
+        "A": "Azure Monitor指标",
+        "B": "Azure活动日志 (Activity Log)",
+        "C": "Azure诊断日志",
+        "D": "Azure安全中心"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure活动日志记录订阅级别的操作，包括谁在什么时间对哪些资源执行了什么操作。这是审核Azure资源更改的主要工具，日志保留90天。\n---",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q9",
+      "domain": 1,
+      "question": "一家公司想要邀请外部合作伙伴访问其Azure资源，而无需为他们创建新的Azure AD帐户。应该使用什么？",
+      "options": {
+        "A": "Azure AD B2C",
+        "B": "Azure AD B2B协作",
+        "C": "Azure AD域服务",
+        "D": "Azure AD Connect"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure AD B2B允许邀请外部用户作为来宾用户访问您的Azure资源。来宾用户使用自己组织的凭据进行身份验证，您可以通过RBAC控制他们的访问权限。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q10",
+      "domain": 1,
+      "question": "一家公司需要确保特定资源不能被意外删除。应该应用什么？",
+      "options": {
+        "A": "Azure Policy",
+        "B": "资源锁 - 删除锁",
+        "C": "RBAC只读角色",
+        "D": "Azure Backup"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "资源锁可以防止资源被意外修改或删除。删除锁（CanNotDelete）防止删除但允许修改，只读锁（ReadOnly）防止任何更改。锁可以在订阅、资源组或资源级别应用。\n---",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q11",
+      "domain": 2,
+      "question": "一家公司需要一个高性能的存储解决方案来存储频繁访问的数据。应该选择哪种Azure存储访问层？",
+      "options": {
+        "A": "热访问层 (Hot)",
+        "B": "冷访问层 (Cool)",
+        "C": "存档访问层 (Archive)",
+        "D": "高级访问层 (Premium)"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "热访问层针对频繁访问的数据进行了优化，存储成本较高但访问成本较低。冷访问层适合不常访问的数据（至少存储30天），存档层适合很少访问的数据（至少存储180天）。\n---",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q12",
+      "domain": 2,
+      "question": "一家公司需要将存储账户的数据复制到另一个Azure区域以实现灾难恢复。应该选择哪种复制选项？",
+      "options": {
+        "A": "本地冗余存储 (LRS)",
+        "B": "区域冗余存储 (ZRS)",
+        "C": "地理冗余存储 (GRS)",
+        "D": "高级存储"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "地理冗余存储 (GRS) 将数据同步复制到主区域的三个副本，然后异步复制到配对区域的三个副本。这提供了跨区域的灾难恢复能力。如果需要读取辅助区域的数据，可以选择RA-GRS。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q13",
+      "domain": 2,
+      "question": "一家公司需要将本地文件服务器迁移到Azure，同时保持SMB协议访问。应该使用哪种Azure服务？",
+      "options": {
+        "A": "Azure Blob存储",
+        "B": "Azure文件存储 (Azure Files)",
+        "C": "Azure队列存储",
+        "D": "Azure表存储"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure文件存储提供完全托管的云文件共享，可以通过SMB或NFS协议访问。它可以直接替换本地文件服务器，支持Azure File Sync实现混合场景。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q14",
+      "domain": 2,
+      "question": "一家公司想要使用Azure存储账户存储敏感数据，需要确保数据在传输过程中被加密。应该配置什么？",
+      "options": {
+        "A": "启用存储服务加密 (SSE)",
+        "B": "要求安全传输 (HTTPS)",
+        "C": "配置客户托管密钥",
+        "D": "启用软删除"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "\"要求安全传输\"选项强制所有到存储账户的请求使用HTTPS，确保数据在传输过程中被加密。SSE负责静态数据加密，这两者应该同时启用以获得完整保护。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q15",
+      "domain": 2,
+      "question": "一家公司需要限制对存储账户的访问，只允许特定的虚拟网络中的资源访问。应该配置什么？",
+      "options": {
+        "A": "共享访问签名 (SAS)",
+        "B": "存储账户防火墙和虚拟网络规则",
+        "C": "Azure AD身份验证",
+        "D": "访问密钥轮换"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "存储账户防火墙允许配置允许访问的IP地址范围和虚拟网络。通过选择\"选定的网络\"并添加虚拟网络规则，可以限制只有指定VNet中的资源才能访问存储账户。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q16",
+      "domain": 2,
+      "question": "一家公司需要为存储账户中的Blob设置自动生命周期管理，将30天未访问的数据移动到冷层。应该使用什么？",
+      "options": {
+        "A": "Azure Automation",
+        "B": "存储生命周期管理策略",
+        "C": "Azure Logic Apps",
+        "D": "Azure Functions"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "存储生命周期管理策略可以根据规则自动管理Blob的生命周期：将Blob移动到较冷的访问层、删除过期的Blob、根据上次修改或访问时间执行操作。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q17",
+      "domain": 2,
+      "question": "一家公司需要从Azure门户上传一个大于100GB的文件到Blob存储。应该使用什么方法？",
+      "options": {
+        "A": "直接从门户上传",
+        "B": "使用AzCopy工具",
+        "C": "使用REST API",
+        "D": "使用Azure CLI"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "AzCopy是一个命令行工具，专为在Azure存储账户之间复制大量数据而设计。它支持大文件上传、断点续传、并行传输，是上传大文件的推荐方法。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q18",
+      "domain": 2,
+      "question": "一家公司需要为Azure存储账户中意外删除的Blob提供恢复能力。应该启用什么功能？",
+      "options": {
+        "A": "版本控制",
+        "B": "软删除",
+        "C": "不可变存储",
+        "D": "对象复制"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Blob软删除可以在指定的保留期内恢复已删除的Blob和快照。启用后，删除的数据会保留指定天数，在此期间可以恢复。\n---",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q19",
+      "domain": 2,
+      "question": "一家公司需要授予第三方应用程序对存储账户中特定容器的临时访问权限。应该使用什么？",
+      "options": {
+        "A": "存储账户访问密钥",
+        "B": "共享访问签名 (SAS)",
+        "C": "Azure AD服务主体",
+        "D": "匿名访问"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "共享访问签名 (SAS) 提供对存储资源的委托访问，可以指定允许的权限、有效时间范围和IP地址限制。服务SAS可以限制对特定容器的访问。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q20",
+      "domain": 2,
+      "question": "一家公司使用Azure File Sync将本地文件服务器与Azure同步。当本地存储空间不足时，应该启用什么功能？",
+      "options": {
+        "A": "增加本地存储容量",
+        "B": "云分层 (Cloud Tiering)",
+        "C": "删除旧文件",
+        "D": "压缩文件"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "云分层功能会自动将不常访问的文件移动到Azure文件共享，只在本地保留占位符。当用户访问这些文件时，它们会自动从云端下载。这有效解决本地存储空间问题。\n---",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q21",
+      "domain": 3,
+      "question": "一家公司需要部署一个具有高可用性的Web应用程序，要求在同一区域的不同数据中心运行多个实例。应该使用什么？",
+      "options": {
+        "A": "虚拟机规模集配置可用性区域",
+        "B": "单个虚拟机",
+        "C": "可用性集",
+        "D": "本地部署"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "可用性区域是一个区域内物理上独立的数据中心。通过将虚拟机规模集配置为跨可用性区域部署，可以保护应用程序免受数据中心故障的影响，提供99.99%的SLA。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q22",
+      "domain": 3,
+      "question": "一家公司需要部署一个容器化的Web应用程序，不想管理底层基础设施。应该使用什么服务？",
+      "options": {
+        "A": "Azure虚拟机",
+        "B": "Azure Kubernetes Service (AKS)",
+        "C": "Azure Container Instances (ACI)",
+        "D": "Azure App Service"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "Azure App Service是一个完全托管的平台，支持容器化应用程序部署，无需管理基础设施。如果需要更多控制和容器编排功能，可以选择AKS；如果只需要快速运行单个容器，可以选择ACI。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q23",
+      "domain": 3,
+      "question": "一家公司需要根据CPU使用率自动增加或减少虚拟机数量。应该配置什么？",
+      "options": {
+        "A": "手动扩展",
+        "B": "虚拟机规模集自动扩展规则",
+        "C": "Azure Advisor",
+        "D": "Azure Monitor警报"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "虚拟机规模集支持基于指标（如CPU、内存）或计划的自动扩展。可以定义规则在CPU超过阈值时增加实例，在CPU低于阈值时减少实例，实现成本优化。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q24",
+      "domain": 3,
+      "question": "一家公司需要将现有的虚拟机从一个资源组移动到另一个资源组。这是否可行？",
+      "options": {
+        "A": "不可能，需要重新创建虚拟机",
+        "B": "可以，使用资源移动功能",
+        "C": "只能移动托管磁盘",
+        "D": "需要先删除虚拟机"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure支持将资源从一个资源组移动到另一个资源组。在移动虚拟机时，关联的资源（如磁盘、网卡、公共IP）也需要一起移动。某些资源类型可能有移动限制。\n---",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q25",
+      "domain": 3,
+      "question": "一家公司想要使用ARM模板自动化部署Azure资源。应该如何导出现有资源的配置？",
+      "options": {
+        "A": "手动编写ARM模板",
+        "B": "从资源组导出模板",
+        "C": "使用Azure CLI创建模板",
+        "D": "复制Azure门户中的设置"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "可以从Azure门户的资源组中导出现有资源的ARM模板。这会生成一个JSON模板，描述资源组中所有资源的配置，可以用作自动化部署的起点。\n---",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q26",
+      "domain": 3,
+      "question": "一家公司需要为虚拟机配置自定义扩展来自动安装软件。应该使用什么？",
+      "options": {
+        "A": "远程桌面连接",
+        "B": "虚拟机扩展 (VM Extension)",
+        "C": "Azure Bastion",
+        "D": "SSH连接"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "虚拟机扩展可以在部署后自动执行任务，如安装软件、运行脚本或配置监控。常用扩展包括Custom Script Extension、DSC Extension等。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q27",
+      "domain": 3,
+      "question": "一家公司需要运行一个需要GPU的机器学习工作负载。应该选择什么类型的虚拟机？",
+      "options": {
+        "A": "B系列",
+        "B": "D系列",
+        "C": "N系列",
+        "D": "F系列"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "Azure N系列虚拟机配备NVIDIA GPU，专为GPU密集型工作负载设计，如机器学习训练、图形渲染和视频编码。包括NC、ND和NV系列。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q28",
+      "domain": 3,
+      "question": "一家公司需要安全地连接到Azure虚拟机，而不暴露公共IP地址。应该使用什么？",
+      "options": {
+        "A": "开放RDP端口",
+        "B": "Azure Bastion",
+        "C": "公共IP地址",
+        "D": "网络安全组"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure Bastion提供通过Azure门户直接连接到虚拟机的安全RDP/SSH访问，无需为虚拟机配置公共IP地址。流量通过HTTPS传输，提供更高的安全性。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q29",
+      "domain": 3,
+      "question": "一家公司需要确保虚拟机的操作系统磁盘有备份。应该使用什么服务？",
+      "options": {
+        "A": "Azure Site Recovery",
+        "B": "Azure Backup",
+        "C": "Azure Blob复制",
+        "D": "托管磁盘快照"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure Backup提供简单可靠的虚拟机备份解决方案。可以配置备份策略（每日、每周等）、保留期限，并在需要时恢复整个虚拟机或单个文件。\n---",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q30",
+      "domain": 3,
+      "question": "一家公司需要为其Web应用程序配置蓝绿部署策略。应该使用Azure App Service的什么功能？",
+      "options": {
+        "A": "自动扩展",
+        "B": "部署槽 (Deployment Slots)",
+        "C": "备份和还原",
+        "D": "自定义域"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "部署槽允许在生产槽之外创建预发布环境。可以先将新版本部署到槽中进行测试，然后通过交换操作将流量切换到新版本，实现零停机部署。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q31",
+      "domain": 4,
+      "question": "一家公司需要创建两个虚拟网络之间的连接，这两个虚拟网络位于不同的Azure区域。应该使用什么？",
+      "options": {
+        "A": "VNet对等互连 (全局)",
+        "B": "子网",
+        "C": "网络安全组",
+        "D": "应用程序安全组"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "全局VNet对等互连允许在不同Azure区域的虚拟网络之间建立私有连接。流量通过Azure骨干网络传输，具有低延迟和高带宽。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q32",
+      "domain": 4,
+      "question": "一家公司需要控制进入虚拟机的网络流量，只允许特定端口的访问。应该使用什么？",
+      "options": {
+        "A": "Azure防火墙",
+        "B": "网络安全组 (NSG)",
+        "C": "用户定义路由",
+        "D": "服务端点"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "网络安全组包含安全规则，用于允许或拒绝入站和出站网络流量。可以基于源IP、目标IP、端口和协议创建规则，并将NSG关联到子网或网卡。\n---",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q33",
+      "domain": 4,
+      "question": "一家公司需要将本地网络安全地连接到Azure虚拟网络，使用加密的Internet连接。应该使用什么？",
+      "options": {
+        "A": "ExpressRoute",
+        "B": "站点到站点VPN",
+        "C": "VNet对等互连",
+        "D": "Azure CDN"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "站点到站点VPN通过加密的IPsec/IKE隧道将本地网络连接到Azure虚拟网络。这是通过Internet建立安全连接的经济实惠选择。如果需要私有专线连接，可以选择ExpressRoute。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q34",
+      "domain": 4,
+      "question": "一家公司需要为其Azure虚拟网络配置DNS解析。如果不配置自定义DNS，将使用什么？",
+      "options": {
+        "A": "本地DNS服务器",
+        "B": "Azure提供的DNS (168.63.129.16)",
+        "C": "Google DNS",
+        "D": "无法解析DNS"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "如果未配置自定义DNS，Azure虚拟网络默认使用Azure提供的DNS服务。这个DNS服务器可以解析Azure资源名称和公共DNS名称。\n---",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q35",
+      "domain": 4,
+      "question": "一家公司需要在多个虚拟机之间分发传入的网络流量。应该使用什么？",
+      "options": {
+        "A": "Azure负载均衡器",
+        "B": "网络安全组",
+        "C": "虚拟网络网关",
+        "D": "Azure Firewall"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Azure负载均衡器在后端池中的多个虚拟机之间分发传入流量。支持第4层（TCP/UDP）负载均衡，可以配置健康探测以检测不健康的后端实例。\n---",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q36",
+      "domain": 4,
+      "question": "一家公司需要基于URL路径将流量路由到不同的后端池。应该使用什么？",
+      "options": {
+        "A": "Azure负载均衡器",
+        "B": "Azure应用程序网关",
+        "C": "Azure Front Door",
+        "D": "Azure流量管理器"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "应用程序网关是一个第7层（HTTP/HTTPS）负载均衡器，支持基于URL路径的路由、SSL终止、Web应用程序防火墙等功能。可以将/images/*路由到图像服务器，/api/*路由到API服务器。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q37",
+      "domain": 4,
+      "question": "一家公司需要通过Azure虚拟网络安全访问Azure存储账户，而不经过公共Internet。应该配置什么？",
+      "options": {
+        "A": "公共端点",
+        "B": "服务端点或私有端点",
+        "C": "网络安全组",
+        "D": "Azure Firewall"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "服务端点将VNet流量路由到Azure服务时保持在Azure骨干网络上。私有端点在VNet中创建私有IP地址，流量完全不经过公共Internet。两者都可以提高安全性。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q38",
+      "domain": 4,
+      "question": "一家公司需要将流量强制通过网络虚拟设备（如防火墙）进行检查。应该配置什么？",
+      "options": {
+        "A": "网络安全组",
+        "B": "用户定义路由 (UDR)",
+        "C": "服务端点",
+        "D": "VNet对等互连"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "用户定义路由允许自定义网络流量的路由路径。可以创建路由表将特定流量（如0.0.0.0/0 Internet流量）的下一跳设置为网络虚拟设备的IP地址。\n---",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q39",
+      "domain": 4,
+      "question": "一家公司需要为其虚拟机配置一个始终不变的公共IP地址。应该选择什么SKU？",
+      "options": {
+        "A": "动态公共IP",
+        "B": "静态公共IP",
+        "C": "标准负载均衡器IP",
+        "D": "私有IP"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "静态公共IP地址在创建后不会改变，即使虚拟机停止或重新启动。动态公共IP在虚拟机停止时可能会改变。对于需要固定IP的场景（如DNS记录），应选择静态IP。\n---",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q40",
+      "domain": 4,
+      "question": "一家公司需要为多个Web应用程序配置跨区域的流量分发和故障转移。应该使用什么？",
+      "options": {
+        "A": "Azure负载均衡器",
+        "B": "应用程序网关",
+        "C": "Azure流量管理器",
+        "D": "VPN网关"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "Azure流量管理器是一个基于DNS的流量负载均衡器，可以在全球Azure区域之间分发流量。支持多种路由方法（优先级、加权、地理位置、性能），提供自动故障转移。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q41",
+      "domain": 5,
+      "question": "一家公司需要在虚拟机CPU使用率超过80%时收到电子邮件通知。应该配置什么？",
+      "options": {
+        "A": "Azure Advisor",
+        "B": "Azure Monitor警报",
+        "C": "活动日志",
+        "D": "诊断日志"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure Monitor警报可以基于指标条件触发通知。可以创建一个指标警报，当CPU百分比超过80%时触发，并配置操作组发送电子邮件通知。\n---",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q42",
+      "domain": 5,
+      "question": "一家公司需要长期保留Azure活动日志以满足合规要求。应该将日志发送到哪里？",
+      "options": {
+        "A": "Azure Monitor日志 (Log Analytics)",
+        "B": "Azure存储账户",
+        "C": "Azure Event Hubs",
+        "D": "以上所有都可以"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "Azure活动日志可以发送到多个目标：Log Analytics用于查询分析（保留最多2年）、存储账户用于长期归档、Event Hubs用于流式传输到外部系统。可以同时配置多个目标。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q43",
+      "domain": 5,
+      "question": "一家公司想要获取关于其Azure资源的优化建议，包括成本、安全和性能。应该使用什么服务？",
+      "options": {
+        "A": "Azure Monitor",
+        "B": "Azure Advisor",
+        "C": "Azure Security Center",
+        "D": "Azure Cost Management"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure Advisor分析您的资源配置和使用情况，提供个性化的建议以优化成本、提高可靠性、增强安全性和改善性能。建议是免费的。\n---",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q44",
+      "domain": 5,
+      "question": "一家公司需要查询和分析虚拟机的详细性能数据。应该使用什么？",
+      "options": {
+        "A": "Azure门户仪表板",
+        "B": "Log Analytics工作区和KQL查询",
+        "C": "Azure Advisor",
+        "D": "活动日志"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Log Analytics工作区收集和存储来自Azure资源的日志和指标数据。可以使用Kusto查询语言 (KQL) 编写复杂查询来分析性能数据、创建可视化和设置警报。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q45",
+      "domain": 5,
+      "question": "一家公司需要监控Azure虚拟机的操作系统级别性能指标（如磁盘I/O详情）。应该安装什么？",
+      "options": {
+        "A": "Azure Monitor Agent",
+        "B": "Azure Backup Agent",
+        "C": "Site Recovery Agent",
+        "D": "Dependency Agent"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Azure Monitor Agent (AMA) 收集来宾操作系统的详细性能数据和日志。这是收集VM内部指标（如详细磁盘I/O、内存使用、进程信息）所必需的。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q46",
+      "domain": 5,
+      "question": "一家公司需要在主Azure区域发生故障时将虚拟机故障转移到另一个区域。应该配置什么？",
+      "options": {
+        "A": "Azure Backup",
+        "B": "Azure Site Recovery",
+        "C": "可用性区域",
+        "D": "可用性集"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure Site Recovery提供跨区域的灾难恢复能力。它持续将虚拟机复制到次要区域，在主区域发生故障时可以快速故障转移，实现业务连续性。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q47",
+      "domain": 5,
+      "question": "一家公司需要可视化其Azure资源的整体健康状况和服务中断信息。应该查看什么？",
+      "options": {
+        "A": "Azure Monitor",
+        "B": "Azure Service Health",
+        "C": "Azure Advisor",
+        "D": "资源运行状况"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure Service Health提供Azure服务的健康状态信息，包括计划维护、服务问题和健康建议。可以配置警报在影响您资源的服务问题发生时收到通知。\n---",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q48",
+      "domain": 5,
+      "question": "一家公司需要定期自动执行维护任务，如启动和停止虚拟机。应该使用什么？",
+      "options": {
+        "A": "Azure Functions",
+        "B": "Azure Automation运行簿",
+        "C": "Azure Logic Apps",
+        "D": "以上都可以"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "所有选项都可以用于自动化任务：Azure Automation运行簿提供PowerShell/Python脚本执行、Azure Functions提供事件驱动的代码执行、Logic Apps提供工作流自动化。选择取决于具体需求。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q49",
+      "domain": 5,
+      "question": "一家公司需要确保其虚拟机的Windows更新自动应用。应该使用什么Azure功能？",
+      "options": {
+        "A": "Azure Automation更新管理",
+        "B": "手动Windows更新",
+        "C": "Azure Policy",
+        "D": "Azure Backup"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Azure Automation更新管理可以评估虚拟机的更新状态、安排更新部署、在维护窗口内自动安装更新。支持Windows和Linux虚拟机，可以集中管理多个VM的更新。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q50",
+      "domain": 5,
+      "question": "一家公司需要查看单个Azure资源（如虚拟机）是否受到平台问题的影响。应该查看什么？",
+      "options": {
+        "A": "Azure Service Health",
+        "B": "资源运行状况 (Resource Health)",
+        "C": "Azure Monitor指标",
+        "D": "活动日志"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "资源运行状况提供特定Azure资源的当前和历史健康状态。它显示资源是否可用、是否受到Azure平台问题影响，以及问题的根本原因分析。\n---",
+      "difficulty": "easy"
+    }
+  ]
+}

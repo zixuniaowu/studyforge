@@ -1,0 +1,794 @@
+{
+  "exam": {
+    "id": "azure-dp-100-set2-ja",
+    "name": "Azure DP-100 データサイエンティスト模擬試験 #2",
+    "code": "DP-100",
+    "provider": "Azure",
+    "language": "ja",
+    "description": "Azure Data Scientist Associate認定試験の模擬問題 - 第2セット",
+    "totalQuestions": 50,
+    "passingScore": 70,
+    "examTime": 150,
+    "domains": [
+      {
+        "id": 1,
+        "name": "Design and prepare a machine learning solution",
+        "weight": 25
+      },
+      {
+        "id": 2,
+        "name": "Explore data and train models",
+        "weight": 40
+      },
+      {
+        "id": 3,
+        "name": "Prepare a model for deployment",
+        "weight": 25
+      },
+      {
+        "id": 4,
+        "name": "Deploy and retrain a model",
+        "weight": 10
+      }
+    ],
+    "tags": [
+      "Azure",
+      "Machine Learning",
+      "Data Science",
+      "MLOps",
+      "認定試験"
+    ]
+  },
+  "questions": [
+    {
+      "id": "q1",
+      "domain": 1,
+      "question": "ある金融会社がMLワークロード用の適切なコンピューティングリソースを選択する必要があります。チームは大規模なGPU集約型のディープラーニングトレーニングジョブを実行する必要があります。どのコンピューティングオプションを選択すべきですか？",
+      "options": {
+        "A": "コンピューティングインスタンス (Compute Instance)",
+        "B": "サーバーレスコンピューティング (Serverless Compute)",
+        "C": "GPU SKUを備えたコンピューティングクラスター (Compute Cluster)",
+        "D": "Azure Container Instance"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "GPU SKUを備えたコンピューティングクラスターは、大規模なディープラーニングトレーニングに最適です：\n- NVIDIA V100、A100などのハイエンドGPUをサポート\n- 分散トレーニング用に複数のGPUノードを構成可能\n- 自動スケーリング機能でコストを最適化\n- 低優先度VMでさらにコストを削減可能\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q2",
+      "domain": 1,
+      "question": "データサイエンティストが複数の実験で共有できる再利用可能なデータ処理ロジックを作成する必要があります。Azure MLのどの機能を使用すべきですか？",
+      "options": {
+        "A": "Environment",
+        "B": "Component",
+        "C": "Dataset",
+        "D": "Experiment"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Component（コンポーネント）はAzure ML v2の中核概念です：\n- 再利用可能なコードユニットをカプセル化\n- 入力、出力、環境定義を含む\n- パイプラインで組み合わせて使用可能\n- バージョン管理をサポート\n- チーム間で共有可能\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q3",
+      "domain": 1,
+      "question": "ある医療会社がMLワークスペースのデータが特定のリージョンから出ないようにする必要があります。何を構成すべきですか？",
+      "options": {
+        "A": "マネージド仮想ネットワーク (Managed VNet)",
+        "B": "データ暗号化",
+        "C": "RBACロール",
+        "D": "サービスプリンシパル"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "マネージド仮想ネットワークはネットワーク分離を提供します：\n- ワークスペースリソースはプライベートネットワーク内で実行\n- データはパブリックインターネットを経由しない\n- プライベートエンドポイント接続をサポート\n- データ所在地のコンプライアンス要件に準拠\n- ネットワーク構成を簡素化\n---",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q4",
+      "domain": 1,
+      "question": "Azure MLで機密性の高い接続文字列やAPIキーを安全に保存するにはどうすればよいですか？",
+      "options": {
+        "A": "コード内に保存する",
+        "B": "Azure Key Vaultを使用する",
+        "C": "構成ファイルに保存する",
+        "D": "環境変数を使用する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure Key Vaultとの統合：\n- キー、証明書、シークレットを安全に保存\n- Azure MLワークスペースと自動的に統合\n- アクセスポリシー制御をサポート\n- 監査ログ記録\n- トレーニングスクリプトから安全にアクセス可能\n---",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q5",
+      "domain": 1,
+      "question": "あるチームがAzure MLワークスペースでコンピューティングリソースを作成できるユーザーを制限する必要があります。どのロールを割り当てるべきですか？",
+      "options": {
+        "A": "Owner",
+        "B": "Contributor",
+        "C": "AzureML Compute Operator",
+        "D": "Reader"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "AzureML Compute Operatorロール：\n- コンピューティングリソースの管理専用\n- コンピューティングの作成、更新、削除が可能\n- その他のワークスペースリソースにはアクセスできない\n- 最小権限の原則に従う\n- 運用チームに適している\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q6",
+      "domain": 1,
+      "question": "データサイエンティストがAzure MLでAzure Data Lake Storage Gen2に保存されているデータを使用する必要があります。最初に何をすべきですか？",
+      "options": {
+        "A": "URIを使用して直接アクセスする",
+        "B": "ADLS Gen2を指すデータストアを作成する",
+        "C": "データをBlobストレージにコピーする",
+        "D": "データドリフトモニターを作成する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "ADLS Gen2データへのアクセス手順：\n1. ADLS Gen2に接続するデータストア（Datastore）を作成\n2. 認証を構成（サービスプリンシパルまたはマネージドID）\n3. 具体的なデータを参照するデータアセット（Data Asset）を作成\nデータストアは接続情報をカプセル化し、データをコピーしません。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q7",
+      "domain": 1,
+      "question": "ある会社のMLチームが、使用したデータ、コード、環境を含む実験の系統（lineage）を追跡する必要があります。Azure MLはこの要件をどのようにサポートしますか？",
+      "options": {
+        "A": "Gitでバージョン管理を使用する",
+        "B": "Job（ジョブ）が系統情報を自動的に記録する",
+        "C": "ドキュメントに手動で記録する",
+        "D": "外部のMLflowサーバーを使用する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure MLジョブは自動的に追跡します：\n- 入力データアセットのバージョン\n- コードスナップショット\n- 環境定義\n- 出力モデルとメトリクス\n- 実行時間とコンピューティングリソース\n完全なトレーサビリティと再現性をサポートします。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q8",
+      "domain": 1,
+      "question": "データサイエンティストがトレーニング環境のベースとしてカスタムDockerイメージを作成する必要があります。Environmentをどのように構成すべきですか？",
+      "options": {
+        "A": "Condaファイルのみを使用する",
+        "B": "カスタムbase_imageを指定する",
+        "C": "キュレーション環境を使用する",
+        "D": "pip requirementsを使用する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "カスタムDocker環境の構成：\n```python\nfrom azure.ai.ml.entities import Environment\nenv = Environment(\n    image='myregistry.azurecr.io/custom-image:v1',\n    name='custom-env'\n)\n```\nAzure Container Registryからカスタムイメージをプルできます。\n---",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q9",
+      "domain": 1,
+      "question": "MLソリューションを設計する際、モデルの公平性を考慮する必要があります。Azure MLはモデルの公平性を評価するためにどのようなツールを提供していますか？",
+      "options": {
+        "A": "AutoML",
+        "B": "Responsible AIダッシュボード",
+        "C": "Model Profiler",
+        "D": "Data Drift Monitor"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Responsible AIダッシュボードは以下を提供します：\n- 公平性評価（グループ間のパフォーマンス差異）\n- モデルの説明可能性\n- エラー分析\n- 因果推論\n- 反事実分析\n責任あるAIシステムの構築を支援します。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q10",
+      "domain": 1,
+      "question": "あるMLプロジェクトがAzure Machine Learning CLI v2を使用する必要があります。CLI v2はv1と比較して主にどのような改善がありますか？",
+      "options": {
+        "A": "より遅い実行速度",
+        "B": "YAMLベースのアセット定義",
+        "C": "Pythonのみをサポート",
+        "D": "パイプラインをサポートしない"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure ML CLI v2の特徴：\n- YAMLベースの宣言的アセット定義\n- より簡潔なコマンド構造\n- SDK v2と整合\n- すべてのアセットタイプをサポート\n- GitOpsとの統合が向上\n- 再現可能な構成\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q11",
+      "domain": 2,
+      "question": "データサイエンティストがAutoMLを使用して時系列予測を行っています。予測の時間範囲をどのように指定しますか？",
+      "options": {
+        "A": "max_horizonパラメータを設定する",
+        "B": "forecast_horizonパラメータを設定する",
+        "C": "スライディングウィンドウを使用する",
+        "D": "time_columnパラメータを設定する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "AutoML時系列予測の構成：\n- forecast_horizon：将来何時点を予測するか\n- time_column_name：タイムスタンプ列\n- target_lags：過去のラグ特徴量を使用\n- target_rolling_window_size：ローリングウィンドウ特徴量\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q12",
+      "domain": 2,
+      "question": "AutoML分類タスクで、データサイエンティストが特定のアルゴリズムを除外したいと考えています。どの構成を使用すべきですか？",
+      "options": {
+        "A": "primary_metric",
+        "B": "blocked_algorithms",
+        "C": "enable_voting_ensemble",
+        "D": "experiment_timeout_minutes"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "blocked_algorithmsパラメータ：\n- 使用しないアルゴリズムのリストを指定\n- 例：blocked_algorithms=['LightGBM', 'XGBoost']\n- 逆に、allowed_algorithmsは使用するアルゴリズムのみを指定\n- 特定のモデル要件を満たすために使用可能\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q13",
+      "domain": 2,
+      "question": "AutoMLを使用する際、画像分類のためのディープラーニングモデルを有効にするにはどうすればよいですか？",
+      "options": {
+        "A": "task='classification'を設定する",
+        "B": "task='image_classification'を設定する",
+        "C": "Designerを使用する",
+        "D": "HyperDriveを使用する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "AutoML画像タスクの種類：\n- image_classification：画像分類\n- image_classification_multilabel：マルチラベル分類\n- image_object_detection：オブジェクト検出\n- image_instance_segmentation：インスタンスセグメンテーション\n事前学習済みのディープラーニングモデルを自動的に使用します。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q14",
+      "domain": 2,
+      "question": "データサイエンティストがトレーニング中にカスタムチャートや画像を記録する必要があります。どのメソッドを使用すべきですか？",
+      "options": {
+        "A": "mlflow.log_metric()",
+        "B": "mlflow.log_artifact()",
+        "C": "mlflow.log_param()",
+        "D": "print()"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "MLflowのログ記録メソッド：\n- log_metric()：数値メトリクスを記録\n- log_param()：パラメータを記録\n- log_artifact()：ファイル（画像、モデル、データ）を記録\n- log_figure()：matplotlibチャートを記録\n- log_image()：画像を記録\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q15",
+      "domain": 2,
+      "question": "SDK v2を使用してモデルをトレーニングする際、分散PyTorchトレーニングをどのように構成しますか？",
+      "options": {
+        "A": "単一ノードコンピューティングを使用する",
+        "B": "PyTorchDistributionを構成する",
+        "C": "MPIを使用する",
+        "D": "TensorFlowDistributionを使用する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "PyTorch分散トレーニングの構成：\n```python\nfrom azure.ai.ml import command\nfrom azure.ai.ml.entities import PyTorchDistribution\n\njob = command(\n    code='./src',\n    command='python train.py',\n    distribution=PyTorchDistribution(process_count_per_instance=4),\n    instance_count=2\n)\n```\nデータ並列とモデル並列をサポートします。\n---",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q16",
+      "domain": 2,
+      "question": "データサイエンティストがSweep機能を使用してハイパーパラメータチューニングを行いたいと考えています。連続型ハイパーパラメータの探索空間をどのように定義しますか？",
+      "options": {
+        "A": "choice(['a', 'b', 'c'])",
+        "B": "uniform(0.01, 0.1)",
+        "C": "randint(1, 10)",
+        "D": "normal(0, 1)"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "ハイパーパラメータ探索空間の種類：\n- choice()：離散的な選択\n- uniform()：一様分布（連続）\n- loguniform()：対数一様分布\n- normal()：正規分布\n- randint()：ランダムな整数\n- quniform()：量子化一様分布\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q17",
+      "domain": 2,
+      "question": "HyperDrive/Sweepで、どの早期終了ポリシーが最も積極的で、最も多くの実行を終了させますか？",
+      "options": {
+        "A": "BanditPolicy",
+        "B": "MedianStoppingPolicy",
+        "C": "TruncationSelectionPolicy",
+        "D": "NoTerminationPolicy"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "早期終了ポリシーの比較：\n- TruncationSelection：最悪のX%の実行を終了、最も積極的\n- Bandit：最良の実行のスラックに基づく\n- MedianStopping：中央値以下の場合に終了\n- NoTermination：実行を終了しない\n選択はコンピューティング予算と探索ニーズによって異なります。\n---",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q18",
+      "domain": 2,
+      "question": "データサイエンティストが多数のカテゴリ（100以上）を含むカテゴリ特徴量を処理する必要があります。どのエンコーディング方法が最適ですか？",
+      "options": {
+        "A": "One-Hot Encoding",
+        "B": "Target Encoding",
+        "C": "Label Encoding",
+        "D": "Binary Encoding"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "高カーディナリティカテゴリ特徴量の処理：\n- Target Encoding：目的変数の平均値でカテゴリを置換\n- One-Hot：カテゴリが多いと次元爆発を引き起こす\n- Embedding：ディープラーニングで一般的\n- Frequency Encoding：出現頻度で置換\nTarget Encodingは次元を減らしながら情報を保持できます。\n---",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q19",
+      "domain": 2,
+      "question": "データセットに深刻なクラス不均衡があります（正例が1%のみ）。分類モデルをトレーニングする前に、どの戦略を検討すべきですか？",
+      "options": {
+        "A": "不均衡を無視する",
+        "B": "SMOTEを使用して少数クラスをオーバーサンプリングする",
+        "C": "多数クラスのサンプルを削除する",
+        "D": "回帰モデルを使用する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "クラス不均衡を処理する方法：\n- SMOTE：少数クラスの合成オーバーサンプリング\n- クラス重み：クラスの重みを調整\n- アンダーサンプリング：多数クラスのアンダーサンプリング\n- アンサンブル法：BalancedRandomForestなど\n- 閾値調整：分類閾値の調整\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q20",
+      "domain": 2,
+      "question": "Azure ML Designerで、連続的な数値特徴量を離散的なビンに変換するにはどうすればよいですか？",
+      "options": {
+        "A": "Normalize Data",
+        "B": "Clip Values",
+        "C": "Group Data into Bins",
+        "D": "Apply Math Operation"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "Group Data into Binsモジュール：\n- 連続値を離散区間に変換\n- 等幅ビニングと等頻度ビニングをサポート\n- カスタム境界をサポート\n- ビンインデックスまたは境界値を生成可能\n非線形関係の処理に適しています。\n---",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q21",
+      "domain": 2,
+      "question": "データサイエンティストが目的変数との相関が最も高い特徴量を選択する必要があります。Designerのどのモジュールを使用すべきですか？",
+      "options": {
+        "A": "PCA",
+        "B": "Filter Based Feature Selection",
+        "C": "Remove Duplicate Rows",
+        "D": "Select Columns in Dataset"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Filter Based Feature Selectionモジュール：\n- 特徴量と目的変数の相関を計算\n- 複数のスコアリング方法をサポート（Pearson、Chi-squaredなど）\n- 上位N個の特徴量を選択可能\n- 迅速な特徴量スクリーニングに適している\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q22",
+      "domain": 2,
+      "question": "勾配ブースティングモデルをトレーニングする際、過学習を最も効果的に防ぐハイパーパラメータはどれですか？",
+      "options": {
+        "A": "木の数を増やす",
+        "B": "最大深度を増やす",
+        "C": "学習率を下げてより多くの木を使用する",
+        "D": "リーフノードの最小サンプル数を増やす"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "勾配ブースティングの過学習を防ぐ戦略：\n- 学習率を下げる（収束は遅くなるがより安定）\n- 木の深さを制限する\n- リーフノードの最小サンプル数を増やす\n- 正則化パラメータを使用する\n- サブサンプリング（バギング分数）\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q23",
+      "domain": 2,
+      "question": "データサイエンティストがAzure MLで事前学習済みのHugging Faceモデルを使用する必要があります。最も簡単な方法は何ですか？",
+      "options": {
+        "A": "モデルファイルを手動でダウンロードする",
+        "B": "Azure MLモデルカタログを使用する",
+        "C": "モデルを一から学習する",
+        "D": "Azure Cognitive Servicesを使用する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure MLモデルカタログ（Model Catalog）：\n- Hugging Face、Metaなどの事前学習済みモデルを含む\n- マネージドエンドポイントへのワンクリックデプロイ\n- ファインチューニングをサポート\n- 使用例とドキュメントを含む\n- モデルは定期的に更新\n---",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q24",
+      "domain": 2,
+      "question": "MLパイプラインを作成する際、入力データが変更された場合にのみ特定のステップを再実行するにはどうすればよいですか？",
+      "options": {
+        "A": "手動で制御する",
+        "B": "キャッシュ機能を使用する",
+        "C": "毎回再実行する",
+        "D": "条件分岐を使用する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "パイプラインステップのキャッシング：\n- 入力データ、コード、構成が変更されていない場合、実行をスキップ\n- 以前の出力を再利用\n- パイプラインの実行を大幅に高速化\n- is_deterministic=Trueで有効化可能\n- コンピューティングコストを節約\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q25",
+      "domain": 2,
+      "question": "データサイエンティストがパイプラインで条件付きロジックを実装し、モデルのパフォーマンスに基づいてデプロイするかどうかを決定する必要があります。何を使用すべきですか？",
+      "options": {
+        "A": "すべてのステップを直列に実行する",
+        "B": "Pipeline control flowコンポーネント",
+        "C": "手動介入",
+        "D": "複数の独立したパイプラインを使用する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "パイプライン制御フロー：\n- 条件分岐：if-elseロジック\n- ループ：for-each反復\n- 並列：複数のブランチの並列実行\n- 集約：並列結果の統合\n複雑なワークフローロジックを実装します。\n---",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q26",
+      "domain": 2,
+      "question": "AutoMLを使用する際、ディープニューラルネットワーク（DNN）特徴化を有効にするにはどうすればよいですか？",
+      "options": {
+        "A": "task='deep_learning'を設定する",
+        "B": "enable_dnn=Trueを設定する",
+        "C": "GPUコンピューティングを使用する",
+        "D": "ニューラルネットワークアルゴリズムを選択する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "AutoML DNN特徴化：\n- enable_dnn=Trueでディープラーニング特徴を有効化\n- テキストと画像の特徴を自動的に抽出\n- 事前学習済みモデルを使用して埋め込みを生成\n- 非構造化データのパフォーマンスを向上\n- GPUコンピューティングリソースが必要\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q27",
+      "domain": 2,
+      "question": "データサイエンティストがトレーニング中にモデルチェックポイントを定期的に保存する必要があります。何を使用すべきですか？",
+      "options": {
+        "A": "mlflow.log_model()",
+        "B": "チェックポインティングを構成する",
+        "C": "各エポック後にモデルを登録する",
+        "D": "AutoMLを使用する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "モデルチェックポイント機能：\n- トレーニング状態を定期的に保存\n- 中断点からの再開をサポート\n- 長時間のトレーニングの進行状況の損失を防止\n- 最適なチェックポイントを選択可能\n- ディープラーニングトレーニングのベストプラクティス\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q28",
+      "domain": 2,
+      "question": "時系列予測モデルをトレーニングする際、データリークを避けるためにデータを正しく分割するにはどうすればよいですか？",
+      "options": {
+        "A": "ランダム分割",
+        "B": "時間順に分割（時系列分割）",
+        "C": "層化抽出",
+        "D": "K分割交差検証"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "時系列データの分割：\n- 時間順に分割する必要がある\n- トレーニングセットは過去のデータを使用\n- 検証セットは将来のデータを使用\n- 将来の情報がトレーニングに漏れるのを防ぐ\n- ローリングウィンドウ検証を使用\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q29",
+      "domain": 2,
+      "question": "データサイエンティストが同じデータセットで複数のモデルのパフォーマンスを比較したいと考えています。Designerでどのように行うべきですか？",
+      "options": {
+        "A": "複数のパイプラインを別々に実行する",
+        "B": "Evaluate Modelモジュールを使用して複数のScore Model出力を接続する",
+        "C": "1つのモデルのみをトレーニングする",
+        "D": "AutoMLを使用する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Designerでのモデル比較：\n- Evaluate Modelモジュールは2つのScore Model入力を受け入れ可能\n- 2つのモデルのパフォーマンスメトリクスを並べて表示\n- 精度、AUCなどを直感的に比較\n- 最適なモデルの選択を支援\n---",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q30",
+      "domain": 2,
+      "question": "データサイエンティストが自然言語処理モデルをトレーニングする必要があります。AutoMLはどのNLPタスクをサポートしていますか？",
+      "options": {
+        "A": "感情分析",
+        "B": "テキスト分類",
+        "C": "固有表現認識",
+        "D": "上記すべて"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "AutoMLがサポートするNLPタスク：\n- テキスト分類（シングルラベルとマルチラベル）\n- 固有表現認識（NER）\n- 感情分析（分類タスクとして）\n- 質問応答\n事前学習済みのTransformerモデルを使用します。\n---",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q31",
+      "domain": 3,
+      "question": "モデルを登録する際、後で照会および管理するためにメタデータタグを追加するにはどうすればよいですか？",
+      "options": {
+        "A": "モデルファイルにコメントを追加する",
+        "B": "Modelのtagsパラメータを使用する",
+        "C": "別のドキュメントを作成する",
+        "D": "Gitタグを使用する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "モデルタグ機能：\n```python\nfrom azure.ai.ml.entities import Model\nmodel = Model(\n    path='./model',\n    name='my-model',\n    tags={'framework': 'sklearn', 'task': 'classification'}\n)\nml_client.models.create_or_update(model)\n```\nタグはフィルタリングと検索をサポートします。\n---",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q32",
+      "domain": 3,
+      "question": "データサイエンティストがscikit-learnモデルをONNX形式に変換する必要があります。どのツールを使用すべきですか？",
+      "options": {
+        "A": "torch.onnx.export()",
+        "B": "sklearn-onnx (skl2onnx)",
+        "C": "tf2onnx",
+        "D": "pickle"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "sklearn-onnx変換：\n```python\nfrom skl2onnx import convert_sklearn\nfrom skl2onnx.common.data_types import FloatTensorType\n\ninitial_type = [('float_input', FloatTensorType([None, 4]))]\nonnx_model = convert_sklearn(clf, initial_types=initial_type)\n```\nほとんどのsklearnモデルをサポートします。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q33",
+      "domain": 3,
+      "question": "エントリースクリプト（score.py）で、run()関数はどのような形式のデータを返すべきですか？",
+      "options": {
+        "A": "文字列を返す必要がある",
+        "B": "numpy配列を返す必要がある",
+        "C": "JSONシリアライズ可能なデータを返す",
+        "D": "pickleオブジェクトを返す"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "run()関数の戻り値：\n- JSONシリアライズ可能である必要がある\n- dict、list、str、int、floatが可能\n- 通常は予測結果の辞書を返す\n```python\ndef run(data):\n    result = model.predict(data)\n    return {'predictions': result.tolist()}\n```\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q34",
+      "domain": 3,
+      "question": "モデルをデプロイする前に、エントリースクリプトのinit()およびrun()関数が正しいことを検証するにはどうすればよいですか？",
+      "options": {
+        "A": "本番環境に直接デプロイする",
+        "B": "MLflowモデルのローカルテストを使用する",
+        "C": "構文のみをチェックする",
+        "D": "AutoML検証を使用する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "ローカルテスト方法：\n```python\nimport mlflow\nmodel = mlflow.pyfunc.load_model('./model')\ntest_data = pd.DataFrame(...)\npredictions = model.predict(test_data)\n```\nまたはDockerコンテナを使用したローカルデプロイメントテスト。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q35",
+      "domain": 3,
+      "question": "ある会社が2つのバージョンの実際の効果を比較するためにモデルのA/Bテストを実施する必要があります。どのデプロイ戦略を使用すべきですか？",
+      "options": {
+        "A": "2つの独立したエンドポイントを作成する",
+        "B": "同じエンドポイントでトラフィック分配を構成する",
+        "C": "バッチエンドポイントを使用する",
+        "D": "手動でデプロイメントを切り替える"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "トラフィック分配によるA/Bテストの実装：\n```python\nendpoint.traffic = {\n    'model-v1': 50,\n    'model-v2': 50\n}\nml_client.online_endpoints.begin_create_or_update(endpoint)\n```\n2つのバージョンのパフォーマンスデータを収集して比較できます。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q36",
+      "domain": 3,
+      "question": "マネージドオンラインエンドポイントを使用する際、自動スケーリングをどのように構成しますか？",
+      "options": {
+        "A": "インスタンス数を手動で調整する",
+        "B": "scale_settingsのscale_typeをautomaticに構成する",
+        "C": "Azure Functionsを使用する",
+        "D": "自動スケーリングはサポートされていない"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "自動スケーリングの構成：\n```python\nfrom azure.ai.ml.entities import ManagedOnlineDeployment\ndeployment = ManagedOnlineDeployment(\n    ...\n    scale_settings=DefaultScaleSettings(\n        scale_type='automatic',\n        min_instances=1,\n        max_instances=5\n    )\n)\n```\n負荷に応じてインスタンス数を自動的に調整します。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q37",
+      "domain": 3,
+      "question": "データサイエンティストが推論にGPUを必要とするディープラーニングモデルをデプロイする必要があります。どのように構成すべきですか？",
+      "options": {
+        "A": "CPU SKUを使用する",
+        "B": "GPUを備えたVM SKU（Standard_NCシリーズなど）を選択する",
+        "C": "Azure Container Instanceを使用する",
+        "D": "エンドポイントでGPUを使用することはできない"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "GPU推論の構成：\n```python\ndeployment = ManagedOnlineDeployment(\n    ...\n    instance_type='Standard_NC6s_v3',\n    environment=env_with_cuda\n)\n```\n環境にCUDAと関連ドライバーが含まれていることを確認してください。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q38",
+      "domain": 3,
+      "question": "デプロイの準備をする際、モデルの依存関係のバージョンがトレーニング時と完全に一致していることを確認するにはどうすればよいですか？",
+      "options": {
+        "A": "最新バージョンのパッケージを使用する",
+        "B": "トレーニングと同じEnvironment定義を使用する",
+        "C": "バージョンを指定しない",
+        "D": "システムのデフォルト環境を使用する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "環境一貫性のベストプラクティス：\n- トレーニング時に環境定義を記録\n- conda.yamlでバージョンをロック\n- デプロイ時に同じ環境を参照\n- またはDockerイメージを使用して完全な一貫性を確保\n実行時のバージョン非互換性の問題を回避します。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q39",
+      "domain": 3,
+      "question": "MLflowモデルをオンラインエンドポイントとしてデプロイする必要があります。デプロイプロセスを簡素化するにはどうすればよいですか？",
+      "options": {
+        "A": "エントリースクリプトを手動で記述する",
+        "B": "MLflowモデルのノーコードデプロイメントを使用する",
+        "C": "ONNXに変換する",
+        "D": "Designerを使用する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "MLflowノーコードデプロイメント：\n- MLflowモデルはモデルとメタデータを含む\n- Azure MLはエントリースクリプトを自動生成\n- 環境を自動的に構成\n- デプロイプロセスを簡素化\n```python\ndeployment = ManagedOnlineDeployment(\n    model=mlflow_model\n)\n```\n---",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q40",
+      "domain": 3,
+      "question": "モデルをデプロイする際、リクエストタイムアウトと同時処理をどのように構成しますか？",
+      "options": {
+        "A": "構成できない",
+        "B": "デプロイメントのrequest_settingsで構成する",
+        "C": "エントリースクリプトで設定する",
+        "D": "モデルファイルで定義する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "リクエスト設定の構成：\n```python\nfrom azure.ai.ml.entities import OnlineRequestSettings\ndeployment = ManagedOnlineDeployment(\n    ...\n    request_settings=OnlineRequestSettings(\n        request_timeout_ms=60000,\n        max_concurrent_requests_per_instance=10\n    )\n)\n```\nモデルの複雑さに応じて調整します。\n---",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q41",
+      "domain": 4,
+      "question": "デプロイされたモデルエンドポイントには認証が必要です。マネージドオンラインエンドポイントはどの認証方式をサポートしていますか？",
+      "options": {
+        "A": "キー認証のみ",
+        "B": "キー認証とAzure ADトークン認証",
+        "C": "Azure AD認証のみ",
+        "D": "認証は不要"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "マネージドオンラインエンドポイントの認証オプション：\n- キー認証（Key-based）：APIキーを使用\n- Azure ADトークン認証：AADトークンを使用\nエンドポイント作成時にauth_modeを構成できます：\n- auth_mode='key'\n- auth_mode='aad_token'\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q42",
+      "domain": 4,
+      "question": "データサイエンティストがモデルの入力データ分布の変化を監視する必要があります。どの機能を使用すべきですか？",
+      "options": {
+        "A": "Application Insights",
+        "B": "データドリフトモニター（Model Monitor）",
+        "C": "Azure Monitorログ",
+        "D": "手動チェック"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure ML Model Monitor：\n- 本番推論データを収集\n- トレーニングデータのベースラインと比較\n- データドリフトを検出\n- アラート閾値を設定\n- 再トレーニングパイプラインをトリガー\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q43",
+      "domain": 4,
+      "question": "MLパイプラインをスケジュールに従って自動的に実行する（例：週1回）ようにするにはどうすればよいですか？",
+      "options": {
+        "A": "手動でトリガーする",
+        "B": "Scheduleを使用してスケジュールされたタスクを作成する",
+        "C": "Azure Functionsを使用する",
+        "D": "Azure Logic Appsを使用する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "パイプラインのスケジュール実行：\n```python\nfrom azure.ai.ml.entities import Schedule, RecurrenceTrigger\nschedule = Schedule(\n    name='weekly-retrain',\n    trigger=RecurrenceTrigger(\n        frequency='week',\n        interval=1\n    ),\n    create_job=pipeline_job\n)\nml_client.schedules.begin_create_or_update(schedule)\n```\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q44",
+      "domain": 4,
+      "question": "ある会社がMLアセットを管理するためにGitOpsプロセスを実装する必要があります。どのツールを使用すべきですか？",
+      "options": {
+        "A": "Azure Portalのみを使用する",
+        "B": "Azure ML CLI v2とGitHub Actionsを統合する",
+        "C": "手動でデプロイする",
+        "D": "Jupyter Notebookを使用する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "GitOpsのベストプラクティス：\n- YAMLファイルを使用してMLアセットを定義\n- YAMLをGitリポジトリに保存\n- GitHub Actions/Azure DevOpsを使用してトリガー\n- CLI v2コマンドでアセットをデプロイ\n- バージョン管理と監査を実装\n---",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q45",
+      "domain": 4,
+      "question": "モデルのパフォーマンスが低下した場合、自動アラートを設定するにはどうすればよいですか？",
+      "options": {
+        "A": "メトリクスを手動で監視する",
+        "B": "Azure Monitorアラートルールを構成する",
+        "C": "定期的にログを確認する",
+        "D": "ユーザーフィードバック"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure Monitorアラートの構成：\n- メトリクスアラートルールを作成\n- 閾値条件を設定\n- 通知アクショングループを構成\n- Teams、メール、SMS通知を統合\n- 自動化アクションをトリガー可能\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q46",
+      "domain": 4,
+      "question": "バッチエンドポイントがスコアリングを完了した後、出力結果をどのように取得しますか？",
+      "options": {
+        "A": "リアルタイムで結果を返す",
+        "B": "結果は指定された出力データストアに保存される",
+        "C": "APIを通じてクエリする",
+        "D": "メール通知を送信する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "バッチエンドポイントの出力：\n- 結果は非同期でデータストアに保存\n- 出力パスを指定可能\n- Blobストレージ、ADLSなどをサポート\n- 完了後、結果をダウンロードまたは処理可能\n- 大規模なバッチスコアリングに適している\n---",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q47",
+      "domain": 4,
+      "question": "モデルのデプロイが会社のガバナンス要件に準拠していることを確認するにはどうすればよいですか？",
+      "options": {
+        "A": "ガバナンスチェックをスキップする",
+        "B": "Azure Policyとモデル登録承認プロセスを使用する",
+        "C": "手動レビューのみに依存する",
+        "D": "パブリックエンドポイントを使用する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "MLガバナンスのベストプラクティス：\n- Azure Policyでコンプライアンスを強制\n- モデル登録承認プロセス\n- アセットタグとメタデータ\n- アクセス制御（RBAC）\n- 監査ログ\n- Responsible AIチェック\n---",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q48",
+      "domain": 4,
+      "question": "Kubernetesにデプロイされたモデルが高負荷を処理するために水平スケールする必要があります。どのように構成すべきですか？",
+      "options": {
+        "A": "VMサイズを増やす",
+        "B": "Kubernetes HPA（Horizontal Pod Autoscaler）を構成する",
+        "C": "レプリカを手動で追加する",
+        "D": "バッチエンドポイントを使用する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Kubernetes自動スケーリング：\n- HPAはCPU/メモリ使用率に基づいてPod数を自動調整\n- 最小および最大レプリカ数を構成可能\n- トラフィックの変化に対応\n- サービスの可用性を確保\n- リソース使用率を最適化\n---",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q49",
+      "domain": 4,
+      "question": "問題をデバッグするためにオンラインエンドポイントのリアルタイムログを表示するにはどうすればよいですか？",
+      "options": {
+        "A": "Azure Portalでのみ表示可能",
+        "B": "ml_client.online_deployments.get_logs()を使用する",
+        "C": "ログを表示できない",
+        "D": "Application Insightsのみを使用"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "デプロイメントログの表示：\n```python\nlogs = ml_client.online_deployments.get_logs(\n    name='my-deployment',\n    endpoint_name='my-endpoint',\n    lines=100\n)\nprint(logs)\n```\nAzure PortalまたはCLIからも表示できます。\n---",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q50",
+      "domain": 4,
+      "question": "ある会社がモデルの再トレーニング後に新旧モデルのパフォーマンスを自動的に比較し、パフォーマンスが向上した場合のみデプロイする必要があります。どのように実装すべきですか？",
+      "options": {
+        "A": "手動で比較する",
+        "B": "パイプラインにモデル検証ステップを追加する",
+        "C": "常に新しいモデルをデプロイする",
+        "D": "比較を行わない"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "モデル検証のベストプラクティス：\n- パイプラインに評価ステップを追加\n- 新しいモデルを登録されている最良のモデルと比較\n- パフォーマンス閾値を設定\n- 条件分岐を使用して登録/デプロイを決定\n- 比較結果を記録\nCI/CDのモデル品質ゲートを実装します。\n---",
+      "difficulty": "hard"
+    }
+  ]
+}

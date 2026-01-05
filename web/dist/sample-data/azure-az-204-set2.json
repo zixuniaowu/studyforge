@@ -1,0 +1,649 @@
+{
+  "exam": {
+    "id": "azure-az-204-set2",
+    "name": "Azure AZ-204 开发人员认证模拟考试 #2",
+    "code": "AZ-204",
+    "provider": "Azure",
+    "language": "zh-CN",
+    "description": "Microsoft Azure Developer Associate 认证考试模拟题，涵盖 Azure 计算解决方案、存储解决方案、安全性、监控优化以及第三方服务集成等核心开发领域",
+    "totalQuestions": 40,
+    "passingScore": 70,
+    "examTime": 120,
+    "domains": [
+      {
+        "id": 1,
+        "name": "开发 Azure 计算解决方案 (Develop Azure compute solutions)",
+        "weight": 28
+      },
+      {
+        "id": 2,
+        "name": "开发 Azure 存储解决方案 (Develop for Azure storage)",
+        "weight": 17
+      },
+      {
+        "id": 3,
+        "name": "实现 Azure 安全性 (Implement Azure security)",
+        "weight": 22
+      },
+      {
+        "id": 4,
+        "name": "监视、故障排除和优化 Azure 解决方案 (Monitor, troubleshoot, and optimize)",
+        "weight": 18
+      },
+      {
+        "id": 5,
+        "name": "连接和使用 Azure 服务及第三方服务 (Connect to and consume Azure and third-party services)",
+        "weight": 15
+      }
+    ],
+    "tags": [
+      "Azure",
+      "AZ-204",
+      "开发人员",
+      "认证考试",
+      "云开发"
+    ]
+  },
+  "questions": [
+    {
+      "id": "q1",
+      "domain": 1,
+      "question": "您正在开发一个 Azure Function，需要访问 Azure SQL 数据库。您希望在不存储凭据的情况下进行身份验证。您应该使用什么？",
+      "options": {
+        "A": "SQL 身份验证",
+        "B": "Azure AD 集成身份验证与托管标识",
+        "C": "连接字符串中的用户名和密码",
+        "D": "证书身份验证"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "使用托管标识和 Azure AD 集成身份验证是无密码访问 Azure SQL 数据库的最佳实践。Azure Function 的托管标识可以被授予对 SQL 数据库的访问权限，无需在代码或配置中存储凭据。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q2",
+      "domain": 1,
+      "question": "您正在使用 Azure App Service 部署槽进行蓝绿部署。您需要将生产流量逐步切换到新版本。您应该使用什么功能？",
+      "options": {
+        "A": "自动交换",
+        "B": "流量路由",
+        "C": "手动交换",
+        "D": "槽设置"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "流量路由功能允许您将一定百分比的流量路由到部署槽。这对于金丝雀发布或 A/B 测试非常有用，可以逐步增加新版本的流量百分比，同时监控性能和错误率。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q3",
+      "domain": 1,
+      "question": "您正在开发一个 Azure Function，该函数由 Blob Storage 触发器激活。您需要确保函数只处理特定容器中的新 Blob。您应该如何配置触发器？",
+      "options": {
+        "A": "使用 path 属性指定容器名称",
+        "B": "使用 filter 属性过滤 Blob",
+        "C": "在函数代码中检查容器名称",
+        "D": "创建多个函数"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "在 Blob 触发器的绑定中，使用 path 属性指定容器名称和 Blob 模式，例如 'mycontainer/{name}'。这确保函数只在指定容器中创建新 Blob 时触发。\n---",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q4",
+      "domain": 1,
+      "question": "您需要在 Azure Container Apps 中配置环境变量。这些变量应该在运行时可用且可以安全存储敏感值。您应该使用什么？",
+      "options": {
+        "A": "Dockerfile 中的 ENV 指令",
+        "B": "容器应用程序的机密和环境变量",
+        "C": "Azure App Configuration",
+        "D": "Azure Blob Storage"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure Container Apps 支持机密（secrets）来存储敏感值，以及环境变量来传递配置。机密可以从 Azure Key Vault 引用或直接定义。环境变量可以引用机密值，确保敏感数据安全。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q5",
+      "domain": 1,
+      "question": "您正在使用 Durable Functions 实现一个长时间运行的工作流。工作流需要在完成后发送通知，但中间状态不需要持久化。您应该使用哪种持久性选项？",
+      "options": {
+        "A": "Azure Storage",
+        "B": "Netherite (Azure Event Hubs)",
+        "C": "MSSQL",
+        "D": "In-memory (仅用于测试)"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Azure Storage 是 Durable Functions 的默认存储提供程序，适用于大多数生产场景。Netherite 适用于需要极高吞吐量的场景，MSSQL 适用于需要 SQL Server 的企业环境。In-memory 仅用于测试，不持久化状态。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q6",
+      "domain": 1,
+      "question": "您正在将应用程序容器化并部署到 Azure Container Instances。应用程序需要 2 个 CPU 核心和 4 GB 内存。您应该如何指定资源？",
+      "options": {
+        "A": "在 Dockerfile 中指定",
+        "B": "在容器组定义中指定 CPU 和内存请求",
+        "C": "在应用程序代码中配置",
+        "D": "使用环境变量"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure Container Instances 允许在容器组定义中指定 CPU 和内存资源。使用 ARM 模板、Azure CLI 或 Azure Portal 创建容器组时，可以为每个容器指定 cpu 和 memoryInGB 属性。\n---",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q7",
+      "domain": 1,
+      "question": "您正在开发一个需要处理大量并发请求的 Azure Function。您需要确保函数可以水平扩展。您应该选择哪个托管计划？",
+      "options": {
+        "A": "消耗计划",
+        "B": "专用计划 (Basic 层)",
+        "C": "专用计划 (Free 层)",
+        "D": "Flex 消耗计划"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "消耗计划提供自动横向扩展，根据传入事件数量动态添加函数实例。这是处理可变负载的理想选择。专用计划的 Basic 和 Free 层扩展能力有限。Flex 消耗计划是较新选项，提供更多控制。\n---",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q8",
+      "domain": 1,
+      "question": "您正在使用 Azure App Service 的 WebJobs 运行后台任务。您需要一个持续运行的作业来处理队列消息。您应该创建哪种类型的 WebJob？",
+      "options": {
+        "A": "触发式 WebJob",
+        "B": "连续 WebJob",
+        "C": "计划 WebJob",
+        "D": "按需 WebJob"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "连续 WebJob 持续运行，适合需要持续处理工作的场景，如监听队列消息。WebJob SDK 可以简化与 Azure 存储队列的集成。触发式 WebJob 响应事件运行，计划 WebJob 按 CRON 时间表运行。\n---",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q9",
+      "domain": 2,
+      "question": "您正在使用 Azure Blob Storage 的不可变存储功能。您需要确保 Blob 在保留期内不能被修改或删除。您应该配置什么？",
+      "options": {
+        "A": "软删除",
+        "B": "基于时间的保留策略",
+        "C": "法定保留",
+        "D": "版本控制"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "基于时间的保留策略可以配置在容器级别，防止 Blob 在指定保留期内被修改或删除。这对于合规性要求非常重要。法定保留用于无限期保留，软删除允许恢复已删除的 Blob，版本控制保留历史版本。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q10",
+      "domain": 2,
+      "question": "您正在使用 Azure Cosmos DB 并需要实现乐观并发控制。您应该使用什么？",
+      "options": {
+        "A": "分区键",
+        "B": "ETag 和条件请求",
+        "C": "存储过程",
+        "D": "触发器"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Cosmos DB 使用 ETag（实体标签）实现乐观并发控制。每个文档都有一个 _etag 属性，在更新时可以使用条件请求（If-Match 标头）来确保文档未被其他进程修改。如果 ETag 不匹配，更新将失败。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q11",
+      "domain": 2,
+      "question": "您需要将数据从 Azure Blob Storage 复制到另一个存储帐户。源和目标都在同一区域。您应该使用什么以获得最佳性能？",
+      "options": {
+        "A": "AzCopy 异步复制",
+        "B": "Put Blob From URL",
+        "C": "下载然后上传",
+        "D": "Azure Data Factory"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Put Blob From URL 操作允许服务器端复制，数据直接在 Azure 存储服务之间传输，无需通过客户端。这比下载后上传快得多，并且不消耗本地带宽。AzCopy 也使用此 API 进行跨帐户复制。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q12",
+      "domain": 2,
+      "question": "您正在使用 Azure Cosmos DB 的 SQL API。您需要执行一个事务，其中多个操作必须作为一个原子单元成功或失败。您应该使用什么？",
+      "options": {
+        "A": "批量执行器",
+        "B": "事务性批处理",
+        "C": "存储过程",
+        "D": "更改源处理器"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "事务性批处理允许在同一分区键内执行多个操作作为单个事务。所有操作要么全部成功，要么全部失败。这适用于需要原子性的场景。存储过程也支持事务，但事务性批处理更简单易用。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q13",
+      "domain": 2,
+      "question": "您正在为 Azure Blob Storage 配置访问层。数据将频繁访问前 30 天，之后很少访问。您应该使用什么策略？",
+      "options": {
+        "A": "始终使用热存储层",
+        "B": "始终使用冷存储层",
+        "C": "使用生命周期管理策略自动转换",
+        "D": "手动更改访问层"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "生命周期管理策略可以自动根据 Blob 的年龄将其从热存储转移到冷存储或存档存储。这可以在不牺牲性能的情况下优化存储成本。配置规则将 30 天后的 Blob 移动到冷存储层。\n---",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q14",
+      "domain": 2,
+      "question": "您正在使用 Azure Cosmos DB 并需要查询跨多个分区的数据。您应该注意什么性能考虑？",
+      "options": {
+        "A": "跨分区查询自动优化",
+        "B": "跨分区查询消耗更多 RU 且延迟更高",
+        "C": "跨分区查询被禁止",
+        "D": "跨分区查询与单分区查询性能相同"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "跨分区查询需要向多个分区发送请求并合并结果，因此消耗更多请求单位 (RU) 并且延迟更高。为了获得最佳性能，应设计查询以针对单个分区，通过在查询中包含分区键来实现。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q15",
+      "domain": 3,
+      "question": "您需要使用 Azure AD 保护 Web API，并且只允许特定应用程序访问。您应该在令牌中验证什么？",
+      "options": {
+        "A": "scope 声明",
+        "B": "appid 或 azp 声明",
+        "C": "name 声明",
+        "D": "email 声明"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "appid（v1.0 令牌）或 azp（v2.0 令牌）声明包含调用应用程序的客户端 ID。通过验证此声明，可以确保只有特定的授权应用程序可以访问 API。scope 声明用于验证委托权限。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q16",
+      "domain": 3,
+      "question": "您正在配置 Azure Key Vault 以允许多个应用程序访问。您需要遵循最小权限原则。您应该如何配置访问权限？",
+      "options": {
+        "A": "将所有应用程序添加到同一访问策略",
+        "B": "为每个应用程序创建单独的访问策略，只授予必要的权限",
+        "C": "使用管理员访问策略",
+        "D": "禁用访问策略，使用防火墙规则"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "最小权限原则要求每个应用程序只获得其所需的最少权限。为每个应用程序创建单独的访问策略，只授予必要的权限（如某些应用程序只需要读取机密，而其他应用程序可能需要管理密钥）。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q17",
+      "domain": 3,
+      "question": "您正在实现 OAuth 2.0 客户端凭据流以允许守护程序应用程序访问 API。应用程序不代表用户操作。您应该请求什么类型的令牌？",
+      "options": {
+        "A": "ID 令牌",
+        "B": "刷新令牌",
+        "C": "带有应用程序权限的访问令牌",
+        "D": "带有委托权限的访问令牌"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "客户端凭据流用于服务到服务的身份验证，不涉及用户。应用程序请求带有应用程序权限（而不是委托权限）的访问令牌。应用程序权限在 Azure AD 应用注册中配置并需要管理员同意。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q18",
+      "domain": 3,
+      "question": "您的应用程序需要安全地存储和检索加密密钥。您需要确保密钥永远不会离开安全边界。您应该使用什么 Azure Key Vault 功能？",
+      "options": {
+        "A": "软删除",
+        "B": "HSM 支持的密钥",
+        "C": "密钥轮换",
+        "D": "访问策略"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure Key Vault 的 HSM（硬件安全模块）支持的密钥确保密钥存储在经过 FIPS 140-2 验证的硬件中，密钥材料永远不会离开 HSM 边界。这提供了最高级别的密钥保护。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q19",
+      "domain": 3,
+      "question": "您正在为 Azure App Service 配置身份验证。您需要允许匿名访问某些端点，同时保护其他端点。您应该如何配置？",
+      "options": {
+        "A": "启用身份验证并设置"允许未经身份验证的请求"",
+        "B": "禁用 App Service 身份验证",
+        "C": "为每个端点创建单独的 App Service",
+        "D": "使用 IP 限制"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "配置 App Service 身份验证时，选择"允许未经身份验证的请求"选项。这允许未经身份验证的请求通过，但仍然会对经过身份验证的请求进行令牌验证。然后在应用程序代码中对需要保护的端点进行授权检查。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q20",
+      "domain": 3,
+      "question": "您需要配置 Azure Key Vault 的网络安全，只允许特定虚拟网络中的资源访问。您应该配置什么？",
+      "options": {
+        "A": "访问策略",
+        "B": "服务终结点和防火墙规则",
+        "C": "托管标识",
+        "D": "软删除"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "通过配置 Key Vault 防火墙和虚拟网络规则，可以限制只有特定虚拟网络子网中的资源才能访问 Key Vault。首先在子网上启用服务终结点，然后在 Key Vault 中添加虚拟网络规则。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q21",
+      "domain": 4,
+      "question": "您需要在 Application Insights 中创建自定义警报，当应用程序响应时间超过 5 秒时触发。您应该使用什么？",
+      "options": {
+        "A": "可用性警报",
+        "B": "指标警报",
+        "C": "日志警报",
+        "D": "智能检测"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "指标警报基于平台指标创建警报规则。可以配置当响应时间指标超过阈值时触发警报。日志警报基于日志查询，可用性警报用于 URL ping 测试，智能检测是自动的异常检测。\n---",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q22",
+      "domain": 4,
+      "question": "您正在使用 Azure Redis Cache，需要监控缓存命中率以评估缓存效率。您应该查看什么指标？",
+      "options": {
+        "A": "已用内存",
+        "B": "缓存命中数和缓存未命中数",
+        "C": "连接客户端数",
+        "D": "服务器负载"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "缓存命中率 = 缓存命中数 / (缓存命中数 + 缓存未命中数)。高命中率表示缓存有效，大多数请求从缓存返回。低命中率可能表示需要调整缓存策略或 TTL 设置。\n---",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q23",
+      "domain": 4,
+      "question": "您需要配置 Application Insights 以采样遥测数据，减少成本同时保持代表性数据。您应该使用什么类型的采样？",
+      "options": {
+        "A": "固定速率采样",
+        "B": "自适应采样",
+        "C": "引入采样",
+        "D": "禁用采样"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "自适应采样会自动调整采样率以保持遥测量在目标范围内。在高流量时期增加采样，低流量时期减少采样。这确保了代表性数据同时控制成本。固定速率采样使用恒定百分比。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q24",
+      "domain": 4,
+      "question": "您正在使用 Azure CDN 并需要了解内容的缓存状态。您应该检查响应中的什么标头？",
+      "options": {
+        "A": "Content-Type",
+        "B": "X-Cache",
+        "C": "Cache-Control",
+        "D": "ETag"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "X-Cache 标头指示响应是从 CDN 边缘缓存返回（HIT）还是从源服务器获取（MISS）。这对于验证 CDN 缓存是否正常工作非常有用。Cache-Control 定义缓存策略，ETag 用于验证。\n---",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q25",
+      "domain": 4,
+      "question": "您需要在 Application Insights 中关联来自多个服务的分布式跟踪。您应该确保什么？",
+      "options": {
+        "A": "所有服务使用相同的 Instrumentation Key",
+        "B": "所有服务传播 W3C Trace Context 标头",
+        "C": "所有服务在同一区域",
+        "D": "所有服务使用相同的编程语言"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "W3C Trace Context 标准定义了 traceparent 和 tracestate 标头，用于在分布式系统中传播跟踪上下文。确保所有服务传播这些标头可以在 Application Insights 中自动关联跨服务的请求。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q26",
+      "domain": 4,
+      "question": "您正在优化 Azure Cosmos DB 的性能。您注意到某些查询消耗了大量 RU。您应该使用什么来分析查询性能？",
+      "options": {
+        "A": "Azure Monitor",
+        "B": "查询执行指标",
+        "C": "Application Insights",
+        "D": "Azure Advisor"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Cosmos DB SDK 返回每个请求的执行指标，包括请求费用（RU 消耗）、执行时间和文档计数。在 Azure Portal 的 Data Explorer 中执行查询时也会显示查询统计信息。这有助于识别和优化高成本查询。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q27",
+      "domain": 5,
+      "question": "您正在使用 Azure Service Bus 主题发布消息。您需要确保多个订阅者可以接收相同的消息。您应该创建什么？",
+      "options": {
+        "A": "多个队列",
+        "B": "一个主题和多个订阅",
+        "C": "多个主题",
+        "D": "一个队列和多个消费者"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Service Bus 主题支持发布/订阅模式。发送到主题的消息会复制到所有订阅。每个订阅独立消费消息，可以有自己的筛选规则。这与队列不同，队列中每条消息只被一个消费者处理。\n---",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q28",
+      "domain": 5,
+      "question": "您正在使用 Azure Event Grid 并需要确保事件按顺序传递。您应该注意什么？",
+      "options": {
+        "A": "Event Grid 保证全局顺序",
+        "B": "Event Grid 不保证事件顺序",
+        "C": "Event Grid 在主题内保证顺序",
+        "D": "Event Grid 在订阅内保证顺序"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure Event Grid 不保证事件的顺序传递。它优化了高吞吐量和低延迟传递。如果需要有序处理，应在应用程序中实现排序逻辑，或使用支持 FIFO 的服务如 Service Bus 会话。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q29",
+      "domain": 5,
+      "question": "您需要在 Azure API Management 中实现请求限制，以防止单个客户端消耗过多资源。您应该使用什么策略？",
+      "options": {
+        "A": "rate-limit",
+        "B": "rate-limit-by-key",
+        "C": "quota",
+        "D": "ip-filter"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "rate-limit-by-key 策略允许基于任何表达式（如订阅密钥、IP 地址或用户身份）限制请求速率。这对于防止单个客户端过度使用 API 非常有效。rate-limit 策略应用于所有调用者。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q30",
+      "domain": 5,
+      "question": "您正在使用 Azure Queue Storage 并需要实现消息的延迟处理。您应该使用什么功能？",
+      "options": {
+        "A": "消息 TTL",
+        "B": "可见性超时",
+        "C": "添加消息时指定初始隐藏时间",
+        "D": "死信队列"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "Azure Queue Storage 允许在添加消息时指定初始不可见时间（visibilityTimeout）。这使得消息在指定时间之前不会被任何消费者看到，从而实现延迟处理。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q31",
+      "domain": 5,
+      "question": "您正在使用 Azure Event Hubs 捕获流数据到存储。您需要将数据保存为 Avro 格式以供后续分析。您应该启用什么功能？",
+      "options": {
+        "A": "Event Hubs 存档",
+        "B": "Event Hubs Capture",
+        "C": "Azure Stream Analytics",
+        "D": "Azure Data Factory"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Event Hubs Capture 自动将流数据捕获到 Azure Blob Storage 或 Azure Data Lake Storage，格式为 Avro。这允许在不编写额外代码的情况下保留原始事件数据以供批量处理或分析。\n---",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q32",
+      "domain": 5,
+      "question": "您需要使用 Azure API Management 将旧版 SOAP 服务暴露为 REST API。您应该使用什么功能？",
+      "options": {
+        "A": "API 版本",
+        "B": "SOAP 到 REST 转换策略",
+        "C": "后端服务",
+        "D": "GraphQL API"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure API Management 可以导入 WSDL 规范并创建 SOAP 传递 API 或 SOAP 到 REST API。通过策略可以将 SOAP 请求/响应转换为 RESTful JSON 格式，使现代客户端可以使用旧版服务。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q33",
+      "domain": 1,
+      "question": "您正在使用 Azure Functions 的输入绑定从 Cosmos DB 读取数据。您需要基于 HTTP 请求中的参数查询特定文档。您应该如何配置绑定？",
+      "options": {
+        "A": "使用静态 ID 配置绑定",
+        "B": "使用绑定表达式引用路由参数",
+        "C": "在函数代码中执行查询",
+        "D": "使用输出绑定"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure Functions 绑定表达式允许在绑定配置中使用动态值。例如，可以使用 {id} 引用 HTTP 路由参数来查询特定文档。这简化了代码并利用了绑定的声明式特性。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q34",
+      "domain": 1,
+      "question": "您正在开发一个 Azure Function，需要在函数启动时执行初始化代码（如配置依赖注入）。您应该在哪里放置此代码？",
+      "options": {
+        "A": "在函数方法的开头",
+        "B": "在 Startup 类中",
+        "C": "在 host.json 中",
+        "D": "在 function.json 中"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure Functions 支持使用 Startup 类配置依赖注入和其他初始化逻辑。创建一个继承自 FunctionsStartup 的类，并使用 [assembly: FunctionsStartup] 属性注册它。这在函数主机启动时执行。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q35",
+      "domain": 2,
+      "question": "您需要在 Azure Cosmos DB 中实现全文搜索功能。您应该使用什么？",
+      "options": {
+        "A": "Cosmos DB 内置的 CONTAINS 函数",
+        "B": "Azure Cognitive Search 与 Cosmos DB 集成",
+        "C": "Cosmos DB 存储过程",
+        "D": "Cosmos DB 触发器"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure Cognitive Search 提供了强大的全文搜索功能，可以与 Cosmos DB 集成。通过配置索引器自动同步 Cosmos DB 数据到搜索索引，然后使用搜索 API 执行复杂的全文搜索。CONTAINS 函数只支持基本的字符串包含检查。\n---",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q36",
+      "domain": 3,
+      "question": "您需要为 Azure App Service 配置自定义域并启用 HTTPS。您应该使用什么类型的证书？",
+      "options": {
+        "A": "自签名证书",
+        "B": "App Service 托管证书",
+        "C": "IP SSL 证书",
+        "D": "通配符证书必须手动上传"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "App Service 托管证书是免费的 SSL/TLS 证书，由 Azure 自动创建和续订。适用于自定义域的标准 HTTPS 要求。对于更高级的需求（如通配符证书），可以购买 App Service 证书或导入自己的证书。\n---",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q37",
+      "domain": 4,
+      "question": "您需要使用 Azure Monitor 创建工作簿来可视化多个 Azure 资源的指标。工作簿应该可以与团队共享。您应该如何配置？",
+      "options": {
+        "A": "创建私有工作簿",
+        "B": "创建共享工作簿",
+        "C": "导出为 JSON",
+        "D": "使用 Power BI"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure Monitor 工作簿可以保存为共享工作簿，存储在资源组中，团队成员可以查看和编辑。共享工作簿支持协作和版本控制。私有工作簿只对创建者可见。\n---",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q38",
+      "domain": 5,
+      "question": "您正在使用 Azure API Management 并需要在将请求发送到后端之前修改请求标头。您应该使用哪个策略部分？",
+      "options": {
+        "A": "inbound",
+        "B": "outbound",
+        "C": "backend",
+        "D": "on-error"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "API Management 策略分为四个部分：inbound（入站）处理传入请求，backend（后端）在请求发送到后端之前应用，outbound（出站）处理响应，on-error 处理错误。修改请求标头应在 inbound 部分完成。\n---",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q39",
+      "domain": 1,
+      "question": "您正在使用 Azure Container Apps 并需要配置应用程序以在流量为零时缩减到零实例。您应该配置什么？",
+      "options": {
+        "A": "最小副本数设置为 0",
+        "B": "禁用自动缩放",
+        "C": "使用消耗计划",
+        "D": "配置 CPU 缩放规则"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Azure Container Apps 允许将最小副本数配置为 0，这意味着在没有流量时应用程序可以缩减到零实例以节省成本。当新请求到达时，应用程序会自动扩展。这是容器应用程序的按需计费模型。\n---",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q40",
+      "domain": 2,
+      "question": "您正在使用 Azure Blob Storage 并需要启用对象复制以将 Blob 异步复制到另一个区域。您需要满足什么先决条件？（选择两个）",
+      "options": {
+        "A": "源和目标存储帐户启用版本控制",
+        "B": "源和目标存储帐户启用更改源",
+        "C": "源和目标存储帐户在同一订阅中",
+        "D": "使用高级性能层"
+      },
+      "answer": ["A", "B"],
+      "answerType": "multiple",
+      "explanation": "Azure Blob Storage 对象复制要求源和目标存储帐户都启用 Blob 版本控制和更改源。版本控制跟踪 Blob 更改，更改源提供更改日志。存储帐户可以在不同订阅或区域中。\n---",
+      "difficulty": "medium"
+    }
+  ]
+}
