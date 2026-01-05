@@ -1,0 +1,661 @@
+{
+  "exam": {
+    "id": "azure-dp-203-set3-ja",
+    "name": "Data Engineering on Microsoft Azure 練習問題 Set 3",
+    "code": "DP-203",
+    "provider": "Microsoft",
+    "language": "ja",
+    "description": "Azure データ エンジニアリング ソリューションの設計と実装に関する練習問題セット 3",
+    "totalQuestions": 40,
+    "passingScore": 70,
+    "examTime": 120,
+    "domains": [
+      "データ ストレージの設計と実装",
+      "データ処理の開発",
+      "データ ストレージとデータ処理のセキュリティ保護、監視、最適化"
+    ],
+    "tags": ["Azure", "Data Engineering", "Synapse", "Data Factory", "Databricks"]
+  },
+  "questions": [
+    {
+      "id": "dp203-s3-ja-q1",
+      "examId": "azure-dp-203-set3-ja",
+      "setNumber": 3,
+      "domain": "データ ストレージの設計と実装",
+      "question": "Azure Synapse Analytics を使用してデータ ウェアハウスを設計しています。注文が作成されてから完了するまでのライフサイクル全体を追跡するための累積スナップショット ファクト テーブルを実装する必要があります。このテーブルをどのように設計しますか？",
+      "options": {
+        "A": "各注文状態に対して個別の行を作成する",
+        "B": "単一の行にすべてのマイルストーン日付とメジャーを保存する",
+        "C": "各ステージに対して複数のファクト テーブルを作成する",
+        "D": "SCD タイプ 2 を使用して変更を追跡する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "累積スナップショット ファクト テーブルは、ビジネス プロセスのライフサイクル全体を単一の行で追跡し、複数のマイルストーン日付列（order_date、ship_date、delivery_date など）と関連するメジャーを含みます。プロセスが進行すると、同じ行が更新されます。"
+    },
+    {
+      "id": "dp203-s3-ja-q2",
+      "examId": "azure-dp-203-set3-ja",
+      "setNumber": 3,
+      "domain": "データ処理の開発",
+      "question": "Azure Databricks の Delta Lake を使用しています。CDC（変更データ キャプチャ）データを処理するために MERGE 操作を実装する必要があります。MERGE 操作の正しい構文順序は何ですか？",
+      "options": {
+        "A": "MERGE INTO, USING, ON, WHEN MATCHED, WHEN NOT MATCHED",
+        "B": "MERGE, FROM, WHERE, UPDATE, INSERT",
+        "C": "UPDATE, INSERT, DELETE, FROM, WHERE",
+        "D": "UPSERT INTO, VALUES, ON CONFLICT"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Delta Lake MERGE 構文は、MERGE INTO target USING source ON condition WHEN MATCHED THEN UPDATE WHEN NOT MATCHED THEN INSERT です。これにより、単一のアトミック操作で更新、挿入、削除を実行できます。他のオプションは有効な Delta Lake 構文ではありません。"
+    },
+    {
+      "id": "dp203-s3-ja-q3",
+      "examId": "azure-dp-203-set3-ja",
+      "setNumber": 3,
+      "domain": "データ ストレージとデータ処理のセキュリティ保護、監視、最適化",
+      "question": "Azure Synapse Analytics で最小権限の原則を実装する必要があります。ユーザーが SELECT クエリを実行できるようにしながら、テーブル定義の表示を阻止したいです。どのアクセス許可を付与しますか？",
+      "options": {
+        "A": "db_datareader ロール",
+        "B": "SELECT 権限を付与し、VIEW DEFINITION を拒否する",
+        "C": "EXECUTE 権限",
+        "D": "CONNECT 権限"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "SELECT 権限を付与し、VIEW DEFINITION 権限を明示的に拒否することで、ユーザーはデータをクエリできますが、テーブル構造を表示できません。db_datareader ロールには VIEW DEFINITION 権限が含まれ、EXECUTE はストアド プロシージャ用、CONNECT はデータベースへの接続のみを許可します。"
+    },
+    {
+      "id": "dp203-s3-ja-q4",
+      "examId": "azure-dp-203-set3-ja",
+      "setNumber": 3,
+      "domain": "データ ストレージの設計と実装",
+      "question": "Azure Data Lake Storage Gen2 を使用しています。誤って削除または変更されたファイルを回復できるようにバージョン管理を実装する必要があります。どの機能を有効にしますか？",
+      "options": {
+        "A": "論理的な削除",
+        "B": "BLOB バージョン管理",
+        "C": "不変ストレージ",
+        "D": "ポイント イン タイム復元"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "BLOB バージョン管理は、変更ごとに新しいバージョンを自動的に作成し、以前のバージョンに回復できます。論理的な削除は削除操作のみを保護し、不変ストレージは変更を防ぎますがバージョン履歴は提供せず、ポイント イン タイム復元はコンテナー レベルの回復に使用されます。"
+    },
+    {
+      "id": "dp203-s3-ja-q5",
+      "examId": "azure-dp-203-set3-ja",
+      "setNumber": 3,
+      "domain": "データ処理の開発",
+      "question": "Azure Stream Analytics を使用して IoT データを処理しています。デバイスが 10 分間データを送信していない状況を検出する必要があります。どの技術を使用しますか？",
+      "options": {
+        "A": "タンブリング ウィンドウ集計",
+        "B": "DATEDIFF 関数",
+        "C": "LAG 関数と LIMIT DURATION",
+        "D": "セッション ウィンドウ"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "LAG 関数を使用すると以前のイベントにアクセスでき、LIMIT DURATION と組み合わせてルックバック時間ウィンドウを設定できます。現在のイベント時間と前のイベント時間を比較することで、しきい値を超えるギャップを検出できます。"
+    },
+    {
+      "id": "dp203-s3-ja-q6",
+      "examId": "azure-dp-203-set3-ja",
+      "setNumber": 3,
+      "domain": "データ ストレージとデータ処理のセキュリティ保護、監視、最適化",
+      "question": "Azure Databricks の Spark ジョブを最適化する必要があります。一部のタスクの実行時間が他のタスクよりもはるかに長いことがわかりました。この問題の最も可能性の高い原因は何ですか？",
+      "options": {
+        "A": "メモリ不足",
+        "B": "データ スキュー",
+        "C": "ネットワーク遅延",
+        "D": "ディスク I/O ボトルネック"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "一部のタスクの実行時間が他のタスクよりもはるかに長い場合、通常はデータ スキューの問題を示しています。一部のパーティションのデータ量が他のパーティションよりもはるかに多く、それらのパーティションを処理するタスクにより長い時間がかかります。解決策には再パーティション化やソルティングなどの技術が含まれます。"
+    },
+    {
+      "id": "dp203-s3-ja-q7",
+      "examId": "azure-dp-203-set3-ja",
+      "setNumber": 3,
+      "domain": "データ ストレージの設計と実装",
+      "question": "Azure Synapse Analytics で CETAS（CREATE EXTERNAL TABLE AS SELECT）を使用してクエリ結果を Data Lake にエクスポートしています。並列読み取りパフォーマンスを向上させるために出力を複数のファイルにパーティション化する必要があります。どのように実現しますか？",
+      "options": {
+        "A": "SELECT で PARTITION BY を使用する",
+        "B": "複数の CETAS ステートメントを使用する",
+        "C": "クエリ結果は分散列に基づいて自動的にパーティション化される",
+        "D": "WITH 句で DATA_SOURCE を指定する"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "CETAS は、ソース テーブルの分散と並列度に基づいて出力データを複数のファイルに自動的に書き込みます。各分散が 1 つ以上のファイルに書き込みます。追加の構成は必要なく、システムが出力を自動的に並列化します。"
+    },
+    {
+      "id": "dp203-s3-ja-q8",
+      "examId": "azure-dp-203-set3-ja",
+      "setNumber": 3,
+      "domain": "データ処理の開発",
+      "question": "Azure Data Factory のマッピング データ フローを使用しています。複雑なビジネス ルールに基づいて 1 つの入力ストリームを複数の出力ストリームに分割する必要があります。どの変換を使用しますか？",
+      "options": {
+        "A": "派生列",
+        "B": "条件分割",
+        "C": "フィルター",
+        "D": "選択"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "条件分割（Conditional Split）変換を使用すると、条件に基づいてデータ行を異なる出力ストリームにルーティングできます。複数の条件を定義でき、各条件は 1 つの出力分岐に対応します。派生列は新しい列を作成し、フィルターは単一の出力のみを生成し、選択は列の選択と名前変更に使用されます。"
+    },
+    {
+      "id": "dp203-s3-ja-q9",
+      "examId": "azure-dp-203-set3-ja",
+      "setNumber": 3,
+      "domain": "データ ストレージとデータ処理のセキュリティ保護、監視、最適化",
+      "question": "Azure Synapse Analytics 専用 SQL プールで大量の NULL 値を含む列のクエリを最適化する必要があります。NULL 値は列値の約 80% を占めています。どのように最適化しますか？",
+      "options": {
+        "A": "NULL をデフォルト値に置き換える",
+        "B": "スパース列を作成する",
+        "C": "NULL を除外するフィルター インデックスを作成する",
+        "D": "列ストア インデックスを使用する"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "列ストア インデックスは NULL 値に対して優れた圧縮効果を持っています。NULL 値は列ストアではほとんどスペースを占有せず、クエリ時に NULL セグメントを効率的にスキップできます。Synapse ではスパース列のサポートが限られており、フィルター インデックスは役立ちますが列ストアの方が通常より効果的です。"
+    },
+    {
+      "id": "dp203-s3-ja-q10",
+      "examId": "azure-dp-203-set3-ja",
+      "setNumber": 3,
+      "domain": "データ ストレージの設計と実装",
+      "question": "データ レイクの Medallion アーキテクチャを設計しています。Bronze 層にはどのようなタイプのデータを保存しますか？",
+      "options": {
+        "A": "集計されたビジネス メトリック",
+        "B": "クレンジングおよび標準化されたデータ",
+        "C": "生の未処理データ",
+        "D": "レポート用に最適化されたデータ"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "Medallion（Bronze/Silver/Gold）アーキテクチャでは、Bronze 層は生の未処理データを保存し、監査と再処理のためにデータの元の状態を維持します。Silver 層はクレンジングおよび標準化されたデータを保存し、Gold 層はビジネス ユース ケース用に最適化された集計データを保存します。"
+    },
+    {
+      "id": "dp203-s3-ja-q11",
+      "examId": "azure-dp-203-set3-ja",
+      "setNumber": 3,
+      "domain": "データ処理の開発",
+      "question": "Azure Databricks を使用して大規模なデータセットを処理しています。複数回使用する中間結果をキャッシュして速度を向上させる必要があります。cache() と persist() の主な違いは何ですか？",
+      "options": {
+        "A": "cache() はメモリを使用し、persist() はディスクを使用する",
+        "B": "cache() は遅延実行で、persist() は即時実行",
+        "C": "cache() は persist(MEMORY_AND_DISK) のエイリアス",
+        "D": "cache() は DataFrame 用、persist() は RDD 用"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "cache() は persist() のショートカットで、デフォルトのストレージ レベル MEMORY_AND_DISK を使用します。persist() では異なるストレージ レベル（MEMORY_ONLY、DISK_ONLY など）を指定できます。両方とも遅延操作であり、DataFrame と RDD の両方に使用できます。"
+    },
+    {
+      "id": "dp203-s3-ja-q12",
+      "examId": "azure-dp-203-set3-ja",
+      "setNumber": 3,
+      "domain": "データ ストレージとデータ処理のセキュリティ保護、監視、最適化",
+      "question": "Azure Data Factory で CI/CD を実装する必要があります。パイプライン定義をバージョン管理に保存し、異なる環境に自動的にデプロイしたいです。どの方法を使用しますか？",
+      "options": {
+        "A": "ARM テンプレートを手動でエクスポートおよびインポートする",
+        "B": "Git 統合と Azure DevOps リリース パイプラインを使用する",
+        "C": "PowerShell スクリプトを使用してパイプラインをコピーする",
+        "D": "REST API を使用してパイプラインを同期する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Data Factory は Git 統合（Azure Repos または GitHub）をネイティブにサポートしています。変更は開発ファクトリで行われ、コラボレーション ブランチに発行すると ARM テンプレートが生成され、Azure DevOps リリース パイプラインを使用してテストおよび本番環境にデプロイします。これは推奨される CI/CD 方法です。"
+    },
+    {
+      "id": "dp203-s3-ja-q13",
+      "examId": "azure-dp-203-set3-ja",
+      "setNumber": 3,
+      "domain": "データ ストレージの設計と実装",
+      "question": "Azure Synapse Analytics サーバーレス SQL プールを使用しています。大きな Parquet ファイルへのクエリを最適化する必要があります。ファイル サイズは約 10 GB です。どのような対策を講じますか？",
+      "options": {
+        "A": "ファイルを小さなファイル（100〜250 MB）に分割する",
+        "B": "メタデータ オーバーヘッドを減らすためにより大きなファイルを使用する",
+        "C": "ファイルを CSV 形式に変換する",
+        "D": "列プルーニングを無効にする"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "サーバーレス SQL プールは、大きなファイルの並列処理効率が低下します。Parquet ファイルを 100〜250 MB のサイズに分割することをお勧めします。これにより、より良い並列読み取りを実現できます。ファイルが大きすぎると並列度が制限され、CSV は効率が低く、列プルーニングは I/O を削減するために有効にする必要があります。"
+    },
+    {
+      "id": "dp203-s3-ja-q14",
+      "examId": "azure-dp-203-set3-ja",
+      "setNumber": 3,
+      "domain": "データ処理の開発",
+      "question": "Azure Event Hubs と Azure Stream Analytics を使用しています。コンシューマーが特定の時点からデータの読み取りを開始できるようにする必要があります。どの機能を使用しますか？",
+      "options": {
+        "A": "コンシューマー グループ",
+        "B": "イベント保持期間",
+        "C": "オフセットとシーケンス番号",
+        "D": "パーティション キー"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "Event Hubs の各イベントにはオフセットとシーケンス番号があります。コンシューマーはこれらの値を使用して特定の位置から読み取りを開始できます。タイムスタンプ（EnqueuedTime）を使用して特定の時点に位置付けることもできます。コンシューマー グループは並列読み取りに使用され、保持期間はデータ保存時間を定義します。"
+    },
+    {
+      "id": "dp203-s3-ja-q15",
+      "examId": "azure-dp-203-set3-ja",
+      "setNumber": 3,
+      "domain": "データ ストレージとデータ処理のセキュリティ保護、監視、最適化",
+      "question": "Azure Databricks でデータ分離を実装する必要があります。異なるチームは自分のデータにのみアクセスできるようにする必要があります。どの方法を使用しますか？",
+      "options": {
+        "A": "別のワークスペースを作成する",
+        "B": "Unity Catalog ときめ細かいアクセス制御を使用する",
+        "C": "異なるクラスターを使用する",
+        "D": "別のストレージ アカウントを作成する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Unity Catalog は、集中的なデータ ガバナンスときめ細かいアクセス制御を提供し、テーブル、列、行レベルでアクセス許可を設定できます。これは、単一のワークスペース内でデータ分離を実現するための最良の方法です。別のワークスペースやストレージ アカウントは管理の複雑さを増します。"
+    },
+    {
+      "id": "dp203-s3-ja-q16",
+      "examId": "azure-dp-203-set3-ja",
+      "setNumber": 3,
+      "domain": "データ ストレージの設計と実装",
+      "question": "Azure Synapse Analytics 専用 SQL プールを使用しています。適切な分散列を選択する必要があります。次のうち、分散列を選択するための良い基準でないものはどれですか？",
+      "options": {
+        "A": "高い基数（多くの一意の値）",
+        "B": "WHERE 句で使用されない",
+        "C": "結合操作で使用される",
+        "D": "データが均等に分散される"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "良い分散列は、高い基数、結合操作での使用、均等なデータ分散を持つ必要があります。WHERE 句のフィルター列であるかどうかは主な考慮事項ではありません。実際、結合列でもある場合、WHERE で使用されることはむしろ有益な場合があります。"
+    },
+    {
+      "id": "dp203-s3-ja-q17",
+      "examId": "azure-dp-203-set3-ja",
+      "setNumber": 3,
+      "domain": "データ処理の開発",
+      "question": "Azure Data Factory を使用してパラメーター化されたパイプラインを作成しています。パイプライン実行時にソース テーブル名を動的に指定する必要があります。どのように実現しますか？",
+      "options": {
+        "A": "変数を使用する",
+        "B": "パイプライン パラメーターと式を使用する",
+        "C": "グローバル パラメーターを使用する",
+        "D": "リンク サービス パラメーターを使用する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "パイプライン パラメーターを使用すると、実行時に値を渡すことができます。データセットまたはアクティビティで式（@pipeline().parameters.TableName など）を使用してパラメーター値を参照します。変数はパイプライン内部ロジック用、グローバル パラメーターはパイプライン間で定数を共有、リンク サービス パラメーターは接続構成用です。"
+    },
+    {
+      "id": "dp203-s3-ja-q18",
+      "examId": "azure-dp-203-set3-ja",
+      "setNumber": 3,
+      "domain": "データ ストレージとデータ処理のセキュリティ保護、監視、最適化",
+      "question": "Azure Databricks クラスターのリソース使用率を監視する必要があります。CPU、メモリ、ディスク使用量のリアルタイム メトリックを確認したいです。どこで確認しますか？",
+      "options": {
+        "A": "Azure Monitor",
+        "B": "Spark UI",
+        "C": "Ganglia メトリック",
+        "D": "クラスター イベント ログ"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "Databricks クラスターには Ganglia メトリック ページが含まれており、CPU、メモリ、ネットワーク、ディスクのリアルタイムおよび履歴メトリックを提供します。Spark UI はジョブとタスク情報を表示し、Azure Monitor は診断設定の構成が必要で、イベント ログはクラスター状態の変更を表示します。"
+    },
+    {
+      "id": "dp203-s3-ja-q19",
+      "examId": "azure-dp-203-set3-ja",
+      "setNumber": 3,
+      "domain": "データ ストレージの設計と実装",
+      "question": "Azure Event Hubs のパーティション戦略を設計しています。アプリケーションは、同じデバイスからのイベントが順番に処理されることを保証する必要があります。どのように構成しますか？",
+      "options": {
+        "A": "単一のパーティションを使用する",
+        "B": "デバイス ID をパーティション キーとして使用する",
+        "C": "スループット ユニットを増やす",
+        "D": "キャプチャ機能を有効にする"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "デバイス ID をパーティション キーとして使用すると、同じデバイスからのすべてのイベントが同じパーティションに送信されます。単一パーティション内では、イベントは送信順序を維持します。単一パーティションはスループットを制限し、スループット ユニットは容量に影響し、キャプチャはストレージに使用されます。"
+    },
+    {
+      "id": "dp203-s3-ja-q20",
+      "examId": "azure-dp-203-set3-ja",
+      "setNumber": 3,
+      "domain": "データ処理の開発",
+      "question": "Azure Databricks の Delta Lake を使用しています。読み取りパフォーマンスを最適化するために小さなファイルを定期的にマージする必要があります。どのコマンドを使用しますか？",
+      "options": {
+        "A": "VACUUM",
+        "B": "OPTIMIZE",
+        "C": "COMPACT",
+        "D": "MERGE"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "OPTIMIZE コマンドは、小さなファイルをより大きなファイルにマージし、読み取りパフォーマンスを向上させます。ZORDER BY と組み合わせてデータ レイアウトを最適化することもできます。VACUUM は古いファイルを削除し、COMPACT は有効なコマンドではなく、MERGE は upsert 操作に使用されます。"
+    },
+    {
+      "id": "dp203-s3-ja-q21",
+      "examId": "azure-dp-203-set3-ja",
+      "setNumber": 3,
+      "domain": "データ ストレージとデータ処理のセキュリティ保護、監視、最適化",
+      "question": "Azure Synapse Analytics で結果セット キャッシュを実装する必要があります。結果セット キャッシュはどのように機能しますか？",
+      "options": {
+        "A": "キャッシュはユーザーのローカル コンピューターに保存される",
+        "B": "キャッシュは専用 SQL プールの SSD に保存される",
+        "C": "キャッシュは Azure Storage に保存される",
+        "D": "キャッシュは Redis に保存される"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "結果セット キャッシュは、クエリ結果を専用 SQL プールのコントロール ノードの SSD に保存します。同じクエリが再度実行され、基になるデータが変更されていない場合、キャッシュから直接結果が返されます。キャッシュはクライアント、Azure Storage、または Redis にはありません。"
+    },
+    {
+      "id": "dp203-s3-ja-q22",
+      "examId": "azure-dp-203-set3-ja",
+      "setNumber": 3,
+      "domain": "データ ストレージの設計と実装",
+      "question": "Azure Cosmos DB と Azure Synapse Link を使用しています。Synapse Link の分析ストアはどの形式を使用しますか？",
+      "options": {
+        "A": "JSON",
+        "B": "列形式",
+        "C": "行ストレージ形式",
+        "D": "Parquet"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure Synapse Link の分析ストアは、Cosmos DB のトランザクション データ（行形式）を列形式に自動的に変換し、分析クエリのパフォーマンスを最適化します。これは Parquet ではない専有の列形式ですが、同様の分析上の利点を提供します。"
+    },
+    {
+      "id": "dp203-s3-ja-q23",
+      "examId": "azure-dp-203-set3-ja",
+      "setNumber": 3,
+      "domain": "データ処理の開発",
+      "question": "Azure Stream Analytics を使用してリアルタイム分析を行っています。参照データをストリーミング データと結合する必要があります。参照データはどのように提供する必要がありますか？",
+      "options": {
+        "A": "Azure SQL Database のみ",
+        "B": "Azure Blob Storage または Azure SQL Database",
+        "C": "Azure Event Hubs のみ",
+        "D": "Azure Cosmos DB"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Stream Analytics は 2 つの参照データ ソースをサポートしています：Azure Blob Storage（静的または低速で変化する参照データ用）と Azure SQL Database（定期的な更新が必要な参照データ用）。Event Hubs はストリーム入力に使用され、Cosmos DB は参照データ ソースとしてサポートされていません。"
+    },
+    {
+      "id": "dp203-s3-ja-q24",
+      "examId": "azure-dp-203-set3-ja",
+      "setNumber": 3,
+      "domain": "データ ストレージとデータ処理のセキュリティ保護、監視、最適化",
+      "question": "Azure Data Lake Storage Gen2 でネットワーク分離を構成する必要があります。特定の仮想ネットワーク内のリソースのみがストレージ アカウントにアクセスできるようにしたいです。何を構成しますか？",
+      "options": {
+        "A": "共有アクセス署名",
+        "B": "ストレージ アカウント ファイアウォールと仮想ネットワーク サービス エンドポイント",
+        "C": "Azure Active Directory 条件付きアクセス",
+        "D": "アクセス制御リスト"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "ストレージ アカウント ファイアウォールと仮想ネットワーク サービス エンドポイントを組み合わせて使用すると、特定の VNet 内のリソースのみがストレージにアクセスできるように制限できます。SAS はアクセス トークンを提供しますがネットワークを制限せず、AAD 条件付きアクセスは認証を制御し、ACL はファイル/ディレクトリのアクセス許可を制御します。"
+    },
+    {
+      "id": "dp203-s3-ja-q25",
+      "examId": "azure-dp-203-set3-ja",
+      "setNumber": 3,
+      "domain": "データ ストレージの設計と実装",
+      "question": "Azure Synapse Analytics で緩やかに変化するディメンション (SCD) を設計しています。履歴の変更を追跡し、現在の値をすばやく検索できるようにする必要があります。どの列を追加しますか？",
+      "options": {
+        "A": "EffectiveDate のみを追加する",
+        "B": "EffectiveDate、ExpirationDate、IsCurrent を追加する",
+        "C": "IsCurrent フラグのみを追加する",
+        "D": "Version 列を追加する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "SCD タイプ 2 のベスト プラクティスは、EffectiveDate（開始日）、ExpirationDate（終了日）、IsCurrent（現在フラグ）を追加することです。これにより、ポイント イン タイム クエリ（日付範囲を使用）と現在値クエリ（IsCurrent=1 を使用）の両方をサポートできます。"
+    },
+    {
+      "id": "dp203-s3-ja-q26",
+      "examId": "azure-dp-203-set3-ja",
+      "setNumber": 3,
+      "domain": "データ処理の開発",
+      "question": "Azure Databricks を使用してデータを処理しています。Spark DataFrame のスキーマ進化を設定して、新しい列が自動的に追加されるようにする必要があります。どのオプションを設定しますか？",
+      "options": {
+        "A": "mode('overwrite')",
+        "B": "option('mergeSchema', 'true')",
+        "C": "option('schema', 'auto')",
+        "D": "option('inferSchema', 'true')"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Delta Lake への書き込み時に option('mergeSchema', 'true') を使用すると、既存のテーブル スキーマに新しい列を自動的に追加できます。mode('overwrite') はデータを置き換え、inferSchema は読み取り時にスキーマを推論し、schema オプションは固定スキーマを指定します。"
+    },
+    {
+      "id": "dp203-s3-ja-q27",
+      "examId": "azure-dp-203-set3-ja",
+      "setNumber": 3,
+      "domain": "データ ストレージとデータ処理のセキュリティ保護、監視、最適化",
+      "question": "Azure Synapse Analytics 専用 SQL プールでブロッキング問題を診断する必要があります。どの DMV をクエリしますか？",
+      "options": {
+        "A": "sys.dm_pdw_exec_requests",
+        "B": "sys.dm_pdw_waits",
+        "C": "sys.dm_pdw_lock_waits",
+        "D": "sys.dm_pdw_nodes"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "sys.dm_pdw_lock_waits は、ロックを待機している要求の情報（ブロックされた要求 ID とロックを保持している要求 ID を含む）を表示します。これはロック競合とブロッキングの診断に非常に役立ちます。exec_requests は要求の概要、waits はすべての待機タイプ、nodes はノード情報を表示します。"
+    },
+    {
+      "id": "dp203-s3-ja-q28",
+      "examId": "azure-dp-203-set3-ja",
+      "setNumber": 3,
+      "domain": "データ ストレージの設計と実装",
+      "question": "Azure Synapse Analytics サーバーレス SQL プールを使用して CSV ファイルをクエリしています。一部の列にはカンマを含むテキストが含まれています。どのように処理しますか？",
+      "options": {
+        "A": "異なるフィールド区切り文字を使用する",
+        "B": "FIELDQUOTE を使用して引用符文字を指定する",
+        "C": "カンマをエスケープする",
+        "D": "ファイルを Parquet に変換する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "FIELDQUOTE パラメーターを使用して、区切り文字を含むテキスト値を囲むために使用される文字（通常は二重引用符）を指定します。たとえば、FIELDQUOTE = '\"' です。これは CSV で区切り文字を含む値を処理する標準的な方法です。Parquet への変換はより良い長期的なソリューションですが、直接的な解決策ではありません。"
+    },
+    {
+      "id": "dp203-s3-ja-q29",
+      "examId": "azure-dp-203-set3-ja",
+      "setNumber": 3,
+      "domain": "データ処理の開発",
+      "question": "Azure Data Factory のマッピング データ フローを使用しています。複数の列を単一の複合キー列にマージする必要があります。どの変換と関数を使用しますか？",
+      "options": {
+        "A": "Aggregate 変換と concat() 関数",
+        "B": "派生列変換と concat() 関数",
+        "C": "結合変換",
+        "D": "選択変換"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "派生列変換を使用すると、新しい列を作成したり既存の列を変更したりできます。concat() 関数を使用すると、複数の列の値を複合キーとして単一の文字列に連結できます。Aggregate は集計に使用され、結合はデータセットのマージに使用され、選択は列の選択に使用されます。"
+    },
+    {
+      "id": "dp203-s3-ja-q30",
+      "examId": "azure-dp-203-set3-ja",
+      "setNumber": 3,
+      "domain": "データ ストレージとデータ処理のセキュリティ保護、監視、最適化",
+      "question": "Azure Databricks でコスト最適化を実装する必要があります。勤務時間中にクラスターを自動的に起動し、非勤務時間に自動的に停止したいです。どの方法を使用しますか？",
+      "options": {
+        "A": "自動終了設定",
+        "B": "ジョブ スケジューリング",
+        "C": "プール",
+        "D": "スケジュール ポリシー"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "ジョブ スケジューリングを使用すると、特定の時間にジョブを開始でき、ジョブ クラスターは完了後に自動的に終了します。対話型ワークロードの場合、外部スケジューリング（Azure Automation など）を使用してクラスターを起動/停止できます。自動終了はアイドル後にのみ停止し、プールは起動時間を短縮します。"
+    },
+    {
+      "id": "dp203-s3-ja-q31",
+      "examId": "azure-dp-203-set3-ja",
+      "setNumber": 3,
+      "domain": "データ ストレージの設計と実装",
+      "question": "Azure Synapse Analytics の Spark プールを使用しています。Azure Key Vault に保存されている接続文字列を読み取る必要があります。どの方法を使用しますか？",
+      "options": {
+        "A": "コードにハードコードする",
+        "B": "リンク サービスと TokenLibrary を使用する",
+        "C": "環境変数を使用する",
+        "D": "構成ファイルに保存する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Synapse Spark では、Azure Key Vault にリンクされたリンク サービスを作成し、TokenLibrary.getSecret() メソッドを使用してコードでシークレットを安全に取得できます。これにより、機密情報をコードにハードコードすることを回避できます。環境変数と構成ファイルは Synapse Spark の標準的な方法ではありません。"
+    },
+    {
+      "id": "dp203-s3-ja-q32",
+      "examId": "azure-dp-203-set3-ja",
+      "setNumber": 3,
+      "domain": "データ処理の開発",
+      "question": "Azure Stream Analytics を使用しています。順序が乱れて到着するイベントを処理し、正しいタイムスタンプ順序を確保する必要があります。何を構成しますか？",
+      "options": {
+        "A": "システム タイムスタンプ",
+        "B": "到着時刻",
+        "C": "アプリケーション タイムスタンプと順序の乱れ許容ウィンドウ",
+        "D": "パーティション キー"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "アプリケーション タイムスタンプ（TIMESTAMP BY）は、到着時刻ではなくイベント内の時間フィールドを使用します。順序の乱れ許容ウィンドウ設定により、システムは遅延イベントを待機し、このウィンドウ内の順序の乱れたイベントが正しくソートされます。"
+    },
+    {
+      "id": "dp203-s3-ja-q33",
+      "examId": "azure-dp-203-set3-ja",
+      "setNumber": 3,
+      "domain": "データ ストレージとデータ処理のセキュリティ保護、監視、最適化",
+      "question": "Azure Synapse Analytics で列レベルの暗号化を実装する必要があります。データベース内の機密列を暗号化し、アプリケーションが復号化できるようにしたいです。どの機能を使用しますか？",
+      "options": {
+        "A": "透過的なデータ暗号化 (TDE)",
+        "B": "Always Encrypted",
+        "C": "動的データ マスキング",
+        "D": "行レベル セキュリティ"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Always Encrypted は列レベルの暗号化を提供し、データはクライアント側で暗号化/復号化され、データベースは暗号文のみを見ます。これにより、データベース管理者のアクセスからデータを保護します。TDE はデータベース全体を暗号化しますがアプリケーションには透過的で、動的データ マスキングは表示のみを隠します。"
+    },
+    {
+      "id": "dp203-s3-ja-q34",
+      "examId": "azure-dp-203-set3-ja",
+      "setNumber": 3,
+      "domain": "データ ストレージの設計と実装",
+      "question": "Azure Data Factory を使用して API からデータを取得しています。API は OAuth 2.0 クライアント資格情報フローを使用して認証します。リンク サービスで何を構成しますか？",
+      "options": {
+        "A": "基本認証",
+        "B": "匿名認証",
+        "C": "サービス プリンシパル認証",
+        "D": "マネージド ID 認証"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "OAuth 2.0 クライアント資格情報フローは、アプリケーションのクライアント ID とクライアント シークレットを使用してトークンを取得します。Data Factory では、これはサービス プリンシパル認証を使用して構成し、テナント ID、クライアント ID、シークレットを指定します。基本認証はユーザー名/パスワードを使用し、マネージド ID は外部 API には適用されません。"
+    },
+    {
+      "id": "dp203-s3-ja-q35",
+      "examId": "azure-dp-203-set3-ja",
+      "setNumber": 3,
+      "domain": "データ処理の開発",
+      "question": "Azure Databricks の Structured Streaming を使用しています。デバッグのために各マイクロバッチの処理結果をコンソールに出力する必要があります。どの出力モードを使用しますか？",
+      "options": {
+        "A": "append",
+        "B": "complete",
+        "C": "update",
+        "D": "console"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "update モードは、前回のトリガー以降に更新された行のみを出力し、デバッグと監視に適しています。コンソール出力（format('console')）の場合、append はすべての新しい行を出力し、complete は完全な結果テーブルを出力します。console は出力モードではなく形式です。"
+    },
+    {
+      "id": "dp203-s3-ja-q36",
+      "examId": "azure-dp-203-set3-ja",
+      "setNumber": 3,
+      "domain": "データ ストレージとデータ処理のセキュリティ保護、監視、最適化",
+      "question": "Azure Synapse Analytics 専用 SQL プールで統計情報を最適化する必要があります。統計情報が古いと何の問題が発生する可能性がありますか？",
+      "options": {
+        "A": "データ損失",
+        "B": "最適でないクエリ プラン",
+        "C": "データ破損",
+        "D": "接続エラー"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "統計情報は、クエリ オプティマイザーが最適な実行プランを選択するのに役立ちます。古い統計情報は、オプティマイザーが誤った選択（誤った結合タイプやスキャン順序の選択など）を行う原因となり、最適でないクエリ パフォーマンスにつながる可能性があります。統計情報はデータの整合性や接続には関係しません。"
+    },
+    {
+      "id": "dp203-s3-ja-q37",
+      "examId": "azure-dp-203-set3-ja",
+      "setNumber": 3,
+      "domain": "データ ストレージの設計と実装",
+      "question": "Azure Synapse Analytics 専用 SQL プールを使用しています。中間結果を保存するための一時テーブルを作成する必要があります。一時テーブルのライフサイクルは何ですか？",
+      "options": {
+        "A": "明示的に削除されるまで",
+        "B": "セッションが終了するまで",
+        "C": "トランザクションが終了するまで",
+        "D": "24 時間後に自動的に削除される"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure Synapse Analytics では、一時テーブル（# で始まる）のスコープはセッション レベルです。ユーザーが切断するかセッションが終了すると、一時テーブルは自動的に削除されます。グローバル一時テーブル（## で始まる）は、すべてのセッションが切断されると削除されます。"
+    },
+    {
+      "id": "dp203-s3-ja-q38",
+      "examId": "azure-dp-203-set3-ja",
+      "setNumber": 3,
+      "domain": "データ処理の開発",
+      "question": "Azure Data Factory のメタデータ駆動型アプローチを使用しています。データベースからテーブル リストを読み取り、各テーブルのコピー アクティビティを作成する必要があります。どのアクティビティの組み合わせを使用しますか？",
+      "options": {
+        "A": "Lookup と ForEach",
+        "B": "GetMetadata と Until",
+        "C": "Execute Pipeline と Switch",
+        "D": "Stored Procedure と If Condition"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Lookup アクティビティはデータベースをクエリしてテーブル リストを取得し、ForEach アクティビティは結果を反復処理して各テーブルのコピー アクティビティを実行します。これはメタデータ駆動型パイプラインを実装するための標準パターンです。GetMetadata はファイル メタデータを取得し、Until は条件付きループに使用されます。"
+    },
+    {
+      "id": "dp203-s3-ja-q39",
+      "examId": "azure-dp-203-set3-ja",
+      "setNumber": 3,
+      "domain": "データ ストレージとデータ処理のセキュリティ保護、監視、最適化",
+      "question": "Azure Databricks でシークレット管理を実装する必要があります。データベース パスワードを安全に保存してアクセスしたいです。どの方法を使用しますか？",
+      "options": {
+        "A": "ノートブックにハードコードする",
+        "B": "Databricks シークレットと Azure Key Vault バックアップ スコープを使用する",
+        "C": "環境変数を使用する",
+        "D": "DBFS ファイルに保存する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Databricks シークレットは安全なシークレット管理を提供します。Azure Key Vault バックアップ スコープを使用すると、Key Vault のシークレットを Databricks で安全に使用できます。dbutils.secrets.get() を使用してコードでシークレットを取得し、値はログに表示されません。ハードコードとファイル ストレージは安全ではありません。"
+    },
+    {
+      "id": "dp203-s3-ja-q40",
+      "examId": "azure-dp-203-set3-ja",
+      "setNumber": 3,
+      "domain": "データ ストレージの設計と実装",
+      "question": "Azure Synapse Analytics ソリューションを設計しています。アドホック クエリとデータ探索を処理し、コストを制御するための正しいリソースを選択する必要があります。何を使用しますか？",
+      "options": {
+        "A": "専用 SQL プール",
+        "B": "サーバーレス SQL プール",
+        "C": "Spark プール",
+        "D": "データ フロー"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "サーバーレス SQL プールは、アドホック クエリとデータ探索に最適です。クエリで処理されたデータ量に基づいて課金され、リソースを事前にプロビジョニングする必要がないため、予測不可能なワークロードに非常に適しています。専用 SQL プールは継続的な課金が必要で、Spark プールは起動時間が必要で、データ フローは Data Factory の ETL に使用されます。"
+    }
+  ]
+}

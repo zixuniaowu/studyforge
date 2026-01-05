@@ -1,0 +1,542 @@
+{
+  "exam": {
+    "id": "aws-dea-c01-set2-ja",
+    "name": "AWS DEA-C01 模擬試験 #2",
+    "code": "DEA-C01",
+    "provider": "AWS",
+    "language": "ja",
+    "description": "AWSデータエンジニアアソシエイト認定試験模擬問題 - 第2セット",
+    "totalQuestions": 40,
+    "passingScore": 72,
+    "examTime": 130,
+    "domains": [
+      {"id": 1, "name": "データ取り込みと変換", "weight": 34},
+      {"id": 2, "name": "データストア管理", "weight": 26},
+      {"id": 3, "name": "データ運用とサポート", "weight": 22},
+      {"id": 4, "name": "データセキュリティとガバナンス", "weight": 18}
+    ],
+    "tags": ["AWS", "データエンジニアリング", "DEA", "認定試験"]
+  },
+  "questions": [
+    {
+      "id": "q1",
+      "domain": 1,
+      "question": "企業がオンプレミスデータセンターから100TBのデータをS3にバッチ移行する必要があります。ネットワーク帯域幅が限られており、1週間以内に完了する必要があります。最適なソリューションは何ですか？",
+      "options": {
+        "A": "AWS Direct Connectを使用する",
+        "B": "AWS Snowball Edgeを使用する",
+        "C": "S3 Transfer Accelerationを使用する",
+        "D": "マルチスレッドアップロードでS3に送信する"
+      },
+      "answer": "B",
+      "explanation": "100TBのデータで時間が緊迫している場合、Snowball Edgeが最適な選択です。これは物理デバイスで、ローカルでデータをロードした後AWSに送付でき、ネットワーク帯域幅の制限を回避できます。"
+    },
+    {
+      "id": "q2",
+      "domain": 1,
+      "question": "GlueでETLを行う際、ネストしたJSONデータを処理してフラット化する必要があります。どの変換を使用すべきですか？",
+      "options": {
+        "A": "Filter変換",
+        "B": "Relationalize変換",
+        "C": "Map変換",
+        "D": "Join変換"
+      },
+      "answer": "B",
+      "explanation": "GlueのRelationalize変換はネストしたJSON構造をリレーショナルテーブル形式にフラット化でき、配列やネストしたオブジェクトを自動的に処理します。"
+    },
+    {
+      "id": "q3",
+      "domain": 1,
+      "question": "Kinesis Data Streamsが受信するデータに対してexactly-once（厳密に1回）のセマンティクスで処理する必要があります。どのように実現しますか？",
+      "options": {
+        "A": "Kinesis Client Library (KCL)の組み込み重複排除を使用する",
+        "B": "DynamoDBと組み合わせて冪等性チェックを実装する",
+        "C": "シャード数を増やす",
+        "D": "Kinesis Data Firehoseを使用する"
+      },
+      "answer": "B",
+      "explanation": "Kinesis自体はat-least-onceセマンティクスを提供します。exactly-onceを実現するには、コンシューマー側で冪等性を実装する必要があり、通常はDynamoDBに処理済みのシーケンス番号やメッセージIDを保存します。"
+    },
+    {
+      "id": "q4",
+      "domain": 1,
+      "question": "MySQLデータベースの変更をAmazon Elasticsearchにリアルタイムで同期する必要があります。最適なソリューションは何ですか？",
+      "options": {
+        "A": "定期的な完全エクスポート",
+        "B": "AWS DMS + Kinesis Data Streams + Lambda",
+        "C": "JDBCで直接クエリする",
+        "D": "変更ログを手動でエクスポートする"
+      },
+      "answer": "B",
+      "explanation": "DMSはMySQLのCDC変更をキャプチャし、Kinesis Data Streamsで転送し、Lambdaが処理してElasticsearchに書き込むことで、ほぼリアルタイムの同期を実現します。"
+    },
+    {
+      "id": "q5",
+      "domain": 1,
+      "question": "Glue Crawlerが検出したテーブルスキーマが期待と異なります。分類器をカスタマイズするにはどうすればよいですか？",
+      "options": {
+        "A": "Data Catalog内のテーブル定義を修正する",
+        "B": "カスタムClassifierを作成してCrawlerに関連付ける",
+        "C": "別のデータソースを使用する",
+        "D": "すべてのテーブルを手動で作成する"
+      },
+      "answer": "B",
+      "explanation": "カスタムClassifier（Grok、JSON、CSV分類器など）を作成し、データ形式の解析ルールを指定して、Crawlerに関連付けることでスキーマを正しく認識できます。"
+    },
+    {
+      "id": "q6",
+      "domain": 2,
+      "question": "S3データレイクがUPSERT操作（更新または挿入）をサポートする必要があります。どの技術を使用すべきですか？",
+      "options": {
+        "A": "S3 Object Lock",
+        "B": "Apache Hudi",
+        "C": "S3 Versioning",
+        "D": "S3 Lifecycle Policies"
+      },
+      "answer": "B",
+      "explanation": "Apache HudiはデータレイクフレームワークでUPSERT、DELETE等の操作をサポートし、S3上で増分データ処理とレコードレベルの更新を実現できます。"
+    },
+    {
+      "id": "q7",
+      "domain": 2,
+      "question": "Redshiftクラスターのディスク使用率が継続的に増加しています。スペースを解放するにはどうすればよいですか？",
+      "options": {
+        "A": "ノードを追加する",
+        "B": "VACUUMコマンドを実行する",
+        "C": "クラスターを再起動する",
+        "D": "スナップショットを作成する"
+      },
+      "answer": "B",
+      "explanation": "Redshiftの削除操作は削除マークを付けるだけです。VACUUMコマンドは削除された行のスペースを回収し、データを再ソートし、統計情報を更新できます。"
+    },
+    {
+      "id": "q8",
+      "domain": 2,
+      "question": "DynamoDBで過去24時間のすべてのイベントをクエリする必要があります。テーブルはイベントIDをパーティションキーとして使用しています。どのように最適化しますか？",
+      "options": {
+        "A": "テーブル全体をスキャンしてフィルタリングする",
+        "B": "日付をパーティションキーとするGSIを作成する",
+        "C": "Query操作を使用する",
+        "D": "RCUを増やす"
+      },
+      "answer": "B",
+      "explanation": "元のテーブル設計は時間によるクエリをサポートしていません。GSI（グローバルセカンダリインデックス）を作成し、日付/時間関連の属性をパーティションキーとして使用することで、特定の時間範囲のデータを効率的にクエリできます。"
+    },
+    {
+      "id": "q9",
+      "domain": 2,
+      "question": "データレイクがGlue Data Catalogでメタデータを管理しています。カタログと実際のデータの同期を確保するにはどうすればよいですか？",
+      "options": {
+        "A": "カタログを手動で更新する",
+        "B": "Glue Crawlerを定期的に実行する",
+        "C": "S3イベント通知を使用する",
+        "D": "カタログを再作成する"
+      },
+      "answer": "B",
+      "explanation": "Glue Crawlerを定期的に実行すると、新しいデータとスキーマ変更を自動的に検出し、Data Catalogを更新できます。EventBridgeを使用してCrawlerの実行をトリガーすることもできます。"
+    },
+    {
+      "id": "q10",
+      "domain": 2,
+      "question": "Athenaクエリが大量の結果を返すためページネーションが必要です。どのように実装しますか？",
+      "options": {
+        "A": "LIMITとOFFSETを使用する",
+        "B": "Athenaページネーショントークン（NextToken）を使用する",
+        "C": "クエリを複数回実行する",
+        "D": "クライアント側でページネーションする"
+      },
+      "answer": "B",
+      "explanation": "Athena APIはページネーションをサポートし、NextTokenを使用して次のページの結果を取得できます。大規模データセットに対してはOFFSETの使用は効率が悪いため避けるべきです。"
+    },
+    {
+      "id": "q11",
+      "domain": 3,
+      "question": "Glue ETLジョブがインターネット上の外部APIにアクセスする必要があります。どのように設定しますか？",
+      "options": {
+        "A": "Glueジョブはデフォルトでインターネットにアクセスできる",
+        "B": "VPCでNAT Gatewayを設定し、Glue Connectionを設定する",
+        "C": "パブリックサブネットを使用する",
+        "D": "VPC設定を無効にする"
+      },
+      "answer": "B",
+      "explanation": "GlueジョブがVPCアクセスを設定している場合（VPC内のリソースにアクセスするため）、NAT Gateway経由でインターネットにアクセスする必要があります。VPCを設定していないGlueジョブはデフォルトでインターネットにアクセスできます。"
+    },
+    {
+      "id": "q12",
+      "domain": 3,
+      "question": "EMRクラスターが機密データを処理する必要があり、クラスター終了後にデータが回復不可能であることが求められます。どのように設定すべきですか？",
+      "options": {
+        "A": "デフォルトのEBS設定を使用する",
+        "B": "EBS暗号化と一時ストレージを使用し、クラスター終了時にEBSボリュームを削除するよう設定する",
+        "C": "S3を使用してすべてのデータを保存する",
+        "D": "インスタンスストレージを使用する"
+      },
+      "answer": "B",
+      "explanation": "EBS暗号化を設定すると静的データのセキュリティが確保され、クラスター終了時にEBSボリュームを自動削除するよう設定するとデータが回復不可能になります。一時データにはインスタンスストレージ（エフェメラルストレージ）を使用できます。"
+    },
+    {
+      "id": "q13",
+      "domain": 3,
+      "question": "Step Functionsワークフローの実行時間が予想より長くなっています。問題を診断するにはどうすればよいですか？",
+      "options": {
+        "A": "CloudWatch Logsを確認する",
+        "B": "Step Functions実行履歴とX-Rayトレースを使用する",
+        "C": "Lambdaのタイムアウトを延長する",
+        "D": "ワークフローを再実行する"
+      },
+      "answer": "B",
+      "explanation": "Step Functionsは詳細な実行履歴を提供し、各状態の開始時間と終了時間を確認できます。X-Rayを有効にすると、サービス間呼び出しのレイテンシをさらに追跡できます。"
+    },
+    {
+      "id": "q14",
+      "domain": 3,
+      "question": "データパイプラインが特定の時間枠内に完了する必要があります。SLAコンプライアンスを監視するにはどうすればよいですか？",
+      "options": {
+        "A": "完了時間を手動で確認する",
+        "B": "CloudWatch Metricsとアラームを使用してジョブ期間を監視する",
+        "C": "完了通知メールを送信する",
+        "D": "より大きなリソースを使用する"
+      },
+      "answer": "B",
+      "explanation": "CloudWatchアラームを設定してGlueジョブまたはStep Functions実行時間を監視し、SLAしきい値に近づいた時または超えた時にアラートをトリガーして、自動化されたSLA監視を実現します。"
+    },
+    {
+      "id": "q15",
+      "domain": 3,
+      "question": "Glueジョブの処理中にメモリ不足で失敗しています。どのように解決しますか？",
+      "options": {
+        "A": "DPU数を増やすか、G.2Xワーカータイプを使用する",
+        "B": "入力データ量を減らす",
+        "C": "Python Shellジョブを使用する",
+        "D": "ジョブブックマークを無効にする"
+      },
+      "answer": "A",
+      "explanation": "G.2Xワーカータイプはより多くのメモリ（標準の4GBに対して16GB）を提供します。また、DPU数を増やして処理負荷を分散し、単一のexecutorのメモリ圧力を軽減することもできます。"
+    },
+    {
+      "id": "q16",
+      "domain": 4,
+      "question": "データレイクにデータ分類タグを実装してアクセス制御をサポートする必要があります。何を使用すべきですか？",
+      "options": {
+        "A": "S3オブジェクトタグ",
+        "B": "Lake Formationタグ（LF-Tags）",
+        "C": "Glue Data Catalogプロパティ",
+        "D": "IAMタグ"
+      },
+      "answer": "B",
+      "explanation": "Lake Formation LF-Tagsはタグベースのアクセス制御（TBAC）を可能にし、データベース、テーブル、列にタグを付け、タグに基づいて権限を定義でき、大規模な権限管理を簡素化します。"
+    },
+    {
+      "id": "q17",
+      "domain": 4,
+      "question": "Redshiftで特定のユーザーが特定の行のデータのみを表示できるように制限する必要があります。どのように実現しますか？",
+      "options": {
+        "A": "異なるテーブルを作成する",
+        "B": "行レベルセキュリティ（RLS）ポリシーを使用する",
+        "C": "ビューを使用する",
+        "D": "異なるスキーマを使用する"
+      },
+      "answer": "B",
+      "explanation": "RedshiftはRow Level Security（RLS）をサポートしており、ユーザーの属性に基づいて特定の行のデータのみにアクセスできるポリシーを作成でき、きめ細かな行レベルのアクセス制御を実現できます。"
+    },
+    {
+      "id": "q18",
+      "domain": 4,
+      "question": "データエンジニアがトラブルシューティングのために本番S3バケットに一時的にアクセスする必要があります。安全にアクセス権限を付与するにはどうすればよいですか？",
+      "options": {
+        "A": "IAMユーザー認証情報を共有する",
+        "B": "IAMロールと一時認証情報（STS AssumeRole）を使用する",
+        "C": "永続的なアクセスキーを作成する",
+        "D": "バケットを公開する"
+      },
+      "answer": "B",
+      "explanation": "IAMロールとSTS一時認証情報の使用がベストプラクティスです。認証情報は自動的に期限切れになり、セッション持続時間を設定でき、長期認証情報のセキュリティリスクを回避できます。"
+    },
+    {
+      "id": "q19",
+      "domain": 4,
+      "question": "Kinesis Data Streams内のデータを暗号化する必要があります。どのように設定すべきですか？",
+      "options": {
+        "A": "Kinesisは暗号化をサポートしていない",
+        "B": "KMSを使用したサーバー側暗号化（SSE）を有効にする",
+        "C": "HTTPSエンドポイントを使用する",
+        "D": "プロデューサー側で手動で暗号化する"
+      },
+      "answer": "B",
+      "explanation": "Kinesis Data Streamsはサーバー側暗号化（SSE）をサポートしており、KMSキーを使用して静的データを暗号化します。AWSマネージドキーまたはカスタマーマネージドキーを使用できます。"
+    },
+    {
+      "id": "q20",
+      "domain": 4,
+      "question": "Glue Data Catalog内のテーブル定義変更が監査されることをどのように確保しますか？",
+      "options": {
+        "A": "カタログを定期的にバックアップする",
+        "B": "CloudTrailを有効にしてGlue API呼び出しを記録する",
+        "C": "バージョン管理を使用する",
+        "D": "変更を手動で記録する"
+      },
+      "answer": "B",
+      "explanation": "CloudTrailはCreateTable、UpdateTableなどの操作を含むすべてのGlue API呼び出しを自動的に記録し、完全な監査ログを提供します。"
+    },
+    {
+      "id": "q21",
+      "domain": 1,
+      "question": "AWS Glueで半構造化データを処理する際、スキーマが一貫していないレコードをどのように処理しますか？",
+      "options": {
+        "A": "一貫していないレコードを破棄する",
+        "B": "DynamicFrameのResolveChoice変換を使用する",
+        "C": "固定スキーマを強制する",
+        "D": "RDDで処理する"
+      },
+      "answer": "B",
+      "explanation": "DynamicFrameのResolveChoice変換はスキーマの競合を処理でき、cast、make_struct、projectなどの複数の戦略をサポートし、一貫していないデータ型を柔軟に処理できます。"
+    },
+    {
+      "id": "q22",
+      "domain": 1,
+      "question": "KafkaクラスターからS3にデータを取り込む必要があります。最もシンプルなAWSネイティブソリューションは何ですか？",
+      "options": {
+        "A": "EC2でKafka Consumerを実行する",
+        "B": "Amazon MSK Connectを使用する",
+        "C": "LambdaでKafkaをサブスクライブする",
+        "D": "Kinesis Data Firehoseを使用する"
+      },
+      "answer": "B",
+      "explanation": "Amazon MSK ConnectはマネージドKafka Connectサービスで、S3 Sink Connectorを簡単にデプロイでき、インフラストラクチャを管理せずにKafkaデータをS3に自動転送できます。"
+    },
+    {
+      "id": "q23",
+      "domain": 1,
+      "question": "AWS Glueジョブが数百万の小さなファイルを含むS3パスを処理する必要があります。読み取りパフォーマンスを最適化するにはどうすればよいですか？",
+      "options": {
+        "A": "DPU数を増やす",
+        "B": "groupFilesパラメータを使用してファイルグループ化を有効にする",
+        "C": "Python Shellジョブを使用する",
+        "D": "ファイルをバッチ処理する"
+      },
+      "answer": "B",
+      "explanation": "groupFilesパラメータにより、Glueは複数の小さなファイルを単一のSparkパーティションにグループ化して処理でき、タスクオーバーヘッドとS3 API呼び出しを減らし、処理効率を大幅に向上させます。"
+    },
+    {
+      "id": "q24",
+      "domain": 2,
+      "question": "Redshift Serverlessワークグループでコストを制御するために最大容量を制限する必要があります。何を設定すべきですか？",
+      "options": {
+        "A": "ノード数",
+        "B": "最大RPU（Redshift Processing Units）",
+        "C": "同時接続数",
+        "D": "クエリタイムアウト"
+      },
+      "answer": "B",
+      "explanation": "Redshift ServerlessはRPUを計算容量単位として使用し、最大RPUを設定して自動スケーリングの上限を制限でき、コストを制御できます。"
+    },
+    {
+      "id": "q25",
+      "domain": 2,
+      "question": "データレイク内のParquetファイルがスキーマ進化（新しい列の追加）をサポートする必要があります。どのように設定しますか？",
+      "options": {
+        "A": "既存のすべてのファイルを書き換える",
+        "B": "mergeSchemaオプションを使用してデータを読み取る",
+        "C": "新しいテーブルを作成する",
+        "D": "スキーマ進化はサポートされていない"
+      },
+      "answer": "B",
+      "explanation": "Spark/GlueがParquetを読み取る際にmergeSchemaオプションを使用すると、異なるファイルのスキーマをマージでき、新しい列の追加などの後方互換性のあるスキーマ進化をサポートします。"
+    },
+    {
+      "id": "q26",
+      "domain": 2,
+      "question": "AthenaでGlue Crawlerを使用せずにテーブルを作成する必要があります。テーブルをどのように定義しますか？",
+      "options": {
+        "A": "Athena DDL文を使用して外部テーブルを作成する",
+        "B": "AthenaはCrawlerでのみテーブルを作成できる",
+        "C": "S3コンソールで作成する",
+        "D": "CloudFormationを使用する"
+      },
+      "answer": "A",
+      "explanation": "AthenaでCREATE EXTERNAL TABLE DDL文を使用して直接テーブルを定義し、S3の場所、ファイル形式、スキーマなどを指定でき、Crawlerを使用する必要がありません。"
+    },
+    {
+      "id": "q27",
+      "domain": 3,
+      "question": "Glue ETLジョブがシークレット（データベースパスワードなど）にアクセスする必要があります。安全な方法は何ですか？",
+      "options": {
+        "A": "スクリプトにハードコードする",
+        "B": "AWS Secrets Managerを使用し、ジョブ内でAPIを呼び出す",
+        "C": "S3ファイルに保存する",
+        "D": "環境変数で渡す"
+      },
+      "answer": "B",
+      "explanation": "AWS Secrets Managerは機密情報を安全に保存および管理し、GlueジョブはAPIでシークレットを取得でき、自動ローテーションをサポートしており、セキュリティのベストプラクティスです。"
+    },
+    {
+      "id": "q28",
+      "domain": 3,
+      "question": "データ品質チェックで特定のバッチデータに問題があることが判明しました。本番に影響を与えずに調査するにはどうすればよいですか？",
+      "options": {
+        "A": "本番データを直接修正する",
+        "B": "データバージョン管理を使用してロールバックするか、データスナップショットを作成して分析する",
+        "C": "問題のあるデータを無視する",
+        "D": "すべてのデータパイプラインを停止する"
+      },
+      "answer": "B",
+      "explanation": "Apache Iceberg/Hudiのタイムトラベル機能を使用して分析用の履歴バージョンデータにアクセスしたり、S3データスナップショットを作成して隔離調査でき、本番環境に影響を与えません。"
+    },
+    {
+      "id": "q29",
+      "domain": 3,
+      "question": "EMR上で実行されるSparkジョブが失敗回復のために中間結果を永続化する必要があります。何を使用すべきですか？",
+      "options": {
+        "A": "RDD cache",
+        "B": "S3へのSpark Checkpointing",
+        "C": "executorメモリを増やす",
+        "D": "ブロードキャスト変数を使用する"
+      },
+      "answer": "B",
+      "explanation": "Spark CheckpointingはRDD/DataFrameを信頼性の高いストレージ（S3など）に永続化し、再計算せずにcheckpointから回復でき、長時間実行または反復計算のジョブに適しています。"
+    },
+    {
+      "id": "q30",
+      "domain": 3,
+      "question": "S3データ到着後にGlueジョブを自動的にトリガーする必要があります。どのように実装しますか？",
+      "options": {
+        "A": "固定時間スケジュールを使用する",
+        "B": "S3イベント通知を使用してEventBridgeルールをトリガーし、Glueジョブを開始する",
+        "C": "ジョブを手動で実行する",
+        "D": "Glue Crawlerをトリガーとして使用する"
+      },
+      "answer": "B",
+      "explanation": "S3イベント通知をEventBridgeに送信するよう設定し、特定のイベント（PutObjectなど）に一致するルールを作成し、ターゲットをGlueジョブの開始に設定して、イベント駆動型ETLを実現します。"
+    },
+    {
+      "id": "q31",
+      "domain": 4,
+      "question": "S3データレイク内の重要なデータの誤削除を防ぐ必要があります。何を設定すべきですか？",
+      "options": {
+        "A": "S3 Object Lock（ガバナンスモードまたはコンプライアンスモード）",
+        "B": "S3 Versioningのみ",
+        "C": "バケットポリシー",
+        "D": "IAMポリシー"
+      },
+      "answer": "A",
+      "explanation": "S3 Object Lockはオブジェクトが削除または上書きされることを防止できます。ガバナンスモードは特権ユーザーによる上書きを許可し、コンプライアンスモードは保持期間内は誰も削除できず、コンプライアンス要件を満たします。"
+    },
+    {
+      "id": "q32",
+      "domain": 4,
+      "question": "Lake Formation権限モデルは従来のIAMポリシーと比較してどのような利点がありますか？",
+      "options": {
+        "A": "より高速なパフォーマンス",
+        "B": "集中化されたきめ細かなデータ権限管理",
+        "C": "より低いコスト",
+        "D": "より良い暗号化"
+      },
+      "answer": "B",
+      "explanation": "Lake Formationは集中化された権限管理インターフェースを提供し、テーブルレベル、列レベル、行レベルの権限制御をサポートし、複雑なS3バケットポリシーとIAMポリシー管理を簡素化します。"
+    },
+    {
+      "id": "q33",
+      "domain": 1,
+      "question": "JSONデータの処理中に一部のフィールドにnull値が含まれており、下流の分析に影響しています。Glueでどのように処理しますか？",
+      "options": {
+        "A": "nullを含むレコードを無視する",
+        "B": "FillMissingValuesまたはDropNullFields変換を使用する",
+        "C": "文字列\"null\"に変換する",
+        "D": "null値を処理しない"
+      },
+      "answer": "B",
+      "explanation": "GlueはFillMissingValues変換でnullをデフォルト値に置換でき、DropNullFieldsでnullフィールドを削除できます。ビジネス要件に応じて適切な処理戦略を選択します。"
+    },
+    {
+      "id": "q34",
+      "domain": 1,
+      "question": "Kinesis Data Analyticsでストリーミングデータを処理する際、履歴データとの関連付けが必要です。どのように実現しますか？",
+      "options": {
+        "A": "ストリームにすべての履歴データを含める",
+        "B": "S3からロードする参照データテーブル（Reference Data）を使用する",
+        "C": "履歴データとの関連付けはサポートされていない",
+        "D": "Lambdaで前処理する"
+      },
+      "answer": "B",
+      "explanation": "Kinesis Data Analyticsは参照データテーブルをサポートし、S3から静的または定期的に更新される参照データをロードして、ストリーミングデータとJOIN操作を実行できます。"
+    },
+    {
+      "id": "q35",
+      "domain": 2,
+      "question": "Redshiftの大きなテーブルのクエリパフォーマンスが悪く、EXPLAINでフルテーブルスキャンが表示されています。どのように最適化しますか？",
+      "options": {
+        "A": "クラスターサイズを増やす",
+        "B": "クエリ条件に基づいてソートキー（Sort Key）を追加する",
+        "C": "クエリ列を減らす",
+        "D": "LIMITを使用する"
+      },
+      "answer": "B",
+      "explanation": "ソートキーにより、Redshiftはzone mapを使用して無関係なデータブロックをスキップできます。クエリWHERE条件でよく使用される列をソートキーとして選択すると、データスキャン量を大幅に削減できます。"
+    },
+    {
+      "id": "q36",
+      "domain": 2,
+      "question": "リアルタイムデータダッシュボードを構築する必要があり、データソースはKinesis Data Streamsです。最適なアーキテクチャは何ですか？",
+      "options": {
+        "A": "Kinesis → S3 → Athena → QuickSight",
+        "B": "Kinesis → OpenSearch Service → OpenSearch Dashboards",
+        "C": "Kinesis → Redshift → QuickSight",
+        "D": "Kinesis → RDS → カスタムダッシュボード"
+      },
+      "answer": "B",
+      "explanation": "OpenSearch Service（旧Elasticsearch）はほぼリアルタイムの検索と分析用に設計されており、Kinesisから直接データを取り込め、OpenSearch Dashboards（旧Kibana）がリアルタイム可視化を提供します。"
+    },
+    {
+      "id": "q37",
+      "domain": 3,
+      "question": "Glueワークフロー（Workflow）とStep Functionsの選択基準は何ですか？",
+      "options": {
+        "A": "機能は完全に同じ",
+        "B": "Glue WorkflowはETLオーケストレーションに適し、Step Functionsは複雑なマルチサービスオーケストレーションに適している",
+        "C": "Step FunctionsはLambdaのみをオーケストレーションできる",
+        "D": "Glue Workflowはパフォーマンスが優れている"
+      },
+      "answer": "B",
+      "explanation": "Glue WorkflowはGlueジョブとCrawlerのオーケストレーション用に特別に設計されており、設定が簡単です。Step Functionsはより複雑なロジックと複数のAWSサービス統合をサポートし、複雑なデータパイプラインに適しています。"
+    },
+    {
+      "id": "q38",
+      "domain": 3,
+      "question": "データパイプラインを開発、テスト、本番環境間で移行する必要があります。Infrastructure as Codeをどのように実現しますか？",
+      "options": {
+        "A": "各環境で手動設定する",
+        "B": "AWS CDKまたはCloudFormationを使用してすべてのリソースを定義する",
+        "C": "コンソールのスクリーンショットでドキュメント化する",
+        "D": "AWSアカウントをコピーする"
+      },
+      "answer": "B",
+      "explanation": "AWS CDKまたはCloudFormationはGlueジョブ、Step Functions、IAMロールなどをコードとして定義でき、バージョン管理、コードレビューが可能で、異なる環境に繰り返しデプロイできます。"
+    },
+    {
+      "id": "q39",
+      "domain": 4,
+      "question": "データレイクがデータレジデンシー要件を満たし、データが特定のリージョンを離れないことを確保する必要があります。どのように実現しますか？",
+      "options": {
+        "A": "クロスリージョンレプリケーションを使用する",
+        "B": "S3バケットリージョンロックとサービスコントロールポリシー（SCP）を使用する",
+        "C": "データを暗号化する",
+        "D": "VPC Endpointを使用する"
+      },
+      "answer": "B",
+      "explanation": "特定のリージョンにS3バケットを作成し、SCPまたはIAMポリシーでクロスリージョン操作を制限して、データが常に指定されたリージョンに留まるようにし、コンプライアンス要件を満たします。"
+    },
+    {
+      "id": "q40",
+      "domain": 4,
+      "question": "データリネージ追跡を実装し、ソースからターゲットまでのデータの完全なフローを理解する必要があります。何を使用すべきですか？",
+      "options": {
+        "A": "CloudWatch Logs",
+        "B": "AWS Glue Data Catalogとサードパーティデータリネージツールまたはカスタム追跡の組み合わせ",
+        "C": "S3アクセスログ",
+        "D": "X-Rayトレース"
+      },
+      "answer": "B",
+      "explanation": "Glue Data Catalogはメタデータの基盤を提供し、AWSパートナーツール（Alation、Collibraなど）やオープンソースソリューション（Apache Atlasなど）と組み合わせて完全なデータリネージ追跡を実現できます。"
+    }
+  ]
+}

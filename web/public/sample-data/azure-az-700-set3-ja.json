@@ -1,0 +1,649 @@
+{
+  "exam": {
+    "id": "azure-az-700-set3-ja",
+    "name": "Azure AZ-700 ネットワークエンジニア認定模擬試験 #3",
+    "code": "AZ-700",
+    "provider": "Azure",
+    "language": "ja",
+    "description": "Microsoft Azureネットワークエンジニア認定試験の模擬問題。Azureコアネットワークインフラストラクチャ、ハイブリッドネットワーク、ルーティング、セキュリティ、プライベートアクセスなどの主要領域をカバー",
+    "totalQuestions": 40,
+    "passingScore": 70,
+    "examTime": 120,
+    "domains": [
+      {
+        "id": 1,
+        "name": "コアネットワークインフラストラクチャの設計と実装",
+        "weight": 25
+      },
+      {
+        "id": 2,
+        "name": "ルーティングの設計と実装",
+        "weight": 25
+      },
+      {
+        "id": 3,
+        "name": "Azureセキュリティサービスの設計と実装",
+        "weight": 25
+      },
+      {
+        "id": 4,
+        "name": "プライベートアクセスの設計と実装",
+        "weight": 15
+      },
+      {
+        "id": 5,
+        "name": "負荷分散の設計と実装",
+        "weight": 10
+      }
+    ],
+    "tags": [
+      "Azure",
+      "AZ-700",
+      "ネットワークエンジニア",
+      "認定試験",
+      "クラウドコンピューティング"
+    ]
+  },
+  "questions": [
+    {
+      "id": "q1",
+      "domain": 1,
+      "question": "ある企業がAzureネットワークアーキテクチャを設計する必要があり、異なる事業部門は互いに分離する必要があります。各部門は何を使用してネットワークセグメンテーションを実現すべきですか？",
+      "options": {
+        "A": "同じVNet内で複数のサブネットを使用",
+        "B": "各部門に個別の仮想ネットワークを作成",
+        "C": "ネットワークセキュリティグループを使用",
+        "D": "BとCを組み合わせて使用"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "ベストプラクティスは、各事業部門に個別の仮想ネットワークを作成してネットワーク分離を実現し、ネットワークセキュリティグループを使用してVNet間およびVNet内のトラフィックを制御することです。これにより多層セキュリティが提供されます。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q2",
+      "domain": 1,
+      "question": "ある企業がAzure Virtual WANを使用しています。2つのブランチオフィスのVPNデバイスを接続する必要があります。各ブランチがVirtual WANハブに接続するには何が必要ですか？",
+      "options": {
+        "A": "VNetピアリング",
+        "B": "サイト間VPN接続",
+        "C": "ExpressRoute回線",
+        "D": "ポイント対サイトVPN"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "ブランチオフィスのVPNデバイスはサイト間VPN接続を介してAzure Virtual WANハブに接続します。Virtual WANハブには組み込みのVPNゲートウェイがあり、ブランチ間の接続を自動的に処理できます。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q3",
+      "domain": 1,
+      "question": "ある企業がAzure DNSゾーンのエイリアスレコードを有効にしてAzureロードバランサーを指すようにする必要があります。これを行う利点は何ですか？",
+      "options": {
+        "A": "コストの削減",
+        "B": "リソースIPの変更を反映するためにレコードを自動更新",
+        "C": "DNS解決速度の向上",
+        "D": "DNSSECの有効化"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure DNSエイリアスレコードはAzureリソース（ロードバランサーなど）を直接指すことができます。リソースのIPアドレスが変更されると、エイリアスレコードは自動的に更新され、孤立したDNSレコードの問題を回避します。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q4",
+      "domain": 1,
+      "question": "ある企業が高可用性を実現するためにアプリケーションゲートウェイを複数の可用性ゾーンにまたがってデプロイする必要があります。アプリケーションゲートウェイv2は何個の可用性ゾーンをサポートしますか？",
+      "options": {
+        "A": "1つ",
+        "B": "2つ",
+        "C": "最大3つ",
+        "D": "可用性ゾーンをサポートしない"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "アプリケーションゲートウェイv2 SKUは最大3つの可用性ゾーンにまたがるデプロイをサポートし、ゾーンレベルの冗長性を提供します。これにより、1つのゾーンで障害が発生してもアプリケーションゲートウェイは引き続き利用可能です。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q5",
+      "domain": 1,
+      "question": "ある企業が仮想ネットワークにIPv6サポートを構成する必要があります。Azure仮想ネットワークでのIPv6の現在のステータスは何ですか？",
+      "options": {
+        "A": "IPv6はサポートされていない",
+        "B": "IPv6のみをサポート",
+        "C": "デュアルスタック（IPv4とIPv6）をサポート",
+        "D": "特定のリージョンでのみサポート"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "Azure仮想ネットワークはデュアルスタック構成をサポートしており、IPv4とIPv6の両方のアドレス空間を同時に使用できます。これにより、VMはIPv4とIPv6の両方のアドレスを持つことができます。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q6",
+      "domain": 1,
+      "question": "ある企業が仮想ネットワークのアドレス空間がオンプレミスネットワークと重複しないようにする必要があります。計画時に何を考慮すべきですか？",
+      "options": {
+        "A": "現在使用されているアドレスのみを考慮",
+        "B": "既存および計画されているすべてのオンプレミスネットワーク、Azureネットワーク、ピアリングネットワークを考慮",
+        "C": "パブリックIPアドレス空間を使用",
+        "D": "Azureネットワークのみを考慮"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "アドレス空間を計画する際には、オンプレミスデータセンター、Azure仮想ネットワーク、計画されているVNetピアリングおよびVPN接続を含む、既存および計画されているすべてのネットワークを考慮する必要があります。アドレスの重複はルーティングの問題を引き起こします。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q7",
+      "domain": 1,
+      "question": "ある企業がサブネットからのネットワークトラフィックをネットワーク仮想アプライアンスにミラーリングして分析する必要があります。どの機能を使用すべきですか？",
+      "options": {
+        "A": "ネットワークセキュリティグループフローログ",
+        "B": "仮想ネットワークTAP",
+        "C": "Azure Monitor",
+        "D": "Network Watcher"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "仮想ネットワークTAP（ターミナルアクセスポイント）は、ネットワークトラフィックをネットワーク仮想アプライアンスまたは分析ツールに継続的にストリーミングできます。これはディープパケットインスペクションやネットワークフォレンジックに役立ちます。",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q8",
+      "domain": 1,
+      "question": "ある企業がAzureでネットワークトポロジを作成する必要があり、すべてのスポークVNetがスポーク間でピアリングを作成せずに相互通信できる必要があります。どのアーキテクチャを使用すべきですか？",
+      "options": {
+        "A": "メッシュピアリング",
+        "B": "NVAを使用したHub-Spokeトポロジ",
+        "C": "Azure Virtual WAN",
+        "D": "BとCの両方が可能"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "NVA（Azure Firewallなど）を使用したHub-Spokeトポロジ、またはAzure Virtual WANを使用してany-to-any接続を実現できます。Virtual WANはスポーク間のルーティングを自動的に処理します。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q9",
+      "domain": 2,
+      "question": "ある企業がAzure Route Serverを使用してブランチ間機能を有効にしています。これは何を意味しますか？",
+      "options": {
+        "A": "VNet間の通信のみを許可",
+        "B": "Route Serverを介して学習されたルートをExpressRouteとVPN間で交換可能にする",
+        "C": "すべてのルーティングを無効化",
+        "D": "オンプレミスブランチ間の通信のみを許可"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "ブランチ間機能を有効にすると、Azure Route ServerはExpressRouteゲートウェイとVPNゲートウェイ間でルートを交換できます。これにより、オンプレミスネットワークがAzureを介してトランジットルーティングを行うことができます。",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q10",
+      "domain": 2,
+      "question": "ある企業がMicrosoft 365サービスをサポートするようにExpressRouteを構成する必要があります。どのピアリングタイプを構成する必要がありますか？",
+      "options": {
+        "A": "Azureプライベートピアリング",
+        "B": "Azureパブリックピアリング（非推奨）",
+        "C": "Microsoftピアリング",
+        "D": "特別な構成は不要"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "MicrosoftピアリングはMicrosoft 365やDynamics 365などのMicrosoftオンラインサービスへの接続に使用されます。AzureプライベートピアリングはAzure IaaSおよびPaaSサービスのプライベートアドレスへの接続に使用されます。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q11",
+      "domain": 2,
+      "question": "ある企業がAzureで非対称ルーティングの検出を実装する必要があります。どのシナリオが非対称ルーティングを引き起こす可能性がありますか？",
+      "options": {
+        "A": "単一パス構成",
+        "B": "ExpressRouteとVPN接続の両方が存在",
+        "C": "システムルートのみを使用",
+        "D": "単一ゲートウェイを使用"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "ExpressRouteとVPNの両方を構成している場合、非対称ルーティングが発生する可能性があります：リクエストは1つのパスを通って入り、応答は別のパスを通って戻ります。これはファイアウォールなどのステートフルデバイスで接続の問題を引き起こす可能性があります。",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q12",
+      "domain": 2,
+      "question": "ある企業がExpressRoute回線のBGPセッション状態を表示する必要があります。どのツールを使用すべきですか？",
+      "options": {
+        "A": "Azureポータル - ExpressRoute回線",
+        "B": "Network Watcher",
+        "C": "Azure Monitor",
+        "D": "すべてのオプションが情報を提供可能"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "ExpressRoute BGPステータスは複数の方法で表示できます：Azureポータルはピアリング構成を表示し、Network Watcherは診断ツールを提供し、Azure Monitorは監視メトリクスとアラートを提供します。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q13",
+      "domain": 2,
+      "question": "ある企業がVPNゲートウェイのアクティブ/アクティブモードを構成しています。クライアント接続はどのように構成すべきですか？",
+      "options": {
+        "A": "単一のパブリックIPに接続",
+        "B": "2つのトンネルを構成し、それぞれ2つのパブリックIPに接続",
+        "C": "ロードバランサーを使用",
+        "D": "Traffic Managerを使用"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "アクティブ/アクティブVPN構成では、オンプレミスVPNデバイスは2つのIPsecトンネルを構成し、それぞれAzure VPNゲートウェイの2つのパブリックIPアドレスに接続する必要があります。両方のトンネルが同時にアクティブになります。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q14",
+      "domain": 2,
+      "question": "ある企業がAzure CLIを使用して有効なルートテーブルを表示する必要があります。どのコマンドが正しいですか？",
+      "options": {
+        "A": "az network route-table list",
+        "B": "az network nic show-effective-route-table",
+        "C": "az network vnet show",
+        "D": "az network route show"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "az network nic show-effective-route-tableコマンドは、システムルート、ユーザー定義ルート、BGPルートを含むネットワークインターフェースの有効なルートを表示します。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q15",
+      "domain": 2,
+      "question": "ある企業がAzureルーティングの優先順位を理解する必要があります。次のルートソースのうち、最も高い優先順位を持つのはどれですか？",
+      "options": {
+        "A": "システムルート",
+        "B": "ユーザー定義ルート",
+        "C": "BGPルート",
+        "D": "デフォルトルート"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "ユーザー定義ルートは最も高い優先順位を持ち、システムルートとBGPルートを上書きできます。優先順位の順序は：ユーザー定義ルート > BGPルート > システムルートです。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q16",
+      "domain": 2,
+      "question": "ある企業がExpressRoute FastPathを使用しています。FastPathの主な利点は何ですか？",
+      "options": {
+        "A": "コストの削減",
+        "B": "ExpressRouteゲートウェイをバイパスして低遅延を実現",
+        "C": "より高い帯域幅",
+        "D": "より良いセキュリティ"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "ExpressRoute FastPathは、ExpressRoute仮想ネットワークゲートウェイをバイパスして、データパストラフィックを仮想ネットワーク内の仮想マシンに直接送信します。これにより遅延が減少し、パフォーマンスが向上します。",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q17",
+      "domain": 3,
+      "question": "ある企業がAzure FirewallのDNSプロキシ機能を構成する必要があります。これはどのような利点を提供しますか？",
+      "options": {
+        "A": "DNSクエリの暗号化",
+        "B": "ネットワークルールでFQDNの使用を許可",
+        "C": "DNSトラフィックの削減",
+        "D": "すべてのDNSリクエストをブロック"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "DNSプロキシを有効にすると、Azure Firewallはネットワークルール内のFQDNを解決できます。トラフィックがファイアウォールを通過する際、FQDNはIPアドレスに解決され、ネットワークルールが適用されます。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q18",
+      "domain": 3,
+      "question": "ある企業がAzure Firewallを使用してインバウンドDNATルールを作成する必要があります。DNATルールはどのシナリオで使用されますか？",
+      "options": {
+        "A": "アウトバウンドトラフィックのフィルタリング",
+        "B": "インバウンドインターネットトラフィックを内部リソースに転送",
+        "C": "VNet間のトラフィックフィルタリング",
+        "D": "悪意のあるIPのブロック"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "DNAT（宛先ネットワークアドレス変換）ルールは、ファイアウォールのパブリックIPに到達するインバウンドトラフィックを仮想ネットワーク内の内部リソースに転送するために使用され、同時にポート番号を変更することもできます。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q19",
+      "domain": 3,
+      "question": "ある企業がAzure Firewall Managerを使用して複数のVirtual WANハブのセキュリティポリシーを管理する必要があります。このデプロイモデルは何と呼ばれますか？",
+      "options": {
+        "A": "Hub仮想ネットワーク",
+        "B": "セキュリティで保護された仮想ハブ",
+        "C": "マネージドハブ",
+        "D": "ファイアウォールクラスター"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "セキュリティで保護された仮想ハブは、Azure Virtual WANハブにAzure Firewallをデプロイする構成です。Azure Firewall Managerは、複数のセキュリティで保護された仮想ハブのポリシーを一元管理できます。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q20",
+      "domain": 3,
+      "question": "ある企業がネットワークセキュリティグループルールの評価順序を理解する必要があります。インバウンドとアウトバウンドのルールはどのように評価されますか？",
+      "options": {
+        "A": "すべてのルールが同時に評価される",
+        "B": "優先度の低い順から高い順に評価",
+        "C": "優先度の高い順から低い順に評価（数字が小さいほど優先度が高い）",
+        "D": "ランダムに評価"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "NSGルールは最も低い数字から最も高い数字の順に優先度が評価されます（数字が小さいほど優先度が高い）。一致するルールが見つかると評価が停止し、そのルールのアクション（許可または拒否）が適用されます。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q21",
+      "domain": 3,
+      "question": "ある企業がアプリケーションセキュリティグループ（ASG）を使用してNSGルール管理を簡素化する必要があります。ASGの主な利点は何ですか？",
+      "options": {
+        "A": "NSGルールの自動作成",
+        "B": "IPアドレスではなくアプリケーションロジックでVMをグループ化できる",
+        "C": "DDoS保護の提供",
+        "D": "ネットワークトラフィックの暗号化"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "アプリケーションセキュリティグループを使用すると、VMを論理的にグループ化（Webサーバー、データベースサーバーなど）し、NSGルールでIPアドレスの代わりにこれらのグループをソースまたは宛先として使用できます。これによりルール管理が簡素化されます。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q22",
+      "domain": 3,
+      "question": "ある企業がトラブルシューティングのためにAzure Firewallログを確認する必要があります。ログはどこに保存されますか？",
+      "options": {
+        "A": "ローカルストレージ",
+        "B": "Log Analyticsワークスペース、ストレージアカウント、またはEvent Hubs",
+        "C": "Azureポータルのみ",
+        "D": "ファイアウォールのローカルキャッシュ"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure Firewallログは、Log Analyticsワークスペース（クエリと分析用）、ストレージアカウント（アーカイブ用）、またはEvent Hubs（外部システムへのストリーミング用）に送信できます。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q23",
+      "domain": 3,
+      "question": "ある企業がAzure DDoS Protection Standardをデプロイしました。保護が正常に機能していることをどのように検証しますか？",
+      "options": {
+        "A": "実際の攻撃を待つ",
+        "B": "Azure DDoS Protectionテストパートナーを使用してシミュレーションを行う",
+        "C": "サブスクリプションのクォータを確認",
+        "D": "リソースタグを表示"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "AzureはDDoSシミュレーションサービスを提供するテストパートナーと協力しています。承認されたテストパートナー（BreakingPoint Cloudなど）を使用してシミュレーション攻撃トラフィックを生成し、DDoS保護構成を検証できます。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q24",
+      "domain": 3,
+      "question": "ある企業がAzure FirewallのSNAT動作を実装する必要があります。デフォルトでSNATは何を使用しますか？",
+      "options": {
+        "A": "バックエンドプールIP",
+        "B": "ファイアウォールのパブリックIPアドレス",
+        "C": "ランダムIP",
+        "D": "ソースVMのIP"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "デフォルトでは、Azure Firewallはすべてのアウトバウンドトラフィックに対してSNATを実行し、ファイアウォールのパブリックIPアドレスをソースIPとして使用します。複数のパブリックIPを構成したり、RFC 1918アドレスに対してSNATを実行しないように設定したりできます。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q25",
+      "domain": 4,
+      "question": "ある企業がExpressRouteを介してオンプレミスネットワークからAzure Storageのプライベートエンドポイントにアクセスする必要があります。どのような構成が必要ですか？",
+      "options": {
+        "A": "プライベートエンドポイントのみを作成",
+        "B": "プライベートエンドポイントとプライベートIPを解決するための正しいDNS構成",
+        "C": "パブリックエンドポイント",
+        "D": "サービスエンドポイント"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "オンプレミスからプライベートエンドポイントにアクセスするには、1）プライベートエンドポイントを作成し、2）サービスFQDNをプライベートIPに解決するようにDNSを構成する必要があります。通常、DNSフォワーダーまたは条件付き転送を使用して実現します。",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q26",
+      "domain": 4,
+      "question": "ある企業がプライベートエンドポイントのネットワークセキュリティグループサポートを理解する必要があります。NSGはプライベートエンドポイントにどのような影響を与えますか？",
+      "options": {
+        "A": "NSGがプライベートエンドポイントトラフィックを完全に制御",
+        "B": "NSGはプライベートエンドポイントトラフィックに影響しない",
+        "C": "NSGはプライベートエンドポイントに適用できるが、特定のポリシーを有効にする必要がある",
+        "D": "プライベートエンドポイントはNSGをサポートしない"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "デフォルトでは、NSGルールはプライベートエンドポイントに適用されません。サブネットで\"privatelinkNetworkPolicies\"を有効にして、NSGとUDRをプライベートエンドポイントトラフィックに適用できるようにする必要があります。",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q27",
+      "domain": 4,
+      "question": "ある企業がAzure Private LinkサービスでNAT IPアドレスを構成したいと考えています。NAT IPの用途は何ですか？",
+      "options": {
+        "A": "パブリックアクセスの提供",
+        "B": "コンシューマーからのトラフィックに対してSNATを実行",
+        "C": "トラフィックの暗号化",
+        "D": "負荷分散"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Private LinkサービスのNAT IPは、コンシューマーのプライベートエンドポイントからのトラフィックに対してソースNATを実行するために使用されます。これにより、戻りトラフィックがコンシューマーネットワークに正しくルーティングされます。",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q28",
+      "domain": 4,
+      "question": "ある企業がプライベートエンドポイントをサポートするAzureサービスを判断する必要があります。次のサービスのうち、プライベートエンドポイントをサポートするのはどれですか？",
+      "options": {
+        "A": "Azure Storage",
+        "B": "Azure SQL Database",
+        "C": "Azure Cosmos DB",
+        "D": "上記すべて"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "多くのAzure PaaSサービスがプライベートエンドポイントをサポートしています。Azure Storage、Azure SQL Database、Azure Cosmos DB、Azure Key Vault、Azure Container Registryなどが含まれます。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q29",
+      "domain": 4,
+      "question": "ある企業がAzure Private DNSリゾルバーを構成する必要があります。リゾルバーのインバウンドエンドポイントは何に使用されますか？",
+      "options": {
+        "A": "AzureからオンプレミスへのDNSクエリの転送",
+        "B": "オンプレミスからDNSクエリを受信し、AzureプライベートDNSゾーンを解決",
+        "C": "DNSクエリのブロック",
+        "D": "DNSトラフィックの暗号化"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Private DNSリゾルバーのインバウンドエンドポイントは、オンプレミスネットワークからDNSクエリを受信するために使用されます。オンプレミスDNSサーバーはクエリをインバウンドエンドポイントに転送し、リゾルバーがAzureプライベートDNSゾーンを照会します。",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q30",
+      "domain": 4,
+      "question": "ある企業がAzure Key Vaultのプライベートエンドポイントを構成する必要があります。プライベートエンドポイントのみを介してアクセスするようにするには何を無効にすべきですか？",
+      "options": {
+        "A": "すべてのアクセスポリシー",
+        "B": "パブリックネットワークアクセス",
+        "C": "RBAC",
+        "D": "論理的な削除"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "プライベートエンドポイントを構成した後、Key Vaultのネットワーク設定でパブリックネットワークアクセスを無効にする必要があります。これにより、Key Vaultにはプライベートエンドポイントを介してのみアクセスでき、セキュリティが強化されます。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q31",
+      "domain": 5,
+      "question": "ある企業がAzure Load Balancerを複数のフロントエンドIP構成をサポートするように構成する必要があります。これは何に使用されますか？",
+      "options": {
+        "A": "冗長性のみ",
+        "B": "異なるパブリックIPを異なるバックエンドプールまたはポートにマッピングできる",
+        "C": "パフォーマンスの向上",
+        "D": "コストの削減"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "複数のフロントエンドIP構成により、単一のロードバランサーで異なるサービスに異なるパブリックIPアドレスを使用できます。各フロントエンドIPには独自の負荷分散ルールがあり、同じまたは異なるバックエンドプールにマッピングできます。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q32",
+      "domain": 5,
+      "question": "ある企業がAzureアプリケーションゲートウェイの接続ドレイン機能を理解する必要があります。この機能は何をしますか？",
+      "options": {
+        "A": "すべての接続を即座に終了",
+        "B": "バックエンドプールからインスタンスを削除する前に既存の接続を優雅に完了",
+        "C": "接続数の増加",
+        "D": "接続の暗号化"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "接続ドレインにより、バックエンドインスタンスがプールから削除される際に、既存の接続が即座に切断されるのではなく優雅に完了できます。ドレインタイムアウト時間を構成できます。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q33",
+      "domain": 5,
+      "question": "ある企業がAzure Traffic Managerのエンドポイント監視を構成する必要があります。どのプローブプロトコルを構成できますか？",
+      "options": {
+        "A": "HTTPのみ",
+        "B": "HTTPSのみ",
+        "C": "HTTP、HTTPS、またはTCP",
+        "D": "ICMPのみ"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "Azure Traffic Managerはエンドポイントのヘルス監視にHTTP、HTTPS、TCPのプローブプロトコルをサポートしています。プローブパス、間隔、耐障害しきい値を構成できます。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q34",
+      "domain": 5,
+      "question": "ある企業がAzure Front Doorを使用してブルーグリーンデプロイメントを実装する必要があります。どの機能を使用すべきですか？",
+      "options": {
+        "A": "URLリダイレクト",
+        "B": "重み付けバックエンドプール",
+        "C": "キャッシュ",
+        "D": "WAF"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "重み付けバックエンドプールを使用すると、異なるバックエンド（ブルー環境とグリーン環境など）にトラフィックの重みを割り当てることができます。新しい環境の重みを徐々に増やすことで、スムーズなブルーグリーンデプロイメントを実現できます。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q35",
+      "domain": 5,
+      "question": "ある企業がAzure Load BalancerのTCPリセット機能を構成する必要があります。この機能はいつTCPリセットを送信しますか？",
+      "options": {
+        "A": "接続が成功したとき",
+        "B": "接続のアイドルタイムアウトまたはヘルスプローブ失敗時",
+        "C": "すべてのインバウンド接続",
+        "D": "アウトバウンド接続のみ"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "TCPリセットを有効にすると、ロードバランサーは接続のアイドルタイムアウト、バックエンドプールメンバーのヘルスプローブ失敗、または接続の異常終了時にクライアントとサーバーにTCP RSTパケットを送信します。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q36",
+      "domain": 5,
+      "question": "ある企業がAzureアプリケーションゲートウェイをホストヘッダーに基づいてトラフィックをルーティングするように構成する必要があります。どの機能を使用すべきですか？",
+      "options": {
+        "A": "URLパスルーティング",
+        "B": "マルチサイトリスナー",
+        "C": "リダイレクトルール",
+        "D": "書き換えルール"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "マルチサイトリスナーを使用すると、同じアプリケーションゲートウェイで複数のWebサイトを構成できます。リクエストのホストヘッダーに基づいて、トラフィックは異なるバックエンドプールにルーティングされます。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q37",
+      "domain": 5,
+      "question": "ある企業がAzure Front Doorのセッションアフィニティを構成する必要があります。セッションアフィニティは何に基づいていますか？",
+      "options": {
+        "A": "ソースIPアドレス",
+        "B": "クライアントCookie",
+        "C": "URLパラメータ",
+        "D": "リクエストヘッダー"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure Front Doorのセッションアフィニティは、クライアントCookieを使用して同じユーザーセッションからのリクエストが同じバックエンドにルーティングされるようにします。これはステートフルアプリケーションにとって重要です。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q38",
+      "domain": 5,
+      "question": "ある企業がAzure Gateway Load Balancerを構成する必要があります。このサービスの主な用途は何ですか？",
+      "options": {
+        "A": "Webアプリケーションの負荷分散",
+        "B": "ネットワーク仮想アプライアンスの前に透過的な負荷分散を挿入",
+        "C": "DNS負荷分散",
+        "D": "グローバルトラフィック管理"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure Gateway Load BalancerはNVA（ファイアウォール、IDS/IPSなど）の前に透過的な負荷分散を挿入するために使用されます。他のロードバランサーとチェーンされ、すべてのトラフィックがNVAを通過することを保証します。",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q39",
+      "domain": 5,
+      "question": "ある企業がAzure Load BalancerのSNATポート枯渇問題を理解する必要があります。どのような状況がSNATポート枯渇を引き起こす可能性がありますか？",
+      "options": {
+        "A": "少数のバックエンドインスタンスが大量のアウトバウンド接続を処理",
+        "B": "多すぎるインバウンド接続",
+        "C": "ヘルスプローブの失敗",
+        "D": "パブリックIPアドレスの不足"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "少数のバックエンドインスタンスが大量のアウトバウンド接続を確立する必要がある場合、利用可能なSNATポートが不足する可能性があります。解決策には、バックエンドインスタンスの追加、NATゲートウェイの構成、またはアウトバウンドルールを使用したより多くのSNATポートの割り当てが含まれます。",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q40",
+      "domain": 5,
+      "question": "ある企業がAzureアプリケーションゲートウェイの書き換えルールを構成する必要があります。何を書き換えることができますか？",
+      "options": {
+        "A": "リクエストヘッダーのみ",
+        "B": "レスポンスヘッダーのみ",
+        "C": "リクエストヘッダー、レスポンスヘッダー、URL",
+        "D": "URLのみ"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "アプリケーションゲートウェイv2の書き換えルールは、HTTPリクエストヘッダー、レスポンスヘッダー、URL（パスとクエリ文字列を含む）を変更できます。これはセキュリティヘッダーの変更、リダイレクト、URL正規化に役立ちます。",
+      "difficulty": "medium"
+    }
+  ]
+}

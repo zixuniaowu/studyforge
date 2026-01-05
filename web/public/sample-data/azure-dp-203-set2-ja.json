@@ -1,0 +1,661 @@
+{
+  "exam": {
+    "id": "azure-dp-203-set2-ja",
+    "name": "Data Engineering on Microsoft Azure 練習問題 Set 2",
+    "code": "DP-203",
+    "provider": "Microsoft",
+    "language": "ja",
+    "description": "Azure データ エンジニアリング ソリューションの設計と実装に関する練習問題セット 2",
+    "totalQuestions": 40,
+    "passingScore": 70,
+    "examTime": 120,
+    "domains": [
+      "データ ストレージの設計と実装",
+      "データ処理の開発",
+      "データ ストレージとデータ処理のセキュリティ保護、監視、最適化"
+    ],
+    "tags": ["Azure", "Data Engineering", "Synapse", "Data Factory", "Databricks"]
+  },
+  "questions": [
+    {
+      "id": "dp203-s2-ja-q1",
+      "examId": "azure-dp-203-set2-ja",
+      "setNumber": 2,
+      "domain": "データ ストレージの設計と実装",
+      "question": "Azure Synapse Analytics 専用 SQL プールを使用しています。製品販売データを保存するテーブルを作成する必要があります。テーブルには数十億行が含まれ、製品カテゴリに基づいてフィルター処理と集計が頻繁に行われます。テーブルの分散とインデックスをどのように設計しますか？",
+      "options": {
+        "A": "ProductID でハッシュ分散、クラスター化列ストア インデックス",
+        "B": "ラウンド ロビン分散、クラスター化インデックス",
+        "C": "CategoryID でハッシュ分散、クラスター化列ストア インデックス",
+        "D": "レプリケート分散、非クラスター化インデックス"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "大規模なテーブルで特定の列で頻繁にフィルター処理される場合、その列でハッシュ分散を使用する必要があります。CategoryID はフィルター列であり、ハッシュ分散によりデータ移動を減らせます。クラスター化列ストア インデックスは分析ワークロードに最適です。"
+    },
+    {
+      "id": "dp203-s2-ja-q2",
+      "examId": "azure-dp-203-set2-ja",
+      "setNumber": 2,
+      "domain": "データ処理の開発",
+      "question": "Azure Data Factory を使用してパイプラインを作成しており、パラメーター値に基づいて異なるアクティビティを実行する必要があります。どの制御フロー アクティビティを使用しますか？",
+      "options": {
+        "A": "ForEach",
+        "B": "Until",
+        "C": "If Condition",
+        "D": "Switch"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "Switch アクティビティはプログラミングの switch ステートメントに似ており、式の値に基づいて実行する異なるアクティビティ分岐を選択できます。If Condition は 2 つの分岐（true/false）のみをサポートし、ForEach は反復に使用され、Until は条件が true になるまでループします。"
+    },
+    {
+      "id": "dp203-s2-ja-q3",
+      "examId": "azure-dp-203-set2-ja",
+      "setNumber": 2,
+      "domain": "データ ストレージとデータ処理のセキュリティ保護、監視、最適化",
+      "question": "Azure Data Lake Storage Gen2 のデータが顧客が管理するキーで暗号化されていることを確認する必要があります。何を構成しますか？",
+      "options": {
+        "A": "ストレージ アカウントの暗号化設定",
+        "B": "Azure Key Vault ファイアウォール",
+        "C": "ストレージ アカウント ファイアウォール",
+        "D": "Azure Active Directory 条件付きアクセス"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "ストレージ アカウントの暗号化設定で、Microsoft が管理するキーではなく顧客が管理するキーを選択できます。キーは Azure Key Vault に保存されますが、構成はストレージ アカウントの暗号化設定で完了します。"
+    },
+    {
+      "id": "dp203-s2-ja-q4",
+      "examId": "azure-dp-203-set2-ja",
+      "setNumber": 2,
+      "domain": "データ ストレージの設計と実装",
+      "question": "Azure Synapse Analytics サーバーレス SQL プールを使用して Parquet ファイルをクエリしています。ファイル内の特定の列のみを読み取ってパフォーマンスを向上させる必要があります。Parquet ファイルのどの特性がこの機能をサポートしていますか？",
+      "options": {
+        "A": "行グループ",
+        "B": "列形式ストレージ",
+        "C": "フッター メタデータ",
+        "D": "Snappy 圧縮"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Parquet は列形式ストレージ形式であり、データは列ごとに編成されて保存されます。これにより、クエリ エンジンは必要な列のみを読み取り、関連のない列をスキップして I/O を削減できます。行グループは Parquet のパーティション単位、フッター メタデータにはスキーマ情報が含まれます。"
+    },
+    {
+      "id": "dp203-s2-ja-q5",
+      "examId": "azure-dp-203-set2-ja",
+      "setNumber": 2,
+      "domain": "データ処理の開発",
+      "question": "Azure Databricks を使用してストリーミング データを処理しています。ストリーミング データを Delta Lake テーブルに書き込み、更新と削除操作もサポートする必要があります。どの出力モードを使用しますか？",
+      "options": {
+        "A": "append",
+        "B": "complete",
+        "C": "update",
+        "D": "foreachBatch"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "foreachBatch を使用すると、各マイクロバッチで MERGE（更新、挿入、削除）操作を含む任意の操作を実行できます。append はデータを追加するだけで、complete は結果全体を書き換え、update は変更された行のみを出力しますが Delta の MERGE 操作をサポートしていません。"
+    },
+    {
+      "id": "dp203-s2-ja-q6",
+      "examId": "azure-dp-203-set2-ja",
+      "setNumber": 2,
+      "domain": "データ ストレージとデータ処理のセキュリティ保護、監視、最適化",
+      "question": "Azure Synapse Analytics 専用 SQL プールで長時間実行されているクエリを監視する必要があります。クエリ実行の詳細なステップとデータ移動情報を表示したいです。どの DMV をクエリしますか？",
+      "options": {
+        "A": "sys.dm_pdw_exec_requests",
+        "B": "sys.dm_pdw_request_steps",
+        "C": "sys.dm_pdw_sql_requests",
+        "D": "sys.dm_pdw_nodes_exec_query_plan"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "sys.dm_pdw_request_steps は、クエリ実行のすべてのステップ（ShuffleMove、BroadcastMove などのデータ移動操作を含む）を表示します。これはクエリ パフォーマンスの理解と最適化に非常に役立ちます。exec_requests は要求の概要を表示します。"
+    },
+    {
+      "id": "dp203-s2-ja-q7",
+      "examId": "azure-dp-203-set2-ja",
+      "setNumber": 2,
+      "domain": "データ ストレージの設計と実装",
+      "question": "Azure Data Lake Storage Gen2 のアクセス アーキテクチャを設計しています。データ エンジニアには特定のフォルダーへの完全なアクセス権を許可し、データ アナリストには読み取りのみを制限する必要があります。どの方法を使用しますか？",
+      "options": {
+        "A": "Azure RBAC のみを使用する",
+        "B": "アクセス制御リスト (ACL) のみを使用する",
+        "C": "Azure RBAC と ACL を組み合わせる",
+        "D": "共有アクセス署名 (SAS)"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "ベスト プラクティスは、Azure RBAC と ACL を組み合わせて使用することです。RBAC を使用してコンテナー レベルで基本的なアクセス権を付与し、ACL を使用してフォルダーとファイル レベルで細かい制御を実装します。RBAC のみではフォルダー レベルの制御ができず、ACL のみでは管理が複雑です。"
+    },
+    {
+      "id": "dp203-s2-ja-q8",
+      "examId": "azure-dp-203-set2-ja",
+      "setNumber": 2,
+      "domain": "データ処理の開発",
+      "question": "Azure Stream Analytics を使用してリアルタイム データを処理しています。デバイス ID に基づいてデータをグループ化し、スライディング ウィンドウで各デバイスの平均温度を計算する必要があります。正しいクエリ構文は何ですか？",
+      "options": {
+        "A": "GROUP BY DeviceId, TumblingWindow(minute, 5)",
+        "B": "GROUP BY DeviceId, SlidingWindow(minute, 5, 1)",
+        "C": "GROUP BY DeviceId, HoppingWindow(minute, 5, 1)",
+        "D": "GROUP BY DeviceId, SessionWindow(minute, 5)"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "SlidingWindow は各イベントで出力するウィンドウを作成し、各イベントのスライディング平均を計算するのに適しています。パラメーターは（時間単位、ウィンドウ サイズ、オフセット）です。TumblingWindow は重複しない固定ウィンドウ、HoppingWindow は重複可能な固定ウィンドウです。"
+    },
+    {
+      "id": "dp203-s2-ja-q9",
+      "examId": "azure-dp-203-set2-ja",
+      "setNumber": 2,
+      "domain": "データ ストレージとデータ処理のセキュリティ保護、監視、最適化",
+      "question": "Azure Databricks でデータ ガバナンスを実装する必要があります。データ リネージとメタデータを追跡したいです。どの機能を使用しますか？",
+      "options": {
+        "A": "Azure Databricks ワークスペース",
+        "B": "Unity Catalog",
+        "C": "Delta Sharing",
+        "D": "MLflow"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Unity Catalog は Azure Databricks の統合データ ガバナンス ソリューションであり、集中的なメタデータ管理、きめ細かいアクセス制御、データ リネージ追跡を提供します。ワークスペースは開発環境、Delta Sharing はデータ共有、MLflow は機械学習ライフサイクル管理に使用されます。"
+    },
+    {
+      "id": "dp203-s2-ja-q10",
+      "examId": "azure-dp-203-set2-ja",
+      "setNumber": 2,
+      "domain": "データ ストレージの設計と実装",
+      "question": "Azure Synapse Analytics で Azure Blob Storage に保存された圧縮 CSV ファイルをクエリするための外部テーブルを作成しています。外部ファイル形式で何を指定しますか？",
+      "options": {
+        "A": "DATA_COMPRESSION = 'org.apache.hadoop.io.compress.GzipCodec'",
+        "B": "DATA_COMPRESSION = 'gzip'",
+        "C": "COMPRESSION_TYPE = 'GZIP'",
+        "D": "FORMAT_OPTIONS (DATA_COMPRESSION = 'GZIP')"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "CREATE EXTERNAL FILE FORMAT ステートメントでは、DATA_COMPRESSION = 'org.apache.hadoop.io.compress.GzipCodec' を使用して Gzip 圧縮を指定します。これは Hadoop 互換の圧縮コーデック名です。他のオプションの構文は正しくないか、サポートされていません。"
+    },
+    {
+      "id": "dp203-s2-ja-q11",
+      "examId": "azure-dp-203-set2-ja",
+      "setNumber": 2,
+      "domain": "データ処理の開発",
+      "question": "Azure Data Factory のマッピング データ フローを使用しています。重複行を削除し、各グループの最新レコードを保持する必要があります。どの変換の組み合わせを使用しますか？",
+      "options": {
+        "A": "Aggregate と Sort",
+        "B": "Window と Filter",
+        "C": "Aggregate と Rank",
+        "D": "Window と Rank"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "Window 変換を使用してデータをパーティション化およびソートし、Rank 関数を使用して各グループ内の行にランクを割り当てます。その後、Filter を使用してランクが 1 の行（各グループの最新レコード）をフィルター処理します。Aggregate は集計に使用され、ランク付けには使用しません。"
+    },
+    {
+      "id": "dp203-s2-ja-q12",
+      "examId": "azure-dp-203-set2-ja",
+      "setNumber": 2,
+      "domain": "データ ストレージとデータ処理のセキュリティ保護、監視、最適化",
+      "question": "Azure Synapse Analytics 専用 SQL プールのクエリを最適化する必要があります。実行プランを分析したところ、大量の Shuffle 操作が見つかりました。どのような対策を講じますか？",
+      "options": {
+        "A": "結果セット キャッシュ サイズを増やす",
+        "B": "結合列が同じハッシュ分散を使用していることを確認する",
+        "C": "非クラスター化インデックスを追加する",
+        "D": "DWU レベルを増やす"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Shuffle 操作は、通常、結合または集計時にデータを計算ノード間で再分散する必要がある場合に発生します。結合に参加するテーブルが結合列で同じハッシュ分散を使用していることを確認すると、Shuffle を排除または削減できます。結果セット キャッシュは結果をキャッシュし、インデックスは分散に影響しません。"
+    },
+    {
+      "id": "dp203-s2-ja-q13",
+      "examId": "azure-dp-203-set2-ja",
+      "setNumber": 2,
+      "domain": "データ ストレージの設計と実装",
+      "question": "Azure Synapse Analytics の Spark プールを使用しています。SQL プールと Spark プールの両方からアクセスできるテーブルを作成する必要があります。何を使用しますか？",
+      "options": {
+        "A": "Spark マネージド テーブル",
+        "B": "外部テーブル",
+        "C": "Lake データベースのテーブル",
+        "D": "一時ビュー"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "Lake データベース（共有データベースとも呼ばれる）で作成されたテーブルは、Spark プールとサーバーレス SQL プールの両方からアクセスできます。これにより、エンジン間でのデータ共有が実現します。Spark マネージド テーブルは Spark アクセスのみに制限され、外部テーブルは各エンジンで個別に作成する必要があります。"
+    },
+    {
+      "id": "dp203-s2-ja-q14",
+      "examId": "azure-dp-203-set2-ja",
+      "setNumber": 2,
+      "domain": "データ処理の開発",
+      "question": "Azure Databricks を使用して JSON データを処理しています。JSON ファイルにはネストされた配列が含まれており、各配列要素を個別の行に展開する必要があります。どの関数を使用しますか？",
+      "options": {
+        "A": "from_json()",
+        "B": "explode()",
+        "C": "flatten()",
+        "D": "array_join()"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "explode() 関数は、配列またはマップ列を展開し、各要素に対して新しい行を作成します。from_json() は JSON 文字列を解析し、flatten() はネストされた配列を単一の配列にフラット化しますが新しい行は作成せず、array_join() は配列要素を文字列に連結します。"
+    },
+    {
+      "id": "dp203-s2-ja-q15",
+      "examId": "azure-dp-203-set2-ja",
+      "setNumber": 2,
+      "domain": "データ ストレージとデータ処理のセキュリティ保護、監視、最適化",
+      "question": "Azure Data Factory で増分データ キャプチャの監視を実装する必要があります。各パイプライン実行で読み込まれた行数を追跡したいです。何を使用しますか？",
+      "options": {
+        "A": "パイプライン実行ログ",
+        "B": "アクティビティ出力",
+        "C": "診断設定",
+        "D": "Azure Monitor メトリック"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "コピー アクティビティの出力には、rowsCopied、rowsRead などの詳細情報が含まれており、後続のアクティビティで参照または記録できます。パイプライン実行ログは概要を提供し、診断設定はログを宛先に送信しますが行数に直接アクセスできず、Azure Monitor メトリックは集計データを提供します。"
+    },
+    {
+      "id": "dp203-s2-ja-q16",
+      "examId": "azure-dp-203-set2-ja",
+      "setNumber": 2,
+      "domain": "データ ストレージの設計と実装",
+      "question": "データ レイクのパーティション戦略を設計しています。データセットは毎日 100 GB 増加し、クエリは通常日付範囲でフィルター処理されます。パーティションをどのように設計しますか？",
+      "options": {
+        "A": "時間単位でパーティション",
+        "B": "日単位でパーティション",
+        "C": "週単位でパーティション",
+        "D": "月単位でパーティション"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "毎日 100 GB のデータ量は日単位のパーティションに適しています。パーティションは効率を確保するのに十分な大きさ（小さなファイルの問題を回避）で、効果的なパーティション プルーニングを実現するのに十分に細かくする必要があります。時間単位のパーティションは小さなファイルが多すぎる可能性があります。"
+    },
+    {
+      "id": "dp203-s2-ja-q17",
+      "examId": "azure-dp-203-set2-ja",
+      "setNumber": 2,
+      "domain": "データ処理の開発",
+      "question": "Azure Synapse Analytics の Apache Spark プールを使用しています。DataFrame を一時ビューとして登録し、同じセッションで SQL クエリを使用できるようにする必要があります。どのメソッドを使用しますか？",
+      "options": {
+        "A": "df.createGlobalTempView()",
+        "B": "df.createOrReplaceTempView()",
+        "C": "df.registerTempTable()",
+        "D": "df.saveAsTable()"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "createOrReplaceTempView() は、セッション スコープの一時ビューを作成し、spark.sql() クエリで参照できます。createGlobalTempView() はグローバル一時ビュー（セッション間）を作成し、registerTempTable() は非推奨、saveAsTable() は一時ビューではなく永続テーブルを作成します。"
+    },
+    {
+      "id": "dp203-s2-ja-q18",
+      "examId": "azure-dp-203-set2-ja",
+      "setNumber": 2,
+      "domain": "データ ストレージとデータ処理のセキュリティ保護、監視、最適化",
+      "question": "Azure Synapse Analytics でワークロード分離を実装する必要があります。レポート クエリが ETL ジョブのリソースに影響を与えないようにしたいです。どのように構成しますか？",
+      "options": {
+        "A": "別の SQL プールを作成する",
+        "B": "ワークロード グループと分類子を使用する",
+        "C": "リソース クラスを構成する",
+        "D": "クエリ タイムアウトを設定する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "ワークロード グループでリソース割り当て（min_percentage_resource、cap_percentage_resource など）を定義し、分類子でユーザーをワークロード グループに割り当てることで、リソース使用量を制御できます。複数の SQL プールを作成せずにワークロード分離を実現できます。"
+    },
+    {
+      "id": "dp203-s2-ja-q19",
+      "examId": "azure-dp-203-set2-ja",
+      "setNumber": 2,
+      "domain": "データ ストレージの設計と実装",
+      "question": "Azure Synapse Analytics 専用 SQL プールを使用しています。大量のテキスト データを保存する必要があり、一部の列は 8000 バイトを超える可能性があります。どのデータ型を使用しますか？",
+      "options": {
+        "A": "VARCHAR(MAX)",
+        "B": "NVARCHAR(4000)",
+        "C": "TEXT",
+        "D": "CHAR(8000)"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "VARCHAR(MAX) は最大 2 GB の可変長文字データを保存できます。NVARCHAR(4000) は 4000 Unicode 文字に制限され、TEXT データ型は非推奨、CHAR(8000) は固定長で 8000 バイトに制限されます。"
+    },
+    {
+      "id": "dp203-s2-ja-q20",
+      "examId": "azure-dp-203-set2-ja",
+      "setNumber": 2,
+      "domain": "データ処理の開発",
+      "question": "Azure Data Factory のコピー アクティビティを使用しています。コピー プロセス中に日付形式を 'YYYYMMDD' から 'YYYY-MM-DD' に変換する必要があります。この変換はどこで構成しますか？",
+      "options": {
+        "A": "ソース設定",
+        "B": "シンク設定",
+        "C": "マッピング",
+        "D": "マッピング データ フロー"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "コピー アクティビティの列マッピングは基本的な列名の変更をサポートしていますが、データ変換はサポートしていません。データ形式変換を実行するには、マッピング データ フローを使用し、派生列変換で式を適用する必要があります。"
+    },
+    {
+      "id": "dp203-s2-ja-q21",
+      "examId": "azure-dp-203-set2-ja",
+      "setNumber": 2,
+      "domain": "データ ストレージとデータ処理のセキュリティ保護、監視、最適化",
+      "question": "Azure Databricks で機密データを保護する必要があります。クエリ結果でクレジット カード番号の一部の数字を非表示にしたいです。どの方法を使用しますか？",
+      "options": {
+        "A": "データ マスキング関数",
+        "B": "列レベルの暗号化",
+        "C": "行レベル セキュリティ",
+        "D": "ビュー"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "Databricks では、ビューを作成し、組み込み関数（concat、substring、mask など）を使用して機密データをマスクできます。ユーザーは元のテーブルではなくビューをクエリします。Unity Catalog も動的データ マスキングをサポートしています。"
+    },
+    {
+      "id": "dp203-s2-ja-q22",
+      "examId": "azure-dp-203-set2-ja",
+      "setNumber": 2,
+      "domain": "データ ストレージの設計と実装",
+      "question": "COPY コマンドを使用して Azure Synapse Analytics 専用 SQL プールにデータを読み込んでいます。ソース ファイルの NULL 値を処理する必要があり、ソース ファイルでは 'NA' が NULL を表しています。どのパラメーターを使用しますか？",
+      "options": {
+        "A": "NULLVALUE = 'NA'",
+        "B": "NULL_VALUE = 'NA'",
+        "C": "FIELDQUOTE = 'NA'",
+        "D": "EMPTYVALUE = 'NA'"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "COPY コマンドは NULLVALUE パラメーターを使用して、ソース ファイルで NULL を表す文字列値を指定します。ソース データに 'NA' が含まれている場合、データベースの NULL に変換されます。NULL_VALUE の構文は正しくなく、FIELDQUOTE はフィールド引用符を指定します。"
+    },
+    {
+      "id": "dp203-s2-ja-q23",
+      "examId": "azure-dp-203-set2-ja",
+      "setNumber": 2,
+      "domain": "データ処理の開発",
+      "question": "Azure Databricks の Auto Loader を使用して増分データ取り込みを行っています。Auto Loader の主な利点は何ですか？",
+      "options": {
+        "A": "クラスターの自動スケーリング",
+        "B": "新しいファイルの自動検出と処理済みファイルの追跡",
+        "C": "自動データ型推論",
+        "D": "自動データ品質検証"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Auto Loader は、クラウド ストレージ内の新しいファイルを自動的に検出し、増分処理を行います。チェックポイントを使用して処理済みのファイルを追跡し、重複処理を回避します。ファイル通知（プッシュ モード）またはディレクトリ リスト（プル モード）を使用して新しいファイルを検出できます。"
+    },
+    {
+      "id": "dp203-s2-ja-q24",
+      "examId": "azure-dp-203-set2-ja",
+      "setNumber": 2,
+      "domain": "データ ストレージとデータ処理のセキュリティ保護、監視、最適化",
+      "question": "Azure Synapse Analytics でマテリアライズド ビューのパフォーマンスを最適化する必要があります。マテリアライズド ビューの更新時間が長いことがわかりました。どのような対策を講じますか？",
+      "options": {
+        "A": "自動更新を無効にする",
+        "B": "マテリアライズド ビューの列数を減らす",
+        "C": "基本テーブルがハッシュ分散を使用していることを確認する",
+        "D": "マテリアライズド ビューのパーティション数を増やす"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "マテリアライズド ビューのパフォーマンスは基本テーブルの設計と密接に関連しています。基本テーブルが適切なハッシュ分散を使用していることを確認すると、更新時のデータ移動を減らせます。自動更新を無効にするとデータが古くなり、列数を減らすと機能に影響する可能性があります。"
+    },
+    {
+      "id": "dp203-s2-ja-q25",
+      "examId": "azure-dp-203-set2-ja",
+      "setNumber": 2,
+      "domain": "データ ストレージの設計と実装",
+      "question": "Azure Synapse Analytics サーバーレス SQL プールを使用しています。Data Lake に保存されているファイルをクエリするビューを作成し、Parquet ファイルのファイル パスをパーティション列として使用する必要があります。どの関数を使用しますか？",
+      "options": {
+        "A": "FILEPATH()",
+        "B": "FILENAME()",
+        "C": "PARTITION()",
+        "D": "PATH()"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "FILEPATH() 関数は、ファイル パスの特定の部分を返し、Hive スタイルのパーティション パスからパーティション値を抽出するために使用できます。たとえば、FILEPATH(1) はパス内の最初のディレクトリ名を返します。FILENAME() はファイル名を返し、PARTITION() と PATH() は有効な関数ではありません。"
+    },
+    {
+      "id": "dp203-s2-ja-q26",
+      "examId": "azure-dp-203-set2-ja",
+      "setNumber": 2,
+      "domain": "データ処理の開発",
+      "question": "Azure Data Factory を使用してデータ パイプラインを実装しています。パイプラインが失敗したときにクリーンアップ操作を実行する必要があります。どのように構成しますか？",
+      "options": {
+        "A": "If Condition アクティビティを使用してエラーをチェックする",
+        "B": "アクティビティの失敗依存関係を構成する",
+        "C": "Try-Catch ブロックを使用する",
+        "D": "再試行ポリシーを構成する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Data Factory では、アクティビティ間の依存関係条件（成功、失敗、完了、スキップ）を構成できます。「失敗」依存関係を設定すると、前のアクティビティが失敗したときにクリーンアップ アクティビティを実行できます。Data Factory は Try-Catch をサポートしていません。"
+    },
+    {
+      "id": "dp203-s2-ja-q27",
+      "examId": "azure-dp-203-set2-ja",
+      "setNumber": 2,
+      "domain": "データ ストレージとデータ処理のセキュリティ保護、監視、最適化",
+      "question": "Azure Data Lake Storage Gen2 で誤ったデータ損失を防ぐために論理的な削除を構成する必要があります。論理的な削除はどのオブジェクトに適用されますか？",
+      "options": {
+        "A": "BLOB のみ",
+        "B": "コンテナーのみ",
+        "C": "BLOB とコンテナー",
+        "D": "BLOB、コンテナー、ストレージ アカウント"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "Azure Storage は BLOB の論理的な削除とコンテナーの論理的な削除をサポートしています。有効にすると、削除された BLOB またはコンテナーを保持期間内に復元できます。ストレージ アカウントは論理的な削除をサポートしていないため、誤った削除を防ぐにはリソース ロックまたは Azure Policy を使用します。"
+    },
+    {
+      "id": "dp203-s2-ja-q28",
+      "examId": "azure-dp-203-set2-ja",
+      "setNumber": 2,
+      "domain": "データ ストレージの設計と実装",
+      "question": "Azure Synapse Analytics でファクト テーブルを設計しています。テーブルは注文データを保存し、注文金額と数量が含まれます。レポート クエリが合計金額を効率的に計算できるようにする必要があります。どのように設計しますか？",
+      "options": {
+        "A": "金額列に非クラスター化インデックスを作成する",
+        "B": "クラスター化列ストア インデックスを使用する",
+        "C": "サマリー テーブルを作成する",
+        "D": "レプリケート分散を使用する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "クラスター化列ストア インデックスは、大規模な分析ファクト テーブルに最適です。列形式ストレージとバッチ モード実行を提供し、集計クエリ（SUM、AVG など）に特に効率的です。非クラスター化インデックスはポイント ルックアップに適し、サマリー テーブルはメンテナンスの複雑さを増します。"
+    },
+    {
+      "id": "dp203-s2-ja-q29",
+      "examId": "azure-dp-203-set2-ja",
+      "setNumber": 2,
+      "domain": "データ処理の開発",
+      "question": "Azure Databricks を使用してデータを処理しています。同じスキーマを持つ 2 つの DataFrame をマージし、重複行を削除する必要があります。どのメソッドを使用しますか？",
+      "options": {
+        "A": "df1.join(df2)",
+        "B": "df1.union(df2).distinct()",
+        "C": "df1.merge(df2)",
+        "D": "df1.append(df2).dropDuplicates()"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "union() メソッドは 2 つの DataFrame をマージし（垂直スタック）、distinct() は重複行を削除します。join() はキーに基づいてデータを水平にマージし、merge() は PySpark DataFrame のメソッドではなく、append() も有効なメソッドではありません。"
+    },
+    {
+      "id": "dp203-s2-ja-q30",
+      "examId": "azure-dp-203-set2-ja",
+      "setNumber": 2,
+      "domain": "データ ストレージとデータ処理のセキュリティ保護、監視、最適化",
+      "question": "Azure Synapse Analytics 専用 SQL プールの災害復旧を構成する必要があります。別のリージョンに利用可能なレプリカを用意したいです。何を構成しますか？",
+      "options": {
+        "A": "自動一時停止",
+        "B": "geo バックアップ",
+        "C": "geo 冗長ストレージ",
+        "D": "アクティブ geo レプリケーション"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure Synapse Analytics 専用 SQL プールは自動的に geo バックアップを作成し、ペアの地理リージョンに保存します。これらのバックアップを使用して、別のリージョンでデータ ウェアハウスを復元できます。自動一時停止はコスト最適化に使用され、アクティブ geo レプリケーションは専用 SQL プールには適用されません。"
+    },
+    {
+      "id": "dp203-s2-ja-q31",
+      "examId": "azure-dp-203-set2-ja",
+      "setNumber": 2,
+      "domain": "データ ストレージの設計と実装",
+      "question": "Azure Synapse Analytics でリンク サービスを使用して Azure SQL Database に接続しています。マネージド ID を使用して認証する必要があります。リンク サービスで何を構成しますか？",
+      "options": {
+        "A": "SQL 認証",
+        "B": "サービス プリンシパル認証",
+        "C": "マネージド ID 認証",
+        "D": "Windows 認証"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "マネージド ID 認証は、Azure Synapse ワークスペースのシステム割り当てまたはユーザー割り当てのマネージド ID を使用して Azure SQL Database にアクセスします。資格情報を管理する必要がないため、最も安全な方法です。"
+    },
+    {
+      "id": "dp203-s2-ja-q32",
+      "examId": "azure-dp-203-set2-ja",
+      "setNumber": 2,
+      "domain": "データ処理の開発",
+      "question": "Azure Stream Analytics を使用して Azure Synapse Analytics に出力しています。データを最高のパフォーマンスで書き込む必要があります。どの書き込み方法を使用しますか？",
+      "options": {
+        "A": "直接書き込み",
+        "B": "ステージング書き込み",
+        "C": "バルク書き込み",
+        "D": "増分書き込み"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "ステージング書き込みは、最初にデータを Azure Blob Storage に書き込み、次に COPY コマンドを使用して Synapse に一括読み込みすることで、最高のスループットを提供します。直接書き込みは単一行の挿入を使用し、パフォーマンスが低下します。"
+    },
+    {
+      "id": "dp203-s2-ja-q33",
+      "examId": "azure-dp-203-set2-ja",
+      "setNumber": 2,
+      "domain": "データ ストレージとデータ処理のセキュリティ保護、監視、最適化",
+      "question": "Azure Databricks でクラスターの自動スケーリングを実装する必要があります。ワークロードに基づいてノードを自動的に追加または削除したいです。何を構成しますか？",
+      "options": {
+        "A": "自動終了",
+        "B": "自動スケーリング",
+        "C": "プール",
+        "D": "ジョブ スケジュール"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "自動スケーリング（Autoscaling）を使用すると、クラスターはワークロードに基づいてノード数を動的に調整できます。最小ノード数と最大ノード数を設定できます。自動終了はアイドル時にクラスターをシャットダウンし、プールは起動時間を短縮するために事前構成された VM です。"
+    },
+    {
+      "id": "dp203-s2-ja-q34",
+      "examId": "azure-dp-203-set2-ja",
+      "setNumber": 2,
+      "domain": "データ ストレージの設計と実装",
+      "question": "Azure Data Lake Storage Gen2 のストレージ層戦略を設計しています。データは最初の 30 日間は頻繁にアクセスされ、その後はほとんどアクセスされません。どのように構成しますか？",
+      "options": {
+        "A": "すべてのデータをホット ストレージ層に保存する",
+        "B": "すべてのデータをクール ストレージ層に保存する",
+        "C": "ライフサイクル管理ポリシーを使用して自動的に層を変換する",
+        "D": "手動で定期的にデータを移動する"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "ライフサイクル管理ポリシーは、ルールに基づいてデータをホット ストレージからクール ストレージまたはアーカイブ ストレージに自動的に移動できます。30 日後にデータをクール ストレージ層に自動的に変換するルールを構成でき、コストを最適化しながらアクセス可能性を維持できます。"
+    },
+    {
+      "id": "dp203-s2-ja-q35",
+      "examId": "azure-dp-203-set2-ja",
+      "setNumber": 2,
+      "domain": "データ処理の開発",
+      "question": "Azure Data Factory のコピー アクティビティを使用しています。Oracle データベースから Azure Synapse Analytics にデータをコピーする必要があり、ソース テーブルには 500 列あります。コピー速度が遅いことがわかりました。どのような対策を講じますか？",
+      "options": {
+        "A": "並列コピー度を増やす",
+        "B": "全列ではなく必要な列のみを選択する",
+        "C": "データ圧縮を無効にする",
+        "D": "より大きな統合ランタイムを使用する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "500 列すべてをコピーすると、不要なデータ転送が大量に発生する可能性があります。マッピングで必要な列のみを選択することで、データ量とコピー時間を大幅に削減できます。並列度は役立ちますが根本的な問題を解決しません。"
+    },
+    {
+      "id": "dp203-s2-ja-q36",
+      "examId": "azure-dp-203-set2-ja",
+      "setNumber": 2,
+      "domain": "データ ストレージとデータ処理のセキュリティ保護、監視、最適化",
+      "question": "Azure Synapse Analytics でクエリ実行履歴を追跡する必要があります。過去 30 日間のクエリ パフォーマンス傾向を確認したいです。何を使用しますか？",
+      "options": {
+        "A": "動的管理ビュー (DMV)",
+        "B": "クエリ ストア",
+        "C": "Azure Monitor ログ",
+        "D": "監査ログ"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "DMV は最近のクエリ情報のみを保持します（通常数時間から数日）。30 日間の履歴傾向を確認するには、診断設定を構成してログを Azure Monitor ログ（Log Analytics）に送信する必要があります。その後、Kusto クエリを使用して履歴データを分析できます。"
+    },
+    {
+      "id": "dp203-s2-ja-q37",
+      "examId": "azure-dp-203-set2-ja",
+      "setNumber": 2,
+      "domain": "データ ストレージの設計と実装",
+      "question": "Azure Synapse Analytics 専用 SQL プールを使用しています。データが日付列でパーティション化されるテーブルを作成する必要があります。各パーティションには 1 か月分のデータが含まれます。どの構文を使用しますか？",
+      "options": {
+        "A": "PARTITION BY RANGE",
+        "B": "PARTITION BY HASH",
+        "C": "PARTITION BY LIST",
+        "D": "PARTITION BY MONTH"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Azure Synapse Analytics では、テーブル パーティショニングは PARTITION BY RANGE 構文を使用して境界値に基づいてパーティションを定義します。月単位でパーティション化された日付データの場合、各月の境界値を定義する必要があります。HASH は分散に使用され、LIST と MONTH は有効なパーティション タイプではありません。"
+    },
+    {
+      "id": "dp203-s2-ja-q38",
+      "examId": "azure-dp-203-set2-ja",
+      "setNumber": 2,
+      "domain": "データ処理の開発",
+      "question": "Azure Databricks の Delta Lake を使用しています。Delta テーブルを特定のバージョンにロールバックする必要があります。どのコマンドを使用しますか？",
+      "options": {
+        "A": "RESTORE TABLE table_name TO VERSION AS OF version_number",
+        "B": "ROLLBACK TABLE table_name TO version_number",
+        "C": "REVERT TABLE table_name VERSION version_number",
+        "D": "UNDO TABLE table_name TO VERSION version_number"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "RESTORE TABLE ... TO VERSION AS OF は、Delta Lake でテーブルを特定のバージョンにロールバックするための正しい構文です。RESTORE TABLE ... TO TIMESTAMP AS OF を使用して特定の時点にロールバックすることもできます。ROLLBACK、REVERT、UNDO は有効な Delta Lake コマンドではありません。"
+    },
+    {
+      "id": "dp203-s2-ja-q39",
+      "examId": "azure-dp-203-set2-ja",
+      "setNumber": 2,
+      "domain": "データ ストレージとデータ処理のセキュリティ保護、監視、最適化",
+      "question": "Azure Data Factory でデータ品質チェックを実装する必要があります。データを読み込む前に、データが特定のルールに準拠していることを検証したいです。どの方法を使用しますか？",
+      "options": {
+        "A": "コピー アクティビティのデータ プレビュー",
+        "B": "マッピング データ フローのアサート変換",
+        "C": "ストアド プロシージャ アクティビティ",
+        "D": "検証アクティビティ"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "マッピング データ フローのアサート（Assert）変換を使用すると、データ品質ルールを定義し、データがルールに準拠していない場合にエラーまたは警告を発生させることができます。データ プレビューは開発時にデータを表示し、検証アクティビティはファイルの存在を検証します。"
+    },
+    {
+      "id": "dp203-s2-ja-q40",
+      "examId": "azure-dp-203-set2-ja",
+      "setNumber": 2,
+      "domain": "データ ストレージの設計と実装",
+      "question": "Azure Event Hubs をストリーミング データの入口として使用しています。サービスの中断後でもデータを再処理できるようにする必要があります。何を構成しますか？",
+      "options": {
+        "A": "自動膨張を有効にする",
+        "B": "キャプチャ機能を構成する",
+        "C": "パーティション数を増やす",
+        "D": "コンシューマー グループを構成する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Event Hubs キャプチャ機能は、ストリーミング データを Azure Blob Storage または Data Lake Storage に Avro 形式で自動的に保存します。これにより、サービスの中断後にストレージからデータを再処理できます。自動膨張はスループットのスケーリングに使用されます。"
+    }
+  ]
+}

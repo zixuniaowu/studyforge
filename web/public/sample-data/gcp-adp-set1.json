@@ -1,0 +1,663 @@
+{
+  "exam": {
+    "id": "gcp-adp-set1",
+    "name": "Associate Data Practitioner 练习题 Set 1",
+    "code": "ADP",
+    "provider": "Google Cloud",
+    "language": "zh-CN",
+    "description": "Google Cloud 数据从业者认证练习题第一套",
+    "totalQuestions": 40,
+    "passingScore": 70,
+    "examTime": 120,
+    "domains": [
+      "数据分析和探索",
+      "数据准备和集成",
+      "机器学习基础",
+      "商业智能和可视化",
+      "数据治理和安全"
+    ],
+    "tags": ["GCP", "Data", "BigQuery", "Looker", "Data Analytics"]
+  },
+  "questions": [
+    {
+      "id": "gcp-adp-s1-q1",
+      "examId": "gcp-adp-set1",
+      "setNumber": 1,
+      "domain": "数据分析和探索",
+      "question": "您需要在 BigQuery 中分析一个包含 10 亿行数据的表。要最小化查询成本，应该使用什么方法？",
+      "options": {
+        "A": "使用 SELECT * 查询所有列",
+        "B": "只选择需要的特定列",
+        "C": "使用 LIMIT 子句限制返回的行数",
+        "D": "在查询中使用 ORDER BY 子句"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "BigQuery 按扫描的数据量计费，而不是返回的行数。只选择需要的特定列可以减少扫描的数据量，从而降低成本。使用 SELECT * 会扫描所有列，LIMIT 子句不会减少扫描的数据量。"
+    },
+    {
+      "id": "gcp-adp-s1-q2",
+      "examId": "gcp-adp-set1",
+      "setNumber": 1,
+      "domain": "数据准备和集成",
+      "question": "您需要将本地 MySQL 数据库中的数据定期同步到 BigQuery。应该使用什么服务？",
+      "options": {
+        "A": "Cloud Storage Transfer Service",
+        "B": "Datastream",
+        "C": "Transfer Appliance",
+        "D": "Cloud Composer"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Datastream 是一个无服务器的变更数据捕获（CDC）和复制服务，可以从 MySQL、PostgreSQL、Oracle 等数据库实时同步数据到 BigQuery。它支持持续复制，适合定期同步场景。"
+    },
+    {
+      "id": "gcp-adp-s1-q3",
+      "examId": "gcp-adp-set1",
+      "setNumber": 1,
+      "domain": "机器学习基础",
+      "question": "您想使用 BigQuery ML 创建一个预测客户流失的模型。应该使用什么模型类型？",
+      "options": {
+        "A": "LINEAR_REG（线性回归）",
+        "B": "LOGISTIC_REG（逻辑回归）",
+        "C": "KMEANS（K均值聚类）",
+        "D": "ARIMA_PLUS（时间序列）"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "客户流失预测是一个二元分类问题（流失或不流失），应该使用逻辑回归（LOGISTIC_REG）。线性回归用于连续值预测，K均值用于聚类，ARIMA 用于时间序列预测。"
+    },
+    {
+      "id": "gcp-adp-s1-q4",
+      "examId": "gcp-adp-set1",
+      "setNumber": 1,
+      "domain": "商业智能和可视化",
+      "question": "您需要创建一个交互式仪表板，允许业务用户探索 BigQuery 中的数据。应该使用什么工具？",
+      "options": {
+        "A": "Cloud Composer",
+        "B": "Looker Studio",
+        "C": "Dataproc",
+        "D": "Pub/Sub"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Looker Studio（以前称为 Data Studio）是 Google 的免费商业智能工具，可以创建交互式仪表板和报告。它可以直接连接到 BigQuery，允许业务用户无需编写代码即可探索数据。"
+    },
+    {
+      "id": "gcp-adp-s1-q5",
+      "examId": "gcp-adp-set1",
+      "setNumber": 1,
+      "domain": "数据治理和安全",
+      "question": "您需要确保只有特定部门的用户可以访问 BigQuery 表中的敏感列。应该使用什么功能？",
+      "options": {
+        "A": "数据集级别的 IAM",
+        "B": "列级安全性",
+        "C": "行级安全性",
+        "D": "VPC Service Controls"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "BigQuery 的列级安全性允许您使用策略标签来限制对特定列的访问。您可以创建数据目录分类法，定义策略标签，然后将标签应用于敏感列，并配置哪些用户或组可以访问这些标签。"
+    },
+    {
+      "id": "gcp-adp-s1-q6",
+      "examId": "gcp-adp-set1",
+      "setNumber": 1,
+      "domain": "数据分析和探索",
+      "question": "在 BigQuery 中，您需要查找过去 30 天内购买金额最高的 10 个客户。应该使用什么查询结构？",
+      "options": {
+        "A": "GROUP BY 和 ORDER BY 结合 LIMIT",
+        "B": "仅使用 WHERE 子句",
+        "C": "使用 UNION ALL",
+        "D": "使用递归 CTE"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "要找到购买金额最高的客户，需要使用 GROUP BY 按客户分组并聚合金额，ORDER BY 按金额降序排序，LIMIT 10 获取前 10 个。WHERE 子句用于过滤过去 30 天的数据。"
+    },
+    {
+      "id": "gcp-adp-s1-q7",
+      "examId": "gcp-adp-set1",
+      "setNumber": 1,
+      "domain": "数据准备和集成",
+      "question": "您需要清洗和转换数据，包括处理缺失值和异常值，然后加载到 BigQuery。应该使用什么服务？",
+      "options": {
+        "A": "Cloud Functions",
+        "B": "Dataprep by Trifacta",
+        "C": "Cloud Scheduler",
+        "D": "Cloud Tasks"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Dataprep by Trifacta 是一个交互式数据准备工具，提供可视化界面来探索、清洗和转换数据。它可以自动检测数据质量问题，提供建议的转换操作，并将结果输出到 BigQuery。"
+    },
+    {
+      "id": "gcp-adp-s1-q8",
+      "examId": "gcp-adp-set1",
+      "setNumber": 1,
+      "domain": "机器学习基础",
+      "question": "您使用 BigQuery ML 训练了一个模型，想要评估其性能。对于分类模型，应该查看哪个评估指标？",
+      "options": {
+        "A": "mean_squared_error",
+        "B": "r2_score",
+        "C": "precision 和 recall",
+        "D": "mean_absolute_error"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "对于分类模型，precision（精确率）和 recall（召回率）是重要的评估指标。Precision 衡量预测为正类中实际为正类的比例，recall 衡量实际正类中被正确预测的比例。MSE、MAE 和 R² 用于回归模型。"
+    },
+    {
+      "id": "gcp-adp-s1-q9",
+      "examId": "gcp-adp-set1",
+      "setNumber": 1,
+      "domain": "商业智能和可视化",
+      "question": "在 Looker Studio 中，您需要创建一个显示销售趋势的图表，X 轴为时间，Y 轴为销售额。应该使用什么图表类型？",
+      "options": {
+        "A": "饼图",
+        "B": "折线图",
+        "C": "散点图",
+        "D": "地理图"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "折线图是显示时间序列趋势的最佳选择。它可以清楚地展示数据随时间的变化，帮助识别趋势、周期性和异常值。饼图用于显示比例，散点图用于显示两个变量之间的关系。"
+    },
+    {
+      "id": "gcp-adp-s1-q10",
+      "examId": "gcp-adp-set1",
+      "setNumber": 1,
+      "domain": "数据治理和安全",
+      "question": "您需要自动发现和分类 BigQuery 中的敏感数据（如 PII）。应该使用什么服务？",
+      "options": {
+        "A": "Cloud Armor",
+        "B": "Cloud DLP (Data Loss Prevention)",
+        "C": "Security Command Center",
+        "D": "Cloud KMS"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Cloud DLP（数据泄露防护）可以自动扫描和发现 BigQuery 表中的敏感数据，如社会安全号码、信用卡号、电子邮件地址等 PII。它还可以对敏感数据进行脱敏或掩码处理。"
+    },
+    {
+      "id": "gcp-adp-s1-q11",
+      "examId": "gcp-adp-set1",
+      "setNumber": 1,
+      "domain": "数据分析和探索",
+      "question": "在 BigQuery 中，您需要将两个大表进行 JOIN 操作。为了提高性能，应该使用什么技术？",
+      "options": {
+        "A": "在 JOIN 键上创建聚簇表",
+        "B": "使用 SELECT *",
+        "C": "增加 ON 子句中的条件数量",
+        "D": "在所有列上创建索引"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "在 BigQuery 中，将表按 JOIN 键聚簇可以显著提高 JOIN 性能。聚簇表将具有相同聚簇列值的行存储在一起，减少了扫描的数据量。BigQuery 不支持传统索引。"
+    },
+    {
+      "id": "gcp-adp-s1-q12",
+      "examId": "gcp-adp-set1",
+      "setNumber": 1,
+      "domain": "数据准备和集成",
+      "question": "您需要从多个 Cloud Storage 存储桶中的 CSV 文件定期加载数据到 BigQuery。应该使用什么方法？",
+      "options": {
+        "A": "手动使用 bq load 命令",
+        "B": "BigQuery Data Transfer Service",
+        "C": "Cloud Run 每次触发",
+        "D": "App Engine cron 作业"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "BigQuery Data Transfer Service 可以自动化从 Cloud Storage 定期加载数据到 BigQuery。您可以配置传输计划，设置源文件模式，并自动处理新文件的加载。"
+    },
+    {
+      "id": "gcp-adp-s1-q13",
+      "examId": "gcp-adp-set1",
+      "setNumber": 1,
+      "domain": "机器学习基础",
+      "question": "您需要使用 BigQuery ML 对客户进行细分，将他们分成不同的群组。应该使用什么模型类型？",
+      "options": {
+        "A": "LINEAR_REG",
+        "B": "LOGISTIC_REG",
+        "C": "KMEANS",
+        "D": "BOOSTED_TREE_CLASSIFIER"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "K-means 聚类（KMEANS）是用于客户细分的常用方法。它是一种无监督学习算法，可以将客户分成具有相似特征的群组，而无需预先标记的数据。"
+    },
+    {
+      "id": "gcp-adp-s1-q14",
+      "examId": "gcp-adp-set1",
+      "setNumber": 1,
+      "domain": "商业智能和可视化",
+      "question": "在 Looker 中，什么是 LookML？",
+      "options": {
+        "A": "一种编程语言用于数据处理",
+        "B": "定义数据模型和维度的语言",
+        "C": "一种机器学习框架",
+        "D": "数据库查询优化器"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "LookML 是 Looker 的建模语言，用于定义数据模型、维度、度量和关系。它创建了一个语义层，使业务用户可以使用业务术语而不是复杂的 SQL 来探索数据。"
+    },
+    {
+      "id": "gcp-adp-s1-q15",
+      "examId": "gcp-adp-set1",
+      "setNumber": 1,
+      "domain": "数据治理和安全",
+      "question": "您需要审计 BigQuery 中的所有查询活动，包括谁运行了什么查询。应该使用什么？",
+      "options": {
+        "A": "Cloud Monitoring",
+        "B": "Cloud Audit Logs",
+        "C": "Error Reporting",
+        "D": "Cloud Trace"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Cloud Audit Logs 自动记录 BigQuery 中的所有管理活动和数据访问活动。数据访问日志包含详细的查询信息，如查询文本、用户、时间戳和扫描的字节数。"
+    },
+    {
+      "id": "gcp-adp-s1-q16",
+      "examId": "gcp-adp-set1",
+      "setNumber": 1,
+      "domain": "数据分析和探索",
+      "question": "在 BigQuery 中，您需要计算移动平均值。应该使用什么 SQL 功能？",
+      "options": {
+        "A": "GROUP BY 子句",
+        "B": "窗口函数（Window Functions）",
+        "C": "子查询",
+        "D": "UNION 操作"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "窗口函数（如 AVG() OVER()）是计算移动平均值的最佳方法。您可以使用 ROWS BETWEEN 子句定义窗口大小，例如 AVG(value) OVER(ORDER BY date ROWS BETWEEN 6 PRECEDING AND CURRENT ROW) 计算 7 天移动平均。"
+    },
+    {
+      "id": "gcp-adp-s1-q17",
+      "examId": "gcp-adp-set1",
+      "setNumber": 1,
+      "domain": "数据准备和集成",
+      "question": "您需要构建一个 ETL 管道，从多个源提取数据，进行转换，然后加载到 BigQuery。应该使用什么服务？",
+      "options": {
+        "A": "Cloud Dataflow",
+        "B": "Cloud Run",
+        "C": "Compute Engine",
+        "D": "App Engine"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Cloud Dataflow 是一个完全托管的流和批处理数据处理服务，基于 Apache Beam。它非常适合构建 ETL 管道，可以处理大规模数据转换，并自动扩展以满足工作负载需求。"
+    },
+    {
+      "id": "gcp-adp-s1-q18",
+      "examId": "gcp-adp-set1",
+      "setNumber": 1,
+      "domain": "机器学习基础",
+      "question": "在机器学习中，什么是过拟合？",
+      "options": {
+        "A": "模型在训练数据上表现差",
+        "B": "模型在训练数据上表现好，但在新数据上表现差",
+        "C": "模型无法学习任何模式",
+        "D": "模型处理速度太慢"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "过拟合是指模型过度学习了训练数据的特征（包括噪声），导致在训练集上表现很好，但在未见过的新数据上表现差。这意味着模型缺乏泛化能力。"
+    },
+    {
+      "id": "gcp-adp-s1-q19",
+      "examId": "gcp-adp-set1",
+      "setNumber": 1,
+      "domain": "商业智能和可视化",
+      "question": "在 Looker Studio 中，您需要让用户能够按日期范围筛选数据。应该添加什么？",
+      "options": {
+        "A": "参数",
+        "B": "控件（日期范围选择器）",
+        "C": "计算字段",
+        "D": "数据混合"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Looker Studio 的控件功能允许用户交互式地筛选数据。日期范围选择器控件可以让用户选择特定的日期范围，仪表板中的所有图表都会根据所选日期进行过滤。"
+    },
+    {
+      "id": "gcp-adp-s1-q20",
+      "examId": "gcp-adp-set1",
+      "setNumber": 1,
+      "domain": "数据治理和安全",
+      "question": "您需要在 BigQuery 中实施行级安全性，确保用户只能看到属于其部门的数据。应该使用什么？",
+      "options": {
+        "A": "视图",
+        "B": "行级访问策略",
+        "C": "IAM 条件",
+        "D": "服务账号"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "BigQuery 的行级访问策略允许您根据用户的属性（如部门）限制对特定行的访问。您可以创建策略来过滤行，确保用户只能查询和看到他们被授权访问的数据。"
+    },
+    {
+      "id": "gcp-adp-s1-q21",
+      "examId": "gcp-adp-set1",
+      "setNumber": 1,
+      "domain": "数据分析和探索",
+      "question": "BigQuery 中的分区表有什么好处？",
+      "options": {
+        "A": "增加数据冗余",
+        "B": "减少查询扫描的数据量和成本",
+        "C": "提高数据压缩率",
+        "D": "简化数据导入流程"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "分区表将数据按指定列（通常是时间戳）分割成更小的部分。当查询包含分区列的过滤条件时，BigQuery 只扫描相关的分区，大大减少了扫描的数据量，从而降低成本和提高性能。"
+    },
+    {
+      "id": "gcp-adp-s1-q22",
+      "examId": "gcp-adp-set1",
+      "setNumber": 1,
+      "domain": "数据准备和集成",
+      "question": "您需要处理实时流数据并将其写入 BigQuery。应该使用什么架构？",
+      "options": {
+        "A": "Cloud Storage 触发 Cloud Functions",
+        "B": "Pub/Sub + Dataflow + BigQuery",
+        "C": "Cloud Scheduler + BigQuery",
+        "D": "Cloud Run + Cloud SQL"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "处理实时流数据的典型架构是：Pub/Sub 接收和缓冲流数据，Dataflow 进行实时处理和转换，最后写入 BigQuery 进行分析。这是 Google Cloud 推荐的流处理架构。"
+    },
+    {
+      "id": "gcp-adp-s1-q23",
+      "examId": "gcp-adp-set1",
+      "setNumber": 1,
+      "domain": "机器学习基础",
+      "question": "在使用 BigQuery ML 之前，为什么需要对数据进行特征工程？",
+      "options": {
+        "A": "减少存储成本",
+        "B": "提高模型的准确性和性能",
+        "C": "加快数据导入速度",
+        "D": "简化查询语法"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "特征工程是创建、转换和选择最能代表预测问题的特征的过程。好的特征可以显著提高模型的准确性和性能，因为模型的质量很大程度上取决于输入特征的质量。"
+    },
+    {
+      "id": "gcp-adp-s1-q24",
+      "examId": "gcp-adp-set1",
+      "setNumber": 1,
+      "domain": "商业智能和可视化",
+      "question": "在 Looker 中，什么是 Explore？",
+      "options": {
+        "A": "数据导入工具",
+        "B": "允许用户交互式查询数据的界面",
+        "C": "数据库备份功能",
+        "D": "机器学习训练环境"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Explore 是 Looker 中允许用户交互式探索数据的界面。用户可以选择维度和度量，添加过滤器，并查看结果，而无需编写 SQL。Explore 基于 LookML 模型定义的数据关系。"
+    },
+    {
+      "id": "gcp-adp-s1-q25",
+      "examId": "gcp-adp-set1",
+      "setNumber": 1,
+      "domain": "数据治理和安全",
+      "question": "您需要确保 BigQuery 中的静态数据使用客户管理的加密密钥（CMEK）进行加密。应该使用什么服务？",
+      "options": {
+        "A": "Cloud IAM",
+        "B": "Cloud KMS",
+        "C": "Secret Manager",
+        "D": "Cloud HSM"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Cloud KMS（密钥管理服务）用于创建和管理客户管理的加密密钥（CMEK）。您可以在创建 BigQuery 数据集时指定 Cloud KMS 密钥，BigQuery 将使用该密钥加密静态数据。"
+    },
+    {
+      "id": "gcp-adp-s1-q26",
+      "examId": "gcp-adp-set1",
+      "setNumber": 1,
+      "domain": "数据分析和探索",
+      "question": "在 BigQuery 中，如何查看查询的执行计划和性能？",
+      "options": {
+        "A": "使用 EXPLAIN 语句",
+        "B": "查看查询作业的执行详情",
+        "C": "使用 DESCRIBE 语句",
+        "D": "查看 Cloud Monitoring 仪表板"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "在 BigQuery Console 中，您可以查看每个查询作业的执行详情，包括阶段、读取的行数、写入的行数、shuffle 数据量等。这有助于识别性能瓶颈和优化查询。"
+    },
+    {
+      "id": "gcp-adp-s1-q27",
+      "examId": "gcp-adp-set1",
+      "setNumber": 1,
+      "domain": "数据准备和集成",
+      "question": "您需要从 SaaS 应用程序（如 Salesforce）定期导入数据到 BigQuery。应该使用什么？",
+      "options": {
+        "A": "手动 CSV 导出/导入",
+        "B": "BigQuery Data Transfer Service",
+        "C": "gsutil 命令",
+        "D": "Cloud Storage FUSE"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "BigQuery Data Transfer Service 支持从多种 SaaS 应用程序（包括 Salesforce、Google Ads、YouTube 等）自动导入数据到 BigQuery。您可以配置传输计划，无需编写代码即可实现定期数据同步。"
+    },
+    {
+      "id": "gcp-adp-s1-q28",
+      "examId": "gcp-adp-set1",
+      "setNumber": 1,
+      "domain": "机器学习基础",
+      "question": "您使用 BigQuery ML 创建了一个模型，需要对新数据进行预测。应该使用什么函数？",
+      "options": {
+        "A": "ML.TRAIN",
+        "B": "ML.PREDICT",
+        "C": "ML.EVALUATE",
+        "D": "ML.EXPLAIN_PREDICT"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "ML.PREDICT 函数用于使用训练好的模型对新数据进行预测。它接受模型名称和输入数据作为参数，返回预测结果。ML.TRAIN 用于训练，ML.EVALUATE 用于评估，ML.EXPLAIN_PREDICT 用于解释预测。"
+    },
+    {
+      "id": "gcp-adp-s1-q29",
+      "examId": "gcp-adp-set1",
+      "setNumber": 1,
+      "domain": "商业智能和可视化",
+      "question": "在 Looker Studio 中，您需要合并来自两个不同数据源的数据。应该使用什么功能？",
+      "options": {
+        "A": "数据混合（Data Blending）",
+        "B": "计算字段",
+        "C": "参数",
+        "D": "社区连接器"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "数据混合（Data Blending）允许您在 Looker Studio 中合并来自不同数据源的数据。通过定义共同的连接键，您可以在单个报表中显示来自多个来源的数据，无需预先在数据库中进行连接。"
+    },
+    {
+      "id": "gcp-adp-s1-q30",
+      "examId": "gcp-adp-set1",
+      "setNumber": 1,
+      "domain": "数据治理和安全",
+      "question": "您需要为 BigQuery 实施数据生命周期管理，自动删除超过一年的数据。应该使用什么？",
+      "options": {
+        "A": "Cloud Scheduler 触发删除作业",
+        "B": "表的分区过期设置",
+        "C": "Cloud Functions 定期清理",
+        "D": "手动删除"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "BigQuery 支持对分区表设置分区过期时间。您可以配置 partition_expiration_days 参数，BigQuery 会自动删除超过指定天数的分区，无需额外的作业或代码。"
+    },
+    {
+      "id": "gcp-adp-s1-q31",
+      "examId": "gcp-adp-set1",
+      "setNumber": 1,
+      "domain": "数据分析和探索",
+      "question": "在 BigQuery 中，ARRAY 和 STRUCT 数据类型有什么用途？",
+      "options": {
+        "A": "仅用于存储图像数据",
+        "B": "用于存储嵌套和重复数据，减少数据冗余",
+        "C": "用于加密敏感数据",
+        "D": "用于创建外键约束"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "ARRAY 用于存储重复数据（同类型的多个值），STRUCT 用于存储嵌套数据（不同类型的多个字段）。这些数据类型允许您以反规范化的方式存储数据，减少 JOIN 操作，提高查询性能。"
+    },
+    {
+      "id": "gcp-adp-s1-q32",
+      "examId": "gcp-adp-set1",
+      "setNumber": 1,
+      "domain": "数据准备和集成",
+      "question": "您需要编排复杂的数据管道，包括多个依赖的任务和条件分支。应该使用什么服务？",
+      "options": {
+        "A": "Cloud Scheduler",
+        "B": "Cloud Composer (Airflow)",
+        "C": "Cloud Tasks",
+        "D": "Cloud Pub/Sub"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Cloud Composer 是基于 Apache Airflow 的托管工作流编排服务。它非常适合编排复杂的数据管道，支持任务依赖、条件分支、重试、监控和告警等功能。"
+    },
+    {
+      "id": "gcp-adp-s1-q33",
+      "examId": "gcp-adp-set1",
+      "setNumber": 1,
+      "domain": "机器学习基础",
+      "question": "在 BigQuery ML 中，什么是 TRANSFORM 子句的用途？",
+      "options": {
+        "A": "将模型导出为其他格式",
+        "B": "在训练时定义特征预处理，并在预测时自动应用",
+        "C": "转换查询结果的格式",
+        "D": "将数据移动到不同的数据集"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "TRANSFORM 子句允许您在 CREATE MODEL 语句中定义特征预处理步骤（如标准化、独热编码）。这些转换会在训练时应用，并自动在预测时应用相同的转换，确保一致性。"
+    },
+    {
+      "id": "gcp-adp-s1-q34",
+      "examId": "gcp-adp-set1",
+      "setNumber": 1,
+      "domain": "商业智能和可视化",
+      "question": "Looker 的内容缓存有什么好处？",
+      "options": {
+        "A": "增加数据库负载",
+        "B": "减少重复查询，提高响应速度并降低成本",
+        "C": "增加存储使用量",
+        "D": "减少数据安全性"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Looker 的内容缓存存储查询结果，当相同的查询再次执行时，可以直接从缓存返回结果，无需再次查询数据库。这显著提高了响应速度，并通过减少数据库查询降低了成本。"
+    },
+    {
+      "id": "gcp-adp-s1-q35",
+      "examId": "gcp-adp-set1",
+      "setNumber": 1,
+      "domain": "数据治理和安全",
+      "question": "您需要跟踪 BigQuery 数据的血缘关系（数据从哪里来）。应该使用什么服务？",
+      "options": {
+        "A": "Cloud Logging",
+        "B": "Data Catalog 数据血缘",
+        "C": "Cloud Monitoring",
+        "D": "Cloud Trace"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Data Catalog 的数据血缘功能可以自动跟踪 BigQuery 中数据的流动，显示数据如何从源表流向目标表。这有助于理解数据依赖关系、进行影响分析和故障排除。"
+    },
+    {
+      "id": "gcp-adp-s1-q36",
+      "examId": "gcp-adp-set1",
+      "setNumber": 1,
+      "domain": "数据分析和探索",
+      "question": "在 BigQuery 中，什么是物化视图（Materialized View）？",
+      "options": {
+        "A": "一个逻辑视图，每次查询时执行",
+        "B": "预计算并存储的查询结果，可自动刷新",
+        "C": "一个临时表，查询后自动删除",
+        "D": "一个外部表，引用 Cloud Storage 中的数据"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "物化视图是预计算并物理存储的查询结果。当基础表更新时，BigQuery 可以自动增量刷新物化视图。这对于频繁执行的聚合查询非常有用，可以显著提高性能并降低成本。"
+    },
+    {
+      "id": "gcp-adp-s1-q37",
+      "examId": "gcp-adp-set1",
+      "setNumber": 1,
+      "domain": "数据准备和集成",
+      "question": "您需要对 BigQuery 表执行定期的增量更新，只处理新增和变更的数据。应该使用什么策略？",
+      "options": {
+        "A": "每次完全重新加载所有数据",
+        "B": "使用 MERGE 语句进行增量更新",
+        "C": "删除整个表后重建",
+        "D": "使用 TRUNCATE 清空表后重新加载"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "MERGE 语句允许您根据匹配条件执行 INSERT、UPDATE 或 DELETE 操作。对于增量更新，您可以使用 MERGE 将新数据与现有数据合并，只处理变更的记录，这比完全重新加载更高效。"
+    },
+    {
+      "id": "gcp-adp-s1-q38",
+      "examId": "gcp-adp-set1",
+      "setNumber": 1,
+      "domain": "机器学习基础",
+      "question": "在机器学习中，什么是训练集、验证集和测试集？",
+      "options": {
+        "A": "三种不同的数据库",
+        "B": "用于训练、调优和评估模型的数据子集",
+        "C": "三种不同的模型类型",
+        "D": "数据清洗的三个阶段"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "训练集用于训练模型，验证集用于调优超参数和防止过拟合，测试集用于评估模型在未见数据上的最终性能。将数据分成这三个子集是机器学习的标准实践。"
+    },
+    {
+      "id": "gcp-adp-s1-q39",
+      "examId": "gcp-adp-set1",
+      "setNumber": 1,
+      "domain": "商业智能和可视化",
+      "question": "您需要在 Looker Studio 报表中计算两个字段的比率。应该使用什么？",
+      "options": {
+        "A": "数据混合",
+        "B": "计算字段",
+        "C": "控件",
+        "D": "社区连接器"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "计算字段允许您在 Looker Studio 中创建基于现有字段的新字段。您可以使用公式（如 field1/field2）来计算比率、百分比或其他派生值，这些计算字段可以在图表中使用。"
+    },
+    {
+      "id": "gcp-adp-s1-q40",
+      "examId": "gcp-adp-set1",
+      "setNumber": 1,
+      "domain": "数据治理和安全",
+      "question": "您需要在多个 GCP 项目之间共享 BigQuery 数据集，同时保持数据在原始项目中。应该使用什么？",
+      "options": {
+        "A": "复制数据集到每个项目",
+        "B": "使用 BigQuery 授权视图或数据集共享",
+        "C": "导出数据到 Cloud Storage 并共享存储桶",
+        "D": "使用 Pub/Sub 发送数据"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "BigQuery 允许您通过 IAM 授权其他项目的用户或服务账号访问您的数据集。授权视图可以进一步控制访问，只暴露特定的列或行，而无需复制数据。这是跨项目数据共享的最佳实践。"
+    }
+  ]
+}

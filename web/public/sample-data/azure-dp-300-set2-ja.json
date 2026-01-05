@@ -1,0 +1,649 @@
+{
+  "exam": {
+    "id": "azure-dp-300-set2-ja",
+    "name": "Azure DP-300 データベース管理者模擬試験 #2",
+    "code": "DP-300",
+    "provider": "Azure",
+    "language": "ja",
+    "description": "Microsoft Azure Database Administrator Associate認定試験の模擬問題。データプラットフォームリソースの計画、セキュア環境の実装、データベースの監視と最適化、タスク自動化、高可用性と災害復旧を網羅",
+    "totalQuestions": 40,
+    "passingScore": 70,
+    "examTime": 150,
+    "domains": [
+      {
+        "id": 1,
+        "name": "データプラットフォームリソースの計画と実装",
+        "weight": 23
+      },
+      {
+        "id": 2,
+        "name": "セキュア環境の実装",
+        "weight": 18
+      },
+      {
+        "id": 3,
+        "name": "データベースリソースの監視、構成、最適化",
+        "weight": 23
+      },
+      {
+        "id": 4,
+        "name": "タスク自動化の構成と管理",
+        "weight": 13
+      },
+      {
+        "id": 5,
+        "name": "高可用性と災害復旧環境の計画と実装",
+        "weight": 23
+      }
+    ],
+    "tags": [
+      "Azure",
+      "DP-300",
+      "データベース管理者",
+      "認定試験",
+      "SQL Server"
+    ]
+  },
+  "questions": [
+    {
+      "id": "q1",
+      "domain": 1,
+      "question": "ある企業がAzure SQL Databaseをデプロイし、月額コストを予測する必要があります。コスト見積もりに最適なツールはどれですか？",
+      "options": {
+        "A": "Azure Monitor",
+        "B": "Azure料金計算ツール",
+        "C": "Azure Advisor",
+        "D": "コスト管理 + 請求"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure料金計算ツールを使用すると、さまざまなサービスオプション（サービス層、コンピューティングサイズ、ストレージなど）を構成して月額コストを見積もることができます。デプロイ前にコストの可視性を提供します。コスト管理 + 請求はデプロイ済みリソースの実際のコストを監視するために使用されます。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q2",
+      "domain": 1,
+      "question": "SQL ServerをAzureに移行する際、互換性の問題を評価し、ターゲットAzureデータプラットフォームを推奨できるツールはどれですか？",
+      "options": {
+        "A": "Azure Migrate",
+        "B": "Data Migration Assistant（DMA）",
+        "C": "Azure Database Migration Service（DMS）",
+        "D": "SQL Server構成マネージャー"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Data Migration Assistant（DMA）はSQL ServerからAzureへの移行の互換性問題、機能パリティ、パフォーマンス推奨事項を評価できます。移行をブロックする問題、部分的にサポートされる機能、非推奨の機能を識別します。Azure Migrateは主に仮想マシン移行の評価に使用されます。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q3",
+      "domain": 1,
+      "question": "Azure SQL Databaseがサポートする最大データベースサイズはいくつですか？",
+      "options": {
+        "A": "1 TB",
+        "B": "4 TB",
+        "C": "100 TB（Hyperscale）",
+        "D": "16 TB"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "Azure SQL Database Hyperscaleサービス層は最大100TBのデータベースサイズをサポートします。他のサービス層（General PurposeとBusiness Critical）は最大4TBをサポートします。Hyperscaleは分散ストレージアーキテクチャを使用し、高速バックアップとほぼ瞬時のポイントインタイム復元を提供します。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q4",
+      "domain": 1,
+      "question": "Azure SQL Managed Instanceのメンテナンスウィンドウを構成する利点は何ですか？",
+      "options": {
+        "A": "ストレージコストの削減",
+        "B": "システムメンテナンス活動の時間を制御し、ビジネスピーク時を回避",
+        "C": "クエリパフォーマンスの向上",
+        "D": "バックアップ頻度の増加"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "メンテナンスウィンドウ機能を使用すると、Azureがシステムメンテナンス（セキュリティパッチ、ハードウェア更新など）を実行する時間枠を選択できます。これにより、短時間の接続中断を引き起こす可能性のあるメンテナンス活動がビジネスクリティカルな期間に発生することを回避でき、より予測可能なサービス可用性を提供します。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q5",
+      "domain": 1,
+      "question": "Azure SQL Databaseのコンピューティング層でサーバーレス構成を使用する場合、自動的に処理されるのは何ですか？",
+      "options": {
+        "A": "データ暗号化",
+        "B": "ワークロードに基づくコンピューティングリソースの自動スケーリング",
+        "C": "バックアップ保持期間",
+        "D": "geoレプリケーション"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "サーバーレスコンピューティング層はワークロード需要に基づいてコンピューティングリソースを自動的にスケーリングします。データベースがアイドル状態のとき、コンピューティングリソースは自動的に一時停止してコストを節約できます。アクティビティが検出されると、データベースは自動的に再開します。ユーザーは実際に使用したコンピューティングリソースに対してのみ課金されます。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q6",
+      "domain": 2,
+      "question": "Azure SQL Databaseへのすべての接続が暗号化を使用していることを確認するには、どの設定を検証すべきですか？",
+      "options": {
+        "A": "透過的データ暗号化（TDE）を有効化",
+        "B": "最小TLSバージョンを1.2に設定",
+        "C": "Azure AD認証を有効化",
+        "D": "動的データマスキングを構成"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "最小TLSバージョンを1.2に設定することで、すべてのクライアント接続がTLS 1.2以上を使用する必要があることを確保できます。これにより、古い安全でないプロトコルを使用した接続を防止できます。Azure SQL Databaseはデフォルトで暗号化接続を強制しますが、TLSバージョンは構成可能です。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q7",
+      "domain": 2,
+      "question": "Azure SQL DatabaseでAzure AD認証を構成した後、Azure ADグループにデータベースへのアクセス権を付与するにはどうすべきですか？",
+      "options": {
+        "A": "FROM EXTERNAL PROVIDERを指定してCREATE LOGINとCREATE USERステートメントを使用",
+        "B": "Azureポータルでのみ構成",
+        "C": "Windows認証を使用",
+        "D": "SQL Server認証でログインを作成"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Azure ADユーザーまたはグループにデータベースアクセス権を付与するには、T-SQLを使用します：CREATE USER [GroupName] FROM EXTERNAL PROVIDER。これにより、Azure ADアイデンティティにマップされるユーザーがデータベースに作成されます。その後、標準のGRANTステートメントを使用して権限を付与できます。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q8",
+      "domain": 2,
+      "question": "Azure SQL Databaseに接続するための多要素認証（MFA）をサポートする認証方法はどれですか？",
+      "options": {
+        "A": "SQL認証",
+        "B": "Windows認証",
+        "C": "Azure AD - MFAを使用したユニバーサル認証",
+        "D": "証明書認証"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "Azure AD - MFAを使用したユニバーサル認証は、電話、テキストメッセージ、スマートカード、モバイルアプリ通知を含む対話型多要素認証をサポートします。SSMSでこのオプションを選択すると、MFA検証を強制でき、追加のセキュリティ層を提供します。SQL認証はMFAをサポートしていません。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q9",
+      "domain": 2,
+      "question": "コンプライアンス要件を満たすためにAzure SQL Databaseでデータ分類を実装するには、どの機能を使用すべきですか？",
+      "options": {
+        "A": "動的データマスキング",
+        "B": "データ検出と分類",
+        "C": "脆弱性評価",
+        "D": "透過的データ暗号化"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "データ検出と分類機能は、データベース内の機密データを検出、分類、ラベル付け、保護できます。組み込みの機密度ラベル（機密、高機密など）を使用し、GDPRなどのデータプライバシー標準とコンプライアンス要件を満たすのに役立ちます。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q10",
+      "domain": 2,
+      "question": "Azure SQL Database内の特定の機密列をアプリケーションのみが復号化でき、DBAでさえ平文データを閲覧できないようにするには、どの機能とキー管理方法を使用すべきですか？",
+      "options": {
+        "A": "TDEとサービス管理キー",
+        "B": "Always EncryptedとAzure Key Vault内の列マスターキー",
+        "C": "動的データマスキング",
+        "D": "行レベルセキュリティ"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Always EncryptedとAzure Key Vaultを組み合わせることで、キーアクセス権を持つアプリケーションのみがデータを復号化できることを確保できます。列マスターキーをAzure Key Vaultに保存し、アプリケーションにのみアクセス権を付与することで、DBAやキーアクセス権を持たない人が機密データを閲覧することを防止できます。",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q11",
+      "domain": 3,
+      "question": "Azure SQL Databaseのクエリパフォーマンス分析情報（Query Performance Insight）はどのような情報を提供しますか？",
+      "options": {
+        "A": "失敗したクエリのみを表示",
+        "B": "最もリソースを消費するクエリとパフォーマンスの傾向を表示",
+        "C": "セキュリティの脆弱性を表示",
+        "D": "バックアップ履歴を表示"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "クエリパフォーマンス分析情報（QPI）はインテリジェントなクエリ分析を提供し、DTU/CPU消費量が最も高いクエリ、長時間実行されているクエリ、リソース使用の傾向グラフを表示します。パフォーマンス問題のあるクエリを迅速に識別し、最適化の推奨事項を提供するのに役立ちます。これはAzureポータルの組み込み機能です。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q12",
+      "domain": 3,
+      "question": "Azure SQL Databaseで自動インデックス管理を有効にした後、システムはどの操作を実行できますか？（2つ選択）",
+      "options": {
+        "A": "欠落しているインデックスを自動作成",
+        "B": "重複または未使用のインデックスを自動削除",
+        "C": "すべてのインデックスを自動再構築",
+        "D": "ストレージサイズを自動増加"
+      },
+      "answer": ["A", "B"],
+      "answerType": "multiple",
+      "explanation": "自動チューニングのインデックス管理には以下が含まれます：1）CREATE INDEX - クエリパフォーマンスを向上させることができるインデックスを自動作成。2）DROP INDEX - 重複または長期間使用されていないインデックスを自動削除。システムは変更が実際にパフォーマンスを向上させることを検証してから保持します。インデックスの自動再構築やストレージサイズの調整は含まれません。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q13",
+      "domain": 3,
+      "question": "Azure SQL Databaseで特定のクエリに特定の実行プランを使用するよう強制するには、どの機能を使用すべきですか？",
+      "options": {
+        "A": "クエリヒント",
+        "B": "Query Storeのプラン強制",
+        "C": "インデックスヒント",
+        "D": "リソースガバナー"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Query Storeのプラン強制機能を使用すると、特定のクエリの実行プランをロックできます。プラン変更によるパフォーマンスのリグレッションが識別された場合、既知の良好なプランを強制できます。アプリケーションコードを変更する必要がなく、プランのリグレッションに対処する効果的な方法です。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q14",
+      "domain": 3,
+      "question": "Azure SQL Databaseが高いDTU使用率を示しており、主にCPUによるものです。パフォーマンスを改善する可能性が最も高い操作はどれですか？",
+      "options": {
+        "A": "ストレージサイズを増加",
+        "B": "頻繁に実行されるクエリを最適化またはパラメータ化",
+        "C": "geoレプリケーションを有効化",
+        "D": "バックアップ保持期間を変更"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "高いCPU使用率は通常、非効率なクエリまたは大量の繰り返しコンパイルによって引き起こされます。クエリの最適化（インデックスの追加、クエリ構造の改善）とクエリのパラメータ化（コンパイルオーバーヘッドの削減）により、CPU使用率を大幅に削減できます。ストレージサイズ、geoレプリケーション、バックアップ設定はCPUパフォーマンスに直接影響しません。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q15",
+      "domain": 3,
+      "question": "Azure SQL Databaseで現在実行中のクエリとそのリソース使用状況を表示するにはどうすべきですか？",
+      "options": {
+        "A": "sys.dm_exec_requestsとsys.dm_exec_sql_textをクエリ",
+        "B": "SQL Server Profilerを使用",
+        "C": "Azure Activity Logを確認",
+        "D": "Extended Events Wizardを使用"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "sys.dm_exec_requestsは現在実行中の各リクエストのステータス、リソース消費、待機情報を表示します。sys.dm_exec_sql_textと組み合わせることで、実行中のSQLステートメントのテキストを取得できます。これはデータベースアクティビティをリアルタイムで監視するための標準的な方法です。SQL Server ProfilerはAzure SQL Databaseでは使用できません。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q16",
+      "domain": 3,
+      "question": "長時間実行されるレポートクエリが他のトランザクションのタイムアウトを引き起こしています。影響を軽減するためにどの措置を講じるべきですか？",
+      "options": {
+        "A": "ロックタイムアウト設定を増加",
+        "B": "Read Committed Snapshot Isolation（RCSI）を有効化",
+        "C": "インデックスを無効化",
+        "D": "データベースのDTUを減少"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Read Committed Snapshot Isolation（RCSI）は行バージョン管理を使用し、読み取り操作が書き込み操作をブロックせず、書き込み操作も読み取り操作をブロックしません。これにより、レポートクエリによるブロッキングの問題を大幅に軽減できます。Azure SQL DatabaseはデフォルトでRCSIが有効になっています。",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q17",
+      "domain": 4,
+      "question": "Azure SQL Databaseで週次のインデックスメンテナンスタスクを実行する必要があります。Azure SQL DatabaseはSQL Server Agentをサポートしていないため、どの代替手段を使用すべきですか？",
+      "options": {
+        "A": "Windowsタスクスケジューラ",
+        "B": "Azure AutomationとRunbook",
+        "C": "SQL Server Integration Services",
+        "D": "メンテナンススクリプトを手動実行"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure Automationを使用すると、データベースメンテナンスタスクを実行するPowerShellまたはPython Runbookを作成できます。スケジューラを構成して定期的に実行できます（週次のインデックス再構築や統計情報更新など）。RunbookはAzure SQL Databaseに接続してT-SQLスクリプトを実行できます。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q18",
+      "domain": 4,
+      "question": "Azure SQL Databaseのストレージ使用率が80%を超えた場合に管理者に通知するアラートを構成する必要があります。どこで構成すべきですか？",
+      "options": {
+        "A": "Azure SQL Database監査設定",
+        "B": "Azure Monitorアラートルール",
+        "C": "SQL Server Agentアラート",
+        "D": "Azure Security Center"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure MonitorはAzure SQL Databaseのメトリクス（ストレージパーセンテージ、CPU、DTU使用率など）に基づいてアラートルールを作成できます。メトリクスが閾値を超えると、メール、SMS、Webhook、またはAzure Functionsをトリガーできます。これはAzureリソースを監視するための標準的な方法です。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q19",
+      "domain": 4,
+      "question": "Azure Resource Manager（ARM）テンプレートを使用してAzure SQL Databaseをデプロイする利点は何ですか？（2つ選択）",
+      "options": {
+        "A": "宣言型構文で望ましい最終状態を定義",
+        "B": "Infrastructure as Codeとバージョン管理をサポート",
+        "C": "クエリパフォーマンスを自動最適化",
+        "D": "geoレプリケーションを自動構成"
+      },
+      "answer": ["A", "B"],
+      "answerType": "multiple",
+      "explanation": "ARMテンプレートは宣言型JSON構文を使用してインフラストラクチャの望ましい状態を定義し、Azureがリソース作成順序と依存関係を自動的に処理します。テンプレートはソースコード管理に保存でき、Infrastructure as Code（IaC）を実現し、再現可能で一貫したデプロイをサポートします。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q20",
+      "domain": 4,
+      "question": "Azure SQL Databaseのデータを定期的にAzure Blob Storageにエクスポートして分析に使用する必要があります。最も自動化された方法は何ですか？",
+      "options": {
+        "A": "SSMSで手動エクスポート",
+        "B": "Azure Data Factoryパイプラインを構成",
+        "C": "Azureポータルのエクスポート機能を使用",
+        "D": "BCPコマンドを手動実行"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure Data Factory（ADF）はスケジュールパイプラインを作成して、Azure SQL DatabaseからAzure Blob Storageにデータを定期的にコピーできます。増分ロード、データ変換、複数のターゲット形式をサポートします。データエクスポート自動化のためのエンタープライズグレードのソリューションです。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q21",
+      "domain": 4,
+      "question": "新バージョンのデータベーススキーマをデプロイする前に、変更がデータ損失を引き起こすかどうかを検証するには、sqlpackage.exeのどの操作を使用すべきですか？",
+      "options": {
+        "A": "/Action:Extract",
+        "B": "/Action:Publish",
+        "C": "/Action:Script",
+        "D": "/Action:DeployReport"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "/Action:DeployReportは、実行されるすべての変更をリストするXMLレポートを生成します。これには、データ損失を引き起こす可能性のある操作（列やテーブルの削除など）が含まれます。実際のデプロイ前に変更を確認でき、CI/CDパイプラインのセキュリティベストプラクティスです。",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q22",
+      "domain": 5,
+      "question": "Azure SQL Databaseの自動フェイルオーバーグループがサポートするセカンダリリージョンの最大数はいくつですか？",
+      "options": {
+        "A": "1つ",
+        "B": "2つ",
+        "C": "4つ",
+        "D": "無制限"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "自動フェイルオーバーグループは1つのプライマリリージョンと1つのセカンダリリージョン（1対1構成）をサポートします。複数の読み取り専用レプリカや複数リージョンデプロイが必要な場合は、アクティブgeoレプリケーション（最大4つの読み取り可能なセカンダリデータベースをサポート）と組み合わせて使用できます。フェイルオーバーグループは自動化された災害復旧に焦点を当てています。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q23",
+      "domain": 5,
+      "question": "Azure SQL Databaseフェイルオーバーグループを構成する際、自動フェイルオーバーの猶予期間設定は何を意味しますか？",
+      "options": {
+        "A": "バックアップ保持時間を定義",
+        "B": "障害検出後、自動フェイルオーバーをトリガーするまでの待機時間を定義",
+        "C": "データ同期の間隔を定義",
+        "D": "読み取り専用ルーティングのタイムアウトを定義"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "猶予期間（GracePeriodWithDataLossHours）は、障害が検出された後、システムが自動フェイルオーバーを実行するまでの待機時間を定義します。これにより、一時的なネットワーク問題による不要なフェイルオーバーを防止できます。デフォルトは1時間で、ビジネス要件に応じて調整できます（最小1時間）。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q24",
+      "domain": 5,
+      "question": "Azure SQL Managed Instanceのゾーン冗長構成はどのレベルの保護を提供しますか？",
+      "options": {
+        "A": "データセンター障害からの保護",
+        "B": "リージョン全体の障害からの保護",
+        "C": "データ破損からの保護",
+        "D": "誤削除からの保護"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "ゾーン冗長は、同じリージョン内の複数の可用性ゾーンにデータベースレプリカを分散します。1つのデータセンター（可用性ゾーン）で障害が発生した場合、サービスは自動的に別のゾーンにフェイルオーバーします。これにより高可用性が提供されますが、リージョン全体の障害からは保護されません。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q25",
+      "domain": 5,
+      "question": "Azure SQL Databaseのポイントインタイム復元（PITR）を実行する場合、どの精度の時点に復元できますか？",
+      "options": {
+        "A": "最新の完全バックアップ",
+        "B": "最新の差分バックアップ",
+        "C": "任意の秒単位の精度",
+        "D": "最新のログバックアップ"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "Azure SQL Databaseのポイントインタイム復元は、保持期間内の任意の秒単位の精度への復元をサポートします。システムは完全バックアップ、差分バックアップ、トランザクションログバックアップの組み合わせを使用して、指定された正確な時点にデータベースを再構築します。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q26",
+      "domain": 5,
+      "question": "ある企業が規制要件を満たすためにAzure SQL Databaseのバックアップを10年間保持する必要があります。どの機能を構成すべきですか？",
+      "options": {
+        "A": "短期バックアップ保持期間を35日に増加",
+        "B": "長期保持（LTR）ポリシーを構成",
+        "C": "geoレプリケーションを構成",
+        "D": "監査ログを有効化"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "長期保持（LTR）を使用すると、完全なデータベースバックアップを最大10年間Azure Blob Storageに保存できます。週次、月次、年次バックアップの保持ポリシーを構成できます。短期バックアップ（PITR）は最長35日しか保持できず、長期コンプライアンス要件を満たすには不十分です。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q27",
+      "domain": 1,
+      "question": "Azure SQL Databaseエラスティックプールを使用する際、プールが正しく構成されているかどうかを判断するにはどうすべきですか？",
+      "options": {
+        "A": "各データベースのストレージ使用量を確認",
+        "B": "プールのeDTUまたはvCore使用率を監視し、継続的に100%に達していないことを確認",
+        "C": "すべてのデータベースが同じサービス層を使用していることを確認",
+        "D": "ネットワーク遅延を確認"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "エラスティックプールはすべてのデータベースの集約ワークロードを処理するのに十分なリソースが必要です。プールのeDTU/vCore使用率が継続的に100%に達している場合、プールサイズを増やすか、ビジーなデータベースをプールから移動する必要があるかもしれません。Azureポータルのリソース使用率グラフがこれを監視するのに役立ちます。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q28",
+      "domain": 1,
+      "question": "Azure SQL Database Hyperscaleサービス層の主なアーキテクチャ上の利点は何ですか？",
+      "options": {
+        "A": "オンプレミスSQL Serverとの完全な互換性",
+        "B": "コンピューティングとストレージの分離により、高速スケーリングと大規模データベースをサポート",
+        "C": "組み込みの機械学習機能",
+        "D": "無料のgeoレプリケーション"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Hyperscaleは分散ストレージアーキテクチャを使用し、コンピューティングとストレージを分離します。これにより、コンピューティング（数秒以内）とストレージ（最大100TB）の高速スケーリング、およびほぼ瞬時のデータベースバックアップ（スナップショットベース）と高速なポイントインタイム復元が可能になります。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q29",
+      "domain": 2,
+      "question": "SQLインジェクション攻撃を防止するため、パラメータ化クエリ以外にAzure SQL Databaseが提供する組み込みの保護は何ですか？",
+      "options": {
+        "A": "透過的データ暗号化",
+        "B": "Advanced Threat Protection（ATP）",
+        "C": "行レベルセキュリティ",
+        "D": "Always Encrypted"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Advanced Threat Protection（ATP）は、潜在的なSQLインジェクション攻撃を含む異常なデータベースアクティビティを検出できます。機械学習を使用してデータベーストラフィックを分析し、疑わしいパターンが検出されるとアラートを発します。これはアプリケーションレベルのセキュリティ対策を補完します。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q30",
+      "domain": 2,
+      "question": "Azure SQL Databaseのアカウントロックアウトポリシーはどのように機能しますか？",
+      "options": {
+        "A": "5回失敗後に30分間ロック",
+        "B": "Azure AD条件付きアクセスポリシーで制御",
+        "C": "SQL認証を使用する場合は組み込みロックアウトなし、Azure ADを使用する必要あり",
+        "D": "3回失敗後に永久にロック"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "SQL認証にはブルートフォース攻撃を防止するための組み込みアカウントロックアウトメカニズムがありません。条件付きアクセスポリシー、多要素認証、スマートロックアウトをサポートするAzure AD認証の使用を推奨します。Azure ADスマートロックアウトはブルートフォース攻撃が検出されると一時的にアカウントをロックできます。",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q31",
+      "domain": 3,
+      "question": "Azure SQL Databaseの自動一時停止機能はいつアクティブになりますか？",
+      "options": {
+        "A": "DTU使用率が50%未満のとき",
+        "B": "構成された非アクティブ期間後（サーバーレスコンピューティング層のみ）",
+        "C": "毎日深夜に自動一時停止",
+        "D": "コストが予算を超えたとき"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "自動一時停止はサーバーレスコンピューティング層の機能です。データベースが構成された遅延期間（最短1時間）内にアクティビティがない場合、コンピューティングリソースは自動的に一時停止され、一時停止中はストレージ料金のみが課金されます。接続リクエストが検出されると、データベースは自動的に再開します。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q32",
+      "domain": 3,
+      "question": "Azure SQL Databaseの推奨インデックスと、インデックス作成によるパフォーマンスへの推定影響を表示できるAzureポータル機能はどれですか？",
+      "options": {
+        "A": "Query Store",
+        "B": "パフォーマンス推奨事項（Database Advisor）",
+        "C": "Azure Advisor",
+        "D": "Activity Log"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "パフォーマンス推奨事項（Database Advisor）はクエリワークロードを分析し、インデックスの作成、インデックスの削除、クエリのパラメータ化の推奨事項を提供します。各推奨事項は推定されるパフォーマンス改善のパーセンテージを表示します。推奨事項を手動で適用するか、自動チューニングを有効にして自動的に実装できます。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q33",
+      "domain": 3,
+      "question": "Azure SQL Databaseのパフォーマンス問題を分析する際、PAGEIOLATCH_*待機タイプは何の問題を示していますか？",
+      "options": {
+        "A": "CPUボトルネック",
+        "B": "ストレージI/Oボトルネック",
+        "C": "ネットワーク遅延",
+        "D": "ロック競合"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "PAGEIOLATCH_*待機タイプは、クエリがストレージからメモリにデータページを読み取るのを待っていることを示します。高いPAGEIOLATCH待機は通常I/Oボトルネックを示し、I/Oを減らすためのクエリの最適化、インデックスの追加、またはより高いI/Oパフォーマンスを持つサービス層へのアップグレードが必要な場合があります。",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q34",
+      "domain": 4,
+      "question": "Azure Logic Appsを使用してAzure SQL Databaseアラートに自動応答する利点は何ですか？",
+      "options": {
+        "A": "通知の送信後に修復アクションを実行するなど、複雑なワークフローを実行可能",
+        "B": "メール送信のみ可能",
+        "C": "データベーススキーマを直接変更可能",
+        "D": "クエリパフォーマンスを自動最適化"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Azure Logic AppsはAzure Monitorアラートに応答するワークフローを作成できます。例えば、高いCPUが検出されたとき、自動的にTeamsメッセージを送信し、サービスチケットを作成し、Azure Automation Runbookを実行してデータベースをスケーリングするなど、自動化されたインシデント対応を実現できます。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q35",
+      "domain": 5,
+      "question": "Azure SQL Databaseのアクティブgeoレプリケーションにおいて、セカンダリデータベースにはどのような制限がありますか？",
+      "options": {
+        "A": "クエリを実行できない",
+        "B": "読み取り専用クエリのみ実行可能",
+        "C": "読み取り/書き込み操作を実行可能",
+        "D": "バックアップにのみ使用可能"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "アクティブgeoレプリケーションのセカンダリデータベースは読み取り可能です。読み取り専用ワークロード（レポート、分析クエリなど）をセカンダリデータベースにルーティングして、プライマリデータベースの負荷を分散できます。フェイルオーバー後、セカンダリデータベースはプライマリデータベースになり、書き込み操作を受け入れることができます。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q36",
+      "domain": 5,
+      "question": "Azure SQL Managed Instanceでセカンダリリージョンへの手動フェイルオーバーを実行する際、どの操作を実行すべきですか？",
+      "options": {
+        "A": "セカンダリインスタンスでALTER DATABASEを実行",
+        "B": "フェイルオーバーグループを使用して計画内フェイルオーバーを実行",
+        "C": "データベースを再作成",
+        "D": "DNSレコードを変更"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "計画内フェイルオーバーはフェイルオーバーグループを通じて実行され、Azureポータル、PowerShell、またはCLIを使用します。プロセス中にデータが完全に同期されてから、プライマリ/セカンダリロールが切り替わります。フェイルオーバーグループのリスナーエンドポイントは自動的に更新されるため、DNSを手動で変更する必要はありません。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q37",
+      "domain": 1,
+      "question": "Azure SQL DatabaseのDTUとvCore購入モデルを選択する際、どのシナリオがvCoreモデルにより適していますか？",
+      "options": {
+        "A": "ワークロードがシンプルで予算が限られている",
+        "B": "コンピューティングとストレージリソースを個別に制御する必要がある、またはAzure Hybrid Benefitを使用",
+        "C": "基本的なデータベース機能のみが必要",
+        "D": "データベースサイズが1GB未満"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "vCoreモデルはより大きな柔軟性を提供し、コンピューティング（vCore）とストレージリソースを個別に構成できます。Azure Hybrid Benefit（BYOL）をサポートしており、既存のSQL Serverライセンスを使用してコストを節約できます。また、可変ワークロードに適したサーバーレスコンピューティング層もサポートしています。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q38",
+      "domain": 2,
+      "question": "Azure SQL Databaseの透過的データ暗号化（TDE）にカスタマーマネージドキー（CMK）を構成する利点は何ですか？",
+      "options": {
+        "A": "クエリパフォーマンスの向上",
+        "B": "暗号化キーのライフサイクルとアクセスの完全な制御",
+        "C": "ストレージコストの削減",
+        "D": "バックアップ速度の向上"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "カスタマーマネージドキー（Azure Key Vaultに保存）を使用してTDEを行うと、キーの作成、ローテーション、無効化、削除を完全に制御できます。これにより、特定のコンプライアンス要件を満たし、必要に応じてキーを削除することでデータへのアクセスを「切断」できます。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q39",
+      "domain": 3,
+      "question": "Azure SQL Databaseのリソース制限（最大同時ワーカー数など）に達するとどうなりますか？",
+      "options": {
+        "A": "データベースが自動アップグレード",
+        "B": "新しい接続リクエストがブロックまたは拒否される",
+        "C": "データベースが自動再起動",
+        "D": "セカンダリレプリカに自動切り替え"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "リソース制限（最大同時ワーカー数やセッション数など）に達すると、新しい接続リクエストはエラーを受け取り、拒否されます。アプリケーションはこれらの一時的な制限を処理するために再試行ロジックを実装すべきです。継続的なリソース制限の問題を解決するには、ワークロードの最適化またはサービス層のアップグレードが必要です。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q40",
+      "domain": 5,
+      "question": "Azure SQL Databaseがgeo冗長バックアップストレージ（GRS）を使用する場合、バックアップはどこに保存されますか？",
+      "options": {
+        "A": "プライマリリージョンのみ",
+        "B": "プライマリリージョンとペアリージョン",
+        "C": "すべてのAzureリージョン",
+        "D": "ユーザーが指定した任意のリージョン"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "geo冗長バックアップストレージ（GRS）はバックアップをAzureペアリージョンに複製し、プライマリリージョンが完全に利用できなくなってもデータベースを復元できます。バックアップはプライマリリージョンに3つのレプリカ、ペアリージョンに追加で3つのレプリカを保存し、高い耐久性を提供します。",
+      "difficulty": "medium"
+    }
+  ]
+}

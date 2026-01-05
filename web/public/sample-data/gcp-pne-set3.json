@@ -1,0 +1,663 @@
+{
+  "exam": {
+    "id": "gcp-pne-set3",
+    "name": "Professional Cloud Network Engineer 练习题 Set 3",
+    "code": "PNE",
+    "provider": "Google Cloud",
+    "language": "zh-CN",
+    "description": "Google Cloud Professional Cloud Network Engineer 认证练习题第三套",
+    "totalQuestions": 40,
+    "passingScore": 70,
+    "examTime": 120,
+    "domains": [
+      "设计和规划云网络",
+      "实现VPC网络",
+      "配置网络服务",
+      "实现混合互连",
+      "管理和监控网络操作"
+    ],
+    "tags": ["Google Cloud", "Network", "Professional"]
+  },
+  "questions": [
+    {
+      "id": "gcp-pne-set3-q1",
+      "examId": "gcp-pne-set3",
+      "setNumber": 3,
+      "domain": "设计和规划云网络",
+      "question": "您正在为一家金融机构设计网络架构。要求所有数据在传输过程中加密，并且网络流量不能经过公共互联网。应该选择哪种方案连接到Google Cloud的服务？",
+      "options": {
+        "A": "使用公共IP通过HTTPS访问服务",
+        "B": "使用Private Service Connect配合Cloud Interconnect",
+        "C": "配置VPN并通过VPN访问公共API",
+        "D": "使用代理服务器转发所有请求"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Private Service Connect允许通过私有端点访问Google API和服务，流量完全在Google网络内部。配合Cloud Interconnect，从本地到GCP的流量也不经过公共互联网。这提供了端到端的私有连接，满足金融机构的安全合规要求。"
+    },
+    {
+      "id": "gcp-pne-set3-q2",
+      "examId": "gcp-pne-set3",
+      "setNumber": 3,
+      "domain": "实现VPC网络",
+      "question": "您需要配置一个子网，使其中的VM实例只能访问Google API，不能访问公共互联网上的其他资源。应该如何配置？",
+      "options": {
+        "A": "不为VM分配外部IP，启用Private Google Access",
+        "B": "配置Cloud NAT但仅允许访问googleapis.com",
+        "C": "使用VPC防火墙规则阻止所有出站流量",
+        "D": "将VM放在隔离的VPC中"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "不分配外部IP的VM无法直接访问公共互联网。启用子网的Private Google Access后，这些VM可以访问Google API和服务（如Cloud Storage、BigQuery等）。这是最简单和最安全的方法，不需要NAT或额外的网络组件。"
+    },
+    {
+      "id": "gcp-pne-set3-q3",
+      "examId": "gcp-pne-set3",
+      "setNumber": 3,
+      "domain": "配置网络服务",
+      "question": "您的Web应用程序使用外部HTTP(S)负载均衡器。您需要确保后端服务只接受来自负载均衡器的流量，不接受直接访问。应该如何配置？",
+      "options": {
+        "A": "不为后端VM分配外部IP地址",
+        "B": "配置防火墙规则只允许来自负载均衡器IP范围的流量",
+        "C": "配置防火墙规则只允许来自Google健康检查和负载均衡器源范围（130.211.0.0/22和35.191.0.0/16）的流量",
+        "D": "使用Cloud Armor阻止非负载均衡器流量"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "Google的HTTP(S)负载均衡器使用特定的源IP范围（130.211.0.0/22和35.191.0.0/16）与后端通信。配置防火墙规则只允许这些范围的入站流量，可以确保后端只接受来自负载均衡器的请求。同时需要允许健康检查的源IP。后端VM可以有或没有外部IP。"
+    },
+    {
+      "id": "gcp-pne-set3-q4",
+      "examId": "gcp-pne-set3",
+      "setNumber": 3,
+      "domain": "实现混合互连",
+      "question": "您需要配置Cloud Router的BGP保持活动计时器和保持计时器以实现更快的故障检测。但发现无法配置这些计时器低于某个值。这是为什么？",
+      "options": {
+        "A": "Cloud Router不支持自定义BGP计时器",
+        "B": "BGP计时器有最小值限制，需要使用BFD实现亚秒级故障检测",
+        "C": "需要联系Google支持启用此功能",
+        "D": "必须在本地路由器端配置计时器"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "BGP协议本身的保持时间最小为3秒。要实现更快的故障检测，应使用BFD（双向转发检测）。Cloud Router支持BFD，可以配置毫秒级的检测间隔和乘数，实现亚秒级的故障检测。BFD独立于BGP运行，检测到故障后会通知BGP终止会话。"
+    },
+    {
+      "id": "gcp-pne-set3-q5",
+      "examId": "gcp-pne-set3",
+      "setNumber": 3,
+      "domain": "管理和监控网络操作",
+      "question": "您需要创建一个仪表板来展示VPC网络的关键指标，包括流量、连接数、丢包率等。应该使用哪个工具？",
+      "options": {
+        "A": "VPC流日志配合Data Studio",
+        "B": "Cloud Monitoring自定义仪表板",
+        "C": "Network Intelligence Center的网络拓扑",
+        "D": "BigQuery BI Engine"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Cloud Monitoring提供VPC网络的各种指标，包括发送/接收的字节和数据包、丢包率、连接数等。使用Cloud Monitoring的自定义仪表板功能，可以创建图表展示这些指标，设置时间范围，并配置告警。这是最直接和集成的网络监控解决方案。"
+    },
+    {
+      "id": "gcp-pne-set3-q6",
+      "examId": "gcp-pne-set3",
+      "setNumber": 3,
+      "domain": "设计和规划云网络",
+      "question": "您的组织正在实施网络分段策略。需要将生产环境、开发环境和测试环境在网络层面完全隔离，但允许共享某些服务。最佳架构是什么？",
+      "options": {
+        "A": "在同一VPC中使用不同子网和防火墙规则",
+        "B": "创建独立的VPC，使用VPC对等连接共享服务VPC",
+        "C": "使用Shared VPC，不同环境使用不同的服务项目",
+        "D": "为每个环境创建独立的组织"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "为每个环境创建独立的VPC提供了最强的网络隔离。通过VPC对等连接到共享服务VPC（如日志、监控、身份验证服务），可以实现服务共享。这种星型拓扑（Hub-and-Spoke）允许集中管理共享服务，同时保持环境间的隔离。"
+    },
+    {
+      "id": "gcp-pne-set3-q7",
+      "examId": "gcp-pne-set3",
+      "setNumber": 3,
+      "domain": "实现VPC网络",
+      "question": "您需要配置VPC以支持超过300个VPC对等连接。默认限制不足以满足需求。应该怎么做？",
+      "options": {
+        "A": "使用VPN替代VPC对等",
+        "B": "申请配额增加",
+        "C": "使用传递路由的中心VPC",
+        "D": "VPC对等没有此类限制"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "VPC对等连接默认限制为每个VPC 25个直接对等。这是软性配额，可以通过Google Cloud Console或联系支持申请增加。对于需要大量对等连接的场景，增加配额是最直接的解决方案。注意：VPC对等不支持传递路由，所以中心VPC方案不适用。"
+    },
+    {
+      "id": "gcp-pne-set3-q8",
+      "examId": "gcp-pne-set3",
+      "setNumber": 3,
+      "domain": "配置网络服务",
+      "question": "您需要为您的API Gateway配置速率限制，防止单个客户端发送过多请求。应该使用哪个组件？",
+      "options": {
+        "A": "VPC防火墙规则",
+        "B": "Cloud Armor速率限制规则",
+        "C": "Cloud NAT连接限制",
+        "D": "负载均衡器连接超时设置"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Cloud Armor支持速率限制规则，可以根据客户端IP地址、头信息或其他属性限制请求速率。配置阈值后，超过限制的请求会被拒绝（返回429状态码）或进行限速。这是保护API免受滥用和DDoS攻击的有效方法。"
+    },
+    {
+      "id": "gcp-pne-set3-q9",
+      "examId": "gcp-pne-set3",
+      "setNumber": 3,
+      "domain": "实现混合互连",
+      "question": "您正在配置专用互连（Dedicated Interconnect）。需要在VLAN附件上配置什么参数来建立BGP会话？",
+      "options": {
+        "A": "只需要配置VLAN ID",
+        "B": "VLAN ID、对等ASN、Cloud Router链路IP和客户路由器IP",
+        "C": "只需要选择Cloud Router，其他自动配置",
+        "D": "IPsec密钥和BGP密码"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "配置VLAN附件需要指定：VLAN ID（与本地端匹配）、对等ASN（本地路由器的BGP AS号）、Cloud Router链路IP（/29或/30网段中的GCP端IP）和客户路由器IP（本地端IP）。这些参数用于建立BGP会话。IPsec不适用于互连，它使用物理连接而非加密隧道。"
+    },
+    {
+      "id": "gcp-pne-set3-q10",
+      "examId": "gcp-pne-set3",
+      "setNumber": 3,
+      "domain": "管理和监控网络操作",
+      "question": "您的Cloud VPN隧道间歇性断开。您需要分析问题原因。应该查看哪些日志？",
+      "options": {
+        "A": "VM实例的系统日志",
+        "B": "Cloud VPN网关的Cloud Logging日志",
+        "C": "VPC流日志",
+        "D": "Cloud Router的BGP日志"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Cloud VPN网关的日志记录在Cloud Logging中，包含IKE协商、隧道状态变化、错误信息等详细内容。这些日志可以帮助诊断隧道断开的原因，如IKE参数不匹配、网络超时、DPD失败等。使用日志过滤器查看resource.type=\"vpn_gateway\"的日志。"
+    },
+    {
+      "id": "gcp-pne-set3-q11",
+      "examId": "gcp-pne-set3",
+      "setNumber": 3,
+      "domain": "设计和规划云网络",
+      "question": "您正在为一个需要处理敏感医疗数据的应用程序设计网络。需要满足HIPAA合规要求，包括审计所有数据访问和网络活动。应该启用哪些功能？",
+      "options": {
+        "A": "仅启用Cloud Audit Logs",
+        "B": "启用VPC流日志、Cloud Audit Logs和Access Transparency",
+        "C": "仅使用第三方安全工具",
+        "D": "启用Cloud Armor和防火墙规则日志"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "HIPAA合规需要全面的审计能力。VPC流日志记录网络流量，Cloud Audit Logs记录API调用和数据访问，Access Transparency记录Google员工对您数据的访问（当需要支持时）。这些组合提供了满足HIPAA审计要求的完整可见性。"
+    },
+    {
+      "id": "gcp-pne-set3-q12",
+      "examId": "gcp-pne-set3",
+      "setNumber": 3,
+      "domain": "实现VPC网络",
+      "question": "您需要在VPC中实现微分段，确保同一子网中的VM之间的流量也受到控制。应该如何实现？",
+      "options": {
+        "A": "每个VM使用单独的子网",
+        "B": "使用VPC防火墙规则配合网络标签或服务账号",
+        "C": "VPC防火墙无法控制同一子网的流量",
+        "D": "使用Cloud NAT隔离流量"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "VPC防火墙规则可以控制同一子网内VM之间的流量。使用网络标签或服务账号作为源和目标，可以创建细粒度的规则。例如，允许web-server标签的VM访问database标签的VM的3306端口。这实现了不依赖于IP地址或子网的微分段。"
+    },
+    {
+      "id": "gcp-pne-set3-q13",
+      "examId": "gcp-pne-set3",
+      "setNumber": 3,
+      "domain": "配置网络服务",
+      "question": "您需要配置一个负载均衡器，要求后端处于维护状态时向客户端返回自定义错误页面。应该如何配置？",
+      "options": {
+        "A": "在后端服务器上配置错误页面",
+        "B": "使用HTTP(S)负载均衡器的自定义错误响应功能",
+        "C": "配置Cloud CDN缓存错误页面",
+        "D": "使用URL映射重定向到错误页面"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "HTTP(S)负载均衡器支持自定义错误响应。您可以为特定的HTTP状态码（如502、503）配置自定义响应，包括静态HTML内容。当所有后端不健康或返回这些错误时，负载均衡器会返回您配置的自定义页面，而不是默认的错误消息。"
+    },
+    {
+      "id": "gcp-pne-set3-q14",
+      "examId": "gcp-pne-set3",
+      "setNumber": 3,
+      "domain": "实现混合互连",
+      "question": "您的组织在两个不同的地理位置都有数据中心，都需要连接到GCP。为了实现站点间通过GCP网络通信，应该如何设计？",
+      "options": {
+        "A": "每个站点独立连接到GCP，使用VPN连接站点",
+        "B": "使用Cloud Interconnect连接两个站点到同一个VPC，启用全局动态路由",
+        "C": "只连接一个站点，另一个通过第一个站点访问",
+        "D": "使用公共互联网连接两个站点"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "将两个站点通过Cloud Interconnect连接到同一个GCP VPC，并启用VPC的全局动态路由模式。Cloud Router会学习两个站点的路由并在VPC中传播。这样两个站点可以通过GCP的骨干网络通信，利用Google的高速、低延迟全球网络。"
+    },
+    {
+      "id": "gcp-pne-set3-q15",
+      "examId": "gcp-pne-set3",
+      "setNumber": 3,
+      "domain": "管理和监控网络操作",
+      "question": "您需要定期生成网络合规报告，包括所有VPC、子网、防火墙规则和路由的配置。应该使用什么工具？",
+      "options": {
+        "A": "编写gcloud脚本定期导出配置",
+        "B": "使用Cloud Asset Inventory导出资源数据",
+        "C": "使用Network Intelligence Center的配置报告",
+        "D": "从Cloud Console手动导出"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Cloud Asset Inventory可以导出组织或项目中所有资源的配置，包括VPC、子网、防火墙规则、路由等网络资源。支持导出到BigQuery或Cloud Storage，可以定期运行导出作业生成合规报告。这提供了完整、一致的资源快照，适合审计和合规目的。"
+    },
+    {
+      "id": "gcp-pne-set3-q16",
+      "examId": "gcp-pne-set3",
+      "setNumber": 3,
+      "domain": "设计和规划云网络",
+      "question": "您需要设计一个网络架构，允许合作伙伴公司安全地访问您GCP中的特定服务，而不需要将他们纳入您的VPC或共享网络凭据。最佳方案是什么？",
+      "options": {
+        "A": "使用VPN连接合作伙伴网络",
+        "B": "为合作伙伴创建IAM用户访问公共端点",
+        "C": "使用Private Service Connect发布服务，合作伙伴订阅",
+        "D": "通过VPC对等连接合作伙伴的GCP项目"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "Private Service Connect允许您将服务发布为私有端点，合作伙伴可以在自己的VPC中创建端点来消费您的服务。这不需要网络对等、VPN或共享凭据，提供了安全的服务共享机制。服务提供者控制谁可以连接，消费者获得私有的、专属的端点。"
+    },
+    {
+      "id": "gcp-pne-set3-q17",
+      "examId": "gcp-pne-set3",
+      "setNumber": 3,
+      "domain": "实现VPC网络",
+      "question": "您需要配置一个出站流量的防火墙规则，阻止VM访问特定的外部IP范围，但允许访问其他所有外部地址。应该如何配置？",
+      "options": {
+        "A": "创建优先级低的允许所有出站规则，再创建优先级高的拒绝特定范围规则",
+        "B": "创建优先级高的允许所有出站规则，再创建优先级低的拒绝特定范围规则",
+        "C": "只创建拒绝特定范围的规则，依赖隐含的允许所有出站规则",
+        "D": "VPC防火墙不支持出站规则"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "VPC防火墙有隐含的允许所有出站流量规则（最低优先级65535）。只需创建一条拒绝特定IP范围的出站规则（较高优先级），该规则会先于隐含规则匹配。被拒绝范围外的流量将匹配隐含的允许规则。不需要显式创建允许所有的规则。"
+    },
+    {
+      "id": "gcp-pne-set3-q18",
+      "examId": "gcp-pne-set3",
+      "setNumber": 3,
+      "domain": "配置网络服务",
+      "question": "您需要配置内部HTTP(S)负载均衡器以支持基于路径的路由，将不同URL路径的请求发送到不同的后端服务。应该如何配置？",
+      "options": {
+        "A": "创建多个负载均衡器，每个处理不同路径",
+        "B": "配置URL映射定义路径规则和对应的后端服务",
+        "C": "内部HTTP(S)负载均衡器不支持路径路由",
+        "D": "使用Cloud DNS根据路径路由请求"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "内部HTTP(S)负载均衡器（内部应用负载均衡器）支持URL映射。创建URL映射时，定义主机规则和路径匹配规则，将不同路径（如/api/*、/static/*）映射到不同的后端服务。这实现了基于内容的路由，一个负载均衡器可以服务多个后端。"
+    },
+    {
+      "id": "gcp-pne-set3-q19",
+      "examId": "gcp-pne-set3",
+      "setNumber": 3,
+      "domain": "实现混合互连",
+      "question": "您正在使用HA VPN，发现两个隧道都处于活动状态，但流量只通过一个隧道。本地路由器显示两个隧道的BGP会话都已建立。可能的原因是什么？",
+      "options": {
+        "A": "HA VPN只支持主备模式",
+        "B": "本地路由器的BGP配置没有启用ECMP",
+        "C": "GCP端的Cloud Router配置错误",
+        "D": "隧道带宽达到限制"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "HA VPN配合Cloud Router默认支持主主（Active-Active）模式和ECMP负载均衡。如果流量只通过一个隧道，通常是本地路由器没有正确配置ECMP。确保本地路由器启用了ECMP，并且两条路径有相同的度量值。Cloud Router会自动通过两个隧道通告相同的路由。"
+    },
+    {
+      "id": "gcp-pne-set3-q20",
+      "examId": "gcp-pne-set3",
+      "setNumber": 3,
+      "domain": "管理和监控网络操作",
+      "question": "您需要测试新的防火墙规则在应用前是否会影响现有流量。应该使用什么方法？",
+      "options": {
+        "A": "在生产环境直接应用规则并监控",
+        "B": "创建一个测试VPC复制配置进行测试",
+        "C": "使用Network Intelligence Center的连接测试模拟规则影响",
+        "D": "分析VPC流日志预测影响"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "Network Intelligence Center的连接测试可以模拟端到端的网络路径，分析防火墙规则的影响。您可以在不实际应用规则的情况下，测试如果添加或修改规则会发生什么。这提供了安全的方式来验证规则更改，避免意外中断生产流量。"
+    },
+    {
+      "id": "gcp-pne-set3-q21",
+      "examId": "gcp-pne-set3",
+      "setNumber": 3,
+      "domain": "设计和规划云网络",
+      "question": "您的应用程序需要发送大量小数据包到互联网。您发现Cloud NAT的出站连接数达到限制。应该如何解决？",
+      "options": {
+        "A": "增加Cloud NAT网关的数量",
+        "B": "增加分配给Cloud NAT的外部IP地址数量",
+        "C": "减小NAT超时时间",
+        "D": "以上都可以帮助解决问题"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "Cloud NAT的连接数限制取决于分配的IP地址数量和端口分配。解决方案包括：1）增加NAT IP地址（每个IP提供约64000个端口）；2）减小TCP/UDP超时时间以更快释放端口；3）配置动态端口分配；4）如果使用多个子网，可能需要多个NAT网关。所有这些方法都可以增加可用的出站连接数。"
+    },
+    {
+      "id": "gcp-pne-set3-q22",
+      "examId": "gcp-pne-set3",
+      "setNumber": 3,
+      "domain": "实现VPC网络",
+      "question": "您需要配置VPC，使其中的Compute Engine实例可以使用自定义元数据服务器而不是默认的GCP元数据服务器。应该如何实现？",
+      "options": {
+        "A": "修改VPC的元数据服务器设置",
+        "B": "创建到169.254.169.254的自定义路由指向您的服务器",
+        "C": "这不可能，元数据服务器是GCP管理的",
+        "D": "在实例启动脚本中修改/etc/hosts"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "GCP的元数据服务器（169.254.169.254）是Google管理的系统服务，无法被自定义路由覆盖或替换。这是设计决定，确保实例始终能访问必要的元数据（如服务账号凭据、实例属性等）。如果需要额外的元数据服务，应使用不同的IP地址部署。"
+    },
+    {
+      "id": "gcp-pne-set3-q23",
+      "examId": "gcp-pne-set3",
+      "setNumber": 3,
+      "domain": "配置网络服务",
+      "question": "您需要配置Cloud CDN以缓存来自Cloud Storage存储桶的内容。存储桶中的对象是私有的。应该如何配置？",
+      "options": {
+        "A": "将存储桶设置为公开访问",
+        "B": "配置后端存储桶并使用签名URL",
+        "C": "Cloud CDN不能缓存私有Cloud Storage对象",
+        "D": "为Cloud CDN服务账号授予存储桶访问权限"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Cloud CDN可以缓存私有Cloud Storage对象。配置后端存储桶后，使用签名URL来控制访问。客户端使用签名URL请求内容，Cloud CDN验证签名后缓存内容。后续请求可以从缓存提供，直到签名过期或内容更新。这保持了安全性同时提供CDN加速。"
+    },
+    {
+      "id": "gcp-pne-set3-q24",
+      "examId": "gcp-pne-set3",
+      "setNumber": 3,
+      "domain": "实现混合互连",
+      "question": "您的组织决定从合作伙伴互连迁移到专用互连以获得更高的带宽。在迁移过程中需要保持连接不中断。应该如何规划迁移？",
+      "options": {
+        "A": "先断开合作伙伴互连，再配置专用互连",
+        "B": "并行配置专用互连，迁移流量后再断开合作伙伴互连",
+        "C": "使用VPN作为临时连接",
+        "D": "请求Google暂时增加合作伙伴互连带宽"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "零停机迁移的最佳方法是并行运行两种连接。先配置和测试专用互连，确保BGP会话建立且路由正确。然后调整路由策略（如BGP AS路径预置或MED值）将流量逐渐迁移到专用互连。确认所有流量都通过新连接后，再断开合作伙伴互连。"
+    },
+    {
+      "id": "gcp-pne-set3-q25",
+      "examId": "gcp-pne-set3",
+      "setNumber": 3,
+      "domain": "管理和监控网络操作",
+      "question": "您需要自动响应网络安全事件，例如检测到可疑流量时自动更新防火墙规则。应该使用什么架构？",
+      "options": {
+        "A": "手动监控日志并更新规则",
+        "B": "使用Cloud Functions配合日志路由器和Pub/Sub自动化响应",
+        "C": "使用第三方SIEM工具",
+        "D": "配置Cloud Armor的自动适应保护"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "自动化安全响应的架构：配置日志路由器将安全相关日志（如VPC流日志、防火墙日志）发送到Pub/Sub，触发Cloud Functions进行分析。当检测到可疑模式时，Cloud Functions使用Compute Engine API自动创建或更新防火墙规则。这实现了实时的自动化安全响应。"
+    },
+    {
+      "id": "gcp-pne-set3-q26",
+      "examId": "gcp-pne-set3",
+      "setNumber": 3,
+      "domain": "设计和规划云网络",
+      "question": "您正在设计一个边缘计算架构，需要在全球多个位置部署应用程序，并确保用户连接到最近的位置。最佳方案是什么？",
+      "options": {
+        "A": "在每个区域部署独立的应用实例和负载均衡器",
+        "B": "使用全局外部HTTP(S)负载均衡器配合多区域后端",
+        "C": "使用Cloud CDN缓存动态内容",
+        "D": "配置Cloud DNS轮询多个区域的IP"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "全局外部HTTP(S)负载均衡器使用Google的全球任播网络，自动将用户请求路由到最近的健康后端。配置多区域后端组后，负载均衡器会考虑延迟、后端健康和容量来选择最优后端。这比DNS轮询提供了更准确的地理路由和更快的故障转移。"
+    },
+    {
+      "id": "gcp-pne-set3-q27",
+      "examId": "gcp-pne-set3",
+      "setNumber": 3,
+      "domain": "实现VPC网络",
+      "question": "您的VPC中有多个子网使用重叠的IP范围。您需要合并这些子网到一个统一的IP规划中。应该如何进行？",
+      "options": {
+        "A": "直接修改现有子网的IP范围",
+        "B": "创建新子网，迁移资源，然后删除旧子网",
+        "C": "使用VPC对等连接重叠的子网",
+        "D": "GCP不允许同一VPC中有重叠IP的子网"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "GCP VPC不允许在同一VPC中创建IP范围重叠的子网。如果您当前有重叠的IP，它们必须在不同的VPC中。要合并到统一的IP规划，需要：1）创建使用新IP范围的子网；2）迁移资源到新子网；3）删除旧子网。子网的IP范围创建后不能修改，只能扩展。"
+    },
+    {
+      "id": "gcp-pne-set3-q28",
+      "examId": "gcp-pne-set3",
+      "setNumber": 3,
+      "domain": "配置网络服务",
+      "question": "您需要配置负载均衡器健康检查，要求在后端实例重启后有足够的预热时间才开始接收流量。应该如何配置？",
+      "options": {
+        "A": "增加健康检查间隔时间",
+        "B": "配置健康检查的初始延迟（Initial Delay）",
+        "C": "减少健康阈值（Healthy Threshold）",
+        "D": "使用TCP健康检查而不是HTTP"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "健康检查的初始延迟（Initial Delay）参数指定实例启动后等待多长时间才开始健康检查。这给应用程序足够的预热时间（如加载缓存、建立连接池）。在初始延迟期间，实例不会接收流量。这比简单增加检查间隔更精确地控制预热行为。"
+    },
+    {
+      "id": "gcp-pne-set3-q29",
+      "examId": "gcp-pne-set3",
+      "setNumber": 3,
+      "domain": "实现混合互连",
+      "question": "您正在配置Cloud Router，需要防止本地网络通告的某些路由被导入到VPC路由表。应该如何配置？",
+      "options": {
+        "A": "在本地路由器上过滤出站路由通告",
+        "B": "配置Cloud Router的入站BGP路由策略",
+        "C": "使用VPC防火墙规则阻止这些路由的流量",
+        "D": "手动从VPC路由表删除不需要的路由"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Cloud Router支持BGP路由策略，包括入站路由过滤。您可以配置策略来接受或拒绝特定前缀的路由，修改路由属性（如优先级）。这在GCP端实现路由过滤，不依赖于本地路由器配置。使用路由策略可以精确控制哪些学习到的路由被导入到VPC。"
+    },
+    {
+      "id": "gcp-pne-set3-q30",
+      "examId": "gcp-pne-set3",
+      "setNumber": 3,
+      "domain": "管理和监控网络操作",
+      "question": "您需要验证VPC Service Controls是否正确阻止了来自未授权网络的数据访问尝试。应该查看哪些日志？",
+      "options": {
+        "A": "VPC流日志",
+        "B": "Data Access审计日志和VPC Service Controls日志",
+        "C": "防火墙规则日志",
+        "D": "Cloud Armor日志"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "VPC Service Controls的违规和访问尝试记录在Cloud Audit Logs中。查看Policy Denied日志可以看到被阻止的访问尝试，包括源IP、身份、请求的服务和被违反的策略。Data Access审计日志记录数据访问操作。这些日志帮助验证服务边界是否按预期工作。"
+    },
+    {
+      "id": "gcp-pne-set3-q31",
+      "examId": "gcp-pne-set3",
+      "setNumber": 3,
+      "domain": "设计和规划云网络",
+      "question": "您的组织有严格的数据主权要求，所有数据必须存储和处理在特定国家/地区。网络架构应该如何支持这一要求？",
+      "options": {
+        "A": "使用全局VPC，依赖应用程序级别的数据路由",
+        "B": "使用区域性资源，配置组织策略限制资源位置，使用区域性负载均衡",
+        "C": "使用Cloud CDN确保数据在正确位置缓存",
+        "D": "配置VPN将数据路由到特定区域"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "满足数据主权要求需要：1）使用组织策略限制可以创建资源的位置；2）使用区域性（而非全局）负载均衡器和资源；3）确保所有数据存储服务配置在允许的区域。全局负载均衡器会将流量路由到任何健康后端，可能违反数据主权要求。"
+    },
+    {
+      "id": "gcp-pne-set3-q32",
+      "examId": "gcp-pne-set3",
+      "setNumber": 3,
+      "domain": "实现VPC网络",
+      "question": "您需要在VPC中配置一个NAT网关，要求某些VM使用NAT访问互联网，而其他VM直接使用自己的外部IP。应该如何配置？",
+      "options": {
+        "A": "为使用NAT的VM创建单独的子网",
+        "B": "配置Cloud NAT仅对没有外部IP的VM生效",
+        "C": "为每组VM创建不同的Cloud NAT网关",
+        "D": "Cloud NAT对所有VM统一生效，无法区分"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Cloud NAT默认只对没有外部IP地址的VM生效。有外部IP的VM会使用自己的IP进行出站连接。因此，只需为需要NAT的VM不分配外部IP，为需要直接访问的VM分配外部IP。Cloud NAT会自动区分这两种情况，不需要特殊配置。"
+    },
+    {
+      "id": "gcp-pne-set3-q33",
+      "examId": "gcp-pne-set3",
+      "setNumber": 3,
+      "domain": "配置网络服务",
+      "question": "您需要配置一个负载均衡器来处理SSL/TLS流量，要求在后端服务器上终止SSL（端到端加密）。应该选择哪种配置？",
+      "options": {
+        "A": "SSL代理负载均衡器",
+        "B": "HTTP(S)负载均衡器配合后端HTTPS",
+        "C": "TCP代理负载均衡器",
+        "D": "网络负载均衡器（直通）"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "HTTP(S)负载均衡器可以配置为端到端加密：客户端到负载均衡器使用HTTPS，负载均衡器到后端也使用HTTPS。在后端服务配置中选择HTTPS协议，负载均衡器会与后端建立新的TLS连接。这提供了7层功能（如URL路由）同时保持端到端加密。"
+    },
+    {
+      "id": "gcp-pne-set3-q34",
+      "examId": "gcp-pne-set3",
+      "setNumber": 3,
+      "domain": "实现混合互连",
+      "question": "您需要通过Cloud Interconnect将GCP连接到AWS。Google Cloud和AWS之间没有直接互连产品。应该使用什么方案？",
+      "options": {
+        "A": "使用Google的Cross-Cloud Interconnect",
+        "B": "通过合作伙伴提供的网络连接两个云",
+        "C": "使用公共互联网VPN",
+        "D": "这是不可能的，需要使用传统WAN"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Google Cloud提供Cross-Cloud Interconnect，专门用于连接GCP到其他云提供商（如AWS、Azure）。这在Google的边缘位置和其他云之间提供专用、低延迟的连接。配置包括在GCP创建互连和VLAN附件，在AWS创建Direct Connect。这比通过合作伙伴或VPN提供更好的性能和可靠性。"
+    },
+    {
+      "id": "gcp-pne-set3-q35",
+      "examId": "gcp-pne-set3",
+      "setNumber": 3,
+      "domain": "管理和监控网络操作",
+      "question": "您需要设置告警，当VPC中的任何防火墙规则被修改时立即通知安全团队。应该如何配置？",
+      "options": {
+        "A": "监控VPC流日志的变化",
+        "B": "配置Cloud Audit Logs的日志路由，触发Pub/Sub通知",
+        "C": "使用Cloud Monitoring监控防火墙指标",
+        "D": "定期使用脚本比较防火墙规则配置"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "防火墙规则的创建、修改和删除操作记录在Admin Activity审计日志中。配置日志路由器，过滤compute.firewalls.insert/update/delete操作，将匹配的日志发送到Pub/Sub。然后配置Pub/Sub订阅触发邮件通知或调用Cloud Functions。这提供了实时的防火墙变更告警。"
+    },
+    {
+      "id": "gcp-pne-set3-q36",
+      "examId": "gcp-pne-set3",
+      "setNumber": 3,
+      "domain": "设计和规划云网络",
+      "question": "您需要设计一个网络架构，支持多个团队独立管理各自的网络资源，同时共享中央IT管理的核心网络基础设施。最佳方案是什么？",
+      "options": {
+        "A": "每个团队使用完全独立的项目和VPC",
+        "B": "使用Shared VPC，中央IT管理宿主项目，团队使用服务项目",
+        "C": "所有团队使用同一个项目，通过IAM分配权限",
+        "D": "使用VPC对等连接各团队的VPC"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Shared VPC是此场景的理想解决方案。中央IT团队管理宿主项目中的网络资源（VPC、子网、防火墙规则、路由），各团队在服务项目中独立管理计算资源。团队可以使用共享网络中的子网，但不能修改网络配置。这实现了网络集中管理和资源分散管理的平衡。"
+    },
+    {
+      "id": "gcp-pne-set3-q37",
+      "examId": "gcp-pne-set3",
+      "setNumber": 3,
+      "domain": "实现VPC网络",
+      "question": "您正在配置一个使用Alias IP的GKE集群。需要确保Pod IP范围与VPC中其他子网的IP范围不冲突。应该如何规划？",
+      "options": {
+        "A": "GKE会自动选择不冲突的IP范围",
+        "B": "在创建子网时定义辅助IP范围用于Pod",
+        "C": "使用网络策略隔离Pod IP",
+        "D": "Pod IP与节点使用相同的IP范围"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "VPC原生GKE集群使用子网的辅助IP范围作为Pod IP。在创建子网时，需要定义一个或多个辅助IP范围，专门用于Pod（和Service）。这些范围应该与VPC中其他子网的主要和辅助范围不重叠。规划时需要考虑集群规模和未来扩展需求，选择足够大的CIDR块。"
+    },
+    {
+      "id": "gcp-pne-set3-q38",
+      "examId": "gcp-pne-set3",
+      "setNumber": 3,
+      "domain": "配置网络服务",
+      "question": "您的应用程序使用多个后端服务，需要配置负载均衡器根据HTTP头信息（如User-Agent）路由流量到不同的后端。应该如何配置？",
+      "options": {
+        "A": "使用多个负载均衡器，每个处理特定的User-Agent",
+        "B": "在HTTP(S)负载均衡器的URL映射中配置头匹配规则",
+        "C": "使用Cloud Armor根据头信息路由",
+        "D": "在后端应用程序中处理路由逻辑"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "HTTP(S)负载均衡器的URL映射支持高级路由规则，包括基于HTTP头的匹配。可以配置规则根据特定头（如User-Agent、Cookie）的值将请求路由到不同的后端服务。这在负载均衡器层面实现内容路由，无需后端处理或多个负载均衡器。"
+    },
+    {
+      "id": "gcp-pne-set3-q39",
+      "examId": "gcp-pne-set3",
+      "setNumber": 3,
+      "domain": "实现混合互连",
+      "question": "您需要确保Cloud VPN的IPsec密钥定期轮换以符合安全策略。应该如何实现？",
+      "options": {
+        "A": "Cloud VPN自动轮换IKE密钥",
+        "B": "配置密钥自动轮换功能",
+        "C": "手动更新预共享密钥并在两端应用",
+        "D": "使用证书认证代替预共享密钥"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "Cloud VPN使用IKE自动协商会话密钥，但预共享密钥（PSK）需要手动轮换。轮换时需要在GCP和本地端同时更新PSK，会导致短暂的连接中断。最佳实践是使用复杂的PSK，并根据安全策略定期轮换。GCP不提供自动PSK轮换功能。"
+    },
+    {
+      "id": "gcp-pne-set3-q40",
+      "examId": "gcp-pne-set3",
+      "setNumber": 3,
+      "domain": "管理和监控网络操作",
+      "question": "您需要实施网络成本优化策略，识别哪些资源产生了最多的出站流量费用。应该使用什么工具？",
+      "options": {
+        "A": "Cloud Monitoring的网络指标",
+        "B": "将计费数据导出到BigQuery并分析网络出站费用",
+        "C": "VPC流日志的流量统计",
+        "D": "Network Intelligence Center的成本报告"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "将计费数据导出到BigQuery可以详细分析成本，包括网络出站流量费用。可以按项目、服务、区域、SKU等维度分析费用，识别产生最多出站流量成本的资源。Cloud Monitoring提供流量指标但不直接关联成本，计费分析是成本优化的正确工具。"
+    }
+  ]
+}

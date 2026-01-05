@@ -1,0 +1,663 @@
+{
+  "exam": {
+    "id": "gcp-pdevops-set2-ja",
+    "name": "Professional Cloud DevOps Engineer 練習問題 Set 2",
+    "code": "PDevOps",
+    "provider": "Google Cloud",
+    "language": "ja",
+    "description": "Google Cloud Professional Cloud DevOps Engineer認定試験の練習問題セット2です。高度なSRE原則、CI/CDパイプライン、監視戦略をカバーしています。",
+    "totalQuestions": 40,
+    "passingScore": 70,
+    "examTime": 120,
+    "domains": [
+      "アプリケーション開発とサービス信頼性",
+      "ビルドとデプロイパイプライン",
+      "サービス監視とロギング",
+      "インシデント管理",
+      "Google Kubernetes Engine管理"
+    ],
+    "tags": ["Google Cloud", "DevOps", "SRE", "Professional"]
+  },
+  "questions": [
+    {
+      "id": "gcp-pdevops-set2-ja-q1",
+      "examId": "gcp-pdevops-set2-ja",
+      "setNumber": 2,
+      "domain": "アプリケーション開発とサービス信頼性",
+      "question": "SLOベースのアラートを設計する際、どのアプローチが最も効果的ですか？",
+      "options": {
+        "A": "すべての技術メトリクスに個別のアラートを設定する",
+        "B": "マルチウィンドウ、マルチバーンレートアラートを使用する",
+        "C": "1つのSLOに対して1つのアラートのみを設定する",
+        "D": "アラートを設定せず、ダッシュボードのみを使用する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "マルチウィンドウ、マルチバーンレートアラートは、短期的な急激な悪化と長期的な緩やかな悪化の両方を検出でき、誤検知を減らしながら実際の問題を確実に捕捉できます。"
+    },
+    {
+      "id": "gcp-pdevops-set2-ja-q2",
+      "examId": "gcp-pdevops-set2-ja",
+      "setNumber": 2,
+      "domain": "ビルドとデプロイパイプライン",
+      "question": "Cloud Buildでプライベートワーカープールを使用する利点は何ですか？",
+      "options": {
+        "A": "ビルドが常に高速になる",
+        "B": "VPCネットワーク内のリソースにアクセスできる",
+        "C": "ビルドコストが削減される",
+        "D": "並列ビルドが自動的に有効になる"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "プライベートワーカープールはVPCネットワーク内で実行されるため、プライベートリソース（内部APIや内部レジストリなど）にアクセスできます。"
+    },
+    {
+      "id": "gcp-pdevops-set2-ja-q3",
+      "examId": "gcp-pdevops-set2-ja",
+      "setNumber": 2,
+      "domain": "サービス監視とロギング",
+      "question": "Cloud Monitoringでカスタムダッシュボードを設計する際のベストプラクティスは何ですか？",
+      "options": {
+        "A": "可能な限り多くのウィジェットを追加する",
+        "B": "USE/REDメソッドに基づいてメトリクスを整理する",
+        "C": "すべてのメトリクスを1つのグラフに表示する",
+        "D": "リアルタイムデータのみを表示する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "USE（Utilization、Saturation、Errors）またはRED（Rate、Errors、Duration）メソッドに基づいてダッシュボードを設計することで、システムの健全性を効率的に把握できます。"
+    },
+    {
+      "id": "gcp-pdevops-set2-ja-q4",
+      "examId": "gcp-pdevops-set2-ja",
+      "setNumber": 2,
+      "domain": "インシデント管理",
+      "question": "エスカレーションポリシーを設定する際に考慮すべき重要な要素は何ですか？",
+      "options": {
+        "A": "すべてのアラートを同じチームにエスカレートする",
+        "B": "インシデントの重大度に基づいて適切なチームにエスカレートする",
+        "C": "エスカレーションを1レベルのみに制限する",
+        "D": "エスカレーション間隔を24時間に設定する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "エスカレーションポリシーは、インシデントの重大度に基づいて適切なチームにルーティングし、段階的にエスカレートすることで、効率的なインシデント対応を実現します。"
+    },
+    {
+      "id": "gcp-pdevops-set2-ja-q5",
+      "examId": "gcp-pdevops-set2-ja",
+      "setNumber": 2,
+      "domain": "Google Kubernetes Engine管理",
+      "question": "GKEでHorizontal Pod Autoscaler（HPA）のカスタムメトリクスを使用するには何が必要ですか？",
+      "options": {
+        "A": "Cloud Monitoringのみを使用する",
+        "B": "Custom Metrics Adapterをインストールする",
+        "C": "Vertical Pod Autoscalerを有効にする",
+        "D": "Cluster Autoscalerを無効にする"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "GKEでカスタムメトリクスに基づいてHPAを使用するには、Stackdriver Custom Metrics AdapterなどのCustom Metrics Adapterをインストールする必要があります。"
+    },
+    {
+      "id": "gcp-pdevops-set2-ja-q6",
+      "examId": "gcp-pdevops-set2-ja",
+      "setNumber": 2,
+      "domain": "アプリケーション開発とサービス信頼性",
+      "question": "依存サービスの障害からアプリケーションを保護するためのパターンとして、Bulkheadパターンの目的は何ですか？",
+      "options": {
+        "A": "すべてのリクエストを単一のコネクションプールで処理する",
+        "B": "リソースを分離して障害の影響を制限する",
+        "C": "リクエストのレイテンシーを増加させる",
+        "D": "すべてのサービスを同じプロセスで実行する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Bulkhead（隔壁）パターンは、リソース（スレッドプール、接続プールなど）を分離することで、1つのコンポーネントの障害が他のコンポーネントに伝播するのを防ぎます。"
+    },
+    {
+      "id": "gcp-pdevops-set2-ja-q7",
+      "examId": "gcp-pdevops-set2-ja",
+      "setNumber": 2,
+      "domain": "ビルドとデプロイパイプライン",
+      "question": "Binary Authorizationを使用する主な目的は何ですか？",
+      "options": {
+        "A": "コンテナイメージのサイズを最適化する",
+        "B": "署名済みのコンテナイメージのみをデプロイすることを保証する",
+        "C": "ビルド時間を短縮する",
+        "D": "コンテナレジストリのストレージコストを削減する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Binary Authorizationは、信頼できるソースからの署名済みコンテナイメージのみがGKEまたはCloud Runにデプロイされることを保証するセキュリティ機能です。"
+    },
+    {
+      "id": "gcp-pdevops-set2-ja-q8",
+      "examId": "gcp-pdevops-set2-ja",
+      "setNumber": 2,
+      "domain": "サービス監視とロギング",
+      "question": "Cloud Loggingでの構造化ログを使用する利点は何ですか？",
+      "options": {
+        "A": "ログのストレージコストが削減される",
+        "B": "ログの検索とフィルタリングが容易になる",
+        "C": "ログの生成速度が向上する",
+        "D": "ログの暗号化が自動的に有効になる"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "構造化ログ（JSONフォーマット）を使用すると、特定のフィールドによるフィルタリングと検索が容易になり、ログ分析の効率が向上します。"
+    },
+    {
+      "id": "gcp-pdevops-set2-ja-q9",
+      "examId": "gcp-pdevops-set2-ja",
+      "setNumber": 2,
+      "domain": "インシデント管理",
+      "question": "サービスレベル目標（SLO）ベースのインシデント優先度を決定する方法として最も適切なのはどれですか？",
+      "options": {
+        "A": "すべてのインシデントを最高優先度として扱う",
+        "B": "SLOへの影響度とエラーバジェット消費率に基づいて優先度を決定する",
+        "C": "最初に報告されたインシデントを優先する",
+        "D": "影響を受けるサーバー数のみに基づいて優先度を決定する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "SLOへの影響度とエラーバジェット消費率に基づいてインシデント優先度を決定することで、ユーザー影響が大きい問題に適切にリソースを割り当てることができます。"
+    },
+    {
+      "id": "gcp-pdevops-set2-ja-q10",
+      "examId": "gcp-pdevops-set2-ja",
+      "setNumber": 2,
+      "domain": "Google Kubernetes Engine管理",
+      "question": "GKEでNetwork Policyを使用する目的は何ですか？",
+      "options": {
+        "A": "外部ロードバランサーを設定する",
+        "B": "Pod間のトラフィックを制御する",
+        "C": "Ingressルールを定義する",
+        "D": "DNSの解決を高速化する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Network PolicyはKubernetesのネットワークセキュリティ機能で、Pod間のトラフィックを制御し、許可されたトラフィックのみを通過させます。"
+    },
+    {
+      "id": "gcp-pdevops-set2-ja-q11",
+      "examId": "gcp-pdevops-set2-ja",
+      "setNumber": 2,
+      "domain": "アプリケーション開発とサービス信頼性",
+      "question": "リトライロジックを実装する際、エクスポネンシャルバックオフを使用する理由は何ですか？",
+      "options": {
+        "A": "リトライの間隔を一定に保つ",
+        "B": "障害中のシステムへの負荷を軽減しながらリトライする",
+        "C": "リトライ回数を増やす",
+        "D": "タイムアウトを短縮する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "エクスポネンシャルバックオフは、リトライ間隔を徐々に増加させることで、障害から回復しようとしているシステムへの負荷を軽減し、より多くの回復時間を与えます。"
+    },
+    {
+      "id": "gcp-pdevops-set2-ja-q12",
+      "examId": "gcp-pdevops-set2-ja",
+      "setNumber": 2,
+      "domain": "ビルドとデプロイパイプライン",
+      "question": "Cloud Deployでデプロイの自動ロールバックをトリガーするには何を設定すべきですか？",
+      "options": {
+        "A": "ビルドトリガー",
+        "B": "デプロイポリシーとモニタリング基準",
+        "C": "手動承認フロー",
+        "D": "スケジュールされたジョブ"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Cloud Deployでは、デプロイポリシーを設定し、Cloud Monitoringからのメトリクスに基づいてデプロイの健全性を評価し、問題が検出された場合に自動的にロールバックできます。"
+    },
+    {
+      "id": "gcp-pdevops-set2-ja-q13",
+      "examId": "gcp-pdevops-set2-ja",
+      "setNumber": 2,
+      "domain": "サービス監視とロギング",
+      "question": "分散トレーシングにおいて、スパン（Span）とは何ですか？",
+      "options": {
+        "A": "エラーメッセージのグループ",
+        "B": "単一のサービス内での操作の単位",
+        "C": "ログエントリのコレクション",
+        "D": "メトリクスのサンプル"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "スパンはトレース内の単一の操作を表し、操作名、開始時刻、期間、およびその他のメタデータを含みます。複数のスパンがトレースを構成します。"
+    },
+    {
+      "id": "gcp-pdevops-set2-ja-q14",
+      "examId": "gcp-pdevops-set2-ja",
+      "setNumber": 2,
+      "domain": "インシデント管理",
+      "question": "ポストモーテムで「タイムライン」セクションを含める目的は何ですか？",
+      "options": {
+        "A": "責任者を特定する",
+        "B": "インシデントの発生から解決までの経過を記録し学習に活用する",
+        "C": "将来の締め切りを設定する",
+        "D": "オンコールスケジュールを記録する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "タイムラインはインシデントの発生、検出、対応、解決までの経過を時系列で記録し、どこで遅延があったか、どのような対応が効果的だったかを学習するために使用されます。"
+    },
+    {
+      "id": "gcp-pdevops-set2-ja-q15",
+      "examId": "gcp-pdevops-set2-ja",
+      "setNumber": 2,
+      "domain": "Google Kubernetes Engine管理",
+      "question": "GKEでPodのセキュリティを強化するためにPod Security Standardsを使用する際、「restricted」プロファイルの特徴は何ですか？",
+      "options": {
+        "A": "すべてのセキュリティ制限を緩和する",
+        "B": "最も厳格なセキュリティポリシーを適用する",
+        "C": "rootでの実行を許可する",
+        "D": "特権コンテナを許可する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "restrictedプロファイルは最も厳格なPod Security Standardで、特権の昇格を防ぎ、rootでの実行を禁止し、最小限の権限でPodを実行することを強制します。"
+    },
+    {
+      "id": "gcp-pdevops-set2-ja-q16",
+      "examId": "gcp-pdevops-set2-ja",
+      "setNumber": 2,
+      "domain": "アプリケーション開発とサービス信頼性",
+      "question": "SLOを設定する際、「達成可能だが挑戦的」な目標を設定する理由は何ですか？",
+      "options": {
+        "A": "常に目標を達成することで士気を高める",
+        "B": "適切なリスクを取りながら信頼性とイノベーションのバランスを取る",
+        "C": "できるだけ多くのエラーバジェットを確保する",
+        "D": "SLOを変更する必要をなくす"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "達成可能だが挑戦的なSLOを設定することで、チームは信頼性を維持しながら新機能の開発も進めることができ、リスクとイノベーションのバランスを取ることができます。"
+    },
+    {
+      "id": "gcp-pdevops-set2-ja-q17",
+      "examId": "gcp-pdevops-set2-ja",
+      "setNumber": 2,
+      "domain": "ビルドとデプロイパイプライン",
+      "question": "GitOpsの原則に基づいてデプロイを管理する利点は何ですか？",
+      "options": {
+        "A": "手動デプロイの頻度が増加する",
+        "B": "Gitリポジトリがシステムの真実の源となり、監査性が向上する",
+        "C": "環境間の設定の違いが増加する",
+        "D": "ロールバックが複雑になる"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "GitOpsでは、Gitリポジトリが宣言的な設定の真実の源となり、すべての変更が追跡可能になるため、監査性が向上し、ロールバックも容易になります。"
+    },
+    {
+      "id": "gcp-pdevops-set2-ja-q18",
+      "examId": "gcp-pdevops-set2-ja",
+      "setNumber": 2,
+      "domain": "サービス監視とロギング",
+      "question": "Cloud Monitoringでアラート条件のウィンドウサイズを選択する際、どのような考慮事項がありますか？",
+      "options": {
+        "A": "常に最小のウィンドウサイズを使用する",
+        "B": "ノイズと検出速度のトレードオフを考慮する",
+        "C": "常に24時間のウィンドウを使用する",
+        "D": "ウィンドウサイズは影響しない"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "ウィンドウサイズが短いと迅速に問題を検出できますがノイズ（誤検知）が増え、長いとノイズは減りますが検出が遅れます。適切なバランスを見つけることが重要です。"
+    },
+    {
+      "id": "gcp-pdevops-set2-ja-q19",
+      "examId": "gcp-pdevops-set2-ja",
+      "setNumber": 2,
+      "domain": "インシデント管理",
+      "question": "オンコールシフトの引き継ぎで最も重要なことは何ですか？",
+      "options": {
+        "A": "すべてのアラートを次のシフトに転送する",
+        "B": "現在のインシデント状況と最近の変更を明確に伝える",
+        "C": "できるだけ迅速に引き継ぎを完了する",
+        "D": "次のシフトに詳細を確認させる"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "効果的なオンコール引き継ぎには、現在のインシデント状況、最近のシステム変更、注意が必要な領域を明確に伝えることが不可欠です。"
+    },
+    {
+      "id": "gcp-pdevops-set2-ja-q20",
+      "examId": "gcp-pdevops-set2-ja",
+      "setNumber": 2,
+      "domain": "Google Kubernetes Engine管理",
+      "question": "GKEでSecret管理のベストプラクティスとして推奨されるのはどれですか？",
+      "options": {
+        "A": "SecretsをGitリポジトリにコミットする",
+        "B": "Secret Managerを統合してSecretsを管理する",
+        "C": "環境変数にSecretsを直接埋め込む",
+        "D": "SecretsをConfigMapに保存する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Secret ManagerをGKEと統合することで、Secretsを安全に保存・管理し、自動ローテーションやアクセス制御を実現できます。"
+    },
+    {
+      "id": "gcp-pdevops-set2-ja-q21",
+      "examId": "gcp-pdevops-set2-ja",
+      "setNumber": 2,
+      "domain": "アプリケーション開発とサービス信頼性",
+      "question": "フィーチャーフラグ（Feature Flags）を使用する利点として最も適切なのはどれですか？",
+      "options": {
+        "A": "コードのバージョン管理が不要になる",
+        "B": "デプロイとリリースを分離し、段階的なロールアウトが可能になる",
+        "C": "すべてのユーザーに同時に機能を公開する",
+        "D": "テスト環境が不要になる"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "フィーチャーフラグにより、コードのデプロイとビジネス機能のリリースを分離でき、段階的なロールアウト、A/Bテスト、迅速なロールバックが可能になります。"
+    },
+    {
+      "id": "gcp-pdevops-set2-ja-q22",
+      "examId": "gcp-pdevops-set2-ja",
+      "setNumber": 2,
+      "domain": "ビルドとデプロイパイプライン",
+      "question": "Cloud Buildでビルドのキャッシュを使用してビルド時間を短縮する方法は何ですか？",
+      "options": {
+        "A": "常に新しいビルド環境を使用する",
+        "B": "kaniko cachingを使用してコンテナレイヤーをキャッシュする",
+        "C": "並列ビルドを無効にする",
+        "D": "ソースコードを毎回再ダウンロードする"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "kaniko cachingを使用すると、コンテナイメージのレイヤーをCloud Storageにキャッシュし、変更のないレイヤーを再利用してビルド時間を短縮できます。"
+    },
+    {
+      "id": "gcp-pdevops-set2-ja-q23",
+      "examId": "gcp-pdevops-set2-ja",
+      "setNumber": 2,
+      "domain": "サービス監視とロギング",
+      "question": "ゴールデンシグナルの4つのメトリクスは何ですか？",
+      "options": {
+        "A": "CPU、メモリ、ディスク、ネットワーク",
+        "B": "レイテンシー、トラフィック、エラー、サチュレーション",
+        "C": "可用性、スループット、コスト、セキュリティ",
+        "D": "リクエスト、レスポンス、エラー、タイムアウト"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "ゴールデンシグナルは、レイテンシー（応答時間）、トラフィック（需要）、エラー（失敗率）、サチュレーション（リソース使用率）の4つのメトリクスで、サービスの健全性を監視するための基本的な指標です。"
+    },
+    {
+      "id": "gcp-pdevops-set2-ja-q24",
+      "examId": "gcp-pdevops-set2-ja",
+      "setNumber": 2,
+      "domain": "インシデント管理",
+      "question": "Mean Time to Detect（MTTD）を短縮するための最も効果的な方法は何ですか？",
+      "options": {
+        "A": "アラートの閾値を非常に低く設定する",
+        "B": "適切なモニタリングとアラートの設定を行う",
+        "C": "すべてのログを手動で確認する",
+        "D": "インシデント報告を待つ"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "MTTDを短縮するには、ユーザー影響を反映した適切なモニタリングとアラートを設定し、問題が発生した際に迅速に検出できるようにすることが重要です。"
+    },
+    {
+      "id": "gcp-pdevops-set2-ja-q25",
+      "examId": "gcp-pdevops-set2-ja",
+      "setNumber": 2,
+      "domain": "Google Kubernetes Engine管理",
+      "question": "GKEでコンテナの起動に時間がかかる場合、Startup Probeを使用する目的は何ですか？",
+      "options": {
+        "A": "コンテナの終了を高速化する",
+        "B": "起動時間が長いコンテナを保護し、Liveness Probeの誤動作を防ぐ",
+        "C": "トラフィックをコンテナにルーティングする",
+        "D": "コンテナのリソース制限を設定する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Startup Probeは、起動時間が長いコンテナを保護するために使用されます。Startup Probeが成功するまでLiveness ProbeとReadiness Probeは実行されず、起動中にコンテナが誤って再起動されるのを防ぎます。"
+    },
+    {
+      "id": "gcp-pdevops-set2-ja-q26",
+      "examId": "gcp-pdevops-set2-ja",
+      "setNumber": 2,
+      "domain": "アプリケーション開発とサービス信頼性",
+      "question": "100%の可用性を目標として設定しない理由は何ですか？",
+      "options": {
+        "A": "技術的に達成可能ではないから",
+        "B": "限界効用が逓減し、イノベーションの余地がなくなるから",
+        "C": "ユーザーは100%の可用性を期待しないから",
+        "D": "コストは関係ないから"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "100%の可用性を追求すると、追加の信頼性向上のコストが指数関数的に増加し、新機能の開発やイノベーションのためのリスクを取る余地がなくなります。99.9%から99.99%への改善コストは、99%から99.9%よりもはるかに高くなります。"
+    },
+    {
+      "id": "gcp-pdevops-set2-ja-q27",
+      "examId": "gcp-pdevops-set2-ja",
+      "setNumber": 2,
+      "domain": "ビルドとデプロイパイプライン",
+      "question": "継続的デリバリー（CD）と継続的デプロイメントの主な違いは何ですか？",
+      "options": {
+        "A": "CDはテストを含まない",
+        "B": "継続的デプロイメントは本番へのデプロイを自動化する",
+        "C": "CDはビルドプロセスを含まない",
+        "D": "違いはない"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "継続的デリバリーは、いつでも本番にデプロイできる状態を維持することを意味し、継続的デプロイメントは、すべての変更を自動的に本番環境にデプロイすることを意味します。"
+    },
+    {
+      "id": "gcp-pdevops-set2-ja-q28",
+      "examId": "gcp-pdevops-set2-ja",
+      "setNumber": 2,
+      "domain": "サービス監視とロギング",
+      "question": "Synthetics Monitoringを使用する目的は何ですか？",
+      "options": {
+        "A": "サーバーリソースを監視する",
+        "B": "ユーザージャーニーをシミュレートして外形監視を行う",
+        "C": "コードの静的解析を行う",
+        "D": "セキュリティ脆弱性をスキャンする"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Synthetics Monitoringは、スクリプト化されたテストを使用してユーザーの操作をシミュレートし、エンドツーエンドの可用性とパフォーマンスをプロアクティブに監視します。"
+    },
+    {
+      "id": "gcp-pdevops-set2-ja-q29",
+      "examId": "gcp-pdevops-set2-ja",
+      "setNumber": 2,
+      "domain": "インシデント管理",
+      "question": "インシデントレトロスペクティブでの「5 Whys」テクニックの目的は何ですか？",
+      "options": {
+        "A": "5人の責任者を特定する",
+        "B": "問題の表面的な症状ではなく根本原因を特定する",
+        "C": "5つの解決策を提案する",
+        "D": "5分以内に分析を完了する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "5 Whysは、問題に対して繰り返し「なぜ」を問うことで、表面的な症状を超えて根本原因を特定する手法です。"
+    },
+    {
+      "id": "gcp-pdevops-set2-ja-q30",
+      "examId": "gcp-pdevops-set2-ja",
+      "setNumber": 2,
+      "domain": "Google Kubernetes Engine管理",
+      "question": "GKEでNodeAffinity を使用する目的は何ですか？",
+      "options": {
+        "A": "Podのリソース制限を設定する",
+        "B": "特定の条件を満たすノードにPodをスケジュールする",
+        "C": "Pod間の通信を暗号化する",
+        "D": "ノードの自動スケーリングを設定する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "NodeAffinityを使用すると、特定のラベルや条件を持つノードにPodをスケジュールするよう制約を設定できます。これにより、特定のハードウェアやロケーションにPodを配置できます。"
+    },
+    {
+      "id": "gcp-pdevops-set2-ja-q31",
+      "examId": "gcp-pdevops-set2-ja",
+      "setNumber": 2,
+      "domain": "アプリケーション開発とサービス信頼性",
+      "question": "ロードシェディングを実装する目的は何ですか？",
+      "options": {
+        "A": "すべてのリクエストを受け入れる",
+        "B": "過負荷時に一部のリクエストを意図的に拒否してシステムを保護する",
+        "C": "レスポンスタイムを増加させる",
+        "D": "エラー率を増加させる"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "ロードシェディングは、システムが過負荷状態になった際に一部のリクエスト（通常は優先度の低いもの）を意図的に拒否することで、システム全体の安定性を維持します。"
+    },
+    {
+      "id": "gcp-pdevops-set2-ja-q32",
+      "examId": "gcp-pdevops-set2-ja",
+      "setNumber": 2,
+      "domain": "ビルドとデプロイパイプライン",
+      "question": "Skaffoldを使用する利点は何ですか？",
+      "options": {
+        "A": "本番環境でのみ動作する",
+        "B": "ローカル開発とCI/CDパイプラインで一貫したビルドとデプロイのワークフローを提供する",
+        "C": "コンテナを使用しない開発に特化している",
+        "D": "手動デプロイのみをサポートする"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Skaffoldは、ローカル開発からCI/CDパイプラインまで一貫したKubernetesアプリケーションのビルド、プッシュ、デプロイのワークフローを提供するツールです。"
+    },
+    {
+      "id": "gcp-pdevops-set2-ja-q33",
+      "examId": "gcp-pdevops-set2-ja",
+      "setNumber": 2,
+      "domain": "サービス監視とロギング",
+      "question": "アラートのスヌーズ機能を使用するのは、どのような場合が適切ですか？",
+      "options": {
+        "A": "永続的にアラートを無効にしたい場合",
+        "B": "計画されたメンテナンス中にアラートを一時的に抑制したい場合",
+        "C": "アラート条件を変更したい場合",
+        "D": "新しいアラートを作成したい場合"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "スヌーズ機能は、計画されたメンテナンスやデプロイなど、一時的にアラートを抑制したい場合に使用します。指定した期間が過ぎると、アラートは自動的に再開されます。"
+    },
+    {
+      "id": "gcp-pdevops-set2-ja-q34",
+      "examId": "gcp-pdevops-set2-ja",
+      "setNumber": 2,
+      "domain": "インシデント管理",
+      "question": "コミュニケーションリードの役割は何ですか？",
+      "options": {
+        "A": "技術的な問題を解決する",
+        "B": "ステークホルダーへの情報発信と外部コミュニケーションを管理する",
+        "C": "オンコールスケジュールを管理する",
+        "D": "ポストモーテムを作成する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "コミュニケーションリードは、インシデント中の外部コミュニケーション、ステータスページの更新、ステークホルダーへの情報発信を担当します。これにより、他のチームメンバーは問題解決に集中できます。"
+    },
+    {
+      "id": "gcp-pdevops-set2-ja-q35",
+      "examId": "gcp-pdevops-set2-ja",
+      "setNumber": 2,
+      "domain": "Google Kubernetes Engine管理",
+      "question": "GKEでPrometheusメトリクスを収集するためのマネージドサービスは何ですか？",
+      "options": {
+        "A": "Cloud Trace",
+        "B": "Google Cloud Managed Service for Prometheus",
+        "C": "Cloud Logging",
+        "D": "BigQuery"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Google Cloud Managed Service for Prometheus（GMP）は、Prometheusメトリクスを収集、保存、クエリするためのフルマネージドサービスで、既存のPrometheus設定との互換性を維持します。"
+    },
+    {
+      "id": "gcp-pdevops-set2-ja-q36",
+      "examId": "gcp-pdevops-set2-ja",
+      "setNumber": 2,
+      "domain": "アプリケーション開発とサービス信頼性",
+      "question": "キャパシティプランニングにおいて、ヘッドルームを確保する目的は何ですか？",
+      "options": {
+        "A": "コストを最小限に抑える",
+        "B": "予期しない負荷スパイクに対応するための余裕を持つ",
+        "C": "リソースを常に最大限に使用する",
+        "D": "スケーリングを無効にする"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "ヘッドルームは、予期しない負荷スパイクやトラフィックの増加に対応するための予備容量です。適切なヘッドルームを確保することで、サービスの信頼性を維持できます。"
+    },
+    {
+      "id": "gcp-pdevops-set2-ja-q37",
+      "examId": "gcp-pdevops-set2-ja",
+      "setNumber": 2,
+      "domain": "ビルドとデプロイパイプライン",
+      "question": "コンテナイメージのセキュリティスキャンをビルドパイプラインに統合する利点は何ですか？",
+      "options": {
+        "A": "ビルド時間が短縮される",
+        "B": "脆弱性を早期に検出し、本番環境へのデプロイを防ぐ",
+        "C": "コンテナイメージのサイズが縮小される",
+        "D": "テストが不要になる"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "ビルドパイプラインにセキュリティスキャンを統合することで、脆弱性のあるイメージが本番環境にデプロイされる前に検出し、対処することができます（シフトレフトセキュリティ）。"
+    },
+    {
+      "id": "gcp-pdevops-set2-ja-q38",
+      "examId": "gcp-pdevops-set2-ja",
+      "setNumber": 2,
+      "domain": "サービス監視とロギング",
+      "question": "Cloud Monitoringで複数のSLOを管理するためのSLOダッシュボードを作成する利点は何ですか？",
+      "options": {
+        "A": "SLOを作成する必要がなくなる",
+        "B": "すべてのサービスのSLOステータスとエラーバジェットを一覧で確認できる",
+        "C": "アラートが自動的に設定される",
+        "D": "ログが自動的に分析される"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "SLOダッシュボードを使用すると、複数のサービスのSLOコンプライアンス状況、エラーバジェット残量、バーンレートを一元的に可視化し、迅速に問題を特定できます。"
+    },
+    {
+      "id": "gcp-pdevops-set2-ja-q39",
+      "examId": "gcp-pdevops-set2-ja",
+      "setNumber": 2,
+      "domain": "インシデント管理",
+      "question": "インシデントの重大度を決定する際に考慮すべき要素として最も重要なのは何ですか？",
+      "options": {
+        "A": "インシデントを報告した人の役職",
+        "B": "ユーザーへの影響の範囲と深刻度",
+        "C": "インシデントが発生した時間帯",
+        "D": "影響を受けるサーバーの数"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "インシデントの重大度は、主にユーザーへの影響（何人のユーザーが影響を受けるか、どの程度のサービス低下か）に基づいて決定すべきです。"
+    },
+    {
+      "id": "gcp-pdevops-set2-ja-q40",
+      "examId": "gcp-pdevops-set2-ja",
+      "setNumber": 2,
+      "domain": "Google Kubernetes Engine管理",
+      "question": "GKEでMulti-cluster Ingressを使用する目的は何ですか？",
+      "options": {
+        "A": "単一クラスタのパフォーマンスを向上させる",
+        "B": "複数のGKEクラスタにトラフィックを分散し、グローバルなロードバランシングを実現する",
+        "C": "クラスタ内のPod間通信を暗号化する",
+        "D": "ノードの自動スケーリングを設定する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Multi-cluster Ingressは、複数のGKEクラスタにトラフィックを分散するグローバルなロードバランサーを提供し、高可用性とリージョン間の負荷分散を実現します。"
+    }
+  ]
+}

@@ -1,0 +1,662 @@
+{
+  "exam": {
+    "id": "azure-az-140-set1-ja",
+    "name": "Azure Virtual Desktop Specialty 練習問題 Set 1",
+    "code": "AZ-140",
+    "provider": "Microsoft",
+    "language": "ja",
+    "description": "Azure Virtual Desktop スペシャリスト認定練習問題セット1",
+    "totalQuestions": 40,
+    "passingScore": 70,
+    "examTime": 120,
+    "domains": [
+      "Azure Virtual Desktop インフラストラクチャの計画と実装",
+      "ID とセキュリティの計画と実装",
+      "ユーザー環境とアプリの計画と実装",
+      "Azure Virtual Desktop インフラストラクチャの監視と保守"
+    ],
+    "tags": ["Azure", "Virtual Desktop", "AVD", "VDI", "リモートデスクトップ"]
+  },
+  "questions": [
+    {
+      "id": "az-140-s1-ja-q1",
+      "examId": "azure-az-140-set1-ja",
+      "setNumber": 1,
+      "domain": "Azure Virtual Desktop インフラストラクチャの計画と実装",
+      "question": "Azure Virtual Desktop のホストプールを作成する際、個人用デスクトップを提供するにはどのホストプールタイプを選択する必要がありますか？",
+      "options": {
+        "A": "プール型",
+        "B": "個人用",
+        "C": "共有型",
+        "D": "専用型"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "個人用ホストプールは、各ユーザーに専用のセッションホストを割り当てます。これにより、ユーザーは常に同じ仮想マシンに接続し、個人設定やアプリケーションを保持できます。プール型ホストプールは複数のユーザーが同じセッションホストを共有します。"
+    },
+    {
+      "id": "az-140-s1-ja-q2",
+      "examId": "azure-az-140-set1-ja",
+      "setNumber": 1,
+      "domain": "ユーザー環境とアプリの計画と実装",
+      "question": "FSLogix プロファイルコンテナーを使用する主な利点は何ですか？",
+      "options": {
+        "A": "アプリケーションの自動更新",
+        "B": "ユーザープロファイルのローミングとサインイン時間の短縮",
+        "C": "ネットワーク帯域幅の最適化",
+        "D": "セキュリティパッチの自動適用"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "FSLogix プロファイルコンテナーは、ユーザープロファイルを VHD/VHDX ファイルとして保存し、サインイン時にマウントします。これにより、プロファイルのローミングが可能になり、サインイン時間が大幅に短縮されます。特に非永続的な環境で効果的です。"
+    },
+    {
+      "id": "az-140-s1-ja-q3",
+      "examId": "azure-az-140-set1-ja",
+      "setNumber": 1,
+      "domain": "ID とセキュリティの計画と実装",
+      "question": "Azure Virtual Desktop で Microsoft Entra ID 参加済みセッションホストを使用する場合、オンプレミスの Active Directory は必要ですか？",
+      "options": {
+        "A": "はい、常に必要",
+        "B": "いいえ、必要ない",
+        "C": "ハイブリッド構成の場合のみ必要",
+        "D": "FSLogix を使用する場合のみ必要"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Microsoft Entra ID 参加済みセッションホストを使用する場合、オンプレミスの Active Directory は必要ありません。ユーザーは Microsoft Entra ID 資格情報を使用して直接認証できます。これにより、クラウドネイティブなデプロイメントが可能になります。"
+    },
+    {
+      "id": "az-140-s1-ja-q4",
+      "examId": "azure-az-140-set1-ja",
+      "setNumber": 1,
+      "domain": "Azure Virtual Desktop インフラストラクチャの監視と保守",
+      "question": "Azure Virtual Desktop の診断データを収集するために、ホストプールで何を構成する必要がありますか？",
+      "options": {
+        "A": "Azure Policy",
+        "B": "診断設定",
+        "C": "Azure Advisor",
+        "D": "サービスヘルス"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "ホストプールの診断設定を構成して、診断データを Log Analytics ワークスペースに送信します。これにより、接続、エラー、チェックポイントなどのデータを収集し、Azure Monitor や AVD Insights で分析できます。"
+    },
+    {
+      "id": "az-140-s1-ja-q5",
+      "examId": "azure-az-140-set1-ja",
+      "setNumber": 1,
+      "domain": "Azure Virtual Desktop インフラストラクチャの計画と実装",
+      "question": "Azure Virtual Desktop のセッションホストを Azure Availability Zones に分散させる主な理由は何ですか？",
+      "options": {
+        "A": "コスト削減",
+        "B": "高可用性と障害復旧",
+        "C": "パフォーマンス向上",
+        "D": "ライセンス要件"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Availability Zones にセッションホストを分散させることで、データセンターレベルの障害から保護されます。1 つのゾーンが利用できなくなっても、他のゾーンのセッションホストが引き続きサービスを提供できます。"
+    },
+    {
+      "id": "az-140-s1-ja-q6",
+      "examId": "azure-az-140-set1-ja",
+      "setNumber": 1,
+      "domain": "ユーザー環境とアプリの計画と実装",
+      "question": "MSIX アプリアタッチを使用する場合、アプリケーションパッケージはどこに保存する必要がありますか？",
+      "options": {
+        "A": "ローカルディスク",
+        "B": "Azure Files または Azure NetApp Files",
+        "C": "Azure Blob Storage のみ",
+        "D": "CD/DVD イメージ"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "MSIX アプリアタッチパッケージは、セッションホストからアクセス可能なファイル共有に保存する必要があります。Azure Files または Azure NetApp Files が推奨されます。これにより、ユーザーがサインインするときにアプリケーションが動的にアタッチされます。"
+    },
+    {
+      "id": "az-140-s1-ja-q7",
+      "examId": "azure-az-140-set1-ja",
+      "setNumber": 1,
+      "domain": "ID とセキュリティの計画と実装",
+      "question": "Azure Virtual Desktop への接続に多要素認証（MFA）を要求するには、何を構成する必要がありますか？",
+      "options": {
+        "A": "RDP プロパティ",
+        "B": "条件付きアクセスポリシー",
+        "C": "グループポリシー",
+        "D": "ホストプール設定"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure AD 条件付きアクセスポリシーを使用して、Azure Virtual Desktop への接続時に MFA を要求します。Azure Virtual Desktop クラウドアプリをターゲットにしたポリシーを作成し、MFA を要求するグラントコントロールを設定します。"
+    },
+    {
+      "id": "az-140-s1-ja-q8",
+      "examId": "azure-az-140-set1-ja",
+      "setNumber": 1,
+      "domain": "Azure Virtual Desktop インフラストラクチャの監視と保守",
+      "question": "Azure Virtual Desktop のセッションホストの CPU とメモリ使用率を監視するには、何をインストールする必要がありますか？",
+      "options": {
+        "A": "Azure AD Connect",
+        "B": "Azure Monitor エージェント",
+        "C": "FSLogix エージェント",
+        "D": "Remote Desktop Web クライアント"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure Monitor エージェントをセッションホストにインストールして、パフォーマンスカウンター（CPU、メモリ、ディスクなど）を収集します。データは Log Analytics ワークスペースに送信され、AVD Insights で可視化できます。"
+    },
+    {
+      "id": "az-140-s1-ja-q9",
+      "examId": "azure-az-140-set1-ja",
+      "setNumber": 1,
+      "domain": "Azure Virtual Desktop インフラストラクチャの計画と実装",
+      "question": "Azure Virtual Desktop でブレッドスフィルスト負荷分散アルゴリズムを選択した場合、どのようにユーザーが分散されますか？",
+      "options": {
+        "A": "すべてのセッションホストに均等に分散",
+        "B": "1 つのセッションホストが満杯になるまで使用してから次へ",
+        "C": "ランダムに分散",
+        "D": "CPU 使用率に基づいて分散"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "ブレッドスフィルスト（幅優先）負荷分散では、1 つのセッションホストが最大セッション制限に達するまでユーザーを割り当て、その後次のセッションホストに移ります。これにより、ピーク時以外は少ない VM でサービスを提供でき、コストを最適化できます。"
+    },
+    {
+      "id": "az-140-s1-ja-q10",
+      "examId": "azure-az-140-set1-ja",
+      "setNumber": 1,
+      "domain": "ユーザー環境とアプリの計画と実装",
+      "question": "Azure Virtual Desktop で RemoteApp アプリケーショングループを使用する利点は何ですか？",
+      "options": {
+        "A": "完全なデスクトップ環境を提供",
+        "B": "個々のアプリケーションのみを公開",
+        "C": "より多くのセッションをサポート",
+        "D": "GPU アクセラレーションを有効化"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "RemoteApp アプリケーショングループを使用すると、完全なデスクトップではなく、個々のアプリケーションのみをユーザーに公開できます。これにより、ユーザーはローカルデスクトップからシームレスにリモートアプリケーションを使用できます。"
+    },
+    {
+      "id": "az-140-s1-ja-q11",
+      "examId": "azure-az-140-set1-ja",
+      "setNumber": 1,
+      "domain": "ID とセキュリティの計画と実装",
+      "question": "Azure Virtual Desktop のセッションホストを Active Directory ドメインに参加させるには、何が必要ですか？",
+      "options": {
+        "A": "Azure AD Connect のみ",
+        "B": "ドメインコントローラーへのネットワーク接続",
+        "C": "オンプレミスの ADFS サーバー",
+        "D": "Azure Bastion"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "セッションホストを Active Directory ドメインに参加させるには、セッションホストからドメインコントローラーへのネットワーク接続が必要です。これは、VNet ピアリング、VPN、または ExpressRoute を介して実現できます。"
+    },
+    {
+      "id": "az-140-s1-ja-q12",
+      "examId": "azure-az-140-set1-ja",
+      "setNumber": 1,
+      "domain": "Azure Virtual Desktop インフラストラクチャの監視と保守",
+      "question": "Azure Virtual Desktop のスケーリングプランで「ランプアップ」フェーズの目的は何ですか？",
+      "options": {
+        "A": "すべてのセッションホストをシャットダウン",
+        "B": "営業時間前にセッションホストを徐々に起動",
+        "C": "ユーザーセッションを強制切断",
+        "D": "バックアップを実行"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "ランプアップフェーズは、ピーク時間前にセッションホストを徐々に起動するために使用されます。これにより、ユーザーが接続を開始したときに十分なキャパシティが利用可能になり、待ち時間なしで接続できます。"
+    },
+    {
+      "id": "az-140-s1-ja-q13",
+      "examId": "azure-az-140-set1-ja",
+      "setNumber": 1,
+      "domain": "Azure Virtual Desktop インフラストラクチャの計画と実装",
+      "question": "Azure Virtual Desktop のセッションホストイメージを作成する際のベストプラクティスは何ですか？",
+      "options": {
+        "A": "Azure Marketplace イメージを直接使用",
+        "B": "カスタムイメージを作成し、Azure Compute Gallery に保存",
+        "C": "物理マシンからイメージをコピー",
+        "D": "ISO ファイルから手動インストール"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "ベストプラクティスは、必要なアプリケーションと構成を含むカスタムイメージを作成し、Azure Compute Gallery（旧 Shared Image Gallery）に保存することです。これにより、イメージのバージョン管理、レプリケーション、共有が容易になります。"
+    },
+    {
+      "id": "az-140-s1-ja-q14",
+      "examId": "azure-az-140-set1-ja",
+      "setNumber": 1,
+      "domain": "ユーザー環境とアプリの計画と実装",
+      "question": "FSLogix でプロファイルコンテナーと Office コンテナーを分離する利点は何ですか？",
+      "options": {
+        "A": "ライセンスコストの削減",
+        "B": "プロファイルとOfficeデータの独立した管理とストレージ最適化",
+        "C": "より高速なネットワーク接続",
+        "D": "セキュリティの向上のみ"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "プロファイルコンテナーと Office コンテナー（ODFC）を分離すると、Outlook OST ファイルや OneDrive キャッシュなどの大きな Office データを別のコンテナーに保存できます。これにより、ストレージの最適化とバックアップ戦略の柔軟性が向上します。"
+    },
+    {
+      "id": "az-140-s1-ja-q15",
+      "examId": "azure-az-140-set1-ja",
+      "setNumber": 1,
+      "domain": "ID とセキュリティの計画と実装",
+      "question": "Azure Virtual Desktop でスクリーンキャプチャ保護を有効にするには、何を構成する必要がありますか？",
+      "options": {
+        "A": "グループポリシー",
+        "B": "RDP プロパティ",
+        "C": "条件付きアクセス",
+        "D": "Azure Policy"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "スクリーンキャプチャ保護は、ホストプールの RDP プロパティで構成します。この機能を有効にすると、リモートデスクトップクライアントでスクリーンショットや画面録画をブロックできます。Windows クライアント 1.2.1526 以降が必要です。"
+    },
+    {
+      "id": "az-140-s1-ja-q16",
+      "examId": "azure-az-140-set1-ja",
+      "setNumber": 1,
+      "domain": "Azure Virtual Desktop インフラストラクチャの監視と保守",
+      "question": "Azure Virtual Desktop Insights ワークブックを使用するには、何を有効にする必要がありますか？",
+      "options": {
+        "A": "Azure Advisor のみ",
+        "B": "ホストプールの診断設定と Azure Monitor エージェント",
+        "C": "Azure Cost Management",
+        "D": "Azure Backup"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "AVD Insights を使用するには、ホストプールの診断設定を Log Analytics ワークスペースに送信するように構成し、セッションホストに Azure Monitor エージェントをインストールしてパフォーマンスカウンターを収集する必要があります。"
+    },
+    {
+      "id": "az-140-s1-ja-q17",
+      "examId": "azure-az-140-set1-ja",
+      "setNumber": 1,
+      "domain": "Azure Virtual Desktop インフラストラクチャの計画と実装",
+      "question": "Azure Virtual Desktop でマルチセッション Windows 11 を使用するには、どのライセンスが必要ですか？",
+      "options": {
+        "A": "Windows Server CAL",
+        "B": "Microsoft 365 E3/E5 または Windows E3/E5",
+        "C": "Azure Reserved Instances",
+        "D": "Visual Studio サブスクリプション"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Windows 11 マルチセッションを使用するには、Microsoft 365 E3/E5、Microsoft 365 A3/A5、Microsoft 365 Business Premium、または Windows E3/E5 ライセンスが必要です。これらのライセンスには Azure Virtual Desktop のアクセス権が含まれています。"
+    },
+    {
+      "id": "az-140-s1-ja-q18",
+      "examId": "azure-az-140-set1-ja",
+      "setNumber": 1,
+      "domain": "ユーザー環境とアプリの計画と実装",
+      "question": "Azure Virtual Desktop で Teams の音声/ビデオ最適化を有効にするには、何が必要ですか？",
+      "options": {
+        "A": "Azure ExpressRoute",
+        "B": "WebRTC リダイレクトサービスのインストール",
+        "C": "専用 GPU",
+        "D": "Azure Front Door"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Teams の最適化には、セッションホストに Remote Desktop WebRTC サービスをインストールする必要があります。また、クライアントデバイスには WebRTC リダイレクトをサポートする Remote Desktop クライアントが必要です。これにより、音声/ビデオはクライアントでローカル処理されます。"
+    },
+    {
+      "id": "az-140-s1-ja-q19",
+      "examId": "azure-az-140-set1-ja",
+      "setNumber": 1,
+      "domain": "ID とセキュリティの計画と実装",
+      "question": "Azure Virtual Desktop のユーザーにアプリケーションへのアクセスを許可するには、何に割り当てる必要がありますか？",
+      "options": {
+        "A": "ホストプール",
+        "B": "アプリケーショングループ",
+        "C": "ワークスペース",
+        "D": "セッションホスト"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "ユーザーまたはグループをアプリケーショングループに割り当てて、Azure Virtual Desktop リソースへのアクセスを許可します。アプリケーショングループはデスクトップまたは RemoteApp を定義し、ワークスペースにリンクされています。"
+    },
+    {
+      "id": "az-140-s1-ja-q20",
+      "examId": "azure-az-140-set1-ja",
+      "setNumber": 1,
+      "domain": "Azure Virtual Desktop インフラストラクチャの監視と保守",
+      "question": "Azure Virtual Desktop のセッションホストでドレインモードを有効にする目的は何ですか？",
+      "options": {
+        "A": "パフォーマンスを向上させる",
+        "B": "新しい接続を防止し、既存セッションの完了後にメンテナンスを実行",
+        "C": "ストレージを解放する",
+        "D": "ネットワーク帯域幅を増加させる"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "ドレインモードを有効にすると、そのセッションホストへの新しい接続がブロックされますが、既存のセッションは続行できます。これにより、ユーザーの作業を中断することなく、セッションホストのメンテナンスや更新を計画できます。"
+    },
+    {
+      "id": "az-140-s1-ja-q21",
+      "examId": "azure-az-140-set1-ja",
+      "setNumber": 1,
+      "domain": "Azure Virtual Desktop インフラストラクチャの計画と実装",
+      "question": "Azure Virtual Desktop で GPU アクセラレーションを使用するには、どの VM シリーズを選択する必要がありますか？",
+      "options": {
+        "A": "D シリーズ",
+        "B": "NV または NC シリーズ",
+        "C": "F シリーズ",
+        "D": "B シリーズ"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "GPU アクセラレーションには、NV シリーズ（ビジュアライゼーション）または NC シリーズ（コンピューティング）の VM を使用します。これらには NVIDIA GPU が搭載されており、グラフィックス集約型のアプリケーションやビデオレンダリングに適しています。"
+    },
+    {
+      "id": "az-140-s1-ja-q22",
+      "examId": "azure-az-140-set1-ja",
+      "setNumber": 1,
+      "domain": "ユーザー環境とアプリの計画と実装",
+      "question": "Azure Virtual Desktop でクライアントからのドライブリダイレクトを無効にするには、どの RDP プロパティを設定しますか？",
+      "options": {
+        "A": "drivestoredirect:s:",
+        "B": "redirectdrives:i:0",
+        "C": "disabledrives:i:1",
+        "D": "driveaccess:i:0"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "RDP プロパティ 'drivestoredirect:s:' を空の値に設定すると、クライアントドライブのリダイレクトが無効になります。これにより、ユーザーはリモートセッションからローカルドライブにアクセスできなくなり、データ漏洩を防止できます。"
+    },
+    {
+      "id": "az-140-s1-ja-q23",
+      "examId": "azure-az-140-set1-ja",
+      "setNumber": 1,
+      "domain": "ID とセキュリティの計画と実装",
+      "question": "Azure Virtual Desktop で Azure RBAC の 'Desktop Virtualization User' ロールは何を許可しますか？",
+      "options": {
+        "A": "ホストプールの作成と管理",
+        "B": "アプリケーショングループへのアクセスとセッションの開始",
+        "C": "セッションホストの削除",
+        "D": "診断設定の構成"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Desktop Virtualization User ロールは、ユーザーがアプリケーショングループを使用し、リモートセッションを開始することを許可します。このロールは AVD リソースの管理権限は持たず、エンドユーザー向けの最小限の権限を提供します。"
+    },
+    {
+      "id": "az-140-s1-ja-q24",
+      "examId": "azure-az-140-set1-ja",
+      "setNumber": 1,
+      "domain": "Azure Virtual Desktop インフラストラクチャの監視と保守",
+      "question": "Azure Virtual Desktop で接続の問題をトラブルシューティングする際、最初に確認すべき診断テーブルは何ですか？",
+      "options": {
+        "A": "WVDManagement",
+        "B": "WVDConnections",
+        "C": "WVDHostRegistrations",
+        "D": "WVDSessionHostManagement"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "WVDConnections テーブルには、ユーザー接続の詳細（接続の開始、成功、失敗、切断など）が記録されます。接続の問題をトラブルシューティングする際は、このテーブルを最初に確認してエラーコードと詳細を把握します。"
+    },
+    {
+      "id": "az-140-s1-ja-q25",
+      "examId": "azure-az-140-set1-ja",
+      "setNumber": 1,
+      "domain": "Azure Virtual Desktop インフラストラクチャの計画と実装",
+      "question": "Azure Virtual Desktop のワークスペースの目的は何ですか？",
+      "options": {
+        "A": "セッションホストを保存する",
+        "B": "アプリケーショングループをグループ化してユーザーに表示",
+        "C": "ユーザープロファイルを保存する",
+        "D": "ネットワーク設定を構成する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "ワークスペースは、1 つ以上のアプリケーショングループをグループ化する論理コンテナーです。ユーザーは、Remote Desktop クライアントでワークスペース内の利用可能なリソースを確認できます。"
+    },
+    {
+      "id": "az-140-s1-ja-q26",
+      "examId": "azure-az-140-set1-ja",
+      "setNumber": 1,
+      "domain": "ユーザー環境とアプリの計画と実装",
+      "question": "FSLogix で Cloud Cache を使用する利点は何ですか？",
+      "options": {
+        "A": "プロファイルをローカルにのみ保存",
+        "B": "複数のストレージ場所にプロファイルをレプリケートして高可用性を実現",
+        "C": "プロファイルサイズを削減",
+        "D": "暗号化を無効化"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Cloud Cache は、プロファイルコンテナーを複数のストレージプロバイダー（Azure Files、Azure NetApp Files など）にリアルタイムでレプリケートします。これにより、1 つのストレージが利用できなくなっても、ユーザーは引き続きプロファイルにアクセスできます。"
+    },
+    {
+      "id": "az-140-s1-ja-q27",
+      "examId": "azure-az-140-set1-ja",
+      "setNumber": 1,
+      "domain": "ID とセキュリティの計画と実装",
+      "question": "Azure Virtual Desktop で Watermarking（透かし）機能を使用する目的は何ですか？",
+      "options": {
+        "A": "ネットワーク帯域幅を最適化する",
+        "B": "画面に識別情報を表示してデータ漏洩を抑止",
+        "C": "ユーザーエクスペリエンスを向上させる",
+        "D": "アプリケーションパフォーマンスを向上させる"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Watermarking 機能は、リモートデスクトップセッション中に QR コードやテキストの透かしを画面に表示します。これにより、スクリーンショットや写真が撮影された場合に、ソースユーザーを特定でき、データ漏洩を抑止します。"
+    },
+    {
+      "id": "az-140-s1-ja-q28",
+      "examId": "azure-az-140-set1-ja",
+      "setNumber": 1,
+      "domain": "Azure Virtual Desktop インフラストラクチャの監視と保守",
+      "question": "Azure Virtual Desktop のスケーリングプランで「ピーク時間」に使用される負荷分散アルゴリズムとして推奨されるのは何ですか？",
+      "options": {
+        "A": "ブレッドスフィルスト",
+        "B": "デプスフィルスト",
+        "C": "ラウンドロビン",
+        "D": "最小接続"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "ピーク時間中は、デプスフィルスト（深さ優先）負荷分散が推奨されます。これにより、ユーザーはすべての利用可能なセッションホストに均等に分散され、最適なユーザーエクスペリエンスが提供されます。"
+    },
+    {
+      "id": "az-140-s1-ja-q29",
+      "examId": "azure-az-140-set1-ja",
+      "setNumber": 1,
+      "domain": "Azure Virtual Desktop インフラストラクチャの計画と実装",
+      "question": "Azure Virtual Desktop の RDP Shortpath for managed networks を使用する利点は何ですか？",
+      "options": {
+        "A": "より高いセキュリティ",
+        "B": "UDP を使用した直接接続による低レイテンシ",
+        "C": "より低いコスト",
+        "D": "より多くのユーザーサポート"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "RDP Shortpath は、クライアントとセッションホスト間で UDP を使用した直接接続を確立します。これにより、Azure Virtual Desktop ゲートウェイを経由する場合と比較して、レイテンシが大幅に削減され、より応答性の高いユーザーエクスペリエンスが提供されます。"
+    },
+    {
+      "id": "az-140-s1-ja-q30",
+      "examId": "azure-az-140-set1-ja",
+      "setNumber": 1,
+      "domain": "ユーザー環境とアプリの計画と実装",
+      "question": "Azure Virtual Desktop で Universal Print を使用する利点は何ですか？",
+      "options": {
+        "A": "プリンタードライバーの管理が不要",
+        "B": "印刷速度の向上",
+        "C": "カラー印刷のサポート",
+        "D": "ローカルプリンターへの接続"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Universal Print は、プリンタードライバーをセッションホストにインストールする必要がないクラウドベースの印刷ソリューションです。プリンターは Azure AD に登録され、ユーザーはドライバーなしで印刷できます。これにより、ドライバー管理の複雑さが解消されます。"
+    },
+    {
+      "id": "az-140-s1-ja-q31",
+      "examId": "azure-az-140-set1-ja",
+      "setNumber": 1,
+      "domain": "ID とセキュリティの計画と実装",
+      "question": "Azure Virtual Desktop のセッションホストに適用すべき NSG ルールとして、最も重要なアウトバウンドルールは何ですか？",
+      "options": {
+        "A": "すべてのトラフィックを拒否",
+        "B": "Azure Virtual Desktop サービスへのアクセスを許可",
+        "C": "インターネットへのすべてのアクセスを許可",
+        "D": "オンプレミスへのアクセスのみを許可"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "セッションホストは Azure Virtual Desktop サービス（WindowsVirtualDesktop サービスタグ）への接続が必要です。このアウトバウンド接続がないと、セッションホストは AVD コントロールプレーンと通信できず、ユーザー接続を受け入れることができません。"
+    },
+    {
+      "id": "az-140-s1-ja-q32",
+      "examId": "azure-az-140-set1-ja",
+      "setNumber": 1,
+      "domain": "Azure Virtual Desktop インフラストラクチャの監視と保守",
+      "question": "Azure Virtual Desktop で セッションホストのエージェントが「Unavailable」と表示される原因として最も可能性が高いのは何ですか？",
+      "options": {
+        "A": "ユーザーがログインしていない",
+        "B": "VM がシャットダウンまたはエージェントが AVD サービスと通信できない",
+        "C": "ディスク容量が不足",
+        "D": "ライセンスの問題"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "エージェントステータスが「Unavailable」の場合、通常は VM がシャットダウンしているか、エージェントが Azure Virtual Desktop サービスと通信できないことを示します。ネットワーク接続、NSG ルール、またはエージェントサービスの状態を確認してください。"
+    },
+    {
+      "id": "az-140-s1-ja-q33",
+      "examId": "azure-az-140-set1-ja",
+      "setNumber": 1,
+      "domain": "Azure Virtual Desktop インフラストラクチャの計画と実装",
+      "question": "Azure Virtual Desktop のホストプール登録トークンの有効期限は最大何日間ですか？",
+      "options": {
+        "A": "7 日",
+        "B": "27 日",
+        "C": "30 日",
+        "D": "90 日"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "ホストプール登録トークンの有効期限は、作成から最小 1 時間から最大 27 日間です。新しいセッションホストを追加する際は、有効なトークンが必要です。トークンが期限切れの場合は、新しいトークンを生成する必要があります。"
+    },
+    {
+      "id": "az-140-s1-ja-q34",
+      "examId": "azure-az-140-set1-ja",
+      "setNumber": 1,
+      "domain": "ユーザー環境とアプリの計画と実装",
+      "question": "Azure Virtual Desktop でアプリケーションマスキングを使用する FSLogix の機能は何ですか？",
+      "options": {
+        "A": "Profile Container",
+        "B": "Office Container",
+        "C": "App Masking",
+        "D": "Cloud Cache"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "FSLogix App Masking は、特定のユーザーまたはグループに対してアプリケーションの表示/非表示を制御できます。アプリケーションは実際にインストールされていますが、許可されていないユーザーからは見えなくなります。これにより、単一のイメージで異なるユーザーに異なるアプリを提供できます。"
+    },
+    {
+      "id": "az-140-s1-ja-q35",
+      "examId": "azure-az-140-set1-ja",
+      "setNumber": 1,
+      "domain": "ID とセキュリティの計画と実装",
+      "question": "Azure Virtual Desktop で Microsoft Defender for Endpoint を統合する利点は何ですか？",
+      "options": {
+        "A": "ユーザーエクスペリエンスの向上",
+        "B": "セッションホストの脅威検出と対応",
+        "C": "プロファイル同期の高速化",
+        "D": "ネットワーク帯域幅の最適化"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Microsoft Defender for Endpoint は、セッションホストに対する高度な脅威保護を提供します。これには、マルウェア検出、脆弱性管理、エンドポイント検出と対応（EDR）が含まれ、セキュリティインシデントを迅速に特定して対応できます。"
+    },
+    {
+      "id": "az-140-s1-ja-q36",
+      "examId": "azure-az-140-set1-ja",
+      "setNumber": 1,
+      "domain": "Azure Virtual Desktop インフラストラクチャの監視と保守",
+      "question": "Azure Virtual Desktop の診断データで「WVDErrors」テーブルに記録される情報は何ですか？",
+      "options": {
+        "A": "成功した接続のみ",
+        "B": "サービスで発生したエラーと問題",
+        "C": "ユーザープロファイル情報",
+        "D": "ネットワーク帯域幅の使用状況"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "WVDErrors テーブルには、Azure Virtual Desktop サービスで発生したエラーと問題が記録されます。これには、接続エラー、認証の失敗、エージェントの問題などが含まれ、トラブルシューティングに役立ちます。"
+    },
+    {
+      "id": "az-140-s1-ja-q37",
+      "examId": "azure-az-140-set1-ja",
+      "setNumber": 1,
+      "domain": "Azure Virtual Desktop インフラストラクチャの計画と実装",
+      "question": "Azure Virtual Desktop で Start VM on Connect 機能を使用するには、何が必要ですか？",
+      "options": {
+        "A": "Azure Automation アカウント",
+        "B": "Desktop Virtualization Power On Off Contributor ロール",
+        "C": "Azure Reserved Instances",
+        "D": "Premium SSD ストレージ"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Start VM on Connect 機能を使用するには、Azure Virtual Desktop サービスプリンシパルに 'Desktop Virtualization Power On Off Contributor' ロールを割り当てる必要があります。これにより、ユーザーが接続しようとしたときに VM を自動的に起動できます。"
+    },
+    {
+      "id": "az-140-s1-ja-q38",
+      "examId": "azure-az-140-set1-ja",
+      "setNumber": 1,
+      "domain": "ユーザー環境とアプリの計画と実装",
+      "question": "Azure Virtual Desktop でマルチメディアリダイレクト（MMR）を使用する目的は何ですか？",
+      "options": {
+        "A": "オーディオ品質の向上",
+        "B": "ビデオコンテンツをクライアントでローカルレンダリングしてパフォーマンス向上",
+        "C": "ファイル転送の高速化",
+        "D": "セキュリティの強化"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "マルチメディアリダイレクト（MMR）は、特定の Web サイト（YouTube など）からのビデオをセッションホストではなくクライアントデバイスでレンダリングします。これにより、帯域幅使用量が削減され、ビデオ再生のパフォーマンスが向上します。"
+    },
+    {
+      "id": "az-140-s1-ja-q39",
+      "examId": "azure-az-140-set1-ja",
+      "setNumber": 1,
+      "domain": "ID とセキュリティの計画と実装",
+      "question": "Azure Virtual Desktop の個人用ホストプールで自動割り当てを構成した場合、どのように動作しますか？",
+      "options": {
+        "A": "ユーザーが手動で VM を選択",
+        "B": "ユーザーが初めて接続したときに自動的に VM が割り当てられる",
+        "C": "管理者が各ユーザーに VM を割り当てる",
+        "D": "ランダムに VM が割り当てられる"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "自動割り当てを構成した個人用ホストプールでは、ユーザーが初めて接続したときに、利用可能なセッションホストが自動的にそのユーザーに割り当てられます。以降、ユーザーは常に同じ VM に接続します。"
+    },
+    {
+      "id": "az-140-s1-ja-q40",
+      "examId": "azure-az-140-set1-ja",
+      "setNumber": 1,
+      "domain": "Azure Virtual Desktop インフラストラクチャの監視と保守",
+      "question": "Azure Virtual Desktop で VM の自動シャットダウンをスケジュールするには、どの機能を使用しますか？",
+      "options": {
+        "A": "Azure Automation",
+        "B": "スケーリングプラン",
+        "C": "Azure Policy",
+        "D": "Azure Advisor"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "スケーリングプランを使用して、営業時間外にセッションホストを自動的にシャットダウンするスケジュールを構成できます。ランプダウンフェーズとオフピーク時間の設定により、使用されていない VM を自動的に停止してコストを削減できます。"
+    }
+  ]
+}

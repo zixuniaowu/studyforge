@@ -145,7 +145,7 @@ const AILearningMindMap: React.FC<AILearningMindMapProps> = ({ language, onNodeC
         {/* Icon */}
         <foreignObject x={-size/2} y={-size/2 - (isChild ? 0 : 5)} width={size} height={size}>
           <div className="w-full h-full flex items-center justify-center">
-            <Icon size={isChild ? 16 : size > 60 ? 32 : 24} className="text-white" style={{ color: node.color }} />
+            <Icon size={isChild ? 16 : size > 60 ? 32 : 24} className="text-white" />
           </div>
         </foreignObject>
 

@@ -1,0 +1,663 @@
+{
+  "exam": {
+    "id": "gcp-pse-set3-ja",
+    "name": "Professional Cloud Security Engineer 練習問題 Set 3",
+    "code": "PSE",
+    "provider": "Google Cloud",
+    "language": "ja",
+    "description": "Google Cloud Professional Cloud Security Engineer認定試験の練習問題セット3です。高度なセキュリティアーキテクチャ、インシデント対応、セキュリティ自動化をカバーしています。",
+    "totalQuestions": 40,
+    "passingScore": 70,
+    "examTime": 120,
+    "domains": [
+      "アクセス制御の構成",
+      "ネットワークセキュリティの構成",
+      "データ保護の確保",
+      "セキュリティ運用の管理",
+      "コンプライアンスの確保"
+    ],
+    "tags": ["Google Cloud", "Security", "Professional"]
+  },
+  "questions": [
+    {
+      "id": "gcp-pse-set3-ja-q1",
+      "examId": "gcp-pse-set3-ja",
+      "setNumber": 3,
+      "domain": "アクセス制御の構成",
+      "question": "GKEクラスタ内のワークロードに対してGCPサービスへの細粒度のアクセス制御を実装する必要があり、異なるPodには異なる権限が必要です。どの方法を使用すべきですか？",
+      "options": {
+        "A": "すべてのPodに同じノードサービスアカウントを使用する",
+        "B": "各ワークロードにWorkload Identityを構成し、異なるGCPサービスアカウントに関連付ける",
+        "C": "各Podにサービスアカウントキーを保存する",
+        "D": "サービスアカウントを無効にする"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Workload Identityにより、異なるKubernetesサービスアカウントを異なるGCPサービスアカウントにマッピングでき、各ワークロードに最小権限の原則に従った正確な権限を提供できます。"
+    },
+    {
+      "id": "gcp-pse-set3-ja-q2",
+      "examId": "gcp-pse-set3-ja",
+      "setNumber": 3,
+      "domain": "ネットワークセキュリティの構成",
+      "question": "GKEコントロールプレーンAPIサーバーを不正アクセスから保護する必要があります。何を構成すべきですか？",
+      "options": {
+        "A": "コントロールプレーンエンドポイントを公開する",
+        "B": "プライベートクラスタを有効にし、認証済みネットワークを構成する",
+        "C": "APIサーバーを無効にする",
+        "D": "Cloud Shellのみを使用する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "プライベートクラスタを有効にすると、コントロールプレーンにプライベートIPが割り当てられます。認証済みネットワーク（master authorized networks）を構成すると、特定のIP範囲からのリクエストのみがコントロールプレーンにアクセスできるよう制限できます。"
+    },
+    {
+      "id": "gcp-pse-set3-ja-q3",
+      "examId": "gcp-pse-set3-ja",
+      "setNumber": 3,
+      "domain": "データ保護の確保",
+      "question": "Compute Engine永続ディスクがVM削除後もデータを保持することを確保しつつ、重要なディスクを保護する必要があります。どのメカニズムを使用すべきですか？",
+      "options": {
+        "A": "デフォルトの動作がディスクを保護する",
+        "B": "ディスク削除保護を設定し、Cloud KMS暗号化を使用する",
+        "C": "ローカルSSDのみを使用する",
+        "D": "自動削除を無効にする"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "deletionProtectionを設定すると、誤ってディスクを削除することを防げます。Cloud KMS暗号化を使用すると、ディスクが不正にアクセスされてもデータが保護されます。スナップショットでバックアップも可能です。"
+    },
+    {
+      "id": "gcp-pse-set3-ja-q4",
+      "examId": "gcp-pse-set3-ja",
+      "setNumber": 3,
+      "domain": "セキュリティ運用の管理",
+      "question": "GCEインスタンスで疑わしいコマンド実行アクティビティを検出しました。直ちにどのようなアクションを取るべきですか？",
+      "options": {
+        "A": "アラートを無視する",
+        "B": "インスタンスを隔離（ネットワークアクセスを無効化）し、フォレンジック証拠を保存する",
+        "C": "インスタンスを即座に削除する",
+        "D": "インスタンスを再起動する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "影響を受けたインスタンスを隔離して横方向の移動を防ぎ、同時にフォレンジック分析用にディスクスナップショットとログを保存します。インスタンスを削除すると重要なフォレンジック証拠が失われるため、削除しないでください。"
+    },
+    {
+      "id": "gcp-pse-set3-ja-q5",
+      "examId": "gcp-pse-set3-ja",
+      "setNumber": 3,
+      "domain": "コンプライアンスの確保",
+      "question": "GCP環境がSOC 2要件に準拠していることを証明する必要があります。どのリソースを使用すべきですか？",
+      "options": {
+        "A": "自分でコンプライアンスレポートを作成する",
+        "B": "Google Cloud SOC 2レポートを要求し、自社の制御措置ドキュメントと組み合わせる",
+        "C": "デフォルトで準拠していると仮定する",
+        "D": "コンプライアンス証明は不要"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Google CloudはGoogleが管理する制御措置をカバーするSOC 2監査レポートを提供しています。これらのレポートと自社で実装したセキュリティ制御措置のドキュメントを組み合わせて、全体的なコンプライアンスを証明する必要があります。"
+    },
+    {
+      "id": "gcp-pse-set3-ja-q6",
+      "examId": "gcp-pse-set3-ja",
+      "setNumber": 3,
+      "domain": "アクセス制御の構成",
+      "question": "緊急時に一時的に権限を昇格させるための緊急アクセス（break-glass）プロセスを実装する必要があります。どのように設計すべきですか？",
+      "options": {
+        "A": "すべてのユーザーに永続的なOwner権限を付与する",
+        "B": "専用の緊急サービスアカウントを使用し、監査ログとアラートを構成する",
+        "C": "すべてのセキュリティ制御を無効にする",
+        "D": "管理者パスワードを共有する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "専用の緊急サービスアカウントを設定し、その認証情報を安全に保存し、使用時に自動アラートと監査をトリガーします。緊急アクセス後は使用状況を即座にレビューし、認証情報をローテーションする必要があります。"
+    },
+    {
+      "id": "gcp-pse-set3-ja-q7",
+      "examId": "gcp-pse-set3-ja",
+      "setNumber": 3,
+      "domain": "ネットワークセキュリティの構成",
+      "question": "CloudflareからのトラフィックのみをCloud Load Balancingが受け入れるように構成する必要があります。どの構成を使用すべきですか？",
+      "options": {
+        "A": "VPC Firewallルール",
+        "B": "Cloud ArmorセキュリティポリシーでCloudflare IP範囲をホワイトリストに追加する",
+        "C": "Cloud NAT",
+        "D": "VPC Peering"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Cloud Armorセキュリティポリシーを使用して、Cloudflareの公開IP範囲からのトラフィックのみを許可し、他のすべてのソースを拒否するルールを構成します。これにより、トラフィックがCloudflareのセキュリティ層を通過することが保証されます。"
+    },
+    {
+      "id": "gcp-pse-set3-ja-q8",
+      "examId": "gcp-pse-set3-ja",
+      "setNumber": 3,
+      "domain": "データ保護の確保",
+      "question": "Cloud Spannerデータベースが顧客管理の暗号化キー（CMEK）を使用し、特定のプロジェクトのみがキーを使用できることを確保する必要があります。どのように構成すべきですか？",
+      "options": {
+        "A": "Googleデフォルト暗号化を使用する",
+        "B": "Cloud KMSキーを作成し、IAMでアクセス権限を制限する",
+        "C": "CSEKを使用する",
+        "D": "暗号化を無効にする"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Cloud KMSでキーを作成し、IAMを使用してどのプロジェクト/サービスアカウントがそのキーを使用できるかを正確に制御します。その後、Cloud Spanner構成でそのCMEKキーを使用するよう指定します。"
+    },
+    {
+      "id": "gcp-pse-set3-ja-q9",
+      "examId": "gcp-pse-set3-ja",
+      "setNumber": 3,
+      "domain": "セキュリティ運用の管理",
+      "question": "GCP環境を監視するためのセキュリティオペレーションセンター（SOC）を構築する必要があります。どのコアツールを使用すべきですか？",
+      "options": {
+        "A": "Cloud Monitoringのみを使用する",
+        "B": "Security Command Center + Chronicle SIEM + Cloud Logging",
+        "C": "メール通知のみを使用する",
+        "D": "コンソールを手動でチェックする"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "完全なSOCソリューションには、セキュリティ態勢管理用のSecurity Command Center、ログ分析と脅威検出用のChronicle SIEM、ログ収集用のCloud Loggingが含まれます。3つを組み合わせることで包括的なセキュリティ監視が提供されます。"
+    },
+    {
+      "id": "gcp-pse-set3-ja-q10",
+      "examId": "gcp-pse-set3-ja",
+      "setNumber": 3,
+      "domain": "コンプライアンスの確保",
+      "question": "組織内の誰もパブリックIPを持つCompute Engineインスタンスを作成できないことを確保する必要があります。どの制御を使用すべきですか？",
+      "options": {
+        "A": "VPC Firewallルール",
+        "B": "組織ポリシーcompute.vmExternalIpAccess制約",
+        "C": "Cloud Armor",
+        "D": "IAMポリシー"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "組織ポリシー制約compute.vmExternalIpAccessは、すべて拒否（deny all）または特定のVMのみに外部IPを許可するよう構成できます。これは組織/フォルダレベルで強制され、外部IPを持つインスタンスの作成を防ぎます。"
+    },
+    {
+      "id": "gcp-pse-set3-ja-q11",
+      "examId": "gcp-pse-set3-ja",
+      "setNumber": 3,
+      "domain": "アクセス制御の構成",
+      "question": "組織内にユーザーアカウントを作成せずに、サードパーティベンダーにGCPリソースへの限定的なアクセス権限を付与する必要があります。どの方法を使用すべきですか？",
+      "options": {
+        "A": "管理者認証情報を共有する",
+        "B": "Workload Identity Federationを使用して自社のIDプロバイダーで認証を許可する",
+        "C": "各ベンダー従業員にGoogleアカウントを作成する",
+        "D": "アクセス制御を無効にする"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Workload Identity Federationにより、外部IDプロバイダーのユーザーが既存のIDを使用して一時的なGCP認証情報を取得でき、組織内にGoogleアカウントを作成する必要がありません。"
+    },
+    {
+      "id": "gcp-pse-set3-ja-q12",
+      "examId": "gcp-pse-set3-ja",
+      "setNumber": 3,
+      "domain": "ネットワークセキュリティの構成",
+      "question": "ハイブリッドクラウド環境でオンプレミスネットワークと複数のGCP VPCを安全に接続する必要があります。どのアーキテクチャを使用すべきですか？",
+      "options": {
+        "A": "各VPCに個別のVPN接続を作成する",
+        "B": "Network Connectivity CenterとHub-and-Spokeアーキテクチャを使用する",
+        "C": "パブリックインターネットを使用する",
+        "D": "ネットワーク接続を無効にする"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Network Connectivity CenterにはHub-and-Spokeネットワークアーキテクチャを作成でき、オンプレミスネットワークと複数のVPCを中央ハブを通じて接続し、管理を簡素化して安全なハイブリッドクラウド接続を提供します。"
+    },
+    {
+      "id": "gcp-pse-set3-ja-q13",
+      "examId": "gcp-pse-set3-ja",
+      "setNumber": 3,
+      "domain": "データ保護の確保",
+      "question": "Cloud Storage内の特定のオブジェクトが指定された期間前に削除または変更できないことを確保する必要があります。どの機能を使用すべきですか？",
+      "options": {
+        "A": "オブジェクトバージョニング",
+        "B": "保持ポリシー（Retention Policy）とバケットロック",
+        "C": "IAMポリシー",
+        "D": "オブジェクトライフサイクル"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "保持ポリシーはオブジェクトを保持する必要がある最短期間を定義します。バケットロックを使用すると保持ポリシーを不変にでき、管理者であっても保持期間が満了する前にオブジェクトを削除できなくなり、コンプライアンス要件を満たします。"
+    },
+    {
+      "id": "gcp-pse-set3-ja-q14",
+      "examId": "gcp-pse-set3-ja",
+      "setNumber": 3,
+      "domain": "セキュリティ運用の管理",
+      "question": "Security Command Centerで検出された特定の構成問題を自動的に修復する必要があります。どの方法を使用すべきですか？",
+      "options": {
+        "A": "各検出結果を手動で修復する",
+        "B": "SCC検出結果をトリガーとしてCloud Functionsで自動修復を実行する",
+        "C": "検出結果を無視する",
+        "D": "SCCを無効にする"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "SCC通知を構成して検出結果をPub/Subに公開し、Cloud Functionsをトリガーして自動修復アクション（公開バケットの閉鎖、疑わしいサービスアカウントの無効化など）を実行します。これによりセキュリティ運用の自動化が実現します。"
+    },
+    {
+      "id": "gcp-pse-set3-ja-q15",
+      "examId": "gcp-pse-set3-ja",
+      "setNumber": 3,
+      "domain": "コンプライアンスの確保",
+      "question": "組織のデータ分類と取り扱い基準を確立する必要があります。何から始めるべきですか？",
+      "options": {
+        "A": "すべてのデータを暗号化する",
+        "B": "データ分類レベルを定義し、Data Catalogを使用してリソースにタグを付ける",
+        "C": "すべての機密データを削除する",
+        "D": "データを分類しない"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "まずデータ分類レベル（公開、内部、機密、高度機密など）を定義し、Data Catalogのポリシータグを使用してデータアセットにタグを付けます。これにより適切なセキュリティ制御を実装するための基盤が提供されます。"
+    },
+    {
+      "id": "gcp-pse-set3-ja-q16",
+      "examId": "gcp-pse-set3-ja",
+      "setNumber": 3,
+      "domain": "アクセス制御の構成",
+      "question": "サービスアカウントが過剰な権限を持っていることを発見し、実際に使用されている権限を特定する必要があります。どのツールを使用すべきですか？",
+      "options": {
+        "A": "必要な権限を推測する",
+        "B": "IAM Policy AnalyzerとActivity Analyzer",
+        "C": "すべての権限を削除する",
+        "D": "ドキュメントを確認する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "IAM Policy Analyzerは誰がどのリソースにアクセスできるかを分析できます。Activity Analyzerはサービスアカウントの実際のアクティビティを分析し、過去90日間に使用された権限を表示して、最小権限の実装を支援します。"
+    },
+    {
+      "id": "gcp-pse-set3-ja-q17",
+      "examId": "gcp-pse-set3-ja",
+      "setNumber": 3,
+      "domain": "ネットワークセキュリティの構成",
+      "question": "VPC内の横方向移動攻撃を検出してブロックする必要があります。どの組み合わせを使用すべきですか？",
+      "options": {
+        "A": "VPC Firewallのみを使用する",
+        "B": "Cloud IDS + VPC Firewall + マイクロセグメンテーション",
+        "C": "Cloud Armorのみを使用する",
+        "D": "内部通信を無効にする"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Cloud IDSは疑わしい内部トラフィックと既知の脅威を検出します。VPC Firewallルールはマイクロセグメンテーションを実装し、リソース間の通信を制限します。組み合わせて使用することで横方向移動攻撃を検出してブロックできます。"
+    },
+    {
+      "id": "gcp-pse-set3-ja-q18",
+      "examId": "gcp-pse-set3-ja",
+      "setNumber": 3,
+      "domain": "データ保護の確保",
+      "question": "Dataflowジョブで機密データを処理する際に匿名化を行う必要があります。Cloud DLPをどのように統合すべきですか？",
+      "options": {
+        "A": "手動で匿名化する",
+        "B": "DataflowパイプラインでCloud DLP APIを呼び出してリアルタイムで匿名化する",
+        "C": "機密データを処理しない",
+        "D": "匿名化ステップをスキップする"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "DataflowはCloud DLP APIと統合でき、データ処理パイプラインで機密データをリアルタイムで検査して匿名化できます。これにより、データがシステムを通過する際に自動的にデータ保護が適用されます。"
+    },
+    {
+      "id": "gcp-pse-set3-ja-q19",
+      "examId": "gcp-pse-set3-ja",
+      "setNumber": 3,
+      "domain": "セキュリティ運用の管理",
+      "question": "GCP環境のセキュリティペネトレーションテストを実施する必要があります。何に注意すべきですか？",
+      "options": {
+        "A": "通知なしで任意のテストを実施できる",
+        "B": "GCPペネトレーションテストポリシーに従い、特定のテストは通知不要だが他の顧客に影響を与えないようにする",
+        "C": "すべてのペネトレーションテストは禁止されている",
+        "D": "Googleのみがテストを実施できる"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "GCPでは自社のリソースに対するペネトレーションテストを許可しており、事前にGoogleに通知する必要はありません。ただし、利用規約に従い、他の顧客やGoogleのインフラストラクチャに影響を与えないようにする必要があります。"
+    },
+    {
+      "id": "gcp-pse-set3-ja-q20",
+      "examId": "gcp-pse-set3-ja",
+      "setNumber": 3,
+      "domain": "コンプライアンスの確保",
+      "question": "機密ワークロードが特定のセキュリティ標準を満たすハードウェア上でのみ実行されることを確保する必要があります。どの機能を使用すべきですか？",
+      "options": {
+        "A": "標準Compute Engine",
+        "B": "Confidential Computing（機密VM）",
+        "C": "Preemptible VM",
+        "D": "Spot VM"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Confidential Computingはハードウェアレベルの暗号化を使用して使用中のデータを保護します。機密VMはデータが処理中も暗号化されることを保証し、Googleでさえランタイムメモリ内のデータにアクセスできません。"
+    },
+    {
+      "id": "gcp-pse-set3-ja-q21",
+      "examId": "gcp-pse-set3-ja",
+      "setNumber": 3,
+      "domain": "アクセス制御の構成",
+      "question": "BigQueryデータセットに行レベルのセキュリティ制御を実装する必要があります。どの機能を使用すべきですか？",
+      "options": {
+        "A": "データセットレベルIAM",
+        "B": "行レベルセキュリティポリシー（Row-level Security）",
+        "C": "ビュー",
+        "D": "テーブルパーティショニング"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "BigQuery行レベルセキュリティポリシーにより、ユーザーIDまたは属性に基づいてテーブル内の行をフィルタリングできます。異なるユーザーが同じテーブルをクエリしても、承認された行のみが表示され、複数のビューを作成する必要がありません。"
+    },
+    {
+      "id": "gcp-pse-set3-ja-q22",
+      "examId": "gcp-pse-set3-ja",
+      "setNumber": 3,
+      "domain": "ネットワークセキュリティの構成",
+      "question": "VPCとGoogle API間のプライベート接続を確立し、トラフィックがインターネットを経由しないことを確保する必要があります。何を使用すべきですか？",
+      "options": {
+        "A": "パブリックインターネット経由でアクセスする",
+        "B": "Private Service ConnectでGoogle APIに接続する",
+        "C": "Cloud VPN",
+        "D": "Cloud CDN"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Private Service Connectにより、VPC内部からプライベートエンドポイントを通じてGoogle APIとサービスにアクセスでき、トラフィックは完全にGoogleネットワーク内で転送され、パブリックインターネットを経由しません。"
+    },
+    {
+      "id": "gcp-pse-set3-ja-q23",
+      "examId": "gcp-pse-set3-ja",
+      "setNumber": 3,
+      "domain": "データ保護の確保",
+      "question": "Dataprocクラスタのデータとメタデータを暗号化する必要があります。どの構成を使用すべきですか？",
+      "options": {
+        "A": "デフォルト暗号化を使用する",
+        "B": "ディスク暗号化にCMEKを構成し、通信暗号化にKerberosを使用する",
+        "C": "パフォーマンス向上のため暗号化を無効にする",
+        "D": "出力データのみを暗号化する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Dataprocクラスタに永続ディスク上のデータを暗号化するCMEKを構成します。Kerberosを有効にしてクラスタ内のコンポーネント間の通信を暗号化し認証します。これにより包括的なデータ保護が提供されます。"
+    },
+    {
+      "id": "gcp-pse-set3-ja-q24",
+      "examId": "gcp-pse-set3-ja",
+      "setNumber": 3,
+      "domain": "セキュリティ運用の管理",
+      "question": "セキュリティ調査のためにGCPリソースの変更履歴を追跡する必要があります。どのサービスを使用すべきですか？",
+      "options": {
+        "A": "Cloud Monitoring",
+        "B": "Cloud Asset Inventory",
+        "C": "Cloud Logging",
+        "D": "VPC Flow Logs"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Cloud Asset InventoryはGCPリソースとIAMポリシーの履歴ビューを提供します。特定の時点でのリソース状態をクエリし、変更履歴を追跡できるため、セキュリティ調査に不可欠です。"
+    },
+    {
+      "id": "gcp-pse-set3-ja-q25",
+      "examId": "gcp-pse-set3-ja",
+      "setNumber": 3,
+      "domain": "コンプライアンスの確保",
+      "question": "組織のセキュリティベースラインを作成し、逸脱を継続的に監視する必要があります。どの方法を使用すべきですか？",
+      "options": {
+        "A": "各プロジェクトを手動でチェックする",
+        "B": "Security Health Analyticsとカスタム検出器を使用する",
+        "C": "構成を監視しない",
+        "D": "イベント発生後にのみチェックする"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Security Health Analyticsはリソース構成を継続的にスキャンします。組み込みの検出器（CISベンチマークなど）とカスタム検出器を使用して組織固有のセキュリティベースラインを定義し、逸脱を自動的に検出できます。"
+    },
+    {
+      "id": "gcp-pse-set3-ja-q26",
+      "examId": "gcp-pse-set3-ja",
+      "setNumber": 3,
+      "domain": "アクセス制御の構成",
+      "question": "GCPサービスアカウントが悪意のあるアクティビティ（マイニングなど）に使用された後の横方向移動を防ぐ必要があります。どのような対策を講じるべきですか？",
+      "options": {
+        "A": "すべてのタスクに単一のサービスアカウントを使用する",
+        "B": "各サービスに専用のサービスアカウントを使用し、最小権限を実装する",
+        "C": "サービスアカウントを使用しない",
+        "D": "すべてのサービスアカウントにOwner権限を付与する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "各サービスに専用のサービスアカウントを使用し、必要最小限の権限のみを付与します。これにより、1つのサービスアカウントが侵害されても、攻撃者はそれを使用して他のリソースにアクセスできず、爆発半径が制限されます。"
+    },
+    {
+      "id": "gcp-pse-set3-ja-q27",
+      "examId": "gcp-pse-set3-ja",
+      "setNumber": 3,
+      "domain": "ネットワークセキュリティの構成",
+      "question": "Cloud Runサービスを保護し、VPC内部からのみアクセスできるようにする必要があります。どのように構成すべきですか？",
+      "options": {
+        "A": "パブリックエンドポイントを使用する",
+        "B": "Cloud Runの入力を内部トラフィックのみに設定し、Private Service Connectを使用する",
+        "C": "Cloud Runを無効にする",
+        "D": "Cloud CDNを使用する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Cloud Runサービスの入力をinternalまたはinternal-and-cloud-load-balancingに設定し、VPCからのトラフィックのみを受け入れるよう制限します。Private Service Connectと組み合わせてプライベートアクセスを実現できます。"
+    },
+    {
+      "id": "gcp-pse-set3-ja-q28",
+      "examId": "gcp-pse-set3-ja",
+      "setNumber": 3,
+      "domain": "データ保護の確保",
+      "question": "Cloud KMSキーを安全に破棄し、暗号化されたデータを回復不能にする必要があります。どのプロセスに従うべきですか？",
+      "options": {
+        "A": "キーを即座に削除する",
+        "B": "キーバージョンを無効化し、破棄スケジュール期間を待ってから破棄を確認する",
+        "C": "すべてのキーバージョンを保持する",
+        "D": "キーをエクスポートする"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "まずキーバージョンを無効化し、データを復号化する必要がないことを確認します。次にキーバージョンの破棄をスケジュールし、破棄スケジュール期間（デフォルト24時間）中はキャンセル可能です。期間満了後、キーマテリアルは永久に破棄されます。"
+    },
+    {
+      "id": "gcp-pse-set3-ja-q29",
+      "examId": "gcp-pse-set3-ja",
+      "setNumber": 3,
+      "domain": "セキュリティ運用の管理",
+      "question": "脅威インテリジェンス主導のセキュリティ監視を確立する必要があります。どのサービスを使用すべきですか？",
+      "options": {
+        "A": "Cloud Loggingのみを使用する",
+        "B": "Chronicle Security OperationsとVirusTotal",
+        "C": "ファイアウォールのみを使用する",
+        "D": "ログを手動で分析する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Chronicle Security Operations（SIEM/SOAR）はGoogleの脅威インテリジェンスと統合されています。VirusTotalはマルウェアとURL分析を提供します。両者を組み合わせて脅威インテリジェンス主導のセキュリティ運用を実現します。"
+    },
+    {
+      "id": "gcp-pse-set3-ja-q30",
+      "examId": "gcp-pse-set3-ja",
+      "setNumber": 3,
+      "domain": "コンプライアンスの確保",
+      "question": "GKEクラスタがPCI-DSS要件に準拠していることを確保する必要があります。何を構成すべきですか？",
+      "options": {
+        "A": "デフォルトのクラスタ構成を使用する",
+        "B": "プライベートクラスタ、ネットワークポリシー、監査ログ、RBAC、Workload Identityを有効にする",
+        "C": "すべてのセキュリティ機能を無効にする",
+        "D": "パブリッククラスタのみを使用する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "PCI-DSS準拠のGKE構成には、プライベートクラスタ（ネットワークセグメンテーション）、ネットワークポリシー（マイクロセグメンテーション）、完全な監査ログ、RBAC（アクセス制御）、Workload Identity（ID管理）など、複数層のセキュリティ制御が含まれます。"
+    },
+    {
+      "id": "gcp-pse-set3-ja-q31",
+      "examId": "gcp-pse-set3-ja",
+      "setNumber": 3,
+      "domain": "アクセス制御の構成",
+      "question": "Google Cloud Consoleへのアクセスを制御し、企業ネットワークからのアクセスのみを許可する必要があります。何を使用すべきですか？",
+      "options": {
+        "A": "VPC Firewall",
+        "B": "Access Context Managerアクセスレベル",
+        "C": "Cloud Armor",
+        "D": "Cloud NAT"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Access Context Managerにより、アクセスレベル（IP範囲、デバイス属性などに基づく）を定義できます。コンテキスト認識型アクセスポリシーを構成して、企業ネットワークIPからのユーザーのみがCloud Consoleにアクセスできるよう制限できます。"
+    },
+    {
+      "id": "gcp-pse-set3-ja-q32",
+      "examId": "gcp-pse-set3-ja",
+      "setNumber": 3,
+      "domain": "ネットワークセキュリティの構成",
+      "question": "Secure Web Proxyを使用してVPC内のアウトバウンドHTTPSトラフィックを検査する必要があります。どのような機能が提供されますか？",
+      "options": {
+        "A": "トラフィックを記録するのみ",
+        "B": "URLフィルタリング、TLS検査、アクセスポリシー強制",
+        "C": "トラフィックを高速化するのみ",
+        "D": "コンテンツをキャッシュするのみ"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Secure Web Proxyはアウトバウンドトラフィックの細粒度制御を提供し、URLフィルタリング（悪意のあるウェブサイトへのアクセスをブロック）、TLS検査（HTTPSトラフィックを復号して分析）、ポリシー強制（許可/拒否ルール）が含まれます。"
+    },
+    {
+      "id": "gcp-pse-set3-ja-q33",
+      "examId": "gcp-pse-set3-ja",
+      "setNumber": 3,
+      "domain": "データ保護の確保",
+      "question": "Cloud Pub/Subメッセージがパブリッシャーとサブスクライバー間で転送される際に保護されることを確保する必要があります。デフォルトでどのような保護が提供されますか？",
+      "options": {
+        "A": "保護なし",
+        "B": "デフォルトでTLSが転送中のデータを暗号化し、オプションでCMEKが保存されたメッセージを暗号化する",
+        "C": "保存されたメッセージのみが暗号化される",
+        "D": "TLSを手動で構成する必要がある"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Cloud Pub/Subはデフォルトで転送中のデータをTLSで暗号化します。メッセージが保存される際はデフォルトでGoogle管理のキーで暗号化され、CMEKを構成して顧客管理のキーで保存されたメッセージを暗号化することもできます。"
+    },
+    {
+      "id": "gcp-pse-set3-ja-q34",
+      "examId": "gcp-pse-set3-ja",
+      "setNumber": 3,
+      "domain": "セキュリティ運用の管理",
+      "question": "GCP環境の定期的なセキュリティ評価を実施する必要があります。どのツールの組み合わせを使用すべきですか？",
+      "options": {
+        "A": "手動監査のみ",
+        "B": "Security Health Analytics + Policy Analyzer + Recommender",
+        "C": "Cloud Monitoringのみを使用する",
+        "D": "評価を実施しない"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Security Health Analyticsは構成の脆弱性を検出し、Policy AnalyzerはIAM権限を分析し、Recommenderはセキュリティ最適化の推奨事項を提供します。組み合わせて使用することで包括的なセキュリティ評価が提供されます。"
+    },
+    {
+      "id": "gcp-pse-set3-ja-q35",
+      "examId": "gcp-pse-set3-ja",
+      "setNumber": 3,
+      "domain": "コンプライアンスの確保",
+      "question": "HIPAAコンプライアンスのためにGCP環境を構成する必要があります。まず何をすべきですか？",
+      "options": {
+        "A": "デフォルトでHIPAA準拠と仮定する",
+        "B": "BAA（業務提携契約）を締結し、HIPAA対象サービスのみを使用する",
+        "C": "任意のGCPサービスを使用する",
+        "D": "すべてのセキュリティ機能を無効にする"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "HIPAAコンプライアンスには、まずGoogleとBAA（Business Associate Agreement）を締結する必要があります。その後、PHI（保護された健康情報）を処理するためにHIPAA対象範囲内のGCPサービスのみを使用できます。"
+    },
+    {
+      "id": "gcp-pse-set3-ja-q36",
+      "examId": "gcp-pse-set3-ja",
+      "setNumber": 3,
+      "domain": "アクセス制御の構成",
+      "question": "ユーザーが勤務時間中にのみGCPリソースにアクセスできるよう制限する必要があります。どの機能を使用すべきですか？",
+      "options": {
+        "A": "アカウントを手動で有効化/無効化する",
+        "B": "IAM条件の時間属性",
+        "C": "VPC Firewallルール",
+        "D": "Cloud Scheduler"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "IAM条件は時間ベースのアクセス制御をサポートしています。特定の時間（平日9時〜18時など）にのみアクセスを許可する条件を設定でき、勤務時間外は自動的に拒否され、手動管理は不要です。"
+    },
+    {
+      "id": "gcp-pse-set3-ja-q37",
+      "examId": "gcp-pse-set3-ja",
+      "setNumber": 3,
+      "domain": "ネットワークセキュリティの構成",
+      "question": "L7 DDoS攻撃に対する適応型保護を実装する必要があります。どの機能を使用すべきですか？",
+      "options": {
+        "A": "標準VPC Firewall",
+        "B": "Cloud Armor Adaptive Protection",
+        "C": "Cloud NAT",
+        "D": "VPC Flow Logs"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Cloud Armor Adaptive Protectionは機械学習を使用してトラフィックパターンを分析し、L7 DDoS攻撃を自動的に検出して軽減します。推奨される保護ルールを自動生成し、手動介入を減らすことができます。"
+    },
+    {
+      "id": "gcp-pse-set3-ja-q38",
+      "examId": "gcp-pse-set3-ja",
+      "setNumber": 3,
+      "domain": "データ保護の確保",
+      "question": "BigQuery MLモデルのトレーニングデータが処理中に保護されることを確保する必要があります。どの構成を使用すべきですか？",
+      "options": {
+        "A": "標準BigQuery",
+        "B": "BigQuery AEAD暗号化関数とCMEK",
+        "C": "MLを使用しない",
+        "D": "データをエクスポートしてローカルでトレーニングする"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "BigQuery AEAD（Authenticated Encryption with Associated Data）暗号化関数を使用して機密データ列を保護し、CMEKを組み合わせて保存されたデータを暗号化します。これにより、MLトレーニングデータがライフサイクル全体を通じて保護されます。"
+    },
+    {
+      "id": "gcp-pse-set3-ja-q39",
+      "examId": "gcp-pse-set3-ja",
+      "setNumber": 3,
+      "domain": "セキュリティ運用の管理",
+      "question": "セキュリティチームのために、すべてのプロジェクトのセキュリティ態勢を表示する統一ビューを作成する必要があります。何を使用すべきですか？",
+      "options": {
+        "A": "各プロジェクトを個別に表示する",
+        "B": "Security Command Center組織レベルダッシュボード",
+        "C": "Cloud Monitoringダッシュボード",
+        "D": "スプレッドシート"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Security Command Centerは組織レベルで統一ダッシュボードを提供し、すべてのプロジェクトのセキュリティ検出結果、コンプライアンス状況、アセット、脆弱性を表示します。これによりセキュリティチームにGCP組織全体のセキュリティ態勢ビューが提供されます。"
+    },
+    {
+      "id": "gcp-pse-set3-ja-q40",
+      "examId": "gcp-pse-set3-ja",
+      "setNumber": 3,
+      "domain": "コンプライアンスの確保",
+      "question": "Google Cloudが無許可でデータにアクセスしないことを証明する必要があります。どの機能を使用すべきですか？",
+      "options": {
+        "A": "デフォルト設定を信頼する",
+        "B": "Access TransparencyとAccess Approval",
+        "C": "VPC Firewall",
+        "D": "Cloud Armor"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Access TransparencyはGoogle従業員が顧客データにアクセスしたログを記録します。Access ApprovalはGoogleサポート担当者がデータにアクセスする前に明示的な承認を要求します。両者を組み合わせて監査可能なアクセス制御の証明を提供します。"
+    }
+  ]
+}

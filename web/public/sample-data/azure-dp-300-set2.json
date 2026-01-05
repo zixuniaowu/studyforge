@@ -1,0 +1,649 @@
+{
+  "exam": {
+    "id": "azure-dp-300-set2",
+    "name": "Azure DP-300 数据库管理员模拟考试 #2",
+    "code": "DP-300",
+    "provider": "Azure",
+    "language": "zh-CN",
+    "description": "Microsoft Azure Database Administrator Associate认证考试模拟题，涵盖数据平台资源规划、安全环境实施、数据库监控优化、任务自动化配置和高可用性灾难恢复等核心领域",
+    "totalQuestions": 40,
+    "passingScore": 70,
+    "examTime": 150,
+    "domains": [
+      {
+        "id": 1,
+        "name": "规划和实施数据平台资源 (Plan and implement data platform resources)",
+        "weight": 23
+      },
+      {
+        "id": 2,
+        "name": "实施安全环境 (Implement a secure environment)",
+        "weight": 18
+      },
+      {
+        "id": 3,
+        "name": "监控、配置和优化数据库资源 (Monitor, configure, and optimize database resources)",
+        "weight": 23
+      },
+      {
+        "id": 4,
+        "name": "配置和管理任务自动化 (Configure and manage automation of tasks)",
+        "weight": 13
+      },
+      {
+        "id": 5,
+        "name": "规划和实施高可用性和灾难恢复环境 (Plan and implement HA/DR environment)",
+        "weight": 23
+      }
+    ],
+    "tags": [
+      "Azure",
+      "DP-300",
+      "数据库管理员",
+      "认证考试",
+      "SQL Server"
+    ]
+  },
+  "questions": [
+    {
+      "id": "q1",
+      "domain": 1,
+      "question": "一家公司计划部署Azure SQL Database，需要预测每月成本。哪个工具最适合进行成本估算？",
+      "options": {
+        "A": "Azure Monitor",
+        "B": "Azure定价计算器",
+        "C": "Azure Advisor",
+        "D": "成本管理+计费"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure定价计算器允许配置不同的服务选项(服务层级、计算大小、存储等)并估算每月成本。它在部署之前提供成本可见性。成本管理+计费用于监控已部署资源的实际成本。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q2",
+      "domain": 1,
+      "question": "在评估将SQL Server迁移到Azure时，哪个工具可以评估兼容性问题并推荐目标Azure数据平台？",
+      "options": {
+        "A": "Azure Migrate",
+        "B": "数据迁移助手(DMA)",
+        "C": "Azure数据库迁移服务(DMS)",
+        "D": "SQL Server配置管理器"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "数据迁移助手(DMA)可以评估SQL Server迁移到Azure的兼容性问题、功能奇偶校验和性能建议。它会识别阻止迁移的问题、部分支持的功能和已弃用的功能。Azure Migrate主要用于虚拟机迁移评估。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q3",
+      "domain": 1,
+      "question": "Azure SQL Database支持的最大数据库大小是多少？",
+      "options": {
+        "A": "1 TB",
+        "B": "4 TB",
+        "C": "100 TB（超大规模）",
+        "D": "16 TB"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "Azure SQL Database超大规模(Hyperscale)服务层级支持高达100 TB的数据库大小。其他服务层级(通用和业务关键)最大支持4 TB。超大规模使用分布式存储架构，提供快速备份和几乎即时的时间点恢复。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q4",
+      "domain": 1,
+      "question": "为Azure SQL Managed Instance配置维护窗口有什么好处？",
+      "options": {
+        "A": "减少存储成本",
+        "B": "控制系统维护活动发生的时间，避免业务高峰期",
+        "C": "提高查询性能",
+        "D": "增加备份频率"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "维护窗口功能允许您选择Azure执行系统维护(如安全补丁、硬件更新)的时间窗口。这样可以避免在业务关键时段发生可能导致短暂连接中断的维护活动，提供更可预测的服务可用性。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q5",
+      "domain": 1,
+      "question": "当Azure SQL Database的计算层使用无服务器配置时，以下哪项是自动处理的？",
+      "options": {
+        "A": "数据加密",
+        "B": "基于工作负载的计算资源自动缩放",
+        "C": "备份保留期",
+        "D": "异地复制"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "无服务器计算层根据工作负载需求自动缩放计算资源。当数据库空闲时，计算资源可以自动暂停以节省成本。当检测到活动时，数据库会自动恢复。用户只需为实际使用的计算资源付费。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q6",
+      "domain": 2,
+      "question": "一家公司需要确保Azure SQL Database的所有连接都使用加密。应该验证什么设置？",
+      "options": {
+        "A": "启用透明数据加密(TDE)",
+        "B": "最低TLS版本设置为1.2",
+        "C": "启用Azure AD身份验证",
+        "D": "配置动态数据掩码"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "通过将最低TLS版本设置为1.2，可以确保所有客户端连接必须使用TLS 1.2或更高版本。这可以防止使用旧版不安全协议的连接。Azure SQL Database默认强制使用加密连接，但TLS版本可以配置。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q7",
+      "domain": 2,
+      "question": "为Azure SQL Database配置Azure AD身份验证后，如何授予Azure AD组访问数据库的权限？",
+      "options": {
+        "A": "使用CREATE LOGIN和CREATE USER语句，指定FROM EXTERNAL PROVIDER",
+        "B": "仅在Azure门户中配置",
+        "C": "使用Windows身份验证",
+        "D": "使用SQL Server身份验证创建登录"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "要为Azure AD用户或组授予数据库访问权限，需要使用T-SQL: CREATE USER [GroupName] FROM EXTERNAL PROVIDER。这会在数据库中创建映射到Azure AD标识的用户。然后可以使用标准GRANT语句授予权限。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q8",
+      "domain": 2,
+      "question": "哪种身份验证方法支持多重身份验证(MFA)来连接Azure SQL Database？",
+      "options": {
+        "A": "SQL身份验证",
+        "B": "Windows身份验证",
+        "C": "Azure AD - 通用身份验证与MFA",
+        "D": "证书身份验证"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "Azure AD通用身份验证与MFA支持交互式多重身份验证，包括电话呼叫、短信、智能卡或移动应用通知。在SSMS中选择此选项可以强制MFA验证，提供额外的安全层。SQL身份验证不支持MFA。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q9",
+      "domain": 2,
+      "question": "为了在Azure SQL Database中实施数据分类以满足合规要求，应该使用什么功能？",
+      "options": {
+        "A": "动态数据掩码",
+        "B": "数据发现和分类",
+        "C": "漏洞评估",
+        "D": "透明数据加密"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "数据发现和分类功能可以发现、分类、标记和保护数据库中的敏感数据。它使用内置的敏感度标签(如机密、高度机密)，帮助满足数据隐私标准和合规性要求，如GDPR。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q10",
+      "domain": 2,
+      "question": "需要确保Azure SQL Database中的某些敏感列只有应用程序可以解密，即使DBA也无法查看明文数据。应该使用什么功能和密钥管理方式？",
+      "options": {
+        "A": "TDE与服务管理的密钥",
+        "B": "Always Encrypted与Azure Key Vault中的列主密钥",
+        "C": "动态数据掩码",
+        "D": "行级安全性"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Always Encrypted结合Azure Key Vault可以确保只有具有密钥访问权限的应用程序才能解密数据。将列主密钥存储在Azure Key Vault中，并仅授予应用程序访问权限，可以防止DBA或任何没有密钥访问权限的人查看敏感数据。",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q11",
+      "domain": 3,
+      "question": "Azure SQL Database的查询性能见解(Query Performance Insight)提供什么信息？",
+      "options": {
+        "A": "只显示失败的查询",
+        "B": "显示资源消耗最高的查询和性能趋势",
+        "C": "显示安全漏洞",
+        "D": "显示备份历史记录"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "查询性能见解(QPI)提供智能查询分析，显示DTU/CPU消耗最高的查询、长时间运行的查询和资源使用趋势图表。它帮助快速识别性能问题查询并提供优化建议，是Azure门户中的内置功能。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q12",
+      "domain": 3,
+      "question": "在Azure SQL Database中启用自动索引管理后，系统可以执行哪些操作？（选择两项）",
+      "options": {
+        "A": "自动创建缺失索引",
+        "B": "自动删除重复或未使用的索引",
+        "C": "自动重建所有索引",
+        "D": "自动增加存储大小"
+      },
+      "answer": ["A", "B"],
+      "answerType": "multiple",
+      "explanation": "自动调优的索引管理包括：1)CREATE INDEX - 自动创建可以提高查询性能的索引；2)DROP INDEX - 自动删除重复的或长时间未使用的索引。系统会验证更改确实提高性能后才会保留。不包括自动重建索引或调整存储大小。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q13",
+      "domain": 3,
+      "question": "需要强制Azure SQL Database中的特定查询使用特定的执行计划。应该使用什么功能？",
+      "options": {
+        "A": "查询提示",
+        "B": "查询存储的计划强制",
+        "C": "索引提示",
+        "D": "资源调控器"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "查询存储的计划强制功能允许您锁定特定查询的执行计划。当识别到由于计划更改导致的性能回归时，可以强制使用已知良好的计划。这不需要修改应用程序代码，是处理计划回归的有效方法。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q14",
+      "domain": 3,
+      "question": "Azure SQL Database显示高DTU使用率，主要由CPU造成。以下哪项操作最可能改善性能？",
+      "options": {
+        "A": "增加存储大小",
+        "B": "优化或参数化频繁执行的查询",
+        "C": "启用异地复制",
+        "D": "更改备份保留期"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "高CPU使用率通常由低效查询或大量重复编译造成。优化查询(添加索引、改进查询结构)和参数化查询(减少编译开销)可以显著降低CPU使用率。存储大小、异地复制和备份设置不直接影响CPU性能。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q15",
+      "domain": 3,
+      "question": "在Azure SQL Database中，如何查看当前正在运行的查询及其资源使用情况？",
+      "options": {
+        "A": "查询sys.dm_exec_requests和sys.dm_exec_sql_text",
+        "B": "使用SQL Server Profiler",
+        "C": "查看Azure Activity Log",
+        "D": "使用Extended Events Wizard"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "sys.dm_exec_requests显示当前执行的每个请求的状态、资源消耗和等待信息。结合sys.dm_exec_sql_text可以获取正在执行的SQL语句文本。这是实时监控数据库活动的标准方法。SQL Server Profiler在Azure SQL Database中不可用。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q16",
+      "domain": 3,
+      "question": "一个长时间运行的报表查询导致其他事务超时。应该采取什么措施来减轻影响？",
+      "options": {
+        "A": "增加锁超时设置",
+        "B": "启用读已提交快照隔离(RCSI)",
+        "C": "禁用索引",
+        "D": "减少数据库的DTU"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "读已提交快照隔离(RCSI)使用行版本控制，读操作不会阻塞写操作，写操作也不会阻塞读操作。这可以显著减少由报表查询导致的阻塞问题。Azure SQL Database默认启用RCSI。",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q17",
+      "domain": 4,
+      "question": "需要在Azure SQL Database上执行每周索引维护任务。由于Azure SQL Database不支持SQL Server Agent，应该使用什么替代方案？",
+      "options": {
+        "A": "Windows任务计划程序",
+        "B": "Azure Automation与Runbook",
+        "C": "SQL Server Integration Services",
+        "D": "手动执行维护脚本"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure Automation允许创建PowerShell或Python Runbook来执行数据库维护任务。可以配置调度程序定期运行，如每周执行索引重建或统计信息更新。Runbook可以连接到Azure SQL Database执行T-SQL脚本。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q18",
+      "domain": 4,
+      "question": "需要配置警报，当Azure SQL Database的存储使用率超过80%时通知管理员。应该在哪里配置？",
+      "options": {
+        "A": "Azure SQL Database审计设置",
+        "B": "Azure Monitor警报规则",
+        "C": "SQL Server Agent警报",
+        "D": "Azure Security Center"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure Monitor可以基于Azure SQL Database的指标(如存储百分比、CPU、DTU使用率等)创建警报规则。当指标超过阈值时，可以触发电子邮件、短信、webhook或Azure Functions。这是监控Azure资源的标准方法。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q19",
+      "domain": 4,
+      "question": "使用Azure Resource Manager(ARM)模板部署Azure SQL Database有什么优势？（选择两项）",
+      "options": {
+        "A": "声明式语法，定义所需的最终状态",
+        "B": "支持基础设施即代码和版本控制",
+        "C": "自动优化查询性能",
+        "D": "自动配置异地复制"
+      },
+      "answer": ["A", "B"],
+      "answerType": "multiple",
+      "explanation": "ARM模板使用声明式JSON语法定义基础设施的期望状态，Azure会自动处理资源创建顺序和依赖关系。模板可以存储在源代码控制中，实现基础设施即代码(IaC)，支持可重复、一致的部署。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q20",
+      "domain": 4,
+      "question": "需要定期导出Azure SQL Database的数据到Azure Blob存储以供分析。最自动化的方法是什么？",
+      "options": {
+        "A": "使用SSMS手动导出",
+        "B": "配置Azure数据工厂管道",
+        "C": "使用Azure门户的导出功能",
+        "D": "使用BCP命令手动运行"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure数据工厂(ADF)可以创建调度管道，定期从Azure SQL Database复制数据到Azure Blob存储。支持增量加载、数据转换和多种目标格式。是实现数据导出自动化的企业级解决方案。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q21",
+      "domain": 4,
+      "question": "为了在部署新版本数据库架构之前验证更改是否会导致数据丢失，应该使用sqlpackage.exe的哪个操作？",
+      "options": {
+        "A": "/Action:Extract",
+        "B": "/Action:Publish",
+        "C": "/Action:Script",
+        "D": "/Action:DeployReport"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "/Action:DeployReport生成XML报告，列出将要执行的所有更改，包括任何可能导致数据丢失的操作(如删除列或表)。这允许在实际部署之前审查更改，是CI/CD管道中的安全最佳实践。",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q22",
+      "domain": 5,
+      "question": "Azure SQL Database的自动故障转移组支持的最大辅助区域数量是多少？",
+      "options": {
+        "A": "1个",
+        "B": "2个",
+        "C": "4个",
+        "D": "无限制"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "自动故障转移组支持一个主区域和一个辅助区域(1对1配置)。如果需要多个只读副本或多区域部署，可以结合使用活动异地复制(支持最多4个可读辅助数据库)。故障转移组专注于自动化灾难恢复。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q23",
+      "domain": 5,
+      "question": "配置Azure SQL Database故障转移组时，自动故障转移的宽限期设置有什么作用？",
+      "options": {
+        "A": "定义备份保留时间",
+        "B": "定义检测到中断后等待多长时间才触发自动故障转移",
+        "C": "定义数据同步的间隔",
+        "D": "定义只读路由的超时时间"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "宽限期(GracePeriodWithDataLossHours)定义检测到中断后系统等待多长时间才执行自动故障转移。这可以防止由于短暂网络问题导致不必要的故障转移。默认为1小时，可以根据业务需求调整(最小1小时)。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q24",
+      "domain": 5,
+      "question": "Azure SQL Managed Instance的区域冗余配置提供什么级别的保护？",
+      "options": {
+        "A": "保护免受数据中心故障影响",
+        "B": "保护免受整个区域故障影响",
+        "C": "保护免受数据损坏",
+        "D": "保护免受意外删除"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "区域冗余(Zone-redundant)将数据库副本分布在同一区域内的多个可用性区域中。如果一个数据中心(可用性区域)发生故障，服务会自动故障转移到另一个区域。这提供高可用性，但不保护免受整个区域故障。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q25",
+      "domain": 5,
+      "question": "执行Azure SQL Database的时间点还原(PITR)时，可以还原到什么精度的时间点？",
+      "options": {
+        "A": "最近的完整备份",
+        "B": "最近的差异备份",
+        "C": "任意一秒的精度",
+        "D": "最近的日志备份"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "Azure SQL Database的时间点还原支持还原到保留期内任意一秒的精度。系统使用完整备份、差异备份和事务日志备份的组合来重建数据库到指定的精确时间点。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q26",
+      "domain": 5,
+      "question": "一家公司需要保留Azure SQL Database的备份10年以满足法规要求。应该配置什么功能？",
+      "options": {
+        "A": "增加短期备份保留期到35天",
+        "B": "配置长期保留(LTR)策略",
+        "C": "配置异地复制",
+        "D": "启用审计日志"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "长期保留(LTR)允许将完整数据库备份存储在Azure Blob存储中长达10年。可以配置每周、每月和每年备份的保留策略。短期备份(PITR)最长只能保留35天，不足以满足长期合规要求。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q27",
+      "domain": 1,
+      "question": "使用Azure SQL Database弹性池时，如何确定池是否正确配置？",
+      "options": {
+        "A": "检查每个数据库的存储使用量",
+        "B": "监控池的eDTU或vCore使用率，确保未持续达到100%",
+        "C": "验证所有数据库使用相同的服务层级",
+        "D": "检查网络延迟"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "弹性池应该有足够的资源来处理所有数据库的聚合工作负载。如果池的eDTU/vCore使用率持续达到100%，可能需要增加池的大小或将繁忙的数据库移出池。Azure门户的资源利用率图表可以帮助监控这一点。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q28",
+      "domain": 1,
+      "question": "Azure SQL Database超大规模(Hyperscale)服务层级的主要架构优势是什么？",
+      "options": {
+        "A": "完全兼容本地SQL Server",
+        "B": "计算和存储分离，支持快速缩放和大型数据库",
+        "C": "内置机器学习功能",
+        "D": "免费的异地复制"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "超大规模使用分布式存储架构，将计算和存储解耦。这允许快速扩展计算(几秒内)和存储(最高100TB)，以及几乎即时的数据库备份(基于快照)和快速的时间点恢复。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q29",
+      "domain": 2,
+      "question": "为了防止SQL注入攻击，除了参数化查询外，Azure SQL Database还提供什么内置保护？",
+      "options": {
+        "A": "透明数据加密",
+        "B": "高级威胁防护(ATP)",
+        "C": "行级安全性",
+        "D": "Always Encrypted"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "高级威胁防护(ATP)可以检测异常数据库活动，包括潜在的SQL注入攻击。它使用机器学习分析数据库流量，当检测到可疑模式时会发出警报。这是应用程序级安全措施的补充。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q30",
+      "domain": 2,
+      "question": "Azure SQL Database的账户锁定策略是如何工作的？",
+      "options": {
+        "A": "5次失败后锁定30分钟",
+        "B": "由Azure AD条件访问策略控制",
+        "C": "使用SQL身份验证时没有内置锁定，需使用Azure AD",
+        "D": "3次失败后永久锁定"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "SQL身份验证没有内置的账户锁定机制来防止暴力攻击。建议使用Azure AD身份验证，它支持条件访问策略、多重身份验证和智能锁定。Azure AD智能锁定可以在检测到暴力攻击时临时锁定账户。",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q31",
+      "domain": 3,
+      "question": "Azure SQL Database的自动暂停功能在什么情况下会激活？",
+      "options": {
+        "A": "当DTU使用率低于50%时",
+        "B": "在配置的非活动期后（仅无服务器计算层）",
+        "C": "每天午夜自动暂停",
+        "D": "当成本超过预算时"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "自动暂停是无服务器计算层的功能。当数据库在配置的延迟期(最短1小时)内没有活动时，计算资源会自动暂停，暂停期间只收取存储费用。当检测到连接请求时，数据库会自动恢复。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q32",
+      "domain": 3,
+      "question": "哪个Azure门户功能可以显示Azure SQL Database的建议索引以及创建索引对性能的预估影响？",
+      "options": {
+        "A": "查询存储",
+        "B": "性能建议(Database Advisor)",
+        "C": "Azure Advisor",
+        "D": "活动日志"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "性能建议(Database Advisor)分析查询工作负载，提供创建索引、删除索引和参数化查询的建议。每个建议都显示预估的性能改进百分比。可以手动应用建议或启用自动调优来自动实施。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q33",
+      "domain": 3,
+      "question": "在分析Azure SQL Database性能问题时，PAGEIOLATCH_*等待类型表示什么问题？",
+      "options": {
+        "A": "CPU瓶颈",
+        "B": "存储I/O瓶颈",
+        "C": "网络延迟",
+        "D": "锁争用"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "PAGEIOLATCH_*等待类型表示查询正在等待从存储读取数据页到内存。高PAGEIOLATCH等待通常表示I/O瓶颈，可能需要优化查询减少I/O、添加索引，或升级到具有更高I/O性能的服务层级。",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q34",
+      "domain": 4,
+      "question": "使用Azure Logic Apps自动响应Azure SQL Database警报有什么优势？",
+      "options": {
+        "A": "可以执行复杂的工作流程，如发送通知后执行补救操作",
+        "B": "仅能发送电子邮件",
+        "C": "可以直接修改数据库架构",
+        "D": "自动优化查询性能"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Azure Logic Apps可以创建响应Azure Monitor警报的工作流程。例如，当检测到高CPU时，可以自动发送Teams消息、创建服务工单、执行Azure Automation Runbook来缩放数据库，实现自动化事件响应。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q35",
+      "domain": 5,
+      "question": "在Azure SQL Database的活动异地复制中，辅助数据库有什么限制？",
+      "options": {
+        "A": "不能执行任何查询",
+        "B": "只能执行只读查询",
+        "C": "可以执行读写操作",
+        "D": "只能用于备份"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "活动异地复制的辅助数据库是可读的。可以将只读工作负载(如报表、分析查询)路由到辅助数据库以分散主数据库的负载。在故障转移后，辅助数据库将成为主数据库，可以接受写操作。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q36",
+      "domain": 5,
+      "question": "执行Azure SQL Managed Instance的手动故障转移到辅助区域时，应该执行什么操作？",
+      "options": {
+        "A": "在辅助实例上执行ALTER DATABASE",
+        "B": "使用故障转移组执行计划内故障转移",
+        "C": "重新创建数据库",
+        "D": "更改DNS记录"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "计划内故障转移通过故障转移组执行，使用Azure门户、PowerShell或CLI。过程中会确保数据完全同步，然后切换主/辅助角色。故障转移组的侦听器端点会自动更新，无需手动更改DNS。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q37",
+      "domain": 1,
+      "question": "选择Azure SQL Database的DTU和vCore购买模型时，哪种场景更适合vCore模型？",
+      "options": {
+        "A": "工作负载简单且预算有限",
+        "B": "需要独立控制计算和存储资源，或使用Azure混合权益",
+        "C": "只需要基本的数据库功能",
+        "D": "数据库大小小于1GB"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "vCore模型提供更大的灵活性，允许独立配置计算(vCores)和存储资源。它支持Azure混合权益(BYOL)，可以使用现有SQL Server许可证节省成本。还支持无服务器计算层，适合可变工作负载。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q38",
+      "domain": 2,
+      "question": "配置Azure SQL Database的客户管理密钥(CMK)用于透明数据加密(TDE)有什么好处？",
+      "options": {
+        "A": "提高查询性能",
+        "B": "完全控制加密密钥的生命周期和访问",
+        "C": "减少存储成本",
+        "D": "加快备份速度"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "使用客户管理密钥(存储在Azure Key Vault中)进行TDE，您可以完全控制密钥的创建、轮换、禁用和删除。这满足某些合规要求，并允许在需要时通过删除密钥来\"断开\"对数据的访问。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q39",
+      "domain": 3,
+      "question": "Azure SQL Database的资源限制(如最大并发工作线程数)达到时会发生什么？",
+      "options": {
+        "A": "数据库自动升级",
+        "B": "新连接请求将被阻塞或拒绝",
+        "C": "数据库自动重启",
+        "D": "自动切换到辅助副本"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "当达到资源限制(如最大并发工作线程数或会话数)时，新的连接请求将收到错误并被拒绝。应用程序应该实施重试逻辑来处理这些临时限制。需要优化工作负载或升级服务层级来解决持续的资源限制问题。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q40",
+      "domain": 5,
+      "question": "Azure SQL Database使用异地冗余备份存储(GRS)时，备份存储在哪里？",
+      "options": {
+        "A": "仅在主区域",
+        "B": "主区域和配对区域",
+        "C": "所有Azure区域",
+        "D": "用户指定的任意区域"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "异地冗余备份存储(GRS)将备份复制到Azure配对区域，即使主区域完全不可用也能恢复数据库。备份在主区域存储3个副本，在配对区域存储额外3个副本，提供高持久性。",
+      "difficulty": "medium"
+    }
+  ]
+}

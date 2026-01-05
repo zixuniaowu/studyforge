@@ -1,0 +1,663 @@
+{
+  "exam": {
+    "id": "gcp-adp-set3-ja",
+    "name": "Associate Data Practitioner 練習問題 Set 3",
+    "code": "ADP",
+    "provider": "Google Cloud",
+    "language": "ja",
+    "description": "Google Cloud データプラクティショナー認定練習問題セット3",
+    "totalQuestions": 40,
+    "passingScore": 70,
+    "examTime": 120,
+    "domains": [
+      "データ分析と探索",
+      "データ準備と統合",
+      "機械学習の基礎",
+      "ビジネスインテリジェンスと可視化",
+      "データガバナンスとセキュリティ"
+    ],
+    "tags": ["GCP", "Data", "BigQuery", "Looker", "データ分析"]
+  },
+  "questions": [
+    {
+      "id": "gcp-adp-s3-ja-q1",
+      "examId": "gcp-adp-set3-ja",
+      "setNumber": 3,
+      "domain": "データ分析と探索",
+      "question": "BigQuery で大きなテーブルに対して近似ユニークカウントを実行してパフォーマンスを向上させる必要があります。どの関数を使用すべきですか？",
+      "options": {
+        "A": "COUNT(DISTINCT column)",
+        "B": "APPROX_COUNT_DISTINCT(column)",
+        "C": "UNIQUE_COUNT(column)",
+        "D": "DISTINCT_COUNT(column)"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "APPROX_COUNT_DISTINCT は HyperLogLog++ アルゴリズムを使用して近似ユニークカウントを提供し、正確な COUNT(DISTINCT) よりもはるかに高速で、特に大規模データセットで効果的です。誤差は通常 1% 以内で、正確なカウントが不要なシナリオに適しています。"
+    },
+    {
+      "id": "gcp-adp-s3-ja-q2",
+      "examId": "gcp-adp-set3-ja",
+      "setNumber": 3,
+      "domain": "データ準備と統合",
+      "question": "BigQuery から Google Sheets にデータを同期して共同分析を行う必要があります。どの機能を使用すべきですか？",
+      "options": {
+        "A": "CSV をエクスポートしてから手動でインポートする",
+        "B": "BigQuery Connected Sheets",
+        "C": "コピー＆ペースト",
+        "D": "API 呼び出し"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "BigQuery Connected Sheets を使用すると、Google Sheets から BigQuery データを直接クエリして分析でき、エクスポートする必要がありません。ユーザーは使い慣れたスプレッドシートインターフェースを使用しながら、BigQuery の処理能力を活用して大規模データを処理できます。"
+    },
+    {
+      "id": "gcp-adp-s3-ja-q3",
+      "examId": "gcp-adp-set3-ja",
+      "setNumber": 3,
+      "domain": "機械学習の基礎",
+      "question": "BigQuery ML で、トレーニング済みのモデルを他の環境にデプロイするためにエクスポートするにはどうすればよいですか？",
+      "options": {
+        "A": "エクスポートできない",
+        "B": "EXPORT MODEL ステートメントを使用して Cloud Storage にエクスポートする",
+        "C": "モデルコードをコピーする",
+        "D": "スクリーンショットで保存する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "EXPORT MODEL ステートメントを使用して、BigQuery ML モデルを Cloud Storage にエクスポートできます。エクスポートされたモデルは、Vertex AI などの他のプラットフォームで使用したり、TensorFlow Serving を使用してデプロイしたりできます。"
+    },
+    {
+      "id": "gcp-adp-s3-ja-q4",
+      "examId": "gcp-adp-set3-ja",
+      "setNumber": 3,
+      "domain": "ビジネスインテリジェンスと可視化",
+      "question": "Looker で Derived Table（派生テーブル）とは何ですか？",
+      "options": {
+        "A": "他のデータベースからコピーされたテーブル",
+        "B": "SQL クエリによって動的に作成される仮想テーブル",
+        "C": "暗号化されたテーブル",
+        "D": "圧縮されたテーブル"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "派生テーブルは LookML で SQL クエリを使用して定義される仮想テーブルです。クエリごとに動的に計算されるか、永続的に保存される（PDT）かのいずれかです。派生テーブルは複雑なデータ変換や事前集計を作成するために使用されます。"
+    },
+    {
+      "id": "gcp-adp-s3-ja-q5",
+      "examId": "gcp-adp-set3-ja",
+      "setNumber": 3,
+      "domain": "データガバナンスとセキュリティ",
+      "question": "許可されたアプリケーションのみが BigQuery API にアクセスできるようにする必要があります。何を使用すべきですか？",
+      "options": {
+        "A": "API キー",
+        "B": "サービスアカウントと OAuth 2.0",
+        "C": "ユーザー名とパスワード",
+        "D": "IP ホワイトリスト"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "サービスアカウントはアプリケーション認証の推奨方法です。OAuth 2.0 と IAM 権限を組み合わせることで、どのアプリケーションがどの BigQuery リソースにアクセスできるかを正確に制御できます。API キーは十分なセキュリティを提供しません。"
+    },
+    {
+      "id": "gcp-adp-s3-ja-q6",
+      "examId": "gcp-adp-set3-ja",
+      "setNumber": 3,
+      "domain": "データ分析と探索",
+      "question": "BigQuery で日付でパーティション化され、顧客 ID でクラスタ化されたテーブルを作成するにはどうすればよいですか？",
+      "options": {
+        "A": "CREATE INDEX を使用する",
+        "B": "CREATE TABLE で PARTITION BY と CLUSTER BY を使用する",
+        "C": "ALTER TABLE を使用する",
+        "D": "パーティションとクラスタリングを同時に使用できない"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "CREATE TABLE ステートメントで、PARTITION BY（日付でパーティション化）と CLUSTER BY（指定された列でクラスタリング）を同時に使用できます。例：CREATE TABLE ... PARTITION BY DATE(timestamp) CLUSTER BY customer_id。"
+    },
+    {
+      "id": "gcp-adp-s3-ja-q7",
+      "examId": "gcp-adp-set3-ja",
+      "setNumber": 3,
+      "domain": "データ準備と統合",
+      "question": "BigQuery テーブルのデータが期待される形式と範囲に準拠していることを検証する必要があります。どのツールを使用すべきですか？",
+      "options": {
+        "A": "Cloud Monitoring",
+        "B": "Dataplex データ品質タスク",
+        "C": "Cloud Logging",
+        "D": "Cloud Trace"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Dataplex データ品質タスクを使用すると、NULL 値チェック、範囲検証、形式検証などのデータ品質ルールを定義できます。自動的に実行してデータ品質レポートを生成し、データの健全性を監視するのに役立ちます。"
+    },
+    {
+      "id": "gcp-adp-s3-ja-q8",
+      "examId": "gcp-adp-set3-ja",
+      "setNumber": 3,
+      "domain": "機械学習の基礎",
+      "question": "BigQuery ML でレコメンデーションシステムを作成するにはどのモデルタイプを使用すべきですか？",
+      "options": {
+        "A": "LINEAR_REG",
+        "B": "MATRIX_FACTORIZATION",
+        "C": "KMEANS",
+        "D": "LOGISTIC_REG"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "MATRIX_FACTORIZATION（行列分解）はレコメンデーションシステムを構築するためのモデルタイプです。ユーザー-アイテムインタラクション行列を分解して潜在因子を発見し、ユーザーがまだインタラクションしていないアイテムへの嗜好を予測できます。"
+    },
+    {
+      "id": "gcp-adp-s3-ja-q9",
+      "examId": "gcp-adp-set3-ja",
+      "setNumber": 3,
+      "domain": "ビジネスインテリジェンスと可視化",
+      "question": "Looker Studio でドリルダウン機能を実装し、ユーザーがサマリーデータをクリックして詳細データを表示できるようにするにはどうすればよいですか？",
+      "options": {
+        "A": "パラメータを使用する",
+        "B": "グラフのインタラクションとリンクを構成する",
+        "C": "計算フィールドを使用する",
+        "D": "データブレンド"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "グラフのインタラクションを構成することで、データポイントをクリックしたときに別のページまたはレポートに移動し、フィルター条件を渡すように設定できます。これにより、サマリーから詳細へのドリルダウン機能が実現し、ユーザーがデータを深く分析できるようになります。"
+    },
+    {
+      "id": "gcp-adp-s3-ja-q10",
+      "examId": "gcp-adp-set3-ja",
+      "setNumber": 3,
+      "domain": "データガバナンスとセキュリティ",
+      "question": "BigQuery にデータアクセス承認プロセスを実装し、機密データへのアクセスにはマネージャーの承認が必要にする必要があります。何を使用すべきですか？",
+      "options": {
+        "A": "IAM 条件",
+        "B": "Access Approval",
+        "C": "Cloud Armor",
+        "D": "Cloud NAT"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Access Approval を使用すると、機密リソースへのアクセスには明示的な承認が必要になります。ユーザーがアクセスをリクエストすると、指定された承認者に通知が届き、承認するかどうかを決定します。これにより、機密データへのアクセスの制御が強化されます。"
+    },
+    {
+      "id": "gcp-adp-s3-ja-q11",
+      "examId": "gcp-adp-set3-ja",
+      "setNumber": 3,
+      "domain": "データ分析と探索",
+      "question": "BigQuery で過去 7 日間のデータスナップショットをクエリする必要があります。どの機能を使用すべきですか？",
+      "options": {
+        "A": "バックアップリストア",
+        "B": "タイムトラベル（Time Travel）",
+        "C": "バージョン管理",
+        "D": "増分スナップショット"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "BigQuery のタイムトラベル機能を使用すると、過去最大 7 日間の任意の時点のデータ状態をクエリできます。FOR SYSTEM_TIME AS OF 句を使用して履歴データにアクセスでき、データが更新または削除されていても可能です。"
+    },
+    {
+      "id": "gcp-adp-s3-ja-q12",
+      "examId": "gcp-adp-set3-ja",
+      "setNumber": 3,
+      "domain": "データ準備と統合",
+      "question": "Apache Spark を使用して Cloud Storage に保存されているデータを処理し、結果を BigQuery に書き込む必要があります。どのサービスを使用すべきですか？",
+      "options": {
+        "A": "Cloud Functions",
+        "B": "Dataproc",
+        "C": "App Engine",
+        "D": "Cloud Run"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Dataproc はマネージド Apache Spark および Hadoop サービスです。クラスターをすばやく作成して Spark ジョブを実行し、Cloud Storage 内のデータを処理し、BigQuery コネクタを使用して結果を BigQuery に直接書き込むことができます。"
+    },
+    {
+      "id": "gcp-adp-s3-ja-q13",
+      "examId": "gcp-adp-set3-ja",
+      "setNumber": 3,
+      "domain": "機械学習の基礎",
+      "question": "機械学習で「バイアス-バリアンス・トレードオフ」とは何ですか？",
+      "options": {
+        "A": "データサイズと処理速度のトレードオフ",
+        "B": "モデルの複雑さと汎化能力のトレードオフ",
+        "C": "コストとパフォーマンスのトレードオフ",
+        "D": "ストレージとコンピューティングのトレードオフ"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "バイアス-バリアンス・トレードオフは、モデルの複雑さと汎化能力の関係を説明しています。高バイアス（シンプルなモデル）は過小適合を引き起こす可能性があり、高バリアンス（複雑なモデル）は過学習を引き起こす可能性があります。目標は総誤差が最小になるバランスポイントを見つけることです。"
+    },
+    {
+      "id": "gcp-adp-s3-ja-q14",
+      "examId": "gcp-adp-set3-ja",
+      "setNumber": 3,
+      "domain": "ビジネスインテリジェンスと可視化",
+      "question": "Looker で Look とは何ですか？",
+      "options": {
+        "A": "データベース接続",
+        "B": "保存されたクエリとビジュアライゼーション",
+        "C": "ユーザーロール",
+        "D": "データモデル"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Look は Looker で保存されたクエリ結果とビジュアライゼーションです。ユーザーは Explore でクエリを作成し、後でアクセスしたり他の人と共有したりするために Look として保存できます。Look はダッシュボードに追加できます。"
+    },
+    {
+      "id": "gcp-adp-s3-ja-q15",
+      "examId": "gcp-adp-set3-ja",
+      "setNumber": 3,
+      "domain": "データガバナンスとセキュリティ",
+      "question": "BigQuery の個人データを識別して追跡し、コンプライアンス要件を満たす必要があります。何を使用すべきですか？",
+      "options": {
+        "A": "Cloud Logging",
+        "B": "Data Catalog タグと分類法",
+        "C": "Cloud Monitoring",
+        "D": "Cloud Trace"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Data Catalog のタグと分類法機能を使用すると、個人データを含む列にタグを付け、データ分類（PII、機密、公開など）を作成し、組織全体で機密データの場所を追跡できます。これは GDPR などのコンプライアンス要件を満たすのに役立ちます。"
+    },
+    {
+      "id": "gcp-adp-s3-ja-q16",
+      "examId": "gcp-adp-set3-ja",
+      "setNumber": 3,
+      "domain": "データ分析と探索",
+      "question": "BigQuery で、同じユーザーの 30 分以内のアクティビティを 1 つのセッションとしてグループ化するセッションを計算するにはどうすればよいですか？",
+      "options": {
+        "A": "GROUP BY ユーザー ID を使用する",
+        "B": "ウィンドウ関数と条件ロジックを使用してセッション境界を特定する",
+        "C": "DISTINCT を使用する",
+        "D": "UNION を使用する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "セッションを計算するには、ウィンドウ関数を使用して連続するイベント間の時間差を比較する必要があります。時間差が 30 分を超える場合、新しいセッションが開始されます。LAG 関数を使用して前のイベント時間を取得し、SUM を使用してセッション ID を累積します。"
+    },
+    {
+      "id": "gcp-adp-s3-ja-q17",
+      "examId": "gcp-adp-set3-ja",
+      "setNumber": 3,
+      "domain": "データ準備と統合",
+      "question": "毎日深夜に自動的に実行され、結果をターゲットテーブルに追加する BigQuery クエリを作成する必要があります。何を使用すべきですか？",
+      "options": {
+        "A": "Cloud Scheduler が Cloud Functions を呼び出す",
+        "B": "BigQuery Scheduled Queries",
+        "C": "Cron ジョブ",
+        "D": "手動実行"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "BigQuery Scheduled Queries は、スケジュールに従ってクエリを自動的に実行するように構成できる組み込み機能です。実行時間、ターゲットテーブル、書き込みモード（追加、上書き、空のテーブルに書き込み）などを設定でき、追加のインフラストラクチャは必要ありません。"
+    },
+    {
+      "id": "gcp-adp-s3-ja-q18",
+      "examId": "gcp-adp-set3-ja",
+      "setNumber": 3,
+      "domain": "機械学習の基礎",
+      "question": "BigQuery ML でクラス不均衡のある分類問題を処理するにはどうすればよいですか？",
+      "options": {
+        "A": "不均衡を無視する",
+        "B": "CLASS_WEIGHT パラメータを使用してクラス重みを調整する",
+        "C": "データ量を削減する",
+        "D": "多数クラスのみを使用する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "正負サンプルの比率が著しく不均衡な場合、CREATE MODEL で CLASS_WEIGHT パラメータを使用して少数クラスに高い重みを設定するか、AUTO_CLASS_WEIGHT を使用して BigQuery が自動的にバランスを取るようにできます。これにより、モデルが少数クラスをよりよく学習できます。"
+    },
+    {
+      "id": "gcp-adp-s3-ja-q19",
+      "examId": "gcp-adp-set3-ja",
+      "setNumber": 3,
+      "domain": "ビジネスインテリジェンスと可視化",
+      "question": "Looker Studio で目標達成進捗を表示するダッシュボードを作成するにはどうすればよいですか？",
+      "options": {
+        "A": "円グラフ",
+        "B": "ゲージチャート（Gauge Chart）またはプログレスバー",
+        "C": "地図",
+        "D": "散布図"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "ゲージチャート（Gauge Chart）またはプログレスバーは目標達成進捗を表示するのに最適です。現在の値と目標値の比較を視覚的に示し、色分け（目標達成は緑、未達成は赤など）を使用して状態をすばやく理解できるようにします。"
+    },
+    {
+      "id": "gcp-adp-s3-ja-q20",
+      "examId": "gcp-adp-set3-ja",
+      "setNumber": 3,
+      "domain": "データガバナンスとセキュリティ",
+      "question": "BigQuery に保存されているデータを暗号化したいが、独自のキーを使用してキーローテーションを管理したい場合、何を使用すべきですか？",
+      "options": {
+        "A": "デフォルトの Google 管理暗号化",
+        "B": "Cloud KMS を使用した顧客管理暗号化キー（CMEK）",
+        "C": "クライアント側暗号化",
+        "D": "暗号化しない"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "CMEK（顧客管理暗号化キー）を使用すると、Cloud KMS で暗号化キーを作成して管理できます。キーローテーションポリシー、アクセス権限を制御でき、いつでもキーを取り消してデータにアクセスできなくすることができます。これはデフォルトの暗号化よりも多くの制御を提供します。"
+    },
+    {
+      "id": "gcp-adp-s3-ja-q21",
+      "examId": "gcp-adp-set3-ja",
+      "setNumber": 3,
+      "domain": "データ分析と探索",
+      "question": "BigQuery で超大規模な結果セットの処理を避けるためのベストプラクティスは何ですか？",
+      "options": {
+        "A": "制限を使用しない",
+        "B": "ページネーション、LIMIT 句を使用するか、結果をテーブルに書き込む",
+        "C": "メモリを増やす",
+        "D": "より大きな VM を使用する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "大規模な結果セットを処理するためのベストプラクティスには、LIMIT 句を使用して返される行数を制限する、ページネーション（OFFSET）を使用してバッチ処理する、または結果をクライアントに直接返さずにターゲットテーブルに書き込むなどがあります。これにより、メモリオーバーフローやタイムアウトを回避できます。"
+    },
+    {
+      "id": "gcp-adp-s3-ja-q22",
+      "examId": "gcp-adp-set3-ja",
+      "setNumber": 3,
+      "domain": "データ準備と統合",
+      "question": "Google Analytics 4 データを BigQuery にエクスポートして高度な分析を行う必要があります。何を使用すべきですか？",
+      "options": {
+        "A": "CSV を手動でエクスポートする",
+        "B": "GA4 の BigQuery リンク機能",
+        "C": "API 呼び出し",
+        "D": "スクリーンショット"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Google Analytics 4 は組み込みの BigQuery リンク機能を提供し、生のイベントデータを BigQuery に自動的にエクスポートできます。これにより、サンプリングされていない完全なデータに対して高度な分析を行い、SQL を使用してカスタムレポートを作成できます。"
+    },
+    {
+      "id": "gcp-adp-s3-ja-q23",
+      "examId": "gcp-adp-set3-ja",
+      "setNumber": 3,
+      "domain": "機械学習の基礎",
+      "question": "BigQuery ML で予測を行う前に、なぜ特徴スケーリングが必要ですか？",
+      "options": {
+        "A": "ストレージスペースを削減するため",
+        "B": "異なるスケールの特徴のモデルへの貢献を同等にするため",
+        "C": "データインポートを高速化するため",
+        "D": "セキュリティ要件を満たすため"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "異なる特徴は異なる数値範囲を持つ場合があります（例：年齢 0-100、収入 0-1000000）。スケーリングを行わないと、数値範囲の大きい特徴がモデルを支配します。標準化または正規化により、すべての特徴のモデルへの貢献が同等になります。"
+    },
+    {
+      "id": "gcp-adp-s3-ja-q24",
+      "examId": "gcp-adp-set3-ja",
+      "setNumber": 3,
+      "domain": "ビジネスインテリジェンスと可視化",
+      "question": "Looker で、異なるタイムゾーンのユーザーが正しいローカル時間のデータを表示できるようにするにはどうすればよいですか？",
+      "options": {
+        "A": "手動でタイムゾーンを変換する",
+        "B": "LookML でタイムゾーン変換を構成する",
+        "C": "UTC 時間のみを表示する",
+        "D": "タイムゾーンの違いを無視する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Looker は LookML でタイムゾーン処理を構成することをサポートしています。ユーザー属性を設定してユーザーのタイムゾーンを保存し、モデルで convert_tz パラメータを使用して時間をユーザーのローカルタイムゾーンに変換できます。これにより、各ユーザーが正しい時間を表示できます。"
+    },
+    {
+      "id": "gcp-adp-s3-ja-q25",
+      "examId": "gcp-adp-set3-ja",
+      "setNumber": 3,
+      "domain": "データガバナンスとセキュリティ",
+      "question": "BigQuery の使用状況とコストを監視し、高コストのクエリとユーザーを特定する必要があります。何を使用すべきですか？",
+      "options": {
+        "A": "Cloud Trace",
+        "B": "INFORMATION_SCHEMA ビューと Cloud Billing",
+        "C": "Cloud Debugger",
+        "D": "Cloud Profiler"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "BigQuery の INFORMATION_SCHEMA ビューは、各クエリのスキャンされたバイト数、ユーザー、実行時間などの詳細なジョブ履歴を提供します。Cloud Billing のエクスポートを BigQuery と組み合わせることで、コストを分析して最適化の機会を特定できます。"
+    },
+    {
+      "id": "gcp-adp-s3-ja-q26",
+      "examId": "gcp-adp-set3-ja",
+      "setNumber": 3,
+      "domain": "データ分析と探索",
+      "question": "BigQuery でネストされた REPEATED フィールドを効率的にクエリするにはどうすればよいですか？",
+      "options": {
+        "A": "JOIN を使用する",
+        "B": "UNNEST を使用し、オプションで CROSS JOIN と組み合わせる",
+        "C": "UNION を使用する",
+        "D": "クエリできない"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "UNNEST 関数は REPEATED（配列）フィールドを行に展開するために使用されます。通常、CROSS JOIN と組み合わせて使用します：FROM table CROSS JOIN UNNEST(array_column) AS item。これにより、通常のテーブルをクエリするようにネストされたデータをクエリできます。"
+    },
+    {
+      "id": "gcp-adp-s3-ja-q27",
+      "examId": "gcp-adp-set3-ja",
+      "setNumber": 3,
+      "domain": "データ準備と統合",
+      "question": "半構造化の JSON ログデータを処理し、特定のフィールドを解析して BigQuery にロードする必要があります。どの方法を使用すべきですか？",
+      "options": {
+        "A": "JSON を手動で編集する",
+        "B": "Dataflow と JSON 解析関数を使用する",
+        "C": "処理せずに直接ロードする",
+        "D": "テキストエディタを使用する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Dataflow は Apache Beam の JSON 解析機能を使用して半構造化ログを処理できます。特定のフィールドを抽出し、ネストされた構造を処理し、結果を BigQuery の構造化テーブルに書き込む変換ロジックを定義できます。"
+    },
+    {
+      "id": "gcp-adp-s3-ja-q28",
+      "examId": "gcp-adp-set3-ja",
+      "setNumber": 3,
+      "domain": "機械学習の基礎",
+      "question": "BigQuery ML で ML.GLOBAL_EXPLAIN 関数の用途は何ですか？",
+      "options": {
+        "A": "個々の予測結果を説明する",
+        "B": "モデルレベルの特徴重要度の説明を提供する",
+        "C": "モデルをエクスポートする",
+        "D": "モデルのパフォーマンスを評価する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "ML.GLOBAL_EXPLAIN はモデルレベルの特徴重要度の説明を提供し、各特徴がモデル全体にどの程度貢献しているかを示します。これはモデルの決定根拠を理解し、特徴選択を行い、利害関係者にモデルを説明するのに役立ちます。"
+    },
+    {
+      "id": "gcp-adp-s3-ja-q29",
+      "examId": "gcp-adp-set3-ja",
+      "setNumber": 3,
+      "domain": "ビジネスインテリジェンスと可視化",
+      "question": "Looker Studio で、データソースのフィールド名が変更されたことによるレポートエラーを処理するにはどうすればよいですか？",
+      "options": {
+        "A": "レポートを再作成する",
+        "B": "フィールドマッピングを使用して参照を更新する",
+        "C": "エラーを無視する",
+        "D": "関連するグラフを削除する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "データソースのフィールド名が変更された場合、Looker Studio はフィールドマッピング機能を提供して参照を更新します。データソース編集インターフェースでフィールドを再マッピングでき、レポート全体を再作成する必要はありません。"
+    },
+    {
+      "id": "gcp-adp-s3-ja-q30",
+      "examId": "gcp-adp-set3-ja",
+      "setNumber": 3,
+      "domain": "データガバナンスとセキュリティ",
+      "question": "BigQuery データセットが特定の VPC ネットワークからのみアクセスできるようにする必要があります。何を使用すべきですか？",
+      "options": {
+        "A": "IAM 権限",
+        "B": "VPC Service Controls",
+        "C": "Cloud NAT",
+        "D": "Cloud DNS"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "VPC Service Controls はセキュリティ境界を作成し、承認された VPC ネットワークからのみデータにアクセスできるように制限します。アクセスレベルを構成して、許可された IP 範囲または VPC ネットワークを指定し、信頼されていないネットワークからのデータ漏洩を防ぎます。"
+    },
+    {
+      "id": "gcp-adp-s3-ja-q31",
+      "examId": "gcp-adp-set3-ja",
+      "setNumber": 3,
+      "domain": "データ分析と探索",
+      "question": "BigQuery でパーセンタイル（例：中央値）を計算するにはどうすればよいですか？",
+      "options": {
+        "A": "AVG 関数を使用する",
+        "B": "PERCENTILE_CONT または PERCENTILE_DISC 関数を使用する",
+        "C": "SUM 関数を使用する",
+        "D": "COUNT 関数を使用する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "PERCENTILE_CONT（連続）と PERCENTILE_DISC（離散）関数はパーセンタイルを計算するために使用されます。例えば、中央値は PERCENTILE_CONT(column, 0.5) です。CONT は補間結果を返し、DISC は実際に存在する値を返します。"
+    },
+    {
+      "id": "gcp-adp-s3-ja-q32",
+      "examId": "gcp-adp-set3-ja",
+      "setNumber": 3,
+      "domain": "データ準備と統合",
+      "question": "ストリーミングデータを数分遅延させてから処理し、データの完全性チェックを行う必要があります。どの Dataflow 機能を使用すべきですか？",
+      "options": {
+        "A": "即時処理",
+        "B": "ウィンドウとウォーターマーク（Windowing and Watermarks）",
+        "C": "バッチ処理",
+        "D": "遅延データを無視する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Dataflow のウィンドウとウォーターマーク機能を使用すると、イベント時間データと遅延到着データを処理できます。許容される遅延時間を設定でき、その期間中は遅延データを受信して処理し続け、データの完全性を確保します。"
+    },
+    {
+      "id": "gcp-adp-s3-ja-q33",
+      "examId": "gcp-adp-set3-ja",
+      "setNumber": 3,
+      "domain": "機械学習の基礎",
+      "question": "BigQuery ML でモデルをトレーニングする際、正則化（Regularization）の役割は何ですか？",
+      "options": {
+        "A": "トレーニング速度を上げる",
+        "B": "過学習を防ぎ、モデルの汎化能力を向上させる",
+        "C": "モデルの複雑さを増す",
+        "D": "ストレージ要件を削減する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "正則化（L1、L2 など）は損失関数にペナルティ項を追加してモデルの複雑さを制限します。これは過学習を防ぎ、モデルが未知のデータでより良いパフォーマンスを発揮するのに役立ちます。BigQuery ML はモデルオプションで正則化パラメータを構成することをサポートしています。"
+    },
+    {
+      "id": "gcp-adp-s3-ja-q34",
+      "examId": "gcp-adp-set3-ja",
+      "setNumber": 3,
+      "domain": "ビジネスインテリジェンスと可視化",
+      "question": "Looker で Scheduled Delivery 機能とは何ですか？",
+      "options": {
+        "A": "データインポートスケジューリング",
+        "B": "スケジュールに従ってレポートを自動的にメールや他の宛先に送信する",
+        "C": "モデルデプロイメントスケジューリング",
+        "D": "データベースバックアップスケジューリング"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Scheduled Delivery を使用すると、ユーザーは Look または Dashboard をスケジュール（毎日、毎週など）に従って自動的にメール、Slack、SFTP、または他の宛先に送信するように設定できます。これにより、利害関係者が定期的に最新のデータインサイトを受け取ることができます。"
+    },
+    {
+      "id": "gcp-adp-s3-ja-q35",
+      "examId": "gcp-adp-set3-ja",
+      "setNumber": 3,
+      "domain": "データガバナンスとセキュリティ",
+      "question": "機密の BigQuery データが許可されていないプロジェクトにコピーされないようにする必要があります。何を使用すべきですか？",
+      "options": {
+        "A": "IAM のみを使用する",
+        "B": "組織ポリシー制約と VPC Service Controls を組み合わせる",
+        "C": "データを暗号化する",
+        "D": "すべてのアクセスを無効にする"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "組織ポリシーはリソースを作成できる場所を制限でき、VPC Service Controls はデータの流出を防ぎます。これら 2 つを組み合わせることで、データが許可されたプロジェクトにのみ存在し、境界外にコピーできないようにできます。"
+    },
+    {
+      "id": "gcp-adp-s3-ja-q36",
+      "examId": "gcp-adp-set3-ja",
+      "setNumber": 3,
+      "domain": "データ分析と探索",
+      "question": "BigQuery はどのタイプのワイルドカードテーブルクエリをサポートしていますか？",
+      "options": {
+        "A": "完全一致のみサポート",
+        "B": "テーブルワイルドカード（*）を使用して類似した名前の複数のテーブルをクエリする",
+        "C": "正規表現のみサポート",
+        "D": "ワイルドカードはサポートされていない"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "BigQuery はテーブルワイルドカード（*）をサポートしており、複数のテーブルをクエリできます。例えば、SELECT * FROM `project.dataset.events_*` は events_ で始まるすべてのテーブルをクエリできます。_TABLE_SUFFIX 疑似列と組み合わせて特定のテーブルをフィルタリングできます。"
+    },
+    {
+      "id": "gcp-adp-s3-ja-q37",
+      "examId": "gcp-adp-set3-ja",
+      "setNumber": 3,
+      "domain": "データ準備と統合",
+      "question": "機密データを匿名化処理してから分析用に BigQuery にロードする必要があります。どのサービスを使用すべきですか？",
+      "options": {
+        "A": "Cloud Composer",
+        "B": "Cloud DLP と Dataflow を組み合わせる",
+        "C": "Cloud Scheduler",
+        "D": "Cloud Tasks"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Cloud DLP は機密データを自動的に検出し、匿名化処理（マスキング、トークン化、暗号化など）を行うことができます。Dataflow パイプラインに Cloud DLP を統合することで、データを BigQuery にロードする前に匿名化し、機密情報を保護できます。"
+    },
+    {
+      "id": "gcp-adp-s3-ja-q38",
+      "examId": "gcp-adp-set3-ja",
+      "setNumber": 3,
+      "domain": "機械学習の基礎",
+      "question": "BigQuery ML で、トレーニング済みのモデルを使用してリアルタイム予測を行うにはどうすればよいですか？",
+      "options": {
+        "A": "バッチ予測のみ可能",
+        "B": "モデルを Vertex AI にエクスポートしてエンドポイントとしてデプロイする",
+        "C": "ストアドプロシージャを使用する",
+        "D": "手動で計算する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "BigQuery ML の ML.PREDICT はバッチ予測に適していますが、リアルタイム予測には、モデルを Vertex AI にエクスポートし、オンラインエンドポイントとしてデプロイして、API を通じてリアルタイム推論を行うことができます。"
+    },
+    {
+      "id": "gcp-adp-s3-ja-q39",
+      "examId": "gcp-adp-set3-ja",
+      "setNumber": 3,
+      "domain": "ビジネスインテリジェンスと可視化",
+      "question": "Looker Studio で、メトリックを動的に変更できるレポート（例：売上高と数量の切り替え）を作成するにはどうすればよいですか？",
+      "options": {
+        "A": "複数のレポートを作成する",
+        "B": "パラメータと CASE ステートメントを使用して動的フィールドを作成する",
+        "C": "データを手動で編集する",
+        "D": "実現できない"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "ドロップダウンコントロールとしてパラメータを作成し、計算フィールドで CASE ステートメントを使用してパラメータ値に基づいて異なるメトリックを返すことができます。ユーザーが異なるパラメータ値を選択すると、グラフは対応するメトリックを表示します。"
+    },
+    {
+      "id": "gcp-adp-s3-ja-q40",
+      "examId": "gcp-adp-set3-ja",
+      "setNumber": 3,
+      "domain": "データガバナンスとセキュリティ",
+      "question": "BigQuery データの災害復旧戦略を実装する必要があります。どの方法を使用すべきですか？",
+      "options": {
+        "A": "デフォルトのリージョン冗長性に依存する",
+        "B": "BigQuery のクロスリージョンレプリケーションまたは別のリージョンの Cloud Storage への定期的なエクスポートを使用する",
+        "C": "ローカルに手動でバックアップする",
+        "D": "災害復旧は必要ない"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "BigQuery は単一リージョン内で自動冗長性を持っていますが、クロスリージョン災害復旧には、BigQuery のクロスリージョンデータセットレプリケーション機能を使用するか、データを別のリージョンの Cloud Storage に定期的にエクスポートする必要があります。これにより、リージョンレベルの障害時のデータ可用性が確保されます。"
+    }
+  ]
+}

@@ -1,0 +1,542 @@
+{
+  "exam": {
+    "id": "aws-dea-c01-set1",
+    "name": "AWS DEA-C01 模拟考试 #1",
+    "code": "DEA-C01",
+    "provider": "AWS",
+    "language": "zh-CN",
+    "description": "AWS数据工程师助理认证考试模拟题 - 第1套",
+    "totalQuestions": 40,
+    "passingScore": 72,
+    "examTime": 130,
+    "domains": [
+      {"id": 1, "name": "Data Ingestion and Transformation", "weight": 34},
+      {"id": 2, "name": "Data Store Management", "weight": 26},
+      {"id": 3, "name": "Data Operations and Support", "weight": 22},
+      {"id": 4, "name": "Data Security and Governance", "weight": 18}
+    ],
+    "tags": ["AWS", "数据工程", "DEA", "认证考试"]
+  },
+  "questions": [
+    {
+      "id": "q1",
+      "domain": 1,
+      "question": "一家公司需要从多个数据源实时摄取流数据，并在5分钟内将数据提供给分析团队。应该使用哪种AWS服务组合？",
+      "options": {
+        "A": "Amazon Kinesis Data Streams + AWS Lambda",
+        "B": "Amazon SQS + Amazon EC2",
+        "C": "AWS Data Pipeline + Amazon S3",
+        "D": "Amazon EMR + Apache Spark"
+      },
+      "answer": "A",
+      "explanation": "Kinesis Data Streams专为实时流数据摄取设计，结合Lambda可以实现近实时的数据处理和转换，满足5分钟内的延迟要求。"
+    },
+    {
+      "id": "q2",
+      "domain": 1,
+      "question": "数据工程师需要将CSV文件转换为Parquet格式以优化查询性能。使用AWS Glue时，哪种方法最有效？",
+      "options": {
+        "A": "使用Glue Crawler自动转换",
+        "B": "使用Glue ETL Job进行格式转换",
+        "C": "使用Glue Data Catalog存储转换规则",
+        "D": "使用Glue Schema Registry转换"
+      },
+      "answer": "B",
+      "explanation": "AWS Glue ETL Job可以读取CSV文件并将其写入Parquet格式。Crawler用于发现schema，Data Catalog用于元数据管理，Schema Registry用于流数据schema管理。"
+    },
+    {
+      "id": "q3",
+      "domain": 1,
+      "question": "公司使用Kinesis Data Firehose将数据传送到S3。需要在传送前对敏感数据进行脱敏处理。应该如何实现？",
+      "options": {
+        "A": "启用Firehose数据加密",
+        "B": "使用Firehose数据转换功能调用Lambda",
+        "C": "在S3存储桶策略中配置数据过滤",
+        "D": "使用Kinesis Data Analytics处理"
+      },
+      "answer": "B",
+      "explanation": "Kinesis Data Firehose支持数据转换功能，可以调用Lambda函数对传输中的数据进行处理，包括脱敏、格式转换等操作。"
+    },
+    {
+      "id": "q4",
+      "domain": 1,
+      "question": "数据团队需要从关系型数据库增量提取变更数据(CDC)到数据湖。最适合的AWS服务是？",
+      "options": {
+        "A": "AWS Database Migration Service (DMS)",
+        "B": "AWS DataSync",
+        "C": "AWS Transfer Family",
+        "D": "Amazon AppFlow"
+      },
+      "answer": "A",
+      "explanation": "AWS DMS支持持续复制和CDC功能，可以捕获源数据库的增量变更并将其复制到目标位置，非常适合数据库到数据湖的实时同步场景。"
+    },
+    {
+      "id": "q5",
+      "domain": 1,
+      "question": "使用AWS Glue进行ETL时，如何处理源数据中的schema演变问题？",
+      "options": {
+        "A": "每次运行前手动更新Data Catalog",
+        "B": "使用Glue Crawler定期更新schema",
+        "C": "在ETL脚本中使用DynamicFrame处理",
+        "D": "禁用schema验证"
+      },
+      "answer": "C",
+      "explanation": "Glue的DynamicFrame可以处理schema不一致的数据，它不强制使用固定schema，可以灵活处理schema演变的情况。结合ResolveChoice等转换可以处理schema冲突。"
+    },
+    {
+      "id": "q6",
+      "domain": 2,
+      "question": "公司需要存储PB级的非结构化数据，并且需要使用SQL进行查询分析。最佳的存储和查询组合是？",
+      "options": {
+        "A": "Amazon RDS + 标准SQL查询",
+        "B": "Amazon S3 + Amazon Athena",
+        "C": "Amazon DynamoDB + PartiQL",
+        "D": "Amazon EFS + Amazon EMR"
+      },
+      "answer": "B",
+      "explanation": "Amazon S3适合存储PB级数据，成本低廉。Athena是无服务器查询服务，可以直接对S3中的数据使用标准SQL进行查询，无需管理基础设施。"
+    },
+    {
+      "id": "q7",
+      "domain": 2,
+      "question": "数据仓库需要存储5年的历史数据用于合规报告，但只有最近90天的数据会被频繁访问。如何优化Redshift存储成本？",
+      "options": {
+        "A": "使用Redshift Spectrum查询所有数据",
+        "B": "将历史数据卸载到S3并使用Redshift Spectrum",
+        "C": "使用Redshift压缩编码",
+        "D": "增加Redshift集群节点"
+      },
+      "answer": "B",
+      "explanation": "将不常访问的历史数据卸载到S3可以降低Redshift存储成本，同时使用Redshift Spectrum可以透明地查询S3中的数据，保持查询的统一性。"
+    },
+    {
+      "id": "q8",
+      "domain": 2,
+      "question": "公司使用Amazon Redshift作为数据仓库。为了提高复杂分析查询的性能，应该采用哪种表设计策略？",
+      "options": {
+        "A": "对所有表使用EVEN分布样式",
+        "B": "根据查询模式选择合适的分布键和排序键",
+        "C": "对所有表使用ALL分布样式",
+        "D": "避免使用任何分布样式"
+      },
+      "answer": "B",
+      "explanation": "Redshift性能优化的关键是根据实际查询模式选择合适的分布键（减少数据移动）和排序键（支持zone map优化和高效的范围扫描）。"
+    },
+    {
+      "id": "q9",
+      "domain": 2,
+      "question": "数据湖使用S3存储数据，需要支持ACID事务以处理并发更新。应该使用什么技术？",
+      "options": {
+        "A": "S3 Object Lock",
+        "B": "S3 Versioning",
+        "C": "Apache Iceberg或Delta Lake",
+        "D": "S3 Cross-Region Replication"
+      },
+      "answer": "C",
+      "explanation": "Apache Iceberg和Delta Lake是开放表格式，可以在S3上实现ACID事务、时间旅行和并发控制，AWS EMR和Glue都支持这些格式。"
+    },
+    {
+      "id": "q10",
+      "domain": 2,
+      "question": "使用Amazon DynamoDB存储时序数据，如何设计主键以支持高效的时间范围查询？",
+      "options": {
+        "A": "使用时间戳作为分区键",
+        "B": "使用设备ID作为分区键，时间戳作为排序键",
+        "C": "使用随机ID作为分区键",
+        "D": "使用复合字符串作为分区键"
+      },
+      "answer": "B",
+      "explanation": "使用设备ID作为分区键可以分散数据，避免热分区。使用时间戳作为排序键支持高效的时间范围查询。这是DynamoDB时序数据的典型设计模式。"
+    },
+    {
+      "id": "q11",
+      "domain": 3,
+      "question": "数据管道每天运行一次，偶尔因源系统问题而失败。如何实现自动重试和告警？",
+      "options": {
+        "A": "使用AWS Step Functions编排，配置重试策略",
+        "B": "使用cron job和shell脚本",
+        "C": "手动监控和重新运行",
+        "D": "增加数据管道的超时时间"
+      },
+      "answer": "A",
+      "explanation": "Step Functions提供内置的重试机制、错误处理和状态管理，可以配置指数退避的重试策略，并集成SNS进行失败告警。"
+    },
+    {
+      "id": "q12",
+      "domain": 3,
+      "question": "AWS Glue Job运行缓慢，日志显示存在数据倾斜问题。如何解决？",
+      "options": {
+        "A": "增加DPU数量",
+        "B": "使用groupFiles参数和自定义分区策略",
+        "C": "切换到Python Shell Job",
+        "D": "减少并行度"
+      },
+      "answer": "B",
+      "explanation": "数据倾斜可以通过重新分区数据来解决。Glue的groupFiles参数可以合并小文件，使用repartition或自定义分区键可以平衡数据分布。"
+    },
+    {
+      "id": "q13",
+      "domain": 3,
+      "question": "公司需要监控数据质量，确保进入数据仓库的数据满足业务规则。最佳实践是？",
+      "options": {
+        "A": "仅在ETL完成后手动检查",
+        "B": "使用AWS Glue DataBrew进行数据概要分析和质量检查",
+        "C": "依赖源系统的数据验证",
+        "D": "只检查数据格式不检查内容"
+      },
+      "answer": "B",
+      "explanation": "Glue DataBrew提供数据概要分析功能，可以发现数据质量问题。结合Glue Data Quality可以定义规则并自动验证数据质量。"
+    },
+    {
+      "id": "q14",
+      "domain": 3,
+      "question": "EMR集群处理大量小文件导致性能问题。如何优化？",
+      "options": {
+        "A": "增加集群节点数",
+        "B": "使用S3DistCp或Spark合并小文件",
+        "C": "使用更大的EC2实例类型",
+        "D": "启用EMR托管扩展"
+      },
+      "answer": "B",
+      "explanation": "小文件问题会导致过多的任务开销和元数据操作。使用S3DistCp或Spark的coalesce/repartition可以合并小文件，减少文件数量，提高处理效率。"
+    },
+    {
+      "id": "q15",
+      "domain": 3,
+      "question": "需要自动化Glue ETL作业的部署和版本控制。应该使用什么方法？",
+      "options": {
+        "A": "在Glue控制台手动更新脚本",
+        "B": "使用AWS CloudFormation或CDK部署Glue资源",
+        "C": "使用S3存储脚本版本",
+        "D": "使用EC2运行ETL脚本"
+      },
+      "answer": "B",
+      "explanation": "CloudFormation或CDK可以将Glue作业定义为基础设施即代码(IaC)，实现版本控制、代码审查和自动化部署，是CI/CD最佳实践。"
+    },
+    {
+      "id": "q16",
+      "domain": 4,
+      "question": "数据湖包含敏感的PII数据。如何确保只有授权用户可以访问特定列？",
+      "options": {
+        "A": "使用S3存储桶策略",
+        "B": "使用AWS Lake Formation列级权限",
+        "C": "使用IAM用户策略",
+        "D": "加密整个S3存储桶"
+      },
+      "answer": "B",
+      "explanation": "AWS Lake Formation提供细粒度的列级和行级访问控制，可以控制哪些用户可以访问数据湖中的特定列，适合保护PII数据。"
+    },
+    {
+      "id": "q17",
+      "domain": 4,
+      "question": "公司需要满足GDPR要求，能够识别和删除特定用户的所有数据。最佳实践是？",
+      "options": {
+        "A": "手动搜索所有数据存储",
+        "B": "使用AWS Glue Data Catalog标记敏感数据，并建立数据血缘",
+        "C": "禁止收集用户数据",
+        "D": "将所有数据存储在单一位置"
+      },
+      "answer": "B",
+      "explanation": "使用Data Catalog标记和分类敏感数据，结合数据血缘追踪，可以识别特定数据在整个数据管道中的位置，支持GDPR的被遗忘权要求。"
+    },
+    {
+      "id": "q18",
+      "domain": 4,
+      "question": "需要对S3中的数据进行静态加密，且密钥必须由公司管理和轮换。应该使用什么？",
+      "options": {
+        "A": "SSE-S3",
+        "B": "SSE-KMS with CMK",
+        "C": "SSE-C",
+        "D": "不加密，使用VPC Endpoint"
+      },
+      "answer": "B",
+      "explanation": "SSE-KMS with Customer Managed Key (CMK)允许公司完全控制密钥的生命周期，包括创建、轮换和审计密钥使用，同时利用KMS的托管服务。"
+    },
+    {
+      "id": "q19",
+      "domain": 4,
+      "question": "数据工程团队需要审计谁在什么时候访问了数据湖中的哪些数据。应该使用什么？",
+      "options": {
+        "A": "S3 Server Access Logging",
+        "B": "AWS CloudTrail + Lake Formation审计日志",
+        "C": "Amazon CloudWatch Logs",
+        "D": "VPC Flow Logs"
+      },
+      "answer": "B",
+      "explanation": "CloudTrail记录API调用，Lake Formation提供数据访问审计日志，两者结合可以完整追踪谁在什么时候访问了什么数据，满足合规审计要求。"
+    },
+    {
+      "id": "q20",
+      "domain": 4,
+      "question": "Redshift集群需要与其他AWS账户的S3数据进行联合查询。如何安全地实现？",
+      "options": {
+        "A": "公开S3存储桶",
+        "B": "使用跨账户IAM角色和Redshift Spectrum",
+        "C": "复制数据到本账户",
+        "D": "使用VPC对等连接"
+      },
+      "answer": "B",
+      "explanation": "跨账户IAM角色允许Redshift安全地访问另一个账户的S3数据，Redshift Spectrum可以直接查询外部S3数据，无需复制数据。"
+    },
+    {
+      "id": "q21",
+      "domain": 1,
+      "question": "需要从SaaS应用程序（如Salesforce）定期提取数据到S3。最简单的解决方案是？",
+      "options": {
+        "A": "开发自定义API集成",
+        "B": "使用Amazon AppFlow",
+        "C": "使用AWS Lambda调用API",
+        "D": "使用AWS Data Pipeline"
+      },
+      "answer": "B",
+      "explanation": "Amazon AppFlow是全托管的集成服务，预置了与Salesforce等常见SaaS应用的连接器，可以轻松配置数据流，无需编写代码。"
+    },
+    {
+      "id": "q22",
+      "domain": 1,
+      "question": "使用Kinesis Data Streams处理高吞吐量数据时，如何处理消费者处理速度跟不上生产者的情况？",
+      "options": {
+        "A": "增加分片数量",
+        "B": "使用增强型扇出(Enhanced Fan-Out)",
+        "C": "减少数据保留期",
+        "D": "使用更大的批处理大小"
+      },
+      "answer": "B",
+      "explanation": "增强型扇出为每个消费者提供专用的2MB/s吞吐量，避免消费者之间的竞争。如果单个分片的数据量过大，增加分片数量也是一个选项。"
+    },
+    {
+      "id": "q23",
+      "domain": 1,
+      "question": "AWS Glue ETL作业需要连接到VPC内的RDS数据库。需要配置什么？",
+      "options": {
+        "A": "仅配置RDS安全组",
+        "B": "配置Glue连接，指定VPC、子网和安全组",
+        "C": "使用公共RDS端点",
+        "D": "配置NAT Gateway"
+      },
+      "answer": "B",
+      "explanation": "Glue需要通过Glue Connection配置VPC访问，指定子网和安全组，确保Glue作业可以通过ENI访问VPC内的资源。"
+    },
+    {
+      "id": "q24",
+      "domain": 2,
+      "question": "数据分析团队需要对S3中的数据执行交互式SQL查询，但查询结果集很大。如何优化Athena查询成本？",
+      "options": {
+        "A": "使用更多的分区",
+        "B": "使用列式存储格式(Parquet/ORC)并进行分区",
+        "C": "增加查询超时时间",
+        "D": "使用Athena工作组限制"
+      },
+      "answer": "B",
+      "explanation": "Athena按扫描数据量收费。使用列式格式(Parquet/ORC)和分区可以大幅减少扫描的数据量，降低成本并提高查询速度。"
+    },
+    {
+      "id": "q25",
+      "domain": 2,
+      "question": "需要在Redshift中快速加载大量数据。哪种方法性能最好？",
+      "options": {
+        "A": "使用INSERT语句逐行插入",
+        "B": "使用COPY命令从S3批量加载",
+        "C": "使用JDBC连接批量插入",
+        "D": "使用Redshift Data API"
+      },
+      "answer": "B",
+      "explanation": "COPY命令是Redshift加载数据的最高效方式，它并行加载数据，自动压缩，并可以利用manifest文件管理多个文件的加载。"
+    },
+    {
+      "id": "q26",
+      "domain": 2,
+      "question": "数据湖架构中，如何管理数据的不同处理阶段（原始、清洗、聚合）？",
+      "options": {
+        "A": "使用不同的AWS账户",
+        "B": "使用S3前缀分层（bronze/silver/gold或raw/curated/aggregated）",
+        "C": "使用不同的AWS区域",
+        "D": "将所有数据存储在同一位置"
+      },
+      "answer": "B",
+      "explanation": "使用S3前缀（如bronze/silver/gold或raw/curated/aggregated）分层是数据湖的常见模式，可以清晰地管理数据质量和处理状态。"
+    },
+    {
+      "id": "q27",
+      "domain": 3,
+      "question": "Glue作业处理大量分区表时性能下降。如何优化？",
+      "options": {
+        "A": "禁用作业书签",
+        "B": "使用push_down_predicate进行分区裁剪",
+        "C": "增加作业超时时间",
+        "D": "使用Python Shell作业类型"
+      },
+      "answer": "B",
+      "explanation": "push_down_predicate允许Glue在读取数据时进行分区裁剪，只读取需要的分区，大幅减少数据扫描量和处理时间。"
+    },
+    {
+      "id": "q28",
+      "domain": 3,
+      "question": "需要监控多个Glue作业的运行状态和性能指标。应该使用什么？",
+      "options": {
+        "A": "CloudWatch Metrics和Dashboards",
+        "B": "手动检查Glue控制台",
+        "C": "发送邮件通知",
+        "D": "使用第三方监控工具"
+      },
+      "answer": "A",
+      "explanation": "Glue自动将作业指标发送到CloudWatch，包括运行时间、DPU使用率、错误等。可以创建CloudWatch Dashboard和告警进行集中监控。"
+    },
+    {
+      "id": "q29",
+      "domain": 3,
+      "question": "EMR集群需要处理不可预测的工作负载。如何优化成本同时保持性能？",
+      "options": {
+        "A": "使用固定大小的集群",
+        "B": "使用EMR托管扩展(Managed Scaling)",
+        "C": "手动调整集群大小",
+        "D": "使用最大配置运行"
+      },
+      "answer": "B",
+      "explanation": "EMR托管扩展可以根据工作负载自动调整集群大小，在负载高时扩展，负载低时缩减，同时可以配置Spot实例进一步优化成本。"
+    },
+    {
+      "id": "q30",
+      "domain": 3,
+      "question": "数据管道需要等待多个独立的上游任务完成后才能开始。如何实现这种依赖关系？",
+      "options": {
+        "A": "使用固定时间延迟",
+        "B": "使用Step Functions的Parallel状态后接下一步",
+        "C": "串行执行所有任务",
+        "D": "手动触发"
+      },
+      "answer": "B",
+      "explanation": "Step Functions的Parallel状态可以并行执行多个分支，所有分支完成后自动继续到下一个状态，实现并行任务的汇聚(join)模式。"
+    },
+    {
+      "id": "q31",
+      "domain": 4,
+      "question": "需要对数据湖中的敏感数据进行分类和发现。应该使用什么服务？",
+      "options": {
+        "A": "Amazon GuardDuty",
+        "B": "Amazon Macie",
+        "C": "AWS Config",
+        "D": "Amazon Detective"
+      },
+      "answer": "B",
+      "explanation": "Amazon Macie使用机器学习自动发现、分类和保护S3中的敏感数据，如PII、财务数据等，并可以生成发现报告和告警。"
+    },
+    {
+      "id": "q32",
+      "domain": 4,
+      "question": "公司政策要求数据在传输过程中必须加密。如何确保Kinesis Data Firehose传输到S3的数据在传输中加密？",
+      "options": {
+        "A": "配置Firehose使用HTTPS端点",
+        "B": "Firehose到S3默认使用TLS加密传输",
+        "C": "使用VPC Endpoint",
+        "D": "在客户端加密数据"
+      },
+      "answer": "B",
+      "explanation": "Kinesis Data Firehose到S3的数据传输默认使用TLS加密，确保数据在传输过程中的安全性。无需额外配置。"
+    },
+    {
+      "id": "q33",
+      "domain": 1,
+      "question": "需要实时处理IoT设备发送的遥测数据，并在检测到异常时触发告警。最合适的架构是？",
+      "options": {
+        "A": "IoT Core → S3 → Athena",
+        "B": "IoT Core → Kinesis Data Streams → Lambda",
+        "C": "IoT Core → SQS → EC2",
+        "D": "IoT Core → SNS → Email"
+      },
+      "answer": "B",
+      "explanation": "IoT Core可以将消息路由到Kinesis Data Streams进行实时流处理，Lambda可以实时分析数据并检测异常，触发SNS告警。"
+    },
+    {
+      "id": "q34",
+      "domain": 1,
+      "question": "使用AWS DMS进行数据库迁移，源数据库的一些列包含LOB数据。如何确保LOB数据正确迁移？",
+      "options": {
+        "A": "LOB数据自动迁移，无需配置",
+        "B": "配置完整LOB模式或有限LOB模式",
+        "C": "手动导出LOB数据",
+        "D": "不支持LOB迁移"
+      },
+      "answer": "B",
+      "explanation": "DMS支持LOB数据迁移，可以配置完整LOB模式（较慢但完整）或有限LOB模式（设置大小限制，较快）。需要根据数据特点选择合适的模式。"
+    },
+    {
+      "id": "q35",
+      "domain": 2,
+      "question": "Redshift查询需要访问频繁变化的维度数据。如何优化？",
+      "options": {
+        "A": "使用物化视图缓存维度数据",
+        "B": "增加Redshift节点",
+        "C": "使用Redshift Spectrum",
+        "D": "禁用结果缓存"
+      },
+      "answer": "A",
+      "explanation": "物化视图可以预计算和缓存查询结果，Redshift支持增量刷新，对于频繁访问的维度数据可以显著提高查询性能。"
+    },
+    {
+      "id": "q36",
+      "domain": 2,
+      "question": "需要存储和查询图数据（如社交网络关系）。最合适的AWS服务是？",
+      "options": {
+        "A": "Amazon DynamoDB",
+        "B": "Amazon Neptune",
+        "C": "Amazon RDS",
+        "D": "Amazon Redshift"
+      },
+      "answer": "B",
+      "explanation": "Amazon Neptune是托管图数据库服务，支持Property Graph和RDF模型，使用Gremlin和SPARQL查询语言，专为高度关联的数据设计。"
+    },
+    {
+      "id": "q37",
+      "domain": 3,
+      "question": "Glue作业书签(Job Bookmark)的作用是什么？",
+      "options": {
+        "A": "保存作业配置",
+        "B": "跟踪已处理的数据，实现增量处理",
+        "C": "存储作业日志",
+        "D": "缓存中间结果"
+      },
+      "answer": "B",
+      "explanation": "Glue作业书签跟踪作业已经处理过的数据，在下次运行时只处理新数据，实现增量ETL，避免重复处理。"
+    },
+    {
+      "id": "q38",
+      "domain": 3,
+      "question": "数据管道失败后需要从失败点恢复而不是从头开始。应该使用什么？",
+      "options": {
+        "A": "Step Functions的标准工作流",
+        "B": "Lambda函数重试",
+        "C": "Step Functions Express工作流",
+        "D": "CloudWatch Events"
+      },
+      "answer": "A",
+      "explanation": "Step Functions标准工作流支持持久化执行历史，可以从失败点恢复或重试特定步骤，而Express工作流不支持这种恢复模式。"
+    },
+    {
+      "id": "q39",
+      "domain": 4,
+      "question": "多个AWS账户需要共享数据湖中的数据，但要保持细粒度的访问控制。最佳方案是？",
+      "options": {
+        "A": "复制数据到每个账户",
+        "B": "使用AWS Lake Formation跨账户共享",
+        "C": "公开S3存储桶",
+        "D": "使用S3复制"
+      },
+      "answer": "B",
+      "explanation": "Lake Formation支持跨账户的细粒度数据共享，可以在表、列或行级别控制访问权限，而不需要复制数据。"
+    },
+    {
+      "id": "q40",
+      "domain": 4,
+      "question": "需要确保Glue作业使用的临时凭证权限最小化。应该如何配置？",
+      "options": {
+        "A": "使用管理员角色运行所有作业",
+        "B": "为每个作业创建专用IAM角色，仅授予必要权限",
+        "C": "使用根账户凭证",
+        "D": "禁用IAM角色"
+      },
+      "answer": "B",
+      "explanation": "遵循最小权限原则，为每个Glue作业创建专用IAM角色，仅授予该作业所需的最小权限，这是安全最佳实践。"
+    }
+  ]
+}

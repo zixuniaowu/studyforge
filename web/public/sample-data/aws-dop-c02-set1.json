@@ -1,0 +1,544 @@
+{
+  "exam": {
+    "id": "aws-dop-c02-set1",
+    "name": "AWS DOP-C02 模拟考试 #1",
+    "code": "DOP-C02",
+    "provider": "AWS",
+    "language": "zh-CN",
+    "description": "AWS DevOps工程师专业级认证考试模拟题 - 第1套",
+    "totalQuestions": 40,
+    "passingScore": 75,
+    "examTime": 180,
+    "domains": [
+      {"id": 1, "name": "SDLC Automation", "weight": 22},
+      {"id": 2, "name": "Configuration Management and IaC", "weight": 17},
+      {"id": 3, "name": "Resilient Cloud Solutions", "weight": 15},
+      {"id": 4, "name": "Monitoring and Logging", "weight": 15},
+      {"id": 5, "name": "Incident and Event Response", "weight": 14},
+      {"id": 6, "name": "Security and Compliance", "weight": 17}
+    ],
+    "tags": ["AWS", "DevOps", "DOP", "认证考试", "专业级"]
+  },
+  "questions": [
+    {
+      "id": "q1",
+      "domain": 1,
+      "question": "开发团队需要实现一个CI/CD管道，在代码推送到CodeCommit后自动运行单元测试、构建Docker镜像并部署到ECS。最佳方案是？",
+      "options": {
+        "A": "CodeCommit → CodeBuild → CodeDeploy → ECS",
+        "B": "CodeCommit → CodePipeline (CodeBuild + ECS Deploy)",
+        "C": "CodeCommit → Jenkins → ECS",
+        "D": "CodeCommit → Lambda → ECS"
+      },
+      "answer": "B",
+      "explanation": "CodePipeline可以编排整个CI/CD流程，集成CodeBuild进行测试和构建，使用ECS部署操作将镜像部署到ECS，是AWS原生的完整解决方案。"
+    },
+    {
+      "id": "q2",
+      "domain": 1,
+      "question": "公司要求所有部署必须经过手动审批。如何在CodePipeline中实现？",
+      "options": {
+        "A": "在部署阶段前添加手动审批操作",
+        "B": "使用Lambda函数发送审批请求",
+        "C": "配置CodeDeploy需要手动触发",
+        "D": "使用CloudWatch Events暂停管道"
+      },
+      "answer": "A",
+      "explanation": "CodePipeline支持手动审批操作，可以配置SNS通知审批者，审批者通过控制台或CLI批准或拒绝，然后管道继续或停止。"
+    },
+    {
+      "id": "q3",
+      "domain": 1,
+      "question": "蓝绿部署到EC2实例时，如何确保新版本通过健康检查后才切换流量？",
+      "options": {
+        "A": "使用CodeDeploy的蓝绿部署配置和健康检查",
+        "B": "手动检查后切换负载均衡器",
+        "C": "使用Route 53加权路由",
+        "D": "部署后等待固定时间"
+      },
+      "answer": "A",
+      "explanation": "CodeDeploy蓝绿部署支持配置ELB健康检查，只有当新实例通过健康检查后才会将流量从蓝色环境切换到绿色环境。"
+    },
+    {
+      "id": "q4",
+      "domain": 2,
+      "question": "需要管理多个AWS账户的基础设施，确保所有账户使用相同的配置标准。最佳方案是？",
+      "options": {
+        "A": "在每个账户手动配置",
+        "B": "使用AWS CloudFormation StackSets",
+        "C": "使用共享的S3模板",
+        "D": "使用AWS Config规则"
+      },
+      "answer": "B",
+      "explanation": "CloudFormation StackSets允许跨多个AWS账户和区域部署相同的CloudFormation模板，确保一致的基础设施配置。"
+    },
+    {
+      "id": "q5",
+      "domain": 2,
+      "question": "CloudFormation栈更新失败并回滚。如何诊断问题？",
+      "options": {
+        "A": "查看EC2系统日志",
+        "B": "查看CloudFormation栈事件和失败原因",
+        "C": "检查VPC流日志",
+        "D": "查看S3访问日志"
+      },
+      "answer": "B",
+      "explanation": "CloudFormation栈事件记录了每个资源的创建/更新/删除状态和失败原因，是诊断栈操作问题的首要位置。"
+    },
+    {
+      "id": "q6",
+      "domain": 2,
+      "question": "团队使用Terraform管理基础设施。如何安全地存储Terraform状态文件？",
+      "options": {
+        "A": "存储在本地文件系统",
+        "B": "使用S3后端并启用版本控制和加密，配合DynamoDB锁定",
+        "C": "存储在Git仓库",
+        "D": "使用EFS共享存储"
+      },
+      "answer": "B",
+      "explanation": "S3后端支持版本控制和服务器端加密保护状态文件。DynamoDB用于状态锁定，防止并发修改导致的状态损坏。"
+    },
+    {
+      "id": "q7",
+      "domain": 3,
+      "question": "应用程序需要在单个AZ故障时自动恢复。Auto Scaling组应该如何配置？",
+      "options": {
+        "A": "在单个AZ中配置多个实例",
+        "B": "跨多个AZ配置Auto Scaling组",
+        "C": "使用预留实例",
+        "D": "配置更大的实例类型"
+      },
+      "answer": "B",
+      "explanation": "将Auto Scaling组配置为跨多个可用区，当一个AZ故障时，ASG会在其他AZ启动新实例替换故障实例，实现高可用性。"
+    },
+    {
+      "id": "q8",
+      "domain": 3,
+      "question": "RDS数据库需要实现跨区域灾难恢复，RPO要求小于1小时。最佳方案是？",
+      "options": {
+        "A": "使用RDS自动备份",
+        "B": "配置RDS跨区域只读副本",
+        "C": "手动导出数据到另一区域",
+        "D": "使用DynamoDB Global Tables"
+      },
+      "answer": "B",
+      "explanation": "RDS跨区域只读副本提供异步复制，通常延迟在秒级，满足RPO<1小时要求。灾难时可以将只读副本提升为独立数据库。"
+    },
+    {
+      "id": "q9",
+      "domain": 3,
+      "question": "需要确保应用程序在部署失败时可以快速回滚。使用ECS部署时如何实现？",
+      "options": {
+        "A": "手动停止新任务并启动旧版本",
+        "B": "使用ECS滚动更新并配置Circuit Breaker",
+        "C": "使用Lambda部署",
+        "D": "使用Elastic Beanstalk"
+      },
+      "answer": "B",
+      "explanation": "ECS部署Circuit Breaker可以在检测到部署失败（任务启动失败）时自动回滚到之前的稳定版本，无需手动干预。"
+    },
+    {
+      "id": "q10",
+      "domain": 4,
+      "question": "需要集中收集和分析多个AWS账户的VPC流日志。最佳架构是？",
+      "options": {
+        "A": "每个账户独立分析",
+        "B": "使用跨账户角色将日志发送到中央S3存储桶，使用Athena分析",
+        "C": "使用EC2实例收集日志",
+        "D": "使用CloudWatch Logs Insights"
+      },
+      "answer": "B",
+      "explanation": "配置VPC流日志发送到中央S3存储桶（通过跨账户访问），然后使用Athena进行SQL分析，是成本效益高的集中日志分析方案。"
+    },
+    {
+      "id": "q11",
+      "domain": 4,
+      "question": "应用程序日志需要实时分析以检测异常模式。最合适的服务组合是？",
+      "options": {
+        "A": "CloudWatch Logs → S3 → Athena",
+        "B": "CloudWatch Logs → Kinesis Data Streams → Lambda",
+        "C": "S3 → Glue → Redshift",
+        "D": "CloudTrail → SNS"
+      },
+      "answer": "B",
+      "explanation": "CloudWatch Logs订阅过滤器可以将日志实时发送到Kinesis Data Streams，Lambda可以实时处理和分析日志检测异常模式。"
+    },
+    {
+      "id": "q12",
+      "domain": 4,
+      "question": "需要为EC2实例创建自定义CloudWatch指标监控应用程序队列深度。如何实现？",
+      "options": {
+        "A": "CloudWatch默认收集队列指标",
+        "B": "使用CloudWatch Agent发布自定义指标",
+        "C": "使用VPC Flow Logs",
+        "D": "使用AWS Config"
+      },
+      "answer": "B",
+      "explanation": "CloudWatch Agent可以配置收集自定义指标，应用程序可以通过PutMetricData API或Agent的StatsD/collectd接口发布自定义指标。"
+    },
+    {
+      "id": "q13",
+      "domain": 5,
+      "question": "EC2实例突然无法访问。需要快速诊断问题。首先应该检查什么？",
+      "options": {
+        "A": "检查实例状态检查和系统日志",
+        "B": "重启实例",
+        "C": "创建新实例",
+        "D": "联系AWS支持"
+      },
+      "answer": "A",
+      "explanation": "首先检查EC2状态检查（系统状态和实例状态）确定是硬件还是软件问题，然后查看系统日志诊断具体原因。"
+    },
+    {
+      "id": "q14",
+      "domain": 5,
+      "question": "需要在检测到高CPU使用率时自动触发Lambda函数进行故障排查。如何实现？",
+      "options": {
+        "A": "手动监控并触发",
+        "B": "CloudWatch Alarm → SNS → Lambda",
+        "C": "使用Auto Scaling",
+        "D": "使用Systems Manager Run Command"
+      },
+      "answer": "B",
+      "explanation": "配置CloudWatch Alarm监控CPU指标，触发SNS通知，SNS触发Lambda函数执行自动化故障排查脚本。"
+    },
+    {
+      "id": "q15",
+      "domain": 5,
+      "question": "生产环境出现问题需要快速执行脚本修复多个EC2实例。最安全高效的方法是？",
+      "options": {
+        "A": "SSH到每个实例执行",
+        "B": "使用AWS Systems Manager Run Command",
+        "C": "重新部署应用程序",
+        "D": "终止并重建实例"
+      },
+      "answer": "B",
+      "explanation": "Systems Manager Run Command可以在多个实例上并行执行命令/脚本，无需SSH密钥，有完整的执行日志和审计追踪。"
+    },
+    {
+      "id": "q16",
+      "domain": 6,
+      "question": "需要确保所有S3存储桶都启用了加密。如何持续监控合规性？",
+      "options": {
+        "A": "手动定期检查",
+        "B": "使用AWS Config规则检测不合规的存储桶",
+        "C": "使用CloudTrail监控",
+        "D": "使用IAM策略"
+      },
+      "answer": "B",
+      "explanation": "AWS Config可以持续评估资源配置，使用托管规则s3-bucket-server-side-encryption-enabled检测未启用加密的存储桶并报告不合规。"
+    },
+    {
+      "id": "q17",
+      "domain": 6,
+      "question": "CI/CD管道需要安全地访问数据库凭证。最佳实践是？",
+      "options": {
+        "A": "在代码中硬编码凭证",
+        "B": "使用AWS Secrets Manager存储凭证，在构建/部署时动态获取",
+        "C": "在环境变量中存储明文凭证",
+        "D": "使用参数文件存储凭证"
+      },
+      "answer": "B",
+      "explanation": "Secrets Manager安全存储敏感信息，支持自动轮换。CodeBuild/CodePipeline可以通过IAM角色在运行时获取凭证，避免硬编码。"
+    },
+    {
+      "id": "q18",
+      "domain": 6,
+      "question": "需要确保只有经过批准的AMI可以启动EC2实例。如何实现？",
+      "options": {
+        "A": "使用安全组限制",
+        "B": "使用Service Control Policy (SCP)限制AMI ID",
+        "C": "使用NACL",
+        "D": "使用VPC Endpoint"
+      },
+      "answer": "B",
+      "explanation": "Service Control Policy可以在组织级别限制允许使用的AMI ID，阻止用户启动未经批准的AMI，实现合规控制。"
+    },
+    {
+      "id": "q19",
+      "domain": 1,
+      "question": "需要为不同环境（开发、测试、生产）使用相同的CodePipeline模板但配置不同参数。如何实现？",
+      "options": {
+        "A": "为每个环境创建独立的管道",
+        "B": "使用CloudFormation参数和条件",
+        "C": "手动修改管道配置",
+        "D": "使用不同的AWS账户"
+      },
+      "answer": "B",
+      "explanation": "使用CloudFormation模板定义CodePipeline，通过参数传递环境特定配置，使用条件控制环境差异，实现模板复用。"
+    },
+    {
+      "id": "q20",
+      "domain": 1,
+      "question": "CodeBuild项目需要访问私有VPC中的资源。如何配置？",
+      "options": {
+        "A": "CodeBuild默认可以访问VPC",
+        "B": "配置CodeBuild VPC配置指定VPC、子网和安全组",
+        "C": "使用NAT Gateway",
+        "D": "使用VPC Peering"
+      },
+      "answer": "B",
+      "explanation": "CodeBuild支持VPC配置，指定VPC、子网和安全组后，构建环境将在VPC中运行，可以访问VPC内的私有资源。"
+    },
+    {
+      "id": "q21",
+      "domain": 2,
+      "question": "CloudFormation模板需要引用另一个栈的输出。如何实现？",
+      "options": {
+        "A": "手动复制输出值",
+        "B": "使用Fn::ImportValue引用导出的输出",
+        "C": "使用Parameter Store",
+        "D": "使用嵌套栈"
+      },
+      "answer": "B",
+      "explanation": "CloudFormation允许栈导出输出值，其他栈使用Fn::ImportValue函数引用导出的值，实现跨栈资源共享。"
+    },
+    {
+      "id": "q22",
+      "domain": 2,
+      "question": "需要在EC2实例启动时自动安装和配置软件。使用CloudFormation时最佳方法是？",
+      "options": {
+        "A": "手动SSH安装",
+        "B": "使用cfn-init和CloudFormation::Init元数据",
+        "C": "使用预配置的AMI",
+        "D": "使用用户数据脚本"
+      },
+      "answer": "B",
+      "explanation": "cfn-init结合CloudFormation::Init元数据提供声明式配置，支持软件包安装、文件创建、服务管理，并可以配置cfn-signal报告配置完成状态。"
+    },
+    {
+      "id": "q23",
+      "domain": 3,
+      "question": "应用程序使用SQS队列处理消息。如何确保消息处理的高可用性？",
+      "options": {
+        "A": "使用单个消费者",
+        "B": "使用Auto Scaling组的多个消费者基于队列深度扩展",
+        "C": "增加队列保留时间",
+        "D": "使用FIFO队列"
+      },
+      "answer": "B",
+      "explanation": "使用ASG管理多个消费者实例，配置基于SQS队列深度的扩展策略，确保有足够的消费者处理消息，实现高可用。"
+    },
+    {
+      "id": "q24",
+      "domain": 3,
+      "question": "需要实现应用程序级别的故障转移，在主区域故障时自动切换到灾备区域。如何实现？",
+      "options": {
+        "A": "手动更新DNS",
+        "B": "使用Route 53健康检查和故障转移路由策略",
+        "C": "使用CloudFront",
+        "D": "使用Global Accelerator"
+      },
+      "answer": "B",
+      "explanation": "Route 53健康检查可以监控端点健康状态，故障转移路由策略在主端点不健康时自动将流量路由到备用端点。"
+    },
+    {
+      "id": "q25",
+      "domain": 4,
+      "question": "需要创建统一的仪表板显示多个AWS账户的关键指标。如何实现？",
+      "options": {
+        "A": "在每个账户创建独立仪表板",
+        "B": "使用CloudWatch跨账户观测功能",
+        "C": "导出指标到Excel",
+        "D": "使用第三方工具"
+      },
+      "answer": "B",
+      "explanation": "CloudWatch支持跨账户观测，可以在中央监控账户创建仪表板，聚合显示多个源账户的指标、日志和告警。"
+    },
+    {
+      "id": "q26",
+      "domain": 4,
+      "question": "需要追踪分布式应用程序的请求延迟和错误。最合适的服务是？",
+      "options": {
+        "A": "CloudWatch Logs",
+        "B": "AWS X-Ray",
+        "C": "CloudTrail",
+        "D": "VPC Flow Logs"
+      },
+      "answer": "B",
+      "explanation": "X-Ray提供分布式追踪功能，可以追踪请求在微服务之间的流转，识别性能瓶颈和错误根因。"
+    },
+    {
+      "id": "q27",
+      "domain": 5,
+      "question": "需要自动响应安全事件，如检测到可疑的IAM活动时自动禁用用户。如何实现？",
+      "options": {
+        "A": "手动监控并响应",
+        "B": "GuardDuty → EventBridge → Lambda自动禁用用户",
+        "C": "使用CloudWatch Alarms",
+        "D": "使用AWS Config"
+      },
+      "answer": "B",
+      "explanation": "GuardDuty检测威胁并生成发现，EventBridge可以匹配GuardDuty事件触发Lambda，Lambda调用IAM API禁用可疑用户。"
+    },
+    {
+      "id": "q28",
+      "domain": 5,
+      "question": "需要自动修复不合规的安全组配置（如开放0.0.0.0/0）。如何实现？",
+      "options": {
+        "A": "手动定期检查",
+        "B": "AWS Config规则配合自动修复操作",
+        "C": "使用NACL替代安全组",
+        "D": "使用WAF"
+      },
+      "answer": "B",
+      "explanation": "AWS Config可以检测不合规的安全组，并配置SSM自动化文档作为修复操作，自动移除不合规的入站规则。"
+    },
+    {
+      "id": "q29",
+      "domain": 6,
+      "question": "需要确保Lambda函数只能被特定的API Gateway调用。如何配置？",
+      "options": {
+        "A": "使用Lambda环境变量",
+        "B": "配置Lambda资源策略限制源ARN",
+        "C": "使用VPC",
+        "D": "使用安全组"
+      },
+      "answer": "B",
+      "explanation": "Lambda资源策略可以指定允许调用函数的源ARN，限制只有特定API Gateway可以调用该函数。"
+    },
+    {
+      "id": "q30",
+      "domain": 6,
+      "question": "需要轮换RDS数据库密码而不影响应用程序连接。如何实现？",
+      "options": {
+        "A": "手动更新密码并重启应用",
+        "B": "使用Secrets Manager自动轮换并让应用程序动态获取凭证",
+        "C": "不轮换密码",
+        "D": "使用IAM数据库认证"
+      },
+      "answer": "B",
+      "explanation": "Secrets Manager支持RDS密码自动轮换，应用程序通过API获取最新凭证，Secrets Manager确保在轮换期间应用程序始终能获取有效凭证。"
+    },
+    {
+      "id": "q31",
+      "domain": 1,
+      "question": "需要在部署前对基础设施变更进行代码审查。如何在CI/CD管道中实现？",
+      "options": {
+        "A": "手动审查CloudFormation模板",
+        "B": "使用CodePipeline的Pull Request触发和审批门控",
+        "C": "直接部署然后回滚",
+        "D": "使用邮件通知"
+      },
+      "answer": "B",
+      "explanation": "CodePipeline可以配置Pull Request触发构建，使用手动审批操作作为门控，审查者审批后才能继续部署。"
+    },
+    {
+      "id": "q32",
+      "domain": 2,
+      "question": "AWS OpsWorks Stacks与CloudFormation相比有什么优势？",
+      "options": {
+        "A": "成本更低",
+        "B": "提供应用程序级别的配置管理和Chef/Puppet集成",
+        "C": "支持更多AWS服务",
+        "D": "更好的GUI"
+      },
+      "answer": "B",
+      "explanation": "OpsWorks提供应用程序生命周期管理，集成Chef/Puppet进行配置管理，适合需要持续配置管理而非一次性部署的场景。"
+    },
+    {
+      "id": "q33",
+      "domain": 3,
+      "question": "需要确保EBS卷在实例故障时数据不丢失。如何配置？",
+      "options": {
+        "A": "使用实例存储",
+        "B": "配置EBS快照生命周期策略定期备份",
+        "C": "增加EBS卷大小",
+        "D": "使用更大的实例类型"
+      },
+      "answer": "B",
+      "explanation": "Amazon Data Lifecycle Manager可以自动创建EBS快照，根据策略定期备份数据，确保实例故障时可以从快照恢复。"
+    },
+    {
+      "id": "q34",
+      "domain": 4,
+      "question": "需要设置告警在Lambda函数错误率超过阈值时通知团队。如何配置？",
+      "options": {
+        "A": "检查Lambda控制台",
+        "B": "创建CloudWatch告警监控Errors指标",
+        "C": "使用X-Ray告警",
+        "D": "查看CloudWatch Logs"
+      },
+      "answer": "B",
+      "explanation": "Lambda自动发送Errors指标到CloudWatch，可以创建告警监控错误率（Errors/Invocations），超过阈值时发送SNS通知。"
+    },
+    {
+      "id": "q35",
+      "domain": 5,
+      "question": "需要记录所有对S3存储桶的访问以进行安全审计。如何配置？",
+      "options": {
+        "A": "使用VPC Flow Logs",
+        "B": "启用S3服务器访问日志记录",
+        "C": "使用CloudWatch Logs",
+        "D": "使用AWS Config"
+      },
+      "answer": "B",
+      "explanation": "S3服务器访问日志记录所有对存储桶的请求，包括请求者、操作、响应状态等详细信息，用于安全审计和访问分析。"
+    },
+    {
+      "id": "q36",
+      "domain": 6,
+      "question": "需要加密EBS卷但使用自己管理的密钥。如何配置？",
+      "options": {
+        "A": "使用默认AWS托管密钥",
+        "B": "创建KMS客户托管密钥(CMK)用于EBS加密",
+        "C": "使用SSE-C",
+        "D": "不支持自定义密钥"
+      },
+      "answer": "B",
+      "explanation": "创建KMS CMK并在创建EBS卷时指定该密钥，可以完全控制密钥的生命周期、轮换策略和访问权限。"
+    },
+    {
+      "id": "q37",
+      "domain": 1,
+      "question": "CodeBuild项目构建时间过长，主要耗时在下载依赖。如何优化？",
+      "options": {
+        "A": "使用更大的计算类型",
+        "B": "使用CodeBuild本地缓存或S3缓存",
+        "C": "减少依赖",
+        "D": "使用Jenkins"
+      },
+      "answer": "B",
+      "explanation": "CodeBuild支持本地缓存和S3缓存，可以缓存依赖包和中间构建产物，后续构建无需重新下载，显著减少构建时间。"
+    },
+    {
+      "id": "q38",
+      "domain": 2,
+      "question": "需要在CloudFormation模板中使用外部值（如最新的AMI ID）。如何实现？",
+      "options": {
+        "A": "硬编码AMI ID",
+        "B": "使用AWS::SSM::Parameter::Value动态引用Parameter Store",
+        "C": "手动更新模板",
+        "D": "使用Lambda Custom Resource"
+      },
+      "answer": "B",
+      "explanation": "CloudFormation支持动态引用SSM Parameter Store的值，AWS维护的公共参数如最新AMI ID可以自动获取，避免硬编码。"
+    },
+    {
+      "id": "q39",
+      "domain": 3,
+      "question": "需要在多区域架构中同步DynamoDB数据。如何实现？",
+      "options": {
+        "A": "使用Lambda复制数据",
+        "B": "使用DynamoDB Global Tables",
+        "C": "使用DMS",
+        "D": "手动同步"
+      },
+      "answer": "B",
+      "explanation": "DynamoDB Global Tables提供跨区域的全托管多主复制，自动同步数据变更，支持多区域读写和故障转移。"
+    },
+    {
+      "id": "q40",
+      "domain": 5,
+      "question": "需要快速诊断生产环境Lambda函数性能问题。最有效的工具是？",
+      "options": {
+        "A": "CloudWatch Logs",
+        "B": "Lambda Power Tuning结合X-Ray追踪",
+        "C": "手动测试",
+        "D": "增加内存"
+      },
+      "answer": "B",
+      "explanation": "X-Ray追踪可以可视化函数执行细节和外部调用延迟。Lambda Power Tuning工具可以测试不同内存配置下的性能和成本，找到最优配置。"
+    }
+  ]
+}

@@ -1,0 +1,663 @@
+{
+  "exam": {
+    "id": "azure-az-400-set3",
+    "name": "Azure DevOps Engineer Expert 练习题 Set 3",
+    "code": "AZ-400",
+    "provider": "Microsoft",
+    "language": "zh-CN",
+    "description": "Microsoft Azure DevOps Engineer Expert 认证练习题第三套",
+    "totalQuestions": 40,
+    "passingScore": 70,
+    "examTime": 150,
+    "domains": [
+      "配置流程和通信",
+      "设计和实现源代码管理",
+      "设计和实现构建与发布管道",
+      "开发安全性和合规性计划",
+      "实现检测策略"
+    ],
+    "tags": ["Azure", "DevOps", "CI/CD", "云计算", "自动化"]
+  },
+  "questions": [
+    {
+      "id": "az400-s3-q1",
+      "examId": "azure-az-400-set3",
+      "setNumber": 3,
+      "domain": "配置流程和通信",
+      "question": "你的团队使用 Azure DevOps 进行项目管理。你需要确保团队成员只能看到分配给他们的工作项。应该如何配置？",
+      "options": {
+        "A": "配置区域路径权限",
+        "B": "配置迭代路径权限",
+        "C": "配置项目级别权限",
+        "D": "配置组织级别权限"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "区域路径权限允许你控制对特定工作项区域的访问。通过配置区域路径权限，你可以限制用户只能查看和编辑特定区域中的工作项，从而实现细粒度的访问控制。"
+    },
+    {
+      "id": "az400-s3-q2",
+      "examId": "azure-az-400-set3",
+      "setNumber": 3,
+      "domain": "设计和实现源代码管理",
+      "question": "你需要在 Azure Repos 中实施代码审查策略，要求至少两名审阅者批准才能完成拉取请求。应该配置什么？",
+      "options": {
+        "A": "分支策略中的最小审阅者数量",
+        "B": "仓库设置中的安全策略",
+        "C": "项目设置中的服务连接",
+        "D": "管道设置中的审批门"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "在 Azure Repos 的分支策略中，你可以配置'需要最小审阅者数量'策略，指定完成拉取请求所需的最小批准数量。这确保了代码在合并前经过适当的审查。"
+    },
+    {
+      "id": "az400-s3-q3",
+      "examId": "azure-az-400-set3",
+      "setNumber": 3,
+      "domain": "设计和实现构建与发布管道",
+      "question": "你正在使用 Azure Pipelines 构建一个 .NET 应用程序。你需要在构建过程中运行单元测试并发布测试结果。应该使用哪个任务？",
+      "options": {
+        "A": "VSTest@2",
+        "B": "DotNetCoreCLI@2 with test command",
+        "C": "PublishTestResults@2",
+        "D": "B 和 C"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "DotNetCoreCLI@2 任务的 test 命令用于运行 .NET Core 单元测试，而 PublishTestResults@2 任务用于将测试结果发布到 Azure Pipelines，以便在管道运行中查看测试报告。两者结合使用可以完成运行测试和发布结果的完整流程。"
+    },
+    {
+      "id": "az400-s3-q4",
+      "examId": "azure-az-400-set3",
+      "setNumber": 3,
+      "domain": "开发安全性和合规性计划",
+      "question": "你需要在 Azure DevOps 管道中安全地存储数据库连接字符串。连接字符串应该在多个管道之间共享。最佳做法是什么？",
+      "options": {
+        "A": "使用管道变量",
+        "B": "使用变量组并链接到 Azure Key Vault",
+        "C": "使用环境变量",
+        "D": "使用服务连接"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "变量组可以在多个管道之间共享变量，而将变量组链接到 Azure Key Vault 提供了集中、安全的机密管理。这样可以在 Key Vault 中管理机密，同时在多个管道中使用它们。"
+    },
+    {
+      "id": "az400-s3-q5",
+      "examId": "azure-az-400-set3",
+      "setNumber": 3,
+      "domain": "实现检测策略",
+      "question": "你需要监控 Azure Kubernetes Service (AKS) 集群的性能。你希望收集容器日志和指标。应该启用什么功能？",
+      "options": {
+        "A": "Azure Monitor for containers",
+        "B": "Azure Security Center",
+        "C": "Azure Policy",
+        "D": "Azure Advisor"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Azure Monitor for containers（现称为 Container insights）提供对 AKS 集群的全面监控功能，包括收集容器日志、性能指标、资源使用情况等，是监控 Kubernetes 工作负载的最佳选择。"
+    },
+    {
+      "id": "az400-s3-q6",
+      "examId": "azure-az-400-set3",
+      "setNumber": 3,
+      "domain": "配置流程和通信",
+      "question": "你需要在 Azure DevOps 中配置工作流自动化，当工作项状态更改时自动发送通知。应该使用什么功能？",
+      "options": {
+        "A": "服务挂钩",
+        "B": "管道触发器",
+        "C": "发布门",
+        "D": "部署组"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "服务挂钩允许你在 Azure DevOps 中的事件发生时执行操作，例如当工作项状态更改时发送通知到 Slack、Microsoft Teams 或其他服务。这提供了灵活的事件驱动自动化。"
+    },
+    {
+      "id": "az400-s3-q7",
+      "examId": "azure-az-400-set3",
+      "setNumber": 3,
+      "domain": "设计和实现源代码管理",
+      "question": "你的团队正在使用 Git 进行版本控制。你需要实施一种策略，确保所有提交都使用 GPG 密钥签名。在 Azure Repos 中应该如何配置？",
+      "options": {
+        "A": "配置分支策略要求签名提交",
+        "B": "配置仓库安全设置",
+        "C": "配置项目服务设置",
+        "D": "Azure Repos 不支持此功能"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Azure Repos 支持在分支策略中配置要求签名提交的选项。启用此策略后，只有使用有效 GPG 密钥签名的提交才能推送到受保护的分支。"
+    },
+    {
+      "id": "az400-s3-q8",
+      "examId": "azure-az-400-set3",
+      "setNumber": 3,
+      "domain": "设计和实现构建与发布管道",
+      "question": "你正在设计一个多阶段管道，需要在部署到生产环境之前等待手动批准。应该使用什么功能？",
+      "options": {
+        "A": "环境审批",
+        "B": "发布门",
+        "C": "管道装饰器",
+        "D": "任务组"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "在 YAML 管道中，你可以为环境配置审批和检查。当管道部署到需要审批的环境时，它会暂停并等待指定的审批者批准后才能继续。这是在多阶段管道中实现手动批准的推荐方式。"
+    },
+    {
+      "id": "az400-s3-q9",
+      "examId": "azure-az-400-set3",
+      "setNumber": 3,
+      "domain": "开发安全性和合规性计划",
+      "question": "你需要扫描 Docker 镜像以查找漏洞。哪个 Azure 服务可以提供此功能？",
+      "options": {
+        "A": "Azure Container Registry 与 Microsoft Defender for Containers",
+        "B": "Azure Kubernetes Service",
+        "C": "Azure Container Instances",
+        "D": "Azure App Service"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Microsoft Defender for Containers 与 Azure Container Registry 集成，可以自动扫描推送到注册表的容器镜像，检测操作系统和应用程序级别的漏洞，并提供修复建议。"
+    },
+    {
+      "id": "az400-s3-q10",
+      "examId": "azure-az-400-set3",
+      "setNumber": 3,
+      "domain": "实现检测策略",
+      "question": "你需要在 Azure DevOps 发布管道中实施质量门，在部署后检查 Application Insights 中的错误率。应该使用什么功能？",
+      "options": {
+        "A": "部署后门",
+        "B": "手动干预任务",
+        "C": "条件部署",
+        "D": "环境变量"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "部署后门允许你在部署完成后评估指标，例如检查 Application Insights 中的错误率。如果错误率超过阈值，门将失败，可以自动回滚或阻止继续部署到下一个环境。"
+    },
+    {
+      "id": "az400-s3-q11",
+      "examId": "azure-az-400-set3",
+      "setNumber": 3,
+      "domain": "配置流程和通信",
+      "question": "你的组织使用多个 Azure DevOps 项目。你需要创建一个仪表板，显示跨所有项目的工作项统计信息。应该如何实现？",
+      "options": {
+        "A": "创建组织级别的仪表板",
+        "B": "使用 Power BI 连接到 Azure DevOps Analytics",
+        "C": "创建共享查询",
+        "D": "使用 Azure DevOps REST API"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Power BI 可以连接到 Azure DevOps Analytics 服务，允许你创建跨多个项目的综合报表和仪表板。这提供了灵活的数据可视化和分析功能，超越了内置仪表板的限制。"
+    },
+    {
+      "id": "az400-s3-q12",
+      "examId": "azure-az-400-set3",
+      "setNumber": 3,
+      "domain": "设计和实现源代码管理",
+      "question": "你需要将大型二进制文件存储在 Git 仓库中，但不想影响仓库性能。应该使用什么解决方案？",
+      "options": {
+        "A": "Git Large File Storage (LFS)",
+        "B": "Git 子模块",
+        "C": "Git 存档",
+        "D": "增加仓库大小限制"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Git LFS 是一个 Git 扩展，用于版本控制大型文件。它将大型文件替换为指针文件，而实际文件存储在远程服务器上。这保持了仓库的小型化和高性能。"
+    },
+    {
+      "id": "az400-s3-q13",
+      "examId": "azure-az-400-set3",
+      "setNumber": 3,
+      "domain": "设计和实现构建与发布管道",
+      "question": "你需要在 Azure Pipelines 中实现基础设施即代码，使用 Terraform 部署 Azure 资源。应该使用哪种方法来管理 Terraform 状态？",
+      "options": {
+        "A": "将状态文件存储在 Git 仓库中",
+        "B": "使用 Azure Storage 作为远程后端",
+        "C": "使用本地状态文件",
+        "D": "禁用状态管理"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "使用 Azure Storage 作为 Terraform 远程后端是最佳实践。它提供状态锁定以防止并发修改，支持团队协作，并确保状态文件的安全存储和版本控制。"
+    },
+    {
+      "id": "az400-s3-q14",
+      "examId": "azure-az-400-set3",
+      "setNumber": 3,
+      "domain": "开发安全性和合规性计划",
+      "question": "你需要确保 Azure DevOps 管道中使用的所有 npm 包都没有已知漏洞。应该使用什么工具？",
+      "options": {
+        "A": "npm audit 任务",
+        "B": "WhiteSource Bolt",
+        "C": "两者都可以",
+        "D": "SonarQube"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "npm audit 是 npm 内置的安全审计工具，可以检查依赖项中的已知漏洞。WhiteSource Bolt（现在称为 Mend Bolt）是一个更全面的开源安全和许可证合规性工具。两者都可以在 Azure Pipelines 中使用来扫描 npm 包漏洞。"
+    },
+    {
+      "id": "az400-s3-q15",
+      "examId": "azure-az-400-set3",
+      "setNumber": 3,
+      "domain": "实现检测策略",
+      "question": "你需要实现分布式跟踪，以监控跨多个微服务的请求。Azure Application Insights 中的哪个功能支持此场景？",
+      "options": {
+        "A": "应用程序映射",
+        "B": "实时指标流",
+        "C": "可用性测试",
+        "D": "使用情况分析"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Application Insights 的应用程序映射功能可视化应用程序组件及其依赖关系，显示分布式跟踪数据。它帮助你了解请求如何在微服务之间流动，识别性能瓶颈和故障点。"
+    },
+    {
+      "id": "az400-s3-q16",
+      "examId": "azure-az-400-set3",
+      "setNumber": 3,
+      "domain": "配置流程和通信",
+      "question": "你需要在 Azure DevOps 中实施看板方法。你希望限制每个列中的工作项数量以防止过载。应该配置什么？",
+      "options": {
+        "A": "WIP（在制品）限制",
+        "B": "区域路径",
+        "C": "迭代路径",
+        "D": "泳道"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "WIP（Work In Progress）限制是看板方法的核心实践。在 Azure Boards 中，你可以为每个看板列设置 WIP 限制，当列中的工作项数量超过限制时会显示警告，帮助团队专注于完成现有工作而不是开始新工作。"
+    },
+    {
+      "id": "az400-s3-q17",
+      "examId": "azure-az-400-set3",
+      "setNumber": 3,
+      "domain": "设计和实现源代码管理",
+      "question": "你的团队需要在不同分支之间选择性地合并特定提交。应该使用哪个 Git 命令？",
+      "options": {
+        "A": "git cherry-pick",
+        "B": "git merge",
+        "C": "git rebase",
+        "D": "git squash"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "git cherry-pick 命令允许你选择特定的提交并将其应用到当前分支。这在需要将 bug 修复从一个分支移植到另一个分支时非常有用，而不需要合并整个分支。"
+    },
+    {
+      "id": "az400-s3-q18",
+      "examId": "azure-az-400-set3",
+      "setNumber": 3,
+      "domain": "设计和实现构建与发布管道",
+      "question": "你需要在 Azure Pipelines 中缓存依赖项以加速构建。对于 Node.js 项目，应该缓存哪个文件夹？",
+      "options": {
+        "A": "node_modules",
+        "B": ".npm 或 node_modules",
+        "C": "package.json",
+        "D": "dist"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "对于 Node.js 项目，你可以缓存 node_modules 文件夹来存储已安装的依赖项，或者缓存 npm 缓存目录（.npm）。缓存这些文件夹可以显著减少后续构建中 npm install 的时间。"
+    },
+    {
+      "id": "az400-s3-q19",
+      "examId": "azure-az-400-set3",
+      "setNumber": 3,
+      "domain": "开发安全性和合规性计划",
+      "question": "你需要在 Azure DevOps 中实施策略，要求所有拉取请求都必须链接到工作项。应该在哪里配置此策略？",
+      "options": {
+        "A": "分支策略",
+        "B": "项目设置",
+        "C": "组织策略",
+        "D": "安全设置"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "在 Azure Repos 的分支策略中，你可以配置'检查链接的工作项'策略，要求每个拉取请求都必须关联至少一个工作项。这有助于保持代码更改与需求或 bug 之间的可追溯性。"
+    },
+    {
+      "id": "az400-s3-q20",
+      "examId": "azure-az-400-set3",
+      "setNumber": 3,
+      "domain": "实现检测策略",
+      "question": "你需要设置警报，当 Azure Web App 的响应时间超过阈值时通知团队。应该使用什么功能？",
+      "options": {
+        "A": "Azure Monitor 警报规则",
+        "B": "Azure Advisor 建议",
+        "C": "Azure Policy",
+        "D": "Azure Automation"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Azure Monitor 警报规则允许你基于指标、日志或活动日志创建警报。你可以配置响应时间指标的阈值，当超过时自动触发通知、运行自动化操作或调用 webhook。"
+    },
+    {
+      "id": "az400-s3-q21",
+      "examId": "azure-az-400-set3",
+      "setNumber": 3,
+      "domain": "配置流程和通信",
+      "question": "你需要在 Azure DevOps 中跟踪团队的速度和燃尽图。这些报告在哪里可用？",
+      "options": {
+        "A": "Sprint 概述页面",
+        "B": "分析视图",
+        "C": "两者都有",
+        "D": "项目设置"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "燃尽图和速度报告在 Sprint 概述页面中直接可用，提供当前和历史 Sprint 的数据。分析视图提供更高级的报告功能，允许创建自定义查询和可视化，包括速度趋势分析。"
+    },
+    {
+      "id": "az400-s3-q22",
+      "examId": "azure-az-400-set3",
+      "setNumber": 3,
+      "domain": "设计和实现源代码管理",
+      "question": "你需要在 Azure Repos 中设置自动完成拉取请求的功能，使其在所有策略满足后自动合并。这个功能叫什么？",
+      "options": {
+        "A": "自动完成",
+        "B": "自动合并",
+        "C": "自动批准",
+        "D": "自动部署"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Azure Repos 中的自动完成功能允许你将拉取请求设置为在所有分支策略（如审阅者批准、构建成功等）满足后自动完成合并。这减少了手动干预，加速了代码合并流程。"
+    },
+    {
+      "id": "az400-s3-q23",
+      "examId": "azure-az-400-set3",
+      "setNumber": 3,
+      "domain": "设计和实现构建与发布管道",
+      "question": "你正在使用 Azure Pipelines YAML 管道。你需要根据触发分支使用不同的变量值。应该使用什么技术？",
+      "options": {
+        "A": "条件变量",
+        "B": "模板表达式",
+        "C": "运行时参数",
+        "D": "A 和 B"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "你可以使用条件变量和模板表达式来根据触发分支设置不同的变量值。例如，使用 ${{ if eq(variables['Build.SourceBranch'], 'refs/heads/main') }} 语法来有条件地设置变量。"
+    },
+    {
+      "id": "az400-s3-q24",
+      "examId": "azure-az-400-set3",
+      "setNumber": 3,
+      "domain": "开发安全性和合规性计划",
+      "question": "你需要确保 Azure DevOps 代理可以安全地访问私有 Azure 虚拟网络中的资源。应该使用什么解决方案？",
+      "options": {
+        "A": "自托管代理部署在 VNet 中",
+        "B": "Microsoft 托管代理与服务端点",
+        "C": "Azure Private Link",
+        "D": "VPN 网关"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "将自托管代理部署在 Azure VNet 中是访问私有网络资源的最佳方式。代理可以直接与 VNet 中的资源通信，而无需公开这些资源或配置复杂的网络规则。"
+    },
+    {
+      "id": "az400-s3-q25",
+      "examId": "azure-az-400-set3",
+      "setNumber": 3,
+      "domain": "实现检测策略",
+      "question": "你需要收集和分析 Azure 资源的诊断日志。应该将日志发送到哪里进行长期存储和分析？",
+      "options": {
+        "A": "Azure Storage 账户",
+        "B": "Log Analytics 工作区",
+        "C": "Event Hubs",
+        "D": "以上所有都可以"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "Azure 诊断设置支持将日志发送到多个目标：Storage 账户用于长期归档，Log Analytics 工作区用于查询和分析，Event Hubs 用于流式处理到外部系统。你可以同时使用多个目标。"
+    },
+    {
+      "id": "az400-s3-q26",
+      "examId": "azure-az-400-set3",
+      "setNumber": 3,
+      "domain": "配置流程和通信",
+      "question": "你需要在 Azure DevOps 中配置测试计划，以支持手动测试执行和缺陷跟踪。应该使用哪个服务？",
+      "options": {
+        "A": "Azure Test Plans",
+        "B": "Azure Pipelines 测试任务",
+        "C": "Azure Boards",
+        "D": "Azure Repos"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Azure Test Plans 是 Azure DevOps 中用于手动和探索性测试的服务。它支持创建测试计划、测试套件、测试用例，执行手动测试，并直接从测试运行中创建 bug，实现完整的测试管理和缺陷跟踪。"
+    },
+    {
+      "id": "az400-s3-q27",
+      "examId": "azure-az-400-set3",
+      "setNumber": 3,
+      "domain": "设计和实现源代码管理",
+      "question": "你需要在单个 Azure DevOps 仓库中管理多个相关项目。哪种仓库结构最适合这种情况？",
+      "options": {
+        "A": "Monorepo（单一仓库）",
+        "B": "多仓库",
+        "C": "Git 子模块",
+        "D": "Git Subtree"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Monorepo 方法将多个项目存储在单个仓库中，便于代码共享、统一版本控制和原子提交。这对于紧密耦合的项目特别有用，可以简化依赖管理和跨项目更改。"
+    },
+    {
+      "id": "az400-s3-q28",
+      "examId": "azure-az-400-set3",
+      "setNumber": 3,
+      "domain": "设计和实现构建与发布管道",
+      "question": "你需要在 Azure Pipelines 中实现蓝绿部署策略。应该使用什么 Azure 服务来实现零停机部署？",
+      "options": {
+        "A": "Azure App Service 部署槽",
+        "B": "Azure Traffic Manager",
+        "C": "Azure Front Door",
+        "D": "以上都可以"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "蓝绿部署可以通过多种方式实现：App Service 部署槽允许你部署到暂存槽然后交换；Traffic Manager 和 Front Door 可以在两个独立部署之间切换流量。选择取决于你的具体架构需求。"
+    },
+    {
+      "id": "az400-s3-q29",
+      "examId": "azure-az-400-set3",
+      "setNumber": 3,
+      "domain": "开发安全性和合规性计划",
+      "question": "你需要在 Azure DevOps 管道中实施动态应用程序安全测试（DAST）。应该使用什么类型的工具？",
+      "options": {
+        "A": "OWASP ZAP",
+        "B": "SonarQube",
+        "C": "Checkmarx",
+        "D": "Fortify"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "OWASP ZAP（Zed Attack Proxy）是一个流行的开源 DAST 工具，可以集成到 Azure Pipelines 中对运行中的应用程序进行安全扫描。SonarQube、Checkmarx 和 Fortify 主要是静态分析（SAST）工具。"
+    },
+    {
+      "id": "az400-s3-q30",
+      "examId": "azure-az-400-set3",
+      "setNumber": 3,
+      "domain": "实现检测策略",
+      "question": "你需要在 Azure 中实现集中式日志管理，以便从多个订阅收集日志。应该如何配置？",
+      "options": {
+        "A": "使用 Azure Lighthouse 和共享 Log Analytics 工作区",
+        "B": "每个订阅使用单独的 Log Analytics 工作区",
+        "C": "使用 Azure Policy 强制执行日志设置",
+        "D": "A 和 C"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "要从多个订阅集中收集日志，你可以使用 Azure Lighthouse 进行跨租户管理，配置共享的 Log Analytics 工作区，并使用 Azure Policy 确保所有资源都配置为将日志发送到中央工作区。"
+    },
+    {
+      "id": "az400-s3-q31",
+      "examId": "azure-az-400-set3",
+      "setNumber": 3,
+      "domain": "配置流程和通信",
+      "question": "你的团队使用 Scrum 框架。你需要在 Azure DevOps 中配置产品待办事项列表的优先级排序。哪种方法最适合？",
+      "options": {
+        "A": "使用拖放重新排序工作项",
+        "B": "使用堆栈排名字段",
+        "C": "使用优先级字段",
+        "D": "A 和 B"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "Azure Boards 支持通过拖放直接在待办事项列表视图中重新排序工作项，这会自动更新堆栈排名字段。堆栈排名提供了工作项的相对顺序，是管理待办事项优先级的推荐方式。"
+    },
+    {
+      "id": "az400-s3-q32",
+      "examId": "azure-az-400-set3",
+      "setNumber": 3,
+      "domain": "设计和实现源代码管理",
+      "question": "你需要在 Azure Repos 中配置强制推送保护，防止开发人员重写分支历史。应该在哪里配置？",
+      "options": {
+        "A": "分支安全设置",
+        "B": "分支策略",
+        "C": "仓库设置",
+        "D": "项目设置"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "在 Azure Repos 中，分支安全设置允许你控制谁可以对分支执行强制推送。通过移除'强制推送'权限，你可以防止开发人员使用 git push --force 重写分支历史。"
+    },
+    {
+      "id": "az400-s3-q33",
+      "examId": "azure-az-400-set3",
+      "setNumber": 3,
+      "domain": "设计和实现构建与发布管道",
+      "question": "你需要在 Azure Pipelines 中并行运行多个测试作业以减少总执行时间。应该使用什么功能？",
+      "options": {
+        "A": "矩阵策略",
+        "B": "并行作业",
+        "C": "多代理部署",
+        "D": "A 和 B"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "矩阵策略允许你定义变量组合，自动生成多个并行运行的作业。并行作业功能确定了可以同时运行的作业数量。两者结合使用可以有效地并行化测试执行。"
+    },
+    {
+      "id": "az400-s3-q34",
+      "examId": "azure-az-400-set3",
+      "setNumber": 3,
+      "domain": "开发安全性和合规性计划",
+      "question": "你需要在 Azure DevOps 中配置审计日志，以跟踪用户操作和安全事件。审计日志在哪里可用？",
+      "options": {
+        "A": "组织设置 > 审计",
+        "B": "项目设置 > 安全",
+        "C": "Azure Monitor",
+        "D": "Azure Active Directory"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Azure DevOps 组织级别的审计功能记录用户操作、安全更改和系统事件。你可以在组织设置的审计部分查看审计日志，并可以将其导出到 Azure Monitor 或其他分析工具。"
+    },
+    {
+      "id": "az400-s3-q35",
+      "examId": "azure-az-400-set3",
+      "setNumber": 3,
+      "domain": "实现检测策略",
+      "question": "你需要在 Azure Application Insights 中实现自定义指标跟踪。应该使用哪个 API？",
+      "options": {
+        "A": "TelemetryClient.TrackMetric()",
+        "B": "TelemetryClient.TrackEvent()",
+        "C": "TelemetryClient.TrackTrace()",
+        "D": "TelemetryClient.TrackRequest()"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "TelemetryClient.TrackMetric() 方法用于发送自定义指标到 Application Insights。你可以跟踪业务相关的数值指标，如处理时间、队列长度或任何自定义测量值。"
+    },
+    {
+      "id": "az400-s3-q36",
+      "examId": "azure-az-400-set3",
+      "setNumber": 3,
+      "domain": "配置流程和通信",
+      "question": "你需要在 Azure DevOps 中配置工作项自动化规则，当拉取请求合并时自动关闭关联的 bug。应该使用什么功能？",
+      "options": {
+        "A": "工作项规则",
+        "B": "分支策略中的工作项链接设置",
+        "C": "自动化规则",
+        "D": "服务挂钩"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "Azure Boards 中的自动化规则允许你配置基于事件的工作项状态更改。你可以创建规则，当拉取请求合并时自动将关联的工作项移动到'已关闭'或其他指定状态。"
+    },
+    {
+      "id": "az400-s3-q37",
+      "examId": "azure-az-400-set3",
+      "setNumber": 3,
+      "domain": "设计和实现源代码管理",
+      "question": "你需要在 Azure Repos 中实现分支保护，要求所有合并到主分支的更改都必须通过 CI 构建。应该配置什么？",
+      "options": {
+        "A": "分支策略中的构建验证",
+        "B": "管道触发器",
+        "C": "PR 触发器",
+        "D": "条件访问策略"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "分支策略中的构建验证功能要求拉取请求在合并前必须成功完成指定的构建管道。这确保了只有通过 CI 验证的代码才能合并到受保护的分支。"
+    },
+    {
+      "id": "az400-s3-q38",
+      "examId": "azure-az-400-set3",
+      "setNumber": 3,
+      "domain": "设计和实现构建与发布管道",
+      "question": "你需要在 Azure Pipelines 中使用容器作业来确保构建环境的一致性。应该如何配置？",
+      "options": {
+        "A": "在作业中指定 container 属性",
+        "B": "使用 Docker 任务",
+        "C": "使用容器代理池",
+        "D": "使用 Kubernetes 服务连接"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "在 YAML 管道中，你可以使用 container 属性在作业级别指定一个 Docker 容器映像。管道将在该容器内运行，确保构建环境的一致性和隔离性。"
+    },
+    {
+      "id": "az400-s3-q39",
+      "examId": "azure-az-400-set3",
+      "setNumber": 3,
+      "domain": "开发安全性和合规性计划",
+      "question": "你需要在 Azure DevOps 中实施最小权限原则。哪种方法最适合管理用户权限？",
+      "options": {
+        "A": "使用 Azure DevOps 组和 AAD 组",
+        "B": "为每个用户单独分配权限",
+        "C": "使用项目集合管理员组",
+        "D": "禁用继承权限"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "使用组来管理权限是最佳实践。Azure DevOps 组和 Azure AD 组允许你基于角色分配权限，简化权限管理，并确保一致地应用最小权限原则。"
+    },
+    {
+      "id": "az400-s3-q40",
+      "examId": "azure-az-400-set3",
+      "setNumber": 3,
+      "domain": "实现检测策略",
+      "question": "你需要使用 Azure Monitor 创建自定义工作簿来可视化 DevOps 指标。工作簿支持哪些数据源？",
+      "options": {
+        "A": "仅 Log Analytics",
+        "B": "Log Analytics 和 Application Insights",
+        "C": "Log Analytics、Application Insights、Azure Resource Graph 和自定义 API",
+        "D": "仅 Application Insights"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "Azure Monitor 工作簿支持多种数据源，包括 Log Analytics、Application Insights、Azure Resource Graph、Azure Resource Manager、自定义 API 等。这使你能够创建综合的可视化仪表板，整合来自不同来源的数据。"
+    }
+  ]
+}

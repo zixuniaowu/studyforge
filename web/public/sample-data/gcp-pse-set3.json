@@ -1,0 +1,663 @@
+{
+  "exam": {
+    "id": "gcp-pse-set3",
+    "name": "Professional Cloud Security Engineer 练习题 Set 3",
+    "code": "PSE",
+    "provider": "Google Cloud",
+    "language": "zh-CN",
+    "description": "Google Cloud Professional Cloud Security Engineer认证考试练习题集3，涵盖高级安全架构、事件响应和安全自动化。",
+    "totalQuestions": 40,
+    "passingScore": 70,
+    "examTime": 120,
+    "domains": [
+      "配置访问控制",
+      "配置网络安全",
+      "确保数据保护",
+      "管理安全运营",
+      "确保合规性"
+    ],
+    "tags": ["Google Cloud", "Security", "Professional"]
+  },
+  "questions": [
+    {
+      "id": "gcp-pse-set3-q1",
+      "examId": "gcp-pse-set3",
+      "setNumber": 3,
+      "domain": "配置访问控制",
+      "question": "您需要为 GKE 集群中的工作负载实现细粒度的 GCP 服务访问控制，不同的 Pod 需要不同的权限。应该使用什么方法？",
+      "options": {
+        "A": "为所有 Pod 使用相同的节点服务账号",
+        "B": "为每个工作负载配置 Workload Identity 并关联不同的 GCP 服务账号",
+        "C": "在每个 Pod 中存储服务账号密钥",
+        "D": "禁用服务账号"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Workload Identity 允许将不同的 Kubernetes 服务账号映射到不同的 GCP 服务账号，从而为每个工作负载提供精确的权限，遵循最小权限原则。"
+    },
+    {
+      "id": "gcp-pse-set3-q2",
+      "examId": "gcp-pse-set3",
+      "setNumber": 3,
+      "domain": "配置网络安全",
+      "question": "您需要保护 GKE 控制平面 API 服务器免受未经授权的访问。应该配置什么？",
+      "options": {
+        "A": "公开控制平面端点",
+        "B": "启用私有集群并配置授权网络",
+        "C": "禁用 API 服务器",
+        "D": "仅使用 Cloud Shell"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "启用私有集群会为控制平面分配私有 IP。配置授权网络（master authorized networks）可以限制只有来自特定 IP 范围的请求才能访问控制平面。"
+    },
+    {
+      "id": "gcp-pse-set3-q3",
+      "examId": "gcp-pse-set3",
+      "setNumber": 3,
+      "domain": "确保数据保护",
+      "question": "您需要确保 Compute Engine 持久磁盘在删除 VM 后仍然保留数据，但磁盘本身可以被删除。应该使用什么机制保护关键磁盘？",
+      "options": {
+        "A": "默认行为会保护磁盘",
+        "B": "设置磁盘删除保护并使用 Cloud KMS 加密",
+        "C": "仅使用本地 SSD",
+        "D": "禁用自动删除"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "设置 deletionProtection 可以防止意外删除磁盘。使用 Cloud KMS 加密确保即使磁盘被不当访问，数据也受到保护。还可以使用快照进行备份。"
+    },
+    {
+      "id": "gcp-pse-set3-q4",
+      "examId": "gcp-pse-set3",
+      "setNumber": 3,
+      "domain": "管理安全运营",
+      "question": "您检测到 GCE 实例上有可疑的命令执行活动。应该立即采取什么行动？",
+      "options": {
+        "A": "忽略警报",
+        "B": "隔离实例（禁用网络访问）并保留取证证据",
+        "C": "立即删除实例",
+        "D": "重启实例"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "应该隔离受影响的实例以防止横向移动，同时保留磁盘快照和日志用于取证分析。不要删除实例，因为这会丢失重要的取证证据。"
+    },
+    {
+      "id": "gcp-pse-set3-q5",
+      "examId": "gcp-pse-set3",
+      "setNumber": 3,
+      "domain": "确保合规性",
+      "question": "您需要证明您的 GCP 环境符合 SOC 2 要求。应该使用什么资源？",
+      "options": {
+        "A": "自行创建合规报告",
+        "B": "请求 Google Cloud SOC 2 报告并结合自己的控制措施文档",
+        "C": "假设默认符合",
+        "D": "不需要合规性证明"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Google Cloud 提供 SOC 2 审计报告，涵盖 Google 管理的控制措施。您需要结合这些报告和您自己实施的安全控制措施文档来证明整体合规性。"
+    },
+    {
+      "id": "gcp-pse-set3-q6",
+      "examId": "gcp-pse-set3",
+      "setNumber": 3,
+      "domain": "配置访问控制",
+      "question": "您需要实现紧急访问（break-glass）流程，允许在紧急情况下临时提升权限。应该如何设计？",
+      "options": {
+        "A": "给所有用户永久 Owner 权限",
+        "B": "使用专门的紧急服务账号，配合审计日志和警报",
+        "C": "禁用所有安全控制",
+        "D": "共享管理员密码"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "设置专门的紧急服务账号，其凭据安全存储，使用时会触发自动警报和审计。紧急访问后应立即审查使用情况并轮换凭据。"
+    },
+    {
+      "id": "gcp-pse-set3-q7",
+      "examId": "gcp-pse-set3",
+      "setNumber": 3,
+      "domain": "配置网络安全",
+      "question": "您需要配置 Cloud Load Balancing 以仅接受来自 Cloudflare 的流量。应该使用什么配置？",
+      "options": {
+        "A": "VPC Firewall 规则",
+        "B": "Cloud Armor 安全策略白名单 Cloudflare IP 范围",
+        "C": "Cloud NAT",
+        "D": "VPC Peering"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "使用 Cloud Armor 安全策略，配置规则只允许来自 Cloudflare 公开 IP 范围的流量，拒绝所有其他来源。这确保流量必须通过 Cloudflare 的安全层。"
+    },
+    {
+      "id": "gcp-pse-set3-q8",
+      "examId": "gcp-pse-set3",
+      "setNumber": 3,
+      "domain": "确保数据保护",
+      "question": "您需要确保 Cloud Spanner 数据库使用客户管理的加密密钥（CMEK），并且密钥只能由特定项目使用。应该如何配置？",
+      "options": {
+        "A": "使用 Google 默认加密",
+        "B": "创建 Cloud KMS 密钥并使用 IAM 限制访问权限",
+        "C": "使用 CSEK",
+        "D": "禁用加密"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "在 Cloud KMS 中创建密钥，使用 IAM 精确控制哪些项目/服务账号可以使用该密钥。然后在 Cloud Spanner 配置中指定使用该 CMEK 密钥。"
+    },
+    {
+      "id": "gcp-pse-set3-q9",
+      "examId": "gcp-pse-set3",
+      "setNumber": 3,
+      "domain": "管理安全运营",
+      "question": "您需要建立安全运营中心（SOC）来监控 GCP 环境。应该使用什么核心工具？",
+      "options": {
+        "A": "仅使用 Cloud Monitoring",
+        "B": "Security Command Center + Chronicle SIEM + Cloud Logging",
+        "C": "仅使用电子邮件通知",
+        "D": "手动检查控制台"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "完整的 SOC 解决方案包括：Security Command Center 用于安全态势管理，Chronicle SIEM 用于日志分析和威胁检测，Cloud Logging 用于日志收集。三者结合提供全面的安全监控。"
+    },
+    {
+      "id": "gcp-pse-set3-q10",
+      "examId": "gcp-pse-set3",
+      "setNumber": 3,
+      "domain": "确保合规性",
+      "question": "您需要确保组织中没有人可以创建具有公开 IP 的 Compute Engine 实例。应该使用什么控制？",
+      "options": {
+        "A": "VPC Firewall 规则",
+        "B": "组织策略 compute.vmExternalIpAccess 约束",
+        "C": "Cloud Armor",
+        "D": "IAM 策略"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "组织策略约束 compute.vmExternalIpAccess 可以配置为拒绝所有（deny all）或仅允许特定 VM 有外部 IP。这在组织/文件夹级别强制执行，防止创建带外部 IP 的实例。"
+    },
+    {
+      "id": "gcp-pse-set3-q11",
+      "examId": "gcp-pse-set3",
+      "setNumber": 3,
+      "domain": "配置访问控制",
+      "question": "您需要授予第三方供应商有限的 GCP 资源访问权限，但不想在您的组织中创建用户账号。应该使用什么方法？",
+      "options": {
+        "A": "共享管理员凭据",
+        "B": "使用 Workload Identity Federation 允许他们使用自己的身份提供商",
+        "C": "为每个供应商员工创建 Google 账号",
+        "D": "禁用访问控制"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Workload Identity Federation 允许外部身份提供商的用户使用他们现有的身份获取临时 GCP 凭据，无需在您的组织中创建 Google 账号。"
+    },
+    {
+      "id": "gcp-pse-set3-q12",
+      "examId": "gcp-pse-set3",
+      "setNumber": 3,
+      "domain": "配置网络安全",
+      "question": "您需要在混合云环境中安全地连接本地网络和多个 GCP VPC。应该使用什么架构？",
+      "options": {
+        "A": "为每个 VPC 创建单独的 VPN 连接",
+        "B": "使用 Network Connectivity Center 和 Hub-and-Spoke 架构",
+        "C": "使用公共互联网",
+        "D": "禁用网络连接"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Network Connectivity Center 允许创建 Hub-and-Spoke 网络架构，将本地网络和多个 VPC 通过中央枢纽连接，简化管理并提供安全的混合云连接。"
+    },
+    {
+      "id": "gcp-pse-set3-q13",
+      "examId": "gcp-pse-set3",
+      "setNumber": 3,
+      "domain": "确保数据保护",
+      "question": "您需要确保 Cloud Storage 中的特定对象在指定时间之前无法被删除或修改。应该使用什么功能？",
+      "options": {
+        "A": "对象版本控制",
+        "B": "保留策略（Retention Policy）和存储桶锁",
+        "C": "IAM 策略",
+        "D": "对象生命周期"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "保留策略定义对象必须保留的最短时间。使用存储桶锁可以使保留策略不可变，确保即使管理员也无法在保留期满前删除对象，满足合规性要求。"
+    },
+    {
+      "id": "gcp-pse-set3-q14",
+      "examId": "gcp-pse-set3",
+      "setNumber": 3,
+      "domain": "管理安全运营",
+      "question": "您需要自动修复 Security Command Center 发现的某些配置问题。应该使用什么方法？",
+      "options": {
+        "A": "手动修复每个发现",
+        "B": "使用 SCC 发现触发 Cloud Functions 执行自动修复",
+        "C": "忽略发现",
+        "D": "禁用 SCC"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "配置 SCC 通知将发现发布到 Pub/Sub，触发 Cloud Functions 执行自动修复操作（如关闭公开的存储桶、禁用可疑服务账号等）。这实现了安全运营的自动化。"
+    },
+    {
+      "id": "gcp-pse-set3-q15",
+      "examId": "gcp-pse-set3",
+      "setNumber": 3,
+      "domain": "确保合规性",
+      "question": "您需要为组织建立数据分类和处理标准。应该从什么开始？",
+      "options": {
+        "A": "加密所有数据",
+        "B": "定义数据分类级别并使用 Data Catalog 标记资源",
+        "C": "删除所有敏感数据",
+        "D": "不分类数据"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "首先定义数据分类级别（如公开、内部、机密、高度机密），然后使用 Data Catalog 的策略标签标记数据资产。这为实施适当的安全控制提供基础。"
+    },
+    {
+      "id": "gcp-pse-set3-q16",
+      "examId": "gcp-pse-set3",
+      "setNumber": 3,
+      "domain": "配置访问控制",
+      "question": "您发现一个服务账号拥有过多权限，需要确定实际使用了哪些权限。应该使用什么工具？",
+      "options": {
+        "A": "猜测需要的权限",
+        "B": "IAM Policy Analyzer 和 Activity Analyzer",
+        "C": "删除所有权限",
+        "D": "查看文档"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "IAM Policy Analyzer 可以分析谁有权访问什么资源。Activity Analyzer 分析服务账号的实际活动，显示过去 90 天内使用的权限，帮助实施最小权限。"
+    },
+    {
+      "id": "gcp-pse-set3-q17",
+      "examId": "gcp-pse-set3",
+      "setNumber": 3,
+      "domain": "配置网络安全",
+      "question": "您需要检测和阻止 VPC 中的横向移动攻击。应该使用什么组合？",
+      "options": {
+        "A": "仅使用 VPC Firewall",
+        "B": "Cloud IDS + VPC Firewall + 微分段",
+        "C": "仅使用 Cloud Armor",
+        "D": "禁用内部通信"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Cloud IDS 检测可疑的内部流量和已知威胁。VPC Firewall 规则实现微分段，限制资源之间的通信。组合使用可以检测和阻止横向移动攻击。"
+    },
+    {
+      "id": "gcp-pse-set3-q18",
+      "examId": "gcp-pse-set3",
+      "setNumber": 3,
+      "domain": "确保数据保护",
+      "question": "您需要在 Dataflow 作业中处理敏感数据时进行脱敏。应该如何集成 Cloud DLP？",
+      "options": {
+        "A": "手动脱敏",
+        "B": "在 Dataflow 管道中调用 Cloud DLP API 进行实时脱敏",
+        "C": "不处理敏感数据",
+        "D": "跳过脱敏步骤"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Dataflow 可以集成 Cloud DLP API，在数据处理管道中实时检查和脱敏敏感数据。这允许在数据流经系统时自动应用数据保护。"
+    },
+    {
+      "id": "gcp-pse-set3-q19",
+      "examId": "gcp-pse-set3",
+      "setNumber": 3,
+      "domain": "管理安全运营",
+      "question": "您需要进行 GCP 环境的安全渗透测试。有什么需要注意的？",
+      "options": {
+        "A": "无需通知即可进行任何测试",
+        "B": "遵循 GCP 渗透测试政策，某些测试无需通知，但要避免影响其他客户",
+        "C": "禁止所有渗透测试",
+        "D": "只能由 Google 进行测试"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "GCP 允许对您自己的资源进行渗透测试，无需事先通知 Google。但必须遵守可接受使用政策，不得影响其他客户或 Google 的基础设施。"
+    },
+    {
+      "id": "gcp-pse-set3-q20",
+      "examId": "gcp-pse-set3",
+      "setNumber": 3,
+      "domain": "确保合规性",
+      "question": "您需要确保敏感工作负载只在符合特定安全标准的硬件上运行。应该使用什么功能？",
+      "options": {
+        "A": "标准 Compute Engine",
+        "B": "Confidential Computing（机密 VM）",
+        "C": "Preemptible VM",
+        "D": "Spot VM"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Confidential Computing 使用硬件级加密保护使用中的数据。机密 VM 确保数据在处理过程中也被加密，即使是 Google 也无法访问运行时内存中的数据。"
+    },
+    {
+      "id": "gcp-pse-set3-q21",
+      "examId": "gcp-pse-set3",
+      "setNumber": 3,
+      "domain": "配置访问控制",
+      "question": "您需要实现对 BigQuery 数据集的行级别安全控制。应该使用什么功能？",
+      "options": {
+        "A": "数据集级 IAM",
+        "B": "行级安全策略（Row-level Security）",
+        "C": "视图",
+        "D": "表分区"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "BigQuery 行级安全策略允许基于用户身份或属性过滤表中的行。不同用户查询相同表时只能看到授权的行，无需创建多个视图。"
+    },
+    {
+      "id": "gcp-pse-set3-q22",
+      "examId": "gcp-pse-set3",
+      "setNumber": 3,
+      "domain": "配置网络安全",
+      "question": "您需要在 VPC 和 Google API 之间建立私有连接，确保流量不经过互联网。应该使用什么？",
+      "options": {
+        "A": "通过公共互联网访问",
+        "B": "Private Service Connect 到 Google API",
+        "C": "Cloud VPN",
+        "D": "Cloud CDN"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Private Service Connect 允许从 VPC 内部通过私有端点访问 Google API 和服务，流量完全在 Google 网络内传输，不经过公共互联网。"
+    },
+    {
+      "id": "gcp-pse-set3-q23",
+      "examId": "gcp-pse-set3",
+      "setNumber": 3,
+      "domain": "确保数据保护",
+      "question": "您需要加密 Dataproc 集群的数据和元数据。应该使用什么配置？",
+      "options": {
+        "A": "使用默认加密",
+        "B": "配置 CMEK 用于磁盘加密和 Kerberos 用于通信加密",
+        "C": "禁用加密以提高性能",
+        "D": "仅加密输出数据"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "为 Dataproc 集群配置 CMEK 加密持久磁盘上的数据。启用 Kerberos 确保集群内组件之间的通信加密和身份验证。这提供全面的数据保护。"
+    },
+    {
+      "id": "gcp-pse-set3-q24",
+      "examId": "gcp-pse-set3",
+      "setNumber": 3,
+      "domain": "管理安全运营",
+      "question": "您需要追踪 GCP 资源的变更历史以进行安全调查。应该使用什么服务？",
+      "options": {
+        "A": "Cloud Monitoring",
+        "B": "Cloud Asset Inventory",
+        "C": "Cloud Logging",
+        "D": "VPC Flow Logs"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Cloud Asset Inventory 提供 GCP 资源和 IAM 策略的历史视图。您可以查询特定时间点的资源状态，追踪变更历史，这对于安全调查至关重要。"
+    },
+    {
+      "id": "gcp-pse-set3-q25",
+      "examId": "gcp-pse-set3",
+      "setNumber": 3,
+      "domain": "确保合规性",
+      "question": "您需要为组织创建安全基准并持续监控偏差。应该使用什么方法？",
+      "options": {
+        "A": "手动检查每个项目",
+        "B": "使用 Security Health Analytics 和自定义检测器",
+        "C": "不监控配置",
+        "D": "仅在事件发生后检查"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Security Health Analytics 持续扫描资源配置。您可以使用内置检测器（如 CIS 基准）和自定义检测器来定义组织特定的安全基准，并自动检测偏差。"
+    },
+    {
+      "id": "gcp-pse-set3-q26",
+      "examId": "gcp-pse-set3",
+      "setNumber": 3,
+      "domain": "配置访问控制",
+      "question": "您需要防止 GCP 服务账号被用于恶意活动（如挖矿）后横向移动。应该采取什么措施？",
+      "options": {
+        "A": "使用单个服务账号处理所有任务",
+        "B": "为每个服务使用专用服务账号，并实施最小权限",
+        "C": "不使用服务账号",
+        "D": "授予所有服务账号 Owner 权限"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "每个服务使用专用服务账号，仅授予必要的最小权限。这样即使一个服务账号被攻破，攻击者也无法使用它访问其他资源，限制了爆炸半径。"
+    },
+    {
+      "id": "gcp-pse-set3-q27",
+      "examId": "gcp-pse-set3",
+      "setNumber": 3,
+      "domain": "配置网络安全",
+      "question": "您需要保护 Cloud Run 服务，使其只能从 VPC 内部访问。应该如何配置？",
+      "options": {
+        "A": "使用公共端点",
+        "B": "将 Cloud Run 入口设置为仅内部流量并使用 Private Service Connect",
+        "C": "禁用 Cloud Run",
+        "D": "使用 Cloud CDN"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "将 Cloud Run 服务的入口设置为 internal 或 internal-and-cloud-load-balancing，限制只接受来自 VPC 的流量。可以结合 Private Service Connect 实现私有访问。"
+    },
+    {
+      "id": "gcp-pse-set3-q28",
+      "examId": "gcp-pse-set3",
+      "setNumber": 3,
+      "domain": "确保数据保护",
+      "question": "您需要安全地销毁 Cloud KMS 密钥，确保加密数据无法恢复。应该遵循什么流程？",
+      "options": {
+        "A": "立即删除密钥",
+        "B": "禁用密钥版本，等待计划销毁期，然后确认销毁",
+        "C": "保留所有密钥版本",
+        "D": "导出密钥"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "首先禁用密钥版本，确认不再需要解密任何数据。然后安排密钥版本销毁，在计划销毁期（默认 24 小时）内可以取消。期满后密钥材料将被永久销毁。"
+    },
+    {
+      "id": "gcp-pse-set3-q29",
+      "examId": "gcp-pse-set3",
+      "setNumber": 3,
+      "domain": "管理安全运营",
+      "question": "您需要建立威胁情报驱动的安全监控。应该使用什么服务？",
+      "options": {
+        "A": "仅使用 Cloud Logging",
+        "B": "Chronicle Security Operations 和 VirusTotal",
+        "C": "仅使用防火墙",
+        "D": "手动分析日志"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Chronicle Security Operations（SIEM/SOAR）集成了 Google 的威胁情报。VirusTotal 提供恶意软件和 URL 分析。两者结合实现威胁情报驱动的安全运营。"
+    },
+    {
+      "id": "gcp-pse-set3-q30",
+      "examId": "gcp-pse-set3",
+      "setNumber": 3,
+      "domain": "确保合规性",
+      "question": "您需要确保 GKE 集群符合 PCI-DSS 要求。应该配置什么？",
+      "options": {
+        "A": "使用默认集群配置",
+        "B": "启用私有集群、网络策略、审计日志、RBAC 和工作负载身份",
+        "C": "禁用所有安全功能",
+        "D": "仅使用公共集群"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "PCI-DSS 合规的 GKE 配置包括：私有集群（网络分段）、网络策略（微分段）、完整审计日志、RBAC（访问控制）、Workload Identity（身份管理）等多层安全控制。"
+    },
+    {
+      "id": "gcp-pse-set3-q31",
+      "examId": "gcp-pse-set3",
+      "setNumber": 3,
+      "domain": "配置访问控制",
+      "question": "您需要控制对 Google Cloud Console 的访问，仅允许来自公司网络的访问。应该使用什么？",
+      "options": {
+        "A": "VPC Firewall",
+        "B": "Access Context Manager 访问级别",
+        "C": "Cloud Armor",
+        "D": "Cloud NAT"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Access Context Manager 允许定义访问级别（基于 IP 范围、设备属性等）。可以配置上下文感知访问策略，限制只有来自公司网络 IP 的用户才能访问 Cloud Console。"
+    },
+    {
+      "id": "gcp-pse-set3-q32",
+      "examId": "gcp-pse-set3",
+      "setNumber": 3,
+      "domain": "配置网络安全",
+      "question": "您需要使用 Secure Web Proxy 检查 VPC 中的出站 HTTPS 流量。这提供什么功能？",
+      "options": {
+        "A": "仅记录流量",
+        "B": "URL 过滤、TLS 检查和访问策略执行",
+        "C": "仅加速流量",
+        "D": "仅缓存内容"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Secure Web Proxy 提供对出站流量的细粒度控制，包括 URL 过滤（阻止访问恶意网站）、TLS 检查（解密和分析 HTTPS 流量）和策略执行（允许/拒绝规则）。"
+    },
+    {
+      "id": "gcp-pse-set3-q33",
+      "examId": "gcp-pse-set3",
+      "setNumber": 3,
+      "domain": "确保数据保护",
+      "question": "您需要确保 Cloud Pub/Sub 消息在发布者和订阅者之间传输时受到保护。默认提供什么保护？",
+      "options": {
+        "A": "没有保护",
+        "B": "默认使用 TLS 加密传输中的数据，可选配置 CMEK 加密存储的消息",
+        "C": "仅加密存储的消息",
+        "D": "需要手动配置 TLS"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Cloud Pub/Sub 默认使用 TLS 加密传输中的数据。消息存储时默认使用 Google 管理的密钥加密，也可配置 CMEK 使用客户管理的密钥加密存储的消息。"
+    },
+    {
+      "id": "gcp-pse-set3-q34",
+      "examId": "gcp-pse-set3",
+      "setNumber": 3,
+      "domain": "管理安全运营",
+      "question": "您需要对 GCP 环境进行定期安全评估。应该使用什么工具组合？",
+      "options": {
+        "A": "仅手动审计",
+        "B": "Security Health Analytics + Policy Analyzer + Recommender",
+        "C": "仅使用 Cloud Monitoring",
+        "D": "不进行评估"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Security Health Analytics 检测配置漏洞，Policy Analyzer 分析 IAM 权限，Recommender 提供安全优化建议。组合使用提供全面的安全评估。"
+    },
+    {
+      "id": "gcp-pse-set3-q35",
+      "examId": "gcp-pse-set3",
+      "setNumber": 3,
+      "domain": "确保合规性",
+      "question": "您需要为 HIPAA 合规性配置 GCP 环境。首先应该做什么？",
+      "options": {
+        "A": "假设默认符合 HIPAA",
+        "B": "签署 BAA（业务伙伴协议）并仅使用 HIPAA 覆盖的服务",
+        "C": "使用任何 GCP 服务",
+        "D": "禁用所有安全功能"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "HIPAA 合规首先需要与 Google 签署 BAA（Business Associate Agreement）。然后只能使用 HIPAA 覆盖范围内的 GCP 服务来处理 PHI（受保护的健康信息）。"
+    },
+    {
+      "id": "gcp-pse-set3-q36",
+      "examId": "gcp-pse-set3",
+      "setNumber": 3,
+      "domain": "配置访问控制",
+      "question": "您需要限制用户只能在工作时间访问 GCP 资源。应该使用什么功能？",
+      "options": {
+        "A": "手动启用/禁用账号",
+        "B": "IAM 条件中的时间属性",
+        "C": "VPC Firewall 规则",
+        "D": "Cloud Scheduler"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "IAM 条件支持基于时间的访问控制。您可以设置条件只在特定时间（如工作日 9AM-6PM）允许访问，非工作时间自动拒绝，无需手动管理。"
+    },
+    {
+      "id": "gcp-pse-set3-q37",
+      "examId": "gcp-pse-set3",
+      "setNumber": 3,
+      "domain": "配置网络安全",
+      "question": "您需要实现针对 L7 DDoS 攻击的自适应保护。应该使用什么功能？",
+      "options": {
+        "A": "标准 VPC Firewall",
+        "B": "Cloud Armor Adaptive Protection",
+        "C": "Cloud NAT",
+        "D": "VPC Flow Logs"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Cloud Armor Adaptive Protection 使用机器学习分析流量模式，自动检测和缓解 L7 DDoS 攻击。它可以自动生成建议的防护规则，减少手动干预。"
+    },
+    {
+      "id": "gcp-pse-set3-q38",
+      "examId": "gcp-pse-set3",
+      "setNumber": 3,
+      "domain": "确保数据保护",
+      "question": "您需要确保 BigQuery ML 模型的训练数据在处理过程中受到保护。应该使用什么配置？",
+      "options": {
+        "A": "标准 BigQuery",
+        "B": "BigQuery AEAD 加密函数和 CMEK",
+        "C": "不使用 ML",
+        "D": "导出数据进行本地训练"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "使用 BigQuery AEAD（Authenticated Encryption with Associated Data）加密函数保护敏感数据列，配合 CMEK 加密存储的数据。这确保 ML 训练数据在整个生命周期中受到保护。"
+    },
+    {
+      "id": "gcp-pse-set3-q39",
+      "examId": "gcp-pse-set3",
+      "setNumber": 3,
+      "domain": "管理安全运营",
+      "question": "您需要为安全团队创建一个统一的视图，显示所有项目的安全状况。应该使用什么？",
+      "options": {
+        "A": "为每个项目单独查看",
+        "B": "Security Command Center 组织级仪表板",
+        "C": "Cloud Monitoring 仪表板",
+        "D": "电子表格"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Security Command Center 在组织级别提供统一仪表板，显示所有项目的安全发现、合规性状态、资产和漏洞。这为安全团队提供整个 GCP 组织的安全态势视图。"
+    },
+    {
+      "id": "gcp-pse-set3-q40",
+      "examId": "gcp-pse-set3",
+      "setNumber": 3,
+      "domain": "确保合规性",
+      "question": "您需要证明 Google Cloud 不会在未经授权的情况下访问您的数据。应该使用什么功能？",
+      "options": {
+        "A": "信任默认设置",
+        "B": "Access Transparency 和 Access Approval",
+        "C": "VPC Firewall",
+        "D": "Cloud Armor"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Access Transparency 记录 Google 员工访问客户数据的日志。Access Approval 要求在 Google 支持人员访问您的数据之前获得明确批准。两者结合提供可审计的访问控制证明。"
+    }
+  ]
+}

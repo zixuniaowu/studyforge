@@ -1,0 +1,661 @@
+{
+  "exam": {
+    "id": "azure-dp-203-set1",
+    "name": "Data Engineering on Microsoft Azure 练习题 Set 1",
+    "code": "DP-203",
+    "provider": "Microsoft",
+    "language": "zh-CN",
+    "description": "Azure 数据工程解决方案的设计和实现练习题集 1，涵盖 Azure Synapse Analytics、Data Factory、Databricks 等技术",
+    "totalQuestions": 40,
+    "passingScore": 70,
+    "examTime": 120,
+    "domains": [
+      "设计和实现数据存储",
+      "开发数据处理",
+      "保护、监视和优化数据存储和数据处理"
+    ],
+    "tags": ["Azure", "Data Engineering", "Synapse", "Data Factory", "Databricks"]
+  },
+  "questions": [
+    {
+      "id": "dp203-s1-q1",
+      "examId": "azure-dp-203-set1",
+      "setNumber": 1,
+      "domain": "设计和实现数据存储",
+      "question": "您正在设计一个数据湖解决方案，需要存储结构化、半结构化和非结构化数据。您需要支持分层命名空间以实现高效的数据管理。应该使用哪种 Azure 存储服务？",
+      "options": {
+        "A": "Azure Blob 存储",
+        "B": "Azure Data Lake Storage Gen2",
+        "C": "Azure 文件存储",
+        "D": "Azure 队列存储"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure Data Lake Storage Gen2 提供分层命名空间功能，支持高效的目录和文件操作。它结合了 Azure Blob 存储的可扩展性和成本效益与分层文件系统的性能优势，是数据湖解决方案的理想选择。"
+    },
+    {
+      "id": "dp203-s1-q2",
+      "examId": "azure-dp-203-set1",
+      "setNumber": 1,
+      "domain": "开发数据处理",
+      "question": "您正在使用 Azure Synapse Analytics 中的专用 SQL 池。您需要优化大型事实表的查询性能。应该使用哪种表分布类型？",
+      "options": {
+        "A": "轮循分布",
+        "B": "哈希分布",
+        "C": "复制分布",
+        "D": "范围分布"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "对于大型事实表，哈希分布是最佳选择。它将数据均匀分布到所有分布节点，并在连接操作时减少数据移动。轮循分布会导致连接时大量数据移动，复制分布适用于小型维度表，范围分布不是 Synapse 支持的分布类型。"
+    },
+    {
+      "id": "dp203-s1-q3",
+      "examId": "azure-dp-203-set1",
+      "setNumber": 1,
+      "domain": "保护、监视和优化数据存储和数据处理",
+      "question": "您需要在 Azure Data Lake Storage Gen2 中实现列级安全性，以限制对敏感数据列的访问。应该使用什么方法？",
+      "options": {
+        "A": "Azure RBAC",
+        "B": "访问控制列表 (ACL)",
+        "C": "Azure Synapse Analytics 列级安全性",
+        "D": "共享访问签名 (SAS)"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "Azure Data Lake Storage Gen2 本身不支持列级安全性。要实现列级访问控制，需要使用 Azure Synapse Analytics 的列级安全性功能，通过创建安全策略来限制对特定列的访问。RBAC 和 ACL 提供文件/目录级别的访问控制，SAS 提供临时访问。"
+    },
+    {
+      "id": "dp203-s1-q4",
+      "examId": "azure-dp-203-set1",
+      "setNumber": 1,
+      "domain": "设计和实现数据存储",
+      "question": "您正在 Azure Synapse Analytics 专用 SQL 池中设计维度表。该表包含 50,000 行数据，并且频繁与事实表进行连接。应该使用哪种表分布类型？",
+      "options": {
+        "A": "哈希分布",
+        "B": "轮循分布",
+        "C": "复制分布",
+        "D": "聚集列存储"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "对于小型维度表（通常小于 60,000 行），复制分布是最佳选择。它将表的完整副本存储在每个计算节点上，消除了连接操作时的数据移动。哈希分布适用于大型表，轮循分布会导致数据移动，聚集列存储是索引类型而非分布类型。"
+    },
+    {
+      "id": "dp203-s1-q5",
+      "examId": "azure-dp-203-set1",
+      "setNumber": 1,
+      "domain": "开发数据处理",
+      "question": "您正在使用 Azure Data Factory 创建数据管道。您需要在复制活动失败时重试三次，每次重试之间间隔 30 秒。应该在哪里配置此设置？",
+      "options": {
+        "A": "管道参数",
+        "B": "活动策略",
+        "C": "触发器设置",
+        "D": "链接服务"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "活动策略用于配置活动的重试行为、超时和其他执行策略。在活动策略中，可以设置 retry 属性指定重试次数，retryIntervalInSeconds 属性指定重试间隔。管道参数用于传递值，触发器用于调度，链接服务用于连接配置。"
+    },
+    {
+      "id": "dp203-s1-q6",
+      "examId": "azure-dp-203-set1",
+      "setNumber": 1,
+      "domain": "保护、监视和优化数据存储和数据处理",
+      "question": "您需要监视 Azure Synapse Analytics 专用 SQL 池的查询性能。您想要识别长时间运行的查询和资源等待。应该使用哪个动态管理视图？",
+      "options": {
+        "A": "sys.dm_pdw_exec_requests",
+        "B": "sys.dm_pdw_nodes",
+        "C": "sys.dm_pdw_sql_requests",
+        "D": "sys.dm_pdw_distributions"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "sys.dm_pdw_exec_requests 提供有关当前和最近执行的所有查询请求的信息，包括执行时间、状态和资源等待类型。这是监视查询性能的主要视图。sys.dm_pdw_nodes 显示节点信息，sys.dm_pdw_sql_requests 显示 SQL 步骤详情，sys.dm_pdw_distributions 显示分布信息。"
+    },
+    {
+      "id": "dp203-s1-q7",
+      "examId": "azure-dp-203-set1",
+      "setNumber": 1,
+      "domain": "设计和实现数据存储",
+      "question": "您正在 Azure Synapse Analytics 中设计一个星型架构。您需要存储历史数据变化并支持缓慢变化维度 (SCD) 类型 2。应该如何设计维度表？",
+      "options": {
+        "A": "添加开始日期、结束日期和当前标志列",
+        "B": "使用仅包含当前值的单行",
+        "C": "创建单独的历史表",
+        "D": "使用 JSON 列存储历史记录"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "SCD 类型 2 通过为每个变化创建新行来保留完整历史记录。典型实现包括添加开始日期、结束日期和当前标志列。这允许跟踪属性随时间的变化，同时支持时间点分析。单行方法是 SCD 类型 1，单独的历史表增加复杂性，JSON 列不利于查询优化。"
+    },
+    {
+      "id": "dp203-s1-q8",
+      "examId": "azure-dp-203-set1",
+      "setNumber": 1,
+      "domain": "开发数据处理",
+      "question": "您正在使用 Azure Databricks 处理流数据。您需要从 Azure Event Hubs 读取数据并实现精确一次语义。应该使用哪种方法？",
+      "options": {
+        "A": "使用 Spark Streaming 和检查点",
+        "B": "使用结构化流式处理和检查点",
+        "C": "使用批处理模式",
+        "D": "使用手动偏移管理"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "结构化流式处理（Structured Streaming）与检查点结合使用可以实现精确一次语义。它使用 WAL（预写日志）和检查点来跟踪处理进度，确保数据不会丢失或重复处理。传统 Spark Streaming 提供至少一次语义，批处理不适用于流数据，手动偏移管理更复杂且容易出错。"
+    },
+    {
+      "id": "dp203-s1-q9",
+      "examId": "azure-dp-203-set1",
+      "setNumber": 1,
+      "domain": "保护、监视和优化数据存储和数据处理",
+      "question": "您需要在 Azure Synapse Analytics 专用 SQL 池中实现动态数据屏蔽。您想要屏蔽电子邮件地址列。应该使用哪种屏蔽函数？",
+      "options": {
+        "A": "default()",
+        "B": "email()",
+        "C": "random()",
+        "D": "custom()"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "email() 屏蔽函数专门用于电子邮件地址，它显示电子邮件的第一个字母和域名后缀（例如 aXXX@XXXX.com）。default() 根据数据类型进行完全屏蔽，random() 用于数字范围的随机化，custom() 用于自定义模式屏蔽。"
+    },
+    {
+      "id": "dp203-s1-q10",
+      "examId": "azure-dp-203-set1",
+      "setNumber": 1,
+      "domain": "设计和实现数据存储",
+      "question": "您正在设计 Azure Data Lake Storage Gen2 的文件夹结构。您需要支持按日期进行有效的数据分区查询。最佳的文件夹结构是什么？",
+      "options": {
+        "A": "/data/file_20230101.parquet",
+        "B": "/data/year=2023/month=01/day=01/",
+        "C": "/2023/01/01/data/",
+        "D": "/data/2023-01-01/"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "使用 key=value 格式（如 year=2023/month=01/day=01）的分区结构是 Hive 风格分区，被 Spark、Synapse 和其他大数据工具原生支持。这种格式允许自动分区发现和分区修剪，显著提高查询性能。其他格式需要额外配置才能实现分区修剪。"
+    },
+    {
+      "id": "dp203-s1-q11",
+      "examId": "azure-dp-203-set1",
+      "setNumber": 1,
+      "domain": "开发数据处理",
+      "question": "您正在使用 Azure Data Factory 中的映射数据流。您需要将多个输入流合并为单个输出流。这些流具有相同的架构。应该使用哪种转换？",
+      "options": {
+        "A": "联接 (Join)",
+        "B": "联合 (Union)",
+        "C": "查找 (Lookup)",
+        "D": "存在 (Exists)"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "联合（Union）转换用于将具有相同架构的多个数据流垂直合并为单个流。联接（Join）用于基于键水平合并不同的数据集，查找（Lookup）用于从引用数据集获取匹配值，存在（Exists）用于筛选存在于另一个数据集中的行。"
+    },
+    {
+      "id": "dp203-s1-q12",
+      "examId": "azure-dp-203-set1",
+      "setNumber": 1,
+      "domain": "保护、监视和优化数据存储和数据处理",
+      "question": "您需要优化 Azure Synapse Analytics 专用 SQL 池中的表存储。表包含 10 亿行历史数据，主要用于分析查询。应该使用哪种索引类型？",
+      "options": {
+        "A": "聚集索引",
+        "B": "非聚集索引",
+        "C": "聚集列存储索引",
+        "D": "堆"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "聚集列存储索引是大型分析表的最佳选择。它提供高压缩率（最多可减少 10 倍存储）和批处理模式执行，显著提高分析查询性能。聚集索引和非聚集索引是行存储索引，适用于 OLTP 工作负载。堆没有索引，性能最差。"
+    },
+    {
+      "id": "dp203-s1-q13",
+      "examId": "azure-dp-203-set1",
+      "setNumber": 1,
+      "domain": "设计和实现数据存储",
+      "question": "您正在 Azure Synapse Analytics 中创建外部表以查询 Data Lake Storage Gen2 中的 Parquet 文件。您需要定义外部数据源。必须指定哪个参数？",
+      "options": {
+        "A": "TYPE",
+        "B": "LOCATION",
+        "C": "CREDENTIAL",
+        "D": "FILE_FORMAT"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "LOCATION 是创建外部数据源时唯一必需的参数，它指定数据的存储位置 URL。TYPE 默认为 HADOOP，CREDENTIAL 仅在需要身份验证时指定（使用托管标识时可省略），FILE_FORMAT 在创建外部表时指定而非外部数据源。"
+    },
+    {
+      "id": "dp203-s1-q14",
+      "examId": "azure-dp-203-set1",
+      "setNumber": 1,
+      "domain": "开发数据处理",
+      "question": "您正在使用 Azure Databricks 处理大型数据集。您需要优化连接操作，一个表有 10 亿行，另一个表有 1000 行。应该使用哪种连接策略？",
+      "options": {
+        "A": "排序合并连接",
+        "B": "广播连接",
+        "C": "Shuffle 哈希连接",
+        "D": "嵌套循环连接"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "当一个表较小（通常小于 10MB）时，广播连接是最佳选择。小表会被广播到所有工作节点，避免昂贵的 shuffle 操作。排序合并连接和 shuffle 哈希连接都需要 shuffle，嵌套循环连接效率最低。在 Spark 中可以使用 broadcast() 提示强制广播连接。"
+    },
+    {
+      "id": "dp203-s1-q15",
+      "examId": "azure-dp-203-set1",
+      "setNumber": 1,
+      "domain": "保护、监视和优化数据存储和数据处理",
+      "question": "您需要在 Azure Data Lake Storage Gen2 中实现数据生命周期管理。您想要将超过 90 天的数据自动移动到冷存储层。应该配置什么？",
+      "options": {
+        "A": "Azure Policy",
+        "B": "生命周期管理策略",
+        "C": "Azure Data Factory 管道",
+        "D": "Azure 逻辑应用"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "生命周期管理策略允许您基于规则自动将 blob 转换为不同的访问层或删除。您可以定义基于上次修改时间的规则，自动将数据从热存储移动到冷存储或存档存储。Azure Policy 用于治理，Data Factory 和逻辑应用需要手动编排。"
+    },
+    {
+      "id": "dp203-s1-q16",
+      "examId": "azure-dp-203-set1",
+      "setNumber": 1,
+      "domain": "设计和实现数据存储",
+      "question": "您正在使用 Azure Synapse Analytics 无服务器 SQL 池查询 JSON 文件。您需要提取嵌套的 JSON 属性。应该使用哪个函数？",
+      "options": {
+        "A": "JSON_VALUE()",
+        "B": "OPENJSON()",
+        "C": "JSON_QUERY()",
+        "D": "ISJSON()"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "JSON_VALUE() 函数用于从 JSON 字符串中提取标量值。它使用 JSON 路径表达式访问嵌套属性（例如 $.address.city）。OPENJSON() 用于将 JSON 转换为行集，JSON_QUERY() 用于提取对象或数组，ISJSON() 用于验证 JSON 格式。"
+    },
+    {
+      "id": "dp203-s1-q17",
+      "examId": "azure-dp-203-set1",
+      "setNumber": 1,
+      "domain": "开发数据处理",
+      "question": "您正在使用 Azure Data Factory 实现增量数据加载。源表没有可靠的修改时间戳列。应该使用哪种方法来跟踪变化？",
+      "options": {
+        "A": "高水位标记",
+        "B": "更改数据捕获 (CDC)",
+        "C": "完整加载",
+        "D": "更改跟踪"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "当源表没有可靠的时间戳列时，更改数据捕获 (CDC) 是最佳选择。CDC 捕获数据库级别的所有更改（插入、更新、删除），不依赖于表中的特定列。高水位标记需要递增的列，完整加载效率低，更改跟踪需要在源数据库启用且仅跟踪哪些行更改。"
+    },
+    {
+      "id": "dp203-s1-q18",
+      "examId": "azure-dp-203-set1",
+      "setNumber": 1,
+      "domain": "保护、监视和优化数据存储和数据处理",
+      "question": "您需要加密 Azure Synapse Analytics 专用 SQL 池中的数据。您想要使用客户管理的密钥进行透明数据加密 (TDE)。密钥应该存储在哪里？",
+      "options": {
+        "A": "Azure 存储账户",
+        "B": "Azure Key Vault",
+        "C": "Azure Active Directory",
+        "D": "Azure SQL 数据库"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "客户管理的 TDE 密钥必须存储在 Azure Key Vault 中。Key Vault 提供安全的密钥存储、访问控制和审计功能。Synapse Analytics 使用托管标识从 Key Vault 访问加密密钥。存储账户用于数据存储，AAD 用于身份管理，SQL 数据库不能存储 TDE 密钥。"
+    },
+    {
+      "id": "dp203-s1-q19",
+      "examId": "azure-dp-203-set1",
+      "setNumber": 1,
+      "domain": "设计和实现数据存储",
+      "question": "您正在设计 Delta Lake 表结构。您需要支持 ACID 事务、时间旅行和模式演化。应该使用哪种文件格式？",
+      "options": {
+        "A": "CSV",
+        "B": "JSON",
+        "C": "Parquet",
+        "D": "Delta"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "Delta 格式是基于 Parquet 的开放格式，提供 ACID 事务、时间旅行（数据版本控制）、模式演化和统一的批处理/流处理。它在 Parquet 基础上添加了事务日志。CSV 和 JSON 不支持这些高级功能，原始 Parquet 不支持事务或时间旅行。"
+    },
+    {
+      "id": "dp203-s1-q20",
+      "examId": "azure-dp-203-set1",
+      "setNumber": 1,
+      "domain": "开发数据处理",
+      "question": "您正在使用 Azure Stream Analytics 处理实时数据。您需要检测 5 分钟窗口内的异常值。应该使用哪种窗口类型？",
+      "options": {
+        "A": "翻滚窗口",
+        "B": "跳跃窗口",
+        "C": "滑动窗口",
+        "D": "会话窗口"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "翻滚窗口（Tumbling Window）是固定大小、不重叠的连续时间段，适合固定间隔的聚合分析。跳跃窗口可以重叠，滑动窗口在每个事件上输出，会话窗口基于活动间隙。对于固定 5 分钟间隔的异常检测，翻滚窗口最直接有效。"
+    },
+    {
+      "id": "dp203-s1-q21",
+      "examId": "azure-dp-203-set1",
+      "setNumber": 1,
+      "domain": "保护、监视和优化数据存储和数据处理",
+      "question": "您需要监视 Azure Data Factory 管道的执行。您想要在管道失败时收到警报。应该使用什么方法？",
+      "options": {
+        "A": "Azure Monitor 警报",
+        "B": "Data Factory 活动日志",
+        "C": "诊断设置",
+        "D": "Azure 顾问"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Azure Monitor 警报可以基于 Data Factory 指标（如失败的管道运行）创建警报规则，并发送通知（电子邮件、SMS、Webhook 等）。活动日志记录管理操作，诊断设置用于将日志发送到目标，Azure 顾问提供优化建议而非实时警报。"
+    },
+    {
+      "id": "dp203-s1-q22",
+      "examId": "azure-dp-203-set1",
+      "setNumber": 1,
+      "domain": "设计和实现数据存储",
+      "question": "您正在 Azure Synapse Analytics 中创建物化视图。物化视图的主要优势是什么？",
+      "options": {
+        "A": "减少存储成本",
+        "B": "预计算和缓存查询结果",
+        "C": "支持实时数据更新",
+        "D": "简化安全管理"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "物化视图预计算并存储查询结果，当相同或相似的查询执行时，可以直接从物化视图获取结果，而不需要重新计算。这显著提高了查询性能。物化视图增加存储成本，需要刷新以反映数据变化，与安全管理无关。"
+    },
+    {
+      "id": "dp203-s1-q23",
+      "examId": "azure-dp-203-set1",
+      "setNumber": 1,
+      "domain": "开发数据处理",
+      "question": "您正在使用 Azure Databricks 进行 ETL 处理。您需要确保数据写入是原子的，如果作业失败，不会有部分数据被写入。应该使用什么方法？",
+      "options": {
+        "A": "覆盖模式写入",
+        "B": "追加模式写入",
+        "C": "Delta Lake 事务",
+        "D": "检查点"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "Delta Lake 提供 ACID 事务支持，确保写入操作是原子的。如果作业失败，事务会自动回滚，不会有部分数据被写入。覆盖和追加模式在 Parquet 等格式中不提供事务保证，检查点用于流处理恢复而非原子写入。"
+    },
+    {
+      "id": "dp203-s1-q24",
+      "examId": "azure-dp-203-set1",
+      "setNumber": 1,
+      "domain": "保护、监视和优化数据存储和数据处理",
+      "question": "您需要在 Azure Synapse Analytics 中实现行级安全性。您想要用户只能看到属于其部门的数据。应该创建什么？",
+      "options": {
+        "A": "安全策略和内联表值函数",
+        "B": "列屏蔽策略",
+        "C": "数据库角色",
+        "D": "存储过程"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "行级安全性 (RLS) 通过安全策略和谓词函数实现。创建内联表值函数作为筛选谓词，然后创建安全策略将该函数绑定到表。当用户查询表时，函数自动应用，只返回用户有权访问的行。列屏蔽用于列级保护，角色和存储过程不能自动筛选行。"
+    },
+    {
+      "id": "dp203-s1-q25",
+      "examId": "azure-dp-203-set1",
+      "setNumber": 1,
+      "domain": "设计和实现数据存储",
+      "question": "您正在使用 Azure Synapse Analytics 无服务器 SQL 池。您需要查询存储在 Data Lake 中的 CSV 文件。文件的第一行是标题。应该使用哪个 OPENROWSET 参数？",
+      "options": {
+        "A": "FIRSTROW = 2",
+        "B": "HEADER_ROW = TRUE",
+        "C": "SKIP = 1",
+        "D": "FIELDTERMINATOR = ','"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "HEADER_ROW = TRUE 参数告诉 OPENROWSET 将第一行视为列标题，并从第二行开始读取数据。FIRSTROW 指定开始读取的行号但不处理标题，SKIP 不是有效参数，FIELDTERMINATOR 指定字段分隔符。"
+    },
+    {
+      "id": "dp203-s1-q26",
+      "examId": "azure-dp-203-set1",
+      "setNumber": 1,
+      "domain": "开发数据处理",
+      "question": "您正在使用 Azure Data Factory 中的数据流。您需要对数据进行透视操作，将行转换为列。应该使用哪种转换？",
+      "options": {
+        "A": "透视 (Pivot)",
+        "B": "逆透视 (Unpivot)",
+        "C": "展平 (Flatten)",
+        "D": "派生列 (Derived Column)"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "透视（Pivot）转换将行数据转换为列，基于一列的唯一值创建新列。逆透视（Unpivot）执行相反操作，将列转换为行。展平（Flatten）用于展开数组，派生列用于创建计算列。"
+    },
+    {
+      "id": "dp203-s1-q27",
+      "examId": "azure-dp-203-set1",
+      "setNumber": 1,
+      "domain": "保护、监视和优化数据存储和数据处理",
+      "question": "您需要优化 Azure Synapse Analytics 专用 SQL 池中的查询性能。您发现许多查询需要大量的 tempdb 空间。应该采取什么措施？",
+      "options": {
+        "A": "增加 DWU",
+        "B": "添加更多分布",
+        "C": "优化查询以减少数据移动",
+        "D": "创建更多索引"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "tempdb 使用量高通常表明存在大量数据移动操作（如 Shuffle、Broadcast）。优化查询以减少数据移动是解决此问题的最佳方法，例如确保连接列使用哈希分布、使用复制表等。增加 DWU 提供更多资源但不解决根本问题，分布数量固定，索引不直接影响 tempdb。"
+    },
+    {
+      "id": "dp203-s1-q28",
+      "examId": "azure-dp-203-set1",
+      "setNumber": 1,
+      "domain": "设计和实现数据存储",
+      "question": "您正在 Azure Synapse Analytics 中设计数据仓库。您需要在事实表上实现分区以提高查询性能和管理效率。应该基于哪种列进行分区？",
+      "options": {
+        "A": "主键列",
+        "B": "外键列",
+        "C": "日期列",
+        "D": "度量列"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "日期列是分区的最佳选择，因为大多数数据仓库查询按时间范围筛选。日期分区允许分区消除，只扫描相关分区。主键列值过于分散，外键用于连接，度量列通常是数值不适合分区。建议每个分区至少有 100 万行。"
+    },
+    {
+      "id": "dp203-s1-q29",
+      "examId": "azure-dp-203-set1",
+      "setNumber": 1,
+      "domain": "开发数据处理",
+      "question": "您正在使用 Azure Databricks 处理大型数据集。您需要对数据进行重新分区以优化后续的连接操作。应该使用哪个方法？",
+      "options": {
+        "A": "coalesce()",
+        "B": "repartition()",
+        "C": "cache()",
+        "D": "persist()"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "repartition() 方法可以基于指定的列对数据进行重新分区，这对于优化连接操作非常有用。当连接列与分区列匹配时，可以避免 shuffle 操作。coalesce() 只能减少分区数，cache() 和 persist() 用于缓存数据而非重新分区。"
+    },
+    {
+      "id": "dp203-s1-q30",
+      "examId": "azure-dp-203-set1",
+      "setNumber": 1,
+      "domain": "保护、监视和优化数据存储和数据处理",
+      "question": "您需要在 Azure Data Lake Storage Gen2 中实现细粒度的访问控制。您想要授予用户对特定文件夹的读取和执行权限，但不授予写入权限。应该配置什么？",
+      "options": {
+        "A": "Azure RBAC 存储 Blob 数据读取者角色",
+        "B": "访问控制列表 (ACL) 的 r-x 权限",
+        "C": "共享访问签名 (SAS) 令牌",
+        "D": "Azure Policy"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "访问控制列表 (ACL) 提供 POSIX 风格的细粒度权限控制。r-x 权限表示读取和执行（遍历目录），但没有写入权限。Azure RBAC 在容器级别工作，不能控制单个文件夹。SAS 提供临时访问，Azure Policy 用于治理而非访问控制。"
+    },
+    {
+      "id": "dp203-s1-q31",
+      "examId": "azure-dp-203-set1",
+      "setNumber": 1,
+      "domain": "设计和实现数据存储",
+      "question": "您正在使用 PolyBase 将数据从 Azure Blob 存储加载到 Azure Synapse Analytics。加载 1 TB 数据需要很长时间。您可以采取什么措施来提高加载性能？",
+      "options": {
+        "A": "使用单个大文件",
+        "B": "将数据拆分为多个文件",
+        "C": "使用 CSV 格式",
+        "D": "禁用压缩"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "将数据拆分为多个文件可以启用并行加载，每个计算节点可以同时加载不同的文件。建议文件数量是 DWU 级别的倍数。单个大文件无法并行化，Parquet 比 CSV 效率更高，压缩可以减少 I/O。"
+    },
+    {
+      "id": "dp203-s1-q32",
+      "examId": "azure-dp-203-set1",
+      "setNumber": 1,
+      "domain": "开发数据处理",
+      "question": "您正在使用 Azure Stream Analytics 处理 IoT 设备数据。您需要处理延迟到达的数据并更新之前的聚合结果。应该配置什么？",
+      "options": {
+        "A": "水印策略",
+        "B": "延迟到达策略",
+        "C": "输出错误策略",
+        "D": "事件排序策略"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "延迟到达策略定义系统等待延迟事件的时间。在此窗口内到达的延迟数据将被处理并可能更新之前的结果。水印用于内部跟踪进度，输出错误策略处理输出失败，事件排序处理乱序事件的容错时间。"
+    },
+    {
+      "id": "dp203-s1-q33",
+      "examId": "azure-dp-203-set1",
+      "setNumber": 1,
+      "domain": "保护、监视和优化数据存储和数据处理",
+      "question": "您需要审计 Azure Synapse Analytics 专用 SQL 池中的所有数据访问操作。应该启用什么功能？",
+      "options": {
+        "A": "Azure SQL 审核",
+        "B": "活动日志",
+        "C": "诊断日志",
+        "D": "Azure 安全中心"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Azure SQL 审核可以记录数据库事件并将其写入审核日志。它可以捕获 SELECT、INSERT、UPDATE、DELETE 等数据操作。活动日志记录管理操作，诊断日志记录性能指标，安全中心提供安全建议而非详细审计。"
+    },
+    {
+      "id": "dp203-s1-q34",
+      "examId": "azure-dp-203-set1",
+      "setNumber": 1,
+      "domain": "设计和实现数据存储",
+      "question": "您正在 Azure Synapse Analytics 中使用 COPY 命令加载数据。您需要指定列分隔符为制表符。应该使用哪个参数？",
+      "options": {
+        "A": "FIELDTERMINATOR = '\\t'",
+        "B": "ROWTERMINATOR = '\\t'",
+        "C": "DELIMITER = '\\t'",
+        "D": "SEPARATOR = '\\t'"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "COPY 命令使用 FIELDTERMINATOR 参数指定列分隔符。'\\t' 表示制表符。ROWTERMINATOR 指定行分隔符，DELIMITER 和 SEPARATOR 不是有效的 COPY 命令参数。"
+    },
+    {
+      "id": "dp203-s1-q35",
+      "examId": "azure-dp-203-set1",
+      "setNumber": 1,
+      "domain": "开发数据处理",
+      "question": "您正在使用 Azure Databricks 中的 Delta Lake。您需要定期清理旧的文件版本以节省存储成本。应该使用哪个命令？",
+      "options": {
+        "A": "OPTIMIZE",
+        "B": "VACUUM",
+        "C": "Z-ORDER",
+        "D": "ANALYZE"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "VACUUM 命令删除不再被 Delta 表引用的数据文件。默认情况下，它保留 7 天内的文件以支持时间旅行。OPTIMIZE 合并小文件，Z-ORDER 优化数据布局以提高查询性能，ANALYZE 收集统计信息。"
+    },
+    {
+      "id": "dp203-s1-q36",
+      "examId": "azure-dp-203-set1",
+      "setNumber": 1,
+      "domain": "保护、监视和优化数据存储和数据处理",
+      "question": "您需要在 Azure Databricks 中管理敏感数据。您想要确保数据在工作空间内的传输过程中是加密的。应该配置什么？",
+      "options": {
+        "A": "客户管理的密钥",
+        "B": "集群隔离",
+        "C": "加密网络连接",
+        "D": "IP 访问列表"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "加密网络连接确保 Databricks 集群节点之间的通信是加密的。这可以通过在工作空间配置中启用加密来实现。客户管理的密钥用于静态数据加密，集群隔离控制资源访问，IP 访问列表控制网络访问。"
+    },
+    {
+      "id": "dp203-s1-q37",
+      "examId": "azure-dp-203-set1",
+      "setNumber": 1,
+      "domain": "设计和实现数据存储",
+      "question": "您正在设计数据仓库的模式。您需要存储多对多关系，例如学生和课程的关系。应该使用什么设计模式？",
+      "options": {
+        "A": "星型架构",
+        "B": "雪花架构",
+        "C": "桥接表",
+        "D": "去规范化表"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "桥接表（也称为关联表或因子表）用于处理多对多关系。它包含两个实体的外键，将多对多关系分解为两个一对多关系。星型和雪花架构是整体设计模式，去规范化不能正确表示多对多关系。"
+    },
+    {
+      "id": "dp203-s1-q38",
+      "examId": "azure-dp-203-set1",
+      "setNumber": 1,
+      "domain": "开发数据处理",
+      "question": "您正在使用 Azure Data Factory 从 REST API 获取数据。API 使用分页返回结果。应该如何配置复制活动？",
+      "options": {
+        "A": "使用 ForEach 活动",
+        "B": "配置分页规则",
+        "C": "使用 Web 活动",
+        "D": "配置重试策略"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "REST 连接器支持配置分页规则来处理 API 分页。您可以指定分页类型（偏移、页码、游标等）和相关参数。ForEach 需要预先知道页数，Web 活动用于调用 REST 端点但需要手动处理分页，重试策略用于错误处理。"
+    },
+    {
+      "id": "dp203-s1-q39",
+      "examId": "azure-dp-203-set1",
+      "setNumber": 1,
+      "domain": "保护、监视和优化数据存储和数据处理",
+      "question": "您需要在 Azure Synapse Analytics 中限制特定用户的资源使用。您想要确保用户的查询不会消耗超过 20% 的系统资源。应该使用什么功能？",
+      "options": {
+        "A": "工作负荷管理",
+        "B": "结果集缓存",
+        "C": "查询标签",
+        "D": "资源类"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "工作负荷管理允许您创建工作负荷组并设置资源限制（如 min_percentage_resource、cap_percentage_resource）。通过分类器将用户分配到工作负荷组，可以控制其资源使用。结果集缓存提高性能，查询标签用于标识查询，资源类是旧的资源管理方法。"
+    },
+    {
+      "id": "dp203-s1-q40",
+      "examId": "azure-dp-203-set1",
+      "setNumber": 1,
+      "domain": "设计和实现数据存储",
+      "question": "您正在使用 Azure Synapse Link for Azure Cosmos DB。Synapse Link 的主要优势是什么？",
+      "options": {
+        "A": "替换现有的 ETL 管道",
+        "B": "提供对操作数据的近实时分析，无需 ETL",
+        "C": "减少 Cosmos DB 的存储成本",
+        "D": "提高 Cosmos DB 的写入性能"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure Synapse Link 在 Cosmos DB 中创建分析存储，自动将操作数据同步到列式存储。这允许使用 Synapse Analytics 对 Cosmos DB 数据进行近实时分析，而不影响事务工作负荷，也不需要构建 ETL 管道。它不会减少存储成本（实际上增加），也不影响写入性能。"
+    }
+  ]
+}

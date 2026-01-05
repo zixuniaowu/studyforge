@@ -133,7 +133,7 @@ export const awsCertifications: Certification[] = [
     questionCount: 65,
     passingScore: 72,
     prerequisites: ['aws-clf-c02'],
-    hasExamData: false,
+    hasExamData: true,
     description: { zh: 'AWS 数据工程能力认证', ja: 'AWS データエンジニアリング能力を証明する認定' }
   },
   // Professional
@@ -164,7 +164,7 @@ export const awsCertifications: Certification[] = [
     questionCount: 75,
     passingScore: 75,
     prerequisites: ['aws-dva-c02', 'aws-soa-c02'],
-    hasExamData: false,
+    hasExamData: true,
     description: { zh: '高级 DevOps 能力认证', ja: '高度な DevOps 能力を証明する認定' }
   },
   // Specialty
@@ -210,7 +210,7 @@ export const awsCertifications: Certification[] = [
     questionCount: 65,
     passingScore: 75,
     prerequisites: ['aws-saa-c03'],
-    hasExamData: false,
+    hasExamData: true,
     description: { zh: 'AWS 网络专家认证', ja: 'AWS ネットワークの専門知識を証明する認定' }
   },
   {
@@ -225,7 +225,7 @@ export const awsCertifications: Certification[] = [
     questionCount: 65,
     passingScore: 75,
     prerequisites: ['aws-saa-c03'],
-    hasExamData: false,
+    hasExamData: true,
     description: { zh: 'AWS 数据库专家认证', ja: 'AWS データベースの専門知識を証明する認定' }
   }
 ];
@@ -396,7 +396,7 @@ export const azureCertifications: Certification[] = [
     questionCount: 50,
     passingScore: 70,
     prerequisites: ['azure-dp-900'],
-    hasExamData: false,
+    hasExamData: true,
     description: { zh: 'Azure 数据库管理员认证', ja: 'Azure データベース管理者認定' }
   },
   // Expert
@@ -648,7 +648,7 @@ export const gcpCertifications: Certification[] = [
     questionCount: 50,
     passingScore: 70,
     prerequisites: ['gcp-ace'],
-    hasExamData: false,
+    hasExamData: true,
     description: { zh: '实施 DevOps 流程、平衡可靠性与交付速度', ja: 'DevOps プロセスの実装、信頼性とデリバリー速度のバランス' }
   },
   {
@@ -663,7 +663,7 @@ export const gcpCertifications: Certification[] = [
     questionCount: 50,
     passingScore: 70,
     prerequisites: ['gcp-ace'],
-    hasExamData: false,
+    hasExamData: true,
     description: { zh: '管理访问控制、组织策略和网络安全', ja: 'アクセス制御、組織ポリシー、ネットワークセキュリティの管理' }
   },
   {
@@ -678,7 +678,7 @@ export const gcpCertifications: Certification[] = [
     questionCount: 50,
     passingScore: 70,
     prerequisites: ['gcp-ace'],
-    hasExamData: false,
+    hasExamData: true,
     description: { zh: '混合连接、网络服务和网络架构安全', ja: 'ハイブリッド接続、ネットワークサービス、ネットワークアーキテクチャセキュリティ' }
   },
   {
@@ -708,7 +708,7 @@ export const gcpCertifications: Certification[] = [
     questionCount: 50,
     passingScore: 70,
     prerequisites: ['gcp-awa'],
-    hasExamData: false,
+    hasExamData: true,
     description: { zh: 'Workspace 策略、安全和协作配置', ja: 'Workspace ポリシー、セキュリティ、コラボレーション設定' }
   },
   {
@@ -723,7 +723,7 @@ export const gcpCertifications: Certification[] = [
     questionCount: 50,
     passingScore: 70,
     prerequisites: ['gcp-ace'],
-    hasExamData: false,
+    hasExamData: true,
     description: { zh: '设计和管理 Cloud SQL、Spanner、Bigtable 等数据库', ja: 'Cloud SQL、Spanner、Bigtable などのデータベース設計・管理' }
   }
 ];

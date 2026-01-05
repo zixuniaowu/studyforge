@@ -1,0 +1,663 @@
+{
+  "exam": {
+    "id": "gcp-adp-set2",
+    "name": "Associate Data Practitioner 练习题 Set 2",
+    "code": "ADP",
+    "provider": "Google Cloud",
+    "language": "zh-CN",
+    "description": "Google Cloud 数据从业者认证练习题第二套",
+    "totalQuestions": 40,
+    "passingScore": 70,
+    "examTime": 120,
+    "domains": [
+      "数据分析和探索",
+      "数据准备和集成",
+      "机器学习基础",
+      "商业智能和可视化",
+      "数据治理和安全"
+    ],
+    "tags": ["GCP", "Data", "BigQuery", "Looker", "Data Analytics"]
+  },
+  "questions": [
+    {
+      "id": "gcp-adp-s2-q1",
+      "examId": "gcp-adp-set2",
+      "setNumber": 2,
+      "domain": "数据分析和探索",
+      "question": "您需要在 BigQuery 中处理 JSON 格式的数据。应该使用什么函数来提取 JSON 中的特定值？",
+      "options": {
+        "A": "PARSE_JSON",
+        "B": "JSON_EXTRACT_SCALAR",
+        "C": "CONVERT_JSON",
+        "D": "READ_JSON"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "JSON_EXTRACT_SCALAR 函数用于从 JSON 字符串中提取标量值（字符串、数字、布尔值）。您可以使用 JSONPath 语法指定要提取的字段，例如 JSON_EXTRACT_SCALAR(json_column, '$.name')。"
+    },
+    {
+      "id": "gcp-adp-s2-q2",
+      "examId": "gcp-adp-set2",
+      "setNumber": 2,
+      "domain": "数据准备和集成",
+      "question": "您需要将 Avro 格式的数据从 Cloud Storage 加载到 BigQuery。BigQuery 支持这种格式吗？",
+      "options": {
+        "A": "不支持，需要先转换为 CSV",
+        "B": "支持，可以直接加载",
+        "C": "仅支持压缩的 Avro",
+        "D": "需要使用 Dataflow 转换"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "BigQuery 原生支持 Avro 格式。您可以直接从 Cloud Storage 加载 Avro 文件到 BigQuery，BigQuery 会自动推断架构。Avro 是一种高效的二进制格式，非常适合大数据处理。"
+    },
+    {
+      "id": "gcp-adp-s2-q3",
+      "examId": "gcp-adp-set2",
+      "setNumber": 2,
+      "domain": "机器学习基础",
+      "question": "在 BigQuery ML 中，您需要预测一个连续数值（如房价）。应该使用什么模型类型？",
+      "options": {
+        "A": "LOGISTIC_REG",
+        "B": "LINEAR_REG",
+        "C": "KMEANS",
+        "D": "AUTOENCODER"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "线性回归（LINEAR_REG）用于预测连续数值。它通过找到输入特征和目标变量之间的线性关系来进行预测。房价预测是典型的回归问题。"
+    },
+    {
+      "id": "gcp-adp-s2-q4",
+      "examId": "gcp-adp-set2",
+      "setNumber": 2,
+      "domain": "商业智能和可视化",
+      "question": "在 Looker 中，什么是 Dimension（维度）和 Measure（度量）的区别？",
+      "options": {
+        "A": "维度是文本，度量是数字",
+        "B": "维度是分组依据，度量是聚合计算",
+        "C": "维度是行，度量是列",
+        "D": "它们是相同的概念"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "在 Looker 中，维度是用于分组或过滤数据的字段（如日期、类别、地区），度量是聚合计算的结果（如 SUM、COUNT、AVG）。维度描述数据的特征，度量量化数据。"
+    },
+    {
+      "id": "gcp-adp-s2-q5",
+      "examId": "gcp-adp-set2",
+      "setNumber": 2,
+      "domain": "数据治理和安全",
+      "question": "您需要确保所有 BigQuery 查询都使用 VPC Service Controls 进行隔离。应该配置什么？",
+      "options": {
+        "A": "仅配置 IAM 权限",
+        "B": "创建服务边界并将 BigQuery 添加到受保护的服务中",
+        "C": "启用 Private Google Access",
+        "D": "配置 Cloud NAT"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "VPC Service Controls 通过创建服务边界来隔离 GCP 资源。您需要创建一个服务边界，将相关项目添加到边界中，并将 BigQuery 指定为受保护的服务。这可以防止数据泄露到边界外。"
+    },
+    {
+      "id": "gcp-adp-s2-q6",
+      "examId": "gcp-adp-set2",
+      "setNumber": 2,
+      "domain": "数据分析和探索",
+      "question": "在 BigQuery 中，您需要计算每月的同比增长率。应该使用什么 SQL 功能？",
+      "options": {
+        "A": "GROUP BY 和 HAVING",
+        "B": "LAG 窗口函数",
+        "C": "UNION ALL",
+        "D": "子查询"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "LAG 窗口函数可以访问当前行之前的行。计算同比增长率时，可以使用 LAG 获取去年同期的值，然后计算增长率：(current - LAG(current, 12))/LAG(current, 12)。"
+    },
+    {
+      "id": "gcp-adp-s2-q7",
+      "examId": "gcp-adp-set2",
+      "setNumber": 2,
+      "domain": "数据准备和集成",
+      "question": "您需要实时捕获数据库变更并同步到 BigQuery。应该使用什么模式？",
+      "options": {
+        "A": "批量导出",
+        "B": "变更数据捕获（CDC）",
+        "C": "完全刷新",
+        "D": "手动导入"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "变更数据捕获（CDC）是一种捕获源数据库中所有插入、更新和删除操作的技术。Datastream 服务支持 CDC，可以实时将变更复制到 BigQuery，保持数据同步。"
+    },
+    {
+      "id": "gcp-adp-s2-q8",
+      "examId": "gcp-adp-set2",
+      "setNumber": 2,
+      "domain": "机器学习基础",
+      "question": "在 BigQuery ML 中，BOOSTED_TREE_CLASSIFIER 相比 LOGISTIC_REG 的优势是什么？",
+      "options": {
+        "A": "训练速度更快",
+        "B": "可以捕获非线性关系和特征交互",
+        "C": "需要更少的数据",
+        "D": "更容易解释"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Boosted Tree（梯度提升树）可以捕获特征之间的非线性关系和复杂交互，通常在复杂数据集上表现更好。逻辑回归假设线性关系，可能无法捕获复杂模式。"
+    },
+    {
+      "id": "gcp-adp-s2-q9",
+      "examId": "gcp-adp-set2",
+      "setNumber": 2,
+      "domain": "商业智能和可视化",
+      "question": "在 Looker Studio 中，您需要创建一个根据条件显示不同颜色的指标。应该使用什么？",
+      "options": {
+        "A": "数据混合",
+        "B": "条件格式",
+        "C": "参数",
+        "D": "日期范围控件"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "条件格式允许您根据值的范围或条件设置不同的颜色。例如，您可以将低于目标的值显示为红色，高于目标的值显示为绿色，帮助用户快速识别关键指标。"
+    },
+    {
+      "id": "gcp-adp-s2-q10",
+      "examId": "gcp-adp-set2",
+      "setNumber": 2,
+      "domain": "数据治理和安全",
+      "question": "您需要对 BigQuery 中的电话号码进行脱敏处理，只显示最后四位数字。应该使用什么技术？",
+      "options": {
+        "A": "数据加密",
+        "B": "数据掩码（Data Masking）",
+        "C": "数据删除",
+        "D": "数据压缩"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "数据掩码是一种脱敏技术，用替代字符隐藏敏感数据的部分内容。Cloud DLP 可以自动检测电话号码并应用掩码，例如将 123-456-7890 显示为 XXX-XXX-7890。"
+    },
+    {
+      "id": "gcp-adp-s2-q11",
+      "examId": "gcp-adp-set2",
+      "setNumber": 2,
+      "domain": "数据分析和探索",
+      "question": "BigQuery 的 BI Engine 有什么作用？",
+      "options": {
+        "A": "数据导入加速",
+        "B": "提供内存缓存，加速交互式查询",
+        "C": "自动优化表结构",
+        "D": "批量数据处理"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "BI Engine 是 BigQuery 的内存分析服务，它将频繁访问的数据缓存在内存中，显著加速交互式查询和仪表板刷新。特别适合与 Looker Studio 配合使用，提供亚秒级响应时间。"
+    },
+    {
+      "id": "gcp-adp-s2-q12",
+      "examId": "gcp-adp-set2",
+      "setNumber": 2,
+      "domain": "数据准备和集成",
+      "question": "您需要使用 SQL 对 BigQuery 表进行数据质量检查。应该使用什么方法？",
+      "options": {
+        "A": "INFORMATION_SCHEMA 视图",
+        "B": "聚合查询检查空值、重复值和异常值",
+        "C": "EXPLAIN 语句",
+        "D": "DESCRIBE 语句"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "使用聚合查询可以检查数据质量问题：COUNT(*) WHERE column IS NULL 检查空值，COUNT(DISTINCT column) 检查唯一性，AVG/MIN/MAX 检查异常值。这些查询帮助识别数据问题。"
+    },
+    {
+      "id": "gcp-adp-s2-q13",
+      "examId": "gcp-adp-set2",
+      "setNumber": 2,
+      "domain": "机器学习基础",
+      "question": "在 BigQuery ML 中，什么是特征重要性（Feature Importance）？",
+      "options": {
+        "A": "数据导入的优先级",
+        "B": "每个特征对模型预测的贡献度",
+        "C": "特征的存储大小",
+        "D": "特征的数据类型"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "特征重要性衡量每个输入特征对模型预测结果的贡献程度。在 BigQuery ML 中，您可以使用 ML.FEATURE_IMPORTANCE 函数查看各特征的重要性得分，帮助理解模型决策并进行特征选择。"
+    },
+    {
+      "id": "gcp-adp-s2-q14",
+      "examId": "gcp-adp-set2",
+      "setNumber": 2,
+      "domain": "商业智能和可视化",
+      "question": "在 Looker 中，什么是 PDT（Persistent Derived Tables）？",
+      "options": {
+        "A": "临时表，查询后删除",
+        "B": "预计算并存储的表，可按计划刷新",
+        "C": "外部数据源的连接",
+        "D": "用户上传的文件"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "PDT（持久派生表）是 Looker 预计算并存储在数据库中的表。它们可以按计划刷新（如每天凌晨），用于加速复杂聚合查询的性能，避免每次查询都重新计算。"
+    },
+    {
+      "id": "gcp-adp-s2-q15",
+      "examId": "gcp-adp-set2",
+      "setNumber": 2,
+      "domain": "数据治理和安全",
+      "question": "您需要在 BigQuery 中创建一个视图，只显示用户有权访问的行。应该使用什么？",
+      "options": {
+        "A": "标准视图",
+        "B": "授权视图",
+        "C": "物化视图",
+        "D": "外部表"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "授权视图（Authorized Views）可以将视图授权访问底层表，而不需要给用户直接访问表的权限。结合行级访问策略，可以确保用户只能通过视图看到他们被授权访问的数据。"
+    },
+    {
+      "id": "gcp-adp-s2-q16",
+      "examId": "gcp-adp-set2",
+      "setNumber": 2,
+      "domain": "数据分析和探索",
+      "question": "在 BigQuery 中，UNNEST 函数的用途是什么？",
+      "options": {
+        "A": "压缩数据",
+        "B": "将数组展开为行",
+        "C": "合并多个表",
+        "D": "加密数据"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "UNNEST 函数将数组类型的列展开为多行。例如，如果一个订单有多个商品存储在数组中，UNNEST 可以将每个商品展开为单独的行，便于分析和聚合。"
+    },
+    {
+      "id": "gcp-adp-s2-q17",
+      "examId": "gcp-adp-set2",
+      "setNumber": 2,
+      "domain": "数据准备和集成",
+      "question": "您需要在 BigQuery 中创建一个指向 Cloud Storage 中 CSV 文件的表，但不想复制数据。应该使用什么？",
+      "options": {
+        "A": "导入表",
+        "B": "外部表",
+        "C": "分区表",
+        "D": "聚簇表"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "外部表允许您直接查询存储在 Cloud Storage 中的数据，无需将数据加载到 BigQuery。这对于很少查询的数据或需要保持数据在原位置的场景很有用，但查询性能可能不如原生表。"
+    },
+    {
+      "id": "gcp-adp-s2-q18",
+      "examId": "gcp-adp-set2",
+      "setNumber": 2,
+      "domain": "机器学习基础",
+      "question": "在使用 BigQuery ML 之前，为什么需要处理缺失值？",
+      "options": {
+        "A": "减少存储空间",
+        "B": "缺失值可能导致模型训练失败或性能下降",
+        "C": "加快查询速度",
+        "D": "满足合规要求"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "缺失值可能导致模型训练出现问题或产生有偏差的结果。需要通过删除包含缺失值的行、用均值/中位数填充、或使用特定值替代等方法处理缺失值。"
+    },
+    {
+      "id": "gcp-adp-s2-q19",
+      "examId": "gcp-adp-set2",
+      "setNumber": 2,
+      "domain": "商业智能和可视化",
+      "question": "在 Looker Studio 中，您需要创建一个仪表板，允许不同用户看到不同的数据。应该使用什么功能？",
+      "options": {
+        "A": "数据混合",
+        "B": "用户级数据源凭据",
+        "C": "计算字段",
+        "D": "主题设置"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "使用用户级数据源凭据时，每个用户使用自己的凭据访问数据源。结合数据源中的行级安全性（如 BigQuery 行级访问策略），不同用户可以在同一仪表板上看到他们被授权访问的数据。"
+    },
+    {
+      "id": "gcp-adp-s2-q20",
+      "examId": "gcp-adp-set2",
+      "setNumber": 2,
+      "domain": "数据治理和安全",
+      "question": "您需要为 BigQuery 数据集添加描述性元数据，如业务定义和数据所有者。应该使用什么？",
+      "options": {
+        "A": "Cloud Logging",
+        "B": "Data Catalog",
+        "C": "Cloud Monitoring",
+        "D": "Cloud Trace"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Data Catalog 是一个完全托管的数据发现和元数据管理服务。它自动发现 BigQuery 表，并允许您添加业务元数据、标签、描述和数据所有者信息，帮助用户发现和理解数据。"
+    },
+    {
+      "id": "gcp-adp-s2-q21",
+      "examId": "gcp-adp-set2",
+      "setNumber": 2,
+      "domain": "数据分析和探索",
+      "question": "在 BigQuery 中，您需要对字符串列进行模糊匹配搜索。应该使用什么函数？",
+      "options": {
+        "A": "EXACT_MATCH",
+        "B": "LIKE 或 REGEXP_CONTAINS",
+        "C": "EQUAL",
+        "D": "COMPARE"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "LIKE 操作符支持通配符模式匹配（% 和 _），REGEXP_CONTAINS 支持正则表达式匹配。例如，WHERE name LIKE '%smith%' 或 REGEXP_CONTAINS(email, r'@gmail\\.com$')。"
+    },
+    {
+      "id": "gcp-adp-s2-q22",
+      "examId": "gcp-adp-set2",
+      "setNumber": 2,
+      "domain": "数据准备和集成",
+      "question": "您需要将多个 BigQuery 项目的数据整合到一个分析环境中。应该使用什么方法？",
+      "options": {
+        "A": "复制所有数据到一个项目",
+        "B": "使用跨项目查询",
+        "C": "导出数据到 Cloud Storage",
+        "D": "使用 Cloud Pub/Sub"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "BigQuery 支持跨项目查询，您可以使用完全限定的表名（project.dataset.table）在查询中引用其他项目的表。只需确保有适当的 IAM 权限，无需复制数据。"
+    },
+    {
+      "id": "gcp-adp-s2-q23",
+      "examId": "gcp-adp-set2",
+      "setNumber": 2,
+      "domain": "机器学习基础",
+      "question": "在 BigQuery ML 中，什么是 DATA_SPLIT_METHOD？",
+      "options": {
+        "A": "数据分片存储方法",
+        "B": "将数据分割为训练集和评估集的方法",
+        "C": "数据压缩方法",
+        "D": "数据加密方法"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "DATA_SPLIT_METHOD 指定如何将数据分割为训练集和评估集。选项包括 AUTO_SPLIT（自动）、RANDOM（随机）、CUSTOM（自定义）等。这对于评估模型性能至关重要。"
+    },
+    {
+      "id": "gcp-adp-s2-q24",
+      "examId": "gcp-adp-set2",
+      "setNumber": 2,
+      "domain": "商业智能和可视化",
+      "question": "在 Looker 中，什么是 Dashboard Filter 的作用？",
+      "options": {
+        "A": "删除仪表板上的数据",
+        "B": "允许用户交互式地筛选仪表板上的所有可视化",
+        "C": "隐藏仪表板元素",
+        "D": "更改仪表板颜色"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Dashboard Filter 是仪表板级别的筛选器，允许用户选择特定的值（如日期范围、地区、产品类别），筛选器会应用于仪表板上的所有相关可视化，提供一致的数据视图。"
+    },
+    {
+      "id": "gcp-adp-s2-q25",
+      "examId": "gcp-adp-set2",
+      "setNumber": 2,
+      "domain": "数据治理和安全",
+      "question": "您需要限制 BigQuery 查询的成本，防止用户运行过于昂贵的查询。应该使用什么？",
+      "options": {
+        "A": "IAM 权限",
+        "B": "自定义配额和最大字节数设置",
+        "C": "VPC Service Controls",
+        "D": "Cloud Armor"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "您可以在项目或用户级别设置自定义配额，限制每日查询量。此外，可以使用 maximumBytesBilled 参数限制单个查询扫描的最大字节数，超过限制的查询将失败。"
+    },
+    {
+      "id": "gcp-adp-s2-q26",
+      "examId": "gcp-adp-set2",
+      "setNumber": 2,
+      "domain": "数据分析和探索",
+      "question": "在 BigQuery 中，如何优化包含多个 JOIN 的复杂查询？",
+      "options": {
+        "A": "增加更多的 JOIN 条件",
+        "B": "按 JOIN 键对表进行聚簇，并将小表放在 JOIN 的右侧",
+        "C": "使用 SELECT * 选择所有列",
+        "D": "避免使用 WHERE 子句"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "优化 JOIN 查询的方法包括：对频繁 JOIN 的列创建聚簇表，将较小的表放在 JOIN 的右侧（BigQuery 会广播小表），只选择需要的列，以及使用适当的过滤条件减少 JOIN 之前的数据量。"
+    },
+    {
+      "id": "gcp-adp-s2-q27",
+      "examId": "gcp-adp-set2",
+      "setNumber": 2,
+      "domain": "数据准备和集成",
+      "question": "您需要创建一个数据管道，在新文件上传到 Cloud Storage 时自动触发处理。应该使用什么？",
+      "options": {
+        "A": "定时轮询",
+        "B": "Cloud Storage 触发器和 Cloud Functions",
+        "C": "手动触发",
+        "D": "SSH 连接"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Cloud Storage 可以发送事件通知到 Cloud Functions 或 Pub/Sub。当文件上传、修改或删除时，会自动触发处理函数。这是事件驱动架构的典型实现。"
+    },
+    {
+      "id": "gcp-adp-s2-q28",
+      "examId": "gcp-adp-set2",
+      "setNumber": 2,
+      "domain": "机器学习基础",
+      "question": "在 BigQuery ML 中，如何使用训练好的模型进行批量预测？",
+      "options": {
+        "A": "逐行调用 API",
+        "B": "使用 ML.PREDICT 函数对整个表进行预测",
+        "C": "导出模型到本地处理",
+        "D": "手动计算"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "ML.PREDICT 函数可以对整个表或查询结果进行批量预测。只需提供模型名称和输入数据，BigQuery 会并行处理所有行，高效地生成预测结果。"
+    },
+    {
+      "id": "gcp-adp-s2-q29",
+      "examId": "gcp-adp-set2",
+      "setNumber": 2,
+      "domain": "商业智能和可视化",
+      "question": "在 Looker Studio 中，什么是「社区连接器」？",
+      "options": {
+        "A": "社交媒体分析工具",
+        "B": "允许连接非原生支持的数据源的自定义连接器",
+        "C": "用户论坛",
+        "D": "团队协作工具"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "社区连接器是用户创建的自定义连接器，允许 Looker Studio 连接到原生不支持的数据源。开发者可以使用 Apps Script 创建连接器，并在社区库中共享。"
+    },
+    {
+      "id": "gcp-adp-s2-q30",
+      "examId": "gcp-adp-set2",
+      "setNumber": 2,
+      "domain": "数据治理和安全",
+      "question": "您需要记录 BigQuery 中谁创建或删除了表。应该查看什么日志？",
+      "options": {
+        "A": "数据访问日志",
+        "B": "管理活动日志",
+        "C": "系统事件日志",
+        "D": "政策拒绝日志"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "管理活动日志记录对资源配置或元数据的修改，包括创建、删除、更新表和数据集等操作。这些日志默认启用且不可禁用，保留 400 天。"
+    },
+    {
+      "id": "gcp-adp-s2-q31",
+      "examId": "gcp-adp-set2",
+      "setNumber": 2,
+      "domain": "数据分析和探索",
+      "question": "在 BigQuery 中，什么是 Scripting 功能？",
+      "options": {
+        "A": "网页脚本执行",
+        "B": "允许在 BigQuery 中使用变量、循环和条件逻辑",
+        "C": "数据导入脚本",
+        "D": "自动化备份脚本"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "BigQuery Scripting 允许您在 SQL 中使用程序化构造，如变量声明（DECLARE）、循环（LOOP、WHILE）、条件语句（IF-THEN-ELSE）和异常处理。这使得复杂的数据处理逻辑可以在单个脚本中完成。"
+    },
+    {
+      "id": "gcp-adp-s2-q32",
+      "examId": "gcp-adp-set2",
+      "setNumber": 2,
+      "domain": "数据准备和集成",
+      "question": "您需要从 Oracle 数据库实时复制数据到 BigQuery。应该使用什么服务？",
+      "options": {
+        "A": "Database Migration Service",
+        "B": "Datastream",
+        "C": "Cloud SQL",
+        "D": "Dataproc"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Datastream 支持从 Oracle、MySQL、PostgreSQL 等数据库进行变更数据捕获（CDC）和实时复制到 BigQuery。它是无服务器的，可以持续同步数据变更。"
+    },
+    {
+      "id": "gcp-adp-s2-q33",
+      "examId": "gcp-adp-set2",
+      "setNumber": 2,
+      "domain": "机器学习基础",
+      "question": "在评估分类模型时，什么是 F1 Score？",
+      "options": {
+        "A": "模型的训练速度",
+        "B": "精确率和召回率的调和平均值",
+        "C": "模型的存储大小",
+        "D": "特征的数量"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "F1 Score 是精确率（Precision）和召回率（Recall）的调和平均值，公式为 2 * (Precision * Recall) / (Precision + Recall)。它在两个指标之间取得平衡，是评估分类模型的常用综合指标。"
+    },
+    {
+      "id": "gcp-adp-s2-q34",
+      "examId": "gcp-adp-set2",
+      "setNumber": 2,
+      "domain": "商业智能和可视化",
+      "question": "在 Looker 中，如何确保所有用户看到一致的业务定义？",
+      "options": {
+        "A": "每个用户编写自己的 SQL",
+        "B": "在 LookML 中定义标准化的维度和度量",
+        "C": "使用电子表格共享",
+        "D": "发送电子邮件说明"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "LookML 创建了一个语义层，在其中定义标准化的业务逻辑、维度和度量。所有用户通过 Explore 使用这些定义，确保了业务术语和计算的一致性，避免了每个人编写不同 SQL 的问题。"
+    },
+    {
+      "id": "gcp-adp-s2-q35",
+      "examId": "gcp-adp-set2",
+      "setNumber": 2,
+      "domain": "数据治理和安全",
+      "question": "您需要对 BigQuery 表中的信用卡号进行令牌化处理，使其可以用于分析但不能还原。应该使用什么技术？",
+      "options": {
+        "A": "对称加密",
+        "B": "哈希或不可逆令牌化",
+        "C": "Base64 编码",
+        "D": "数据压缩"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "不可逆令牌化或加密哈希（如 SHA-256）将敏感数据转换为无法还原的令牌。这允许数据用于分析（如计数唯一值）而不会暴露原始数据。Cloud DLP 支持多种令牌化方法。"
+    },
+    {
+      "id": "gcp-adp-s2-q36",
+      "examId": "gcp-adp-set2",
+      "setNumber": 2,
+      "domain": "数据分析和探索",
+      "question": "在 BigQuery 中，什么是 Scheduled Queries（计划查询）？",
+      "options": {
+        "A": "只能在特定时间运行的查询",
+        "B": "按计划自动执行的重复查询",
+        "C": "需要审批才能运行的查询",
+        "D": "高优先级查询"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Scheduled Queries 允许您设置查询按固定计划（如每天、每小时）自动运行。结果可以写入指定的表，适用于 ETL 作业、报表生成和数据汇总等场景。"
+    },
+    {
+      "id": "gcp-adp-s2-q37",
+      "examId": "gcp-adp-set2",
+      "setNumber": 2,
+      "domain": "数据准备和集成",
+      "question": "您需要将 BigQuery 中的数据导出到 Cloud Storage 用于外部处理。应该使用什么格式以获得最佳性能？",
+      "options": {
+        "A": "CSV",
+        "B": "Parquet 或 Avro",
+        "C": "JSON",
+        "D": "XML"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Parquet 和 Avro 是列式和二进制格式，比 CSV 或 JSON 更高效。它们支持压缩、保留数据类型信息，并且读写速度更快。这对于大数据处理和外部工具（如 Spark）非常重要。"
+    },
+    {
+      "id": "gcp-adp-s2-q38",
+      "examId": "gcp-adp-set2",
+      "setNumber": 2,
+      "domain": "机器学习基础",
+      "question": "在 BigQuery ML 中，ARIMA_PLUS 模型的用途是什么？",
+      "options": {
+        "A": "图像分类",
+        "B": "时间序列预测",
+        "C": "文本分析",
+        "D": "推荐系统"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "ARIMA_PLUS 是用于时间序列预测的模型类型。它可以自动识别季节性模式，处理节假日效应，并进行趋势预测。适用于销售预测、需求规划、财务预测等场景。"
+    },
+    {
+      "id": "gcp-adp-s2-q39",
+      "examId": "gcp-adp-set2",
+      "setNumber": 2,
+      "domain": "商业智能和可视化",
+      "question": "在 Looker Studio 中，如何优化报表的加载速度？",
+      "options": {
+        "A": "添加更多可视化",
+        "B": "使用 BI Engine、减少可视化数量、优化数据模型",
+        "C": "使用更大的图表",
+        "D": "禁用缓存"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "优化报表加载速度的方法包括：启用 BigQuery BI Engine 进行内存缓存、减少单页的可视化数量、优化底层数据模型（如使用物化视图或聚合表）、以及设置适当的数据刷新策略。"
+    },
+    {
+      "id": "gcp-adp-s2-q40",
+      "examId": "gcp-adp-set2",
+      "setNumber": 2,
+      "domain": "数据治理和安全",
+      "question": "您需要确保 BigQuery 中的数据符合 GDPR 要求，包括「被遗忘权」。应该实施什么策略？",
+      "options": {
+        "A": "禁用所有数据访问",
+        "B": "实施数据删除流程和保留策略",
+        "C": "加密所有数据",
+        "D": "使用匿名账户"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "GDPR 的「被遗忘权」要求能够删除个人数据。您需要实施数据删除流程（如基于用户请求删除其数据）、设置数据保留策略（自动删除过期数据）、并维护数据处理记录以证明合规。"
+    }
+  ]
+}

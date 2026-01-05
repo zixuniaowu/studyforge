@@ -22,14 +22,14 @@ import { useLanguageStore } from '../stores/languageStore';
 
 // YouTube Video Component
 interface VideoCardProps {
-  videoId: string;
+  id: string;
   title: string;
   channel: string;
   duration?: string;
   description?: string;
 }
 
-const VideoCard: React.FC<VideoCardProps> = ({ videoId, title, channel, duration, description }) => {
+const VideoCard: React.FC<VideoCardProps> = ({ id: videoId, title, channel, duration, description }) => {
   const [isPlaying, setIsPlaying] = useState(false);
 
   return (

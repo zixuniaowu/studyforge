@@ -1,0 +1,649 @@
+{
+  "exam": {
+    "id": "gcp-pcdev-set3-ja",
+    "name": "GCP クラウド デベロッパー認定模擬試験 #3",
+    "code": "PCDEV",
+    "provider": "GCP",
+    "language": "ja",
+    "description": "Google Cloud Professional Cloud Developer 認定試験模擬問題",
+    "totalQuestions": 40,
+    "passingScore": 70,
+    "examTime": 120,
+    "domains": [
+      {
+        "id": 1,
+        "name": "スケーラブルで可用性の高いクラウドネイティブアプリケーションの設計",
+        "weight": 25
+      },
+      {
+        "id": 2,
+        "name": "アプリケーションの構築とテスト",
+        "weight": 25
+      },
+      {
+        "id": 3,
+        "name": "アプリケーションのデプロイ",
+        "weight": 20
+      },
+      {
+        "id": 4,
+        "name": "Google Cloud サービスの統合",
+        "weight": 20
+      },
+      {
+        "id": 5,
+        "name": "アプリケーションパフォーマンス監視の管理",
+        "weight": 10
+      }
+    ],
+    "tags": [
+      "GCP",
+      "Cloud Developer",
+      "Cloud Run",
+      "GKE",
+      "認定試験"
+    ]
+  },
+  "questions": [
+    {
+      "id": "q1",
+      "domain": 1,
+      "question": "ECサイトがプロモーション期間中に通常トラフィックの10倍を処理する必要があります。どの戦略を採用すべきですか？",
+      "options": {
+        "A": "プロモーション前に手動でサーバーを増やす",
+        "B": "ウォームインスタンスと負荷テストを伴う自動スケーリングを使用",
+        "C": "システムが処理できることを願う",
+        "D": "プロモーション活動を減らす"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "トラフィックピーク対応戦略：\n- 自動スケーリングで動的負荷を処理\n- 事前の負荷テストで容量を検証\n- ウォームインスタンスでコールドスタートを軽減\n- 適切なスケーリングパラメータを設定\n- 静的コンテンツにCDNキャッシュを検討",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q2",
+      "domain": 1,
+      "question": "Sidecarパターンとは何ですか？Kubernetesでどのように使用されますか？",
+      "options": {
+        "A": "メインアプリのバックアップ",
+        "B": "同一Pod内で補助コンテナを実行し、ログ、プロキシなどの機能を提供",
+        "C": "負荷分散戦略",
+        "D": "データベース接続プール"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Sidecarパターン：\n- 補助コンテナがメインコンテナとネットワークとストレージを共有\n- 一般的なユースケース：ログ収集、サービスメッシュプロキシ\n- 関心の分離\n- Istio Envoyプロキシが典型例\n- 独立して更新・管理可能",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q3",
+      "domain": 1,
+      "question": "オフライン機能をサポートするモバイルアプリバックエンドをどのように設計しますか？",
+      "options": {
+        "A": "継続的なネットワーク接続を要求",
+        "B": "Firestoreオフラインサポートとコンフリクト解決戦略を使用",
+        "C": "オフラインをサポートしない",
+        "D": "ローカルファイルストレージを使用"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "オフラインサポート設計：\n- Firestoreは組み込みオフラインキャッシュを提供\n- オフライン変更を自動同期\n- コンフリクト解決戦略（最終書き込み優先またはカスタム）\n- クライアント側楽観的更新\n- データ一貫性モデルを考慮",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q4",
+      "domain": 1,
+      "question": "サービス間のリトライとタイムアウト戦略をどのように実装しますか？",
+      "options": {
+        "A": "タイムアウトを設定しない",
+        "B": "指数バックオフリトライと適切なタイムアウト時間を設定",
+        "C": "無限リトライ",
+        "D": "即座に失敗"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "リトライとタイムアウトのベストプラクティス：\n- 指数バックオフで雪崩効果を回避\n- 最大リトライ回数を設定\n- タイムアウト時間は呼び出し元のタイムアウトより短く\n- リトライ可能エラーと不可能エラーを区別\n- サーキットブレーカーパターンと組み合わせ",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q5",
+      "domain": 1,
+      "question": "リードレプリカアーキテクチャとは何ですか？その利点は何ですか？",
+      "options": {
+        "A": "システム複雑性の増加",
+        "B": "読み取り操作を読み取り専用レプリカにルーティングし、読み取りパフォーマンスと可用性を向上",
+        "C": "データ一貫性の低下",
+        "D": "コストの増加"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "リードレプリカの利点：\n- 読み取り負荷を複数のレプリカに分散\n- プライマリインスタンスは書き込み操作に専念\n- 全体スループットの向上\n- Cloud SQLはリードレプリカをサポート\n- レプリケーション遅延を考慮する必要あり",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q6",
+      "domain": 1,
+      "question": "API設計時にページネーションをどのように処理しますか？",
+      "options": {
+        "A": "すべてのデータを返す",
+        "B": "カーソルまたはオフセットページネーションを使用し、ページトークンを返す",
+        "C": "総データ量を制限",
+        "D": "ページネーションをサポートしない"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "APIページネーション設計：\n- カーソルページネーション：大規模データセットに適している\n- オフセットページネーション：シンプルだがパフォーマンス問題あり\n- nextPageTokenまたはhasMoreを返す\n- デフォルトと最大ページサイズを設定\n- ソートの安定性を考慮",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q7",
+      "domain": 1,
+      "question": "マルチリージョンActive-Activeアーキテクチャをどのように設計しますか？",
+      "options": {
+        "A": "1つのリージョンにのみデプロイ",
+        "B": "複数リージョンにサービスをデプロイし、グローバルロードバランシングとマルチリージョンデータベースを使用",
+        "C": "コールドバックアップを使用",
+        "D": "手動フェイルオーバー"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "マルチリージョンActive-Activeアーキテクチャ：\n- グローバルHTTP(S)ロードバランシングでトラフィックを分散\n- Cloud Spannerまたはマルチリージョン Cloud SQL\n- データレプリケーションとコンフリクト解決\n- 各リージョンが独立してリクエストを処理\n- 自動フェイルオーバー",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q8",
+      "domain": 1,
+      "question": "バックプレッシャー（Backpressure）メカニズムとは何ですか？",
+      "options": {
+        "A": "システムへの圧力を増加",
+        "B": "下流システムが過負荷の場合、上流システムが送信速度を低下",
+        "C": "データ圧縮",
+        "D": "ネットワーク最適化"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "バックプレッシャーメカニズム：\n- 下流システムの圧迫を防止\n- 上流が下流の処理能力を認識\n- フロー制御戦略\n- Pub/Subはフロー制御で実装\n- Dataflowは自動的にバックプレッシャーを処理",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q9",
+      "domain": 2,
+      "question": "アプリケーション依存関係のバージョンをどのように管理しますか？",
+      "options": {
+        "A": "バージョンをロックしない",
+        "B": "ロックファイル（package-lock.jsonなど）を使用して依存バージョンを固定",
+        "C": "常に最新バージョンを使用",
+        "D": "依存関係を手動でコピー"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "依存関係バージョン管理：\n- ロックファイルで再現可能なビルドを確保\n- 定期的に依存関係を更新してテスト\n- Dependabotなどのツールで自動更新\n- 依存関係のセキュリティを監査\n- 依存関係のライセンスを考慮",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q10",
+      "domain": 2,
+      "question": "Chaos Engineeringとは何ですか？GCPでどのように実践しますか？",
+      "options": {
+        "A": "ランダムにコードを書く",
+        "B": "意図的に障害を注入してシステムの回復力をテスト",
+        "C": "パフォーマンステスト",
+        "D": "セキュリティテスト"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Chaos Engineering：\n- 本番環境に障害を注入\n- システムの回復力を検証\n- GKEではLitmus、Chaos Meshを使用可能\n- ネットワーク分断、Pod障害などをテスト\n- 小規模な実験から開始",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q11",
+      "domain": 2,
+      "question": "A/Bテストのバックエンドサポートをどのように実装しますか？",
+      "options": {
+        "A": "各バリアント用に独立したアプリをデプロイ",
+        "B": "フィーチャーフラグとトラフィック分割を使用",
+        "C": "手動でユーザーを割り当て",
+        "D": "A/Bテストをサポートしない"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "A/Bテスト実装：\n- フィーチャーフラグで機能バリアントを制御\n- Cloud RunまたはApp Engineのトラフィック分割\n- 一貫したユーザーグループ分け（IDハッシュベース）\n- メトリクスを収集・分析\n- Firebase Remote Configがモバイルアプリをサポート",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q12",
+      "domain": 2,
+      "question": "Cloud Source Repositoriesを使用してコードをどのように管理しますか？",
+      "options": {
+        "A": "GitHubしか使用できない",
+        "B": "プライベートGitリポジトリとして、Cloud Buildと統合",
+        "C": "ファイルストレージのみ",
+        "D": "バージョン管理をサポートしない"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Cloud Source Repositories：\n- ホストされたプライベートGitリポジトリ\n- Cloud Buildとシームレスに統合\n- GitHub/Bitbucketからのミラーリングをサポート\n- IAM権限制御\n- コード検索機能",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q13",
+      "domain": 2,
+      "question": "Dockerイメージでシークレットをどのように安全に処理しますか？",
+      "options": {
+        "A": "DockerfileでENV指令を使用",
+        "B": "Secret Managerを使用して実行時に注入、イメージにシークレットを含めない",
+        "C": "コードにハードコード",
+        "D": "ビルド引数を使用"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Dockerシークレットセキュリティ：\n- イメージにシークレットを含めない\n- 実行時にSecret Managerから取得\n- 環境変数またはボリュームマウントを使用\n- マルチステージビルドで漏洩を防止\n- イメージ内のシークレット漏洩をスキャン",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q14",
+      "domain": 2,
+      "question": "コードカバレッジとは何ですか？どのように改善しますか？",
+      "options": {
+        "A": "コードの行数",
+        "B": "テストでカバーされるコードの割合、テストケースを増やして向上",
+        "C": "コードドキュメントの割合",
+        "D": "コードの複雑さ"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "コードカバレッジ：\n- テストがカバーするコードの割合を測定\n- 行カバレッジ、分岐カバレッジ、関数カバレッジを含む\n- 高カバレッジ≠高品質テスト\n- 重要なビジネスロジックに焦点\n- CIと統合して自動レポート",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q15",
+      "domain": 2,
+      "question": "Dockerイメージのビルド速度をどのように最適化しますか？",
+      "options": {
+        "A": "より大きなビルドマシンを使用",
+        "B": "レイヤー順序の最適化、キャッシュの使用、マルチステージビルド",
+        "C": "コード量を減らす",
+        "D": "キャッシュを使用しない"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Dockerビルド最適化：\n- 変更が少ないレイヤーを前に配置\n- レイヤーキャッシュを活用\n- マルチステージビルドを使用\n- 適切なベースイメージを選択\n- .dockerignoreで無関係なファイルを除外",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q16",
+      "domain": 2,
+      "question": "データベースマイグレーションの自動化をどのように実装しますか？",
+      "options": {
+        "A": "SQLを手動で実行",
+        "B": "マイグレーションツール（Flyway、Liquibaseなど）をCI/CDで自動実行",
+        "C": "本番データベースを直接変更",
+        "D": "マイグレーションを行わない"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "データベースマイグレーション自動化：\n- バージョン管理されたマイグレーションスクリプト\n- CI/CDで自動実行\n- ロールバックをサポート\n- テスト環境で先に検証\n- ゼロダウンタイムマイグレーション戦略",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q17",
+      "domain": 3,
+      "question": "GKEでPodのReadiness Probeをどのように実装しますか？",
+      "options": {
+        "A": "プローブは不要",
+        "B": "HTTP、TCP、またはコマンドプローブを設定してアプリの準備状態を検証",
+        "C": "外部監視を使用",
+        "D": "手動で準備完了をマーク"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Readiness Probe：\n- HTTPエンドポイントチェック（最も一般的）\n- TCPソケットチェック\n- コマンド実行チェック\n- 準備ができていないPodはトラフィックを受け取らない\n- 適切なチェック間隔としきい値を設定",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q18",
+      "domain": 3,
+      "question": "Kubernetes Ingressとは何ですか？Serviceとの違いは何ですか？",
+      "options": {
+        "A": "違いはない",
+        "B": "IngressはHTTPレイヤーのルーティングとTLS終端を提供、ServiceはL4ロードバランシングを提供",
+        "C": "Serviceの方が高度",
+        "D": "Ingressはロードバランシングをサポートしない"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Ingress vs Service：\n- Ingress：L7ロードバランシング、パスとホストルーティング\n- Service：L4ロードバランシング\n- IngressはTLS終端をサポート\n- 単一のIngressが複数のServiceにルーティング可能\n- GKEはCloud Load BalancingでIngressを実装",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q19",
+      "domain": 3,
+      "question": "Cloud RunでVPCアクセスをどのように設定しますか？",
+      "options": {
+        "A": "Cloud RunはVPCにアクセスできない",
+        "B": "VPCコネクタまたはダイレクトVPCエグレスを設定",
+        "C": "パブリックネットワーク接続を使用",
+        "D": "Cloud SQLのみ使用可能"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Cloud Run VPCアクセス：\n- Serverless VPC Accessコネクタ\n- ダイレクトVPCエグレス（プレビュー）\n- プライベートIPリソースにアクセス\n- Cloud SQL、Memorystoreなどに接続\n- コネクタの容量とコストを考慮",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q20",
+      "domain": 3,
+      "question": "Kubernetes Network Policyとは何ですか？",
+      "options": {
+        "A": "ネットワーク帯域幅制限",
+        "B": "Pod間およびPodと外部間のネットワークトラフィックを制御",
+        "C": "DNS設定",
+        "D": "ロードバランシングポリシー"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Network Policy：\n- Podレベルのネットワークルールを定義\n- インバウンドとアウトバウンドトラフィックを制御\n- ラベルセレクタベース\n- デフォルトですべてのトラフィックを許可\n- マイクロセグメンテーションとゼロトラストネットワークを実現",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q21",
+      "domain": 3,
+      "question": "Cloud Runの同時実行設定をどのように構成しますか？",
+      "options": {
+        "A": "構成できない",
+        "B": "インスタンスあたりの最大同時リクエスト数を設定",
+        "C": "デフォルト値しか使用できない",
+        "D": "コードで設定"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Cloud Run同時実行設定：\n- container concurrencyを設定（デフォルト80）\n- CPU集約型タスクは同時実行を下げる\n- IO集約型タスクは同時実行を上げる\n- 自動スケーリング動作に影響\n- リソース設定と組み合わせてパフォーマンスを最適化",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q22",
+      "domain": 3,
+      "question": "GKEでInit Containersをどのように使用しますか？",
+      "options": {
+        "A": "データベースを初期化",
+        "B": "メインコンテナ起動前に実行し、初期化タスクを実行",
+        "C": "メインアプリとして実行",
+        "D": "ログ収集に使用"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Init Containers：\n- メインコンテナ起動前に実行\n- 順次実行、成功する必要あり\n- 依存サービスの待機に一般的\n- 設定やデータのダウンロード\n- ファイル権限の設定",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q23",
+      "domain": 3,
+      "question": "GKEノードの自動修復をどのように実装しますか？",
+      "options": {
+        "A": "手動で修復",
+        "B": "ノード自動修復機能を有効化",
+        "C": "自動修復をサポートしない",
+        "D": "外部ツールを使用"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "GKEノード自動修復：\n- 不健全なノードを検出\n- ノードを自動修復または再構築\n- ノード自動アップグレードと連携\n- 運用負担を軽減\n- クラスタの可用性を向上",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q24",
+      "domain": 3,
+      "question": "Kubernetes DeploymentのmaxSurgeパラメータとは何ですか？",
+      "options": {
+        "A": "最大Pod数",
+        "B": "更新中に希望レプリカ数を超えて許可される数",
+        "C": "最大CPU使用量",
+        "D": "最大メモリ使用量"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "maxSurge：\n- ローリングアップデート中に追加作成されるPod数\n- 数値またはパーセンテージ\n- maxUnavailableと組み合わせて更新速度を制御\n- リソース使用に影響\n- 更新速度とリソース消費のトレードオフ",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q25",
+      "domain": 4,
+      "question": "Cloud Pub/Subを使用して信頼性の高いメッセージ配信をどのように実装しますか？",
+      "options": {
+        "A": "メッセージ損失を無視",
+        "B": "確認応答メカニズムとデッドレターキューを使用して失敗メッセージを処理",
+        "C": "一度だけ送信",
+        "D": "同期呼び出しを使用"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Pub/Sub信頼性の高いメッセージ配信：\n- メッセージ確認応答（ack）メカニズム\n- 確認応答期限を設定\n- デッドレターキューで処理できないメッセージを処理\n- メッセージ保持ポリシー\n- バックログメッセージを監視",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q26",
+      "domain": 4,
+      "question": "Cloud Functionsでバックグラウンドタスクをどのように処理しますか？",
+      "options": {
+        "A": "HTTPリクエストのみ処理可能",
+        "B": "イベントトリガー（Pub/Sub、Cloud Storageなど）を使用",
+        "C": "ポーリングでタスクをチェック",
+        "D": "定期タスクを使用"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Cloud Functionsバックグラウンドタスク：\n- Pub/Subトリガーでメッセージキューを処理\n- Cloud Storageトリガーでファイルを処理\n- Firestoreトリガーでデータ変更に応答\n- Cloud Schedulerで定期トリガー\n- Eventarcで統一イベント処理",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q27",
+      "domain": 4,
+      "question": "Cloud Translation APIを使用して多言語サポートをどのように実装しますか？",
+      "options": {
+        "A": "すべてのコンテンツを手動で翻訳",
+        "B": "APIを呼び出してリアルタイムまたはバッチでテキストを翻訳",
+        "C": "英語のみサポート",
+        "D": "モデルのトレーニングが必要"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Cloud Translation API：\n- 100以上の言語をサポート\n- リアルタイム翻訳とバッチ翻訳\n- ソース言語を自動検出\n- AutoML Translationでカスタマイズ可能\n- 翻訳結果のキャッシュを検討",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q28",
+      "domain": 4,
+      "question": "アプリにCloud Firestoreをどのように統合しますか？",
+      "options": {
+        "A": "SQLクエリを使用",
+        "B": "クライアントSDKを使用してドキュメントの読み書きとリアルタイムリスニング",
+        "C": "REST APIのみ使用可能",
+        "D": "接続プールが必要"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Firestore統合：\n- マルチプラットフォームSDK（Web、Android、iOS、サーバーサイド）\n- ドキュメントとコレクションモデル\n- データ変更のリアルタイムリスニング\n- オフラインサポート\n- トランザクションとバッチ書き込み",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q29",
+      "domain": 4,
+      "question": "Cloud Armorを使用してアプリをどのように保護しますか？",
+      "options": {
+        "A": "暗号化のみ使用",
+        "B": "DDoSとWeb攻撃に対するセキュリティポリシーを設定",
+        "C": "ファイアウォールの代替",
+        "D": "内部サービスのみ使用"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Cloud Armorの機能：\n- DDoS保護\n- WAFルール（OWASP Top 10）\n- IP許可/拒否リスト\n- 地域制限\n- レート制限\n- Cloud Load Balancingと統合",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q30",
+      "domain": 4,
+      "question": "Identity Platformを使用してユーザー認証をどのように実装しますか？",
+      "options": {
+        "A": "認証を自分で実装",
+        "B": "SDKを使用して複数のログイン方法（メール、ソーシャルアカウント、MFA）を実装",
+        "C": "Googleアカウントのみサポート",
+        "D": "モバイルアプリのみ使用"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Identity Platform：\n- 複数のログインプロバイダー（Google、Facebook、SAMLなど）\n- メール/パスワード、電話番号認証\n- 多要素認証\n- ユーザー管理とカスタムトークン\n- Firebase Authと互換",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q31",
+      "domain": 4,
+      "question": "Cloud CDNを使用してコンテンツ配信をどのように高速化しますか？",
+      "options": {
+        "A": "静的ファイルのみキャッシュ",
+        "B": "キャッシュルールを設定して静的および動的コンテンツをキャッシュ",
+        "C": "アプリコードの変更が必要",
+        "D": "ビデオのみサポート"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Cloud CDN設定：\n- Cloud Load Balancingと統合\n- カスタムキャッシュキーとTTL\n- 署名付きURLとCookieをサポート\n- キャッシュ無効化メカニズム\n- エッジキャッシュで遅延を削減",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q32",
+      "domain": 4,
+      "question": "マイクロサービスでgRPCをどのように使用しますか？",
+      "options": {
+        "A": "RESTのみ使用可能",
+        "B": "protobufサービスを定義し、gRPCクライアントライブラリで呼び出し",
+        "C": "gRPCはマイクロサービスに適していない",
+        "D": "特別なハードウェアが必要"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "マイクロサービスでのgRPC：\n- Protocol Buffersでインターフェースを定義\n- バイナリプロトコルで高効率\n- ストリーミングをサポート\n- 自動コード生成\n- Cloud RunとGKEでネイティブサポート",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q33",
+      "domain": 5,
+      "question": "Cloud Debuggerを使用して本番アプリをどのようにデバッグしますか？",
+      "options": {
+        "A": "本番サービスを停止",
+        "B": "スナップショットとログポイントを設定、アプリ実行に影響なし",
+        "C": "デバッガをアタッチする必要あり",
+        "D": "テスト環境のみデバッグ可能"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Cloud Debugger：\n- 本番環境のリアルタイムデバッグ\n- スナップショットで変数状態をキャプチャ\n- ログポイントで動的にログを追加\n- アプリパフォーマンスに影響なし\n- 複数言語をサポート\n- 注意：Cloud Logging機能に置き換えられている",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q34",
+      "domain": 5,
+      "question": "Uptime Checkを設定してサービス可用性をどのように監視しますか？",
+      "options": {
+        "A": "手動でチェック",
+        "B": "Cloud Monitoring Uptime Checkを設定して定期的にエンドポイントをチェック",
+        "C": "GCPサービスのみ監視可能",
+        "D": "エージェントのインストールが必要"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Uptime Check：\n- グローバルの複数の場所からチェック\n- HTTP、HTTPS、TCPをサポート\n- レスポンス内容を検証\n- アラートポリシーを設定\n- 公開アクセス可能な任意のエンドポイントを監視",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q35",
+      "domain": 5,
+      "question": "アプリでカスタムメトリクスをどのように実装しますか？",
+      "options": {
+        "A": "組み込みメトリクスのみ使用可能",
+        "B": "Cloud Monitoring APIまたはOpenTelemetryを使用してカスタムメトリクスを書き込み",
+        "C": "専用の監視サーバーが必要",
+        "D": "手動で記録"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "カスタムメトリクス：\n- Cloud Monitoring APIでメトリクスディスクリプタを作成\n- 時系列データを書き込み\n- OpenTelemetry SDKをサポート\n- ダッシュボードとアラートで使用\n- クォータ制限に注意",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q36",
+      "domain": 5,
+      "question": "GKEクラスタのリソース使用状況をどのように分析しますか？",
+      "options": {
+        "A": "各Podを手動でチェック",
+        "B": "Kubernetes Engine Monitoringを使用してダッシュボードとメトリクスを表示",
+        "C": "kubectlのみ使用可能",
+        "D": "リソース監視をサポートしない"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "GKEリソース監視：\n- 組み込みKubernetes Engine Monitoring\n- ノード、Pod、コンテナレベルのメトリクス\n- CPU、メモリ、ネットワーク、ディスク使用量\n- Cloud Monitoringと統合\n- カスタムダッシュボードをサポート",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q37",
+      "domain": 5,
+      "question": "分散トレーシングにおけるSpanとは何ですか？",
+      "options": {
+        "A": "ネットワーク接続",
+        "B": "操作名、タイムスタンプ、メタデータを含む作業単位",
+        "C": "ログエントリ",
+        "D": "エラーメッセージ"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Trace Span：\n- 操作または作業単位を表す\n- 開始時間と期間を含む\n- 親子関係を持つことができる\n- タグとアノテーションを含む\n- 複数のSpanが1つのTraceを構成",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q38",
+      "domain": 5,
+      "question": "アラート通知チャネルをどのように設定しますか？",
+      "options": {
+        "A": "メールのみ使用可能",
+        "B": "複数の通知チャネル（メール、SMS、PagerDuty、Slackなど）を設定",
+        "C": "通知をサポートしない",
+        "D": "アラートを手動で確認"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "アラート通知チャネル：\n- メール通知\n- SMS通知\n- PagerDuty、Slack、Webhook統合\n- 複数のチャネルを組み合わせ可能\n- 重大度に応じて異なるチャネルを設定",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q39",
+      "domain": 1,
+      "question": "サービスメッシュ（Service Mesh）とは何ですか？Anthos Service Meshはどのような機能を提供しますか？",
+      "options": {
+        "A": "ネットワークルーター",
+        "B": "サービス間通信管理、可観測性、セキュリティ、トラフィック制御を提供",
+        "C": "データベース接続",
+        "D": "ファイル共有"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Service Mesh / Anthos Service Mesh：\n- 透過的なサービス間通信\n- mTLS暗号化\n- トラフィック管理（カナリア、ブルーグリーン）\n- 可観測性（トレーシング、メトリクス、ログ）\n- Istioをベースに構築",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q40",
+      "domain": 2,
+      "question": "セキュアなソフトウェアサプライチェーンをどのように実装しますか？",
+      "options": {
+        "A": "追加のセキュリティ対策は不要",
+        "B": "Binary Authorization、脆弱性スキャン、署名検証を使用",
+        "C": "コードを手動でチェック",
+        "D": "内部ソフトウェアのみ使用"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "セキュアサプライチェーン：\n- Container Analysisで脆弱性スキャン\n- Binary Authorizationでデプロイポリシー\n- イメージ署名検証\n- SLSAフレームワーク準拠\n- Software Delivery Shield統合",
+      "difficulty": "hard"
+    }
+  ]
+}

@@ -1,0 +1,662 @@
+{
+  "exam": {
+    "id": "azure-az-140-set2",
+    "name": "Azure Virtual Desktop Specialty 练习题 Set 2",
+    "code": "AZ-140",
+    "provider": "Microsoft",
+    "language": "zh-CN",
+    "description": "Azure 虚拟桌面基础架构的规划、部署、管理和优化练习题集 2",
+    "totalQuestions": 40,
+    "passingScore": 70,
+    "examTime": 120,
+    "domains": [
+      "规划和实现 Azure 虚拟桌面基础结构",
+      "规划和实现身份和安全性",
+      "规划和实现用户环境和应用",
+      "监视和维护 Azure 虚拟桌面基础结构"
+    ],
+    "tags": ["Azure", "Virtual Desktop", "AVD", "Windows", "Remote Desktop"]
+  },
+  "questions": [
+    {
+      "id": "az140-s2-q1",
+      "examId": "azure-az-140-set2",
+      "setNumber": 2,
+      "domain": "规划和实现 Azure 虚拟桌面基础结构",
+      "question": "您正在规划 Azure 虚拟桌面部署，需要支持需要 GPU 加速的 CAD 设计人员。应该选择哪种 VM 系列？",
+      "options": {
+        "A": "D 系列",
+        "B": "E 系列",
+        "C": "NV 系列",
+        "D": "F 系列"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "NV 系列虚拟机配备 NVIDIA GPU，专为图形密集型工作负载设计，包括 CAD、3D 建模和可视化应用程序。它们支持 GPU 加速的远程桌面体验。D 系列是通用型，E 系列是内存优化型，F 系列是计算优化型，都不包含 GPU。"
+    },
+    {
+      "id": "az140-s2-q2",
+      "examId": "azure-az-140-set2",
+      "setNumber": 2,
+      "domain": "规划和实现身份和安全性",
+      "question": "您需要为 Azure 虚拟桌面实现屏幕捕获保护。您想要防止用户使用截图工具捕获会话内容。应该配置什么？",
+      "options": {
+        "A": "RDP 属性",
+        "B": "屏幕捕获保护策略",
+        "C": "Windows Defender 应用程序控制",
+        "D": "组策略对象"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure 虚拟桌面的屏幕捕获保护是一项原生功能，可以阻止在会话中捕获屏幕内容。启用后，远程桌面客户端会阻止截图工具和屏幕录制软件捕获会话窗口。RDP 属性控制重定向，WDAC 控制应用程序执行，组策略可以禁用工具但不如原生功能有效。"
+    },
+    {
+      "id": "az140-s2-q3",
+      "examId": "azure-az-140-set2",
+      "setNumber": 2,
+      "domain": "规划和实现用户环境和应用",
+      "question": "您正在配置 FSLogix Office 容器。Office 容器与配置文件容器的主要区别是什么？",
+      "options": {
+        "A": "Office 容器存储整个用户配置文件",
+        "B": "Office 容器专门存储 Microsoft 365 应用数据和激活信息",
+        "C": "Office 容器不支持漫游",
+        "D": "Office 容器只能在本地存储"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "FSLogix Office 容器专门用于存储 Microsoft 365 应用数据（如 Outlook OST 文件、Teams 缓存、OneDrive 缓存）和 Office 激活信息。它可以与配置文件容器分开使用，或在已有其他配置文件解决方案时单独使用。配置文件容器存储整个用户配置文件。"
+    },
+    {
+      "id": "az140-s2-q4",
+      "examId": "azure-az-140-set2",
+      "setNumber": 2,
+      "domain": "监视和维护 Azure 虚拟桌面基础结构",
+      "question": "您需要跟踪 Azure 虚拟桌面的用户连接活动以满足合规性要求。应该使用什么方法？",
+      "options": {
+        "A": "Azure 活动日志",
+        "B": "配置诊断设置并将连接日志发送到 Log Analytics",
+        "C": "Windows 事件日志",
+        "D": "Azure 成本管理"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "通过配置 Azure 虚拟桌面的诊断设置，可以将连接活动、错误和其他事件发送到 Log Analytics 工作区。这提供了用于合规性审计的详细连接日志。活动日志记录管理操作，Windows 事件日志需要在每个主机上收集，成本管理用于费用跟踪。"
+    },
+    {
+      "id": "az140-s2-q5",
+      "examId": "azure-az-140-set2",
+      "setNumber": 2,
+      "domain": "规划和实现 Azure 虚拟桌面基础结构",
+      "question": "您正在为 Azure 虚拟桌面配置多区域部署以提高可用性。您需要将用户路由到最近的主机池。应该使用什么？",
+      "options": {
+        "A": "Azure 负载均衡器",
+        "B": "Azure 流量管理器与地理路由",
+        "C": "Azure 前门",
+        "D": "Azure 应用程序网关"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "虽然 Azure 虚拟桌面服务本身处理连接路由，但对于多区域主机池，可以使用流量管理器与地理路由策略将用户定向到最近的区域。实际上，AVD 本身支持多区域部署，用户可以通过工作区选择合适的主机池。"
+    },
+    {
+      "id": "az140-s2-q6",
+      "examId": "azure-az-140-set2",
+      "setNumber": 2,
+      "domain": "规划和实现身份和安全性",
+      "question": "您需要实现 Azure 虚拟桌面的无密码身份验证。用户应该能够使用 Windows Hello for Business 登录。必须满足什么先决条件？",
+      "options": {
+        "A": "所有用户必须使用智能卡",
+        "B": "会话主机必须是混合 Azure AD 加入或 Azure AD 加入",
+        "C": "必须禁用 MFA",
+        "D": "必须使用 Windows Server 作为会话主机"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "要使用 Windows Hello for Business 进行 Azure 虚拟桌面身份验证，会话主机必须是混合 Azure AD 加入或 Azure AD 加入。这允许使用证书或密钥信任模型进行无密码身份验证。智能卡是另一种方法，MFA 可以与 WHfB 一起使用，Windows 10/11 多会话是推荐的 OS。"
+    },
+    {
+      "id": "az140-s2-q7",
+      "examId": "azure-az-140-set2",
+      "setNumber": 2,
+      "domain": "规划和实现用户环境和应用",
+      "question": "您正在使用 Azure 虚拟桌面为开发人员提供环境。开发人员需要在会话中运行 Docker 容器。您需要启用什么功能？",
+      "options": {
+        "A": "GPU 加速",
+        "B": "嵌套虚拟化",
+        "C": "增加内存",
+        "D": "启用 Hyper-V"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "要在 Azure 虚拟桌面会话中运行 Docker 容器，需要支持嵌套虚拟化的 VM 大小（如 Dv3、Ev3 或更新版本）。启用嵌套虚拟化后，可以在 VM 中安装 Hyper-V 和 Docker。GPU 和内存是不同的需求，启用 Hyper-V 需要先有嵌套虚拟化支持。"
+    },
+    {
+      "id": "az140-s2-q8",
+      "examId": "azure-az-140-set2",
+      "setNumber": 2,
+      "domain": "监视和维护 Azure 虚拟桌面基础结构",
+      "question": "您需要识别 Azure 虚拟桌面部署中的未使用会话主机以优化成本。应该使用什么工具？",
+      "options": {
+        "A": "Azure 顾问",
+        "B": "Azure 虚拟桌面见解中的利用率报告",
+        "C": "Azure 安全中心",
+        "D": "Azure 策略"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure 虚拟桌面见解提供利用率报告，显示每个会话主机的使用情况，包括活动会话数、连接时间和空闲时间。这可以帮助识别未充分利用的主机以进行合并或关闭。顾问提供一般性建议，安全中心用于安全，策略用于治理。"
+    },
+    {
+      "id": "az140-s2-q9",
+      "examId": "azure-az-140-set2",
+      "setNumber": 2,
+      "domain": "规划和实现 Azure 虚拟桌面基础结构",
+      "question": "您正在设计 Azure 虚拟桌面的映像管理策略。您需要定期更新映像并将更新部署到现有主机池。推荐的方法是什么？",
+      "options": {
+        "A": "就地更新每个会话主机",
+        "B": "使用 Azure Compute Gallery 管理映像版本并进行滚动更新",
+        "C": "每次都从头创建新的主机池",
+        "D": "禁用所有更新"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure Compute Gallery（以前称为共享映像库）允许您存储和管理映像的多个版本。使用版本控制，可以逐步将会话主机更新到新映像版本，同时保留回滚能力。就地更新可能导致配置偏移，重建主机池效率低，禁用更新不安全。"
+    },
+    {
+      "id": "az140-s2-q10",
+      "examId": "azure-az-140-set2",
+      "setNumber": 2,
+      "domain": "规划和实现身份和安全性",
+      "question": "您需要保护 Azure 虚拟桌面免受勒索软件攻击。以下哪项是关键保护措施？",
+      "options": {
+        "A": "禁用 Windows Update",
+        "B": "启用 Azure Backup 并配置 Microsoft Defender for Endpoint",
+        "C": "允许所有入站连接",
+        "D": "使用弱密码策略"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "保护 Azure 虚拟桌面免受勒索软件需要多层防御：Azure Backup 提供数据恢复能力，Microsoft Defender for Endpoint 提供高级威胁检测和响应。还应该启用受控文件夹访问、保持系统更新并限制网络访问。其他选项都会降低安全性。"
+    },
+    {
+      "id": "az140-s2-q11",
+      "examId": "azure-az-140-set2",
+      "setNumber": 2,
+      "domain": "规划和实现用户环境和应用",
+      "question": "您正在配置 Azure 虚拟桌面以支持多显示器设置。用户需要跨最多 4 个显示器扩展其远程桌面。应该确保什么？",
+      "options": {
+        "A": "使用特定的 VM 大小",
+        "B": "客户端和 RDP 属性支持多显示器",
+        "C": "安装特殊驱动程序",
+        "D": "购买额外许可证"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure 虚拟桌面支持多显示器配置，最多可跨 16 个显示器。需要确保使用支持多显示器的远程桌面客户端（如 Windows 桌面客户端），并在 RDP 属性中启用多显示器支持。不需要特定 VM 大小、特殊驱动程序或额外许可证。"
+    },
+    {
+      "id": "az140-s2-q12",
+      "examId": "azure-az-140-set2",
+      "setNumber": 2,
+      "domain": "监视和维护 Azure 虚拟桌面基础结构",
+      "question": "您需要在用户断开连接但会话仍然活动时收到通知。应该配置什么？",
+      "options": {
+        "A": "会话空闲超时",
+        "B": "基于 ConnectionState 指标的警报",
+        "C": "Windows 事件订阅",
+        "D": "Azure 活动日志警报"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure 虚拟桌面诊断日志包含连接状态信息。通过在 Log Analytics 中查询断开连接的会话并创建警报，可以在用户断开连接时收到通知。空闲超时用于自动注销，事件订阅需要更多配置，活动日志不包含连接状态。"
+    },
+    {
+      "id": "az140-s2-q13",
+      "examId": "azure-az-140-set2",
+      "setNumber": 2,
+      "domain": "规划和实现 Azure 虚拟桌面基础结构",
+      "question": "您正在配置 Azure 虚拟桌面的 DNS。会话主机需要解析本地资源和 Azure 资源。应该如何配置 DNS？",
+      "options": {
+        "A": "仅使用 Azure 提供的 DNS",
+        "B": "仅使用本地 DNS 服务器",
+        "C": "配置自定义 DNS 服务器，可以解析两者",
+        "D": "不需要配置 DNS"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "对于混合环境，应配置自定义 DNS 服务器（如 Azure 中运行的 AD DS DNS 或 Azure DNS 私有解析器），它可以解析本地资源和 Azure 资源。仅 Azure DNS 无法解析本地名称，仅本地 DNS 可能无法解析 Azure 私有终结点。"
+    },
+    {
+      "id": "az140-s2-q14",
+      "examId": "azure-az-140-set2",
+      "setNumber": 2,
+      "domain": "规划和实现身份和安全性",
+      "question": "您需要为 Azure 虚拟桌面实现数据丢失防护 (DLP)。您想要防止用户将敏感数据复制出会话。除了禁用剪贴板重定向外，还应该实现什么？",
+      "options": {
+        "A": "Microsoft Purview DLP",
+        "B": "增加密码复杂性",
+        "C": "启用审核日志",
+        "D": "使用 VPN"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Microsoft Purview DLP（数据丢失防护）可以与 Azure 虚拟桌面集成，提供基于内容的数据保护。它可以检测和阻止敏感数据的传输，无论是通过剪贴板、文件传输还是其他渠道。密码复杂性和审核是不同的安全领域，VPN 提供网络安全。"
+    },
+    {
+      "id": "az140-s2-q15",
+      "examId": "azure-az-140-set2",
+      "setNumber": 2,
+      "domain": "规划和实现用户环境和应用",
+      "question": "您正在配置 FSLogix 以优化登录时间。您想要预先扩展配置文件容器以减少登录期间的磁盘增长。应该配置什么设置？",
+      "options": {
+        "A": "SizeInMBs",
+        "B": "VolumeType",
+        "C": "IsDynamic",
+        "D": "ProfileType"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "SizeInMBs 设置指定配置文件容器的初始和最大大小。通过预先分配足够的空间，可以减少登录期间动态扩展磁盘所需的时间。VolumeType 指定 VHD 或 VHDX，IsDynamic 控制动态扩展，ProfileType 指定配置文件类型。"
+    },
+    {
+      "id": "az140-s2-q16",
+      "examId": "azure-az-140-set2",
+      "setNumber": 2,
+      "domain": "监视和维护 Azure 虚拟桌面基础结构",
+      "question": "您发现用户报告 Azure 虚拟桌面的图形质量很差。您需要改善视觉体验。应该检查什么设置？",
+      "options": {
+        "A": "增加 VM 内存",
+        "B": "RDP 属性中的视觉质量和编码设置",
+        "C": "更改存储类型",
+        "D": "增加网络带宽配额"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "RDP 属性中的视觉质量设置（如使用 AVC 444 编码、调整质量级别）直接影响远程桌面的视觉体验。可以在主机池级别配置这些设置。内存影响性能而非视觉，存储影响 I/O，网络带宽可能是因素但需要先检查 RDP 设置。"
+    },
+    {
+      "id": "az140-s2-q17",
+      "examId": "azure-az-140-set2",
+      "setNumber": 2,
+      "domain": "规划和实现 Azure 虚拟桌面基础结构",
+      "question": "您正在为 Azure 虚拟桌面会话主机配置可用性。您需要确保会话主机分布在多个故障域和更新域中。应该使用什么？",
+      "options": {
+        "A": "可用性集",
+        "B": "可用性区域",
+        "C": "规模集",
+        "D": "接近放置组"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "可用性区域提供物理分离的数据中心，每个区域有独立的电源、冷却和网络。将会话主机部署到可用性区域可提供最高级别的可用性（99.99% SLA）。可用性集在单个数据中心内，规模集用于自动扩展，接近放置组用于低延迟。"
+    },
+    {
+      "id": "az140-s2-q18",
+      "examId": "azure-az-140-set2",
+      "setNumber": 2,
+      "domain": "规划和实现身份和安全性",
+      "question": "您需要使用 Microsoft Entra 条件访问限制对 Azure 虚拟桌面的访问。您想要要求用户完成 MFA 并使用合规设备。应该针对哪个云应用配置策略？",
+      "options": {
+        "A": "Microsoft Remote Desktop",
+        "B": "Azure Virtual Desktop",
+        "C": "Windows 365",
+        "D": "Windows Virtual Desktop (classic)"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "在条件访问策略中，应该选择 Azure Virtual Desktop 云应用来控制对 AVD 资源的访问。Microsoft Remote Desktop 是客户端应用，Windows 365 是不同的服务，Windows Virtual Desktop (classic) 是旧版本。"
+    },
+    {
+      "id": "az140-s2-q19",
+      "examId": "azure-az-140-set2",
+      "setNumber": 2,
+      "domain": "规划和实现用户环境和应用",
+      "question": "您正在为 Azure 虚拟桌面配置启动应用程序。您想要在用户登录时自动启动特定应用程序。应该使用什么方法？",
+      "options": {
+        "A": "Windows 启动文件夹",
+        "B": "组策略登录脚本",
+        "C": "RemoteApp 应用程序组",
+        "D": "计划任务"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "使用组策略登录脚本可以在用户登录到 Azure 虚拟桌面会话时自动启动应用程序。这提供了集中管理和基于用户/组的灵活性。启动文件夹是每用户配置，RemoteApp 发布单个应用程序而非启动它们，计划任务更适合系统级任务。"
+    },
+    {
+      "id": "az140-s2-q20",
+      "examId": "azure-az-140-set2",
+      "setNumber": 2,
+      "domain": "监视和维护 Azure 虚拟桌面基础结构",
+      "question": "您需要自动处理 Azure 虚拟桌面会话主机上的断开连接会话。您想要在用户断开连接后一定时间注销会话。应该配置什么？",
+      "options": {
+        "A": "RDP 属性中的断开连接会话限制",
+        "B": "缩放计划设置",
+        "C": "组策略中的会话时间限制",
+        "D": "Azure Automation Runbook"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "组策略中的会话时间限制设置允许配置断开连接会话的最大持续时间。超过此限制后，会话将自动注销，释放资源。RDP 属性控制某些行为但不含此设置，缩放计划控制主机数量，Automation 需要自定义脚本。"
+    },
+    {
+      "id": "az140-s2-q21",
+      "examId": "azure-az-140-set2",
+      "setNumber": 2,
+      "domain": "规划和实现 Azure 虚拟桌面基础结构",
+      "question": "您正在评估 Azure 虚拟桌面的网络需求。对于知识工作者的典型工作负载，每个用户需要多少带宽？",
+      "options": {
+        "A": "1 Mbps",
+        "B": "1.5 Mbps",
+        "C": "10 Mbps",
+        "D": "100 Mbps"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Microsoft 建议知识工作者（使用 Office 应用程序、Web 浏览等）每个用户大约 1.5 Mbps 带宽。更高要求的工作负载（如视频会议、CAD）需要更多带宽。1 Mbps 可能不足，10 Mbps 和 100 Mbps 远超典型需求。"
+    },
+    {
+      "id": "az140-s2-q22",
+      "examId": "azure-az-140-set2",
+      "setNumber": 2,
+      "domain": "规划和实现身份和安全性",
+      "question": "您需要为外部承包商提供 Azure 虚拟桌面访问。他们没有您组织的 Azure AD 帐户。应该使用什么身份解决方案？",
+      "options": {
+        "A": "为每个承包商创建本地 AD 帐户",
+        "B": "Microsoft Entra B2B 来宾用户",
+        "C": "共享帐户",
+        "D": "匿名访问"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Microsoft Entra B2B（企业对企业）允许邀请外部用户作为来宾访问您的资源。承包商可以使用他们自己的身份（如个人 Microsoft 帐户或其组织的 Azure AD）进行身份验证。本地帐户增加管理负担，共享帐户和匿名访问不安全。"
+    },
+    {
+      "id": "az140-s2-q23",
+      "examId": "azure-az-140-set2",
+      "setNumber": 2,
+      "domain": "规划和实现用户环境和应用",
+      "question": "您正在使用 MSIX 应用附加。您需要确保应用程序在用户登录时快速可用。应该采取什么措施来优化性能？",
+      "options": {
+        "A": "将 MSIX 包存储在 Blob 存储中",
+        "B": "使用 CIM 挂载格式并确保存储有足够的 IOPS",
+        "C": "增加会话主机 CPU",
+        "D": "禁用登录脚本"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "MSIX 应用附加性能取决于存储速度。使用 CIM（复合映像）格式比 VHD/VHDX 更快，因为它不需要完全挂载磁盘。确保使用高性能存储（如高级文件存储或 Azure NetApp Files）提供足够的 IOPS。Blob 存储不支持直接挂载。"
+    },
+    {
+      "id": "az140-s2-q24",
+      "examId": "azure-az-140-set2",
+      "setNumber": 2,
+      "domain": "监视和维护 Azure 虚拟桌面基础结构",
+      "question": "您需要分析 Azure 虚拟桌面用户的登录时间。您发现登录时间很长。应该检查哪些常见原因？",
+      "options": {
+        "A": "仅网络延迟",
+        "B": "FSLogix 配置文件大小、组策略处理和启动应用程序",
+        "C": "仅 VM 大小",
+        "D": "仅存储类型"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "长登录时间通常由多个因素造成：大的 FSLogix 配置文件需要更长时间加载，复杂的组策略需要处理时间，大量的启动应用程序延迟登录。还应检查存储性能、网络延迟和会话主机负载。需要全面分析而非单一因素。"
+    },
+    {
+      "id": "az140-s2-q25",
+      "examId": "azure-az-140-set2",
+      "setNumber": 2,
+      "domain": "规划和实现 Azure 虚拟桌面基础结构",
+      "question": "您正在配置 Azure 虚拟桌面以使用专用链接。专用链接的主要优势是什么？",
+      "options": {
+        "A": "降低成本",
+        "B": "通过私有网络连接而非公共互联网访问 AVD",
+        "C": "提高带宽",
+        "D": "简化部署"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure 虚拟桌面专用链接允许用户和会话主机通过私有终结点连接到 AVD 服务，流量不会通过公共互联网。这提高了安全性并可以满足合规性要求。专用链接可能增加成本，不直接影响带宽，并增加配置复杂性。"
+    },
+    {
+      "id": "az140-s2-q26",
+      "examId": "azure-az-140-set2",
+      "setNumber": 2,
+      "domain": "规划和实现身份和安全性",
+      "question": "您需要在 Azure 虚拟桌面中实现会话锁定。当用户离开工作站一段时间后，会话应该自动锁定。应该配置什么？",
+      "options": {
+        "A": "屏幕保护程序设置",
+        "B": "组策略中的交互式登录设置",
+        "C": "RDP 属性",
+        "D": "Azure 策略"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "组策略中的 '交互式登录: 计算机不活动限制' 设置可以配置在指定的不活动时间后自动锁定会话。这是一个安全最佳实践。屏幕保护程序可以配合使用但不够强制，RDP 属性和 Azure 策略不控制此行为。"
+    },
+    {
+      "id": "az140-s2-q27",
+      "examId": "azure-az-140-set2",
+      "setNumber": 2,
+      "domain": "规划和实现用户环境和应用",
+      "question": "您正在为 Azure 虚拟桌面用户配置应用程序兼容性。某些旧版应用程序需要特定的 Windows 组件。应该使用什么功能？",
+      "options": {
+        "A": "应用程序兼容性工具包 (ACT)",
+        "B": "添加 Windows 功能（按需功能）",
+        "C": "虚拟机扩展",
+        "D": "Azure Migrate"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Windows 功能（按需功能或 FOD）允许在 Windows 10/11 多会话上添加特定组件（如 .NET Framework 3.5、旧版 Windows 组件）以支持旧版应用程序。ACT 用于评估兼容性，VM 扩展用于其他目的，Azure Migrate 用于迁移。"
+    },
+    {
+      "id": "az140-s2-q28",
+      "examId": "azure-az-140-set2",
+      "setNumber": 2,
+      "domain": "监视和维护 Azure 虚拟桌面基础结构",
+      "question": "您需要确保 Azure 虚拟桌面会话主机的操作系统磁盘有足够的空间。您想要监视磁盘使用情况并在空间不足时收到警报。应该使用什么？",
+      "options": {
+        "A": "Azure 安全中心",
+        "B": "基于 VM 磁盘指标的 Azure Monitor 警报",
+        "C": "Azure 顾问",
+        "D": "Azure 成本管理"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure Monitor 可以收集 VM 磁盘指标（如可用空间百分比）并创建警报规则。当磁盘空间低于阈值时，可以发送通知。安全中心用于安全建议，顾问提供优化建议，成本管理用于费用跟踪。"
+    },
+    {
+      "id": "az140-s2-q29",
+      "examId": "azure-az-140-set2",
+      "setNumber": 2,
+      "domain": "规划和实现 Azure 虚拟桌面基础结构",
+      "question": "您正在创建 Azure 虚拟桌面的验证主机池。验证主机池的用途是什么？",
+      "options": {
+        "A": "为生产用户提供更高的性能",
+        "B": "在推送到生产之前测试服务更新",
+        "C": "存储用户配置文件",
+        "D": "提供灾难恢复"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "验证主机池是一种特殊类型的主机池，它会比生产主机池更早接收 Azure 虚拟桌面服务更新。这允许管理员和测试用户在更新推送到生产环境之前验证更新，确保兼容性。"
+    },
+    {
+      "id": "az140-s2-q30",
+      "examId": "azure-az-140-set2",
+      "setNumber": 2,
+      "domain": "规划和实现身份和安全性",
+      "question": "您需要审计 Azure 虚拟桌面中的管理员活动。应该在哪里找到这些日志？",
+      "options": {
+        "A": "Azure 虚拟桌面诊断日志",
+        "B": "Azure 活动日志",
+        "C": "Windows 安全日志",
+        "D": "Azure AD 登录日志"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure 活动日志记录对 Azure 资源的管理操作，包括创建、修改和删除 Azure 虚拟桌面资源（主机池、应用程序组等）。AVD 诊断日志记录用户活动，Windows 安全日志记录本地事件，Azure AD 日志记录身份验证。"
+    },
+    {
+      "id": "az140-s2-q31",
+      "examId": "azure-az-140-set2",
+      "setNumber": 2,
+      "domain": "规划和实现用户环境和应用",
+      "question": "您正在配置 Azure 虚拟桌面以优化 Outlook 体验。用户报告 Outlook 搜索很慢。应该如何改进？",
+      "options": {
+        "A": "禁用 Outlook 搜索",
+        "B": "确保 Windows 搜索索引包含在 FSLogix 配置文件容器中",
+        "C": "增加 VM 内存",
+        "D": "使用 Web 版 Outlook"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Outlook 使用 Windows 搜索索引来加速搜索。在 FSLogix 环境中，应该配置配置文件容器以包含搜索索引数据库。FSLogix 提供了 search_roaming 功能来漫游搜索索引。禁用搜索降低功能，增加内存不解决索引问题。"
+    },
+    {
+      "id": "az140-s2-q32",
+      "examId": "azure-az-140-set2",
+      "setNumber": 2,
+      "domain": "监视和维护 Azure 虚拟桌面基础结构",
+      "question": "您需要在 Azure 虚拟桌面会话主机上执行维护任务，但不想影响当前连接的用户。应该先执行什么操作？",
+      "options": {
+        "A": "立即重启会话主机",
+        "B": "将会话主机设置为排空模式",
+        "C": "删除会话主机",
+        "D": "禁用会话主机的网络"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "将会话主机设置为排空模式会阻止新用户连接到该主机，但允许现有用户继续工作直到他们注销。维护完成后可以禁用排空模式。立即重启会中断用户，删除主机过于激进，禁用网络会断开所有连接。"
+    },
+    {
+      "id": "az140-s2-q33",
+      "examId": "azure-az-140-set2",
+      "setNumber": 2,
+      "domain": "规划和实现 Azure 虚拟桌面基础结构",
+      "question": "您正在使用 Terraform 部署 Azure 虚拟桌面。您需要注册会话主机到主机池。应该使用什么令牌？",
+      "options": {
+        "A": "SAS 令牌",
+        "B": "主机池注册令牌",
+        "C": "Azure AD 访问令牌",
+        "D": "VM 访问令牌"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "主机池注册令牌是用于将会话主机注册到 Azure 虚拟桌面主机池的临时令牌。在部署会话主机 VM 时，使用此令牌与 Azure 虚拟桌面代理一起注册主机。令牌有有效期，可以按需生成。"
+    },
+    {
+      "id": "az140-s2-q34",
+      "examId": "azure-az-140-set2",
+      "setNumber": 2,
+      "domain": "规划和实现身份和安全性",
+      "question": "您需要确保 Azure 虚拟桌面用户只能访问其工作所需的应用程序。您想要基于用户的部门动态分配应用程序。应该使用什么方法？",
+      "options": {
+        "A": "手动分配每个用户",
+        "B": "基于 Azure AD 组的应用程序组分配",
+        "C": "使用相同的应用程序组为所有用户",
+        "D": "在会话主机上使用 AppLocker"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "通过创建与部门对应的 Azure AD 组，并将这些组分配到包含相应应用程序的应用程序组，可以实现基于部门的动态应用程序分配。当用户加入或离开部门时，只需更新其组成员身份。手动分配不可扩展，单一应用程序组不提供细粒度控制。"
+    },
+    {
+      "id": "az140-s2-q35",
+      "examId": "azure-az-140-set2",
+      "setNumber": 2,
+      "domain": "规划和实现用户环境和应用",
+      "question": "您正在为 Azure 虚拟桌面配置时区重定向。您想要会话显示用户本地设备的时区。应该配置什么？",
+      "options": {
+        "A": "在会话主机上手动设置时区",
+        "B": "在 RDP 属性中启用时区重定向",
+        "C": "使用组策略强制所有用户使用相同时区",
+        "D": "安装时区应用程序"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "时区重定向是 RDP 功能，允许远程会话使用客户端设备的时区。在主机池的 RDP 属性中启用 'redirecttimezone' 设置即可。手动设置和强制时区不适合分布在多个时区的用户。"
+    },
+    {
+      "id": "az140-s2-q36",
+      "examId": "azure-az-140-set2",
+      "setNumber": 2,
+      "domain": "监视和维护 Azure 虚拟桌面基础结构",
+      "question": "您发现某些 Azure 虚拟桌面用户的连接频繁断开。您需要诊断问题。应该首先检查什么？",
+      "options": {
+        "A": "用户的许可证状态",
+        "B": "网络连接质量和诊断日志中的连接错误",
+        "C": "Azure 账单状态",
+        "D": "会话主机的 CPU 使用率"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "频繁断开连接通常与网络问题有关。应该检查网络连接质量（延迟、丢包）并查看 Azure 虚拟桌面诊断日志中的连接错误代码。这可以帮助识别是客户端网络、Azure 网络还是会话主机问题。许可证和账单不会导致断开，CPU 可能是次要因素。"
+    },
+    {
+      "id": "az140-s2-q37",
+      "examId": "azure-az-140-set2",
+      "setNumber": 2,
+      "domain": "规划和实现 Azure 虚拟桌面基础结构",
+      "question": "您正在评估 Azure 虚拟桌面与 Windows 365 的区别。以下哪项是 Azure 虚拟桌面独有的功能？",
+      "options": {
+        "A": "云托管的 Windows 桌面",
+        "B": "多会话 Windows 10/11 和完全的基础设施控制",
+        "C": "Microsoft 管理的简单定价",
+        "D": "快速部署"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure 虚拟桌面提供多会话 Windows 10/11（多用户共享单个 VM）和对底层基础设施的完全控制。Windows 365 是完全托管的服务，每用户一个 VM，定价简单但缺乏灵活性。两者都提供云桌面，但 AVD 更适合需要自定义的企业。"
+    },
+    {
+      "id": "az140-s2-q38",
+      "examId": "azure-az-140-set2",
+      "setNumber": 2,
+      "domain": "规划和实现身份和安全性",
+      "question": "您需要为 Azure 虚拟桌面启用多重身份验证。您想要在用户首次连接时和重新连接断开的会话时都要求 MFA。应该如何配置？",
+      "options": {
+        "A": "仅在条件访问中配置 MFA",
+        "B": "在条件访问中配置 MFA，并禁用会话令牌缓存",
+        "C": "在每个会话主机上配置 MFA",
+        "D": "使用 NPS 扩展"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "条件访问策略中配置 MFA 可以在用户首次连接时强制执行。要在重新连接时也要求 MFA，需要配置更短的会话令牌生存期或完全禁用持久会话。默认情况下，用户重新连接到断开的会话时不需要重新进行 MFA。"
+    },
+    {
+      "id": "az140-s2-q39",
+      "examId": "azure-az-140-set2",
+      "setNumber": 2,
+      "domain": "规划和实现用户环境和应用",
+      "question": "您正在为 Azure 虚拟桌面配置 GPU 加速。您需要安装 NVIDIA 驱动程序。应该如何部署驱动程序？",
+      "options": {
+        "A": "使用 Windows Update",
+        "B": "使用 NVIDIA GPU 驱动程序 VM 扩展",
+        "C": "手动从 NVIDIA 网站下载",
+        "D": "驱动程序已预安装"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure 提供 NVIDIA GPU 驱动程序 VM 扩展，可以自动安装和更新 NV 系列 VM 上的 NVIDIA GRID 驱动程序。这是推荐的方法，因为它确保驱动程序版本与 Azure 兼容并自动更新。手动安装更复杂，Windows Update 不包含所需的 GRID 驱动程序。"
+    },
+    {
+      "id": "az140-s2-q40",
+      "examId": "azure-az-140-set2",
+      "setNumber": 2,
+      "domain": "监视和维护 Azure 虚拟桌面基础结构",
+      "question": "您需要生成 Azure 虚拟桌面的合规性报告，显示过去 90 天的用户访问历史。应该使用什么工具？",
+      "options": {
+        "A": "Azure 门户概述页面",
+        "B": "Log Analytics 中的 Kusto 查询",
+        "C": "Azure 成本管理报告",
+        "D": "Azure 安全中心报告"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "通过将 Azure 虚拟桌面诊断日志发送到 Log Analytics 工作区，可以使用 Kusto 查询语言 (KQL) 查询历史数据并生成自定义报告。Log Analytics 可以保留数据长达数年，满足合规性报告需求。门户概述仅显示当前状态，成本管理用于费用，安全中心用于安全。"
+    }
+  ]
+}
