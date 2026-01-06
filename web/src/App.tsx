@@ -2,7 +2,7 @@ import { HashRouter, Routes, Route } from 'react-router-dom';
 import { Header } from './components/Layout/Header';
 import { HomePage } from './pages/HomePage';
 import { QuizPage } from './pages/QuizPage';
-import AILearningPage from './pages/AILearningPage';
+import AICoursePage from './pages/AICoursePage';
 import { CertificationPathPage } from './pages/CertificationPathPage';
 
 function App() {
@@ -13,7 +13,7 @@ function App() {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/quiz/:examId" element={<QuizPage />} />
-          <Route path="/ai-intro" element={<AILearningPage />} />
+          <Route path="/ai-intro" element={<AICoursePage />} />
           <Route path="/certification-path" element={<CertificationPathPage />} />
         </Routes>
       </div>
