@@ -427,7 +427,7 @@ export const azureCertifications: Certification[] = [
     questionCount: 50,
     passingScore: 70,
     prerequisites: ['azure-az-104', 'azure-az-204'],
-    hasExamData: false,
+    hasExamData: true,
     description: { zh: 'Azure DevOps 工程师专家认证', ja: 'Azure DevOps エンジニア エキスパート認定' }
   },
   // Additional Fundamentals
@@ -443,7 +443,7 @@ export const azureCertifications: Certification[] = [
     questionCount: 45,
     passingScore: 70,
     prerequisites: [],
-    hasExamData: false,
+    hasExamData: true,
     description: { zh: 'Power Platform 低代码平台基础认证', ja: 'Power Platform ローコードプラットフォーム基礎認定' }
   },
   // Additional Associate - Security
@@ -459,7 +459,7 @@ export const azureCertifications: Certification[] = [
     questionCount: 50,
     passingScore: 70,
     prerequisites: ['azure-sc-900'],
-    hasExamData: false,
+    hasExamData: true,
     description: { zh: 'Microsoft Sentinel 和 Defender 安全运营认证', ja: 'Microsoft Sentinel と Defender セキュリティ運用認定' }
   },
   {
@@ -474,7 +474,7 @@ export const azureCertifications: Certification[] = [
     questionCount: 50,
     passingScore: 70,
     prerequisites: ['azure-sc-900'],
-    hasExamData: false,
+    hasExamData: true,
     description: { zh: 'Azure AD 身份和访问管理认证', ja: 'Azure AD ID とアクセス管理認定' }
   },
   // Additional Associate - Data
@@ -490,7 +490,7 @@ export const azureCertifications: Certification[] = [
     questionCount: 50,
     passingScore: 70,
     prerequisites: ['azure-dp-900'],
-    hasExamData: false,
+    hasExamData: true,
     description: { zh: 'Azure 数据工程和 ETL 管道认证', ja: 'Azure データエンジニアリングと ETL パイプライン認定' }
   },
   // Additional Associate - Virtual Desktop
@@ -506,7 +506,7 @@ export const azureCertifications: Certification[] = [
     questionCount: 50,
     passingScore: 70,
     prerequisites: ['azure-az-104'],
-    hasExamData: false,
+    hasExamData: true,
     description: { zh: 'Azure 虚拟桌面部署和管理认证', ja: 'Azure Virtual Desktop のデプロイと管理認定' }
   }
 ];
@@ -572,7 +572,7 @@ export const gcpCertifications: Certification[] = [
     questionCount: 50,
     passingScore: 70,
     prerequisites: ['gcp-cdl'],
-    hasExamData: false,
+    hasExamData: true,
     description: { zh: '数据准备、摄取、分析和管理，BigQuery 查询', ja: 'データの準備・取り込み・分析・管理、BigQuery クエリ' }
   },
   {
@@ -587,7 +587,7 @@ export const gcpCertifications: Certification[] = [
     questionCount: 50,
     passingScore: 70,
     prerequisites: ['gcp-cdl'],
-    hasExamData: false,
+    hasExamData: true,
     description: { zh: 'Google Workspace 环境管理、AI 助手配置', ja: 'Google Workspace 環境管理、AI アシスタント設定' }
   },
   // ========== Professional (9) ==========
