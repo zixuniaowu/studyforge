@@ -1,6 +1,6 @@
 // AI Resources 日本語版データ
 
-import type { Category, ResourceItem } from './aiResourcesData';
+import type { Category } from './aiResourcesData';
 
 // ============================================
 // AI フレームワーク
