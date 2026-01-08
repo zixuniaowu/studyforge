@@ -778,6 +778,89 @@ export const HomePage: React.FC = () => {
             </div>
           </div>
 
+          {/* AI Learning Section - Featured */}
+          <div className="mb-8">
+            <h2 className="text-center text-2xl font-bold text-stone-800 mb-1">
+              {language === 'ja' ? 'AI学習コンテンツ' : 'AI 学习内容'}
+            </h2>
+            <p className="text-center text-stone-500 text-lg mb-4">
+              {language === 'ja' ? 'ゼロから始めるAI入門から実践まで' : '从零基础入门到实战进阶'}
+            </p>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              {/* AI Beginner Guide */}
+              <button
+                onClick={() => navigate('/ai-book/beginner')}
+                className="group relative bg-gradient-to-br from-violet-500 to-purple-600 rounded-2xl p-6 text-left overflow-hidden hover:shadow-xl hover:shadow-violet-200/50 transition-all duration-300 hover:scale-[1.02]"
+              >
+                <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full -translate-y-1/2 translate-x-1/2" />
+                <div className="absolute bottom-0 left-0 w-24 h-24 bg-white/10 rounded-full translate-y-1/2 -translate-x-1/2" />
+                <div className="relative">
+                  <div className="inline-flex p-3 bg-white/20 rounded-xl mb-4 group-hover:scale-110 transition-transform">
+                    <Lightbulb size={28} className="text-white" />
+                  </div>
+                  <h3 className="text-xl font-bold text-white mb-2">
+                    {language === 'ja' ? 'AI入門ガイド' : 'AI 入门指南'}
+                  </h3>
+                  <p className="text-violet-100 text-sm mb-3">
+                    {language === 'ja' ? 'ゼロから学ぶAI基礎知識。機械学習、深層学習、LLMまで体系的に解説' : '零基础学AI，系统讲解机器学习、深度学习、大语言模型'}
+                  </p>
+                  <div className="flex items-center gap-2">
+                    <span className="px-2 py-1 bg-white/20 rounded-full text-xs text-white">{language === 'ja' ? '5章' : '5章节'}</span>
+                    <span className="px-2 py-1 bg-white/20 rounded-full text-xs text-white">{language === 'ja' ? '初心者向け' : '零基础'}</span>
+                  </div>
+                </div>
+              </button>
+
+              {/* AI Advanced */}
+              <button
+                onClick={() => navigate('/ai-book/advanced')}
+                className="group relative bg-gradient-to-br from-amber-500 to-orange-600 rounded-2xl p-6 text-left overflow-hidden hover:shadow-xl hover:shadow-amber-200/50 transition-all duration-300 hover:scale-[1.02]"
+              >
+                <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full -translate-y-1/2 translate-x-1/2" />
+                <div className="absolute bottom-0 left-0 w-24 h-24 bg-white/10 rounded-full translate-y-1/2 -translate-x-1/2" />
+                <div className="relative">
+                  <div className="inline-flex p-3 bg-white/20 rounded-xl mb-4 group-hover:scale-110 transition-transform">
+                    <Rocket size={28} className="text-white" />
+                  </div>
+                  <h3 className="text-xl font-bold text-white mb-2">
+                    {language === 'ja' ? 'AI実践上級編' : 'AI 进阶实战'}
+                  </h3>
+                  <p className="text-amber-100 text-sm mb-3">
+                    {language === 'ja' ? 'プロンプトエンジニアリング、AIエージェント、RAGなど実践テクニック' : '提示词工程、AI Agent、RAG等实战技术详解'}
+                  </p>
+                  <div className="flex items-center gap-2">
+                    <span className="px-2 py-1 bg-white/20 rounded-full text-xs text-white">{language === 'ja' ? '3章' : '3章节'}</span>
+                    <span className="px-2 py-1 bg-white/20 rounded-full text-xs text-white">Prompt/Agent/RAG</span>
+                  </div>
+                </div>
+              </button>
+
+              {/* AI Resources */}
+              <button
+                onClick={() => navigate('/ai-resources')}
+                className="group relative bg-gradient-to-br from-rose-500 to-pink-600 rounded-2xl p-6 text-left overflow-hidden hover:shadow-xl hover:shadow-rose-200/50 transition-all duration-300 hover:scale-[1.02]"
+              >
+                <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full -translate-y-1/2 translate-x-1/2" />
+                <div className="absolute bottom-0 left-0 w-24 h-24 bg-white/10 rounded-full translate-y-1/2 -translate-x-1/2" />
+                <div className="relative">
+                  <div className="inline-flex p-3 bg-white/20 rounded-xl mb-4 group-hover:scale-110 transition-transform">
+                    <Boxes size={28} className="text-white" />
+                  </div>
+                  <h3 className="text-xl font-bold text-white mb-2">
+                    {language === 'ja' ? 'AIリソースまとめ' : 'AI 资源汇总'}
+                  </h3>
+                  <p className="text-rose-100 text-sm mb-3">
+                    {language === 'ja' ? 'PyTorch、LangChain、Ollamaなど主要フレームワークとツールの使い方' : 'PyTorch、LangChain、Ollama等主流框架工具教程'}
+                  </p>
+                  <div className="flex items-center gap-2">
+                    <span className="px-2 py-1 bg-white/20 rounded-full text-xs text-white">{language === 'ja' ? '9個のツール' : '9个工具'}</span>
+                    <span className="px-2 py-1 bg-white/20 rounded-full text-xs text-white">{language === 'ja' ? 'コード付き' : '含代码'}</span>
+                  </div>
+                </div>
+              </button>
+            </div>
+          </div>
+
           {/* Certification Exams Section */}
           <div className="mb-8">
             <h2 className="text-center text-2xl font-bold text-stone-800 mb-1">
@@ -919,61 +1002,27 @@ export const HomePage: React.FC = () => {
                 )}
               </div>
 
-              {/* Quick Links Card */}
-              <div className="bg-white rounded-xl p-5 border border-stone-200 shadow-sm">
-                <h3 className="text-base font-semibold text-stone-600 mb-4 flex items-center gap-2">
-                  <Rocket size={18} className="text-rose-500" />
-                  {language === 'ja' ? 'クイックリンク' : '快捷入口'}
-                </h3>
-                <div className="space-y-2">
-                  <button
-                    onClick={() => navigate('/ai-book/beginner')}
-                    className="w-full flex items-center gap-3 p-3 rounded-lg hover:bg-stone-50 transition-colors text-left group"
-                  >
-                    <div className="p-2 bg-violet-100 rounded-lg group-hover:bg-violet-200 transition-colors">
-                      <Lightbulb size={18} className="text-violet-600" />
-                    </div>
-                    <div className="flex-1">
-                      <div className="text-base font-medium text-stone-800">{language === 'ja' ? 'AI入門ガイド' : 'AI 入门指南'}</div>
-                      <div className="text-xs text-stone-500">{language === 'ja' ? '5章・基礎概念' : '5章・基础概念'}</div>
-                    </div>
-                  </button>
-                  <button
-                    onClick={() => navigate('/ai-book/advanced')}
-                    className="w-full flex items-center gap-3 p-3 rounded-lg hover:bg-stone-50 transition-colors text-left group"
-                  >
-                    <div className="p-2 bg-amber-100 rounded-lg group-hover:bg-amber-200 transition-colors">
-                      <Rocket size={18} className="text-amber-600" />
-                    </div>
-                    <div className="flex-1">
-                      <div className="text-base font-medium text-stone-800">{language === 'ja' ? 'AI実践上級編' : 'AI 进阶实战'}</div>
-                      <div className="text-xs text-stone-500">{language === 'ja' ? '3章・Prompt/Agent/RAG' : '3章・提示词/Agent/RAG'}</div>
-                    </div>
-                  </button>
-                  <button
-                    onClick={() => navigate('/ai-resources')}
-                    className="w-full flex items-center gap-3 p-3 rounded-lg hover:bg-stone-50 transition-colors text-left group"
-                  >
-                    <div className="p-2 bg-rose-100 rounded-lg group-hover:bg-rose-200 transition-colors">
-                      <Boxes size={18} className="text-rose-500" />
-                    </div>
-                    <div className="text-base font-medium text-stone-800">{language === 'ja' ? 'AIリソース' : 'AI 资源'}</div>
-                  </button>
-                  {stats.wrongCount > 0 && (
+              {/* Wrong Answers Card - Only show if there are wrong answers */}
+              {stats.wrongCount > 0 && (
+                <div className="bg-white rounded-xl p-5 border border-stone-200 shadow-sm">
+                  <h3 className="text-base font-semibold text-stone-600 mb-4 flex items-center gap-2">
+                    <AlertCircle size={18} className="text-amber-500" />
+                    {language === 'ja' ? '要復習' : '待复习'}
+                  </h3>
+                  <div className="text-center py-4">
+                    <div className="text-4xl font-bold text-amber-600 mb-2">{stats.wrongCount}</div>
+                    <p className="text-sm text-stone-500 mb-4">
+                      {language === 'ja' ? '間違えた問題' : '道错题'}
+                    </p>
                     <button
                       onClick={() => navigate('/wrong-answers')}
-                      className="w-full flex items-center gap-3 p-3 rounded-lg hover:bg-stone-50 transition-colors text-left group"
+                      className="w-full py-3 bg-amber-500 hover:bg-amber-600 text-white rounded-lg font-medium transition-colors"
                     >
-                      <div className="p-2 bg-amber-100 rounded-lg group-hover:bg-amber-200 transition-colors">
-                        <AlertCircle size={18} className="text-amber-600" />
-                      </div>
-                      <div className="text-base font-medium text-stone-800">
-                        {language === 'ja' ? '復習する' : '去复习'} ({stats.wrongCount})
-                      </div>
+                      {language === 'ja' ? '復習を始める' : '开始复习'}
                     </button>
-                  )}
+                  </div>
                 </div>
-              </div>
+              )}
             </div>
 
             {/* Per-Certification Progress (show if has data) */}
