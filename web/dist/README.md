@@ -3,7 +3,7 @@ title: StudyForge
 emoji: 📚
 colorFrom: indigo
 colorTo: purple
-sdk: static
+sdk: docker
 pinned: false
 ---
 

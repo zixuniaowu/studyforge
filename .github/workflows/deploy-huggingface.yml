@@ -31,20 +31,30 @@ jobs:
 
       - name: Prepare Hugging Face Space
         run: |
-          # Create Space README
+          # Create Space README with Docker SDK
           cat > web/dist/README.md << 'EOF'
           ---
           title: StudyForge
           emoji: 📚
           colorFrom: blue
           colorTo: purple
-          sdk: static
+          sdk: docker
           pinned: false
           ---
 
           # StudyForge - Exam Practice Platform
 
           An interactive exam preparation platform supporting Chinese and Japanese.
+          EOF
+
+          # Create Dockerfile for nginx static serving
+          cat > web/dist/Dockerfile << 'EOF'
+          FROM nginx:alpine
+          COPY . /usr/share/nginx/html/
+          RUN rm /usr/share/nginx/html/Dockerfile
+          RUN echo 'server { listen 7860; location / { root /usr/share/nginx/html; index index.html; try_files $uri $uri/ /index.html; } }' > /etc/nginx/conf.d/default.conf
+          EXPOSE 7860
+          CMD ["nginx", "-g", "daemon off;"]
           EOF
 
       - name: Deploy to Hugging Face Spaces
