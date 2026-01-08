@@ -29,7 +29,6 @@ import {
   Sparkles,
   Users,
   LucideIcon,
-  Clock,
   BarChart3,
   Award,
   Play,
