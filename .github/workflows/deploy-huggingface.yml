@@ -66,6 +66,12 @@ jobs:
           git init -b main
           git config user.name "GitHub Actions"
           git config user.email "actions@github.com"
+
+          # Setup Git LFS for large WASM files
+          git lfs install
+          git lfs track "*.wasm"
+          git add .gitattributes
+
           git add .
           git commit -m "Deploy from GitHub Actions"
           git push --force https://user:$HF_TOKEN@huggingface.co/spaces/$HF_SPACE_NAME main
