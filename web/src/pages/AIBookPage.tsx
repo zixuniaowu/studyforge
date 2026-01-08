@@ -1,23 +1,124 @@
-import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useState, useEffect, useMemo } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
 import {
   ArrowLeft, ArrowRight, BookOpen, Check, ChevronRight,
   Menu, X, Home
 } from 'lucide-react';
 import { useLanguageStore } from '../stores/languageStore';
-import { aiBeginnerBook, getAllSections, getTotalSections } from '../data/aiBookContent';
+import { aiBeginnerBook, getAllSections, getTotalSections, Book } from '../data/aiBookContent';
+import { aiAdvancedBook } from '../data/aiAdvancedContent';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
+import {
+  TransformerExplainer,
+  TransformerExplainerV2,
+  GPT2VizMain,
+  RAGPipelineViz,
+  AgentLoopViz,
+  AttentionViz
+} from '../components/GPT2Viz';
+
+// Custom content renderer that handles special markers
+const ContentWithComponents: React.FC<{
+  content: string;
+  language: 'zh' | 'ja';
+  markdownComponents: Record<string, React.ComponentType<any>>;
+}> = ({ content, language, markdownComponents }) => {
+  // Split content by any component marker
+  const markerPattern = /(::transformer-viz::|::transformer-v2-viz::|::gpt2-viz::|::rag-viz::|::agent-viz::|::attention-viz::)/;
+  const parts = content.split(markerPattern);
+
+  if (parts.length === 1) {
+    // No marker found, render as normal markdown
+    return (
+      <ReactMarkdown remarkPlugins={[remarkGfm]} components={markdownComponents}>
+        {content}
+      </ReactMarkdown>
+    );
+  }
+
+  // Render with components inserted at marker positions
+  return (
+    <>
+      {parts.map((part, index) => {
+        // Check if this part is a marker
+        if (part === '::transformer-viz::') {
+          return (
+            <div key={`marker-${index}`} className="my-8">
+              <TransformerExplainer language={language} />
+            </div>
+          );
+        }
+        if (part === '::transformer-v2-viz::') {
+          return (
+            <div key={`marker-${index}`} className="my-8">
+              <TransformerExplainerV2 language={language} />
+            </div>
+          );
+        }
+        if (part === '::gpt2-viz::') {
+          return (
+            <div key={`marker-${index}`} className="my-8">
+              <GPT2VizMain language={language} />
+            </div>
+          );
+        }
+        if (part === '::rag-viz::') {
+          return (
+            <div key={`marker-${index}`} className="my-8">
+              <RAGPipelineViz language={language} />
+            </div>
+          );
+        }
+        if (part === '::agent-viz::') {
+          return (
+            <div key={`marker-${index}`} className="my-8">
+              <AgentLoopViz language={language} />
+            </div>
+          );
+        }
+        if (part === '::attention-viz::') {
+          return (
+            <div key={`marker-${index}`} className="my-8">
+              <AttentionViz language={language} />
+            </div>
+          );
+        }
+        // Regular content - render as markdown
+        if (part && part.trim()) {
+          return (
+            <ReactMarkdown
+              key={`content-${index}`}
+              remarkPlugins={[remarkGfm]}
+              components={markdownComponents}
+            >
+              {part}
+            </ReactMarkdown>
+          );
+        }
+        return null;
+      })}
+    </>
+  );
+};
+
+// Available books
+const books: Record<string, Book> = {
+  'beginner': aiBeginnerBook,
+  'advanced': aiAdvancedBook,
+};
 
 // Book Reader Component
 const AIBookPage: React.FC = () => {
   const navigate = useNavigate();
+  const { bookId } = useParams<{ bookId: string }>();
   const { language } = useLanguageStore();
   const lang = language as 'zh' | 'ja';
 
-  const book = aiBeginnerBook;
-  const allSections = getAllSections(book);
-  const totalSections = getTotalSections(book);
+  // Get the book based on bookId parameter, default to beginner
+  const book = useMemo(() => books[bookId || 'beginner'] || aiBeginnerBook, [bookId]);
+  const allSections = useMemo(() => getAllSections(book), [book]);
+  const totalSections = useMemo(() => getTotalSections(book), [book]);
 
   // Current position
   const [currentSectionIndex, setCurrentSectionIndex] = useState(0);
@@ -25,23 +126,30 @@ const AIBookPage: React.FC = () => {
   const [sidebarOpen, setSidebarOpen] = useState(true);
   const [expandedChapters, setExpandedChapters] = useState<Set<string>>(new Set(['chapter-1']));
 
-  // Load saved progress
+  // Storage key for each book
+  const storageKey = `ai-book-progress-${book.id}`;
+
+  // Load saved progress when book changes
   useEffect(() => {
-    const saved = localStorage.getItem('ai-book-progress');
+    const saved = localStorage.getItem(storageKey);
     if (saved) {
       const data = JSON.parse(saved);
       setCurrentSectionIndex(data.currentIndex || 0);
       setReadSections(new Set(data.readSections || []));
+    } else {
+      // Reset state when switching to a new book
+      setCurrentSectionIndex(0);
+      setReadSections(new Set());
     }
-  }, []);
+  }, [storageKey]);
 
   // Save progress
   useEffect(() => {
-    localStorage.setItem('ai-book-progress', JSON.stringify({
+    localStorage.setItem(storageKey, JSON.stringify({
       currentIndex: currentSectionIndex,
       readSections: Array.from(readSections)
     }));
-  }, [currentSectionIndex, readSections]);
+  }, [currentSectionIndex, readSections, storageKey]);
 
   // Mark current section as read when viewing
   useEffect(() => {
@@ -267,9 +375,10 @@ const AIBookPage: React.FC = () => {
 
                 {/* Content */}
                 <article className="prose prose-stone prose-xl max-w-none">
-                  <ReactMarkdown
-                    remarkPlugins={[remarkGfm]}
-                    components={{
+                  <ContentWithComponents
+                    content={currentItem.section.content[lang]}
+                    language={lang}
+                    markdownComponents={{
                       h1: ({ children }) => (
                         <h1 className="font-serif text-4xl font-bold text-stone-900 mt-12 mb-6">
                           {children}
@@ -379,9 +488,7 @@ const AIBookPage: React.FC = () => {
                         </a>
                       ),
                     }}
-                  >
-                    {currentItem.section.content[lang]}
-                  </ReactMarkdown>
+                  />
                 </article>
 
                 {/* Navigation Footer */}

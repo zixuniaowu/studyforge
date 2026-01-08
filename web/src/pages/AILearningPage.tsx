@@ -9,7 +9,6 @@ import {
   BookOpen,
   Play,
   Globe,
-  ExternalLink,
   ChevronDown,
   ChevronRight,
   Clock,
@@ -116,12 +115,12 @@ const Section: React.FC<SectionProps> = ({ title, icon: Icon, children, defaultO
 // Resource Link Component
 interface ResourceLinkProps {
   title: string;
-  url: string;
+  desc: string;
   type: 'video' | 'article' | 'course';
   source?: string;
 }
 
-const ResourceLink: React.FC<ResourceLinkProps> = ({ title, url, type, source }) => {
+const ResourceLink: React.FC<ResourceLinkProps> = ({ title, desc, type, source }) => {
   const icons = {
     video: <Video size={14} className="text-red-400" />,
     article: <FileText size={14} className="text-blue-400" />,
@@ -129,19 +128,14 @@ const ResourceLink: React.FC<ResourceLinkProps> = ({ title, url, type, source })
   };
 
   return (
-    <a
-      href={url}
-      target="_blank"
-      rel="noopener noreferrer"
-      className="flex items-center gap-3 p-3 bg-white/5 border border-white/10 rounded-lg hover:bg-white/10 hover:border-white/20 transition-colors group"
-    >
+    <div className="flex items-center gap-3 p-3 bg-white/5 border border-white/10 rounded-lg hover:bg-white/10 hover:border-white/20 transition-colors group">
       {icons[type]}
       <div className="flex-1 min-w-0">
-        <div className="text-sm font-medium text-white group-hover:text-cyan-400 truncate transition-colors">{title}</div>
+        <div className="text-sm font-medium text-white truncate">{title}</div>
+        <div className="text-xs text-slate-400">{desc}</div>
         {source && <div className="text-xs text-slate-500">{source}</div>}
       </div>
-      <ExternalLink size={14} className="text-slate-500 group-hover:text-cyan-400 flex-shrink-0 transition-colors" />
-    </a>
+    </div>
   );
 };
 
@@ -171,8 +165,8 @@ const AILearningPage: React.FC = () => {
         { id: 'JMUxmLyrhSk', title: 'What is AI? (Artificial Intelligence)', channel: 'CrashCourse', duration: '11:46' },
       ],
       resources: [
-        { title: 'AI For Everyone - Andrew Ng', url: 'https://www.coursera.org/learn/ai-for-everyone', type: 'course' as const, source: 'Coursera' },
-        { title: 'Introduction to AI - MIT', url: 'https://ocw.mit.edu/courses/6-034-artificial-intelligence-fall-2010/', type: 'course' as const, source: 'MIT OpenCourseWare' },
+        { title: 'AI For Everyone - Andrew Ng', desc: 'AI入门首选课程，无需编程基础，4周完成', type: 'course' as const, source: 'Coursera' },
+        { title: 'Introduction to AI - MIT', desc: 'MIT经典AI课程，理论扎实，免费开放', type: 'course' as const, source: 'MIT OCW' },
       ],
       content: {
         overview: lang === 'ja'
@@ -201,8 +195,8 @@ const AILearningPage: React.FC = () => {
         { id: 'nKW8Ndu7Mjw', title: 'The Math Behind Neural Networks', channel: 'Veritasium', duration: '23:45' },
       ],
       resources: [
-        { title: 'Machine Learning - Stanford (Andrew Ng)', url: 'https://www.coursera.org/learn/machine-learning', type: 'course' as const, source: 'Coursera' },
-        { title: 'StatQuest ML Playlist', url: 'https://www.youtube.com/playlist?list=PLblh5JKOoLUICTaGLRoHQDuF_7q2GfuJF', type: 'video' as const, source: 'YouTube' },
+        { title: 'Machine Learning - Stanford', desc: 'Andrew Ng经典ML课程，系统学习机器学习', type: 'course' as const, source: 'Coursera' },
+        { title: 'StatQuest ML Playlist', desc: '可视化讲解ML概念，通俗易懂', type: 'video' as const, source: 'YouTube' },
       ],
       content: {
         overview: lang === 'ja'
@@ -231,8 +225,8 @@ const AILearningPage: React.FC = () => {
         { id: 'wjZofJX0v4M', title: 'Transformers, the tech behind LLMs', channel: '3Blue1Brown', duration: '27:14' },
       ],
       resources: [
-        { title: 'Deep Learning Specialization', url: 'https://www.coursera.org/specializations/deep-learning', type: 'course' as const, source: 'DeepLearning.AI' },
-        { title: 'Neural Networks: Zero to Hero', url: 'https://www.youtube.com/playlist?list=PLAqhIrjkxbuWI23v9cThsA9GvCAUhRvKZ', type: 'video' as const, source: 'Andrej Karpathy' },
+        { title: 'Deep Learning Specialization', desc: '深度学习专项课程，5门课系统学习', type: 'course' as const, source: 'DeepLearning.AI' },
+        { title: 'Neural Networks: Zero to Hero', desc: 'Karpathy手把手教你从零实现神经网络', type: 'video' as const, source: 'YouTube' },
       ],
       content: {
         overview: lang === 'ja'
@@ -261,8 +255,8 @@ const AILearningPage: React.FC = () => {
         { id: 'zjkBMFhNj_g', title: 'Intro to Large Language Models', channel: 'Andrej Karpathy', duration: '59:47' },
       ],
       resources: [
-        { title: 'ChatGPT Prompt Engineering for Developers', url: 'https://www.deeplearning.ai/short-courses/chatgpt-prompt-engineering-for-developers/', type: 'course' as const, source: 'DeepLearning.AI' },
-        { title: 'Generative AI with LLMs', url: 'https://www.coursera.org/learn/generative-ai-with-llms', type: 'course' as const, source: 'Coursera' },
+        { title: 'ChatGPT Prompt Engineering', desc: 'OpenAI官方合作课程，学习提示词工程', type: 'course' as const, source: 'DeepLearning.AI' },
+        { title: 'Generative AI with LLMs', desc: '生成式AI实战课程，含AWS实验环境', type: 'course' as const, source: 'Coursera' },
       ],
       content: {
         overview: lang === 'ja'
@@ -352,26 +346,34 @@ const AILearningPage: React.FC = () => {
                   {lang === 'ja' ? 'おすすめチャンネル' : '推荐频道'}
                 </h3>
                 <div className="space-y-2 text-sm">
-                  <a href="https://www.youtube.com/@3blue1brown" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-slate-400 hover:text-cyan-400 transition-colors">
+                  <div className="flex items-center gap-2 text-slate-400">
                     <Youtube size={14} className="text-red-500" />
-                    3Blue1Brown
-                    <ExternalLink size={12} className="ml-auto opacity-50" />
-                  </a>
-                  <a href="https://www.youtube.com/@statquest" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-slate-400 hover:text-cyan-400 transition-colors">
+                    <div>
+                      <div className="text-white">3Blue1Brown</div>
+                      <div className="text-xs text-slate-500">{lang === 'ja' ? '数学の可視化、神経ネットワーク解説' : '数学可视化，神经网络讲解'}</div>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-2 text-slate-400">
                     <Youtube size={14} className="text-red-500" />
-                    StatQuest
-                    <ExternalLink size={12} className="ml-auto opacity-50" />
-                  </a>
-                  <a href="https://www.youtube.com/@Deeplearningai" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-slate-400 hover:text-cyan-400 transition-colors">
+                    <div>
+                      <div className="text-white">StatQuest</div>
+                      <div className="text-xs text-slate-500">{lang === 'ja' ? '統計・ML概念をわかりやすく解説' : '统计与ML概念通俗讲解'}</div>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-2 text-slate-400">
                     <Youtube size={14} className="text-red-500" />
-                    DeepLearning.AI
-                    <ExternalLink size={12} className="ml-auto opacity-50" />
-                  </a>
-                  <a href="https://www.youtube.com/@AndrejKarpathy" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-slate-400 hover:text-cyan-400 transition-colors">
+                    <div>
+                      <div className="text-white">DeepLearning.AI</div>
+                      <div className="text-xs text-slate-500">{lang === 'ja' ? 'Andrew Ng公式、AIコース' : 'Andrew Ng官方，AI课程'}</div>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-2 text-slate-400">
                     <Youtube size={14} className="text-red-500" />
-                    Andrej Karpathy
-                    <ExternalLink size={12} className="ml-auto opacity-50" />
-                  </a>
+                    <div>
+                      <div className="text-white">Andrej Karpathy</div>
+                      <div className="text-xs text-slate-500">{lang === 'ja' ? '元Tesla AI責任者、実装重視' : '前Tesla AI总监，实战代码'}</div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
