@@ -17,6 +17,7 @@ import {
 } from 'lucide-react';
 import { useLanguageStore } from '../stores/languageStore';
 import { allCategoriesZh, type ResourceItem } from '../data/aiResourcesData';
+import { allCategoriesJa } from '../data/aiResourcesDataJa';
 
 // Icon mapping
 const iconMap: Record<string, React.FC<{ size?: number; className?: string }>> = {
@@ -34,7 +35,7 @@ export const AIResourcesPage: React.FC = () => {
   const [selectedItem, setSelectedItem] = useState<{ categoryIndex: number; itemIndex: number }>({ categoryIndex: 0, itemIndex: 0 });
   const [copiedCode, setCopiedCode] = useState<string | null>(null);
 
-  const categories = allCategoriesZh;
+  const categories = language === 'ja' ? allCategoriesJa : allCategoriesZh;
   const currentCategory = categories[selectedItem.categoryIndex];
   const currentItem = currentCategory.items[selectedItem.itemIndex];
 
