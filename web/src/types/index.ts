@@ -83,3 +83,67 @@ export interface ExamImportData {
   exam: Omit<Exam, 'createdAt' | 'updatedAt'>;
   questions: Omit<Question, 'examId'>[];
 }
+
+// 学习笔记
+export interface Note {
+  id: string;
+  pageId: string;       // 关联页面路径
+  examId?: string;      // 可选：关联考试
+  questionId?: string;  // 可选：关联题目
+  title: string;
+  content: string;      // Markdown 内容
+  tags: string[];
+  createdAt: string;
+  updatedAt: string;
+}
+
+// 闪卡卡组
+export interface FlashcardDeck {
+  id: string;
+  name: string;
+  description?: string;
+  category?: string;
+  color: string;        // 卡组颜色主题
+  cardCount: number;
+  createdAt: string;
+  updatedAt: string;
+}
+
+// 闪卡
+export interface Flashcard {
+  id: string;
+  deckId: string;
+  front: string;        // 问题面
+  back: string;         // 答案面
+  tags: string[];
+  createdAt: string;
+}
+
+// 闪卡复习记录 (SM-2 算法)
+export interface FlashcardReview {
+  id: string;
+  cardId: string;
+  easeFactor: number;   // 难度因子，初始 2.5
+  interval: number;     // 间隔天数
+  repetitions: number;  // 连续正确次数
+  nextReview: string;   // 下次复习时间
+  lastReview?: string;  // 上次复习时间
+}
+
+// AI 聊天会话
+export interface ChatSession {
+  id: string;
+  title: string;
+  pageContext?: string; // 关联页面上下文
+  createdAt: string;
+  updatedAt: string;
+}
+
+// AI 聊天消息
+export interface ChatMessage {
+  id: string;
+  sessionId: string;
+  role: 'user' | 'assistant' | 'system';
+  content: string;
+  timestamp: string;
+}

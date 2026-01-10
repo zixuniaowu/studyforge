@@ -213,20 +213,20 @@ const AIBookPage: React.FC = () => {
   }, [currentSectionIndex, allSections.length]);
 
   return (
-    <div className="min-h-screen bg-stone-50">
+    <div className="min-h-screen bg-slate-50">
       {/* Header */}
-      <header className="fixed top-0 left-0 right-0 z-50 bg-white border-b border-stone-200 shadow-sm">
+      <header className="fixed top-0 left-0 right-0 z-50 bg-white border-b border-slate-200 shadow-sm">
         <div className="flex items-center justify-between h-14 px-4">
           <div className="flex items-center gap-4">
             <button
               onClick={() => setSidebarOpen(!sidebarOpen)}
-              className="p-2 hover:bg-stone-100 rounded-lg transition-colors lg:hidden"
+              className="p-2 hover:bg-slate-100 rounded-lg transition-colors lg:hidden"
             >
               {sidebarOpen ? <X size={20} /> : <Menu size={20} />}
             </button>
             <button
               onClick={() => navigate('/')}
-              className="flex items-center gap-2 text-stone-600 hover:text-stone-900 transition-colors"
+              className="flex items-center gap-2 text-slate-600 hover:text-slate-900 transition-colors"
             >
               <Home size={20} />
               <span className="text-base font-medium hidden sm:inline">
@@ -237,20 +237,20 @@ const AIBookPage: React.FC = () => {
 
           <div className="flex items-center gap-2">
             <BookOpen size={20} className="text-amber-600" />
-            <span className="font-serif text-lg text-stone-800 hidden sm:inline">
+            <span className="font-serif text-lg text-slate-800 hidden sm:inline">
               {book.title[lang]}
             </span>
           </div>
 
           <div className="flex items-center gap-4">
             <div className="flex items-center gap-2">
-              <div className="w-24 h-2 bg-stone-200 rounded-full overflow-hidden">
+              <div className="w-24 h-2 bg-slate-200 rounded-full overflow-hidden">
                 <div
                   className="h-full bg-amber-500 transition-all duration-500"
                   style={{ width: `${progress}%` }}
                 />
               </div>
-              <span className="text-sm text-stone-500">{progress}%</span>
+              <span className="text-sm text-slate-500">{progress}%</span>
             </div>
           </div>
         </div>
@@ -259,17 +259,17 @@ const AIBookPage: React.FC = () => {
       <div className="flex pt-14">
         {/* Sidebar - Table of Contents */}
         <aside
-          className={`fixed lg:sticky top-14 left-0 h-[calc(100vh-56px)] bg-white border-r border-stone-200 transition-all duration-300 z-40 overflow-hidden ${
+          className={`fixed lg:sticky top-14 left-0 h-[calc(100vh-56px)] bg-white border-r border-slate-200 transition-all duration-300 z-40 overflow-hidden ${
             sidebarOpen ? 'w-80' : 'w-0 lg:w-80'
           }`}
         >
           <div className="w-80 h-full overflow-y-auto">
             {/* Book Title */}
-            <div className="p-4 border-b border-stone-100">
-              <h2 className="font-serif text-2xl font-semibold text-stone-800">
+            <div className="p-4 border-b border-slate-100">
+              <h2 className="font-serif text-2xl font-semibold text-slate-800">
                 {book.title[lang]}
               </h2>
-              <p className="text-base text-stone-500 mt-1">{book.subtitle[lang]}</p>
+              <p className="text-base text-slate-500 mt-1">{book.subtitle[lang]}</p>
             </div>
 
             {/* Chapters */}
@@ -285,10 +285,10 @@ const AIBookPage: React.FC = () => {
                     {/* Chapter Header */}
                     <button
                       onClick={() => toggleChapter(chapter.id)}
-                      className="w-full flex items-center gap-2 p-3 rounded-lg hover:bg-stone-50 transition-colors text-left"
+                      className="w-full flex items-center gap-2 p-3 rounded-lg hover:bg-slate-50 transition-colors text-left"
                     >
                       <span className={`transition-transform ${isExpanded ? 'rotate-90' : ''}`}>
-                        <ChevronRight size={16} className="text-stone-400" />
+                        <ChevronRight size={16} className="text-slate-400" />
                       </span>
                       <div className="flex-1 min-w-0">
                         <div className="flex items-center gap-2">
@@ -297,7 +297,7 @@ const AIBookPage: React.FC = () => {
                           </span>
                           {chapterRead && <Check size={14} className="text-green-500" />}
                         </div>
-                        <div className="text-stone-800 font-medium text-lg truncate">
+                        <div className="text-slate-800 font-medium text-lg truncate">
                           {chapter.title[lang]}
                         </div>
                       </div>
@@ -305,7 +305,7 @@ const AIBookPage: React.FC = () => {
 
                     {/* Sections */}
                     {isExpanded && (
-                      <div className="ml-4 border-l-2 border-stone-100 pl-2">
+                      <div className="ml-4 border-l-2 border-slate-100 pl-2">
                         {chapter.sections.map((section, sectionIdx) => {
                           const globalIndex = firstSectionIndex + sectionIdx;
                           const isActive = globalIndex === currentSectionIndex;
@@ -321,7 +321,7 @@ const AIBookPage: React.FC = () => {
                               className={`w-full text-left p-2 rounded-lg transition-colors text-base ${
                                 isActive
                                   ? 'bg-amber-50 text-amber-800 font-medium'
-                                  : 'text-stone-600 hover:bg-stone-50'
+                                  : 'text-slate-600 hover:bg-slate-50'
                               }`}
                             >
                               <div className="flex items-center gap-2">
@@ -329,7 +329,7 @@ const AIBookPage: React.FC = () => {
                                   <Check size={12} className="text-green-500 flex-shrink-0" />
                                 ) : (
                                   <span className={`w-3 h-3 rounded-full flex-shrink-0 ${
-                                    isActive ? 'bg-amber-500' : 'bg-stone-200'
+                                    isActive ? 'bg-amber-500' : 'bg-slate-200'
                                   }`} />
                                 )}
                                 <span className="truncate">{section.title[lang]}</span>
@@ -368,82 +368,82 @@ const AIBookPage: React.FC = () => {
                     <ChevronRight size={14} />
                     <span>{currentItem.chapter.title[lang]}</span>
                   </div>
-                  <h1 className="font-serif text-4xl sm:text-5xl font-bold text-stone-900 leading-tight">
+                  <h1 className="font-serif text-4xl sm:text-5xl font-bold text-slate-900 leading-tight">
                     {currentItem.section.title[lang]}
                   </h1>
                 </div>
 
                 {/* Content */}
-                <article className="prose prose-stone prose-xl max-w-none">
+                <article className="prose prose-slate prose-xl max-w-none">
                   <ContentWithComponents
                     content={currentItem.section.content[lang]}
                     language={lang}
                     markdownComponents={{
                       h1: ({ children }) => (
-                        <h1 className="font-serif text-4xl font-bold text-stone-900 mt-12 mb-6">
+                        <h1 className="font-serif text-4xl font-bold text-slate-900 mt-12 mb-6">
                           {children}
                         </h1>
                       ),
                       h2: ({ children }) => (
-                        <h2 className="font-serif text-3xl font-bold text-stone-800 mt-10 mb-4 pb-2 border-b border-stone-200">
+                        <h2 className="font-serif text-3xl font-bold text-slate-800 mt-10 mb-4 pb-2 border-b border-slate-200">
                           {children}
                         </h2>
                       ),
                       h3: ({ children }) => (
-                        <h3 className="font-serif text-2xl font-semibold text-stone-800 mt-8 mb-3">
+                        <h3 className="font-serif text-2xl font-semibold text-slate-800 mt-8 mb-3">
                           {children}
                         </h3>
                       ),
                       h4: ({ children }) => (
-                        <h4 className="font-serif text-xl font-semibold text-stone-700 mt-6 mb-2">
+                        <h4 className="font-serif text-xl font-semibold text-slate-700 mt-6 mb-2">
                           {children}
                         </h4>
                       ),
                       p: ({ children }) => (
-                        <p className="text-stone-700 leading-relaxed mb-5 text-lg sm:text-xl">
+                        <p className="text-slate-700 leading-relaxed mb-5 text-lg sm:text-xl">
                           {children}
                         </p>
                       ),
                       ul: ({ children }) => (
-                        <ul className="space-y-3 my-5 text-stone-700 text-lg sm:text-xl">{children}</ul>
+                        <ul className="space-y-3 my-5 text-slate-700 text-lg sm:text-xl">{children}</ul>
                       ),
                       ol: ({ children }) => (
-                        <ol className="space-y-3 my-5 text-stone-700 text-lg sm:text-xl list-decimal list-inside">{children}</ol>
+                        <ol className="space-y-3 my-5 text-slate-700 text-lg sm:text-xl list-decimal list-inside">{children}</ol>
                       ),
                       li: ({ children }) => (
-                        <li className="text-stone-700 leading-relaxed text-lg sm:text-xl">{children}</li>
+                        <li className="text-slate-700 leading-relaxed text-lg sm:text-xl">{children}</li>
                       ),
                       strong: ({ children }) => (
-                        <strong className="font-semibold text-stone-900">{children}</strong>
+                        <strong className="font-semibold text-slate-900">{children}</strong>
                       ),
                       em: ({ children }) => (
-                        <em className="italic text-stone-600">{children}</em>
+                        <em className="italic text-slate-600">{children}</em>
                       ),
                       blockquote: ({ children }) => (
-                        <blockquote className="border-l-4 border-amber-400 pl-6 py-3 my-6 bg-amber-50 rounded-r-lg text-stone-700 italic text-lg sm:text-xl">
+                        <blockquote className="border-l-4 border-amber-400 pl-6 py-3 my-6 bg-amber-50 rounded-r-lg text-slate-700 italic text-lg sm:text-xl">
                           {children}
                         </blockquote>
                       ),
                       hr: () => (
-                        <hr className="my-8 border-stone-200" />
+                        <hr className="my-8 border-slate-200" />
                       ),
                       table: ({ children }) => (
-                        <div className="overflow-x-auto my-6 rounded-lg border border-stone-200">
+                        <div className="overflow-x-auto my-6 rounded-lg border border-slate-200">
                           <table className="w-full border-collapse">
                             {children}
                           </table>
                         </div>
                       ),
                       thead: ({ children }) => (
-                        <thead className="bg-stone-100">{children}</thead>
+                        <thead className="bg-slate-100">{children}</thead>
                       ),
                       th: ({ children }) => (
-                        <th className="px-5 py-4 text-left text-stone-800 font-semibold border-b border-stone-200 text-lg">
+                        <th className="px-5 py-4 text-left text-slate-800 font-semibold border-b border-slate-200 text-lg">
                           {children}
                         </th>
                       ),
                       td: ({ children }) => (
-                        <td className="px-5 py-4 text-stone-700 border-b border-stone-100 text-lg">
+                        <td className="px-5 py-4 text-slate-700 border-b border-slate-100 text-lg">
                           {children}
                         </td>
                       ),
@@ -451,27 +451,27 @@ const AIBookPage: React.FC = () => {
                         const isInline = !className;
                         if (isInline) {
                           return (
-                            <code className="bg-stone-100 text-amber-700 px-1.5 py-0.5 rounded text-sm font-mono">
+                            <code className="bg-slate-100 text-amber-700 px-1.5 py-0.5 rounded text-sm font-mono">
                               {children}
                             </code>
                           );
                         }
                         return (
-                          <pre className="bg-stone-900 text-stone-100 rounded-lg p-4 overflow-x-auto my-4">
+                          <pre className="bg-slate-900 text-slate-100 rounded-lg p-4 overflow-x-auto my-4">
                             <code className="text-sm font-mono">{children}</code>
                           </pre>
                         );
                       },
                       img: ({ alt }) => (
                         <figure className="my-8">
-                          <div className="bg-stone-100 rounded-lg p-4 flex items-center justify-center min-h-[200px]">
-                            <div className="text-center text-stone-500">
-                              <BookOpen size={48} className="mx-auto mb-2 text-stone-300" />
+                          <div className="bg-slate-100 rounded-lg p-4 flex items-center justify-center min-h-[200px]">
+                            <div className="text-center text-slate-500">
+                              <BookOpen size={48} className="mx-auto mb-2 text-slate-300" />
                               <p className="text-sm">{alt || '图片'}</p>
                             </div>
                           </div>
                           {alt && (
-                            <figcaption className="text-center text-sm text-stone-500 mt-2">
+                            <figcaption className="text-center text-sm text-slate-500 mt-2">
                               {alt}
                             </figcaption>
                           )}
@@ -492,7 +492,7 @@ const AIBookPage: React.FC = () => {
                 </article>
 
                 {/* Navigation Footer */}
-                <div className="mt-16 pt-8 border-t border-stone-200">
+                <div className="mt-16 pt-8 border-t border-slate-200">
                   <div className="flex items-center justify-between gap-4">
                     {/* Previous */}
                     <button
@@ -500,8 +500,8 @@ const AIBookPage: React.FC = () => {
                       disabled={currentSectionIndex === 0}
                       className={`flex-1 max-w-xs text-left p-4 rounded-xl border transition-colors ${
                         currentSectionIndex === 0
-                          ? 'border-stone-100 text-stone-300 cursor-not-allowed'
-                          : 'border-stone-200 hover:border-amber-300 hover:bg-amber-50 text-stone-600'
+                          ? 'border-slate-100 text-slate-300 cursor-not-allowed'
+                          : 'border-slate-200 hover:border-amber-300 hover:bg-amber-50 text-slate-600'
                       }`}
                     >
                       <div className="flex items-center gap-2 text-sm mb-1">
@@ -509,14 +509,14 @@ const AIBookPage: React.FC = () => {
                         <span>{lang === 'ja' ? '前へ' : '上一节'}</span>
                       </div>
                       {currentSectionIndex > 0 && (
-                        <div className="text-stone-800 font-medium truncate">
+                        <div className="text-slate-800 font-medium truncate">
                           {allSections[currentSectionIndex - 1].section.title[lang]}
                         </div>
                       )}
                     </button>
 
                     {/* Page indicator */}
-                    <div className="text-stone-400 text-sm hidden sm:block">
+                    <div className="text-slate-400 text-sm hidden sm:block">
                       {currentSectionIndex + 1} / {allSections.length}
                     </div>
 
@@ -526,8 +526,8 @@ const AIBookPage: React.FC = () => {
                       disabled={currentSectionIndex === allSections.length - 1}
                       className={`flex-1 max-w-xs text-right p-4 rounded-xl border transition-colors ${
                         currentSectionIndex === allSections.length - 1
-                          ? 'border-stone-100 text-stone-300 cursor-not-allowed'
-                          : 'border-stone-200 hover:border-amber-300 hover:bg-amber-50 text-stone-600'
+                          ? 'border-slate-100 text-slate-300 cursor-not-allowed'
+                          : 'border-slate-200 hover:border-amber-300 hover:bg-amber-50 text-slate-600'
                       }`}
                     >
                       <div className="flex items-center justify-end gap-2 text-sm mb-1">
@@ -535,7 +535,7 @@ const AIBookPage: React.FC = () => {
                         <ArrowRight size={14} />
                       </div>
                       {currentSectionIndex < allSections.length - 1 && (
-                        <div className="text-stone-800 font-medium truncate">
+                        <div className="text-slate-800 font-medium truncate">
                           {allSections[currentSectionIndex + 1].section.title[lang]}
                         </div>
                       )}
@@ -544,7 +544,7 @@ const AIBookPage: React.FC = () => {
                 </div>
 
                 {/* Reading tip */}
-                <div className="mt-8 text-center text-stone-400 text-sm">
+                <div className="mt-8 text-center text-slate-400 text-sm">
                   {lang === 'ja' ? '← → キーでページ移動' : '使用 ← → 方向键翻页'}
                 </div>
               </>

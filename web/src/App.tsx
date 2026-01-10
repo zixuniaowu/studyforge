@@ -5,10 +5,19 @@ import { QuizPage } from './pages/QuizPage';
 import AIBookPage from './pages/AIBookPage';
 import AIResourcesPage from './pages/AIResourcesPage';
 import { CertificationPathPage } from './pages/CertificationPathPage';
+import ExamTipsPage from './pages/ExamTipsPage';
+import AICodeExamplesPage from './pages/AICodeExamplesPage';
+import AILearningRoadmapPage from './pages/AILearningRoadmapPage';
+import InterviewQuestionsPage from './pages/InterviewQuestionsPage';
+import CheatSheetsPage from './pages/CheatSheetsPage';
+import GlossaryPage from './pages/GlossaryPage';
+import NotesPage from './pages/NotesPage';
+import FlashcardsPage from './pages/FlashcardsPage';
+import { AIChat } from './components/AIAssistant';
 
 function AppContent() {
   const location = useLocation();
-  const hideHeader = location.pathname.startsWith('/ai-book') || location.pathname.startsWith('/ai-resources');
+  const hideHeader = location.pathname.startsWith('/ai-book') || location.pathname.startsWith('/ai-resources') || location.pathname.startsWith('/exam-tips') || location.pathname.startsWith('/ai-code') || location.pathname.startsWith('/ai-roadmap') || location.pathname.startsWith('/interview') || location.pathname.startsWith('/cheat') || location.pathname.startsWith('/glossary') || location.pathname.startsWith('/notes') || location.pathname.startsWith('/flashcards');
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -18,8 +27,18 @@ function AppContent() {
         <Route path="/quiz/:examId" element={<QuizPage />} />
         <Route path="/ai-book/:bookId" element={<AIBookPage />} />
         <Route path="/ai-resources" element={<AIResourcesPage />} />
+        <Route path="/exam-tips" element={<ExamTipsPage />} />
+        <Route path="/ai-code-examples" element={<AICodeExamplesPage />} />
+        <Route path="/ai-roadmap" element={<AILearningRoadmapPage />} />
+        <Route path="/interview-questions" element={<InterviewQuestionsPage />} />
+        <Route path="/cheat-sheets" element={<CheatSheetsPage />} />
+        <Route path="/glossary" element={<GlossaryPage />} />
+        <Route path="/notes" element={<NotesPage />} />
+        <Route path="/flashcards" element={<FlashcardsPage />} />
         <Route path="/certification-path" element={<CertificationPathPage />} />
       </Routes>
+      {/* Global AI Assistant */}
+      <AIChat />
     </div>
   );
 }

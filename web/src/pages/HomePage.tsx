@@ -7,7 +7,6 @@ import {
   BookOpen,
   Loader2,
   RefreshCw,
-  Trophy,
   Target,
   Brain,
   ArrowLeft,
@@ -54,21 +53,8 @@ const careerIcons: Record<string, LucideIcon> = {
   'enterprise-admin': Users
 };
 
-// Career gradient colors
-const careerGradients: Record<string, string> = {
-  'cloud-architect': 'from-blue-500 to-indigo-600',
-  'ai-engineer': 'from-purple-500 to-pink-600',
-  'genai-engineer': 'from-violet-500 to-fuchsia-600',
-  'data-engineer': 'from-emerald-500 to-teal-600',
-  'devops-engineer': 'from-orange-500 to-red-600',
-  'security-engineer': 'from-slate-500 to-zinc-700',
-  'network-engineer': 'from-cyan-500 to-blue-600',
-  'database-engineer': 'from-amber-500 to-orange-600',
-  'cloud-developer': 'from-green-500 to-emerald-600',
-  'enterprise-admin': 'from-rose-500 to-pink-600'
-};
 
-// Provider configuration for certification exams
+// Provider configuration for certification exams - Professional colors
 const providerConfig = {
   AWS: {
     name: { zh: 'Amazon Web Services', ja: 'Amazon Web Services' },
@@ -77,11 +63,11 @@ const providerConfig = {
       zh: 'AWS 云认证考试，包括 AI 从业者、解决方案架构师等',
       ja: 'AWS クラウド認定試験、AI Practitioner、ソリューションアーキテクトなど'
     },
-    gradient: 'from-orange-500 via-amber-500 to-yellow-500',
-    bgGradient: 'from-orange-50 to-amber-50',
-    borderColor: 'border-orange-200',
-    iconBg: 'bg-orange-500',
-    hoverShadow: 'hover:shadow-orange-200/50'
+    gradient: 'from-amber-600 to-orange-700',
+    bgGradient: 'from-slate-50 to-white',
+    borderColor: 'border-slate-200',
+    iconBg: 'bg-amber-600',
+    hoverShadow: 'hover:shadow-lg'
   },
   Azure: {
     name: { zh: 'Microsoft Azure', ja: 'Microsoft Azure' },
@@ -90,11 +76,11 @@ const providerConfig = {
       zh: 'Azure 云认证考试，包括 AI-102、AZ-900 等',
       ja: 'Azure クラウド認定試験、AI-102、AZ-900など'
     },
-    gradient: 'from-blue-500 via-cyan-500 to-teal-500',
-    bgGradient: 'from-blue-50 to-cyan-50',
-    borderColor: 'border-blue-200',
-    iconBg: 'bg-blue-500',
-    hoverShadow: 'hover:shadow-blue-200/50'
+    gradient: 'from-blue-600 to-blue-700',
+    bgGradient: 'from-slate-50 to-white',
+    borderColor: 'border-slate-200',
+    iconBg: 'bg-blue-600',
+    hoverShadow: 'hover:shadow-lg'
   },
   GCP: {
     name: { zh: 'Google Cloud Platform', ja: 'Google Cloud Platform' },
@@ -103,15 +89,15 @@ const providerConfig = {
       zh: 'GCP 云认证考试，包括机器学习工程师、云架构师等',
       ja: 'GCP クラウド認定試験、MLエンジニア、クラウドアーキテクトなど'
     },
-    gradient: 'from-green-500 via-emerald-500 to-teal-500',
-    bgGradient: 'from-green-50 to-emerald-50',
-    borderColor: 'border-green-200',
-    iconBg: 'bg-green-500',
-    hoverShadow: 'hover:shadow-green-200/50'
+    gradient: 'from-emerald-600 to-green-700',
+    bgGradient: 'from-slate-50 to-white',
+    borderColor: 'border-slate-200',
+    iconBg: 'bg-emerald-600',
+    hoverShadow: 'hover:shadow-lg'
   }
 };
 
-// Learning category configuration
+// Learning category configuration - Professional colors
 const learningConfig = {
   'ai-intro': {
     name: { zh: 'AI 入门', ja: 'AI入門' },
@@ -119,11 +105,11 @@ const learningConfig = {
       zh: '面向零基础学习者的 AI 入门指南，从基础概念到实践应用',
       ja: 'ゼロから始めるAI入門ガイド、基本概念から実践応用まで'
     },
-    gradient: 'from-violet-500 via-purple-500 to-fuchsia-500',
-    bgGradient: 'from-violet-50 to-purple-50',
-    borderColor: 'border-violet-200',
-    iconBg: 'bg-violet-500',
-    hoverShadow: 'hover:shadow-violet-200/50',
+    gradient: 'from-slate-700 to-slate-800',
+    bgGradient: 'from-slate-50 to-white',
+    borderColor: 'border-slate-200',
+    iconBg: 'bg-slate-700',
+    hoverShadow: 'hover:shadow-lg',
     icon: Lightbulb
   },
   'cert-path': {
@@ -132,11 +118,11 @@ const learningConfig = {
       zh: 'AWS、Azure、GCP 云认证学习路径图谱，包含依赖关系和职业建议',
       ja: 'AWS、Azure、GCPクラウド認定学習パス、依存関係とキャリアアドバイス'
     },
-    gradient: 'from-cyan-500 via-teal-500 to-emerald-500',
-    bgGradient: 'from-cyan-50 to-teal-50',
-    borderColor: 'border-cyan-200',
-    iconBg: 'bg-cyan-500',
-    hoverShadow: 'hover:shadow-cyan-200/50',
+    gradient: 'from-slate-700 to-slate-800',
+    bgGradient: 'from-slate-50 to-white',
+    borderColor: 'border-slate-200',
+    iconBg: 'bg-slate-700',
+    hoverShadow: 'hover:shadow-lg',
     icon: Map
   },
   'ai-resources': {
@@ -145,11 +131,11 @@ const learningConfig = {
       zh: '最新 AI 框架、工具和技术资源汇总',
       ja: '最新AIフレームワーク、ツール、技術リソースまとめ'
     },
-    gradient: 'from-rose-500 via-pink-500 to-red-500',
-    bgGradient: 'from-rose-50 to-pink-50',
-    borderColor: 'border-rose-200',
-    iconBg: 'bg-rose-500',
-    hoverShadow: 'hover:shadow-rose-200/50',
+    gradient: 'from-slate-700 to-slate-800',
+    bgGradient: 'from-slate-50 to-white',
+    borderColor: 'border-slate-200',
+    iconBg: 'bg-slate-700',
+    hoverShadow: 'hover:shadow-lg',
     icon: Boxes
   }
 };
@@ -699,293 +685,207 @@ export const HomePage: React.FC = () => {
     );
   }
 
-  // Cover page view (default)
+  // Cover page view (default) - Professional Business Style
   return (
-    <div className="min-h-screen bg-stone-50 flex flex-col">
+    <div className="min-h-screen bg-slate-50 flex flex-col">
+      {/* Header Bar */}
+      <header className="bg-slate-800 text-white py-4 px-6 lg:px-10">
+        <div className="flex items-center justify-between">
+          <div className="flex items-center gap-3">
+            <div className="w-10 h-10 bg-white rounded flex items-center justify-center">
+              <GraduationCap className="w-6 h-6 text-slate-800" />
+            </div>
+            <div>
+              <h1 className="text-xl font-bold tracking-tight">StudyForge</h1>
+              <p className="text-slate-400 text-xs">{language === 'ja' ? 'クラウド認定試験対策' : '云认证考试平台'}</p>
+            </div>
+          </div>
+          <div className="flex items-center gap-6 text-sm">
+            <div className="flex items-center gap-2">
+              <BookOpen className="w-4 h-4 text-slate-400" />
+              <span className="font-medium">{stats.totalExams}</span>
+              <span className="text-slate-400">{language === 'ja' ? 'セット' : '套'}</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <Target className="w-4 h-4 text-slate-400" />
+              <span className="font-medium">{stats.totalQuestions}</span>
+              <span className="text-slate-400">{language === 'ja' ? '問' : '题'}</span>
+            </div>
+            {stats.wrongCount > 0 && (
+              <button
+                onClick={() => navigate('/wrong-answers')}
+                className="flex items-center gap-2 bg-amber-500 hover:bg-amber-400 px-3 py-1.5 rounded text-sm transition-colors"
+              >
+                <AlertCircle className="w-4 h-4" />
+                <span className="font-medium">{stats.wrongCount}</span>
+                <span>{language === 'ja' ? '復習' : '复习'}</span>
+              </button>
+            )}
+          </div>
+        </div>
+      </header>
+
       {/* Main Content Section */}
-      <section className="relative">
+      <section className="flex-1">
+        <div className="px-6 lg:px-10 py-8">
 
-        <div className="relative px-3 lg:px-6 py-6 lg:py-8">
-          {/* Centered Hero Header */}
-          <div className="text-center mb-8">
-            <h1 className="text-3xl lg:text-5xl font-bold text-stone-800 mb-2">
-              {language === 'ja' ? '効率的に学習、確実に合格' : '高效学习，稳过考试'}
-            </h1>
-            <p className="text-lg text-stone-500">
-              {language === 'ja' ? 'AWS・Azure・GCP クラウド認定試験対策' : 'AWS・Azure・GCP 云认证考试备考'}
-            </p>
-            {/* Stats Row */}
-            <div className="flex justify-center items-center gap-4 mt-6">
-              <div className="flex items-center gap-2 px-4 py-2 bg-white rounded-full border border-stone-200 shadow-sm">
-                <BookOpen className="w-5 h-5 text-cyan-600" />
-                <span className="text-lg font-semibold text-stone-800">{stats.totalExams}</span>
-                <span className="text-sm text-stone-500">{language === 'ja' ? 'セット' : '套'}</span>
-              </div>
-              <div className="flex items-center gap-2 px-4 py-2 bg-white rounded-full border border-stone-200 shadow-sm">
-                <Target className="w-5 h-5 text-emerald-600" />
-                <span className="text-lg font-semibold text-stone-800">{stats.totalQuestions}</span>
-                <span className="text-sm text-stone-500">{language === 'ja' ? '問' : '题'}</span>
-              </div>
-              {stats.wrongCount > 0 && (
-                <div className="flex items-center gap-2 px-4 py-2 bg-amber-50 rounded-full border border-amber-200">
-                  <Trophy className="w-5 h-5 text-amber-600" />
-                  <span className="text-lg font-semibold text-amber-700">{stats.wrongCount}</span>
-                  <span className="text-sm text-amber-600">{language === 'ja' ? '要復習' : '待复习'}</span>
-                </div>
-              )}
+          {/* Section 1: Certification Exams */}
+          <div className="mb-8">
+            <div className="flex items-center gap-2 mb-4 pb-2 border-b border-slate-200">
+              <GraduationCap size={20} className="text-slate-600" />
+              <h2 className="text-lg font-semibold text-slate-800">
+                {language === 'ja' ? '認定試験' : '认证考试'}
+              </h2>
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+              {(Object.keys(providerConfig) as ProviderKey[]).map((provider) => {
+                const config = providerConfig[provider];
+                const pStats = providerStats[provider] || { examCount: 0, questionCount: 0 };
+                return (
+                  <button
+                    key={provider}
+                    onClick={() => setSelectedView(provider)}
+                    className="group bg-white rounded-lg p-5 border border-slate-200 hover:border-slate-300 hover:shadow-md transition-all text-left"
+                  >
+                    <div className="flex items-center gap-4">
+                      <div className={`w-12 h-12 rounded-lg ${config.iconBg} flex items-center justify-center`}>
+                        <GraduationCap size={24} className="text-white" />
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <h3 className="text-base font-semibold text-slate-800">{config.shortName}</h3>
+                        <p className="text-sm text-slate-500">{pStats.examCount} {language === 'ja' ? 'セット' : '套'} · {pStats.questionCount} {language === 'ja' ? '問' : '题'}</p>
+                      </div>
+                      <ChevronRight size={18} className="text-slate-400 group-hover:text-slate-600 transition-colors" />
+                    </div>
+                  </button>
+                );
+              })}
             </div>
           </div>
 
-          {/* Two Column Layout: Main Content + Sidebar */}
-          <div className="flex flex-col lg:flex-row gap-6">
-            {/* Main Content - Left Side */}
-            <div className="flex-1 min-w-0">
-              {/* Certification Exams Section */}
-              <div className="mb-6">
-                <h2 className="text-xl font-bold text-stone-800 mb-4 flex items-center gap-2">
-                  <GraduationCap size={22} className="text-cyan-600" />
-                  {language === 'ja' ? '認定試験' : '认证考试'}
+          {/* Section 2: Career Path */}
+          <div className="mb-8">
+            <div className="flex items-center justify-between mb-4 pb-2 border-b border-slate-200">
+              <div className="flex items-center gap-2">
+                <Map size={20} className="text-slate-600" />
+                <h2 className="text-lg font-semibold text-slate-800">
+                  {language === 'ja' ? 'キャリアパス' : '职业路径'}
                 </h2>
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-                  {(Object.keys(providerConfig) as ProviderKey[]).map((provider) => {
-                    const config = providerConfig[provider];
-                    const pStats = providerStats[provider] || { examCount: 0, questionCount: 0 };
-                    return (
-                      <button
-                        key={provider}
-                        onClick={() => setSelectedView(provider)}
-                        className="group relative bg-white rounded-xl p-4 border border-stone-200 hover:border-stone-300 hover:shadow-lg transition-all duration-300 text-left"
-                      >
-                        <div className="flex items-center gap-3">
-                          <div className={`p-2.5 rounded-xl bg-gradient-to-br ${config.gradient} shadow-md group-hover:scale-110 transition-transform duration-300`}>
-                            <GraduationCap size={22} className="text-white" />
-                          </div>
-                          <div className="flex-1 min-w-0">
-                            <h3 className="text-lg font-bold text-stone-800">{config.shortName}</h3>
-                            <p className="text-sm text-stone-500">{pStats.examCount}{language === 'ja' ? 'セット' : '套'} · {pStats.questionCount}{language === 'ja' ? '問' : '题'}</p>
-                          </div>
-                          <ChevronRight size={18} className="text-stone-400 group-hover:text-stone-600 transition-colors" />
-                        </div>
-                      </button>
-                    );
-                  })}
-                </div>
               </div>
-
-              {/* Career Path Section */}
-              <div className="mb-6">
-                <div className="flex items-center justify-between mb-4">
-                  <h2 className="text-xl font-bold text-stone-800 flex items-center gap-2">
-                    <Map size={22} className="text-violet-600" />
-                    {language === 'ja' ? 'キャリアパス' : '职业路径'}
-                  </h2>
-                  <button
-                    onClick={() => navigate('/certification-path')}
-                    className="text-sm text-violet-600 hover:text-violet-700 font-medium transition-colors flex items-center gap-1"
-                  >
-                    {language === 'ja' ? 'すべて見る' : '查看全部'}
-                    <ChevronRight size={16} />
-                  </button>
-                </div>
-                <div className="grid grid-cols-2 sm:grid-cols-5 gap-2">
-                  {careerPaths.slice(0, 5).map((path) => {
-                    const IconComponent = careerIcons[path.id] || Building2;
-                    const gradient = careerGradients[path.id] || 'from-gray-500 to-gray-600';
-                    return (
-                      <button
-                        key={path.id}
-                        onClick={() => navigate(`/certification-path?career=${path.id}`)}
-                        className="group bg-white rounded-lg p-3 border border-stone-200 hover:border-stone-300 hover:shadow-md transition-all duration-300 text-center"
-                      >
-                        <div className={`inline-flex p-2 rounded-lg bg-gradient-to-br ${gradient} mb-2 group-hover:scale-110 transition-transform duration-300`}>
-                          <IconComponent size={18} className="text-white" />
-                        </div>
-                        <h3 className="text-xs font-medium text-stone-700 leading-tight">
-                          {path.name[language === 'ja' ? 'ja' : 'zh']}
-                        </h3>
-                      </button>
-                    );
-                  })}
-                </div>
-              </div>
+              <button
+                onClick={() => navigate('/certification-path')}
+                className="text-sm text-slate-600 hover:text-slate-800 font-medium transition-colors flex items-center gap-1"
+              >
+                {language === 'ja' ? 'すべて見る' : '查看全部'}
+                <ChevronRight size={16} />
+              </button>
             </div>
-
-            {/* Sidebar - Right Side: AI Learning */}
-            <div className="lg:w-80 flex-shrink-0">
-              <div className="bg-gradient-to-br from-violet-500 via-purple-500 to-fuchsia-500 rounded-2xl p-5 text-white sticky top-4">
-                <h2 className="text-lg font-bold mb-4 flex items-center gap-2">
-                  <Brain size={20} />
-                  {language === 'ja' ? 'AI学習コンテンツ' : 'AI 学习内容'}
-                </h2>
-
-                <div className="space-y-3">
-                  {/* AI Beginner */}
+            <div className="grid grid-cols-2 sm:grid-cols-5 gap-3">
+              {careerPaths.slice(0, 5).map((path) => {
+                const IconComponent = careerIcons[path.id] || Building2;
+                return (
                   <button
-                    onClick={() => navigate('/ai-book/beginner')}
-                    className="w-full bg-white/15 hover:bg-white/25 backdrop-blur rounded-xl p-4 text-left transition-all group"
+                    key={path.id}
+                    onClick={() => navigate(`/certification-path?career=${path.id}`)}
+                    className="group bg-white rounded-lg p-4 border border-slate-200 hover:border-slate-300 hover:shadow-md transition-all text-center"
                   >
-                    <div className="flex items-start gap-3">
-                      <div className="p-2 bg-white/20 rounded-lg group-hover:scale-110 transition-transform">
-                        <Lightbulb size={20} />
-                      </div>
-                      <div className="flex-1">
-                        <h3 className="font-semibold mb-1">{language === 'ja' ? 'AI入門ガイド' : 'AI 入门指南'}</h3>
-                        <p className="text-white/80 text-xs leading-relaxed">
-                          {language === 'ja' ? '機械学習、深層学習、LLMの基礎' : '机器学习、深度学习、LLM基础'}
-                        </p>
-                        <div className="flex gap-1 mt-2">
-                          <span className="px-2 py-0.5 bg-white/20 rounded text-xs">{language === 'ja' ? '5章' : '5章'}</span>
-                          <span className="px-2 py-0.5 bg-white/20 rounded text-xs">{language === 'ja' ? '入門' : '入门'}</span>
-                        </div>
-                      </div>
+                    <div className="w-10 h-10 mx-auto rounded-lg bg-slate-700 flex items-center justify-center mb-2">
+                      <IconComponent size={20} className="text-white" />
                     </div>
+                    <h3 className="text-xs font-medium text-slate-700 leading-tight">
+                      {path.name[language === 'ja' ? 'ja' : 'zh']}
+                    </h3>
                   </button>
-
-                  {/* AI Advanced */}
-                  <button
-                    onClick={() => navigate('/ai-book/advanced')}
-                    className="w-full bg-white/15 hover:bg-white/25 backdrop-blur rounded-xl p-4 text-left transition-all group"
-                  >
-                    <div className="flex items-start gap-3">
-                      <div className="p-2 bg-white/20 rounded-lg group-hover:scale-110 transition-transform">
-                        <Rocket size={20} />
-                      </div>
-                      <div className="flex-1">
-                        <h3 className="font-semibold mb-1">{language === 'ja' ? 'AI実践上級編' : 'AI 进阶实战'}</h3>
-                        <p className="text-white/80 text-xs leading-relaxed">
-                          {language === 'ja' ? 'プロンプト、Agent、RAG' : '提示词、Agent、RAG'}
-                        </p>
-                        <div className="flex gap-1 mt-2">
-                          <span className="px-2 py-0.5 bg-white/20 rounded text-xs">{language === 'ja' ? '3章' : '3章'}</span>
-                          <span className="px-2 py-0.5 bg-white/20 rounded text-xs">{language === 'ja' ? '実践' : '实战'}</span>
-                        </div>
-                      </div>
-                    </div>
-                  </button>
-
-                  {/* AI Resources */}
-                  <button
-                    onClick={() => navigate('/ai-resources')}
-                    className="w-full bg-white/15 hover:bg-white/25 backdrop-blur rounded-xl p-4 text-left transition-all group"
-                  >
-                    <div className="flex items-start gap-3">
-                      <div className="p-2 bg-white/20 rounded-lg group-hover:scale-110 transition-transform">
-                        <Boxes size={20} />
-                      </div>
-                      <div className="flex-1">
-                        <h3 className="font-semibold mb-1">{language === 'ja' ? 'AIリソースまとめ' : 'AI 资源汇总'}</h3>
-                        <p className="text-white/80 text-xs leading-relaxed">
-                          {language === 'ja' ? 'PyTorch、LangChain、Ollama等' : 'PyTorch、LangChain、Ollama等'}
-                        </p>
-                        <div className="flex gap-1 mt-2">
-                          <span className="px-2 py-0.5 bg-white/20 rounded text-xs">{language === 'ja' ? '9ツール' : '9工具'}</span>
-                          <span className="px-2 py-0.5 bg-white/20 rounded text-xs">{language === 'ja' ? 'コード付' : '含代码'}</span>
-                        </div>
-                      </div>
-                    </div>
-                  </button>
-                </div>
-
-                {/* Wrong answers shortcut */}
-                {stats.wrongCount > 0 && (
-                  <button
-                    onClick={() => navigate('/wrong-answers')}
-                    className="w-full mt-4 bg-amber-500 hover:bg-amber-400 rounded-xl p-3 text-left transition-all flex items-center gap-3"
-                  >
-                    <AlertCircle size={20} />
-                    <div className="flex-1">
-                      <span className="font-medium">{language === 'ja' ? '復習する' : '去复习'}</span>
-                    </div>
-                    <span className="bg-white/30 px-2 py-0.5 rounded-full text-sm font-bold">{stats.wrongCount}</span>
-                  </button>
-                )}
-              </div>
+                );
+              })}
             </div>
           </div>
 
-          {/* Learning Dashboard Section */}
-          <div className="mt-6">
-            <h2 className="text-xl font-bold text-stone-800 mb-4 flex items-center gap-2">
-              <BarChart3 size={22} className="text-cyan-600" />
-              {language === 'ja' ? '学習ダッシュボード' : '学习仪表盘'}
-            </h2>
+          {/* Section 3: Learning Dashboard */}
+          <div className="mb-8">
+            <div className="flex items-center gap-2 mb-4 pb-2 border-b border-slate-200">
+              <BarChart3 size={20} className="text-slate-600" />
+              <h2 className="text-lg font-semibold text-slate-800">
+                {language === 'ja' ? '学習ダッシュボード' : '学习仪表盘'}
+              </h2>
+            </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               {/* Overall Stats Card */}
-              <div className="bg-white rounded-xl p-5 border border-stone-200 shadow-sm">
-                <h3 className="text-base font-semibold text-stone-600 mb-4">
+              <div className="bg-white rounded-lg p-5 border border-slate-200">
+                <h3 className="text-sm font-medium text-slate-500 mb-4 uppercase tracking-wide">
                   {language === 'ja' ? '総合統計' : '总体统计'}
                 </h3>
                 <div className="space-y-3">
                   <div className="flex items-center justify-between">
-                    <span className="text-sm text-stone-500">{language === 'ja' ? '総回答数' : '总答题数'}</span>
-                    <span className="text-xl font-bold text-cyan-600">{learningStats.totalAnswered}</span>
+                    <span className="text-sm text-slate-600">{language === 'ja' ? '総回答数' : '总答题数'}</span>
+                    <span className="text-xl font-semibold text-slate-800">{learningStats.totalAnswered}</span>
                   </div>
                   <div className="flex items-center justify-between">
-                    <span className="text-sm text-stone-500">{language === 'ja' ? '総正解率' : '总正确率'}</span>
-                    <span className="text-xl font-bold text-emerald-600">{learningStats.overallCorrectRate}%</span>
+                    <span className="text-sm text-slate-600">{language === 'ja' ? '総正解率' : '总正确率'}</span>
+                    <span className="text-xl font-semibold text-emerald-600">{learningStats.overallCorrectRate}%</span>
                   </div>
                   <div className="flex items-center justify-between">
-                    <span className="text-sm text-stone-500">{language === 'ja' ? '学習日数' : '学习天数'}</span>
-                    <span className="text-xl font-bold text-purple-600">{learningStats.studyDays}</span>
+                    <span className="text-sm text-slate-600">{language === 'ja' ? '学習日数' : '学习天数'}</span>
+                    <span className="text-xl font-semibold text-slate-800">{learningStats.studyDays}</span>
                   </div>
                 </div>
               </div>
 
               {/* Practice & Exam Mode Stats */}
-              <div className="bg-white rounded-xl p-5 border border-stone-200 shadow-sm">
-                <h3 className="text-base font-semibold text-stone-600 mb-4">
+              <div className="bg-white rounded-lg p-5 border border-slate-200">
+                <h3 className="text-sm font-medium text-slate-500 mb-4 uppercase tracking-wide">
                   {language === 'ja' ? 'モード別統計' : '模式统计'}
                 </h3>
                 <div className="space-y-3">
-                  <div className="p-3 bg-green-50 rounded-lg border border-green-200">
+                  <div className="p-3 bg-slate-50 rounded border border-slate-200">
                     <div className="flex items-center gap-2 mb-1">
-                      <Play size={14} className="text-green-600" />
-                      <span className="text-sm text-green-700 font-medium">{language === 'ja' ? '練習モード' : '练习模式'}</span>
+                      <Play size={14} className="text-emerald-600" />
+                      <span className="text-sm text-slate-700 font-medium">{language === 'ja' ? '練習モード' : '练习模式'}</span>
                     </div>
-                    <div className="flex items-center justify-between text-base">
-                      <span className="text-stone-500">{learningStats.practiceQuestions}{language === 'ja' ? '問' : '题'}</span>
-                      <span className="font-semibold text-green-600">{learningStats.practiceCorrectRate}%</span>
+                    <div className="flex items-center justify-between text-sm">
+                      <span className="text-slate-500">{learningStats.practiceQuestions} {language === 'ja' ? '問' : '题'}</span>
+                      <span className="font-semibold text-emerald-600">{learningStats.practiceCorrectRate}%</span>
                     </div>
                   </div>
-                  <div className="p-3 bg-red-50 rounded-lg border border-red-200">
+                  <div className="p-3 bg-slate-50 rounded border border-slate-200">
                     <div className="flex items-center gap-2 mb-1">
-                      <FileCheck size={14} className="text-red-600" />
-                      <span className="text-sm text-red-700 font-medium">{language === 'ja' ? '模擬試験' : '模拟考试'}</span>
+                      <FileCheck size={14} className="text-blue-600" />
+                      <span className="text-sm text-slate-700 font-medium">{language === 'ja' ? '模擬試験' : '模拟考试'}</span>
                     </div>
-                    <div className="flex items-center justify-between text-base">
-                      <span className="text-stone-500">{learningStats.examCount}{language === 'ja' ? '回' : '次'}</span>
-                      <span className="font-semibold text-red-600">{learningStats.examAvgScore}%</span>
+                    <div className="flex items-center justify-between text-sm">
+                      <span className="text-slate-500">{learningStats.examCount} {language === 'ja' ? '回' : '次'}</span>
+                      <span className="font-semibold text-blue-600">{learningStats.examAvgScore}%</span>
                     </div>
                   </div>
                 </div>
               </div>
 
               {/* Recent Sessions Card */}
-              <div className="bg-white rounded-xl p-5 border border-stone-200 shadow-sm">
-                <h3 className="text-base font-semibold text-stone-600 mb-4">
+              <div className="bg-white rounded-lg p-5 border border-slate-200">
+                <h3 className="text-sm font-medium text-slate-500 mb-4 uppercase tracking-wide">
                   {language === 'ja' ? '最近の学習' : '最近学习'}
                 </h3>
                 {learningStats.recentSessions.length > 0 ? (
                   <div className="space-y-2">
                     {learningStats.recentSessions.slice(0, 4).map((session, i) => (
-                      <div key={i} className="flex items-center justify-between text-base">
+                      <div key={i} className="flex items-center justify-between text-sm">
                         <div className="flex items-center gap-2">
                           {session.mode === 'exam' ? (
-                            <FileCheck size={12} className="text-red-500" />
+                            <FileCheck size={12} className="text-blue-500" />
                           ) : (
-                            <Play size={12} className="text-green-500" />
+                            <Play size={12} className="text-emerald-500" />
                           )}
-                          <span className="text-stone-600 text-sm">{session.examName}</span>
+                          <span className="text-slate-600">{session.examName}</span>
                         </div>
-                        <span className={`font-semibold text-sm ${session.score >= 70 ? 'text-emerald-600' : 'text-amber-600'}`}>
+                        <span className={`font-medium ${session.score >= 70 ? 'text-emerald-600' : 'text-amber-600'}`}>
                           {session.score}%
                         </span>
                       </div>
                     ))}
                   </div>
                 ) : (
-                  <div className="text-center text-base text-stone-400 py-4">
+                  <div className="text-center text-sm text-slate-400 py-4">
                     {language === 'ja' ? 'まだ学習記録がありません' : '暂无学习记录'}
                   </div>
                 )}
@@ -994,22 +894,22 @@ export const HomePage: React.FC = () => {
 
             {/* Per-Certification Progress (show if has data) */}
             {learningStats.certStats.length > 0 && (
-              <div className="mt-4">
-                <h3 className="text-sm font-semibold text-stone-600 mb-3 flex items-center gap-2">
-                  <Award size={16} className="text-yellow-500" />
+              <div className="mt-6">
+                <h3 className="text-sm font-medium text-slate-500 mb-3 flex items-center gap-2">
+                  <Award size={16} className="text-slate-400" />
                   {language === 'ja' ? '認定別進捗' : '认证进度'}
                 </h3>
-                <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-2">
+                <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-3">
                   {learningStats.certStats.slice(0, 6).map((cert, i) => (
-                    <div key={i} className="bg-white rounded-lg p-3 border border-stone-200 shadow-sm">
-                      <div className="text-xs font-bold text-stone-800 mb-1">{cert.certCode}</div>
+                    <div key={i} className="bg-white rounded-lg p-3 border border-slate-200">
+                      <div className="text-xs font-semibold text-slate-800 mb-1">{cert.certCode}</div>
                       <div className="flex items-center justify-between text-xs">
-                        <span className="text-stone-500">{cert.questionsAnswered}{language === 'ja' ? '問' : '题'}</span>
-                        <span className={`font-semibold ${cert.correctRate >= 70 ? 'text-emerald-600' : 'text-amber-600'}`}>
+                        <span className="text-slate-500">{cert.questionsAnswered} {language === 'ja' ? '問' : '题'}</span>
+                        <span className={`font-medium ${cert.correctRate >= 70 ? 'text-emerald-600' : 'text-amber-600'}`}>
                           {cert.correctRate}%
                         </span>
                       </div>
-                      <div className="text-xs text-stone-500 mt-1">
+                      <div className="text-xs text-slate-400 mt-1">
                         {language === 'ja' ? '最高' : '最高'}: {cert.bestScore}%
                       </div>
                     </div>
@@ -1018,17 +918,155 @@ export const HomePage: React.FC = () => {
               </div>
             )}
           </div>
+
+          {/* Section 4: AI Learning Resources */}
+          <div className="mb-8">
+            <div className="flex items-center gap-2 mb-4 pb-2 border-b border-slate-200">
+              <Brain size={20} className="text-slate-600" />
+              <h2 className="text-lg font-semibold text-slate-800">
+                {language === 'ja' ? 'AI 学習リソース' : 'AI 学习资源'}
+              </h2>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+              {/* AI Beginner */}
+              <button
+                onClick={() => navigate('/ai-book/beginner')}
+                className="group bg-white rounded-lg p-5 border border-slate-200 hover:border-slate-300 hover:shadow-md transition-all text-left"
+              >
+                <div className="flex items-center gap-4">
+                  <div className="w-10 h-10 rounded-lg bg-blue-600 flex items-center justify-center">
+                    <Lightbulb size={20} className="text-white" />
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="text-sm font-semibold text-slate-800">{language === 'ja' ? 'AI入門ガイド' : 'AI 入门指南'}</h3>
+                    <p className="text-xs text-slate-500">{language === 'ja' ? '5章・基礎から学ぶ' : '5章·从基础开始'}</p>
+                  </div>
+                  <ChevronRight size={16} className="text-slate-400 group-hover:text-slate-600" />
+                </div>
+              </button>
+
+              {/* AI Advanced */}
+              <button
+                onClick={() => navigate('/ai-book/advanced')}
+                className="group bg-white rounded-lg p-5 border border-slate-200 hover:border-slate-300 hover:shadow-md transition-all text-left"
+              >
+                <div className="flex items-center gap-4">
+                  <div className="w-10 h-10 rounded-lg bg-purple-600 flex items-center justify-center">
+                    <Rocket size={20} className="text-white" />
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="text-sm font-semibold text-slate-800">{language === 'ja' ? 'AI実践上級編' : 'AI 进阶实战'}</h3>
+                    <p className="text-xs text-slate-500">{language === 'ja' ? '3章・Agent、RAG' : '3章·Agent、RAG'}</p>
+                  </div>
+                  <ChevronRight size={16} className="text-slate-400 group-hover:text-slate-600" />
+                </div>
+              </button>
+
+              {/* AI Resources */}
+              <button
+                onClick={() => navigate('/ai-resources')}
+                className="group bg-white rounded-lg p-5 border border-slate-200 hover:border-slate-300 hover:shadow-md transition-all text-left"
+              >
+                <div className="flex items-center gap-4">
+                  <div className="w-10 h-10 rounded-lg bg-emerald-600 flex items-center justify-center">
+                    <Boxes size={20} className="text-white" />
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="text-sm font-semibold text-slate-800">{language === 'ja' ? 'AIリソース' : 'AI 资源汇总'}</h3>
+                    <p className="text-xs text-slate-500">{language === 'ja' ? '9ツール・コード付' : '9工具·含代码'}</p>
+                  </div>
+                  <ChevronRight size={16} className="text-slate-400 group-hover:text-slate-600" />
+                </div>
+              </button>
+
+              {/* Exam Tips */}
+              <button
+                onClick={() => navigate('/exam-tips')}
+                className="group bg-white rounded-lg p-5 border border-slate-200 hover:border-slate-300 hover:shadow-md transition-all text-left"
+              >
+                <div className="flex items-center gap-4">
+                  <div className="w-10 h-10 rounded-lg bg-amber-600 flex items-center justify-center">
+                    <Award size={20} className="text-white" />
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="text-sm font-semibold text-slate-800">{language === 'ja' ? '試験攻略ガイド' : '考试攻略指南'}</h3>
+                    <p className="text-xs text-slate-500">{language === 'ja' ? '3社対応・高頻出問題' : '3厂商·高频考点'}</p>
+                  </div>
+                  <ChevronRight size={16} className="text-slate-400 group-hover:text-slate-600" />
+                </div>
+              </button>
+
+              {/* AI Code Examples */}
+              <button
+                onClick={() => navigate('/ai-code-examples')}
+                className="group bg-white rounded-lg p-5 border border-slate-200 hover:border-slate-300 hover:shadow-md transition-all text-left"
+              >
+                <div className="flex items-center gap-4">
+                  <div className="w-10 h-10 rounded-lg bg-cyan-600 flex items-center justify-center">
+                    <Code2 size={20} className="text-white" />
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="text-sm font-semibold text-slate-800">{language === 'ja' ? 'コード実践例' : '代码实战'}</h3>
+                    <p className="text-xs text-slate-500">{language === 'ja' ? '5分野・コピペOK' : '5领域·即学即用'}</p>
+                  </div>
+                  <ChevronRight size={16} className="text-slate-400 group-hover:text-slate-600" />
+                </div>
+              </button>
+
+              {/* Learning Roadmap */}
+              <button
+                onClick={() => navigate('/ai-roadmap')}
+                className="group bg-white rounded-lg p-5 border border-slate-200 hover:border-slate-300 hover:shadow-md transition-all text-left"
+              >
+                <div className="flex items-center gap-4">
+                  <div className="w-10 h-10 rounded-lg bg-rose-600 flex items-center justify-center">
+                    <Map size={20} className="text-white" />
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="text-sm font-semibold text-slate-800">{language === 'ja' ? '学習ロードマップ' : '学习路线图'}</h3>
+                    <p className="text-xs text-slate-500">{language === 'ja' ? '3コース・体系的' : '3路线·系统化'}</p>
+                  </div>
+                  <ChevronRight size={16} className="text-slate-400 group-hover:text-slate-600" />
+                </div>
+              </button>
+            </div>
+
+            {/* Quick Tools */}
+            <div className="mt-4 flex gap-3">
+              <button
+                onClick={() => navigate('/interview-questions')}
+                className="flex items-center gap-2 px-4 py-2 bg-slate-100 hover:bg-slate-200 rounded-lg transition-colors"
+              >
+                <Target size={16} className="text-slate-600" />
+                <span className="text-sm text-slate-700">{language === 'ja' ? '面接対策' : '面试题库'}</span>
+              </button>
+              <button
+                onClick={() => navigate('/cheat-sheets')}
+                className="flex items-center gap-2 px-4 py-2 bg-slate-100 hover:bg-slate-200 rounded-lg transition-colors"
+              >
+                <BookOpen size={16} className="text-slate-600" />
+                <span className="text-sm text-slate-700">{language === 'ja' ? '速查表' : '速查手册'}</span>
+              </button>
+              <button
+                onClick={() => navigate('/glossary')}
+                className="flex items-center gap-2 px-4 py-2 bg-slate-100 hover:bg-slate-200 rounded-lg transition-colors"
+              >
+                <Sparkles size={16} className="text-slate-600" />
+                <span className="text-sm text-slate-700">{language === 'ja' ? '用語集' : '术语词典'}</span>
+              </button>
+            </div>
+          </div>
         </div>
       </section>
 
-      {/* Footer - Compact */}
-      <footer className="relative z-10 py-4 border-t border-stone-200">
-        <div className="text-center">
-          <p className="text-stone-500 text-base">
-            <span className="font-semibold bg-gradient-to-r from-cyan-600 to-purple-600 bg-clip-text text-transparent">StudyForge</span>
-            <span className="mx-2">·</span>
-            {language === 'ja' ? 'AI学習プラットフォーム' : 'AI 学习平台'}
-          </p>
+      {/* Footer - Professional */}
+      <footer className="bg-slate-800 text-white py-4 mt-auto">
+        <div className="px-6 lg:px-10">
+          <div className="flex items-center justify-between text-sm">
+            <span className="font-semibold">StudyForge</span>
+            <span className="text-slate-400">{language === 'ja' ? 'クラウド認定試験対策プラットフォーム' : '云认证考试学习平台'}</span>
+          </div>
         </div>
       </footer>
     </div>
