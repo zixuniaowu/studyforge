@@ -1030,6 +1030,23 @@ export const HomePage: React.FC = () => {
                   <ChevronRight size={16} className="text-slate-400 group-hover:text-slate-600" />
                 </div>
               </button>
+
+              {/* Kids AI Course */}
+              <button
+                onClick={() => navigate('/kids-course')}
+                className="group bg-gradient-to-r from-pink-50 to-purple-50 rounded-lg p-5 border-2 border-pink-200 hover:border-pink-300 hover:shadow-md transition-all text-left"
+              >
+                <div className="flex items-center gap-4">
+                  <div className="w-10 h-10 rounded-lg bg-gradient-to-r from-pink-500 to-purple-500 flex items-center justify-center text-2xl">
+                    🤖
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="text-sm font-semibold text-pink-700">{language === 'ja' ? '子供AI教室' : '儿童AI课堂'}</h3>
+                    <p className="text-xs text-purple-500">{language === 'ja' ? '24レッスン・ゲーム化' : '24课时·游戏化学习'}</p>
+                  </div>
+                  <ChevronRight size={16} className="text-pink-400 group-hover:text-pink-600" />
+                </div>
+              </button>
             </div>
 
             {/* Quick Tools */}

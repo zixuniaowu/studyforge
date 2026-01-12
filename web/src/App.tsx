@@ -13,11 +13,23 @@ import CheatSheetsPage from './pages/CheatSheetsPage';
 import GlossaryPage from './pages/GlossaryPage';
 import NotesPage from './pages/NotesPage';
 import FlashcardsPage from './pages/FlashcardsPage';
+import KidsCoursePage from './pages/KidsCoursePage';
+import KidsLessonPage from './pages/KidsLessonPage';
 import { AIChat } from './components/AIAssistant';
 
 function AppContent() {
   const location = useLocation();
-  const hideHeader = location.pathname.startsWith('/ai-book') || location.pathname.startsWith('/ai-resources') || location.pathname.startsWith('/exam-tips') || location.pathname.startsWith('/ai-code') || location.pathname.startsWith('/ai-roadmap') || location.pathname.startsWith('/interview') || location.pathname.startsWith('/cheat') || location.pathname.startsWith('/glossary') || location.pathname.startsWith('/notes') || location.pathname.startsWith('/flashcards');
+  const hideHeader = location.pathname.startsWith('/ai-book') ||
+    location.pathname.startsWith('/ai-resources') ||
+    location.pathname.startsWith('/exam-tips') ||
+    location.pathname.startsWith('/ai-code') ||
+    location.pathname.startsWith('/ai-roadmap') ||
+    location.pathname.startsWith('/interview') ||
+    location.pathname.startsWith('/cheat') ||
+    location.pathname.startsWith('/glossary') ||
+    location.pathname.startsWith('/notes') ||
+    location.pathname.startsWith('/flashcards') ||
+    location.pathname.startsWith('/kids-course');
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -36,6 +48,9 @@ function AppContent() {
         <Route path="/notes" element={<NotesPage />} />
         <Route path="/flashcards" element={<FlashcardsPage />} />
         <Route path="/certification-path" element={<CertificationPathPage />} />
+        {/* Kids AI Course */}
+        <Route path="/kids-course" element={<KidsCoursePage />} />
+        <Route path="/kids-course/:lessonId" element={<KidsLessonPage />} />
       </Routes>
       {/* Global AI Assistant */}
       <AIChat />

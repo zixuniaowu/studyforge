@@ -147,3 +147,140 @@ export interface ChatMessage {
   content: string;
   timestamp: string;
 }
+
+// ============================================
+// 儿童 AI 课程系统类型
+// ============================================
+
+// 多语言文本
+export interface LocalizedText {
+  zh: string;
+  ja: string;
+}
+
+// 课程单元
+export interface KidsCourseUnit {
+  id: string;
+  title: LocalizedText;
+  description: LocalizedText;
+  icon: string;           // emoji 图标
+  color: string;          // 主题色
+  lessons: KidsLesson[];
+  badge: KidsBadge;
+}
+
+// 课时
+export interface KidsLesson {
+  id: string;
+  unitId: string;
+  order: number;
+  title: LocalizedText;
+  duration: number;       // 分钟
+  type: 'video' | 'reading' | 'interactive' | 'quiz' | 'project';
+
+  // 内容块
+  sections: LessonSection[];
+
+  // 练习题
+  exercises: KidsExercise[];
+
+  // 小测验（课末）
+  quiz?: KidsQuiz;
+
+  // 奖励
+  starsReward: number;
+}
+
+// 内容块
+export interface LessonSection {
+  id: string;
+  type: 'intro' | 'video' | 'text' | 'image' | 'animation' | 'interactive' | 'code';
+  content: LocalizedText;
+  videoUrl?: string;
+  imageUrl?: string;
+  codeExample?: string;
+  duration?: number;
+}
+
+// 练习选项
+export interface ExerciseOption {
+  id: string;
+  text: LocalizedText;
+  imageUrl?: string;
+}
+
+// 练习题（游戏化）
+export interface KidsExercise {
+  id: string;
+  type: 'drag-drop' | 'multiple-choice' | 'fill-blank' | 'code-blocks' | 'match' | 'order';
+  question: LocalizedText;
+  options?: ExerciseOption[];
+  correctAnswer: string | string[];
+  hint?: LocalizedText;
+  encouragement: LocalizedText;  // 鼓励语
+  explanation?: LocalizedText;   // 解释
+}
+
+// 小测验
+export interface KidsQuiz {
+  id: string;
+  questions: KidsExercise[];
+  passingScore: number;   // 及格星数
+  maxStars: number;       // 最高星数
+}
+
+// 徽章
+export interface KidsBadge {
+  id: string;
+  name: LocalizedText;
+  icon: string;
+  description: LocalizedText;
+  condition: string;
+}
+
+// 学习进度
+export interface KidsProgress {
+  id: string;
+  lessonId: string;
+  status: 'locked' | 'available' | 'in-progress' | 'completed';
+  starsEarned: number;
+  completedAt?: string;
+  timeSpent: number;      // 分钟
+}
+
+// 用户成就
+export interface KidsAchievement {
+  id: string;
+  totalStars: number;
+  level: number;
+  currentStreak: number;  // 连续学习天数
+  badges: string[];       // 已获得徽章ID
+  completedLessons: string[];
+  lastLearningDate: string;
+}
+
+// 每日任务
+export interface KidsDailyTask {
+  id: string;
+  date: string;           // YYYY-MM-DD
+  tasks: DailyTaskItem[];
+}
+
+// 每日任务项
+export interface DailyTaskItem {
+  id: string;
+  type: 'lesson' | 'exercise' | 'review' | 'quiz';
+  title: LocalizedText;
+  target: number;
+  progress: number;
+  stars: number;
+  completed: boolean;
+}
+
+// 等级配置
+export interface KidsLevel {
+  level: number;
+  title: LocalizedText;
+  requiredStars: number;
+  reward: string;
+}

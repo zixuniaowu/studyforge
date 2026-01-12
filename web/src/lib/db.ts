@@ -10,7 +10,10 @@ import {
   Flashcard,
   FlashcardReview,
   ChatSession,
-  ChatMessage
+  ChatMessage,
+  KidsProgress,
+  KidsAchievement,
+  KidsDailyTask
 } from '../types';
 
 export class StudyForgeDB extends Dexie {
@@ -19,13 +22,17 @@ export class StudyForgeDB extends Dexie {
   quizSessions!: Table<QuizSession>;
   wrongAnswers!: Table<WrongAnswer>;
   users!: Table<User>;
-  // 新增表
+  // 笔记、闪卡、聊天表
   notes!: Table<Note>;
   flashcardDecks!: Table<FlashcardDeck>;
   flashcards!: Table<Flashcard>;
   flashcardReviews!: Table<FlashcardReview>;
   chatSessions!: Table<ChatSession>;
   chatMessages!: Table<ChatMessage>;
+  // 儿童课程表
+  kidsProgress!: Table<KidsProgress>;
+  kidsAchievements!: Table<KidsAchievement>;
+  kidsDailyTasks!: Table<KidsDailyTask>;
 
   constructor() {
     super('StudyForgeDB');
@@ -45,13 +52,31 @@ export class StudyForgeDB extends Dexie {
       quizSessions: 'id, odId, examId, startTime',
       wrongAnswers: 'id, odId, examId, questionId, [examId+odId]',
       users: 'id, email',
-      // 新增表
       notes: 'id, pageId, examId, questionId, *tags, createdAt, updatedAt',
       flashcardDecks: 'id, category, createdAt',
       flashcards: 'id, deckId, *tags, createdAt',
       flashcardReviews: 'id, cardId, nextReview',
       chatSessions: 'id, pageContext, createdAt',
       chatMessages: 'id, sessionId, role, timestamp'
+    });
+
+    // 版本3：添加儿童课程表
+    this.version(3).stores({
+      exams: 'id, provider, language, code',
+      questions: 'id, examId, domain, setNumber, [examId+domain], [examId+setNumber]',
+      quizSessions: 'id, odId, examId, startTime',
+      wrongAnswers: 'id, odId, examId, questionId, [examId+odId]',
+      users: 'id, email',
+      notes: 'id, pageId, examId, questionId, *tags, createdAt, updatedAt',
+      flashcardDecks: 'id, category, createdAt',
+      flashcards: 'id, deckId, *tags, createdAt',
+      flashcardReviews: 'id, cardId, nextReview',
+      chatSessions: 'id, pageContext, createdAt',
+      chatMessages: 'id, sessionId, role, timestamp',
+      // 儿童课程进度
+      kidsProgress: 'id, lessonId, status',
+      kidsAchievements: 'id, level, totalStars',
+      kidsDailyTasks: 'id, date'
     });
   }
 }
@@ -334,5 +359,175 @@ export const chatDB = {
 
   async deleteMessage(id: string): Promise<void> {
     await db.chatMessages.delete(id);
+  }
+};
+
+// 儿童课程进度相关操作
+export const kidsDB = {
+  // 进度操作
+  async getProgress(lessonId: string): Promise<KidsProgress | undefined> {
+    return db.kidsProgress.where('lessonId').equals(lessonId).first();
+  },
+
+  async getAllProgress(): Promise<KidsProgress[]> {
+    return db.kidsProgress.toArray();
+  },
+
+  async updateProgress(lessonId: string, updates: Partial<KidsProgress>): Promise<void> {
+    const existing = await db.kidsProgress.where('lessonId').equals(lessonId).first();
+    if (existing) {
+      await db.kidsProgress.update(existing.id, updates);
+    } else {
+      await db.kidsProgress.add({
+        id: `progress-${lessonId}`,
+        lessonId,
+        status: 'available',
+        starsEarned: 0,
+        timeSpent: 0,
+        ...updates
+      });
+    }
+  },
+
+  async completeLesson(lessonId: string, starsEarned: number, timeSpent: number): Promise<void> {
+    await this.updateProgress(lessonId, {
+      status: 'completed',
+      starsEarned,
+      timeSpent,
+      completedAt: new Date().toISOString()
+    });
+  },
+
+  async unlockLesson(lessonId: string): Promise<void> {
+    await this.updateProgress(lessonId, { status: 'available' });
+  },
+
+  // 成就操作
+  async getAchievement(): Promise<KidsAchievement | undefined> {
+    return db.kidsAchievements.toCollection().first();
+  },
+
+  async initAchievement(): Promise<KidsAchievement> {
+    const existing = await this.getAchievement();
+    if (existing) return existing;
+
+    const achievement: KidsAchievement = {
+      id: 'main-achievement',
+      totalStars: 0,
+      level: 1,
+      currentStreak: 0,
+      badges: [],
+      completedLessons: [],
+      lastLearningDate: ''
+    };
+    await db.kidsAchievements.add(achievement);
+    return achievement;
+  },
+
+  async updateAchievement(updates: Partial<KidsAchievement>): Promise<void> {
+    const achievement = await this.getAchievement();
+    if (achievement) {
+      await db.kidsAchievements.update(achievement.id, updates);
+    }
+  },
+
+  async addStars(stars: number): Promise<void> {
+    const achievement = await this.getAchievement();
+    if (achievement) {
+      await db.kidsAchievements.update(achievement.id, {
+        totalStars: achievement.totalStars + stars
+      });
+    }
+  },
+
+  async addBadge(badgeId: string): Promise<void> {
+    const achievement = await this.getAchievement();
+    if (achievement && !achievement.badges.includes(badgeId)) {
+      await db.kidsAchievements.update(achievement.id, {
+        badges: [...achievement.badges, badgeId]
+      });
+    }
+  },
+
+  async markLessonCompleted(lessonId: string): Promise<void> {
+    const achievement = await this.getAchievement();
+    if (achievement && !achievement.completedLessons.includes(lessonId)) {
+      await db.kidsAchievements.update(achievement.id, {
+        completedLessons: [...achievement.completedLessons, lessonId]
+      });
+    }
+  },
+
+  async updateStreak(): Promise<void> {
+    const achievement = await this.getAchievement();
+    if (!achievement) return;
+
+    const today = new Date().toISOString().split('T')[0];
+    const lastDate = achievement.lastLearningDate;
+
+    if (lastDate === today) {
+      // 今天已经学习过
+      return;
+    }
+
+    const yesterday = new Date();
+    yesterday.setDate(yesterday.getDate() - 1);
+    const yesterdayStr = yesterday.toISOString().split('T')[0];
+
+    if (lastDate === yesterdayStr) {
+      // 连续学习
+      await db.kidsAchievements.update(achievement.id, {
+        currentStreak: achievement.currentStreak + 1,
+        lastLearningDate: today
+      });
+    } else {
+      // 中断，重新开始
+      await db.kidsAchievements.update(achievement.id, {
+        currentStreak: 1,
+        lastLearningDate: today
+      });
+    }
+  },
+
+  // 每日任务操作
+  async getDailyTasks(date?: string): Promise<KidsDailyTask | undefined> {
+    const targetDate = date || new Date().toISOString().split('T')[0];
+    return db.kidsDailyTasks.where('date').equals(targetDate).first();
+  },
+
+  async createDailyTasks(tasks: KidsDailyTask): Promise<void> {
+    const existing = await this.getDailyTasks(tasks.date);
+    if (existing) {
+      await db.kidsDailyTasks.update(existing.id, { tasks: tasks.tasks, date: tasks.date });
+    } else {
+      await db.kidsDailyTasks.add(tasks);
+    }
+  },
+
+  async updateDailyTask(date: string, taskId: string, progress: number): Promise<void> {
+    const dailyTask = await this.getDailyTasks(date);
+    if (dailyTask) {
+      const updatedTasks = dailyTask.tasks.map(task => {
+        if (task.id === taskId) {
+          const newProgress = Math.min(task.target, progress);
+          return {
+            ...task,
+            progress: newProgress,
+            completed: newProgress >= task.target
+          };
+        }
+        return task;
+      });
+      await db.kidsDailyTasks.update(dailyTask.id, { tasks: updatedTasks });
+    }
+  },
+
+  // 重置所有进度
+  async resetAllProgress(): Promise<void> {
+    await db.transaction('rw', [db.kidsProgress, db.kidsAchievements, db.kidsDailyTasks], async () => {
+      await db.kidsProgress.clear();
+      await db.kidsAchievements.clear();
+      await db.kidsDailyTasks.clear();
+    });
   }
 };
