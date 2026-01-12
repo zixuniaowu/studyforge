@@ -15,7 +15,6 @@ import NotesPage from './pages/NotesPage';
 import FlashcardsPage from './pages/FlashcardsPage';
 import KidsCoursePage from './pages/KidsCoursePage';
 import KidsLessonPage from './pages/KidsLessonPage';
-import { AIChat } from './components/AIAssistant';
 
 function AppContent() {
   const location = useLocation();
@@ -52,8 +51,6 @@ function AppContent() {
         <Route path="/kids-course" element={<KidsCoursePage />} />
         <Route path="/kids-course/:lessonId" element={<KidsLessonPage />} />
       </Routes>
-      {/* Global AI Assistant */}
-      <AIChat />
     </div>
   );
 }
