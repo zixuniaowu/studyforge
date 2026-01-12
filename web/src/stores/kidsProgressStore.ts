@@ -135,28 +135,13 @@ export const useKidsProgressStore = create<KidsProgressStore>()(
         const { progress } = get();
         const lessonProgress = progress[lessonId];
 
+        // 如果有进度记录，返回记录的状态
         if (lessonProgress) {
           return lessonProgress.status;
         }
 
-        // 检查是否是第一课
-        const allLessons = getAllLessons();
-        const lessonIndex = allLessons.findIndex(l => l.lesson.id === lessonId);
-
-        if (lessonIndex === 0) {
-          return 'available';
-        }
-
-        // 检查前一课是否完成
-        if (lessonIndex > 0) {
-          const prevLessonId = allLessons[lessonIndex - 1].lesson.id;
-          const prevProgress = progress[prevLessonId];
-          if (prevProgress?.status === 'completed') {
-            return 'available';
-          }
-        }
-
-        return 'locked';
+        // 所有课程默认开放
+        return 'available';
       },
 
       loadAchievement: async () => {

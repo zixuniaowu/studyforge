@@ -283,10 +283,9 @@ export default function KidsCoursePage() {
   };
 
   // 检查单元是否解锁
-  const isUnitUnlocked = (unitIndex: number) => {
-    if (unitIndex === 0) return true;
-    const prevUnit = kidsCourseUnits[unitIndex - 1];
-    return prevUnit.lessons.every(lesson => progress[lesson.id]?.status === 'completed');
+  // 所有单元都开放
+  const isUnitUnlocked = (_unitIndex: number) => {
+    return true;
   };
 
   if (isLoading) {
