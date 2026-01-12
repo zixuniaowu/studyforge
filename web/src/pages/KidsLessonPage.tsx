@@ -123,6 +123,17 @@ const ExerciseGame = ({
   const [showResult, setShowResult] = useState(false);
   const [isCorrect, setIsCorrect] = useState(false);
   const [showHint, setShowHint] = useState(false);
+  const [hasCompleted, setHasCompleted] = useState(false);
+  const timerRef = useRef<NodeJS.Timeout | null>(null);
+
+  // 清理定时器
+  useEffect(() => {
+    return () => {
+      if (timerRef.current) {
+        clearTimeout(timerRef.current);
+      }
+    };
+  }, []);
 
   const handleSelect = (optionId: string) => {
     if (showResult) return;
@@ -150,6 +161,8 @@ const ExerciseGame = ({
   };
 
   const handleSubmit = () => {
+    if (hasCompleted) return; // 防止重复提交
+
     let correct = false;
     const correctAnswer = Array.isArray(exercise.correctAnswer)
       ? exercise.correctAnswer
@@ -170,8 +183,14 @@ const ExerciseGame = ({
 
     setIsCorrect(correct);
     setShowResult(true);
+    setHasCompleted(true);
 
-    setTimeout(() => {
+    // 清理旧的定时器
+    if (timerRef.current) {
+      clearTimeout(timerRef.current);
+    }
+
+    timerRef.current = setTimeout(() => {
       onComplete(correct);
     }, 2000);
   };
