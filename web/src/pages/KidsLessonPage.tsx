@@ -273,11 +273,13 @@ const ExerciseGame = ({
 const QuizSection = ({
   quiz,
   isZh,
-  onComplete
+  onComplete,
+  onFinish
 }: {
   quiz: KidsQuiz;
   isZh: boolean;
   onComplete: (score: number, maxScore: number) => void;
+  onFinish: () => void;
 }) => {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [score, setScore] = useState(0);
@@ -312,12 +314,18 @@ const QuizSection = ({
           <span className="text-4xl font-bold">{finalScore}/{quiz.questions.length}</span>
           <Star className="w-8 h-8 text-yellow-400 fill-yellow-400" />
         </div>
-        <p className="text-gray-600">
+        <p className="text-gray-600 mb-8">
           {passed
             ? (isZh ? '太棒了！你已经掌握了这些知识！' : 'すごい！これらの知識をマスターした！')
             : (isZh ? '不要灰心，多复习一下再来挑战！' : '落ち込まないで、復習してまた挑戦しよう！')
           }
         </p>
+        <button
+          onClick={onFinish}
+          className="px-8 py-4 bg-gradient-to-r from-purple-500 to-pink-500 text-white text-xl font-bold rounded-2xl hover:opacity-90 transition-all"
+        >
+          {isZh ? '完成课程 🎓' : 'レッスン完了 🎓'}
+        </button>
       </div>
     );
   }
@@ -343,6 +351,7 @@ const QuizSection = ({
       </div>
 
       <ExerciseGame
+        key={`quiz-q-${currentQuestion}`}
         exercise={quiz.questions[currentQuestion]}
         isZh={isZh}
         onComplete={handleQuestionComplete}
@@ -546,6 +555,7 @@ export default function KidsLessonPage() {
 
             {currentStepData?.type === 'exercise' && (
               <ExerciseGame
+                key={`exercise-${currentStep}`}
                 exercise={currentStepData.data as KidsExercise}
                 isZh={isZh}
                 onComplete={handleExerciseComplete}
@@ -554,9 +564,11 @@ export default function KidsLessonPage() {
 
             {currentStepData?.type === 'quiz' && (
               <QuizSection
+                key={`quiz-${currentStep}`}
                 quiz={currentStepData.data as KidsQuiz}
                 isZh={isZh}
                 onComplete={handleQuizComplete}
+                onFinish={handleLessonComplete}
               />
             )}
           </div>
