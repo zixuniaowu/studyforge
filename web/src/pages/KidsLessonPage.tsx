@@ -123,12 +123,33 @@ const ExerciseGame = ({
   const [showResult, setShowResult] = useState(false);
   const [isCorrect, setIsCorrect] = useState(false);
   const [showHint, setShowHint] = useState(false);
-  const [hasCompleted, setHasCompleted] = useState(false);
+  const [waitingForNext, setWaitingForNext] = useState(false);
+  const exerciseIdRef = useRef(exercise.id);
   const timerRef = useRef<NodeJS.Timeout | null>(null);
+  const isMountedRef = useRef(true);
 
-  // 清理定时器
+  // 当 exercise 变化时重置状态
   useEffect(() => {
+    exerciseIdRef.current = exercise.id;
+    setSelectedAnswers([]);
+    setTextAnswer('');
+    setShowResult(false);
+    setIsCorrect(false);
+    setShowHint(false);
+    setWaitingForNext(false);
+
+    // 清理旧的定时器
+    if (timerRef.current) {
+      clearTimeout(timerRef.current);
+      timerRef.current = null;
+    }
+  }, [exercise.id]);
+
+  // 组件卸载时清理
+  useEffect(() => {
+    isMountedRef.current = true;
     return () => {
+      isMountedRef.current = false;
       if (timerRef.current) {
         clearTimeout(timerRef.current);
       }
@@ -136,7 +157,7 @@ const ExerciseGame = ({
   }, []);
 
   const handleSelect = (optionId: string) => {
-    if (showResult) return;
+    if (showResult || waitingForNext) return;
 
     if (exercise.type === 'multiple-choice') {
       // 单选
@@ -161,7 +182,7 @@ const ExerciseGame = ({
   };
 
   const handleSubmit = () => {
-    if (hasCompleted) return; // 防止重复提交
+    if (showResult || waitingForNext) return; // 防止重复提交
 
     let correct = false;
     const correctAnswer = Array.isArray(exercise.correctAnswer)
@@ -183,7 +204,10 @@ const ExerciseGame = ({
 
     setIsCorrect(correct);
     setShowResult(true);
-    setHasCompleted(true);
+    setWaitingForNext(true);
+
+    // 保存当前 exercise.id 用于验证
+    const currentExerciseId = exercise.id;
 
     // 清理旧的定时器
     if (timerRef.current) {
@@ -191,7 +215,10 @@ const ExerciseGame = ({
     }
 
     timerRef.current = setTimeout(() => {
-      onComplete(correct);
+      // 只有当组件仍然挂载且 exercise 没有变化时才调用回调
+      if (isMountedRef.current && exerciseIdRef.current === currentExerciseId) {
+        onComplete(correct);
+      }
     }, 2000);
   };
 
