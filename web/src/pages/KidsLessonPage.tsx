@@ -119,6 +119,7 @@ const ExerciseGame = ({
   onComplete: (correct: boolean) => void;
 }) => {
   const [selectedAnswers, setSelectedAnswers] = useState<string[]>([]);
+  const [textAnswer, setTextAnswer] = useState('');
   const [showResult, setShowResult] = useState(false);
   const [isCorrect, setIsCorrect] = useState(false);
   const [showHint, setShowHint] = useState(false);
@@ -127,8 +128,19 @@ const ExerciseGame = ({
     if (showResult) return;
 
     if (exercise.type === 'multiple-choice') {
+      // 单选
       setSelectedAnswers([optionId]);
+    } else if (exercise.type === 'code-blocks') {
+      // 代码拼图 - 按顺序添加
+      if (selectedAnswers.includes(optionId)) {
+        // 点击已选中的，移除它及之后的所有选择
+        const index = selectedAnswers.indexOf(optionId);
+        setSelectedAnswers(selectedAnswers.slice(0, index));
+      } else {
+        setSelectedAnswers([...selectedAnswers, optionId]);
+      }
     } else if (exercise.type === 'drag-drop' || exercise.type === 'match') {
+      // 多选
       if (selectedAnswers.includes(optionId)) {
         setSelectedAnswers(selectedAnswers.filter(id => id !== optionId));
       } else {
@@ -138,13 +150,23 @@ const ExerciseGame = ({
   };
 
   const handleSubmit = () => {
+    let correct = false;
     const correctAnswer = Array.isArray(exercise.correctAnswer)
       ? exercise.correctAnswer
       : [exercise.correctAnswer];
 
-    const correct = exercise.type === 'multiple-choice'
-      ? selectedAnswers[0] === correctAnswer[0]
-      : JSON.stringify(selectedAnswers.sort()) === JSON.stringify(correctAnswer.sort());
+    if (exercise.type === 'multiple-choice') {
+      correct = selectedAnswers[0] === correctAnswer[0];
+    } else if (exercise.type === 'code-blocks') {
+      // 代码拼图 - 检查顺序
+      correct = JSON.stringify(selectedAnswers) === JSON.stringify(correctAnswer);
+    } else if (exercise.type === 'fill-blank') {
+      // 填空题 - 检查文本答案
+      correct = textAnswer.trim().toLowerCase() === (exercise.correctAnswer as string).toLowerCase();
+    } else {
+      // drag-drop, match - 检查是否包含所有正确答案（不考虑顺序）
+      correct = JSON.stringify(selectedAnswers.sort()) === JSON.stringify(correctAnswer.sort());
+    }
 
     setIsCorrect(correct);
     setShowResult(true);
@@ -153,6 +175,10 @@ const ExerciseGame = ({
       onComplete(correct);
     }, 2000);
   };
+
+  const canSubmit = exercise.type === 'fill-blank'
+    ? textAnswer.trim().length > 0
+    : selectedAnswers.length > 0;
 
   return (
     <div className="bg-white rounded-3xl p-8 shadow-lg mb-6">
@@ -177,51 +203,107 @@ const ExerciseGame = ({
         )}
       </div>
 
-      {/* 选项 */}
-      <div className="grid gap-4 mb-6">
-        {exercise.options?.map(option => {
-          const isSelected = selectedAnswers.includes(option.id);
-          const isAnswerCorrect = Array.isArray(exercise.correctAnswer)
-            ? exercise.correctAnswer.includes(option.id)
-            : exercise.correctAnswer === option.id;
+      {/* 代码拼图 - 显示已选择的代码块 */}
+      {exercise.type === 'code-blocks' && selectedAnswers.length > 0 && (
+        <div className="mb-6 p-4 bg-gray-900 rounded-2xl">
+          <div className="text-sm text-gray-400 mb-2">{isZh ? '你的代码：' : 'あなたのコード：'}</div>
+          <div className="flex flex-wrap gap-2">
+            {selectedAnswers.map((id, index) => {
+              const option = exercise.options?.find(o => o.id === id);
+              return (
+                <span key={index} className="px-3 py-2 bg-green-500 text-white rounded-lg font-mono text-lg">
+                  {option ? (isZh ? option.text.zh : option.text.ja) : id}
+                </span>
+              );
+            })}
+          </div>
+        </div>
+      )}
 
-          let optionStyle = 'bg-gray-50 hover:bg-gray-100 border-2 border-gray-200';
-          if (isSelected && !showResult) {
-            optionStyle = 'bg-purple-100 border-2 border-purple-400';
-          }
-          if (showResult) {
-            if (isAnswerCorrect) {
-              optionStyle = 'bg-green-100 border-2 border-green-400';
-            } else if (isSelected && !isAnswerCorrect) {
-              optionStyle = 'bg-red-100 border-2 border-red-400';
+      {/* 填空题 - 输入框 */}
+      {exercise.type === 'fill-blank' && (
+        <div className="mb-6">
+          <input
+            type="text"
+            value={textAnswer}
+            onChange={(e) => setTextAnswer(e.target.value)}
+            disabled={showResult}
+            placeholder={isZh ? '在这里输入答案...' : 'ここに答えを入力...'}
+            className="w-full p-4 text-xl border-2 border-gray-200 rounded-2xl focus:border-purple-400 focus:outline-none"
+          />
+        </div>
+      )}
+
+      {/* 选项 - 非填空题时显示 */}
+      {exercise.type !== 'fill-blank' && (
+        <div className={`gap-4 mb-6 ${exercise.type === 'code-blocks' ? 'flex flex-wrap' : 'grid'}`}>
+          {exercise.options?.map(option => {
+            const isSelected = selectedAnswers.includes(option.id);
+            const selectionIndex = selectedAnswers.indexOf(option.id);
+            const isAnswerCorrect = Array.isArray(exercise.correctAnswer)
+              ? exercise.correctAnswer.includes(option.id)
+              : exercise.correctAnswer === option.id;
+
+            let optionStyle = 'bg-gray-50 hover:bg-gray-100 border-2 border-gray-200';
+            if (isSelected && !showResult) {
+              optionStyle = 'bg-purple-100 border-2 border-purple-400';
             }
-          }
+            if (showResult) {
+              if (isAnswerCorrect) {
+                optionStyle = 'bg-green-100 border-2 border-green-400';
+              } else if (isSelected && !isAnswerCorrect) {
+                optionStyle = 'bg-red-100 border-2 border-red-400';
+              }
+            }
 
-          return (
-            <button
-              key={option.id}
-              onClick={() => handleSelect(option.id)}
-              disabled={showResult}
-              className={`p-5 rounded-2xl text-left text-lg font-medium transition-all ${optionStyle}`}
-            >
-              <div className="flex items-center gap-3">
-                <div className={`w-8 h-8 rounded-full flex items-center justify-center text-white font-bold ${
-                  isSelected ? 'bg-purple-500' : 'bg-gray-300'
-                }`}>
-                  {option.id.toUpperCase()}
+            // 代码块样式
+            if (exercise.type === 'code-blocks') {
+              return (
+                <button
+                  key={option.id}
+                  onClick={() => handleSelect(option.id)}
+                  disabled={showResult}
+                  className={`px-6 py-4 rounded-2xl text-lg font-mono font-medium transition-all ${optionStyle} ${isSelected ? 'opacity-50' : ''}`}
+                >
+                  <div className="flex items-center gap-2">
+                    {isSelected && (
+                      <span className="w-6 h-6 bg-purple-500 text-white text-sm rounded-full flex items-center justify-center">
+                        {selectionIndex + 1}
+                      </span>
+                    )}
+                    <span>{isZh ? option.text.zh : option.text.ja}</span>
+                  </div>
+                </button>
+              );
+            }
+
+            // 普通选项样式
+            return (
+              <button
+                key={option.id}
+                onClick={() => handleSelect(option.id)}
+                disabled={showResult}
+                className={`p-5 rounded-2xl text-left text-lg font-medium transition-all ${optionStyle}`}
+              >
+                <div className="flex items-center gap-3">
+                  <div className={`w-8 h-8 rounded-full flex items-center justify-center text-white font-bold ${
+                    isSelected ? 'bg-purple-500' : 'bg-gray-300'
+                  }`}>
+                    {option.id.toUpperCase()}
+                  </div>
+                  <span>{isZh ? option.text.zh : option.text.ja}</span>
+                  {showResult && isAnswerCorrect && (
+                    <CheckCircle className="w-6 h-6 text-green-500 ml-auto" />
+                  )}
+                  {showResult && isSelected && !isAnswerCorrect && (
+                    <XCircle className="w-6 h-6 text-red-500 ml-auto" />
+                  )}
                 </div>
-                <span>{isZh ? option.text.zh : option.text.ja}</span>
-                {showResult && isAnswerCorrect && (
-                  <CheckCircle className="w-6 h-6 text-green-500 ml-auto" />
-                )}
-                {showResult && isSelected && !isAnswerCorrect && (
-                  <XCircle className="w-6 h-6 text-red-500 ml-auto" />
-                )}
-              </div>
-            </button>
-          );
-        })}
-      </div>
+              </button>
+            );
+          })}
+        </div>
+      )}
 
       {/* 结果反馈 */}
       {showResult && (
@@ -255,9 +337,9 @@ const ExerciseGame = ({
       {!showResult && (
         <button
           onClick={handleSubmit}
-          disabled={selectedAnswers.length === 0}
+          disabled={!canSubmit}
           className={`w-full py-4 rounded-2xl text-xl font-bold text-white transition-all ${
-            selectedAnswers.length > 0
+            canSubmit
               ? 'bg-gradient-to-r from-purple-500 to-pink-500 hover:opacity-90'
               : 'bg-gray-300 cursor-not-allowed'
           }`}
