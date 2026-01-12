@@ -302,49 +302,51 @@ export default function KidsCoursePage() {
 
   return (
     <div className="min-h-screen pb-20" style={{ backgroundColor: kidsColors.bg }}>
-      {/* 顶部状态栏 */}
-      <div className="sticky top-0 z-10 bg-gradient-to-r from-purple-500 to-pink-500 text-white p-4 shadow-lg">
-        <div className="max-w-4xl mx-auto flex items-center justify-between">
-          {/* 等级和星星 */}
-          <div className="flex items-center gap-4">
-            <div className="bg-white/20 backdrop-blur rounded-2xl px-4 py-2 flex items-center gap-2">
-              <Trophy className="w-6 h-6 text-yellow-300" />
-              <span className="font-bold">
-                Lv.{level} {isZh ? currentLevelConfig?.title.zh : currentLevelConfig?.title.ja}
+      {/* 顶部状态栏 - 全宽 */}
+      <div className="sticky top-0 z-10 bg-gradient-to-r from-purple-500 to-pink-500 text-white shadow-lg">
+        <div className="w-full px-6 lg:px-12 py-4">
+          <div className="flex items-center justify-between">
+            {/* 等级和星星 */}
+            <div className="flex items-center gap-4">
+              <div className="bg-white/20 backdrop-blur rounded-2xl px-5 py-3 flex items-center gap-3">
+                <Trophy className="w-7 h-7 text-yellow-300" />
+                <span className="font-bold text-lg">
+                  Lv.{level} {isZh ? currentLevelConfig?.title.zh : currentLevelConfig?.title.ja}
+                </span>
+              </div>
+              <div className="bg-white/20 backdrop-blur rounded-2xl px-5 py-3 flex items-center gap-3">
+                <Star className="w-7 h-7 text-yellow-300 fill-yellow-300" />
+                <span className="font-bold text-lg">{totalStars}</span>
+              </div>
+            </div>
+
+            {/* 连续学习 */}
+            <div className="bg-white/20 backdrop-blur rounded-2xl px-5 py-3 flex items-center gap-3">
+              <Flame className="w-7 h-7 text-orange-300" />
+              <span className="font-bold text-lg">
+                {streak} {isZh ? '天' : '日'}
               </span>
             </div>
-            <div className="bg-white/20 backdrop-blur rounded-2xl px-4 py-2 flex items-center gap-2">
-              <Star className="w-6 h-6 text-yellow-300 fill-yellow-300" />
-              <span className="font-bold">{totalStars}</span>
+          </div>
+
+          {/* 等级进度条 */}
+          <div className="mt-4">
+            <div className="flex items-center justify-between text-sm mb-2">
+              <span>{isZh ? '升级进度' : 'レベルアップ進捗'}</span>
+              <span>{levelProgress.current}/{levelProgress.next}</span>
             </div>
-          </div>
-
-          {/* 连续学习 */}
-          <div className="bg-white/20 backdrop-blur rounded-2xl px-4 py-2 flex items-center gap-2">
-            <Flame className="w-6 h-6 text-orange-300" />
-            <span className="font-bold">
-              {streak} {isZh ? '天' : '日'}
-            </span>
-          </div>
-        </div>
-
-        {/* 等级进度条 */}
-        <div className="max-w-4xl mx-auto mt-3">
-          <div className="flex items-center justify-between text-sm mb-1">
-            <span>{isZh ? '升级进度' : 'レベルアップ進捗'}</span>
-            <span>{levelProgress.current}/{levelProgress.next}</span>
-          </div>
-          <div className="w-full bg-white/30 rounded-full h-3">
-            <div
-              className="h-full bg-yellow-300 rounded-full transition-all duration-500"
-              style={{ width: `${levelProgress.progress}%` }}
-            />
+            <div className="w-full bg-white/30 rounded-full h-4">
+              <div
+                className="h-full bg-yellow-300 rounded-full transition-all duration-500"
+                style={{ width: `${levelProgress.progress}%` }}
+              />
+            </div>
           </div>
         </div>
       </div>
 
-      {/* 主内容区 */}
-      <div className="max-w-4xl mx-auto p-6">
+      {/* 主内容区 - 全宽 */}
+      <div className="w-full px-6 lg:px-12 py-8">
         {/* 吉祥物欢迎 */}
         <Mascot
           message={isZh
@@ -354,10 +356,10 @@ export default function KidsCoursePage() {
           className="mb-8"
         />
 
-        <div className="grid lg:grid-cols-3 gap-6">
-          {/* 课程列表 */}
-          <div className="lg:col-span-2 space-y-6">
-            <h2 className="text-2xl font-bold text-gray-800 flex items-center gap-2">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
+          {/* 课程列表 - 占 8/12 */}
+          <div className="lg:col-span-8 space-y-6">
+            <h2 className="text-3xl font-bold text-gray-800 flex items-center gap-3">
               📚 {isZh ? '小小AI探险家课程' : '小さなAI冒険家コース'}
             </h2>
 
@@ -373,8 +375,8 @@ export default function KidsCoursePage() {
             ))}
           </div>
 
-          {/* 侧边栏 */}
-          <div className="space-y-6">
+          {/* 侧边栏 - 占 4/12 */}
+          <div className="lg:col-span-4 space-y-6">
             <DailyTasks />
 
             {/* 学习统计 */}
@@ -383,21 +385,21 @@ export default function KidsCoursePage() {
                 📊 {isZh ? '学习统计' : '学習統計'}
               </h3>
               <div className="grid grid-cols-2 gap-4">
-                <div className="bg-purple-50 rounded-2xl p-4 text-center">
-                  <div className="text-3xl font-bold text-purple-600">{completedCount}</div>
-                  <div className="text-sm text-purple-500 mt-1">{isZh ? '已完成课程' : '完了レッスン'}</div>
+                <div className="bg-purple-50 rounded-2xl p-5 text-center">
+                  <div className="text-4xl font-bold text-purple-600">{completedCount}</div>
+                  <div className="text-sm text-purple-500 mt-2">{isZh ? '已完成课程' : '完了レッスン'}</div>
                 </div>
-                <div className="bg-yellow-50 rounded-2xl p-4 text-center">
-                  <div className="text-3xl font-bold text-yellow-600">{totalStars}</div>
-                  <div className="text-sm text-yellow-500 mt-1">{isZh ? '获得星星' : '獲得した星'}</div>
+                <div className="bg-yellow-50 rounded-2xl p-5 text-center">
+                  <div className="text-4xl font-bold text-yellow-600">{totalStars}</div>
+                  <div className="text-sm text-yellow-500 mt-2">{isZh ? '获得星星' : '獲得した星'}</div>
                 </div>
-                <div className="bg-orange-50 rounded-2xl p-4 text-center">
-                  <div className="text-3xl font-bold text-orange-600">{streak}</div>
-                  <div className="text-sm text-orange-500 mt-1">{isZh ? '连续天数' : '連続日数'}</div>
+                <div className="bg-orange-50 rounded-2xl p-5 text-center">
+                  <div className="text-4xl font-bold text-orange-600">{streak}</div>
+                  <div className="text-sm text-orange-500 mt-2">{isZh ? '连续天数' : '連続日数'}</div>
                 </div>
-                <div className="bg-green-50 rounded-2xl p-4 text-center">
-                  <div className="text-3xl font-bold text-green-600">{level}</div>
-                  <div className="text-sm text-green-500 mt-1">{isZh ? '当前等级' : '現在のレベル'}</div>
+                <div className="bg-green-50 rounded-2xl p-5 text-center">
+                  <div className="text-4xl font-bold text-green-600">{level}</div>
+                  <div className="text-sm text-green-500 mt-2">{isZh ? '当前等级' : '現在のレベル'}</div>
                 </div>
               </div>
             </div>
