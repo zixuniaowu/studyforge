@@ -15,12 +15,13 @@ import {
   Bot,
   Sparkles,
   Rocket,
-  Briefcase
+  Briefcase,
+  GraduationCap
 } from 'lucide-react';
 import { useLanguageStore } from '../stores/languageStore';
 import { ColabButton, StackBlitzButton } from '../components/CodeRunner';
 
-type Category = 'langchain' | 'ollama' | 'openai' | 'claude' | 'agent' | 'rag' | 'prompts' | 'cases' | 'deploy';
+type Category = 'tutorial' | 'langchain' | 'ollama' | 'openai' | 'claude' | 'agent' | 'rag' | 'prompts' | 'cases' | 'deploy';
 
 interface CodeExample {
   id: string;
@@ -39,6 +40,2257 @@ const codeExamples: Record<Category, {
   gradient: string;
   examples: CodeExample[];
 }> = {
+  // ==================== 渐进式教程 ====================
+  tutorial: {
+    name: { zh: '🎯 渐进式项目', ja: '🎯 段階的プロジェクト' },
+    description: { zh: '从零开始，10步构建完整AI应用', ja: 'ゼロから始める、10ステップで完全なAIアプリを構築' },
+    icon: GraduationCap,
+    gradient: 'from-purple-500 to-indigo-600',
+    examples: [
+      // ========== Level 1: Hello AI ==========
+      {
+        id: 'tutorial-1',
+        title: { zh: 'Level 1: Hello AI - 第一次对话', ja: 'Level 1: Hello AI - 初めての会話' },
+        description: { zh: '环境配置 + 发送第一条消息给 AI（约40行）', ja: '環境設定 + AIへ最初のメッセージを送信（約40行）' },
+        code: `"""
+===========================================
+Level 1: Hello AI - 你的第一个 AI 程序
+===========================================
+目标：学会调用 AI API，发送消息并获取回复
+代码行数：约 40 行
+前置知识：Python 基础
+===========================================
+"""
+
+# Step 1: 安装依赖
+# pip install anthropic python-dotenv
+
+# Step 2: 创建 .env 文件，添加你的 API Key
+# ANTHROPIC_API_KEY=sk-ant-xxxxx
+
+import os
+from dotenv import load_dotenv
+from anthropic import Anthropic
+
+# 加载环境变量
+load_dotenv()
+
+# 创建客户端
+client = Anthropic(api_key=os.getenv("ANTHROPIC_API_KEY"))
+
+def chat(user_message: str) -> str:
+    """发送消息给 AI 并获取回复"""
+    response = client.messages.create(
+        model="claude-sonnet-4-20250514",
+        max_tokens=1024,
+        messages=[
+            {"role": "user", "content": user_message}
+        ]
+    )
+    return response.content[0].text
+
+# 主程序
+if __name__ == "__main__":
+    print("🤖 Hello AI! 输入 'quit' 退出")
+    print("-" * 40)
+
+    while True:
+        user_input = input("你: ")
+        if user_input.lower() == 'quit':
+            print("再见！")
+            break
+
+        reply = chat(user_input)
+        print(f"AI: {reply}")
+        print("-" * 40)
+
+# 运行: python level1_hello_ai.py
+# 恭喜！你已经完成了第一个 AI 程序！`,
+        language: 'python',
+        difficulty: 'beginner',
+        tags: ['入门', 'API调用', 'Claude', 'Level 1']
+      },
+
+      // ========== Level 2: 流式输出 ==========
+      {
+        id: 'tutorial-2',
+        title: { zh: 'Level 2: 流式输出 - 实时显示回复', ja: 'Level 2: ストリーミング - リアルタイム表示' },
+        description: { zh: '让 AI 回复像打字一样逐字显示（约60行）', ja: 'AIの返信をタイピングのように一文字ずつ表示（約60行）' },
+        code: `"""
+===========================================
+Level 2: 流式输出 - 实时显示 AI 回复
+===========================================
+目标：实现打字机效果，提升用户体验
+新增：流式 API 调用、实时输出处理
+代码行数：约 60 行
+===========================================
+"""
+
+import os
+import sys
+from dotenv import load_dotenv
+from anthropic import Anthropic
+
+load_dotenv()
+client = Anthropic(api_key=os.getenv("ANTHROPIC_API_KEY"))
+
+def chat_stream(user_message: str):
+    """流式输出 - 实时显示 AI 回复"""
+    print("AI: ", end="", flush=True)
+
+    full_response = ""
+
+    # 使用 stream=True 开启流式输出
+    with client.messages.stream(
+        model="claude-sonnet-4-20250514",
+        max_tokens=1024,
+        messages=[{"role": "user", "content": user_message}]
+    ) as stream:
+        for text in stream.text_stream:
+            # 实时打印每个字符
+            print(text, end="", flush=True)
+            full_response += text
+
+    print()  # 换行
+    return full_response
+
+def chat_stream_with_callback(user_message: str, on_token=None):
+    """带回调函数的流式输出 - 方便集成到其他系统"""
+    full_response = ""
+
+    with client.messages.stream(
+        model="claude-sonnet-4-20250514",
+        max_tokens=1024,
+        messages=[{"role": "user", "content": user_message}]
+    ) as stream:
+        for text in stream.text_stream:
+            full_response += text
+            if on_token:
+                on_token(text)  # 调用回调函数
+
+    return full_response
+
+# 主程序
+if __name__ == "__main__":
+    print("🚀 Level 2: 流式输出演示")
+    print("=" * 50)
+
+    # 演示基础流式输出
+    print("\\n【演示1】基础流式输出:")
+    chat_stream("用3句话介绍一下人工智能")
+
+    # 演示带回调的流式输出
+    print("\\n【演示2】带回调函数的流式输出:")
+    char_count = [0]  # 用列表来在闭包中修改
+
+    def count_callback(token):
+        char_count[0] += len(token)
+        sys.stdout.write(token)
+        sys.stdout.flush()
+
+    print("AI: ", end="")
+    result = chat_stream_with_callback("什么是机器学习？", count_callback)
+    print(f"\\n[总字符数: {char_count[0]}]")
+
+    print("\\n✅ Level 2 完成！你学会了流式输出。")`,
+        language: 'python',
+        difficulty: 'beginner',
+        tags: ['流式输出', 'Streaming', 'UX优化', 'Level 2']
+      },
+
+      // ========== Level 3: 多轮对话 ==========
+      {
+        id: 'tutorial-3',
+        title: { zh: 'Level 3: 多轮对话 - 记住上下文', ja: 'Level 3: マルチターン会話 - コンテキスト記憶' },
+        description: { zh: '让 AI 记住之前的对话内容（约90行）', ja: 'AIに以前の会話内容を記憶させる（約90行）' },
+        code: `"""
+===========================================
+Level 3: 多轮对话 - 让 AI 记住上下文
+===========================================
+目标：实现连续对话，AI 能记住之前说过的话
+新增：对话历史管理、上下文传递
+代码行数：约 90 行
+===========================================
+"""
+
+import os
+from dotenv import load_dotenv
+from anthropic import Anthropic
+from typing import List, Dict
+
+load_dotenv()
+client = Anthropic(api_key=os.getenv("ANTHROPIC_API_KEY"))
+
+class ChatBot:
+    """支持多轮对话的聊天机器人"""
+
+    def __init__(self, max_history: int = 20):
+        self.messages: List[Dict[str, str]] = []
+        self.max_history = max_history  # 最大历史记录条数
+
+    def add_message(self, role: str, content: str):
+        """添加消息到历史记录"""
+        self.messages.append({"role": role, "content": content})
+
+        # 防止历史记录过长
+        if len(self.messages) > self.max_history:
+            # 保留最近的消息
+            self.messages = self.messages[-self.max_history:]
+
+    def chat(self, user_message: str) -> str:
+        """发送消息并获取回复"""
+        # 添加用户消息
+        self.add_message("user", user_message)
+
+        # 调用 API，传入完整历史
+        response = client.messages.create(
+            model="claude-sonnet-4-20250514",
+            max_tokens=1024,
+            messages=self.messages  # 传入所有历史消息！
+        )
+
+        assistant_reply = response.content[0].text
+
+        # 添加 AI 回复到历史
+        self.add_message("assistant", assistant_reply)
+
+        return assistant_reply
+
+    def chat_stream(self, user_message: str):
+        """流式多轮对话"""
+        self.add_message("user", user_message)
+
+        print("AI: ", end="", flush=True)
+        full_response = ""
+
+        with client.messages.stream(
+            model="claude-sonnet-4-20250514",
+            max_tokens=1024,
+            messages=self.messages
+        ) as stream:
+            for text in stream.text_stream:
+                print(text, end="", flush=True)
+                full_response += text
+
+        print()
+        self.add_message("assistant", full_response)
+        return full_response
+
+    def clear_history(self):
+        """清空对话历史"""
+        self.messages = []
+        print("✨ 对话历史已清空")
+
+    def show_history(self):
+        """显示对话历史"""
+        print("\\n📜 对话历史:")
+        for i, msg in enumerate(self.messages):
+            role = "你" if msg["role"] == "user" else "AI"
+            print(f"  [{i+1}] {role}: {msg['content'][:50]}...")
+
+# 主程序
+if __name__ == "__main__":
+    print("🧠 Level 3: 多轮对话演示")
+    print("=" * 50)
+    print("命令: /clear 清空历史 | /history 查看历史 | quit 退出")
+    print("=" * 50)
+
+    bot = ChatBot(max_history=10)
+
+    while True:
+        user_input = input("\\n你: ").strip()
+
+        if user_input.lower() == 'quit':
+            break
+        elif user_input == '/clear':
+            bot.clear_history()
+            continue
+        elif user_input == '/history':
+            bot.show_history()
+            continue
+        elif not user_input:
+            continue
+
+        bot.chat_stream(user_input)
+
+    print("\\n✅ Level 3 完成！你学会了多轮对话管理。")`,
+        language: 'python',
+        difficulty: 'beginner',
+        tags: ['多轮对话', 'Context', '历史管理', 'Level 3']
+      },
+
+      // ========== Level 4: 系统角色设定 ==========
+      {
+        id: 'tutorial-4',
+        title: { zh: 'Level 4: 系统角色 - 定制 AI 人格', ja: 'Level 4: システムロール - AIパーソナリティ設定' },
+        description: { zh: '使用系统提示词定制 AI 的性格和行为（约120行）', ja: 'システムプロンプトでAIの性格と行動を設定（約120行）' },
+        code: `"""
+===========================================
+Level 4: 系统角色设定 - 定制 AI 人格
+===========================================
+目标：使用 system prompt 定制 AI 的行为和风格
+新增：系统提示词、角色设定、提示词工程基础
+代码行数：约 120 行
+===========================================
+"""
+
+import os
+from dotenv import load_dotenv
+from anthropic import Anthropic
+from typing import List, Dict, Optional
+
+load_dotenv()
+client = Anthropic(api_key=os.getenv("ANTHROPIC_API_KEY"))
+
+# 预设角色模板
+ROLE_TEMPLATES = {
+    "default": "你是一个友好、专业的AI助手。",
+
+    "teacher": """你是一位耐心的编程老师。
+角色特点：
+- 用简单易懂的语言解释复杂概念
+- 喜欢用生活中的例子做类比
+- 经常鼓励学生，指出他们的进步
+- 如果学生困惑，会分步骤讲解
+- 每次回答后会问"这样解释清楚吗？"
+""",
+
+    "coder": """你是一位资深全栈工程师。
+角色特点：
+- 代码风格简洁优雅，遵循最佳实践
+- 总是先理解需求，再给出方案
+- 代码必须有注释和错误处理
+- 会考虑性能、安全和可维护性
+- 推荐使用现代工具和框架
+""",
+
+    "translator": """你是一位精通中日英的专业翻译。
+角色特点：
+- 翻译准确，保持原文风格
+- 对于专业术语会提供解释
+- 注意文化差异，适当本地化
+- 提供多个可选翻译供参考
+""",
+
+    "assistant": """你是一位高效的私人助理。
+角色特点：
+- 回答简洁明了，直击重点
+- 擅长整理信息、制定计划
+- 主动提供相关建议
+- 使用清晰的格式（列表、表格等）
+"""
+}
+
+class RolePlayChatBot:
+    """支持角色扮演的聊天机器人"""
+
+    def __init__(self, role: str = "default"):
+        self.messages: List[Dict[str, str]] = []
+        self.system_prompt = ROLE_TEMPLATES.get(role, ROLE_TEMPLATES["default"])
+        self.current_role = role
+
+    def set_role(self, role: str):
+        """切换角色"""
+        if role in ROLE_TEMPLATES:
+            self.system_prompt = ROLE_TEMPLATES[role]
+            self.current_role = role
+            self.messages = []  # 切换角色时清空历史
+            print(f"✅ 已切换到角色: {role}")
+        else:
+            print(f"❌ 未知角色: {role}")
+            print(f"可用角色: {list(ROLE_TEMPLATES.keys())}")
+
+    def set_custom_role(self, prompt: str):
+        """设置自定义角色"""
+        self.system_prompt = prompt
+        self.current_role = "custom"
+        self.messages = []
+        print("✅ 已设置自定义角色")
+
+    def chat(self, user_message: str) -> str:
+        """对话"""
+        self.messages.append({"role": "user", "content": user_message})
+
+        response = client.messages.create(
+            model="claude-sonnet-4-20250514",
+            max_tokens=1024,
+            system=self.system_prompt,  # 传入系统提示词！
+            messages=self.messages
+        )
+
+        reply = response.content[0].text
+        self.messages.append({"role": "assistant", "content": reply})
+        return reply
+
+    def chat_stream(self, user_message: str):
+        """流式对话"""
+        self.messages.append({"role": "user", "content": user_message})
+
+        print("AI: ", end="", flush=True)
+        full_response = ""
+
+        with client.messages.stream(
+            model="claude-sonnet-4-20250514",
+            max_tokens=1024,
+            system=self.system_prompt,
+            messages=self.messages
+        ) as stream:
+            for text in stream.text_stream:
+                print(text, end="", flush=True)
+                full_response += text
+
+        print()
+        self.messages.append({"role": "assistant", "content": full_response})
+
+# 主程序
+if __name__ == "__main__":
+    print("🎭 Level 4: 系统角色设定演示")
+    print("=" * 50)
+    print("命令:")
+    print("  /roles      - 查看可用角色")
+    print("  /role <名字> - 切换角色")
+    print("  /current    - 显示当前角色")
+    print("  quit        - 退出")
+    print("=" * 50)
+
+    bot = RolePlayChatBot("teacher")
+    print(f"当前角色: {bot.current_role}")
+
+    while True:
+        user_input = input("\\n你: ").strip()
+
+        if user_input.lower() == 'quit':
+            break
+        elif user_input == '/roles':
+            print("可用角色:", list(ROLE_TEMPLATES.keys()))
+            continue
+        elif user_input.startswith('/role '):
+            role = user_input.split(' ', 1)[1]
+            bot.set_role(role)
+            continue
+        elif user_input == '/current':
+            print(f"当前角色: {bot.current_role}")
+            print(f"系统提示:\\n{bot.system_prompt[:100]}...")
+            continue
+        elif not user_input:
+            continue
+
+        bot.chat_stream(user_input)
+
+    print("\\n✅ Level 4 完成！你学会了系统角色设定。")`,
+        language: 'python',
+        difficulty: 'intermediate',
+        tags: ['System Prompt', '角色扮演', '提示词工程', 'Level 4']
+      },
+
+      // ========== Level 5: 错误处理与重试 ==========
+      {
+        id: 'tutorial-5',
+        title: { zh: 'Level 5: 健壮性 - 错误处理与重试', ja: 'Level 5: 堅牢性 - エラー処理とリトライ' },
+        description: { zh: '添加异常处理、自动重试、日志记录（约150行）', ja: '例外処理、自動リトライ、ログ記録を追加（約150行）' },
+        code: `"""
+===========================================
+Level 5: 健壮性 - 错误处理与重试机制
+===========================================
+目标：让程序更加稳定，能够处理各种异常情况
+新增：异常处理、指数退避重试、日志系统、超时控制
+代码行数：约 150 行
+===========================================
+"""
+
+import os
+import time
+import logging
+from dotenv import load_dotenv
+from anthropic import Anthropic, APIError, RateLimitError, APIConnectionError
+from typing import List, Dict, Optional, Callable
+from functools import wraps
+
+load_dotenv()
+
+# 配置日志
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s [%(levelname)s] %(message)s',
+    handlers=[
+        logging.StreamHandler(),
+        logging.FileHandler('chatbot.log', encoding='utf-8')
+    ]
+)
+logger = logging.getLogger(__name__)
+
+def retry_with_exponential_backoff(
+    max_retries: int = 3,
+    base_delay: float = 1.0,
+    max_delay: float = 60.0,
+    exceptions: tuple = (RateLimitError, APIConnectionError)
+):
+    """
+    装饰器：指数退避重试
+    - max_retries: 最大重试次数
+    - base_delay: 基础延迟（秒）
+    - max_delay: 最大延迟（秒）
+    - exceptions: 需要重试的异常类型
+    """
+    def decorator(func: Callable):
+        @wraps(func)
+        def wrapper(*args, **kwargs):
+            last_exception = None
+
+            for attempt in range(max_retries + 1):
+                try:
+                    return func(*args, **kwargs)
+                except exceptions as e:
+                    last_exception = e
+
+                    if attempt == max_retries:
+                        logger.error(f"重试 {max_retries} 次后仍失败: {e}")
+                        raise
+
+                    # 计算延迟：2^attempt * base_delay，但不超过 max_delay
+                    delay = min(base_delay * (2 ** attempt), max_delay)
+                    logger.warning(f"请求失败 (尝试 {attempt + 1}/{max_retries + 1}): {e}")
+                    logger.info(f"等待 {delay:.1f} 秒后重试...")
+                    time.sleep(delay)
+
+            raise last_exception
+        return wrapper
+    return decorator
+
+class RobustChatBot:
+    """健壮的聊天机器人"""
+
+    def __init__(self, max_history: int = 20):
+        self.client = Anthropic(api_key=os.getenv("ANTHROPIC_API_KEY"))
+        self.messages: List[Dict[str, str]] = []
+        self.max_history = max_history
+        self.system_prompt = "你是一个友好的AI助手。"
+
+        logger.info("ChatBot 初始化完成")
+
+    @retry_with_exponential_backoff(max_retries=3)
+    def _call_api(self, messages: List[Dict]) -> str:
+        """调用 API（带重试机制）"""
+        logger.debug(f"调用 API，消息数: {len(messages)}")
+
+        response = self.client.messages.create(
+            model="claude-sonnet-4-20250514",
+            max_tokens=1024,
+            system=self.system_prompt,
+            messages=messages
+        )
+
+        return response.content[0].text
+
+    def chat(self, user_message: str) -> Optional[str]:
+        """发送消息（带完整错误处理）"""
+        if not user_message.strip():
+            logger.warning("收到空消息")
+            return None
+
+        try:
+            self.messages.append({"role": "user", "content": user_message})
+
+            # 控制历史长度
+            if len(self.messages) > self.max_history:
+                removed = len(self.messages) - self.max_history
+                self.messages = self.messages[-self.max_history:]
+                logger.info(f"历史记录过长，移除了 {removed} 条旧消息")
+
+            # 调用 API
+            reply = self._call_api(self.messages)
+
+            self.messages.append({"role": "assistant", "content": reply})
+            logger.info(f"对话成功，回复长度: {len(reply)}")
+
+            return reply
+
+        except RateLimitError as e:
+            logger.error(f"API 速率限制: {e}")
+            return "⚠️ 请求太频繁，请稍后再试。"
+
+        except APIConnectionError as e:
+            logger.error(f"网络连接错误: {e}")
+            return "⚠️ 网络连接失败，请检查网络。"
+
+        except APIError as e:
+            logger.error(f"API 错误: {e}")
+            return f"⚠️ API 错误: {e.message}"
+
+        except Exception as e:
+            logger.exception(f"未知错误: {e}")
+            return "⚠️ 发生未知错误，请重试。"
+
+    def chat_stream(self, user_message: str):
+        """流式对话（带错误处理）"""
+        if not user_message.strip():
+            return
+
+        try:
+            self.messages.append({"role": "user", "content": user_message})
+
+            print("AI: ", end="", flush=True)
+            full_response = ""
+
+            with self.client.messages.stream(
+                model="claude-sonnet-4-20250514",
+                max_tokens=1024,
+                system=self.system_prompt,
+                messages=self.messages
+            ) as stream:
+                for text in stream.text_stream:
+                    print(text, end="", flush=True)
+                    full_response += text
+
+            print()
+            self.messages.append({"role": "assistant", "content": full_response})
+            logger.info(f"流式对话成功，回复长度: {len(full_response)}")
+
+        except Exception as e:
+            print(f"\\n⚠️ 错误: {e}")
+            logger.exception("流式对话失败")
+
+# 主程序
+if __name__ == "__main__":
+    print("🛡️ Level 5: 健壮性演示")
+    print("=" * 50)
+    print("这个版本添加了：")
+    print("  - 自动重试（指数退避）")
+    print("  - 完整的错误处理")
+    print("  - 日志记录（chatbot.log）")
+    print("=" * 50)
+
+    bot = RobustChatBot()
+
+    while True:
+        user_input = input("\\n你: ").strip()
+
+        if user_input.lower() == 'quit':
+            break
+        elif not user_input:
+            continue
+
+        bot.chat_stream(user_input)
+
+    print("\\n✅ Level 5 完成！你学会了错误处理与重试机制。")
+    print("💡 提示：查看 chatbot.log 文件了解日志记录。")`,
+        language: 'python',
+        difficulty: 'intermediate',
+        tags: ['错误处理', '重试机制', '日志', 'Level 5']
+      },
+
+      // ========== Level 6: 工具调用 ==========
+      {
+        id: 'tutorial-6',
+        title: { zh: 'Level 6: 工具调用 - 让 AI 使用工具', ja: 'Level 6: ツール呼び出し - AIにツールを使わせる' },
+        description: { zh: 'Function Calling 实现天气查询、计算器等功能（约200行）', ja: 'Function Callingで天気検索、計算機などを実装（約200行）' },
+        code: `"""
+===========================================
+Level 6: 工具调用 (Function Calling)
+===========================================
+目标：让 AI 能够调用外部工具/函数，扩展能力
+新增：Tool Use、工具定义、工具执行循环
+代码行数：约 200 行
+===========================================
+"""
+
+import os
+import json
+from dotenv import load_dotenv
+from anthropic import Anthropic
+from typing import List, Dict, Any
+from datetime import datetime
+
+load_dotenv()
+client = Anthropic(api_key=os.getenv("ANTHROPIC_API_KEY"))
+
+# ==================== 工具定义 ====================
+TOOLS = [
+    {
+        "name": "get_current_time",
+        "description": "获取当前日期和时间",
+        "input_schema": {
+            "type": "object",
+            "properties": {
+                "timezone": {
+                    "type": "string",
+                    "description": "时区，如 'Asia/Shanghai', 'Asia/Tokyo'"
+                }
+            },
+            "required": []
+        }
+    },
+    {
+        "name": "calculator",
+        "description": "执行数学计算，支持加减乘除、幂运算等",
+        "input_schema": {
+            "type": "object",
+            "properties": {
+                "expression": {
+                    "type": "string",
+                    "description": "数学表达式，如 '2 + 3 * 4', 'sqrt(16)'"
+                }
+            },
+            "required": ["expression"]
+        }
+    },
+    {
+        "name": "get_weather",
+        "description": "获取指定城市的天气信息",
+        "input_schema": {
+            "type": "object",
+            "properties": {
+                "city": {
+                    "type": "string",
+                    "description": "城市名称，如 '北京', '东京', 'New York'"
+                }
+            },
+            "required": ["city"]
+        }
+    },
+    {
+        "name": "search_knowledge",
+        "description": "在知识库中搜索信息",
+        "input_schema": {
+            "type": "object",
+            "properties": {
+                "query": {
+                    "type": "string",
+                    "description": "搜索关键词"
+                }
+            },
+            "required": ["query"]
+        }
+    }
+]
+
+# ==================== 工具实现 ====================
+def get_current_time(timezone: str = "Asia/Shanghai") -> str:
+    """获取当前时间"""
+    from datetime import datetime
+    import pytz
+
+    try:
+        tz = pytz.timezone(timezone)
+        now = datetime.now(tz)
+        return now.strftime("%Y年%m月%d日 %H:%M:%S")
+    except:
+        return datetime.now().strftime("%Y年%m月%d日 %H:%M:%S")
+
+def calculator(expression: str) -> str:
+    """计算数学表达式"""
+    import math
+
+    # 安全的数学函数
+    safe_dict = {
+        "sqrt": math.sqrt, "sin": math.sin, "cos": math.cos,
+        "tan": math.tan, "log": math.log, "log10": math.log10,
+        "exp": math.exp, "pow": pow, "abs": abs,
+        "pi": math.pi, "e": math.e
+    }
+
+    try:
+        # 安全执行（只允许数学运算）
+        result = eval(expression, {"__builtins__": {}}, safe_dict)
+        return f"计算结果: {expression} = {result}"
+    except Exception as e:
+        return f"计算错误: {e}"
+
+def get_weather(city: str) -> str:
+    """模拟天气查询（实际应调用天气 API）"""
+    # 模拟数据（实际应调用真实 API）
+    weather_data = {
+        "北京": {"temp": 25, "condition": "晴", "humidity": 45},
+        "上海": {"temp": 28, "condition": "多云", "humidity": 65},
+        "东京": {"temp": 22, "condition": "小雨", "humidity": 80},
+        "纽约": {"temp": 18, "condition": "阴", "humidity": 55},
+    }
+
+    if city in weather_data:
+        w = weather_data[city]
+        return f"{city}天气: {w['condition']}, 温度 {w['temp']}°C, 湿度 {w['humidity']}%"
+    return f"抱歉，暂无 {city} 的天气数据"
+
+def search_knowledge(query: str) -> str:
+    """模拟知识库搜索"""
+    knowledge_base = {
+        "python": "Python 是一种高级编程语言，以简洁易读著称。",
+        "ai": "人工智能(AI)是让机器模拟人类智能的技术。",
+        "机器学习": "机器学习是 AI 的子领域，让机器从数据中学习。",
+    }
+
+    for key, value in knowledge_base.items():
+        if key in query.lower():
+            return value
+    return f"未找到与 '{query}' 相关的信息"
+
+# 工具执行映射
+TOOL_FUNCTIONS = {
+    "get_current_time": get_current_time,
+    "calculator": calculator,
+    "get_weather": get_weather,
+    "search_knowledge": search_knowledge,
+}
+
+def execute_tool(tool_name: str, tool_input: Dict) -> str:
+    """执行工具"""
+    if tool_name in TOOL_FUNCTIONS:
+        return TOOL_FUNCTIONS[tool_name](**tool_input)
+    return f"未知工具: {tool_name}"
+
+# ==================== AI + 工具循环 ====================
+def chat_with_tools(user_message: str) -> str:
+    """带工具调用的对话"""
+    messages = [{"role": "user", "content": user_message}]
+
+    print(f"\\n🔧 开始处理: {user_message}")
+
+    while True:
+        # 调用 AI
+        response = client.messages.create(
+            model="claude-sonnet-4-20250514",
+            max_tokens=1024,
+            tools=TOOLS,
+            messages=messages
+        )
+
+        # 检查是否需要调用工具
+        if response.stop_reason == "tool_use":
+            # 处理所有工具调用
+            tool_results = []
+
+            for content in response.content:
+                if content.type == "tool_use":
+                    tool_name = content.name
+                    tool_input = content.input
+                    tool_id = content.id
+
+                    print(f"  📌 调用工具: {tool_name}")
+                    print(f"     参数: {tool_input}")
+
+                    # 执行工具
+                    result = execute_tool(tool_name, tool_input)
+                    print(f"     结果: {result}")
+
+                    tool_results.append({
+                        "type": "tool_result",
+                        "tool_use_id": tool_id,
+                        "content": result
+                    })
+
+            # 将 AI 响应和工具结果加入消息历史
+            messages.append({"role": "assistant", "content": response.content})
+            messages.append({"role": "user", "content": tool_results})
+
+        else:
+            # 没有工具调用，返回最终回复
+            final_text = ""
+            for content in response.content:
+                if hasattr(content, "text"):
+                    final_text += content.text
+
+            print(f"\\n✅ AI 回复: {final_text}")
+            return final_text
+
+# 主程序
+if __name__ == "__main__":
+    print("🔧 Level 6: 工具调用演示")
+    print("=" * 50)
+    print("可用工具:")
+    print("  - 时间查询: '现在几点了'")
+    print("  - 计算器: '计算 123 * 456'")
+    print("  - 天气: '北京天气怎么样'")
+    print("  - 知识搜索: '什么是机器学习'")
+    print("=" * 50)
+
+    # 演示
+    test_queries = [
+        "现在北京时间几点了？",
+        "帮我计算 sqrt(144) + 15 * 3",
+        "东京今天天气如何？",
+        "北京和上海的天气哪个更热？"
+    ]
+
+    for query in test_queries:
+        chat_with_tools(query)
+        print("-" * 50)
+
+    print("\\n✅ Level 6 完成！你学会了工具调用。")`,
+        language: 'python',
+        difficulty: 'intermediate',
+        tags: ['Tool Use', 'Function Calling', '扩展能力', 'Level 6']
+      },
+
+      // ========== Level 7: RAG 知识库 ==========
+      {
+        id: 'tutorial-7',
+        title: { zh: 'Level 7: RAG 知识库 - 让 AI 学习你的文档', ja: 'Level 7: RAGナレッジベース - AIにドキュメントを学習させる' },
+        description: { zh: '向量数据库 + 文档检索 + 生成回答（约280行）', ja: 'ベクトルDB + 文書検索 + 回答生成（約280行）' },
+        code: `"""
+===========================================
+Level 7: RAG 知识库 - 让 AI 学习你的文档
+===========================================
+目标：实现检索增强生成(RAG)，让 AI 基于你的文档回答问题
+新增：向量数据库、文档切分、嵌入模型、检索-生成流程
+代码行数：约 280 行
+
+安装依赖：
+pip install chromadb sentence-transformers anthropic
+===========================================
+"""
+
+import os
+from dotenv import load_dotenv
+from anthropic import Anthropic
+from typing import List, Dict, Optional
+import chromadb
+from chromadb.utils import embedding_functions
+
+load_dotenv()
+
+# ==================== 配置 ====================
+EMBEDDING_MODEL = "paraphrase-multilingual-MiniLM-L12-v2"  # 多语言嵌入模型
+COLLECTION_NAME = "my_knowledge_base"
+CHUNK_SIZE = 500  # 每个文档块的最大字符数
+CHUNK_OVERLAP = 50  # 块之间的重叠字符数
+TOP_K = 3  # 检索返回的相关文档数
+
+# ==================== 文档处理 ====================
+def split_text(text: str, chunk_size: int = CHUNK_SIZE, overlap: int = CHUNK_OVERLAP) -> List[str]:
+    """将长文本切分成小块"""
+    chunks = []
+    start = 0
+
+    while start < len(text):
+        end = start + chunk_size
+
+        # 尝试在句子边界切分
+        if end < len(text):
+            # 找最近的句号、问号、感叹号
+            for punct in ['。', '！', '？', '.', '!', '?', '\\n\\n']:
+                pos = text.rfind(punct, start, end)
+                if pos != -1:
+                    end = pos + 1
+                    break
+
+        chunk = text[start:end].strip()
+        if chunk:
+            chunks.append(chunk)
+
+        start = end - overlap
+
+    return chunks
+
+# ==================== 知识库类 ====================
+class KnowledgeBase:
+    """基于 ChromaDB 的向量知识库"""
+
+    def __init__(self, persist_directory: str = "./chroma_db"):
+        # 初始化 ChromaDB（持久化存储）
+        self.client = chromadb.PersistentClient(path=persist_directory)
+
+        # 使用多语言嵌入模型
+        self.embedding_fn = embedding_functions.SentenceTransformerEmbeddingFunction(
+            model_name=EMBEDDING_MODEL
+        )
+
+        # 获取或创建集合
+        self.collection = self.client.get_or_create_collection(
+            name=COLLECTION_NAME,
+            embedding_function=self.embedding_fn,
+            metadata={"hnsw:space": "cosine"}
+        )
+
+        print(f"📚 知识库已加载，当前文档数: {self.collection.count()}")
+
+    def add_document(self, content: str, source: str = "unknown", metadata: Dict = None):
+        """添加文档到知识库"""
+        chunks = split_text(content)
+
+        ids = []
+        documents = []
+        metadatas = []
+
+        for i, chunk in enumerate(chunks):
+            doc_id = f"{source}_{i}_{hash(chunk) % 10000}"
+            ids.append(doc_id)
+            documents.append(chunk)
+            metadatas.append({
+                "source": source,
+                "chunk_index": i,
+                **(metadata or {})
+            })
+
+        self.collection.add(
+            ids=ids,
+            documents=documents,
+            metadatas=metadatas
+        )
+
+        print(f"✅ 已添加 {len(chunks)} 个文档块 (来源: {source})")
+
+    def add_file(self, file_path: str):
+        """从文件添加文档"""
+        with open(file_path, 'r', encoding='utf-8') as f:
+            content = f.read()
+
+        source = os.path.basename(file_path)
+        self.add_document(content, source=source)
+
+    def search(self, query: str, top_k: int = TOP_K) -> List[Dict]:
+        """搜索相关文档"""
+        results = self.collection.query(
+            query_texts=[query],
+            n_results=top_k
+        )
+
+        documents = []
+        for i in range(len(results['ids'][0])):
+            documents.append({
+                "id": results['ids'][0][i],
+                "content": results['documents'][0][i],
+                "metadata": results['metadatas'][0][i],
+                "distance": results['distances'][0][i] if 'distances' in results else None
+            })
+
+        return documents
+
+    def clear(self):
+        """清空知识库"""
+        self.client.delete_collection(COLLECTION_NAME)
+        self.collection = self.client.get_or_create_collection(
+            name=COLLECTION_NAME,
+            embedding_function=self.embedding_fn
+        )
+        print("🗑️ 知识库已清空")
+
+# ==================== RAG 聊天机器人 ====================
+class RAGChatBot:
+    """带知识库的 RAG 聊天机器人"""
+
+    def __init__(self):
+        self.client = Anthropic(api_key=os.getenv("ANTHROPIC_API_KEY"))
+        self.kb = KnowledgeBase()
+        self.messages: List[Dict] = []
+
+    def _build_context(self, query: str) -> str:
+        """构建上下文（检索相关文档）"""
+        docs = self.kb.search(query)
+
+        if not docs:
+            return ""
+
+        context_parts = ["以下是相关的参考资料：\\n"]
+        for i, doc in enumerate(docs, 1):
+            source = doc['metadata'].get('source', '未知')
+            context_parts.append(f"[资料{i}] (来源: {source})\\n{doc['content']}\\n")
+
+        return "\\n".join(context_parts)
+
+    def chat(self, user_message: str) -> str:
+        """RAG 对话"""
+        # Step 1: 检索相关文档
+        context = self._build_context(user_message)
+
+        # Step 2: 构建增强提示
+        if context:
+            enhanced_message = f"""请根据以下参考资料回答用户问题。
+如果资料中没有相关信息，请诚实地说不知道。
+
+{context}
+
+用户问题：{user_message}"""
+        else:
+            enhanced_message = user_message
+
+        self.messages.append({"role": "user", "content": enhanced_message})
+
+        # Step 3: 调用 AI 生成回答
+        response = self.client.messages.create(
+            model="claude-sonnet-4-20250514",
+            max_tokens=1024,
+            system="你是一个知识库助手，基于提供的资料回答问题。回答要准确、简洁。",
+            messages=self.messages
+        )
+
+        reply = response.content[0].text
+        self.messages.append({"role": "assistant", "content": reply})
+
+        return reply
+
+    def chat_stream(self, user_message: str):
+        """RAG 流式对话"""
+        context = self._build_context(user_message)
+
+        if context:
+            print("\\n📖 找到相关资料，正在生成回答...")
+            enhanced_message = f"""请根据以下参考资料回答用户问题。
+{context}
+
+用户问题：{user_message}"""
+        else:
+            print("\\n⚠️ 未找到相关资料，使用通用知识回答...")
+            enhanced_message = user_message
+
+        self.messages.append({"role": "user", "content": enhanced_message})
+
+        print("AI: ", end="", flush=True)
+        full_response = ""
+
+        with self.client.messages.stream(
+            model="claude-sonnet-4-20250514",
+            max_tokens=1024,
+            system="你是一个知识库助手，基于提供的资料回答问题。回答要准确、简洁。",
+            messages=self.messages
+        ) as stream:
+            for text in stream.text_stream:
+                print(text, end="", flush=True)
+                full_response += text
+
+        print()
+        self.messages.append({"role": "assistant", "content": full_response})
+
+# ==================== 主程序 ====================
+if __name__ == "__main__":
+    print("📚 Level 7: RAG 知识库演示")
+    print("=" * 50)
+
+    bot = RAGChatBot()
+
+    # 添加示例文档
+    sample_docs = [
+        ("Python是一种高级编程语言，由Guido van Rossum于1991年创建。"
+         "Python以其简洁易读的语法著称，支持多种编程范式，包括面向对象、函数式和过程式编程。"
+         "Python广泛应用于Web开发、数据科学、人工智能、自动化脚本等领域。"),
+
+        ("机器学习是人工智能的一个子领域，它使计算机能够从数据中学习，而无需明确编程。"
+         "常见的机器学习算法包括：线性回归、决策树、随机森林、神经网络等。"
+         "深度学习是机器学习的一个分支，使用多层神经网络处理复杂问题。"),
+
+        ("大语言模型(LLM)是基于Transformer架构的AI模型，通过大量文本数据训练。"
+         "知名的LLM包括：GPT系列、Claude、Gemini、LLaMA等。"
+         "LLM可以执行文本生成、翻译、摘要、问答等多种任务。")
+    ]
+
+    for i, doc in enumerate(sample_docs):
+        bot.kb.add_document(doc, source=f"doc_{i+1}")
+
+    print("\\n命令:")
+    print("  /add <文本>  - 添加文档")
+    print("  /search <词> - 搜索知识库")
+    print("  /clear       - 清空知识库")
+    print("  quit         - 退出")
+    print("=" * 50)
+
+    while True:
+        user_input = input("\\n你: ").strip()
+
+        if user_input.lower() == 'quit':
+            break
+        elif user_input.startswith('/add '):
+            text = user_input[5:]
+            bot.kb.add_document(text, source="user_input")
+        elif user_input.startswith('/search '):
+            query = user_input[8:]
+            results = bot.kb.search(query)
+            for r in results:
+                print(f"  - {r['content'][:100]}...")
+        elif user_input == '/clear':
+            bot.kb.clear()
+        elif user_input:
+            bot.chat_stream(user_input)
+
+    print("\\n✅ Level 7 完成！你学会了 RAG 知识库。")`,
+        language: 'python',
+        difficulty: 'intermediate',
+        tags: ['RAG', 'Vector DB', 'ChromaDB', 'Embeddings', 'Level 7']
+      },
+
+      // ========== Level 8: Agent 智能体 ==========
+      {
+        id: 'tutorial-8',
+        title: { zh: 'Level 8: Agent 智能体 - 自主决策系统', ja: 'Level 8: Agentインテリジェント体 - 自律決定システム' },
+        description: { zh: '实现自主规划、执行、反思的 AI Agent（约350行）', ja: '自律的に計画、実行、反省するAI Agentを実装（約350行）' },
+        code: `"""
+===========================================
+Level 8: Agent 智能体 - 自主决策系统
+===========================================
+目标：构建能够自主规划、执行和反思的 AI Agent
+新增：Agent 循环、思维链、任务分解、执行监控
+代码行数：约 350 行
+===========================================
+"""
+
+import os
+import json
+from dotenv import load_dotenv
+from anthropic import Anthropic
+from typing import List, Dict, Any, Optional
+from dataclasses import dataclass, field
+from datetime import datetime
+from enum import Enum
+
+load_dotenv()
+client = Anthropic(api_key=os.getenv("ANTHROPIC_API_KEY"))
+
+# ==================== 数据结构 ====================
+class TaskStatus(Enum):
+    PENDING = "pending"
+    IN_PROGRESS = "in_progress"
+    COMPLETED = "completed"
+    FAILED = "failed"
+
+@dataclass
+class Task:
+    """任务对象"""
+    id: str
+    description: str
+    status: TaskStatus = TaskStatus.PENDING
+    result: Optional[str] = None
+    created_at: str = field(default_factory=lambda: datetime.now().isoformat())
+
+@dataclass
+class AgentState:
+    """Agent 状态"""
+    goal: str
+    tasks: List[Task] = field(default_factory=list)
+    thoughts: List[str] = field(default_factory=list)
+    current_task_index: int = 0
+    is_complete: bool = False
+
+# ==================== 工具定义 ====================
+TOOLS = [
+    {
+        "name": "think",
+        "description": "记录思考过程，分析问题或规划下一步",
+        "input_schema": {
+            "type": "object",
+            "properties": {
+                "thought": {"type": "string", "description": "思考内容"}
+            },
+            "required": ["thought"]
+        }
+    },
+    {
+        "name": "create_plan",
+        "description": "创建任务计划，将目标分解为具体步骤",
+        "input_schema": {
+            "type": "object",
+            "properties": {
+                "tasks": {
+                    "type": "array",
+                    "items": {"type": "string"},
+                    "description": "任务列表"
+                }
+            },
+            "required": ["tasks"]
+        }
+    },
+    {
+        "name": "execute_task",
+        "description": "执行当前任务并返回结果",
+        "input_schema": {
+            "type": "object",
+            "properties": {
+                "action": {"type": "string", "description": "要执行的动作"},
+                "details": {"type": "string", "description": "执行细节"}
+            },
+            "required": ["action"]
+        }
+    },
+    {
+        "name": "search_web",
+        "description": "搜索网络获取信息（模拟）",
+        "input_schema": {
+            "type": "object",
+            "properties": {
+                "query": {"type": "string", "description": "搜索查询"}
+            },
+            "required": ["query"]
+        }
+    },
+    {
+        "name": "write_file",
+        "description": "写入文件（模拟）",
+        "input_schema": {
+            "type": "object",
+            "properties": {
+                "filename": {"type": "string"},
+                "content": {"type": "string"}
+            },
+            "required": ["filename", "content"]
+        }
+    },
+    {
+        "name": "complete",
+        "description": "标记目标已完成，提供最终结果",
+        "input_schema": {
+            "type": "object",
+            "properties": {
+                "summary": {"type": "string", "description": "完成总结"}
+            },
+            "required": ["summary"]
+        }
+    }
+]
+
+# ==================== 工具执行 ====================
+def execute_tool(name: str, inputs: Dict, state: AgentState) -> str:
+    """执行工具"""
+
+    if name == "think":
+        thought = inputs["thought"]
+        state.thoughts.append(thought)
+        return f"已记录思考: {thought[:50]}..."
+
+    elif name == "create_plan":
+        tasks = inputs["tasks"]
+        state.tasks = [
+            Task(id=f"task_{i}", description=t)
+            for i, t in enumerate(tasks)
+        ]
+        return f"已创建 {len(tasks)} 个任务:\\n" + "\\n".join(f"  {i+1}. {t}" for i, t in enumerate(tasks))
+
+    elif name == "execute_task":
+        action = inputs["action"]
+        details = inputs.get("details", "")
+
+        if state.current_task_index < len(state.tasks):
+            task = state.tasks[state.current_task_index]
+            task.status = TaskStatus.COMPLETED
+            task.result = f"{action}: {details}"
+            state.current_task_index += 1
+            return f"✅ 任务完成: {task.description}\\n结果: {task.result}"
+
+        return "没有待执行的任务"
+
+    elif name == "search_web":
+        query = inputs["query"]
+        # 模拟搜索结果
+        results = {
+            "python": "Python 是最流行的编程语言之一，适合初学者学习。",
+            "机器学习": "机器学习需要掌握数学基础和编程技能，推荐从 scikit-learn 开始。",
+            "default": f"关于 '{query}' 的搜索结果：这是一个有趣的话题..."
+        }
+        for key, value in results.items():
+            if key in query.lower():
+                return value
+        return results["default"]
+
+    elif name == "write_file":
+        filename = inputs["filename"]
+        content = inputs["content"]
+        # 模拟写入文件
+        return f"已写入文件 {filename} ({len(content)} 字符)"
+
+    elif name == "complete":
+        summary = inputs["summary"]
+        state.is_complete = True
+        return f"🎉 目标完成！\\n{summary}"
+
+    return f"未知工具: {name}"
+
+# ==================== Agent 类 ====================
+class Agent:
+    """自主决策 Agent"""
+
+    def __init__(self, verbose: bool = True):
+        self.verbose = verbose
+        self.max_iterations = 10
+
+    def _log(self, message: str):
+        if self.verbose:
+            print(message)
+
+    def run(self, goal: str) -> str:
+        """运行 Agent 完成目标"""
+        state = AgentState(goal=goal)
+
+        self._log(f"\\n🎯 目标: {goal}")
+        self._log("=" * 50)
+
+        system_prompt = f"""你是一个自主 Agent，需要完成以下目标：
+{goal}
+
+你有以下能力：
+1. think - 思考和分析
+2. create_plan - 创建任务计划
+3. execute_task - 执行任务
+4. search_web - 搜索信息
+5. write_file - 写入文件
+6. complete - 标记完成
+
+工作流程：
+1. 首先使用 think 分析目标
+2. 使用 create_plan 分解为具体任务
+3. 逐个使用 execute_task 完成任务
+4. 最后使用 complete 汇总结果
+
+每次只调用一个工具，按顺序完成任务。"""
+
+        messages = [{"role": "user", "content": f"请开始执行目标: {goal}"}]
+
+        for iteration in range(self.max_iterations):
+            self._log(f"\\n--- 迭代 {iteration + 1} ---")
+
+            # 调用 AI
+            response = client.messages.create(
+                model="claude-sonnet-4-20250514",
+                max_tokens=1024,
+                system=system_prompt,
+                tools=TOOLS,
+                messages=messages
+            )
+
+            # 处理响应
+            assistant_content = response.content
+            messages.append({"role": "assistant", "content": assistant_content})
+
+            # 如果有文本，显示
+            for block in assistant_content:
+                if hasattr(block, "text") and block.text:
+                    self._log(f"💭 Agent: {block.text}")
+
+            # 如果需要调用工具
+            if response.stop_reason == "tool_use":
+                tool_results = []
+
+                for block in assistant_content:
+                    if block.type == "tool_use":
+                        self._log(f"🔧 调用工具: {block.name}")
+                        self._log(f"   参数: {json.dumps(block.input, ensure_ascii=False)}")
+
+                        result = execute_tool(block.name, block.input, state)
+                        self._log(f"   结果: {result}")
+
+                        tool_results.append({
+                            "type": "tool_result",
+                            "tool_use_id": block.id,
+                            "content": result
+                        })
+
+                messages.append({"role": "user", "content": tool_results})
+
+                # 检查是否完成
+                if state.is_complete:
+                    self._log("\\n" + "=" * 50)
+                    self._log("✅ Agent 已完成目标!")
+                    break
+            else:
+                # 没有工具调用，可能已完成
+                break
+
+        # 返回最终结果
+        return self._summarize(state)
+
+    def _summarize(self, state: AgentState) -> str:
+        """生成执行摘要"""
+        summary = [f"目标: {state.goal}", ""]
+
+        if state.thoughts:
+            summary.append("💭 思考过程:")
+            for t in state.thoughts:
+                summary.append(f"  - {t}")
+            summary.append("")
+
+        if state.tasks:
+            summary.append("📋 任务执行:")
+            for task in state.tasks:
+                status = "✅" if task.status == TaskStatus.COMPLETED else "⏳"
+                summary.append(f"  {status} {task.description}")
+                if task.result:
+                    summary.append(f"      结果: {task.result}")
+
+        return "\\n".join(summary)
+
+# ==================== 主程序 ====================
+if __name__ == "__main__":
+    print("🤖 Level 8: Agent 智能体演示")
+    print("=" * 50)
+
+    agent = Agent(verbose=True)
+
+    # 测试目标
+    test_goals = [
+        "帮我制定一个学习 Python 的计划",
+        # "研究如何入门机器学习，并写一份学习指南"
+    ]
+
+    for goal in test_goals:
+        result = agent.run(goal)
+        print("\\n📝 执行摘要:")
+        print(result)
+        print("\\n" + "=" * 50)
+
+    print("\\n✅ Level 8 完成！你学会了构建 AI Agent。")`,
+        language: 'python',
+        difficulty: 'advanced',
+        tags: ['Agent', '自主决策', '任务规划', 'Level 8']
+      },
+
+      // ========== Level 9: FastAPI 后端 ==========
+      {
+        id: 'tutorial-9',
+        title: { zh: 'Level 9: Web API - FastAPI 后端服务', ja: 'Level 9: Web API - FastAPIバックエンド' },
+        description: { zh: '构建生产级 RESTful API 服务（约400行）', ja: '本番レベルのRESTful APIサービスを構築（約400行）' },
+        code: `"""
+===========================================
+Level 9: FastAPI 后端 - 生产级 API 服务
+===========================================
+目标：将 AI 能力封装为 Web API，支持多用户并发
+新增：FastAPI、Pydantic、异步处理、会话管理、SSE 流式
+代码行数：约 400 行
+
+安装依赖：
+pip install fastapi uvicorn sse-starlette pydantic anthropic
+===========================================
+"""
+
+import os
+import uuid
+from datetime import datetime
+from typing import List, Dict, Optional, AsyncGenerator
+from contextlib import asynccontextmanager
+
+from dotenv import load_dotenv
+from fastapi import FastAPI, HTTPException, Depends, Header
+from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import StreamingResponse
+from pydantic import BaseModel, Field
+from sse_starlette.sse import EventSourceResponse
+import anthropic
+
+load_dotenv()
+
+# ==================== 数据模型 ====================
+class Message(BaseModel):
+    role: str = Field(..., pattern="^(user|assistant)$")
+    content: str
+
+class ChatRequest(BaseModel):
+    message: str
+    session_id: Optional[str] = None
+    system_prompt: Optional[str] = None
+    stream: bool = False
+
+class ChatResponse(BaseModel):
+    message: str
+    session_id: str
+    created_at: str
+    tokens_used: Optional[int] = None
+
+class SessionInfo(BaseModel):
+    session_id: str
+    message_count: int
+    created_at: str
+    last_active: str
+
+class HealthResponse(BaseModel):
+    status: str
+    version: str
+    timestamp: str
+
+# ==================== 会话管理 ====================
+class SessionManager:
+    """会话管理器 - 生产环境应使用 Redis"""
+
+    def __init__(self, max_history: int = 20):
+        self.sessions: Dict[str, Dict] = {}
+        self.max_history = max_history
+
+    def create_session(self) -> str:
+        session_id = str(uuid.uuid4())
+        self.sessions[session_id] = {
+            "messages": [],
+            "system_prompt": "你是一个友好的AI助手。",
+            "created_at": datetime.now().isoformat(),
+            "last_active": datetime.now().isoformat()
+        }
+        return session_id
+
+    def get_session(self, session_id: str) -> Optional[Dict]:
+        if session_id in self.sessions:
+            self.sessions[session_id]["last_active"] = datetime.now().isoformat()
+            return self.sessions[session_id]
+        return None
+
+    def add_message(self, session_id: str, role: str, content: str):
+        session = self.sessions.get(session_id)
+        if session:
+            session["messages"].append({"role": role, "content": content})
+            # 限制历史长度
+            if len(session["messages"]) > self.max_history:
+                session["messages"] = session["messages"][-self.max_history:]
+
+    def set_system_prompt(self, session_id: str, prompt: str):
+        if session_id in self.sessions:
+            self.sessions[session_id]["system_prompt"] = prompt
+
+    def delete_session(self, session_id: str) -> bool:
+        if session_id in self.sessions:
+            del self.sessions[session_id]
+            return True
+        return False
+
+    def list_sessions(self) -> List[SessionInfo]:
+        return [
+            SessionInfo(
+                session_id=sid,
+                message_count=len(data["messages"]),
+                created_at=data["created_at"],
+                last_active=data["last_active"]
+            )
+            for sid, data in self.sessions.items()
+        ]
+
+# ==================== AI 服务 ====================
+class AIService:
+    """AI 服务封装"""
+
+    def __init__(self):
+        self.client = anthropic.Anthropic(api_key=os.getenv("ANTHROPIC_API_KEY"))
+        self.model = "claude-sonnet-4-20250514"
+
+    def chat(self, messages: List[Dict], system_prompt: str) -> tuple[str, int]:
+        """同步对话"""
+        response = self.client.messages.create(
+            model=self.model,
+            max_tokens=1024,
+            system=system_prompt,
+            messages=messages
+        )
+
+        text = response.content[0].text
+        tokens = response.usage.input_tokens + response.usage.output_tokens
+
+        return text, tokens
+
+    async def chat_stream(
+        self,
+        messages: List[Dict],
+        system_prompt: str
+    ) -> AsyncGenerator[str, None]:
+        """异步流式对话"""
+        with self.client.messages.stream(
+            model=self.model,
+            max_tokens=1024,
+            system=system_prompt,
+            messages=messages
+        ) as stream:
+            for text in stream.text_stream:
+                yield text
+
+# ==================== 全局实例 ====================
+session_manager = SessionManager()
+ai_service = AIService()
+
+# ==================== FastAPI 应用 ====================
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    """应用生命周期管理"""
+    print("🚀 AI Chat API 启动中...")
+    yield
+    print("👋 AI Chat API 关闭")
+
+app = FastAPI(
+    title="AI Chat API",
+    description="基于 Claude 的智能对话 API 服务",
+    version="1.0.0",
+    lifespan=lifespan
+)
+
+# CORS 配置
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # 生产环境应限制域名
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+# ==================== API 路由 ====================
+@app.get("/health", response_model=HealthResponse, tags=["系统"])
+async def health_check():
+    """健康检查"""
+    return HealthResponse(
+        status="healthy",
+        version="1.0.0",
+        timestamp=datetime.now().isoformat()
+    )
+
+@app.post("/sessions", tags=["会话"])
+async def create_session():
+    """创建新会话"""
+    session_id = session_manager.create_session()
+    return {"session_id": session_id, "message": "会话创建成功"}
+
+@app.get("/sessions", response_model=List[SessionInfo], tags=["会话"])
+async def list_sessions():
+    """列出所有会话"""
+    return session_manager.list_sessions()
+
+@app.delete("/sessions/{session_id}", tags=["会话"])
+async def delete_session(session_id: str):
+    """删除会话"""
+    if session_manager.delete_session(session_id):
+        return {"message": "会话删除成功"}
+    raise HTTPException(status_code=404, detail="会话不存在")
+
+@app.post("/chat", response_model=ChatResponse, tags=["对话"])
+async def chat(request: ChatRequest):
+    """普通对话（非流式）"""
+    # 获取或创建会话
+    if request.session_id:
+        session = session_manager.get_session(request.session_id)
+        if not session:
+            raise HTTPException(status_code=404, detail="会话不存在")
+        session_id = request.session_id
+    else:
+        session_id = session_manager.create_session()
+        session = session_manager.get_session(session_id)
+
+    # 设置系统提示词
+    if request.system_prompt:
+        session_manager.set_system_prompt(session_id, request.system_prompt)
+
+    # 添加用户消息
+    session_manager.add_message(session_id, "user", request.message)
+
+    # 调用 AI
+    try:
+        reply, tokens = ai_service.chat(
+            session["messages"],
+            session["system_prompt"]
+        )
+
+        # 保存回复
+        session_manager.add_message(session_id, "assistant", reply)
+
+        return ChatResponse(
+            message=reply,
+            session_id=session_id,
+            created_at=datetime.now().isoformat(),
+            tokens_used=tokens
+        )
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.post("/chat/stream", tags=["对话"])
+async def chat_stream(request: ChatRequest):
+    """流式对话 (SSE)"""
+    # 获取或创建会话
+    if request.session_id:
+        session = session_manager.get_session(request.session_id)
+        if not session:
+            raise HTTPException(status_code=404, detail="会话不存在")
+        session_id = request.session_id
+    else:
+        session_id = session_manager.create_session()
+        session = session_manager.get_session(session_id)
+
+    if request.system_prompt:
+        session_manager.set_system_prompt(session_id, request.system_prompt)
+
+    session_manager.add_message(session_id, "user", request.message)
+
+    async def event_generator():
+        full_response = ""
+
+        # 发送会话 ID
+        yield {"event": "session", "data": session_id}
+
+        try:
+            async for text in ai_service.chat_stream(
+                session["messages"],
+                session["system_prompt"]
+            ):
+                full_response += text
+                yield {"event": "message", "data": text}
+
+            # 保存完整回复
+            session_manager.add_message(session_id, "assistant", full_response)
+
+            yield {"event": "done", "data": ""}
+
+        except Exception as e:
+            yield {"event": "error", "data": str(e)}
+
+    return EventSourceResponse(event_generator())
+
+# ==================== 主程序 ====================
+if __name__ == "__main__":
+    import uvicorn
+
+    print("""
+╔══════════════════════════════════════════╗
+║     Level 9: FastAPI AI Chat API         ║
+╠══════════════════════════════════════════╣
+║  启动服务: uvicorn main:app --reload     ║
+║  API 文档: http://localhost:8000/docs    ║
+║  健康检查: http://localhost:8000/health  ║
+╚══════════════════════════════════════════╝
+    """)
+
+    uvicorn.run(
+        "main:app",
+        host="0.0.0.0",
+        port=8000,
+        reload=True
+    )
+
+# ==================== 使用示例 ====================
+"""
+# 1. 启动服务
+uvicorn main:app --reload
+
+# 2. 创建会话
+curl -X POST http://localhost:8000/sessions
+
+# 3. 发送消息
+curl -X POST http://localhost:8000/chat \\
+  -H "Content-Type: application/json" \\
+  -d '{"message": "你好", "session_id": "xxx"}'
+
+# 4. 流式对话
+curl -X POST http://localhost:8000/chat/stream \\
+  -H "Content-Type: application/json" \\
+  -d '{"message": "讲个笑话", "session_id": "xxx"}'
+
+# 5. 访问 API 文档
+open http://localhost:8000/docs
+"""`,
+        language: 'python',
+        difficulty: 'advanced',
+        tags: ['FastAPI', 'REST API', 'SSE', '后端开发', 'Level 9']
+      },
+
+      // ========== Level 10: 完整项目 ==========
+      {
+        id: 'tutorial-10',
+        title: { zh: 'Level 10: 完整项目 - AI 智能客服系统', ja: 'Level 10: 完全プロジェクト - AIカスタマーサービス' },
+        description: { zh: '包含前后端的生产级完整项目（约600行）', ja: 'フロントエンドとバックエンドを含む本番レベルの完全プロジェクト（約600行）' },
+        code: `"""
+================================================================================
+Level 10: 完整项目 - AI 智能客服系统
+================================================================================
+这是一个生产级的完整项目，包含：
+- FastAPI 后端 API
+- React 前端界面
+- RAG 知识库支持
+- 工具调用能力
+- 会话管理
+- 部署配置
+
+项目结构：
+ai-customer-service/
+├── backend/
+│   ├── main.py           # FastAPI 主应用
+│   ├── ai_service.py     # AI 服务封装
+│   ├── knowledge_base.py # RAG 知识库
+│   ├── tools.py          # 工具定义
+│   ├── models.py         # 数据模型
+│   └── requirements.txt  # Python 依赖
+├── frontend/
+│   ├── src/
+│   │   ├── App.tsx       # React 主组件
+│   │   ├── ChatWidget.tsx # 聊天组件
+│   │   └── api.ts        # API 客户端
+│   └── package.json
+├── docker-compose.yml    # Docker 编排
+└── README.md
+================================================================================
+"""
+
+# ===================== backend/main.py =====================
+"""
+AI 智能客服系统 - 主应用
+"""
+
+import os
+from datetime import datetime
+from typing import List, Optional
+from contextlib import asynccontextmanager
+
+from fastapi import FastAPI, HTTPException
+from fastapi.middleware.cors import CORSMiddleware
+from pydantic import BaseModel
+from sse_starlette.sse import EventSourceResponse
+from dotenv import load_dotenv
+
+# 导入服务模块
+# from ai_service import AIService
+# from knowledge_base import KnowledgeBase
+# from tools import TOOLS, execute_tool
+
+load_dotenv()
+
+# ==================== 数据模型 ====================
+class Message(BaseModel):
+    role: str
+    content: str
+    timestamp: Optional[str] = None
+
+class ChatRequest(BaseModel):
+    message: str
+    session_id: Optional[str] = None
+    context: Optional[dict] = None  # 用户上下文（订单号、用户ID等）
+
+class ChatResponse(BaseModel):
+    message: str
+    session_id: str
+    suggestions: List[str] = []  # 推荐问题
+    sources: List[str] = []      # 引用来源
+
+# ==================== 快速问题推荐 ====================
+QUICK_QUESTIONS = {
+    "greeting": ["订单查询", "退款申请", "产品咨询", "技术支持"],
+    "order": ["查看物流", "修改地址", "申请发票", "取消订单"],
+    "refund": ["退款进度", "退款规则", "换货服务"],
+    "product": ["产品规格", "使用教程", "保修政策"],
+}
+
+# ==================== 系统提示词 ====================
+SYSTEM_PROMPT = """你是一个专业的智能客服助手，服务于电商平台。
+
+你的职责：
+1. 热情友好地回答用户问题
+2. 基于知识库提供准确的产品和服务信息
+3. 帮助用户解决订单、退款、配送等问题
+4. 对于无法解决的问题，引导用户联系人工客服
+
+回答规范：
+- 语言简洁清晰，避免冗长
+- 使用友好的语气，适当使用 emoji
+- 对于敏感问题（退款、投诉），保持耐心
+- 如果不确定答案，诚实告知并建议联系人工
+
+可用工具：
+- 查询订单状态
+- 查询物流信息
+- 查询退款进度
+- 搜索知识库
+"""
+
+# ==================== AI 服务（简化版） ====================
+import anthropic
+
+class AIService:
+    def __init__(self):
+        self.client = anthropic.Anthropic()
+        self.sessions = {}  # 实际应用使用 Redis
+
+    def get_or_create_session(self, session_id: str = None):
+        import uuid
+        if not session_id:
+            session_id = str(uuid.uuid4())
+        if session_id not in self.sessions:
+            self.sessions[session_id] = {
+                "messages": [],
+                "created_at": datetime.now().isoformat()
+            }
+        return session_id, self.sessions[session_id]
+
+    async def chat_stream(self, session_id: str, user_message: str, context: dict = None):
+        """流式对话"""
+        sid, session = self.get_or_create_session(session_id)
+
+        # 添加上下文信息
+        enhanced_message = user_message
+        if context:
+            context_str = "\\n".join([f"- {k}: {v}" for k, v in context.items()])
+            enhanced_message = f"用户上下文:\\n{context_str}\\n\\n用户问题: {user_message}"
+
+        session["messages"].append({"role": "user", "content": enhanced_message})
+
+        # 流式调用 AI
+        full_response = ""
+        with self.client.messages.stream(
+            model="claude-sonnet-4-20250514",
+            max_tokens=1024,
+            system=SYSTEM_PROMPT,
+            messages=session["messages"]
+        ) as stream:
+            for text in stream.text_stream:
+                full_response += text
+                yield text
+
+        session["messages"].append({"role": "assistant", "content": full_response})
+
+ai_service = AIService()
+
+# ==================== FastAPI 应用 ====================
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    print("🤖 AI 智能客服系统启动")
+    yield
+    print("👋 系统关闭")
+
+app = FastAPI(
+    title="AI 智能客服系统",
+    version="1.0.0",
+    lifespan=lifespan
+)
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+@app.get("/api/health")
+async def health():
+    return {"status": "ok", "timestamp": datetime.now().isoformat()}
+
+@app.get("/api/suggestions")
+async def get_suggestions(category: str = "greeting"):
+    """获取推荐问题"""
+    return {"suggestions": QUICK_QUESTIONS.get(category, QUICK_QUESTIONS["greeting"])}
+
+@app.post("/api/chat/stream")
+async def chat_stream(request: ChatRequest):
+    """流式对话接口"""
+    async def generate():
+        yield {"event": "start", "data": request.session_id or "new"}
+
+        async for text in ai_service.chat_stream(
+            request.session_id,
+            request.message,
+            request.context
+        ):
+            yield {"event": "token", "data": text}
+
+        yield {"event": "done", "data": ""}
+
+    return EventSourceResponse(generate())
+
+
+# ===================== frontend/src/ChatWidget.tsx =====================
+"""
+/* React 聊天组件 */
+
+import React, { useState, useRef, useEffect } from 'react';
+
+interface Message {
+  role: 'user' | 'assistant';
+  content: string;
+  timestamp: string;
+}
+
+export default function ChatWidget() {
+  const [messages, setMessages] = useState<Message[]>([]);
+  const [input, setInput] = useState('');
+  const [loading, setLoading] = useState(false);
+  const [sessionId, setSessionId] = useState<string | null>(null);
+  const messagesEndRef = useRef<HTMLDivElement>(null);
+
+  const scrollToBottom = () => {
+    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+  };
+
+  useEffect(() => {
+    scrollToBottom();
+  }, [messages]);
+
+  const sendMessage = async () => {
+    if (!input.trim() || loading) return;
+
+    const userMessage: Message = {
+      role: 'user',
+      content: input,
+      timestamp: new Date().toISOString()
+    };
+
+    setMessages(prev => [...prev, userMessage]);
+    setInput('');
+    setLoading(true);
+
+    try {
+      const response = await fetch('/api/chat/stream', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          message: input,
+          session_id: sessionId
+        })
+      });
+
+      const reader = response.body?.getReader();
+      const decoder = new TextDecoder();
+      let assistantMessage = '';
+
+      // 添加空的助手消息占位
+      setMessages(prev => [...prev, {
+        role: 'assistant',
+        content: '',
+        timestamp: new Date().toISOString()
+      }]);
+
+      while (reader) {
+        const { done, value } = await reader.read();
+        if (done) break;
+
+        const chunk = decoder.decode(value);
+        const lines = chunk.split('\\n');
+
+        for (const line of lines) {
+          if (line.startsWith('data: ')) {
+            const data = line.slice(6);
+            if (data && !data.startsWith('{')) {
+              assistantMessage += data;
+              // 更新最后一条消息
+              setMessages(prev => {
+                const newMessages = [...prev];
+                newMessages[newMessages.length - 1].content = assistantMessage;
+                return newMessages;
+              });
+            }
+          }
+        }
+      }
+    } catch (error) {
+      console.error('Chat error:', error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  return (
+    <div className="flex flex-col h-screen max-w-2xl mx-auto">
+      {/* Header */}
+      <header className="bg-blue-600 text-white p-4">
+        <h1 className="text-xl font-bold">🤖 智能客服</h1>
+        <p className="text-sm opacity-80">有什么可以帮您的？</p>
+      </header>
+
+      {/* Messages */}
+      <div className="flex-1 overflow-y-auto p-4 space-y-4">
+        {messages.length === 0 && (
+          <div className="text-center text-gray-500 mt-8">
+            <p className="text-lg mb-4">👋 您好！我是智能客服小助手</p>
+            <div className="flex flex-wrap justify-center gap-2">
+              {['订单查询', '退款申请', '产品咨询'].map(q => (
+                <button
+                  key={q}
+                  onClick={() => setInput(q)}
+                  className="px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-sm hover:bg-blue-200"
+                >
+                  {q}
+                </button>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {messages.map((msg, idx) => (
+          <div
+            key={idx}
+            className={\`flex \${msg.role === 'user' ? 'justify-end' : 'justify-start'}\`}
+          >
+            <div
+              className={\`max-w-[80%] p-3 rounded-lg \${
+                msg.role === 'user'
+                  ? 'bg-blue-600 text-white'
+                  : 'bg-gray-100 text-gray-800'
+              }\`}
+            >
+              {msg.content || (loading && '思考中...')}
+            </div>
+          </div>
+        ))}
+        <div ref={messagesEndRef} />
+      </div>
+
+      {/* Input */}
+      <div className="border-t p-4">
+        <div className="flex gap-2">
+          <input
+            value={input}
+            onChange={(e) => setInput(e.target.value)}
+            onKeyPress={(e) => e.key === 'Enter' && sendMessage()}
+            placeholder="输入您的问题..."
+            className="flex-1 border rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            disabled={loading}
+          />
+          <button
+            onClick={sendMessage}
+            disabled={loading || !input.trim()}
+            className="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 disabled:opacity-50"
+          >
+            发送
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+}
+"""
+
+# ===================== docker-compose.yml =====================
+"""
+version: '3.8'
+
+services:
+  backend:
+    build: ./backend
+    ports:
+      - "8000:8000"
+    environment:
+      - ANTHROPIC_API_KEY=\${ANTHROPIC_API_KEY}
+    volumes:
+      - ./data:/app/data
+
+  frontend:
+    build: ./frontend
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend
+
+  # 可选: Redis 用于会话持久化
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+"""
+
+# ===================== 运行说明 =====================
+print("""
+╔══════════════════════════════════════════════════════════════════╗
+║              Level 10: AI 智能客服系统 - 完整项目                ║
+╠══════════════════════════════════════════════════════════════════╣
+║                                                                  ║
+║  🎉 恭喜你完成了从入门到实战的完整学习路径！                     ║
+║                                                                  ║
+║  这个项目整合了你学到的所有技能：                                ║
+║  ✅ Level 1-3: API 调用、流式输出、多轮对话                      ║
+║  ✅ Level 4-5: 系统角色、错误处理                                ║
+║  ✅ Level 6-7: 工具调用、RAG 知识库                              ║
+║  ✅ Level 8: Agent 智能体                                        ║
+║  ✅ Level 9: FastAPI 后端                                        ║
+║  ✅ Level 10: 完整的前后端项目                                   ║
+║                                                                  ║
+║  项目启动：                                                      ║
+║  1. cd ai-customer-service                                       ║
+║  2. docker-compose up                                            ║
+║  3. 访问 http://localhost:3000                                   ║
+║                                                                  ║
+║  下一步：                                                        ║
+║  - 添加更多业务工具（订单查询、物流追踪等）                      ║
+║  - 接入真实知识库（产品文档、FAQ）                               ║
+║  - 添加用户认证和多租户支持                                      ║
+║  - 部署到云平台（AWS/GCP/阿里云）                                ║
+║                                                                  ║
+╚══════════════════════════════════════════════════════════════════╝
+""")`,
+        language: 'python',
+        difficulty: 'advanced',
+        tags: ['完整项目', 'Full Stack', 'Docker', '生产部署', 'Level 10']
+      }
+    ]
+  },
+
+  // ==================== 原有分类 ====================
   langchain: {
     name: { zh: 'LangChain 基础', ja: 'LangChain 基礎' },
     description: { zh: 'LangChain 核心概念与使用方法', ja: 'LangChain のコア概念と使い方' },
@@ -1701,7 +3953,7 @@ const CodeBlock: React.FC<{ example: CodeExample; language: string }> = ({ examp
 export default function AICodeExamplesPage() {
   const navigate = useNavigate();
   const language = useLanguageStore(state => state.language);
-  const [selectedCategory, setSelectedCategory] = useState<Category>('langchain');
+  const [selectedCategory, setSelectedCategory] = useState<Category>('tutorial');
 
   const category = codeExamples[selectedCategory];
 
