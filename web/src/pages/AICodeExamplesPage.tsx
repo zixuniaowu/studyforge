@@ -11,12 +11,16 @@ import {
   Database,
   Zap,
   Play,
-  FileText
+  FileText,
+  Bot,
+  Sparkles,
+  Rocket,
+  Briefcase
 } from 'lucide-react';
 import { useLanguageStore } from '../stores/languageStore';
 import { ColabButton, StackBlitzButton } from '../components/CodeRunner';
 
-type Category = 'langchain' | 'ollama' | 'openai' | 'rag' | 'prompts';
+type Category = 'langchain' | 'ollama' | 'openai' | 'claude' | 'agent' | 'rag' | 'prompts' | 'cases' | 'deploy';
 
 interface CodeExample {
   id: string;
@@ -752,6 +756,855 @@ print(f"要点：{review.key_points}")`,
         language: 'python',
         difficulty: 'intermediate',
         tags: ['Prompts', 'JSON', 'Structured']
+      }
+    ]
+  },
+  claude: {
+    name: { zh: 'Claude API', ja: 'Claude API' },
+    description: { zh: 'Anthropic Claude API 使用', ja: 'Anthropic Claude API の使用' },
+    icon: Sparkles,
+    gradient: 'from-orange-500 to-amber-600',
+    examples: [
+      {
+        id: 'cl-1',
+        title: { zh: 'Claude 基础对话', ja: 'Claude 基本対話' },
+        description: { zh: 'Claude API 基础调用', ja: 'Claude API の基本呼び出し' },
+        code: `# Claude API 基础
+# pip install anthropic
+
+from anthropic import Anthropic
+
+client = Anthropic(api_key="your-api-key")
+
+# 基础对话
+message = client.messages.create(
+    model="claude-sonnet-4-20250514",
+    max_tokens=1024,
+    messages=[
+        {"role": "user", "content": "解释什么是量子计算"}
+    ]
+)
+print(message.content[0].text)
+
+# 带系统提示
+message = client.messages.create(
+    model="claude-sonnet-4-20250514",
+    max_tokens=1024,
+    system="你是Python编程导师",
+    messages=[{"role": "user", "content": "如何读取CSV？"}]
+)
+
+# 多轮对话
+messages = [
+    {"role": "user", "content": "我叫小明"},
+    {"role": "assistant", "content": "你好小明！"},
+    {"role": "user", "content": "我叫什么？"}
+]
+response = client.messages.create(
+    model="claude-sonnet-4-20250514",
+    max_tokens=1024,
+    messages=messages
+)`,
+        language: 'python',
+        difficulty: 'beginner',
+        tags: ['Claude', 'Anthropic', 'Chat']
+      },
+      {
+        id: 'cl-2',
+        title: { zh: 'Claude 流式输出', ja: 'Claude ストリーミング' },
+        description: { zh: '实时流式响应', ja: 'リアルタイムストリーミング' },
+        code: `# Claude 流式输出
+from anthropic import Anthropic
+
+client = Anthropic()
+
+with client.messages.stream(
+    model="claude-sonnet-4-20250514",
+    max_tokens=1024,
+    messages=[{"role": "user", "content": "写一首诗"}]
+) as stream:
+    for text in stream.text_stream:
+        print(text, end="", flush=True)
+
+# 获取统计信息
+with client.messages.stream(
+    model="claude-sonnet-4-20250514",
+    max_tokens=1024,
+    messages=[{"role": "user", "content": "解释递归"}]
+) as stream:
+    for text in stream.text_stream:
+        print(text, end="", flush=True)
+
+    final = stream.get_final_message()
+    print(f"\\n输入: {final.usage.input_tokens}")
+    print(f"输出: {final.usage.output_tokens}")`,
+        language: 'python',
+        difficulty: 'intermediate',
+        tags: ['Claude', 'Streaming']
+      },
+      {
+        id: 'cl-3',
+        title: { zh: 'Claude Tool Use', ja: 'Claude Tool Use' },
+        description: { zh: 'Claude 工具调用', ja: 'Claude ツール呼び出し' },
+        code: `# Claude Tool Use
+from anthropic import Anthropic
+import json
+
+client = Anthropic()
+
+tools = [{
+    "name": "get_weather",
+    "description": "获取天气",
+    "input_schema": {
+        "type": "object",
+        "properties": {
+            "city": {"type": "string", "description": "城市"}
+        },
+        "required": ["city"]
+    }
+}]
+
+def get_weather(city):
+    return json.dumps({"city": city, "temp": 22, "weather": "晴"})
+
+response = client.messages.create(
+    model="claude-sonnet-4-20250514",
+    max_tokens=1024,
+    tools=tools,
+    messages=[{"role": "user", "content": "北京天气？"}]
+)
+
+if response.stop_reason == "tool_use":
+    tool = next(b for b in response.content if b.type == "tool_use")
+    result = get_weather(**tool.input)
+
+    final = client.messages.create(
+        model="claude-sonnet-4-20250514",
+        max_tokens=1024,
+        tools=tools,
+        messages=[
+            {"role": "user", "content": "北京天气？"},
+            {"role": "assistant", "content": response.content},
+            {"role": "user", "content": [
+                {"type": "tool_result", "tool_use_id": tool.id, "content": result}
+            ]}
+        ]
+    )
+    print(final.content[0].text)`,
+        language: 'python',
+        difficulty: 'advanced',
+        tags: ['Claude', 'Tools']
+      },
+      {
+        id: 'cl-4',
+        title: { zh: 'Claude 图像理解', ja: 'Claude 画像理解' },
+        description: { zh: 'Claude 视觉能力', ja: 'Claude ビジョン機能' },
+        code: `# Claude 图像理解
+from anthropic import Anthropic
+import base64
+
+client = Anthropic()
+
+# URL图片
+message = client.messages.create(
+    model="claude-sonnet-4-20250514",
+    max_tokens=1024,
+    messages=[{
+        "role": "user",
+        "content": [
+            {"type": "image", "source": {"type": "url", "url": "https://example.com/image.jpg"}},
+            {"type": "text", "text": "描述这张图片"}
+        ]
+    }]
+)
+
+# Base64图片
+def encode_image(path):
+    with open(path, "rb") as f:
+        return base64.b64encode(f.read()).decode()
+
+image_data = encode_image("photo.jpg")
+message = client.messages.create(
+    model="claude-sonnet-4-20250514",
+    max_tokens=1024,
+    messages=[{
+        "role": "user",
+        "content": [
+            {"type": "image", "source": {"type": "base64", "media_type": "image/jpeg", "data": image_data}},
+            {"type": "text", "text": "这是什么？"}
+        ]
+    }]
+)`,
+        language: 'python',
+        difficulty: 'intermediate',
+        tags: ['Claude', 'Vision', 'Multimodal']
+      }
+    ]
+  },
+  agent: {
+    name: { zh: 'Agent 开发', ja: 'Agent 開発' },
+    description: { zh: '构建 AI Agent', ja: 'AI Agent の構築' },
+    icon: Bot,
+    gradient: 'from-indigo-500 to-purple-600',
+    examples: [
+      {
+        id: 'ag-1',
+        title: { zh: 'ReAct Agent', ja: 'ReAct Agent' },
+        description: { zh: '思考-行动循环', ja: '思考-行動ループ' },
+        code: `# ReAct Agent 实现
+from anthropic import Anthropic
+
+client = Anthropic()
+
+# 工具定义
+def calculator(expr):
+    try: return str(eval(expr))
+    except: return "错误"
+
+def get_time():
+    from datetime import datetime
+    return datetime.now().strftime("%Y-%m-%d %H:%M")
+
+tools = {
+    "calculator": ("计算表达式", calculator),
+    "get_time": ("获取时间", get_time),
+}
+
+def run_agent(query, max_iter=5):
+    tool_desc = "\\n".join([f"- {k}: {v[0]}" for k, v in tools.items()])
+    system = f"""可用工具：
+{tool_desc}
+
+格式：
+思考：[分析]
+行动：[tool_name]
+输入：[input]"""
+
+    messages = [{"role": "user", "content": query}]
+
+    for _ in range(max_iter):
+        resp = client.messages.create(
+            model="claude-sonnet-4-20250514",
+            max_tokens=1024,
+            system=system,
+            messages=messages
+        )
+        text = resp.content[0].text
+        print(text)
+
+        if "行动：" in text:
+            lines = text.split("\\n")
+            action = next((l.split("：")[1].strip() for l in lines if "行动：" in l), None)
+            inp = next((l.split("：")[1].strip() for l in lines if "输入：" in l), "")
+
+            if action in tools:
+                result = tools[action][1](inp) if inp else tools[action][1]()
+                print(f"观察：{result}")
+                messages.append({"role": "assistant", "content": text})
+                messages.append({"role": "user", "content": f"观察：{result}"})
+                continue
+        return text
+
+run_agent("现在几点？算123*456")`,
+        language: 'python',
+        difficulty: 'advanced',
+        tags: ['Agent', 'ReAct']
+      },
+      {
+        id: 'ag-2',
+        title: { zh: 'LangChain Agent', ja: 'LangChain Agent' },
+        description: { zh: 'LangChain 工具 Agent', ja: 'LangChain ツール Agent' },
+        code: `# LangChain Agent
+from langchain_anthropic import ChatAnthropic
+from langchain.agents import tool, AgentExecutor, create_tool_calling_agent
+from langchain_core.prompts import ChatPromptTemplate
+
+llm = ChatAnthropic(model="claude-sonnet-4-20250514")
+
+@tool
+def calculator(expression: str) -> str:
+    """计算数学表达式，如 2+2"""
+    return str(eval(expression))
+
+@tool
+def get_datetime() -> str:
+    """获取当前日期时间"""
+    from datetime import datetime
+    return datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+
+tools = [calculator, get_datetime]
+
+prompt = ChatPromptTemplate.from_messages([
+    ("system", "你是AI助手，可以使用工具"),
+    ("human", "{input}"),
+    ("placeholder", "{agent_scratchpad}")
+])
+
+agent = create_tool_calling_agent(llm, tools, prompt)
+executor = AgentExecutor(agent=agent, tools=tools, verbose=True)
+
+result = executor.invoke({"input": "现在几点？算2024-2000"})
+print(result['output'])`,
+        language: 'python',
+        difficulty: 'intermediate',
+        tags: ['LangChain', 'Agent']
+      },
+      {
+        id: 'ag-3',
+        title: { zh: 'Agentic Loop', ja: 'Agentic Loop' },
+        description: { zh: '生产级 Agent 循环', ja: '本番レベル Agent ループ' },
+        code: `# 生产级 Agentic Loop
+from anthropic import Anthropic
+from dataclasses import dataclass
+import os
+
+@dataclass
+class ToolResult:
+    success: bool
+    output: str
+    error: str = None
+
+class AgenticLoop:
+    def __init__(self):
+        self.client = Anthropic()
+        self.tools = {}
+        self.schemas = []
+        self.history = []
+
+    def register(self, name, desc, params, handler):
+        self.tools[name] = handler
+        self.schemas.append({
+            "name": name,
+            "description": desc,
+            "input_schema": {"type": "object", "properties": params, "required": list(params.keys())}
+        })
+
+    def execute(self, name, input_data):
+        try:
+            return ToolResult(True, str(self.tools[name](**input_data)))
+        except Exception as e:
+            return ToolResult(False, "", str(e))
+
+    def run(self, query, max_turns=10):
+        self.history.append({"role": "user", "content": query})
+
+        for _ in range(max_turns):
+            resp = self.client.messages.create(
+                model="claude-sonnet-4-20250514",
+                max_tokens=4096,
+                tools=self.schemas or None,
+                messages=self.history
+            )
+            self.history.append({"role": "assistant", "content": resp.content})
+
+            if resp.stop_reason == "end_turn":
+                return "\\n".join([b.text for b in resp.content if hasattr(b, 'text')])
+
+            if resp.stop_reason == "tool_use":
+                results = []
+                for b in resp.content:
+                    if b.type == "tool_use":
+                        r = self.execute(b.name, b.input)
+                        results.append({"type": "tool_result", "tool_use_id": b.id, "content": r.output or r.error})
+                self.history.append({"role": "user", "content": results})
+
+        return "达到最大轮次"
+
+# 使用
+agent = AgenticLoop()
+agent.register("list_files", "列出目录文件", {"dir": {"type": "string"}}, lambda dir: str(os.listdir(dir)))
+agent.register("read_file", "读取文件", {"path": {"type": "string"}}, lambda path: open(path).read()[:500])
+
+result = agent.run("列出当前目录的文件")
+print(result)`,
+        language: 'python',
+        difficulty: 'advanced',
+        tags: ['Agent', 'Production']
+      }
+    ]
+  },
+  cases: {
+    name: { zh: '实战案例', ja: '実践事例' },
+    description: { zh: '完整可运行项目', ja: '完全実行可能プロジェクト' },
+    icon: Briefcase,
+    gradient: 'from-rose-500 to-pink-600',
+    examples: [
+      {
+        id: 'case-1',
+        title: { zh: '智能客服机器人', ja: 'スマートカスタマーサービス' },
+        description: { zh: 'RAG 知识库客服 (FastAPI)', ja: 'RAG ナレッジベース (FastAPI)' },
+        code: `# 智能客服 - FastAPI + RAG
+# pip install fastapi uvicorn langchain langchain-anthropic langchain-chroma sentence-transformers
+
+from fastapi import FastAPI
+from pydantic import BaseModel
+from langchain_chroma import Chroma
+from langchain_anthropic import ChatAnthropic
+from langchain_community.embeddings import HuggingFaceEmbeddings
+from langchain_core.prompts import ChatPromptTemplate
+
+app = FastAPI(title="智能客服API")
+
+# 知识库
+embeddings = HuggingFaceEmbeddings(model_name="sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2")
+vectorstore = Chroma(embedding_function=embeddings)
+
+# 初始化知识
+knowledge = [
+    "退款政策：购买后7天内可无理由退款，请联系客服提供订单号",
+    "配送时间：普通快递3-5个工作日，顺丰次日达",
+    "VIP会员：享受9折优惠，免费配送，优先客服",
+    "支付方式：支持支付宝、微信、银行卡",
+    "营业时间：周一至周五 9:00-18:00",
+]
+vectorstore.add_texts(knowledge)
+
+llm = ChatAnthropic(model="claude-sonnet-4-20250514")
+prompt = ChatPromptTemplate.from_template("""
+你是专业客服。基于知识库回答，不知道就说不知道。
+
+知识库：
+{context}
+
+问题：{question}
+
+友好专业地回答：""")
+
+class ChatRequest(BaseModel):
+    message: str
+
+@app.post("/chat")
+async def chat(req: ChatRequest):
+    docs = vectorstore.similarity_search(req.message, k=2)
+    context = "\\n".join([d.page_content for d in docs])
+
+    chain = prompt | llm
+    response = chain.invoke({"context": context, "question": req.message})
+    return {"reply": response.content}
+
+@app.post("/knowledge/add")
+async def add(texts: list[str]):
+    vectorstore.add_texts(texts)
+    return {"status": "ok", "count": len(texts)}
+
+# uvicorn app:app --reload --port 8000
+# curl -X POST localhost:8000/chat -H "Content-Type: application/json" -d '{"message":"退款政策？"}'`,
+        language: 'python',
+        difficulty: 'intermediate',
+        tags: ['RAG', 'FastAPI', '完整项目']
+      },
+      {
+        id: 'case-2',
+        title: { zh: 'PDF 问答助手', ja: 'PDF Q&A アシスタント' },
+        description: { zh: '上传 PDF 智能问答 (Gradio)', ja: 'PDF インテリジェント Q&A (Gradio)' },
+        code: `# PDF 问答 - Gradio 界面
+# pip install gradio pypdf langchain langchain-anthropic langchain-chroma sentence-transformers
+
+import gradio as gr
+from langchain_community.document_loaders import PyPDFLoader
+from langchain.text_splitter import RecursiveCharacterTextSplitter
+from langchain_chroma import Chroma
+from langchain_anthropic import ChatAnthropic
+from langchain_community.embeddings import HuggingFaceEmbeddings
+import tempfile
+
+embeddings = HuggingFaceEmbeddings(model_name="sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2")
+llm = ChatAnthropic(model="claude-sonnet-4-20250514")
+vectorstore = None
+
+def load_pdf(file):
+    global vectorstore
+    if not file: return "请上传PDF"
+
+    with tempfile.NamedTemporaryFile(delete=False, suffix=".pdf") as tmp:
+        tmp.write(file)
+        loader = PyPDFLoader(tmp.name)
+        pages = loader.load()
+
+    splitter = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=200)
+    chunks = splitter.split_documents(pages)
+    vectorstore = Chroma.from_documents(chunks, embeddings)
+    return f"✅ 加载成功！{len(pages)}页，{len(chunks)}块"
+
+def ask(question):
+    if not vectorstore: return "请先上传PDF"
+    if not question.strip(): return "请输入问题"
+
+    docs = vectorstore.similarity_search(question, k=3)
+    context = "\\n---\\n".join([d.page_content for d in docs])
+
+    response = llm.invoke(f"基于以下内容回答：\\n{context}\\n\\n问题：{question}")
+    return response.content
+
+with gr.Blocks(title="PDF问答") as demo:
+    gr.Markdown("# 📄 PDF 智能问答")
+
+    with gr.Row():
+        with gr.Column(scale=1):
+            pdf = gr.File(label="上传PDF", file_types=[".pdf"], type="binary")
+            btn = gr.Button("📥 加载", variant="primary")
+            status = gr.Textbox(label="状态")
+
+        with gr.Column(scale=2):
+            question = gr.Textbox(label="问题", lines=2)
+            ask_btn = gr.Button("🔍 提问", variant="primary")
+            answer = gr.Textbox(label="回答", lines=8)
+
+    btn.click(load_pdf, pdf, status)
+    ask_btn.click(ask, question, answer)
+    question.submit(ask, question, answer)
+
+demo.launch(server_port=7860)`,
+        language: 'python',
+        difficulty: 'intermediate',
+        tags: ['Gradio', 'PDF', 'RAG', '完整项目']
+      },
+      {
+        id: 'case-3',
+        title: { zh: '代码审查助手', ja: 'コードレビューアシスタント' },
+        description: { zh: 'AI 自动代码审查', ja: 'AI 自動コードレビュー' },
+        code: `# 代码审查助手
+from anthropic import Anthropic
+
+client = Anthropic()
+
+SYSTEM = """你是资深代码审查专家。审查以下方面：
+
+1. **代码质量**: 可读性、命名规范
+2. **潜在Bug**: 边界条件、空值处理
+3. **安全隐患**: SQL注入、XSS等
+4. **最佳实践**: 是否符合规范
+
+输出格式：
+## 总体评价
+[简评]
+
+## 🔴 必须修改
+- [严重问题]
+
+## 🟡 建议修改
+- [改进建议]
+
+## 🟢 代码亮点
+- [好的地方]
+
+## 修改示例
+\\\`\\\`\\\`
+[修改后的代码]
+\\\`\\\`\\\`"""
+
+def review_code(code: str, lang: str = "python") -> str:
+    response = client.messages.create(
+        model="claude-sonnet-4-20250514",
+        max_tokens=2048,
+        system=SYSTEM,
+        messages=[{"role": "user", "content": f"审查{lang}代码：\\n\\\`\\\`\\\`{lang}\\n{code}\\n\\\`\\\`\\\`"}]
+    )
+    return response.content[0].text
+
+# 测试
+code = '''
+def get_user(id):
+    query = f"SELECT * FROM users WHERE id = {id}"
+    result = db.execute(query)
+    return result[0]
+'''
+
+review = review_code(code)
+print(review)
+
+# 输出示例：
+# ## 总体评价
+# 代码存在严重安全隐患
+#
+# ## 🔴 必须修改
+# - SQL注入风险：直接拼接用户输入
+# - IndexError：空结果时崩溃
+#
+# ## 修改示例
+# def get_user(user_id: int) -> dict | None:
+#     query = "SELECT * FROM users WHERE id = ?"
+#     result = db.execute(query, (user_id,))
+#     return result[0] if result else None`,
+        language: 'python',
+        difficulty: 'beginner',
+        tags: ['Code Review', 'Security', '完整项目']
+      },
+      {
+        id: 'case-4',
+        title: { zh: '会议纪要生成器', ja: '議事録ジェネレーター' },
+        description: { zh: '从文字生成会议纪要', ja: 'テキストから議事録を生成' },
+        code: `# 会议纪要生成器 - Gradio
+# pip install gradio anthropic
+
+import gradio as gr
+from anthropic import Anthropic
+
+client = Anthropic()
+
+SYSTEM = """你是专业会议记录员。根据内容生成结构化纪要：
+
+# 📋 会议纪要
+
+## 基本信息
+- **会议主题**: [推断]
+- **参会人员**: [提取]
+
+## 📌 核心议题
+1. [议题]
+
+## 💡 关键决策
+- [决策]
+
+## ✅ 行动项目
+| 负责人 | 任务 | 截止 |
+|--------|------|------|
+
+## 📝 讨论要点
+### 议题1
+- 内容
+
+## 🔜 下一步
+- [计划]"""
+
+def generate(text):
+    if not text.strip(): return "请输入会议内容"
+
+    response = client.messages.create(
+        model="claude-sonnet-4-20250514",
+        max_tokens=4096,
+        system=SYSTEM,
+        messages=[{"role": "user", "content": f"生成会议纪要：\\n\\n{text}"}]
+    )
+    return response.content[0].text
+
+with gr.Blocks(title="会议纪要") as demo:
+    gr.Markdown("# 📝 AI 会议纪要生成器")
+
+    text_input = gr.Textbox(label="会议内容", placeholder="粘贴会议记录...", lines=10)
+    btn = gr.Button("生成纪要", variant="primary")
+    output = gr.Markdown(label="会议纪要")
+
+    btn.click(generate, text_input, output)
+
+demo.launch()`,
+        language: 'python',
+        difficulty: 'beginner',
+        tags: ['Gradio', 'Meeting', '完整项目']
+      }
+    ]
+  },
+  deploy: {
+    name: { zh: '部署上线', ja: 'デプロイ' },
+    description: { zh: 'AI 应用部署', ja: 'AI アプリデプロイ' },
+    icon: Rocket,
+    gradient: 'from-cyan-500 to-blue-600',
+    examples: [
+      {
+        id: 'dep-1',
+        title: { zh: 'Docker 部署', ja: 'Docker デプロイ' },
+        description: { zh: 'AI 应用容器化', ja: 'AI アプリのコンテナ化' },
+        code: `# === Dockerfile ===
+FROM python:3.11-slim
+WORKDIR /app
+
+RUN apt-get update && apt-get install -y build-essential && rm -rf /var/lib/apt/lists/*
+
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+COPY . .
+EXPOSE 8000
+CMD ["uvicorn", "app:app", "--host", "0.0.0.0", "--port", "8000"]
+
+# === docker-compose.yml ===
+version: '3.8'
+services:
+  ai-app:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      - ANTHROPIC_API_KEY=\${ANTHROPIC_API_KEY}
+    volumes:
+      - ./data:/app/data
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+
+  chroma:
+    image: chromadb/chroma:latest
+    ports:
+      - "8001:8000"
+    volumes:
+      - chroma_data:/chroma/chroma
+
+volumes:
+  chroma_data:
+
+# === .env ===
+ANTHROPIC_API_KEY=your-key
+
+# === 部署命令 ===
+docker build -t ai-app .
+docker-compose up -d
+docker-compose logs -f
+docker-compose down`,
+        language: 'bash',
+        difficulty: 'intermediate',
+        tags: ['Docker', 'Production']
+      },
+      {
+        id: 'dep-2',
+        title: { zh: 'Hugging Face Spaces', ja: 'HF Spaces' },
+        description: { zh: '免费部署 Gradio', ja: 'Gradio 無料デプロイ' },
+        code: `# Hugging Face Spaces 免费部署
+
+# === 项目结构 ===
+# my-app/
+# ├── app.py
+# ├── requirements.txt
+# └── README.md
+
+# === app.py ===
+import gradio as gr
+from anthropic import Anthropic
+import os
+
+client = Anthropic(api_key=os.getenv("ANTHROPIC_API_KEY"))
+
+def chat(message, history):
+    messages = []
+    for h, a in history:
+        messages.extend([
+            {"role": "user", "content": h},
+            {"role": "assistant", "content": a}
+        ])
+    messages.append({"role": "user", "content": message})
+
+    response = client.messages.create(
+        model="claude-sonnet-4-20250514",
+        max_tokens=1024,
+        messages=messages
+    )
+    return response.content[0].text
+
+demo = gr.ChatInterface(
+    fn=chat,
+    title="🤖 AI 聊天助手",
+    examples=["你好", "解释机器学习", "写首诗"]
+)
+demo.launch()
+
+# === requirements.txt ===
+gradio>=4.0.0
+anthropic>=0.18.0
+
+# === README.md (Space配置) ===
+---
+title: AI Chat
+emoji: 🤖
+colorFrom: blue
+colorTo: purple
+sdk: gradio
+sdk_version: 4.15.0
+app_file: app.py
+---
+
+# === 部署步骤 ===
+# 1. 登录 huggingface.co
+# 2. New Space -> 选择 Gradio
+# 3. 上传文件或连接 GitHub
+# 4. Settings > Secrets 添加 ANTHROPIC_API_KEY
+# 5. 完成！访问 https://huggingface.co/spaces/你的用户名/空间名`,
+        language: 'python',
+        difficulty: 'beginner',
+        tags: ['Hugging Face', 'Free', 'Gradio']
+      },
+      {
+        id: 'dep-3',
+        title: { zh: 'Vercel + Next.js', ja: 'Vercel + Next.js' },
+        description: { zh: '全栈 AI 应用', ja: 'フルスタック AI アプリ' },
+        code: `// Next.js AI 应用部署到 Vercel
+
+// === app/api/chat/route.ts ===
+import Anthropic from '@anthropic-ai/sdk';
+import { NextRequest, NextResponse } from 'next/server';
+
+const client = new Anthropic();
+
+export async function POST(req: NextRequest) {
+  const { messages } = await req.json();
+
+  const response = await client.messages.create({
+    model: 'claude-sonnet-4-20250514',
+    max_tokens: 1024,
+    messages: messages,
+  });
+
+  return NextResponse.json({
+    content: response.content[0].text,
+  });
+}
+
+// === app/page.tsx ===
+'use client';
+import { useState } from 'react';
+
+export default function Home() {
+  const [messages, setMessages] = useState([]);
+  const [input, setInput] = useState('');
+  const [loading, setLoading] = useState(false);
+
+  const send = async () => {
+    if (!input.trim()) return;
+
+    const newMessages = [...messages, { role: 'user', content: input }];
+    setMessages(newMessages);
+    setInput('');
+    setLoading(true);
+
+    const res = await fetch('/api/chat', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ messages: newMessages }),
+    });
+    const data = await res.json();
+    setMessages([...newMessages, { role: 'assistant', content: data.content }]);
+    setLoading(false);
+  };
+
+  return (
+    <main className="p-8 max-w-2xl mx-auto">
+      <h1 className="text-2xl font-bold mb-4">🤖 AI Chat</h1>
+      <div className="border rounded p-4 h-96 overflow-y-auto mb-4">
+        {messages.map((m, i) => (
+          <div key={i} className={\`mb-2 \${m.role === 'user' ? 'text-right' : ''}\`}>
+            <span className={\`inline-block p-2 rounded \${m.role === 'user' ? 'bg-blue-500 text-white' : 'bg-gray-200'}\`}>
+              {m.content}
+            </span>
+          </div>
+        ))}
+        {loading && <div>思考中...</div>}
+      </div>
+      <div className="flex gap-2">
+        <input value={input} onChange={e => setInput(e.target.value)} onKeyPress={e => e.key === 'Enter' && send()} className="flex-1 border p-2 rounded" />
+        <button onClick={send} className="bg-blue-500 text-white px-4 rounded">发送</button>
+      </div>
+    </main>
+  );
+}
+
+// === 部署 ===
+// 1. 推送到 GitHub
+// 2. 登录 vercel.com
+// 3. Import 仓库
+// 4. 添加环境变量 ANTHROPIC_API_KEY
+// 5. Deploy!`,
+        language: 'typescript',
+        difficulty: 'intermediate',
+        tags: ['Vercel', 'Next.js', 'Full Stack']
       }
     ]
   }
