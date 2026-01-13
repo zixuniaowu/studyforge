@@ -18,7 +18,8 @@ import KidsLessonPage from './pages/KidsLessonPage';
 
 function AppContent() {
   const location = useLocation();
-  const hideHeader = location.pathname.startsWith('/ai-book') ||
+  const hideHeader = location.pathname === '/' ||
+    location.pathname.startsWith('/ai-book') ||
     location.pathname.startsWith('/ai-resources') ||
     location.pathname.startsWith('/exam-tips') ||
     location.pathname.startsWith('/ai-code') ||
