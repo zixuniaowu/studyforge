@@ -14287,96 +14287,818 @@ AIアラインメントは、AIシステムの行動が人間の価値観と意�
           title: { zh: '7.1 智能客服机器人', ja: '7.1 スマートカスタマーサービスボット' },
           content: {
             zh: `
-## 项目：企业级智能客服
+## 项目：企业级智能客服系统
 
-构建一个能回答产品问题的客服机器人。
-
----
-
-## 📋 技术栈
-
-| 组件 | 技术选型 |
-|------|----------|
-| LLM | Claude / GPT-4o |
-| 向量数据库 | Chroma |
-| 框架 | LangChain |
-| 前端 | Streamlit |
+构建一个功能完整的智能客服机器人，支持知识库问答、多轮对话、意图识别。
 
 ---
 
-## 🔧 核心代码
+## 📁 项目结构
 
-\`\`\`python
-from langchain_anthropic import ChatAnthropic
-from langchain_chroma import Chroma
-from langchain_openai import OpenAIEmbeddings
-from langchain.chains import RetrievalQA
-
-# 1. 加载知识库
-embeddings = OpenAIEmbeddings()
-vectorstore = Chroma(
-    persist_directory="./knowledge_base",
-    embedding_function=embeddings
-)
-
-# 2. 创建检索链
-llm = ChatAnthropic(model="claude-sonnet-4-20250514")
-qa_chain = RetrievalQA.from_chain_type(
-    llm=llm,
-    chain_type="stuff",
-    retriever=vectorstore.as_retriever(search_kwargs={"k": 3})
-)
-
-# 3. 问答函数
-def answer_question(query: str) -> str:
-    result = qa_chain.invoke({"query": query})
-    return result["result"]
-
-# 4. Streamlit 界面
-import streamlit as st
-
-st.title("智能客服助手")
-query = st.text_input("请输入您的问题：")
-if query:
-    with st.spinner("正在思考..."):
-        answer = answer_question(query)
-    st.write(answer)
+\`\`\`
+smart-customer-service/
+├── requirements.txt          # 依赖清单
+├── .env                      # 环境变量
+├── config.py                 # 配置管理
+├── data/
+│   └── knowledge/            # 知识库文档
+│       ├── products.md
+│       ├── faq.md
+│       └── policies.md
+├── src/
+│   ├── __init__.py
+│   ├── knowledge_base.py     # 知识库管理
+│   ├── chat_engine.py        # 对话引擎
+│   ├── intent_classifier.py  # 意图识别
+│   └── memory.py             # 对话记忆
+├── app.py                    # Streamlit 应用
+└── tests/
+    └── test_chat.py
 \`\`\`
 
 ---
 
-## 📊 功能清单
+## 📋 依赖安装
 
-- [x] 基于知识库问答
-- [x] 多轮对话上下文
-- [ ] 意图识别分流
-- [ ] 人工客服转接
-- [ ] 满意度评分
+\`\`\`bash
+# requirements.txt
+langchain>=0.3.0
+langchain-anthropic>=0.3.0
+langchain-openai>=0.3.0
+langchain-chroma>=0.2.0
+chromadb>=0.5.0
+streamlit>=1.40.0
+python-dotenv>=1.0.0
+pydantic>=2.0.0
+\`\`\`
+
+\`\`\`bash
+pip install -r requirements.txt
+\`\`\`
+
+---
+
+## 🔧 配置管理 (config.py)
+
+\`\`\`python
+import os
+from dotenv import load_dotenv
+from pydantic_settings import BaseSettings
+
+load_dotenv()
+
+class Settings(BaseSettings):
+    # LLM 配置
+    llm_provider: str = "anthropic"  # anthropic / openai
+    anthropic_api_key: str = ""
+    openai_api_key: str = ""
+    model_name: str = "claude-sonnet-4-20250514"
+
+    # 向量数据库
+    chroma_persist_dir: str = "./chroma_db"
+    embedding_model: str = "text-embedding-3-small"
+
+    # 检索配置
+    top_k: int = 5
+    score_threshold: float = 0.7
+
+    # 对话配置
+    max_history: int = 10
+    system_prompt: str = """你是一个专业的客服助手。
+请根据知识库内容回答用户问题。
+如果知识库中没有相关信息，请诚实说明。
+回答要简洁、准确、有帮助。"""
+
+    class Config:
+        env_file = ".env"
+
+settings = Settings()
+\`\`\`
+
+---
+
+## 📚 知识库管理 (knowledge_base.py)
+
+\`\`\`python
+import os
+from pathlib import Path
+from typing import List, Optional
+
+from langchain_community.document_loaders import (
+    DirectoryLoader,
+    TextLoader,
+    UnstructuredMarkdownLoader
+)
+from langchain.text_splitter import RecursiveCharacterTextSplitter
+from langchain_openai import OpenAIEmbeddings
+from langchain_chroma import Chroma
+from langchain_core.documents import Document
+
+from config import settings
+
+
+class KnowledgeBase:
+    """知识库管理类"""
+
+    def __init__(self, persist_dir: str = None):
+        self.persist_dir = persist_dir or settings.chroma_persist_dir
+        self.embeddings = OpenAIEmbeddings(
+            model=settings.embedding_model,
+            api_key=settings.openai_api_key
+        )
+        self.text_splitter = RecursiveCharacterTextSplitter(
+            chunk_size=1000,
+            chunk_overlap=200,
+            separators=["\\n## ", "\\n### ", "\\n\\n", "\\n", " "]
+        )
+        self._vectorstore: Optional[Chroma] = None
+
+    @property
+    def vectorstore(self) -> Chroma:
+        """懒加载向量存储"""
+        if self._vectorstore is None:
+            if os.path.exists(self.persist_dir):
+                self._vectorstore = Chroma(
+                    persist_directory=self.persist_dir,
+                    embedding_function=self.embeddings
+                )
+            else:
+                raise ValueError("知识库未初始化，请先调用 build_from_directory()")
+        return self._vectorstore
+
+    def build_from_directory(self, docs_dir: str) -> int:
+        """从目录构建知识库"""
+        # 加载 Markdown 文件
+        loader = DirectoryLoader(
+            docs_dir,
+            glob="**/*.md",
+            loader_cls=UnstructuredMarkdownLoader,
+            show_progress=True
+        )
+        documents = loader.load()
+
+        # 添加来源元数据
+        for doc in documents:
+            doc.metadata["source"] = Path(doc.metadata.get("source", "")).name
+
+        # 分块
+        chunks = self.text_splitter.split_documents(documents)
+        print(f"文档分块完成: {len(documents)} 文档 -> {len(chunks)} 块")
+
+        # 创建向量存储
+        self._vectorstore = Chroma.from_documents(
+            documents=chunks,
+            embedding=self.embeddings,
+            persist_directory=self.persist_dir
+        )
+
+        return len(chunks)
+
+    def add_documents(self, texts: List[str], metadata: dict = None) -> None:
+        """添加新文档"""
+        docs = [Document(page_content=t, metadata=metadata or {}) for t in texts]
+        chunks = self.text_splitter.split_documents(docs)
+        self.vectorstore.add_documents(chunks)
+
+    def search(self, query: str, k: int = None) -> List[Document]:
+        """相似度搜索"""
+        k = k or settings.top_k
+        return self.vectorstore.similarity_search(query, k=k)
+
+    def search_with_score(self, query: str, k: int = None) -> List[tuple]:
+        """带分数的搜索"""
+        k = k or settings.top_k
+        results = self.vectorstore.similarity_search_with_score(query, k=k)
+        # 过滤低分结果
+        return [(doc, score) for doc, score in results
+                if score >= settings.score_threshold]
+
+
+# 全局实例
+knowledge_base = KnowledgeBase()
+\`\`\`
+
+---
+
+## 🧠 意图识别 (intent_classifier.py)
+
+\`\`\`python
+from enum import Enum
+from typing import Tuple
+from langchain_anthropic import ChatAnthropic
+from langchain_core.prompts import ChatPromptTemplate
+from pydantic import BaseModel, Field
+
+from config import settings
+
+
+class Intent(str, Enum):
+    """用户意图枚举"""
+    PRODUCT_INQUIRY = "product_inquiry"      # 产品咨询
+    ORDER_STATUS = "order_status"            # 订单查询
+    TECHNICAL_SUPPORT = "technical_support"  # 技术支持
+    COMPLAINT = "complaint"                  # 投诉建议
+    GENERAL_CHAT = "general_chat"            # 闲聊
+    TRANSFER_HUMAN = "transfer_human"        # 转人工
+
+
+class IntentResult(BaseModel):
+    """意图识别结果"""
+    intent: Intent = Field(description="识别到的意图")
+    confidence: float = Field(description="置信度 0-1", ge=0, le=1)
+    keywords: list[str] = Field(description="关键词列表", default_factory=list)
+
+
+class IntentClassifier:
+    """意图分类器"""
+
+    def __init__(self):
+        self.llm = ChatAnthropic(
+            model=settings.model_name,
+            api_key=settings.anthropic_api_key
+        ).with_structured_output(IntentResult)
+
+        self.prompt = ChatPromptTemplate.from_messages([
+            ("system", """你是意图识别专家。分析用户消息，识别意图类别。
+
+可选意图：
+- product_inquiry: 询问产品功能、价格、规格
+- order_status: 查询订单、物流、退换货
+- technical_support: 使用问题、故障排查
+- complaint: 投诉、建议、不满
+- general_chat: 问候、闲聊、无明确目的
+- transfer_human: 明确要求人工客服
+
+输出结构化 JSON。"""),
+            ("human", "{message}")
+        ])
+
+        self.chain = self.prompt | self.llm
+
+    def classify(self, message: str) -> IntentResult:
+        """识别用户意图"""
+        return self.chain.invoke({"message": message})
+
+    def should_transfer(self, intent_result: IntentResult) -> bool:
+        """判断是否需要转人工"""
+        # 明确要求转人工
+        if intent_result.intent == Intent.TRANSFER_HUMAN:
+            return True
+        # 投诉类高置信度
+        if intent_result.intent == Intent.COMPLAINT and intent_result.confidence > 0.8:
+            return True
+        return False
+
+
+intent_classifier = IntentClassifier()
+\`\`\`
+
+---
+
+## 💬 对话记忆 (memory.py)
+
+\`\`\`python
+from typing import List, Dict
+from collections import deque
+from datetime import datetime
+
+from config import settings
+
+
+class ConversationMemory:
+    """对话记忆管理"""
+
+    def __init__(self, session_id: str, max_history: int = None):
+        self.session_id = session_id
+        self.max_history = max_history or settings.max_history
+        self.messages: deque = deque(maxlen=self.max_history * 2)
+        self.created_at = datetime.now()
+        self.metadata: Dict = {}
+
+    def add_user_message(self, content: str) -> None:
+        """添加用户消息"""
+        self.messages.append({
+            "role": "user",
+            "content": content,
+            "timestamp": datetime.now().isoformat()
+        })
+
+    def add_assistant_message(self, content: str, sources: List[str] = None) -> None:
+        """添加助手消息"""
+        self.messages.append({
+            "role": "assistant",
+            "content": content,
+            "sources": sources or [],
+            "timestamp": datetime.now().isoformat()
+        })
+
+    def get_history(self) -> List[Dict]:
+        """获取对话历史"""
+        return list(self.messages)
+
+    def get_context_string(self) -> str:
+        """获取上下文字符串，用于 prompt"""
+        if not self.messages:
+            return "（无历史对话）"
+
+        lines = []
+        for msg in self.messages:
+            role = "用户" if msg["role"] == "user" else "客服"
+            lines.append(f"{role}: {msg['content']}")
+        return "\\n".join(lines)
+
+    def clear(self) -> None:
+        """清空记忆"""
+        self.messages.clear()
+
+
+class MemoryStore:
+    """会话存储管理"""
+
+    def __init__(self):
+        self._sessions: Dict[str, ConversationMemory] = {}
+
+    def get_or_create(self, session_id: str) -> ConversationMemory:
+        """获取或创建会话"""
+        if session_id not in self._sessions:
+            self._sessions[session_id] = ConversationMemory(session_id)
+        return self._sessions[session_id]
+
+    def delete(self, session_id: str) -> None:
+        """删除会话"""
+        self._sessions.pop(session_id, None)
+
+
+memory_store = MemoryStore()
+\`\`\`
+
+---
+
+## 🤖 对话引擎 (chat_engine.py)
+
+\`\`\`python
+from typing import Generator, Dict, Any
+from langchain_anthropic import ChatAnthropic
+from langchain_core.prompts import ChatPromptTemplate
+from langchain_core.output_parsers import StrOutputParser
+
+from config import settings
+from knowledge_base import knowledge_base
+from intent_classifier import intent_classifier, Intent
+from memory import memory_store, ConversationMemory
+
+
+class ChatEngine:
+    """智能对话引擎"""
+
+    def __init__(self):
+        self.llm = ChatAnthropic(
+            model=settings.model_name,
+            api_key=settings.anthropic_api_key,
+            streaming=True
+        )
+
+        self.qa_prompt = ChatPromptTemplate.from_messages([
+            ("system", """{system_prompt}
+
+## 知识库参考
+{context}
+
+## 对话历史
+{history}
+
+请根据以上信息回答用户问题。回答要求：
+1. 优先使用知识库内容
+2. 保持对话连贯性
+3. 如果不确定，请诚实说明
+4. 回答简洁专业"""),
+            ("human", "{question}")
+        ])
+
+        self.chain = self.qa_prompt | self.llm | StrOutputParser()
+
+    def _retrieve_context(self, query: str) -> str:
+        """检索相关知识"""
+        try:
+            docs = knowledge_base.search(query)
+            if not docs:
+                return "（未找到相关知识库内容）"
+
+            context_parts = []
+            for i, doc in enumerate(docs, 1):
+                source = doc.metadata.get("source", "未知")
+                context_parts.append(f"[{i}] 来源: {source}\\n{doc.page_content}")
+
+            return "\\n\\n".join(context_parts)
+        except Exception as e:
+            return f"（知识库检索失败: {e}）"
+
+    def chat(self,
+             session_id: str,
+             message: str) -> Generator[str, None, Dict[str, Any]]:
+        """
+        处理用户消息，流式返回回复
+
+        Args:
+            session_id: 会话ID
+            message: 用户消息
+
+        Yields:
+            str: 回复文本片段
+
+        Returns:
+            Dict: 元数据（意图、来源等）
+        """
+        memory = memory_store.get_or_create(session_id)
+
+        # 1. 意图识别
+        intent_result = intent_classifier.classify(message)
+
+        # 2. 检查是否需要转人工
+        if intent_classifier.should_transfer(intent_result):
+            response = "好的，我这就为您转接人工客服，请稍候..."
+            memory.add_user_message(message)
+            memory.add_assistant_message(response)
+            yield response
+            return {
+                "intent": intent_result.intent,
+                "transfer_human": True
+            }
+
+        # 3. 检索知识库
+        context = self._retrieve_context(message)
+        history = memory.get_context_string()
+
+        # 4. 生成回复（流式）
+        memory.add_user_message(message)
+        full_response = ""
+
+        for chunk in self.chain.stream({
+            "system_prompt": settings.system_prompt,
+            "context": context,
+            "history": history,
+            "question": message
+        }):
+            full_response += chunk
+            yield chunk
+
+        # 5. 保存回复
+        memory.add_assistant_message(full_response)
+
+        return {
+            "intent": intent_result.intent,
+            "confidence": intent_result.confidence,
+            "transfer_human": False
+        }
+
+    def get_history(self, session_id: str) -> list:
+        """获取对话历史"""
+        memory = memory_store.get_or_create(session_id)
+        return memory.get_history()
+
+
+chat_engine = ChatEngine()
+\`\`\`
+
+---
+
+## 🖥️ Streamlit 应用 (app.py)
+
+\`\`\`python
+import streamlit as st
+import uuid
+from datetime import datetime
+
+from chat_engine import chat_engine
+from knowledge_base import knowledge_base
+
+# 页面配置
+st.set_page_config(
+    page_title="智能客服助手",
+    page_icon="🤖",
+    layout="wide"
+)
+
+# 自定义样式
+st.markdown("""
+<style>
+.stChatMessage {
+    padding: 1rem;
+    border-radius: 0.5rem;
+}
+.user-message {
+    background-color: #e3f2fd;
+}
+.assistant-message {
+    background-color: #f5f5f5;
+}
+</style>
+""", unsafe_allow_html=True)
+
+# 初始化会话状态
+if "session_id" not in st.session_state:
+    st.session_state.session_id = str(uuid.uuid4())
+if "messages" not in st.session_state:
+    st.session_state.messages = []
+
+# 侧边栏
+with st.sidebar:
+    st.title("🤖 智能客服")
+    st.markdown("---")
+
+    # 知识库管理
+    st.subheader("📚 知识库")
+    if st.button("🔄 重建知识库"):
+        with st.spinner("正在构建知识库..."):
+            try:
+                count = knowledge_base.build_from_directory("./data/knowledge")
+                st.success(f"✅ 已索引 {count} 个文档块")
+            except Exception as e:
+                st.error(f"❌ 构建失败: {e}")
+
+    st.markdown("---")
+
+    # 会话管理
+    st.subheader("💬 当前会话")
+    st.text(f"ID: {st.session_state.session_id[:8]}...")
+    if st.button("🗑️ 清空对话"):
+        st.session_state.messages = []
+        st.rerun()
+
+    st.markdown("---")
+    st.caption(f"© {datetime.now().year} 智能客服系统")
+
+# 主界面
+st.title("💬 智能客服助手")
+st.caption("有什么可以帮助您的？")
+
+# 显示对话历史
+for msg in st.session_state.messages:
+    with st.chat_message(msg["role"]):
+        st.markdown(msg["content"])
+
+# 用户输入
+if prompt := st.chat_input("请输入您的问题..."):
+    # 显示用户消息
+    st.session_state.messages.append({"role": "user", "content": prompt})
+    with st.chat_message("user"):
+        st.markdown(prompt)
+
+    # 生成回复
+    with st.chat_message("assistant"):
+        message_placeholder = st.empty()
+        full_response = ""
+
+        try:
+            for chunk in chat_engine.chat(
+                st.session_state.session_id,
+                prompt
+            ):
+                if isinstance(chunk, str):
+                    full_response += chunk
+                    message_placeholder.markdown(full_response + "▌")
+
+            message_placeholder.markdown(full_response)
+            st.session_state.messages.append({
+                "role": "assistant",
+                "content": full_response
+            })
+
+        except Exception as e:
+            error_msg = f"抱歉，处理您的请求时出现错误: {str(e)}"
+            message_placeholder.error(error_msg)
+
+# 快捷问题
+st.markdown("---")
+st.subheader("💡 常见问题")
+cols = st.columns(3)
+quick_questions = [
+    "产品有哪些功能？",
+    "如何查询订单状态？",
+    "退换货政策是什么？"
+]
+for col, q in zip(cols, quick_questions):
+    if col.button(q, use_container_width=True):
+        st.session_state.messages.append({"role": "user", "content": q})
+        st.rerun()
+\`\`\`
+
+---
+
+## 🚀 启动运行
+
+\`\`\`bash
+# 1. 配置环境变量
+cat > .env << EOF
+ANTHROPIC_API_KEY=your-api-key
+OPENAI_API_KEY=your-openai-key
+EOF
+
+# 2. 准备知识库文档 (data/knowledge/*.md)
+
+# 3. 构建知识库
+python -c "from knowledge_base import knowledge_base; \\
+           knowledge_base.build_from_directory('./data/knowledge')"
+
+# 4. 启动应用
+streamlit run app.py
+\`\`\`
+
+---
+
+## 🧪 测试用例 (tests/test_chat.py)
+
+\`\`\`python
+import pytest
+from chat_engine import chat_engine
+from intent_classifier import intent_classifier, Intent
+from memory import memory_store
+
+def test_intent_classification():
+    """测试意图识别"""
+    result = intent_classifier.classify("你们的产品多少钱？")
+    assert result.intent == Intent.PRODUCT_INQUIRY
+    assert result.confidence > 0.5
+
+def test_transfer_human():
+    """测试转人工判断"""
+    result = intent_classifier.classify("我要转人工")
+    assert intent_classifier.should_transfer(result)
+
+def test_conversation_memory():
+    """测试对话记忆"""
+    memory = memory_store.get_or_create("test-session")
+    memory.add_user_message("你好")
+    memory.add_assistant_message("您好！有什么可以帮您？")
+
+    history = memory.get_history()
+    assert len(history) == 2
+    assert history[0]["role"] == "user"
+
+def test_chat_stream():
+    """测试流式对话"""
+    session_id = "test-session"
+    response_chunks = []
+
+    for chunk in chat_engine.chat(session_id, "你好"):
+        if isinstance(chunk, str):
+            response_chunks.append(chunk)
+
+    full_response = "".join(response_chunks)
+    assert len(full_response) > 0
+
+if __name__ == "__main__":
+    pytest.main([__file__, "-v"])
+\`\`\`
+
+---
+
+## 📊 生产部署清单
+
+| 项目 | 开发环境 | 生产环境 |
+|------|----------|----------|
+| 向量数据库 | Chroma (本地) | Pinecone / Qdrant |
+| 会话存储 | 内存 | Redis |
+| 日志 | 控制台 | ELK / CloudWatch |
+| 监控 | 无 | Prometheus + Grafana |
+| 部署 | Streamlit | Docker + K8s |
+| CDN | 无 | CloudFlare |
             `,
             ja: `
 ## プロジェクト：エンタープライズスマートカスタマーサービス
 
-製品の質問に答えるカスタマーサービスボットを構築。
+ナレッジベースQ&A、マルチターン対話、意図認識をサポートする完全な機能を備えたスマートカスタマーサービスボットを構築します。
 
 ---
 
-## 📋 技術スタック
+## 📁 プロジェクト構造
 
-| コンポーネント | 技術選定 |
-|----------------|----------|
-| LLM | Claude / GPT-4o |
-| ベクトルDB | Chroma |
-| フレームワーク | LangChain |
-| フロントエンド | Streamlit |
+\`\`\`
+smart-customer-service/
+├── requirements.txt          # 依存関係リスト
+├── .env                      # 環境変数
+├── config.py                 # 設定管理
+├── data/
+│   └── knowledge/            # ナレッジベースドキュメント
+├── src/
+│   ├── knowledge_base.py     # ナレッジベース管理
+│   ├── chat_engine.py        # 対話エンジン
+│   ├── intent_classifier.py  # 意図認識
+│   └── memory.py             # 対話メモリ
+├── app.py                    # Streamlitアプリ
+└── tests/
+    └── test_chat.py
+\`\`\`
 
 ---
 
-## 📊 機能リスト
+## 📋 依存関係インストール
 
-- [x] ナレッジベースQ&A
-- [x] マルチターン対話コンテキスト
-- [ ] 意図認識による振り分け
-- [ ] 人間オペレーターへのエスカレーション
+\`\`\`bash
+pip install langchain langchain-anthropic langchain-chroma streamlit
+\`\`\`
+
+---
+
+## 🔧 設定管理 (config.py)
+
+\`\`\`python
+from pydantic_settings import BaseSettings
+
+class Settings(BaseSettings):
+    llm_provider: str = "anthropic"
+    anthropic_api_key: str = ""
+    model_name: str = "claude-sonnet-4-20250514"
+    chroma_persist_dir: str = "./chroma_db"
+    top_k: int = 5
+    max_history: int = 10
+
+    system_prompt: str = """あなたはプロフェッショナルな
+カスタマーサービスアシスタントです。
+ナレッジベースの内容に基づいて質問に回答してください。"""
+
+settings = Settings()
+\`\`\`
+
+---
+
+## 🧠 意図認識 (intent_classifier.py)
+
+\`\`\`python
+from enum import Enum
+from pydantic import BaseModel
+
+class Intent(str, Enum):
+    PRODUCT_INQUIRY = "product_inquiry"      # 製品問い合わせ
+    ORDER_STATUS = "order_status"            # 注文照会
+    TECHNICAL_SUPPORT = "technical_support"  # 技術サポート
+    COMPLAINT = "complaint"                  # 苦情
+    TRANSFER_HUMAN = "transfer_human"        # 人間オペレーターへ
+
+class IntentResult(BaseModel):
+    intent: Intent
+    confidence: float
+    keywords: list[str] = []
+\`\`\`
+
+---
+
+## 💬 対話エンジン (chat_engine.py)
+
+\`\`\`python
+from langchain_anthropic import ChatAnthropic
+from langchain_core.prompts import ChatPromptTemplate
+
+class ChatEngine:
+    def __init__(self):
+        self.llm = ChatAnthropic(
+            model="claude-sonnet-4-20250514",
+            streaming=True
+        )
+
+    def chat(self, session_id: str, message: str):
+        # 1. 意図認識
+        intent = self.classify_intent(message)
+
+        # 2. ナレッジベース検索
+        context = self.retrieve_context(message)
+
+        # 3. 回答生成（ストリーミング）
+        for chunk in self.generate_response(context, message):
+            yield chunk
+\`\`\`
+
+---
+
+## 🖥️ Streamlitアプリ (app.py)
+
+\`\`\`python
+import streamlit as st
+
+st.set_page_config(page_title="スマートカスタマーサービス", page_icon="🤖")
+st.title("💬 スマートカスタマーサービス")
+
+# チャット履歴表示
+for msg in st.session_state.get("messages", []):
+    with st.chat_message(msg["role"]):
+        st.markdown(msg["content"])
+
+# ユーザー入力
+if prompt := st.chat_input("ご質問をどうぞ..."):
+    with st.chat_message("assistant"):
+        response = st.write_stream(chat_engine.chat(session_id, prompt))
+\`\`\`
+
+---
+
+## 📊 本番デプロイチェックリスト
+
+| 項目 | 開発環境 | 本番環境 |
+|------|----------|----------|
+| ベクトルDB | Chroma | Pinecone / Qdrant |
+| セッション | メモリ | Redis |
+| ログ | コンソール | ELK |
+| デプロイ | Streamlit | Docker + K8s |
             `
           }
         },
@@ -14385,76 +15107,918 @@ if query:
           title: { zh: '7.2 文档问答系统', ja: '7.2 ドキュメントQ&Aシステム' },
           content: {
             zh: `
-## 项目：PDF/Word 文档问答
+## 项目：多格式文档问答系统
 
-让 AI 阅读并回答关于文档的问题。
+构建一个支持 PDF/Word/Excel/TXT 的智能文档问答系统，带来源引用和页码标注。
 
 ---
 
-## 🔧 核心代码
+## 📁 项目结构
 
-\`\`\`python
-from langchain_community.document_loaders import PyPDFLoader
-from langchain.text_splitter import RecursiveCharacterTextSplitter
-from langchain_chroma import Chroma
-from langchain_openai import OpenAIEmbeddings, ChatOpenAI
-
-# 1. 加载文档
-loader = PyPDFLoader("document.pdf")
-documents = loader.load()
-
-# 2. 分块
-text_splitter = RecursiveCharacterTextSplitter(
-    chunk_size=1000,
-    chunk_overlap=200
-)
-chunks = text_splitter.split_documents(documents)
-
-# 3. 向量化存储
-embeddings = OpenAIEmbeddings()
-vectorstore = Chroma.from_documents(chunks, embeddings)
-
-# 4. 问答
-llm = ChatOpenAI(model="gpt-4o")
-retriever = vectorstore.as_retriever()
-
-def ask_document(question: str) -> str:
-    docs = retriever.invoke(question)
-    context = "\\n".join([d.page_content for d in docs])
-
-    response = llm.invoke(f"""
-    基于以下文档内容回答问题。如果文档中没有相关信息，请说明。
-
-    文档内容：
-    {context}
-
-    问题：{question}
-    """)
-    return response.content
+\`\`\`
+document-qa-system/
+├── requirements.txt
+├── .env
+├── config.py
+├── uploads/                    # 上传文档目录
+├── vector_store/               # 向量存储
+├── src/
+│   ├── __init__.py
+│   ├── document_loader.py      # 多格式文档加载
+│   ├── text_processor.py       # 文本处理与分块
+│   ├── vector_store.py         # 向量存储管理
+│   ├── qa_engine.py            # 问答引擎
+│   └── citation.py             # 来源引用处理
+├── api/
+│   ├── __init__.py
+│   ├── main.py                 # FastAPI 服务
+│   └── schemas.py              # 数据模型
+└── frontend/
+    └── app.py                  # Gradio 界面
 \`\`\`
 
 ---
 
-## 💡 扩展功能
+## 📋 依赖安装
 
-- 支持多文档上传
-- 文档来源标注
-- 关键词高亮
-- 导出问答记录
-            `,
-            ja: `
-## プロジェクト：PDF/Wordドキュメント Q&A
+\`\`\`bash
+# requirements.txt
+langchain>=0.3.0
+langchain-anthropic>=0.3.0
+langchain-openai>=0.3.0
+langchain-chroma>=0.2.0
+chromadb>=0.5.0
 
-AIにドキュメントを読ませ、質問に回答させる。
+# 文档解析
+pypdf>=4.0.0
+python-docx>=1.0.0
+openpyxl>=3.1.0
+unstructured>=0.10.0
+
+# API & 前端
+fastapi>=0.115.0
+uvicorn>=0.30.0
+gradio>=5.0.0
+python-multipart>=0.0.9
+\`\`\`
 
 ---
 
-## 💡 拡張機能
+## 📄 多格式文档加载器 (document_loader.py)
 
-- 複数ドキュメントアップロード対応
-- ドキュメントソース表示
-- キーワードハイライト
-- Q&A履歴エクスポート
+\`\`\`python
+import os
+from pathlib import Path
+from typing import List, Optional, Dict, Any
+from abc import ABC, abstractmethod
+
+from langchain_core.documents import Document
+from langchain_community.document_loaders import (
+    PyPDFLoader,
+    Docx2txtLoader,
+    UnstructuredExcelLoader,
+    TextLoader
+)
+
+
+class DocumentLoader(ABC):
+    """文档加载器基类"""
+
+    @abstractmethod
+    def load(self, file_path: str) -> List[Document]:
+        pass
+
+    @abstractmethod
+    def supports(self, file_path: str) -> bool:
+        pass
+
+
+class PDFLoader(DocumentLoader):
+    """PDF 加载器，保留页码信息"""
+
+    def supports(self, file_path: str) -> bool:
+        return file_path.lower().endswith('.pdf')
+
+    def load(self, file_path: str) -> List[Document]:
+        loader = PyPDFLoader(file_path)
+        docs = loader.load()
+
+        # 添加页码和文件名元数据
+        filename = Path(file_path).name
+        for i, doc in enumerate(docs):
+            doc.metadata.update({
+                "source": filename,
+                "page": i + 1,
+                "file_type": "pdf"
+            })
+
+        return docs
+
+
+class WordLoader(DocumentLoader):
+    """Word 文档加载器"""
+
+    def supports(self, file_path: str) -> bool:
+        return file_path.lower().endswith(('.docx', '.doc'))
+
+    def load(self, file_path: str) -> List[Document]:
+        loader = Docx2txtLoader(file_path)
+        docs = loader.load()
+
+        filename = Path(file_path).name
+        for doc in docs:
+            doc.metadata.update({
+                "source": filename,
+                "file_type": "word"
+            })
+
+        return docs
+
+
+class ExcelLoader(DocumentLoader):
+    """Excel 加载器"""
+
+    def supports(self, file_path: str) -> bool:
+        return file_path.lower().endswith(('.xlsx', '.xls'))
+
+    def load(self, file_path: str) -> List[Document]:
+        loader = UnstructuredExcelLoader(file_path)
+        docs = loader.load()
+
+        filename = Path(file_path).name
+        for doc in docs:
+            doc.metadata.update({
+                "source": filename,
+                "file_type": "excel"
+            })
+
+        return docs
+
+
+class TxtLoader(DocumentLoader):
+    """纯文本加载器"""
+
+    def supports(self, file_path: str) -> bool:
+        return file_path.lower().endswith('.txt')
+
+    def load(self, file_path: str) -> List[Document]:
+        loader = TextLoader(file_path, encoding='utf-8')
+        docs = loader.load()
+
+        filename = Path(file_path).name
+        for doc in docs:
+            doc.metadata.update({
+                "source": filename,
+                "file_type": "text"
+            })
+
+        return docs
+
+
+class MultiFormatLoader:
+    """统一多格式加载器"""
+
+    def __init__(self):
+        self.loaders: List[DocumentLoader] = [
+            PDFLoader(),
+            WordLoader(),
+            ExcelLoader(),
+            TxtLoader()
+        ]
+
+    def load(self, file_path: str) -> List[Document]:
+        """加载单个文档"""
+        for loader in self.loaders:
+            if loader.supports(file_path):
+                return loader.load(file_path)
+
+        raise ValueError(f"不支持的文件格式: {file_path}")
+
+    def load_directory(self, dir_path: str) -> List[Document]:
+        """加载目录下所有文档"""
+        all_docs = []
+        supported_extensions = ('.pdf', '.docx', '.doc', '.xlsx', '.xls', '.txt')
+
+        for file_path in Path(dir_path).rglob('*'):
+            if file_path.suffix.lower() in supported_extensions:
+                try:
+                    docs = self.load(str(file_path))
+                    all_docs.extend(docs)
+                    print(f"✅ 已加载: {file_path.name}")
+                except Exception as e:
+                    print(f"❌ 加载失败 {file_path.name}: {e}")
+
+        return all_docs
+
+    def get_supported_formats(self) -> List[str]:
+        return ["PDF", "Word (.docx)", "Excel (.xlsx)", "Text (.txt)"]
+
+
+# 全局实例
+document_loader = MultiFormatLoader()
+\`\`\`
+
+---
+
+## 🔍 文本处理与分块 (text_processor.py)
+
+\`\`\`python
+from typing import List, Dict, Any
+from langchain.text_splitter import RecursiveCharacterTextSplitter
+from langchain_core.documents import Document
+
+
+class TextProcessor:
+    """文本处理器"""
+
+    def __init__(
+        self,
+        chunk_size: int = 1000,
+        chunk_overlap: int = 200,
+        length_function: callable = len
+    ):
+        self.splitter = RecursiveCharacterTextSplitter(
+            chunk_size=chunk_size,
+            chunk_overlap=chunk_overlap,
+            length_function=length_function,
+            separators=[
+                "\\n\\n",  # 段落
+                "\\n",     # 换行
+                "。",      # 中文句号
+                ".",       # 英文句号
+                "！",
+                "!",
+                "？",
+                "?",
+                "；",
+                ";",
+                " ",
+                ""
+            ]
+        )
+
+    def split_documents(self, documents: List[Document]) -> List[Document]:
+        """分割文档，保留元数据"""
+        chunks = self.splitter.split_documents(documents)
+
+        # 添加分块索引
+        for i, chunk in enumerate(chunks):
+            chunk.metadata["chunk_id"] = i
+            chunk.metadata["chunk_total"] = len(chunks)
+
+        return chunks
+
+    def preprocess_text(self, text: str) -> str:
+        """文本预处理"""
+        # 去除多余空白
+        import re
+        text = re.sub(r'\\s+', ' ', text)
+        # 去除特殊字符
+        text = re.sub(r'[\\x00-\\x08\\x0b\\x0c\\x0e-\\x1f]', '', text)
+        return text.strip()
+
+
+text_processor = TextProcessor()
+\`\`\`
+
+---
+
+## 💾 向量存储管理 (vector_store.py)
+
+\`\`\`python
+import os
+from typing import List, Optional, Tuple
+from langchain_openai import OpenAIEmbeddings
+from langchain_chroma import Chroma
+from langchain_core.documents import Document
+
+
+class VectorStoreManager:
+    """向量存储管理器"""
+
+    def __init__(
+        self,
+        persist_directory: str = "./vector_store",
+        collection_name: str = "documents"
+    ):
+        self.persist_directory = persist_directory
+        self.collection_name = collection_name
+        self.embeddings = OpenAIEmbeddings(
+            model="text-embedding-3-small"
+        )
+        self._vectorstore: Optional[Chroma] = None
+
+    @property
+    def vectorstore(self) -> Chroma:
+        if self._vectorstore is None:
+            if os.path.exists(self.persist_directory):
+                self._vectorstore = Chroma(
+                    persist_directory=self.persist_directory,
+                    collection_name=self.collection_name,
+                    embedding_function=self.embeddings
+                )
+            else:
+                raise ValueError("向量库未初始化")
+        return self._vectorstore
+
+    def create_from_documents(self, documents: List[Document]) -> int:
+        """从文档创建向量库"""
+        self._vectorstore = Chroma.from_documents(
+            documents=documents,
+            embedding=self.embeddings,
+            persist_directory=self.persist_directory,
+            collection_name=self.collection_name
+        )
+        return len(documents)
+
+    def add_documents(self, documents: List[Document]) -> None:
+        """添加文档到现有向量库"""
+        self.vectorstore.add_documents(documents)
+
+    def search(
+        self,
+        query: str,
+        k: int = 5,
+        filter_dict: dict = None
+    ) -> List[Document]:
+        """相似度搜索"""
+        return self.vectorstore.similarity_search(
+            query,
+            k=k,
+            filter=filter_dict
+        )
+
+    def search_with_score(
+        self,
+        query: str,
+        k: int = 5
+    ) -> List[Tuple[Document, float]]:
+        """带分数的搜索"""
+        return self.vectorstore.similarity_search_with_score(query, k=k)
+
+    def delete_by_source(self, source: str) -> None:
+        """按来源删除文档"""
+        # Chroma 支持按 metadata 过滤删除
+        self.vectorstore._collection.delete(
+            where={"source": source}
+        )
+
+    def get_all_sources(self) -> List[str]:
+        """获取所有文档来源"""
+        results = self.vectorstore._collection.get()
+        sources = set()
+        for meta in results.get("metadatas", []):
+            if meta and "source" in meta:
+                sources.add(meta["source"])
+        return list(sources)
+
+
+vector_store = VectorStoreManager()
+\`\`\`
+
+---
+
+## 🤖 问答引擎 (qa_engine.py)
+
+\`\`\`python
+from typing import List, Dict, Any, Generator
+from dataclasses import dataclass
+
+from langchain_anthropic import ChatAnthropic
+from langchain_core.prompts import ChatPromptTemplate
+from langchain_core.output_parsers import StrOutputParser
+from langchain_core.documents import Document
+
+from vector_store import vector_store
+
+
+@dataclass
+class Citation:
+    """引用信息"""
+    source: str
+    page: int | None
+    content: str
+    relevance_score: float
+
+
+@dataclass
+class QAResponse:
+    """问答响应"""
+    answer: str
+    citations: List[Citation]
+    query: str
+
+
+class DocumentQAEngine:
+    """文档问答引擎"""
+
+    def __init__(self, model: str = "claude-sonnet-4-20250514"):
+        self.llm = ChatAnthropic(
+            model=model,
+            streaming=True
+        )
+
+        self.prompt = ChatPromptTemplate.from_messages([
+            ("system", """你是一个专业的文档问答助手。
+
+## 任务
+根据提供的文档内容回答用户问题。
+
+## 规则
+1. 只使用文档中的信息回答
+2. 如果文档中没有相关信息，明确说明
+3. 引用来源时使用 [来源: 文件名, 第X页] 格式
+4. 回答要准确、简洁、有条理
+
+## 文档内容
+{context}
+
+---
+请回答用户问题，并标注引用来源。"""),
+            ("human", "{question}")
+        ])
+
+        self.chain = self.prompt | self.llm | StrOutputParser()
+
+    def _format_context(
+        self,
+        docs: List[tuple[Document, float]]
+    ) -> tuple[str, List[Citation]]:
+        """格式化检索结果和引用"""
+        context_parts = []
+        citations = []
+
+        for i, (doc, score) in enumerate(docs, 1):
+            source = doc.metadata.get("source", "未知")
+            page = doc.metadata.get("page")
+            content = doc.page_content
+
+            # 构建上下文
+            page_info = f", 第{page}页" if page else ""
+            context_parts.append(
+                f"[文档{i}] 来源: {source}{page_info}\\n{content}"
+            )
+
+            # 记录引用
+            citations.append(Citation(
+                source=source,
+                page=page,
+                content=content[:200] + "..." if len(content) > 200 else content,
+                relevance_score=score
+            ))
+
+        return "\\n\\n---\\n\\n".join(context_parts), citations
+
+    def query(
+        self,
+        question: str,
+        k: int = 5,
+        source_filter: str = None
+    ) -> QAResponse:
+        """问答查询（非流式）"""
+        # 检索相关文档
+        filter_dict = {"source": source_filter} if source_filter else None
+        docs_with_scores = vector_store.search_with_score(question, k=k)
+
+        if not docs_with_scores:
+            return QAResponse(
+                answer="抱歉，未找到与问题相关的文档内容。",
+                citations=[],
+                query=question
+            )
+
+        # 格式化上下文
+        context, citations = self._format_context(docs_with_scores)
+
+        # 生成回答
+        answer = self.chain.invoke({
+            "context": context,
+            "question": question
+        })
+
+        return QAResponse(
+            answer=answer,
+            citations=citations,
+            query=question
+        )
+
+    def query_stream(
+        self,
+        question: str,
+        k: int = 5
+    ) -> Generator[str, None, List[Citation]]:
+        """流式问答查询"""
+        docs_with_scores = vector_store.search_with_score(question, k=k)
+
+        if not docs_with_scores:
+            yield "抱歉，未找到与问题相关的文档内容。"
+            return []
+
+        context, citations = self._format_context(docs_with_scores)
+
+        for chunk in self.chain.stream({
+            "context": context,
+            "question": question
+        }):
+            yield chunk
+
+        return citations
+
+
+qa_engine = DocumentQAEngine()
+\`\`\`
+
+---
+
+## 🌐 FastAPI 服务 (api/main.py)
+
+\`\`\`python
+import os
+import shutil
+from typing import List, Optional
+from fastapi import FastAPI, UploadFile, File, HTTPException
+from fastapi.middleware.cors import CORSMiddleware
+from pydantic import BaseModel
+
+from document_loader import document_loader
+from text_processor import text_processor
+from vector_store import vector_store
+from qa_engine import qa_engine
+
+
+app = FastAPI(title="文档问答系统 API")
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_methods=["*"],
+    allow_headers=["*"]
+)
+
+UPLOAD_DIR = "./uploads"
+os.makedirs(UPLOAD_DIR, exist_ok=True)
+
+
+# 请求/响应模型
+class QuestionRequest(BaseModel):
+    question: str
+    k: int = 5
+    source_filter: Optional[str] = None
+
+
+class CitationResponse(BaseModel):
+    source: str
+    page: Optional[int]
+    content: str
+    score: float
+
+
+class AnswerResponse(BaseModel):
+    answer: str
+    citations: List[CitationResponse]
+
+
+class UploadResponse(BaseModel):
+    filename: str
+    chunks: int
+    message: str
+
+
+# API 端点
+@app.post("/upload", response_model=UploadResponse)
+async def upload_document(file: UploadFile = File(...)):
+    """上传并索引文档"""
+    # 保存文件
+    file_path = os.path.join(UPLOAD_DIR, file.filename)
+    with open(file_path, "wb") as f:
+        shutil.copyfileobj(file.file, f)
+
+    try:
+        # 加载文档
+        docs = document_loader.load(file_path)
+
+        # 分块
+        chunks = text_processor.split_documents(docs)
+
+        # 索引
+        vector_store.add_documents(chunks)
+
+        return UploadResponse(
+            filename=file.filename,
+            chunks=len(chunks),
+            message=f"成功索引 {len(chunks)} 个文本块"
+        )
+
+    except Exception as e:
+        # 清理文件
+        os.remove(file_path)
+        raise HTTPException(status_code=400, detail=str(e))
+
+
+@app.post("/ask", response_model=AnswerResponse)
+async def ask_question(request: QuestionRequest):
+    """文档问答"""
+    response = qa_engine.query(
+        question=request.question,
+        k=request.k,
+        source_filter=request.source_filter
+    )
+
+    return AnswerResponse(
+        answer=response.answer,
+        citations=[
+            CitationResponse(
+                source=c.source,
+                page=c.page,
+                content=c.content,
+                score=c.relevance_score
+            )
+            for c in response.citations
+        ]
+    )
+
+
+@app.get("/documents")
+async def list_documents():
+    """列出已索引的文档"""
+    return {"documents": vector_store.get_all_sources()}
+
+
+@app.delete("/documents/{filename}")
+async def delete_document(filename: str):
+    """删除指定文档"""
+    vector_store.delete_by_source(filename)
+    file_path = os.path.join(UPLOAD_DIR, filename)
+    if os.path.exists(file_path):
+        os.remove(file_path)
+    return {"message": f"已删除 {filename}"}
+
+
+if __name__ == "__main__":
+    import uvicorn
+    uvicorn.run(app, host="0.0.0.0", port=8000)
+\`\`\`
+
+---
+
+## 🖥️ Gradio 界面 (frontend/app.py)
+
+\`\`\`python
+import gradio as gr
+import requests
+
+API_URL = "http://localhost:8000"
+
+
+def upload_file(file):
+    """上传文件"""
+    if file is None:
+        return "请选择文件"
+
+    with open(file.name, "rb") as f:
+        response = requests.post(
+            f"{API_URL}/upload",
+            files={"file": (file.name.split("/")[-1], f)}
+        )
+
+    if response.ok:
+        data = response.json()
+        return f"✅ {data['message']}"
+    else:
+        return f"❌ 上传失败: {response.text}"
+
+
+def ask_question(question, k):
+    """问答"""
+    if not question:
+        return "", ""
+
+    response = requests.post(
+        f"{API_URL}/ask",
+        json={"question": question, "k": int(k)}
+    )
+
+    if response.ok:
+        data = response.json()
+        answer = data["answer"]
+
+        # 格式化引用
+        citations = []
+        for c in data["citations"]:
+            page_info = f", 第{c['page']}页" if c['page'] else ""
+            citations.append(
+                f"📄 **{c['source']}**{page_info}\\n"
+                f"相关度: {c['score']:.2f}\\n"
+                f"> {c['content'][:100]}..."
+            )
+
+        return answer, "\\n\\n---\\n\\n".join(citations)
+    else:
+        return f"❌ 查询失败: {response.text}", ""
+
+
+def get_documents():
+    """获取文档列表"""
+    response = requests.get(f"{API_URL}/documents")
+    if response.ok:
+        docs = response.json()["documents"]
+        return "\\n".join([f"📄 {d}" for d in docs]) if docs else "暂无文档"
+    return "获取失败"
+
+
+# 构建界面
+with gr.Blocks(title="文档问答系统", theme=gr.themes.Soft()) as demo:
+    gr.Markdown("# 📚 智能文档问答系统")
+    gr.Markdown("上传 PDF/Word/Excel/TXT 文档，AI 帮你阅读和回答问题")
+
+    with gr.Tabs():
+        # 问答标签页
+        with gr.Tab("💬 问答"):
+            with gr.Row():
+                with gr.Column(scale=2):
+                    question_input = gr.Textbox(
+                        label="您的问题",
+                        placeholder="请输入关于文档的问题...",
+                        lines=2
+                    )
+                    k_slider = gr.Slider(
+                        minimum=1, maximum=10, value=5, step=1,
+                        label="检索文档数量"
+                    )
+                    ask_btn = gr.Button("🔍 提问", variant="primary")
+
+                with gr.Column(scale=3):
+                    answer_output = gr.Markdown(label="回答")
+                    citations_output = gr.Markdown(label="引用来源")
+
+            ask_btn.click(
+                ask_question,
+                inputs=[question_input, k_slider],
+                outputs=[answer_output, citations_output]
+            )
+
+        # 文档管理标签页
+        with gr.Tab("📁 文档管理"):
+            with gr.Row():
+                file_input = gr.File(
+                    label="上传文档",
+                    file_types=[".pdf", ".docx", ".xlsx", ".txt"]
+                )
+                upload_btn = gr.Button("📤 上传并索引")
+
+            upload_status = gr.Textbox(label="上传状态", interactive=False)
+            upload_btn.click(upload_file, inputs=file_input, outputs=upload_status)
+
+            gr.Markdown("---")
+            docs_display = gr.Markdown(label="已索引文档")
+            refresh_btn = gr.Button("🔄 刷新列表")
+            refresh_btn.click(get_documents, outputs=docs_display)
+
+    gr.Markdown("---")
+    gr.Markdown("💡 支持格式: PDF, Word (.docx), Excel (.xlsx), 纯文本 (.txt)")
+
+
+if __name__ == "__main__":
+    demo.launch(server_name="0.0.0.0", server_port=7860)
+\`\`\`
+
+---
+
+## 🚀 运行项目
+
+\`\`\`bash
+# 1. 安装依赖
+pip install -r requirements.txt
+
+# 2. 配置环境变量
+export OPENAI_API_KEY="your-key"
+export ANTHROPIC_API_KEY="your-key"
+
+# 3. 启动后端 API
+python api/main.py
+
+# 4. 启动前端（新终端）
+python frontend/app.py
+
+# 访问 http://localhost:7860
+\`\`\`
+
+---
+
+## 📊 功能对比
+
+| 功能 | 基础版 | 完整版 |
+|------|--------|--------|
+| 文档格式 | PDF | PDF/Word/Excel/TXT |
+| 来源引用 | ❌ | ✅ 页码标注 |
+| 多文档 | ❌ | ✅ 批量上传 |
+| 文档管理 | ❌ | ✅ 增删查 |
+| API 接口 | ❌ | ✅ RESTful |
+| 流式输出 | ❌ | ✅ |
+            `,
+            ja: `
+## プロジェクト：マルチフォーマットドキュメントQ&Aシステム
+
+PDF/Word/Excel/TXTをサポートし、ソース引用とページ番号表示付きのインテリジェントドキュメントQ&Aシステムを構築。
+
+---
+
+## 📁 プロジェクト構造
+
+\`\`\`
+document-qa-system/
+├── requirements.txt
+├── src/
+│   ├── document_loader.py      # マルチフォーマットローダー
+│   ├── text_processor.py       # テキスト処理
+│   ├── vector_store.py         # ベクトルストア
+│   └── qa_engine.py            # Q&Aエンジン
+├── api/
+│   └── main.py                 # FastAPIサービス
+└── frontend/
+    └── app.py                  # Gradioインターフェース
+\`\`\`
+
+---
+
+## 📄 マルチフォーマットローダー
+
+\`\`\`python
+class MultiFormatLoader:
+    def __init__(self):
+        self.loaders = [
+            PDFLoader(),
+            WordLoader(),
+            ExcelLoader(),
+            TxtLoader()
+        ]
+
+    def load(self, file_path: str) -> List[Document]:
+        for loader in self.loaders:
+            if loader.supports(file_path):
+                return loader.load(file_path)
+        raise ValueError(f"サポートされていないフォーマット: {file_path}")
+\`\`\`
+
+---
+
+## 🤖 Q&Aエンジン
+
+\`\`\`python
+@dataclass
+class Citation:
+    source: str
+    page: int | None
+    content: str
+    relevance_score: float
+
+class DocumentQAEngine:
+    def query(self, question: str, k: int = 5) -> QAResponse:
+        # ドキュメント検索
+        docs = vector_store.search_with_score(question, k=k)
+
+        # コンテキスト構築
+        context, citations = self._format_context(docs)
+
+        # 回答生成
+        answer = self.chain.invoke({
+            "context": context,
+            "question": question
+        })
+
+        return QAResponse(answer=answer, citations=citations)
+\`\`\`
+
+---
+
+## 🌐 FastAPI サービス
+
+\`\`\`python
+@app.post("/upload")
+async def upload_document(file: UploadFile):
+    # ファイル保存
+    # ドキュメント読み込み
+    # チャンク分割
+    # ベクトルインデックス作成
+    return {"chunks": len(chunks)}
+
+@app.post("/ask")
+async def ask_question(request: QuestionRequest):
+    response = qa_engine.query(request.question)
+    return {"answer": response.answer, "citations": response.citations}
+\`\`\`
+
+---
+
+## 📊 機能比較
+
+| 機能 | 基本版 | 完全版 |
+|------|--------|--------|
+| ドキュメント形式 | PDF | PDF/Word/Excel/TXT |
+| ソース引用 | ❌ | ✅ ページ番号付き |
+| 複数ドキュメント | ❌ | ✅ 一括アップロード |
+| ドキュメント管理 | ❌ | ✅ CRUD |
+| API | ❌ | ✅ RESTful |
             `
           }
         },
@@ -14463,86 +16027,1334 @@ AIにドキュメントを読ませ、質問に回答させる。
           title: { zh: '7.3 代码助手开发', ja: '7.3 コードアシスタント開発' },
           content: {
             zh: `
-## 项目：个人代码助手
+## 项目：完整代码助手（Agentic 循环）
 
-构建一个了解你代码库的 AI 助手。
+构建一个能读取、搜索、编辑代码的 AI 编程助手，实现完整的 Agentic 循环。
 
 ---
 
-## 🔧 使用 Claude Code SDK
+## 📁 项目结构
+
+\`\`\`
+code-assistant/
+├── requirements.txt
+├── config.py                   # 配置
+├── src/
+│   ├── __init__.py
+│   ├── tools/                  # 工具定义
+│   │   ├── __init__.py
+│   │   ├── file_tools.py       # 文件操作
+│   │   ├── search_tools.py     # 代码搜索
+│   │   ├── git_tools.py        # Git 操作
+│   │   └── shell_tools.py      # Shell 命令
+│   ├── agent.py                # Agent 核心
+│   └── tool_executor.py        # 工具执行器
+├── main.py                     # CLI 入口
+└── tests/
+    └── test_tools.py
+\`\`\`
+
+---
+
+## 📋 依赖安装
+
+\`\`\`bash
+# requirements.txt
+anthropic>=0.40.0
+rich>=13.0.0
+gitpython>=3.1.0
+click>=8.0.0
+\`\`\`
+
+---
+
+## 🔧 工具定义 (tools/file_tools.py)
 
 \`\`\`python
-# 最简单的方式：使用 Claude Code
-# 在项目根目录运行：claude
+import os
+from pathlib import Path
+from typing import Optional
 
-# 或者使用 Agent SDK 构建自定义工具
-from anthropic import Anthropic
 
-client = Anthropic()
+def read_file(path: str, start_line: int = 1, end_line: Optional[int] = None) -> str:
+    """读取文件内容，支持行范围"""
+    try:
+        with open(path, 'r', encoding='utf-8') as f:
+            lines = f.readlines()
 
-# 定义代码分析工具
-tools = [
+        total_lines = len(lines)
+        start_idx = max(0, start_line - 1)
+        end_idx = end_line if end_line else total_lines
+
+        selected_lines = lines[start_idx:end_idx]
+
+        # 添加行号
+        numbered_lines = [
+            f"{start_line + i:4d} | {line.rstrip()}"
+            for i, line in enumerate(selected_lines)
+        ]
+
+        return f"文件: {path} (共 {total_lines} 行)\\n" + "\\n".join(numbered_lines)
+
+    except FileNotFoundError:
+        return f"错误: 文件不存在 - {path}"
+    except Exception as e:
+        return f"错误: {str(e)}"
+
+
+def write_file(path: str, content: str) -> str:
+    """写入文件"""
+    try:
+        # 确保目录存在
+        Path(path).parent.mkdir(parents=True, exist_ok=True)
+
+        with open(path, 'w', encoding='utf-8') as f:
+            f.write(content)
+
+        return f"成功写入: {path}"
+    except Exception as e:
+        return f"错误: {str(e)}"
+
+
+def edit_file(path: str, old_text: str, new_text: str) -> str:
+    """编辑文件（字符串替换）"""
+    try:
+        with open(path, 'r', encoding='utf-8') as f:
+            content = f.read()
+
+        if old_text not in content:
+            return f"错误: 未找到要替换的文本"
+
+        # 检查是否有多处匹配
+        count = content.count(old_text)
+        if count > 1:
+            return f"警告: 找到 {count} 处匹配，请提供更多上下文以精确定位"
+
+        new_content = content.replace(old_text, new_text, 1)
+
+        with open(path, 'w', encoding='utf-8') as f:
+            f.write(new_content)
+
+        return f"成功编辑: {path}"
+    except Exception as e:
+        return f"错误: {str(e)}"
+
+
+def list_directory(path: str = ".", recursive: bool = False) -> str:
+    """列出目录内容"""
+    try:
+        p = Path(path)
+        if not p.exists():
+            return f"错误: 目录不存在 - {path}"
+
+        if recursive:
+            items = list(p.rglob("*"))
+        else:
+            items = list(p.iterdir())
+
+        # 过滤隐藏文件和常见忽略目录
+        ignore_patterns = {'.git', 'node_modules', '__pycache__', '.venv', 'venv'}
+        items = [
+            item for item in items
+            if not any(part in ignore_patterns for part in item.parts)
+            and not item.name.startswith('.')
+        ]
+
+        # 分类显示
+        dirs = sorted([f"📁 {item.relative_to(p)}" for item in items if item.is_dir()])
+        files = sorted([f"📄 {item.relative_to(p)}" for item in items if item.is_file()])
+
+        return f"目录: {path}\\n\\n" + "\\n".join(dirs + files)
+    except Exception as e:
+        return f"错误: {str(e)}"
+
+
+# 工具 Schema 定义
+FILE_TOOLS = [
     {
         "name": "read_file",
-        "description": "读取指定路径的文件内容",
+        "description": "读取文件内容。可指定起始行和结束行。",
         "input_schema": {
             "type": "object",
             "properties": {
-                "path": {"type": "string"}
+                "path": {
+                    "type": "string",
+                    "description": "文件路径"
+                },
+                "start_line": {
+                    "type": "integer",
+                    "description": "起始行号（默认1）",
+                    "default": 1
+                },
+                "end_line": {
+                    "type": "integer",
+                    "description": "结束行号（默认到文件末尾）"
+                }
             },
             "required": ["path"]
         }
     },
     {
-        "name": "search_code",
-        "description": "在代码库中搜索关键词",
+        "name": "write_file",
+        "description": "创建或覆盖文件",
         "input_schema": {
             "type": "object",
             "properties": {
-                "keyword": {"type": "string"}
+                "path": {"type": "string", "description": "文件路径"},
+                "content": {"type": "string", "description": "文件内容"}
             },
-            "required": ["keyword"]
+            "required": ["path", "content"]
+        }
+    },
+    {
+        "name": "edit_file",
+        "description": "编辑文件，通过替换指定文本",
+        "input_schema": {
+            "type": "object",
+            "properties": {
+                "path": {"type": "string", "description": "文件路径"},
+                "old_text": {"type": "string", "description": "要替换的原文本"},
+                "new_text": {"type": "string", "description": "替换后的新文本"}
+            },
+            "required": ["path", "old_text", "new_text"]
+        }
+    },
+    {
+        "name": "list_directory",
+        "description": "列出目录内容",
+        "input_schema": {
+            "type": "object",
+            "properties": {
+                "path": {"type": "string", "description": "目录路径", "default": "."},
+                "recursive": {"type": "boolean", "description": "是否递归", "default": False}
+            }
         }
     }
 ]
-
-# 代码问答
-response = client.messages.create(
-    model="claude-sonnet-4-20250514",
-    max_tokens=4096,
-    tools=tools,
-    messages=[
-        {"role": "user", "content": "这个项目的入口文件在哪里？"}
-    ]
-)
 \`\`\`
 
 ---
 
-## 💡 最佳实践
+## 🔍 搜索工具 (tools/search_tools.py)
 
-1. **使用 CLAUDE.md** 提供项目上下文
-2. **MCP 集成** 让 AI 访问开发工具
-3. **保持代码库整洁** 帮助 AI 理解
-            `,
-            ja: `
-## プロジェクト：個人コードアシスタント
+\`\`\`python
+import subprocess
+from pathlib import Path
+from typing import List, Optional
 
-あなたのコードベースを理解するAIアシスタントを構築。
+
+def grep_search(
+    pattern: str,
+    path: str = ".",
+    file_pattern: Optional[str] = None,
+    context_lines: int = 2
+) -> str:
+    """使用 ripgrep 搜索代码"""
+    try:
+        cmd = ["rg", "--color=never", "-n"]
+
+        if context_lines > 0:
+            cmd.extend(["-C", str(context_lines)])
+
+        if file_pattern:
+            cmd.extend(["-g", file_pattern])
+
+        # 忽略常见目录
+        cmd.extend(["--ignore-file", ".gitignore"])
+        cmd.append(pattern)
+        cmd.append(path)
+
+        result = subprocess.run(
+            cmd,
+            capture_output=True,
+            text=True,
+            timeout=30
+        )
+
+        if result.returncode == 0:
+            return f"搜索结果 '{pattern}':\\n\\n{result.stdout}"
+        elif result.returncode == 1:
+            return f"未找到匹配: {pattern}"
+        else:
+            return f"搜索错误: {result.stderr}"
+
+    except FileNotFoundError:
+        # fallback to grep
+        return _grep_fallback(pattern, path)
+    except Exception as e:
+        return f"错误: {str(e)}"
+
+
+def _grep_fallback(pattern: str, path: str) -> str:
+    """使用 Python 实现的简单搜索"""
+    results = []
+    p = Path(path)
+
+    for file_path in p.rglob("*"):
+        if file_path.is_file() and not _should_ignore(file_path):
+            try:
+                with open(file_path, 'r', encoding='utf-8', errors='ignore') as f:
+                    for i, line in enumerate(f, 1):
+                        if pattern in line:
+                            results.append(f"{file_path}:{i}: {line.strip()}")
+            except:
+                continue
+
+    if results:
+        return f"搜索结果 '{pattern}':\\n\\n" + "\\n".join(results[:50])
+    return f"未找到匹配: {pattern}"
+
+
+def _should_ignore(path: Path) -> bool:
+    """判断是否应忽略"""
+    ignore = {'.git', 'node_modules', '__pycache__', '.venv', 'dist', 'build'}
+    return any(part in ignore for part in path.parts)
+
+
+def find_definition(symbol: str, path: str = ".") -> str:
+    """查找函数/类定义"""
+    patterns = [
+        f"def {symbol}",           # Python 函数
+        f"class {symbol}",         # Python 类
+        f"function {symbol}",      # JavaScript 函数
+        f"const {symbol}",         # JavaScript 常量
+        f"interface {symbol}",     # TypeScript 接口
+        f"type {symbol}",          # TypeScript 类型
+    ]
+
+    results = []
+    for pattern in patterns:
+        result = grep_search(pattern, path)
+        if "未找到" not in result:
+            results.append(result)
+
+    if results:
+        return "\\n\\n".join(results)
+    return f"未找到定义: {symbol}"
+
+
+SEARCH_TOOLS = [
+    {
+        "name": "grep_search",
+        "description": "在代码库中搜索文本或正则表达式",
+        "input_schema": {
+            "type": "object",
+            "properties": {
+                "pattern": {"type": "string", "description": "搜索模式"},
+                "path": {"type": "string", "description": "搜索路径", "default": "."},
+                "file_pattern": {"type": "string", "description": "文件过滤（如 *.py）"},
+                "context_lines": {"type": "integer", "description": "上下文行数", "default": 2}
+            },
+            "required": ["pattern"]
+        }
+    },
+    {
+        "name": "find_definition",
+        "description": "查找函数或类的定义位置",
+        "input_schema": {
+            "type": "object",
+            "properties": {
+                "symbol": {"type": "string", "description": "函数或类名"},
+                "path": {"type": "string", "description": "搜索路径", "default": "."}
+            },
+            "required": ["symbol"]
+        }
+    }
+]
+\`\`\`
 
 ---
 
-## 💡 ベストプラクティス
+## 🐚 Shell 工具 (tools/shell_tools.py)
 
-1. **CLAUDE.md使用** - プロジェクトコンテキストを提供
-2. **MCP統合** - AIに開発ツールへのアクセスを許可
-3. **コードベースを整理** - AIの理解を助ける
+\`\`\`python
+import subprocess
+import shlex
+from typing import Optional
+
+# 允许执行的命令白名单
+ALLOWED_COMMANDS = {
+    'ls', 'cat', 'head', 'tail', 'wc', 'find', 'tree',
+    'git', 'npm', 'pip', 'python', 'node', 'pytest',
+    'make', 'cargo', 'go'
+}
+
+# 危险命令黑名单
+DANGEROUS_PATTERNS = [
+    'rm -rf', 'sudo', 'chmod 777', '> /dev',
+    'curl | bash', 'wget | sh', 'dd if='
+]
+
+
+def run_command(command: str, timeout: int = 60) -> str:
+    """执行 shell 命令（带安全检查）"""
+    # 安全检查
+    for pattern in DANGEROUS_PATTERNS:
+        if pattern in command:
+            return f"拒绝执行: 检测到危险模式 '{pattern}'"
+
+    # 解析命令
+    try:
+        parts = shlex.split(command)
+        base_cmd = parts[0] if parts else ""
+
+        if base_cmd not in ALLOWED_COMMANDS:
+            return f"拒绝执行: '{base_cmd}' 不在允许列表中。\\n允许: {', '.join(sorted(ALLOWED_COMMANDS))}"
+
+    except Exception as e:
+        return f"命令解析错误: {str(e)}"
+
+    # 执行命令
+    try:
+        result = subprocess.run(
+            command,
+            shell=True,
+            capture_output=True,
+            text=True,
+            timeout=timeout,
+            cwd="."
+        )
+
+        output = []
+        if result.stdout:
+            output.append(f"stdout:\\n{result.stdout}")
+        if result.stderr:
+            output.append(f"stderr:\\n{result.stderr}")
+        output.append(f"exit code: {result.returncode}")
+
+        return "\\n".join(output)
+
+    except subprocess.TimeoutExpired:
+        return f"命令超时（{timeout}秒）"
+    except Exception as e:
+        return f"执行错误: {str(e)}"
+
+
+SHELL_TOOLS = [
+    {
+        "name": "run_command",
+        "description": "执行 shell 命令（受限于安全白名单）",
+        "input_schema": {
+            "type": "object",
+            "properties": {
+                "command": {"type": "string", "description": "要执行的命令"},
+                "timeout": {"type": "integer", "description": "超时秒数", "default": 60}
+            },
+            "required": ["command"]
+        }
+    }
+]
+\`\`\`
+
+---
+
+## 🤖 Agent 核心 (agent.py)
+
+\`\`\`python
+from typing import List, Dict, Any, Generator
+from anthropic import Anthropic
+
+from tools.file_tools import FILE_TOOLS, read_file, write_file, edit_file, list_directory
+from tools.search_tools import SEARCH_TOOLS, grep_search, find_definition
+from tools.shell_tools import SHELL_TOOLS, run_command
+
+
+class CodeAssistant:
+    """代码助手 Agent"""
+
+    def __init__(
+        self,
+        model: str = "claude-sonnet-4-20250514",
+        max_iterations: int = 20
+    ):
+        self.client = Anthropic()
+        self.model = model
+        self.max_iterations = max_iterations
+
+        # 合并所有工具
+        self.tools = FILE_TOOLS + SEARCH_TOOLS + SHELL_TOOLS
+
+        # 工具执行映射
+        self.tool_handlers = {
+            "read_file": read_file,
+            "write_file": write_file,
+            "edit_file": edit_file,
+            "list_directory": list_directory,
+            "grep_search": grep_search,
+            "find_definition": find_definition,
+            "run_command": run_command
+        }
+
+        # 系统提示
+        self.system_prompt = """你是一个专业的代码助手，可以帮助用户：
+1. 阅读和理解代码
+2. 搜索代码库
+3. 编辑和创建文件
+4. 执行命令
+
+工作原则：
+- 先理解再行动：阅读相关代码后再修改
+- 最小改动：只修改必要的部分
+- 安全第一：不执行危险命令
+- 保持沟通：解释你的思考过程
+
+当前工作目录是项目根目录。"""
+
+    def _execute_tool(self, name: str, input_data: Dict) -> str:
+        """执行工具调用"""
+        handler = self.tool_handlers.get(name)
+        if not handler:
+            return f"未知工具: {name}"
+
+        try:
+            return handler(**input_data)
+        except Exception as e:
+            return f"工具执行错误: {str(e)}"
+
+    def chat(
+        self,
+        user_message: str,
+        conversation_history: List[Dict] = None
+    ) -> Generator[str, None, None]:
+        """
+        对话接口，支持流式输出
+
+        Yields:
+            str: 输出片段（文本或工具调用信息）
+        """
+        messages = conversation_history or []
+        messages.append({"role": "user", "content": user_message})
+
+        iteration = 0
+
+        while iteration < self.max_iterations:
+            iteration += 1
+
+            # 调用 API
+            response = self.client.messages.create(
+                model=self.model,
+                max_tokens=4096,
+                system=self.system_prompt,
+                tools=self.tools,
+                messages=messages
+            )
+
+            # 处理响应
+            assistant_content = []
+
+            for block in response.content:
+                if block.type == "text":
+                    yield block.text
+                    assistant_content.append(block)
+
+                elif block.type == "tool_use":
+                    yield f"\\n🔧 调用工具: {block.name}\\n"
+                    yield f"   参数: {block.input}\\n"
+
+                    # 执行工具
+                    result = self._execute_tool(block.name, block.input)
+                    yield f"   结果: {result[:200]}...\\n" if len(result) > 200 else f"   结果: {result}\\n"
+
+                    assistant_content.append(block)
+
+                    # 添加工具结果到消息
+                    messages.append({"role": "assistant", "content": assistant_content})
+                    messages.append({
+                        "role": "user",
+                        "content": [{
+                            "type": "tool_result",
+                            "tool_use_id": block.id,
+                            "content": result
+                        }]
+                    })
+                    assistant_content = []
+
+            # 如果没有工具调用，对话结束
+            if response.stop_reason == "end_turn":
+                if assistant_content:
+                    messages.append({"role": "assistant", "content": assistant_content})
+                break
+
+        yield f"\\n[完成，共 {iteration} 轮迭代]"
+
+    def run_task(self, task: str) -> str:
+        """执行任务（非交互式）"""
+        output = []
+        for chunk in self.chat(task):
+            output.append(chunk)
+        return "".join(output)
+\`\`\`
+
+---
+
+## 💻 CLI 入口 (main.py)
+
+\`\`\`python
+import click
+from rich.console import Console
+from rich.markdown import Markdown
+from rich.panel import Panel
+
+from agent import CodeAssistant
+
+console = Console()
+
+
+@click.group()
+def cli():
+    """代码助手 CLI"""
+    pass
+
+
+@cli.command()
+def chat():
+    """交互式对话模式"""
+    console.print(Panel.fit(
+        "[bold blue]代码助手[/bold blue]\\n"
+        "输入问题或任务，输入 'exit' 退出",
+        title="Welcome"
+    ))
+
+    assistant = CodeAssistant()
+    history = []
+
+    while True:
+        try:
+            user_input = console.input("[bold green]> [/bold green]")
+
+            if user_input.lower() in ('exit', 'quit', 'q'):
+                console.print("[yellow]再见！[/yellow]")
+                break
+
+            if not user_input.strip():
+                continue
+
+            # 流式输出
+            console.print()
+            for chunk in assistant.chat(user_input, history):
+                console.print(chunk, end="")
+            console.print()
+
+        except KeyboardInterrupt:
+            console.print("\\n[yellow]已中断[/yellow]")
+            break
+
+
+@cli.command()
+@click.argument('task')
+def run(task: str):
+    """执行单个任务"""
+    assistant = CodeAssistant()
+    result = assistant.run_task(task)
+    console.print(Markdown(result))
+
+
+@cli.command()
+@click.argument('file_path')
+def explain(file_path: str):
+    """解释代码文件"""
+    assistant = CodeAssistant()
+    result = assistant.run_task(f"请阅读并解释这个文件的代码: {file_path}")
+    console.print(Markdown(result))
+
+
+@cli.command()
+@click.argument('symbol')
+def find(symbol: str):
+    """查找符号定义"""
+    assistant = CodeAssistant()
+    result = assistant.run_task(f"查找 {symbol} 的定义和用法")
+    console.print(Markdown(result))
+
+
+if __name__ == "__main__":
+    cli()
+\`\`\`
+
+---
+
+## 🚀 使用示例
+
+\`\`\`bash
+# 安装
+pip install -r requirements.txt
+
+# 交互模式
+python main.py chat
+
+# 单任务模式
+python main.py run "帮我找到所有 TODO 注释"
+
+# 解释代码
+python main.py explain src/agent.py
+
+# 查找定义
+python main.py find CodeAssistant
+\`\`\`
+
+---
+
+## 💡 Agentic 循环核心逻辑
+
+\`\`\`
+┌─────────────────────────────────────────┐
+│  用户输入: "帮我修复这个 bug"            │
+└───────────────┬─────────────────────────┘
+                ▼
+┌─────────────────────────────────────────┐
+│  Agent 思考: 需要先了解代码              │
+│  -> 调用 read_file 读取相关文件          │
+└───────────────┬─────────────────────────┘
+                ▼
+┌─────────────────────────────────────────┐
+│  工具返回: 文件内容                      │
+│  Agent 分析: 发现问题在第 42 行          │
+│  -> 调用 edit_file 修复                 │
+└───────────────┬─────────────────────────┘
+                ▼
+┌─────────────────────────────────────────┐
+│  工具返回: 修改成功                      │
+│  Agent: 需要验证修复                     │
+│  -> 调用 run_command 执行测试           │
+└───────────────┬─────────────────────────┘
+                ▼
+┌─────────────────────────────────────────┐
+│  测试通过，任务完成                      │
+│  Agent 输出: 总结修复过程                │
+└─────────────────────────────────────────┘
+\`\`\`
+
+---
+
+## 📊 与 Claude Code 对比
+
+| 特性 | 自建 Agent | Claude Code |
+|------|------------|-------------|
+| 自定义工具 | ✅ 完全可控 | ⚠️ 受限 |
+| MCP 集成 | ✅ 可选 | ✅ 原生支持 |
+| 安全控制 | ✅ 自定义白名单 | ✅ 沙箱隔离 |
+| 部署方式 | 服务器/本地 | 本地 CLI |
+| 学习成本 | 中等 | 低 |
+| 适用场景 | 定制化需求 | 通用开发 |
+            `,
+            ja: `
+## プロジェクト：完全なコードアシスタント（Agenticループ）
+
+コードの読み取り、検索、編集ができるAIプログラミングアシスタントを構築し、完全なAgenticループを実装。
+
+---
+
+## 📁 プロジェクト構造
+
+\`\`\`
+code-assistant/
+├── requirements.txt
+├── src/
+│   ├── tools/                  # ツール定義
+│   │   ├── file_tools.py       # ファイル操作
+│   │   ├── search_tools.py     # コード検索
+│   │   └── shell_tools.py      # シェルコマンド
+│   └── agent.py                # Agentコア
+└── main.py                     # CLIエントリ
+\`\`\`
+
+---
+
+## 🔧 ファイルツール (file_tools.py)
+
+\`\`\`python
+def read_file(path: str, start_line: int = 1, end_line: int = None) -> str:
+    """ファイル内容を読み取り、行番号付きで返す"""
+    with open(path, 'r') as f:
+        lines = f.readlines()
+    # 行番号を追加して返す
+    return "\\n".join([f"{i:4d} | {line}" for i, line in enumerate(lines, 1)])
+
+def edit_file(path: str, old_text: str, new_text: str) -> str:
+    """テキスト置換でファイルを編集"""
+    with open(path, 'r') as f:
+        content = f.read()
+    new_content = content.replace(old_text, new_text, 1)
+    with open(path, 'w') as f:
+        f.write(new_content)
+    return f"編集成功: {path}"
+\`\`\`
+
+---
+
+## 🤖 Agentコア (agent.py)
+
+\`\`\`python
+class CodeAssistant:
+    def __init__(self, model: str = "claude-sonnet-4-20250514"):
+        self.client = Anthropic()
+        self.tools = FILE_TOOLS + SEARCH_TOOLS + SHELL_TOOLS
+
+    def chat(self, user_message: str) -> Generator[str, None, None]:
+        messages = [{"role": "user", "content": user_message}]
+
+        while True:
+            response = self.client.messages.create(
+                model=self.model,
+                tools=self.tools,
+                messages=messages
+            )
+
+            for block in response.content:
+                if block.type == "text":
+                    yield block.text
+                elif block.type == "tool_use":
+                    result = self._execute_tool(block.name, block.input)
+                    # ツール結果をメッセージに追加
+                    messages.append({"role": "user", "content": [{
+                        "type": "tool_result",
+                        "tool_use_id": block.id,
+                        "content": result
+                    }]})
+
+            if response.stop_reason == "end_turn":
+                break
+\`\`\`
+
+---
+
+## 💡 Agenticループのコアロジック
+
+\`\`\`
+ユーザー入力 → Agent思考 → ツール呼び出し → 結果分析
+     ↑                                         ↓
+     └──────────── 必要に応じて繰り返し ←────────┘
+\`\`\`
+
+---
+
+## 📊 Claude Code との比較
+
+| 特性 | 自作Agent | Claude Code |
+|------|-----------|-------------|
+| カスタムツール | ✅ 完全制御可能 | ⚠️ 制限あり |
+| MCP統合 | ✅ オプション | ✅ ネイティブ |
+| セキュリティ | ✅ カスタムホワイトリスト | ✅ サンドボックス |
+| デプロイ | サーバー/ローカル | ローカルCLI |
+            `
+          }
+        },
+        {
+          id: 'ch7-agent-workflow',
+          title: { zh: '7.4 AI Agent 自动化工作流', ja: '7.4 AI Agent 自動化ワークフロー' },
+          content: {
+            zh: `
+## 项目：自动化数据采集与报告生成
+
+构建一个能自动浏览网页、提取数据、生成报告的 AI Agent。
+
+---
+
+## 📁 项目结构
+
+\`\`\`
+automation-agent/
+├── requirements.txt
+├── config.py
+├── src/
+│   ├── browser_agent.py        # 浏览器自动化
+│   ├── data_extractor.py       # 数据提取
+│   ├── report_generator.py     # 报告生成
+│   └── scheduler.py            # 定时任务
+├── templates/
+│   └── report_template.html
+└── main.py
+\`\`\`
+
+---
+
+## 📋 依赖安装
+
+\`\`\`bash
+# requirements.txt
+anthropic>=0.40.0
+playwright>=1.40.0
+pandas>=2.0.0
+jinja2>=3.0.0
+schedule>=1.2.0
+\`\`\`
+
+---
+
+## 🌐 浏览器自动化 (browser_agent.py)
+
+\`\`\`python
+import asyncio
+from typing import List, Dict, Any, Optional
+from playwright.async_api import async_playwright, Page, Browser
+from anthropic import Anthropic
+
+
+class BrowserAgent:
+    """基于 AI 的浏览器自动化 Agent"""
+
+    def __init__(self, headless: bool = True):
+        self.headless = headless
+        self.client = Anthropic()
+        self.browser: Optional[Browser] = None
+        self.page: Optional[Page] = None
+
+    async def __aenter__(self):
+        playwright = await async_playwright().start()
+        self.browser = await playwright.chromium.launch(headless=self.headless)
+        self.page = await self.browser.new_page()
+        return self
+
+    async def __aexit__(self, *args):
+        if self.browser:
+            await self.browser.close()
+
+    async def navigate(self, url: str) -> str:
+        """导航到 URL"""
+        await self.page.goto(url, wait_until="networkidle")
+        return f"已导航到: {url}"
+
+    async def get_page_content(self) -> str:
+        """获取页面内容（简化版）"""
+        # 提取主要文本内容
+        content = await self.page.evaluate('''() => {
+            const elements = document.querySelectorAll('h1, h2, h3, p, li, td, th, a');
+            return Array.from(elements).map(el => ({
+                tag: el.tagName.toLowerCase(),
+                text: el.innerText.trim().substring(0, 200),
+                href: el.href || null
+            })).filter(el => el.text.length > 0).slice(0, 100);
+        }''')
+        return str(content)
+
+    async def click(self, selector: str) -> str:
+        """点击元素"""
+        try:
+            await self.page.click(selector, timeout=5000)
+            await self.page.wait_for_load_state("networkidle")
+            return f"已点击: {selector}"
+        except Exception as e:
+            return f"点击失败: {str(e)}"
+
+    async def fill(self, selector: str, value: str) -> str:
+        """填写表单"""
+        try:
+            await self.page.fill(selector, value)
+            return f"已填写: {selector}"
+        except Exception as e:
+            return f"填写失败: {str(e)}"
+
+    async def screenshot(self, path: str = "screenshot.png") -> str:
+        """截图"""
+        await self.page.screenshot(path=path, full_page=True)
+        return f"截图保存: {path}"
+
+    async def extract_table(self, selector: str = "table") -> List[Dict]:
+        """提取表格数据"""
+        tables = await self.page.query_selector_all(selector)
+        if not tables:
+            return []
+
+        result = []
+        for table in tables:
+            rows = await table.query_selector_all("tr")
+            table_data = []
+
+            for row in rows:
+                cells = await row.query_selector_all("td, th")
+                row_data = [await cell.inner_text() for cell in cells]
+                if row_data:
+                    table_data.append(row_data)
+
+            if table_data:
+                # 第一行作为表头
+                headers = table_data[0]
+                for row in table_data[1:]:
+                    result.append(dict(zip(headers, row)))
+
+        return result
+
+    def _get_tools(self) -> List[Dict]:
+        """定义浏览器工具"""
+        return [
+            {
+                "name": "navigate",
+                "description": "导航到指定 URL",
+                "input_schema": {
+                    "type": "object",
+                    "properties": {
+                        "url": {"type": "string", "description": "目标 URL"}
+                    },
+                    "required": ["url"]
+                }
+            },
+            {
+                "name": "get_page_content",
+                "description": "获取当前页面的主要内容",
+                "input_schema": {"type": "object", "properties": {}}
+            },
+            {
+                "name": "click",
+                "description": "点击页面元素",
+                "input_schema": {
+                    "type": "object",
+                    "properties": {
+                        "selector": {"type": "string", "description": "CSS 选择器"}
+                    },
+                    "required": ["selector"]
+                }
+            },
+            {
+                "name": "fill",
+                "description": "填写表单字段",
+                "input_schema": {
+                    "type": "object",
+                    "properties": {
+                        "selector": {"type": "string"},
+                        "value": {"type": "string"}
+                    },
+                    "required": ["selector", "value"]
+                }
+            },
+            {
+                "name": "extract_table",
+                "description": "提取页面中的表格数据",
+                "input_schema": {
+                    "type": "object",
+                    "properties": {
+                        "selector": {"type": "string", "default": "table"}
+                    }
+                }
+            },
+            {
+                "name": "screenshot",
+                "description": "对当前页面截图",
+                "input_schema": {
+                    "type": "object",
+                    "properties": {
+                        "path": {"type": "string", "default": "screenshot.png"}
+                    }
+                }
+            }
+        ]
+
+    async def _execute_tool(self, name: str, input_data: Dict) -> str:
+        """执行工具"""
+        handlers = {
+            "navigate": lambda: self.navigate(input_data["url"]),
+            "get_page_content": self.get_page_content,
+            "click": lambda: self.click(input_data["selector"]),
+            "fill": lambda: self.fill(input_data["selector"], input_data["value"]),
+            "extract_table": lambda: self.extract_table(input_data.get("selector", "table")),
+            "screenshot": lambda: self.screenshot(input_data.get("path", "screenshot.png"))
+        }
+
+        handler = handlers.get(name)
+        if handler:
+            result = await handler()
+            return str(result)
+        return f"未知工具: {name}"
+
+    async def run_task(self, task: str, max_iterations: int = 15) -> str:
+        """执行自动化任务"""
+        messages = [{"role": "user", "content": task}]
+        results = []
+
+        for i in range(max_iterations):
+            response = self.client.messages.create(
+                model="claude-sonnet-4-20250514",
+                max_tokens=4096,
+                system="""你是一个网页自动化助手。你可以：
+1. 导航到网页
+2. 提取页面内容和表格
+3. 点击和填写表单
+4. 截图
+
+请一步一步完成任务，每次只执行一个操作。""",
+                tools=self._get_tools(),
+                messages=messages
+            )
+
+            assistant_content = []
+            for block in response.content:
+                if block.type == "text":
+                    results.append(block.text)
+                    assistant_content.append(block)
+
+                elif block.type == "tool_use":
+                    result = await self._execute_tool(block.name, block.input)
+                    results.append(f"[{block.name}] {result}")
+                    assistant_content.append(block)
+
+                    messages.append({"role": "assistant", "content": assistant_content})
+                    messages.append({
+                        "role": "user",
+                        "content": [{
+                            "type": "tool_result",
+                            "tool_use_id": block.id,
+                            "content": result
+                        }]
+                    })
+                    assistant_content = []
+
+            if response.stop_reason == "end_turn":
+                break
+
+        return "\\n".join(results)
+\`\`\`
+
+---
+
+## 📊 报告生成器 (report_generator.py)
+
+\`\`\`python
+import pandas as pd
+from datetime import datetime
+from pathlib import Path
+from jinja2 import Environment, FileSystemLoader
+from typing import List, Dict, Any
+
+
+class ReportGenerator:
+    """自动报告生成器"""
+
+    def __init__(self, template_dir: str = "./templates"):
+        self.env = Environment(loader=FileSystemLoader(template_dir))
+
+    def generate_html_report(
+        self,
+        title: str,
+        data: List[Dict],
+        output_path: str,
+        summary: str = ""
+    ) -> str:
+        """生成 HTML 报告"""
+        template = self.env.get_template("report_template.html")
+
+        # 转换为 DataFrame 以便处理
+        df = pd.DataFrame(data)
+
+        html = template.render(
+            title=title,
+            generated_at=datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+            summary=summary,
+            table_html=df.to_html(classes="data-table", index=False),
+            total_rows=len(data)
+        )
+
+        Path(output_path).write_text(html, encoding='utf-8')
+        return output_path
+
+    def generate_csv(self, data: List[Dict], output_path: str) -> str:
+        """生成 CSV 文件"""
+        df = pd.DataFrame(data)
+        df.to_csv(output_path, index=False, encoding='utf-8-sig')
+        return output_path
+
+    def generate_excel(self, data: List[Dict], output_path: str) -> str:
+        """生成 Excel 文件"""
+        df = pd.DataFrame(data)
+        df.to_excel(output_path, index=False, engine='openpyxl')
+        return output_path
+\`\`\`
+
+---
+
+## ⏰ 定时任务 (scheduler.py)
+
+\`\`\`python
+import schedule
+import time
+import asyncio
+from datetime import datetime
+from typing import Callable
+
+
+class TaskScheduler:
+    """定时任务调度器"""
+
+    def __init__(self):
+        self.tasks = []
+
+    def add_daily_task(self, time_str: str, task: Callable):
+        """添加每日任务"""
+        schedule.every().day.at(time_str).do(task)
+        self.tasks.append(f"每日 {time_str}: {task.__name__}")
+
+    def add_hourly_task(self, task: Callable):
+        """添加每小时任务"""
+        schedule.every().hour.do(task)
+        self.tasks.append(f"每小时: {task.__name__}")
+
+    def run(self):
+        """运行调度器"""
+        print(f"调度器启动，共 {len(self.tasks)} 个任务")
+        for task in self.tasks:
+            print(f"  - {task}")
+
+        while True:
+            schedule.run_pending()
+            time.sleep(60)
+
+
+# 使用示例
+async def daily_data_collection():
+    """每日数据采集任务"""
+    async with BrowserAgent() as agent:
+        result = await agent.run_task(
+            "访问 https://example.com/data，提取今日数据表格，生成报告"
+        )
+        print(f"[{datetime.now()}] 采集完成: {result[:100]}...")
+
+
+if __name__ == "__main__":
+    scheduler = TaskScheduler()
+
+    # 每天早上 9 点执行
+    scheduler.add_daily_task("09:00", lambda: asyncio.run(daily_data_collection()))
+
+    scheduler.run()
+\`\`\`
+
+---
+
+## 🚀 完整使用示例 (main.py)
+
+\`\`\`python
+import asyncio
+from browser_agent import BrowserAgent
+from report_generator import ReportGenerator
+
+
+async def main():
+    # 1. 创建浏览器 Agent
+    async with BrowserAgent(headless=False) as agent:
+
+        # 2. 执行数据采集任务
+        result = await agent.run_task("""
+        请完成以下任务：
+        1. 访问 https://quotes.toscrape.com/
+        2. 提取页面上的名言和作者
+        3. 截图保存
+        """)
+
+        print("任务结果:", result)
+
+        # 3. 提取表格数据
+        await agent.navigate("https://quotes.toscrape.com/tableful/")
+        data = await agent.extract_table()
+
+        # 4. 生成报告
+        if data:
+            generator = ReportGenerator()
+            report_path = generator.generate_html_report(
+                title="名言数据采集报告",
+                data=data,
+                output_path="./output/report.html",
+                summary="自动采集的名言数据"
+            )
+            print(f"报告已生成: {report_path}")
+
+
+if __name__ == "__main__":
+    asyncio.run(main())
+\`\`\`
+
+---
+
+## 💡 安全注意事项
+
+| 风险 | 防护措施 |
+|------|----------|
+| 访问恶意网站 | URL 白名单过滤 |
+| 表单自动提交 | 敏感操作需确认 |
+| 数据泄露 | 不保存敏感信息 |
+| 无限循环 | 设置最大迭代次数 |
+| 资源耗尽 | 超时和内存限制 |
+
+---
+
+## 📊 应用场景
+
+| 场景 | 描述 |
+|------|------|
+| 竞品监控 | 定期采集竞品价格/功能 |
+| 数据采集 | 自动抓取公开数据 |
+| 报告生成 | 每日/周自动生成报告 |
+| 表单测试 | 自动化 E2E 测试 |
+| 内容聚合 | 多源信息汇总 |
+            `,
+            ja: `
+## プロジェクト：自動データ収集とレポート生成
+
+Webページを自動的にブラウズし、データを抽出し、レポートを生成するAI Agentを構築。
+
+---
+
+## 📁 プロジェクト構造
+
+\`\`\`
+automation-agent/
+├── src/
+│   ├── browser_agent.py        # ブラウザ自動化
+│   ├── data_extractor.py       # データ抽出
+│   ├── report_generator.py     # レポート生成
+│   └── scheduler.py            # スケジューラー
+└── main.py
+\`\`\`
+
+---
+
+## 🌐 ブラウザ自動化 (browser_agent.py)
+
+\`\`\`python
+class BrowserAgent:
+    async def navigate(self, url: str) -> str:
+        await self.page.goto(url)
+        return f"ナビゲート完了: {url}"
+
+    async def extract_table(self, selector: str = "table") -> List[Dict]:
+        # テーブルデータを抽出
+        tables = await self.page.query_selector_all(selector)
+        # ...処理...
+        return result
+
+    async def run_task(self, task: str) -> str:
+        # AIがタスクを実行
+        messages = [{"role": "user", "content": task}]
+        # Agenticループで自動実行
+        ...
+\`\`\`
+
+---
+
+## ⏰ スケジューラー
+
+\`\`\`python
+import schedule
+
+scheduler = TaskScheduler()
+# 毎日午前9時に実行
+scheduler.add_daily_task("09:00", daily_data_collection)
+scheduler.run()
+\`\`\`
+
+---
+
+## 📊 応用シーン
+
+| シーン | 説明 |
+|--------|------|
+| 競合モニタリング | 定期的に競合の価格/機能を収集 |
+| データ収集 | 公開データの自動スクレイピング |
+| レポート生成 | 日次/週次自動レポート |
+| E2Eテスト | 自動化フォームテスト |
             `
           }
         },
         {
           id: 'ch7-summary',
-          title: { zh: '7.4 本章小结', ja: '7.4 この章のまとめ' },
+          title: { zh: '7.5 本章小结', ja: '7.5 この章のまとめ' },
           content: {
             zh: `
 ## 实战项目核心要点
