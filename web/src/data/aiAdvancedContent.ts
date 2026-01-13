@@ -9001,7 +9001,7 @@ gemini chat
 gemini chat --context src/
 
 # 指定模型
-gemini chat --model gemini-2.0-flash
+gemini chat --model gemini-3-pro-preview
 \`\`\`
 
 ### 交互式命令
@@ -17699,14 +17699,17 @@ Gemini 是 Google 最新一代大模型，原生支持多模态，在多项基�
 
 ---
 
-## 📊 Gemini 模型对比
+## 📊 Gemini 模型对比（2025.11 最新）
 
-| 模型 | 上下文窗口 | 特点 | 适用场景 |
-|------|------------|------|----------|
-| **Gemini 2.0 Flash** | 1M tokens | 最新旗舰，多模态原生 | 复杂推理、代码、视觉 |
-| **Gemini 1.5 Pro** | 2M tokens | 超长上下文 | 长文档分析、视频理解 |
-| **Gemini 1.5 Flash** | 1M tokens | 快速响应 | 实时应用、高并发 |
-| **Gemini Nano** | 设备端 | 轻量级 | 移动端、边缘计算 |
+| 模型 | 发布时间 | 特点 | 适用场景 |
+|------|----------|------|----------|
+| **Gemini 3 Pro** 🆕 | 2025.11.18 | 最新旗舰，Google 最强模型 | 复杂推理、研究、代码 |
+| **Gemini 3 Deep Think** 🆕 | 2025.11.18 | 深度思考模式 | 数学、科学、长程推理 |
+| **Gemini 2.5 Pro** | 2025.03 | 上一代旗舰 | 通用任务、多模态 |
+| **Gemini 2.5 Flash** | 2025.05 | 快速高效 | 实时应用、高并发 |
+| **Gemini Nano** | 设备端 | 端侧部署 | 移动端、离线场景 |
+
+> 💡 **2025年11月更新**：Gemini 3 系列已取代 2.5 系列成为主力模型
 
 ---
 
@@ -17727,7 +17730,7 @@ import google.generativeai as genai
 genai.configure(api_key="YOUR_API_KEY")
 
 # 创建模型
-model = genai.GenerativeModel("gemini-2.0-flash")
+model = genai.GenerativeModel("gemini-3-pro-preview")
 
 # 文本生成
 response = model.generate_content("解释量子计算的基本原理")
@@ -17889,7 +17892,7 @@ def search_flights(origin: str, destination: str, date: str) -> list:
 
 # 创建带工具的模型
 model = genai.GenerativeModel(
-    "gemini-2.0-flash",
+    "gemini-3-pro-preview",
     tools=[get_weather, search_flights]
 )
 
@@ -17923,7 +17926,7 @@ for chunk in response:
 
 \`\`\`python
 # 计算 Token 数量
-model = genai.GenerativeModel("gemini-2.0-flash")
+model = genai.GenerativeModel("gemini-3-pro-preview")
 
 # 文本 Token
 text = "这是一段测试文本，用于计算 Token 数量。"
@@ -17955,14 +17958,17 @@ GeminiはGoogleの最新世代大規模モデルで、ネイティブでマル�
 
 ---
 
-## 📊 Geminiモデル比較
+## 📊 Geminiモデル比較（2025年11月最新）
 
-| モデル | コンテキストウィンドウ | 特徴 | 用途 |
-|--------|------------------------|------|------|
-| **Gemini 2.0 Flash** | 1M tokens | 最新フラッグシップ | 複雑な推論、コード、ビジョン |
-| **Gemini 1.5 Pro** | 2M tokens | 超長コンテキスト | 長文書分析、動画理解 |
-| **Gemini 1.5 Flash** | 1M tokens | 高速レスポンス | リアルタイムアプリ |
-| **Gemini Nano** | オンデバイス | 軽量 | モバイル、エッジ |
+| モデル | リリース日 | 特徴 | 用途 |
+|--------|------------|------|------|
+| **Gemini 3 Pro** 🆕 | 2025.11.18 | 最新フラッグシップ、Google最強 | 複雑な推論、研究、コード |
+| **Gemini 3 Deep Think** 🆕 | 2025.11.18 | 深い思考モード | 数学、科学、長期推論 |
+| **Gemini 2.5 Pro** | 2025.03 | 前世代フラッグシップ | 汎用、マルチモーダル |
+| **Gemini 2.5 Flash** | 2025.05 | 高速高効率 | リアルタイムアプリ |
+| **Gemini Nano** | オンデバイス | 端末デプロイ | モバイル、オフライン |
+
+> 💡 **2025年11月更新**：Gemini 3シリーズが2.5シリーズに代わり主力モデルに
 
 ---
 
@@ -17972,7 +17978,7 @@ GeminiはGoogleの最新世代大規模モデルで、ネイティブでマル�
 import google.generativeai as genai
 
 genai.configure(api_key="YOUR_API_KEY")
-model = genai.GenerativeModel("gemini-2.0-flash")
+model = genai.GenerativeModel("gemini-3-pro-preview")
 
 response = model.generate_content("量子コンピューティングの基本原理を説明して")
 print(response.text)
@@ -18001,7 +18007,7 @@ def get_weather(location: str) -> dict:
     return {"location": location, "temperature": 22}
 
 model = genai.GenerativeModel(
-    "gemini-2.0-flash",
+    "gemini-3-pro-preview",
     tools=[get_weather]
 )
 
@@ -18070,7 +18076,7 @@ from vertexai.generative_models import GenerativeModel, Part
 vertexai.init(project="your-project-id", location="us-central1")
 
 # 创建模型
-model = GenerativeModel("gemini-2.0-flash")
+model = GenerativeModel("gemini-3-pro-preview")
 
 # 文本生成
 response = model.generate_content("解释机器学习和深度学习的区别")
@@ -18253,7 +18259,7 @@ import vertexai
 from vertexai.generative_models import GenerativeModel
 
 vertexai.init(project="your-project-id", location="us-central1")
-model = GenerativeModel("gemini-2.0-flash")
+model = GenerativeModel("gemini-3-pro-preview")
 
 response = model.generate_content("機械学習と深層学習の違いを説明して")
 print(response.text)
@@ -18359,7 +18365,7 @@ generation_config = {
 }
 
 model = genai.GenerativeModel(
-    model_name="gemini-2.0-flash",
+    model_name="gemini-3-pro-preview",
     generation_config=generation_config,
     system_instruction="你是一个专业的技术顾问"
 )
@@ -18378,7 +18384,7 @@ const genAI = new GoogleGenerativeAI("YOUR_API_KEY");
 
 async function run() {
     const model = genAI.getGenerativeModel({
-        model: "gemini-2.0-flash",
+        model: "gemini-3-pro-preview",
         systemInstruction: "你是一个专业的技术顾问"
     });
 
@@ -18392,7 +18398,7 @@ run();
 ### cURL
 
 \`\`\`bash
-curl "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=YOUR_API_KEY" \\
+curl "https://generativelanguage.googleapis.com/v1beta/models/gemini-3-pro-preview:generateContent?key=YOUR_API_KEY" \\
   -H 'Content-Type: application/json' \\
   -d '{
     "contents": [{
@@ -18471,7 +18477,7 @@ import google.generativeai as genai
 genai.configure(api_key="YOUR_API_KEY")
 
 model = genai.GenerativeModel(
-    model_name="gemini-2.0-flash",
+    model_name="gemini-3-pro-preview",
     system_instruction="あなたは技術コンサルタントです"
 )
 
