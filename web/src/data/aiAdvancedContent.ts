@@ -5629,13 +5629,13 @@ print(response.text)  # 保证符合 Schema 的 JSON
 
 请严格按照以下 JSON 格式输出，不要包含任何解释性文字：
 
-\\\`\\\`\\\`json
+\`\`\`json
 {
   "field1": "说明1",
   "field2": "说明2",
   "field3": ["数组", "示例"]
 }
-\\\`\\\`\\\`
+\`\`\`
 
 重要规则：
 1. 只输出 JSON，不要输出其他内容
@@ -5882,12 +5882,12 @@ APIがネイティブJSON Modeをサポートしていない場合：
 
 以下のJSON形式で厳密に出力し、説明文は含めないでください：
 
-\\\`\\\`\\\`json
+\`\`\`json
 {
   "field1": "説明1",
   "field2": "説明2"
 }
-\\\`\\\`\\\`
+\`\`\`
 
 重要なルール：
 1. JSONのみを出力
@@ -17676,6 +17676,1602 @@ AI実践上級編の学習完了おめでとうございます！
 8. **ツールチェーン** —— LangChain、LlamaIndex、HuggingFace
 
 **AI技術は日々進化、学び続け、好奇心を持ち続けましょう！**
+            `
+          }
+        }
+      ]
+    },
+    // ==================== 第九章：Google AI 生态系统 ====================
+    {
+      id: 'chapter-9',
+      number: 9,
+      title: { zh: 'Google AI 生态系统', ja: 'Google AIエコシステム' },
+      subtitle: { zh: 'Gemini、Vertex AI 与云端 AI 服务', ja: 'Gemini、Vertex AIとクラウドAIサービス' },
+      sections: [
+        {
+          id: 'ch9-gemini',
+          title: { zh: '9.1 Gemini 大模型家族', ja: '9.1 Gemini大規模モデルファミリー' },
+          content: {
+            zh: `
+## Google Gemini：多模态原生大模型
+
+Gemini 是 Google 最新一代大模型，原生支持多模态，在多项基准测试中超越 GPT-4。
+
+---
+
+## 📊 Gemini 模型对比
+
+| 模型 | 上下文窗口 | 特点 | 适用场景 |
+|------|------------|------|----------|
+| **Gemini 2.0 Flash** | 1M tokens | 最新旗舰，多模态原生 | 复杂推理、代码、视觉 |
+| **Gemini 1.5 Pro** | 2M tokens | 超长上下文 | 长文档分析、视频理解 |
+| **Gemini 1.5 Flash** | 1M tokens | 快速响应 | 实时应用、高并发 |
+| **Gemini Nano** | 设备端 | 轻量级 | 移动端、边缘计算 |
+
+---
+
+## 🔧 快速开始
+
+### 安装 SDK
+
+\`\`\`bash
+pip install google-generativeai
+\`\`\`
+
+### 基础调用
+
+\`\`\`python
+import google.generativeai as genai
+
+# 配置 API Key
+genai.configure(api_key="YOUR_API_KEY")
+
+# 创建模型
+model = genai.GenerativeModel("gemini-2.0-flash")
+
+# 文本生成
+response = model.generate_content("解释量子计算的基本原理")
+print(response.text)
+\`\`\`
+
+---
+
+## 🖼️ 多模态能力
+
+### 图像理解
+
+\`\`\`python
+import PIL.Image
+
+# 加载图片
+image = PIL.Image.open("diagram.png")
+
+# 图文混合输入
+response = model.generate_content([
+    "请详细分析这张架构图，解释各组件之间的关系：",
+    image
+])
+print(response.text)
+\`\`\`
+
+### 视频分析
+
+\`\`\`python
+import time
+
+# 上传视频文件
+video_file = genai.upload_file("presentation.mp4")
+
+# 等待处理完成
+while video_file.state.name == "PROCESSING":
+    time.sleep(5)
+    video_file = genai.get_file(video_file.name)
+
+# 分析视频内容
+response = model.generate_content([
+    video_file,
+    "总结这个视频的主要内容，列出关键要点"
+])
+print(response.text)
+\`\`\`
+
+---
+
+## 💬 多轮对话
+
+\`\`\`python
+# 创建对话
+chat = model.start_chat(history=[])
+
+# 第一轮
+response = chat.send_message("我想学习机器学习，应该从哪里开始？")
+print(response.text)
+
+# 第二轮（自动携带上下文）
+response = chat.send_message("Python 基础需要学到什么程度？")
+print(response.text)
+
+# 查看对话历史
+for message in chat.history:
+    print(f"{message.role}: {message.parts[0].text[:100]}...")
+\`\`\`
+
+---
+
+## 🔒 安全设置
+
+\`\`\`python
+from google.generativeai.types import HarmCategory, HarmBlockThreshold
+
+# 配置安全过滤
+safety_settings = {
+    HarmCategory.HARM_CATEGORY_HARASSMENT: HarmBlockThreshold.BLOCK_MEDIUM_AND_ABOVE,
+    HarmCategory.HARM_CATEGORY_HATE_SPEECH: HarmBlockThreshold.BLOCK_MEDIUM_AND_ABOVE,
+    HarmCategory.HARM_CATEGORY_SEXUALLY_EXPLICIT: HarmBlockThreshold.BLOCK_MEDIUM_AND_ABOVE,
+    HarmCategory.HARM_CATEGORY_DANGEROUS_CONTENT: HarmBlockThreshold.BLOCK_MEDIUM_AND_ABOVE,
+}
+
+response = model.generate_content(
+    "你的问题",
+    safety_settings=safety_settings
+)
+\`\`\`
+
+---
+
+## 📊 结构化输出 (JSON Mode)
+
+\`\`\`python
+import json
+
+# 方法1：通过 Prompt 指定
+response = model.generate_content(
+    """分析以下文本的情感，返回 JSON 格式：
+    {"sentiment": "positive/negative/neutral", "confidence": 0.0-1.0, "keywords": [...]}
+
+    文本：这款产品真的太棒了，用户体验非常流畅！
+    """,
+    generation_config=genai.types.GenerationConfig(
+        response_mime_type="application/json"
+    )
+)
+
+result = json.loads(response.text)
+print(result)
+
+# 方法2：使用 Schema（更严格）
+from google.generativeai.types import content_types
+
+schema = content_types.Schema(
+    type=content_types.Type.OBJECT,
+    properties={
+        "sentiment": content_types.Schema(type=content_types.Type.STRING),
+        "confidence": content_types.Schema(type=content_types.Type.NUMBER),
+        "keywords": content_types.Schema(
+            type=content_types.Type.ARRAY,
+            items=content_types.Schema(type=content_types.Type.STRING)
+        )
+    },
+    required=["sentiment", "confidence"]
+)
+
+response = model.generate_content(
+    "分析：这个服务太慢了，等了半天",
+    generation_config=genai.types.GenerationConfig(
+        response_mime_type="application/json",
+        response_schema=schema
+    )
+)
+\`\`\`
+
+---
+
+## 🛠️ Function Calling
+
+\`\`\`python
+# 定义工具函数
+def get_weather(location: str, unit: str = "celsius") -> dict:
+    """获取指定城市的天气信息"""
+    # 模拟 API 调用
+    return {
+        "location": location,
+        "temperature": 22,
+        "unit": unit,
+        "condition": "晴天"
+    }
+
+def search_flights(origin: str, destination: str, date: str) -> list:
+    """搜索航班信息"""
+    return [
+        {"flight": "CA123", "price": 1500, "departure": "08:00"},
+        {"flight": "MU456", "price": 1200, "departure": "14:30"}
+    ]
+
+# 创建带工具的模型
+model = genai.GenerativeModel(
+    "gemini-2.0-flash",
+    tools=[get_weather, search_flights]
+)
+
+# 自动调用工具
+chat = model.start_chat(enable_automatic_function_calling=True)
+response = chat.send_message("北京今天天气怎么样？")
+print(response.text)
+
+response = chat.send_message("帮我查一下明天从北京到上海的航班")
+print(response.text)
+\`\`\`
+
+---
+
+## ⚡ 流式输出
+
+\`\`\`python
+# 流式生成
+response = model.generate_content(
+    "写一篇关于人工智能发展历史的文章",
+    stream=True
+)
+
+for chunk in response:
+    print(chunk.text, end="", flush=True)
+\`\`\`
+
+---
+
+## 📈 Token 计数与成本估算
+
+\`\`\`python
+# 计算 Token 数量
+model = genai.GenerativeModel("gemini-2.0-flash")
+
+# 文本 Token
+text = "这是一段测试文本，用于计算 Token 数量。"
+token_count = model.count_tokens(text)
+print(f"Token 数量: {token_count.total_tokens}")
+
+# 图片 Token（每张图约 258 tokens）
+image = PIL.Image.open("image.png")
+token_count = model.count_tokens([text, image])
+print(f"图文混合 Token: {token_count.total_tokens}")
+\`\`\`
+
+---
+
+## 💰 定价参考 (2024)
+
+| 模型 | 输入 (每百万 Token) | 输出 (每百万 Token) |
+|------|---------------------|---------------------|
+| Gemini 2.0 Flash | $0.10 | $0.40 |
+| Gemini 1.5 Pro | $1.25 - $2.50 | $5.00 - $10.00 |
+| Gemini 1.5 Flash | $0.075 | $0.30 |
+
+*价格可能变动，以官网为准*
+            `,
+            ja: `
+## Google Gemini：マルチモーダルネイティブ大規模モデル
+
+GeminiはGoogleの最新世代大規模モデルで、ネイティブでマルチモーダルをサポート。
+
+---
+
+## 📊 Geminiモデル比較
+
+| モデル | コンテキストウィンドウ | 特徴 | 用途 |
+|--------|------------------------|------|------|
+| **Gemini 2.0 Flash** | 1M tokens | 最新フラッグシップ | 複雑な推論、コード、ビジョン |
+| **Gemini 1.5 Pro** | 2M tokens | 超長コンテキスト | 長文書分析、動画理解 |
+| **Gemini 1.5 Flash** | 1M tokens | 高速レスポンス | リアルタイムアプリ |
+| **Gemini Nano** | オンデバイス | 軽量 | モバイル、エッジ |
+
+---
+
+## 🔧 クイックスタート
+
+\`\`\`python
+import google.generativeai as genai
+
+genai.configure(api_key="YOUR_API_KEY")
+model = genai.GenerativeModel("gemini-2.0-flash")
+
+response = model.generate_content("量子コンピューティングの基本原理を説明して")
+print(response.text)
+\`\`\`
+
+---
+
+## 🖼️ マルチモーダル機能
+
+\`\`\`python
+import PIL.Image
+
+image = PIL.Image.open("diagram.png")
+response = model.generate_content([
+    "このアーキテクチャ図を分析してください：",
+    image
+])
+\`\`\`
+
+---
+
+## 🛠️ Function Calling
+
+\`\`\`python
+def get_weather(location: str) -> dict:
+    return {"location": location, "temperature": 22}
+
+model = genai.GenerativeModel(
+    "gemini-2.0-flash",
+    tools=[get_weather]
+)
+
+chat = model.start_chat(enable_automatic_function_calling=True)
+response = chat.send_message("東京の天気は？")
+\`\`\`
+            `
+          }
+        },
+        {
+          id: 'ch9-vertex-ai',
+          title: { zh: '9.2 Vertex AI 企业级平台', ja: '9.2 Vertex AIエンタープライズプラットフォーム' },
+          content: {
+            zh: `
+## Vertex AI：Google Cloud 的 AI 平台
+
+Vertex AI 是 Google Cloud 的统一 AI 平台，提供从模型训练到部署的全流程服务。
+
+---
+
+## 🏗️ Vertex AI 核心组件
+
+\`\`\`
+┌─────────────────────────────────────────────────────────────┐
+│                      Vertex AI Platform                      │
+├─────────────────────────────────────────────────────────────┤
+│  ┌─────────────┐  ┌─────────────┐  ┌─────────────┐          │
+│  │   Gemini    │  │  Model      │  │  Vertex AI  │          │
+│  │   API       │  │  Garden     │  │  Studio     │          │
+│  └─────────────┘  └─────────────┘  └─────────────┘          │
+├─────────────────────────────────────────────────────────────┤
+│  ┌─────────────┐  ┌─────────────┐  ┌─────────────┐          │
+│  │  AutoML     │  │  Custom     │  │  Pipelines  │          │
+│  │             │  │  Training   │  │             │          │
+│  └─────────────┘  └─────────────┘  └─────────────┘          │
+├─────────────────────────────────────────────────────────────┤
+│  ┌─────────────┐  ┌─────────────┐  ┌─────────────┐          │
+│  │  Feature    │  │  Vector     │  │  Model      │          │
+│  │  Store      │  │  Search     │  │  Registry   │          │
+│  └─────────────┘  └─────────────┘  └─────────────┘          │
+└─────────────────────────────────────────────────────────────┘
+\`\`\`
+
+---
+
+## 🔧 环境配置
+
+\`\`\`bash
+# 安装 SDK
+pip install google-cloud-aiplatform
+
+# 认证
+gcloud auth application-default login
+gcloud config set project YOUR_PROJECT_ID
+\`\`\`
+
+---
+
+## 🤖 使用 Gemini on Vertex AI
+
+\`\`\`python
+import vertexai
+from vertexai.generative_models import GenerativeModel, Part
+
+# 初始化
+vertexai.init(project="your-project-id", location="us-central1")
+
+# 创建模型
+model = GenerativeModel("gemini-2.0-flash")
+
+# 文本生成
+response = model.generate_content("解释机器学习和深度学习的区别")
+print(response.text)
+
+# 多模态：图片 + 文本
+image = Part.from_uri(
+    "gs://your-bucket/image.jpg",
+    mime_type="image/jpeg"
+)
+response = model.generate_content([image, "描述这张图片"])
+print(response.text)
+\`\`\`
+
+---
+
+## 🔍 Vertex AI Search (企业搜索)
+
+\`\`\`python
+from google.cloud import discoveryengine_v1 as discoveryengine
+
+# 创建搜索客户端
+client = discoveryengine.SearchServiceClient()
+
+# 执行搜索
+request = discoveryengine.SearchRequest(
+    serving_config=f"projects/{project}/locations/global/collections/default_collection/dataStores/{data_store}/servingConfigs/default_search",
+    query="如何配置 Kubernetes 集群",
+    page_size=10,
+)
+
+response = client.search(request)
+
+for result in response.results:
+    print(f"文档: {result.document.name}")
+    print(f"摘要: {result.document.derived_struct_data.get('snippets', [])}")
+\`\`\`
+
+---
+
+## 📊 Vertex AI Vector Search
+
+用于构建大规模向量检索系统（原 Matching Engine）。
+
+\`\`\`python
+from google.cloud import aiplatform
+
+# 初始化
+aiplatform.init(project="your-project", location="us-central1")
+
+# 创建向量索引
+my_index = aiplatform.MatchingEngineIndex.create_tree_ah_index(
+    display_name="product-embeddings",
+    contents_delta_uri="gs://your-bucket/embeddings/",
+    dimensions=768,
+    approximate_neighbors_count=150,
+)
+
+# 创建端点
+my_index_endpoint = aiplatform.MatchingEngineIndexEndpoint.create(
+    display_name="product-search-endpoint",
+    public_endpoint_enabled=True
+)
+
+# 部署索引
+my_index_endpoint.deploy_index(
+    index=my_index,
+    deployed_index_id="deployed_product_index"
+)
+
+# 执行向量搜索
+response = my_index_endpoint.find_neighbors(
+    deployed_index_id="deployed_product_index",
+    queries=[[0.1, 0.2, ...]],  # 查询向量
+    num_neighbors=10
+)
+\`\`\`
+
+---
+
+## 🏭 Model Garden：预训练模型库
+
+\`\`\`python
+# 部署开源模型（如 Llama 2）
+from vertexai.preview.language_models import TextGenerationModel
+
+# 浏览可用模型
+# console.cloud.google.com/vertex-ai/model-garden
+
+# 部署到端点
+model = TextGenerationModel.from_pretrained("text-bison")
+response = model.predict("写一首关于春天的诗")
+print(response.text)
+\`\`\`
+
+---
+
+## 🔄 Vertex AI Pipelines
+
+\`\`\`python
+from kfp import dsl
+from kfp.v2 import compiler
+from google.cloud import aiplatform
+
+@dsl.component
+def preprocess_data(input_path: str, output_path: str):
+    # 数据预处理逻辑
+    pass
+
+@dsl.component
+def train_model(data_path: str, model_path: str):
+    # 模型训练逻辑
+    pass
+
+@dsl.component
+def evaluate_model(model_path: str) -> float:
+    # 模型评估
+    return 0.95
+
+@dsl.pipeline(name="ml-training-pipeline")
+def ml_pipeline(input_data: str):
+    preprocess_task = preprocess_data(input_path=input_data, output_path="gs://...")
+    train_task = train_model(data_path=preprocess_task.output, model_path="gs://...")
+    evaluate_task = evaluate_model(model_path=train_task.output)
+
+# 编译并运行
+compiler.Compiler().compile(ml_pipeline, "pipeline.json")
+
+aiplatform.init(project="your-project", location="us-central1")
+job = aiplatform.PipelineJob(
+    display_name="training-job",
+    template_path="pipeline.json",
+    parameter_values={"input_data": "gs://your-bucket/data"}
+)
+job.run()
+\`\`\`
+
+---
+
+## 💰 成本优化建议
+
+| 策略 | 说明 |
+|------|------|
+| 使用 Flash 模型 | 比 Pro 便宜 5-10x |
+| 批量处理 | 减少 API 调用次数 |
+| 缓存响应 | 相同查询复用结果 |
+| 区域选择 | 不同区域价格不同 |
+| 承诺使用折扣 | 1年/3年承诺享折扣 |
+            `,
+            ja: `
+## Vertex AI：Google CloudのAIプラットフォーム
+
+Vertex AIはGoogle Cloudの統合AIプラットフォームで、モデルトレーニングからデプロイまでの全プロセスをサポート。
+
+---
+
+## 🏗️ Vertex AIコアコンポーネント
+
+- **Gemini API** - 最新LLMアクセス
+- **Model Garden** - 事前学習モデルライブラリ
+- **Vertex AI Studio** - ノーコード実験環境
+- **Vector Search** - 大規模ベクトル検索
+- **Pipelines** - MLワークフロー自動化
+
+---
+
+## 🔧 環境設定
+
+\`\`\`bash
+pip install google-cloud-aiplatform
+gcloud auth application-default login
+\`\`\`
+
+---
+
+## 🤖 Gemini on Vertex AI
+
+\`\`\`python
+import vertexai
+from vertexai.generative_models import GenerativeModel
+
+vertexai.init(project="your-project-id", location="us-central1")
+model = GenerativeModel("gemini-2.0-flash")
+
+response = model.generate_content("機械学習と深層学習の違いを説明して")
+print(response.text)
+\`\`\`
+
+---
+
+## 📊 Vector Search
+
+\`\`\`python
+# ベクトルインデックス作成
+my_index = aiplatform.MatchingEngineIndex.create_tree_ah_index(
+    display_name="product-embeddings",
+    dimensions=768
+)
+
+# 検索実行
+response = my_index_endpoint.find_neighbors(
+    queries=[[0.1, 0.2, ...]],
+    num_neighbors=10
+)
+\`\`\`
+            `
+          }
+        },
+        {
+          id: 'ch9-ai-studio',
+          title: { zh: '9.3 Google AI Studio 快速原型', ja: '9.3 Google AI Studio クイックプロトタイプ' },
+          content: {
+            zh: `
+## Google AI Studio：免费的 Gemini 实验平台
+
+AI Studio 是 Google 提供的免费在线工具，用于快速测试和原型开发。
+
+---
+
+## 🌐 访问地址
+
+> **https://aistudio.google.com**
+
+---
+
+## 🎯 核心功能
+
+### 1. 即时对话测试
+
+\`\`\`
+┌─────────────────────────────────────────┐
+│  Chat Prompt                             │
+├─────────────────────────────────────────┤
+│  System: 你是一个专业的技术顾问          │
+│                                          │
+│  User: 如何选择合适的数据库？            │
+│                                          │
+│  Model: [Gemini 响应]                    │
+├─────────────────────────────────────────┤
+│  [Temperature] [Top-P] [Max Tokens]     │
+└─────────────────────────────────────────┘
+\`\`\`
+
+### 2. 结构化 Prompt 设计
+
+\`\`\`
+┌─────────────────────────────────────────┐
+│  Freeform Prompt                         │
+├─────────────────────────────────────────┤
+│  任务描述：                              │
+│  根据用户问题，分析并给出建议            │
+│                                          │
+│  输入示例：                              │
+│  Q: 网站加载慢怎么办？                   │
+│  A: 1. 优化图片 2. 启用CDN 3. 代码压缩  │
+│                                          │
+│  测试输入：                              │
+│  Q: API 响应时间太长                     │
+└─────────────────────────────────────────┘
+\`\`\`
+
+### 3. 多模态测试
+
+- 上传图片进行视觉问答
+- 上传视频进行内容分析
+- 音频转写和理解
+
+---
+
+## 🔧 导出代码
+
+AI Studio 可以一键导出为多种语言：
+
+### Python
+
+\`\`\`python
+import google.generativeai as genai
+
+genai.configure(api_key="YOUR_API_KEY")
+
+generation_config = {
+    "temperature": 0.7,
+    "top_p": 0.95,
+    "top_k": 40,
+    "max_output_tokens": 8192,
+}
+
+model = genai.GenerativeModel(
+    model_name="gemini-2.0-flash",
+    generation_config=generation_config,
+    system_instruction="你是一个专业的技术顾问"
+)
+
+chat = model.start_chat(history=[])
+response = chat.send_message("如何优化数据库查询性能？")
+print(response.text)
+\`\`\`
+
+### JavaScript/Node.js
+
+\`\`\`javascript
+const { GoogleGenerativeAI } = require("@google/generative-ai");
+
+const genAI = new GoogleGenerativeAI("YOUR_API_KEY");
+
+async function run() {
+    const model = genAI.getGenerativeModel({
+        model: "gemini-2.0-flash",
+        systemInstruction: "你是一个专业的技术顾问"
+    });
+
+    const result = await model.generateContent("如何优化数据库？");
+    console.log(result.response.text());
+}
+
+run();
+\`\`\`
+
+### cURL
+
+\`\`\`bash
+curl "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=YOUR_API_KEY" \\
+  -H 'Content-Type: application/json' \\
+  -d '{
+    "contents": [{
+      "parts": [{"text": "解释 RESTful API 设计原则"}]
+    }],
+    "generationConfig": {
+      "temperature": 0.7,
+      "maxOutputTokens": 2048
+    }
+  }'
+\`\`\`
+
+---
+
+## 📊 Prompt Gallery（提示词库）
+
+AI Studio 提供丰富的 Prompt 模板：
+
+| 类别 | 示例 |
+|------|------|
+| 写作 | 博客生成、邮件撰写 |
+| 代码 | 代码解释、Bug 修复 |
+| 分析 | 数据分析、报告生成 |
+| 创意 | 故事创作、广告文案 |
+| 教育 | 知识问答、概念解释 |
+
+---
+
+## 🆓 免费额度
+
+| 资源 | 免费额度 |
+|------|----------|
+| Gemini 2.0 Flash | 15 RPM / 100万 TPM |
+| Gemini 1.5 Pro | 2 RPM / 32K TPM |
+| 图片处理 | 包含在请求中 |
+| 视频处理 | 包含在请求中 |
+
+*RPM = 每分钟请求数，TPM = 每分钟 Token 数*
+
+---
+
+## 💡 最佳实践
+
+1. **先在 AI Studio 测试** —— 验证 Prompt 效果
+2. **使用 System Instruction** —— 定义角色和行为
+3. **调整 Temperature** —— 创意任务调高，精确任务调低
+4. **导出后再优化** —— 添加错误处理和重试逻辑
+            `,
+            ja: `
+## Google AI Studio：無料のGemini実験プラットフォーム
+
+AI StudioはGoogleが提供する無料オンラインツールで、迅速なテストとプロトタイプ開発に使用。
+
+---
+
+## 🌐 アクセスURL
+
+> **https://aistudio.google.com**
+
+---
+
+## 🎯 コア機能
+
+1. **即時対話テスト** - リアルタイムでGeminiと対話
+2. **構造化プロンプト設計** - 例題付きプロンプト作成
+3. **マルチモーダルテスト** - 画像・動画・音声対応
+4. **コードエクスポート** - Python/JavaScript/cURL
+
+---
+
+## 🔧 エクスポートコード例
+
+\`\`\`python
+import google.generativeai as genai
+
+genai.configure(api_key="YOUR_API_KEY")
+
+model = genai.GenerativeModel(
+    model_name="gemini-2.0-flash",
+    system_instruction="あなたは技術コンサルタントです"
+)
+
+response = model.generate_content("データベースの最適化方法は？")
+print(response.text)
+\`\`\`
+
+---
+
+## 🆓 無料枠
+
+| リソース | 無料枠 |
+|----------|--------|
+| Gemini 2.0 Flash | 15 RPM / 100万 TPM |
+| Gemini 1.5 Pro | 2 RPM / 32K TPM |
+            `
+          }
+        },
+        {
+          id: 'ch9-gemma',
+          title: { zh: '9.4 Gemma 开源模型', ja: '9.4 Gemmaオープンソースモデル' },
+          content: {
+            zh: `
+## Gemma：Google 的开源大模型
+
+Gemma 是 Google 开源的轻量级大模型系列，与 Gemini 共享技术架构。
+
+---
+
+## 📊 Gemma 模型对比
+
+| 模型 | 参数量 | 特点 | HuggingFace |
+|------|--------|------|-------------|
+| **Gemma 2 27B** | 27B | 性能最强 | google/gemma-2-27b |
+| **Gemma 2 9B** | 9B | 平衡之选 | google/gemma-2-9b |
+| **Gemma 2 2B** | 2B | 轻量快速 | google/gemma-2-2b |
+| **CodeGemma 7B** | 7B | 代码专精 | google/codegemma-7b |
+| **PaliGemma** | 3B | 视觉语言 | google/paligemma-3b |
+
+---
+
+## 🔧 本地部署（Ollama）
+
+\`\`\`bash
+# 安装 Ollama
+curl -fsSL https://ollama.com/install.sh | sh
+
+# 下载 Gemma
+ollama pull gemma2:9b
+
+# 运行对话
+ollama run gemma2:9b
+
+# API 调用
+curl http://localhost:11434/api/generate -d '{
+  "model": "gemma2:9b",
+  "prompt": "解释什么是 Transformer 架构",
+  "stream": false
+}'
+\`\`\`
+
+---
+
+## 🐍 Python 调用（HuggingFace）
+
+\`\`\`python
+from transformers import AutoTokenizer, AutoModelForCausalLM
+import torch
+
+# 加载模型
+model_id = "google/gemma-2-9b-it"  # it = instruction-tuned
+tokenizer = AutoTokenizer.from_pretrained(model_id)
+model = AutoModelForCausalLM.from_pretrained(
+    model_id,
+    device_map="auto",
+    torch_dtype=torch.bfloat16
+)
+
+# 构建对话格式
+messages = [
+    {"role": "user", "content": "写一个 Python 快速排序算法"}
+]
+prompt = tokenizer.apply_chat_template(
+    messages,
+    tokenize=False,
+    add_generation_prompt=True
+)
+
+# 生成
+inputs = tokenizer(prompt, return_tensors="pt").to(model.device)
+outputs = model.generate(
+    **inputs,
+    max_new_tokens=512,
+    temperature=0.7,
+    do_sample=True
+)
+
+response = tokenizer.decode(outputs[0], skip_special_tokens=True)
+print(response)
+\`\`\`
+
+---
+
+## ⚡ 量化部署
+
+\`\`\`python
+from transformers import AutoModelForCausalLM, BitsAndBytesConfig
+
+# 4-bit 量化配置
+quantization_config = BitsAndBytesConfig(
+    load_in_4bit=True,
+    bnb_4bit_compute_dtype=torch.bfloat16,
+    bnb_4bit_quant_type="nf4"
+)
+
+model = AutoModelForCausalLM.from_pretrained(
+    "google/gemma-2-9b-it",
+    quantization_config=quantization_config,
+    device_map="auto"
+)
+
+# 9B 模型量化后约需 6GB 显存
+\`\`\`
+
+---
+
+## 🖼️ PaliGemma（视觉语言模型）
+
+\`\`\`python
+from transformers import AutoProcessor, PaliGemmaForConditionalGeneration
+from PIL import Image
+
+# 加载模型
+model_id = "google/paligemma-3b-pt-224"
+processor = AutoProcessor.from_pretrained(model_id)
+model = PaliGemmaForConditionalGeneration.from_pretrained(model_id)
+
+# 图像理解
+image = Image.open("photo.jpg")
+prompt = "describe this image in detail"
+
+inputs = processor(text=prompt, images=image, return_tensors="pt")
+outputs = model.generate(**inputs, max_new_tokens=256)
+description = processor.decode(outputs[0], skip_special_tokens=True)
+print(description)
+\`\`\`
+
+---
+
+## 💻 CodeGemma（代码模型）
+
+\`\`\`python
+from transformers import GemmaTokenizer, AutoModelForCausalLM
+
+model_id = "google/codegemma-7b-it"
+tokenizer = GemmaTokenizer.from_pretrained(model_id)
+model = AutoModelForCausalLM.from_pretrained(model_id, device_map="auto")
+
+# 代码补全
+prompt = '''def fibonacci(n):
+    """Calculate the nth Fibonacci number."""
+'''
+
+inputs = tokenizer(prompt, return_tensors="pt").to(model.device)
+outputs = model.generate(**inputs, max_new_tokens=200)
+code = tokenizer.decode(outputs[0], skip_special_tokens=True)
+print(code)
+\`\`\`
+
+---
+
+## 🆚 Gemma vs Llama 对比
+
+| 特性 | Gemma 2 | Llama 3 |
+|------|---------|---------|
+| 开发商 | Google | Meta |
+| 许可证 | Gemma ToU | Llama 3 Community |
+| 商用 | ✅ (有限制) | ✅ (有限制) |
+| 最大参数 | 27B | 70B |
+| 中文能力 | 中等 | 较好 |
+| 代码能力 | 强 (CodeGemma) | 强 |
+| 视觉版本 | PaliGemma | Llama 3.2 Vision |
+
+---
+
+## 📦 部署方案对比
+
+| 方案 | 优点 | 缺点 |
+|------|------|------|
+| Ollama | 简单易用 | 功能有限 |
+| vLLM | 高性能 | 配置复杂 |
+| TGI | 企业级 | 需要更多资源 |
+| llama.cpp | 低资源 | CPU 为主 |
+            `,
+            ja: `
+## Gemma：Googleのオープンソース大規模モデル
+
+GemmaはGoogleがオープンソース化した軽量大規模モデルシリーズで、Geminiと技術アーキテクチャを共有。
+
+---
+
+## 📊 Gemmaモデル比較
+
+| モデル | パラメータ | 特徴 |
+|--------|------------|------|
+| **Gemma 2 27B** | 27B | 最高性能 |
+| **Gemma 2 9B** | 9B | バランス型 |
+| **Gemma 2 2B** | 2B | 軽量高速 |
+| **CodeGemma 7B** | 7B | コード特化 |
+| **PaliGemma** | 3B | ビジョン言語 |
+
+---
+
+## 🔧 ローカルデプロイ（Ollama）
+
+\`\`\`bash
+ollama pull gemma2:9b
+ollama run gemma2:9b
+\`\`\`
+
+---
+
+## 🐍 Python呼び出し
+
+\`\`\`python
+from transformers import AutoTokenizer, AutoModelForCausalLM
+
+model = AutoModelForCausalLM.from_pretrained(
+    "google/gemma-2-9b-it",
+    device_map="auto",
+    torch_dtype=torch.bfloat16
+)
+
+messages = [{"role": "user", "content": "Pythonのクイックソートを書いて"}]
+# ...
+\`\`\`
+
+---
+
+## 🆚 Gemma vs Llama
+
+| 特性 | Gemma 2 | Llama 3 |
+|------|---------|---------|
+| 開発元 | Google | Meta |
+| ライセンス | Gemma ToU | Llama 3 Community |
+| 最大パラメータ | 27B | 70B |
+            `
+          }
+        },
+        {
+          id: 'ch9-notebooklm',
+          title: { zh: '9.5 NotebookLM 研究助手', ja: '9.5 NotebookLM リサーチアシスタント' },
+          content: {
+            zh: `
+## NotebookLM：AI 驱动的研究助手
+
+NotebookLM 是 Google 推出的 AI 笔记工具，可以基于你上传的文档进行问答和总结。
+
+---
+
+## 🌐 访问地址
+
+> **https://notebooklm.google.com**
+
+---
+
+## 🎯 核心功能
+
+### 1. 文档上传与理解
+
+支持的格式：
+- PDF 文档
+- Google Docs
+- 网页链接
+- 文本文件
+- YouTube 视频
+
+\`\`\`
+┌─────────────────────────────────────────┐
+│  Sources（来源）                         │
+├─────────────────────────────────────────┤
+│  📄 research_paper.pdf                   │
+│  📄 meeting_notes.docx                   │
+│  🔗 https://arxiv.org/...               │
+│  🎬 YouTube: AI 技术讲座                 │
+│                                          │
+│  [+ Add Source]                          │
+└─────────────────────────────────────────┘
+\`\`\`
+
+### 2. 智能问答
+
+\`\`\`
+用户: 这篇论文的主要贡献是什么？
+
+NotebookLM: 根据论文内容，主要贡献包括：
+1. 提出了新的注意力机制... [引用: 第3页]
+2. 在多个基准测试上取得SOTA... [引用: 第7页]
+3. ...
+\`\`\`
+
+### 3. 自动生成笔记
+
+- **文档摘要** —— 一键生成概要
+- **关键问题** —— 提取核心问题
+- **FAQ 生成** —— 自动生成问答对
+- **时间线** —— 提取时间节点
+
+### 4. 🎙️ Audio Overview（音频概述）
+
+**最具特色的功能！** 将文档转换为两人对话的播客形式。
+
+\`\`\`
+[生成音频概述]
+        ↓
+两位 AI 主持人讨论你的文档内容
+        ↓
+~10分钟的播客式音频
+        ↓
+可下载 MP3 离线收听
+\`\`\`
+
+---
+
+## 💡 使用场景
+
+| 场景 | 用法 |
+|------|------|
+| **论文研究** | 上传 PDF，快速理解核心内容 |
+| **会议纪要** | 上传录音转写，生成摘要 |
+| **学习笔记** | 上传教材，生成问答卡片 |
+| **竞品分析** | 上传多篇报告，交叉对比 |
+| **播客创作** | 将长文档转为音频内容 |
+
+---
+
+## 🔧 高级技巧
+
+### 1. 多文档交叉引用
+
+\`\`\`
+上传多篇论文后提问：
+"比较这三篇论文在方法论上的异同"
+→ NotebookLM 会综合分析并标注来源
+\`\`\`
+
+### 2. 引用追溯
+
+点击回答中的引用标注，可直接跳转到原文位置。
+
+### 3. 笔记导出
+
+生成的笔记可以导出为 Google Doc，便于编辑和分享。
+
+---
+
+## ⚠️ 限制
+
+| 限制 | 说明 |
+|------|------|
+| 来源数量 | 最多 50 个来源/笔记本 |
+| 文件大小 | 每个文件最大 200MB |
+| 音频长度 | Audio Overview 约 10 分钟 |
+| 语言 | 目前英文效果最佳 |
+| 隐私 | 文档内容用于 AI 处理 |
+
+---
+
+## 🆚 与其他工具对比
+
+| 工具 | 特点 | 适用场景 |
+|------|------|----------|
+| **NotebookLM** | 深度文档理解 | 研究、学习 |
+| **ChatGPT + 文件** | 通用对话 | 快速问答 |
+| **Claude Projects** | 代码 + 文档 | 开发项目 |
+| **Perplexity** | 网络搜索 | 信息检索 |
+            `,
+            ja: `
+## NotebookLM：AI駆動のリサーチアシスタント
+
+NotebookLMはGoogleが提供するAIノートツールで、アップロードしたドキュメントに基づいてQ&Aと要約が可能。
+
+---
+
+## 🌐 アクセスURL
+
+> **https://notebooklm.google.com**
+
+---
+
+## 🎯 コア機能
+
+### 1. ドキュメントアップロード
+
+対応フォーマット：PDF、Google Docs、Webリンク、テキスト、YouTube動画
+
+### 2. スマートQ&A
+
+ドキュメントの内容に基づいて質問に回答し、引用元を明示
+
+### 3. 自動ノート生成
+
+- ドキュメント要約
+- 重要な質問抽出
+- FAQ自動生成
+
+### 4. 🎙️ Audio Overview
+
+**最も特徴的な機能！** ドキュメントを2人の対話形式のポッドキャストに変換
+
+---
+
+## 💡 使用シーン
+
+| シーン | 用途 |
+|--------|------|
+| **論文研究** | PDFをアップロードし、核心内容を素早く理解 |
+| **会議メモ** | 録音の文字起こしをアップロードし、要約を生成 |
+| **学習ノート** | 教材をアップロードし、Q&Aカードを生成 |
+
+---
+
+## ⚠️ 制限
+
+| 制限 | 説明 |
+|------|------|
+| ソース数 | 最大50ソース/ノートブック |
+| ファイルサイズ | 各ファイル最大200MB |
+            `
+          }
+        },
+        {
+          id: 'ch9-cloud-ai',
+          title: { zh: '9.6 Google Cloud AI 服务', ja: '9.6 Google Cloud AIサービス' },
+          content: {
+            zh: `
+## Google Cloud AI 服务矩阵
+
+Google Cloud 提供丰富的预训练 AI 服务，可直接调用 API。
+
+---
+
+## 🗣️ Speech-to-Text（语音转文字）
+
+\`\`\`python
+from google.cloud import speech
+
+client = speech.SpeechClient()
+
+# 从文件读取音频
+with open("audio.wav", "rb") as f:
+    audio = speech.RecognitionAudio(content=f.read())
+
+config = speech.RecognitionConfig(
+    encoding=speech.RecognitionConfig.AudioEncoding.LINEAR16,
+    sample_rate_hertz=16000,
+    language_code="zh-CN",  # 中文
+    enable_automatic_punctuation=True,
+    enable_word_time_offsets=True,  # 获取单词时间戳
+)
+
+response = client.recognize(config=config, audio=audio)
+
+for result in response.results:
+    print(f"转写: {result.alternatives[0].transcript}")
+    print(f"置信度: {result.alternatives[0].confidence}")
+\`\`\`
+
+### 支持的语言
+
+- 中文（普通话、粤语）
+- 日语、韩语
+- 英语（多种口音）
+- 125+ 种语言
+
+---
+
+## 🔊 Text-to-Speech（文字转语音）
+
+\`\`\`python
+from google.cloud import texttospeech
+
+client = texttospeech.TextToSpeechClient()
+
+# 设置文本
+synthesis_input = texttospeech.SynthesisInput(
+    text="欢迎使用 Google Cloud 语音合成服务"
+)
+
+# 选择声音
+voice = texttospeech.VoiceSelectionParams(
+    language_code="zh-CN",
+    name="zh-CN-Wavenet-A",  # Wavenet 更自然
+    ssml_gender=texttospeech.SsmlVoiceGender.FEMALE
+)
+
+# 音频配置
+audio_config = texttospeech.AudioConfig(
+    audio_encoding=texttospeech.AudioEncoding.MP3,
+    speaking_rate=1.0,  # 语速
+    pitch=0.0  # 音调
+)
+
+response = client.synthesize_speech(
+    input=synthesis_input,
+    voice=voice,
+    audio_config=audio_config
+)
+
+with open("output.mp3", "wb") as f:
+    f.write(response.audio_content)
+\`\`\`
+
+### 声音类型
+
+| 类型 | 特点 | 价格 |
+|------|------|------|
+| Standard | 基础质量 | 最低 |
+| Wavenet | 高质量 | 中等 |
+| Neural2 | 最自然 | 最高 |
+| Studio | 专业配音 | 按需 |
+
+---
+
+## 👁️ Vision AI（视觉 AI）
+
+\`\`\`python
+from google.cloud import vision
+
+client = vision.ImageAnnotatorClient()
+
+# 从文件读取图片
+with open("image.jpg", "rb") as f:
+    content = f.read()
+
+image = vision.Image(content=content)
+
+# 多种分析功能
+# 1. 标签检测
+labels = client.label_detection(image=image).label_annotations
+for label in labels:
+    print(f"标签: {label.description}, 置信度: {label.score:.2f}")
+
+# 2. 文字识别 (OCR)
+texts = client.text_detection(image=image).text_annotations
+if texts:
+    print(f"识别文字: {texts[0].description}")
+
+# 3. 人脸检测
+faces = client.face_detection(image=image).face_annotations
+for face in faces:
+    print(f"表情: 喜悦={face.joy_likelihood.name}")
+
+# 4. 物体定位
+objects = client.object_localization(image=image).localized_object_annotations
+for obj in objects:
+    print(f"物体: {obj.name}, 位置: {obj.bounding_poly}")
+
+# 5. 安全检测
+safe = client.safe_search_detection(image=image).safe_search_annotation
+print(f"成人内容: {safe.adult.name}")
+\`\`\`
+
+---
+
+## 🌐 Translation（翻译）
+
+\`\`\`python
+from google.cloud import translate_v2 as translate
+
+client = translate.Client()
+
+# 简单翻译
+result = client.translate(
+    "Hello, how are you?",
+    target_language="zh-CN"
+)
+print(result["translatedText"])  # 你好，你好吗？
+
+# 检测语言
+detection = client.detect_language("こんにちは")
+print(f"语言: {detection['language']}, 置信度: {detection['confidence']}")
+
+# 批量翻译
+texts = ["Hello", "World", "AI is amazing"]
+results = client.translate(texts, target_language="ja")
+for r in results:
+    print(f"{r['input']} -> {r['translatedText']}")
+\`\`\`
+
+---
+
+## 📊 Natural Language（自然语言处理）
+
+\`\`\`python
+from google.cloud import language_v1
+
+client = language_v1.LanguageServiceClient()
+
+text = "谷歌是一家总部位于加利福尼亚的科技公司，由拉里·佩奇和谢尔盖·布林创立。"
+document = language_v1.Document(
+    content=text,
+    type_=language_v1.Document.Type.PLAIN_TEXT,
+    language="zh"
+)
+
+# 情感分析
+sentiment = client.analyze_sentiment(document=document).document_sentiment
+print(f"情感: {sentiment.score:.2f} (正面=1, 负面=-1)")
+
+# 实体识别
+entities = client.analyze_entities(document=document).entities
+for entity in entities:
+    print(f"实体: {entity.name}, 类型: {entity.type_.name}")
+
+# 语法分析
+syntax = client.analyze_syntax(document=document)
+for token in syntax.tokens:
+    print(f"词: {token.text.content}, 词性: {token.part_of_speech.tag.name}")
+\`\`\`
+
+---
+
+## 💰 定价概览
+
+| 服务 | 免费额度 | 超出后价格 |
+|------|----------|------------|
+| Speech-to-Text | 60分钟/月 | $0.006/15秒 |
+| Text-to-Speech | 400万字符/月 | $4-16/百万字符 |
+| Vision AI | 1000次/月 | $1.5/千次 |
+| Translation | 50万字符/月 | $20/百万字符 |
+| Natural Language | 5000次/月 | $1-2/千次 |
+            `,
+            ja: `
+## Google Cloud AIサービスマトリックス
+
+Google Cloudは豊富な事前学習AIサービスを提供し、直接APIを呼び出し可能。
+
+---
+
+## 🗣️ Speech-to-Text
+
+\`\`\`python
+from google.cloud import speech
+
+client = speech.SpeechClient()
+config = speech.RecognitionConfig(
+    language_code="ja-JP",
+    enable_automatic_punctuation=True
+)
+response = client.recognize(config=config, audio=audio)
+\`\`\`
+
+---
+
+## 🔊 Text-to-Speech
+
+\`\`\`python
+from google.cloud import texttospeech
+
+client = texttospeech.TextToSpeechClient()
+voice = texttospeech.VoiceSelectionParams(
+    language_code="ja-JP",
+    name="ja-JP-Wavenet-A"
+)
+\`\`\`
+
+---
+
+## 👁️ Vision AI
+
+- ラベル検出
+- OCR（文字認識）
+- 顔検出
+- 物体検出
+- 安全検索
+
+---
+
+## 💰 料金概要
+
+| サービス | 無料枠 | 超過後 |
+|----------|--------|--------|
+| Speech-to-Text | 60分/月 | $0.006/15秒 |
+| Text-to-Speech | 400万文字/月 | $4-16/百万文字 |
+| Vision AI | 1000回/月 | $1.5/千回 |
+            `
+          }
+        },
+        {
+          id: 'ch9-summary',
+          title: { zh: '9.7 本章小结', ja: '9.7 この章のまとめ' },
+          content: {
+            zh: `
+## Google AI 生态系统总览
+
+---
+
+## 🗺️ 产品地图
+
+\`\`\`
+┌─────────────────────────────────────────────────────────────┐
+│                    Google AI 生态系统                        │
+├─────────────────────────────────────────────────────────────┤
+│                                                              │
+│  ┌─────────────────┐  ┌─────────────────┐                   │
+│  │    Gemini       │  │   Gemma         │                   │
+│  │  (闭源旗舰)     │  │  (开源轻量)     │                   │
+│  └─────────────────┘  └─────────────────┘                   │
+│           │                    │                             │
+│           ▼                    ▼                             │
+│  ┌─────────────────┐  ┌─────────────────┐                   │
+│  │  AI Studio      │  │  HuggingFace    │                   │
+│  │  (免费原型)     │  │  Ollama 本地    │                   │
+│  └─────────────────┘  └─────────────────┘                   │
+│           │                                                  │
+│           ▼                                                  │
+│  ┌─────────────────────────────────────────┐                │
+│  │            Vertex AI                     │                │
+│  │  (企业级：训练、部署、监控)              │                │
+│  └─────────────────────────────────────────┘                │
+│           │                                                  │
+│           ▼                                                  │
+│  ┌─────────────────────────────────────────┐                │
+│  │         Google Cloud AI Services         │                │
+│  │  Speech | Vision | Translation | NLP     │                │
+│  └─────────────────────────────────────────┘                │
+│                                                              │
+│  ┌─────────────────┐                                        │
+│  │   NotebookLM    │  ← 研究助手                            │
+│  └─────────────────┘                                        │
+└─────────────────────────────────────────────────────────────┘
+\`\`\`
+
+---
+
+## 🎯 选择指南
+
+| 需求 | 推荐产品 |
+|------|----------|
+| 快速原型 | AI Studio + Gemini API |
+| 企业部署 | Vertex AI |
+| 本地运行 | Gemma + Ollama |
+| 文档研究 | NotebookLM |
+| 语音处理 | Speech-to-Text / TTS |
+| 图像分析 | Vision AI |
+| 多语言 | Translation API |
+
+---
+
+## 💡 最佳实践
+
+1. **先用 AI Studio 验证** —— 免费测试 Prompt 效果
+2. **选择合适的模型** —— Flash 省钱，Pro 强大
+3. **善用免费额度** —— 各服务都有免费层
+4. **考虑隐私合规** —— 敏感数据用 Gemma 本地部署
+5. **监控成本** —— 设置预算提醒
+
+---
+
+## 📚 学习资源
+
+- 📖 [Google AI 官方文档](https://ai.google.dev/)
+- 🎓 [Google Cloud Skills Boost](https://www.cloudskillsboost.google/)
+- 🔬 [Google AI Blog](https://blog.google/technology/ai/)
+- 💬 [Gemini API Cookbook](https://github.com/google-gemini/cookbook)
+            `,
+            ja: `
+## Google AIエコシステム総覧
+
+---
+
+## 🗺️ プロダクトマップ
+
+| 製品 | 特徴 | 用途 |
+|------|------|------|
+| **Gemini** | クローズドソースフラッグシップ | 本番アプリ |
+| **Gemma** | オープンソース軽量 | ローカルデプロイ |
+| **AI Studio** | 無料プロトタイプ | 実験・検証 |
+| **Vertex AI** | エンタープライズ | 大規模デプロイ |
+| **NotebookLM** | リサーチアシスタント | 文書分析 |
+| **Cloud AI** | 事前学習サービス | 音声・画像・翻訳 |
+
+---
+
+## 🎯 選択ガイド
+
+| ニーズ | 推奨製品 |
+|--------|----------|
+| クイックプロトタイプ | AI Studio + Gemini API |
+| エンタープライズデプロイ | Vertex AI |
+| ローカル実行 | Gemma + Ollama |
+| ドキュメント研究 | NotebookLM |
+
+---
+
+## 📚 学習リソース
+
+- [Google AI公式ドキュメント](https://ai.google.dev/)
+- [Gemini API Cookbook](https://github.com/google-gemini/cookbook)
             `
           }
         }
