@@ -3543,8 +3543,448 @@ docker run -d -p 3000:8080 \\
           }
         },
         {
+          id: 'ch1-quantization',
+          title: { zh: '1.7 模型量化压缩', ja: '1.7 モデル量子化圧縮' },
+          content: {
+            zh: `
+## 让大模型"瘦身"：量化技术详解
+
+当你想在消费级显卡上运行 70B 大模型时，量化就是你的救星。
+
+---
+
+## 🎯 什么是量化？
+
+\`\`\`
+┌─────────────────────────────────────────────────────────────────────────┐
+│                        模型量化原理                                       │
+└─────────────────────────────────────────────────────────────────────────┘
+
+  原始模型 (FP32)                    量化后模型 (INT4)
+  ┌────────────────┐                ┌────────────────┐
+  │ 参数: 3.14159  │   ───量化───▶   │ 参数: 3        │
+  │ 占用: 32 bits  │                │ 占用: 4 bits   │
+  │ 精度: 最高     │                │ 精度: 略降     │
+  └────────────────┘                └────────────────┘
+         │                                  │
+         ▼                                  ▼
+   70B 模型 ≈ 140GB                  70B 模型 ≈ 35GB
+   需要 A100 80G×2                   可用 RTX 4090 24G
+\`\`\`
+
+**核心思想**：用更少的 bit 数存储参数，牺牲少量精度换取巨大的内存节省。
+
+---
+
+## 📊 主流量化方法对比
+
+| 方法 | 精度 | 速度 | VRAM占用 | 适用场景 |
+|------|------|------|----------|----------|
+| **FP32** | ⭐⭐⭐⭐⭐ | ⭐⭐ | 100% | 训练基准 |
+| **FP16** | ⭐⭐⭐⭐ | ⭐⭐⭐ | 50% | 推理标准 |
+| **INT8** | ⭐⭐⭐ | ⭐⭐⭐⭐ | 25% | 部署优化 |
+| **INT4** | ⭐⭐ | ⭐⭐⭐⭐⭐ | 12.5% | 极限压缩 |
+
+---
+
+## 🔧 主流量化格式详解
+
+### 1️⃣ GGUF (原 GGML)
+
+**最流行的 CPU/GPU 混合推理格式**，由 llama.cpp 开发者创建。
+
+\`\`\`bash
+# 使用 llama.cpp 运行 GGUF 模型
+./llama-cli -m llama-3-8b-Q4_K_M.gguf -p "你好" -n 100
+
+# 常见量化级别
+# Q2_K  - 极限压缩，质量损失大
+# Q4_K_M - 推荐！平衡压缩和质量
+# Q5_K_M - 高质量，稍大
+# Q8_0  - 几乎无损
+\`\`\`
+
+**GGUF 量化级别选择指南**：
+
+| 量化级别 | 7B 模型大小 | 质量 | 推荐用途 |
+|----------|-------------|------|----------|
+| Q2_K | ~2.5GB | ⭐⭐ | 极限内存场景 |
+| Q4_K_M | ~4GB | ⭐⭐⭐⭐ | **日常使用首选** |
+| Q5_K_M | ~5GB | ⭐⭐⭐⭐⭐ | 质量优先 |
+| Q8_0 | ~7GB | ⭐⭐⭐⭐⭐ | 几乎无损 |
+
+---
+
+### 2️⃣ GPTQ
+
+**GPU 专用量化**，推理速度快，需要 GPU。
+
+\`\`\`python
+from transformers import AutoModelForCausalLM, AutoTokenizer
+
+# 加载 GPTQ 量化模型
+model_id = "TheBloke/Llama-2-7B-GPTQ"
+model = AutoModelForCausalLM.from_pretrained(
+    model_id,
+    device_map="auto",
+    trust_remote_code=True
+)
+tokenizer = AutoTokenizer.from_pretrained(model_id)
+
+# 正常使用
+output = model.generate(
+    tokenizer("Hello", return_tensors="pt").input_ids.cuda(),
+    max_new_tokens=50
+)
+\`\`\`
+
+---
+
+### 3️⃣ AWQ (Activation-aware Weight Quantization)
+
+**更智能的量化**：根据激活值重要性决定量化精度。
+
+\`\`\`python
+from awq import AutoAWQForCausalLM
+from transformers import AutoTokenizer
+
+# 加载 AWQ 模型
+model_id = "TheBloke/Llama-2-7B-AWQ"
+model = AutoAWQForCausalLM.from_quantized(
+    model_id,
+    fuse_layers=True,  # 融合层加速
+    device_map="auto"
+)
+
+# AWQ 优势：
+# - 比 GPTQ 更好的精度保持
+# - 更快的推理速度
+# - 更低的内存占用
+\`\`\`
+
+---
+
+### 4️⃣ bitsandbytes (QLoRA)
+
+**训练和推理都能用**，HuggingFace 官方支持。
+
+\`\`\`python
+from transformers import AutoModelForCausalLM, BitsAndBytesConfig
+
+# 4-bit 量化配置
+bnb_config = BitsAndBytesConfig(
+    load_in_4bit=True,
+    bnb_4bit_quant_type="nf4",        # NormalFloat4
+    bnb_4bit_compute_dtype="float16",
+    bnb_4bit_use_double_quant=True    # 双重量化
+)
+
+# 加载模型
+model = AutoModelForCausalLM.from_pretrained(
+    "meta-llama/Llama-3-8B",
+    quantization_config=bnb_config,
+    device_map="auto"
+)
+
+# 8-bit 量化 (更简单)
+model_8bit = AutoModelForCausalLM.from_pretrained(
+    "meta-llama/Llama-3-8B",
+    load_in_8bit=True,
+    device_map="auto"
+)
+\`\`\`
+
+---
+
+## 🎮 实战：不同显存的最佳选择
+
+\`\`\`
+┌─────────────────────────────────────────────────────────────────────────┐
+│                    显存 vs 可运行模型                                     │
+└─────────────────────────────────────────────────────────────────────────┘
+
+  显存容量          推荐模型 & 量化方案
+  ─────────────────────────────────────────────────────
+
+  4GB  (GTX 1650)   → Qwen2-1.5B (FP16) 或 7B (Q2_K)
+       │
+       ▼
+  8GB  (RTX 3060)   → Llama3-8B (Q4_K_M) 或 Qwen2-7B (Q5_K_M)
+       │
+       ▼
+  12GB (RTX 3060Ti) → Llama3-8B (Q8_0) 或 13B (Q4_K_M)
+       │
+       ▼
+  24GB (RTX 4090)   → Llama3-70B (Q4_K_M) 或 Qwen2-72B (Q4_K_M)
+       │
+       ▼
+  48GB (A6000×2)    → Llama3-70B (FP16) 或 更大模型
+\`\`\`
+
+---
+
+## 🛠️ 自己动手量化
+
+### 使用 llama.cpp 量化
+
+\`\`\`bash
+# 1. 克隆 llama.cpp
+git clone https://github.com/ggerganov/llama.cpp
+cd llama.cpp && make -j
+
+# 2. 转换 HuggingFace 模型到 GGUF
+python convert_hf_to_gguf.py /path/to/model --outfile model.gguf
+
+# 3. 量化
+./llama-quantize model.gguf model-Q4_K_M.gguf Q4_K_M
+\`\`\`
+
+### 使用 AutoGPTQ 量化
+
+\`\`\`python
+from auto_gptq import AutoGPTQForCausalLM, BaseQuantizeConfig
+
+# 配置量化参数
+quantize_config = BaseQuantizeConfig(
+    bits=4,
+    group_size=128,
+    damp_percent=0.1,
+    desc_act=False
+)
+
+# 加载模型并量化
+model = AutoGPTQForCausalLM.from_pretrained(
+    "meta-llama/Llama-3-8B",
+    quantize_config
+)
+
+# 准备校准数据
+examples = [tokenizer(text, return_tensors="pt") for text in calibration_texts]
+
+# 执行量化
+model.quantize(examples)
+
+# 保存
+model.save_quantized("llama3-8b-gptq-4bit")
+\`\`\`
+
+---
+
+## ⚖️ 如何选择量化方案？
+
+\`\`\`
+                        选择决策树
+                            │
+              ┌─────────────┴─────────────┐
+              │      你有 GPU 吗？         │
+              └─────────────┬─────────────┘
+                   ╱                ╲
+                 是                  否
+                 │                   │
+        ┌────────┴────────┐         │
+        │  推理还是训练？  │         ▼
+        └────────┬────────┘      GGUF
+             ╱         ╲        (CPU推理)
+           推理        训练
+            │           │
+     ┌──────┴──────┐    ▼
+     │ 追求速度？  │  bitsandbytes
+     └──────┬──────┘  (QLoRA训练)
+        ╱        ╲
+      是          否
+       │           │
+       ▼           ▼
+     AWQ        GPTQ
+  (最快推理)   (兼容性好)
+\`\`\`
+
+---
+
+## 💡 小贴士
+
+> 🎯 **推荐组合**：
+> - 本地部署：Ollama + GGUF Q4_K_M
+> - GPU 推理：vLLM + AWQ
+> - 微调训练：bitsandbytes + QLoRA
+> - 生产环境：TensorRT-LLM + INT8
+            `,
+            ja: `
+## 大規模モデルを「スリム化」：量子化技術詳解
+
+消費者向けGPUで70Bモデルを動かしたい時、量子化があなたの救世主です。
+
+---
+
+## 🎯 量子化とは？
+
+\`\`\`
+┌─────────────────────────────────────────────────────────────────────────┐
+│                        モデル量子化の原理                                  │
+└─────────────────────────────────────────────────────────────────────────┘
+
+  元のモデル (FP32)                  量子化後 (INT4)
+  ┌────────────────┐                ┌────────────────┐
+  │ パラメータ: 3.14159 │  ──量子化──▶  │ パラメータ: 3   │
+  │ 容量: 32 bits  │                │ 容量: 4 bits   │
+  │ 精度: 最高     │                │ 精度: やや低下  │
+  └────────────────┘                └────────────────┘
+         │                                  │
+         ▼                                  ▼
+   70B モデル ≈ 140GB                70B モデル ≈ 35GB
+   A100 80G×2 が必要                 RTX 4090 24G で動作
+\`\`\`
+
+**核心思想**：少ないbit数でパラメータを保存し、わずかな精度を犠牲に大きなメモリ節約を実現。
+
+---
+
+## 📊 主要な量子化手法の比較
+
+| 手法 | 精度 | 速度 | VRAM使用 | 適用シーン |
+|------|------|------|----------|------------|
+| **FP32** | ⭐⭐⭐⭐⭐ | ⭐⭐ | 100% | 学習基準 |
+| **FP16** | ⭐⭐⭐⭐ | ⭐⭐⭐ | 50% | 推論標準 |
+| **INT8** | ⭐⭐⭐ | ⭐⭐⭐⭐ | 25% | デプロイ最適化 |
+| **INT4** | ⭐⭐ | ⭐⭐⭐⭐⭐ | 12.5% | 極限圧縮 |
+
+---
+
+## 🔧 主要な量子化フォーマット詳解
+
+### 1️⃣ GGUF（旧 GGML）
+
+**最も人気のCPU/GPUハイブリッド推論形式**、llama.cpp開発者が作成。
+
+\`\`\`bash
+# llama.cpp で GGUF モデルを実行
+./llama-cli -m llama-3-8b-Q4_K_M.gguf -p "こんにちは" -n 100
+
+# 一般的な量子化レベル
+# Q2_K  - 極限圧縮、品質低下大
+# Q4_K_M - おすすめ！圧縮と品質のバランス
+# Q5_K_M - 高品質、やや大きい
+# Q8_0  - ほぼ無損失
+\`\`\`
+
+**GGUF 量子化レベル選択ガイド**：
+
+| 量子化レベル | 7B モデルサイズ | 品質 | 推奨用途 |
+|--------------|-----------------|------|----------|
+| Q2_K | ~2.5GB | ⭐⭐ | 極限メモリ制限 |
+| Q4_K_M | ~4GB | ⭐⭐⭐⭐ | **日常使用に最適** |
+| Q5_K_M | ~5GB | ⭐⭐⭐⭐⭐ | 品質優先 |
+| Q8_0 | ~7GB | ⭐⭐⭐⭐⭐ | ほぼ無損失 |
+
+---
+
+### 2️⃣ GPTQ
+
+**GPU専用量子化**、高速推論、GPUが必要。
+
+\`\`\`python
+from transformers import AutoModelForCausalLM, AutoTokenizer
+
+# GPTQ量子化モデルをロード
+model_id = "TheBloke/Llama-2-7B-GPTQ"
+model = AutoModelForCausalLM.from_pretrained(
+    model_id,
+    device_map="auto",
+    trust_remote_code=True
+)
+tokenizer = AutoTokenizer.from_pretrained(model_id)
+
+# 通常通り使用
+output = model.generate(
+    tokenizer("Hello", return_tensors="pt").input_ids.cuda(),
+    max_new_tokens=50
+)
+\`\`\`
+
+---
+
+### 3️⃣ AWQ（Activation-aware Weight Quantization）
+
+**よりスマートな量子化**：活性化値の重要性に基づいて量子化精度を決定。
+
+\`\`\`python
+from awq import AutoAWQForCausalLM
+from transformers import AutoTokenizer
+
+# AWQモデルをロード
+model_id = "TheBloke/Llama-2-7B-AWQ"
+model = AutoAWQForCausalLM.from_quantized(
+    model_id,
+    fuse_layers=True,  # レイヤー融合で高速化
+    device_map="auto"
+)
+
+# AWQの利点：
+# - GPTQより良い精度維持
+# - より速い推論速度
+# - より少ないメモリ使用
+\`\`\`
+
+---
+
+### 4️⃣ bitsandbytes（QLoRA）
+
+**学習と推論両方で使用可能**、HuggingFace公式サポート。
+
+\`\`\`python
+from transformers import AutoModelForCausalLM, BitsAndBytesConfig
+
+# 4-bit量子化設定
+bnb_config = BitsAndBytesConfig(
+    load_in_4bit=True,
+    bnb_4bit_quant_type="nf4",        # NormalFloat4
+    bnb_4bit_compute_dtype="float16",
+    bnb_4bit_use_double_quant=True    # 二重量子化
+)
+
+# モデルをロード
+model = AutoModelForCausalLM.from_pretrained(
+    "meta-llama/Llama-3-8B",
+    quantization_config=bnb_config,
+    device_map="auto"
+)
+\`\`\`
+
+---
+
+## 🎮 実践：VRAM別の最適な選択
+
+\`\`\`
+┌─────────────────────────────────────────────────────────────────────────┐
+│                    VRAM vs 実行可能モデル                                 │
+└─────────────────────────────────────────────────────────────────────────┘
+
+  VRAM容量           推奨モデル & 量子化方式
+  ─────────────────────────────────────────────────────
+
+  4GB  (GTX 1650)   → Qwen2-1.5B (FP16) または 7B (Q2_K)
+       │
+       ▼
+  8GB  (RTX 3060)   → Llama3-8B (Q4_K_M) または Qwen2-7B (Q5_K_M)
+       │
+       ▼
+  24GB (RTX 4090)   → Llama3-70B (Q4_K_M) または Qwen2-72B (Q4_K_M)
+\`\`\`
+
+---
+
+## 💡 ヒント
+
+> 🎯 **おすすめの組み合わせ**：
+> - ローカルデプロイ：Ollama + GGUF Q4_K_M
+> - GPU推論：vLLM + AWQ
+> - ファインチューニング：bitsandbytes + QLoRA
+> - 本番環境：TensorRT-LLM + INT8
+            `
+          }
+        },
+        {
           id: 'ch1-summary',
-          title: { zh: '1.7 本章小结', ja: '1.7 この章のまとめ' },
+          title: { zh: '1.8 本章小结', ja: '1.8 この章のまとめ' },
           content: {
             zh: `
 ## 大模型技术核心回顾
@@ -4971,8 +5411,517 @@ Markdownテーブルで出力してください。
           }
         },
         {
+          id: 'ch2-structured-output',
+          title: { zh: '2.5 结构化输出：JSON Mode', ja: '2.5 構造化出力：JSON Mode' },
+          content: {
+            zh: `
+## 让 AI 输出可解析的数据
+
+当你需要程序自动处理 AI 的输出时，结构化输出是必备技能。
+
+---
+
+## 🎯 为什么需要结构化输出？
+
+\`\`\`
+┌─────────────────────────────────────────────────────────────────────────┐
+│                    传统输出 vs 结构化输出                                  │
+└─────────────────────────────────────────────────────────────────────────┘
+
+  传统文本输出                          结构化 JSON 输出
+  ┌────────────────────────┐           ┌────────────────────────┐
+  │ "这个产品很好，我给     │           │ {                      │
+  │  5颗星，推荐购买。"    │           │   "sentiment": "正面", │
+  │                        │           │   "rating": 5,         │
+  │  ❌ 难以程序化解析      │           │   "recommend": true    │
+  │  ❌ 格式不稳定          │           │ }                      │
+  │  ❌ 需要正则提取        │           │                        │
+  └────────────────────────┘           │  ✅ 直接 JSON.parse()  │
+                                       │  ✅ 格式稳定可靠       │
+                                       │  ✅ 类型安全           │
+                                       └────────────────────────┘
+\`\`\`
+
+---
+
+## 📊 主流 API 的 JSON Mode 对比
+
+| 平台 | 方式 | 可靠性 | 备注 |
+|------|------|--------|------|
+| **OpenAI** | response_format | ⭐⭐⭐⭐⭐ | 原生支持，强制 JSON |
+| **Claude** | Prompt 引导 | ⭐⭐⭐⭐ | 通过指令实现 |
+| **Gemini** | response_schema | ⭐⭐⭐⭐⭐ | 支持 Schema 验证 |
+
+---
+
+## 🔧 OpenAI JSON Mode
+
+\`\`\`python
+from openai import OpenAI
+import json
+
+client = OpenAI()
+
+# 方法1：简单 JSON Mode
+response = client.chat.completions.create(
+    model="gpt-4o",
+    response_format={"type": "json_object"},  # 开启 JSON Mode
+    messages=[
+        {"role": "system", "content": "你是一个情感分析助手，以 JSON 格式输出分析结果。"},
+        {"role": "user", "content": "分析这条评论的情感：这个产品太棒了，物超所值！"}
+    ]
+)
+
+result = json.loads(response.choices[0].message.content)
+print(result)
+# {"sentiment": "positive", "score": 0.95, "keywords": ["棒", "物超所值"]}
+\`\`\`
+
+### Structured Output (更严格)
+
+\`\`\`python
+from pydantic import BaseModel
+from openai import OpenAI
+
+# 定义数据结构
+class SentimentAnalysis(BaseModel):
+    sentiment: str  # positive, negative, neutral
+    score: float    # 0.0 - 1.0
+    keywords: list[str]
+    summary: str
+
+client = OpenAI()
+
+# 使用 Structured Output
+response = client.beta.chat.completions.parse(
+    model="gpt-4o-2024-08-06",
+    messages=[
+        {"role": "system", "content": "分析用户评论的情感"},
+        {"role": "user", "content": "这个产品质量一般，但价格很便宜"}
+    ],
+    response_format=SentimentAnalysis  # 传入 Pydantic 模型
+)
+
+# 自动解析为 Python 对象
+result = response.choices[0].message.parsed
+print(f"情感: {result.sentiment}")
+print(f"评分: {result.score}")
+print(f"关键词: {result.keywords}")
+\`\`\`
+
+---
+
+## 🔧 Claude 结构化输出
+
+Claude 没有原生 JSON Mode，但可以通过 Prompt 实现：
+
+\`\`\`python
+import anthropic
+import json
+
+client = anthropic.Anthropic()
+
+# 方法1：Prompt 引导
+response = client.messages.create(
+    model="claude-sonnet-4-20250514",
+    max_tokens=1024,
+    system="""你是一个数据提取助手。
+请严格按照以下 JSON Schema 输出，不要包含任何其他文字：
+
+{
+  "name": "string",
+  "email": "string",
+  "phone": "string",
+  "address": "string"
+}""",
+    messages=[
+        {"role": "user", "content": "请从以下文本提取联系信息：张三，邮箱 zhangsan@example.com，电话 13800138000，地址：北京市朝阳区xxx"}
+    ]
+)
+
+# 解析结果
+result = json.loads(response.content[0].text)
+print(result)
+\`\`\`
+
+### Claude Tool Use (更可靠)
+
+\`\`\`python
+import anthropic
+
+client = anthropic.Anthropic()
+
+# 定义工具 Schema
+tools = [
+    {
+        "name": "extract_contact",
+        "description": "提取联系人信息",
+        "input_schema": {
+            "type": "object",
+            "properties": {
+                "name": {"type": "string", "description": "姓名"},
+                "email": {"type": "string", "description": "邮箱"},
+                "phone": {"type": "string", "description": "电话"},
+                "address": {"type": "string", "description": "地址"}
+            },
+            "required": ["name"]
+        }
+    }
+]
+
+response = client.messages.create(
+    model="claude-sonnet-4-20250514",
+    max_tokens=1024,
+    tools=tools,
+    tool_choice={"type": "tool", "name": "extract_contact"},  # 强制使用工具
+    messages=[
+        {"role": "user", "content": "提取联系信息：张三，zhangsan@example.com"}
+    ]
+)
+
+# 获取结构化结果
+tool_use = response.content[0]
+result = tool_use.input
+print(result)  # {"name": "张三", "email": "zhangsan@example.com"}
+\`\`\`
+
+---
+
+## 🔧 Gemini 结构化输出
+
+\`\`\`python
+import google.generativeai as genai
+from google.generativeai import types
+
+genai.configure(api_key="YOUR_API_KEY")
+
+# 定义输出 Schema
+response_schema = {
+    "type": "object",
+    "properties": {
+        "sentiment": {"type": "string", "enum": ["positive", "negative", "neutral"]},
+        "score": {"type": "number"},
+        "keywords": {"type": "array", "items": {"type": "string"}}
+    },
+    "required": ["sentiment", "score"]
+}
+
+model = genai.GenerativeModel(
+    "gemini-1.5-pro",
+    generation_config=types.GenerationConfig(
+        response_mime_type="application/json",
+        response_schema=response_schema
+    )
+)
+
+response = model.generate_content("分析：这个电影太精彩了！")
+print(response.text)  # 保证符合 Schema 的 JSON
+\`\`\`
+
+---
+
+## 💡 通用 Prompt 技巧
+
+当 API 不支持原生 JSON Mode 时：
+
+\`\`\`markdown
+## 输出格式要求
+
+请严格按照以下 JSON 格式输出，不要包含任何解释性文字：
+
+\\\`\\\`\\\`json
+{
+  "field1": "说明1",
+  "field2": "说明2",
+  "field3": ["数组", "示例"]
+}
+\\\`\\\`\\\`
+
+重要规则：
+1. 只输出 JSON，不要输出其他内容
+2. 确保 JSON 格式正确，可以被解析
+3. 所有字段都是必填的
+4. 字符串使用双引号
+\`\`\`
+
+---
+
+## 🛡️ 错误处理最佳实践
+
+\`\`\`python
+import json
+from typing import TypeVar, Type
+from pydantic import BaseModel, ValidationError
+
+T = TypeVar('T', bound=BaseModel)
+
+def parse_ai_response(response: str, model: Type[T]) -> T | None:
+    """安全解析 AI 返回的 JSON"""
+    try:
+        # 尝试提取 JSON 块
+        if '\`\`\`json' in response:
+            json_str = response.split('\`\`\`json')[1].split('\`\`\`')[0]
+        elif '\`\`\`' in response:
+            json_str = response.split('\`\`\`')[1].split('\`\`\`')[0]
+        else:
+            json_str = response
+
+        # 解析并验证
+        data = json.loads(json_str.strip())
+        return model.model_validate(data)
+
+    except json.JSONDecodeError as e:
+        print(f"JSON 解析失败: {e}")
+        return None
+    except ValidationError as e:
+        print(f"数据验证失败: {e}")
+        return None
+
+# 使用示例
+class ProductInfo(BaseModel):
+    name: str
+    price: float
+    in_stock: bool
+
+result = parse_ai_response(ai_response, ProductInfo)
+if result:
+    print(f"产品: {result.name}, 价格: {result.price}")
+\`\`\`
+
+---
+
+## 📊 选择决策树
+
+\`\`\`
+                需要结构化输出？
+                      │
+            ┌─────────┴─────────┐
+            │   使用什么 API？   │
+            └─────────┬─────────┘
+               ╱      │      ╲
+           OpenAI  Claude  Gemini
+              │       │       │
+              ▼       ▼       ▼
+        Structured  Tool   response_
+          Output    Use    schema
+              │       │       │
+              └───────┼───────┘
+                      ▼
+              Pydantic 验证
+                      │
+                      ▼
+                 业务逻辑
+\`\`\`
+            `,
+            ja: `
+## AIの出力をパース可能なデータに
+
+プログラムでAIの出力を自動処理する必要がある場合、構造化出力は必須スキルです。
+
+---
+
+## 🎯 なぜ構造化出力が必要？
+
+\`\`\`
+┌─────────────────────────────────────────────────────────────────────────┐
+│                    従来の出力 vs 構造化出力                               │
+└─────────────────────────────────────────────────────────────────────────┘
+
+  従来のテキスト出力                    構造化JSON出力
+  ┌────────────────────────┐           ┌────────────────────────┐
+  │ "この商品は素晴らしい、 │           │ {                      │
+  │  星5つ、おすすめ！"    │           │   "sentiment": "正面", │
+  │                        │           │   "rating": 5,         │
+  │  ❌ プログラム解析困難  │           │   "recommend": true    │
+  │  ❌ フォーマット不安定  │           │ }                      │
+  │  ❌ 正規表現が必要     │           │                        │
+  └────────────────────────┘           │  ✅ JSON.parse()可能  │
+                                       │  ✅ フォーマット安定   │
+                                       │  ✅ 型安全            │
+                                       └────────────────────────┘
+\`\`\`
+
+---
+
+## 📊 主要APIのJSON Mode比較
+
+| プラットフォーム | 方式 | 信頼性 | 備考 |
+|------------------|------|--------|------|
+| **OpenAI** | response_format | ⭐⭐⭐⭐⭐ | ネイティブ対応 |
+| **Claude** | Prompt誘導 | ⭐⭐⭐⭐ | 指示で実現 |
+| **Gemini** | response_schema | ⭐⭐⭐⭐⭐ | Schema検証対応 |
+
+---
+
+## 🔧 OpenAI JSON Mode
+
+\`\`\`python
+from openai import OpenAI
+import json
+
+client = OpenAI()
+
+# 方法1：シンプルなJSON Mode
+response = client.chat.completions.create(
+    model="gpt-4o",
+    response_format={"type": "json_object"},  # JSON Mode有効化
+    messages=[
+        {"role": "system", "content": "感情分析アシスタントとして、JSON形式で結果を出力してください。"},
+        {"role": "user", "content": "このレビューの感情を分析：この商品は最高、コスパ抜群！"}
+    ]
+)
+
+result = json.loads(response.choices[0].message.content)
+print(result)
+\`\`\`
+
+### Structured Output（より厳密）
+
+\`\`\`python
+from pydantic import BaseModel
+from openai import OpenAI
+
+# データ構造を定義
+class SentimentAnalysis(BaseModel):
+    sentiment: str  # positive, negative, neutral
+    score: float    # 0.0 - 1.0
+    keywords: list[str]
+    summary: str
+
+client = OpenAI()
+
+# Structured Outputを使用
+response = client.beta.chat.completions.parse(
+    model="gpt-4o-2024-08-06",
+    messages=[
+        {"role": "system", "content": "ユーザーレビューの感情を分析"},
+        {"role": "user", "content": "品質は普通だが、価格は安い"}
+    ],
+    response_format=SentimentAnalysis
+)
+
+# 自動的にPythonオブジェクトに解析
+result = response.choices[0].message.parsed
+print(f"感情: {result.sentiment}")
+\`\`\`
+
+---
+
+## 🔧 Claude 構造化出力
+
+ClaudeにはネイティブのJSON Modeがありませんが、Promptで実現可能：
+
+\`\`\`python
+import anthropic
+import json
+
+client = anthropic.Anthropic()
+
+response = client.messages.create(
+    model="claude-sonnet-4-20250514",
+    max_tokens=1024,
+    system="""データ抽出アシスタントです。
+以下のJSON Schemaに厳密に従って出力してください：
+
+{
+  "name": "string",
+  "email": "string",
+  "phone": "string"
+}""",
+    messages=[
+        {"role": "user", "content": "連絡先を抽出：田中太郎、tanaka@example.com"}
+    ]
+)
+
+result = json.loads(response.content[0].text)
+\`\`\`
+
+### Claude Tool Use（より信頼性が高い）
+
+\`\`\`python
+import anthropic
+
+client = anthropic.Anthropic()
+
+tools = [
+    {
+        "name": "extract_contact",
+        "description": "連絡先情報を抽出",
+        "input_schema": {
+            "type": "object",
+            "properties": {
+                "name": {"type": "string"},
+                "email": {"type": "string"}
+            },
+            "required": ["name"]
+        }
+    }
+]
+
+response = client.messages.create(
+    model="claude-sonnet-4-20250514",
+    max_tokens=1024,
+    tools=tools,
+    tool_choice={"type": "tool", "name": "extract_contact"},
+    messages=[
+        {"role": "user", "content": "連絡先を抽出：田中太郎、tanaka@example.com"}
+    ]
+)
+
+result = response.content[0].input
+\`\`\`
+
+---
+
+## 💡 汎用Promptテクニック
+
+APIがネイティブJSON Modeをサポートしていない場合：
+
+\`\`\`markdown
+## 出力フォーマット要件
+
+以下のJSON形式で厳密に出力し、説明文は含めないでください：
+
+\\\`\\\`\\\`json
+{
+  "field1": "説明1",
+  "field2": "説明2"
+}
+\\\`\\\`\\\`
+
+重要なルール：
+1. JSONのみを出力
+2. JSON形式が正しいことを確認
+3. すべてのフィールドは必須
+\`\`\`
+
+---
+
+## 📊 選択決定木
+
+\`\`\`
+                構造化出力が必要？
+                      │
+            ┌─────────┴─────────┐
+            │   どのAPIを使用？  │
+            └─────────┬─────────┘
+               ╱      │      ╲
+           OpenAI  Claude  Gemini
+              │       │       │
+              ▼       ▼       ▼
+        Structured  Tool   response_
+          Output    Use    schema
+              │       │       │
+              └───────┼───────┘
+                      ▼
+              Pydantic検証
+\`\`\`
+            `
+          }
+        },
+        {
           id: 'ch2-summary',
-          title: { zh: '2.5 本章小结', ja: '2.5 この章のまとめ' },
+          title: { zh: '2.6 本章小结', ja: '2.6 この章のまとめ' },
           content: {
             zh: `
 ## 提示词工程核心要点
@@ -9419,8 +10368,406 @@ Computer Use は強力ですが、慎重に使用する必要があります：
           }
         },
         {
+          id: 'ch3-a2a',
+          title: { zh: '3.11 A2A 协议：Agent 互联', ja: '3.11 A2Aプロトコル：Agent連携' },
+          content: {
+            zh: `
+## Agent-to-Agent：AI 代理互联互通
+
+当单个 Agent 不够用时，让多个 Agent 协作是未来趋势。
+
+---
+
+## 🎯 什么是 A2A 协议？
+
+\`\`\`
+┌─────────────────────────────────────────────────────────────────────────┐
+│                        A2A 协议概念                                       │
+└─────────────────────────────────────────────────────────────────────────┘
+
+  传统模式：单一 Agent                 A2A 模式：多 Agent 协作
+  ┌────────────────────┐              ┌────────────────────┐
+  │     用户请求        │              │     用户请求        │
+  │         │          │              │         │          │
+  │         ▼          │              │         ▼          │
+  │   ┌──────────┐     │              │   ┌──────────┐     │
+  │   │ Agent A  │     │              │   │ 协调 Agent │     │
+  │   │ (全能型) │     │              │   └─────┬────┘     │
+  │   └──────────┘     │              │    ╱    │    ╲     │
+  │         │          │              │   ▼     ▼     ▼    │
+  │         ▼          │              │ 代码   数据   搜索  │
+  │      结果          │              │ Agent Agent Agent  │
+  │                    │              │   └────┬────┘      │
+  │  ❌ 能力有限       │              │        ▼           │
+  │  ❌ 难以扩展       │              │     汇总结果        │
+  └────────────────────┘              │                    │
+                                      │  ✅ 专业分工        │
+                                      │  ✅ 能力无限扩展    │
+                                      └────────────────────┘
+\`\`\`
+
+---
+
+## 🌐 Google A2A 协议
+
+Google 发布的开放标准，定义 Agent 间通信规范。
+
+### 核心概念
+
+\`\`\`
+┌─────────────────────────────────────────────────────────────────────────┐
+│                      A2A 协议架构                                         │
+└─────────────────────────────────────────────────────────────────────────┘
+
+         ┌─────────────────────────────────────────────┐
+         │              Agent Card (名片)               │
+         │  - 名称、描述、能力                          │
+         │  - 支持的输入/输出格式                       │
+         │  - 认证方式                                  │
+         └─────────────────────────────────────────────┘
+                              │
+                              ▼
+  ┌─────────────┐    JSON-RPC 2.0    ┌─────────────┐
+  │   Client    │◄─────────────────►│   Server    │
+  │   Agent     │    over HTTP(S)    │   Agent     │
+  └─────────────┘                    └─────────────┘
+        │                                   │
+        └───────────┬───────────────────────┘
+                    │
+                    ▼
+            ┌───────────────┐
+            │    Task       │
+            │  - 任务ID     │
+            │  - 状态       │
+            │  - 输入/输出  │
+            │  - 历史记录   │
+            └───────────────┘
+\`\`\`
+
+### Agent Card 示例
+
+\`\`\`json
+{
+  "name": "代码审查 Agent",
+  "description": "专业的代码审查和安全检测",
+  "url": "https://code-review.example.com/a2a",
+  "version": "1.0.0",
+  "capabilities": {
+    "streaming": true,
+    "pushNotifications": false
+  },
+  "inputModes": ["text/plain", "application/json"],
+  "outputModes": ["text/plain", "text/markdown"],
+  "skills": [
+    {
+      "id": "code-review",
+      "name": "代码审查",
+      "description": "检查代码质量和潜在问题",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "code": { "type": "string" },
+          "language": { "type": "string" }
+        }
+      }
+    },
+    {
+      "id": "security-scan",
+      "name": "安全扫描",
+      "description": "检测安全漏洞"
+    }
+  ]
+}
+\`\`\`
+
+---
+
+## 🔧 A2A 通信流程
+
+\`\`\`python
+import httpx
+import json
+
+class A2AClient:
+    def __init__(self, agent_url: str):
+        self.agent_url = agent_url
+        self.client = httpx.Client()
+
+    def discover(self):
+        """发现 Agent 能力"""
+        response = self.client.get(f"{self.agent_url}/.well-known/agent.json")
+        return response.json()
+
+    def send_task(self, skill_id: str, input_data: dict):
+        """发送任务"""
+        payload = {
+            "jsonrpc": "2.0",
+            "id": "task-001",
+            "method": "tasks/send",
+            "params": {
+                "message": {
+                    "role": "user",
+                    "parts": [{"text": json.dumps(input_data)}]
+                },
+                "skillId": skill_id
+            }
+        }
+        response = self.client.post(
+            f"{self.agent_url}/a2a",
+            json=payload
+        )
+        return response.json()
+
+    def get_task_status(self, task_id: str):
+        """查询任务状态"""
+        payload = {
+            "jsonrpc": "2.0",
+            "id": "status-001",
+            "method": "tasks/get",
+            "params": {"taskId": task_id}
+        }
+        response = self.client.post(
+            f"{self.agent_url}/a2a",
+            json=payload
+        )
+        return response.json()
+
+# 使用示例
+client = A2AClient("https://code-review.example.com")
+
+# 1. 发现能力
+agent_card = client.discover()
+print(f"Agent: {agent_card['name']}")
+print(f"Skills: {[s['name'] for s in agent_card['skills']]}")
+
+# 2. 发送任务
+result = client.send_task("code-review", {
+    "code": "def hello(): print('world')",
+    "language": "python"
+})
+print(f"Task ID: {result['result']['taskId']}")
+\`\`\`
+
+---
+
+## 🔗 A2A vs MCP 对比
+
+| 特性 | A2A | MCP |
+|------|-----|-----|
+| **定位** | Agent 间通信 | Agent 与工具通信 |
+| **协议** | JSON-RPC over HTTP | JSON-RPC over stdio/SSE |
+| **发现机制** | Agent Card | 工具描述 |
+| **适用场景** | 分布式 Agent 网络 | 单机工具集成 |
+| **异步支持** | 任务队列 + 回调 | 流式响应 |
+| **状态管理** | 有状态 (Task) | 无状态 |
+
+\`\`\`
+┌─────────────────────────────────────────────────────────────────────────┐
+│                   A2A + MCP 组合使用                                      │
+└─────────────────────────────────────────────────────────────────────────┘
+
+                           用户请求
+                              │
+                              ▼
+                    ┌──────────────────┐
+                    │   协调 Agent      │
+                    │   (Claude Code)  │
+                    └────────┬─────────┘
+                             │
+              ┌──────────────┼──────────────┐
+              │ A2A          │ A2A          │ MCP
+              ▼              ▼              ▼
+       ┌──────────┐   ┌──────────┐   ┌──────────┐
+       │ 代码审查  │   │ 文档生成  │   │ 本地工具  │
+       │ Agent    │   │ Agent    │   │ (文件/DB) │
+       └──────────┘   └──────────┘   └──────────┘
+            │              │              │
+            │ A2A 远程     │ A2A 远程     │ MCP 本地
+            └──────────────┼──────────────┘
+                           ▼
+                        汇总结果
+\`\`\`
+
+---
+
+## 🚀 实际应用场景
+
+### 1. 企业工作流自动化
+
+\`\`\`
+用户请求："帮我准备下周一的客户演示"
+     │
+     ├─► 日程 Agent: 查询会议安排
+     ├─► CRM Agent: 获取客户信息
+     ├─► 文档 Agent: 生成 PPT
+     ├─► 邮件 Agent: 发送提醒
+     └─► 协调 Agent: 汇总确认
+\`\`\`
+
+### 2. 代码开发协作
+
+\`\`\`
+用户请求："实现用户登录功能"
+     │
+     ├─► 设计 Agent: 生成技术方案
+     ├─► 编码 Agent: 编写代码
+     ├─► 审查 Agent: 代码审查
+     ├─► 测试 Agent: 编写测试
+     └─► 部署 Agent: 准备上线
+\`\`\`
+
+---
+
+## 💡 未来展望
+
+\`\`\`
+                    AI Agent 网络化趋势
+                           │
+         ┌─────────────────┼─────────────────┐
+         │                 │                 │
+         ▼                 ▼                 ▼
+    Agent 市场         Agent 评分        Agent 经济
+   (发现&订阅)       (信誉系统)        (自动付费)
+         │                 │                 │
+         └─────────────────┼─────────────────┘
+                           ▼
+                   去中心化 Agent 网络
+                   (类似 App Store)
+\`\`\`
+
+> 🔮 **预测**：未来 5 年内，A2A 协议将成为 AI Agent 互联的标准，
+> 就像 HTTP 成为 Web 的标准一样。
+            `,
+            ja: `
+## Agent-to-Agent：AIエージェント相互連携
+
+単一のAgentでは不十分な場合、複数のAgent協調が未来のトレンドです。
+
+---
+
+## 🎯 A2Aプロトコルとは？
+
+\`\`\`
+┌─────────────────────────────────────────────────────────────────────────┐
+│                        A2A プロトコル概念                                  │
+└─────────────────────────────────────────────────────────────────────────┘
+
+  従来モード：単一Agent                A2Aモード：複数Agent協調
+  ┌────────────────────┐              ┌────────────────────┐
+  │     ユーザー要求    │              │     ユーザー要求    │
+  │         │          │              │         │          │
+  │         ▼          │              │         ▼          │
+  │   ┌──────────┐     │              │   ┌──────────┐     │
+  │   │ Agent A  │     │              │   │ 調整Agent │     │
+  │   │(万能型) │     │              │   └─────┬────┘     │
+  │   └──────────┘     │              │    ╱    │    ╲     │
+  │         │          │              │   ▼     ▼     ▼    │
+  │         ▼          │              │ コード データ 検索  │
+  │      結果          │              │ Agent Agent Agent  │
+  │                    │              │   └────┬────┘      │
+  │  ❌ 能力限定       │              │        ▼           │
+  │  ❌ 拡張困難       │              │     結果統合        │
+  └────────────────────┘              │                    │
+                                      │  ✅ 専門分業        │
+                                      │  ✅ 無限拡張可能    │
+                                      └────────────────────┘
+\`\`\`
+
+---
+
+## 🌐 Google A2A プロトコル
+
+Googleが発表したオープン標準、Agent間通信規範を定義。
+
+### コア概念
+
+\`\`\`
+┌─────────────────────────────────────────────────────────────────────────┐
+│                      A2A プロトコルアーキテクチャ                          │
+└─────────────────────────────────────────────────────────────────────────┘
+
+         ┌─────────────────────────────────────────────┐
+         │              Agent Card (名刺)               │
+         │  - 名前、説明、機能                          │
+         │  - サポートする入出力形式                    │
+         │  - 認証方式                                  │
+         └─────────────────────────────────────────────┘
+                              │
+                              ▼
+  ┌─────────────┐    JSON-RPC 2.0    ┌─────────────┐
+  │   Client    │◄─────────────────►│   Server    │
+  │   Agent     │    over HTTP(S)    │   Agent     │
+  └─────────────┘                    └─────────────┘
+\`\`\`
+
+### Agent Card 例
+
+\`\`\`json
+{
+  "name": "コードレビューAgent",
+  "description": "専門的なコードレビューとセキュリティ検出",
+  "url": "https://code-review.example.com/a2a",
+  "version": "1.0.0",
+  "skills": [
+    {
+      "id": "code-review",
+      "name": "コードレビュー",
+      "description": "コード品質と潜在的問題をチェック"
+    }
+  ]
+}
+\`\`\`
+
+---
+
+## 🔗 A2A vs MCP 比較
+
+| 特性 | A2A | MCP |
+|------|-----|-----|
+| **位置づけ** | Agent間通信 | Agentとツール通信 |
+| **プロトコル** | JSON-RPC over HTTP | JSON-RPC over stdio/SSE |
+| **発見機構** | Agent Card | ツール説明 |
+| **適用シーン** | 分散Agentネットワーク | ローカルツール統合 |
+| **状態管理** | ステートフル (Task) | ステートレス |
+
+---
+
+## 🚀 実際の応用シーン
+
+### 1. 企業ワークフロー自動化
+
+\`\`\`
+ユーザー要求："来週の顧客プレゼン準備して"
+     │
+     ├─► カレンダーAgent: 会議予定確認
+     ├─► CRM Agent: 顧客情報取得
+     ├─► ドキュメントAgent: PPT生成
+     └─► 調整Agent: 結果統合
+\`\`\`
+
+### 2. コード開発協調
+
+\`\`\`
+ユーザー要求："ユーザーログイン機能を実装"
+     │
+     ├─► 設計Agent: 技術設計書生成
+     ├─► コーディングAgent: コード作成
+     ├─► レビューAgent: コードレビュー
+     └─► テストAgent: テスト作成
+\`\`\`
+
+---
+
+## 💡 将来展望
+
+> 🔮 **予測**：今後5年以内に、A2AプロトコルはAI Agent相互接続の標準になる、
+> HTTPがWebの標準になったように。
+            `
+          }
+        },
+        {
           id: 'ch3-models',
-          title: { zh: '3.11 AI 模型对比与选型', ja: '3.11 AIモデル比較と選定' },
+          title: { zh: '3.12 AI 模型对比与选型', ja: '3.12 AIモデル比較と選定' },
           content: {
             zh: `
 ## 2025 年主流 AI 编程工具对比
@@ -9639,7 +10986,7 @@ Skillsは「AIの作業マニュアル」—— あなたの専門知識とワ�
         },
         {
           id: 'ch3-summary',
-          title: { zh: '3.11 本章小结', ja: '3.11 この章のまとめ' },
+          title: { zh: '3.13 本章小结', ja: '3.13 この章のまとめ' },
           content: {
             zh: `
 ## AI Agent 核心概念回顾
@@ -11062,8 +12409,499 @@ llm = Ollama(model="qwen2.5:7b")
           }
         },
         {
+          id: 'ch4-graphrag',
+          title: { zh: '4.5 GraphRAG：知识图谱增强', ja: '4.5 GraphRAG：ナレッジグラフ強化' },
+          content: {
+            zh: `
+## 当向量检索不够用时：知识图谱来帮忙
+
+传统 RAG 只能找到"相似"的内容，GraphRAG 能理解实体之间的"关系"。
+
+---
+
+## 🎯 传统 RAG vs GraphRAG
+
+\`\`\`
+┌─────────────────────────────────────────────────────────────────────────┐
+│                   传统 RAG vs GraphRAG                                   │
+└─────────────────────────────────────────────────────────────────────────┘
+
+  传统 RAG (向量检索)                   GraphRAG (图谱检索)
+  ┌────────────────────────┐           ┌────────────────────────┐
+  │                        │           │   张三 ──工作于──► 公司A │
+  │  文档1 ████ 0.92       │           │     │                  │
+  │  文档2 ███░ 0.85       │           │   朋友               投资
+  │  文档3 ██░░ 0.71       │           │     │                  │
+  │                        │           │     ▼                  ▼
+  │  纯语义相似度匹配       │           │   李四 ──合作──► 公司B │
+  │  ❌ 无法理解关系        │           │                        │
+  │  ❌ 跨文档推理弱        │           │  ✅ 关系推理           │
+  └────────────────────────┘           │  ✅ 多跳问答           │
+                                       └────────────────────────┘
+\`\`\`
+
+---
+
+## 📊 什么时候用 GraphRAG？
+
+| 场景 | 传统 RAG | GraphRAG |
+|------|----------|----------|
+| 简单问答 | ✅ 够用 | 杀鸡用牛刀 |
+| 多跳推理 | ❌ 弱 | ✅ 强 |
+| 实体关系 | ❌ 无法处理 | ✅ 核心能力 |
+| 全局摘要 | ❌ 信息丢失 | ✅ 社区检测 |
+| 构建成本 | ⭐ 低 | ⭐⭐⭐ 高 |
+
+**典型问题对比**：
+- "张三的公司做什么业务？" → 传统 RAG 可以
+- "张三的朋友们投资了哪些公司？" → 需要 GraphRAG
+
+---
+
+## 🔧 Microsoft GraphRAG
+
+微软开源的 GraphRAG 实现，业界标杆。
+
+### 核心流程
+
+\`\`\`
+┌─────────────────────────────────────────────────────────────────────────┐
+│                   GraphRAG 构建流程                                       │
+└─────────────────────────────────────────────────────────────────────────┘
+
+                         原始文档
+                            │
+                            ▼
+                    ┌───────────────┐
+                    │   文本分块    │
+                    └───────┬───────┘
+                            │
+                            ▼
+                    ┌───────────────┐
+                    │  实体抽取     │ ◄── LLM 提取人名、组织、地点等
+                    └───────┬───────┘
+                            │
+                            ▼
+                    ┌───────────────┐
+                    │  关系抽取     │ ◄── LLM 识别实体间关系
+                    └───────┬───────┘
+                            │
+                            ▼
+                    ┌───────────────┐
+                    │  图谱构建     │ ◄── 节点 + 边
+                    └───────┬───────┘
+                            │
+                            ▼
+                    ┌───────────────┐
+                    │  社区检测     │ ◄── Leiden 算法
+                    └───────┬───────┘
+                            │
+                            ▼
+                    ┌───────────────┐
+                    │  摘要生成     │ ◄── 每个社区生成摘要
+                    └───────────────┘
+\`\`\`
+
+### 安装与使用
+
+\`\`\`bash
+# 安装
+pip install graphrag
+
+# 初始化项目
+graphrag init --root ./my-graphrag
+
+# 配置 settings.yaml
+# 需要设置 OpenAI API Key
+
+# 索引文档
+graphrag index --root ./my-graphrag
+
+# 查询 - 局部搜索 (实体相关问题)
+graphrag query --root ./my-graphrag --method local "张三在哪家公司工作？"
+
+# 查询 - 全局搜索 (需要全局理解)
+graphrag query --root ./my-graphrag --method global "这些文档主要讲什么内容？"
+\`\`\`
+
+### 配置示例 (settings.yaml)
+
+\`\`\`yaml
+llm:
+  api_key: \${OPENAI_API_KEY}
+  model: gpt-4o-mini
+
+embeddings:
+  llm:
+    api_key: \${OPENAI_API_KEY}
+    model: text-embedding-3-small
+
+chunks:
+  size: 1200
+  overlap: 100
+
+entity_extraction:
+  prompt: "Extract all named entities from the following text..."
+  max_gleanings: 1
+
+community_reports:
+  max_length: 2000
+
+local_search:
+  text_unit_prop: 0.5
+  community_prop: 0.1
+\`\`\`
+
+---
+
+## 🔧 LangChain + Neo4j GraphRAG
+
+使用 LangChain 和 Neo4j 构建 GraphRAG。
+
+\`\`\`python
+from langchain_community.graphs import Neo4jGraph
+from langchain_experimental.graph_transformers import LLMGraphTransformer
+from langchain_openai import ChatOpenAI
+from langchain.docstore.document import Document
+
+# 1. 连接 Neo4j
+graph = Neo4jGraph(
+    url="bolt://localhost:7687",
+    username="neo4j",
+    password="password"
+)
+
+# 2. 配置 LLM
+llm = ChatOpenAI(model="gpt-4o-mini", temperature=0)
+
+# 3. 创建图谱转换器
+transformer = LLMGraphTransformer(llm=llm)
+
+# 4. 准备文档
+documents = [
+    Document(page_content="""
+    张三是ABC科技公司的CEO。李四是张三的大学同学，
+    现在在XYZ投资公司担任合伙人。XYZ投资公司是ABC科技的
+    A轮投资方。王五是ABC科技的CTO，曾经在谷歌工作。
+    """)
+]
+
+# 5. 提取实体和关系
+graph_documents = transformer.convert_to_graph_documents(documents)
+
+# 6. 存储到 Neo4j
+graph.add_graph_documents(graph_documents)
+
+# 7. 查询示例
+result = graph.query("""
+    MATCH (p:Person)-[:WORKS_AT]->(c:Company)
+    RETURN p.name, c.name
+""")
+print(result)
+# [{'p.name': '张三', 'c.name': 'ABC科技公司'}, ...]
+\`\`\`
+
+### GraphRAG 检索
+
+\`\`\`python
+from langchain.chains import GraphCypherQAChain
+
+# 创建问答链
+chain = GraphCypherQAChain.from_llm(
+    llm=llm,
+    graph=graph,
+    verbose=True
+)
+
+# 自然语言查询
+response = chain.invoke("张三的同学投资了哪家公司？")
+print(response)
+# 张三的同学李四投资了ABC科技公司
+
+# 复杂推理
+response = chain.invoke("ABC科技公司的CTO之前在哪里工作？")
+print(response)
+# ABC科技公司的CTO王五之前在谷歌工作
+\`\`\`
+
+---
+
+## 🔧 LlamaIndex GraphRAG
+
+\`\`\`python
+from llama_index.core import KnowledgeGraphIndex, SimpleDirectoryReader
+from llama_index.llms.openai import OpenAI
+from llama_index.core import Settings
+
+# 配置
+Settings.llm = OpenAI(model="gpt-4o-mini", temperature=0)
+Settings.chunk_size = 512
+
+# 加载文档
+documents = SimpleDirectoryReader("./data").load_data()
+
+# 构建知识图谱索引
+kg_index = KnowledgeGraphIndex.from_documents(
+    documents,
+    max_triplets_per_chunk=10,
+    include_embeddings=True
+)
+
+# 查询
+query_engine = kg_index.as_query_engine(
+    include_text=True,
+    response_mode="tree_summarize"
+)
+
+response = query_engine.query("张三和李四是什么关系？")
+print(response)
+\`\`\`
+
+---
+
+## 📊 Hybrid RAG：向量 + 图谱
+
+最佳实践是结合两种方法：
+
+\`\`\`
+┌─────────────────────────────────────────────────────────────────────────┐
+│                   Hybrid RAG 架构                                        │
+└─────────────────────────────────────────────────────────────────────────┘
+
+                         用户问题
+                            │
+              ┌─────────────┴─────────────┐
+              │       问题分析器          │
+              └─────────────┬─────────────┘
+                   ╱                ╲
+          简单语义问题          关系推理问题
+                 │                    │
+                 ▼                    ▼
+        ┌──────────────┐     ┌──────────────┐
+        │  向量检索    │     │  图谱检索    │
+        │  (Chroma)    │     │  (Neo4j)     │
+        └───────┬──────┘     └───────┬──────┘
+                │                    │
+                └────────┬───────────┘
+                         │
+                         ▼
+                ┌──────────────┐
+                │  结果融合    │
+                │  重排序      │
+                └───────┬──────┘
+                        │
+                        ▼
+                ┌──────────────┐
+                │  LLM 回答    │
+                └──────────────┘
+\`\`\`
+
+---
+
+## 💡 何时选择 GraphRAG？
+
+\`\`\`
+                    选择决策树
+                        │
+            ┌───────────┴───────────┐
+            │  需要理解实体关系吗？   │
+            └───────────┬───────────┘
+                  ╱           ╲
+                否              是
+                │               │
+                ▼               ▼
+            传统 RAG       ┌─────────┐
+             够用         │ 数据量？ │
+                          └────┬────┘
+                           ╱       ╲
+                        小/中        大
+                          │          │
+                          ▼          ▼
+                     LlamaIndex   Microsoft
+                     + Neo4j     GraphRAG
+\`\`\`
+
+> 🎯 **建议**：先从传统 RAG 开始，遇到关系推理瓶颈再考虑 GraphRAG。
+> GraphRAG 构建成本高（大量 LLM 调用），但对特定场景效果显著。
+            `,
+            ja: `
+## ベクトル検索だけでは不十分な時：ナレッジグラフの出番
+
+従来のRAGは「類似」コンテンツしか見つけられませんが、GraphRAGはエンティティ間の「関係」を理解できます。
+
+---
+
+## 🎯 従来のRAG vs GraphRAG
+
+\`\`\`
+┌─────────────────────────────────────────────────────────────────────────┐
+│                   従来のRAG vs GraphRAG                                  │
+└─────────────────────────────────────────────────────────────────────────┘
+
+  従来のRAG（ベクトル検索）            GraphRAG（グラフ検索）
+  ┌────────────────────────┐           ┌────────────────────────┐
+  │                        │           │   田中 ──勤務──► A社    │
+  │  文書1 ████ 0.92       │           │     │                  │
+  │  文書2 ███░ 0.85       │           │   友人               投資
+  │  文書3 ██░░ 0.71       │           │     │                  │
+  │                        │           │     ▼                  ▼
+  │  純粋な意味的類似度     │           │   鈴木 ──協力──► B社   │
+  │  ❌ 関係理解不可        │           │                        │
+  │  ❌ 文書間推論弱い      │           │  ✅ 関係推論           │
+  └────────────────────────┘           │  ✅ 複数ホップ質問応答  │
+                                       └────────────────────────┘
+\`\`\`
+
+---
+
+## 📊 いつGraphRAGを使う？
+
+| シーン | 従来のRAG | GraphRAG |
+|--------|----------|----------|
+| 単純な質問応答 | ✅ 十分 | オーバースペック |
+| 複数ホップ推論 | ❌ 弱い | ✅ 強い |
+| エンティティ関係 | ❌ 処理不可 | ✅ コア機能 |
+| グローバル要約 | ❌ 情報損失 | ✅ コミュニティ検出 |
+| 構築コスト | ⭐ 低 | ⭐⭐⭐ 高 |
+
+**典型的な質問の比較**：
+- 「田中さんの会社は何の事業？」→ 従来のRAGでOK
+- 「田中さんの友人たちが投資した会社は？」→ GraphRAGが必要
+
+---
+
+## 🔧 Microsoft GraphRAG
+
+Microsoftがオープンソース化したGraphRAG実装、業界標準。
+
+### コアフロー
+
+\`\`\`
+┌─────────────────────────────────────────────────────────────────────────┐
+│                   GraphRAG 構築フロー                                     │
+└─────────────────────────────────────────────────────────────────────────┘
+
+                         元文書
+                            │
+                            ▼
+                    ┌───────────────┐
+                    │   テキスト分割 │
+                    └───────┬───────┘
+                            │
+                            ▼
+                    ┌───────────────┐
+                    │  エンティティ抽出 │ ◄── LLMで人名、組織、地名などを抽出
+                    └───────┬───────┘
+                            │
+                            ▼
+                    ┌───────────────┐
+                    │  関係抽出     │ ◄── LLMでエンティティ間関係を識別
+                    └───────┬───────┘
+                            │
+                            ▼
+                    ┌───────────────┐
+                    │  グラフ構築   │ ◄── ノード + エッジ
+                    └───────────────┘
+\`\`\`
+
+### インストールと使用
+
+\`\`\`bash
+# インストール
+pip install graphrag
+
+# プロジェクト初期化
+graphrag init --root ./my-graphrag
+
+# 文書のインデックス作成
+graphrag index --root ./my-graphrag
+
+# クエリ - ローカル検索
+graphrag query --root ./my-graphrag --method local "田中さんはどの会社で働いている？"
+
+# クエリ - グローバル検索
+graphrag query --root ./my-graphrag --method global "これらの文書は主に何について？"
+\`\`\`
+
+---
+
+## 🔧 LangChain + Neo4j GraphRAG
+
+\`\`\`python
+from langchain_community.graphs import Neo4jGraph
+from langchain_experimental.graph_transformers import LLMGraphTransformer
+from langchain_openai import ChatOpenAI
+
+# 1. Neo4j接続
+graph = Neo4jGraph(
+    url="bolt://localhost:7687",
+    username="neo4j",
+    password="password"
+)
+
+# 2. LLM設定
+llm = ChatOpenAI(model="gpt-4o-mini", temperature=0)
+
+# 3. グラフ変換器作成
+transformer = LLMGraphTransformer(llm=llm)
+
+# 4. エンティティと関係を抽出
+graph_documents = transformer.convert_to_graph_documents(documents)
+
+# 5. Neo4jに保存
+graph.add_graph_documents(graph_documents)
+\`\`\`
+
+---
+
+## 📊 Hybrid RAG：ベクトル + グラフ
+
+ベストプラクティスは両方を組み合わせること：
+
+\`\`\`
+┌─────────────────────────────────────────────────────────────────────────┐
+│                   Hybrid RAG アーキテクチャ                               │
+└─────────────────────────────────────────────────────────────────────────┘
+
+                         ユーザー質問
+                            │
+              ┌─────────────┴─────────────┐
+              │       質問分析器          │
+              └─────────────┬─────────────┘
+                   ╱                ╲
+          単純意味質問          関係推論質問
+                 │                    │
+                 ▼                    ▼
+        ┌──────────────┐     ┌──────────────┐
+        │  ベクトル検索 │     │  グラフ検索  │
+        │  (Chroma)    │     │  (Neo4j)     │
+        └───────┬──────┘     └───────┬──────┘
+                │                    │
+                └────────┬───────────┘
+                         │
+                         ▼
+                ┌──────────────┐
+                │  結果融合    │
+                └───────┬──────┘
+                        │
+                        ▼
+                ┌──────────────┐
+                │  LLM回答     │
+                └──────────────┘
+\`\`\`
+
+---
+
+## 💡 いつGraphRAGを選ぶ？
+
+> 🎯 **アドバイス**：まず従来のRAGから始め、関係推論のボトルネックに遭遇したらGraphRAGを検討。
+> GraphRAGは構築コストが高い（大量のLLM呼び出し）が、特定シーンでは効果が顕著。
+            `
+          }
+        },
+        {
           id: 'ch4-summary',
-          title: { zh: '4.5 本章小结', ja: '4.5 この章のまとめ' },
+          title: { zh: '4.6 本章小结', ja: '4.6 この章のまとめ' },
           content: {
             zh: `
 ## RAG 核心概念回顾
@@ -11230,6 +13068,1802 @@ llm = Ollama(model="qwen2.5:7b")
 **AIの世界は急速に発展し続けています。学び続け、好奇心を持ち続けましょう！**
 
 *「最高の投資は、自分の認知への投資です。」*
+            `
+          }
+        }
+      ]
+    },
+    // ============================================
+    // 第五章：多模态 AI
+    // ============================================
+    {
+      id: 'chapter-5',
+      number: 5,
+      title: { zh: '多模态 AI', ja: 'マルチモーダルAI' },
+      subtitle: { zh: '图像、语音、视频的 AI 革命', ja: '画像・音声・動画のAI革命' },
+      sections: [
+        {
+          id: 'ch5-intro',
+          title: { zh: '5.1 多模态 AI 概述', ja: '5.1 マルチモーダルAI概要' },
+          content: {
+            zh: `
+## 超越文字：AI 的感官革命
+
+多模态 AI 让机器能够像人一样"看"、"听"、"说"。
+
+---
+
+## 🎯 什么是多模态？
+
+\`\`\`
+┌─────────────────────────────────────────────────────────────────────────┐
+│                        多模态 AI 能力矩阵                                 │
+└─────────────────────────────────────────────────────────────────────────┘
+
+                         多模态 AI
+                            │
+        ┌───────────┬───────┴───────┬───────────┐
+        │           │               │           │
+        ▼           ▼               ▼           ▼
+     👁️ 视觉      👂 听觉        💬 语言      🎨 生成
+        │           │               │           │
+   ┌────┴────┐  ┌───┴───┐     ┌────┴────┐  ┌────┴────┐
+   │ 图像理解 │  │ 语音识别│     │ 文本理解 │  │ 内容创作 │
+   │ OCR    │  │ 音乐分析│     │ 翻译    │  │ 图像生成 │
+   │ 视频分析 │  │ 声音克隆│     │ 对话    │  │ 视频生成 │
+   └─────────┘  └────────┘     └─────────┘  └─────────┘
+\`\`\`
+
+---
+
+## 📊 主流多模态模型对比
+
+| 模型 | 厂商 | 视觉理解 | 音频 | 视频 | 生成 |
+|------|------|----------|------|------|------|
+| **GPT-4o** | OpenAI | ✅ 强 | ✅ 语音 | ⚠️ 有限 | ✅ DALL-E |
+| **Claude 3.5** | Anthropic | ✅ 强 | ❌ | ❌ | ❌ |
+| **Gemini 1.5** | Google | ✅ 强 | ✅ 语音 | ✅ 长视频 | ✅ Imagen |
+| **Qwen-VL** | 阿里 | ✅ 强 | ✅ 语音 | ✅ | ❌ |
+| **GPT-4o** 实时 | OpenAI | ✅ | ✅ 实时语音 | ✅ | ✅ |
+
+---
+
+## 🔧 基础使用示例
+
+### OpenAI Vision
+
+\`\`\`python
+from openai import OpenAI
+import base64
+
+client = OpenAI()
+
+# 方法1：URL 图片
+response = client.chat.completions.create(
+    model="gpt-4o",
+    messages=[
+        {
+            "role": "user",
+            "content": [
+                {"type": "text", "text": "描述这张图片的内容"},
+                {"type": "image_url", "image_url": {"url": "https://example.com/image.jpg"}}
+            ]
+        }
+    ]
+)
+
+# 方法2：Base64 图片
+def encode_image(image_path):
+    with open(image_path, "rb") as f:
+        return base64.b64encode(f.read()).decode("utf-8")
+
+base64_image = encode_image("local_image.jpg")
+
+response = client.chat.completions.create(
+    model="gpt-4o",
+    messages=[
+        {
+            "role": "user",
+            "content": [
+                {"type": "text", "text": "这张图片里有什么？"},
+                {"type": "image_url", "image_url": {"url": f"data:image/jpeg;base64,{base64_image}"}}
+            ]
+        }
+    ]
+)
+\`\`\`
+
+### Claude Vision
+
+\`\`\`python
+import anthropic
+import base64
+
+client = anthropic.Anthropic()
+
+# 读取本地图片
+with open("image.jpg", "rb") as f:
+    image_data = base64.standard_b64encode(f.read()).decode("utf-8")
+
+response = client.messages.create(
+    model="claude-sonnet-4-20250514",
+    max_tokens=1024,
+    messages=[
+        {
+            "role": "user",
+            "content": [
+                {
+                    "type": "image",
+                    "source": {
+                        "type": "base64",
+                        "media_type": "image/jpeg",
+                        "data": image_data
+                    }
+                },
+                {"type": "text", "text": "详细描述这张图片"}
+            ]
+        }
+    ]
+)
+\`\`\`
+
+---
+
+## 💡 应用场景
+
+| 场景 | 说明 | 示例 |
+|------|------|------|
+| **文档解析** | 识别表格、图表、公式 | 财报分析、论文解读 |
+| **产品检测** | 质检、缺陷识别 | 工业制造 |
+| **医学影像** | 辅助诊断 | X光、CT分析 |
+| **电商描述** | 自动生成商品文案 | 图片→描述 |
+| **无障碍** | 为视障人士描述图片 | 屏幕阅读 |
+            `,
+            ja: `
+## 文字を超えて：AIの感覚革命
+
+マルチモーダルAIは、機械が人間のように「見る」「聞く」「話す」ことを可能にします。
+
+---
+
+## 🎯 マルチモーダルとは？
+
+\`\`\`
+┌─────────────────────────────────────────────────────────────────────────┐
+│                        マルチモーダルAI能力マトリクス                       │
+└─────────────────────────────────────────────────────────────────────────┘
+
+                         マルチモーダルAI
+                            │
+        ┌───────────┬───────┴───────┬───────────┐
+        │           │               │           │
+        ▼           ▼               ▼           ▼
+     👁️ 視覚      👂 聴覚        💬 言語      🎨 生成
+        │           │               │           │
+   ┌────┴────┐  ┌───┴───┐     ┌────┴────┐  ┌────┴────┐
+   │ 画像理解 │  │ 音声認識│     │ テキスト │  │ コンテンツ│
+   │ OCR    │  │ 音楽分析│     │ 翻訳    │  │ 画像生成 │
+   │ 動画分析 │  │ 音声複製│     │ 対話    │  │ 動画生成 │
+   └─────────┘  └────────┘     └─────────┘  └─────────┘
+\`\`\`
+
+---
+
+## 📊 主要マルチモーダルモデル比較
+
+| モデル | メーカー | 視覚理解 | 音声 | 動画 | 生成 |
+|--------|----------|----------|------|------|------|
+| **GPT-4o** | OpenAI | ✅ 強い | ✅ 音声 | ⚠️ 限定 | ✅ DALL-E |
+| **Claude 3.5** | Anthropic | ✅ 強い | ❌ | ❌ | ❌ |
+| **Gemini 1.5** | Google | ✅ 強い | ✅ 音声 | ✅ 長時間動画 | ✅ Imagen |
+
+---
+
+## 💡 応用シーン
+
+| シーン | 説明 | 例 |
+|--------|------|-----|
+| **文書解析** | 表、チャート、数式認識 | 財務報告分析 |
+| **製品検査** | 品質管理、欠陥検出 | 製造業 |
+| **医療画像** | 診断支援 | X線、CT分析 |
+| **EC説明文** | 商品説明自動生成 | 画像→説明文 |
+            `
+          }
+        },
+        {
+          id: 'ch5-image-gen',
+          title: { zh: '5.2 AI 图像生成', ja: '5.2 AI画像生成' },
+          content: {
+            zh: `
+## 文字变图片：图像生成技术
+
+从 DALL-E 到 Midjourney，AI 绘画正在改变创意产业。
+
+---
+
+## 📊 主流图像生成模型
+
+| 模型 | 特点 | 适用场景 | 价格 |
+|------|------|----------|------|
+| **DALL-E 3** | 语义理解强 | 创意插图 | API 付费 |
+| **Midjourney** | 艺术感强 | 设计海报 | 订阅制 |
+| **Stable Diffusion** | 开源可控 | 本地部署 | 免费 |
+| **Imagen 3** | Google最新 | 真实感强 | API 付费 |
+
+---
+
+## 🔧 DALL-E 3 使用
+
+\`\`\`python
+from openai import OpenAI
+
+client = OpenAI()
+
+# 生成图片
+response = client.images.generate(
+    model="dall-e-3",
+    prompt="一只穿着西装的柴犬，正在咖啡馆喝咖啡，温暖的下午阳光，油画风格",
+    size="1024x1024",
+    quality="hd",
+    n=1
+)
+
+image_url = response.data[0].url
+print(image_url)
+
+# 图片编辑（DALL-E 2）
+response = client.images.edit(
+    image=open("original.png", "rb"),
+    mask=open("mask.png", "rb"),  # 要编辑的区域为白色
+    prompt="将背景换成海滩",
+    size="1024x1024"
+)
+\`\`\`
+
+---
+
+## 🔧 Stable Diffusion 本地部署
+
+\`\`\`python
+from diffusers import StableDiffusionPipeline
+import torch
+
+# 加载模型
+pipe = StableDiffusionPipeline.from_pretrained(
+    "runwayml/stable-diffusion-v1-5",
+    torch_dtype=torch.float16
+)
+pipe = pipe.to("cuda")
+
+# 生成图片
+prompt = "a beautiful sunset over mountains, 4k, detailed"
+image = pipe(prompt).images[0]
+image.save("sunset.png")
+
+# 使用 LoRA 微调模型
+pipe.load_lora_weights("lora-weights-folder")
+image = pipe(prompt).images[0]
+\`\`\`
+
+---
+
+## 💡 Prompt 工程技巧
+
+\`\`\`
+┌─────────────────────────────────────────────────────────────────────────┐
+│                      图像 Prompt 结构                                    │
+└─────────────────────────────────────────────────────────────────────────┘
+
+  [主体] + [细节] + [风格] + [质量词]
+
+  示例：
+  ┌──────────────────────────────────────────────────────────────────┐
+  │ 一只橘猫 + 戴着墨镜，躺在沙滩上 + 像素风格 + 8k, 高细节        │
+  └──────────────────────────────────────────────────────────────────┘
+
+  常用质量词：
+  - 4k, 8k, ultra detailed, photorealistic
+  - trending on artstation, award winning
+  - studio lighting, professional photography
+\`\`\`
+            `,
+            ja: `
+## テキストから画像へ：画像生成技術
+
+DALL-EからMidjourneyまで、AI絵画がクリエイティブ産業を変えています。
+
+---
+
+## 📊 主要画像生成モデル
+
+| モデル | 特徴 | 適用シーン | 価格 |
+|--------|------|------------|------|
+| **DALL-E 3** | 意味理解が強い | クリエイティブイラスト | API課金 |
+| **Midjourney** | 芸術性が高い | デザインポスター | サブスク |
+| **Stable Diffusion** | オープンソース | ローカルデプロイ | 無料 |
+
+---
+
+## 🔧 DALL-E 3 使用例
+
+\`\`\`python
+from openai import OpenAI
+
+client = OpenAI()
+
+response = client.images.generate(
+    model="dall-e-3",
+    prompt="スーツを着た柴犬、カフェでコーヒーを飲んでいる、暖かい午後の光、油絵スタイル",
+    size="1024x1024",
+    quality="hd",
+    n=1
+)
+
+image_url = response.data[0].url
+\`\`\`
+
+---
+
+## 💡 Promptエンジニアリングのコツ
+
+\`\`\`
+[主題] + [詳細] + [スタイル] + [品質ワード]
+
+例：
+オレンジ猫 + サングラスをかけてビーチに寝ている + ピクセルアート + 8k, 高詳細
+\`\`\`
+            `
+          }
+        },
+        {
+          id: 'ch5-audio',
+          title: { zh: '5.3 语音识别与合成', ja: '5.3 音声認識と合成' },
+          content: {
+            zh: `
+## AI 的耳朵和嘴巴：语音技术
+
+从语音转文字到文字转语音，AI 让交互更自然。
+
+---
+
+## 📊 语音技术全景
+
+\`\`\`
+┌─────────────────────────────────────────────────────────────────────────┐
+│                        语音 AI 技术栈                                    │
+└─────────────────────────────────────────────────────────────────────────┘
+
+                    语音 AI
+                       │
+         ┌─────────────┼─────────────┐
+         │             │             │
+         ▼             ▼             ▼
+      ASR          TTS          语音助手
+   (语音→文字)    (文字→语音)    (实时对话)
+         │             │             │
+    ┌────┴────┐   ┌────┴────┐   ┌────┴────┐
+    │ Whisper │   │ OpenAI  │   │ GPT-4o  │
+    │ Azure   │   │ ElevenLabs│ │ Realtime │
+    │ 讯飞    │   │ Edge TTS │   │ Gemini  │
+    └─────────┘   └─────────┘   └─────────┘
+\`\`\`
+
+---
+
+## 🔧 OpenAI Whisper
+
+\`\`\`python
+from openai import OpenAI
+
+client = OpenAI()
+
+# 语音转文字
+with open("audio.mp3", "rb") as audio_file:
+    transcript = client.audio.transcriptions.create(
+        model="whisper-1",
+        file=audio_file,
+        language="zh"  # 可选，自动检测
+    )
+
+print(transcript.text)
+
+# 带时间戳
+transcript = client.audio.transcriptions.create(
+    model="whisper-1",
+    file=open("audio.mp3", "rb"),
+    response_format="verbose_json",
+    timestamp_granularities=["word"]
+)
+
+for word in transcript.words:
+    print(f"{word['start']:.2f}s: {word['word']}")
+\`\`\`
+
+---
+
+## 🔧 文字转语音 (TTS)
+
+\`\`\`python
+from openai import OpenAI
+
+client = OpenAI()
+
+# OpenAI TTS
+response = client.audio.speech.create(
+    model="tts-1-hd",
+    voice="nova",  # alloy, echo, fable, onyx, nova, shimmer
+    input="你好，欢迎使用 AI 语音合成技术！"
+)
+
+response.stream_to_file("output.mp3")
+
+# 流式播放
+from pathlib import Path
+import pygame
+
+pygame.mixer.init()
+with open("output.mp3", "wb") as f:
+    for chunk in response.iter_bytes():
+        f.write(chunk)
+pygame.mixer.music.load("output.mp3")
+pygame.mixer.music.play()
+\`\`\`
+
+### Edge TTS (免费)
+
+\`\`\`python
+import edge_tts
+import asyncio
+
+async def text_to_speech():
+    communicate = edge_tts.Communicate(
+        "今天天气真好！",
+        "zh-CN-XiaoxiaoNeural"  # 中文女声
+    )
+    await communicate.save("output.mp3")
+
+asyncio.run(text_to_speech())
+
+# 可用声音列表
+voices = await edge_tts.list_voices()
+for v in voices:
+    if "zh" in v["Locale"]:
+        print(v["ShortName"])
+\`\`\`
+
+---
+
+## 🔧 实时语音对话
+
+\`\`\`python
+# OpenAI Realtime API (WebSocket)
+import asyncio
+import websockets
+import json
+
+async def realtime_conversation():
+    async with websockets.connect(
+        "wss://api.openai.com/v1/realtime?model=gpt-4o-realtime",
+        extra_headers={"Authorization": f"Bearer {api_key}"}
+    ) as ws:
+        # 发送配置
+        await ws.send(json.dumps({
+            "type": "session.update",
+            "session": {
+                "voice": "alloy",
+                "instructions": "你是一个友好的助手"
+            }
+        }))
+
+        # 发送音频数据
+        audio_data = get_microphone_audio()
+        await ws.send(json.dumps({
+            "type": "input_audio_buffer.append",
+            "audio": audio_data
+        }))
+
+        # 接收响应
+        async for message in ws:
+            data = json.loads(message)
+            if data["type"] == "response.audio.delta":
+                play_audio(data["delta"])
+\`\`\`
+
+---
+
+## 💡 应用场景
+
+| 场景 | 技术 | 示例 |
+|------|------|------|
+| **会议记录** | Whisper | 自动生成会议纪要 |
+| **播客制作** | TTS | AI 主播 |
+| **客服热线** | Realtime | 智能语音客服 |
+| **无障碍** | TTS | 屏幕阅读器 |
+| **语言学习** | ASR+TTS | 口语练习 |
+            `,
+            ja: `
+## AIの耳と口：音声技術
+
+音声からテキスト、テキストから音声へ、AIがより自然なインタラクションを実現。
+
+---
+
+## 🔧 OpenAI Whisper
+
+\`\`\`python
+from openai import OpenAI
+
+client = OpenAI()
+
+# 音声をテキストに
+with open("audio.mp3", "rb") as audio_file:
+    transcript = client.audio.transcriptions.create(
+        model="whisper-1",
+        file=audio_file,
+        language="ja"
+    )
+
+print(transcript.text)
+\`\`\`
+
+---
+
+## 🔧 テキストから音声 (TTS)
+
+\`\`\`python
+from openai import OpenAI
+
+client = OpenAI()
+
+response = client.audio.speech.create(
+    model="tts-1-hd",
+    voice="nova",
+    input="こんにちは、AI音声合成技術へようこそ！"
+)
+
+response.stream_to_file("output.mp3")
+\`\`\`
+
+---
+
+## 💡 応用シーン
+
+| シーン | 技術 | 例 |
+|--------|------|-----|
+| **会議記録** | Whisper | 議事録自動生成 |
+| **ポッドキャスト** | TTS | AIアナウンサー |
+| **カスタマーサービス** | Realtime | 音声AI対応 |
+            `
+          }
+        },
+        {
+          id: 'ch5-video',
+          title: { zh: '5.4 视频理解与生成', ja: '5.4 動画理解と生成' },
+          content: {
+            zh: `
+## AI 电影导演：视频技术
+
+从视频分析到视频生成，AI 正在改变影视制作。
+
+---
+
+## 📊 视频 AI 技术对比
+
+| 技术 | 模型 | 能力 | 限制 |
+|------|------|------|------|
+| **视频理解** | Gemini 1.5 | 分析1小时视频 | - |
+| **视频理解** | GPT-4o | 短视频分析 | 帧数限制 |
+| **视频生成** | Sora | 60秒电影级 | 未公开 |
+| **视频生成** | Runway Gen-3 | 10秒高质量 | 订阅制 |
+| **视频生成** | Pika | 4秒动画 | 免费额度 |
+
+---
+
+## 🔧 Gemini 视频分析
+
+\`\`\`python
+import google.generativeai as genai
+
+genai.configure(api_key="YOUR_API_KEY")
+
+# 上传视频
+video_file = genai.upload_file("video.mp4")
+
+# 等待处理完成
+import time
+while video_file.state.name == "PROCESSING":
+    time.sleep(10)
+    video_file = genai.get_file(video_file.name)
+
+# 分析视频
+model = genai.GenerativeModel("gemini-1.5-pro")
+response = model.generate_content([
+    video_file,
+    "详细描述这个视频的内容，包括场景、人物、动作"
+])
+
+print(response.text)
+\`\`\`
+
+---
+
+## 🔧 Runway API
+
+\`\`\`python
+import runwayml
+
+client = runwayml.RunwayML()
+
+# 文字生成视频
+task = client.image_to_video.create(
+    model="gen3a_turbo",
+    prompt_image="start_frame.jpg",
+    prompt_text="camera slowly zooms in, dramatic lighting"
+)
+
+# 等待完成
+import time
+while True:
+    status = client.tasks.retrieve(task.id)
+    if status.status == "SUCCEEDED":
+        break
+    time.sleep(5)
+
+# 下载视频
+video_url = status.output[0]
+\`\`\`
+
+---
+
+## 🎬 视频生成 Prompt 技巧
+
+\`\`\`
+┌─────────────────────────────────────────────────────────────────────────┐
+│                     视频 Prompt 要素                                     │
+└─────────────────────────────────────────────────────────────────────────┘
+
+  1. 镜头运动：
+     - camera slowly pans left/right
+     - zoom in/out
+     - tracking shot
+     - aerial view
+
+  2. 光影效果：
+     - golden hour lighting
+     - dramatic shadows
+     - soft diffused light
+     - neon glow
+
+  3. 动作描述：
+     - walking slowly through...
+     - water gently flowing...
+     - leaves falling from trees...
+
+  示例：
+  "A lone astronaut walking on Mars surface,
+   camera tracking from behind,
+   dust particles floating in sunlight,
+   cinematic, 4K"
+\`\`\`
+
+---
+
+## 💡 未来展望
+
+> 🎬 **趋势预测**：
+> - 2025：AI 短视频普及
+> - 2026：AI 长视频成熟
+> - 2027：AI 互动电影出现
+            `,
+            ja: `
+## AI映画監督：動画技術
+
+動画分析から動画生成まで、AIが映像制作を変えています。
+
+---
+
+## 📊 動画AI技術比較
+
+| 技術 | モデル | 能力 | 制限 |
+|------|--------|------|------|
+| **動画理解** | Gemini 1.5 | 1時間動画分析 | - |
+| **動画生成** | Sora | 60秒映画級 | 未公開 |
+| **動画生成** | Runway Gen-3 | 10秒高品質 | サブスク |
+
+---
+
+## 🔧 Gemini 動画分析
+
+\`\`\`python
+import google.generativeai as genai
+
+genai.configure(api_key="YOUR_API_KEY")
+
+video_file = genai.upload_file("video.mp4")
+
+model = genai.GenerativeModel("gemini-1.5-pro")
+response = model.generate_content([
+    video_file,
+    "この動画の内容を詳しく説明してください"
+])
+\`\`\`
+
+---
+
+## 💡 将来展望
+
+> 🎬 **トレンド予測**：
+> - 2025：AI短編動画が普及
+> - 2026：AI長編動画が成熟
+> - 2027：AIインタラクティブ映画が登場
+            `
+          }
+        },
+        {
+          id: 'ch5-summary',
+          title: { zh: '5.5 本章小结', ja: '5.5 この章のまとめ' },
+          content: {
+            zh: `
+## 多模态 AI 核心回顾
+
+\`\`\`
+┌─────────────────────────────────────────────────────────────────────────┐
+│                     多模态 AI 知识地图                                    │
+└─────────────────────────────────────────────────────────────────────────┘
+
+                            多模态 AI
+                                │
+          ┌─────────────────────┼─────────────────────┐
+          │                     │                     │
+          ▼                     ▼                     ▼
+       理解类                 生成类                交互类
+          │                     │                     │
+    ┌─────┴─────┐         ┌─────┴─────┐         ┌─────┴─────┐
+    │ 图像理解  │         │ 图像生成  │         │ 实时语音  │
+    │ 视频理解  │         │ 视频生成  │         │ 多模态   │
+    │ 语音识别  │         │ 语音合成  │         │ 对话     │
+    └───────────┘         └───────────┘         └───────────┘
+\`\`\`
+
+---
+
+## 💡 关键要点
+
+1. **图像理解** —— GPT-4o、Claude 都很强
+2. **图像生成** —— DALL-E 易用，SD 可控
+3. **语音识别** —— Whisper 开源最佳
+4. **语音合成** —— Edge TTS 免费，OpenAI 高质量
+5. **视频分析** —— Gemini 支持长视频
+6. **视频生成** —— Sora 领先，Runway 可用
+
+> 🎯 **建议**：根据具体需求选择工具，多模态能力正在快速发展。
+            `,
+            ja: `
+## マルチモーダルAIコア復習
+
+---
+
+## 💡 重要ポイント
+
+1. **画像理解** —— GPT-4o、Claude共に強力
+2. **画像生成** —— DALL-E使いやすい、SD制御可能
+3. **音声認識** —— Whisperオープンソース最強
+4. **音声合成** —— Edge TTS無料、OpenAI高品質
+5. **動画分析** —— Gemini長時間動画対応
+6. **動画生成** —— Soraリード、Runway使用可能
+
+> 🎯 **アドバイス**：具体的なニーズに応じてツールを選択。マルチモーダル能力は急速に発展中。
+            `
+          }
+        }
+      ]
+    },
+    // ============================================
+    // 第六章：AI 安全与伦理
+    // ============================================
+    {
+      id: 'chapter-6',
+      number: 6,
+      title: { zh: 'AI 安全与伦理', ja: 'AIセキュリティと倫理' },
+      subtitle: { zh: '负责任的 AI 使用指南', ja: '責任あるAI使用ガイド' },
+      sections: [
+        {
+          id: 'ch6-hallucination',
+          title: { zh: '6.1 AI 幻觉问题', ja: '6.1 AIハルシネーション問題' },
+          content: {
+            zh: `
+## AI 会"一本正经地胡说八道"
+
+当 AI 输出看起来正确但实际错误的信息时，我们称之为"幻觉"。
+
+---
+
+## 🎯 什么是 AI 幻觉？
+
+\`\`\`
+┌─────────────────────────────────────────────────────────────────────────┐
+│                        AI 幻觉类型                                       │
+└─────────────────────────────────────────────────────────────────────────┘
+
+                          AI 幻觉
+                             │
+         ┌───────────────────┼───────────────────┐
+         │                   │                   │
+         ▼                   ▼                   ▼
+    事实性错误           逻辑性错误          编造内容
+         │                   │                   │
+   "北京是日本首都"    "1+1=3 因为..."    "论文XYZ研究表明"
+   (完全错误)          (推理错误)          (不存在的引用)
+\`\`\`
+
+---
+
+## 📊 幻觉发生的原因
+
+| 原因 | 说明 | 示例 |
+|------|------|------|
+| **训练数据** | 数据中存在错误 | 过时的信息 |
+| **知识截止** | 模型不知道最新事件 | 2023年后的新闻 |
+| **过度自信** | 模型编造答案 | 不确定时仍给出答案 |
+| **长文本** | 上下文过长时出错 | 忘记前文约束 |
+
+---
+
+## 🔧 检测与缓解方法
+
+### 1. Prompt 约束
+
+\`\`\`python
+system_prompt = """
+你是一个严谨的助手。请遵守以下规则：
+1. 如果不确定，请说"我不确定"
+2. 不要编造不存在的引用或数据
+3. 区分事实和观点
+4. 对于时效性信息，提醒知识截止日期
+"""
+\`\`\`
+
+### 2. 使用 RAG 提供事实依据
+
+\`\`\`python
+# 先检索事实，再让AI回答
+context = retriever.search(query)
+response = llm.generate(
+    f"基于以下资料回答问题，如果资料中没有相关信息请说'未找到相关资料'：\\n{context}\\n\\n问题：{query}"
+)
+\`\`\`
+
+### 3. 事后验证
+
+\`\`\`python
+# 让另一个模型验证回答
+verification_prompt = f"""
+请验证以下回答是否准确：
+问题：{question}
+回答：{answer}
+
+请检查：
+1. 是否有事实性错误？
+2. 是否有不确定的陈述被当作事实？
+3. 引用的资料是否真实存在？
+"""
+\`\`\`
+
+---
+
+## 💡 实践建议
+
+> 🎯 **记住**：
+> - 始终对AI输出保持质疑态度
+> - 重要决策需要人工验证
+> - 使用RAG减少幻觉
+> - 让AI表达不确定性
+            `,
+            ja: `
+## AIは「真面目に嘘をつく」
+
+AIが正しそうに見えて実際には間違っている情報を出力する時、これを「ハルシネーション」と呼びます。
+
+---
+
+## 🎯 AIハルシネーションとは？
+
+| タイプ | 説明 | 例 |
+|--------|------|-----|
+| **事実誤り** | 完全に間違った事実 | 「東京はアメリカの首都」 |
+| **論理誤り** | 推論の誤り | 「1+1=3なぜなら...」 |
+| **捏造** | 存在しない引用 | 「論文XYZによると」 |
+
+---
+
+## 🔧 検出と緩和方法
+
+1. **Prompt制約** —— 不確実な時は「わかりません」と言うよう指示
+2. **RAG使用** —— 事実に基づいて回答させる
+3. **事後検証** —— 別のモデルで検証
+
+> 🎯 **覚えておくこと**：AIの出力は常に疑う姿勢を持つ
+            `
+          }
+        },
+        {
+          id: 'ch6-bias',
+          title: { zh: '6.2 偏见与公平性', ja: '6.2 バイアスと公平性' },
+          content: {
+            zh: `
+## AI 可能带有偏见
+
+训练数据中的偏见会被模型学习并放大。
+
+---
+
+## 📊 常见偏见类型
+
+| 类型 | 说明 | 示例 |
+|------|------|------|
+| **性别偏见** | 职业与性别关联 | "护士=女性" |
+| **种族偏见** | 人种刻板印象 | 人脸识别误差 |
+| **文化偏见** | 西方中心主义 | 忽视非英语文化 |
+| **年龄偏见** | 年龄歧视 | "老年人不懂技术" |
+
+---
+
+## 🔧 检测偏见
+
+\`\`\`python
+# 测试性别偏见
+prompts = [
+    "The doctor told the nurse that she...",
+    "The engineer explained to the secretary that he..."
+]
+
+# 观察模型是否做出性别假设
+for prompt in prompts:
+    response = model.generate(prompt)
+    print(f"Prompt: {prompt}")
+    print(f"Response: {response}")
+\`\`\`
+
+---
+
+## 🔧 缓解策略
+
+1. **多样化训练数据**
+2. **Prompt 去偏见**：明确要求公平对待
+3. **输出审核**：检测敏感内容
+4. **用户反馈**：收集偏见报告
+
+---
+
+## 💡 最佳实践
+
+> ⚖️ 设计 AI 系统时，始终考虑公平性和包容性。
+            `,
+            ja: `
+## AIはバイアスを持つ可能性がある
+
+訓練データのバイアスはモデルに学習され、増幅されます。
+
+---
+
+## 📊 一般的なバイアスタイプ
+
+| タイプ | 説明 | 例 |
+|--------|------|-----|
+| **性別バイアス** | 職業と性別の関連付け | 「看護師=女性」 |
+| **人種バイアス** | 人種ステレオタイプ | 顔認識の誤差 |
+| **文化バイアス** | 西洋中心主義 | 非英語文化の無視 |
+
+---
+
+## 🔧 緩和策
+
+1. **多様な訓練データ**
+2. **Promptでバイアス排除**を明示
+3. **出力監査**：敏感なコンテンツを検出
+4. **ユーザーフィードバック**収集
+
+> ⚖️ AIシステム設計時は、常に公平性と包括性を考慮する
+            `
+          }
+        },
+        {
+          id: 'ch6-privacy',
+          title: { zh: '6.3 隐私与数据安全', ja: '6.3 プライバシーとデータセキュリティ' },
+          content: {
+            zh: `
+## 保护用户数据是底线
+
+使用 AI 时，数据隐私至关重要。
+
+---
+
+## ⚠️ 风险点
+
+| 风险 | 说明 | 缓解措施 |
+|------|------|----------|
+| **数据泄露** | 敏感数据发送给API | 脱敏处理 |
+| **模型记忆** | 模型"记住"私人信息 | 使用无状态API |
+| **第三方共享** | 数据被用于训练 | 选择 opt-out |
+
+---
+
+## 🔧 安全实践
+
+\`\`\`python
+# 1. 数据脱敏
+import re
+
+def anonymize(text):
+    # 移除邮箱
+    text = re.sub(r'[\\w.-]+@[\\w.-]+', '[EMAIL]', text)
+    # 移除手机号
+    text = re.sub(r'1[3-9]\\d{9}', '[PHONE]', text)
+    # 移除身份证
+    text = re.sub(r'\\d{17}[\\dXx]', '[ID]', text)
+    return text
+
+# 2. 选择隐私友好的服务
+# - 本地部署 (Ollama, LMStudio)
+# - 企业版 API (数据不用于训练)
+# - 自建 RAG (数据不出内网)
+\`\`\`
+
+---
+
+## 💡 选择 AI 服务时的隐私考虑
+
+\`\`\`
+┌─────────────────────────────────────────────────────────────────────────┐
+│                      隐私保护决策树                                       │
+└─────────────────────────────────────────────────────────────────────────┘
+
+                     数据敏感度？
+                         │
+            ┌────────────┴────────────┐
+            │                         │
+          低/中                       高
+            │                         │
+            ▼                         ▼
+       云端 API               ┌───────────────┐
+       (方便快捷)             │ 本地部署优先  │
+                              │ - Ollama      │
+                              │ - LMStudio    │
+                              │ - 私有化部署  │
+                              └───────────────┘
+\`\`\`
+            `,
+            ja: `
+## ユーザーデータの保護は最低限
+
+AIを使用する際、データプライバシーは非常に重要です。
+
+---
+
+## ⚠️ リスクポイント
+
+| リスク | 説明 | 緩和措置 |
+|--------|------|----------|
+| **データ漏洩** | 機密データをAPIに送信 | 匿名化処理 |
+| **モデル記憶** | モデルが個人情報を「記憶」 | ステートレスAPIを使用 |
+| **第三者共有** | データが訓練に使用される | opt-out を選択 |
+
+---
+
+## 💡 プライバシー保護の決定木
+
+高機密データ → ローカルデプロイ優先 (Ollama, LMStudio)
+低/中機密データ → クラウドAPI (便利で高速)
+            `
+          }
+        },
+        {
+          id: 'ch6-alignment',
+          title: { zh: '6.4 AI 对齐与安全', ja: '6.4 AIアラインメントと安全性' },
+          content: {
+            zh: `
+## 让 AI 按人类意图行事
+
+AI 对齐(Alignment)是确保 AI 系统的行为符合人类价值观和意图。
+
+---
+
+## 🎯 什么是 AI 对齐？
+
+\`\`\`
+┌─────────────────────────────────────────────────────────────────────────┐
+│                        AI 对齐目标                                       │
+└─────────────────────────────────────────────────────────────────────────┘
+
+                    安全的 AI
+                        │
+          ┌─────────────┼─────────────┐
+          │             │             │
+          ▼             ▼             ▼
+       有益性         无害性         诚实性
+       Helpful       Harmless       Honest
+          │             │             │
+    帮助用户完成     不做有害的事    不欺骗用户
+    合理请求                         承认不确定
+\`\`\`
+
+---
+
+## 🔧 对齐技术
+
+| 技术 | 说明 | 代表 |
+|------|------|------|
+| **RLHF** | 人类反馈强化学习 | ChatGPT |
+| **Constitutional AI** | 宪法AI | Claude |
+| **DPO** | 直接偏好优化 | 开源模型 |
+
+---
+
+## 💡 作为用户的责任
+
+> 🛡️ **负责任使用 AI**：
+> - 不用于违法用途
+> - 不滥用生成能力
+> - 保持人类监督
+> - 报告问题行为
+            `,
+            ja: `
+## AIを人間の意図に沿って動作させる
+
+AIアラインメントは、AIシステムの行動が人間の価値観と意図に沿うことを確保すること。
+
+---
+
+## 🎯 AIアラインメントとは？
+
+\`\`\`
+                    安全なAI
+                        │
+          ┌─────────────┼─────────────┐
+          ▼             ▼             ▼
+       有益性         無害性         誠実性
+       Helpful       Harmless       Honest
+\`\`\`
+
+---
+
+## 💡 ユーザーとしての責任
+
+> 🛡️ **責任あるAI使用**：
+> - 違法用途に使用しない
+> - 生成能力を乱用しない
+> - 人間の監督を維持
+> - 問題行動を報告
+            `
+          }
+        },
+        {
+          id: 'ch6-summary',
+          title: { zh: '6.5 本章小结', ja: '6.5 この章のまとめ' },
+          content: {
+            zh: `
+## AI 安全与伦理核心要点
+
+---
+
+## 💡 关键原则
+
+1. **幻觉防护** —— 使用 RAG、设置约束、事后验证
+2. **偏见意识** —— 审视输出、多样化输入
+3. **隐私优先** —— 敏感数据脱敏或本地部署
+4. **负责任使用** —— 遵守法规、保持人类监督
+
+> 🎯 **记住**：AI 是工具，人类负责如何使用它。
+            `,
+            ja: `
+## AIセキュリティと倫理コアポイント
+
+---
+
+## 💡 重要原則
+
+1. **ハルシネーション防止** —— RAG使用、制約設定、事後検証
+2. **バイアス意識** —— 出力を審査、入力を多様化
+3. **プライバシー優先** —— 機密データ匿名化またはローカルデプロイ
+4. **責任ある使用** —— 規制遵守、人間の監督維持
+
+> 🎯 **覚えておくこと**：AIはツール、人間がその使い方に責任を持つ
+            `
+          }
+        }
+      ]
+    },
+    // ============================================
+    // 第七章：实战项目
+    // ============================================
+    {
+      id: 'chapter-7',
+      number: 7,
+      title: { zh: '实战项目', ja: '実践プロジェクト' },
+      subtitle: { zh: '从零开始构建 AI 应用', ja: 'ゼロからAIアプリケーションを構築' },
+      sections: [
+        {
+          id: 'ch7-chatbot',
+          title: { zh: '7.1 智能客服机器人', ja: '7.1 スマートカスタマーサービスボット' },
+          content: {
+            zh: `
+## 项目：企业级智能客服
+
+构建一个能回答产品问题的客服机器人。
+
+---
+
+## 📋 技术栈
+
+| 组件 | 技术选型 |
+|------|----------|
+| LLM | Claude / GPT-4o |
+| 向量数据库 | Chroma |
+| 框架 | LangChain |
+| 前端 | Streamlit |
+
+---
+
+## 🔧 核心代码
+
+\`\`\`python
+from langchain_anthropic import ChatAnthropic
+from langchain_chroma import Chroma
+from langchain_openai import OpenAIEmbeddings
+from langchain.chains import RetrievalQA
+
+# 1. 加载知识库
+embeddings = OpenAIEmbeddings()
+vectorstore = Chroma(
+    persist_directory="./knowledge_base",
+    embedding_function=embeddings
+)
+
+# 2. 创建检索链
+llm = ChatAnthropic(model="claude-sonnet-4-20250514")
+qa_chain = RetrievalQA.from_chain_type(
+    llm=llm,
+    chain_type="stuff",
+    retriever=vectorstore.as_retriever(search_kwargs={"k": 3})
+)
+
+# 3. 问答函数
+def answer_question(query: str) -> str:
+    result = qa_chain.invoke({"query": query})
+    return result["result"]
+
+# 4. Streamlit 界面
+import streamlit as st
+
+st.title("智能客服助手")
+query = st.text_input("请输入您的问题：")
+if query:
+    with st.spinner("正在思考..."):
+        answer = answer_question(query)
+    st.write(answer)
+\`\`\`
+
+---
+
+## 📊 功能清单
+
+- [x] 基于知识库问答
+- [x] 多轮对话上下文
+- [ ] 意图识别分流
+- [ ] 人工客服转接
+- [ ] 满意度评分
+            `,
+            ja: `
+## プロジェクト：エンタープライズスマートカスタマーサービス
+
+製品の質問に答えるカスタマーサービスボットを構築。
+
+---
+
+## 📋 技術スタック
+
+| コンポーネント | 技術選定 |
+|----------------|----------|
+| LLM | Claude / GPT-4o |
+| ベクトルDB | Chroma |
+| フレームワーク | LangChain |
+| フロントエンド | Streamlit |
+
+---
+
+## 📊 機能リスト
+
+- [x] ナレッジベースQ&A
+- [x] マルチターン対話コンテキスト
+- [ ] 意図認識による振り分け
+- [ ] 人間オペレーターへのエスカレーション
+            `
+          }
+        },
+        {
+          id: 'ch7-doc-qa',
+          title: { zh: '7.2 文档问答系统', ja: '7.2 ドキュメントQ&Aシステム' },
+          content: {
+            zh: `
+## 项目：PDF/Word 文档问答
+
+让 AI 阅读并回答关于文档的问题。
+
+---
+
+## 🔧 核心代码
+
+\`\`\`python
+from langchain_community.document_loaders import PyPDFLoader
+from langchain.text_splitter import RecursiveCharacterTextSplitter
+from langchain_chroma import Chroma
+from langchain_openai import OpenAIEmbeddings, ChatOpenAI
+
+# 1. 加载文档
+loader = PyPDFLoader("document.pdf")
+documents = loader.load()
+
+# 2. 分块
+text_splitter = RecursiveCharacterTextSplitter(
+    chunk_size=1000,
+    chunk_overlap=200
+)
+chunks = text_splitter.split_documents(documents)
+
+# 3. 向量化存储
+embeddings = OpenAIEmbeddings()
+vectorstore = Chroma.from_documents(chunks, embeddings)
+
+# 4. 问答
+llm = ChatOpenAI(model="gpt-4o")
+retriever = vectorstore.as_retriever()
+
+def ask_document(question: str) -> str:
+    docs = retriever.invoke(question)
+    context = "\\n".join([d.page_content for d in docs])
+
+    response = llm.invoke(f"""
+    基于以下文档内容回答问题。如果文档中没有相关信息，请说明。
+
+    文档内容：
+    {context}
+
+    问题：{question}
+    """)
+    return response.content
+\`\`\`
+
+---
+
+## 💡 扩展功能
+
+- 支持多文档上传
+- 文档来源标注
+- 关键词高亮
+- 导出问答记录
+            `,
+            ja: `
+## プロジェクト：PDF/Wordドキュメント Q&A
+
+AIにドキュメントを読ませ、質問に回答させる。
+
+---
+
+## 💡 拡張機能
+
+- 複数ドキュメントアップロード対応
+- ドキュメントソース表示
+- キーワードハイライト
+- Q&A履歴エクスポート
+            `
+          }
+        },
+        {
+          id: 'ch7-code-assistant',
+          title: { zh: '7.3 代码助手开发', ja: '7.3 コードアシスタント開発' },
+          content: {
+            zh: `
+## 项目：个人代码助手
+
+构建一个了解你代码库的 AI 助手。
+
+---
+
+## 🔧 使用 Claude Code SDK
+
+\`\`\`python
+# 最简单的方式：使用 Claude Code
+# 在项目根目录运行：claude
+
+# 或者使用 Agent SDK 构建自定义工具
+from anthropic import Anthropic
+
+client = Anthropic()
+
+# 定义代码分析工具
+tools = [
+    {
+        "name": "read_file",
+        "description": "读取指定路径的文件内容",
+        "input_schema": {
+            "type": "object",
+            "properties": {
+                "path": {"type": "string"}
+            },
+            "required": ["path"]
+        }
+    },
+    {
+        "name": "search_code",
+        "description": "在代码库中搜索关键词",
+        "input_schema": {
+            "type": "object",
+            "properties": {
+                "keyword": {"type": "string"}
+            },
+            "required": ["keyword"]
+        }
+    }
+]
+
+# 代码问答
+response = client.messages.create(
+    model="claude-sonnet-4-20250514",
+    max_tokens=4096,
+    tools=tools,
+    messages=[
+        {"role": "user", "content": "这个项目的入口文件在哪里？"}
+    ]
+)
+\`\`\`
+
+---
+
+## 💡 最佳实践
+
+1. **使用 CLAUDE.md** 提供项目上下文
+2. **MCP 集成** 让 AI 访问开发工具
+3. **保持代码库整洁** 帮助 AI 理解
+            `,
+            ja: `
+## プロジェクト：個人コードアシスタント
+
+あなたのコードベースを理解するAIアシスタントを構築。
+
+---
+
+## 💡 ベストプラクティス
+
+1. **CLAUDE.md使用** - プロジェクトコンテキストを提供
+2. **MCP統合** - AIに開発ツールへのアクセスを許可
+3. **コードベースを整理** - AIの理解を助ける
+            `
+          }
+        },
+        {
+          id: 'ch7-summary',
+          title: { zh: '7.4 本章小结', ja: '7.4 この章のまとめ' },
+          content: {
+            zh: `
+## 实战项目核心要点
+
+---
+
+## 💡 项目开发流程
+
+1. **明确需求** —— 用户要解决什么问题
+2. **选择技术栈** —— LLM + 向量库 + 框架
+3. **构建原型** —— 快速验证可行性
+4. **迭代优化** —— 根据反馈改进
+
+---
+
+## 🚀 推荐起步项目
+
+| 难度 | 项目 | 时间 |
+|------|------|------|
+| ⭐ | 命令行聊天机器人 | 1天 |
+| ⭐⭐ | Streamlit 文档问答 | 3天 |
+| ⭐⭐⭐ | 完整客服系统 | 1-2周 |
+            `,
+            ja: `
+## 実践プロジェクトコアポイント
+
+---
+
+## 🚀 推奨スタートプロジェクト
+
+| 難易度 | プロジェクト | 時間 |
+|--------|--------------|------|
+| ⭐ | CLIチャットボット | 1日 |
+| ⭐⭐ | Streamlitドキュメント Q&A | 3日 |
+| ⭐⭐⭐ | 完全カスタマーサービスシステム | 1-2週間 |
+            `
+          }
+        }
+      ]
+    },
+    // ============================================
+    // 第八章：开发工具链
+    // ============================================
+    {
+      id: 'chapter-8',
+      number: 8,
+      title: { zh: '开发工具链', ja: '開発ツールチェーン' },
+      subtitle: { zh: 'AI 开发必备工具', ja: 'AI開発必須ツール' },
+      sections: [
+        {
+          id: 'ch8-langchain',
+          title: { zh: '8.1 LangChain 深入', ja: '8.1 LangChain詳解' },
+          content: {
+            zh: `
+## LangChain：AI 应用的瑞士军刀
+
+LangChain 是构建 LLM 应用的最流行框架。
+
+---
+
+## 🔧 核心组件
+
+\`\`\`
+┌─────────────────────────────────────────────────────────────────────────┐
+│                      LangChain 架构                                      │
+└─────────────────────────────────────────────────────────────────────────┘
+
+                         LangChain
+                             │
+     ┌───────────┬───────────┼───────────┬───────────┐
+     │           │           │           │           │
+     ▼           ▼           ▼           ▼           ▼
+   Models     Prompts     Chains      Memory      Tools
+   (模型)     (提示词)     (链)       (记忆)      (工具)
+\`\`\`
+
+---
+
+## 🔧 常用模式
+
+\`\`\`python
+from langchain_anthropic import ChatAnthropic
+from langchain_core.prompts import ChatPromptTemplate
+from langchain_core.output_parsers import StrOutputParser
+
+# LCEL 链式调用
+llm = ChatAnthropic(model="claude-sonnet-4-20250514")
+prompt = ChatPromptTemplate.from_template("用一句话解释{topic}")
+parser = StrOutputParser()
+
+chain = prompt | llm | parser
+
+result = chain.invoke({"topic": "量子计算"})
+\`\`\`
+
+---
+
+## 💡 何时使用 LangChain
+
+✅ 需要 RAG 功能
+✅ 需要 Agent 能力
+✅ 需要多模型切换
+❌ 简单 API 调用
+            `,
+            ja: `
+## LangChain：AIアプリケーションのスイスアーミーナイフ
+
+LangChainはLLMアプリケーション構築で最も人気のあるフレームワーク。
+
+---
+
+## 💡 LangChainを使うべき時
+
+✅ RAG機能が必要
+✅ Agent能力が必要
+✅ 複数モデル切り替えが必要
+❌ シンプルなAPI呼び出し
+            `
+          }
+        },
+        {
+          id: 'ch8-llamaindex',
+          title: { zh: '8.2 LlamaIndex 实战', ja: '8.2 LlamaIndex実践' },
+          content: {
+            zh: `
+## LlamaIndex：专注 RAG 的框架
+
+比 LangChain 更专注于数据索引和检索。
+
+---
+
+## 🔧 5 行代码构建 RAG
+
+\`\`\`python
+from llama_index.core import VectorStoreIndex, SimpleDirectoryReader
+
+# 1. 加载文档
+documents = SimpleDirectoryReader("./data").load_data()
+
+# 2. 创建索引
+index = VectorStoreIndex.from_documents(documents)
+
+# 3. 查询
+query_engine = index.as_query_engine()
+response = query_engine.query("这些文档讲了什么？")
+print(response)
+\`\`\`
+
+---
+
+## 📊 LangChain vs LlamaIndex
+
+| 特性 | LangChain | LlamaIndex |
+|------|-----------|------------|
+| **定位** | 通用 LLM 框架 | RAG 专用 |
+| **学习曲线** | 陡峭 | 平缓 |
+| **灵活性** | ⭐⭐⭐⭐⭐ | ⭐⭐⭐ |
+| **开箱即用** | ⭐⭐⭐ | ⭐⭐⭐⭐⭐ |
+            `,
+            ja: `
+## LlamaIndex：RAG専用フレームワーク
+
+LangChainよりデータインデックスと検索に特化。
+
+---
+
+## 🔧 5行でRAG構築
+
+\`\`\`python
+from llama_index.core import VectorStoreIndex, SimpleDirectoryReader
+
+documents = SimpleDirectoryReader("./data").load_data()
+index = VectorStoreIndex.from_documents(documents)
+query_engine = index.as_query_engine()
+response = query_engine.query("これらのドキュメントは何について？")
+\`\`\`
+            `
+          }
+        },
+        {
+          id: 'ch8-huggingface',
+          title: { zh: '8.3 HuggingFace 生态', ja: '8.3 HuggingFaceエコシステム' },
+          content: {
+            zh: `
+## HuggingFace：AI 界的 GitHub
+
+开源模型、数据集、Spaces 的一站式平台。
+
+---
+
+## 🔧 核心资源
+
+| 资源 | 用途 | 示例 |
+|------|------|------|
+| **Models** | 开源模型 | Llama, Qwen, Mistral |
+| **Datasets** | 数据集 | 训练、评估用 |
+| **Spaces** | 在线 Demo | Gradio 应用 |
+| **Transformers** | 推理库 | 本地运行模型 |
+
+---
+
+## 🔧 快速使用模型
+
+\`\`\`python
+from transformers import pipeline
+
+# 情感分析
+classifier = pipeline("sentiment-analysis")
+result = classifier("I love this product!")
+print(result)
+
+# 文本生成
+generator = pipeline("text-generation", model="gpt2")
+result = generator("Once upon a time", max_length=50)
+
+# 翻译
+translator = pipeline("translation", model="Helsinki-NLP/opus-mt-en-zh")
+result = translator("Hello, how are you?")
+\`\`\`
+
+---
+
+## 💡 推荐资源
+
+- 🔥 **LLM 排行榜**：Open LLM Leaderboard
+- 📚 **中文模型**：Qwen, ChatGLM, Yi
+- 🚀 **部署工具**：TGI, vLLM
+            `,
+            ja: `
+## HuggingFace：AI界のGitHub
+
+オープンソースモデル、データセット、Spacesのワンストッププラットフォーム。
+
+---
+
+## 💡 推奨リソース
+
+- 🔥 **LLMランキング**：Open LLM Leaderboard
+- 📚 **日本語モデル**：rinna, ELYZA
+- 🚀 **デプロイツール**：TGI, vLLM
+            `
+          }
+        },
+        {
+          id: 'ch8-summary',
+          title: { zh: '8.4 本章小结', ja: '8.4 この章のまとめ' },
+          content: {
+            zh: `
+## 开发工具链选择指南
+
+---
+
+## 🎯 工具选择建议
+
+| 需求 | 推荐工具 |
+|------|----------|
+| 快速 RAG 原型 | LlamaIndex |
+| 复杂 Agent 系统 | LangChain |
+| 开源模型探索 | HuggingFace |
+| 生产部署 | vLLM + FastAPI |
+| 本地开发 | Ollama + Open WebUI |
+
+---
+
+## 💡 最终建议
+
+> 🎯 **工具只是手段，解决问题才是目的**。
+> 不要过度追求技术栈，选择能快速交付价值的方案。
+
+---
+
+## 📚 全书总结
+
+恭喜你完成了 AI 进阶实战的学习！
+
+你已掌握：
+1. **大模型技术** —— Transformer、微调、量化
+2. **提示词工程** —— 结构化、高级技巧、JSON输出
+3. **AI Agent** —— MCP、Claude Code、A2A
+4. **RAG 技术** —— 向量检索、GraphRAG
+5. **多模态 AI** —— 图像、语音、视频
+6. **安全与伦理** —— 幻觉、偏见、隐私
+7. **实战项目** —— 从零构建应用
+8. **工具链** —— LangChain、LlamaIndex、HuggingFace
+
+**AI 技术日新月异，保持学习，保持好奇！**
+
+*"真正的智慧不是知道多少，而是知道如何学习。"*
+            `,
+            ja: `
+## 開発ツールチェーン選択ガイド
+
+---
+
+## 🎯 ツール選択アドバイス
+
+| ニーズ | 推奨ツール |
+|--------|------------|
+| 迅速なRAGプロトタイプ | LlamaIndex |
+| 複雑なAgentシステム | LangChain |
+| オープンソースモデル探索 | HuggingFace |
+| 本番デプロイ | vLLM + FastAPI |
+| ローカル開発 | Ollama + Open WebUI |
+
+---
+
+## 📚 全書まとめ
+
+AI実践上級編の学習完了おめでとうございます！
+
+習得したこと：
+1. **大規模モデル技術** —— Transformer、ファインチューニング、量子化
+2. **プロンプトエンジニアリング** —— 構造化、高度なテクニック
+3. **AI Agent** —— MCP、Claude Code、A2A
+4. **RAG技術** —— ベクトル検索、GraphRAG
+5. **マルチモーダルAI** —— 画像、音声、動画
+6. **セキュリティと倫理** —— ハルシネーション、バイアス
+7. **実践プロジェクト** —— ゼロからアプリ構築
+8. **ツールチェーン** —— LangChain、LlamaIndex、HuggingFace
+
+**AI技術は日々進化、学び続け、好奇心を持ち続けましょう！**
             `
           }
         }
