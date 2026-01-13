@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="{{ language }}">
+<head>
+    <meta charset="UTF-8">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;700;900&family=Noto+Sans+JP:wght@400;700;900&display=swap');
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Noto Sans SC', 'Noto Sans JP', sans-serif;
+            background: linear-gradient(135deg, #4ECDC4 0%, #556270 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .container {
+            width: 1920px;
+            height: 1080px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 60px;
+        }
+
+        .quiz-card {
+            background: white;
+            border-radius: 48px;
+            padding: 60px 80px;
+            width: 1600px;
+            box-shadow: 0 40px 100px rgba(0,0,0,0.3);
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 40px;
+        }
+
+        .quiz-badge {
+            background: linear-gradient(135deg, #FF6B6B, #FF8E53);
+            color: white;
+            padding: 16px 40px;
+            border-radius: 30px;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .quiz-number {
+            font-size: 32px;
+            color: #6b7280;
+        }
+
+        .question-section {
+            display: flex;
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+
+        .question-mascot {
+            font-size: 120px;
+            animation: think 2s infinite;
+        }
+
+        @keyframes think {
+            0%, 100% { transform: rotate(0deg); }
+            25% { transform: rotate(-5deg); }
+            75% { transform: rotate(5deg); }
+        }
+
+        .question-text {
+            flex: 1;
+            font-size: 42px;
+            line-height: 1.6;
+            color: #1f2937;
+            display: flex;
+            align-items: center;
+        }
+
+        .options {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+        }
+
+        .option {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            padding: 28px 36px;
+            background: #f9fafb;
+            border: 4px solid #e5e7eb;
+            border-radius: 24px;
+            font-size: 32px;
+            transition: all 0.3s;
+        }
+
+        .option.correct {
+            background: #dcfce7;
+            border-color: #22c55e;
+        }
+
+        .option.wrong {
+            background: #fee2e2;
+            border-color: #ef4444;
+        }
+
+        .option-key {
+            width: 56px;
+            height: 56px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 28px;
+            flex-shrink: 0;
+        }
+
+        .option.correct .option-key {
+            background: linear-gradient(135deg, #22c55e, #16a34a);
+        }
+
+        .option.wrong .option-key {
+            background: linear-gradient(135deg, #ef4444, #dc2626);
+        }
+
+        .option-text {
+            flex: 1;
+            line-height: 1.4;
+        }
+
+        .result-icon {
+            font-size: 36px;
+            margin-left: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="quiz-card">
+            <div class="header">
+                <div class="quiz-badge">{{ quiz_label }}</div>
+                <div class="quiz-number">{{ quiz_number }}</div>
+            </div>
+
+            <div class="question-section">
+                <div class="question-mascot">🤔</div>
+                <div class="question-text">{{ question }}</div>
+            </div>
+
+            <div class="options">
+                {% for option in options %}
+                <div class="option {{ option.status }}">
+                    <span class="option-key">{{ option.key }}</span>
+                    <span class="option-text">{{ option.text }}</span>
+                    {% if option.status == 'correct' %}
+                    <span class="result-icon">✅</span>
+                    {% elif option.status == 'wrong' %}
+                    <span class="result-icon">❌</span>
+                    {% endif %}
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</body>
+</html>

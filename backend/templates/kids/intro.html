@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="{{ language }}">
+<head>
+    <meta charset="UTF-8">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;700;900&family=Noto+Sans+JP:wght@400;700;900&display=swap');
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Noto Sans SC', 'Noto Sans JP', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .container {
+            width: 1920px;
+            height: 1080px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Decorative elements */
+        .stars {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .star {
+            position: absolute;
+            font-size: 48px;
+            animation: twinkle 2s infinite;
+        }
+
+        .star:nth-child(1) { top: 10%; left: 5%; animation-delay: 0s; }
+        .star:nth-child(2) { top: 15%; right: 10%; animation-delay: 0.3s; }
+        .star:nth-child(3) { bottom: 20%; left: 8%; animation-delay: 0.6s; }
+        .star:nth-child(4) { bottom: 15%; right: 5%; animation-delay: 0.9s; }
+        .star:nth-child(5) { top: 30%; left: 3%; animation-delay: 1.2s; }
+        .star:nth-child(6) { top: 25%; right: 3%; animation-delay: 1.5s; }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(0.8); }
+        }
+
+        .main-card {
+            background: white;
+            border-radius: 48px;
+            padding: 80px;
+            width: 1400px;
+            box-shadow: 0 40px 100px rgba(0,0,0,0.3);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            position: relative;
+        }
+
+        .lesson-badge {
+            position: absolute;
+            top: -40px;
+            background: linear-gradient(135deg, #FF6B6B, #FF8E53);
+            color: white;
+            padding: 20px 60px;
+            border-radius: 50px;
+            font-size: 32px;
+            font-weight: bold;
+            box-shadow: 0 10px 30px rgba(255,107,107,0.4);
+        }
+
+        .mascot {
+            font-size: 180px;
+            margin: 40px 0;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .title {
+            font-size: 72px;
+            font-weight: 900;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 30px;
+        }
+
+        .subtitle {
+            font-size: 36px;
+            color: #6b7280;
+            margin-bottom: 40px;
+        }
+
+        .duration {
+            display: inline-flex;
+            align-items: center;
+            gap: 16px;
+            background: #f0f4ff;
+            padding: 16px 40px;
+            border-radius: 40px;
+            font-size: 28px;
+            color: #4f46e5;
+        }
+
+        .duration-icon {
+            font-size: 36px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="stars">
+            <span class="star">⭐</span>
+            <span class="star">✨</span>
+            <span class="star">🌟</span>
+            <span class="star">⭐</span>
+            <span class="star">✨</span>
+            <span class="star">🌟</span>
+        </div>
+
+        <div class="main-card">
+            <div class="lesson-badge">{{ lesson_badge }}</div>
+            <div class="mascot">🤖</div>
+            <h1 class="title">{{ title }}</h1>
+            <p class="subtitle">{{ subtitle }}</p>
+            <div class="duration">
+                <span class="duration-icon">⏱️</span>
+                <span>{{ duration }}</span>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

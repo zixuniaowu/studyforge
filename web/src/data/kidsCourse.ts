@@ -100,7 +100,7 @@ export const kidsCourseUnits: KidsCourseUnit[] = [
     color: '#FF6B6B',
     badge: skillBadges[0],
     lessons: [
-      // 第1课
+      // 第1课 - 丰富的30分钟课程
       {
         id: 'lesson-1',
         unitId: 'unit-1',
@@ -108,66 +108,148 @@ export const kidsCourseUnits: KidsCourseUnit[] = [
         title: { zh: '什么是人工智能？', ja: '人工知能って何？' },
         duration: 30,
         type: 'video',
-        starsReward: 10,
+        starsReward: 15,
         sections: [
+          // 开场介绍 (2分钟)
           {
             id: 'l1-s1',
             type: 'intro',
             content: {
-              zh: '欢迎来到AI世界！今天我们要认识一个超级厉害的朋友——人工智能！',
-              ja: 'AIの世界へようこそ！今日はすごい友達——人工知能を紹介するよ！'
+              zh: '欢迎来到AI世界！🎉 今天我们要认识一个超级厉害的朋友——人工智能！准备好了吗？让我们开始神奇的AI探险之旅吧！',
+              ja: 'AIの世界へようこそ！🎉 今日はすごい友達——人工知能を紹介するよ！準備はいい？さあ、AIの冒険を始めよう！'
             },
             duration: 2
           },
+          // 视频学习 (5分钟)
           {
             id: 'l1-s2',
+            type: 'video',
+            content: {
+              zh: '🎬 先来看一个有趣的视频，了解AI是什么吧！',
+              ja: '🎬 まずは楽しい動画でAIについて学ぼう！'
+            },
+            videoUrl: 'https://www.youtube.com/embed/mJeNghZXtMo',
+            duration: 5
+          },
+          // 核心概念1 (3分钟)
+          {
+            id: 'l1-s3',
             type: 'text',
             content: {
-              zh: '🤔 你有没有想过，为什么手机可以认出你的脸？为什么智能音箱能听懂你说的话？这些都是人工智能在帮忙！\n\n人工智能（AI）就像是电脑的大脑，让机器变得越来越聪明。',
-              ja: '🤔 なぜスマホは顔を認識できるの？なぜスマートスピーカーは話を理解できるの？これらは全部AIのおかげ！\n\nAI（人工知能）はコンピュータの脳みたいなもので、機械をどんどん賢くするんだ。'
+              zh: '🤔 什么是人工智能？\n\n你有没有想过：\n• 为什么手机可以认出你的脸？📱\n• 为什么智能音箱能听懂你说的话？🔊\n• 为什么推荐的视频总是你喜欢的？📺\n\n这些都是人工智能（AI）在帮忙！\n\nAI就像是电脑的大脑🧠，让机器变得越来越聪明，能够像人一样思考和学习！',
+              ja: '🤔 人工知能って何？\n\n考えたことある？\n• なぜスマホは顔を認識できるの？📱\n• なぜスマートスピーカーは話を理解できるの？🔊\n• なぜおすすめの動画はいつも好きなもの？📺\n\nこれらは全部AI（人工知能）のおかげ！\n\nAIはコンピュータの脳🧠みたいなもので、機械を賢くして、人間みたいに考えたり学んだりできるようにするんだ！'
             },
             duration: 3
           },
-          {
-            id: 'l1-s3',
-            type: 'image',
-            content: {
-              zh: 'AI就像一个超级聪明的机器人小伙伴，它可以学习、思考、帮我们做很多事情！',
-              ja: 'AIはとっても賢いロボットの友達みたい。学んで、考えて、いろんなことを手伝ってくれるよ！'
-            },
-            imageUrl: '/images/kids/ai-robot-friend.png',
-            duration: 2
-          },
+          // 生活中的AI (3分钟)
           {
             id: 'l1-s4',
             type: 'text',
             content: {
-              zh: '📚 AI的小秘密：\n\n1. AI不会天生就聪明，需要人类教它\n2. AI需要看很多很多例子才能学会\n3. AI可以帮我们节省很多时间\n4. AI是人类的好帮手！',
-              ja: '📚 AIの小さな秘密：\n\n1. AIは生まれつき賢いわけじゃない、人間が教えるんだ\n2. AIはたくさんの例を見て学ぶ\n3. AIは時間を節約してくれる\n4. AIは人間の良い助手！'
+              zh: '🌟 生活中的AI小伙伴\n\n其实，AI就在我们身边！看看这些例子：\n\n🏠 在家里：\n• 小爱同学、天猫精灵会和你聊天\n• 扫地机器人知道怎么打扫房间\n• 智能空调知道什么时候开关\n\n📱 在手机里：\n• 相册会自动整理你的照片\n• 输入法能猜到你想说什么\n• 美颜相机知道怎么让你更好看\n\n🎮 在游戏里：\n• 游戏里的敌人会追着你跑\n• NPC能和你对话\n• 推荐系统知道你喜欢什么游戏',
+              ja: '🌟 生活の中のAI仲間\n\n実は、AIは私たちのそばにいるよ！これらの例を見てみよう：\n\n🏠 家では：\n• スマートスピーカーがおしゃべりしてくれる\n• お掃除ロボットが部屋を掃除してくれる\n• スマートエアコンがいつつけるか知ってる\n\n📱 スマホでは：\n• アルバムが自動で写真を整理\n• 予測変換が言いたいことを当てる\n• 美肌カメラがきれいに撮ってくれる\n\n🎮 ゲームでは：\n• 敵が追いかけてくる\n• NPCと話せる\n• おすすめシステムが好きなゲームを知ってる'
             },
             duration: 3
+          },
+          // 互动环节 (3分钟)
+          {
+            id: 'l1-s5',
+            type: 'interactive',
+            content: {
+              zh: '🎯 互动时间！想一想，你今天用过哪些AI呢？\n\n可能是：\n• 早上让智能音箱放音乐 🎵\n• 用手机拍照 📸\n• 看视频网站推荐的内容 📺\n• 玩游戏 🎮\n\nAI无处不在，是不是很神奇？',
+              ja: '🎯 インタラクティブタイム！今日どんなAIを使った？\n\n例えば：\n• 朝スマートスピーカーで音楽を流した 🎵\n• スマホで写真を撮った 📸\n• 動画サイトのおすすめを見た 📺\n• ゲームで遊んだ 🎮\n\nAIはどこにでもいるね、すごいでしょ？'
+            },
+            duration: 3
+          },
+          // AI的工作原理 (3分钟)
+          {
+            id: 'l1-s6',
+            type: 'text',
+            content: {
+              zh: '🧩 AI是怎么工作的？\n\nAI就像一个超级学霸，它的学习方法是：\n\n1️⃣ 看很多例子 👀\n就像你学认字，要看很多字卡一样，AI也要看成千上万的例子！\n\n2️⃣ 找规律 🔍\n看多了之后，AI就能发现规律。比如看了1万张猫的图片，它就知道猫长什么样了！\n\n3️⃣ 做判断 ✅\n学会之后，AI就能自己判断了。看到新图片，它能说"这是一只猫！"\n\n这个过程叫做"机器学习"！',
+              ja: '🧩 AIはどうやって働くの？\n\nAIはすごい勉強家みたい。学び方は：\n\n1️⃣ たくさんの例を見る 👀\n字を覚えるためにカードをたくさん見るように、AIも何千もの例を見るよ！\n\n2️⃣ パターンを見つける 🔍\nたくさん見ると、AIはパターンを見つけられる。1万枚の猫の写真を見たら、猫がどんな姿か分かるようになる！\n\n3️⃣ 判断する ✅\n学んだ後、AIは自分で判断できる。新しい写真を見て「これは猫だ！」と言えるよ！\n\nこのプロセスを「機械学習」というんだ！'
+            },
+            duration: 3
+          },
+          // AI的秘密 (2分钟)
+          {
+            id: 'l1-s7',
+            type: 'text',
+            content: {
+              zh: '📚 AI的小秘密\n\n🔸 AI不会天生就聪明\n它需要人类当老师，教它很多东西！\n\n🔸 AI需要大量的数据\n就像你需要做很多练习题才能考高分，AI也需要很多例子才能学好！\n\n🔸 AI也会犯错\n就像我们学习时会犯错一样，AI有时候也会判断错误。不过它会从错误中学习，变得越来越准确！\n\n🔸 AI是人类的好帮手\nAI不是来取代人类的，而是帮助我们更好地生活和工作！',
+              ja: '📚 AIの小さな秘密\n\n🔸 AIは生まれつき賢いわけじゃない\n人間が先生になって、たくさんのことを教えるんだ！\n\n🔸 AIはたくさんのデータが必要\n高得点を取るために練習問題をたくさんするように、AIもたくさんの例が必要！\n\n🔸 AIも間違える\n勉強中に間違えるように、AIも時々判断を間違える。でも間違いから学んで、どんどん正確になるよ！\n\n🔸 AIは人間の良い助手\nAIは人間の代わりじゃなくて、生活や仕事をもっと良くするために助けてくれるんだ！'
+            },
+            duration: 2
+          },
+          // 总结 (2分钟)
+          {
+            id: 'l1-s8',
+            type: 'text',
+            content: {
+              zh: '🎓 今天学到了什么？\n\n✅ AI（人工智能）是让电脑变聪明的技术\n✅ AI就在我们身边，帮助我们的生活\n✅ AI通过看很多例子来学习\n✅ AI是人类的好帮手，不是敌人\n\n太棒了！你已经迈出了学习AI的第一步！🌟\n\n接下来，让我们做一些有趣的练习，看看你学会了多少吧！',
+              ja: '🎓 今日何を学んだ？\n\n✅ AI（人工知能）はコンピュータを賢くする技術\n✅ AIは私たちのそばにいて、生活を助けてくれる\n✅ AIはたくさんの例を見て学ぶ\n✅ AIは人間の良い助手で、敵じゃない\n\nすごい！AIを学ぶ最初の一歩を踏み出したね！🌟\n\n次は楽しい練習をして、どれくらい学んだか見てみよう！'
+            },
+            duration: 2
           }
         ],
         exercises: [
+          // 练习1：选择题
           {
             id: 'l1-e1',
             type: 'multiple-choice',
             question: {
-              zh: '人工智能是什么？',
-              ja: '人工知能とは何？'
+              zh: '人工智能（AI）是什么？',
+              ja: '人工知能（AI）とは何？'
             },
             options: [
               { id: 'a', text: { zh: '一种很好吃的糖果', ja: 'おいしいキャンディー' } },
               { id: 'b', text: { zh: '让电脑变聪明的技术', ja: 'コンピュータを賢くする技術' } },
-              { id: 'c', text: { zh: '一种玩具', ja: 'おもちゃの一種' } }
+              { id: 'c', text: { zh: '一种玩具机器人', ja: 'おもちゃのロボット' } },
+              { id: 'd', text: { zh: '一种新的游戏', ja: '新しいゲーム' } }
             ],
             correctAnswer: 'b',
             hint: { zh: '想一想，AI能帮电脑做什么？', ja: 'AIはコンピュータに何をさせる？' },
             encouragement: { zh: '太棒了！你真聪明！🌟', ja: 'すごい！とっても賢いね！🌟' },
-            explanation: { zh: 'AI就是让电脑和机器变得更聪明的技术！', ja: 'AIはコンピュータや機械を賢くする技術だよ！' }
+            explanation: { zh: 'AI就是让电脑和机器变得更聪明的技术，就像给电脑装上了大脑！', ja: 'AIはコンピュータや機械を賢くする技術だよ。コンピュータに脳をつけるようなもの！' }
           },
+          // 练习2：选择题
           {
             id: 'l1-e2',
+            type: 'multiple-choice',
+            question: {
+              zh: '下面哪个是生活中AI的例子？',
+              ja: '次のうち、生活の中のAIの例はどれ？'
+            },
+            options: [
+              { id: 'a', text: { zh: '智能音箱回答你的问题', ja: 'スマートスピーカーが質問に答える' } },
+              { id: 'b', text: { zh: '普通的台灯开关', ja: '普通のデスクランプのスイッチ' } },
+              { id: 'c', text: { zh: '一本书', ja: '本' } },
+              { id: 'd', text: { zh: '一支铅笔', ja: '鉛筆' } }
+            ],
+            correctAnswer: 'a',
+            encouragement: { zh: '答对了！智能音箱用AI来理解你说的话！🎤', ja: '正解！スマートスピーカーはAIを使って話を理解するんだ！🎤' },
+            explanation: { zh: '智能音箱能听懂你说话，还能回答问题，这就是AI在工作！', ja: 'スマートスピーカーは話を理解して質問に答えられる。これがAIの仕事だよ！' }
+          },
+          // 练习3：排序题
+          {
+            id: 'l1-e3',
+            type: 'code-blocks',
+            question: {
+              zh: '请按顺序排列AI学习的步骤：',
+              ja: 'AIの学習ステップを順番に並べてね：'
+            },
+            options: [
+              { id: 'a', text: { zh: '做判断', ja: '判断する' } },
+              { id: 'b', text: { zh: '看很多例子', ja: 'たくさんの例を見る' } },
+              { id: 'c', text: { zh: '找规律', ja: 'パターンを見つける' } }
+            ],
+            correctAnswer: ['b', 'c', 'a'],
+            encouragement: { zh: '完美！你已经理解AI的学习过程了！🧠', ja: 'パーフェクト！AIの学習プロセスを理解したね！🧠' },
+            explanation: { zh: 'AI先看例子，然后找规律，最后就能做判断了！', ja: 'AIはまず例を見て、パターンを見つけて、最後に判断できるようになるよ！' }
+          },
+          // 练习4：选择题
+          {
+            id: 'l1-e4',
             type: 'multiple-choice',
             question: {
               zh: 'AI需要人类来教它吗？',
@@ -179,49 +261,91 @@ export const kidsCourseUnits: KidsCourseUnit[] = [
             ],
             correctAnswer: 'a',
             encouragement: { zh: '答对了！人类是AI的好老师！👨‍🏫', ja: '正解！人間はAIの良い先生！👨‍🏫' },
-            explanation: { zh: 'AI需要人类给它很多例子，它才能学会！', ja: 'AIは人間からたくさんの例をもらって学ぶんだ！' }
+            explanation: { zh: 'AI需要人类给它很多例子和数据，它才能学会！', ja: 'AIは人間からたくさんの例とデータをもらって学ぶんだ！' }
+          },
+          // 练习5：选择题
+          {
+            id: 'l1-e5',
+            type: 'multiple-choice',
+            question: {
+              zh: 'AI和人类是什么关系？',
+              ja: 'AIと人間の関係は？'
+            },
+            options: [
+              { id: 'a', text: { zh: 'AI是人类的敌人', ja: 'AIは人間の敵' } },
+              { id: 'b', text: { zh: 'AI是人类的老板', ja: 'AIは人間のボス' } },
+              { id: 'c', text: { zh: 'AI是人类的好帮手', ja: 'AIは人間の良い助手' } },
+              { id: 'd', text: { zh: 'AI和人类没有关系', ja: 'AIと人間は関係ない' } }
+            ],
+            correctAnswer: 'c',
+            encouragement: { zh: '正确！AI是我们的好朋友和帮手！🤝', ja: '正解！AIは私たちの良い友達と助手！🤝' },
+            explanation: { zh: 'AI帮助我们更好地生活和工作，是人类的好伙伴！', ja: 'AIは生活や仕事をもっと良くするために助けてくれる、人間の良いパートナーだよ！' }
           }
         ],
         quiz: {
           id: 'l1-quiz',
-          passingScore: 2,
-          maxStars: 3,
+          passingScore: 3,
+          maxStars: 5,
           questions: [
             {
               id: 'l1-q1',
               type: 'multiple-choice',
-              question: { zh: '下面哪个是AI的例子？', ja: '次のうち、AIの例はどれ？' },
+              question: { zh: 'AI是什么的缩写？', ja: 'AIは何の略？' },
               options: [
-                { id: 'a', text: { zh: '智能音箱能听懂你说话', ja: 'スマートスピーカーが話を理解する' } },
-                { id: 'b', text: { zh: '普通的闹钟', ja: '普通の目覚まし時計' } },
-                { id: 'c', text: { zh: '一杯水', ja: 'コップ一杯の水' } }
+                { id: 'a', text: { zh: 'Artificial Intelligence（人工智能）', ja: 'Artificial Intelligence（人工知能）' } },
+                { id: 'b', text: { zh: 'Apple iPhone（苹果手机）', ja: 'Apple iPhone（アップルの携帯）' } },
+                { id: 'c', text: { zh: 'Amazing Internet（神奇网络）', ja: 'Amazing Internet（素晴らしいネット）' } }
               ],
               correctAnswer: 'a',
-              encouragement: { zh: '完美！🌟', ja: 'パーフェクト！🌟' }
+              encouragement: { zh: '完美！AI = Artificial Intelligence = 人工智能！🌟', ja: 'パーフェクト！AI = Artificial Intelligence = 人工知能！🌟' }
             },
             {
               id: 'l1-q2',
               type: 'multiple-choice',
-              question: { zh: 'AI可以帮我们做什么？', ja: 'AIは何を手伝ってくれる？' },
+              question: { zh: '下面哪个不是AI的应用？', ja: '次のうち、AIの応用じゃないのはどれ？' },
               options: [
-                { id: 'a', text: { zh: '识别图片', ja: '画像を認識する' } },
-                { id: 'b', text: { zh: '理解语言', ja: '言葉を理解する' } },
-                { id: 'c', text: { zh: '以上都对', ja: '両方とも正しい' } }
+                { id: 'a', text: { zh: '人脸识别解锁手机', ja: '顔認証でスマホを解除' } },
+                { id: 'b', text: { zh: '智能音箱播放音乐', ja: 'スマートスピーカーで音楽を流す' } },
+                { id: 'c', text: { zh: '用钥匙开门', ja: '鍵でドアを開ける' } }
               ],
               correctAnswer: 'c',
-              encouragement: { zh: '太厉害了！🎉', ja: 'すごい！🎉' }
+              encouragement: { zh: '太厉害了！用钥匙开门不需要AI！🔑', ja: 'すごい！鍵でドアを開けるのはAIいらないね！🔑' }
             },
             {
               id: 'l1-q3',
               type: 'multiple-choice',
-              question: { zh: 'AI是人类的...', ja: 'AIは人間の...' },
+              question: { zh: 'AI学习需要什么？', ja: 'AIの学習には何が必要？' },
               options: [
-                { id: 'a', text: { zh: '好帮手', ja: '良い助手' } },
-                { id: 'b', text: { zh: '敌人', ja: '敵' } },
-                { id: 'c', text: { zh: '老板', ja: 'ボス' } }
+                { id: 'a', text: { zh: '很多例子和数据', ja: 'たくさんの例とデータ' } },
+                { id: 'b', text: { zh: '一本魔法书', ja: '魔法の本' } },
+                { id: 'c', text: { zh: '什么都不需要', ja: '何もいらない' } }
               ],
               correctAnswer: 'a',
-              encouragement: { zh: '正确！AI是我们的好朋友！🤝', ja: '正解！AIは私たちの良い友達！🤝' }
+              encouragement: { zh: '正确！AI需要大量的例子来学习！📚', ja: '正解！AIはたくさんの例が必要！📚' }
+            },
+            {
+              id: 'l1-q4',
+              type: 'multiple-choice',
+              question: { zh: 'AI会犯错吗？', ja: 'AIは間違える？' },
+              options: [
+                { id: 'a', text: { zh: '不会，AI永远正确', ja: 'いいえ、AIは常に正しい' } },
+                { id: 'b', text: { zh: '会，但它会从错误中学习', ja: 'はい、でも間違いから学ぶ' } },
+                { id: 'c', text: { zh: 'AI不知道什么是错误', ja: 'AIは間違いを知らない' } }
+              ],
+              correctAnswer: 'b',
+              encouragement: { zh: '答对了！AI也会犯错，但它会不断进步！💪', ja: '正解！AIも間違えるけど、どんどん上達するよ！💪' }
+            },
+            {
+              id: 'l1-q5',
+              type: 'multiple-choice',
+              question: { zh: '今天的课程，你觉得AI是...', ja: '今日のレッスン、AIは...' },
+              options: [
+                { id: 'a', text: { zh: '人类的好帮手', ja: '人間の良い助手' } },
+                { id: 'b', text: { zh: '可怕的机器', ja: '怖い機械' } },
+                { id: 'c', text: { zh: '没有用的东西', ja: '役に立たないもの' } }
+              ],
+              correctAnswer: 'a',
+              encouragement: { zh: '🎉 恭喜你完成了第一课！AI是我们的好朋友！', ja: '🎉 おめでとう！第1課完了！AIは私たちの良い友達！' }
             }
           ]
         }
@@ -232,7 +356,7 @@ export const kidsCourseUnits: KidsCourseUnit[] = [
         unitId: 'unit-1',
         order: 2,
         title: { zh: 'AI能做什么？', ja: 'AIは何ができる？' },
-        duration: 30,
+        duration: 15,
         type: 'interactive',
         starsReward: 10,
         sections: [
@@ -304,7 +428,7 @@ export const kidsCourseUnits: KidsCourseUnit[] = [
         unitId: 'unit-1',
         order: 3,
         title: { zh: '聪明的机器人', ja: '賢いロボット' },
-        duration: 30,
+        duration: 15,
         type: 'video',
         starsReward: 10,
         sections: [
@@ -375,7 +499,7 @@ export const kidsCourseUnits: KidsCourseUnit[] = [
         unitId: 'unit-1',
         order: 4,
         title: { zh: '教机器认图片', ja: '機械に画像を教えよう' },
-        duration: 30,
+        duration: 15,
         type: 'interactive',
         starsReward: 10,
         sections: [
@@ -448,7 +572,7 @@ export const kidsCourseUnits: KidsCourseUnit[] = [
         unitId: 'unit-1',
         order: 5,
         title: { zh: '教机器听声音', ja: '機械に音を教えよう' },
-        duration: 30,
+        duration: 15,
         type: 'interactive',
         starsReward: 10,
         sections: [
@@ -511,7 +635,7 @@ export const kidsCourseUnits: KidsCourseUnit[] = [
         unitId: 'unit-1',
         order: 6,
         title: { zh: '单元小测验', ja: 'ユニットテスト' },
-        duration: 30,
+        duration: 15,
         type: 'quiz',
         starsReward: 15,
         sections: [
@@ -612,7 +736,7 @@ export const kidsCourseUnits: KidsCourseUnit[] = [
         unitId: 'unit-2',
         order: 1,
         title: { zh: '认识Python', ja: 'Pythonを知ろう' },
-        duration: 30,
+        duration: 15,
         type: 'video',
         starsReward: 10,
         sections: [
@@ -668,7 +792,7 @@ export const kidsCourseUnits: KidsCourseUnit[] = [
         unitId: 'unit-2',
         order: 2,
         title: { zh: '让电脑说话 (print)', ja: '電脑に話させよう (print)' },
-        duration: 30,
+        duration: 15,
         type: 'interactive',
         starsReward: 10,
         sections: [
@@ -737,7 +861,7 @@ export const kidsCourseUnits: KidsCourseUnit[] = [
         unitId: 'unit-2',
         order: 3,
         title: { zh: '给电脑取名字 (变量)', ja: '変数に名前をつけよう' },
-        duration: 30,
+        duration: 15,
         type: 'interactive',
         starsReward: 10,
         sections: [
@@ -809,7 +933,7 @@ export const kidsCourseUnits: KidsCourseUnit[] = [
         unitId: 'unit-2',
         order: 4,
         title: { zh: '加减乘除小计算', ja: '足し算引き算かけ算割り算' },
-        duration: 30,
+        duration: 15,
         type: 'interactive',
         starsReward: 10,
         sections: [
@@ -867,7 +991,7 @@ export const kidsCourseUnits: KidsCourseUnit[] = [
         unitId: 'unit-2',
         order: 5,
         title: { zh: '做个小程序', ja: '小さなプログラムを作ろう' },
-        duration: 30,
+        duration: 15,
         type: 'project',
         starsReward: 15,
         sections: [
@@ -915,7 +1039,7 @@ export const kidsCourseUnits: KidsCourseUnit[] = [
         unitId: 'unit-2',
         order: 6,
         title: { zh: '单元小测验', ja: 'ユニットテスト' },
-        duration: 30,
+        duration: 15,
         type: 'quiz',
         starsReward: 15,
         sections: [
@@ -1010,7 +1134,7 @@ export const kidsCourseUnits: KidsCourseUnit[] = [
         unitId: 'unit-3',
         order: 1,
         title: { zh: 'AI怎么看图片', ja: 'AIはどうやって画像を見る？' },
-        duration: 30,
+        duration: 15,
         type: 'video',
         starsReward: 10,
         sections: [
@@ -1066,7 +1190,7 @@ export const kidsCourseUnits: KidsCourseUnit[] = [
         unitId: 'unit-3',
         order: 2,
         title: { zh: '教AI认猫狗', ja: 'AIに猫と犬を教えよう' },
-        duration: 30,
+        duration: 15,
         type: 'interactive',
         starsReward: 10,
         sections: [
@@ -1114,7 +1238,7 @@ export const kidsCourseUnits: KidsCourseUnit[] = [
         unitId: 'unit-3',
         order: 3,
         title: { zh: 'AI画家', ja: 'AI画家' },
-        duration: 30,
+        duration: 15,
         type: 'video',
         starsReward: 10,
         sections: [
@@ -1159,7 +1283,7 @@ export const kidsCourseUnits: KidsCourseUnit[] = [
         unitId: 'unit-3',
         order: 4,
         title: { zh: '动手：图片分类器', ja: '実践：画像分類器' },
-        duration: 30,
+        duration: 15,
         type: 'project',
         starsReward: 15,
         sections: [
@@ -1198,7 +1322,7 @@ export const kidsCourseUnits: KidsCourseUnit[] = [
         unitId: 'unit-3',
         order: 5,
         title: { zh: '动手：AI涂鸦', ja: '実践：AIお絵かき' },
-        duration: 30,
+        duration: 15,
         type: 'project',
         starsReward: 15,
         sections: [
@@ -1235,7 +1359,7 @@ export const kidsCourseUnits: KidsCourseUnit[] = [
         unitId: 'unit-3',
         order: 6,
         title: { zh: '单元小测验', ja: 'ユニットテスト' },
-        duration: 30,
+        duration: 15,
         type: 'quiz',
         starsReward: 15,
         sections: [
@@ -1333,7 +1457,7 @@ export const kidsCourseUnits: KidsCourseUnit[] = [
         unitId: 'unit-4',
         order: 1,
         title: { zh: '聊天机器人原理', ja: 'チャットボットの仕組み' },
-        duration: 30,
+        duration: 15,
         type: 'video',
         starsReward: 10,
         sections: [
@@ -1381,7 +1505,7 @@ export const kidsCourseUnits: KidsCourseUnit[] = [
         unitId: 'unit-4',
         order: 2,
         title: { zh: '教AI说话', ja: 'AIに話を教えよう' },
-        duration: 30,
+        duration: 15,
         type: 'interactive',
         starsReward: 10,
         sections: [
@@ -1427,7 +1551,7 @@ export const kidsCourseUnits: KidsCourseUnit[] = [
         unitId: 'unit-4',
         order: 3,
         title: { zh: '问答小助手', ja: '質問応答アシスタント' },
-        duration: 30,
+        duration: 15,
         type: 'interactive',
         starsReward: 10,
         sections: [
@@ -1473,7 +1597,7 @@ export const kidsCourseUnits: KidsCourseUnit[] = [
         unitId: 'unit-4',
         order: 4,
         title: { zh: '动手：我的聊天伙伴', ja: '実践：私のチャット仲間' },
-        duration: 30,
+        duration: 15,
         type: 'project',
         starsReward: 15,
         sections: [
@@ -1519,7 +1643,7 @@ export const kidsCourseUnits: KidsCourseUnit[] = [
         unitId: 'unit-4',
         order: 5,
         title: { zh: 'AI的未来', ja: 'AIの未来' },
-        duration: 30,
+        duration: 15,
         type: 'video',
         starsReward: 10,
         sections: [
@@ -1565,7 +1689,7 @@ export const kidsCourseUnits: KidsCourseUnit[] = [
         unitId: 'unit-4',
         order: 6,
         title: { zh: '毕业典礼', ja: '卒業式' },
-        duration: 30,
+        duration: 15,
         type: 'quiz',
         starsReward: 20,
         sections: [

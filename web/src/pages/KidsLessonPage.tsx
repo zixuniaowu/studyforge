@@ -5,6 +5,7 @@ import { useLanguageStore } from '../stores/languageStore';
 import { useKidsProgressStore } from '../stores/kidsProgressStore';
 import { getLessonById, getNextLesson } from '../data/kidsCourse';
 import { LessonSection, KidsExercise, KidsQuiz } from '../types';
+import { TeachingMascot, LottieCharacter } from '../components/LottieAnimations';
 
 // 儿童友好配色
 const kidsColors = {
@@ -145,15 +146,12 @@ const SectionContent = ({ section, isZh }: { section: LessonSection; isZh: boole
   return (
     <div className={`bg-white rounded-3xl p-8 shadow-lg mb-6 transition-all duration-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
       {section.type === 'intro' && (
-        <div className="flex items-start gap-4">
-          {/* 动画机器人 */}
-          <div className="text-6xl animate-wave cursor-pointer hover:animate-wiggle">🤖</div>
-          <div className="flex-1 bg-gradient-to-r from-purple-50 to-pink-50 rounded-2xl p-6 relative">
-            {/* 对话气泡尖角 */}
-            <div className="absolute -left-3 top-6 w-4 h-4 bg-purple-50 transform rotate-45" />
-            <p className="text-xl text-gray-700 leading-relaxed">{content}</p>
-          </div>
-        </div>
+        <TeachingMascot
+          message={content}
+          characterType="robot"
+          position="left"
+          isZh={isZh}
+        />
       )}
 
       {section.type === 'text' && (
@@ -222,31 +220,22 @@ const SectionContent = ({ section, isZh }: { section: LessonSection; isZh: boole
 
       {section.type === 'interactive' && (
         <div className="bg-gradient-to-r from-blue-50 to-purple-50 rounded-2xl p-6 relative overflow-hidden">
-          {/* 动画背景 */}
-          <div className="absolute inset-0 opacity-10">
-            {[...Array(5)].map((_, i) => (
-              <span
-                key={i}
-                className="absolute animate-float text-4xl"
-                style={{
-                  left: `${20 + i * 15}%`,
-                  top: `${20 + (i % 2) * 40}%`,
-                  animationDelay: `${i * 0.5}s`,
-                }}
-              >
-                🎮
-              </span>
-            ))}
+          {/* Lottie动画背景 */}
+          <div className="absolute top-0 right-0 opacity-30">
+            <LottieCharacter type="stars" size={100} />
           </div>
-          <div className="relative">
-            <div className="flex items-center gap-3 mb-4">
-              <Sparkles className="w-8 h-8 text-purple-500 animate-spin-star" />
-              <span className="text-xl font-bold text-purple-600 animate-rainbow">
-                {isZh ? '互动时间！' : 'インタラクティブタイム！'}
-              </span>
-              <span className="text-2xl animate-bounce">🎯</span>
+          <div className="relative flex items-start gap-4">
+            <LottieCharacter type="robot" size={100} />
+            <div className="flex-1">
+              <div className="flex items-center gap-3 mb-4">
+                <Sparkles className="w-8 h-8 text-purple-500 animate-spin-star" />
+                <span className="text-xl font-bold text-purple-600 animate-rainbow">
+                  {isZh ? '互动时间！' : 'インタラクティブタイム！'}
+                </span>
+                <span className="text-2xl animate-bounce">🎯</span>
+              </div>
+              <p className="text-lg text-gray-700">{content}</p>
             </div>
-            <p className="text-lg text-gray-700">{content}</p>
           </div>
         </div>
       )}

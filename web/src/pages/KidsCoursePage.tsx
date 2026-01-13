@@ -5,6 +5,7 @@ import { useLanguageStore } from '../stores/languageStore';
 import { useKidsProgressStore } from '../stores/kidsProgressStore';
 import { kidsCourseUnits, kidsLevels } from '../data/kidsCourse';
 import { KidsCourseUnit, KidsLesson } from '../types';
+import { LottieCharacter } from '../components/LottieAnimations';
 
 // 儿童友好配色
 const kidsColors = {
@@ -49,26 +50,52 @@ const FloatingDecorations = () => (
   </div>
 );
 
-// 吉祥物组件
-const Mascot = ({ message, className = '' }: { message: string; className?: string }) => (
-  <div className={`flex items-start gap-4 ${className}`}>
-    <div className="relative">
-      <div className="text-6xl animate-wave" style={{ transformOrigin: '70% 70%' }}>🤖</div>
-      {/* 小星星装饰 */}
-      <span className="absolute -top-2 -right-2 text-xl animate-spin-star" style={{ animationDuration: '3s' }}>✨</span>
-    </div>
-    <div className="relative bg-white rounded-2xl rounded-tl-none p-5 shadow-lg border-2 border-purple-100 max-w-md animate-slideIn">
-      {/* 对话气泡箭头 */}
-      <div className="absolute -left-3 top-4 w-4 h-4 bg-white border-l-2 border-b-2 border-purple-100 transform rotate-45" />
-      <p className="text-lg font-medium text-gray-700 relative z-10">{message}</p>
-      <div className="flex items-center gap-1 mt-2 text-purple-400">
-        <span className="animate-bounce" style={{ animationDelay: '0s' }}>💜</span>
-        <span className="animate-bounce" style={{ animationDelay: '0.1s' }}>💜</span>
-        <span className="animate-bounce" style={{ animationDelay: '0.2s' }}>💜</span>
+// 吉祥物组件 - 使用Lottie动画
+const Mascot = ({ message, className = '' }: { message: string; className?: string }) => {
+  const [displayedText, setDisplayedText] = useState('');
+  const [isTyping, setIsTyping] = useState(true);
+
+  useEffect(() => {
+    setDisplayedText('');
+    setIsTyping(true);
+    let index = 0;
+    const timer = setInterval(() => {
+      if (index < message.length) {
+        setDisplayedText(message.slice(0, index + 1));
+        index++;
+      } else {
+        setIsTyping(false);
+        clearInterval(timer);
+      }
+    }, 40);
+    return () => clearInterval(timer);
+  }, [message]);
+
+  return (
+    <div className={`flex items-start gap-4 ${className}`}>
+      <div className="relative flex-shrink-0">
+        <LottieCharacter type="robot" size={120} />
+        {/* 小星星装饰 */}
+        <span className="absolute -top-1 -right-1 text-xl animate-spin-star" style={{ animationDuration: '3s' }}>✨</span>
+      </div>
+      <div className="relative bg-white rounded-2xl rounded-tl-none p-5 shadow-lg border-2 border-purple-100 max-w-lg animate-slideIn">
+        {/* 对话气泡箭头 */}
+        <div className="absolute -left-3 top-6 w-4 h-4 bg-white border-l-2 border-b-2 border-purple-100 transform rotate-45" />
+        <p className="text-lg font-medium text-gray-700 relative z-10 leading-relaxed">
+          {displayedText}
+          {isTyping && <span className="animate-blink ml-1">|</span>}
+        </p>
+        {!isTyping && (
+          <div className="flex items-center gap-1 mt-3 text-purple-400">
+            <span className="animate-bounce" style={{ animationDelay: '0s' }}>💜</span>
+            <span className="animate-bounce" style={{ animationDelay: '0.1s' }}>💜</span>
+            <span className="animate-bounce" style={{ animationDelay: '0.2s' }}>💜</span>
+          </div>
+        )}
       </div>
     </div>
-  </div>
-);
+  );
+};
 
 // 进度条组件
 const ProgressBar = ({ current, total, color = kidsColors.primary }: { current: number; total: number; color?: string }) => {
