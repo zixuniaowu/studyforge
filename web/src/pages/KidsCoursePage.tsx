@@ -16,12 +16,56 @@ const kidsColors = {
   bg: '#FFF8F0',
 };
 
+// 浮动背景装饰
+const FloatingDecorations = () => (
+  <div className="fixed inset-0 pointer-events-none overflow-hidden z-0">
+    {[...Array(8)].map((_, i) => (
+      <div
+        key={`star-${i}`}
+        className="absolute animate-float opacity-20"
+        style={{
+          left: `${5 + i * 12}%`,
+          top: `${10 + (i % 4) * 20}%`,
+          animationDelay: `${i * 0.5}s`,
+          animationDuration: `${4 + (i % 3)}s`,
+        }}
+      >
+        <span className="text-3xl">{['⭐', '🌟', '✨', '💫', '🎈', '🎀', '🌈', '🦋'][i]}</span>
+      </div>
+    ))}
+    {[...Array(4)].map((_, i) => (
+      <div
+        key={`cloud-${i}`}
+        className="absolute animate-float-slow opacity-15"
+        style={{
+          right: `${5 + i * 20}%`,
+          top: `${15 + i * 20}%`,
+          animationDelay: `${i * 2}s`,
+        }}
+      >
+        <span className="text-6xl">☁️</span>
+      </div>
+    ))}
+  </div>
+);
+
 // 吉祥物组件
 const Mascot = ({ message, className = '' }: { message: string; className?: string }) => (
-  <div className={`flex items-start gap-3 ${className}`}>
-    <div className="text-5xl animate-bounce">🤖</div>
-    <div className="bg-white rounded-2xl rounded-tl-none p-4 shadow-lg border-2 border-gray-100 max-w-xs">
-      <p className="text-lg font-medium text-gray-700">{message}</p>
+  <div className={`flex items-start gap-4 ${className}`}>
+    <div className="relative">
+      <div className="text-6xl animate-wave" style={{ transformOrigin: '70% 70%' }}>🤖</div>
+      {/* 小星星装饰 */}
+      <span className="absolute -top-2 -right-2 text-xl animate-spin-star" style={{ animationDuration: '3s' }}>✨</span>
+    </div>
+    <div className="relative bg-white rounded-2xl rounded-tl-none p-5 shadow-lg border-2 border-purple-100 max-w-md animate-slideIn">
+      {/* 对话气泡箭头 */}
+      <div className="absolute -left-3 top-4 w-4 h-4 bg-white border-l-2 border-b-2 border-purple-100 transform rotate-45" />
+      <p className="text-lg font-medium text-gray-700 relative z-10">{message}</p>
+      <div className="flex items-center gap-1 mt-2 text-purple-400">
+        <span className="animate-bounce" style={{ animationDelay: '0s' }}>💜</span>
+        <span className="animate-bounce" style={{ animationDelay: '0.1s' }}>💜</span>
+        <span className="animate-bounce" style={{ animationDelay: '0.2s' }}>💜</span>
+      </div>
     </div>
   </div>
 );
@@ -30,11 +74,28 @@ const Mascot = ({ message, className = '' }: { message: string; className?: stri
 const ProgressBar = ({ current, total, color = kidsColors.primary }: { current: number; total: number; color?: string }) => {
   const percentage = Math.min(100, (current / total) * 100);
   return (
-    <div className="w-full bg-gray-200 rounded-full h-4 overflow-hidden">
+    <div className="relative w-24 bg-gray-200 rounded-full h-4 overflow-hidden">
       <div
-        className="h-full rounded-full transition-all duration-500 ease-out"
+        className="h-full rounded-full transition-all duration-500 ease-out relative overflow-hidden"
         style={{ width: `${percentage}%`, backgroundColor: color }}
-      />
+      >
+        {/* 闪光效果 */}
+        <div
+          className="absolute inset-0 animate-shimmer"
+          style={{
+            background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent)',
+          }}
+        />
+      </div>
+      {/* 进度条上的小星星 */}
+      {percentage > 10 && (
+        <div
+          className="absolute top-1/2 -translate-y-1/2 text-xs"
+          style={{ left: `calc(${Math.min(percentage, 95)}% - 6px)` }}
+        >
+          ⭐
+        </div>
+      )}
     </div>
   );
 };
@@ -300,28 +361,31 @@ export default function KidsCoursePage() {
   }
 
   return (
-    <div className="min-h-screen pb-20" style={{ backgroundColor: kidsColors.bg }}>
+    <div className="min-h-screen pb-20 relative" style={{ backgroundColor: kidsColors.bg }}>
+      {/* 浮动背景装饰 */}
+      <FloatingDecorations />
+
       {/* 顶部状态栏 - 全宽 */}
-      <div className="sticky top-0 z-10 bg-gradient-to-r from-purple-500 to-pink-500 text-white shadow-lg">
+      <div className="sticky top-0 z-10 bg-gradient-to-r from-purple-500 via-pink-500 to-orange-400 text-white shadow-lg">
         <div className="w-full px-6 lg:px-12 py-4">
           <div className="flex items-center justify-between">
             {/* 等级和星星 */}
             <div className="flex items-center gap-4">
-              <div className="bg-white/20 backdrop-blur rounded-2xl px-5 py-3 flex items-center gap-3">
-                <Trophy className="w-7 h-7 text-yellow-300" />
+              <div className="bg-white/20 backdrop-blur-sm rounded-2xl px-5 py-3 flex items-center gap-3 hover:bg-white/30 transition-all cursor-default">
+                <Trophy className="w-7 h-7 text-yellow-300 animate-pulse" />
                 <span className="font-bold text-lg">
                   Lv.{level} {isZh ? currentLevelConfig?.title.zh : currentLevelConfig?.title.ja}
                 </span>
               </div>
-              <div className="bg-white/20 backdrop-blur rounded-2xl px-5 py-3 flex items-center gap-3">
-                <Star className="w-7 h-7 text-yellow-300 fill-yellow-300" />
+              <div className="bg-white/20 backdrop-blur-sm rounded-2xl px-5 py-3 flex items-center gap-3 hover:bg-white/30 transition-all cursor-default">
+                <Star className="w-7 h-7 text-yellow-300 fill-yellow-300 animate-spin-star" style={{ animationDuration: '5s' }} />
                 <span className="font-bold text-lg">{totalStars}</span>
               </div>
             </div>
 
             {/* 连续学习 */}
-            <div className="bg-white/20 backdrop-blur rounded-2xl px-5 py-3 flex items-center gap-3">
-              <Flame className="w-7 h-7 text-orange-300" />
+            <div className="bg-white/20 backdrop-blur-sm rounded-2xl px-5 py-3 flex items-center gap-3 hover:bg-white/30 transition-all cursor-default">
+              <Flame className="w-7 h-7 text-orange-300 animate-heartbeat" />
               <span className="font-bold text-lg">
                 {streak} {isZh ? '天' : '日'}
               </span>
@@ -331,14 +395,34 @@ export default function KidsCoursePage() {
           {/* 等级进度条 */}
           <div className="mt-4">
             <div className="flex items-center justify-between text-sm mb-2">
-              <span>{isZh ? '升级进度' : 'レベルアップ進捗'}</span>
+              <span className="flex items-center gap-1">
+                <span className="animate-bounce text-sm">🚀</span>
+                {isZh ? '升级进度' : 'レベルアップ進捗'}
+              </span>
               <span>{levelProgress.current}/{levelProgress.next}</span>
             </div>
-            <div className="w-full bg-white/30 rounded-full h-4">
+            <div className="relative w-full bg-white/30 rounded-full h-5 overflow-hidden">
               <div
-                className="h-full bg-yellow-300 rounded-full transition-all duration-500"
+                className="h-full bg-yellow-300 rounded-full transition-all duration-500 relative overflow-hidden"
                 style={{ width: `${levelProgress.progress}%` }}
-              />
+              >
+                {/* 闪光效果 */}
+                <div
+                  className="absolute inset-0 animate-shimmer"
+                  style={{
+                    background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.5), transparent)',
+                  }}
+                />
+              </div>
+              {/* 进度条上的小火箭 */}
+              {levelProgress.progress > 5 && (
+                <div
+                  className="absolute top-1/2 -translate-y-1/2"
+                  style={{ left: `calc(${Math.min(levelProgress.progress, 97)}% - 8px)` }}
+                >
+                  <span className="text-sm">🚀</span>
+                </div>
+              )}
             </div>
           </div>
         </div>
