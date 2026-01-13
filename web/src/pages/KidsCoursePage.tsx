@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Star, Trophy, Flame, ChevronRight, Lock, CheckCircle, Play, Sparkles } from 'lucide-react';
+import { Star, Trophy, Flame, ChevronRight, Lock, CheckCircle, Play, Sparkles, Home, Globe } from 'lucide-react';
 import { useLanguageStore } from '../stores/languageStore';
 import { useKidsProgressStore } from '../stores/kidsProgressStore';
 import { kidsCourseUnits, kidsLevels } from '../data/kidsCourse';
@@ -396,8 +396,16 @@ export default function KidsCoursePage() {
       <div className="sticky top-0 z-10 bg-gradient-to-r from-purple-500 via-pink-500 to-orange-400 text-white shadow-lg">
         <div className="w-full px-6 lg:px-12 py-4">
           <div className="flex items-center justify-between">
-            {/* 等级和星星 */}
+            {/* 返回按钮 + 等级和星星 */}
             <div className="flex items-center gap-4">
+              {/* 返回主页按钮 */}
+              <button
+                onClick={() => navigate('/')}
+                className="bg-white/20 backdrop-blur-sm rounded-2xl px-4 py-3 flex items-center gap-2 hover:bg-white/30 transition-all"
+              >
+                <Home className="w-6 h-6" />
+                <span className="font-medium hidden sm:inline">{isZh ? '主页' : 'ホーム'}</span>
+              </button>
               <div className="bg-white/20 backdrop-blur-sm rounded-2xl px-5 py-3 flex items-center gap-3 hover:bg-white/30 transition-all cursor-default">
                 <Trophy className="w-7 h-7 text-yellow-300 animate-pulse" />
                 <span className="font-bold text-lg">
@@ -410,12 +418,22 @@ export default function KidsCoursePage() {
               </div>
             </div>
 
-            {/* 连续学习 */}
-            <div className="bg-white/20 backdrop-blur-sm rounded-2xl px-5 py-3 flex items-center gap-3 hover:bg-white/30 transition-all cursor-default">
-              <Flame className="w-7 h-7 text-orange-300 animate-heartbeat" />
-              <span className="font-bold text-lg">
-                {streak} {isZh ? '天' : '日'}
-              </span>
+            {/* 连续学习 + 语言切换 */}
+            <div className="flex items-center gap-3">
+              <div className="bg-white/20 backdrop-blur-sm rounded-2xl px-5 py-3 flex items-center gap-3 hover:bg-white/30 transition-all cursor-default">
+                <Flame className="w-7 h-7 text-orange-300 animate-heartbeat" />
+                <span className="font-bold text-lg">
+                  {streak} {isZh ? '天' : '日'}
+                </span>
+              </div>
+              {/* 语言切换按钮 */}
+              <button
+                onClick={() => useLanguageStore.getState().setLanguage(isZh ? 'ja' : 'zh')}
+                className="bg-white/20 backdrop-blur-sm rounded-2xl px-4 py-3 flex items-center gap-2 hover:bg-white/30 transition-all"
+              >
+                <Globe className="w-6 h-6" />
+                <span className="font-medium">{isZh ? '日本語' : '中文'}</span>
+              </button>
             </div>
           </div>
 
