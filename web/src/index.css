@@ -336,3 +336,151 @@ body {
   animation: wave 2s ease-in-out infinite;
   transform-origin: 70% 70%;
 }
+
+/* ============================================
+   Course Map Animations
+   ============================================ */
+
+/* 星星闪烁 (空间主题) */
+@keyframes twinkle {
+  0%, 100% {
+    opacity: 0.3;
+    transform: scale(0.8);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+}
+
+.animate-twinkle {
+  animation: twinkle 2s ease-in-out infinite;
+}
+
+/* 爆炸效果 */
+@keyframes explode {
+  0% {
+    transform: rotate(var(--rotation, 0deg)) translateY(0) scale(0);
+    opacity: 1;
+  }
+  100% {
+    transform: rotate(var(--rotation, 0deg)) translateY(-150px) scale(1);
+    opacity: 0;
+  }
+}
+
+.animate-explode {
+  animation: explode 1s ease-out forwards;
+}
+
+/* 路径移动动画 */
+@keyframes path-travel {
+  0% {
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.animate-path-travel {
+  animation: path-travel 2s ease-in-out infinite;
+}
+
+/* 海洋波浪 */
+@keyframes ocean-wave {
+  0%, 100% {
+    transform: translateY(0) scaleY(1);
+  }
+  50% {
+    transform: translateY(-5px) scaleY(1.1);
+  }
+}
+
+.animate-ocean-wave {
+  animation: ocean-wave 3s ease-in-out infinite;
+}
+
+/* 节点发光 */
+@keyframes node-glow {
+  0%, 100% {
+    box-shadow: 0 0 10px rgba(var(--glow-color), 0.5);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(var(--glow-color), 0.8);
+  }
+}
+
+.animate-node-glow {
+  animation: node-glow 2s ease-in-out infinite;
+}
+
+/* 解锁动画 */
+@keyframes unlock {
+  0% {
+    transform: scale(0.5) rotate(-180deg);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.2) rotate(0deg);
+  }
+  100% {
+    transform: scale(1) rotate(0deg);
+    opacity: 1;
+  }
+}
+
+.animate-unlock {
+  animation: unlock 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
+}
+
+/* 路径绘制 */
+@keyframes draw-path {
+  0% {
+    stroke-dashoffset: 100%;
+  }
+  100% {
+    stroke-dashoffset: 0%;
+  }
+}
+
+.animate-draw-path {
+  animation: draw-path 1s ease-out forwards;
+}
+
+/* 地图滑动过渡 */
+@keyframes slide-left {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slide-right {
+  from {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.animate-slide-left {
+  animation: slide-left 0.5s ease-out forwards;
+}
+
+.animate-slide-right {
+  animation: slide-right 0.5s ease-out forwards;
+}

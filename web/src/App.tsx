@@ -15,6 +15,9 @@ import NotesPage from './pages/NotesPage';
 import FlashcardsPage from './pages/FlashcardsPage';
 import KidsCoursePage from './pages/KidsCoursePage';
 import KidsLessonPage from './pages/KidsLessonPage';
+import KidsClassifyGamePage from './pages/KidsClassifyGamePage';
+import KidsAITrainerPage from './pages/KidsAITrainerPage';
+import KidsStoryPage from './pages/KidsStoryPage';
 
 function AppContent() {
   const location = useLocation();
@@ -29,7 +32,10 @@ function AppContent() {
     location.pathname.startsWith('/glossary') ||
     location.pathname.startsWith('/notes') ||
     location.pathname.startsWith('/flashcards') ||
-    location.pathname.startsWith('/kids-course');
+    location.pathname.startsWith('/kids-course') ||
+    location.pathname.startsWith('/kids-classify') ||
+    location.pathname.startsWith('/kids-ai-trainer') ||
+    location.pathname.startsWith('/kids-story');
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -51,6 +57,10 @@ function AppContent() {
         {/* Kids AI Course */}
         <Route path="/kids-course" element={<KidsCoursePage />} />
         <Route path="/kids-course/:lessonId" element={<KidsLessonPage />} />
+        <Route path="/kids-classify-game" element={<KidsClassifyGamePage />} />
+        <Route path="/kids-classify-game/:levelId" element={<KidsClassifyGamePage />} />
+        <Route path="/kids-ai-trainer" element={<KidsAITrainerPage />} />
+        <Route path="/kids-story" element={<KidsStoryPage />} />
       </Routes>
     </div>
   );

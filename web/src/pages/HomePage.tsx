@@ -724,7 +724,7 @@ export const HomePage: React.FC = () => {
             )}
             {/* Language Switcher */}
             <button
-              onClick={() => setLanguage(language === 'ja' ? 'zh-CN' : 'ja')}
+              onClick={() => setLanguage(language === 'ja' ? 'zh' : 'ja')}
               className="flex items-center gap-1.5 px-3 py-1.5 bg-slate-700 hover:bg-slate-600 rounded text-sm transition-colors"
             >
               <Globe className="w-4 h-4" />

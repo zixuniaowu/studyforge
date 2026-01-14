@@ -1,11 +1,12 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Star, Trophy, Flame, ChevronRight, Lock, CheckCircle, Play, Sparkles, Home, Globe } from 'lucide-react';
+import { Star, Trophy, Flame, ChevronRight, Lock, CheckCircle, Play, Sparkles, Home, Globe, Map, List } from 'lucide-react';
 import { useLanguageStore } from '../stores/languageStore';
 import { useKidsProgressStore } from '../stores/kidsProgressStore';
 import { kidsCourseUnits, kidsLevels } from '../data/kidsCourse';
 import { KidsCourseUnit, KidsLesson } from '../types';
 import { LottieCharacter } from '../components/LottieAnimations';
+import { MapCanvas } from '../components/CourseMap';
 
 // 儿童友好配色
 const kidsColors = {
@@ -329,10 +330,14 @@ const DailyTasks = () => {
   );
 };
 
+// 视图类型
+type ViewMode = 'map' | 'list';
+
 // 主页面组件
 export default function KidsCoursePage() {
   const navigate = useNavigate();
   const { language } = useLanguageStore();
+  const [viewMode, setViewMode] = useState<ViewMode>('map'); // 默认显示地图视图
   const {
     initialize,
     isLoading,
@@ -426,6 +431,31 @@ export default function KidsCoursePage() {
                   {streak} {isZh ? '天' : '日'}
                 </span>
               </div>
+              {/* 视图切换按钮 */}
+              <div className="flex items-center bg-white/20 backdrop-blur-sm rounded-2xl p-1">
+                <button
+                  onClick={() => setViewMode('map')}
+                  className={`px-4 py-2 rounded-xl flex items-center gap-2 transition-all ${
+                    viewMode === 'map'
+                      ? 'bg-white text-purple-600 shadow-md'
+                      : 'text-white hover:bg-white/20'
+                  }`}
+                >
+                  <Map className="w-5 h-5" />
+                  <span className="font-medium hidden sm:inline">{isZh ? '地图' : 'マップ'}</span>
+                </button>
+                <button
+                  onClick={() => setViewMode('list')}
+                  className={`px-4 py-2 rounded-xl flex items-center gap-2 transition-all ${
+                    viewMode === 'list'
+                      ? 'bg-white text-purple-600 shadow-md'
+                      : 'text-white hover:bg-white/20'
+                  }`}
+                >
+                  <List className="w-5 h-5" />
+                  <span className="font-medium hidden sm:inline">{isZh ? '列表' : 'リスト'}</span>
+                </button>
+              </div>
               {/* 语言切换按钮 */}
               <button
                 onClick={() => useLanguageStore.getState().setLanguage(isZh ? 'ja' : 'zh')}
@@ -484,55 +514,161 @@ export default function KidsCoursePage() {
           className="mb-8"
         />
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
-          {/* 课程列表 - 占 8/12 */}
-          <div className="lg:col-span-8 space-y-6">
+        {/* 根据视图模式显示不同内容 */}
+        {viewMode === 'map' ? (
+          /* 地图视图 */
+          <div className="space-y-6">
             <h2 className="text-3xl font-bold text-gray-800 flex items-center gap-3">
-              📚 {isZh ? '小小AI探险家课程' : '小さなAI冒険家コース'}
+              🗺️ {isZh ? '小小AI探险家课程' : '小さなAI冒険家コース'}
             </h2>
+            <MapCanvas
+              units={kidsCourseUnits}
+              onLessonClick={handleLessonClick}
+            />
 
-            {kidsCourseUnits.map((unit, index) => (
-              <UnitCard
-                key={unit.id}
-                unit={unit}
-                index={index}
-                isUnlocked={isUnitUnlocked(index)}
-                completedCount={getUnitCompletedCount(unit)}
-                onLessonClick={handleLessonClick}
-              />
-            ))}
-          </div>
+            {/* 地图视图下的简化侧边栏 */}
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-6">
+              <div className="bg-white rounded-2xl p-4 shadow-lg text-center">
+                <div className="text-3xl font-bold text-purple-600">{completedCount}</div>
+                <div className="text-sm text-purple-500 mt-1">{isZh ? '已完成' : '完了'}</div>
+              </div>
+              <div className="bg-white rounded-2xl p-4 shadow-lg text-center">
+                <div className="text-3xl font-bold text-yellow-600 flex items-center justify-center gap-1">
+                  {totalStars}
+                  <Star className="w-5 h-5 fill-yellow-400 text-yellow-400" />
+                </div>
+                <div className="text-sm text-yellow-500 mt-1">{isZh ? '星星' : '星'}</div>
+              </div>
+              <div className="bg-white rounded-2xl p-4 shadow-lg text-center">
+                <div className="text-3xl font-bold text-orange-600 flex items-center justify-center gap-1">
+                  {streak}
+                  <Flame className="w-5 h-5 text-orange-400" />
+                </div>
+                <div className="text-sm text-orange-500 mt-1">{isZh ? '连续' : '連続'}</div>
+              </div>
+              <div className="bg-white rounded-2xl p-4 shadow-lg text-center">
+                <div className="text-3xl font-bold text-green-600 flex items-center justify-center gap-1">
+                  Lv.{level}
+                  <Trophy className="w-5 h-5 text-green-400" />
+                </div>
+                <div className="text-sm text-green-500 mt-1">{isZh ? '等级' : 'レベル'}</div>
+              </div>
+            </div>
 
-          {/* 侧边栏 - 占 4/12 */}
-          <div className="lg:col-span-4 space-y-6">
-            <DailyTasks />
-
-            {/* 学习统计 */}
-            <div className="bg-white rounded-3xl p-6 shadow-lg">
-              <h3 className="text-xl font-bold text-gray-800 mb-4">
-                📊 {isZh ? '学习统计' : '学習統計'}
+            {/* Mini Games Section */}
+            <div className="mt-8">
+              <h3 className="text-2xl font-bold text-gray-800 mb-4 flex items-center gap-2">
+                🎮 {isZh ? 'AI小游戏' : 'AIミニゲーム'}
               </h3>
-              <div className="grid grid-cols-2 gap-4">
-                <div className="bg-purple-50 rounded-2xl p-5 text-center">
-                  <div className="text-4xl font-bold text-purple-600">{completedCount}</div>
-                  <div className="text-sm text-purple-500 mt-2">{isZh ? '已完成课程' : '完了レッスン'}</div>
-                </div>
-                <div className="bg-yellow-50 rounded-2xl p-5 text-center">
-                  <div className="text-4xl font-bold text-yellow-600">{totalStars}</div>
-                  <div className="text-sm text-yellow-500 mt-2">{isZh ? '获得星星' : '獲得した星'}</div>
-                </div>
-                <div className="bg-orange-50 rounded-2xl p-5 text-center">
-                  <div className="text-4xl font-bold text-orange-600">{streak}</div>
-                  <div className="text-sm text-orange-500 mt-2">{isZh ? '连续天数' : '連続日数'}</div>
-                </div>
-                <div className="bg-green-50 rounded-2xl p-5 text-center">
-                  <div className="text-4xl font-bold text-green-600">{level}</div>
-                  <div className="text-sm text-green-500 mt-2">{isZh ? '当前等级' : '現在のレベル'}</div>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                {/* Image Classification Game */}
+                <button
+                  onClick={() => navigate('/kids-classify-game')}
+                  className="bg-gradient-to-br from-orange-400 to-pink-500 rounded-3xl p-6 text-white text-left shadow-lg hover:shadow-xl transition-all hover:scale-105"
+                >
+                  <div className="text-4xl mb-3">🖼️</div>
+                  <h4 className="text-xl font-bold mb-2">
+                    {isZh ? '图片分类大师' : '画像分類マスター'}
+                  </h4>
+                  <p className="text-white/80 text-sm">
+                    {isZh ? '像AI一样给图片分类！' : 'AIのように画像を分類しよう！'}
+                  </p>
+                  <div className="mt-3 flex items-center gap-2 text-sm">
+                    <span className="bg-white/20 px-2 py-1 rounded-full">6 {isZh ? '关卡' : 'レベル'}</span>
+                    <span className="bg-white/20 px-2 py-1 rounded-full">⭐ 97</span>
+                  </div>
+                </button>
+
+                {/* AI Trainer */}
+                <button
+                  onClick={() => navigate('/kids-ai-trainer')}
+                  className="bg-gradient-to-br from-purple-400 to-blue-500 rounded-3xl p-6 text-white text-left shadow-lg hover:shadow-xl transition-all hover:scale-105"
+                >
+                  <div className="text-4xl mb-3">🧠</div>
+                  <h4 className="text-xl font-bold mb-2">
+                    {isZh ? '训练我的AI' : '私のAIを訓練'}
+                  </h4>
+                  <p className="text-white/80 text-sm">
+                    {isZh ? '创建你自己的AI模型！' : '自分だけのAIモデルを作ろう！'}
+                  </p>
+                  <div className="mt-3 flex items-center gap-2 text-sm">
+                    <span className="bg-white/20 px-2 py-1 rounded-full">3 {isZh ? '项目' : 'プロジェクト'}</span>
+                    <span className="bg-white/20 px-2 py-1 rounded-full">⭐ 60</span>
+                  </div>
+                </button>
+
+                {/* Story Mode */}
+                <button
+                  onClick={() => navigate('/kids-story')}
+                  className="bg-gradient-to-br from-green-400 to-teal-500 rounded-3xl p-6 text-white text-left shadow-lg hover:shadow-xl transition-all hover:scale-105"
+                >
+                  <div className="text-4xl mb-3">📖</div>
+                  <h4 className="text-xl font-bold mb-2">
+                    {isZh ? '小AI的冒险' : '小さなAIの冒険'}
+                  </h4>
+                  <p className="text-white/80 text-sm">
+                    {isZh ? '跟随小AI一起冒险！' : '小さなAIと一緒に冒険しよう！'}
+                  </p>
+                  <div className="mt-3 flex items-center gap-2 text-sm">
+                    <span className="bg-white/20 px-2 py-1 rounded-full">4 {isZh ? '章节' : 'チャプター'}</span>
+                    <span className="bg-white/20 px-2 py-1 rounded-full">⭐ NEW</span>
+                  </div>
+                </button>
+              </div>
+            </div>
+          </div>
+        ) : (
+          /* 列表视图 */
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
+            {/* 课程列表 - 占 8/12 */}
+            <div className="lg:col-span-8 space-y-6">
+              <h2 className="text-3xl font-bold text-gray-800 flex items-center gap-3">
+                📚 {isZh ? '小小AI探险家课程' : '小さなAI冒険家コース'}
+              </h2>
+
+              {kidsCourseUnits.map((unit, index) => (
+                <UnitCard
+                  key={unit.id}
+                  unit={unit}
+                  index={index}
+                  isUnlocked={isUnitUnlocked(index)}
+                  completedCount={getUnitCompletedCount(unit)}
+                  onLessonClick={handleLessonClick}
+                />
+              ))}
+            </div>
+
+            {/* 侧边栏 - 占 4/12 */}
+            <div className="lg:col-span-4 space-y-6">
+              <DailyTasks />
+
+              {/* 学习统计 */}
+              <div className="bg-white rounded-3xl p-6 shadow-lg">
+                <h3 className="text-xl font-bold text-gray-800 mb-4">
+                  📊 {isZh ? '学习统计' : '学習統計'}
+                </h3>
+                <div className="grid grid-cols-2 gap-4">
+                  <div className="bg-purple-50 rounded-2xl p-5 text-center">
+                    <div className="text-4xl font-bold text-purple-600">{completedCount}</div>
+                    <div className="text-sm text-purple-500 mt-2">{isZh ? '已完成课程' : '完了レッスン'}</div>
+                  </div>
+                  <div className="bg-yellow-50 rounded-2xl p-5 text-center">
+                    <div className="text-4xl font-bold text-yellow-600">{totalStars}</div>
+                    <div className="text-sm text-yellow-500 mt-2">{isZh ? '获得星星' : '獲得した星'}</div>
+                  </div>
+                  <div className="bg-orange-50 rounded-2xl p-5 text-center">
+                    <div className="text-4xl font-bold text-orange-600">{streak}</div>
+                    <div className="text-sm text-orange-500 mt-2">{isZh ? '连续天数' : '連続日数'}</div>
+                  </div>
+                  <div className="bg-green-50 rounded-2xl p-5 text-center">
+                    <div className="text-4xl font-bold text-green-600">{level}</div>
+                    <div className="text-sm text-green-500 mt-2">{isZh ? '当前等级' : '現在のレベル'}</div>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
+        )}
       </div>
     </div>
   );
