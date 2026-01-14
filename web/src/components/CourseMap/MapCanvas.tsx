@@ -18,10 +18,13 @@ const unitThemes: UnitTheme[] = ['forest', 'city', 'ocean', 'space'];
 // Calculate lesson positions in a zigzag pattern
 const calculateLessonPositions = (lessons: KidsLesson[], canvasWidth: number, canvasHeight: number) => {
   const positions: { x: number; y: number }[] = [];
-  const marginX = 100;
-  const marginY = 80;
+  // 进一步减小边距，最大化利用空间
+  const marginX = 40;
+  const marginY = 50;
   const availableWidth = canvasWidth - marginX * 2;
   const availableHeight = canvasHeight - marginY * 2;
+
+  const rowCount = Math.ceil(lessons.length / 3);
 
   lessons.forEach((_, index) => {
     const row = Math.floor(index / 3);
@@ -30,16 +33,17 @@ const calculateLessonPositions = (lessons: KidsLesson[], canvasWidth: number, ca
     // Zigzag pattern: even rows go left-to-right, odd rows go right-to-left
     const actualCol = row % 2 === 0 ? col : 2 - col;
 
+    // 更均匀的分布
     const x = marginX + (actualCol / 2) * availableWidth;
-    const y = marginY + (row / Math.ceil(lessons.length / 3)) * availableHeight * 0.8;
+    const y = marginY + (rowCount > 1 ? (row / (rowCount - 1)) * availableHeight * 0.85 : availableHeight * 0.4);
 
     // Add some randomness for organic feel
-    const offsetX = (Math.random() - 0.5) * 30;
-    const offsetY = (Math.random() - 0.5) * 20;
+    const offsetX = (Math.random() - 0.5) * 20;
+    const offsetY = (Math.random() - 0.5) * 15;
 
     positions.push({
-      x: Math.max(80, Math.min(canvasWidth - 80, x + offsetX)),
-      y: Math.max(80, Math.min(canvasHeight - 80, y + offsetY)),
+      x: Math.max(40, Math.min(canvasWidth - 40, x + offsetX)),
+      y: Math.max(50, Math.min(canvasHeight - 50, y + offsetY)),
     });
   });
 
@@ -59,14 +63,16 @@ export const MapCanvas = ({ units, onLessonClick }: MapCanvasProps) => {
     const updateSize = () => {
       if (containerRef.current) {
         const rect = containerRef.current.getBoundingClientRect();
+        // 使用容器的实际宽度，不设最小值限制
         setCanvasSize({
-          width: Math.max(600, rect.width),
+          width: rect.width || window.innerWidth - 48,
           height: Math.max(500, Math.min(700, window.innerHeight - 300)),
         });
       }
     };
 
-    updateSize();
+    // 初始化时延迟一下确保容器已渲染
+    setTimeout(updateSize, 100);
     window.addEventListener('resize', updateSize);
     return () => window.removeEventListener('resize', updateSize);
   }, []);
@@ -162,11 +168,9 @@ export const MapCanvas = ({ units, onLessonClick }: MapCanvasProps) => {
 
       {/* Map canvas */}
       <div
-        className="relative rounded-3xl overflow-hidden shadow-xl border-4 border-white/50"
+        className="relative w-full rounded-3xl overflow-hidden shadow-xl border-4 border-white/50"
         style={{
-          width: canvasSize.width,
           height: canvasSize.height,
-          margin: '0 auto',
         }}
       >
         {/* Theme decorations */}
@@ -178,9 +182,7 @@ export const MapCanvas = ({ units, onLessonClick }: MapCanvasProps) => {
 
         {/* SVG layer for paths */}
         <svg
-          className="absolute inset-0 pointer-events-none"
-          width={canvasSize.width}
-          height={canvasSize.height}
+          className="absolute inset-0 w-full h-full pointer-events-none"
         >
           {lessons.slice(0, -1).map((lesson, index) => (
             <MapPath
@@ -209,18 +211,18 @@ export const MapCanvas = ({ units, onLessonClick }: MapCanvasProps) => {
         {lessons.length > 0 && (
           <>
             <div
-              className="absolute text-2xl animate-bounce pointer-events-none"
+              className="absolute text-xl font-bold text-green-600 animate-bounce pointer-events-none whitespace-nowrap"
               style={{
-                left: positions[0].x - 60,
-                top: positions[0].y - 10,
+                left: Math.max(5, positions[0].x - 50),
+                top: positions[0].y - 30,
               }}
             >
-              {isZh ? '出发!' : 'スタート!'}
+              {isZh ? '🚀出发!' : '🚀スタート!'}
             </div>
             <div
               className="absolute text-2xl animate-bounce pointer-events-none"
               style={{
-                left: positions[positions.length - 1].x + 40,
+                left: Math.min(positions[positions.length - 1].x + 30, canvasSize.width - 40),
                 top: positions[positions.length - 1].y - 10,
               }}
             >
@@ -251,10 +253,6 @@ export const MapCanvas = ({ units, onLessonClick }: MapCanvasProps) => {
         )}
       </div>
 
-      {/* Touch hint for mobile */}
-      <p className="text-center text-gray-500 text-sm mt-4">
-        {isZh ? '← 滑动切换单元 →' : '← スワイプでユニット切替 →'}
-      </p>
     </div>
   );
 };

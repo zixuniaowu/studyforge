@@ -489,9 +489,9 @@ export const HomePage: React.FC = () => {
       <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-indigo-50/30 flex flex-col items-center justify-center">
         <div className="relative">
           <div className="absolute inset-0 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-full blur-xl opacity-30 animate-pulse"></div>
-          <Loader2 size={48} className="relative animate-spin text-indigo-600" />
+          <Loader2 size={56} className="relative animate-spin text-indigo-600" />
         </div>
-        <p className="mt-5 text-lg text-gray-600">
+        <p className="mt-6 text-xl text-gray-600">
           {importing ? (language === 'ja' ? 'データを読み込み中...' : '正在加载题库...') : (language === 'ja' ? '読み込み中...' : '加载中...')}
         </p>
       </div>
@@ -504,29 +504,29 @@ export const HomePage: React.FC = () => {
     return (
       <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-indigo-50/30">
         <div className={`bg-gradient-to-r ${config.bgGradient} border-b ${config.borderColor}`}>
-          <div className="px-3 lg:px-6 py-4">
+          <div className="px-4 lg:px-8 py-5">
             <button
               onClick={() => { setSelectedView(null); setCertCodeFilter(null); }}
-              className="flex items-center gap-2 text-gray-600 hover:text-gray-900 mb-3 transition-colors text-sm"
+              className="flex items-center gap-2 text-gray-600 hover:text-gray-900 mb-4 transition-colors text-base"
             >
-              <ArrowLeft size={16} />
+              <ArrowLeft size={18} />
               <span>{language === 'ja' ? 'トップに戻る' : '返回首页'}</span>
             </button>
             <div className="flex items-center justify-between">
-              <div className="flex items-center gap-3">
-                <div className={`p-2 ${config.iconBg} rounded-xl shadow-lg`}>
-                  <GraduationCap size={24} className="text-white" />
+              <div className="flex items-center gap-4">
+                <div className={`p-3 ${config.iconBg} rounded-xl shadow-lg`}>
+                  <GraduationCap size={28} className="text-white" />
                 </div>
                 <div>
-                  <h1 className="text-xl lg:text-2xl font-bold text-gray-900">
+                  <h1 className="text-2xl lg:text-3xl font-bold text-gray-900">
                     {config.shortName} {certCodeFilter ? certCodeFilter.toUpperCase() : (language === 'ja' ? '認定試験' : '认证考试')}
                   </h1>
-                  <p className="text-gray-600 text-sm">
+                  <p className="text-gray-600 text-base">
                     {filteredExams.length} {language === 'ja' ? 'セット' : '套题库'}
                     {certCodeFilter && (
                       <button
                         onClick={() => setCertCodeFilter(null)}
-                        className="ml-3 text-sm text-indigo-600 hover:text-indigo-700 font-medium"
+                        className="ml-4 text-base text-indigo-600 hover:text-indigo-700 font-medium"
                       >
                         {language === 'ja' ? 'すべて表示' : '显示全部'}
                       </button>
@@ -534,22 +534,22 @@ export const HomePage: React.FC = () => {
                   </p>
                 </div>
               </div>
-              <div className="flex items-center gap-2">
-                <button onClick={handleReset} disabled={importing} className="p-2 text-gray-500 hover:text-gray-700 hover:bg-white/50 rounded-lg transition-colors" title={language === 'ja' ? 'リセット' : '重置数据'}>
-                  <RefreshCw size={18} />
+              <div className="flex items-center gap-3">
+                <button onClick={handleReset} disabled={importing} className="p-2.5 text-gray-500 hover:text-gray-700 hover:bg-white/50 rounded-lg transition-colors" title={language === 'ja' ? 'リセット' : '重置数据'}>
+                  <RefreshCw size={20} />
                 </button>
                 <ImportExam onImportSuccess={loadExams} />
               </div>
             </div>
           </div>
         </div>
-        <div className="px-3 lg:px-6 py-6">
-          {error && <div className="mb-5 p-4 bg-red-50 text-red-700 rounded-xl text-base border border-red-100">{error}</div>}
+        <div className="px-4 lg:px-8 py-8">
+          {error && <div className="mb-6 p-5 bg-red-50 text-red-700 rounded-xl text-lg border border-red-100">{error}</div>}
           {filteredExams.length === 0 ? (
-            <div className="text-center py-20 bg-white rounded-2xl border border-gray-200 shadow-sm">
-              <div className="inline-flex p-4 bg-gray-100 rounded-2xl mb-5"><BookOpen size={48} className="text-gray-400" /></div>
-              <h3 className="text-xl font-semibold text-gray-600 mb-3">{language === 'ja' ? 'この認定の試験がありません' : '暂无此认证的题库'}</h3>
-              <p className="text-base text-gray-500">{language === 'ja' ? '試験をインポートしてください' : '请导入题库'}</p>
+            <div className="text-center py-24 bg-white rounded-2xl border border-gray-200 shadow-sm">
+              <div className="inline-flex p-5 bg-gray-100 rounded-2xl mb-6"><BookOpen size={56} className="text-gray-400" /></div>
+              <h3 className="text-2xl font-semibold text-gray-600 mb-4">{language === 'ja' ? 'この認定の試験がありません' : '暂无此认证的题库'}</h3>
+              <p className="text-lg text-gray-500">{language === 'ja' ? '試験をインポートしてください' : '请导入题库'}</p>
             </div>
           ) : (
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
@@ -633,49 +633,49 @@ export const HomePage: React.FC = () => {
     return (
       <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-indigo-50/30">
         <div className={`bg-gradient-to-r ${config.bgGradient} border-b ${config.borderColor}`}>
-          <div className="px-3 lg:px-6 py-4">
-            <button onClick={() => setSelectedView(null)} className="flex items-center gap-2 text-gray-600 hover:text-gray-900 mb-3 transition-colors text-sm">
-              <ArrowLeft size={16} />
+          <div className="px-4 lg:px-8 py-5">
+            <button onClick={() => setSelectedView(null)} className="flex items-center gap-2 text-gray-600 hover:text-gray-900 mb-4 transition-colors text-base">
+              <ArrowLeft size={18} />
               <span>{language === 'ja' ? 'トップに戻る' : '返回首页'}</span>
             </button>
-            <div className="flex items-center gap-3">
-              <div className={`p-2 ${config.iconBg} rounded-xl shadow-lg`}>
-                <Lightbulb size={24} className="text-white" />
+            <div className="flex items-center gap-4">
+              <div className={`p-3 ${config.iconBg} rounded-xl shadow-lg`}>
+                <Lightbulb size={28} className="text-white" />
               </div>
               <div>
-                <h1 className="text-xl lg:text-2xl font-bold text-gray-900">{content.title}</h1>
-                <p className="text-gray-600 text-sm">{content.subtitle}</p>
+                <h1 className="text-2xl lg:text-3xl font-bold text-gray-900">{content.title}</h1>
+                <p className="text-gray-600 text-base">{content.subtitle}</p>
               </div>
             </div>
           </div>
         </div>
-        <div className="px-3 lg:px-6 py-6 max-w-5xl mx-auto">
+        <div className="px-4 lg:px-8 py-8 max-w-5xl mx-auto">
           <div className="grid gap-6 mb-12">
             {content.sections.map((section, i) => (
-              <div key={i} className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 hover:shadow-lg transition-shadow">
-                <div className="flex items-start gap-4">
-                  <div className={`p-3 rounded-xl bg-gradient-to-br ${config.gradient} flex-shrink-0`}>
-                    <section.icon size={24} className="text-white" />
+              <div key={i} className="bg-white rounded-2xl p-8 shadow-sm border border-gray-100 hover:shadow-lg transition-shadow">
+                <div className="flex items-start gap-5">
+                  <div className={`p-4 rounded-xl bg-gradient-to-br ${config.gradient} flex-shrink-0`}>
+                    <section.icon size={28} className="text-white" />
                   </div>
                   <div>
-                    <h3 className="text-xl font-bold text-gray-900 mb-2">{section.title}</h3>
-                    <p className="text-gray-600 leading-relaxed">{section.content}</p>
+                    <h3 className="text-2xl font-bold text-gray-900 mb-3">{section.title}</h3>
+                    <p className="text-lg text-gray-600 leading-relaxed">{section.content}</p>
                   </div>
                 </div>
               </div>
             ))}
           </div>
           <div className="bg-gradient-to-br from-violet-50 to-purple-50 rounded-2xl p-8 border border-violet-200">
-            <h2 className="text-xl font-bold text-gray-900 mb-6 flex items-center gap-2">
-              <Rocket className="text-violet-600" />
+            <h2 className="text-2xl font-bold text-gray-900 mb-6 flex items-center gap-3">
+              <Rocket size={28} className="text-violet-600" />
               {language === 'ja' ? '学習リソース' : '学习资源'}
             </h2>
-            <div className="grid gap-4">
+            <div className="grid gap-5">
               {content.resources.map((resource, i) => (
-                <div key={i} className="flex items-center p-4 bg-white rounded-xl hover:shadow-md transition-all group">
+                <div key={i} className="flex items-center p-5 bg-white rounded-xl hover:shadow-md transition-all group">
                   <div>
-                    <h4 className="font-semibold text-gray-900">{resource.title}</h4>
-                    <p className="text-sm text-gray-500">{resource.desc}</p>
+                    <h4 className="text-lg font-semibold text-gray-900">{resource.title}</h4>
+                    <p className="text-base text-gray-500">{resource.desc}</p>
                   </div>
                 </div>
               ))}
@@ -690,34 +690,34 @@ export const HomePage: React.FC = () => {
   return (
     <div className="min-h-screen bg-slate-50 flex flex-col">
       {/* Header Bar */}
-      <header className="bg-slate-800 text-white py-4 px-6 lg:px-10">
+      <header className="bg-slate-800 text-white py-5 px-6 lg:px-10">
         <div className="flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 bg-white rounded flex items-center justify-center">
-              <GraduationCap className="w-6 h-6 text-slate-800" />
+          <div className="flex items-center gap-4">
+            <div className="w-12 h-12 bg-white rounded-lg flex items-center justify-center">
+              <GraduationCap className="w-7 h-7 text-slate-800" />
             </div>
             <div>
-              <h1 className="text-xl font-bold tracking-tight">StudyForge</h1>
-              <p className="text-slate-400 text-xs">{language === 'ja' ? 'クラウド認定試験対策' : '云认证考试平台'}</p>
+              <h1 className="text-2xl font-bold tracking-tight">StudyForge</h1>
+              <p className="text-slate-400 text-sm">{language === 'ja' ? 'クラウド認定試験対策' : '云认证考试平台'}</p>
             </div>
           </div>
-          <div className="flex items-center gap-6 text-sm">
+          <div className="flex items-center gap-6 text-base">
             <div className="flex items-center gap-2">
-              <BookOpen className="w-4 h-4 text-slate-400" />
+              <BookOpen className="w-5 h-5 text-slate-400" />
               <span className="font-medium">{stats.totalExams}</span>
               <span className="text-slate-400">{language === 'ja' ? 'セット' : '套'}</span>
             </div>
             <div className="flex items-center gap-2">
-              <Target className="w-4 h-4 text-slate-400" />
+              <Target className="w-5 h-5 text-slate-400" />
               <span className="font-medium">{stats.totalQuestions}</span>
               <span className="text-slate-400">{language === 'ja' ? '問' : '题'}</span>
             </div>
             {stats.wrongCount > 0 && (
               <button
                 onClick={() => navigate('/wrong-answers')}
-                className="flex items-center gap-2 bg-amber-500 hover:bg-amber-400 px-3 py-1.5 rounded text-sm transition-colors"
+                className="flex items-center gap-2 bg-amber-500 hover:bg-amber-400 px-4 py-2 rounded-lg text-base transition-colors"
               >
-                <AlertCircle className="w-4 h-4" />
+                <AlertCircle className="w-5 h-5" />
                 <span className="font-medium">{stats.wrongCount}</span>
                 <span>{language === 'ja' ? '復習' : '复习'}</span>
               </button>
@@ -725,9 +725,9 @@ export const HomePage: React.FC = () => {
             {/* Language Switcher */}
             <button
               onClick={() => setLanguage(language === 'ja' ? 'zh' : 'ja')}
-              className="flex items-center gap-1.5 px-3 py-1.5 bg-slate-700 hover:bg-slate-600 rounded text-sm transition-colors"
+              className="flex items-center gap-2 px-4 py-2 bg-slate-700 hover:bg-slate-600 rounded-lg text-base transition-colors"
             >
-              <Globe className="w-4 h-4" />
+              <Globe className="w-5 h-5" />
               <span>{language === 'ja' ? '中文' : '日本語'}</span>
             </button>
           </div>
@@ -739,14 +739,14 @@ export const HomePage: React.FC = () => {
         <div className="px-6 lg:px-10 py-8">
 
           {/* Section 1: Certification Exams */}
-          <div className="mb-8">
-            <div className="flex items-center gap-2 mb-4 pb-2 border-b border-slate-200">
-              <GraduationCap size={20} className="text-slate-600" />
-              <h2 className="text-lg font-semibold text-slate-800">
+          <div className="mb-10">
+            <div className="flex items-center gap-3 mb-5 pb-3 border-b border-slate-200">
+              <GraduationCap size={24} className="text-slate-600" />
+              <h2 className="text-xl font-semibold text-slate-800">
                 {language === 'ja' ? '認定試験' : '认证考试'}
               </h2>
             </div>
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
               {(Object.keys(providerConfig) as ProviderKey[]).map((provider) => {
                 const config = providerConfig[provider];
                 const pStats = providerStats[provider] || { examCount: 0, questionCount: 0 };
@@ -754,17 +754,17 @@ export const HomePage: React.FC = () => {
                   <button
                     key={provider}
                     onClick={() => setSelectedView(provider)}
-                    className="group bg-white rounded-lg p-5 border border-slate-200 hover:border-slate-300 hover:shadow-md transition-all text-left"
+                    className="group bg-white rounded-xl p-6 border border-slate-200 hover:border-slate-300 hover:shadow-md transition-all text-left"
                   >
                     <div className="flex items-center gap-4">
-                      <div className={`w-12 h-12 rounded-lg ${config.iconBg} flex items-center justify-center`}>
-                        <GraduationCap size={24} className="text-white" />
+                      <div className={`w-14 h-14 rounded-xl ${config.iconBg} flex items-center justify-center`}>
+                        <GraduationCap size={28} className="text-white" />
                       </div>
                       <div className="flex-1 min-w-0">
-                        <h3 className="text-base font-semibold text-slate-800">{config.shortName}</h3>
-                        <p className="text-sm text-slate-500">{pStats.examCount} {language === 'ja' ? 'セット' : '套'} · {pStats.questionCount} {language === 'ja' ? '問' : '题'}</p>
+                        <h3 className="text-lg font-semibold text-slate-800">{config.shortName}</h3>
+                        <p className="text-base text-slate-500">{pStats.examCount} {language === 'ja' ? 'セット' : '套'} · {pStats.questionCount} {language === 'ja' ? '問' : '题'}</p>
                       </div>
-                      <ChevronRight size={18} className="text-slate-400 group-hover:text-slate-600 transition-colors" />
+                      <ChevronRight size={20} className="text-slate-400 group-hover:text-slate-600 transition-colors" />
                     </div>
                   </button>
                 );
@@ -773,35 +773,35 @@ export const HomePage: React.FC = () => {
           </div>
 
           {/* Section 2: Career Path */}
-          <div className="mb-8">
-            <div className="flex items-center justify-between mb-4 pb-2 border-b border-slate-200">
-              <div className="flex items-center gap-2">
-                <Map size={20} className="text-slate-600" />
-                <h2 className="text-lg font-semibold text-slate-800">
+          <div className="mb-10">
+            <div className="flex items-center justify-between mb-5 pb-3 border-b border-slate-200">
+              <div className="flex items-center gap-3">
+                <Map size={24} className="text-slate-600" />
+                <h2 className="text-xl font-semibold text-slate-800">
                   {language === 'ja' ? 'キャリアパス' : '职业路径'}
                 </h2>
               </div>
               <button
                 onClick={() => navigate('/certification-path')}
-                className="text-sm text-slate-600 hover:text-slate-800 font-medium transition-colors flex items-center gap-1"
+                className="text-base text-slate-600 hover:text-slate-800 font-medium transition-colors flex items-center gap-1"
               >
                 {language === 'ja' ? 'すべて見る' : '查看全部'}
-                <ChevronRight size={16} />
+                <ChevronRight size={18} />
               </button>
             </div>
-            <div className="grid grid-cols-2 sm:grid-cols-5 gap-3">
+            <div className="grid grid-cols-2 sm:grid-cols-5 gap-4">
               {careerPaths.slice(0, 5).map((path) => {
                 const IconComponent = careerIcons[path.id] || Building2;
                 return (
                   <button
                     key={path.id}
                     onClick={() => navigate(`/certification-path?career=${path.id}`)}
-                    className="group bg-white rounded-lg p-4 border border-slate-200 hover:border-slate-300 hover:shadow-md transition-all text-center"
+                    className="group bg-white rounded-xl p-5 border border-slate-200 hover:border-slate-300 hover:shadow-md transition-all text-center"
                   >
-                    <div className="w-10 h-10 mx-auto rounded-lg bg-slate-700 flex items-center justify-center mb-2">
-                      <IconComponent size={20} className="text-white" />
+                    <div className="w-12 h-12 mx-auto rounded-xl bg-slate-700 flex items-center justify-center mb-3">
+                      <IconComponent size={24} className="text-white" />
                     </div>
-                    <h3 className="text-xs font-medium text-slate-700 leading-tight">
+                    <h3 className="text-sm font-medium text-slate-700 leading-tight">
                       {path.name[language === 'ja' ? 'ja' : 'zh']}
                     </h3>
                   </button>
@@ -811,58 +811,58 @@ export const HomePage: React.FC = () => {
           </div>
 
           {/* Section 3: Learning Dashboard */}
-          <div className="mb-8">
-            <div className="flex items-center gap-2 mb-4 pb-2 border-b border-slate-200">
-              <BarChart3 size={20} className="text-slate-600" />
-              <h2 className="text-lg font-semibold text-slate-800">
+          <div className="mb-10">
+            <div className="flex items-center gap-3 mb-5 pb-3 border-b border-slate-200">
+              <BarChart3 size={24} className="text-slate-600" />
+              <h2 className="text-xl font-semibold text-slate-800">
                 {language === 'ja' ? '学習ダッシュボード' : '学习仪表盘'}
               </h2>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
               {/* Overall Stats Card */}
-              <div className="bg-white rounded-lg p-5 border border-slate-200">
-                <h3 className="text-sm font-medium text-slate-500 mb-4 uppercase tracking-wide">
+              <div className="bg-white rounded-xl p-6 border border-slate-200">
+                <h3 className="text-base font-medium text-slate-500 mb-5 uppercase tracking-wide">
                   {language === 'ja' ? '総合統計' : '总体统计'}
                 </h3>
-                <div className="space-y-3">
+                <div className="space-y-4">
                   <div className="flex items-center justify-between">
-                    <span className="text-sm text-slate-600">{language === 'ja' ? '総回答数' : '总答题数'}</span>
-                    <span className="text-xl font-semibold text-slate-800">{learningStats.totalAnswered}</span>
+                    <span className="text-base text-slate-600">{language === 'ja' ? '総回答数' : '总答题数'}</span>
+                    <span className="text-2xl font-semibold text-slate-800">{learningStats.totalAnswered}</span>
                   </div>
                   <div className="flex items-center justify-between">
-                    <span className="text-sm text-slate-600">{language === 'ja' ? '総正解率' : '总正确率'}</span>
-                    <span className="text-xl font-semibold text-emerald-600">{learningStats.overallCorrectRate}%</span>
+                    <span className="text-base text-slate-600">{language === 'ja' ? '総正解率' : '总正确率'}</span>
+                    <span className="text-2xl font-semibold text-emerald-600">{learningStats.overallCorrectRate}%</span>
                   </div>
                   <div className="flex items-center justify-between">
-                    <span className="text-sm text-slate-600">{language === 'ja' ? '学習日数' : '学习天数'}</span>
-                    <span className="text-xl font-semibold text-slate-800">{learningStats.studyDays}</span>
+                    <span className="text-base text-slate-600">{language === 'ja' ? '学習日数' : '学习天数'}</span>
+                    <span className="text-2xl font-semibold text-slate-800">{learningStats.studyDays}</span>
                   </div>
                 </div>
               </div>
 
               {/* Practice & Exam Mode Stats */}
-              <div className="bg-white rounded-lg p-5 border border-slate-200">
-                <h3 className="text-sm font-medium text-slate-500 mb-4 uppercase tracking-wide">
+              <div className="bg-white rounded-xl p-6 border border-slate-200">
+                <h3 className="text-base font-medium text-slate-500 mb-5 uppercase tracking-wide">
                   {language === 'ja' ? 'モード別統計' : '模式统计'}
                 </h3>
-                <div className="space-y-3">
-                  <div className="p-3 bg-slate-50 rounded border border-slate-200">
-                    <div className="flex items-center gap-2 mb-1">
-                      <Play size={14} className="text-emerald-600" />
-                      <span className="text-sm text-slate-700 font-medium">{language === 'ja' ? '練習モード' : '练习模式'}</span>
+                <div className="space-y-4">
+                  <div className="p-4 bg-slate-50 rounded-lg border border-slate-200">
+                    <div className="flex items-center gap-2 mb-2">
+                      <Play size={18} className="text-emerald-600" />
+                      <span className="text-base text-slate-700 font-medium">{language === 'ja' ? '練習モード' : '练习模式'}</span>
                     </div>
-                    <div className="flex items-center justify-between text-sm">
+                    <div className="flex items-center justify-between text-base">
                       <span className="text-slate-500">{learningStats.practiceQuestions} {language === 'ja' ? '問' : '题'}</span>
                       <span className="font-semibold text-emerald-600">{learningStats.practiceCorrectRate}%</span>
                     </div>
                   </div>
-                  <div className="p-3 bg-slate-50 rounded border border-slate-200">
-                    <div className="flex items-center gap-2 mb-1">
-                      <FileCheck size={14} className="text-blue-600" />
-                      <span className="text-sm text-slate-700 font-medium">{language === 'ja' ? '模擬試験' : '模拟考试'}</span>
+                  <div className="p-4 bg-slate-50 rounded-lg border border-slate-200">
+                    <div className="flex items-center gap-2 mb-2">
+                      <FileCheck size={18} className="text-blue-600" />
+                      <span className="text-base text-slate-700 font-medium">{language === 'ja' ? '模擬試験' : '模拟考试'}</span>
                     </div>
-                    <div className="flex items-center justify-between text-sm">
+                    <div className="flex items-center justify-between text-base">
                       <span className="text-slate-500">{learningStats.examCount} {language === 'ja' ? '回' : '次'}</span>
                       <span className="font-semibold text-blue-600">{learningStats.examAvgScore}%</span>
                     </div>
@@ -871,19 +871,19 @@ export const HomePage: React.FC = () => {
               </div>
 
               {/* Recent Sessions Card */}
-              <div className="bg-white rounded-lg p-5 border border-slate-200">
-                <h3 className="text-sm font-medium text-slate-500 mb-4 uppercase tracking-wide">
+              <div className="bg-white rounded-xl p-6 border border-slate-200">
+                <h3 className="text-base font-medium text-slate-500 mb-5 uppercase tracking-wide">
                   {language === 'ja' ? '最近の学習' : '最近学习'}
                 </h3>
                 {learningStats.recentSessions.length > 0 ? (
-                  <div className="space-y-2">
+                  <div className="space-y-3">
                     {learningStats.recentSessions.slice(0, 4).map((session, i) => (
-                      <div key={i} className="flex items-center justify-between text-sm">
+                      <div key={i} className="flex items-center justify-between text-base">
                         <div className="flex items-center gap-2">
                           {session.mode === 'exam' ? (
-                            <FileCheck size={12} className="text-blue-500" />
+                            <FileCheck size={16} className="text-blue-500" />
                           ) : (
-                            <Play size={12} className="text-emerald-500" />
+                            <Play size={16} className="text-emerald-500" />
                           )}
                           <span className="text-slate-600">{session.examName}</span>
                         </div>
@@ -894,7 +894,7 @@ export const HomePage: React.FC = () => {
                     ))}
                   </div>
                 ) : (
-                  <div className="text-center text-sm text-slate-400 py-4">
+                  <div className="text-center text-base text-slate-400 py-4">
                     {language === 'ja' ? 'まだ学習記録がありません' : '暂无学习记录'}
                   </div>
                 )}
@@ -904,21 +904,21 @@ export const HomePage: React.FC = () => {
             {/* Per-Certification Progress (show if has data) */}
             {learningStats.certStats.length > 0 && (
               <div className="mt-6">
-                <h3 className="text-sm font-medium text-slate-500 mb-3 flex items-center gap-2">
-                  <Award size={16} className="text-slate-400" />
+                <h3 className="text-base font-medium text-slate-500 mb-4 flex items-center gap-2">
+                  <Award size={20} className="text-slate-400" />
                   {language === 'ja' ? '認定別進捗' : '认证进度'}
                 </h3>
-                <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-3">
+                <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
                   {learningStats.certStats.slice(0, 6).map((cert, i) => (
-                    <div key={i} className="bg-white rounded-lg p-3 border border-slate-200">
-                      <div className="text-xs font-semibold text-slate-800 mb-1">{cert.certCode}</div>
-                      <div className="flex items-center justify-between text-xs">
+                    <div key={i} className="bg-white rounded-xl p-4 border border-slate-200">
+                      <div className="text-sm font-semibold text-slate-800 mb-2">{cert.certCode}</div>
+                      <div className="flex items-center justify-between text-sm">
                         <span className="text-slate-500">{cert.questionsAnswered} {language === 'ja' ? '問' : '题'}</span>
                         <span className={`font-medium ${cert.correctRate >= 70 ? 'text-emerald-600' : 'text-amber-600'}`}>
                           {cert.correctRate}%
                         </span>
                       </div>
-                      <div className="text-xs text-slate-400 mt-1">
+                      <div className="text-sm text-slate-400 mt-2">
                         {language === 'ja' ? '最高' : '最高'}: {cert.bestScore}%
                       </div>
                     </div>
@@ -929,157 +929,157 @@ export const HomePage: React.FC = () => {
           </div>
 
           {/* Section 4: AI Learning Resources */}
-          <div className="mb-8">
-            <div className="flex items-center gap-2 mb-4 pb-2 border-b border-slate-200">
-              <Brain size={20} className="text-slate-600" />
-              <h2 className="text-lg font-semibold text-slate-800">
+          <div className="mb-10">
+            <div className="flex items-center gap-3 mb-5 pb-3 border-b border-slate-200">
+              <Brain size={24} className="text-slate-600" />
+              <h2 className="text-xl font-semibold text-slate-800">
                 {language === 'ja' ? 'AI 学習リソース' : 'AI 学习资源'}
               </h2>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
               {/* AI Beginner */}
               <button
                 onClick={() => navigate('/ai-book/beginner')}
-                className="group bg-white rounded-lg p-5 border border-slate-200 hover:border-slate-300 hover:shadow-md transition-all text-left"
+                className="group bg-white rounded-xl p-6 border border-slate-200 hover:border-slate-300 hover:shadow-md transition-all text-left"
               >
                 <div className="flex items-center gap-4">
-                  <div className="w-10 h-10 rounded-lg bg-blue-600 flex items-center justify-center">
-                    <Lightbulb size={20} className="text-white" />
+                  <div className="w-12 h-12 rounded-xl bg-blue-600 flex items-center justify-center">
+                    <Lightbulb size={24} className="text-white" />
                   </div>
                   <div className="flex-1">
-                    <h3 className="text-sm font-semibold text-slate-800">{language === 'ja' ? 'AI入門ガイド' : 'AI 入门指南'}</h3>
-                    <p className="text-xs text-slate-500">{language === 'ja' ? '5章・基礎から学ぶ' : '5章·从基础开始'}</p>
+                    <h3 className="text-base font-semibold text-slate-800">{language === 'ja' ? 'AI入門ガイド' : 'AI 入门指南'}</h3>
+                    <p className="text-sm text-slate-500">{language === 'ja' ? '5章・基礎から学ぶ' : '5章·从基础开始'}</p>
                   </div>
-                  <ChevronRight size={16} className="text-slate-400 group-hover:text-slate-600" />
+                  <ChevronRight size={20} className="text-slate-400 group-hover:text-slate-600" />
                 </div>
               </button>
 
               {/* AI Advanced */}
               <button
                 onClick={() => navigate('/ai-book/advanced')}
-                className="group bg-white rounded-lg p-5 border border-slate-200 hover:border-slate-300 hover:shadow-md transition-all text-left"
+                className="group bg-white rounded-xl p-6 border border-slate-200 hover:border-slate-300 hover:shadow-md transition-all text-left"
               >
                 <div className="flex items-center gap-4">
-                  <div className="w-10 h-10 rounded-lg bg-purple-600 flex items-center justify-center">
-                    <Rocket size={20} className="text-white" />
+                  <div className="w-12 h-12 rounded-xl bg-purple-600 flex items-center justify-center">
+                    <Rocket size={24} className="text-white" />
                   </div>
                   <div className="flex-1">
-                    <h3 className="text-sm font-semibold text-slate-800">{language === 'ja' ? 'AI実践上級編' : 'AI 进阶实战'}</h3>
-                    <p className="text-xs text-slate-500">{language === 'ja' ? '3章・Agent、RAG' : '3章·Agent、RAG'}</p>
+                    <h3 className="text-base font-semibold text-slate-800">{language === 'ja' ? 'AI実践上級編' : 'AI 进阶实战'}</h3>
+                    <p className="text-sm text-slate-500">{language === 'ja' ? '3章・Agent、RAG' : '3章·Agent、RAG'}</p>
                   </div>
-                  <ChevronRight size={16} className="text-slate-400 group-hover:text-slate-600" />
+                  <ChevronRight size={20} className="text-slate-400 group-hover:text-slate-600" />
                 </div>
               </button>
 
               {/* AI Resources */}
               <button
                 onClick={() => navigate('/ai-resources')}
-                className="group bg-white rounded-lg p-5 border border-slate-200 hover:border-slate-300 hover:shadow-md transition-all text-left"
+                className="group bg-white rounded-xl p-6 border border-slate-200 hover:border-slate-300 hover:shadow-md transition-all text-left"
               >
                 <div className="flex items-center gap-4">
-                  <div className="w-10 h-10 rounded-lg bg-emerald-600 flex items-center justify-center">
-                    <Boxes size={20} className="text-white" />
+                  <div className="w-12 h-12 rounded-xl bg-emerald-600 flex items-center justify-center">
+                    <Boxes size={24} className="text-white" />
                   </div>
                   <div className="flex-1">
-                    <h3 className="text-sm font-semibold text-slate-800">{language === 'ja' ? 'AIリソース' : 'AI 资源汇总'}</h3>
-                    <p className="text-xs text-slate-500">{language === 'ja' ? '9ツール・コード付' : '9工具·含代码'}</p>
+                    <h3 className="text-base font-semibold text-slate-800">{language === 'ja' ? 'AIリソース' : 'AI 资源汇总'}</h3>
+                    <p className="text-sm text-slate-500">{language === 'ja' ? '9ツール・コード付' : '9工具·含代码'}</p>
                   </div>
-                  <ChevronRight size={16} className="text-slate-400 group-hover:text-slate-600" />
+                  <ChevronRight size={20} className="text-slate-400 group-hover:text-slate-600" />
                 </div>
               </button>
 
               {/* Exam Tips */}
               <button
                 onClick={() => navigate('/exam-tips')}
-                className="group bg-white rounded-lg p-5 border border-slate-200 hover:border-slate-300 hover:shadow-md transition-all text-left"
+                className="group bg-white rounded-xl p-6 border border-slate-200 hover:border-slate-300 hover:shadow-md transition-all text-left"
               >
                 <div className="flex items-center gap-4">
-                  <div className="w-10 h-10 rounded-lg bg-amber-600 flex items-center justify-center">
-                    <Award size={20} className="text-white" />
+                  <div className="w-12 h-12 rounded-xl bg-amber-600 flex items-center justify-center">
+                    <Award size={24} className="text-white" />
                   </div>
                   <div className="flex-1">
-                    <h3 className="text-sm font-semibold text-slate-800">{language === 'ja' ? '試験攻略ガイド' : '考试攻略指南'}</h3>
-                    <p className="text-xs text-slate-500">{language === 'ja' ? '3社対応・高頻出問題' : '3厂商·高频考点'}</p>
+                    <h3 className="text-base font-semibold text-slate-800">{language === 'ja' ? '試験攻略ガイド' : '考试攻略指南'}</h3>
+                    <p className="text-sm text-slate-500">{language === 'ja' ? '3社対応・高頻出問題' : '3厂商·高频考点'}</p>
                   </div>
-                  <ChevronRight size={16} className="text-slate-400 group-hover:text-slate-600" />
+                  <ChevronRight size={20} className="text-slate-400 group-hover:text-slate-600" />
                 </div>
               </button>
 
               {/* AI Code Examples */}
               <button
                 onClick={() => navigate('/ai-code-examples')}
-                className="group bg-white rounded-lg p-5 border border-slate-200 hover:border-slate-300 hover:shadow-md transition-all text-left"
+                className="group bg-white rounded-xl p-6 border border-slate-200 hover:border-slate-300 hover:shadow-md transition-all text-left"
               >
                 <div className="flex items-center gap-4">
-                  <div className="w-10 h-10 rounded-lg bg-cyan-600 flex items-center justify-center">
-                    <Code2 size={20} className="text-white" />
+                  <div className="w-12 h-12 rounded-xl bg-cyan-600 flex items-center justify-center">
+                    <Code2 size={24} className="text-white" />
                   </div>
                   <div className="flex-1">
-                    <h3 className="text-sm font-semibold text-slate-800">{language === 'ja' ? 'コード実践例' : '代码实战'}</h3>
-                    <p className="text-xs text-slate-500">{language === 'ja' ? '5分野・コピペOK' : '5领域·即学即用'}</p>
+                    <h3 className="text-base font-semibold text-slate-800">{language === 'ja' ? 'コード実践例' : '代码实战'}</h3>
+                    <p className="text-sm text-slate-500">{language === 'ja' ? '5分野・コピペOK' : '5领域·即学即用'}</p>
                   </div>
-                  <ChevronRight size={16} className="text-slate-400 group-hover:text-slate-600" />
+                  <ChevronRight size={20} className="text-slate-400 group-hover:text-slate-600" />
                 </div>
               </button>
 
               {/* Learning Roadmap */}
               <button
                 onClick={() => navigate('/ai-roadmap')}
-                className="group bg-white rounded-lg p-5 border border-slate-200 hover:border-slate-300 hover:shadow-md transition-all text-left"
+                className="group bg-white rounded-xl p-6 border border-slate-200 hover:border-slate-300 hover:shadow-md transition-all text-left"
               >
                 <div className="flex items-center gap-4">
-                  <div className="w-10 h-10 rounded-lg bg-rose-600 flex items-center justify-center">
-                    <Map size={20} className="text-white" />
+                  <div className="w-12 h-12 rounded-xl bg-rose-600 flex items-center justify-center">
+                    <Map size={24} className="text-white" />
                   </div>
                   <div className="flex-1">
-                    <h3 className="text-sm font-semibold text-slate-800">{language === 'ja' ? '学習ロードマップ' : '学习路线图'}</h3>
-                    <p className="text-xs text-slate-500">{language === 'ja' ? '3コース・体系的' : '3路线·系统化'}</p>
+                    <h3 className="text-base font-semibold text-slate-800">{language === 'ja' ? '学習ロードマップ' : '学习路线图'}</h3>
+                    <p className="text-sm text-slate-500">{language === 'ja' ? '3コース・体系的' : '3路线·系统化'}</p>
                   </div>
-                  <ChevronRight size={16} className="text-slate-400 group-hover:text-slate-600" />
+                  <ChevronRight size={20} className="text-slate-400 group-hover:text-slate-600" />
                 </div>
               </button>
 
               {/* Kids AI Course */}
               <button
                 onClick={() => navigate('/kids-course')}
-                className="group bg-gradient-to-r from-pink-50 to-purple-50 rounded-lg p-5 border-2 border-pink-200 hover:border-pink-300 hover:shadow-md transition-all text-left"
+                className="group bg-gradient-to-r from-pink-50 to-purple-50 rounded-xl p-6 border-2 border-pink-200 hover:border-pink-300 hover:shadow-md transition-all text-left"
               >
                 <div className="flex items-center gap-4">
-                  <div className="w-10 h-10 rounded-lg bg-gradient-to-r from-pink-500 to-purple-500 flex items-center justify-center text-2xl">
+                  <div className="w-12 h-12 rounded-xl bg-gradient-to-r from-pink-500 to-purple-500 flex items-center justify-center text-2xl">
                     🤖
                   </div>
                   <div className="flex-1">
-                    <h3 className="text-sm font-semibold text-pink-700">{language === 'ja' ? '子供AI教室' : '儿童AI课堂'}</h3>
-                    <p className="text-xs text-purple-500">{language === 'ja' ? '24レッスン・ゲーム化' : '24课时·游戏化学习'}</p>
+                    <h3 className="text-base font-semibold text-pink-700">{language === 'ja' ? '子供AI教室' : '儿童AI课堂'}</h3>
+                    <p className="text-sm text-purple-500">{language === 'ja' ? '24レッスン・ゲーム化' : '24课时·游戏化学习'}</p>
                   </div>
-                  <ChevronRight size={16} className="text-pink-400 group-hover:text-pink-600" />
+                  <ChevronRight size={20} className="text-pink-400 group-hover:text-pink-600" />
                 </div>
               </button>
             </div>
 
             {/* Quick Tools */}
-            <div className="mt-4 flex gap-3">
+            <div className="mt-5 flex gap-4">
               <button
                 onClick={() => navigate('/interview-questions')}
-                className="flex items-center gap-2 px-4 py-2 bg-slate-100 hover:bg-slate-200 rounded-lg transition-colors"
+                className="flex items-center gap-2 px-5 py-2.5 bg-slate-100 hover:bg-slate-200 rounded-lg transition-colors"
               >
-                <Target size={16} className="text-slate-600" />
-                <span className="text-sm text-slate-700">{language === 'ja' ? '面接対策' : '面试题库'}</span>
+                <Target size={18} className="text-slate-600" />
+                <span className="text-base text-slate-700">{language === 'ja' ? '面接対策' : '面试题库'}</span>
               </button>
               <button
                 onClick={() => navigate('/cheat-sheets')}
-                className="flex items-center gap-2 px-4 py-2 bg-slate-100 hover:bg-slate-200 rounded-lg transition-colors"
+                className="flex items-center gap-2 px-5 py-2.5 bg-slate-100 hover:bg-slate-200 rounded-lg transition-colors"
               >
-                <BookOpen size={16} className="text-slate-600" />
-                <span className="text-sm text-slate-700">{language === 'ja' ? '速查表' : '速查手册'}</span>
+                <BookOpen size={18} className="text-slate-600" />
+                <span className="text-base text-slate-700">{language === 'ja' ? '速查表' : '速查手册'}</span>
               </button>
               <button
                 onClick={() => navigate('/glossary')}
-                className="flex items-center gap-2 px-4 py-2 bg-slate-100 hover:bg-slate-200 rounded-lg transition-colors"
+                className="flex items-center gap-2 px-5 py-2.5 bg-slate-100 hover:bg-slate-200 rounded-lg transition-colors"
               >
-                <Sparkles size={16} className="text-slate-600" />
-                <span className="text-sm text-slate-700">{language === 'ja' ? '用語集' : '术语词典'}</span>
+                <Sparkles size={18} className="text-slate-600" />
+                <span className="text-base text-slate-700">{language === 'ja' ? '用語集' : '术语词典'}</span>
               </button>
             </div>
           </div>
@@ -1087,9 +1087,9 @@ export const HomePage: React.FC = () => {
       </section>
 
       {/* Footer - Professional */}
-      <footer className="bg-slate-800 text-white py-4 mt-auto">
+      <footer className="bg-slate-800 text-white py-5 mt-auto">
         <div className="px-6 lg:px-10">
-          <div className="flex items-center justify-between text-sm">
+          <div className="flex items-center justify-between text-base">
             <span className="font-semibold">StudyForge</span>
             <span className="text-slate-400">{language === 'ja' ? 'クラウド認定試験対策プラットフォーム' : '云认证考试学习平台'}</span>
           </div>

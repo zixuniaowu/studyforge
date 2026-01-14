@@ -16,10 +16,13 @@ import {
   Sparkles,
   Rocket,
   Briefcase,
-  GraduationCap
+  GraduationCap,
+  BookOpen,
+  ExternalLink,
+  Globe
 } from 'lucide-react';
 import { useLanguageStore } from '../stores/languageStore';
-import { ColabButton, StackBlitzButton } from '../components/CodeRunner';
+import { CodePlayground, EmbeddedNotebook, StackBlitzButton } from '../components/CodeRunner';
 
 type Category = 'tutorial' | 'langchain' | 'ollama' | 'openai' | 'claude' | 'agent' | 'rag' | 'prompts' | 'cases' | 'deploy';
 
@@ -3887,6 +3890,22 @@ const CopyButton: React.FC<{ text: string }> = ({ text }) => {
 };
 
 const CodeBlock: React.FC<{ example: CodeExample; language: string }> = ({ example, language: lang }) => {
+  // Use the professional CodePlayground for Python, fallback to StackBlitz for JS/TS
+  if (example.language === 'python') {
+    return (
+      <CodePlayground
+        code={example.code}
+        language="python"
+        title={example.title[lang === 'ja' ? 'ja' : 'zh']}
+        description={example.description[lang === 'ja' ? 'ja' : 'zh']}
+        difficulty={example.difficulty}
+        tags={example.tags}
+        height="450px"
+      />
+    );
+  }
+
+  // For JavaScript/TypeScript, use a simpler display with StackBlitz
   const difficultyColors = {
     beginner: 'bg-green-100 text-green-700',
     intermediate: 'bg-yellow-100 text-yellow-700',
@@ -3900,7 +3919,7 @@ const CodeBlock: React.FC<{ example: CodeExample; language: string }> = ({ examp
   };
 
   return (
-    <div className="bg-white rounded-lg border border-slate-200 shadow-sm overflow-hidden">
+    <div className="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden">
       <div className="p-4 border-b border-slate-100">
         <div className="flex items-center justify-between mb-2">
           <h3 className="font-semibold text-slate-800">
@@ -3926,13 +3945,6 @@ const CodeBlock: React.FC<{ example: CodeExample; language: string }> = ({ examp
           <span className="px-2 py-0.5 bg-slate-700 text-slate-300 text-xs rounded">
             {example.language}
           </span>
-          {/* Run buttons based on language */}
-          {example.language === 'python' && (
-            <ColabButton
-              code={example.code}
-              title={example.title[lang === 'ja' ? 'ja' : 'zh']}
-            />
-          )}
           {(example.language === 'javascript' || example.language === 'typescript') && (
             <StackBlitzButton
               code={example.code}
@@ -3942,7 +3954,7 @@ const CodeBlock: React.FC<{ example: CodeExample; language: string }> = ({ examp
           )}
           <CopyButton text={example.code} />
         </div>
-        <pre className="bg-slate-900 text-slate-100 p-4 overflow-x-auto text-sm">
+        <pre className="bg-slate-900 text-slate-100 p-4 overflow-x-auto text-sm font-mono">
           <code>{example.code}</code>
         </pre>
       </div>
@@ -3950,118 +3962,298 @@ const CodeBlock: React.FC<{ example: CodeExample; language: string }> = ({ examp
   );
 };
 
+// Featured Colab Notebooks for direct embedding - using verified working URLs
+const featuredNotebooks = [
+  {
+    id: 'pytorch-quickstart',
+    title: { zh: 'PyTorch 快速入门', ja: 'PyTorch クイックスタート' },
+    description: { zh: 'PyTorch 官方入门教程', ja: 'PyTorch 公式入門チュートリアル' },
+    url: 'https://colab.research.google.com/github/pytorch/tutorials/blob/main/beginner_source/basics/quickstart_tutorial.ipynb',
+  },
+  {
+    id: 'huggingface-quicktour',
+    title: { zh: 'HuggingFace 快速入门', ja: 'HuggingFace クイックツアー' },
+    description: { zh: 'Transformers 库快速入门', ja: 'Transformers ライブラリ入門' },
+    url: 'https://colab.research.google.com/github/huggingface/notebooks/blob/main/course/en/chapter1/section3.ipynb',
+  },
+  {
+    id: 'tensorflow-quickstart',
+    title: { zh: 'TensorFlow 入门', ja: 'TensorFlow 入門' },
+    description: { zh: 'TensorFlow 官方快速入门', ja: 'TensorFlow 公式クイックスタート' },
+    url: 'https://colab.research.google.com/github/tensorflow/docs/blob/master/site/en/tutorials/quickstart/beginner.ipynb',
+  },
+];
+
 export default function AICodeExamplesPage() {
   const navigate = useNavigate();
   const language = useLanguageStore(state => state.language);
+  const isZh = language === 'zh';
   const [selectedCategory, setSelectedCategory] = useState<Category>('tutorial');
+  const [showFeatured, setShowFeatured] = useState(false);
+  const [selectedNotebook, setSelectedNotebook] = useState<typeof featuredNotebooks[0] | null>(null);
 
   const category = codeExamples[selectedCategory];
 
   return (
-    <div className="min-h-screen bg-slate-50">
-      {/* Header */}
-      <header className="bg-slate-800 text-white sticky top-0 z-50">
-        <div className="px-6 lg:px-10 py-4">
+    <div className="min-h-screen bg-slate-50 flex flex-col">
+      {/* Professional Header */}
+      <header className="bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 text-white sticky top-0 z-50 shadow-lg">
+        <div className="px-4 lg:px-8 py-3">
           <div className="flex items-center justify-between">
-            <div className="flex items-center gap-4">
+            <div className="flex items-center gap-3">
               <button
                 onClick={() => navigate('/')}
-                className="flex items-center gap-2 text-slate-300 hover:text-white transition-colors"
+                className="flex items-center gap-2 px-3 py-1.5 text-slate-300 hover:text-white hover:bg-white/10 rounded-lg transition-all"
               >
-                <Home size={20} />
-                <span className="hidden sm:inline">{language === 'ja' ? 'ホーム' : '首页'}</span>
+                <Home size={18} />
+                <span className="hidden sm:inline text-sm">{isZh ? '首页' : 'ホーム'}</span>
               </button>
-              <ChevronRight size={16} className="text-slate-500" />
-              <h1 className="text-lg font-semibold">
-                {language === 'ja' ? 'AI コード実践例' : 'AI 代码实战'}
-              </h1>
+              <ChevronRight size={14} className="text-slate-500" />
+              <div className="flex items-center gap-2">
+                <div className="w-8 h-8 bg-gradient-to-br from-cyan-400 to-blue-500 rounded-lg flex items-center justify-center">
+                  <Code2 size={18} />
+                </div>
+                <div>
+                  <h1 className="text-base font-semibold leading-tight">
+                    {isZh ? 'AI 代码实战' : 'AI コード実践'}
+                  </h1>
+                  <p className="text-xs text-slate-400 hidden sm:block">
+                    {isZh ? 'Monaco Editor + Colab 集成' : 'Monaco Editor + Colab 統合'}
+                  </p>
+                </div>
+              </div>
             </div>
+
             <div className="flex items-center gap-2">
-              <Code2 size={20} className="text-slate-400" />
-              <span className="font-semibold">StudyForge</span>
+              {/* Featured Notebooks Toggle */}
+              <button
+                onClick={() => setShowFeatured(!showFeatured)}
+                className={`flex items-center gap-1.5 px-3 py-1.5 text-sm font-medium rounded-lg transition-all ${
+                  showFeatured
+                    ? 'bg-yellow-500 text-white'
+                    : 'bg-white/10 text-slate-300 hover:bg-white/20 hover:text-white'
+                }`}
+              >
+                <BookOpen size={16} />
+                <span className="hidden sm:inline">{isZh ? '精选笔记本' : '注目ノートブック'}</span>
+              </button>
+
+              {/* Language Toggle */}
+              <button
+                onClick={() => useLanguageStore.getState().setLanguage(isZh ? 'ja' : 'zh')}
+                className="flex items-center gap-1.5 px-3 py-1.5 text-sm text-slate-300 hover:text-white hover:bg-white/10 rounded-lg transition-all"
+              >
+                <Globe size={16} />
+                <span>{isZh ? '日本語' : '中文'}</span>
+              </button>
             </div>
           </div>
         </div>
       </header>
 
-      {/* Category Tabs */}
-      <div className="bg-white border-b border-slate-200">
-        <div className="px-6 lg:px-10">
-          <div className="flex overflow-x-auto gap-1 py-2">
+      {/* Featured Notebooks Section */}
+      {showFeatured && (
+        <div className="bg-gradient-to-r from-yellow-50 to-orange-50 border-b border-yellow-200">
+          <div className="px-4 lg:px-8 py-4">
+            <div className="flex items-center gap-2 mb-3">
+              <Sparkles size={18} className="text-yellow-600" />
+              <h2 className="font-semibold text-slate-800">
+                {isZh ? '精选 Colab 笔记本 - 可直接运行' : '注目の Colab ノートブック - 直接実行可能'}
+              </h2>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+              {featuredNotebooks.map((notebook) => (
+                <button
+                  key={notebook.id}
+                  onClick={() => setSelectedNotebook(selectedNotebook?.id === notebook.id ? null : notebook)}
+                  className={`flex items-center gap-3 p-3 rounded-xl border-2 transition-all text-left ${
+                    selectedNotebook?.id === notebook.id
+                      ? 'bg-white border-yellow-400 shadow-lg'
+                      : 'bg-white/70 border-transparent hover:border-yellow-300 hover:bg-white'
+                  }`}
+                >
+                  <div className="w-10 h-10 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-lg flex items-center justify-center flex-shrink-0">
+                    <Play size={18} className="text-white" />
+                  </div>
+                  <div className="min-w-0">
+                    <h3 className="font-medium text-slate-800 truncate">
+                      {isZh ? notebook.title.zh : notebook.title.ja}
+                    </h3>
+                    <p className="text-xs text-slate-500 truncate">
+                      {isZh ? notebook.description.zh : notebook.description.ja}
+                    </p>
+                  </div>
+                  <ExternalLink size={14} className="text-slate-400 flex-shrink-0" />
+                </button>
+              ))}
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Embedded Notebook Display */}
+      {selectedNotebook && (
+        <div className="px-4 lg:px-8 py-4 bg-slate-100">
+          <EmbeddedNotebook
+            url={selectedNotebook.url}
+            title={isZh ? selectedNotebook.title.zh : selectedNotebook.title.ja}
+            description={isZh ? selectedNotebook.description.zh : selectedNotebook.description.ja}
+            height="550px"
+          />
+        </div>
+      )}
+
+      <div className="flex flex-1">
+        {/* Sidebar */}
+        <aside className="w-72 bg-white border-r border-slate-200 hidden lg:block flex-shrink-0">
+          <div className="sticky top-[60px] p-4 space-y-1 max-h-[calc(100vh-60px)] overflow-y-auto">
+            <div className="text-sm font-semibold text-slate-400 uppercase tracking-wider px-3 py-2">
+              {isZh ? '分类' : 'カテゴリー'}
+            </div>
             {(Object.keys(codeExamples) as Category[]).map((cat) => {
               const Icon = codeExamples[cat].icon;
               const isActive = selectedCategory === cat;
+              const exampleCount = codeExamples[cat].examples.length;
               return (
                 <button
                   key={cat}
                   onClick={() => setSelectedCategory(cat)}
-                  className={`flex items-center gap-2 px-4 py-2 rounded-lg whitespace-nowrap transition-all ${
+                  className={`w-full flex items-center justify-between px-3 py-3 rounded-lg transition-all ${
                     isActive
-                      ? 'bg-cyan-100 text-cyan-700 font-medium'
-                      : 'text-slate-600 hover:bg-slate-100'
+                      ? 'bg-cyan-50 text-cyan-700 font-medium'
+                      : 'text-slate-600 hover:bg-slate-50'
                   }`}
                 >
-                  <Icon size={18} />
-                  <span>{codeExamples[cat].name[language === 'ja' ? 'ja' : 'zh']}</span>
-                </button>
-              );
-            })}
-          </div>
-        </div>
-      </div>
-
-      {/* Main Content */}
-      <main className="px-6 lg:px-10 py-8">
-        {/* Category Header */}
-        <div className="mb-6">
-          <div className="flex items-center gap-3 mb-2">
-            <div className={`p-2 rounded-lg bg-gradient-to-br ${category.gradient}`}>
-              <category.icon size={24} className="text-white" />
-            </div>
-            <div>
-              <h2 className="text-xl font-bold text-slate-800">
-                {category.name[language === 'ja' ? 'ja' : 'zh']}
-              </h2>
-              <p className="text-sm text-slate-500">
-                {category.description[language === 'ja' ? 'ja' : 'zh']}
-              </p>
-            </div>
-          </div>
-        </div>
-
-        {/* Code Examples */}
-        <div className="grid gap-6">
-          {category.examples.map((example) => (
-            <CodeBlock key={example.id} example={example} language={language} />
-          ))}
-        </div>
-
-        {/* Quick Navigation */}
-        <div className="mt-12 p-6 bg-gradient-to-br from-slate-100 to-slate-50 rounded-lg">
-          <h3 className="text-lg font-bold text-slate-800 mb-4 flex items-center gap-2">
-            <Play size={20} className="text-cyan-600" />
-            {language === 'ja' ? '他のカテゴリを見る' : '查看其他分类'}
-          </h3>
-          <div className="grid grid-cols-2 md:grid-cols-5 gap-3">
-            {(Object.keys(codeExamples) as Category[]).map((cat) => {
-              if (cat === selectedCategory) return null;
-              const Icon = codeExamples[cat].icon;
-              return (
-                <button
-                  key={cat}
-                  onClick={() => setSelectedCategory(cat)}
-                  className="flex items-center gap-2 p-3 bg-white rounded-lg border border-slate-200 hover:border-slate-300 hover:shadow-md transition-all text-left"
-                >
-                  <Icon size={18} className="text-slate-500" />
-                  <span className="text-sm font-medium text-slate-700">
-                    {codeExamples[cat].name[language === 'ja' ? 'ja' : 'zh']}
+                  <div className="flex items-center gap-3">
+                    <Icon size={20} />
+                    <span className="text-base">{codeExamples[cat].name[isZh ? 'zh' : 'ja']}</span>
+                  </div>
+                  <span className={`text-sm px-2 py-0.5 rounded ${isActive ? 'bg-cyan-100' : 'bg-slate-100'}`}>
+                    {exampleCount}
                   </span>
                 </button>
               );
             })}
+
+            {/* Quick Links */}
+            <div className="pt-4 mt-4 border-t border-slate-100">
+              <div className="text-sm font-semibold text-slate-400 uppercase tracking-wider px-3 py-2">
+                {isZh ? '快捷链接' : 'クイックリンク'}
+              </div>
+              <a
+                href="https://colab.research.google.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-3 px-3 py-2.5 text-base text-slate-600 hover:bg-slate-50 rounded-lg"
+              >
+                <Play size={18} className="text-yellow-500" />
+                Google Colab
+                <ExternalLink size={14} className="ml-auto text-slate-400" />
+              </a>
+              <a
+                href="https://stackblitz.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-3 px-3 py-2.5 text-base text-slate-600 hover:bg-slate-50 rounded-lg"
+              >
+                <Zap size={18} className="text-blue-500" />
+                StackBlitz
+                <ExternalLink size={14} className="ml-auto text-slate-400" />
+              </a>
+            </div>
+          </div>
+        </aside>
+
+        {/* Mobile Category Tabs */}
+        <div className="lg:hidden bg-white border-b border-slate-200 sticky top-[52px] z-40 w-full">
+          <div className="px-4 overflow-x-auto">
+            <div className="flex gap-1 py-2">
+              {(Object.keys(codeExamples) as Category[]).map((cat) => {
+                const Icon = codeExamples[cat].icon;
+                const isActive = selectedCategory === cat;
+                return (
+                  <button
+                    key={cat}
+                    onClick={() => setSelectedCategory(cat)}
+                    className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg whitespace-nowrap text-sm transition-all ${
+                      isActive
+                        ? 'bg-cyan-100 text-cyan-700 font-medium'
+                        : 'text-slate-600 hover:bg-slate-100'
+                    }`}
+                  >
+                    <Icon size={16} />
+                    <span>{codeExamples[cat].name[isZh ? 'zh' : 'ja']}</span>
+                  </button>
+                );
+              })}
+            </div>
           </div>
         </div>
-      </main>
+
+        {/* Main Content */}
+        <main className="flex-1 min-w-0">
+          <div className="px-4 lg:px-8 py-6">
+            {/* Category Header */}
+            <div className="mb-8">
+              <div className="flex items-center gap-4 mb-3">
+                <div className={`p-3 rounded-xl bg-gradient-to-br ${category.gradient} shadow-lg`}>
+                  <category.icon size={28} className="text-white" />
+                </div>
+                <div>
+                  <h2 className="text-2xl font-bold text-slate-800">
+                    {category.name[isZh ? 'zh' : 'ja']}
+                  </h2>
+                  <p className="text-base text-slate-500 mt-1">
+                    {category.description[isZh ? 'zh' : 'ja']}
+                  </p>
+                </div>
+              </div>
+              <div className="flex items-center gap-2 mt-4 text-sm text-slate-500">
+                <Terminal size={16} />
+                <span>{category.examples.length} {isZh ? '个代码示例' : 'コード例'}</span>
+                <span className="text-slate-300">|</span>
+                <span>{isZh ? '支持 Monaco Editor 编辑和 Colab 运行' : 'Monaco Editor 編集と Colab 実行をサポート'}</span>
+              </div>
+            </div>
+
+            {/* Code Examples Grid */}
+            <div className="grid gap-6">
+              {category.examples.map((example) => (
+                <CodeBlock key={example.id} example={example} language={language} />
+              ))}
+            </div>
+
+            {/* Quick Navigation */}
+            <div className="mt-12 p-6 bg-gradient-to-br from-slate-100 to-slate-50 rounded-xl border border-slate-200">
+              <h3 className="text-xl font-bold text-slate-800 mb-5 flex items-center gap-2">
+                <Rocket size={24} className="text-cyan-600" />
+                {isZh ? '探索其他分类' : '他のカテゴリを探索'}
+              </h3>
+              <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4">
+                {(Object.keys(codeExamples) as Category[]).map((cat) => {
+                  if (cat === selectedCategory) return null;
+                  const Icon = codeExamples[cat].icon;
+                  return (
+                    <button
+                      key={cat}
+                      onClick={() => {
+                        setSelectedCategory(cat);
+                        window.scrollTo({ top: 0, behavior: 'smooth' });
+                      }}
+                      className="flex items-center gap-2.5 p-4 bg-white rounded-xl border border-slate-200 hover:border-cyan-300 hover:shadow-md transition-all text-left group"
+                    >
+                      <Icon size={20} className="text-slate-400 group-hover:text-cyan-500 transition-colors" />
+                      <span className="text-base font-medium text-slate-700 truncate">
+                        {codeExamples[cat].name[isZh ? 'zh' : 'ja']}
+                      </span>
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
+          </div>
+        </main>
+      </div>
 
       {/* Footer */}
       <footer className="bg-slate-800 text-white py-4 mt-auto">

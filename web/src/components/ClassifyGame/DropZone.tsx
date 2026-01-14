@@ -43,10 +43,10 @@ export const DropZone = ({
       onDragLeave={handleDragLeave}
       onDrop={handleDrop}
       className={`
-        relative flex flex-col items-center p-4 rounded-3xl border-4 border-dashed
-        transition-all duration-300 min-h-[200px]
+        relative flex flex-col items-center p-3 rounded-2xl border-4 border-dashed
+        transition-all duration-300 h-full min-h-[180px]
         ${isOver
-          ? 'border-solid scale-105 shadow-2xl'
+          ? 'border-solid scale-[1.02] shadow-2xl'
           : isActive
           ? 'border-gray-300 bg-gray-50'
           : 'border-gray-200 bg-white/50'
@@ -59,29 +59,29 @@ export const DropZone = ({
     >
       {/* Category header */}
       <div
-        className="flex items-center gap-2 px-4 py-2 rounded-full mb-3"
+        className="flex items-center gap-2 px-3 py-1.5 rounded-full mb-2"
         style={{ backgroundColor: category.color }}
       >
-        <span className="text-2xl">{category.emoji}</span>
-        <span className="text-white font-bold text-lg">
+        <span className="text-xl">{category.emoji}</span>
+        <span className="text-white font-bold text-base">
           {isZh ? category.name.zh : category.name.ja}
         </span>
       </div>
 
       {/* Drop area */}
-      <div className="flex-1 w-full flex flex-wrap justify-center gap-2 items-start">
+      <div className="flex-1 w-full flex flex-wrap justify-center content-start gap-2 overflow-auto">
         {droppedItems.length === 0 ? (
-          <div className="text-gray-400 text-center py-8">
-            <div className="text-4xl mb-2">👆</div>
-            <p className="text-sm">
-              {isZh ? '把图片拖到这里' : 'ここにドラッグ'}
+          <div className="text-gray-400 text-center py-4">
+            <div className="text-3xl mb-1">👆</div>
+            <p className="text-xs">
+              {isZh ? '拖到这里' : 'ここにドラッグ'}
             </p>
           </div>
         ) : (
           droppedItems.map(item => (
             <div
               key={item.id}
-              className="w-14 h-14 rounded-xl bg-white shadow flex items-center justify-center text-3xl animate-bounceIn"
+              className="w-12 h-12 rounded-lg bg-white shadow flex items-center justify-center text-2xl animate-bounceIn"
             >
               {item.emoji}
             </div>

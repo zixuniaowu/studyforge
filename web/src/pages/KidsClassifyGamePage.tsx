@@ -223,24 +223,24 @@ export default function KidsClassifyGamePage() {
 
   return (
     <div
-      className="min-h-screen pb-20"
+      className="min-h-screen flex flex-col"
       style={{
         background: 'linear-gradient(180deg, #FFF8F0 0%, #FFE8D6 100%)',
       }}
     >
       {/* Header */}
       <div className="sticky top-0 z-10 bg-gradient-to-r from-orange-400 via-pink-500 to-purple-500 text-white shadow-lg">
-        <div className="px-6 py-4">
+        <div className="px-4 py-3">
           <div className="flex items-center justify-between">
-            <div className="flex items-center gap-4">
+            <div className="flex items-center gap-3">
               <button
                 onClick={() => navigate('/kids-course')}
-                className="bg-white/20 backdrop-blur-sm rounded-2xl px-4 py-2 flex items-center gap-2 hover:bg-white/30 transition-all"
+                className="bg-white/20 backdrop-blur-sm rounded-xl px-3 py-2 flex items-center gap-2 hover:bg-white/30 transition-all"
               >
                 <ArrowLeft className="w-5 h-5" />
                 <span className="hidden sm:inline">{isZh ? '返回' : '戻る'}</span>
               </button>
-              <h1 className="text-xl font-bold flex items-center gap-2">
+              <h1 className="text-lg font-bold flex items-center gap-2">
                 🎮 {isZh ? '图片分类游戏' : '画像分類ゲーム'}
               </h1>
             </div>
@@ -256,8 +256,8 @@ export default function KidsClassifyGamePage() {
         </div>
       </div>
 
-      {/* Main content */}
-      <div className="px-6 py-8 max-w-6xl mx-auto">
+      {/* Main content - full width, minimal padding */}
+      <div className="flex-1 px-3 py-4 w-full">
         {/* Level selection view */}
         {gameState === 'selecting' && (
           <div className="text-center">
@@ -303,15 +303,12 @@ export default function KidsClassifyGamePage() {
 
         {/* Playing view */}
         {gameState === 'playing' && currentLevel && (
-          <div className="space-y-6">
-            {/* Level info */}
+          <div className="flex flex-col h-full gap-3">
+            {/* Level info - compact */}
             <div className="text-center">
-              <h2 className="text-2xl font-bold text-gray-800 mb-2">
+              <h2 className="text-xl font-bold text-gray-800">
                 {isZh ? currentLevel.name.zh : currentLevel.name.ja}
               </h2>
-              <p className="text-gray-600">
-                {isZh ? currentLevel.description.zh : currentLevel.description.ja}
-              </p>
             </div>
 
             {/* Score board */}
@@ -322,8 +319,8 @@ export default function KidsClassifyGamePage() {
               starsReward={currentLevel.starsReward}
             />
 
-            {/* Drop zones */}
-            <div className={`grid gap-4 ${currentLevel.categories.length === 2 ? 'grid-cols-2' : 'grid-cols-3'}`}>
+            {/* Drop zones - larger, full width */}
+            <div className={`grid gap-3 flex-1 ${currentLevel.categories.length === 2 ? 'grid-cols-2' : 'grid-cols-3'}`}>
               {currentLevel.categories.map(category => (
                 <DropZone
                   key={category.id}
@@ -335,12 +332,12 @@ export default function KidsClassifyGamePage() {
               ))}
             </div>
 
-            {/* Draggable items */}
-            <div className="bg-white rounded-3xl p-6 shadow-lg">
-              <h3 className="text-lg font-bold text-gray-700 mb-4 text-center">
-                {isZh ? '拖动这些图片到正确的位置' : '画像を正しい場所にドラッグしよう'}
+            {/* Draggable items - compact */}
+            <div className="bg-white rounded-2xl p-4 shadow-lg">
+              <h3 className="text-base font-bold text-gray-700 mb-3 text-center">
+                {isZh ? '👆 拖动图片到上方分类区' : '👆 画像を上の分類エリアにドラッグ'}
               </h3>
-              <div className="flex flex-wrap justify-center gap-4">
+              <div className="flex flex-wrap justify-center gap-3">
                 {unclassifiedItems.map(item => (
                   <DraggableImage
                     key={item.id}
@@ -352,8 +349,8 @@ export default function KidsClassifyGamePage() {
                   />
                 ))}
                 {unclassifiedItems.length === 0 && (
-                  <div className="text-gray-400 py-8">
-                    <div className="text-4xl mb-2">🎉</div>
+                  <div className="text-gray-400 py-4">
+                    <div className="text-3xl mb-1">🎉</div>
                     <p>{isZh ? '全部分类完成！' : 'すべて分類完了！'}</p>
                   </div>
                 )}

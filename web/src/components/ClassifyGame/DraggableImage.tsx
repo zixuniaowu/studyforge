@@ -54,13 +54,13 @@ export const DraggableImage = ({
     return (
       <div
         className={`
-          w-20 h-20 rounded-2xl flex items-center justify-center text-4xl
-          transition-all duration-300 opacity-50
+          w-16 h-16 rounded-xl flex items-center justify-center text-3xl
+          transition-all duration-300 opacity-50 relative
           ${isCorrect ? 'bg-green-100' : 'bg-red-100'}
         `}
       >
         {item.emoji}
-        <div className="absolute -top-1 -right-1 text-lg">
+        <div className="absolute -top-1 -right-1 text-sm">
           {isCorrect ? '✅' : '❌'}
         </div>
       </div>
@@ -76,9 +76,9 @@ export const DraggableImage = ({
       onTouchStart={handleTouchStart}
       onTouchEnd={handleTouchEnd}
       className={`
-        w-20 h-20 rounded-2xl bg-white shadow-lg border-2 border-gray-100
-        flex items-center justify-center text-4xl cursor-grab active:cursor-grabbing
-        transition-all duration-200 select-none
+        w-16 h-16 rounded-xl bg-white shadow-lg border-2 border-gray-100
+        flex items-center justify-center text-3xl cursor-grab active:cursor-grabbing
+        transition-all duration-200 select-none relative
         ${isDragging
           ? 'scale-110 shadow-2xl opacity-70 rotate-6 z-50'
           : 'hover:scale-105 hover:shadow-xl hover:border-purple-300'
@@ -89,9 +89,9 @@ export const DraggableImage = ({
 
       {/* Glow effect on hover */}
       <div
-        className="absolute inset-0 rounded-2xl opacity-0 hover:opacity-100 transition-opacity"
+        className="absolute inset-0 rounded-xl opacity-0 hover:opacity-100 transition-opacity pointer-events-none"
         style={{
-          boxShadow: '0 0 20px rgba(147, 51, 234, 0.3)',
+          boxShadow: '0 0 15px rgba(147, 51, 234, 0.3)',
         }}
       />
     </div>
