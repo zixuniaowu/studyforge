@@ -159,6 +159,174 @@ const glossaryTerms: Term[] = [
       ja: 'MCPプロトコル。Anthropicが提案したオープンプロトコルで、AIアプリケーションと外部ツール/データソースの接続方法を標準化。'
     }
   },
+  {
+    term: 'Generative AI',
+    abbr: 'GenAI',
+    category: 'ai-ml',
+    definition: {
+      zh: '生成式 AI，能够创建新内容（文本、图像、代码、音频等）的 AI 系统，如 GPT、Stable Diffusion、Sora。',
+      ja: '生成AI。テキスト、画像、コード、オーディオなど新しいコンテンツを生成できるAIシステム。GPT、Stable Diffusion、Soraなど。'
+    }
+  },
+  {
+    term: 'Neural Network',
+    abbr: 'NN',
+    category: 'ai-ml',
+    definition: {
+      zh: '神经网络，模仿人脑结构的计算模型，由相互连接的节点（神经元）层组成，是深度学习的基础。',
+      ja: 'ニューラルネットワーク。人間の脳の構造を模倣した計算モデルで、相互接続されたノード（ニューロン）のレイヤーで構成。深層学習の基盤。'
+    }
+  },
+  {
+    term: 'Supervised Learning',
+    category: 'ai-ml',
+    definition: {
+      zh: '监督学习，使用标注数据训练模型，让模型学习输入与正确输出之间的映射关系。如分类、回归任务。',
+      ja: '教師あり学習。ラベル付きデータでモデルを訓練し、入力と正しい出力のマッピングを学習。分類、回帰タスクなど。'
+    }
+  },
+  {
+    term: 'Unsupervised Learning',
+    category: 'ai-ml',
+    definition: {
+      zh: '无监督学习，使用未标注数据训练模型，让模型自行发现数据中的模式和结构。如聚类、降维。',
+      ja: '教師なし学習。ラベルなしデータでモデルを訓練し、モデル自身がデータのパターンと構造を発見。クラスタリング、次元削減など。'
+    }
+  },
+  {
+    term: 'Reinforcement Learning',
+    abbr: 'RL',
+    category: 'ai-ml',
+    definition: {
+      zh: '强化学习，智能体通过与环境交互，根据奖励信号学习最优策略。RLHF 用于训练 ChatGPT 等模型。',
+      ja: '強化学習。エージェントが環境との相互作用を通じて、報酬シグナルに基づき最適な方策を学習。RLHFはChatGPTなどの訓練に使用。'
+    }
+  },
+  {
+    term: 'Reinforcement Learning from Human Feedback',
+    abbr: 'RLHF',
+    category: 'ai-ml',
+    definition: {
+      zh: '基于人类反馈的强化学习，通过人类偏好训练奖励模型，再用强化学习微调 LLM，使其更符合人类期望。',
+      ja: '人間のフィードバックからの強化学習。人間の好みで報酬モデルを訓練し、強化学習でLLMを微調整して人間の期待により適合させる。'
+    }
+  },
+  {
+    term: 'Computer Vision',
+    abbr: 'CV',
+    category: 'ai-ml',
+    definition: {
+      zh: '计算机视觉，让计算机理解和解释视觉信息的 AI 领域，包括图像分类、目标检测、图像分割等任务。',
+      ja: 'コンピュータビジョン。コンピュータに視覚情報を理解・解釈させるAI分野。画像分類、物体検出、画像セグメンテーションなどのタスク。'
+    }
+  },
+  {
+    term: 'Natural Language Processing',
+    abbr: 'NLP',
+    category: 'ai-ml',
+    definition: {
+      zh: '自然语言处理，让计算机理解、解释和生成人类语言的 AI 领域。LLM 是 NLP 的最新发展。',
+      ja: '自然言語処理。コンピュータに人間の言語を理解、解釈、生成させるAI分野。LLMはNLPの最新の発展。'
+    }
+  },
+  {
+    term: 'Feature Engineering',
+    category: 'ai-ml',
+    definition: {
+      zh: '特征工程，从原始数据中提取和构造有意义的特征，用于机器学习模型训练，直接影响模型性能。',
+      ja: '特徴エンジニアリング。生データから意味のある特徴を抽出・構築し、機械学習モデルの訓練に使用。モデル性能に直接影響。'
+    }
+  },
+  {
+    term: 'Model Inference',
+    category: 'ai-ml',
+    definition: {
+      zh: '模型推理，使用训练好的模型对新数据进行预测的过程。推理优化是部署 AI 的关键，涉及延迟和吞吐量。',
+      ja: 'モデル推論。訓練済みモデルで新しいデータに対して予測を行うプロセス。推論最適化はAIデプロイの鍵で、レイテンシとスループットに関係。'
+    }
+  },
+  {
+    term: 'Low-Rank Adaptation',
+    abbr: 'LoRA',
+    category: 'ai-ml',
+    definition: {
+      zh: 'LoRA，一种参数高效微调技术，通过低秩矩阵分解减少可训练参数数量，降低微调成本至原来的万分之一。',
+      ja: 'LoRA。パラメータ効率的な微調整技術で、低ランク行列分解により訓練可能パラメータ数を削減、微調整コストを1万分の1に低減。'
+    }
+  },
+  {
+    term: 'Quantization',
+    category: 'ai-ml',
+    definition: {
+      zh: '量化，将模型权重从高精度（FP32）转换为低精度（INT8/INT4）的技术，减少模型大小和加速推理，轻微损失精度。',
+      ja: '量子化。モデルの重みを高精度（FP32）から低精度（INT8/INT4）に変換する技術。モデルサイズを削減し推論を高速化、精度はわずかに低下。'
+    }
+  },
+  {
+    term: 'Chain of Thought',
+    abbr: 'CoT',
+    category: 'ai-ml',
+    definition: {
+      zh: '思维链，一种提示技术，引导 LLM 逐步推理而非直接给出答案，显著提升复杂问题的准确性。',
+      ja: 'チェーン・オブ・ソート。プロンプト技術の一種で、LLMに直接答えを出すのではなく段階的に推論させ、複雑な問題の精度を大幅向上。'
+    }
+  },
+  {
+    term: 'Context Window',
+    category: 'ai-ml',
+    definition: {
+      zh: '上下文窗口，LLM 一次能处理的最大 Token 数量。GPT-4 Turbo 支持 128K，Claude 3 支持 200K Token。',
+      ja: 'コンテキストウィンドウ。LLMが一度に処理できる最大トークン数。GPT-4 Turboは128K、Claude 3は200Kトークンをサポート。'
+    }
+  },
+  {
+    term: 'Temperature',
+    category: 'ai-ml',
+    definition: {
+      zh: '温度参数，控制 LLM 输出的随机性。温度越低（如 0）输出越确定，温度越高（如 1）输出越多样和创意。',
+      ja: '温度パラメータ。LLM出力のランダム性を制御。温度が低い（0など）と確定的な出力、高い（1など）と多様で創造的な出力。'
+    }
+  },
+  {
+    term: 'Diffusion Model',
+    category: 'ai-ml',
+    definition: {
+      zh: '扩散模型，通过逐步去噪生成图像的生成模型，是 Stable Diffusion、DALL-E 3、Midjourney 的核心技术。',
+      ja: '拡散モデル。段階的にノイズ除去して画像を生成する生成モデル。Stable Diffusion、DALL-E 3、Midjourneyのコア技術。'
+    }
+  },
+  {
+    term: 'Multimodal AI',
+    category: 'ai-ml',
+    definition: {
+      zh: '多模态 AI，能够理解和处理多种数据类型（文本、图像、音频、视频）的 AI 模型。如 GPT-4V、Gemini。',
+      ja: 'マルチモーダルAI。複数のデータタイプ（テキスト、画像、オーディオ、ビデオ）を理解・処理できるAIモデル。GPT-4V、Geminiなど。'
+    }
+  },
+  {
+    term: 'Agentic AI',
+    category: 'ai-ml',
+    definition: {
+      zh: '智能体 AI，能够自主规划、决策、执行多步骤任务的 AI 系统，可调用工具、操作环境，实现复杂目标。',
+      ja: 'エージェントAI。自律的に計画、意思決定、複数ステップのタスク実行ができるAIシステム。ツール呼び出し、環境操作で複雑な目標を達成。'
+    }
+  },
+  {
+    term: 'Benchmark',
+    category: 'ai-ml',
+    definition: {
+      zh: '基准测试，用于评估和比较 AI 模型性能的标准化测试集。如 MMLU、HumanEval、MT-Bench。',
+      ja: 'ベンチマーク。AIモデルの性能を評価・比較するための標準化されたテストセット。MMLU、HumanEval、MT-Benchなど。'
+    }
+  },
+  {
+    term: 'Tokenizer',
+    category: 'ai-ml',
+    definition: {
+      zh: '分词器，将文本转换为 Token 序列的工具。常用算法包括 BPE、WordPiece、SentencePiece。影响模型理解文本的方式。',
+      ja: 'トークナイザー。テキストをトークン列に変換するツール。BPE、WordPiece、SentencePieceなどのアルゴリズム。モデルのテキスト理解方法に影響。'
+    }
+  },
 
   // Cloud Terms
   {
@@ -252,6 +420,101 @@ const glossaryTerms: Term[] = [
     },
     example: { zh: 'CloudFront、Azure CDN、Cloud CDN', ja: 'CloudFront、Azure CDN、Cloud CDN' }
   },
+  {
+    term: 'Object Storage',
+    category: 'cloud',
+    definition: {
+      zh: '对象存储，以对象形式存储数据的存储服务，适合存储图片、视频、备份等非结构化数据，具有高可用性和无限扩展性。',
+      ja: 'オブジェクトストレージ。オブジェクト形式でデータを保存するストレージサービス。画像、動画、バックアップなどの非構造化データに適し、高可用性と無限のスケーラビリティ。'
+    },
+    example: { zh: 'S3、Azure Blob、Cloud Storage', ja: 'S3、Azure Blob、Cloud Storage' }
+  },
+  {
+    term: 'Block Storage',
+    category: 'cloud',
+    definition: {
+      zh: '块存储，将数据存储为固定大小块的存储服务，性能高，适合数据库和需要低延迟的应用。',
+      ja: 'ブロックストレージ。データを固定サイズのブロックとして保存するストレージサービス。高性能で、データベースや低レイテンシが必要なアプリに適する。'
+    },
+    example: { zh: 'EBS、Azure Disk、Persistent Disk', ja: 'EBS、Azure Disk、Persistent Disk' }
+  },
+  {
+    term: 'API Gateway',
+    category: 'cloud',
+    definition: {
+      zh: 'API 网关，管理 API 请求的入口服务，提供认证、限流、缓存、监控等功能，是微服务架构的关键组件。',
+      ja: 'APIゲートウェイ。APIリクエストを管理するエントリーポイントサービス。認証、レート制限、キャッシュ、監視などの機能を提供。マイクロサービスの重要コンポーネント。'
+    },
+    example: { zh: 'API Gateway、Azure API Management、Apigee', ja: 'API Gateway、Azure API Management、Apigee' }
+  },
+  {
+    term: 'Service Mesh',
+    category: 'cloud',
+    definition: {
+      zh: '服务网格，管理微服务间通信的基础设施层，提供服务发现、负载均衡、加密、可观测性等功能。',
+      ja: 'サービスメッシュ。マイクロサービス間の通信を管理するインフラストラクチャレイヤー。サービスディスカバリ、ロードバランシング、暗号化、可観測性を提供。'
+    },
+    example: { zh: 'Istio、Linkerd、Consul Connect', ja: 'Istio、Linkerd、Consul Connect' }
+  },
+  {
+    term: 'Edge Computing',
+    category: 'cloud',
+    definition: {
+      zh: '边缘计算，在靠近数据源的位置进行计算处理，减少延迟和带宽使用，适合 IoT、实时分析等场景。',
+      ja: 'エッジコンピューティング。データソースに近い場所で計算処理を行い、レイテンシと帯域幅使用を削減。IoT、リアルタイム分析などに適する。'
+    }
+  },
+  {
+    term: 'Multi-Cloud',
+    category: 'cloud',
+    definition: {
+      zh: '多云策略，同时使用多个云厂商的服务，避免供应商锁定，提高可用性和灵活性，但增加管理复杂度。',
+      ja: 'マルチクラウド戦略。複数のクラウドベンダーのサービスを同時に使用し、ベンダーロックインを回避、可用性と柔軟性を向上。管理の複雑さは増加。'
+    }
+  },
+  {
+    term: 'Hybrid Cloud',
+    category: 'cloud',
+    definition: {
+      zh: '混合云，将私有云/本地数据中心与公有云结合的架构，兼顾安全性、合规性和扩展性。',
+      ja: 'ハイブリッドクラウド。プライベートクラウド/オンプレミスデータセンターとパブリッククラウドを組み合わせたアーキテクチャ。セキュリティ、コンプライアンス、スケーラビリティを両立。'
+    }
+  },
+  {
+    term: 'Reserved Instances',
+    abbr: 'RI',
+    category: 'cloud',
+    definition: {
+      zh: '预留实例，承诺使用云资源 1-3 年换取大幅折扣（最高 72%），适合稳定工作负载，但缺乏灵活性。',
+      ja: '予約インスタンス。クラウドリソースを1〜3年使用するコミットメントで大幅割引（最大72%）。安定したワークロードに適するが、柔軟性に欠ける。'
+    }
+  },
+  {
+    term: 'Spot Instances',
+    category: 'cloud',
+    definition: {
+      zh: '竞价实例，使用云厂商闲置容量的低价实例，价格可低至按需的 90%，但可能随时被中断。',
+      ja: 'スポットインスタンス。クラウドベンダーの余剰容量を使用する低価格インスタンス。オンデマンドの90%まで安くなるが、いつでも中断される可能性。'
+    }
+  },
+  {
+    term: 'Container Registry',
+    category: 'cloud',
+    definition: {
+      zh: '容器镜像仓库，存储和分发 Docker 镜像的服务，支持版本控制和安全扫描。',
+      ja: 'コンテナレジストリ。Dockerイメージを保存・配布するサービスで、バージョン管理とセキュリティスキャンをサポート。'
+    },
+    example: { zh: 'ECR、ACR、Artifact Registry、Docker Hub', ja: 'ECR、ACR、Artifact Registry、Docker Hub' }
+  },
+  {
+    term: 'Managed Database',
+    category: 'cloud',
+    definition: {
+      zh: '托管数据库，云厂商管理的数据库服务，自动处理备份、补丁、扩展等运维工作。',
+      ja: 'マネージドデータベース。クラウドベンダーが管理するデータベースサービス。バックアップ、パッチ、スケーリングなどの運用を自動処理。'
+    },
+    example: { zh: 'RDS、Aurora、Cloud SQL、CosmosDB', ja: 'RDS、Aurora、Cloud SQL、CosmosDB' }
+  },
 
   // Data Terms
   {
@@ -296,6 +559,91 @@ const glossaryTerms: Term[] = [
       ja: '分散イベントストリーミングプラットフォーム。リアルタイムデータパイプラインとストリーム処理アプリの構築に使用、高スループットと耐障害性を持つ。'
     }
   },
+  {
+    term: 'Data Pipeline',
+    category: 'data',
+    definition: {
+      zh: '数据管道，自动化数据从源到目标的流动过程，包括数据采集、转换、验证和加载。',
+      ja: 'データパイプライン。ソースからターゲットへのデータの流れを自動化するプロセスで、データ収集、変換、検証、ロードを含む。'
+    },
+    example: { zh: 'Airflow、Prefect、Dagster、Step Functions', ja: 'Airflow、Prefect、Dagster、Step Functions' }
+  },
+  {
+    term: 'Feature Store',
+    category: 'data',
+    definition: {
+      zh: '特征仓库，集中存储和管理机器学习特征的系统，确保训练和推理时特征一致性。',
+      ja: 'フィーチャーストア。機械学習の特徴量を一元的に保存・管理するシステムで、訓練と推論時の特徴量の一貫性を保証。'
+    },
+    example: { zh: 'SageMaker Feature Store、Feast、Tecton', ja: 'SageMaker Feature Store、Feast、Tecton' }
+  },
+  {
+    term: 'Data Governance',
+    category: 'data',
+    definition: {
+      zh: '数据治理，管理数据可用性、完整性、安全性和合规性的框架和流程，确保数据质量和可信度。',
+      ja: 'データガバナンス。データの可用性、完全性、セキュリティ、コンプライアンスを管理するフレームワークとプロセスで、データ品質と信頼性を保証。'
+    }
+  },
+  {
+    term: 'Data Lakehouse',
+    category: 'data',
+    definition: {
+      zh: '湖仓一体，结合数据湖的灵活性和数据仓库的性能，支持 ACID 事务和模式管理。',
+      ja: 'データレイクハウス。データレイクの柔軟性とデータウェアハウスのパフォーマンスを組み合わせ、ACIDトランザクションとスキーマ管理をサポート。'
+    },
+    example: { zh: 'Databricks、Delta Lake、Apache Iceberg', ja: 'Databricks、Delta Lake、Apache Iceberg' }
+  },
+  {
+    term: 'OLAP',
+    category: 'data',
+    definition: {
+      zh: '联机分析处理，针对复杂分析查询优化的数据处理方式，支持多维度数据分析，如数据仓库。',
+      ja: 'オンライン分析処理。複雑な分析クエリ向けに最適化されたデータ処理方式で、多次元データ分析をサポート。データウェアハウスなど。'
+    }
+  },
+  {
+    term: 'OLTP',
+    category: 'data',
+    definition: {
+      zh: '联机事务处理，针对大量短小事务优化的数据处理方式，如关系型数据库处理订单、支付。',
+      ja: 'オンライントランザクション処理。大量の短いトランザクション向けに最適化されたデータ処理方式。注文、決済処理のRDBMSなど。'
+    }
+  },
+  {
+    term: 'Data Mesh',
+    category: 'data',
+    definition: {
+      zh: '数据网格，分布式数据架构范式，将数据所有权分散到各业务领域，每个领域作为数据产品提供服务。',
+      ja: 'データメッシュ。分散データアーキテクチャパラダイムで、データの所有権を各ビジネスドメインに分散し、各ドメインがデータプロダクトとしてサービス提供。'
+    }
+  },
+  {
+    term: 'Stream Processing',
+    category: 'data',
+    definition: {
+      zh: '流处理，实时处理连续数据流的技术，与批处理相对，适合需要即时响应的场景。',
+      ja: 'ストリーム処理。連続的なデータストリームをリアルタイム処理する技術。バッチ処理と対照的で、即座の応答が必要なシナリオに適する。'
+    },
+    example: { zh: 'Kafka Streams、Flink、Kinesis', ja: 'Kafka Streams、Flink、Kinesis' }
+  },
+  {
+    term: 'Data Lineage',
+    category: 'data',
+    definition: {
+      zh: '数据血缘，追踪数据从源头到目标的完整路径，了解数据如何被转换和使用，用于审计和调试。',
+      ja: 'データリネージ。データがソースからターゲットまでの完全なパスを追跡し、データがどう変換・使用されるかを把握。監査とデバッグに使用。'
+    }
+  },
+  {
+    term: 'Data Catalog',
+    category: 'data',
+    definition: {
+      zh: '数据目录，集中管理组织数据资产元数据的工具，便于数据发现和理解。',
+      ja: 'データカタログ。組織のデータ資産のメタデータを一元管理するツールで、データの発見と理解を容易にする。'
+    },
+    example: { zh: 'Glue Data Catalog、Purview、Datahub', ja: 'Glue Data Catalog、Purview、Datahub' }
+  },
 
   // Security Terms
   {
@@ -338,6 +686,95 @@ const glossaryTerms: Term[] = [
     definition: {
       zh: '零信任安全模型，"永不信任，始终验证"，不论请求来源，都需要验证身份和权限。',
       ja: 'ゼロトラストセキュリティモデル。「決して信頼せず、常に検証」、リクエストの発信元に関わらず、IDと権限を検証。'
+    }
+  },
+  {
+    term: 'Key Management Service',
+    abbr: 'KMS',
+    category: 'security',
+    definition: {
+      zh: '密钥管理服务，集中管理加密密钥的云服务，支持密钥轮换、审计和硬件安全模块（HSM）。',
+      ja: 'キー管理サービス。暗号化キーを一元管理するクラウドサービスで、キーのローテーション、監査、HSM（ハードウェアセキュリティモジュール）をサポート。'
+    },
+    example: { zh: 'AWS KMS、Azure Key Vault、Cloud KMS', ja: 'AWS KMS、Azure Key Vault、Cloud KMS' }
+  },
+  {
+    term: 'Security Information and Event Management',
+    abbr: 'SIEM',
+    category: 'security',
+    definition: {
+      zh: '安全信息和事件管理，收集、分析和关联安全事件日志，检测威胁和异常行为。',
+      ja: 'セキュリティ情報およびイベント管理。セキュリティイベントログを収集、分析、相関分析し、脅威と異常行動を検出。'
+    },
+    example: { zh: 'Splunk、Sentinel、Chronicle', ja: 'Splunk、Sentinel、Chronicle' }
+  },
+  {
+    term: 'Web Application Firewall',
+    abbr: 'WAF',
+    category: 'security',
+    definition: {
+      zh: 'Web 应用防火墙，保护 Web 应用免受常见攻击（SQL 注入、XSS、CSRF），在应用层过滤恶意流量。',
+      ja: 'Webアプリケーションファイアウォール。Webアプリを一般的な攻撃（SQLインジェクション、XSS、CSRF）から保護し、アプリケーション層で悪意のあるトラフィックをフィルタリング。'
+    }
+  },
+  {
+    term: 'Secrets Manager',
+    category: 'security',
+    definition: {
+      zh: '密钥管理器，安全存储和管理敏感信息（API 密钥、密码、证书），支持自动轮换。',
+      ja: 'シークレットマネージャー。機密情報（APIキー、パスワード、証明書）を安全に保存・管理し、自動ローテーションをサポート。'
+    },
+    example: { zh: 'Secrets Manager、Azure Key Vault、Vault', ja: 'Secrets Manager、Azure Key Vault、Vault' }
+  },
+  {
+    term: 'SOC 2',
+    category: 'security',
+    definition: {
+      zh: 'SOC 2 认证，针对服务组织的安全审计标准，涵盖安全性、可用性、处理完整性、保密性和隐私五项信任原则。',
+      ja: 'SOC 2認証。サービス組織向けのセキュリティ監査標準で、セキュリティ、可用性、処理の完全性、機密性、プライバシーの5つの信頼原則をカバー。'
+    }
+  },
+  {
+    term: 'General Data Protection Regulation',
+    abbr: 'GDPR',
+    category: 'security',
+    definition: {
+      zh: '通用数据保护条例，欧盟的数据隐私法规，规定个人数据的收集、处理和存储要求，违规可罚款至全球收入 4%。',
+      ja: '一般データ保護規則。EUのデータプライバシー法規で、個人データの収集、処理、保存の要件を規定。違反時は世界売上の4%まで罰金。'
+    }
+  },
+  {
+    term: 'Penetration Testing',
+    category: 'security',
+    definition: {
+      zh: '渗透测试，模拟黑客攻击以发现系统安全漏洞的测试方法，分为白盒、黑盒和灰盒测试。',
+      ja: 'ペネトレーションテスト。ハッカー攻撃をシミュレートしてシステムのセキュリティ脆弱性を発見するテスト手法。ホワイトボックス、ブラックボックス、グレーボックステストに分類。'
+    }
+  },
+  {
+    term: 'Security Group',
+    category: 'security',
+    definition: {
+      zh: '安全组，云环境中的虚拟防火墙，控制实例的入站和出站流量，基于 IP、端口和协议设置规则。',
+      ja: 'セキュリティグループ。クラウド環境の仮想ファイアウォールで、インスタンスのインバウンドとアウトバウンドトラフィックを制御。IP、ポート、プロトコルでルール設定。'
+    }
+  },
+  {
+    term: 'Data Loss Prevention',
+    abbr: 'DLP',
+    category: 'security',
+    definition: {
+      zh: '数据丢失防护，检测和防止敏感数据泄露的技术和策略，监控数据在存储、传输和使用中的安全。',
+      ja: 'データ損失防止。機密データの漏洩を検出・防止する技術と戦略で、保存、転送、使用中のデータセキュリティを監視。'
+    }
+  },
+  {
+    term: 'Principle of Least Privilege',
+    abbr: 'PoLP',
+    category: 'security',
+    definition: {
+      zh: '最小权限原则，用户和服务只应获得完成任务所需的最小权限，减少安全风险。',
+      ja: '最小権限の原則。ユーザーとサービスはタスク完了に必要な最小限の権限のみを付与され、セキュリティリスクを低減。'
     }
   },
 
@@ -409,6 +846,126 @@ const glossaryTerms: Term[] = [
     definition: {
       zh: 'GitOps，以 Git 仓库为唯一真相来源，通过 PR 和合并来管理基础设施和应用配置。',
       ja: 'GitOps。Gitリポジトリを唯一の真実の源とし、PRとマージでインフラとアプリ設定を管理。'
+    }
+  },
+  {
+    term: 'Observability',
+    category: 'devops',
+    definition: {
+      zh: '可观测性，通过日志、指标和追踪理解系统内部状态的能力，是监控的进化形式。',
+      ja: '可観測性。ログ、メトリクス、トレースを通じてシステムの内部状態を理解する能力。監視の進化形。'
+    },
+    example: { zh: 'Prometheus、Grafana、Jaeger、OpenTelemetry', ja: 'Prometheus、Grafana、Jaeger、OpenTelemetry' }
+  },
+  {
+    term: 'Service Level Agreement',
+    abbr: 'SLA',
+    category: 'devops',
+    definition: {
+      zh: '服务级别协议，服务提供商与客户之间的正式承诺，定义服务可用性、响应时间等指标和违约赔偿。',
+      ja: 'サービスレベルアグリーメント。サービスプロバイダーと顧客間の正式な約束で、可用性、応答時間などの指標と違約時の補償を定義。'
+    }
+  },
+  {
+    term: 'Service Level Objective',
+    abbr: 'SLO',
+    category: 'devops',
+    definition: {
+      zh: '服务级别目标，SLA 中具体的性能目标，如 99.9% 可用性（每年允许约 8.76 小时宕机）。',
+      ja: 'サービスレベル目標。SLA内の具体的なパフォーマンス目標で、99.9%可用性（年間約8.76時間のダウンタイム許容）など。'
+    }
+  },
+  {
+    term: 'Service Level Indicator',
+    abbr: 'SLI',
+    category: 'devops',
+    definition: {
+      zh: '服务级别指标，衡量服务性能的具体指标，如请求延迟、错误率、吞吐量，用于计算是否达到 SLO。',
+      ja: 'サービスレベル指標。サービスパフォーマンスを測定する具体的な指標で、リクエストレイテンシ、エラー率、スループットなど。SLO達成の判断に使用。'
+    }
+  },
+  {
+    term: 'Blue-Green Deployment',
+    category: 'devops',
+    definition: {
+      zh: '蓝绿部署，同时运行两个相同环境（蓝和绿），部署时切换流量到新环境，问题时快速回滚。',
+      ja: 'ブルーグリーンデプロイメント。2つの同一環境（ブルーとグリーン）を同時に実行し、デプロイ時に新環境にトラフィックを切り替え、問題時は迅速にロールバック。'
+    }
+  },
+  {
+    term: 'Canary Deployment',
+    category: 'devops',
+    definition: {
+      zh: '金丝雀部署，先将新版本部署给少量用户（如 5%），观察无问题后逐步扩大到全部用户。',
+      ja: 'カナリアデプロイメント。まず少数のユーザー（5%など）に新バージョンをデプロイし、問題がなければ徐々に全ユーザーに拡大。'
+    }
+  },
+  {
+    term: 'Feature Flag',
+    category: 'devops',
+    definition: {
+      zh: '功能开关，通过配置控制功能的启用/禁用，无需重新部署即可发布或回滚功能。',
+      ja: 'フィーチャーフラグ。設定で機能の有効/無効を制御し、再デプロイなしで機能をリリースまたはロールバック。'
+    },
+    example: { zh: 'LaunchDarkly、Flagsmith、Unleash', ja: 'LaunchDarkly、Flagsmith、Unleash' }
+  },
+  {
+    term: 'Chaos Engineering',
+    category: 'devops',
+    definition: {
+      zh: '混沌工程，在生产环境中故意引入故障（如网络延迟、服务宕机），测试系统弹性和恢复能力。',
+      ja: 'カオスエンジニアリング。本番環境で意図的に障害（ネットワーク遅延、サービスダウンなど）を発生させ、システムの回復力と復旧能力をテスト。'
+    },
+    example: { zh: 'Chaos Monkey、Gremlin、LitmusChaos', ja: 'Chaos Monkey、Gremlin、LitmusChaos' }
+  },
+  {
+    term: 'Site Reliability Engineering',
+    abbr: 'SRE',
+    category: 'devops',
+    definition: {
+      zh: '站点可靠性工程，将软件工程实践应用于运维的方法论，平衡可靠性和开发速度，由 Google 首创。',
+      ja: 'サイト信頼性エンジニアリング。ソフトウェアエンジニアリングの実践を運用に適用する方法論で、信頼性と開発速度のバランスを取る。Googleが創始。'
+    }
+  },
+  {
+    term: 'Helm',
+    category: 'devops',
+    definition: {
+      zh: 'Kubernetes 的包管理工具，使用 Chart 打包、版本控制和部署 K8s 应用。',
+      ja: 'Kubernetesのパッケージマネージャー。Chartを使用してK8sアプリをパッケージ化、バージョン管理、デプロイ。'
+    }
+  },
+  {
+    term: 'Pod',
+    category: 'devops',
+    definition: {
+      zh: 'Kubernetes 中最小的部署单元，包含一个或多个共享网络和存储的容器。',
+      ja: 'Kubernetesの最小デプロイ単位で、ネットワークとストレージを共有する1つ以上のコンテナを含む。'
+    }
+  },
+  {
+    term: 'Service Discovery',
+    category: 'devops',
+    definition: {
+      zh: '服务发现，自动检测和定位网络中服务实例的机制，是微服务架构的关键组件。',
+      ja: 'サービスディスカバリ。ネットワーク内のサービスインスタンスを自動的に検出・特定する仕組みで、マイクロサービスの重要コンポーネント。'
+    },
+    example: { zh: 'Consul、etcd、Eureka', ja: 'Consul、etcd、Eureka' }
+  },
+  {
+    term: 'Immutable Infrastructure',
+    category: 'devops',
+    definition: {
+      zh: '不可变基础设施，服务器一旦部署就不再修改，更新时用新镜像替换整个服务器，确保环境一致性。',
+      ja: '不変インフラストラクチャ。サーバーは一度デプロイすると変更せず、更新時は新しいイメージでサーバー全体を置き換え、環境の一貫性を保証。'
+    }
+  },
+  {
+    term: 'Rolling Update',
+    category: 'devops',
+    definition: {
+      zh: '滚动更新，逐步用新版本实例替换旧版本实例的部署策略，确保服务不中断。',
+      ja: 'ローリングアップデート。旧バージョンのインスタンスを新バージョンで段階的に置き換えるデプロイ戦略で、サービスの中断なしを保証。'
     }
   }
 ];

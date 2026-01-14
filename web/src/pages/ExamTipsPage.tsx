@@ -12,11 +12,13 @@ import {
   Trophy,
   Zap,
   Shield,
-  TrendingUp
+  TrendingUp,
+  Brain,
+  Lightbulb
 } from 'lucide-react';
 import { useLanguageStore } from '../stores/languageStore';
 
-type Provider = 'general' | 'aws' | 'azure' | 'gcp';
+type Provider = 'general' | 'aws' | 'azure' | 'gcp' | 'ai-ml';
 
 interface TipSection {
   title: { zh: string; ja: string };
@@ -203,6 +205,94 @@ const examTipsData: Record<Provider, {
           { zh: 'GCP 文档和解决方案架构', ja: 'GCP ドキュメントとソリューションアーキテクチャ' },
           { zh: 'Qwiklabs 实验室动手练习', ja: 'Qwiklabs ラボでのハンズオン' },
           { zh: 'Google Cloud 官方 YouTube 频道', ja: 'Google Cloud 公式 YouTube チャンネル' }
+        ]
+      }
+    ]
+  },
+  'ai-ml': {
+    name: { zh: 'AI/ML 认证备考', ja: 'AI/ML 認定試験対策' },
+    gradient: 'from-purple-500 to-violet-600',
+    passingScore: '70-75%',
+    examDuration: '120-180分',
+    sections: [
+      {
+        title: { zh: 'AI/ML 认证概览', ja: 'AI/ML 認定の概要' },
+        icon: Brain,
+        color: 'text-purple-600 bg-purple-100',
+        tips: [
+          { zh: 'AWS AI Practitioner (AIF-C01)：AI 基础知识、生成式 AI 概念', ja: 'AWS AI Practitioner (AIF-C01)：AI基礎知識、生成AIの概念' },
+          { zh: 'AWS ML Specialty (MLS-C01)：机器学习全流程、深度专业知识', ja: 'AWS ML Specialty (MLS-C01)：機械学習の全プロセス、深い専門知識' },
+          { zh: 'Azure AI-102：Azure AI 服务部署与集成', ja: 'Azure AI-102：Azure AIサービスのデプロイと統合' },
+          { zh: 'GCP ML Engineer：端到端 ML 解决方案设计', ja: 'GCP ML Engineer：エンドツーエンドのMLソリューション設計' }
+        ]
+      },
+      {
+        title: { zh: 'ML 核心概念', ja: 'MLのコア概念' },
+        icon: Lightbulb,
+        color: 'text-purple-600 bg-purple-100',
+        tips: [
+          { zh: '深刻理解监督学习、非监督学习、强化学习的区别和应用场景', ja: '教師あり学習、教師なし学習、強化学習の違いと適用シナリオを深く理解' },
+          { zh: '熟悉常见算法：线性回归、决策树、神经网络、SVM、K-Means', ja: '一般的なアルゴリズムに精通：線形回帰、決定木、ニューラルネットワーク、SVM、K-Means' },
+          { zh: '理解模型评估指标：Accuracy、Precision、Recall、F1、AUC-ROC', ja: 'モデル評価指標を理解：Accuracy、Precision、Recall、F1、AUC-ROC' },
+          { zh: '掌握过拟合/欠拟合的识别和解决方法', ja: '過学習/学習不足の識別と解決方法を習得' },
+          { zh: '了解特征工程：缺失值处理、标准化、独热编码、特征选择', ja: '特徴エンジニアリングを理解：欠損値処理、正規化、ワンホットエンコーディング、特徴選択' }
+        ]
+      },
+      {
+        title: { zh: '生成式 AI 重点', ja: '生成AIの重点' },
+        icon: Zap,
+        color: 'text-purple-600 bg-purple-100',
+        tips: [
+          { zh: '理解 Transformer 架构、Attention 机制的基本原理', ja: 'Transformerアーキテクチャ、Attentionメカニズムの基本原理を理解' },
+          { zh: '熟悉大语言模型概念：Token、Context Window、Temperature、Top-p', ja: 'LLMの概念に精通：Token、Context Window、Temperature、Top-p' },
+          { zh: '掌握 RAG（检索增强生成）的原理和应用场景', ja: 'RAG（検索拡張生成）の原理と適用シナリオを習得' },
+          { zh: '了解 Prompt Engineering 技巧：Few-shot、Chain-of-Thought', ja: 'Prompt Engineeringテクニックを理解：Few-shot、Chain-of-Thought' },
+          { zh: '理解模型微调（Fine-tuning）vs 提示工程的选择场景', ja: 'モデルファインチューニング vs プロンプトエンジニアリングの選択シナリオを理解' }
+        ]
+      },
+      {
+        title: { zh: 'ML 工程实践', ja: 'MLエンジニアリング実践' },
+        icon: Target,
+        color: 'text-purple-600 bg-purple-100',
+        tips: [
+          { zh: '熟悉 ML Pipeline：数据收集→预处理→训练→评估→部署→监控', ja: 'MLパイプラインに精通：データ収集→前処理→訓練→評価→デプロイ→監視' },
+          { zh: '了解 MLOps 概念：CI/CD for ML、模型版本控制、A/B 测试', ja: 'MLOpsの概念を理解：CI/CD for ML、モデルバージョン管理、A/Bテスト' },
+          { zh: '掌握模型部署选项：实时推理 vs 批量推理、边缘部署', ja: 'モデルデプロイオプションを習得：リアルタイム推論 vs バッチ推論、エッジデプロイ' },
+          { zh: '理解模型监控：数据漂移、概念漂移、模型性能衰减', ja: 'モデル監視を理解：データドリフト、コンセプトドリフト、モデル性能劣化' }
+        ]
+      },
+      {
+        title: { zh: 'AI 责任与安全', ja: 'AI責任とセキュリティ' },
+        icon: Shield,
+        color: 'text-purple-600 bg-purple-100',
+        tips: [
+          { zh: '理解负责任 AI 原则：公平性、透明性、隐私保护、问责制', ja: '責任あるAI原則を理解：公平性、透明性、プライバシー保護、説明責任' },
+          { zh: '了解模型偏差检测和缓解方法', ja: 'モデルバイアスの検出と軽減方法を理解' },
+          { zh: '熟悉数据隐私法规（GDPR、CCPA）对 AI 的影响', ja: 'データプライバシー規制（GDPR、CCPA）がAIに与える影響に精通' },
+          { zh: '掌握模型安全：对抗攻击、Prompt Injection 防护', ja: 'モデルセキュリティを習得：敵対的攻撃、Prompt Injection防御' }
+        ]
+      },
+      {
+        title: { zh: '云服务考点对比', ja: 'クラウドサービス出題ポイント比較' },
+        icon: TrendingUp,
+        color: 'text-purple-600 bg-purple-100',
+        tips: [
+          { zh: 'AWS：SageMaker、Bedrock、Rekognition、Comprehend、Lex', ja: 'AWS：SageMaker、Bedrock、Rekognition、Comprehend、Lex' },
+          { zh: 'Azure：Azure ML、OpenAI Service、Cognitive Services', ja: 'Azure：Azure ML、OpenAI Service、Cognitive Services' },
+          { zh: 'GCP：Vertex AI、AutoML、Document AI、Vision AI', ja: 'GCP：Vertex AI、AutoML、Document AI、Vision AI' },
+          { zh: '注意各平台的服务命名差异和功能对应关系', ja: '各プラットフォームのサービス名の違いと機能の対応関係に注意' }
+        ]
+      },
+      {
+        title: { zh: '推荐学习资源', ja: 'おすすめ学習リソース' },
+        icon: BookOpen,
+        color: 'text-purple-600 bg-purple-100',
+        tips: [
+          { zh: 'Coursera: 吴恩达 Machine Learning、Deep Learning Specialization', ja: 'Coursera: Andrew Ng Machine Learning、Deep Learning Specialization' },
+          { zh: 'fast.ai: Practical Deep Learning for Coders（免费实践课程）', ja: 'fast.ai: Practical Deep Learning for Coders（無料実践コース）' },
+          { zh: '各云平台官方 ML 学习路径和实验室', ja: '各クラウドプラットフォーム公式ML学習パスとラボ' },
+          { zh: 'Kaggle: 通过竞赛练习数据处理和模型训练', ja: 'Kaggle: コンペティションでデータ処理とモデル訓練を練習' },
+          { zh: 'Hugging Face: 探索和使用开源模型', ja: 'Hugging Face: オープンソースモデルの探索と使用' }
         ]
       }
     ]
