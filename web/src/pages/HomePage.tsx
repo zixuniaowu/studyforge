@@ -169,6 +169,7 @@ export const HomePage: React.FC = () => {
   });
   const t = useT();
   const language = useLanguageStore(state => state.language);
+  const setLanguage = useLanguageStore(state => state.setLanguage);
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -721,6 +722,14 @@ export const HomePage: React.FC = () => {
                 <span>{language === 'ja' ? '復習' : '复习'}</span>
               </button>
             )}
+            {/* Language Switcher */}
+            <button
+              onClick={() => setLanguage(language === 'ja' ? 'zh-CN' : 'ja')}
+              className="flex items-center gap-1.5 px-3 py-1.5 bg-slate-700 hover:bg-slate-600 rounded text-sm transition-colors"
+            >
+              <Globe className="w-4 h-4" />
+              <span>{language === 'ja' ? '中文' : '日本語'}</span>
+            </button>
           </div>
         </div>
       </header>
