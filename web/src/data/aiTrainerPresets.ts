@@ -77,12 +77,16 @@ export const aiTrainerPresets: TrainerPreset[] = [
     samples: [
       { id: 's1', emoji: '🍎', name: { zh: '红苹果', ja: '赤りんご' }, categoryId: 'apple' },
       { id: 's2', emoji: '🍏', name: { zh: '青苹果', ja: '青りんご' }, categoryId: 'apple' },
+      { id: 's9', emoji: '🍎', name: { zh: '大苹果', ja: '大きいりんご' }, categoryId: 'apple' },
+      { id: 's10', emoji: '🍏', name: { zh: '小苹果', ja: '小さいりんご' }, categoryId: 'apple' },
       { id: 's3', emoji: '🍊', name: { zh: '橘子', ja: 'みかん' }, categoryId: 'citrus' },
       { id: 's4', emoji: '🍋', name: { zh: '柠檬', ja: 'レモン' }, categoryId: 'citrus' },
       { id: 's5', emoji: '🍋‍🟩', name: { zh: '青柠', ja: 'ライム' }, categoryId: 'citrus' },
+      { id: 's11', emoji: '🍊', name: { zh: '小橘子', ja: '小みかん' }, categoryId: 'citrus' },
       { id: 's6', emoji: '🍇', name: { zh: '葡萄', ja: 'ぶどう' }, categoryId: 'berry' },
       { id: 's7', emoji: '🫐', name: { zh: '蓝莓', ja: 'ブルーベリー' }, categoryId: 'berry' },
       { id: 's8', emoji: '🍓', name: { zh: '草莓', ja: 'いちご' }, categoryId: 'berry' },
+      { id: 's12', emoji: '🍒', name: { zh: '樱桃', ja: 'さくらんぼ' }, categoryId: 'berry' },
     ],
     testSamples: [
       { id: 't1', emoji: '🍎', name: { zh: '测试苹果', ja: 'テストりんご' }, categoryId: 'apple' },
