@@ -1203,7 +1203,14 @@ export const HomePage: React.FC = () => {
                 className="flex items-center gap-2 px-5 py-2.5 bg-slate-100 hover:bg-slate-200 rounded-lg transition-colors"
               >
                 <Sparkles size={18} className="text-slate-600" />
-                <span className="text-base text-slate-700">{language === 'ja' ? '用語集' : '术语词典'}</span>
+                <span className="text-base text-slate-700">{language === 'ja' ? 'AI用語集' : 'AI词汇表'}</span>
+              </button>
+              <button
+                onClick={() => navigate('/sap-glossary')}
+                className="flex items-center gap-2 px-5 py-2.5 bg-cyan-50 hover:bg-cyan-100 rounded-lg transition-colors border border-cyan-200"
+              >
+                <Database size={18} className="text-cyan-600" />
+                <span className="text-base text-cyan-700">{language === 'ja' ? 'SAP用語集' : 'SAP词汇表'}</span>
               </button>
             </div>
           </div>
