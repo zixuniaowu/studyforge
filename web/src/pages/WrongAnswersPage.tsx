@@ -3,17 +3,16 @@ import { useNavigate } from 'react-router-dom';
 import { ArrowLeft, CheckCircle, XCircle, Trash2, RefreshCw } from 'lucide-react';
 import { db, wrongDB } from '../lib/db';
 import { WrongAnswer, Question, Exam } from '../types';
-import { useLanguage, useT } from '../stores/languageStore';
+import { useLanguageStore } from '../stores/languageStore';
 
 interface WrongAnswerWithDetails extends WrongAnswer {
-  question?: Question;
-  exam?: Exam;
+  question: Question;
+  exam: Exam;
 }
 
 export const WrongAnswersPage: React.FC = () => {
   const navigate = useNavigate();
-  const { language } = useLanguage();
-  const t = useT();
+  const language = useLanguageStore(state => state.language);
   const [wrongAnswers, setWrongAnswers] = useState<WrongAnswerWithDetails[]>([]);
   const [loading, setLoading] = useState(true);
   const [showMastered, setShowMastered] = useState(false);
@@ -32,7 +31,7 @@ export const WrongAnswersPage: React.FC = () => {
         : allWrong.filter(w => !w.mastered);
 
       // Get question and exam details
-      const withDetails: WrongAnswerWithDetails[] = await Promise.all(
+      const withDetails = await Promise.all(
         filtered.map(async (wrong) => {
           const question = await db.questions.get(wrong.questionId);
           const exam = await db.exams.get(wrong.examId);
@@ -47,10 +46,12 @@ export const WrongAnswersPage: React.FC = () => {
 
       // Filter out nulls and sort by lastWrongAt
       const validAnswers = withDetails
-        .filter((w): w is WrongAnswerWithDetails => w !== null && w.question !== undefined)
+        .filter((w): w is NonNullable<typeof w> & { question: Question; exam: Exam } =>
+          w !== null && w.question !== undefined && w.exam !== undefined
+        )
         .sort((a, b) => new Date(b.lastWrongAt).getTime() - new Date(a.lastWrongAt).getTime());
 
-      setWrongAnswers(validAnswers);
+      setWrongAnswers(validAnswers as WrongAnswerWithDetails[]);
     } catch (e) {
       console.error('Failed to load wrong answers:', e);
     } finally {
@@ -132,7 +133,7 @@ export const WrongAnswersPage: React.FC = () => {
               <CheckCircle size={40} className="text-green-600" />
             </div>
             <h2 className="text-2xl font-bold text-gray-800 mb-2">
-              {t.wrongAnswers?.noWrongAnswers || (language === 'ja' ? '間違いなし！' : '暂无错题！')}
+              {language === 'ja' ? '間違いなし！' : '暂无错题！'}
             </h2>
             <p className="text-gray-600 mb-6">
               {language === 'ja' ? 'この調子で頑張りましょう！' : '继续加油！'}

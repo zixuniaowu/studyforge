@@ -83,6 +83,65 @@ const examTipsData: Record<Provider, {
           { zh: '区分"能做到"和"最佳实践"的区别', ja: '「できる」と「ベストプラクティス」の違いを区別' },
           { zh: '注意题目中的场景限制条件（成本、时间、安全等）', ja: '問題のシナリオ制約条件に注意（コスト、時間、セキュリティなど）' }
         ]
+      },
+      {
+        title: { zh: '高效复习方法', ja: '効率的な復習方法' },
+        icon: Brain,
+        color: 'text-indigo-600 bg-indigo-100',
+        tips: [
+          { zh: '间隔重复法：第1天学习后，第2、4、7、14天分别复习', ja: '間隔反復法：1日目の学習後、2、4、7、14日目にそれぞれ復習' },
+          { zh: '费曼学习法：尝试用简单语言向他人解释概念，发现知识盲点', ja: 'ファインマン学習法：シンプルな言葉で他者に概念を説明し、知識の盲点を発見' },
+          { zh: '主动回忆：合上书本后默写知识点，比反复阅读更有效', ja: '能動的な想起：本を閉じた後に知識を書き出す、繰り返し読むより効果的' },
+          { zh: '刷题为主：最后2-3周以刷题为主，查漏补缺', ja: '問題演習中心：最後の2-3週間は問題演習を中心に、弱点を補強' },
+          { zh: '建立思维导图：将知识点串联成网络，便于理解和记忆', ja: 'マインドマップ作成：知識をネットワーク化し、理解と記憶を促進' }
+        ]
+      },
+      {
+        title: { zh: '心态调整', ja: 'メンタル管理' },
+        icon: Lightbulb,
+        color: 'text-emerald-600 bg-emerald-100',
+        tips: [
+          { zh: '保持适度紧张，过度焦虑会影响发挥，适当放松有助于思考', ja: '適度な緊張を保つ、過度な不安は実力発揮に影響、適度なリラックスが思考を助ける' },
+          { zh: '考前一天不要熬夜，保证充足睡眠，疲劳会降低认知能力', ja: '試験前日は徹夜しない、十分な睡眠を確保、疲労は認知能力を低下させる' },
+          { zh: '遇到不会的题不要慌，保持冷静继续做题，最后再回来', ja: '分からない問題で慌てない、冷静に続けて最後に戻る' },
+          { zh: '相信自己的准备，不要考前临时抱佛脚看新内容', ja: '自分の準備を信じる、試験直前に新しい内容を見ない' },
+          { zh: '考试只是检验学习成果，即使失败也是宝贵的学习经验', ja: '試験は学習成果の検証、失敗しても貴重な学習経験になる' }
+        ]
+      },
+      {
+        title: { zh: '模拟考试建议', ja: '模擬試験のアドバイス' },
+        icon: Trophy,
+        color: 'text-rose-600 bg-rose-100',
+        tips: [
+          { zh: '至少完成3次完整模拟考试，模拟真实考试环境和时间', ja: '少なくとも3回の完全な模擬試験を実施、実際の試験環境と時間をシミュレート' },
+          { zh: '模拟分数稳定在80%以上再报名正式考试', ja: '模擬スコアが安定して80%以上になってから正式試験に申し込む' },
+          { zh: '分析错题原因：知识点不熟 vs 审题不清 vs 粗心大意', ja: '間違いの原因を分析：知識不足 vs 問題の読み間違い vs ケアレスミス' },
+          { zh: '模拟考试后立即复盘，趁记忆新鲜时加深印象', ja: '模擬試験後すぐに復習、記憶が新しいうちに印象を深める' },
+          { zh: '记录每次模拟的薄弱领域，针对性强化练习', ja: '各模擬試験の弱点分野を記録し、重点的に強化練習' }
+        ]
+      },
+      {
+        title: { zh: '时间管理策略', ja: '時間管理戦略' },
+        icon: Clock,
+        color: 'text-cyan-600 bg-cyan-100',
+        tips: [
+          { zh: '开始时快速浏览全卷，了解题目数量和难度分布', ja: '開始時に全体を素早く確認、問題数と難易度分布を把握' },
+          { zh: '简单题不超过1分钟，中等题2-3分钟，难题先跳过', ja: '簡単な問題は1分以内、中程度は2-3分、難問は先にスキップ' },
+          { zh: '设置时间检查点：完成50%题目时检查剩余时间', ja: 'タイムチェックポイント設定：50%完了時に残り時間を確認' },
+          { zh: '预留15-20分钟复查时间，重点检查标记题和多选题', ja: '15-20分の見直し時間を確保、マークした問題と複数選択問題を重点確認' },
+          { zh: '如时间紧迫，优先完成确定的题目，猜测的题目最后处理', ja: '時間が足りない場合、確実な問題を優先、推測の問題は最後に処理' }
+        ]
+      },
+      {
+        title: { zh: '考后复盘', ja: '試験後の振り返り' },
+        icon: TrendingUp,
+        color: 'text-violet-600 bg-violet-100',
+        tips: [
+          { zh: '考试结束后立即记录印象深刻的题目，便于后续学习', ja: '試験終了後すぐに印象的な問題を記録、今後の学習に活用' },
+          { zh: '无论通过与否，分析自己的强弱项，为下次准备', ja: '合否に関わらず、自分の強みと弱みを分析、次回に備える' },
+          { zh: '通过后分享经验，帮助他人也是巩固自己知识的好方法', ja: '合格後に経験を共有、他者を助けることは自分の知識を固める良い方法' },
+          { zh: '认证只是起点，持续学习和实践才能真正掌握技术', ja: '認定は出発点、継続的な学習と実践で技術を真に習得' }
+        ]
       }
     ]
   },
@@ -123,6 +182,28 @@ const examTipsData: Record<Provider, {
           { zh: 'AWS 白皮书和最佳实践指南', ja: 'AWS ホワイトペーパーとベストプラクティスガイド' },
           { zh: '动手实验：使用免费套餐实际操作各项服务', ja: 'ハンズオン：無料利用枠で各サービスを実際に操作' },
           { zh: 'Re:Invent 和 AWS 官方 YouTube 频道', ja: 'Re:Invent と AWS 公式 YouTube チャンネル' }
+        ]
+      },
+      {
+        title: { zh: 'AWS 考试时间分配', ja: 'AWS 試験の時間配分' },
+        icon: Clock,
+        color: 'text-orange-600 bg-orange-100',
+        tips: [
+          { zh: 'SAA-C03：130分钟65题，平均每题2分钟，留20分钟检查', ja: 'SAA-C03：130分65問、平均2分/問、見直しに20分確保' },
+          { zh: 'SAP-C02：180分钟75题，场景题较长，每题预留2.5分钟', ja: 'SAP-C02：180分75問、シナリオ問題が長い、1問2.5分を目安' },
+          { zh: '长题先看问题，再有针对性地阅读场景描述', ja: '長文問題は先に質問を見て、必要な部分を重点的に読む' },
+          { zh: '多选题(Select TWO/THREE)分值与单选相同，但更容易出错，需仔细', ja: '複数選択問題は配点同じだがミスしやすい、慎重に解答' }
+        ]
+      },
+      {
+        title: { zh: 'AWS 模拟考试资源', ja: 'AWS 模擬試験リソース' },
+        icon: Trophy,
+        color: 'text-orange-600 bg-orange-100',
+        tips: [
+          { zh: 'AWS 官方模拟题（Skill Builder 内免费提供20题样题）', ja: 'AWS 公式模擬問題（Skill Builder内で20問のサンプル無料提供）' },
+          { zh: 'Tutorials Dojo (Jon Bonso) - 业界公认最接近真题的模拟题', ja: 'Tutorials Dojo (Jon Bonso) - 業界で最も本番に近いと評価される模擬問題' },
+          { zh: 'Udemy 模拟题套餐 - 性价比高，常有折扣', ja: 'Udemy 模擬問題セット - コスパ良好、セール頻繁' },
+          { zh: '本站 StudyForge - 提供中日双语 AWS 认证题库练习', ja: '本サイト StudyForge - 中国語・日本語のAWS認定問題演習を提供' }
         ]
       }
     ]
@@ -165,6 +246,39 @@ const examTipsData: Record<Provider, {
           { zh: 'Azure Friday 视频系列', ja: 'Azure Friday ビデオシリーズ' },
           { zh: '使用 Azure 沙盒环境进行实践', ja: 'Azure サンドボックス環境で実践' }
         ]
+      },
+      {
+        title: { zh: 'Azure 考试时间分配', ja: 'Azure 試験の時間配分' },
+        icon: Clock,
+        color: 'text-blue-600 bg-blue-100',
+        tips: [
+          { zh: 'AZ-104：100分钟约55题，注意案例研究题可能无法返回修改', ja: 'AZ-104：100分約55問、ケーススタディは戻って修正できない可能性あり' },
+          { zh: 'AZ-305：120分钟约45题，架构设计题较长，预留3分钟/题', ja: 'AZ-305：120分約45問、アーキテクチャ設計問題が長い、1問3分を目安' },
+          { zh: '实验题(Lab)通常20-30分钟，需要在Azure Portal实际操作', ja: '実技問題(Lab)は通常20-30分、Azure Portalでの実際の操作が必要' },
+          { zh: '案例研究题先快速浏览全部问题，再针对性阅读案例描述', ja: 'ケーススタディは先に全質問を確認、必要な部分を重点的に読む' }
+        ]
+      },
+      {
+        title: { zh: 'Azure 模拟考试资源', ja: 'Azure 模擬試験リソース' },
+        icon: Trophy,
+        color: 'text-blue-600 bg-blue-100',
+        tips: [
+          { zh: 'Microsoft Learn 官方练习评估（免费，每个认证提供样题）', ja: 'Microsoft Learn 公式練習評価（無料、各認定でサンプル提供）' },
+          { zh: 'MeasureUp 官方合作模拟题 - Microsoft 推荐的练习平台', ja: 'MeasureUp 公式パートナー模擬問題 - Microsoft推奨の練習プラットフォーム' },
+          { zh: 'Whizlabs Azure 模拟题 - 题量大，覆盖面广', ja: 'Whizlabs Azure 模擬問題 - 問題量多い、カバー範囲広い' },
+          { zh: '本站 StudyForge - 提供中日双语 Azure 认证题库练习', ja: '本サイト StudyForge - 中国語・日本語のAzure認定問題演習を提供' }
+        ]
+      },
+      {
+        title: { zh: 'Azure 认证路径建议', ja: 'Azure 認定パスの推奨' },
+        icon: Target,
+        color: 'text-blue-600 bg-blue-100',
+        tips: [
+          { zh: '入门：AZ-900 (基础) → AZ-104 (管理员) 或 AZ-204 (开发者)', ja: '入門：AZ-900 (基礎) → AZ-104 (管理者) または AZ-204 (開発者)' },
+          { zh: '架构师路线：AZ-104 → AZ-305 (解决方案架构师)', ja: 'アーキテクト路線：AZ-104 → AZ-305 (ソリューションアーキテクト)' },
+          { zh: '数据工程路线：DP-900 → DP-203 (数据工程师)', ja: 'データエンジニア路線：DP-900 → DP-203 (データエンジニア)' },
+          { zh: 'AI 路线：AI-900 → AI-102 (AI 工程师)', ja: 'AI 路線：AI-900 → AI-102 (AIエンジニア)' }
+        ]
       }
     ]
   },
@@ -205,6 +319,39 @@ const examTipsData: Record<Provider, {
           { zh: 'GCP 文档和解决方案架构', ja: 'GCP ドキュメントとソリューションアーキテクチャ' },
           { zh: 'Qwiklabs 实验室动手练习', ja: 'Qwiklabs ラボでのハンズオン' },
           { zh: 'Google Cloud 官方 YouTube 频道', ja: 'Google Cloud 公式 YouTube チャンネル' }
+        ]
+      },
+      {
+        title: { zh: 'GCP 考试时间分配', ja: 'GCP 試験の時間配分' },
+        icon: Clock,
+        color: 'text-green-600 bg-green-100',
+        tips: [
+          { zh: 'ACE：120分钟50题，平均每题2.5分钟，场景题需要仔细阅读', ja: 'ACE：120分50問、平均2.5分/問、シナリオ問題は慎重に読む' },
+          { zh: 'PCA：120分钟约50题，架构设计题居多，需要综合分析能力', ja: 'PCA：120分約50問、アーキテクチャ設計問題が多い、総合分析能力が必要' },
+          { zh: 'GCP 考试不允许返回修改已答题目，需一次做对', ja: 'GCP試験は回答済みの問題に戻れない、一度で正確に解答する必要あり' },
+          { zh: '注意 GCP 特有的命名和概念（如 Project、Folder、Organization 层级）', ja: 'GCP特有の命名と概念に注意（Project、Folder、Organization階層など）' }
+        ]
+      },
+      {
+        title: { zh: 'GCP 模拟考试资源', ja: 'GCP 模擬試験リソース' },
+        icon: Trophy,
+        color: 'text-green-600 bg-green-100',
+        tips: [
+          { zh: 'Google Cloud Skills Boost 官方模拟题（部分免费）', ja: 'Google Cloud Skills Boost 公式模擬問題（一部無料）' },
+          { zh: 'Whizlabs GCP 模拟题套餐 - 题量充足，更新及时', ja: 'Whizlabs GCP 模擬問題セット - 問題量充実、更新迅速' },
+          { zh: 'Udemy GCP 认证课程（含模拟题）- 经常打折', ja: 'Udemy GCP 認定コース（模擬問題含む）- セール頻繁' },
+          { zh: '本站 StudyForge - 提供中日双语 GCP 认证题库练习', ja: '本サイト StudyForge - 中国語・日本語のGCP認定問題演習を提供' }
+        ]
+      },
+      {
+        title: { zh: 'GCP vs AWS 服务对比', ja: 'GCP vs AWS サービス比較' },
+        icon: Target,
+        color: 'text-green-600 bg-green-100',
+        tips: [
+          { zh: '计算：Compute Engine ≈ EC2，GKE ≈ EKS，Cloud Run ≈ Fargate', ja: 'コンピューティング：Compute Engine ≈ EC2、GKE ≈ EKS、Cloud Run ≈ Fargate' },
+          { zh: '存储：Cloud Storage ≈ S3，Persistent Disk ≈ EBS，Filestore ≈ EFS', ja: 'ストレージ：Cloud Storage ≈ S3、Persistent Disk ≈ EBS、Filestore ≈ EFS' },
+          { zh: '数据库：Cloud SQL ≈ RDS，Cloud Spanner ≈ Aurora Global，BigQuery ≈ Redshift', ja: 'データベース：Cloud SQL ≈ RDS、Cloud Spanner ≈ Aurora Global、BigQuery ≈ Redshift' },
+          { zh: '网络：VPC 概念类似但实现不同，GCP VPC 默认全球，AWS VPC 区域内', ja: 'ネットワーク：VPC概念は類似だが実装が異なる、GCP VPCはデフォルトでグローバル、AWS VPCはリージョン内' }
         ]
       }
     ]
@@ -269,6 +416,39 @@ const examTipsData: Record<Provider, {
           { zh: 'SAP Community：技术博客、问答社区、最佳实践', ja: 'SAP Community：技術ブログ、Q&Aコミュニティ、ベストプラクティス' },
           { zh: 'SAP Help Portal：官方产品文档和配置指南', ja: 'SAP Help Portal：公式製品ドキュメントと設定ガイド' },
           { zh: 'SAP BTP Trial：免费试用账户，动手实践云服务', ja: 'SAP BTP Trial：無料トライアルアカウント、クラウドサービスのハンズオン' }
+        ]
+      },
+      {
+        title: { zh: 'SAP 考试时间分配', ja: 'SAP 試験の時間配分' },
+        icon: Clock,
+        color: 'text-cyan-600 bg-cyan-100',
+        tips: [
+          { zh: 'SAP 认证考试通常180分钟80题，平均每题2.25分钟', ja: 'SAP認定試験は通常180分80問、平均2.25分/問' },
+          { zh: '场景题较长（可能包含业务流程描述），预留额外阅读时间', ja: 'シナリオ問題が長い（ビジネスプロセス説明含む）、追加の読解時間を確保' },
+          { zh: '考试全程英语，非母语者建议申请延长30分钟时间', ja: '試験は全て英語、非ネイティブは30分の延長申請を推奨' },
+          { zh: '业务流程类题目需要理解前后关联，不能孤立看问题', ja: 'ビジネスプロセス問題は前後関係を理解、個別に見ない' }
+        ]
+      },
+      {
+        title: { zh: 'SAP 模拟考试资源', ja: 'SAP 模擬試験リソース' },
+        icon: Trophy,
+        color: 'text-cyan-600 bg-cyan-100',
+        tips: [
+          { zh: 'SAP Learning Hub 官方模拟题（订阅用户可用）', ja: 'SAP Learning Hub 公式模擬問題（サブスクリプションユーザー向け）' },
+          { zh: 'ERPPrep.com - SAP 认证专业练习平台，题库全面', ja: 'ERPPrep.com - SAP認定専門練習プラットフォーム、問題集が充実' },
+          { zh: 'Michael Management - 提供 S/4HANA 系列高质量模拟题', ja: 'Michael Management - S/4HANAシリーズの高品質模擬問題を提供' },
+          { zh: '本站 StudyForge - 提供中日双语 SAP 认证题库练习', ja: '本サイト StudyForge - 中国語・日本語のSAP認定問題演習を提供' }
+        ]
+      },
+      {
+        title: { zh: 'SAP 认证路径建议', ja: 'SAP 認定パスの推奨' },
+        icon: Target,
+        color: 'text-cyan-600 bg-cyan-100',
+        tips: [
+          { zh: '功能顾问路线：C_TS410 (集成业务流程) → C_TS4FI (财务) 或 C_TS4CO (管控)', ja: '機能コンサルタント路線：C_TS410 (統合ビジネスプロセス) → C_TS4FI (財務) または C_TS4CO (管理会計)' },
+          { zh: '技术开发路线：C_S4CDK (SDK 开发) → C_BTPDEV (BTP 开发者)', ja: '技術開発路線：C_S4CDK (SDK開発) → C_BTPDEV (BTP開発者)' },
+          { zh: '云架构路线：C_BTP (BTP 基础) → C_BTPADM (BTP 管理员) → C_BTPINT (BTP 集成)', ja: 'クラウドアーキテクト路線：C_BTP (BTP基礎) → C_BTPADM (BTP管理者) → C_BTPINT (BTP統合)' },
+          { zh: 'AI 数据路线：C_DATASPH (Datasphere) → C_AICORE (AI Core)', ja: 'AIデータ路線：C_DATASPH (Datasphere) → C_AICORE (AI Core)' }
         ]
       }
     ]

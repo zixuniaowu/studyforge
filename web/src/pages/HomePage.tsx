@@ -1134,20 +1134,20 @@ export const HomePage: React.FC = () => {
                 </div>
               </button>
 
-              {/* Learning Roadmap */}
+              {/* SAP Learning Course */}
               <button
-                onClick={() => navigate('/ai-roadmap')}
-                className="group bg-white rounded-xl p-6 border border-slate-200 hover:border-slate-300 hover:shadow-md transition-all text-left"
+                onClick={() => navigate('/sap-learning')}
+                className="group bg-gradient-to-r from-cyan-50 to-teal-50 rounded-xl p-6 border-2 border-cyan-200 hover:border-cyan-300 hover:shadow-md transition-all text-left"
               >
                 <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 rounded-xl bg-rose-600 flex items-center justify-center">
-                    <Map size={24} className="text-white" />
+                  <div className="w-12 h-12 rounded-xl bg-gradient-to-r from-cyan-600 to-teal-600 flex items-center justify-center">
+                    <Boxes size={24} className="text-white" />
                   </div>
                   <div className="flex-1">
-                    <h3 className="text-base font-semibold text-slate-800">{language === 'ja' ? 'AI学習ロードマップ' : 'AI 学习路线图'}</h3>
-                    <p className="text-sm text-slate-500">{language === 'ja' ? '3コース・体系的' : '3路线·系统化'}</p>
+                    <h3 className="text-base font-semibold text-cyan-800">{language === 'ja' ? 'SAP 学習コース' : 'SAP 学习课程'}</h3>
+                    <p className="text-sm text-teal-600">{language === 'ja' ? '6モジュール・S/4HANA & BTP' : '6模块·S/4HANA & BTP'}</p>
                   </div>
-                  <ChevronRight size={20} className="text-slate-400 group-hover:text-slate-600" />
+                  <ChevronRight size={20} className="text-cyan-400 group-hover:text-cyan-600" />
                 </div>
               </button>
 

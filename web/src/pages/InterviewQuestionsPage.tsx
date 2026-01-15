@@ -10,11 +10,12 @@ import {
   Database,
   CheckCircle2,
   Lightbulb,
-  Star
+  Star,
+  Boxes
 } from 'lucide-react';
 import { useLanguageStore } from '../stores/languageStore';
 
-type Category = 'cloud-general' | 'aws' | 'azure' | 'ai-ml' | 'system-design' | 'behavioral';
+type Category = 'cloud-general' | 'aws' | 'azure' | 'sap' | 'ai-ml' | 'system-design' | 'behavioral';
 
 interface Question {
   id: string;
@@ -409,6 +410,832 @@ const interviewData: Record<Category, CategoryData> = {
         },
         difficulty: 'medium',
         tags: ['Azure', 'High Availability', 'Architecture']
+      }
+    ]
+  },
+  'sap': {
+    name: { zh: 'SAP 专项', ja: 'SAP 専門' },
+    description: { zh: 'SAP S/4HANA、迁移和 BTP 面试题', ja: 'SAP S/4HANA、移行とBTPの面接問題' },
+    icon: Boxes,
+    gradient: 'from-cyan-600 to-teal-700',
+    questions: [
+      {
+        id: 'sap-1',
+        question: {
+          zh: '什么是 SAP S/4HANA？它与 ECC 有什么区别？',
+          ja: 'SAP S/4HANAとは何ですか？ECCとの違いは何ですか？'
+        },
+        answer: {
+          zh: `**SAP S/4HANA** 是 SAP 的下一代智能 ERP 系统，基于 SAP HANA 内存数据库。
+
+**与 ECC 的主要区别**：
+
+| 特性 | ECC | S/4HANA |
+|------|-----|---------|
+| **数据库** | 任意数据库 | 仅 HANA |
+| **数据模型** | 聚合表+索引表 | 简化数据模型 |
+| **用户界面** | SAP GUI | SAP Fiori |
+| **部署** | 仅 On-Premise | Cloud + On-Premise |
+| **实时分析** | 需 BW | 内嵌分析 |
+
+**S/4HANA 优势**：
+1. **性能提升**：HANA 内存计算，实时分析
+2. **简化数据模型**：删除聚合表，单一真实数据源
+3. **现代 UX**：Fiori 基于角色的用户体验
+4. **嵌入式智能**：AI/ML 集成
+5. **云优先**：支持 RISE with SAP`,
+          ja: `**SAP S/4HANA** は、SAP HANAインメモリデータベースをベースとした次世代インテリジェントERPシステムです。
+
+**ECCとの主な違い**：
+
+| 特性 | ECC | S/4HANA |
+|------|-----|---------|
+| **データベース** | 任意のDB | HANAのみ |
+| **データモデル** | 集計テーブル+インデックス | 簡素化データモデル |
+| **UI** | SAP GUI | SAP Fiori |
+| **デプロイ** | オンプレのみ | Cloud + On-Premise |
+| **リアルタイム分析** | BW必要 | 組込み分析 |
+
+**S/4HANAの利点**：
+1. **パフォーマンス向上**：HANAインメモリ計算、リアルタイム分析
+2. **簡素化データモデル**：集計テーブル廃止、単一の真実のソース
+3. **モダンUX**：Fioriロールベースユーザー体験
+4. **組込みインテリジェンス**：AI/ML統合
+5. **クラウドファースト**：RISE with SAPサポート`
+        },
+        difficulty: 'easy',
+        tags: ['S/4HANA', 'ECC', 'HANA', 'Migration']
+      },
+      {
+        id: 'sap-2',
+        question: {
+          zh: '解释 SAP Activate 方法论的六个阶段。',
+          ja: 'SAP Activate方法論の6つのフェーズを説明してください。'
+        },
+        answer: {
+          zh: `**SAP Activate** 是 SAP 官方的敏捷实施方法论。
+
+**六个阶段**：
+
+**1. Discover（发现）**
+- 了解业务需求和挑战
+- 探索 SAP 解决方案
+- 制定初步业务案例
+
+**2. Prepare（准备）**
+- 项目启动和团队组建
+- 确定范围和治理结构
+- 搭建系统环境
+
+**3. Explore（探索）**
+- Fit-to-Standard 研讨会
+- 验证标准流程
+- 识别差距和扩展需求
+
+**4. Realize（实现）**
+- 配置系统
+- 开发扩展
+- 数据迁移
+- 测试（SIT、UAT）
+
+**5. Deploy（部署）**
+- 最终用户培训
+- 切换准备
+- Go-live
+- Hypercare 支持
+
+**6. Run（运行）**
+- 持续运维
+- 持续改进
+- 创新采用`,
+          ja: `**SAP Activate** は、SAPの公式アジャイル導入方法論です。
+
+**6つのフェーズ**：
+
+**1. Discover（発見）**
+- ビジネス要件と課題の理解
+- SAPソリューションの探索
+- 初期ビジネスケースの作成
+
+**2. Prepare（準備）**
+- プロジェクト開始とチーム編成
+- スコープとガバナンス構造の確定
+- システム環境の構築
+
+**3. Explore（探索）**
+- Fit-to-Standardワークショップ
+- 標準プロセスの検証
+- ギャップと拡張要件の特定
+
+**4. Realize（実現）**
+- システム設定
+- 拡張開発
+- データ移行
+- テスト（SIT、UAT）
+
+**5. Deploy（展開）**
+- エンドユーザートレーニング
+- カットオーバー準備
+- Go-live
+- Hypercareサポート
+
+**6. Run（運用）**
+- 継続的な運用
+- 継続的改善
+- イノベーションの採用`
+        },
+        difficulty: 'medium',
+        tags: ['SAP Activate', 'Methodology', 'Implementation']
+      },
+      {
+        id: 'sap-3',
+        question: {
+          zh: 'Greenfield、Brownfield 和 Bluefield 迁移策略有什么区别？',
+          ja: 'Greenfield、Brownfield、Bluefield移行戦略の違いは何ですか？'
+        },
+        answer: {
+          zh: `**三种迁移策略对比**：
+
+**Greenfield（全新实施）**
+- 在全新 S/4HANA 系统上从零开始
+- 采用标准 Best Practices
+- 只迁移必要的主数据
+- ✅ 优势：Clean Core，采用最佳实践
+- ❌ 劣势：历史数据丢失，实施时间长
+
+**Brownfield（系统转换）**
+- 在现有 ECC 系统上原地升级
+- 保留所有数据和配置
+- 自定义代码需适配
+- ✅ 优势：保留历史数据，熟悉的系统
+- ❌ 劣势：继承技术债务，需大量代码修改
+
+**Bluefield / Selective Data Transition**
+- 混合方法：新系统 + 选择性数据迁移
+- 可以选择保留哪些历史数据
+- 平衡 Greenfield 和 Brownfield
+- ✅ 优势：灵活性高，可优化流程
+- ❌ 劣势：复杂度高，需专业工具
+
+**选择建议**：
+- 流程需重新设计 → Greenfield
+- 需保留全部历史 → Brownfield
+- 需要平衡 → Bluefield`,
+          ja: `**3つの移行戦略の比較**：
+
+**Greenfield（新規導入）**
+- 新しいS/4HANAシステムでゼロから開始
+- 標準Best Practicesを採用
+- 必要なマスタデータのみ移行
+- ✅ 利点：Clean Core、ベストプラクティス採用
+- ❌ 欠点：履歴データ喪失、導入期間長い
+
+**Brownfield（システム変換）**
+- 既存ECCシステム上でインプレースアップグレード
+- すべてのデータと設定を保持
+- カスタムコードの適応が必要
+- ✅ 利点：履歴データ保持、馴染みのシステム
+- ❌ 欠点：技術的負債の継承、大量のコード修正
+
+**Bluefield / Selective Data Transition**
+- ハイブリッド：新システム + 選択的データ移行
+- どの履歴データを保持するか選択可能
+- GreenfieldとBrownfieldのバランス
+- ✅ 利点：高い柔軟性、プロセス最適化可能
+- ❌ 欠点：複雑度高、専門ツールが必要
+
+**選択の目安**：
+- プロセス再設計が必要 → Greenfield
+- 全履歴の保持が必要 → Brownfield
+- バランスが必要 → Bluefield`
+        },
+        difficulty: 'medium',
+        tags: ['Migration', 'Greenfield', 'Brownfield', 'Bluefield']
+      },
+      {
+        id: 'sap-4',
+        question: {
+          zh: '什么是 Clean Core 原则？为什么重要？',
+          ja: 'Clean Core原則とは何ですか？なぜ重要ですか？'
+        },
+        answer: {
+          zh: `**Clean Core** 是保持 SAP 核心系统标准化的设计原则。
+
+**核心理念**：
+- 核心系统（S/4HANA）保持标准，不做直接修改
+- 扩展和自定义放在 SAP BTP 上（Side-by-Side）
+- 使用 SAP 提供的扩展点和 API
+
+**为什么重要**：
+
+**1. 升级友好**
+- 标准核心可无缝升级
+- 无需处理自定义代码兼容性
+- 减少回归测试范围
+
+**2. 持续创新**
+- 立即获得 SAP 新功能
+- 云更新自动应用
+- 快速采用 AI/ML 功能
+
+**3. 降低 TCO**
+- 减少维护成本
+- 降低技术债务
+- 简化运维
+
+**实现方式**：
+\`\`\`
+In-App Extensibility    → Key User 工具（小规模扩展）
+Side-by-Side Extension  → SAP BTP 开发（复杂扩展）
+API-First Integration   → 使用标准 API 集成
+\`\`\`
+
+**迁移策略**：
+- 现有自定义代码 → 评估必要性 → 迁移到 BTP 或删除`,
+          ja: `**Clean Core** は、SAPコアシステムを標準化して維持する設計原則です。
+
+**コアコンセプト**：
+- コアシステム（S/4HANA）を標準のまま維持、直接修正しない
+- 拡張とカスタマイズはSAP BTP上に配置（Side-by-Side）
+- SAPが提供する拡張ポイントとAPIを使用
+
+**なぜ重要か**：
+
+**1. アップグレードフレンドリー**
+- 標準コアはシームレスにアップグレード可能
+- カスタムコードの互換性問題なし
+- 回帰テスト範囲の削減
+
+**2. 継続的イノベーション**
+- SAPの新機能を即座に取得
+- クラウド更新が自動適用
+- AI/ML機能の迅速な採用
+
+**3. TCO削減**
+- メンテナンスコスト削減
+- 技術的負債の軽減
+- 運用の簡素化
+
+**実現方法**：
+\`\`\`
+In-App Extensibility    → Key Userツール（小規模拡張）
+Side-by-Side Extension  → SAP BTP開発（複雑な拡張）
+API-First Integration   → 標準APIを使用した統合
+\`\`\`
+
+**移行戦略**：
+- 既存カスタムコード → 必要性評価 → BTPへ移行または削除`
+        },
+        difficulty: 'medium',
+        tags: ['Clean Core', 'BTP', 'Extensibility', 'Best Practice']
+      },
+      {
+        id: 'sap-5',
+        question: {
+          zh: '什么是 RISE with SAP？包含哪些组件？',
+          ja: 'RISE with SAPとは何ですか？どのようなコンポーネントが含まれますか？'
+        },
+        answer: {
+          zh: `**RISE with SAP** 是 SAP 的业务转型即服务（BTaaS）解决方案。
+
+**核心组件**：
+
+**1. S/4HANA Cloud**
+- Private Edition（单租户，更多定制）
+- Public Edition（多租户，标准化）
+
+**2. SAP Business Technology Platform (BTP)**
+- 数据库与数据管理
+- 分析与规划
+- 应用开发与自动化
+- 集成
+
+**3. SAP Business Network**
+- 供应商协作
+- 采购网络
+- 物流网络
+
+**4. SAP Signavio**
+- 流程建模
+- 流程挖掘
+- 流程优化
+
+**5. 支持服务**
+- SAP Enterprise Support
+- Cloud ALM
+- 迁移支持
+
+**定价模式**：
+- 订阅制（OPEX）
+- 包含基础设施
+- 可预测的成本
+
+**RISE vs GROW**：
+| 方面 | RISE | GROW |
+|------|------|------|
+| 目标客户 | 大型企业 | 中小企业 |
+| 版本 | Public/Private | Public Cloud |
+| 定制化 | 高 | 标准化 |`,
+          ja: `**RISE with SAP** は、SAPのビジネストランスフォーメーション・アズ・ア・サービス（BTaaS）ソリューションです。
+
+**コアコンポーネント**：
+
+**1. S/4HANA Cloud**
+- Private Edition（シングルテナント、より多くのカスタマイズ）
+- Public Edition（マルチテナント、標準化）
+
+**2. SAP Business Technology Platform (BTP)**
+- データベース＆データ管理
+- 分析＆計画
+- アプリケーション開発＆自動化
+- 統合
+
+**3. SAP Business Network**
+- サプライヤーコラボレーション
+- 調達ネットワーク
+- 物流ネットワーク
+
+**4. SAP Signavio**
+- プロセスモデリング
+- プロセスマイニング
+- プロセス最適化
+
+**5. サポートサービス**
+- SAP Enterprise Support
+- Cloud ALM
+- 移行サポート
+
+**価格モデル**：
+- サブスクリプション制（OPEX）
+- インフラ含む
+- 予測可能なコスト
+
+**RISE vs GROW**：
+| 側面 | RISE | GROW |
+|------|------|------|
+| ターゲット顧客 | 大企業 | 中小企業 |
+| エディション | Public/Private | Public Cloud |
+| カスタマイズ | 高 | 標準化 |`
+        },
+        difficulty: 'easy',
+        tags: ['RISE with SAP', 'BTaaS', 'S/4HANA Cloud', 'BTP']
+      },
+      {
+        id: 'sap-6',
+        question: {
+          zh: 'SAP BTP 提供哪些主要服务？',
+          ja: 'SAP BTPはどのような主要サービスを提供していますか？'
+        },
+        answer: {
+          zh: `**SAP Business Technology Platform (BTP)** 是统一的技术平台。
+
+**四大支柱**：
+
+**1. 数据库与数据管理**
+- SAP HANA Cloud
+- SAP Data Intelligence
+- SAP Master Data Governance
+- SAP Datasphere
+
+**2. 分析**
+- SAP Analytics Cloud
+- SAP BW/4HANA
+- 嵌入式分析
+
+**3. 应用开发与自动化**
+- SAP Build Apps（低代码）
+- SAP Build Process Automation
+- SAP Build Work Zone
+- Cloud Application Programming (CAP)
+- ABAP Environment
+
+**4. 集成**
+- SAP Integration Suite
+  - Cloud Integration
+  - API Management
+  - Event Mesh
+  - Open Connectors
+
+**关键服务**：
+\`\`\`
+开发框架：CAP (Node.js/Java)、RAP (ABAP)
+低代码：SAP Build Apps、Process Automation
+集成：Integration Suite、API Management
+AI/ML：SAP AI Core、AI Business Services
+\`\`\`
+
+**部署选项**：
+- 多云：AWS、Azure、GCP、阿里云
+- SAP 数据中心`,
+          ja: `**SAP Business Technology Platform (BTP)** は統合技術プラットフォームです。
+
+**4つの柱**：
+
+**1. データベース＆データ管理**
+- SAP HANA Cloud
+- SAP Data Intelligence
+- SAP Master Data Governance
+- SAP Datasphere
+
+**2. 分析**
+- SAP Analytics Cloud
+- SAP BW/4HANA
+- 組込み分析
+
+**3. アプリケーション開発＆自動化**
+- SAP Build Apps（ローコード）
+- SAP Build Process Automation
+- SAP Build Work Zone
+- Cloud Application Programming (CAP)
+- ABAP Environment
+
+**4. 統合**
+- SAP Integration Suite
+  - Cloud Integration
+  - API Management
+  - Event Mesh
+  - Open Connectors
+
+**主要サービス**：
+\`\`\`
+開発フレームワーク：CAP (Node.js/Java)、RAP (ABAP)
+ローコード：SAP Build Apps、Process Automation
+統合：Integration Suite、API Management
+AI/ML：SAP AI Core、AI Business Services
+\`\`\`
+
+**デプロイオプション**：
+- マルチクラウド：AWS、Azure、GCP、Alibaba Cloud
+- SAPデータセンター`
+        },
+        difficulty: 'medium',
+        tags: ['BTP', 'CAP', 'Integration Suite', 'Platform']
+      },
+      {
+        id: 'sap-7',
+        question: {
+          zh: '什么是 Fit-to-Standard？如何进行 Fit-Gap 分析？',
+          ja: 'Fit-to-Standardとは何ですか？Fit-Gapアナリシスはどのように行いますか？'
+        },
+        answer: {
+          zh: `**Fit-to-Standard** 是 SAP 推荐的实施方法，优先采用标准流程。
+
+**核心理念**：
+- 业务流程适应系统标准，而非定制系统
+- 利用 SAP Best Practices
+- 最小化自定义开发
+
+**Fit-Gap 分析流程**：
+
+**1. 准备阶段**
+- 收集业务需求文档
+- 准备 SAP 标准流程演示
+- 邀请业务关键用户
+
+**2. 研讨会执行**
+\`\`\`
+演示标准流程 → 业务验证 → 记录差距 → 讨论解决方案
+\`\`\`
+
+**3. 差距分类**
+| 类型 | 处理方式 |
+|------|----------|
+| **Fit** | 直接采用标准 |
+| **Fit with Config** | 配置实现 |
+| **Gap - 流程变更** | 改变业务流程 |
+| **Gap - 扩展** | In-App 或 Side-by-Side |
+| **Gap - 集成** | 接口开发 |
+
+**4. 输出物**
+- Configuration Workbook
+- Gap 解决方案设计
+- 开发工作清单
+
+**成功关键**：
+- 高管支持流程变革
+- 业务用户深度参与
+- 记录所有决策`,
+          ja: `**Fit-to-Standard** は、標準プロセスを優先的に採用するSAP推奨の導入方法です。
+
+**コアコンセプト**：
+- システムをカスタマイズするのではなく、ビジネスプロセスをシステム標準に適応
+- SAP Best Practicesを活用
+- カスタム開発を最小化
+
+**Fit-Gapアナリシスの流れ**：
+
+**1. 準備段階**
+- ビジネス要件ドキュメントの収集
+- SAP標準プロセスのデモ準備
+- ビジネスキーユーザーの招集
+
+**2. ワークショップ実行**
+\`\`\`
+標準プロセスのデモ → ビジネス検証 → ギャップ記録 → 解決策の議論
+\`\`\`
+
+**3. ギャップ分類**
+| タイプ | 対処方法 |
+|--------|----------|
+| **Fit** | 標準を直接採用 |
+| **Fit with Config** | 設定で実現 |
+| **Gap - プロセス変更** | ビジネスプロセスを変更 |
+| **Gap - 拡張** | In-App または Side-by-Side |
+| **Gap - 統合** | インターフェース開発 |
+
+**4. 成果物**
+- Configuration Workbook
+- Gap解決策設計
+- 開発作業リスト
+
+**成功の鍵**：
+- 経営層のプロセス変革サポート
+- ビジネスユーザーの深い参加
+- すべての決定を記録`
+        },
+        difficulty: 'medium',
+        tags: ['Fit-to-Standard', 'Fit-Gap', 'Implementation', 'Best Practice']
+      },
+      {
+        id: 'sap-8',
+        question: {
+          zh: '描述 SAP 项目中的角色和职责。',
+          ja: 'SAPプロジェクトにおける役割と責任を説明してください。'
+        },
+        answer: {
+          zh: `**SAP 项目典型角色**：
+
+**客户方**：
+| 角色 | 职责 |
+|------|------|
+| **Executive Sponsor** | 项目决策、资源、预算 |
+| **Project Manager** | 项目管理、进度、风险 |
+| **Process Owner** | 业务流程决策、验收 |
+| **Key User** | 参与设计、测试、培训 |
+| **IT Lead** | 技术决策、系统管理 |
+
+**咨询方**：
+| 角色 | 职责 |
+|------|------|
+| **Engagement Manager** | 项目交付、客户关系 |
+| **Solution Architect** | 整体方案设计 |
+| **Functional Consultant** | 业务流程配置 |
+| **Technical Consultant** | 开发、集成、数据迁移 |
+| **Basis Consultant** | 系统管理、性能优化 |
+
+**关键成功因素**：
+1. **明确 RACI 矩阵**
+   - R = Responsible（执行）
+   - A = Accountable（负责）
+   - C = Consulted（咨询）
+   - I = Informed（知会）
+
+2. **客户参与**
+   - 关键用户全职参与
+   - 流程负责人决策权
+
+3. **治理结构**
+   - Steering Committee（月度）
+   - Project Team（每日站会）
+   - Workstream Leads（周会）`,
+          ja: `**SAPプロジェクトの典型的な役割**：
+
+**顧客側**：
+| 役割 | 責任 |
+|------|------|
+| **Executive Sponsor** | プロジェクト決定、リソース、予算 |
+| **Project Manager** | プロジェクト管理、進捗、リスク |
+| **Process Owner** | ビジネスプロセス決定、受入 |
+| **Key User** | 設計参加、テスト、トレーニング |
+| **IT Lead** | 技術決定、システム管理 |
+
+**コンサルタント側**：
+| 役割 | 責任 |
+|------|------|
+| **Engagement Manager** | プロジェクトデリバリー、顧客関係 |
+| **Solution Architect** | 全体ソリューション設計 |
+| **Functional Consultant** | ビジネスプロセス設定 |
+| **Technical Consultant** | 開発、統合、データ移行 |
+| **Basis Consultant** | システム管理、パフォーマンス最適化 |
+
+**重要成功要因**：
+1. **明確なRACIマトリックス**
+   - R = Responsible（実行）
+   - A = Accountable（責任）
+   - C = Consulted（相談）
+   - I = Informed（報告）
+
+2. **顧客参加**
+   - キーユーザーのフルタイム参加
+   - プロセスオーナーの決定権
+
+3. **ガバナンス構造**
+   - Steering Committee（月次）
+   - Project Team（デイリースタンドアップ）
+   - Workstream Leads（週次）`
+        },
+        difficulty: 'easy',
+        tags: ['Project Management', 'Roles', 'RACI', 'Governance']
+      },
+      {
+        id: 'sap-9',
+        question: {
+          zh: '什么是 CDS View？它在 S/4HANA 中的作用？',
+          ja: 'CDS Viewとは何ですか？S/4HANAでの役割は何ですか？'
+        },
+        answer: {
+          zh: `**CDS (Core Data Services)** 是 SAP 的语义数据建模技术。
+
+**核心概念**：
+- 声明式数据定义语言
+- 在数据库层执行（Push-down）
+- 语义丰富（注解、关联）
+
+**CDS View 类型**：
+\`\`\`
+Basic Interface View   → 基础数据访问
+Composite View         → 组合多个视图
+Consumption View       → 供外部消费（OData）
+Extension Include View → 扩展标准视图
+\`\`\`
+
+**在 S/4HANA 中的作用**：
+
+**1. 数据模型基础**
+- 替代传统数据字典视图
+- 虚拟数据模型（VDM）
+- 单一真实数据源
+
+**2. Fiori 应用驱动**
+- @OData 注解生成 OData 服务
+- @UI 注解定义界面元素
+- @Search 注解支持搜索
+
+**3. 分析报表**
+- Embedded Analytics
+- CDS 分析查询
+- 实时报表
+
+**示例**：
+\`\`\`sql
+@AbapCatalog.sqlViewName: 'ZSALES_V'
+@Analytics.dataCategory: #CUBE
+define view ZSalesAnalytics as select from vbak {
+  @UI.lineItem: [{ position: 10 }]
+  vbeln as SalesOrder,
+  @Semantics.amount.currencyCode: 'waerk'
+  netwr as NetValue,
+  waerk as Currency
+}
+\`\`\``,
+          ja: `**CDS (Core Data Services)** は、SAPのセマンティックデータモデリング技術です。
+
+**コアコンセプト**：
+- 宣言型データ定義言語
+- データベース層で実行（Push-down）
+- セマンティックリッチ（アノテーション、アソシエーション）
+
+**CDS Viewの種類**：
+\`\`\`
+Basic Interface View   → 基本データアクセス
+Composite View         → 複数ビューの組合せ
+Consumption View       → 外部消費用（OData）
+Extension Include View → 標準ビューの拡張
+\`\`\`
+
+**S/4HANAでの役割**：
+
+**1. データモデルの基盤**
+- 従来のデータディクショナリビューを置換
+- 仮想データモデル（VDM）
+- 単一の真実のソース
+
+**2. Fioriアプリの駆動**
+- @ODataアノテーションでODataサービス生成
+- @UIアノテーションでUI要素定義
+- @Searchアノテーションで検索サポート
+
+**3. 分析レポート**
+- Embedded Analytics
+- CDS分析クエリ
+- リアルタイムレポート
+
+**例**：
+\`\`\`sql
+@AbapCatalog.sqlViewName: 'ZSALES_V'
+@Analytics.dataCategory: #CUBE
+define view ZSalesAnalytics as select from vbak {
+  @UI.lineItem: [{ position: 10 }]
+  vbeln as SalesOrder,
+  @Semantics.amount.currencyCode: 'waerk'
+  netwr as NetValue,
+  waerk as Currency
+}
+\`\`\``
+        },
+        difficulty: 'hard',
+        tags: ['CDS', 'ABAP', 'Fiori', 'VDM']
+      },
+      {
+        id: 'sap-10',
+        question: {
+          zh: 'SAP 项目中如何进行变更管理（OCM）？',
+          ja: 'SAPプロジェクトで変更管理（OCM）をどのように行いますか？'
+        },
+        answer: {
+          zh: `**组织变更管理 (OCM)** 确保员工顺利过渡到新系统。
+
+**OCM 框架**：
+
+**1. Stakeholder Analysis（利益相关者分析）**
+- 识别受影响群体
+- 评估影响程度和抵触风险
+- 制定针对性策略
+
+**2. Communication Plan（沟通计划）**
+\`\`\`
+阶段     → 内容           → 渠道
+发现     → 为什么变革     → 高层邮件
+准备     → 什么在变       → 全员会议
+实现     → 如何变         → 培训预告
+部署     → 支持在哪       → 帮助台
+运行     → 持续改进       → 反馈渠道
+\`\`\`
+
+**3. Training（培训）**
+- Train-the-Trainer 模式
+- 角色化培训课程
+- 动手实验室
+- SAP Enable Now 辅助
+
+**4. Impact Assessment（影响评估）**
+| 维度 | 评估内容 |
+|------|----------|
+| 人员 | 技能差距、角色变化 |
+| 流程 | 工作方式改变 |
+| 技术 | 系统使用变化 |
+| 组织 | 汇报关系变化 |
+
+**5. Resistance Management（抵触管理）**
+- 识别抵触信号
+- 理解抵触原因
+- 领导层参与
+- 庆祝小成功
+
+**关键成功指标**：
+- 培训完成率 > 90%
+- Go-live 后支持请求趋势
+- 用户满意度调查`,
+          ja: `**組織変更管理 (OCM)** は、従業員が新システムにスムーズに移行することを確保します。
+
+**OCMフレームワーク**：
+
+**1. Stakeholder Analysis（ステークホルダー分析）**
+- 影響を受けるグループの特定
+- 影響度と抵抗リスクの評価
+- 対象を絞った戦略の策定
+
+**2. Communication Plan（コミュニケーション計画）**
+\`\`\`
+フェーズ → 内容           → チャネル
+発見     → なぜ変革するか → 経営層メール
+準備     → 何が変わるか   → 全社会議
+実現     → どう変わるか   → トレーニング予告
+展開     → サポート場所   → ヘルプデスク
+運用     → 継続的改善     → フィードバックチャネル
+\`\`\`
+
+**3. Training（トレーニング）**
+- Train-the-Trainerモデル
+- ロールベーストレーニングコース
+- ハンズオンラボ
+- SAP Enable Nowサポート
+
+**4. Impact Assessment（影響評価）**
+| 次元 | 評価内容 |
+|------|----------|
+| 人材 | スキルギャップ、役割変更 |
+| プロセス | 作業方法の変更 |
+| 技術 | システム使用の変更 |
+| 組織 | 報告関係の変更 |
+
+**5. Resistance Management（抵抗管理）**
+- 抵抗シグナルの識別
+- 抵抗原因の理解
+- リーダーシップの関与
+- 小さな成功を祝う
+
+**重要成功指標**：
+- トレーニング完了率 > 90%
+- Go-live後のサポートリクエスト傾向
+- ユーザー満足度調査`
+        },
+        tips: {
+          zh: '强调自己在变革管理中的实际经验，包括如何处理抵触情绪',
+          ja: '変革管理における実際の経験を強調し、抵抗への対処法を含める'
+        },
+        difficulty: 'medium',
+        tags: ['OCM', 'Change Management', 'Training', 'Communication']
       }
     ]
   },

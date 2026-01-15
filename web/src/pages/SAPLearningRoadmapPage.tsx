@@ -4,27 +4,30 @@ import {
   Home,
   ChevronRight,
   ChevronDown,
-  MapPin,
-  Circle,
+  ChevronUp,
   Target,
   BookOpen,
   Code2,
   Star,
   ArrowRight,
-  ExternalLink,
   Database,
-  Cloud,
-  Settings,
   Users,
-  Layers,
-  Zap,
-  Shield,
   TrendingUp,
-  GitBranch
+  GitBranch,
+  CheckCircle,
+  AlertTriangle,
+  Lightbulb
 } from 'lucide-react';
 import { useLanguageStore } from '../stores/languageStore';
 
 type RoadmapId = 'migration-specialist' | 'functional-consultant' | 'technical-developer';
+
+interface DetailedContent {
+  overview: { zh: string; ja: string };
+  keyPoints: { zh: string[]; ja: string[] };
+  practicalTips: { zh: string; ja: string };
+  commonMistakes?: { zh: string; ja: string };
+}
 
 interface RoadmapStep {
   id: string;
@@ -32,14 +35,14 @@ interface RoadmapStep {
   description: { zh: string; ja: string };
   duration: { zh: string; ja: string };
   skills: string[];
-  resources: { name: string; url?: string; type: 'course' | 'book' | 'cert' | 'practice' }[];
+  resources: { name: string; type: 'course' | 'book' | 'cert' | 'practice' }[];
   certifications?: string[];
+  detailedContent: DetailedContent;
 }
 
 interface RoadmapPhase {
   id: string;
   name: { zh: string; ja: string };
-  color: string;
   steps: RoadmapStep[];
 }
 
@@ -47,8 +50,6 @@ interface Roadmap {
   id: RoadmapId;
   name: { zh: string; ja: string };
   description: { zh: string; ja: string };
-  icon: React.ElementType;
-  gradient: string;
   phases: RoadmapPhase[];
 }
 
@@ -57,171 +58,337 @@ const roadmaps: Roadmap[] = [
     id: 'migration-specialist',
     name: { zh: 'SAP 迁移专家', ja: 'SAP 移行スペシャリスト' },
     description: { zh: '从 ECC 到 S/4HANA 的迁移全流程', ja: 'ECC から S/4HANA への移行全プロセス' },
-    icon: GitBranch,
-    gradient: 'from-cyan-500 to-teal-600',
     phases: [
       {
         id: 'foundation',
-        name: { zh: '迁移基础', ja: '移行基礎' },
-        color: 'bg-cyan-500',
+        name: { zh: '第一阶段：迁移基础', ja: '第1フェーズ：移行基礎' },
         steps: [
           {
             id: 'sap-overview',
             title: { zh: 'SAP 生态系统概览', ja: 'SAP エコシステム概要' },
-            description: { zh: '了解 SAP ECC/R3 到 S/4HANA 的演进历程，理解为什么要迁移', ja: 'SAP ECC/R3 から S/4HANA への進化を理解し、なぜ移行が必要かを把握' },
+            description: { zh: '了解 SAP ECC/R3 到 S/4HANA 的演进历程', ja: 'SAP ECC/R3 から S/4HANA への進化を理解' },
             duration: { zh: '1-2 周', ja: '1-2 週間' },
-            skills: ['SAP History', 'ECC vs S/4HANA', 'Business Case', 'TCO Analysis'],
+            skills: ['SAP History', 'ECC vs S/4HANA', 'Business Case'],
             resources: [
               { name: 'SAP Learning Hub - S/4HANA Overview', type: 'course' },
               { name: 'RISE with SAP 白皮书', type: 'book' }
-            ]
+            ],
+            detailedContent: {
+              overview: {
+                zh: 'SAP 的演进历程可以分为几个重要阶段：R/2（大型机时代）→ R/3（客户端/服务器架构）→ ECC（ERP Central Component）→ S/4HANA（内存数据库时代）。S/4HANA 于 2015 年发布，是 SAP 面向未来的下一代 ERP 系统，基于 SAP HANA 内存数据库构建。',
+                ja: 'SAP の進化は R/2（メインフレーム時代）→ R/3（クライアント/サーバーアーキテクチャ）→ ECC（ERP Central Component）→ S/4HANA（インメモリデータベース時代）という段階を経ています。S/4HANA は 2015 年にリリースされた次世代 ERP システムで、SAP HANA インメモリデータベース上に構築されています。'
+              },
+              keyPoints: {
+                zh: [
+                  'ECC 主流支持将于 2027 年结束，扩展支持 2030 年结束',
+                  '全球约 4 万家 ECC 客户需要迁移到 S/4HANA',
+                  'S/4HANA 提供简化的数据模型，减少数据冗余',
+                  'Universal Journal (ACDOCA) 统一了财务和管理会计',
+                  'Fiori 提供现代化的用户体验'
+                ],
+                ja: [
+                  'ECC のメインストリームサポートは 2027 年に終了、延長サポートは 2030 年終了',
+                  'グローバルで約 4 万社の ECC 顧客が S/4HANA への移行が必要',
+                  'S/4HANA は簡素化されたデータモデルを提供し、データ冗長性を削減',
+                  'Universal Journal (ACDOCA) が財務会計と管理会計を統合',
+                  'Fiori がモダンなユーザーエクスペリエンスを提供'
+                ]
+              },
+              practicalTips: {
+                zh: '建议从 SAP 官方的 openSAP 免费课程开始学习，特别是 "S/4HANA in a Nutshell" 系列。同时关注 SAP Community 论坛，了解真实的迁移案例和经验分享。',
+                ja: 'SAP 公式の openSAP 無料コースから学習を始めることをお勧めします。特に "S/4HANA in a Nutshell" シリーズが役立ちます。また、SAP Community フォーラムで実際の移行事例や経験共有を確認してください。'
+              },
+              commonMistakes: {
+                zh: '不要仅仅将迁移视为技术升级，更重要的是业务流程优化的机会。很多企业犯的错误是 1:1 复制现有流程，而没有利用 S/4HANA 的新功能。',
+                ja: '移行を単なる技術アップグレードと捉えないでください。これはビジネスプロセス最適化の機会です。多くの企業が犯す間違いは、S/4HANA の新機能を活用せずに既存プロセスを 1:1 でコピーすることです。'
+              }
+            }
           },
           {
             id: 'hana-basics',
             title: { zh: 'SAP HANA 基础', ja: 'SAP HANA 基礎' },
-            description: { zh: '内存数据库原理、列式存储、数据压缩、HANA 架构', ja: 'インメモリデータベースの原理、カラムストレージ、データ圧縮、HANA アーキテクチャ' },
+            description: { zh: '内存数据库原理、列式存储、数据压缩', ja: 'インメモリデータベースの原理、カラムストレージ、データ圧縮' },
             duration: { zh: '2-3 周', ja: '2-3 週間' },
             skills: ['In-Memory Computing', 'Column Store', 'HANA Studio', 'SQL on HANA'],
             resources: [
               { name: 'openSAP - SAP HANA Introduction', type: 'course' },
               { name: 'HANA Academy YouTube', type: 'course' }
             ],
-            certifications: ['C_HANATEC']
+            certifications: ['C_HANATEC'],
+            detailedContent: {
+              overview: {
+                zh: 'SAP HANA 是一个内存数据库平台，与传统的行式存储数据库不同，HANA 采用列式存储。这意味着相同列的数据物理上存储在一起，这对于分析型查询（需要聚合大量行的少数列）特别高效。HANA 还使用先进的压缩算法，通常可以达到 10:1 甚至更高的压缩比。',
+                ja: 'SAP HANA はインメモリデータベースプラットフォームです。従来の行指向ストレージとは異なり、HANA はカラムストレージを採用しています。これは同じ列のデータが物理的に一緒に格納されることを意味し、分析クエリ（多数の行から少数の列を集計）に特に効率的です。HANA は高度な圧縮アルゴリズムも使用し、通常 10:1 以上の圧縮率を達成します。'
+              },
+              keyPoints: {
+                zh: [
+                  '内存计算：数据常驻内存，读取速度比磁盘快 10 万倍',
+                  '列式存储：适合 OLAP 分析，同类数据压缩效率高',
+                  '数据压缩：字典编码、前缀编码、游程编码等多种算法',
+                  'Delta Merge：写入先进入 Delta Store，后台合并到 Main Store',
+                  '多租户架构：一个 HANA 系统可托管多个独立数据库'
+                ],
+                ja: [
+                  'インメモリ計算：データがメモリに常駐し、ディスクより 10 万倍高速',
+                  'カラムストア：OLAP 分析に適し、同種データの圧縮効率が高い',
+                  'データ圧縮：辞書エンコーディング、プレフィックス、ランレングスなど',
+                  'Delta Merge：書き込みは先に Delta Store へ、バックグラウンドで Main Store にマージ',
+                  'マルチテナント：1 つの HANA システムで複数の独立データベースをホスト'
+                ]
+              },
+              practicalTips: {
+                zh: '学习 HANA 时，建议在 SAP 提供的免费试用环境中实践 SQL 操作。理解 HANA 特有的 SQL 扩展，如 WINDOW 函数、层次函数等，这些在 CDS Views 中会经常用到。',
+                ja: 'HANA 学習時は、SAP が提供する無料トライアル環境で SQL 操作を実践することをお勧めします。HANA 固有の SQL 拡張（WINDOW 関数、階層関数など）を理解してください。これらは CDS Views でよく使用されます。'
+              }
+            }
           },
           {
             id: 's4-architecture',
             title: { zh: 'S/4HANA 架构理解', ja: 'S/4HANA アーキテクチャ理解' },
-            description: { zh: '简化数据模型、Universal Journal、Fiori UX、嵌入式分析', ja: '簡素化データモデル、Universal Journal、Fiori UX、組み込み分析' },
+            description: { zh: '简化数据模型、Universal Journal、Fiori UX', ja: '簡素化データモデル、Universal Journal、Fiori UX' },
             duration: { zh: '2-3 周', ja: '2-3 週間' },
             skills: ['Simplified Data Model', 'ACDOCA', 'Fiori Launchpad', 'CDS Views'],
             resources: [
               { name: 'openSAP - S/4HANA in a Nutshell', type: 'course' },
               { name: '本站 C_TS410 题库', type: 'practice' }
             ],
-            certifications: ['C_TS410']
+            certifications: ['C_TS410'],
+            detailedContent: {
+              overview: {
+                zh: 'S/4HANA 相比 ECC 最大的变化是数据模型的简化。在 ECC 中，为了提高查询性能，需要维护大量汇总表和索引表。而在 S/4HANA 中，借助 HANA 的计算能力，这些冗余表被移除，所有数据实时计算。最典型的例子是 Universal Journal (ACDOCA)，它将原来分散在多个表中的财务数据统一到一个表中。',
+                ja: 'S/4HANA と ECC の最大の違いはデータモデルの簡素化です。ECC ではクエリ性能向上のため多数の集計テーブルとインデックステーブルの維持が必要でした。S/4HANA では HANA の計算能力により、これらの冗長テーブルが削除され、すべてのデータがリアルタイム計算されます。最も典型的な例は Universal Journal (ACDOCA) で、複数テーブルに分散していた財務データを 1 つのテーブルに統合しています。'
+              },
+              keyPoints: {
+                zh: [
+                  'ACDOCA：统一日记账，合并 FI 和 CO 数据，支持实时报表',
+                  'MATDOC：物料凭证表，取代原来的 MSEG/MKPF',
+                  'ACDOCP：计划数据表，与 ACDOCA 结构一致',
+                  'Business Partner：统一客户和供应商主数据 (KNA1/LFA1 → BP)',
+                  'Fiori Apps：超过 2000 个预定义应用，基于角色的用户体验'
+                ],
+                ja: [
+                  'ACDOCA：統合仕訳帳、FI と CO データを統合、リアルタイムレポート対応',
+                  'MATDOC：材料伝票テーブル、旧 MSEG/MKPF を置き換え',
+                  'ACDOCP：計画データテーブル、ACDOCA と同じ構造',
+                  'Business Partner：顧客と仕入先マスタを統合 (KNA1/LFA1 → BP)',
+                  'Fiori Apps：2000 以上の事前定義アプリ、ロールベースの UX'
+                ]
+              },
+              practicalTips: {
+                zh: '学习 S/4HANA 架构时，建议对比 ECC 和 S/4HANA 的数据模型变化。SAP 提供了 Simplification List，详细列出了所有变更。这个列表对于迁移规划和自定义代码适配非常重要。',
+                ja: 'S/4HANA アーキテクチャ学習時は、ECC と S/4HANA のデータモデル変更を比較することをお勧めします。SAP は Simplification List を提供しており、すべての変更を詳細に記載しています。このリストは移行計画とカスタムコード適応に非常に重要です。'
+              }
+            }
           }
         ]
       },
       {
         id: 'migration-approach',
-        name: { zh: '迁移策略', ja: '移行戦略' },
-        color: 'bg-teal-500',
+        name: { zh: '第二阶段：迁移策略', ja: '第2フェーズ：移行戦略' },
         steps: [
           {
             id: 'greenfield',
             title: { zh: 'Greenfield 全新实施', ja: 'Greenfield 新規導入' },
-            description: { zh: '完全重新实施，重新设计业务流程，适合需要业务转型的企业', ja: '完全に再導入し、ビジネスプロセスを再設計、ビジネス変革が必要な企業に適用' },
+            description: { zh: '完全重新实施，重新设计业务流程', ja: '完全に再導入し、ビジネスプロセスを再設計' },
             duration: { zh: '2-3 周', ja: '2-3 週間' },
-            skills: ['Best Practices', 'Fit-to-Standard', 'Business Process Redesign', 'Clean Slate'],
+            skills: ['Best Practices', 'Fit-to-Standard', 'Clean Slate'],
             resources: [
               { name: 'SAP Best Practices Explorer', type: 'course' },
               { name: 'SAP Model Company', type: 'practice' }
-            ]
+            ],
+            detailedContent: {
+              overview: {
+                zh: 'Greenfield（绿地）方式是指完全从零开始实施 S/4HANA，不迁移现有的配置和数据。这种方式适合以下情况：现有 ECC 系统高度定制化、业务流程需要根本性变革、想要采用 SAP Best Practices 标准流程、或者现有数据质量较差需要清理。',
+                ja: 'Greenfield 方式は S/4HANA をゼロから導入し、既存の設定やデータを移行しない方法です。以下の場合に適しています：既存 ECC システムが高度にカスタマイズされている、ビジネスプロセスの根本的な変革が必要、SAP Best Practices 標準プロセスを採用したい、または既存データの品質が低く整理が必要な場合。'
+              },
+              keyPoints: {
+                zh: [
+                  '优点：获得"干净"的系统，无历史包袱',
+                  '优点：可以完全采用 SAP Best Practices',
+                  '优点：机会重新设计优化业务流程',
+                  '缺点：实施周期长，通常 12-18 个月',
+                  '缺点：需要重新培训所有用户',
+                  '缺点：历史数据迁移复杂，需要数据清洗'
+                ],
+                ja: [
+                  '利点：「クリーン」なシステムを取得、レガシーなし',
+                  '利点：SAP Best Practices を完全採用可能',
+                  '利点：ビジネスプロセスを再設計・最適化する機会',
+                  '欠点：導入期間が長い、通常 12-18 ヶ月',
+                  '欠点：全ユーザーの再トレーニングが必要',
+                  '欠点：履歴データ移行が複雑、データクレンジングが必要'
+                ]
+              },
+              practicalTips: {
+                zh: 'Greenfield 项目中，关键是坚持 Fit-to-Standard 原则，尽量采用标准功能而非定制开发。建议使用 SAP Model Company 作为起点，它提供了预配置的最佳实践模板。',
+                ja: 'Greenfield プロジェクトでは、Fit-to-Standard 原則を堅持し、カスタム開発ではなく標準機能を採用することが重要です。SAP Model Company を出発点として使用することをお勧めします。事前設定されたベストプラクティステンプレートが提供されます。'
+              }
+            }
           },
           {
             id: 'brownfield',
             title: { zh: 'Brownfield 系统转换', ja: 'Brownfield システム変換' },
-            description: { zh: '保留现有配置和数据，技术升级转换，适合配置成熟的企业', ja: '既存の設定とデータを保持、技術アップグレード変換、成熟した設定を持つ企業に適用' },
+            description: { zh: '保留现有配置和数据，技术升级转换', ja: '既存の設定とデータを保持、技術アップグレード変換' },
             duration: { zh: '2-3 周', ja: '2-3 週間' },
-            skills: ['System Conversion', 'SUM Tool', 'Data Migration', 'Custom Code Adaptation'],
+            skills: ['System Conversion', 'SUM Tool', 'Custom Code Adaptation'],
             resources: [
               { name: 'SAP Note 2340778 - S/4HANA Conversion Guide', type: 'book' },
               { name: 'SUM (Software Update Manager)', type: 'practice' }
-            ]
+            ],
+            detailedContent: {
+              overview: {
+                zh: 'Brownfield（棕地）方式是指将现有 ECC 系统直接转换为 S/4HANA，保留所有配置、数据和历史记录。这种方式使用 Software Update Manager (SUM) 工具执行技术转换。适合配置成熟、业务流程稳定、不希望大幅改变现有操作的企业。',
+                ja: 'Brownfield 方式は既存の ECC システムを S/4HANA に直接変換し、すべての設定、データ、履歴を保持する方法です。Software Update Manager (SUM) ツールを使用して技術変換を実行します。設定が成熟し、ビジネスプロセスが安定しており、既存の運用を大幅に変更したくない企業に適しています。'
+              },
+              keyPoints: {
+                zh: [
+                  '优点：保留所有现有配置和定制',
+                  '优点：所有历史数据自动迁移',
+                  '优点：用户界面变化小，培训成本低',
+                  '优点：实施周期相对较短 (6-12 个月)',
+                  '缺点：可能继承 ECC 中的"坏习惯"',
+                  '缺点：需要大量自定义代码适配工作',
+                  '缺点：可能无法充分利用 S/4HANA 新功能'
+                ],
+                ja: [
+                  '利点：既存のすべての設定とカスタマイズを保持',
+                  '利点：すべての履歴データが自動移行',
+                  '利点：UI の変更が少なく、トレーニングコストが低い',
+                  '利点：導入期間が比較的短い (6-12 ヶ月)',
+                  '欠点：ECC の「悪い習慣」を引き継ぐ可能性',
+                  '欠点：大量のカスタムコード適応作業が必要',
+                  '欠点：S/4HANA の新機能を十分に活用できない可能性'
+                ]
+              },
+              practicalTips: {
+                zh: 'Brownfield 转换前，必须使用 Maintenance Planner 和 Readiness Check 工具评估系统就绪性。自定义代码需要使用 ABAP Test Cockpit (ATC) 检查兼容性。建议建立沙盒环境先进行试转换。',
+                ja: 'Brownfield 変換前に、Maintenance Planner と Readiness Check ツールを使用してシステムの準備状況を評価する必要があります。カスタムコードは ABAP Test Cockpit (ATC) で互換性をチェックします。サンドボックス環境で試行変換を先に行うことをお勧めします。'
+              }
+            }
           },
           {
             id: 'bluefield',
             title: { zh: 'Bluefield 选择性迁移', ja: 'Bluefield 選択的移行' },
-            description: { zh: '结合 Greenfield 和 Brownfield 优点，选择性迁移数据和配置', ja: 'Greenfield と Brownfield の利点を組み合わせ、データと設定を選択的に移行' },
+            description: { zh: '结合 Greenfield 和 Brownfield 优点', ja: 'Greenfield と Brownfield の利点を組み合わせ' },
             duration: { zh: '2-3 周', ja: '2-3 週間' },
-            skills: ['Selective Data Transition', 'SNP CrystalBridge', 'SAP S/4HANA Migration Cockpit'],
+            skills: ['Selective Data Transition', 'SNP CrystalBridge', 'Migration Cockpit'],
             resources: [
               { name: 'SAP S/4HANA Migration Cockpit', type: 'course' },
               { name: 'SNP Transformation Platform', type: 'practice' }
-            ]
-          },
-          {
-            id: 'rise-grow',
-            title: { zh: 'RISE/GROW with SAP', ja: 'RISE/GROW with SAP' },
-            description: { zh: 'SAP 官方云转型套餐，包含 BTP、Business Network、成功服务', ja: 'SAP 公式クラウド変革パッケージ、BTP、Business Network、成功サービスを含む' },
-            duration: { zh: '1-2 周', ja: '1-2 週間' },
-            skills: ['RISE with SAP', 'GROW with SAP', 'PCE (Private Cloud Edition)', 'Cloud ALM'],
-            resources: [
-              { name: 'SAP RISE 官方文档', type: 'book' },
-              { name: 'SAP Discovery Center', type: 'course' }
-            ]
+            ],
+            detailedContent: {
+              overview: {
+                zh: 'Bluefield（蓝地）或称 Selective Data Transition，是结合 Greenfield 和 Brownfield 优点的混合方式。它允许你选择性地迁移配置和数据：可以保留好的配置，丢弃不需要的历史数据，同时有机会优化某些业务流程。这种方式需要使用专门的迁移工具，如 SNP CrystalBridge 或 SAP 的 Migration Cockpit。',
+                ja: 'Bluefield（選択的データ移行）は Greenfield と Brownfield の利点を組み合わせたハイブリッド方式です。設定とデータを選択的に移行できます：良い設定を保持し、不要な履歴データを破棄し、一部のビジネスプロセスを最適化する機会があります。SNP CrystalBridge や SAP の Migration Cockpit などの専用移行ツールが必要です。'
+              },
+              keyPoints: {
+                zh: [
+                  '选择性迁移：可以选择迁移哪些配置和数据',
+                  '数据清理机会：可以只迁移近 N 年的历史数据',
+                  '流程优化：可以在迁移过程中优化部分流程',
+                  '系统整合：可以将多个 ECC 系统合并为一个 S/4HANA',
+                  '工具要求：需要专业的迁移工具支持',
+                  '复杂度高：需要详细的数据映射和转换规则'
+                ],
+                ja: [
+                  '選択的移行：どの設定とデータを移行するか選択可能',
+                  'データクレンジングの機会：直近 N 年の履歴データのみ移行可能',
+                  'プロセス最適化：移行プロセス中に一部のプロセスを最適化',
+                  'システム統合：複数の ECC システムを 1 つの S/4HANA に統合可能',
+                  'ツール要件：専門的な移行ツールのサポートが必要',
+                  '複雑度が高い：詳細なデータマッピングと変換ルールが必要'
+                ]
+              },
+              practicalTips: {
+                zh: 'Bluefield 方式特别适合需要系统整合的场景，比如将多个国家的 ECC 系统合并。在选择迁移工具时，要评估工具对特定模块的支持程度，以及是否支持你需要的转换场景。',
+                ja: 'Bluefield 方式はシステム統合が必要なシナリオに特に適しています。例えば、複数国の ECC システムを統合する場合です。移行ツール選択時は、特定モジュールのサポート程度と、必要な変換シナリオをサポートしているかを評価してください。'
+              }
+            }
           }
         ]
       },
       {
         id: 'implementation',
-        name: { zh: '实施方法论', ja: '導入方法論' },
-        color: 'bg-emerald-500',
+        name: { zh: '第三阶段：实施方法论', ja: '第3フェーズ：導入方法論' },
         steps: [
           {
             id: 'activate',
             title: { zh: 'SAP Activate 方法论', ja: 'SAP Activate 方法論' },
-            description: { zh: 'SAP 官方敏捷实施方法论：Discover、Prepare、Explore、Realize、Deploy、Run', ja: 'SAP 公式アジャイル導入方法論：Discover、Prepare、Explore、Realize、Deploy、Run' },
+            description: { zh: 'SAP 官方敏捷实施方法论', ja: 'SAP 公式アジャイル導入方法論' },
             duration: { zh: '3-4 周', ja: '3-4 週間' },
-            skills: ['Agile/Scrum', 'Fit-to-Standard Workshops', 'Solution Manager', 'Cloud ALM'],
+            skills: ['Agile/Scrum', 'Fit-to-Standard', 'Solution Manager'],
             resources: [
               { name: 'openSAP - SAP Activate', type: 'course' },
               { name: '本站 C_ACTIVATE 题库', type: 'practice' }
             ],
-            certifications: ['C_ACTIVATE']
-          },
-          {
-            id: 'signavio',
-            title: { zh: 'SAP Signavio 流程分析', ja: 'SAP Signavio プロセス分析' },
-            description: { zh: '流程挖掘、流程建模、识别优化机会、迁移前后对比', ja: 'プロセスマイニング、プロセスモデリング、最適化機会の特定、移行前後の比較' },
-            duration: { zh: '2-3 周', ja: '2-3 週間' },
-            skills: ['Process Mining', 'BPMN Modeling', 'Process Intelligence', 'Benchmarking'],
-            resources: [
-              { name: 'SAP Signavio Process Manager', type: 'course' },
-              { name: 'Process Mining Best Practices', type: 'book' }
-            ]
+            certifications: ['C_ACTIVATE'],
+            detailedContent: {
+              overview: {
+                zh: 'SAP Activate 是 SAP 官方推荐的敏捷实施方法论，整合了设计思维、敏捷开发和 SAP 最佳实践。它定义了六个阶段：Discover（发现）、Prepare（准备）、Explore（探索）、Realize（实现）、Deploy（部署）、Run（运营）。这个方法论适用于云端、本地和混合部署场景。',
+                ja: 'SAP Activate は SAP 公式推奨のアジャイル導入方法論で、デザイン思考、アジャイル開発、SAP ベストプラクティスを統合しています。6 つのフェーズを定義：Discover（発見）、Prepare（準備）、Explore（探索）、Realize（実現）、Deploy（展開）、Run（運用）。クラウド、オンプレミス、ハイブリッド展開に適用可能です。'
+              },
+              keyPoints: {
+                zh: [
+                  'Discover：识别业务需求，评估 S/4HANA 适用性',
+                  'Prepare：项目启动，定义范围，建立团队',
+                  'Explore：Fit-to-Standard 工作坊，确认标准流程和差距',
+                  'Realize：迭代开发，配置系统，开发扩展',
+                  'Deploy：用户培训，数据迁移，切换上线',
+                  'Run：运营支持，持续改进，超级运营'
+                ],
+                ja: [
+                  'Discover：ビジネス要件の特定、S/4HANA 適用性の評価',
+                  'Prepare：プロジェクト開始、スコープ定義、チーム構築',
+                  'Explore：Fit-to-Standard ワークショップ、標準プロセスとギャップの確認',
+                  'Realize：反復開発、システム設定、拡張開発',
+                  'Deploy：ユーザートレーニング、データ移行、本番稼働',
+                  'Run：運用サポート、継続的改善、ハイパーケア'
+                ]
+              },
+              practicalTips: {
+                zh: '在 Explore 阶段的 Fit-to-Standard 工作坊中，关键是让业务用户理解 SAP 标准流程，而不是直接问他们"需要什么"。这样可以最大化采用标准功能，减少定制开发。',
+                ja: 'Explore フェーズの Fit-to-Standard ワークショップでは、ビジネスユーザーに「何が必要か」を直接聞くのではなく、SAP 標準プロセスを理解してもらうことが重要です。これにより標準機能の採用を最大化し、カスタム開発を削減できます。'
+              }
+            }
           },
           {
             id: 'custom-code',
             title: { zh: '自定义代码适配', ja: 'カスタムコード適応' },
-            description: { zh: '使用 ATC/ABAP Test Cockpit 分析自定义代码，Clean Core 原则', ja: 'ATC/ABAP Test Cockpit でカスタムコードを分析、Clean Core 原則' },
+            description: { zh: 'ATC 检查、Clean Core 原则', ja: 'ATC チェック、Clean Core 原則' },
             duration: { zh: '2-4 周', ja: '2-4 週間' },
-            skills: ['ATC Checks', 'Custom Code Migration', 'Clean Core', 'Side-by-Side Extensions'],
+            skills: ['ATC Checks', 'Clean Core', 'Side-by-Side Extensions'],
             resources: [
               { name: 'SAP Custom Code Migration Guide', type: 'book' },
               { name: 'ABAP Test Cockpit', type: 'practice' }
-            ]
-          }
-        ]
-      },
-      {
-        id: 'cloud-extension',
-        name: { zh: '云扩展', ja: 'クラウド拡張' },
-        color: 'bg-blue-500',
-        steps: [
-          {
-            id: 'btp-foundation',
-            title: { zh: 'SAP BTP 平台基础', ja: 'SAP BTP プラットフォーム基礎' },
-            description: { zh: 'BTP 账户模型、子账户、环境（Cloud Foundry/Kyma）、服务目录', ja: 'BTP アカウントモデル、サブアカウント、環境（Cloud Foundry/Kyma）、サービスカタログ' },
-            duration: { zh: '2-3 周', ja: '2-3 週間' },
-            skills: ['BTP Cockpit', 'Subaccounts', 'Entitlements', 'Service Marketplace'],
-            resources: [
-              { name: 'openSAP - BTP Basics', type: 'course' },
-              { name: '本站 C_BTP 题库', type: 'practice' }
             ],
-            certifications: ['C_BTP']
-          },
-          {
-            id: 'integration-suite',
-            title: { zh: 'SAP Integration Suite', ja: 'SAP Integration Suite' },
-            description: { zh: 'Cloud Integration、API Management、Event Mesh、混合集成场景', ja: 'Cloud Integration、API Management、Event Mesh、ハイブリッド統合シナリオ' },
-            duration: { zh: '3-4 周', ja: '3-4 週間' },
-            skills: ['iFlows', 'API Gateway', 'Event-Driven Architecture', 'Hybrid Integration'],
-            resources: [
-              { name: 'SAP Integration Suite 官方文档', type: 'book' },
-              { name: '本站 C_BTPINT 题库', type: 'practice' }
-            ],
-            certifications: ['C_BTPINT']
+            detailedContent: {
+              overview: {
+                zh: '自定义代码适配是 Brownfield 迁移中最耗时的工作之一。S/4HANA 由于数据模型变化，很多在 ECC 中可用的表和函数在 S/4HANA 中已被移除或替换。SAP 提供了 ABAP Test Cockpit (ATC) 工具来自动检查代码兼容性问题。Clean Core 原则要求将定制代码移到 BTP 上作为 Side-by-Side 扩展。',
+                ja: 'カスタムコード適応は Brownfield 移行で最も時間のかかる作業の 1 つです。S/4HANA はデータモデルの変更により、ECC で使用可能だった多くのテーブルや関数が削除または置き換えられています。SAP は ABAP Test Cockpit (ATC) ツールを提供してコード互換性問題を自動チェックします。Clean Core 原則では、カスタムコードを BTP 上の Side-by-Side 拡張として移動することを求めています。'
+              },
+              keyPoints: {
+                zh: [
+                  'ATC 检查：自动识别不兼容的表、函数模块、语句',
+                  'Simplification Database：SAP 维护的变更数据库',
+                  '常见问题：直接访问被移除的汇总表',
+                  '解决方案：使用 CDS Views 替代直接表访问',
+                  'Clean Core：核心系统保持"干净"，扩展放在 BTP',
+                  'Released APIs：只使用 SAP 发布的稳定 API'
+                ],
+                ja: [
+                  'ATC チェック：互換性のないテーブル、関数モジュール、ステートメントを自動識別',
+                  'Simplification Database：SAP が維持する変更データベース',
+                  '一般的な問題：削除された集計テーブルへの直接アクセス',
+                  '解決策：直接テーブルアクセスの代わりに CDS Views を使用',
+                  'Clean Core：コアシステムを「クリーン」に保ち、拡張を BTP に配置',
+                  'Released APIs：SAP がリリースした安定 API のみを使用'
+                ]
+              },
+              practicalTips: {
+                zh: '建议在迁移项目早期就运行 ATC 检查，了解自定义代码的健康状况。对于大量自定义代码，可以考虑使用第三方工具如 Panaya 进行影响分析。不要试图修复所有代码，有些可能不再需要。',
+                ja: '移行プロジェクトの早い段階で ATC チェックを実行し、カスタムコードの健全性を把握することをお勧めします。大量のカスタムコードには、Panaya などのサードパーティツールで影響分析を検討してください。すべてのコードを修正しようとしないでください。一部は不要かもしれません。'
+              }
+            }
           }
         ]
       }
@@ -231,119 +398,219 @@ const roadmaps: Roadmap[] = [
     id: 'functional-consultant',
     name: { zh: 'SAP 功能顾问', ja: 'SAP ファンクショナルコンサルタント' },
     description: { zh: '业务流程配置与优化专家', ja: 'ビジネスプロセス設定と最適化のエキスパート' },
-    icon: Users,
-    gradient: 'from-amber-500 to-orange-600',
     phases: [
       {
         id: 'erp-basics',
-        name: { zh: 'ERP 基础', ja: 'ERP 基礎' },
-        color: 'bg-amber-500',
+        name: { zh: '第一阶段：ERP 基础', ja: '第1フェーズ：ERP 基礎' },
         steps: [
           {
             id: 'business-process',
             title: { zh: '企业业务流程', ja: '企業ビジネスプロセス' },
-            description: { zh: '采购到付款 (P2P)、订单到收款 (O2C)、记录到报告 (R2R)', ja: '調達から支払い（P2P）、受注から回収（O2C）、記録からレポート（R2R）' },
+            description: { zh: 'P2P、O2C、R2R 核心流程', ja: 'P2P、O2C、R2R コアプロセス' },
             duration: { zh: '2-3 周', ja: '2-3 週間' },
             skills: ['P2P', 'O2C', 'R2R', 'Business Process Mapping'],
             resources: [
               { name: 'SAP Best Practices', type: 'course' },
               { name: '企业 ERP 概论', type: 'book' }
-            ]
-          },
-          {
-            id: 's4-navigation',
-            title: { zh: 'S/4HANA 导航与配置', ja: 'S/4HANA ナビゲーションと設定' },
-            description: { zh: 'Fiori Launchpad、SAP GUI、IMG 配置路径、组织结构', ja: 'Fiori Launchpad、SAP GUI、IMG 設定パス、組織構造' },
-            duration: { zh: '2-3 周', ja: '2-3 週間' },
-            skills: ['Fiori Launchpad', 'SAP GUI', 'IMG', 'Organizational Structure'],
-            resources: [
-              { name: 'openSAP - S/4HANA Navigation', type: 'course' }
             ],
-            certifications: ['C_TS410']
+            detailedContent: {
+              overview: {
+                zh: 'ERP 系统的核心是支持企业的端到端业务流程。最重要的三个流程是：Procure-to-Pay (P2P) 采购到付款、Order-to-Cash (O2C) 订单到收款、Record-to-Report (R2R) 记录到报告。理解这些流程是成为 SAP 功能顾问的基础。',
+                ja: 'ERP システムの核心は企業のエンドツーエンドビジネスプロセスをサポートすることです。最も重要な 3 つのプロセス：Procure-to-Pay (P2P) 調達から支払い、Order-to-Cash (O2C) 受注から回収、Record-to-Report (R2R) 記録からレポート。これらのプロセスを理解することが SAP ファンクショナルコンサルタントの基礎です。'
+              },
+              keyPoints: {
+                zh: [
+                  'P2P 流程：采购申请 → 采购订单 → 收货 → 发票校验 → 付款',
+                  'O2C 流程：询价 → 报价 → 销售订单 → 交货 → 开票 → 收款',
+                  'R2R 流程：日记账分录 → 过账 → 期末结账 → 财务报表',
+                  '集成性：这些流程跨越多个模块，自动生成会计凭证',
+                  '组织结构：公司代码、工厂、采购组织、销售组织等'
+                ],
+                ja: [
+                  'P2P プロセス：購買依頼 → 購買発注 → 入庫 → 請求書照合 → 支払',
+                  'O2C プロセス：引合 → 見積 → 受注 → 出荷 → 請求 → 入金',
+                  'R2R プロセス：仕訳入力 → 転記 → 期末締め → 財務諸表',
+                  '統合性：これらのプロセスは複数モジュールにまたがり、会計伝票を自動生成',
+                  '組織構造：会社コード、プラント、購買組織、販売組織など'
+                ]
+              },
+              practicalTips: {
+                zh: '学习业务流程时，建议画流程图来理解每个步骤产生的数据和凭证。特别注意物料移动（MM）和财务过账（FI）之间的自动集成关系。',
+                ja: 'ビジネスプロセス学習時は、各ステップで生成されるデータと伝票を理解するためにフローチャートを描くことをお勧めします。特に材料移動（MM）と財務転記（FI）間の自動統合関係に注意してください。'
+              }
+            }
           }
         ]
       },
       {
         id: 'finance',
-        name: { zh: '财务模块', ja: '財務モジュール' },
-        color: 'bg-green-500',
+        name: { zh: '第二阶段：财务模块', ja: '第2フェーズ：財務モジュール' },
         steps: [
           {
             id: 'fi-gl',
             title: { zh: '总账与财务报告', ja: '総勘定元帳と財務レポート' },
-            description: { zh: 'Universal Journal (ACDOCA)、科目表、公司代码、财务报表', ja: 'Universal Journal (ACDOCA)、勘定科目表、会社コード、財務諸表' },
+            description: { zh: 'Universal Journal、科目表、财务报表', ja: 'Universal Journal、勘定科目表、財務諸表' },
             duration: { zh: '4-6 周', ja: '4-6 週間' },
             skills: ['General Ledger', 'ACDOCA', 'Chart of Accounts', 'Financial Statements'],
             resources: [
               { name: 'openSAP - S/4HANA Finance', type: 'course' },
               { name: '本站 C_TS4FI 题库', type: 'practice' }
             ],
-            certifications: ['C_TS4FI']
-          },
-          {
-            id: 'fi-arap',
-            title: { zh: '应收应付账款', ja: '売掛金・買掛金' },
-            description: { zh: '客户/供应商主数据、发票处理、付款运行、信用管理', ja: '得意先/仕入先マスタデータ、請求書処理、支払実行、与信管理' },
-            duration: { zh: '3-4 周', ja: '3-4 週間' },
-            skills: ['Customer Master', 'Vendor Master', 'Invoice Processing', 'Payment Run'],
-            resources: [
-              { name: 'SAP S/4HANA Finance 配置指南', type: 'book' }
-            ]
+            certifications: ['C_TS4FI'],
+            detailedContent: {
+              overview: {
+                zh: 'S/4HANA Finance 最大的变化是引入 Universal Journal (ACDOCA)。在 ECC 中，财务会计 (FI) 和管理会计 (CO) 的数据存储在不同的表中，需要定期对账。在 S/4HANA 中，所有数据统一存储在 ACDOCA 表中，实现了真正的实时报表和即时结账。',
+                ja: 'S/4HANA Finance の最大の変更は Universal Journal (ACDOCA) の導入です。ECC では財務会計 (FI) と管理会計 (CO) のデータは異なるテーブルに格納され、定期的な照合が必要でした。S/4HANA ではすべてのデータが ACDOCA テーブルに統一格納され、真のリアルタイムレポートと即時決算を実現しています。'
+              },
+              keyPoints: {
+                zh: [
+                  'ACDOCA：所有会计凭证都存储在这一个表中',
+                  '实时报表：无需月末运行报表程序',
+                  '科目表：运营科目表 + 集团科目表的双层结构',
+                  '凭证拆分：自动按利润中心等维度拆分',
+                  '期末结账：简化流程，很多步骤可以跳过',
+                  '集成：与 CO、AA（资产会计）等模块紧密集成'
+                ],
+                ja: [
+                  'ACDOCA：すべての会計伝票がこの 1 つのテーブルに格納',
+                  'リアルタイムレポート：月末にレポートプログラムを実行する必要なし',
+                  '勘定科目表：運用勘定科目表 + グループ勘定科目表の 2 層構造',
+                  '伝票分割：利益センタなどの次元で自動分割',
+                  '期末決算：プロセスの簡素化、多くのステップをスキップ可能',
+                  '統合：CO、AA（資産会計）など他モジュールと緊密に統合'
+                ]
+              },
+              practicalTips: {
+                zh: '学习 FI 模块时，重点理解科目表结构和凭证类型的概念。在 S/4HANA 中，凭证类型决定了凭证编号范围和允许的过账键。建议在实践中创建各种类型的会计凭证来加深理解。',
+                ja: 'FI モジュール学習時は、勘定科目表構造と伝票タイプの概念を重点的に理解してください。S/4HANA では伝票タイプが伝票番号範囲と許可される転記キーを決定します。実践で様々な種類の会計伝票を作成して理解を深めることをお勧めします。'
+              }
+            }
           },
           {
             id: 'co',
             title: { zh: '管理会计/成本控制', ja: '管理会計/原価管理' },
-            description: { zh: '成本中心、利润中心、内部订单、产品成本核算', ja: '原価センタ、利益センタ、内部指図、製品原価計算' },
+            description: { zh: '成本中心、利润中心、内部订单', ja: '原価センタ、利益センタ、内部指図' },
             duration: { zh: '4-6 周', ja: '4-6 週間' },
-            skills: ['Cost Centers', 'Profit Centers', 'Internal Orders', 'Product Costing'],
+            skills: ['Cost Centers', 'Profit Centers', 'Internal Orders'],
             resources: [
               { name: 'openSAP - S/4HANA Management Accounting', type: 'course' },
               { name: '本站 C_TS4CO 题库', type: 'practice' }
             ],
-            certifications: ['C_TS4CO']
+            certifications: ['C_TS4CO'],
+            detailedContent: {
+              overview: {
+                zh: '管理会计 (CO) 模块用于内部成本核算和绩效分析，与财务会计 (FI) 面向外部报告不同。在 S/4HANA 中，由于 Universal Journal 的统一，FI 和 CO 的边界变得模糊，但 CO 的核心概念仍然存在：成本中心用于归集成本、利润中心用于盈利分析、内部订单用于项目成本追踪。',
+                ja: '管理会計 (CO) モジュールは内部原価計算と業績分析に使用され、外部レポート向けの財務会計 (FI) とは異なります。S/4HANA では Universal Journal の統合により FI と CO の境界が曖昧になりましたが、CO の核心概念は存続：原価センタはコスト集計、利益センタは収益性分析、内部指図はプロジェクトコスト追跡に使用されます。'
+              },
+              keyPoints: {
+                zh: [
+                  '成本中心：按部门/功能归集成本，如 IT 部门、人事部门',
+                  '利润中心：盈利责任单位，可以生成内部损益表',
+                  '内部订单：临时成本收集器，用于项目或活动',
+                  '成本分摊：将间接成本按规则分配到产品或利润中心',
+                  '计划/实际对比：预算控制和差异分析',
+                  '产品成本：计算产品的标准成本和实际成本'
+                ],
+                ja: [
+                  '原価センタ：部門/機能別にコストを集計、例：IT 部門、人事部門',
+                  '利益センタ：収益責任単位、内部損益計算書を生成可能',
+                  '内部指図：一時的なコストコレクター、プロジェクトや活動用',
+                  '原価配賦：間接費をルールに基づいて製品や利益センタに配分',
+                  '計画/実績比較：予算管理と差異分析',
+                  '製品原価：製品の標準原価と実際原価を計算'
+                ]
+              },
+              practicalTips: {
+                zh: '理解 CO 模块的关键是理解成本流。成本从一级成本要素进入成本中心，然后通过分摊/分配流向利润中心或产品。建议画成本流图来理解各种成本对象之间的关系。',
+                ja: 'CO モジュール理解の鍵はコストフローの理解です。コストは一次原価要素から原価センタに入り、配賦/配分を通じて利益センタや製品に流れます。コストフロー図を描いて各種原価対象間の関係を理解することをお勧めします。'
+              }
+            }
           }
         ]
       },
       {
         id: 'logistics',
-        name: { zh: '物流模块', ja: '物流モジュール' },
-        color: 'bg-blue-500',
+        name: { zh: '第三阶段：物流模块', ja: '第3フェーズ：物流モジュール' },
         steps: [
           {
             id: 'mm',
             title: { zh: '物料管理/采购', ja: '購買管理' },
-            description: { zh: '采购申请、采购订单、货物收据、发票校验、库存管理', ja: '購買依頼、購買発注、入庫、請求書照合、在庫管理' },
+            description: { zh: '采购订单、收货、库存管理', ja: '購買発注、入庫、在庫管理' },
             duration: { zh: '4-6 周', ja: '4-6 週間' },
-            skills: ['Purchase Requisition', 'Purchase Order', 'Goods Receipt', 'Invoice Verification'],
+            skills: ['Purchase Order', 'Goods Receipt', 'Invoice Verification'],
             resources: [
               { name: 'openSAP - S/4HANA Sourcing & Procurement', type: 'course' },
               { name: '本站 C_TS450 题库', type: 'practice' }
             ],
-            certifications: ['C_TS450']
+            certifications: ['C_TS450'],
+            detailedContent: {
+              overview: {
+                zh: 'MM（物料管理）模块覆盖采购和库存管理全流程。在 S/4HANA 中，MM 模块的一个重要变化是物料凭证表从 MSEG/MKPF 变为 MATDOC，且库存管理支持实时更新。主要流程包括：采购申请 → 询价/报价 → 采购订单 → 收货 → 发票校验。',
+                ja: 'MM（購買管理）モジュールは調達と在庫管理の全プロセスをカバーします。S/4HANA では MM モジュールの重要な変更として、材料伝票テーブルが MSEG/MKPF から MATDOC に変わり、在庫管理がリアルタイム更新をサポートしています。主要プロセス：購買依頼 → 見積依頼/見積 → 購買発注 → 入庫 → 請求書照合。'
+              },
+              keyPoints: {
+                zh: [
+                  '物料主数据：基本数据、采购数据、MRP 数据等视图',
+                  '采购组织结构：采购组织、采购组、采购员',
+                  '货源确定：配额协议、信息记录、合同',
+                  '库存类型：非限制、质检、冻结等',
+                  '评估类：决定库存的价值记账方式',
+                  '自动记账：收货时自动生成会计凭证'
+                ],
+                ja: [
+                  '品目マスタ：基本データ、購買データ、MRP データなどのビュー',
+                  '購買組織構造：購買組織、購買グループ、バイヤー',
+                  'ソース決定：数量契約、購買情報レコード、契約',
+                  '在庫タイプ：非制限、品質検査、ブロックなど',
+                  '評価クラス：在庫の価額転記方法を決定',
+                  '自動記帳：入庫時に会計伝票を自動生成'
+                ]
+              },
+              practicalTips: {
+                zh: '学习 MM 模块时，重点理解物料移动类型。每种移动类型（如 101 收货、201 成本中心领料）都有预定义的账户确定规则。理解这些规则对于配置和问题排查非常重要。',
+                ja: 'MM モジュール学習時は、材料移動タイプを重点的に理解してください。各移動タイプ（例：101 入庫、201 原価センタ払出）には事前定義された勘定決定ルールがあります。これらのルールを理解することは設定とトラブルシューティングに非常に重要です。'
+              }
+            }
           },
           {
             id: 'sd',
             title: { zh: '销售与分销', ja: '販売管理' },
-            description: { zh: '销售订单、定价、交货、开票、可用性检查', ja: '受注、価格設定、出荷、請求、在庫確認' },
+            description: { zh: '销售订单、定价、交货、开票', ja: '受注、価格設定、出荷、請求' },
             duration: { zh: '4-6 周', ja: '4-6 週間' },
-            skills: ['Sales Order', 'Pricing', 'Delivery', 'Billing', 'ATP Check'],
+            skills: ['Sales Order', 'Pricing', 'Delivery', 'Billing'],
             resources: [
               { name: 'openSAP - S/4HANA Sales', type: 'course' },
               { name: '本站 C_TS460 题库', type: 'practice' }
             ],
-            certifications: ['C_TS460']
-          },
-          {
-            id: 'ewm',
-            title: { zh: '扩展仓库管理', ja: '拡張倉庫管理' },
-            description: { zh: 'EWM 与 S/4HANA 集成、仓储优化、RF 设备、波次管理', ja: 'EWM と S/4HANA 統合、倉庫最適化、RF デバイス、ウェーブ管理' },
-            duration: { zh: '4-6 周', ja: '4-6 週間' },
-            skills: ['Warehouse Structure', 'Putaway', 'Picking', 'Wave Management'],
-            resources: [
-              { name: 'SAP EWM in S/4HANA', type: 'book' },
-              { name: '本站 C_S4EWM 题库', type: 'practice' }
-            ],
-            certifications: ['C_S4EWM']
+            certifications: ['C_TS460'],
+            detailedContent: {
+              overview: {
+                zh: 'SD（销售与分销）模块处理从销售询价到收款的完整流程。核心流程是：询价 → 报价 → 销售订单 → 交货 → 发货过账 → 开票。SD 模块的复杂性主要在于定价过程，SAP 使用条件技术来实现灵活的定价策略。',
+                ja: 'SD（販売管理）モジュールは販売引合から入金までの完全なプロセスを処理します。コアプロセス：引合 → 見積 → 受注 → 出荷 → 出庫転記 → 請求。SD モジュールの複雑さは主に価格設定プロセスにあり、SAP は柔軟な価格戦略を実現するために条件技術を使用しています。'
+              },
+              keyPoints: {
+                zh: [
+                  '销售组织结构：销售组织、分销渠道、产品组',
+                  '客户主数据：一般数据、销售区域数据、公司代码数据',
+                  '定价条件：价格、折扣、运费、税等条件类型',
+                  '可用性检查 (ATP)：检查库存是否足够',
+                  '交货处理：拣配、包装、发货过账',
+                  '开票：生成发票并过账到 FI'
+                ],
+                ja: [
+                  '販売組織構造：販売組織、流通チャネル、製品グループ',
+                  '得意先マスタ：一般データ、販売エリアデータ、会社コードデータ',
+                  '価格条件：価格、割引、運賃、税などの条件タイプ',
+                  '利用可能在庫確認 (ATP)：在庫が十分かチェック',
+                  '出荷処理：ピッキング、梱包、出庫転記',
+                  '請求：請求書を生成し FI に転記'
+                ]
+              },
+              practicalTips: {
+                zh: 'SD 模块最需要深入理解的是定价过程。建议创建一个完整的定价过程，包括基本价格、数量折扣、客户折扣、运费、税等条件类型，在实践中理解条件技术的工作原理。',
+                ja: 'SD モジュールで最も深く理解すべきは価格設定プロセスです。基本価格、数量割引、顧客割引、運賃、税などの条件タイプを含む完全な価格設定プロセスを作成し、実践で条件技術の仕組みを理解することをお勧めします。'
+              }
+            }
           }
         ]
       }
@@ -353,158 +620,179 @@ const roadmaps: Roadmap[] = [
     id: 'technical-developer',
     name: { zh: 'SAP 技术开发者', ja: 'SAP 技術開発者' },
     description: { zh: '现代 SAP 开发技术栈专家', ja: 'モダン SAP 開発技術スタックのエキスパート' },
-    icon: Code2,
-    gradient: 'from-violet-500 to-purple-600',
     phases: [
       {
         id: 'abap-basics',
-        name: { zh: 'ABAP 基础', ja: 'ABAP 基礎' },
-        color: 'bg-violet-500',
+        name: { zh: '第一阶段：ABAP 基础', ja: '第1フェーズ：ABAP 基礎' },
         steps: [
           {
             id: 'abap-core',
             title: { zh: 'ABAP 核心语法', ja: 'ABAP コア構文' },
-            description: { zh: 'ABAP 数据类型、内表、Open SQL、模块化编程', ja: 'ABAP データ型、内部テーブル、Open SQL、モジュール化プログラミング' },
+            description: { zh: '数据类型、内表、Open SQL', ja: 'データ型、内部テーブル、Open SQL' },
             duration: { zh: '4-6 周', ja: '4-6 週間' },
-            skills: ['ABAP Syntax', 'Internal Tables', 'Open SQL', 'Function Modules'],
+            skills: ['ABAP Syntax', 'Internal Tables', 'Open SQL'],
             resources: [
               { name: 'openSAP - ABAP Development', type: 'course' },
               { name: 'ABAP 官方文档', type: 'book' }
-            ]
-          },
-          {
-            id: 'abap-oo',
-            title: { zh: 'ABAP 面向对象', ja: 'ABAP オブジェクト指向' },
-            description: { zh: '类、接口、继承、多态、设计模式在 ABAP 中的应用', ja: 'クラス、インターフェース、継承、ポリモーフィズム、ABAP でのデザインパターン' },
-            duration: { zh: '3-4 周', ja: '3-4 週間' },
-            skills: ['ABAP OO', 'Classes', 'Interfaces', 'Design Patterns'],
-            resources: [
-              { name: 'ABAP Objects 官方指南', type: 'book' }
-            ]
+            ],
+            detailedContent: {
+              overview: {
+                zh: 'ABAP（Advanced Business Application Programming）是 SAP 的专有编程语言，自 1983 年以来一直是 SAP 系统开发的核心。虽然 SAP 现在也支持 Java、JavaScript 等语言，但 ABAP 仍然是 S/4HANA 核心系统开发的主要语言。现代 ABAP（ABAP 7.4+）引入了很多新特性，如内联声明、字符串模板、表达式等。',
+                ja: 'ABAP（Advanced Business Application Programming）は SAP の専用プログラミング言語で、1983 年以来 SAP システム開発の核心です。SAP は現在 Java や JavaScript などもサポートしていますが、ABAP は依然として S/4HANA コアシステム開発の主要言語です。モダン ABAP（ABAP 7.4+）では多くの新機能が導入されています：インライン宣言、文字列テンプレート、式など。'
+              },
+              keyPoints: {
+                zh: [
+                  '数据类型：基本类型 (I, F, C, N, D, T, STRING)、结构、内表',
+                  '内表：标准表、排序表、哈希表',
+                  '内表操作：LOOP、READ TABLE、INSERT、MODIFY、DELETE',
+                  'Open SQL：SELECT、INSERT、UPDATE、DELETE',
+                  '新语法：DATA(var)、VALUE #()、FOR 表达式、CORRESPONDING',
+                  '模块化：函数模块、类方法、子程序（已过时）'
+                ],
+                ja: [
+                  'データ型：基本型 (I, F, C, N, D, T, STRING)、構造、内部テーブル',
+                  '内部テーブル：標準テーブル、ソートテーブル、ハッシュテーブル',
+                  '内部テーブル操作：LOOP、READ TABLE、INSERT、MODIFY、DELETE',
+                  'Open SQL：SELECT、INSERT、UPDATE、DELETE',
+                  '新構文：DATA(var)、VALUE #()、FOR 式、CORRESPONDING',
+                  'モジュール化：関数モジュール、クラスメソッド、サブルーチン（非推奨）'
+                ]
+              },
+              practicalTips: {
+                zh: '学习 ABAP 时，建议直接学习现代 ABAP 语法（7.4+），不要花太多时间在旧语法上。使用 ABAP Development Tools (ADT) 在 Eclipse 中开发，而不是 SAP GUI 中的 SE80。',
+                ja: 'ABAP 学習時は、モダン ABAP 構文（7.4+）を直接学習し、旧構文に時間をかけすぎないことをお勧めします。SAP GUI の SE80 ではなく、Eclipse の ABAP Development Tools (ADT) を使用してください。'
+              }
+            }
           }
         ]
       },
       {
         id: 'modern-abap',
-        name: { zh: '现代 ABAP', ja: 'モダン ABAP' },
-        color: 'bg-purple-500',
+        name: { zh: '第二阶段：现代 ABAP', ja: '第2フェーズ：モダン ABAP' },
         steps: [
           {
             id: 'cds-views',
             title: { zh: 'CDS Views 核心数据服务', ja: 'CDS Views コアデータサービス' },
-            description: { zh: 'ABAP CDS、注解、关联、虚拟元素、分析查询', ja: 'ABAP CDS、アノテーション、アソシエーション、仮想要素、分析クエリ' },
+            description: { zh: 'ABAP CDS、注解、关联', ja: 'ABAP CDS、アノテーション、アソシエーション' },
             duration: { zh: '3-4 周', ja: '3-4 週間' },
-            skills: ['CDS Views', 'Annotations', 'Associations', 'Analytics'],
+            skills: ['CDS Views', 'Annotations', 'Associations'],
             resources: [
               { name: 'openSAP - CDS Views', type: 'course' },
               { name: 'SAP ABAP CDS 官方文档', type: 'book' }
-            ]
+            ],
+            detailedContent: {
+              overview: {
+                zh: 'CDS（Core Data Services）是 SAP 的语义数据建模技术。ABAP CDS 允许你在数据库层定义丰富的数据模型，包括关联、计算字段、权限控制等。CDS Views 是 S/4HANA 的基础，几乎所有标准报表和 Fiori 应用都基于 CDS Views 构建。',
+                ja: 'CDS（Core Data Services）は SAP のセマンティックデータモデリング技術です。ABAP CDS を使用すると、データベース層でアソシエーション、計算フィールド、権限制御などを含む豊富なデータモデルを定義できます。CDS Views は S/4HANA の基盤であり、ほぼすべての標準レポートと Fiori アプリは CDS Views 上に構築されています。'
+              },
+              keyPoints: {
+                zh: [
+                  '基本语法：DEFINE VIEW、SELECT、ASSOCIATION',
+                  '注解：@Analytics、@UI、@ObjectModel 等',
+                  '关联：1:1、1:N 关联，按需加载',
+                  '计算字段：CASE、算术运算、字符串函数',
+                  '参数化视图：带输入参数的 CDS View',
+                  '扩展：EXTEND VIEW 扩展标准 CDS View'
+                ],
+                ja: [
+                  '基本構文：DEFINE VIEW、SELECT、ASSOCIATION',
+                  'アノテーション：@Analytics、@UI、@ObjectModel など',
+                  'アソシエーション：1:1、1:N 関連、オンデマンドロード',
+                  '計算フィールド：CASE、算術演算、文字列関数',
+                  'パラメータ化ビュー：入力パラメータ付き CDS View',
+                  '拡張：EXTEND VIEW で標準 CDS View を拡張'
+                ]
+              },
+              practicalTips: {
+                zh: 'CDS Views 的关键是理解注解的作用。不同的注解用于不同的消费场景：@Analytics 用于分析应用、@UI 用于 Fiori Elements、@OData 用于 OData 服务。建议从简单的 CDS View 开始，逐步添加注解来理解每个注解的效果。',
+                ja: 'CDS Views の鍵はアノテーションの役割を理解することです。異なるアノテーションは異なる消費シナリオ用：@Analytics は分析アプリ、@UI は Fiori Elements、@OData は OData サービス用。シンプルな CDS View から始めて、徐々にアノテーションを追加して各アノテーションの効果を理解することをお勧めします。'
+              }
+            }
           },
           {
             id: 'rap',
             title: { zh: 'RAP 模型 (RESTful ABAP)', ja: 'RAP モデル (RESTful ABAP)' },
-            description: { zh: 'ABAP RESTful 编程模型、Behavior Definition、BOPF 替代', ja: 'ABAP RESTful プログラミングモデル、Behavior Definition、BOPF 代替' },
+            description: { zh: 'ABAP RESTful 编程模型', ja: 'ABAP RESTful プログラミングモデル' },
             duration: { zh: '4-6 周', ja: '4-6 週間' },
-            skills: ['RAP', 'Behavior Definition', 'OData Services', 'Fiori Elements'],
+            skills: ['RAP', 'Behavior Definition', 'OData Services'],
             resources: [
               { name: 'openSAP - Building RAP Applications', type: 'course' },
               { name: 'SAP RAP 开发者指南', type: 'book' }
-            ]
-          },
-          {
-            id: 'abap-cloud',
-            title: { zh: 'ABAP Cloud & Clean Core', ja: 'ABAP Cloud & Clean Core' },
-            description: { zh: 'ABAP 云开发限制、Released APIs、扩展性设计', ja: 'ABAP クラウド開発制限、Released APIs、拡張性設計' },
-            duration: { zh: '2-3 周', ja: '2-3 週間' },
-            skills: ['ABAP Cloud', 'Released APIs', 'Clean Core', 'Extensibility'],
-            resources: [
-              { name: 'SAP Clean Core 白皮书', type: 'book' }
-            ]
+            ],
+            detailedContent: {
+              overview: {
+                zh: 'RAP（RESTful ABAP Programming Model）是 SAP 推荐的现代 ABAP 开发模型，取代了之前的 BOPF。RAP 基于 CDS Views，通过 Behavior Definition 定义业务逻辑（CRUD 操作、验证、动作等），自动生成 OData 服务供 Fiori 应用消费。',
+                ja: 'RAP（RESTful ABAP Programming Model）は SAP が推奨するモダン ABAP 開発モデルで、以前の BOPF を置き換えました。RAP は CDS Views に基づき、Behavior Definition でビジネスロジック（CRUD 操作、検証、アクションなど）を定義し、Fiori アプリが消費する OData サービスを自動生成します。'
+              },
+              keyPoints: {
+                zh: [
+                  '架构：CDS View + Behavior Definition + Behavior Implementation',
+                  '托管场景 (Managed)：SAP 自动处理 CRUD 操作',
+                  '非托管场景 (Unmanaged)：开发者完全控制持久化',
+                  'Behavior Definition：CRUD、LOCK、AUTHORIZATION、VALIDATION、ACTION',
+                  'Draft：支持保存草稿功能，用户可以中断后继续编辑',
+                  'Service Definition/Binding：将 RAP BO 暴露为 OData 服务'
+                ],
+                ja: [
+                  'アーキテクチャ：CDS View + Behavior Definition + Behavior Implementation',
+                  'マネージドシナリオ：SAP が CRUD 操作を自動処理',
+                  'アンマネージドシナリオ：開発者が永続化を完全制御',
+                  'Behavior Definition：CRUD、LOCK、AUTHORIZATION、VALIDATION、ACTION',
+                  'Draft：下書き保存機能、ユーザーは中断して後で編集を続行可能',
+                  'Service Definition/Binding：RAP BO を OData サービスとして公開'
+                ]
+              },
+              practicalTips: {
+                zh: '学习 RAP 建议从 Managed 场景开始，让 SAP 处理底层的数据库操作。理解 EML (Entity Manipulation Language) 用于在 ABAP 代码中调用 RAP 业务对象。',
+                ja: 'RAP 学習は Managed シナリオから始めることをお勧めします。SAP に基盤のデータベース操作を処理させてください。ABAP コードで RAP ビジネスオブジェクトを呼び出すための EML (Entity Manipulation Language) を理解してください。'
+              }
+            }
           }
         ]
       },
       {
         id: 'btp-development',
-        name: { zh: 'BTP 开发', ja: 'BTP 開発' },
-        color: 'bg-blue-500',
+        name: { zh: '第三阶段：BTP 开发', ja: '第3フェーズ：BTP 開発' },
         steps: [
           {
             id: 'cap',
-            title: { zh: 'CAP 框架 (Cloud Application Programming)', ja: 'CAP フレームワーク' },
-            description: { zh: 'Node.js/Java CAP 开发、CDS 建模、服务定义、数据库连接', ja: 'Node.js/Java CAP 開発、CDS モデリング、サービス定義、データベース接続' },
+            title: { zh: 'CAP 框架', ja: 'CAP フレームワーク' },
+            description: { zh: 'Node.js/Java 云应用开发', ja: 'Node.js/Java クラウドアプリ開発' },
             duration: { zh: '4-6 周', ja: '4-6 週間' },
-            skills: ['CAP', 'CDS', 'Node.js', 'Java', 'OData V4'],
+            skills: ['CAP', 'CDS', 'Node.js', 'OData V4'],
             resources: [
               { name: 'CAP 官方文档 (capire.io)', type: 'book' },
               { name: '本站 C_BTPDEV 题库', type: 'practice' }
             ],
-            certifications: ['C_BTPDEV']
-          },
-          {
-            id: 'fiori',
-            title: { zh: 'SAP Fiori/SAPUI5 开发', ja: 'SAP Fiori/SAPUI5 開発' },
-            description: { zh: 'Fiori Elements、SAPUI5 自由式开发、SAP Build Apps', ja: 'Fiori Elements、SAPUI5 フリースタイル開発、SAP Build Apps' },
-            duration: { zh: '4-6 周', ja: '4-6 週間' },
-            skills: ['SAPUI5', 'Fiori Elements', 'SAP Build Apps', 'UI5 Tooling'],
-            resources: [
-              { name: 'openSAP - Fiori Development', type: 'course' },
-              { name: 'SAPUI5 官方文档', type: 'book' }
-            ]
-          },
-          {
-            id: 'cloud-sdk',
-            title: { zh: 'SAP Cloud SDK 扩展开发', ja: 'SAP Cloud SDK 拡張開発' },
-            description: { zh: '使用 Cloud SDK 开发 Side-by-Side 扩展应用', ja: 'Cloud SDK を使用した Side-by-Side 拡張アプリ開発' },
-            duration: { zh: '3-4 周', ja: '3-4 週間' },
-            skills: ['SAP Cloud SDK', 'Destination Service', 'Side-by-Side Extensions'],
-            resources: [
-              { name: 'SAP Cloud SDK 官方文档', type: 'book' },
-              { name: '本站 C_S4CDK 题库', type: 'practice' }
-            ],
-            certifications: ['C_S4CDK']
-          }
-        ]
-      },
-      {
-        id: 'ai-ml',
-        name: { zh: 'SAP AI/ML', ja: 'SAP AI/ML' },
-        color: 'bg-emerald-500',
-        steps: [
-          {
-            id: 'ai-core',
-            title: { zh: 'SAP AI Core', ja: 'SAP AI Core' },
-            description: { zh: '机器学习模型训练、部署、推理，MLOps 最佳实践', ja: '機械学習モデルのトレーニング、デプロイ、推論、MLOps ベストプラクティス' },
-            duration: { zh: '3-4 周', ja: '3-4 週間' },
-            skills: ['AI Core', 'ML Pipelines', 'Model Serving', 'MLOps'],
-            resources: [
-              { name: 'openSAP - AI on SAP BTP', type: 'course' },
-              { name: '本站 C_AICORE 题库', type: 'practice' }
-            ],
-            certifications: ['C_AICORE']
-          },
-          {
-            id: 'ai-services',
-            title: { zh: 'SAP AI 业务服务', ja: 'SAP AI ビジネスサービス' },
-            description: { zh: '文档信息提取、业务实体识别、Generative AI Hub', ja: 'ドキュメント情報抽出、ビジネスエンティティ認識、Generative AI Hub' },
-            duration: { zh: '2-3 周', ja: '2-3 週間' },
-            skills: ['Document Information Extraction', 'Business Entity Recognition', 'Generative AI Hub'],
-            resources: [
-              { name: 'SAP AI Business Services 文档', type: 'book' },
-              { name: '本站 C_AIBUS 题库', type: 'practice' }
-            ],
-            certifications: ['C_AIBUS']
-          },
-          {
-            id: 'datasphere',
-            title: { zh: 'SAP Datasphere 数据分析', ja: 'SAP Datasphere データ分析' },
-            description: { zh: '数据仓库、数据联邦、语义模型、SAP Analytics Cloud 集成', ja: 'データウェアハウス、データフェデレーション、セマンティックモデル、SAC 統合' },
-            duration: { zh: '3-4 周', ja: '3-4 週間' },
-            skills: ['Datasphere', 'Data Federation', 'Semantic Layer', 'SAC Integration'],
-            resources: [
-              { name: 'openSAP - Datasphere', type: 'course' },
-              { name: '本站 C_DATASPH 题库', type: 'practice' }
-            ],
-            certifications: ['C_DATASPH']
+            certifications: ['C_BTPDEV'],
+            detailedContent: {
+              overview: {
+                zh: 'CAP（Cloud Application Programming Model）是 SAP 推荐的 BTP 云应用开发框架，支持 Node.js 和 Java。CAP 使用 CDS（与 ABAP CDS 类似但不完全相同）进行数据建模，自动生成 OData 服务。CAP 强调约定优于配置，能够快速构建企业级应用。',
+                ja: 'CAP（Cloud Application Programming Model）は SAP が推奨する BTP クラウドアプリ開発フレームワークで、Node.js と Java をサポートしています。CAP は CDS（ABAP CDS と似ているが完全に同じではない）でデータモデリングを行い、OData サービスを自動生成します。CAP は設定より規約を重視し、エンタープライズアプリを迅速に構築できます。'
+              },
+              keyPoints: {
+                zh: [
+                  'CDS 建模：定义实体、关系、服务',
+                  '自动持久化：支持 SQLite、PostgreSQL、HANA',
+                  'OData V4：自动生成 REST API',
+                  '事件处理：Before/After handlers',
+                  '认证授权：与 XSUAA 集成',
+                  '远程服务：调用 S/4HANA API'
+                ],
+                ja: [
+                  'CDS モデリング：エンティティ、関係、サービスを定義',
+                  '自動永続化：SQLite、PostgreSQL、HANA をサポート',
+                  'OData V4：REST API を自動生成',
+                  'イベント処理：Before/After ハンドラー',
+                  '認証認可：XSUAA との統合',
+                  'リモートサービス：S/4HANA API の呼び出し'
+                ]
+              },
+              practicalTips: {
+                zh: '学习 CAP 推荐从官方教程 capire.io 开始，使用 cds init 创建项目模板。建议使用 VS Code 配合 SAP CDS 扩展进行开发。',
+                ja: 'CAP 学習は公式チュートリアル capire.io から始めることをお勧めします。cds init でプロジェクトテンプレートを作成してください。VS Code と SAP CDS 拡張機能を使用して開発することをお勧めします。'
+              }
+            }
           }
         ]
       }
@@ -512,200 +800,134 @@ const roadmaps: Roadmap[] = [
   }
 ];
 
+// Step Card Component
 const StepCard: React.FC<{
   step: RoadmapStep;
   language: string;
-  phaseColor: string;
-  isLast: boolean;
-}> = ({ step, language, phaseColor, isLast }) => {
+  stepNumber: number;
+}> = ({ step, language, stepNumber }) => {
   const [expanded, setExpanded] = useState(false);
   const lang = language === 'ja' ? 'ja' : 'zh';
 
-  const resourceTypeIcons = {
-    course: BookOpen,
-    book: BookOpen,
-    cert: Star,
-    practice: Code2
-  };
-
   return (
-    <div className="relative">
-      {/* Connector line */}
-      {!isLast && (
-        <div className="absolute left-5 top-12 bottom-0 w-0.5 bg-slate-200" />
-      )}
-
-      <div className="flex gap-4">
-        {/* Timeline dot */}
-        <div className={`w-10 h-10 rounded-full ${phaseColor} flex items-center justify-center flex-shrink-0 z-10`}>
-          <Circle size={16} className="text-white" />
+    <div className="bg-white border border-slate-200 rounded-lg mb-4">
+      {/* Header */}
+      <button
+        onClick={() => setExpanded(!expanded)}
+        className="w-full p-4 text-left flex items-start gap-4 hover:bg-slate-50 transition-colors"
+      >
+        <div className="w-8 h-8 bg-slate-100 rounded-full flex items-center justify-center flex-shrink-0 text-slate-600 font-semibold text-sm">
+          {stepNumber}
         </div>
+        <div className="flex-1">
+          <h4 className="font-semibold text-slate-800">{step.title[lang]}</h4>
+          <p className="text-sm text-slate-500 mt-1">{step.description[lang]}</p>
+          <div className="flex items-center gap-4 mt-2 text-xs text-slate-400">
+            <span className="flex items-center gap-1">
+              <Target size={12} />
+              {step.duration[lang]}
+            </span>
+            {step.certifications && (
+              <span className="flex items-center gap-1 text-cyan-600">
+                <Star size={12} />
+                {step.certifications.join(', ')}
+              </span>
+            )}
+          </div>
+        </div>
+        {expanded ? (
+          <ChevronUp size={20} className="text-slate-400 flex-shrink-0" />
+        ) : (
+          <ChevronDown size={20} className="text-slate-400 flex-shrink-0" />
+        )}
+      </button>
 
-        {/* Content */}
-        <div className="flex-1 bg-white rounded-xl border border-slate-200 shadow-sm mb-4 overflow-hidden">
-          <button
-            onClick={() => setExpanded(!expanded)}
-            className="w-full p-4 text-left flex items-center justify-between hover:bg-slate-50 transition-colors"
-          >
-            <div>
-              <h4 className="font-semibold text-slate-800">{step.title[lang]}</h4>
-              <p className="text-sm text-slate-500 mt-1">{step.description[lang]}</p>
-              <div className="flex items-center gap-4 mt-2 text-xs text-slate-400">
-                <span className="flex items-center gap-1">
-                  <Target size={12} />
-                  {step.duration[lang]}
-                </span>
-                {step.certifications && (
-                  <span className="flex items-center gap-1 text-cyan-600">
-                    <Star size={12} />
-                    {step.certifications.join(', ')}
-                  </span>
-                )}
-              </div>
-            </div>
-            <ChevronDown
-              size={20}
-              className={`text-slate-400 transition-transform ${expanded ? 'rotate-180' : ''}`}
-            />
-          </button>
+      {/* Expanded Content */}
+      {expanded && (
+        <div className="px-4 pb-4 border-t border-slate-100">
+          {/* Overview */}
+          <div className="mt-4 p-4 bg-slate-50 rounded-lg">
+            <h5 className="text-sm font-semibold text-slate-700 mb-2">
+              {language === 'ja' ? '概要' : '概述'}
+            </h5>
+            <p className="text-sm text-slate-600 leading-relaxed">
+              {step.detailedContent.overview[lang]}
+            </p>
+          </div>
 
-          {expanded && (
-            <div className="px-4 pb-4 border-t border-slate-100 pt-4">
-              {/* Skills */}
-              <div className="mb-4">
-                <h5 className="text-xs font-semibold text-slate-500 uppercase mb-2">
-                  {language === 'ja' ? 'スキル' : '技能点'}
-                </h5>
-                <div className="flex flex-wrap gap-1">
-                  {step.skills.map((skill, i) => (
-                    <span key={i} className="px-2 py-1 bg-cyan-50 text-cyan-700 text-xs rounded">
-                      {skill}
-                    </span>
-                  ))}
-                </div>
-              </div>
+          {/* Key Points */}
+          <div className="mt-4">
+            <h5 className="text-sm font-semibold text-slate-700 mb-2 flex items-center gap-2">
+              <CheckCircle size={16} className="text-green-500" />
+              {language === 'ja' ? '重要ポイント' : '关键要点'}
+            </h5>
+            <ul className="space-y-2">
+              {step.detailedContent.keyPoints[lang].map((point, i) => (
+                <li key={i} className="flex items-start gap-2 text-sm text-slate-600">
+                  <span className="text-slate-400 mt-1">•</span>
+                  <span>{point}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
 
-              {/* Resources */}
-              <div>
-                <h5 className="text-xs font-semibold text-slate-500 uppercase mb-2">
-                  {language === 'ja' ? '学習リソース' : '学习资源'}
-                </h5>
-                <div className="space-y-2">
-                  {step.resources.map((resource, i) => {
-                    const Icon = resourceTypeIcons[resource.type];
-                    return (
-                      <div key={i} className="flex items-center gap-2 text-sm">
-                        <Icon size={14} className="text-slate-400" />
-                        <span className="text-slate-600">{resource.name}</span>
-                        {resource.url && (
-                          <ExternalLink size={12} className="text-cyan-500" />
-                        )}
-                      </div>
-                    );
-                  })}
-                </div>
-              </div>
+          {/* Practical Tips */}
+          <div className="mt-4 p-4 bg-cyan-50 border border-cyan-100 rounded-lg">
+            <h5 className="text-sm font-semibold text-cyan-700 mb-2 flex items-center gap-2">
+              <Lightbulb size={16} />
+              {language === 'ja' ? '実践的なヒント' : '实践建议'}
+            </h5>
+            <p className="text-sm text-cyan-800">
+              {step.detailedContent.practicalTips[lang]}
+            </p>
+          </div>
+
+          {/* Common Mistakes */}
+          {step.detailedContent.commonMistakes && (
+            <div className="mt-4 p-4 bg-amber-50 border border-amber-100 rounded-lg">
+              <h5 className="text-sm font-semibold text-amber-700 mb-2 flex items-center gap-2">
+                <AlertTriangle size={16} />
+                {language === 'ja' ? '注意点' : '常见错误'}
+              </h5>
+              <p className="text-sm text-amber-800">
+                {step.detailedContent.commonMistakes[lang]}
+              </p>
             </div>
           )}
-        </div>
-      </div>
-    </div>
-  );
-};
 
-// Migration timeline component
-const MigrationTimeline: React.FC<{ language: string }> = ({ language }) => {
-  const milestones = [
-    {
-      year: '2015',
-      event: { zh: 'S/4HANA 发布', ja: 'S/4HANA リリース' },
-      color: 'bg-cyan-500'
-    },
-    {
-      year: '2021',
-      event: { zh: 'RISE with SAP 推出', ja: 'RISE with SAP 開始' },
-      color: 'bg-teal-500'
-    },
-    {
-      year: '2027',
-      event: { zh: 'ECC 主流支持结束', ja: 'ECC メインストリームサポート終了' },
-      color: 'bg-amber-500'
-    },
-    {
-      year: '2030',
-      event: { zh: 'ECC 扩展支持结束', ja: 'ECC 延長サポート終了' },
-      color: 'bg-red-500'
-    }
-  ];
-
-  const lang = language === 'ja' ? 'ja' : 'zh';
-
-  return (
-    <div className="bg-slate-800 rounded-xl p-6 mb-8">
-      <h3 className="text-white font-bold mb-4 flex items-center gap-2">
-        <TrendingUp size={20} className="text-cyan-400" />
-        {language === 'ja' ? 'SAP 移行タイムライン' : 'SAP 迁移时间线'}
-      </h3>
-      <div className="flex items-center justify-between relative">
-        <div className="absolute left-0 right-0 top-1/2 h-1 bg-slate-600 -translate-y-1/2" />
-        {milestones.map((m, i) => (
-          <div key={i} className="relative z-10 flex flex-col items-center">
-            <div className={`w-4 h-4 rounded-full ${m.color}`} />
-            <div className="mt-2 text-center">
-              <div className="text-white font-bold text-sm">{m.year}</div>
-              <div className="text-slate-400 text-xs whitespace-nowrap">{m.event[lang]}</div>
+          {/* Skills & Resources */}
+          <div className="mt-4 grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div>
+              <h5 className="text-xs font-semibold text-slate-500 uppercase mb-2">
+                {language === 'ja' ? 'スキル' : '技能点'}
+              </h5>
+              <div className="flex flex-wrap gap-1">
+                {step.skills.map((skill, i) => (
+                  <span key={i} className="px-2 py-1 bg-slate-100 text-slate-600 text-xs rounded">
+                    {skill}
+                  </span>
+                ))}
+              </div>
+            </div>
+            <div>
+              <h5 className="text-xs font-semibold text-slate-500 uppercase mb-2">
+                {language === 'ja' ? '学習リソース' : '学习资源'}
+              </h5>
+              <div className="space-y-1">
+                {step.resources.map((resource, i) => (
+                  <div key={i} className="flex items-center gap-2 text-sm text-slate-600">
+                    {resource.type === 'course' && <BookOpen size={14} className="text-slate-400" />}
+                    {resource.type === 'book' && <BookOpen size={14} className="text-slate-400" />}
+                    {resource.type === 'practice' && <Code2 size={14} className="text-slate-400" />}
+                    {resource.type === 'cert' && <Star size={14} className="text-slate-400" />}
+                    <span>{resource.name}</span>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
-        ))}
-      </div>
-    </div>
-  );
-};
-
-// Stats cards
-const StatsCards: React.FC<{ language: string }> = ({ language }) => {
-  const stats = [
-    {
-      icon: Database,
-      value: '40,000+',
-      label: { zh: '全球 ECC 客户需迁移', ja: 'グローバル ECC 顧客移行必要' },
-      color: 'text-cyan-500',
-      bg: 'bg-cyan-50'
-    },
-    {
-      icon: Users,
-      value: '100万+',
-      label: { zh: 'SAP 顾问缺口', ja: 'SAP コンサルタント不足' },
-      color: 'text-amber-500',
-      bg: 'bg-amber-50'
-    },
-    {
-      icon: TrendingUp,
-      value: '30%+',
-      label: { zh: '迁移顾问薪资溢价', ja: '移行コンサルタント給与プレミアム' },
-      color: 'text-emerald-500',
-      bg: 'bg-emerald-50'
-    },
-    {
-      icon: Shield,
-      value: '2027',
-      label: { zh: 'ECC 支持截止', ja: 'ECC サポート終了' },
-      color: 'text-red-500',
-      bg: 'bg-red-50'
-    }
-  ];
-
-  const lang = language === 'ja' ? 'ja' : 'zh';
-
-  return (
-    <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
-      {stats.map((stat, i) => (
-        <div key={i} className={`${stat.bg} rounded-xl p-4 text-center`}>
-          <stat.icon size={24} className={`${stat.color} mx-auto mb-2`} />
-          <div className={`text-2xl font-bold ${stat.color}`}>{stat.value}</div>
-          <div className="text-xs text-slate-600">{stat.label[lang]}</div>
         </div>
-      ))}
+      )}
     </div>
   );
 };
@@ -718,86 +940,96 @@ export default function SAPLearningRoadmapPage() {
   const roadmap = roadmaps.find(r => r.id === selectedRoadmap)!;
   const lang = language === 'ja' ? 'ja' : 'zh';
 
+  const roadmapIcons: Record<RoadmapId, React.ReactNode> = {
+    'migration-specialist': <GitBranch size={20} />,
+    'functional-consultant': <Users size={20} />,
+    'technical-developer': <Code2 size={20} />
+  };
+
   return (
     <div className="min-h-screen bg-slate-50">
       {/* Header */}
-      <header className="bg-gradient-to-r from-cyan-700 to-teal-700 text-white sticky top-0 z-50">
+      <header className="bg-white border-b border-slate-200 sticky top-0 z-50">
         <div className="px-6 lg:px-10 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-4">
               <button
                 onClick={() => navigate('/')}
-                className="flex items-center gap-2 text-cyan-100 hover:text-white transition-colors"
+                className="flex items-center gap-2 text-slate-500 hover:text-slate-700 transition-colors"
               >
                 <Home size={20} />
                 <span className="hidden sm:inline">{language === 'ja' ? 'ホーム' : '首页'}</span>
               </button>
-              <ChevronRight size={16} className="text-cyan-300" />
-              <h1 className="text-lg font-semibold">
+              <ChevronRight size={16} className="text-slate-300" />
+              <h1 className="text-lg font-semibold text-slate-800">
                 {language === 'ja' ? 'SAP 移行ロードマップ' : 'SAP 迁移路线图'}
               </h1>
             </div>
-            <div className="flex items-center gap-2">
-              <Layers size={20} className="text-cyan-200" />
+            <div className="flex items-center gap-2 text-slate-600">
+              <Database size={20} />
               <span className="font-semibold">StudyForge</span>
             </div>
           </div>
         </div>
       </header>
 
-      {/* Hero Section */}
-      <div className="bg-gradient-to-br from-cyan-600 via-teal-600 to-emerald-600 text-white py-8">
+      {/* Stats */}
+      <div className="bg-white border-b border-slate-200 py-6">
         <div className="px-6 lg:px-10">
-          <div className="flex items-center gap-4 mb-4">
-            <div className="p-3 bg-white/20 rounded-xl">
-              <Zap size={32} />
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <div className="text-center">
+              <div className="text-2xl font-bold text-slate-800">40,000+</div>
+              <div className="text-xs text-slate-500">
+                {language === 'ja' ? 'ECC 顧客移行必要' : 'ECC 客户需迁移'}
+              </div>
             </div>
-            <div>
-              <h2 className="text-2xl font-bold">
-                {language === 'ja' ? 'ECC → S/4HANA 移行の波に乗る' : 'ECC → S/4HANA 迁移大潮'}
-              </h2>
-              <p className="text-cyan-100">
-                {language === 'ja'
-                  ? '史上最大の企業ソフトウェア移行に備えよう'
-                  : '抓住史上最大规模企业软件迁移机遇'}
-              </p>
+            <div className="text-center">
+              <div className="text-2xl font-bold text-slate-800">100万+</div>
+              <div className="text-xs text-slate-500">
+                {language === 'ja' ? 'コンサルタント不足' : '顾问人才缺口'}
+              </div>
+            </div>
+            <div className="text-center">
+              <div className="text-2xl font-bold text-amber-600">2027</div>
+              <div className="text-xs text-slate-500">
+                {language === 'ja' ? 'ECC サポート終了' : 'ECC 支持结束'}
+              </div>
+            </div>
+            <div className="text-center">
+              <div className="text-2xl font-bold text-green-600">30%+</div>
+              <div className="text-xs text-slate-500">
+                {language === 'ja' ? '給与プレミアム' : '薪资溢价'}
+              </div>
             </div>
           </div>
         </div>
       </div>
 
       <main className="px-6 lg:px-10 py-8">
-        {/* Stats */}
-        <StatsCards language={language} />
-
-        {/* Timeline */}
-        <MigrationTimeline language={language} />
-
         {/* Roadmap Selection */}
-        <div className="bg-white border border-slate-200 rounded-xl mb-8">
+        <div className="bg-white border border-slate-200 rounded-lg mb-8">
           <div className="p-4 border-b border-slate-100">
             <h3 className="font-semibold text-slate-800">
               {language === 'ja' ? '学習パスを選択' : '选择学习路径'}
             </h3>
           </div>
-          <div className="flex overflow-x-auto gap-2 p-4">
+          <div className="flex flex-wrap gap-2 p-4">
             {roadmaps.map((rm) => {
-              const Icon = rm.icon;
               const isActive = selectedRoadmap === rm.id;
               return (
                 <button
                   key={rm.id}
                   onClick={() => setSelectedRoadmap(rm.id)}
-                  className={`flex items-center gap-3 px-4 py-3 rounded-lg whitespace-nowrap transition-all ${
+                  className={`flex items-center gap-3 px-4 py-3 rounded-lg transition-all ${
                     isActive
-                      ? `bg-gradient-to-r ${rm.gradient} text-white shadow-lg`
+                      ? 'bg-slate-800 text-white'
                       : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
                   }`}
                 >
-                  <Icon size={20} />
+                  {roadmapIcons[rm.id]}
                   <div className="text-left">
                     <div className="font-semibold">{rm.name[lang]}</div>
-                    <div className={`text-xs ${isActive ? 'text-white/80' : 'text-slate-400'}`}>
+                    <div className={`text-xs ${isActive ? 'text-slate-300' : 'text-slate-400'}`}>
                       {rm.description[lang]}
                     </div>
                   </div>
@@ -808,74 +1040,69 @@ export default function SAPLearningRoadmapPage() {
         </div>
 
         {/* Roadmap Overview */}
-        <div className={`bg-gradient-to-r ${roadmap.gradient} rounded-xl p-6 text-white mb-8`}>
-          <div className="flex items-center gap-4">
-            <div className="p-3 bg-white/20 rounded-xl">
-              <roadmap.icon size={32} />
+        <div className="bg-white border border-slate-200 rounded-lg p-6 mb-8">
+          <div className="flex items-center gap-4 mb-4">
+            <div className="p-3 bg-slate-100 rounded-lg">
+              {roadmapIcons[roadmap.id]}
             </div>
             <div>
-              <h2 className="text-2xl font-bold">{roadmap.name[lang]}</h2>
-              <p className="text-white/80">{roadmap.description[lang]}</p>
+              <h2 className="text-xl font-bold text-slate-800">{roadmap.name[lang]}</h2>
+              <p className="text-slate-500">{roadmap.description[lang]}</p>
             </div>
           </div>
-          <div className="flex gap-4 mt-6">
-            <div className="bg-white/20 rounded-lg px-4 py-2">
-              <div className="text-2xl font-bold">
+          <div className="flex gap-6 text-sm">
+            <div>
+              <span className="text-slate-500">{language === 'ja' ? 'フェーズ' : '阶段'}：</span>
+              <span className="font-semibold text-slate-700">{roadmap.phases.length}</span>
+            </div>
+            <div>
+              <span className="text-slate-500">{language === 'ja' ? 'ステップ' : '步骤'}：</span>
+              <span className="font-semibold text-slate-700">
                 {roadmap.phases.reduce((sum, p) => sum + p.steps.length, 0)}
-              </div>
-              <div className="text-xs text-white/80">
-                {language === 'ja' ? 'ステップ' : '个步骤'}
-              </div>
+              </span>
             </div>
-            <div className="bg-white/20 rounded-lg px-4 py-2">
-              <div className="text-2xl font-bold">{roadmap.phases.length}</div>
-              <div className="text-xs text-white/80">
-                {language === 'ja' ? 'フェーズ' : '个阶段'}
-              </div>
-            </div>
-            <div className="bg-white/20 rounded-lg px-4 py-2">
-              <div className="text-2xl font-bold">
+            <div>
+              <span className="text-slate-500">{language === 'ja' ? '関連認定' : '相关认证'}：</span>
+              <span className="font-semibold text-slate-700">
                 {roadmap.phases.reduce((sum, p) =>
                   sum + p.steps.filter(s => s.certifications).length, 0
                 )}
-              </div>
-              <div className="text-xs text-white/80">
-                {language === 'ja' ? '関連認定' : '相关认证'}
-              </div>
+              </span>
             </div>
           </div>
         </div>
 
         {/* Phases */}
-        {roadmap.phases.map((phase, phaseIndex) => (
-          <div key={phase.id} className="mb-8">
-            {/* Phase Header */}
-            <div className="flex items-center gap-3 mb-4">
-              <div className={`w-8 h-8 rounded-lg ${phase.color} flex items-center justify-center text-white font-bold text-sm`}>
-                {phaseIndex + 1}
-              </div>
-              <h3 className="text-lg font-bold text-slate-800">{phase.name[lang]}</h3>
-              <div className="flex-1 h-px bg-slate-200" />
-            </div>
+        {roadmap.phases.map((phase, phaseIndex) => {
+          let stepCounter = 0;
+          for (let i = 0; i < phaseIndex; i++) {
+            stepCounter += roadmap.phases[i].steps.length;
+          }
 
-            {/* Steps */}
-            <div className="ml-4">
+          return (
+            <div key={phase.id} className="mb-8">
+              <h3 className="text-lg font-bold text-slate-800 mb-4 flex items-center gap-3">
+                <span className="w-8 h-8 bg-slate-800 text-white rounded-full flex items-center justify-center text-sm">
+                  {phaseIndex + 1}
+                </span>
+                {phase.name[lang]}
+              </h3>
+
               {phase.steps.map((step, stepIndex) => (
                 <StepCard
                   key={step.id}
                   step={step}
                   language={language}
-                  phaseColor={phase.color}
-                  isLast={stepIndex === phase.steps.length - 1}
+                  stepNumber={stepCounter + stepIndex + 1}
                 />
               ))}
             </div>
-          </div>
-        ))}
+          );
+        })}
 
         {/* CTA */}
-        <div className="bg-gradient-to-r from-cyan-50 to-teal-50 border border-cyan-200 rounded-xl p-6 text-center">
-          <Settings size={32} className="mx-auto text-cyan-600 mb-3" />
+        <div className="bg-white border border-slate-200 rounded-lg p-6 text-center">
+          <TrendingUp size={32} className="mx-auto text-slate-600 mb-3" />
           <h3 className="text-lg font-bold text-slate-800 mb-2">
             {language === 'ja' ? '今すぐ SAP 学習を始めよう！' : '现在就开始 SAP 学习吧！'}
           </h3>
@@ -886,7 +1113,7 @@ export default function SAPLearningRoadmapPage() {
           </p>
           <button
             onClick={() => navigate('/')}
-            className="inline-flex items-center gap-2 px-6 py-2 bg-cyan-600 text-white rounded-lg font-medium hover:bg-cyan-700 transition-colors"
+            className="inline-flex items-center gap-2 px-6 py-2 bg-slate-800 text-white rounded-lg font-medium hover:bg-slate-700 transition-colors"
           >
             {language === 'ja' ? 'SAP 練習を始める' : '开始 SAP 练习'}
             <ArrowRight size={16} />

@@ -7,9 +7,9 @@ import AIResourcesPage from './pages/AIResourcesPage';
 import { CertificationPathPage } from './pages/CertificationPathPage';
 import ExamTipsPage from './pages/ExamTipsPage';
 import AICodeExamplesPage from './pages/AICodeExamplesPage';
-import AILearningRoadmapPage from './pages/AILearningRoadmapPage';
 import SAPLearningRoadmapPage from './pages/SAPLearningRoadmapPage';
 import SAPGlossaryPage from './pages/SAPGlossaryPage';
+import SAPLearningPage from './pages/SAPLearningPage';
 import InterviewQuestionsPage from './pages/InterviewQuestionsPage';
 import CheatSheetsPage from './pages/CheatSheetsPage';
 import GlossaryPage from './pages/GlossaryPage';
@@ -29,9 +29,9 @@ function AppContent() {
     location.pathname.startsWith('/ai-resources') ||
     location.pathname.startsWith('/exam-tips') ||
     location.pathname.startsWith('/ai-code') ||
-    location.pathname.startsWith('/ai-roadmap') ||
     location.pathname.startsWith('/sap-roadmap') ||
     location.pathname.startsWith('/sap-glossary') ||
+    location.pathname.startsWith('/sap-learning') ||
     location.pathname.startsWith('/interview') ||
     location.pathname.startsWith('/cheat') ||
     location.pathname.startsWith('/glossary') ||
@@ -54,9 +54,9 @@ function AppContent() {
         <Route path="/ai-resources" element={<AIResourcesPage />} />
         <Route path="/exam-tips" element={<ExamTipsPage />} />
         <Route path="/ai-code-examples" element={<AICodeExamplesPage />} />
-        <Route path="/ai-roadmap" element={<AILearningRoadmapPage />} />
         <Route path="/sap-roadmap" element={<SAPLearningRoadmapPage />} />
         <Route path="/sap-glossary" element={<SAPGlossaryPage />} />
+        <Route path="/sap-learning" element={<SAPLearningPage />} />
         <Route path="/interview-questions" element={<InterviewQuestionsPage />} />
         <Route path="/cheat-sheets" element={<CheatSheetsPage />} />
         <Route path="/glossary" element={<GlossaryPage />} />

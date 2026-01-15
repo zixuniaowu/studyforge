@@ -40,7 +40,7 @@ const NeuralNetworkBg = () => {
 
     // Animate nodes
     const interval = setInterval(() => {
-      setNodes(prev => prev.map((node, idx) => ({
+      setNodes(prev => prev.map((node) => ({
         ...node,
         active: Math.random() > 0.7,
       })));

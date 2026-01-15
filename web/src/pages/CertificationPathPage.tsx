@@ -534,18 +534,6 @@ export const CertificationPathPage: React.FC = () => {
     }
   };
 
-  // Scroll to certification card
-  const scrollToCert = (certId: string) => {
-    const element = document.getElementById(`cert-card-${certId}`);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth', block: 'center' });
-      element.classList.add('ring-4', 'ring-purple-400', 'ring-opacity-75');
-      setTimeout(() => {
-        element.classList.remove('ring-4', 'ring-purple-400', 'ring-opacity-75');
-      }, 2000);
-    }
-  };
-
   const config = providerConfig[selectedProvider];
 
   const pageTitle = lang === 'ja' ? '認証学習パス' : '认证学习路径';
