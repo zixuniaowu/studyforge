@@ -1,0 +1,773 @@
+{
+  "exam": {
+    "id": "sap-c-ts4fi-set2",
+    "name": "SAP C_TS4FI 模拟考试 #2",
+    "code": "C_TS4FI",
+    "provider": "SAP",
+    "language": "zh-CN",
+    "description": "SAP S/4HANA 财务认证考试模拟题 - 第2套",
+    "totalQuestions": 50,
+    "passingScore": 65,
+    "examTime": 180,
+    "domains": [
+      { "id": 1, "name": "General Ledger Accounting", "weight": 25 },
+      { "id": 2, "name": "Accounts Payable", "weight": 20 },
+      { "id": 3, "name": "Accounts Receivable", "weight": 20 },
+      { "id": 4, "name": "Asset Accounting", "weight": 15 },
+      { "id": 5, "name": "Financial Closing", "weight": 20 }
+    ],
+    "tags": ["SAP", "S/4HANA", "Finance", "FI", "认证考试"]
+  },
+  "questions": [
+    {
+      "id": "q1",
+      "domain": 1,
+      "question": "在 SAP S/4HANA 中，哪个配置对象用于将多个公司代码分配到同一个财务报表结构？",
+      "options": {
+        "A": "控制范围",
+        "B": "财务报表版本",
+        "C": "公司",
+        "D": "业务范围"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "财务报表版本（Financial Statement Version）用于定义资产负债表和损益表的结构，可以分配给多个公司代码使用相同的报表格式。控制范围是CO的组织单元，公司用于合并，业务范围用于内部报告。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q2",
+      "domain": 1,
+      "question": "SAP S/4HANA 中的\"扩展分类账\"功能可以实现什么？（选择两项）",
+      "options": {
+        "A": "按自定义维度进行报告",
+        "B": "替代 Universal Journal",
+        "C": "为特定场景存储额外的会计数据",
+        "D": "删除主分类账数据"
+      },
+      "answer": ["A", "C"],
+      "answerType": "multiple",
+      "explanation": "扩展分类账功能：\n- 支持自定义维度报告\n- 存储特定场景的额外会计数据\n- 不会替代 Universal Journal\n- 不会删除主分类账数据",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q3",
+      "domain": 1,
+      "question": "在 SAP S/4HANA 中配置\"过账码\"时，借贷标识和科目类型的关系是什么？",
+      "options": {
+        "A": "过账码只决定借贷方向，与科目类型无关",
+        "B": "过账码决定借贷方向和允许的科目类型",
+        "C": "科目类型自动决定过账码",
+        "D": "过账码和科目类型是完全独立的配置"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "过账码配置包含：\n- 借贷方向指示\n- 允许的科目类型（资产、负债、费用等）\n- 特殊总账标识控制\n- 反记账标识",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q4",
+      "domain": 1,
+      "question": "SAP S/4HANA 中的\"科目组\"主要用于什么目的？",
+      "options": {
+        "A": "定义科目的报表层次",
+        "B": "控制科目主数据的屏幕布局和编号范围",
+        "C": "将科目分配给成本中心",
+        "D": "设置科目的税务处理规则"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "科目组（Account Group）功能：\n- 控制科目主数据的屏幕布局\n- 分配编号范围\n- 决定哪些字段必输/选输/隐藏\n- 不同类型科目使用不同科目组",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q5",
+      "domain": 1,
+      "question": "在 SAP S/4HANA 新总账会计中，\"在线拆分\"与\"定期拆分\"的区别是什么？",
+      "options": {
+        "A": "在线拆分实时进行，定期拆分需要批处理运行",
+        "B": "在线拆分只用于利润中心，定期拆分只用于段",
+        "C": "两者功能完全相同",
+        "D": "定期拆分性能更好，应优先使用"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "文档拆分方式：\n- 在线拆分：过账时实时自动拆分\n- 定期拆分：通过批处理作业后续拆分\n- 在线拆分是推荐方式\n- 定期拆分主要用于特殊场景",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q6",
+      "domain": 2,
+      "question": "在 SAP S/4HANA 中，\"一次性供应商\"的特点是什么？",
+      "options": {
+        "A": "只能使用一次就必须删除",
+        "B": "不需要创建完整的主数据，发票录入时输入详细信息",
+        "C": "自动获得最高信用额度",
+        "D": "只能用于现金交易"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "一次性供应商（One-time Vendor）：\n- 使用一个通用主数据记录\n- 发票录入时输入名称、地址等详细信息\n- 适用于偶发交易的供应商\n- 减少主数据维护工作量",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q7",
+      "domain": 2,
+      "question": "SAP S/4HANA 中的\"供应商主数据银行详情\"存储在哪个级别？",
+      "options": {
+        "A": "公司代码级别",
+        "B": "采购组织级别",
+        "C": "一般数据级别（跨公司代码）",
+        "D": "工厂级别"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "供应商银行详情存储在一般数据级别：\n- 跨所有公司代码使用\n- 包含银行账号、银行代码等信息\n- 付款程序使用此信息生成付款\n- 可维护多个银行账户",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q8",
+      "domain": 2,
+      "question": "在自动付款程序中，\"付款方式补充\"的作用是什么？",
+      "options": {
+        "A": "定义付款格式和输出程序",
+        "B": "替代标准付款方式",
+        "C": "为付款方式指定特定公司代码的参数",
+        "D": "取消已执行的付款"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "付款方式补充（Payment Method Supplement）：\n- 为付款方式添加公司代码特定参数\n- 如特定的银行账户\n- 不改变付款方式的基本定义\n- 支持相同付款方式在不同公司的差异化配置",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q9",
+      "domain": 2,
+      "question": "SAP S/4HANA 中处理\"预扣税\"的正确流程是什么？",
+      "options": {
+        "A": "在发票过账时系统自动计算并过账预扣税",
+        "B": "付款时手动输入预扣税金额",
+        "C": "月末通过批处理统一计算",
+        "D": "预扣税只在报表中显示，不实际过账"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "预扣税处理：\n- 在供应商主数据维护预扣税类型\n- 发票过账时自动计算预扣税\n- 付款时自动扣除预扣税金额\n- 生成独立的预扣税凭证用于申报",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q10",
+      "domain": 2,
+      "question": "在 SAP S/4HANA 中，\"评估供应商\"与\"订购供应商\"的区别是什么？",
+      "options": {
+        "A": "评估供应商用于计划，订购供应商用于实际采购",
+        "B": "评估供应商接收付款，订购供应商接收货物",
+        "C": "订购供应商接收订单和货物，评估供应商接收发票和付款",
+        "D": "两者是同一个供应商的不同名称"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "供应商功能分离：\n- 订购供应商：接收采购订单和货物\n- 评估供应商：接收发票，处理付款\n- 用于代理采购、总部集中付款等场景\n- 通过采购信息记录配置关联",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q11",
+      "domain": 3,
+      "question": "SAP S/4HANA 中的\"客户-供应商清账\"功能用于什么场景？",
+      "options": {
+        "A": "清理过期的客户主数据",
+        "B": "当同一业务伙伴既是客户又是供应商时进行应收应付对冲",
+        "C": "将客户转换为供应商",
+        "D": "删除重复的客户记录"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "客户-供应商清账：\n- 当业务伙伴同时是客户和供应商时使用\n- 应收账款和应付账款相互对冲\n- 只支付/收取净额\n- 需要在客户和供应商主数据中相互引用",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q12",
+      "domain": 3,
+      "question": "在 SAP S/4HANA 中，\"客户信用额度\"可以在哪些级别设置？（选择两项）",
+      "options": {
+        "A": "客户主数据级别",
+        "B": "销售区域级别",
+        "C": "产品组级别",
+        "D": "信用控制区域级别"
+      },
+      "answer": ["A", "D"],
+      "answerType": "multiple",
+      "explanation": "客户信用额度设置：\n- 客户主数据（FI视图）\n- 信用控制区域级别（更详细控制）\n- 可为每个信用控制区域设置不同额度\n- 销售区域和产品组不直接设置信用额度",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q13",
+      "domain": 3,
+      "question": "SAP S/4HANA 中处理\"坏账准备\"的方法是什么？",
+      "options": {
+        "A": "直接删除客户未清项目",
+        "B": "使用个别评估或组合评估方法计提准备金",
+        "C": "将应收账款转移到其他客户",
+        "D": "通过现金折扣抵消坏账"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "坏账准备处理：\n- 个别评估：针对特定客户特定发票\n- 组合评估：按账龄或风险类别批量计提\n- 计提到专门的准备金科目\n- 实际发生时核销应收和准备金",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q14",
+      "domain": 3,
+      "question": "在 SAP S/4HANA 中，\"付款通知\"和\"付款建议\"的区别是什么？",
+      "options": {
+        "A": "付款通知发给客户，付款建议发给银行",
+        "B": "付款通知是付款确认，付款建议是待付款项的预览",
+        "C": "两者是相同文档的不同名称",
+        "D": "付款通知是强制的，付款建议是可选的"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "文档区别：\n- 付款通知：发送给业务伙伴确认已收到/已付款\n- 付款建议：自动付款程序生成的待处理付款列表\n- 付款建议可以修改后再执行\n- 付款通知是事后通知",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q15",
+      "domain": 3,
+      "question": "SAP S/4HANA 中的\"收款工厂日历\"用于什么目的？",
+      "options": {
+        "A": "定义工厂的生产计划",
+        "B": "确定付款到期日和工作日计算",
+        "C": "安排仓库收货时间",
+        "D": "设置会计期间的开放和关闭"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "收款工厂日历功能：\n- 定义工作日和非工作日\n- 影响付款到期日计算\n- 确保到期日落在工作日\n- 在客户主数据中分配",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q16",
+      "domain": 4,
+      "question": "在 SAP S/4HANA 资产会计中，\"资产主数据\"必须包含哪些必填信息？（选择两项）",
+      "options": {
+        "A": "资产类别",
+        "B": "保险公司",
+        "C": "资本化日期",
+        "D": "维护合同号"
+      },
+      "answer": ["A", "C"],
+      "answerType": "multiple",
+      "explanation": "资产主数据必填信息：\n- 资产类别（决定折旧参数和科目确定）\n- 资本化日期（决定折旧开始时间）\n- 保险公司和维护合同是可选的辅助信息",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q17",
+      "domain": 4,
+      "question": "SAP S/4HANA 中的\"折旧键\"定义了什么内容？",
+      "options": {
+        "A": "折旧费用过账的科目",
+        "B": "折旧计算方法、基础和期间",
+        "C": "资产的物理位置",
+        "D": "资产的采购来源"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "折旧键（Depreciation Key）定义：\n- 折旧方法（直线法、余额递减法等）\n- 计算基础（采购价值、净值等）\n- 期间控制（首年、末年规则）\n- 变更年度处理方式",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q18",
+      "domain": 4,
+      "question": "在资产转移过程中，\"公司内资产转移\"与\"公司间资产转移\"的主要区别是什么？",
+      "options": {
+        "A": "公司内转移不需要创建会计凭证",
+        "B": "公司内转移保持资产历史，公司间转移创建新资产",
+        "C": "公司间转移不能跨折旧区域",
+        "D": "两种转移方式完全相同"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "资产转移区别：\n- 公司内转移：同一公司代码内，保持资产号和历史\n- 公司间转移：跨公司代码，在接收方创建新资产\n- 公司间转移需要清算价值和可能的损益\n- 需要配置公司间转移变式",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q19",
+      "domain": 4,
+      "question": "SAP S/4HANA 中\"资产的并行估值\"是指什么？",
+      "options": {
+        "A": "一个资产被两个员工同时使用",
+        "B": "在不同的折旧区域按不同会计准则估值",
+        "C": "资产在多个工厂间共享",
+        "D": "资产价值在多个货币中显示"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "并行估值概念：\n- 同一资产在不同折旧区域有不同价值\n- 满足本地准则、IFRS、税务等要求\n- 每个区域可有不同折旧方法和年限\n- Universal Journal 统一存储所有估值",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q20",
+      "domain": 4,
+      "question": "在 SAP S/4HANA 中处理\"资产减值\"使用哪个交易？",
+      "options": {
+        "A": "ABAA (手动价值调整)",
+        "B": "AFAB (折旧运行)",
+        "C": "ABUMN (资产转移)",
+        "D": "AS01 (创建资产)"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "资产减值处理：\n- ABAA：手动价值调整（计划外折旧）\n- 记录资产减值损失\n- 可指定特定折旧区域\n- AFAB 是定期折旧运行，不用于减值",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q21",
+      "domain": 5,
+      "question": "SAP S/4HANA 中的\"会计期间变式\"用于什么目的？",
+      "options": {
+        "A": "定义报表的显示格式",
+        "B": "控制不同期间的过账开放和关闭",
+        "C": "设置员工的工作时间表",
+        "D": "配置银行对账单格式"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "会计期间变式功能：\n- 定义年度期间数（通常12+特殊期间）\n- 控制哪些期间对过账开放\n- 可为不同科目类型设置不同的开放规则\n- 分配给公司代码使用",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q22",
+      "domain": 5,
+      "question": "在 SAP S/4HANA 中执行\"月末结账\"时，以下哪些是关键步骤？（选择两项）",
+      "options": {
+        "A": "运行资产折旧",
+        "B": "删除所有未清项目",
+        "C": "执行外币重估",
+        "D": "创建新的公司代码"
+      },
+      "answer": ["A", "C"],
+      "answerType": "multiple",
+      "explanation": "月末结账关键步骤：\n- 资产折旧运行（AFAB）\n- 外币重估（FAGL_FC_VAL）\n- 还包括：应计/递延处理、GR/IR清账\n- 不应删除未清项目或创建新公司代码",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q23",
+      "domain": 5,
+      "question": "SAP S/4HANA 中的\"重分类\"程序（FAGLF101）主要用于什么？",
+      "options": {
+        "A": "将资产从一个类别转到另一个类别",
+        "B": "将短期应收/应付重分类为长期",
+        "C": "更改供应商的付款条件",
+        "D": "合并多个公司代码"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "重分类程序功能：\n- 按到期日将应收/应付分为短期和长期\n- 满足资产负债表披露要求\n- 生成调整凭证进行重分类\n- 下期自动冲销",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q24",
+      "domain": 5,
+      "question": "在 SAP S/4HANA 的年终结账中，\"损益结转\"程序会做什么？",
+      "options": {
+        "A": "将所有资产负债表科目余额清零",
+        "B": "将所有损益科目余额转入留存收益科目",
+        "C": "删除当年所有会计凭证",
+        "D": "锁定当年所有期间"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "损益结转处理：\n- 将收入和费用科目余额清零\n- 将利润或亏损转入留存收益/本年利润科目\n- 创建结转凭证记录\n- 资产负债表科目余额自动结转到新年度",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q25",
+      "domain": 5,
+      "question": "SAP S/4HANA 中的\"财务报表版本\"可以包含哪些元素？（选择两项）",
+      "options": {
+        "A": "资产负债表项目层次",
+        "B": "物料主数据字段",
+        "C": "损益表项目层次",
+        "D": "人事组织结构"
+      },
+      "answer": ["A", "C"],
+      "answerType": "multiple",
+      "explanation": "财务报表版本内容：\n- 资产负债表项目层次和格式\n- 损益表项目层次和格式\n- 科目分配到报表项目\n- 不包含物料或人事信息",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q26",
+      "domain": 1,
+      "question": "在 SAP S/4HANA 中，\"业务合作伙伴\"（Business Partner）与传统\"客户/供应商主数据\"的关系是什么？",
+      "options": {
+        "A": "业务合作伙伴完全替代了客户/供应商主数据",
+        "B": "业务合作伙伴是客户和供应商主数据的统一入口",
+        "C": "两者是完全独立的，没有关联",
+        "D": "业务合作伙伴只用于新客户"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "业务合作伙伴概念：\n- SAP S/4HANA 使用 BP 作为统一主数据模型\n- 客户和供应商角色在 BP 下管理\n- 一个 BP 可同时具有客户和供应商角色\n- 保持与传统数据的同步",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q27",
+      "domain": 1,
+      "question": "SAP S/4HANA 中的\"成本要素\"与\"总账科目\"的关系是什么？",
+      "options": {
+        "A": "成本要素和总账科目是完全独立的对象",
+        "B": "创建损益科目时自动创建对应的成本要素",
+        "C": "成本要素只能手动创建",
+        "D": "总账科目必须先删除才能创建成本要素"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "成本要素自动创建：\n- S/4HANA 中损益科目自动成为主要成本要素\n- 无需单独创建和维护成本要素主数据\n- 简化了 FI-CO 集成\n- 次级成本要素仍需单独创建",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q28",
+      "domain": 1,
+      "question": "在 SAP S/4HANA 中配置\"货币类型\"时，以下哪些是标准货币类型？（选择两项）",
+      "options": {
+        "A": "10 - 公司代码货币",
+        "B": "20 - 控制范围货币",
+        "C": "50 - 采购订单货币",
+        "D": "30 - 集团货币"
+      },
+      "answer": ["A", "D"],
+      "answerType": "multiple",
+      "explanation": "标准货币类型：\n- 10：公司代码货币（本位币）\n- 30：集团货币\n- 20：控制范围货币是 CO 概念\n- 交易货币是动态的，不需预定义",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q29",
+      "domain": 1,
+      "question": "SAP S/4HANA 中的\"汇率类型\"用于什么目的？",
+      "options": {
+        "A": "定义银行的利率",
+        "B": "为不同业务场景指定不同的汇率",
+        "C": "设置员工的报销标准",
+        "D": "控制系统的访问权限"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "汇率类型功能：\n- M：标准汇率（日常交易）\n- B：买入汇率\n- G：卖出汇率\n- P：评估汇率（期末重估）\n- 不同业务可配置使用不同汇率类型",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q30",
+      "domain": 1,
+      "question": "在 SAP S/4HANA 中，\"凭证类型\"控制哪些行为？（选择两项）",
+      "options": {
+        "A": "凭证编号范围",
+        "B": "允许的过账科目类型",
+        "C": "用户的登录密码",
+        "D": "工厂的生产计划"
+      },
+      "answer": ["A", "B"],
+      "answerType": "multiple",
+      "explanation": "凭证类型控制：\n- 凭证编号范围分配\n- 允许的科目类型（资产、供应商等）\n- 是否反记账\n- 凭证类型与安全和生产无关",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q31",
+      "domain": 2,
+      "question": "SAP S/4HANA 中的\"付款运行变式\"保存了什么信息？",
+      "options": {
+        "A": "特定付款运行的参数设置，可重复使用",
+        "B": "已完成付款的历史记录",
+        "C": "供应商的银行账户详情",
+        "D": "汇率表"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "付款运行变式功能：\n- 保存付款运行的参数设置\n- 包括公司代码、付款方式、供应商范围等\n- 可重复使用，提高效率\n- 减少重复输入参数",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q32",
+      "domain": 2,
+      "question": "在 SAP S/4HANA 中，\"采购订单历史\"包含哪些信息？（选择两项）",
+      "options": {
+        "A": "收货信息",
+        "B": "发票验证信息",
+        "C": "销售订单交货",
+        "D": "员工培训记录"
+      },
+      "answer": ["A", "B"],
+      "answerType": "multiple",
+      "explanation": "采购订单历史内容：\n- 收货记录（日期、数量、价值）\n- 发票验证记录（MIRO）\n- 用于三方匹配和采购订单关闭判断\n- 与销售和培训无关",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q33",
+      "domain": 2,
+      "question": "SAP S/4HANA 中处理\"采购退货\"的正确流程是什么？",
+      "options": {
+        "A": "直接删除原始采购订单",
+        "B": "创建退货采购订单和退货交货",
+        "C": "修改原始收货数量",
+        "D": "向供应商发送电子邮件"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "采购退货流程：\n- 创建退货采购订单（负数量或退货类型）\n- 执行退货交货（发回给供应商）\n- 收到供应商贷项后录入贷方发票\n- 自动更新库存和应付账款",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q34",
+      "domain": 2,
+      "question": "在 SAP S/4HANA 中，\"发票计划\"功能用于什么场景？",
+      "options": {
+        "A": "分期付款的周期性发票",
+        "B": "一次性大额采购",
+        "C": "员工薪资发放",
+        "D": "资产折旧计算"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "发票计划功能：\n- 用于周期性/分期付款场景\n- 如租赁、服务订阅等\n- 自动在指定日期生成发票\n- 减少手工录入工作",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q35",
+      "domain": 3,
+      "question": "SAP S/4HANA 中的\"销售收入确认\"在什么时点发生？",
+      "options": {
+        "A": "创建销售订单时",
+        "B": "货物发运并开具发票时",
+        "C": "客户下单询价时",
+        "D": "库存入库时"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "收入确认时点：\n- 通常在货物发运（风险转移）和开票时\n- 遵循 IFRS 15/ASC 606 标准\n- 可配置不同的收入确认规则\n- 与创建订单或询价无关",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q36",
+      "domain": 3,
+      "question": "在 SAP S/4HANA 中，\"客户主数据的账户组\"控制什么？（选择两项）",
+      "options": {
+        "A": "屏幕字段布局",
+        "B": "客户编号范围",
+        "C": "产品价格",
+        "D": "仓库位置"
+      },
+      "answer": ["A", "B"],
+      "answerType": "multiple",
+      "explanation": "客户账户组控制：\n- 屏幕字段布局（必输、选输、隐藏）\n- 客户编号范围分配\n- 区分不同类型客户（国内、出口等）\n- 与价格和仓库无关",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q37",
+      "domain": 3,
+      "question": "SAP S/4HANA 中的\"清账货币\"是什么概念？",
+      "options": {
+        "A": "用于清算的唯一允许货币",
+        "B": "系统自动选择的清账时使用的货币",
+        "C": "客户首选的支付货币",
+        "D": "银行收取手续费的货币"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "清账货币概念：\n- 执行清账时系统使用的货币\n- 通常是公司代码货币或交易货币\n- 处理汇率差异\n- 确保借贷双方平衡",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q38",
+      "domain": 3,
+      "question": "在 SAP S/4HANA 中处理\"客户预收款\"需要哪些步骤？（选择两项）",
+      "options": {
+        "A": "使用特殊总账标识记录预收",
+        "B": "直接记入收入科目",
+        "C": "开具发票时与预收款清账",
+        "D": "删除客户主数据"
+      },
+      "answer": ["A", "C"],
+      "answerType": "multiple",
+      "explanation": "客户预收款处理：\n- 使用特殊总账标识（如 A）记录预收款\n- 预收款不直接确认收入\n- 开票后与预收款清账\n- 差额收款或记入应收账款",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q39",
+      "domain": 4,
+      "question": "SAP S/4HANA 中的\"资产盘点\"程序（AIAB）用于什么？",
+      "options": {
+        "A": "计算资产的折旧费用",
+        "B": "核对账面资产与实物资产的差异",
+        "C": "创建新的资产主数据",
+        "D": "删除报废资产"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "资产盘点程序功能：\n- 生成资产盘点清单\n- 记录实物盘点结果\n- 识别账实差异\n- 后续处理差异调整",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q40",
+      "domain": 4,
+      "question": "在 SAP S/4HANA 中，\"在建工程\"（AuC）的处理流程是什么？",
+      "options": {
+        "A": "直接作为固定资产折旧",
+        "B": "积累成本后结算到最终资产",
+        "C": "作为费用直接过账",
+        "D": "转入库存管理"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "在建工程处理：\n- AuC 是特殊资产类型，不折旧\n- 积累项目期间的成本\n- 项目完成后结算到正式资产\n- 结算后开始计提折旧",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q41",
+      "domain": 4,
+      "question": "SAP S/4HANA 中\"资产的成本中心\"分配有什么作用？",
+      "options": {
+        "A": "决定资产的物理存放位置",
+        "B": "确定折旧费用的归属对象",
+        "C": "计算资产的保险价值",
+        "D": "设置资产的采购审批人"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "资产成本中心分配：\n- 折旧费用自动过账到该成本中心\n- 支持成本分析和分摊\n- 资产可随业务变化更换成本中心\n- 与物理位置无直接关系",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q42",
+      "domain": 5,
+      "question": "在 SAP S/4HANA 中，\"自动清账程序\"（F.13）的主要用途是什么？",
+      "options": {
+        "A": "自动删除过期凭证",
+        "B": "自动清算借贷相等的未清项目",
+        "C": "自动创建新的会计凭证",
+        "D": "自动发送付款提醒"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "自动清账程序功能：\n- 识别可以互相抵消的未清项目\n- 按配置的规则自动执行清账\n- 常用于 GR/IR 和银行对账\n- 减少手工清账工作量",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q43",
+      "domain": 5,
+      "question": "SAP S/4HANA 中的\"结账任务列表模板\"有什么优势？（选择两项）",
+      "options": {
+        "A": "标准化结账流程",
+        "B": "自动替代所有手工操作",
+        "C": "跟踪任务完成状态",
+        "D": "删除历史财务数据"
+      },
+      "answer": ["A", "C"],
+      "answerType": "multiple",
+      "explanation": "结账任务列表模板优势：\n- 标准化和规范化结账流程\n- 任务状态可视化跟踪\n- 定义任务依赖关系和负责人\n- 不会自动替代所有手工操作",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q44",
+      "domain": 5,
+      "question": "在 SAP S/4HANA 中执行\"银行对账\"时，系统会执行什么操作？",
+      "options": {
+        "A": "更新银行的利率设置",
+        "B": "将银行对账单与账面银行余额进行核对",
+        "C": "创建新的银行账户",
+        "D": "删除所有银行交易记录"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "银行对账功能：\n- 导入银行对账单（电子或手工）\n- 与账面银行余额比较\n- 识别差异项\n- 执行未达账项处理",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q45",
+      "domain": 1,
+      "question": "SAP S/4HANA 中的 Fiori 应用\"管理期间关闭\"提供什么功能？",
+      "options": {
+        "A": "只能查看期间状态",
+        "B": "开放和关闭会计期间，支持灵活的授权控制",
+        "C": "创建新的会计年度",
+        "D": "删除已关闭期间的凭证"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "管理期间关闭 Fiori 应用：\n- 查看和修改期间状态\n- 按科目类型灵活控制\n- 现代化用户界面\n- 支持审计跟踪",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q46",
+      "domain": 2,
+      "question": "SAP S/4HANA 中的\"供应商评估\"功能可以评估哪些维度？（选择两项）",
+      "options": {
+        "A": "价格",
+        "B": "质量",
+        "C": "员工满意度",
+        "D": "市场份额"
+      },
+      "answer": ["A", "B"],
+      "answerType": "multiple",
+      "explanation": "供应商评估维度：\n- 价格（价格水平、价格稳定性）\n- 质量（缺陷率、质量认证）\n- 交货（准时率、数量准确性）\n- 服务（响应速度、技术支持）",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q47",
+      "domain": 3,
+      "question": "在 SAP S/4HANA 中，\"应收票据\"如何处理？",
+      "options": {
+        "A": "作为普通销售发票处理",
+        "B": "使用特殊总账标识管理票据生命周期",
+        "C": "直接计入收入",
+        "D": "作为库存物料管理"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "应收票据处理：\n- 使用特殊总账标识区分票据类型\n- 管理票据的接收、托收、到期、背书等状态\n- 票据到期后转入正常应收账款\n- 支持票据贴现处理",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q48",
+      "domain": 4,
+      "question": "SAP S/4HANA 中的\"折旧模拟\"功能有什么用途？",
+      "options": {
+        "A": "实际执行折旧过账",
+        "B": "预测未来折旧费用而不实际过账",
+        "C": "删除历史折旧数据",
+        "D": "修改已过账的折旧金额"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "折旧模拟功能：\n- 预测未来期间的折旧费用\n- 不产生实际会计凭证\n- 用于预算和财务规划\n- 可模拟不同情景",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q49",
+      "domain": 5,
+      "question": "SAP S/4HANA 中的\"合并准备\"功能包括哪些活动？（选择两项）",
+      "options": {
+        "A": "公司间对账",
+        "B": "统一会计政策调整",
+        "C": "员工招聘",
+        "D": "产品定价"
+      },
+      "answer": ["A", "B"],
+      "answerType": "multiple",
+      "explanation": "合并准备活动：\n- 公司间交易对账和消除\n- 统一会计政策（如折旧方法）\n- 货币换算\n- 少数股东权益计算",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q50",
+      "domain": 1,
+      "question": "在 SAP S/4HANA 中，\"嵌入式分析\"相比传统报表有什么优势？",
+      "options": {
+        "A": "需要更多的服务器资源",
+        "B": "实时访问交易数据，无需数据抽取",
+        "C": "只能显示历史数据",
+        "D": "需要额外的 BW 系统"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "嵌入式分析优势：\n- 直接访问实时交易数据\n- 无需传统的 ETL 过程\n- 减少数据延迟\n- 与事务处理在同一系统\n- 简化 IT 架构",
+      "difficulty": "medium"
+    }
+  ]
+}

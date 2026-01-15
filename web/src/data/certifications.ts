@@ -1,6 +1,6 @@
 // Cloud Certification Data for AWS, Azure, and GCP
 
-export type Provider = 'AWS' | 'Azure' | 'GCP';
+export type Provider = 'AWS' | 'Azure' | 'GCP' | 'SAP';
 export type Level = 'foundational' | 'associate' | 'professional' | 'specialty' | 'expert';
 export type Category = 'cloud' | 'architecture' | 'developer' | 'devops' | 'data' | 'ai' | 'security' | 'networking' | 'database' | 'sap';
 
@@ -728,8 +728,242 @@ export const gcpCertifications: Certification[] = [
   }
 ];
 
+// SAP Certifications (15 total: 8 S/4HANA + 4 BTP + 3 AI/ML)
+export const sapCertifications: Certification[] = [
+  // ========== S/4HANA Series (8) ==========
+  {
+    id: 'sap-c-ts4fi',
+    code: 'C_TS4FI',
+    provider: 'SAP',
+    name: { zh: 'S/4HANA 财务', ja: 'S/4HANA Finance' },
+    fullName: { zh: 'SAP Certified Associate - SAP S/4HANA Cloud Finance', ja: 'SAP 認定アソシエイト - SAP S/4HANA Cloud Finance' },
+    level: 'associate',
+    category: 'sap',
+    examDuration: 180,
+    questionCount: 80,
+    passingScore: 65,
+    prerequisites: [],
+    hasExamData: true,
+    description: { zh: 'S/4HANA 云财务模块认证，覆盖总账、应收应付、资产会计等', ja: 'S/4HANA Cloud財務モジュール認定、総勘定元帳、売掛金・買掛金、資産会計など' }
+  },
+  {
+    id: 'sap-c-ts4co',
+    code: 'C_TS4CO',
+    provider: 'SAP',
+    name: { zh: 'S/4HANA 成本控制', ja: 'S/4HANA Controlling' },
+    fullName: { zh: 'SAP Certified Associate - SAP S/4HANA Cloud Controlling', ja: 'SAP 認定アソシエイト - SAP S/4HANA Cloud Controlling' },
+    level: 'associate',
+    category: 'sap',
+    examDuration: 180,
+    questionCount: 80,
+    passingScore: 65,
+    prerequisites: ['sap-c-ts4fi'],
+    hasExamData: true,
+    description: { zh: 'S/4HANA 云成本控制模块认证，包含成本中心、利润中心、产品成本', ja: 'S/4HANA Cloud管理会計モジュール認定、原価センタ、利益センタ、製品原価' }
+  },
+  {
+    id: 'sap-c-ts410',
+    code: 'C_TS410',
+    provider: 'SAP',
+    name: { zh: 'S/4HANA 集成业务流程', ja: 'S/4HANA 統合ビジネスプロセス' },
+    fullName: { zh: 'SAP Certified Associate - SAP S/4HANA Integrated Business Processes', ja: 'SAP 認定アソシエイト - SAP S/4HANA 統合ビジネスプロセス' },
+    level: 'foundational',
+    category: 'sap',
+    examDuration: 180,
+    questionCount: 80,
+    passingScore: 63,
+    prerequisites: [],
+    hasExamData: true,
+    description: { zh: 'S/4HANA 端到端业务流程入门认证，覆盖采购、销售、生产、财务集成', ja: 'S/4HANA エンドツーエンドビジネスプロセス入門認定、調達、販売、生産、財務統合' }
+  },
+  {
+    id: 'sap-c-ts450',
+    code: 'C_TS450',
+    provider: 'SAP',
+    name: { zh: 'S/4HANA 采购', ja: 'S/4HANA 調達' },
+    fullName: { zh: 'SAP Certified Associate - SAP S/4HANA Sourcing and Procurement', ja: 'SAP 認定アソシエイト - SAP S/4HANA 調達' },
+    level: 'associate',
+    category: 'sap',
+    examDuration: 180,
+    questionCount: 80,
+    passingScore: 63,
+    prerequisites: ['sap-c-ts410'],
+    hasExamData: true,
+    description: { zh: 'S/4HANA 采购和寻源认证，包含采购订单、货物收据、发票验证', ja: 'S/4HANA 調達・購買認定、購買発注、入庫、請求書検証' }
+  },
+  {
+    id: 'sap-c-ts460',
+    code: 'C_TS460',
+    provider: 'SAP',
+    name: { zh: 'S/4HANA 销售', ja: 'S/4HANA 販売' },
+    fullName: { zh: 'SAP Certified Associate - SAP S/4HANA Sales', ja: 'SAP 認定アソシエイト - SAP S/4HANA 販売' },
+    level: 'associate',
+    category: 'sap',
+    examDuration: 180,
+    questionCount: 80,
+    passingScore: 63,
+    prerequisites: ['sap-c-ts410'],
+    hasExamData: true,
+    description: { zh: 'S/4HANA 销售和分销认证，包含销售订单、定价、交货、开票', ja: 'S/4HANA 販売・流通認定、受注、価格設定、出荷、請求' }
+  },
+  {
+    id: 'sap-c-ts4h',
+    code: 'C_TS4H',
+    provider: 'SAP',
+    name: { zh: 'S/4HANA 技术基础', ja: 'S/4HANA 技術基盤' },
+    fullName: { zh: 'SAP Certified Associate - SAP S/4HANA Technology Foundation', ja: 'SAP 認定アソシエイト - SAP S/4HANA 技術基盤' },
+    level: 'associate',
+    category: 'sap',
+    examDuration: 180,
+    questionCount: 80,
+    passingScore: 65,
+    prerequisites: [],
+    hasExamData: true,
+    description: { zh: 'S/4HANA 系统管理和技术基础认证，包含系统配置、用户管理、传输', ja: 'S/4HANA システム管理・技術基盤認定、システム設定、ユーザー管理、移送' }
+  },
+  {
+    id: 'sap-c-s4ewm',
+    code: 'C_S4EWM',
+    provider: 'SAP',
+    name: { zh: 'S/4HANA 仓库管理', ja: 'S/4HANA 倉庫管理' },
+    fullName: { zh: 'SAP Certified Associate - SAP S/4HANA Extended Warehouse Management', ja: 'SAP 認定アソシエイト - SAP S/4HANA 拡張倉庫管理' },
+    level: 'associate',
+    category: 'sap',
+    examDuration: 180,
+    questionCount: 80,
+    passingScore: 63,
+    prerequisites: ['sap-c-ts410'],
+    hasExamData: true,
+    description: { zh: 'S/4HANA 扩展仓库管理认证，包含库存管理、货物移动、仓储优化', ja: 'S/4HANA 拡張倉庫管理認定、在庫管理、入出庫、倉庫最適化' }
+  },
+  {
+    id: 'sap-c-s4cdk',
+    code: 'C_S4CDK',
+    provider: 'SAP',
+    name: { zh: 'S/4HANA Cloud SDK 开发者', ja: 'S/4HANA Cloud SDK Developer' },
+    fullName: { zh: 'SAP Certified Development Associate - SAP S/4HANA Cloud SDK Developer', ja: 'SAP 認定開発アソシエイト - SAP S/4HANA Cloud SDK Developer' },
+    level: 'professional',
+    category: 'developer',
+    examDuration: 180,
+    questionCount: 80,
+    passingScore: 65,
+    prerequisites: ['sap-c-ts4h'],
+    hasExamData: true,
+    description: { zh: 'S/4HANA Cloud 扩展开发认证，使用 CAP 和 SAP Cloud SDK', ja: 'S/4HANA Cloud 拡張開発認定、CAP と SAP Cloud SDK 使用' }
+  },
+
+  // ========== BTP Series (4) ==========
+  {
+    id: 'sap-c-btp',
+    code: 'C_BTP',
+    provider: 'SAP',
+    name: { zh: 'BTP 基础', ja: 'BTP 基礎' },
+    fullName: { zh: 'SAP Certified Associate - SAP BTP Foundation', ja: 'SAP 認定アソシエイト - SAP BTP 基礎' },
+    level: 'foundational',
+    category: 'cloud',
+    examDuration: 90,
+    questionCount: 60,
+    passingScore: 65,
+    prerequisites: [],
+    hasExamData: true,
+    description: { zh: 'SAP Business Technology Platform 基础知识认证', ja: 'SAP Business Technology Platform 基礎知識認定' }
+  },
+  {
+    id: 'sap-c-btpadm',
+    code: 'C_BTPADM',
+    provider: 'SAP',
+    name: { zh: 'BTP 管理员', ja: 'BTP 管理者' },
+    fullName: { zh: 'SAP Certified Associate - SAP BTP Administrator', ja: 'SAP 認定アソシエイト - SAP BTP 管理者' },
+    level: 'associate',
+    category: 'cloud',
+    examDuration: 180,
+    questionCount: 80,
+    passingScore: 65,
+    prerequisites: ['sap-c-btp'],
+    hasExamData: true,
+    description: { zh: 'SAP BTP 平台管理和运维认证，账户模型、身份认证、授权管理', ja: 'SAP BTP プラットフォーム管理・運用認定、アカウントモデル、認証、権限管理' }
+  },
+  {
+    id: 'sap-c-btpdev',
+    code: 'C_BTPDEV',
+    provider: 'SAP',
+    name: { zh: 'BTP 开发者', ja: 'BTP 開発者' },
+    fullName: { zh: 'SAP Certified Development Associate - SAP BTP Developer', ja: 'SAP 認定開発アソシエイト - SAP BTP 開発者' },
+    level: 'associate',
+    category: 'developer',
+    examDuration: 180,
+    questionCount: 80,
+    passingScore: 65,
+    prerequisites: ['sap-c-btp'],
+    hasExamData: true,
+    description: { zh: 'SAP BTP 应用开发认证，CAP 框架、Fiori Elements、SAPUI5', ja: 'SAP BTP アプリケーション開発認定、CAP フレームワーク、Fiori Elements、SAPUI5' }
+  },
+  {
+    id: 'sap-c-btpint',
+    code: 'C_BTPINT',
+    provider: 'SAP',
+    name: { zh: 'BTP 集成', ja: 'BTP 統合' },
+    fullName: { zh: 'SAP Certified Associate - SAP BTP Integration', ja: 'SAP 認定アソシエイト - SAP BTP 統合' },
+    level: 'associate',
+    category: 'devops',
+    examDuration: 180,
+    questionCount: 80,
+    passingScore: 65,
+    prerequisites: ['sap-c-btp'],
+    hasExamData: true,
+    description: { zh: 'SAP Integration Suite 和 API 管理认证', ja: 'SAP Integration Suite と API 管理認定' }
+  },
+
+  // ========== AI/ML Series (3) ==========
+  {
+    id: 'sap-c-aicore',
+    code: 'C_AICORE',
+    provider: 'SAP',
+    name: { zh: 'SAP AI Core', ja: 'SAP AI Core' },
+    fullName: { zh: 'SAP Certified Associate - SAP AI Core', ja: 'SAP 認定アソシエイト - SAP AI Core' },
+    level: 'associate',
+    category: 'ai',
+    examDuration: 180,
+    questionCount: 80,
+    passingScore: 65,
+    prerequisites: ['sap-c-btp'],
+    hasExamData: true,
+    description: { zh: 'SAP AI Core 机器学习运维认证，模型训练、部署和推理', ja: 'SAP AI Core 機械学習運用認定、モデル訓練、デプロイ、推論' }
+  },
+  {
+    id: 'sap-c-aibus',
+    code: 'C_AIBUS',
+    provider: 'SAP',
+    name: { zh: 'SAP AI 业务服务', ja: 'SAP AI ビジネスサービス' },
+    fullName: { zh: 'SAP Certified Associate - SAP AI Business Services', ja: 'SAP 認定アソシエイト - SAP AI ビジネスサービス' },
+    level: 'associate',
+    category: 'ai',
+    examDuration: 180,
+    questionCount: 80,
+    passingScore: 65,
+    prerequisites: ['sap-c-btp'],
+    hasExamData: true,
+    description: { zh: 'SAP 文档信息提取和业务实体识别认证', ja: 'SAP ドキュメント情報抽出・ビジネスエンティティ認識認定' }
+  },
+  {
+    id: 'sap-c-datasph',
+    code: 'C_DATASPH',
+    provider: 'SAP',
+    name: { zh: 'SAP Datasphere', ja: 'SAP Datasphere' },
+    fullName: { zh: 'SAP Certified Associate - SAP Datasphere', ja: 'SAP 認定アソシエイト - SAP Datasphere' },
+    level: 'associate',
+    category: 'data',
+    examDuration: 180,
+    questionCount: 80,
+    passingScore: 65,
+    prerequisites: ['sap-c-btp'],
+    hasExamData: true,
+    description: { zh: 'SAP 数据仓库和数据分析平台认证', ja: 'SAP データウェアハウス・分析プラットフォーム認定' }
+  }
+];
+
 // All certifications
-export const allCertifications = [...awsCertifications, ...azureCertifications, ...gcpCertifications];
+export const allCertifications = [...awsCertifications, ...azureCertifications, ...gcpCertifications, ...sapCertifications];
 
 // Get certifications by provider
 export const getCertificationsByProvider = (provider: Provider): Certification[] => {
@@ -737,6 +971,7 @@ export const getCertificationsByProvider = (provider: Provider): Certification[]
     case 'AWS': return awsCertifications;
     case 'Azure': return azureCertifications;
     case 'GCP': return gcpCertifications;
+    case 'SAP': return sapCertifications;
   }
 };
 
@@ -897,6 +1132,41 @@ export const careerPaths: CareerPath[] = [
       { provider: 'Azure', certId: 'azure-az-140' },
       { provider: 'GCP', certId: 'gcp-cdl' },
       { provider: 'GCP', certId: 'gcp-pwa' }
+    ]
+  },
+  // SAP Career Paths
+  {
+    id: 'sap-consultant',
+    name: { zh: 'SAP 功能顾问', ja: 'SAP 機能コンサルタント' },
+    description: { zh: 'SAP 业务流程实施和配置专家', ja: 'SAP ビジネスプロセス導入・設定の専門家' },
+    certifications: [
+      { provider: 'SAP', certId: 'sap-c-ts410' },
+      { provider: 'SAP', certId: 'sap-c-ts4fi' },
+      { provider: 'SAP', certId: 'sap-c-ts4co' },
+      { provider: 'SAP', certId: 'sap-c-ts450' },
+      { provider: 'SAP', certId: 'sap-c-ts460' }
+    ]
+  },
+  {
+    id: 'sap-developer',
+    name: { zh: 'SAP 技术开发者', ja: 'SAP 技術開発者' },
+    description: { zh: 'SAP 平台开发和扩展专家', ja: 'SAP プラットフォーム開発・拡張の専門家' },
+    certifications: [
+      { provider: 'SAP', certId: 'sap-c-btp' },
+      { provider: 'SAP', certId: 'sap-c-btpdev' },
+      { provider: 'SAP', certId: 'sap-c-s4cdk' },
+      { provider: 'SAP', certId: 'sap-c-btpint' }
+    ]
+  },
+  {
+    id: 'sap-data-analyst',
+    name: { zh: 'SAP 数据分析师', ja: 'SAP データアナリスト' },
+    description: { zh: 'SAP 数据平台和 AI 服务专家', ja: 'SAP データプラットフォームと AI サービスの専門家' },
+    certifications: [
+      { provider: 'SAP', certId: 'sap-c-btp' },
+      { provider: 'SAP', certId: 'sap-c-datasph' },
+      { provider: 'SAP', certId: 'sap-c-aicore' },
+      { provider: 'SAP', certId: 'sap-c-aibus' }
     ]
   }
 ];

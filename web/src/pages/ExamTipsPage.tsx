@@ -18,7 +18,7 @@ import {
 } from 'lucide-react';
 import { useLanguageStore } from '../stores/languageStore';
 
-type Provider = 'general' | 'aws' | 'azure' | 'gcp' | 'ai-ml';
+type Provider = 'general' | 'aws' | 'azure' | 'gcp' | 'sap' | 'ai-ml';
 
 interface TipSection {
   title: { zh: string; ja: string };
@@ -205,6 +205,70 @@ const examTipsData: Record<Provider, {
           { zh: 'GCP 文档和解决方案架构', ja: 'GCP ドキュメントとソリューションアーキテクチャ' },
           { zh: 'Qwiklabs 实验室动手练习', ja: 'Qwiklabs ラボでのハンズオン' },
           { zh: 'Google Cloud 官方 YouTube 频道', ja: 'Google Cloud 公式 YouTube チャンネル' }
+        ]
+      }
+    ]
+  },
+  sap: {
+    name: { zh: 'SAP 认证备考', ja: 'SAP 認定試験対策' },
+    gradient: 'from-cyan-500 to-teal-600',
+    passingScore: '65-70%',
+    examDuration: '180分',
+    sections: [
+      {
+        title: { zh: 'SAP 考试特点', ja: 'SAP 試験の特徴' },
+        icon: Shield,
+        color: 'text-cyan-600 bg-cyan-100',
+        tips: [
+          { zh: 'SAP 考试注重业务流程理解，需要掌握端到端的业务场景', ja: 'SAP試験はビジネスプロセスの理解を重視し、エンドツーエンドのビジネスシナリオを把握する必要がある' },
+          { zh: 'S/4HANA 考试重点：实时分析、Fiori UX、简化数据模型', ja: 'S/4HANA試験の重点：リアルタイム分析、Fiori UX、簡素化されたデータモデル' },
+          { zh: 'BTP 考试重点：云原生开发、扩展应用、集成服务', ja: 'BTP試験の重点：クラウドネイティブ開発、拡張アプリケーション、統合サービス' },
+          { zh: '考试语言通常为英语，注意专业术语的英文表达', ja: '試験言語は通常英語、専門用語の英語表現に注意' }
+        ]
+      },
+      {
+        title: { zh: 'S/4HANA 高频考点', ja: 'S/4HANAの頻出ポイント' },
+        icon: TrendingUp,
+        color: 'text-cyan-600 bg-cyan-100',
+        tips: [
+          { zh: '财务模块(FI/CO)：总账、应收应付、成本中心、利润中心', ja: '財務モジュール(FI/CO)：総勘定元帳、売掛金/買掛金、コストセンター、利益センター' },
+          { zh: '物流模块(MM/SD)：采购流程、销售订单、库存管理', ja: '物流モジュール(MM/SD)：調達プロセス、受注、在庫管理' },
+          { zh: 'Universal Journal：统一日记账的概念和优势', ja: 'Universal Journal：統合仕訳帳の概念とメリット' },
+          { zh: 'Embedded Analytics：嵌入式分析和实时报表', ja: 'Embedded Analytics：組み込み分析とリアルタイムレポート' }
+        ]
+      },
+      {
+        title: { zh: 'BTP 高频考点', ja: 'BTPの頻出ポイント' },
+        icon: TrendingUp,
+        color: 'text-cyan-600 bg-cyan-100',
+        tips: [
+          { zh: 'SAP BTP 架构：Subaccount、Space、环境类型（Cloud Foundry/Kyma）', ja: 'SAP BTPアーキテクチャ：Subaccount、Space、環境タイプ（Cloud Foundry/Kyma）' },
+          { zh: '开发工具：SAP Business Application Studio、CAP (Cloud Application Programming)', ja: '開発ツール：SAP Business Application Studio、CAP (Cloud Application Programming)' },
+          { zh: '集成服务：SAP Integration Suite、API Management、Event Mesh', ja: '統合サービス：SAP Integration Suite、API Management、Event Mesh' },
+          { zh: '扩展方式：Side-by-Side Extension、In-App Extension 的区别', ja: '拡張方式：Side-by-Side Extension、In-App Extensionの違い' }
+        ]
+      },
+      {
+        title: { zh: 'SAP AI 考点', ja: 'SAP AIの出題ポイント' },
+        icon: Brain,
+        color: 'text-cyan-600 bg-cyan-100',
+        tips: [
+          { zh: 'SAP AI Core：机器学习模型的训练和部署平台', ja: 'SAP AI Core：機械学習モデルのトレーニングとデプロイプラットフォーム' },
+          { zh: 'SAP AI Business Services：文档处理、推荐引擎、预测分析', ja: 'SAP AI Business Services：ドキュメント処理、レコメンデーションエンジン、予測分析' },
+          { zh: 'SAP Datasphere：数据仓库、数据建模、联邦查询', ja: 'SAP Datasphere：データウェアハウス、データモデリング、フェデレーテッドクエリ' },
+          { zh: '集成场景：如何将 AI 服务与 S/4HANA 业务流程结合', ja: '統合シナリオ：AIサービスをS/4HANAビジネスプロセスと組み合わせる方法' }
+        ]
+      },
+      {
+        title: { zh: '推荐学习资源', ja: 'おすすめ学習リソース' },
+        icon: BookOpen,
+        color: 'text-cyan-600 bg-cyan-100',
+        tips: [
+          { zh: 'SAP Learning Hub（官方学习平台，需订阅）', ja: 'SAP Learning Hub（公式学習プラットフォーム、サブスクリプション必要）' },
+          { zh: 'openSAP（免费 MOOC 课程，涵盖主要技术领域）', ja: 'openSAP（無料MOOCコース、主要技術領域をカバー）' },
+          { zh: 'SAP Community：技术博客、问答社区、最佳实践', ja: 'SAP Community：技術ブログ、Q&Aコミュニティ、ベストプラクティス' },
+          { zh: 'SAP Help Portal：官方产品文档和配置指南', ja: 'SAP Help Portal：公式製品ドキュメントと設定ガイド' },
+          { zh: 'SAP BTP Trial：免费试用账户，动手实践云服务', ja: 'SAP BTP Trial：無料トライアルアカウント、クラウドサービスのハンズオン' }
         ]
       }
     ]

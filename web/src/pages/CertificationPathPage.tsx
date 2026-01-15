@@ -19,6 +19,7 @@ import {
   awsCertifications,
   azureCertifications,
   gcpCertifications,
+  sapCertifications,
   careerPaths,
   levelNames,
   Certification,
@@ -63,6 +64,18 @@ const providerConfig = {
     activeText: 'text-white',
     lightBg: 'bg-green-100',
     pathColor: '#22C55E'
+  },
+  SAP: {
+    name: 'SAP',
+    gradient: 'from-cyan-500 via-teal-500 to-emerald-500',
+    bgGradient: 'from-cyan-50 to-teal-50',
+    borderColor: 'border-cyan-200',
+    textColor: 'text-cyan-600',
+    hoverBg: 'hover:bg-cyan-50',
+    activeBg: 'bg-cyan-500',
+    activeText: 'text-white',
+    lightBg: 'bg-cyan-100',
+    pathColor: '#0891B2'
   }
 };
 
@@ -72,7 +85,11 @@ const careerIcons: Record<string, LucideIcon> = {
   'ai-engineer': Brain,
   'data-engineer': Database,
   'devops-engineer': Cog,
-  'security-engineer': Shield
+  'security-engineer': Shield,
+  // SAP career paths
+  'sap-consultant': Building2,
+  'sap-developer': Cog,
+  'sap-data-analyst': Database
 };
 
 // Level badge colors
@@ -89,8 +106,9 @@ const CertificationPathSVG: React.FC<{
   provider: Provider;
   certifications: Certification[];
   highlightedCertIds?: string[];
-  language: 'zh' | 'ja'
-}> = ({ provider, certifications, highlightedCertIds, language }) => {
+  language: 'zh' | 'ja';
+  onCertClick?: (certId: string) => void;
+}> = ({ provider, certifications, highlightedCertIds, language, onCertClick }) => {
   const config = providerConfig[provider];
   const hasHighlight = highlightedCertIds && highlightedCertIds.length > 0;
 
@@ -194,10 +212,20 @@ const CertificationPathSVG: React.FC<{
           const x = 100 + certIndex * 160;
           const y = 55 + levelIndex * 95;
           const isHighlighted = !hasHighlight || (highlightedCertIds && highlightedCertIds.includes(cert.id));
-          const nodeOpacity = hasHighlight && !isHighlighted ? 0.6 : 1;
+          const nodeOpacity = hasHighlight && !isHighlighted ? 0.4 : 1;
+          const isClickable = cert.hasExamData && onCertClick;
 
           return (
-            <g key={cert.id} transform={`translate(${x}, ${y})`} filter="url(#shadow)" opacity={nodeOpacity}>
+            <g
+              key={cert.id}
+              transform={`translate(${x}, ${y})`}
+              filter="url(#shadow)"
+              opacity={nodeOpacity}
+              onClick={() => isClickable && onCertClick(cert.id)}
+              style={{ cursor: isClickable ? 'pointer' : 'default' }}
+              className={isClickable ? 'hover:opacity-80 transition-opacity' : ''}
+            >
+              {/* Clickable area */}
               <rect
                 x="0"
                 y="0"
@@ -208,6 +236,7 @@ const CertificationPathSVG: React.FC<{
                 stroke={isHighlighted && cert.hasExamData ? config.pathColor : (isHighlighted ? '#9CA3AF' : '#E5E7EB')}
                 strokeWidth={isHighlighted ? 3 : 2}
               />
+              {/* Highlighted background for career path items */}
               {isHighlighted && cert.hasExamData && (
                 <rect
                   x="0"
@@ -216,9 +245,10 @@ const CertificationPathSVG: React.FC<{
                   height="60"
                   rx="10"
                   fill={config.pathColor}
-                  opacity="0.1"
+                  opacity="0.15"
                 />
               )}
+              {/* Career path indicator border */}
               {isHighlighted && hasHighlight && (
                 <rect
                   x="-3"
@@ -228,8 +258,9 @@ const CertificationPathSVG: React.FC<{
                   rx="12"
                   fill="none"
                   stroke="#8B5CF6"
-                  strokeWidth="2"
-                  strokeDasharray="4,2"
+                  strokeWidth="3"
+                  strokeDasharray="6,3"
+                  className="animate-pulse"
                 />
               )}
               <text
@@ -253,9 +284,12 @@ const CertificationPathSVG: React.FC<{
                 {cert.name[language].length > 10 ? cert.name[language].slice(0, 10) + '...' : cert.name[language]}
               </text>
               {cert.hasExamData && (
-                <circle cx="115" cy="12" r="6" fill={isHighlighted ? config.pathColor : '#D1D5DB'}>
-                  <title>{language === 'ja' ? '練習可能' : '可练习'}</title>
-                </circle>
+                <g>
+                  <circle cx="115" cy="12" r="8" fill={isHighlighted ? config.pathColor : '#D1D5DB'}>
+                    <title>{language === 'ja' ? 'クリックして練習' : '点击练习'}</title>
+                  </circle>
+                  <text x="115" y="16" textAnchor="middle" fill="white" fontSize="10" fontWeight="bold">▶</text>
+                </g>
               )}
             </g>
           );
@@ -283,14 +317,28 @@ const CertificationCard: React.FC<{
   provider: Provider;
   language: 'zh' | 'ja';
   onStartQuiz: (provider: Provider, certCode: string) => void;
-}> = ({ cert, provider, language, onStartQuiz }) => {
+  isCareerPathItem?: boolean;
+}> = ({ cert, provider, language, onStartQuiz, isCareerPathItem = false }) => {
   const config = providerConfig[provider];
   const levelStyle = levelColors[cert.level];
 
   return (
-    <div className={`group relative bg-white rounded-2xl shadow-sm hover:shadow-lg transition-all duration-300 overflow-hidden border ${config.borderColor}`}>
+    <div
+      id={`cert-card-${cert.id}`}
+      className={`group relative bg-white rounded-2xl shadow-sm hover:shadow-lg transition-all duration-300 overflow-hidden border-2 ${
+        isCareerPathItem
+          ? 'border-purple-400 ring-2 ring-purple-200 ring-opacity-50'
+          : config.borderColor
+      }`}
+    >
+      {/* Career path indicator */}
+      {isCareerPathItem && (
+        <div className="absolute top-0 right-0 w-0 h-0 border-t-[40px] border-t-purple-500 border-l-[40px] border-l-transparent">
+          <span className="absolute -top-[35px] -left-[15px] text-white text-xs">★</span>
+        </div>
+      )}
       {/* Gradient border on hover */}
-      <div className={`absolute inset-0 bg-gradient-to-br ${config.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-300`}></div>
+      <div className={`absolute inset-0 bg-gradient-to-br ${isCareerPathItem ? 'from-purple-500 to-indigo-600' : config.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-300`}></div>
       <div className="absolute inset-[2px] bg-white rounded-2xl"></div>
 
       <div className="relative p-5">
@@ -394,6 +442,7 @@ const getCertificationsByProvider = (provider: Provider): Certification[] => {
     case 'AWS': return awsCertifications;
     case 'Azure': return azureCertifications;
     case 'GCP': return gcpCertifications;
+    case 'SAP': return sapCertifications;
   }
 };
 
@@ -429,7 +478,7 @@ export const CertificationPathPage: React.FC = () => {
   const certsByProvider = useMemo(() => {
     if (!currentCareerPath) return null;
 
-    const providers: Provider[] = ['AWS', 'Azure', 'GCP'];
+    const providers: Provider[] = ['AWS', 'Azure', 'GCP', 'SAP'];
     return providers.map(provider => {
       const allCerts = getCertificationsByProvider(provider);
       const relevantCertIds = currentCareerPath.certifications
@@ -477,6 +526,26 @@ export const CertificationPathPage: React.FC = () => {
     navigate('/', { state: { provider, certCode: certCode.toLowerCase() } });
   };
 
+  // Handle certification click from SVG
+  const handleCertClick = (certId: string) => {
+    const cert = certifications.find(c => c.id === certId);
+    if (cert && cert.hasExamData) {
+      handleStartQuiz(selectedProvider, cert.code);
+    }
+  };
+
+  // Scroll to certification card
+  const scrollToCert = (certId: string) => {
+    const element = document.getElementById(`cert-card-${certId}`);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      element.classList.add('ring-4', 'ring-purple-400', 'ring-opacity-75');
+      setTimeout(() => {
+        element.classList.remove('ring-4', 'ring-purple-400', 'ring-opacity-75');
+      }, 2000);
+    }
+  };
+
   const config = providerConfig[selectedProvider];
 
   const pageTitle = lang === 'ja' ? '認証学習パス' : '认证学习路径';
@@ -511,7 +580,7 @@ export const CertificationPathPage: React.FC = () => {
 
             {/* Provider Tabs - always visible */}
             <div className="flex items-center gap-1 p-0.5 bg-white rounded-lg shadow-sm">
-              {(['AWS', 'Azure', 'GCP'] as Provider[]).map((provider) => {
+              {(['AWS', 'Azure', 'GCP', 'SAP'] as Provider[]).map((provider) => {
                 const pConfig = providerConfig[provider];
                 const isActive = selectedProvider === provider;
                 return (
@@ -626,6 +695,7 @@ export const CertificationPathPage: React.FC = () => {
                             provider={provider}
                             language={lang}
                             onStartQuiz={handleStartQuiz}
+                            isCareerPathItem={highlighted.includes(cert.id)}
                           />
                         ))}
                       </div>
@@ -642,13 +712,22 @@ export const CertificationPathPage: React.FC = () => {
           <>
             {/* Certification Path SVG */}
             <section className="mb-6">
-              <h2 className="text-lg font-bold text-gray-900 mb-3">{pathTitle}</h2>
+              <div className="flex items-center justify-between mb-3">
+                <h2 className="text-lg font-bold text-gray-900">{pathTitle}</h2>
+                {selectedCareerPath && (
+                  <span className="text-sm text-purple-600 flex items-center gap-1">
+                    <span className="w-2 h-2 bg-purple-500 rounded-full animate-pulse"></span>
+                    {lang === 'ja' ? '紫の点線 = 推奨認定' : '紫色虚线 = 推荐认证'}
+                  </span>
+                )}
+              </div>
               <div className={`bg-white rounded-xl p-4 shadow-sm border ${config.borderColor} overflow-x-auto`}>
                 <CertificationPathSVG
                   provider={selectedProvider}
                   certifications={certifications}
                   highlightedCertIds={highlightedCertIds}
                   language={lang}
+                  onCertClick={handleCertClick}
                 />
               </div>
             </section>
@@ -675,6 +754,7 @@ export const CertificationPathPage: React.FC = () => {
                         provider={selectedProvider}
                         language={lang}
                         onStartQuiz={handleStartQuiz}
+                        isCareerPathItem={highlightedCertIds.includes(cert.id)}
                       />
                     ))}
                   </div>

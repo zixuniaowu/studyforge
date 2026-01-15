@@ -50,7 +50,11 @@ const careerIcons: Record<string, LucideIcon> = {
   'network-engineer': Network,
   'database-engineer': HardDrive,
   'cloud-developer': Code2,
-  'enterprise-admin': Users
+  'enterprise-admin': Users,
+  // SAP career paths
+  'sap-consultant': Building2,
+  'sap-developer': Code2,
+  'sap-data-analyst': BarChart3
 };
 
 
@@ -93,6 +97,19 @@ const providerConfig = {
     bgGradient: 'from-slate-50 to-white',
     borderColor: 'border-slate-200',
     iconBg: 'bg-emerald-600',
+    hoverShadow: 'hover:shadow-lg'
+  },
+  SAP: {
+    name: { zh: 'SAP', ja: 'SAP' },
+    shortName: 'SAP',
+    description: {
+      zh: 'SAP 认证考试，包括 S/4HANA、BTP、AI 等',
+      ja: 'SAP 認定試験、S/4HANA、BTP、AIなど'
+    },
+    gradient: 'from-cyan-600 to-teal-700',
+    bgGradient: 'from-slate-50 to-white',
+    borderColor: 'border-slate-200',
+    iconBg: 'bg-cyan-600',
     hoverShadow: 'hover:shadow-lg'
   }
 };
@@ -176,7 +193,7 @@ export const HomePage: React.FC = () => {
   // Handle navigation: read provider and certCode from state or reset view
   useEffect(() => {
     const state = location.state as { provider?: string; certCode?: string } | null;
-    if (state?.provider && ['AWS', 'Azure', 'GCP'].includes(state.provider)) {
+    if (state?.provider && ['AWS', 'Azure', 'GCP', 'SAP'].includes(state.provider)) {
       setSelectedView(state.provider as ProviderKey);
       setCertCodeFilter(state.certCode || null);
       // Clear the state so it doesn't persist on refresh
@@ -371,7 +388,25 @@ export const HomePage: React.FC = () => {
             'gcp-pdevops-set1', 'gcp-pdevops-set2', 'gcp-pdevops-set3',
             'gcp-pne-set1', 'gcp-pne-set2', 'gcp-pne-set3',
             'gcp-pse-set1', 'gcp-pse-set2', 'gcp-pse-set3',
-            'gcp-pwa-set1', 'gcp-pwa-set2', 'gcp-pwa-set3'
+            'gcp-pwa-set1', 'gcp-pwa-set2', 'gcp-pwa-set3',
+            // SAP S/4HANA
+            'sap-c-ts4fi-set1', 'sap-c-ts4fi-set2', 'sap-c-ts4fi-set3',
+            'sap-c-ts4co-set1', 'sap-c-ts4co-set2', 'sap-c-ts4co-set3',
+            'sap-c-ts410-set1', 'sap-c-ts410-set2', 'sap-c-ts410-set3',
+            'sap-c-ts450-set1', 'sap-c-ts450-set2', 'sap-c-ts450-set3',
+            'sap-c-ts460-set1', 'sap-c-ts460-set2', 'sap-c-ts460-set3',
+            'sap-c-ts4h-set1', 'sap-c-ts4h-set2', 'sap-c-ts4h-set3',
+            'sap-c-s4ewm-set1', 'sap-c-s4ewm-set2', 'sap-c-s4ewm-set3',
+            'sap-c-s4cdk-set1', 'sap-c-s4cdk-set2', 'sap-c-s4cdk-set3',
+            // SAP BTP
+            'sap-c-btp-set1', 'sap-c-btp-set2', 'sap-c-btp-set3',
+            'sap-c-btpadm-set1', 'sap-c-btpadm-set2', 'sap-c-btpadm-set3',
+            'sap-c-btpdev-set1', 'sap-c-btpdev-set2', 'sap-c-btpdev-set3',
+            'sap-c-btpint-set1', 'sap-c-btpint-set2', 'sap-c-btpint-set3',
+            // SAP AI/ML
+            'sap-c-aicore-set1', 'sap-c-aicore-set2', 'sap-c-aicore-set3',
+            'sap-c-aibus-set1', 'sap-c-aibus-set2', 'sap-c-aibus-set3',
+            'sap-c-datasph-set1', 'sap-c-datasph-set2', 'sap-c-datasph-set3'
           ];
           for (const examFile of examFiles) {
             try {
@@ -458,7 +493,25 @@ export const HomePage: React.FC = () => {
           'gcp-pdevops-set1', 'gcp-pdevops-set2', 'gcp-pdevops-set3',
           'gcp-pne-set1', 'gcp-pne-set2', 'gcp-pne-set3',
           'gcp-pse-set1', 'gcp-pse-set2', 'gcp-pse-set3',
-          'gcp-pwa-set1', 'gcp-pwa-set2', 'gcp-pwa-set3'
+          'gcp-pwa-set1', 'gcp-pwa-set2', 'gcp-pwa-set3',
+          // SAP S/4HANA
+          'sap-c-ts4fi-set1', 'sap-c-ts4fi-set2', 'sap-c-ts4fi-set3',
+          'sap-c-ts4co-set1', 'sap-c-ts4co-set2', 'sap-c-ts4co-set3',
+          'sap-c-ts410-set1', 'sap-c-ts410-set2', 'sap-c-ts410-set3',
+          'sap-c-ts450-set1', 'sap-c-ts450-set2', 'sap-c-ts450-set3',
+          'sap-c-ts460-set1', 'sap-c-ts460-set2', 'sap-c-ts460-set3',
+          'sap-c-ts4h-set1', 'sap-c-ts4h-set2', 'sap-c-ts4h-set3',
+          'sap-c-s4ewm-set1', 'sap-c-s4ewm-set2', 'sap-c-s4ewm-set3',
+          'sap-c-s4cdk-set1', 'sap-c-s4cdk-set2', 'sap-c-s4cdk-set3',
+          // SAP BTP
+          'sap-c-btp-set1', 'sap-c-btp-set2', 'sap-c-btp-set3',
+          'sap-c-btpadm-set1', 'sap-c-btpadm-set2', 'sap-c-btpadm-set3',
+          'sap-c-btpdev-set1', 'sap-c-btpdev-set2', 'sap-c-btpdev-set3',
+          'sap-c-btpint-set1', 'sap-c-btpint-set2', 'sap-c-btpint-set3',
+          // SAP AI/ML
+          'sap-c-aicore-set1', 'sap-c-aicore-set2', 'sap-c-aicore-set3',
+          'sap-c-aibus-set1', 'sap-c-aibus-set2', 'sap-c-aibus-set3',
+          'sap-c-datasph-set1', 'sap-c-datasph-set2', 'sap-c-datasph-set3'
         ];
         const languages = ['', '-ja'];
         for (const suffix of languages) {
@@ -746,7 +799,7 @@ export const HomePage: React.FC = () => {
                 {language === 'ja' ? '認定試験' : '认证考试'}
               </h2>
             </div>
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
               {(Object.keys(providerConfig) as ProviderKey[]).map((provider) => {
                 const config = providerConfig[provider];
                 const pStats = providerStats[provider] || { examCount: 0, questionCount: 0 };
@@ -817,6 +870,64 @@ export const HomePage: React.FC = () => {
               <h2 className="text-xl font-semibold text-slate-800">
                 {language === 'ja' ? '学習ダッシュボード' : '学习仪表盘'}
               </h2>
+            </div>
+
+            {/* Quick Shortcuts Bar */}
+            <div className="mb-5 p-4 bg-gradient-to-r from-indigo-50 to-purple-50 rounded-xl border border-indigo-200">
+              <div className="flex items-center justify-between flex-wrap gap-3">
+                <span className="text-base font-medium text-indigo-700 flex items-center gap-2">
+                  <Rocket size={18} />
+                  {language === 'ja' ? 'クイックアクション' : '快捷操作'}
+                </span>
+                <div className="flex items-center gap-3 flex-wrap">
+                  {/* Continue Learning - show if has recent session */}
+                  {learningStats.recentSessions.length > 0 && (
+                    <button
+                      onClick={() => {
+                        const recent = learningStats.recentSessions[0];
+                        const provider = recent.examName.split('-')[0].toUpperCase();
+                        const certCode = recent.examName.toLowerCase();
+                        navigate('/', { state: { provider, certCode } });
+                      }}
+                      className="flex items-center gap-2 px-4 py-2 bg-white hover:bg-indigo-50 rounded-lg border border-indigo-200 text-indigo-700 text-base font-medium transition-colors"
+                    >
+                      <Play size={16} />
+                      {language === 'ja' ? '続きから学習' : '继续学习'} ({learningStats.recentSessions[0]?.examName})
+                    </button>
+                  )}
+                  {/* Wrong Answers Review */}
+                  {stats.wrongCount > 0 && (
+                    <button
+                      onClick={() => navigate('/wrong-answers')}
+                      className="flex items-center gap-2 px-4 py-2 bg-amber-100 hover:bg-amber-200 rounded-lg border border-amber-300 text-amber-700 text-base font-medium transition-colors"
+                    >
+                      <AlertCircle size={16} />
+                      {language === 'ja' ? '復習' : '复习错题'} ({stats.wrongCount})
+                    </button>
+                  )}
+                  {/* Go to Certification Path */}
+                  <button
+                    onClick={() => navigate('/certification-path')}
+                    className="flex items-center gap-2 px-4 py-2 bg-white hover:bg-purple-50 rounded-lg border border-purple-200 text-purple-700 text-base font-medium transition-colors"
+                  >
+                    <Map size={16} />
+                    {language === 'ja' ? '認定パス' : '认证路径'}
+                  </button>
+                  {/* Random Practice */}
+                  <button
+                    onClick={() => {
+                      // Pick a random provider and navigate
+                      const providers: ProviderKey[] = ['AWS', 'Azure', 'GCP', 'SAP'];
+                      const randomProvider = providers[Math.floor(Math.random() * providers.length)];
+                      setSelectedView(randomProvider);
+                    }}
+                    className="flex items-center gap-2 px-4 py-2 bg-white hover:bg-emerald-50 rounded-lg border border-emerald-200 text-emerald-700 text-base font-medium transition-colors"
+                  >
+                    <Sparkles size={16} />
+                    {language === 'ja' ? 'ランダム練習' : '随机练习'}
+                  </button>
+                </div>
+              </div>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
@@ -1000,7 +1111,7 @@ export const HomePage: React.FC = () => {
                   </div>
                   <div className="flex-1">
                     <h3 className="text-base font-semibold text-slate-800">{language === 'ja' ? '試験攻略ガイド' : '考试攻略指南'}</h3>
-                    <p className="text-sm text-slate-500">{language === 'ja' ? '3社対応・高頻出問題' : '3厂商·高频考点'}</p>
+                    <p className="text-sm text-slate-500">{language === 'ja' ? '4社対応・高頻出問題' : '4厂商·高频考点'}</p>
                   </div>
                   <ChevronRight size={20} className="text-slate-400 group-hover:text-slate-600" />
                 </div>
