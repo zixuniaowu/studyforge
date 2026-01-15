@@ -18,6 +18,7 @@ import KidsLessonPage from './pages/KidsLessonPage';
 import KidsClassifyGamePage from './pages/KidsClassifyGamePage';
 import KidsAITrainerPage from './pages/KidsAITrainerPage';
 import KidsStoryPage from './pages/KidsStoryPage';
+import { WrongAnswersPage } from './pages/WrongAnswersPage';
 
 function AppContent() {
   const location = useLocation();
@@ -35,7 +36,8 @@ function AppContent() {
     location.pathname.startsWith('/kids-course') ||
     location.pathname.startsWith('/kids-classify') ||
     location.pathname.startsWith('/kids-ai-trainer') ||
-    location.pathname.startsWith('/kids-story');
+    location.pathname.startsWith('/kids-story') ||
+    location.pathname.startsWith('/wrong-answers');
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -43,6 +45,7 @@ function AppContent() {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/quiz/:examId" element={<QuizPage />} />
+        <Route path="/wrong-answers" element={<WrongAnswersPage />} />
         <Route path="/ai-book/:bookId" element={<AIBookPage />} />
         <Route path="/ai-resources" element={<AIResourcesPage />} />
         <Route path="/exam-tips" element={<ExamTipsPage />} />
