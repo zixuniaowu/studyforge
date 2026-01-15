@@ -1140,10 +1140,27 @@ export const HomePage: React.FC = () => {
                     <Map size={24} className="text-white" />
                   </div>
                   <div className="flex-1">
-                    <h3 className="text-base font-semibold text-slate-800">{language === 'ja' ? '学習ロードマップ' : '学习路线图'}</h3>
+                    <h3 className="text-base font-semibold text-slate-800">{language === 'ja' ? 'AI学習ロードマップ' : 'AI 学习路线图'}</h3>
                     <p className="text-sm text-slate-500">{language === 'ja' ? '3コース・体系的' : '3路线·系统化'}</p>
                   </div>
                   <ChevronRight size={20} className="text-slate-400 group-hover:text-slate-600" />
+                </div>
+              </button>
+
+              {/* SAP Migration Roadmap */}
+              <button
+                onClick={() => navigate('/sap-roadmap')}
+                className="group bg-gradient-to-r from-cyan-50 to-teal-50 rounded-xl p-6 border-2 border-cyan-200 hover:border-cyan-300 hover:shadow-md transition-all text-left"
+              >
+                <div className="flex items-center gap-4">
+                  <div className="w-12 h-12 rounded-xl bg-gradient-to-r from-cyan-600 to-teal-600 flex items-center justify-center">
+                    <Rocket size={24} className="text-white" />
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="text-base font-semibold text-cyan-800">{language === 'ja' ? 'SAP 移行ロードマップ' : 'SAP 迁移路线图'}</h3>
+                    <p className="text-sm text-teal-600">{language === 'ja' ? 'ECC→S/4HANA・3パス' : 'ECC→S/4HANA·3路径'}</p>
+                  </div>
+                  <ChevronRight size={20} className="text-cyan-400 group-hover:text-cyan-600" />
                 </div>
               </button>
 
