@@ -959,6 +959,23 @@ export const sapCertifications: Certification[] = [
     prerequisites: ['sap-c-btp'],
     hasExamData: true,
     description: { zh: 'SAP 数据仓库和数据分析平台认证', ja: 'SAP データウェアハウス・分析プラットフォーム認定' }
+  },
+
+  // ========== Implementation/Methodology (1) ==========
+  {
+    id: 'sap-c-activate',
+    code: 'C_ACTIVATE',
+    provider: 'SAP',
+    name: { zh: 'SAP Activate 方法论', ja: 'SAP Activate 方法論' },
+    fullName: { zh: 'SAP Certified Associate - SAP Activate Project Manager', ja: 'SAP 認定アソシエイト - SAP Activate プロジェクトマネージャー' },
+    level: 'associate',
+    category: 'sap',
+    examDuration: 180,
+    questionCount: 80,
+    passingScore: 65,
+    prerequisites: [],
+    hasExamData: true,
+    description: { zh: 'SAP 官方敏捷实施方法论认证，S/4HANA 迁移项目必备', ja: 'SAP 公式アジャイル導入方法論認定、S/4HANA 移行プロジェクトに必須' }
   }
 ];
 

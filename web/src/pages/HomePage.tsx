@@ -398,7 +398,9 @@ export const HomePage: React.FC = () => {
             'sap-c-ts4fi-set1', 'sap-c-ts4fi-set2', 'sap-c-ts4fi-set3',
             'sap-c-ts410-set1', 'sap-c-ts410-set2', 'sap-c-ts410-set3',
             // SAP BTP
-            'sap-c-btp-set1', 'sap-c-btp-set2', 'sap-c-btp-set3'
+            'sap-c-btp-set1', 'sap-c-btp-set2', 'sap-c-btp-set3',
+            // SAP Activate
+            'sap-c-activate-set1', 'sap-c-activate-set2', 'sap-c-activate-set3'
           ];
           for (const examFile of examFiles) {
             // Skip if already imported
@@ -507,7 +509,9 @@ export const HomePage: React.FC = () => {
           // SAP AI/ML
           'sap-c-aicore-set1', 'sap-c-aicore-set2', 'sap-c-aicore-set3',
           'sap-c-aibus-set1', 'sap-c-aibus-set2', 'sap-c-aibus-set3',
-          'sap-c-datasph-set1', 'sap-c-datasph-set2', 'sap-c-datasph-set3'
+          'sap-c-datasph-set1', 'sap-c-datasph-set2', 'sap-c-datasph-set3',
+          // SAP Activate
+          'sap-c-activate-set1', 'sap-c-activate-set2', 'sap-c-activate-set3'
         ];
         const languages = ['', '-ja'];
         for (const suffix of languages) {
