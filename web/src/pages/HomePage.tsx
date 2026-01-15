@@ -336,10 +336,15 @@ export const HomePage: React.FC = () => {
 
   useEffect(() => {
     const autoImport = async () => {
-      if (!loading && languageFilteredExams.length === 0 && !importing) {
+      // Check if SAP exams are missing
+      const hasSapExams = languageFilteredExams.some(e => e.provider === 'SAP');
+      const needsImport = languageFilteredExams.length === 0 || !hasSapExams;
+
+      if (!loading && needsImport && !importing) {
         setImporting(true);
         try {
           const langSuffix = language === 'ja' ? '-ja' : '';
+          const existingIds = new Set(languageFilteredExams.map(e => e.id));
           const examFiles = [
             // AWS
             'aws-aif-c01-set1', 'aws-aif-c01-set2', 'aws-aif-c01-set3',
@@ -391,24 +396,15 @@ export const HomePage: React.FC = () => {
             'gcp-pwa-set1', 'gcp-pwa-set2', 'gcp-pwa-set3',
             // SAP S/4HANA
             'sap-c-ts4fi-set1', 'sap-c-ts4fi-set2', 'sap-c-ts4fi-set3',
-            'sap-c-ts4co-set1', 'sap-c-ts4co-set2', 'sap-c-ts4co-set3',
             'sap-c-ts410-set1', 'sap-c-ts410-set2', 'sap-c-ts410-set3',
-            'sap-c-ts450-set1', 'sap-c-ts450-set2', 'sap-c-ts450-set3',
-            'sap-c-ts460-set1', 'sap-c-ts460-set2', 'sap-c-ts460-set3',
-            'sap-c-ts4h-set1', 'sap-c-ts4h-set2', 'sap-c-ts4h-set3',
-            'sap-c-s4ewm-set1', 'sap-c-s4ewm-set2', 'sap-c-s4ewm-set3',
-            'sap-c-s4cdk-set1', 'sap-c-s4cdk-set2', 'sap-c-s4cdk-set3',
             // SAP BTP
-            'sap-c-btp-set1', 'sap-c-btp-set2', 'sap-c-btp-set3',
-            'sap-c-btpadm-set1', 'sap-c-btpadm-set2', 'sap-c-btpadm-set3',
-            'sap-c-btpdev-set1', 'sap-c-btpdev-set2', 'sap-c-btpdev-set3',
-            'sap-c-btpint-set1', 'sap-c-btpint-set2', 'sap-c-btpint-set3',
-            // SAP AI/ML
-            'sap-c-aicore-set1', 'sap-c-aicore-set2', 'sap-c-aicore-set3',
-            'sap-c-aibus-set1', 'sap-c-aibus-set2', 'sap-c-aibus-set3',
-            'sap-c-datasph-set1', 'sap-c-datasph-set2', 'sap-c-datasph-set3'
+            'sap-c-btp-set1', 'sap-c-btp-set2', 'sap-c-btp-set3'
           ];
           for (const examFile of examFiles) {
+            // Skip if already imported
+            const expectedId = langSuffix ? `${examFile}-ja` : examFile;
+            if (existingIds.has(expectedId)) continue;
+
             try {
               const res = await fetch(`./sample-data/${examFile}${langSuffix}.json`);
               if (res.ok) {
@@ -428,7 +424,7 @@ export const HomePage: React.FC = () => {
       }
     };
     autoImport();
-  }, [loading, languageFilteredExams.length, importing, loadExams, language]);
+  }, [loading, languageFilteredExams, importing, loadExams, language]);
 
   const handleDelete = async (examId: string) => {
     if (window.confirm(t.home.deleteConfirm)) {
