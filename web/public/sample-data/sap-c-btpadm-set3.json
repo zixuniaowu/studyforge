@@ -1,0 +1,660 @@
+{
+  "examId": "sap-c-btpadm-set3",
+  "provider": "SAP",
+  "title": "SAP BTP 管理员 (C_BTPADM) 模拟题 Set 3",
+  "description": "SAP Business Technology Platform 管理员认证模拟试题第三套",
+  "icon": "sap",
+  "setNumber": 3,
+  "questions": [
+    {
+      "id": 1,
+      "question": "SAP BTP 中的 Integration Suite 包含哪些主要组件？",
+      "options": {
+        "A": "Cloud Integration",
+        "B": "API Management",
+        "C": "Open Connectors",
+        "D": "Integration Advisor"
+      },
+      "answer": ["A", "B", "C", "D"],
+      "answerType": "multiple",
+      "explanation": "SAP Integration Suite 是集成平台，包含：Cloud Integration(A)用于流程集成、API Management(B)管理API生命周期、Open Connectors(C)连接第三方应用、Integration Advisor(D)提供B2B集成建议。这些组件协同提供全面的集成能力。"
+    },
+    {
+      "id": 2,
+      "question": "在 SAP BTP 中，什么是 Container-Managed Service Binding？",
+      "options": {
+        "A": "Kyma/Kubernetes 环境中自动注入服务凭证的机制",
+        "B": "Docker 容器打包工具",
+        "C": "网络容器配置",
+        "D": "数据库容器管理"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "在 Kyma 环境中，Container-Managed Service Binding 通过 Kubernetes Secret 自动将服务凭证注入到 Pod 中。应用无需手动处理凭证获取，服务绑定信息作为环境变量或文件挂载可用。"
+    },
+    {
+      "id": 3,
+      "question": "管理员需要实现 BTP 应用的单点登出(Single Logout)。需要配置什么？",
+      "options": {
+        "A": "SAML SLO 端点和绑定",
+        "B": "数据库清理脚本",
+        "C": "应用程序重启计划",
+        "D": "网络断开策略"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Single Logout (SLO) 需要在 Identity Provider 和 Service Provider 之间配置 SAML SLO 端点和绑定方式（POST 或 Redirect）。用户登出时，IDP 会向所有已登录的 SP 发送登出请求。"
+    },
+    {
+      "id": 4,
+      "question": "SAP BTP 中的 Launchpad Service 用于什么？",
+      "options": {
+        "A": "提供统一的应用启动和导航体验",
+        "B": "发射卫星通信",
+        "C": "启动服务器实例",
+        "D": "触发定时任务"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Launchpad Service（现整合到 Work Zone）提供统一的应用启动体验，包括应用 tiles、导航、通知、搜索功能。它是企业门户的核心组件，支持个性化和角色基础的内容。"
+    },
+    {
+      "id": 5,
+      "question": "在配置 BTP 的 CI/CD 时，以下哪些是可用的选项？",
+      "options": {
+        "A": "SAP Continuous Integration and Delivery Service",
+        "B": "Jenkins Pipeline",
+        "C": "Azure DevOps 集成",
+        "D": "GitHub Actions"
+      },
+      "answer": ["A", "B", "C", "D"],
+      "answerType": "multiple",
+      "explanation": "BTP 支持多种 CI/CD 方案：SAP CI/CD Service(A)是原生服务、Jenkins(B)通过 SAP 提供的 Pipeline Libraries、Azure DevOps(C)和 GitHub Actions(D)通过 cf CLI 或 API 集成。选择取决于企业现有工具链。"
+    },
+    {
+      "id": 6,
+      "question": "SAP BTP 中的 Credential Store 支持哪些凭证类型？",
+      "options": {
+        "A": "密码",
+        "B": "密钥对",
+        "C": "证书",
+        "D": "OAuth Token"
+      },
+      "answer": ["A", "B", "C"],
+      "answerType": "multiple",
+      "explanation": "Credential Store 支持存储：密码(A)如API密钥、密钥对(B)如SSH密钥、证书(C)如X.509证书。OAuth Token(D)通常由 XSUAA 服务管理，不存储在 Credential Store 中。"
+    },
+    {
+      "id": 7,
+      "question": "管理员需要配置应用的内存限制。在 Cloud Foundry 中如何指定？",
+      "options": {
+        "A": "在 manifest.yml 中设置 memory 参数",
+        "B": "修改操作系统配置",
+        "C": "联系云提供商",
+        "D": "编辑数据库参数"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "在 manifest.yml 文件中使用 memory 参数指定应用内存限制，如 memory: 512M。也可以使用 cf scale -m 命令动态调整。内存是应用资源配额的关键参数。"
+    },
+    {
+      "id": 8,
+      "question": "SAP BTP 中的 SAP HANA Cloud 提供哪些部署选项？",
+      "options": {
+        "A": "单租户数据库",
+        "B": "多租户数据库容器(HDI)",
+        "C": "数据湖(Data Lake)",
+        "D": "内存数据库副本"
+      },
+      "answer": ["A", "B", "C"],
+      "answerType": "multiple",
+      "explanation": "SAP HANA Cloud 提供：单租户数据库(A)独占实例、HDI容器(B)用于多租户应用的隔离、Data Lake(C)用于大数据存储。这些选项支持不同的数据管理需求。"
+    },
+    {
+      "id": 9,
+      "question": "在 BTP 中配置 Private Link 的主要目的是什么？",
+      "options": {
+        "A": "通过私有网络连接而非公网访问服务",
+        "B": "加密邮件通信",
+        "C": "创建私人聊天室",
+        "D": "限制用户登录"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Private Link 允许通过私有网络端点访问 BTP 服务，数据不经过公共互联网。这提高了安全性和性能，常用于连接企业内部网络到 BTP 服务。"
+    },
+    {
+      "id": 10,
+      "question": "SAP BTP 中的 Transport Management Service 用于什么？",
+      "options": {
+        "A": "管理应用在不同环境间的传输和部署",
+        "B": "物流运输跟踪",
+        "C": "数据传输加密",
+        "D": "网络包传输"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Transport Management Service (TMS) 用于管理 BTP 内容（应用、配置）在不同环境（开发、测试、生产）之间的传输。它提供传输路线、审批流程、回滚能力，确保部署的可控性。"
+    },
+    {
+      "id": 11,
+      "question": "管理员发现 BTP 应用的响应时间增加。以下哪些是可能的诊断步骤？",
+      "options": {
+        "A": "检查 Application Logging Service 的日志",
+        "B": "查看 Cloud ALM 的性能指标",
+        "C": "分析数据库查询性能",
+        "D": "检查外部服务的延迟"
+      },
+      "answer": ["A", "B", "C", "D"],
+      "answerType": "multiple",
+      "explanation": "性能诊断应全面检查：应用日志(A)找错误和慢操作、Cloud ALM(B)看整体性能指标、数据库性能(C)检查慢查询、外部服务(D)检查依赖服务延迟。综合分析才能找到瓶颈。"
+    },
+    {
+      "id": 12,
+      "question": "SAP BTP 中的 Application Router (approuter) 的主要功能是什么？",
+      "options": {
+        "A": "处理认证、路由和会话管理",
+        "B": "编译应用代码",
+        "C": "存储用户数据",
+        "D": "管理数据库连接"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Application Router 是 BTP 应用的前端代理，负责：认证集成（与 XSUAA 协作）、URL 路由（将请求转发到后端服务）、会话管理。它是 SAP Fiori 和多模块应用的标准入口点。"
+    },
+    {
+      "id": 13,
+      "question": "在 SAP BTP 中配置 mTLS (mutual TLS) 的目的是什么？",
+      "options": {
+        "A": "实现双向证书认证，增强安全性",
+        "B": "加速数据传输",
+        "C": "减少内存使用",
+        "D": "简化部署流程"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "mTLS 要求客户端和服务端都提供证书进行相互认证，而不仅是服务端认证客户端。这在服务间通信中提供更强的安全保障，防止未授权的服务调用。"
+    },
+    {
+      "id": 14,
+      "question": "SAP BTP 中的 Content Agent Service 用于什么？",
+      "options": {
+        "A": "导出和导入 BTP 内容用于传输",
+        "B": "创建营销内容",
+        "C": "管理社交媒体帖子",
+        "D": "编辑视频内容"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Content Agent Service 用于将 BTP 内容（如 Integration 流程、API 配置）打包导出，便于在不同环境间传输。它与 Transport Management Service 配合，实现内容的生命周期管理。"
+    },
+    {
+      "id": 15,
+      "question": "管理员需要配置 BTP 的监控告警。以下哪个是正确的配置流程？",
+      "options": {
+        "A": "定义告警条件 → 配置通知渠道 → 测试告警",
+        "B": "直接发送邮件通知",
+        "C": "修改应用代码添加告警",
+        "D": "等待问题发生后手动处理"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "正确的告警配置流程：首先定义告警条件（如CPU超过80%、错误率超过阈值），然后配置通知渠道（邮件、Slack等），最后测试确保告警正常触发。这确保问题能及时发现和响应。"
+    },
+    {
+      "id": 16,
+      "question": "SAP BTP 中的 Feature Set B 相比 Feature Set A 新增了哪些功能？",
+      "options": {
+        "A": "Directory 层级管理",
+        "B": "更灵活的 Entitlement 管理",
+        "C": "Custom Properties",
+        "D": "更多编程语言支持"
+      },
+      "answer": ["A", "B", "C"],
+      "answerType": "multiple",
+      "explanation": "Feature Set B 新增：Directory(A)用于组织 Subaccount 层级、更灵活的 Entitlement 管理(B)支持自动分配、Custom Properties(C)为账户添加自定义属性。编程语言支持(D)与 Feature Set 无关。"
+    },
+    {
+      "id": 17,
+      "question": "在 BTP 中实现 Zero Trust 安全架构，需要配置哪些组件？",
+      "options": {
+        "A": "强制认证所有请求",
+        "B": "最小权限原则",
+        "C": "持续验证和监控",
+        "D": "信任所有内部网络"
+      },
+      "answer": ["A", "B", "C"],
+      "answerType": "multiple",
+      "explanation": "Zero Trust 原则包括：强制认证(A)不信任任何请求、最小权限(B)只授予必要权限、持续验证(C)不断验证身份和行为。'信任内部网络'(D)与 Zero Trust 相悖，Zero Trust 不基于网络位置信任。"
+    },
+    {
+      "id": 18,
+      "question": "SAP BTP 中的 Rate Limiting 用于什么？",
+      "options": {
+        "A": "限制 API 调用频率防止过载",
+        "B": "控制数据传输速率",
+        "C": "限制用户登录次数",
+        "D": "设置汇率换算"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Rate Limiting 在 API Management 中用于限制客户端的 API 调用频率（如每分钟100次），防止单个客户端过度使用资源导致服务过载，也用于实现 API 的商业计费模型。"
+    },
+    {
+      "id": 19,
+      "question": "管理员需要配置 Cloud Foundry 应用的磁盘限制。使用什么参数？",
+      "options": {
+        "A": "disk_quota",
+        "B": "storage_limit",
+        "C": "file_size",
+        "D": "space_allocation"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "在 manifest.yml 中使用 disk_quota 参数设置应用的磁盘空间限制，如 disk_quota: 1G。默认值通常是 1GB。应用超出磁盘限制可能导致写入失败或实例重启。"
+    },
+    {
+      "id": 20,
+      "question": "SAP BTP 中的 Service Mesh Istio 提供哪些功能？",
+      "options": {
+        "A": "流量管理",
+        "B": "安全策略（mTLS）",
+        "C": "可观测性",
+        "D": "数据库查询优化"
+      },
+      "answer": ["A", "B", "C"],
+      "answerType": "multiple",
+      "explanation": "Istio Service Mesh 提供：流量管理(A)如负载均衡、重试、故障注入、安全策略(B)如 mTLS 加密和授权、可观测性(C)如追踪和指标收集。数据库优化(D)不是 Service Mesh 的功能。"
+    },
+    {
+      "id": 21,
+      "question": "在 SAP BTP 中，什么是 Sidecar Container？",
+      "options": {
+        "A": "与主应用容器一起运行的辅助容器",
+        "B": "备份数据的容器",
+        "C": "UI 组件容器",
+        "D": "日志存储容器"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Sidecar Container 是 Kubernetes/Kyma 中与主应用容器在同一 Pod 中运行的辅助容器。常见用例包括：日志收集、代理、监控agent。Istio 的 Envoy 代理就是以 Sidecar 方式部署。"
+    },
+    {
+      "id": 22,
+      "question": "管理员需要实现应用的优雅关闭(Graceful Shutdown)。需要配置什么？",
+      "options": {
+        "A": "处理 SIGTERM 信号完成清理",
+        "B": "直接终止进程",
+        "C": "删除所有文件",
+        "D": "断开网络连接"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "优雅关闭要求应用正确处理 SIGTERM 信号：完成正在处理的请求、释放资源、保存状态。Cloud Foundry 在停止应用时发送 SIGTERM，等待配置的超时时间后才强制终止。"
+    },
+    {
+      "id": 23,
+      "question": "SAP BTP 中的 Connectivity Service 和 Destination Service 的关系是什么？",
+      "options": {
+        "A": "Destination 存储配置，Connectivity 提供到本地系统的通道",
+        "B": "两者完全相同",
+        "C": "Connectivity 用于云服务，Destination 用于本地系统",
+        "D": "它们是竞争关系"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Destination Service 存储连接配置（URL、认证等），Connectivity Service 提供到本地系统的安全通道（通过 Cloud Connector）。应用使用 Destination 获取配置，通过 Connectivity 访问本地系统。"
+    },
+    {
+      "id": 24,
+      "question": "在配置 BTP 高可用时，以下哪些是关键考虑因素？",
+      "options": {
+        "A": "多实例部署",
+        "B": "跨区域/可用区部署",
+        "C": "数据复制",
+        "D": "使用单一数据中心"
+      },
+      "answer": ["A", "B", "C"],
+      "answerType": "multiple",
+      "explanation": "高可用关键因素：多实例(A)消除单点故障、跨区域/可用区(B)防范区域级故障、数据复制(C)确保数据可用性。单一数据中心(D)与高可用相悖，应使用多数据中心。"
+    },
+    {
+      "id": 25,
+      "question": "SAP BTP 中的 HTML5 Application Repository 支持什么类型的应用？",
+      "options": {
+        "A": "静态 HTML5/JavaScript 应用",
+        "B": "SAP Fiori 应用",
+        "C": "SAP UI5 应用",
+        "D": "后端 Java 应用"
+      },
+      "answer": ["A", "B", "C"],
+      "answerType": "multiple",
+      "explanation": "HTML5 Application Repository 支持静态前端应用：纯HTML5/JS应用(A)、SAP Fiori应用(B)、SAP UI5应用(C)。后端Java应用(D)部署在Cloud Foundry运行时，不是HTML5 Repo。"
+    },
+    {
+      "id": 26,
+      "question": "管理员需要配置 BTP 的数据隐私功能。以下哪些是相关服务？",
+      "options": {
+        "A": "Data Privacy Integration",
+        "B": "Personal Data Manager",
+        "C": "Audit Log Service",
+        "D": "Alert Notification"
+      },
+      "answer": ["A", "B", "C"],
+      "answerType": "multiple",
+      "explanation": "数据隐私相关服务：Data Privacy Integration(A)提供GDPR合规接口、Personal Data Manager(B)管理个人数据、Audit Log(C)记录数据访问。Alert Notification(D)是告警服务，不直接处理数据隐私。"
+    },
+    {
+      "id": 27,
+      "question": "SAP BTP 中的 Serverless Runtime (已废弃) 被什么替代？",
+      "options": {
+        "A": "Kyma Functions",
+        "B": "Cloud Foundry Tasks",
+        "C": "Job Scheduling Service",
+        "D": "Workflow Service"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "SAP Extension Factory Serverless Runtime 已被 Kyma Functions 替代。Kyma 提供基于 Kubernetes 的 Function as a Service (FaaS) 能力，支持事件触发的无服务器函数执行。"
+    },
+    {
+      "id": 28,
+      "question": "在配置 Cloud Connector 的高可用时，应该如何部署？",
+      "options": {
+        "A": "主备模式（Shadow Instance）",
+        "B": "单实例即可",
+        "C": "负载均衡模式",
+        "D": "数据库集群模式"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Cloud Connector 高可用使用 Shadow Instance（影子实例）模式：主实例处理所有流量，影子实例保持热备。主实例故障时，影子实例自动接管。两个实例共享相同配置。"
+    },
+    {
+      "id": 29,
+      "question": "SAP BTP 中的 Business Application Studio 是什么？",
+      "options": {
+        "A": "云端集成开发环境(IDE)",
+        "B": "商业分析工具",
+        "C": "演示文稿工具",
+        "D": "音频录制软件"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "SAP Business Application Studio (BAS) 是基于 Eclipse Theia 的云端 IDE，用于开发 SAP Fiori、CAP、Mobile 等应用。它提供预配置的开发空间、代码补全、调试功能，是 SAP Web IDE 的继任者。"
+    },
+    {
+      "id": 30,
+      "question": "管理员需要设置 BTP 的成本分摊。以下哪些方法可用？",
+      "options": {
+        "A": "按 Subaccount 追踪使用量",
+        "B": "使用 Directory 的 Custom Properties 标记成本中心",
+        "C": "导出 Usage Analytics 数据",
+        "D": "手动估算"
+      },
+      "answer": ["A", "B", "C"],
+      "answerType": "multiple",
+      "explanation": "成本分摊方法：按 Subaccount 追踪(A)是基础、Custom Properties(B)可标记成本中心或部门、Usage Analytics 导出(C)提供详细数据用于计费。手动估算(D)不准确，应使用实际数据。"
+    },
+    {
+      "id": 31,
+      "question": "SAP BTP 中的 Kubernetes Service Operator 用于什么？",
+      "options": {
+        "A": "在 Kubernetes 中管理 BTP 服务实例",
+        "B": "操作物理服务器",
+        "C": "管理客户服务工单",
+        "D": "电话服务接线"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "SAP BTP Service Operator 是 Kubernetes Operator，允许在 Kyma 或任何 Kubernetes 集群中以声明式方式管理 BTP 服务实例。通过 CRD（Custom Resource Definition）定义服务实例和绑定。"
+    },
+    {
+      "id": 32,
+      "question": "在 BTP 中配置 OAuth 2.0 的 Client Credentials Flow 适用于什么场景？",
+      "options": {
+        "A": "服务间通信（无用户上下文）",
+        "B": "用户交互式登录",
+        "C": "移动应用登录",
+        "D": "浏览器单点登录"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Client Credentials Flow 适用于服务间（machine-to-machine）通信，没有终端用户参与。应用使用自己的 client_id 和 client_secret 直接获取访问令牌，用于后台服务调用。"
+    },
+    {
+      "id": 33,
+      "question": "SAP BTP 中的 Portal Service 的 Content Provider 概念是什么？",
+      "options": {
+        "A": "提供应用内容和 tiles 到 Launchpad 的来源",
+        "B": "互联网服务提供商",
+        "C": "内容创作者",
+        "D": "视频流服务"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Content Provider 是向 Launchpad/Work Zone 提供应用内容（如 tiles、groups、catalogs）的来源。可以是 HTML5 Repository 中的应用、SAP 系统的 Fiori Launchpad 等。管理员配置哪些内容来源可用。"
+    },
+    {
+      "id": 34,
+      "question": "管理员需要配置 BTP 应用的自定义错误页面。在哪里配置？",
+      "options": {
+        "A": "Application Router 的 xs-app.json",
+        "B": "数据库配置",
+        "C": "Cloud Connector",
+        "D": "Entitlement 设置"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "自定义错误页面在 Application Router 的 xs-app.json 中通过 errorPage 属性配置。可以为不同 HTTP 状态码（如 404、500）指定自定义错误页面路径。"
+    },
+    {
+      "id": 35,
+      "question": "SAP BTP 中的 SAP Build 平台包含哪些工具？",
+      "options": {
+        "A": "SAP Build Apps (低代码开发)",
+        "B": "SAP Build Process Automation",
+        "C": "SAP Build Work Zone",
+        "D": "SAP HANA Database"
+      },
+      "answer": ["A", "B", "C"],
+      "answerType": "multiple",
+      "explanation": "SAP Build 是低代码平台，包含：Build Apps(A)用于可视化应用开发、Process Automation(B)用于工作流和RPA、Work Zone(C)用于门户。SAP HANA(D)是数据库服务，不属于 Build 平台。"
+    },
+    {
+      "id": 36,
+      "question": "在配置 BTP 的备份和恢复时，以下哪些是管理员的责任？",
+      "options": {
+        "A": "应用代码和配置的版本控制",
+        "B": "业务数据的备份策略",
+        "C": "测试恢复流程",
+        "D": "BTP 平台基础设施备份"
+      },
+      "answer": ["A", "B", "C"],
+      "answerType": "multiple",
+      "explanation": "管理员负责：代码/配置版本控制(A)、业务数据备份(B)、恢复测试(C)。平台基础设施备份(D)是 SAP 的责任，作为 PaaS 提供商管理底层基础设施。"
+    },
+    {
+      "id": 37,
+      "question": "SAP BTP 中的 Change and Transport System (CTS+) 用于什么？",
+      "options": {
+        "A": "管理 ABAP 内容的传输和部署",
+        "B": "物流运输管理",
+        "C": "交通信号控制",
+        "D": "货币兑换"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "CTS+ 是 SAP 传统的传输系统扩展，用于管理非 ABAP 内容（如 Java、JavaScript）的传输。在 BTP ABAP Environment 中，它仍用于管理 ABAP 对象的传输请求和部署。"
+    },
+    {
+      "id": 38,
+      "question": "管理员需要配置 BTP 的 API 节流策略。以下哪些是常见策略？",
+      "options": {
+        "A": "固定窗口限流",
+        "B": "滑动窗口限流",
+        "C": "令牌桶算法",
+        "D": "先进先出队列"
+      },
+      "answer": ["A", "B", "C"],
+      "answerType": "multiple",
+      "explanation": "API 限流策略：固定窗口(A)每时间窗口固定配额、滑动窗口(B)平滑限流避免边界突发、令牌桶(C)允许突发但平均速率受限。FIFO队列(D)是队列策略，不是限流算法。"
+    },
+    {
+      "id": 39,
+      "question": "SAP BTP 中的 Extension Center 用于什么？",
+      "options": {
+        "A": "发现和启用 SAP 标准应用的扩展",
+        "B": "Chrome 浏览器扩展商店",
+        "C": "硬件扩展配置",
+        "D": "网络扩展服务"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Extension Center 是 BTP 中发现和管理 SAP 应用扩展的门户。它显示可用的扩展点、已创建的扩展、与 SAP S/4HANA、SuccessFactors 等系统的扩展关系。"
+    },
+    {
+      "id": 40,
+      "question": "在配置 BTP 的网络安全时，以下哪些是重要措施？",
+      "options": {
+        "A": "启用 HTTPS/TLS",
+        "B": "配置 Web Application Firewall",
+        "C": "IP 地址限制",
+        "D": "使用默认密码"
+      },
+      "answer": ["A", "B", "C"],
+      "answerType": "multiple",
+      "explanation": "网络安全措施：HTTPS/TLS(A)加密传输、WAF(B)防护Web攻击、IP限制(C)限制访问来源。使用默认密码(D)是严重的安全漏洞，必须更改。"
+    },
+    {
+      "id": 41,
+      "question": "SAP BTP 中的 Fiori Elements 是什么？",
+      "options": {
+        "A": "基于模板快速生成 Fiori 应用的框架",
+        "B": "化学元素周期表",
+        "C": "UI 设计元素库",
+        "D": "数据库元素类型"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Fiori Elements 是 SAP UI5 框架的一部分，提供预定义的 Floor Plan（如 List Report、Object Page）模板。开发者通过注解和元数据生成标准 Fiori 应用，无需编写大量 UI 代码。"
+    },
+    {
+      "id": 42,
+      "question": "管理员需要配置应用的 Readiness 和 Liveness Probe。它们的区别是什么？",
+      "options": {
+        "A": "Readiness 检查是否可接收流量，Liveness 检查是否需要重启",
+        "B": "两者完全相同",
+        "C": "Readiness 用于生产，Liveness 用于测试",
+        "D": "Liveness 更重要"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Readiness Probe 检查应用是否准备好接收请求（失败则从负载均衡移除），Liveness Probe 检查应用是否存活（失败则重启容器）。两者用途不同，应根据应用特性分别配置。"
+    },
+    {
+      "id": 43,
+      "question": "SAP BTP 中的 Credential Rotation 最佳实践是什么？",
+      "options": {
+        "A": "定期更换凭证并更新所有依赖应用",
+        "B": "永远不更换凭证",
+        "C": "只在出现泄露时更换",
+        "D": "每天更换凭证"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "凭证轮换最佳实践：按策略定期更换（如90天）、确保更新所有使用该凭证的应用、保留临时的双凭证期便于平滑过渡。过于频繁或从不轮换都不是最佳实践。"
+    },
+    {
+      "id": 44,
+      "question": "在 BTP 中配置 CORS 时，以下哪些是安全考虑？",
+      "options": {
+        "A": "限制允许的源域",
+        "B": "限制允许的 HTTP 方法",
+        "C": "配置凭证模式",
+        "D": "允许所有域 (*)"
+      },
+      "answer": ["A", "B", "C"],
+      "answerType": "multiple",
+      "explanation": "CORS 安全配置：限制允许的源(A)只允许信任的域、限制 HTTP 方法(B)只允许必要的方法、正确配置凭证(C)。使用通配符 *(D)允许所有域是不安全的，应该避免。"
+    },
+    {
+      "id": 45,
+      "question": "SAP BTP 中的 CAP (Cloud Application Programming) Model 提供什么？",
+      "options": {
+        "A": "基于 CDS 的全栈应用开发框架",
+        "B": "帽子设计工具",
+        "C": "资本投资计算器",
+        "D": "网络容量规划"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "CAP 是 SAP 的应用开发框架，使用 CDS (Core Data Services) 定义数据模型和服务。它支持 Node.js 和 Java 运行时，简化了企业应用开发，内置支持多租户、安全、本地化等功能。"
+    },
+    {
+      "id": 46,
+      "question": "管理员需要配置 BTP 的日志保留策略。以下哪些因素需要考虑？",
+      "options": {
+        "A": "合规要求",
+        "B": "存储成本",
+        "C": "故障排查需求",
+        "D": "日志的颜色"
+      },
+      "answer": ["A", "B", "C"],
+      "answerType": "multiple",
+      "explanation": "日志保留需考虑：合规要求(A)某些行业需保留特定时间、存储成本(B)长期存储费用、排查需求(C)需要足够历史数据分析问题。日志颜色(D)与保留策略无关。"
+    },
+    {
+      "id": 47,
+      "question": "SAP BTP 中的 Event-Driven Architecture 的核心组件是什么？",
+      "options": {
+        "A": "SAP Event Mesh",
+        "B": "事件生产者",
+        "C": "事件消费者",
+        "D": "以上全部"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "事件驱动架构需要：Event Mesh 作为事件总线、事件生产者发布事件、事件消费者订阅和处理事件。这三个组件协同工作实现松耦合的异步通信模式。"
+    },
+    {
+      "id": 48,
+      "question": "在配置 BTP 的 Service Key 时，以下哪些是安全最佳实践？",
+      "options": {
+        "A": "设置适当的有效期",
+        "B": "限制 IP 白名单（如果支持）",
+        "C": "定期轮换",
+        "D": "在代码中硬编码"
+      },
+      "answer": ["A", "B", "C"],
+      "answerType": "multiple",
+      "explanation": "Service Key 安全实践：设置有效期(A)限制暴露风险、IP白名单(B)限制使用来源、定期轮换(C)降低泄露影响。硬编码(D)是反模式，应使用环境变量或 Secret 管理。"
+    },
+    {
+      "id": 49,
+      "question": "SAP BTP 中的 Tenant Onboarding 流程包含哪些步骤？",
+      "options": {
+        "A": "创建租户特定的资源",
+        "B": "配置租户身份提供商",
+        "C": "分配角色和权限",
+        "D": "以上全部"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "多租户应用的 Tenant Onboarding 包括：创建租户资源(A)如数据库 schema、配置 IdP(B)用于租户用户认证、分配权限(C)设置租户管理员。完整流程需要所有这些步骤。"
+    },
+    {
+      "id": 50,
+      "question": "管理员需要评估 BTP 的总体拥有成本(TCO)。以下哪些因素应包含？",
+      "options": {
+        "A": "服务订阅费用",
+        "B": "开发和运维人力成本",
+        "C": "培训成本",
+        "D": "迁移成本"
+      },
+      "answer": ["A", "B", "C", "D"],
+      "answerType": "multiple",
+      "explanation": "TCO 评估应包含所有成本：服务订阅(A)直接费用、人力成本(B)开发运维团队、培训(C)团队技能建设、迁移(D)从现有系统迁移的一次性成本。全面评估才能做出正确决策。"
+    }
+  ]
+}

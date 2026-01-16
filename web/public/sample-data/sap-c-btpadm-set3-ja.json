@@ -1,0 +1,660 @@
+{
+  "examId": "sap-c-btpadm-set3-ja",
+  "provider": "SAP",
+  "title": "SAP BTP 管理者 (C_BTPADM) 模擬試験 Set 3",
+  "description": "SAP Business Technology Platform 管理者認定模擬試験第3セット",
+  "icon": "sap",
+  "setNumber": 3,
+  "questions": [
+    {
+      "id": 1,
+      "question": "SAP BTP の Integration Suite に含まれる主要コンポーネントはどれですか？",
+      "options": {
+        "A": "Cloud Integration",
+        "B": "API Management",
+        "C": "Open Connectors",
+        "D": "Integration Advisor"
+      },
+      "answer": ["A", "B", "C", "D"],
+      "answerType": "multiple",
+      "explanation": "SAP Integration Suite は統合プラットフォームで、Cloud Integration(A)でプロセス統合、API Management(B)で API ライフサイクル管理、Open Connectors(C)でサードパーティアプリ接続、Integration Advisor(D)で B2B 統合アドバイスを提供します。これらが連携して包括的な統合機能を提供します。"
+    },
+    {
+      "id": 2,
+      "question": "SAP BTP における Container-Managed Service Binding とは何ですか？",
+      "options": {
+        "A": "Kyma/Kubernetes 環境でサービス資格情報を自動注入するメカニズム",
+        "B": "Docker コンテナパッケージングツール",
+        "C": "ネットワークコンテナ設定",
+        "D": "データベースコンテナ管理"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Kyma 環境では、Container-Managed Service Binding が Kubernetes Secret を通じてサービス資格情報を Pod に自動注入します。アプリは資格情報取得を手動で処理する必要がなく、サービスバインディング情報は環境変数またはファイルマウントとして利用可能です。"
+    },
+    {
+      "id": 3,
+      "question": "BTP アプリのシングルログアウト(Single Logout)を実装する必要があります。何を設定しますか？",
+      "options": {
+        "A": "SAML SLO エンドポイントとバインディング",
+        "B": "データベースクリーンアップスクリプト",
+        "C": "アプリケーション再起動スケジュール",
+        "D": "ネットワーク切断ポリシー"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Single Logout (SLO) は Identity Provider と Service Provider 間で SAML SLO エンドポイントとバインディング方式（POST または Redirect）を設定する必要があります。ユーザーがログアウトすると、IDP はログイン済みのすべての SP にログアウトリクエストを送信します。"
+    },
+    {
+      "id": 4,
+      "question": "SAP BTP の Launchpad Service は何に使用されますか？",
+      "options": {
+        "A": "統一されたアプリ起動とナビゲーション体験を提供",
+        "B": "衛星通信の打ち上げ",
+        "C": "サーバーインスタンスの起動",
+        "D": "定期タスクのトリガー"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Launchpad Service（現在は Work Zone に統合）は、アプリ tiles、ナビゲーション、通知、検索機能を含む統一されたアプリ起動体験を提供します。エンタープライズポータルの中核コンポーネントで、パーソナライズとロールベースのコンテンツをサポートします。"
+    },
+    {
+      "id": 5,
+      "question": "BTP の CI/CD を設定する際、利用可能なオプションはどれですか？",
+      "options": {
+        "A": "SAP Continuous Integration and Delivery Service",
+        "B": "Jenkins Pipeline",
+        "C": "Azure DevOps 統合",
+        "D": "GitHub Actions"
+      },
+      "answer": ["A", "B", "C", "D"],
+      "answerType": "multiple",
+      "explanation": "BTP は複数の CI/CD オプションをサポート：SAP CI/CD Service(A)はネイティブサービス、Jenkins(B)は SAP 提供の Pipeline Libraries を通じて、Azure DevOps(C)と GitHub Actions(D)は cf CLI または API を通じて統合。企業の既存ツールチェーンに応じて選択します。"
+    },
+    {
+      "id": 6,
+      "question": "SAP BTP の Credential Store がサポートする資格情報タイプはどれですか？",
+      "options": {
+        "A": "パスワード",
+        "B": "キーペア",
+        "C": "証明書",
+        "D": "OAuth Token"
+      },
+      "answer": ["A", "B", "C"],
+      "answerType": "multiple",
+      "explanation": "Credential Store は保存をサポート：パスワード(A)（API キーなど）、キーペア(B)（SSH キーなど）、証明書(C)（X.509 証明書など）。OAuth Token(D)は通常 XSUAA サービスが管理し、Credential Store には保存しません。"
+    },
+    {
+      "id": 7,
+      "question": "アプリのメモリ制限を設定する必要があります。Cloud Foundry での指定方法は？",
+      "options": {
+        "A": "manifest.yml で memory パラメータを設定",
+        "B": "OS 設定を変更",
+        "C": "クラウドプロバイダーに連絡",
+        "D": "データベースパラメータを編集"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "manifest.yml ファイルで memory パラメータを使用してアプリのメモリ制限を指定します（例：memory: 512M）。cf scale -m コマンドで動的に調整することも可能です。メモリはアプリリソースクォータの重要なパラメータです。"
+    },
+    {
+      "id": 8,
+      "question": "SAP BTP の SAP HANA Cloud が提供するデプロイオプションはどれですか？",
+      "options": {
+        "A": "シングルテナントデータベース",
+        "B": "マルチテナントデータベースコンテナ(HDI)",
+        "C": "データレイク(Data Lake)",
+        "D": "インメモリデータベースレプリカ"
+      },
+      "answer": ["A", "B", "C"],
+      "answerType": "multiple",
+      "explanation": "SAP HANA Cloud は、シングルテナントデータベース(A)で専用インスタンス、HDI コンテナ(B)でマルチテナントアプリの分離、Data Lake(C)でビッグデータストレージを提供します。これらのオプションは異なるデータ管理ニーズをサポートします。"
+    },
+    {
+      "id": 9,
+      "question": "BTP で Private Link を設定する主な目的は何ですか？",
+      "options": {
+        "A": "公衆インターネットではなくプライベートネットワーク接続でサービスにアクセス",
+        "B": "メール通信の暗号化",
+        "C": "プライベートチャットルームの作成",
+        "D": "ユーザーログインの制限"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Private Link によりプライベートネットワークエンドポイント経由で BTP サービスにアクセスでき、データは公衆インターネットを経由しません。これによりセキュリティとパフォーマンスが向上し、企業内部ネットワークから BTP サービスへの接続によく使用されます。"
+    },
+    {
+      "id": 10,
+      "question": "SAP BTP の Transport Management Service は何に使用されますか？",
+      "options": {
+        "A": "異なる環境間でのアプリの移送とデプロイを管理",
+        "B": "物流輸送の追跡",
+        "C": "データ転送の暗号化",
+        "D": "ネットワークパケット転送"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Transport Management Service (TMS) は BTP コンテンツ（アプリ、設定）を異なる環境（開発、テスト、本番）間で移送管理するために使用されます。移送ルート、承認フロー、ロールバック機能を提供し、デプロイの管理性を確保します。"
+    },
+    {
+      "id": 11,
+      "question": "BTP アプリのレスポンス時間が増加していることを発見しました。考えられる診断ステップはどれですか？",
+      "options": {
+        "A": "Application Logging Service のログを確認",
+        "B": "Cloud ALM のパフォーマンスメトリクスを確認",
+        "C": "データベースクエリパフォーマンスを分析",
+        "D": "外部サービスの遅延を確認"
+      },
+      "answer": ["A", "B", "C", "D"],
+      "answerType": "multiple",
+      "explanation": "パフォーマンス診断は包括的に確認が必要：アプリログ(A)でエラーと遅い操作を発見、Cloud ALM(B)で全体的なパフォーマンスメトリクスを確認、データベースパフォーマンス(C)で遅いクエリを確認、外部サービス(D)で依存サービスの遅延を確認。総合分析でボトルネックを特定します。"
+    },
+    {
+      "id": 12,
+      "question": "SAP BTP の Application Router (approuter) の主な機能は何ですか？",
+      "options": {
+        "A": "認証、ルーティング、セッション管理を処理",
+        "B": "アプリコードのコンパイル",
+        "C": "ユーザーデータの保存",
+        "D": "データベース接続の管理"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Application Router は BTP アプリのフロントエンドプロキシで、認証統合（XSUAA と連携）、URL ルーティング（バックエンドサービスへのリクエスト転送）、セッション管理を担当します。SAP Fiori やマルチモジュールアプリの標準エントリーポイントです。"
+    },
+    {
+      "id": 13,
+      "question": "SAP BTP で mTLS (mutual TLS) を設定する目的は何ですか？",
+      "options": {
+        "A": "双方向証明書認証を実装し、セキュリティを強化",
+        "B": "データ転送を高速化",
+        "C": "メモリ使用量を削減",
+        "D": "デプロイプロセスを簡素化"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "mTLS ではクライアントとサーバーの両方が証明書を提供して相互認証を行い、サーバーがクライアントを認証するだけではありません。これによりサービス間通信でより強力なセキュリティ保証を提供し、不正なサービス呼び出しを防止します。"
+    },
+    {
+      "id": 14,
+      "question": "SAP BTP の Content Agent Service は何に使用されますか？",
+      "options": {
+        "A": "移送用に BTP コンテンツをエクスポート・インポート",
+        "B": "マーケティングコンテンツの作成",
+        "C": "ソーシャルメディア投稿の管理",
+        "D": "ビデオコンテンツの編集"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Content Agent Service は BTP コンテンツ（Integration フロー、API 設定など）をパッケージ化してエクスポートし、異なる環境間での移送を容易にします。Transport Management Service と連携してコンテンツのライフサイクル管理を実現します。"
+    },
+    {
+      "id": 15,
+      "question": "BTP の監視アラートを設定する必要があります。正しい設定フローはどれですか？",
+      "options": {
+        "A": "アラート条件を定義 → 通知チャネルを設定 → アラートをテスト",
+        "B": "直接メール通知を送信",
+        "C": "アプリコードにアラートを追加",
+        "D": "問題発生後に手動対応"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "正しいアラート設定フロー：まずアラート条件を定義（CPU が 80% 超過、エラー率がしきい値超過など）、次に通知チャネルを設定（メール、Slack など）、最後にテストでアラートが正常にトリガーされることを確認。これにより問題を迅速に発見・対応できます。"
+    },
+    {
+      "id": 16,
+      "question": "SAP BTP の Feature Set B が Feature Set A に比べて追加した機能はどれですか？",
+      "options": {
+        "A": "Directory 階層管理",
+        "B": "より柔軟な Entitlement 管理",
+        "C": "Custom Properties",
+        "D": "より多くのプログラミング言語サポート"
+      },
+      "answer": ["A", "B", "C"],
+      "answerType": "multiple",
+      "explanation": "Feature Set B で追加：Directory(A)で Subaccount 階層を整理、より柔軟な Entitlement 管理(B)で自動割り当てをサポート、Custom Properties(C)でアカウントにカスタム属性を追加。プログラミング言語サポート(D)は Feature Set とは無関係です。"
+    },
+    {
+      "id": 17,
+      "question": "BTP で Zero Trust セキュリティアーキテクチャを実装する際、設定すべきコンポーネントはどれですか？",
+      "options": {
+        "A": "すべてのリクエストに認証を強制",
+        "B": "最小権限の原則",
+        "C": "継続的な検証と監視",
+        "D": "すべての内部ネットワークを信頼"
+      },
+      "answer": ["A", "B", "C"],
+      "answerType": "multiple",
+      "explanation": "Zero Trust の原則：認証の強制(A)でどのリクエストも信頼しない、最小権限(B)で必要な権限のみ付与、継続的検証(C)で ID と行動を常に検証。「内部ネットワークを信頼」(D)は Zero Trust に反し、Zero Trust はネットワーク位置で信頼しません。"
+    },
+    {
+      "id": 18,
+      "question": "SAP BTP の Rate Limiting は何に使用されますか？",
+      "options": {
+        "A": "過負荷を防ぐために API 呼び出し頻度を制限",
+        "B": "データ転送速度を制御",
+        "C": "ユーザーログイン回数を制限",
+        "D": "為替レート換算を設定"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Rate Limiting は API Management で使用され、クライアントの API 呼び出し頻度を制限します（例：1分あたり100回）。単一クライアントによる過度のリソース使用でサービス過負荷になることを防ぎ、API の商用課金モデルの実装にも使用されます。"
+    },
+    {
+      "id": 19,
+      "question": "Cloud Foundry アプリのディスク制限を設定する必要があります。使用するパラメータはどれですか？",
+      "options": {
+        "A": "disk_quota",
+        "B": "storage_limit",
+        "C": "file_size",
+        "D": "space_allocation"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "manifest.yml で disk_quota パラメータを使用してアプリのディスクスペース制限を設定します（例：disk_quota: 1G）。デフォルト値は通常 1GB です。アプリがディスク制限を超えると、書き込み失敗やインスタンス再起動が発生する可能性があります。"
+    },
+    {
+      "id": 20,
+      "question": "SAP BTP の Service Mesh Istio が提供する機能はどれですか？",
+      "options": {
+        "A": "トラフィック管理",
+        "B": "セキュリティポリシー（mTLS）",
+        "C": "可観測性",
+        "D": "データベースクエリ最適化"
+      },
+      "answer": ["A", "B", "C"],
+      "answerType": "multiple",
+      "explanation": "Istio Service Mesh は、トラフィック管理(A)（ロードバランシング、リトライ、フォールトインジェクションなど）、セキュリティポリシー(B)（mTLS 暗号化と認可）、可観測性(C)（トレースとメトリクス収集）を提供します。データベース最適化(D)は Service Mesh の機能ではありません。"
+    },
+    {
+      "id": 21,
+      "question": "SAP BTP における Sidecar Container とは何ですか？",
+      "options": {
+        "A": "メインアプリコンテナと一緒に実行される補助コンテナ",
+        "B": "データバックアップ用のコンテナ",
+        "C": "UI コンポーネントコンテナ",
+        "D": "ログストレージコンテナ"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Sidecar Container は Kubernetes/Kyma でメインアプリコンテナと同じ Pod で実行される補助コンテナです。一般的な用途には、ログ収集、プロキシ、監視エージェントがあります。Istio の Envoy プロキシは Sidecar 方式でデプロイされます。"
+    },
+    {
+      "id": 22,
+      "question": "アプリのグレースフルシャットダウン(Graceful Shutdown)を実装する必要があります。何を設定しますか？",
+      "options": {
+        "A": "SIGTERM シグナルを処理してクリーンアップを完了",
+        "B": "プロセスを直接終了",
+        "C": "すべてのファイルを削除",
+        "D": "ネットワーク接続を切断"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "グレースフルシャットダウンでは、アプリが SIGTERM シグナルを適切に処理する必要があります：処理中のリクエストを完了、リソースを解放、状態を保存。Cloud Foundry はアプリ停止時に SIGTERM を送信し、設定されたタイムアウト後に強制終了します。"
+    },
+    {
+      "id": 23,
+      "question": "SAP BTP の Connectivity Service と Destination Service の関係は何ですか？",
+      "options": {
+        "A": "Destination は設定を保存、Connectivity はオンプレミスシステムへのチャネルを提供",
+        "B": "両者は完全に同じ",
+        "C": "Connectivity はクラウドサービス用、Destination はオンプレミスシステム用",
+        "D": "競合関係にある"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Destination Service は接続設定（URL、認証など）を保存し、Connectivity Service は（Cloud Connector を通じて）オンプレミスシステムへの安全なチャネルを提供します。アプリは Destination から設定を取得し、Connectivity を通じてオンプレミスシステムにアクセスします。"
+    },
+    {
+      "id": 24,
+      "question": "BTP の高可用性を設定する際、重要な考慮事項はどれですか？",
+      "options": {
+        "A": "マルチインスタンスデプロイ",
+        "B": "クロスリージョン/アベイラビリティゾーンデプロイ",
+        "C": "データレプリケーション",
+        "D": "単一データセンターの使用"
+      },
+      "answer": ["A", "B", "C"],
+      "answerType": "multiple",
+      "explanation": "高可用性の重要な要素：マルチインスタンス(A)で単一障害点を排除、クロスリージョン/AZ(B)でリージョンレベルの障害に備える、データレプリケーション(C)でデータ可用性を確保。単一データセンター(D)は高可用性に反し、マルチデータセンターを使用すべきです。"
+    },
+    {
+      "id": 25,
+      "question": "SAP BTP の HTML5 Application Repository がサポートするアプリタイプはどれですか？",
+      "options": {
+        "A": "静的な HTML5/JavaScript アプリ",
+        "B": "SAP Fiori アプリ",
+        "C": "SAP UI5 アプリ",
+        "D": "バックエンド Java アプリ"
+      },
+      "answer": ["A", "B", "C"],
+      "answerType": "multiple",
+      "explanation": "HTML5 Application Repository は静的なフロントエンドアプリをサポート：純粋な HTML5/JS アプリ(A)、SAP Fiori アプリ(B)、SAP UI5 アプリ(C)。バックエンド Java アプリ(D)は Cloud Foundry ランタイムにデプロイし、HTML5 Repo ではありません。"
+    },
+    {
+      "id": 26,
+      "question": "BTP のデータプライバシー機能を設定する必要があります。関連するサービスはどれですか？",
+      "options": {
+        "A": "Data Privacy Integration",
+        "B": "Personal Data Manager",
+        "C": "Audit Log Service",
+        "D": "Alert Notification"
+      },
+      "answer": ["A", "B", "C"],
+      "answerType": "multiple",
+      "explanation": "データプライバシー関連サービス：Data Privacy Integration(A)で GDPR 準拠インターフェースを提供、Personal Data Manager(B)で個人データを管理、Audit Log(C)でデータアクセスを記録。Alert Notification(D)はアラートサービスで、データプライバシーを直接処理しません。"
+    },
+    {
+      "id": 27,
+      "question": "SAP BTP の Serverless Runtime（廃止済み）は何に置き換えられましたか？",
+      "options": {
+        "A": "Kyma Functions",
+        "B": "Cloud Foundry Tasks",
+        "C": "Job Scheduling Service",
+        "D": "Workflow Service"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "SAP Extension Factory Serverless Runtime は Kyma Functions に置き換えられました。Kyma は Kubernetes ベースの Function as a Service (FaaS) 機能を提供し、イベントトリガーのサーバーレス関数実行をサポートします。"
+    },
+    {
+      "id": 28,
+      "question": "Cloud Connector の高可用性を設定する際、どのようにデプロイすべきですか？",
+      "options": {
+        "A": "マスター/スタンバイモード（Shadow Instance）",
+        "B": "シングルインスタンスで十分",
+        "C": "ロードバランシングモード",
+        "D": "データベースクラスターモード"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Cloud Connector の高可用性は Shadow Instance（シャドウインスタンス）モードを使用：マスターインスタンスがすべてのトラフィックを処理し、シャドウインスタンスがホットスタンバイを維持。マスターインスタンスが障害を起こすと、シャドウインスタンスが自動的に引き継ぎます。両方のインスタンスは同じ設定を共有します。"
+    },
+    {
+      "id": 29,
+      "question": "SAP BTP の Business Application Studio とは何ですか？",
+      "options": {
+        "A": "クラウド統合開発環境(IDE)",
+        "B": "ビジネス分析ツール",
+        "C": "プレゼンテーションツール",
+        "D": "オーディオ録音ソフトウェア"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "SAP Business Application Studio (BAS) は Eclipse Theia ベースのクラウド IDE で、SAP Fiori、CAP、Mobile などのアプリ開発に使用されます。事前設定された開発スペース、コード補完、デバッグ機能を提供し、SAP Web IDE の後継です。"
+    },
+    {
+      "id": 30,
+      "question": "BTP のコスト配分を設定する必要があります。利用可能な方法はどれですか？",
+      "options": {
+        "A": "Subaccount ごとに使用量を追跡",
+        "B": "Directory の Custom Properties でコストセンターをタグ付け",
+        "C": "Usage Analytics データをエクスポート",
+        "D": "手動で見積もり"
+      },
+      "answer": ["A", "B", "C"],
+      "answerType": "multiple",
+      "explanation": "コスト配分方法：Subaccount ごとの追跡(A)が基本、Custom Properties(B)でコストセンターや部門をタグ付け、Usage Analytics エクスポート(C)で課金用の詳細データを取得。手動見積もり(D)は不正確で、実際のデータを使用すべきです。"
+    },
+    {
+      "id": 31,
+      "question": "SAP BTP の Kubernetes Service Operator は何に使用されますか？",
+      "options": {
+        "A": "Kubernetes で BTP サービスインスタンスを管理",
+        "B": "物理サーバーを操作",
+        "C": "カスタマーサービスチケットを管理",
+        "D": "電話サービスのオペレーション"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "SAP BTP Service Operator は Kubernetes Operator で、Kyma または任意の Kubernetes クラスターで宣言的に BTP サービスインスタンスを管理できます。CRD（Custom Resource Definition）でサービスインスタンスとバインディングを定義します。"
+    },
+    {
+      "id": 32,
+      "question": "BTP で OAuth 2.0 の Client Credentials Flow を設定する際、適切なシナリオはどれですか？",
+      "options": {
+        "A": "サービス間通信（ユーザーコンテキストなし）",
+        "B": "ユーザー対話型ログイン",
+        "C": "モバイルアプリログイン",
+        "D": "ブラウザシングルサインオン"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Client Credentials Flow はサービス間（machine-to-machine）通信に適しており、エンドユーザーの関与がありません。アプリは自身の client_id と client_secret を使用して直接アクセストークンを取得し、バックエンドサービス呼び出しに使用します。"
+    },
+    {
+      "id": 33,
+      "question": "SAP BTP の Portal Service における Content Provider の概念は何ですか？",
+      "options": {
+        "A": "Launchpad にアプリコンテンツと tiles を提供するソース",
+        "B": "インターネットサービスプロバイダー",
+        "C": "コンテンツクリエイター",
+        "D": "ビデオストリーミングサービス"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Content Provider は Launchpad/Work Zone にアプリコンテンツ（tiles、groups、catalogs など）を提供するソースです。HTML5 Repository のアプリ、SAP システムの Fiori Launchpad などが該当します。管理者はどのコンテンツソースを利用可能にするかを設定します。"
+    },
+    {
+      "id": 34,
+      "question": "BTP アプリのカスタムエラーページを設定する必要があります。どこで設定しますか？",
+      "options": {
+        "A": "Application Router の xs-app.json",
+        "B": "データベース設定",
+        "C": "Cloud Connector",
+        "D": "Entitlement 設定"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "カスタムエラーページは Application Router の xs-app.json で errorPage プロパティを通じて設定します。異なる HTTP ステータスコード（404、500 など）に対してカスタムエラーページパスを指定できます。"
+    },
+    {
+      "id": 35,
+      "question": "SAP BTP の SAP Build プラットフォームに含まれるツールはどれですか？",
+      "options": {
+        "A": "SAP Build Apps（ローコード開発）",
+        "B": "SAP Build Process Automation",
+        "C": "SAP Build Work Zone",
+        "D": "SAP HANA Database"
+      },
+      "answer": ["A", "B", "C"],
+      "answerType": "multiple",
+      "explanation": "SAP Build はローコードプラットフォームで、Build Apps(A)でビジュアルアプリ開発、Process Automation(B)でワークフローと RPA、Work Zone(C)でポータルを提供します。SAP HANA(D)はデータベースサービスで、Build プラットフォームには属しません。"
+    },
+    {
+      "id": 36,
+      "question": "BTP のバックアップとリカバリを設定する際、管理者の責任はどれですか？",
+      "options": {
+        "A": "アプリコードと設定のバージョン管理",
+        "B": "ビジネスデータのバックアップ戦略",
+        "C": "リカバリプロセスのテスト",
+        "D": "BTP プラットフォームインフラストラクチャのバックアップ"
+      },
+      "answer": ["A", "B", "C"],
+      "answerType": "multiple",
+      "explanation": "管理者の責任：コード/設定のバージョン管理(A)、ビジネスデータバックアップ(B)、リカバリテスト(C)。プラットフォームインフラストラクチャバックアップ(D)は SAP の責任で、PaaS プロバイダーとして基盤インフラを管理します。"
+    },
+    {
+      "id": 37,
+      "question": "SAP BTP の Change and Transport System (CTS+) は何に使用されますか？",
+      "options": {
+        "A": "ABAP コンテンツの移送とデプロイを管理",
+        "B": "物流輸送管理",
+        "C": "交通信号制御",
+        "D": "通貨換算"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "CTS+ は SAP の従来の移送システムの拡張で、非 ABAP コンテンツ（Java、JavaScript など）の移送を管理します。BTP ABAP Environment では、ABAP オブジェクトの移送リクエストとデプロイの管理に引き続き使用されます。"
+    },
+    {
+      "id": 38,
+      "question": "BTP で API スロットリングポリシーを設定する必要があります。一般的なポリシーはどれですか？",
+      "options": {
+        "A": "固定ウィンドウレート制限",
+        "B": "スライディングウィンドウレート制限",
+        "C": "トークンバケットアルゴリズム",
+        "D": "先入れ先出しキュー"
+      },
+      "answer": ["A", "B", "C"],
+      "answerType": "multiple",
+      "explanation": "API レート制限ポリシー：固定ウィンドウ(A)で時間ウィンドウごとに固定クォータ、スライディングウィンドウ(B)で境界バーストを避けるスムーズなレート制限、トークンバケット(C)でバーストを許可しつつ平均レートを制限。FIFO キュー(D)はキュー戦略で、レート制限アルゴリズムではありません。"
+    },
+    {
+      "id": 39,
+      "question": "SAP BTP の Extension Center は何に使用されますか？",
+      "options": {
+        "A": "SAP 標準アプリの拡張を発見・有効化",
+        "B": "Chrome ブラウザ拡張ストア",
+        "C": "ハードウェア拡張設定",
+        "D": "ネットワーク拡張サービス"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Extension Center は BTP で SAP アプリ拡張を発見・管理するポータルです。利用可能な拡張ポイント、作成済みの拡張、SAP S/4HANA、SuccessFactors などのシステムとの拡張関係を表示します。"
+    },
+    {
+      "id": 40,
+      "question": "BTP のネットワークセキュリティを設定する際、重要な対策はどれですか？",
+      "options": {
+        "A": "HTTPS/TLS を有効化",
+        "B": "Web Application Firewall を設定",
+        "C": "IP アドレス制限",
+        "D": "デフォルトパスワードを使用"
+      },
+      "answer": ["A", "B", "C"],
+      "answerType": "multiple",
+      "explanation": "ネットワークセキュリティ対策：HTTPS/TLS(A)で転送を暗号化、WAF(B)で Web 攻撃を防御、IP 制限(C)でアクセス元を制限。デフォルトパスワードの使用(D)は深刻なセキュリティ脆弱性で、必ず変更が必要です。"
+    },
+    {
+      "id": 41,
+      "question": "SAP BTP の Fiori Elements とは何ですか？",
+      "options": {
+        "A": "テンプレートベースで Fiori アプリを高速生成するフレームワーク",
+        "B": "化学元素周期表",
+        "C": "UI デザイン要素ライブラリ",
+        "D": "データベース要素タイプ"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Fiori Elements は SAP UI5 フレームワークの一部で、事前定義された Floor Plan（List Report、Object Page など）テンプレートを提供します。開発者はアノテーションとメタデータで標準 Fiori アプリを生成し、大量の UI コードを書く必要がありません。"
+    },
+    {
+      "id": 42,
+      "question": "アプリの Readiness と Liveness Probe を設定する必要があります。両者の違いは何ですか？",
+      "options": {
+        "A": "Readiness はトラフィック受信可否をチェック、Liveness は再起動要否をチェック",
+        "B": "両者は完全に同じ",
+        "C": "Readiness は本番用、Liveness はテスト用",
+        "D": "Liveness の方が重要"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Readiness Probe はアプリがリクエスト受信準備ができているかをチェック（失敗するとロードバランサーから除外）、Liveness Probe はアプリが生存しているかをチェック（失敗するとコンテナを再起動）します。用途が異なり、アプリの特性に応じて個別に設定すべきです。"
+    },
+    {
+      "id": 43,
+      "question": "SAP BTP の Credential Rotation のベストプラクティスは何ですか？",
+      "options": {
+        "A": "定期的に資格情報を更新し、依存するすべてのアプリを更新",
+        "B": "資格情報を絶対に更新しない",
+        "C": "漏洩が発生した場合のみ更新",
+        "D": "毎日資格情報を更新"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "資格情報ローテーションのベストプラクティス：ポリシーに従って定期的に更新（90日ごとなど）、その資格情報を使用するすべてのアプリを更新、スムーズな移行のため一時的に二重資格情報期間を設ける。頻繁すぎる更新や全く更新しないのはベストプラクティスではありません。"
+    },
+    {
+      "id": 44,
+      "question": "BTP で CORS を設定する際、セキュリティ上の考慮事項はどれですか？",
+      "options": {
+        "A": "許可するオリジンドメインを制限",
+        "B": "許可する HTTP メソッドを制限",
+        "C": "資格情報モードを設定",
+        "D": "すべてのドメインを許可 (*)"
+      },
+      "answer": ["A", "B", "C"],
+      "answerType": "multiple",
+      "explanation": "CORS セキュリティ設定：許可するオリジンを制限(A)で信頼するドメインのみ許可、HTTP メソッドを制限(B)で必要なメソッドのみ許可、資格情報を正しく設定(C)。ワイルドカード *(D)ですべてのドメインを許可するのは安全ではなく、避けるべきです。"
+    },
+    {
+      "id": 45,
+      "question": "SAP BTP の CAP (Cloud Application Programming) Model が提供するものは何ですか？",
+      "options": {
+        "A": "CDS ベースのフルスタックアプリ開発フレームワーク",
+        "B": "帽子デザインツール",
+        "C": "資本投資計算機",
+        "D": "ネットワーク容量計画"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "CAP は SAP のアプリ開発フレームワークで、CDS (Core Data Services) を使用してデータモデルとサービスを定義します。Node.js と Java ランタイムをサポートし、マルチテナント、セキュリティ、ローカライゼーションなどの組み込みサポートでエンタープライズアプリ開発を簡素化します。"
+    },
+    {
+      "id": 46,
+      "question": "BTP のログ保持ポリシーを設定する必要があります。考慮すべき要素はどれですか？",
+      "options": {
+        "A": "コンプライアンス要件",
+        "B": "ストレージコスト",
+        "C": "トラブルシューティングニーズ",
+        "D": "ログの色"
+      },
+      "answer": ["A", "B", "C"],
+      "answerType": "multiple",
+      "explanation": "ログ保持で考慮すべき点：コンプライアンス要件(A)（一部の業界は特定期間の保持が必要）、ストレージコスト(B)（長期保存の費用）、トラブルシューティングニーズ(C)（問題分析に十分な履歴データが必要）。ログの色(D)は保持ポリシーとは無関係です。"
+    },
+    {
+      "id": 47,
+      "question": "SAP BTP の Event-Driven Architecture のコアコンポーネントは何ですか？",
+      "options": {
+        "A": "SAP Event Mesh",
+        "B": "イベントプロデューサー",
+        "C": "イベントコンシューマー",
+        "D": "上記すべて"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "イベント駆動アーキテクチャには、Event Mesh（イベントバスとして）、イベントプロデューサー（イベントを発行）、イベントコンシューマー（イベントをサブスクライブして処理）が必要です。これら3つのコンポーネントが連携して疎結合の非同期通信パターンを実現します。"
+    },
+    {
+      "id": 48,
+      "question": "BTP の Service Key を設定する際、セキュリティベストプラクティスはどれですか？",
+      "options": {
+        "A": "適切な有効期限を設定",
+        "B": "IP ホワイトリストを制限（サポートされている場合）",
+        "C": "定期的にローテーション",
+        "D": "コードにハードコード"
+      },
+      "answer": ["A", "B", "C"],
+      "answerType": "multiple",
+      "explanation": "Service Key のセキュリティプラクティス：有効期限を設定(A)で露出リスクを制限、IP ホワイトリスト(B)で使用元を制限、定期的なローテーション(C)で漏洩の影響を軽減。ハードコード(D)はアンチパターンで、環境変数または Secret 管理を使用すべきです。"
+    },
+    {
+      "id": 49,
+      "question": "SAP BTP の Tenant Onboarding プロセスに含まれるステップはどれですか？",
+      "options": {
+        "A": "テナント固有のリソースを作成",
+        "B": "テナントの Identity Provider を設定",
+        "C": "ロールと権限を割り当て",
+        "D": "上記すべて"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "マルチテナントアプリの Tenant Onboarding には、テナントリソースの作成(A)（データベーススキーマなど）、IdP の設定(B)（テナントユーザー認証用）、権限の割り当て(C)（テナント管理者の設定）が含まれます。完全なプロセスにはこれらすべてのステップが必要です。"
+    },
+    {
+      "id": 50,
+      "question": "BTP の総所有コスト(TCO)を評価する必要があります。含めるべき要素はどれですか？",
+      "options": {
+        "A": "サービスサブスクリプション費用",
+        "B": "開発・運用の人件費",
+        "C": "トレーニングコスト",
+        "D": "移行コスト"
+      },
+      "answer": ["A", "B", "C", "D"],
+      "answerType": "multiple",
+      "explanation": "TCO 評価にはすべてのコストを含める：サービスサブスクリプション(A)の直接費用、人件費(B)（開発運用チーム）、トレーニング(C)（チームのスキル構築）、移行(D)（既存システムからの一時的なコスト）。包括的な評価で正しい意思決定ができます。"
+    }
+  ]
+}

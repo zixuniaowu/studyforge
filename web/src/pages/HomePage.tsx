@@ -405,6 +405,9 @@ export const HomePage: React.FC = () => {
             'sap-c-ts410-set1', 'sap-c-ts410-set2', 'sap-c-ts410-set3',
             // SAP BTP
             'sap-c-btp-set1', 'sap-c-btp-set2', 'sap-c-btp-set3',
+            'sap-c-btpadm-set1', 'sap-c-btpadm-set2', 'sap-c-btpadm-set3',
+            'sap-c-btpdev-set1', 'sap-c-btpdev-set2', 'sap-c-btpdev-set3',
+            'sap-c-btpint-set1', 'sap-c-btpint-set2', 'sap-c-btpint-set3',
             // SAP Activate
             'sap-c-activate-set1', 'sap-c-activate-set2', 'sap-c-activate-set3'
           ];

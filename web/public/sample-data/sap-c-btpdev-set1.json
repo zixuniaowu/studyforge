@@ -1,0 +1,660 @@
+{
+  "examId": "sap-c-btpdev-set1",
+  "provider": "SAP",
+  "title": "SAP BTP 开发者 (C_BTPDEV) 模拟题 Set 1",
+  "description": "SAP Business Technology Platform 开发者认证模拟试题第一套",
+  "icon": "sap",
+  "setNumber": 1,
+  "questions": [
+    {
+      "id": 1,
+      "question": "在 SAP BTP 中，CAP (Cloud Application Programming Model) 使用什么语言定义数据模型？",
+      "options": {
+        "A": "CDS (Core Data Services)",
+        "B": "JSON Schema",
+        "C": "XML",
+        "D": "YAML"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "CAP 使用 CDS (Core Data Services) 定义数据模型和服务。CDS 是声明式语言，用于定义实体、关联、视图和服务接口。它被编译成目标数据库的 DDL 和 OData 服务定义。"
+    },
+    {
+      "id": 2,
+      "question": "在 CAP 项目中，以下哪些文件/目录是标准结构的一部分？",
+      "options": {
+        "A": "db/ - 数据模型定义",
+        "B": "srv/ - 服务定义和实现",
+        "C": "app/ - UI 应用",
+        "D": "lib/ - 库文件"
+      },
+      "answer": ["A", "B", "C"],
+      "answerType": "multiple",
+      "explanation": "CAP 标准项目结构：db/(A)包含数据模型CDS文件、srv/(B)包含服务定义和自定义处理程序、app/(C)包含前端UI应用。lib/(D)不是CAP标准目录。"
+    },
+    {
+      "id": 3,
+      "question": "SAP UI5 应用中，什么是 Controller？",
+      "options": {
+        "A": "处理视图逻辑和用户交互的 JavaScript 模块",
+        "B": "存储数据的数据库表",
+        "C": "网络请求处理器",
+        "D": "CSS 样式文件"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "在 SAP UI5 的 MVC 架构中，Controller 是处理视图逻辑的 JavaScript 模块。它响应用户事件、调用后端服务、更新模型数据。每个视图通常有对应的 Controller。"
+    },
+    {
+      "id": 4,
+      "question": "在 SAP BTP 开发中，xs-app.json 文件的作用是什么？",
+      "options": {
+        "A": "配置 Application Router 的路由规则",
+        "B": "定义数据库连接",
+        "C": "存储应用程序数据",
+        "D": "配置 CI/CD 流程"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "xs-app.json 是 Application Router 的配置文件，定义 URL 路由规则、认证要求、目标服务映射等。它决定了请求如何被路由到不同的后端服务。"
+    },
+    {
+      "id": 5,
+      "question": "在 CAP 中，如何定义一个具有自动生成 UUID 主键的实体？",
+      "options": {
+        "A": "使用 aspect cuid 或 key ID : UUID",
+        "B": "手动生成 GUID 字符串",
+        "C": "使用数据库序列",
+        "D": "调用外部 UUID 服务"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "CAP 提供 cuid aspect 自动添加 UUID 主键。定义实体时使用 'entity MyEntity : cuid { }' 或直接声明 'key ID : UUID' 配合 @cds.autoexpose 实现自动生成。"
+    },
+    {
+      "id": 6,
+      "question": "SAP Fiori Elements 中的 List Report 模板提供什么功能？",
+      "options": {
+        "A": "数据列表展示、过滤、排序和搜索",
+        "B": "复杂图表绑制",
+        "C": "视频播放",
+        "D": "文件编辑"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "List Report 是 Fiori Elements 的标准模板，提供数据列表展示、SmartFilterBar 过滤、表格排序、全局搜索等功能。开发者通过 OData 注解控制行为，无需编写 UI 代码。"
+    },
+    {
+      "id": 7,
+      "question": "在 BTP 开发中，什么是 HDI (HANA Deployment Infrastructure) Container？",
+      "options": {
+        "A": "HANA 数据库中的隔离部署单元",
+        "B": "Docker 容器",
+        "C": "网络存储容器",
+        "D": "日志收集容器"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "HDI Container 是 SAP HANA 中的部署单元，提供 schema 级别的隔离。每个 HDI Container 有独立的数据库对象（表、视图、存储过程），支持设计时部署和版本控制。"
+    },
+    {
+      "id": 8,
+      "question": "在 SAP UI5 中，以下哪些是标准的数据绑定模式？",
+      "options": {
+        "A": "One-Way（单向）",
+        "B": "Two-Way（双向）",
+        "C": "One-Time（一次性）",
+        "D": "Three-Way（三向）"
+      },
+      "answer": ["A", "B", "C"],
+      "answerType": "multiple",
+      "explanation": "UI5 支持三种绑定模式：One-Way(A)模型→视图、Two-Way(B)模型⇔视图双向同步、One-Time(C)初始化时绑定一次。不存在 Three-Way(D)绑定模式。"
+    },
+    {
+      "id": 9,
+      "question": "在 CAP 服务中，如何实现自定义的 before/after 处理程序？",
+      "options": {
+        "A": "在 srv/*.js 文件中注册处理函数",
+        "B": "修改数据库触发器",
+        "C": "编辑 OData 元数据",
+        "D": "配置 manifest.json"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "CAP 的自定义逻辑在服务实现文件(*.js)中编写。使用 this.before('CREATE', 'Entity', handler) 或 this.after('READ', ...) 注册处理程序，在 OData 操作前后执行自定义逻辑。"
+    },
+    {
+      "id": 10,
+      "question": "SAP BTP 中的 mta.yaml 文件用于什么？",
+      "options": {
+        "A": "定义多目标应用的模块、资源和依赖",
+        "B": "存储用户密码",
+        "C": "配置数据库索引",
+        "D": "定义 CSS 样式"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "mta.yaml 是多目标应用(MTA)的描述符，定义应用的模块（如 approuter、srv、db）、所需资源（服务实例）、模块间依赖关系。mbt build 命令根据此文件构建部署包。"
+    },
+    {
+      "id": 11,
+      "question": "在开发 OData 服务时，如何定义实体间的一对多关联？",
+      "options": {
+        "A": "使用 Composition 或 Association",
+        "B": "创建外键约束",
+        "C": "使用 JOIN 语句",
+        "D": "配置网络路由"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "在 CDS 中使用 Composition 定义包含关系（父子关系，子记录随父记录删除）或 Association 定义普通关联。例如：Composition of many Items on item.order = $self;"
+    },
+    {
+      "id": 12,
+      "question": "SAP Business Application Studio 中的 Dev Space 是什么？",
+      "options": {
+        "A": "预配置的云端开发环境",
+        "B": "代码存储库",
+        "C": "部署目标服务器",
+        "D": "测试数据集"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Dev Space 是 Business Application Studio 中的开发环境容器，预装了特定类型开发所需的工具和扩展。如 SAP Fiori Dev Space 包含 UI5 工具，Full Stack Dev Space 包含 CAP 工具。"
+    },
+    {
+      "id": 13,
+      "question": "在 SAP UI5 中，Fragment 的主要用途是什么？",
+      "options": {
+        "A": "定义可重用的 UI 组件片段",
+        "B": "存储数据库分片",
+        "C": "网络数据包分割",
+        "D": "日志文件分段"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Fragment 是 UI5 中定义可重用 UI 片段的机制，没有自己的 Controller。常用于对话框、弹出框或在多个视图中共享的 UI 部分。支持 XML、JavaScript、HTML 三种定义方式。"
+    },
+    {
+      "id": 14,
+      "question": "在 CAP 项目中，如何添加自定义验证逻辑？",
+      "options": {
+        "A": "在 before handler 中检查数据并抛出错误",
+        "B": "修改数据库约束",
+        "C": "编辑 package.json",
+        "D": "配置 CI/CD 管道"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "自定义验证在 before handler 中实现：检查传入数据，如不满足条件则使用 req.reject() 或抛出错误。例如：this.before('CREATE', 'Orders', req => { if(!req.data.customer) req.reject(400, 'Customer required'); });"
+    },
+    {
+      "id": 15,
+      "question": "SAP Fiori 应用的 manifest.json 文件包含哪些重要配置？",
+      "options": {
+        "A": "应用元数据和版本信息",
+        "B": "数据源和服务配置",
+        "C": "路由和导航配置",
+        "D": "数据库连接字符串"
+      },
+      "answer": ["A", "B", "C"],
+      "answerType": "multiple",
+      "explanation": "manifest.json（应用描述符）包含：sap.app(A)中的应用元数据、sap.ui5.models(B)中的数据源配置、sap.ui5.routing(C)中的路由配置。数据库连接(D)不在前端 manifest 中配置。"
+    },
+    {
+      "id": 16,
+      "question": "在 BTP 开发中，什么是 XSUAA 的 scope？",
+      "options": {
+        "A": "定义用户可执行操作的权限范围",
+        "B": "JavaScript 变量作用域",
+        "C": "数据库查询范围",
+        "D": "网络访问范围"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "XSUAA scope 定义细粒度权限，如 'Read'、'Write'、'Admin'。在 xs-security.json 中定义，应用代码通过 @requires 注解或 req.user.is() 检查用户是否拥有特定 scope。"
+    },
+    {
+      "id": 17,
+      "question": "在 SAP UI5 中，ODataModel 的 read 方法用于什么？",
+      "options": {
+        "A": "从 OData 服务读取数据",
+        "B": "读取本地文件",
+        "C": "读取用户输入",
+        "D": "读取浏览器缓存"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "ODataModel.read() 方法用于从 OData 服务异步读取数据。它接受实体路径、过滤器、排序等参数，返回的数据可在回调函数中处理或绑定到 UI 控件。"
+    },
+    {
+      "id": 18,
+      "question": "在 CAP 中，cds.connect.to() 方法的作用是什么？",
+      "options": {
+        "A": "连接到外部服务或数据库",
+        "B": "建立网络连接",
+        "C": "连接 UI 组件",
+        "D": "连接日志服务"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "cds.connect.to() 用于获取外部服务或数据库的连接。例如 cds.connect.to('db') 连接数据库，cds.connect.to('API_BUSINESS_PARTNER') 连接外部 API。返回服务实例用于执行查询。"
+    },
+    {
+      "id": 19,
+      "question": "SAP BTP 开发中，package.json 中的 cds.requires 配置什么？",
+      "options": {
+        "A": "声明 CAP 应用所需的服务和资源",
+        "B": "列出 npm 依赖包",
+        "C": "配置构建脚本",
+        "D": "定义测试用例"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "cds.requires 在 package.json 中声明 CAP 应用依赖的服务，如数据库、消息队列、外部 API。运行时 CAP 框架自动建立这些连接。例如 \"db\": { \"kind\": \"sql\" }。"
+    },
+    {
+      "id": 20,
+      "question": "在 SAP UI5 中，如何实现国际化(i18n)？",
+      "options": {
+        "A": "使用 i18n 资源模型和 properties 文件",
+        "B": "硬编码多语言文本",
+        "C": "使用在线翻译 API",
+        "D": "创建多个应用版本"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "UI5 国际化通过 i18n 资源模型实现：创建 i18n.properties（默认）和 i18n_zh.properties 等语言文件，在视图中使用 {i18n>keyName} 绑定。运行时根据用户语言自动加载。"
+    },
+    {
+      "id": 21,
+      "question": "在 CAP 中，@readonly 注解的作用是什么？",
+      "options": {
+        "A": "使实体或属性只读，禁止修改",
+        "B": "加密数据",
+        "C": "缓存数据",
+        "D": "压缩数据"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "@readonly 注解标记实体或字段为只读。应用于实体时禁止 CREATE/UPDATE/DELETE 操作，应用于字段时该字段只能读取不能写入。是实现权限控制的简便方式。"
+    },
+    {
+      "id": 22,
+      "question": "SAP Fiori Elements 中的 Object Page 模板适合什么场景？",
+      "options": {
+        "A": "展示单个实体的详细信息",
+        "B": "批量数据导入",
+        "C": "视频播放",
+        "D": "文件下载"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Object Page 是展示单个业务对象详细信息的模板，包含标题区域、多个章节（Section）、相关数据列表。常与 List Report 配合：列表选择后导航到 Object Page 查看详情。"
+    },
+    {
+      "id": 23,
+      "question": "在 BTP 开发中，如何在本地测试 CAP 应用？",
+      "options": {
+        "A": "使用 cds watch 命令启动开发服务器",
+        "B": "必须部署到云端",
+        "C": "使用浏览器开发工具",
+        "D": "发送邮件请求测试"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "cds watch 启动本地开发服务器，支持热重载。默认使用 SQLite 内存数据库，自动加载示例数据(csv文件)。开发者可以本地测试 OData 服务而无需部署到云端。"
+    },
+    {
+      "id": 24,
+      "question": "在 SAP UI5 中，sap.ui.model.Filter 用于什么？",
+      "options": {
+        "A": "过滤数据列表的显示内容",
+        "B": "过滤网络请求",
+        "C": "过滤日志消息",
+        "D": "过滤用户评论"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Filter 对象用于在数据绑定时过滤显示的数据。可以创建简单过滤器或使用 FilterOperator 组合复杂条件，应用于 ODataListBinding 或 JSONModel 的列表绑定。"
+    },
+    {
+      "id": 25,
+      "question": "在 CAP 中，srv.send() 方法的用途是什么？",
+      "options": {
+        "A": "向外部服务发送请求",
+        "B": "发送电子邮件",
+        "C": "发送短信",
+        "D": "发送推送通知"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "srv.send() 用于向已连接的外部服务发送请求。例如调用外部 API：const API = await cds.connect.to('API'); const result = await API.send('GET', '/endpoint');"
+    },
+    {
+      "id": 26,
+      "question": "SAP BTP 中的 destinations 环境变量包含什么信息？",
+      "options": {
+        "A": "服务绑定提供的目标服务配置",
+        "B": "应用程序源代码",
+        "C": "用户会话数据",
+        "D": "日志文件路径"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "destinations 环境变量包含通过 destination 服务绑定获得的配置信息，包括目标 URL、认证凭证等。应用运行时可读取这些配置连接外部系统。"
+    },
+    {
+      "id": 27,
+      "question": "在 SAP UI5 中，如何创建自定义控件？",
+      "options": {
+        "A": "扩展 sap.ui.core.Control 类",
+        "B": "编辑 CSS 文件",
+        "C": "修改浏览器设置",
+        "D": "安装插件"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "自定义控件通过扩展 sap.ui.core.Control 创建。定义属性、聚合、事件，实现 renderer 方法渲染 HTML。自定义控件可像标准控件一样在视图中使用。"
+    },
+    {
+      "id": 28,
+      "question": "在 CAP 中，@cds.persistence.skip 注解的作用是什么？",
+      "options": {
+        "A": "标记实体不持久化到数据库",
+        "B": "跳过验证",
+        "C": "跳过日志记录",
+        "D": "跳过测试"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "@cds.persistence.skip 标记实体为非持久化，不会在数据库中创建对应的表。用于定义运行时计算的视图、外部服务代理实体等不需要本地存储的实体。"
+    },
+    {
+      "id": 29,
+      "question": "SAP Fiori Launchpad 中的 tile 是什么？",
+      "options": {
+        "A": "应用入口点的可视化表示",
+        "B": "数据库表",
+        "C": "网络数据包",
+        "D": "日志条目"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Tile 是 Fiori Launchpad 中应用的可视化入口。包含图标、标题、副标题，可以显示动态数据（如待处理项数量）。用户点击 tile 启动对应的 Fiori 应用。"
+    },
+    {
+      "id": 30,
+      "question": "在 BTP 开发中，cds build 命令做什么？",
+      "options": {
+        "A": "编译 CDS 模型生成部署产物",
+        "B": "构建 Docker 镜像",
+        "C": "编译 C++ 代码",
+        "D": "构建硬件设备"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "cds build 编译 CDS 模型，生成目标环境所需的产物：数据库 DDL、OData 元数据、Node.js 或 Java 服务代码。是 CAP 应用部署准备的关键步骤。"
+    },
+    {
+      "id": 31,
+      "question": "在 SAP UI5 中，MessageToast 用于什么？",
+      "options": {
+        "A": "显示短暂的消息提示",
+        "B": "发送电子邮件",
+        "C": "存储数据",
+        "D": "打印文档"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "MessageToast 是 UI5 的消息提示控件，在屏幕上短暂显示消息后自动消失。常用于操作成功提示，如 MessageToast.show('Data saved successfully')。"
+    },
+    {
+      "id": 32,
+      "question": "在 CAP 中，如何实现分页查询？",
+      "options": {
+        "A": "使用 $top 和 $skip OData 参数",
+        "B": "手动分割数组",
+        "C": "创建多个服务",
+        "D": "修改数据库配置"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "CAP 自动支持 OData 分页参数：$top 限制返回记录数，$skip 跳过指定数量记录。客户端请求如 /Books?$top=10&$skip=20 获取第3页（每页10条）。"
+    },
+    {
+      "id": 33,
+      "question": "SAP BTP 中的 cf push 命令做什么？",
+      "options": {
+        "A": "将应用部署到 Cloud Foundry",
+        "B": "推送 Git 代码",
+        "C": "发送通知",
+        "D": "上传文件"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "cf push 是 Cloud Foundry CLI 命令，将应用部署到 CF 环境。它读取 manifest.yml 配置，上传应用代码，创建应用实例，绑定服务。"
+    },
+    {
+      "id": 34,
+      "question": "在 SAP UI5 中，Aggregation 的作用是什么？",
+      "options": {
+        "A": "定义控件的子元素集合",
+        "B": "计算数据总和",
+        "C": "聚合日志文件",
+        "D": "合并网络请求"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Aggregation 定义控件可包含的子控件。如 Table 控件的 items 聚合包含行，List 的 items 聚合包含列表项。支持通过数据绑定动态生成子控件。"
+    },
+    {
+      "id": 35,
+      "question": "在 CAP 中，external 服务定义的用途是什么？",
+      "options": {
+        "A": "导入外部 API 的定义以便调用",
+        "B": "定义外部样式",
+        "C": "配置外部网络",
+        "D": "连接外部打印机"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "外部服务定义（如从 EDMX 导入）让 CAP 应用能够类型安全地调用外部 OData 服务。使用 cds import 导入 API 定义，然后在代码中使用强类型方式调用。"
+    },
+    {
+      "id": 36,
+      "question": "SAP BTP 中的 xs-security.json 文件定义什么？",
+      "options": {
+        "A": "应用的 OAuth 2.0 安全配置",
+        "B": "数据库安全设置",
+        "C": "网络防火墙规则",
+        "D": "文件加密密钥"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "xs-security.json 定义应用的 XSUAA 配置，包括：xsappname、scopes（权限范围）、role-templates（角色模板）、attributes（用户属性）。是 BTP 应用安全的基础配置。"
+    },
+    {
+      "id": 37,
+      "question": "在 SAP UI5 中，JSONModel 和 ODataModel 的主要区别是什么？",
+      "options": {
+        "A": "JSONModel 是客户端模型，ODataModel 连接后端服务",
+        "B": "JSONModel 更快",
+        "C": "ODataModel 只支持只读",
+        "D": "两者完全相同"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "JSONModel 是客户端内存模型，数据存储在浏览器中。ODataModel 连接到后端 OData 服务，支持 CRUD 操作自动同步到服务器。根据数据来源选择合适的模型。"
+    },
+    {
+      "id": 38,
+      "question": "在 CAP 中，如何处理并发修改冲突？",
+      "options": {
+        "A": "使用 @odata.etag 实现乐观锁",
+        "B": "禁止并发访问",
+        "C": "忽略冲突",
+        "D": "手动加锁"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "CAP 支持通过 ETag 实现乐观并发控制。在实体上添加 @odata.etag 注解的字段，UPDATE 时自动检查 ETag，如果数据已被其他用户修改则拒绝更新。"
+    },
+    {
+      "id": 39,
+      "question": "SAP Fiori 应用中的 Smart Controls 是什么？",
+      "options": {
+        "A": "自动从 OData 元数据生成 UI 的智能控件",
+        "B": "人工智能控件",
+        "C": "智能家居控件",
+        "D": "远程控制器"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Smart Controls（如 SmartTable、SmartField、SmartFilterBar）自动读取 OData 元数据和注解，生成相应的 UI。开发者无需手动配置字段类型、验证规则等。"
+    },
+    {
+      "id": 40,
+      "question": "在 BTP 开发中，如何添加自定义 OData 注解？",
+      "options": {
+        "A": "在 CDS 模型中使用 @ 语法",
+        "B": "编辑 XML 文件",
+        "C": "修改数据库",
+        "D": "配置网络"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "CDS 支持使用 @ 语法添加注解，如 @UI.LineItem、@Common.Label。这些注解被编译到 OData 元数据中，Fiori Elements 等 UI 框架使用它们自动生成界面。"
+    },
+    {
+      "id": 41,
+      "question": "在 SAP UI5 中，EventBus 的作用是什么？",
+      "options": {
+        "A": "在组件间发布和订阅事件",
+        "B": "管理交通事件",
+        "C": "记录日志事件",
+        "D": "处理数据库事件"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "EventBus 是 UI5 的事件总线，支持组件间松耦合通信。发布者使用 publish() 发送事件，订阅者使用 subscribe() 接收事件，实现组件解耦。"
+    },
+    {
+      "id": 42,
+      "question": "在 CAP 中，srv.run() 方法用于什么？",
+      "options": {
+        "A": "执行 CQL 查询语句",
+        "B": "运行物理程序",
+        "C": "启动服务器",
+        "D": "执行测试"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "srv.run() 在服务上执行 CQL（CDS Query Language）查询。例如：const books = await srv.run(SELECT.from('Books').where({author: 'John'}))。"
+    },
+    {
+      "id": 43,
+      "question": "SAP BTP 中的 cf logs 命令用于什么？",
+      "options": {
+        "A": "查看应用程序日志",
+        "B": "下载日志文件",
+        "C": "删除日志",
+        "D": "创建日志"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "cf logs <app-name> 显示 Cloud Foundry 应用的日志输出。使用 --recent 查看历史日志，不带参数则实时跟踪日志流。是调试部署应用的重要工具。"
+    },
+    {
+      "id": 44,
+      "question": "在 SAP UI5 中，什么是 Routing？",
+      "options": {
+        "A": "管理应用内页面导航",
+        "B": "网络路由配置",
+        "C": "邮件路由",
+        "D": "数据路由"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "UI5 Routing 管理单页应用(SPA)内的导航。在 manifest.json 中配置路由规则，将 URL hash 映射到视图。支持导航参数、嵌套路由、导航守卫等功能。"
+    },
+    {
+      "id": 45,
+      "question": "在 CAP 中，using...from 语句的作用是什么？",
+      "options": {
+        "A": "导入外部 CDS 定义",
+        "B": "导入 CSS 样式",
+        "C": "导入图片",
+        "D": "导入视频"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "using...from 在 CDS 中导入其他文件的定义。例如 using {my.namespace} from '../db/schema'; 导入数据模型定义，实现模块化和重用。"
+    },
+    {
+      "id": 46,
+      "question": "SAP BTP 中的 cf bind-service 命令做什么？",
+      "options": {
+        "A": "将服务实例绑定到应用",
+        "B": "绑定 IP 地址",
+        "C": "绑定域名",
+        "D": "绑定用户账户"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "cf bind-service 将已创建的服务实例绑定到应用。绑定后，服务的连接信息通过 VCAP_SERVICES 环境变量注入应用，应用可以使用该服务。"
+    },
+    {
+      "id": 47,
+      "question": "在 SAP UI5 中，formatter 函数的用途是什么？",
+      "options": {
+        "A": "在数据绑定中转换数据格式",
+        "B": "格式化硬盘",
+        "C": "格式化代码",
+        "D": "格式化邮件"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Formatter 函数在数据绑定中转换模型数据为显示格式。例如将日期对象格式化为字符串、根据状态值返回不同文本。在 Controller 中定义，在视图绑定中引用。"
+    },
+    {
+      "id": 48,
+      "question": "在 CAP 多租户应用中，如何实现租户数据隔离？",
+      "options": {
+        "A": "使用 HDI Container 或 Schema 隔离",
+        "B": "使用不同的服务器",
+        "C": "使用不同的域名",
+        "D": "使用不同的编程语言"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "CAP 多租户应用通过 HDI Container（每租户独立 container）或 Schema 隔离（共享 container 内的不同 schema）实现数据隔离。@sap/cds-mtxs 模块提供租户生命周期管理。"
+    },
+    {
+      "id": 49,
+      "question": "SAP Fiori 应用中的 cross-app navigation 是什么？",
+      "options": {
+        "A": "不同 Fiori 应用间的导航",
+        "B": "跨浏览器导航",
+        "C": "跨设备导航",
+        "D": "跨网络导航"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Cross-app navigation 允许 Fiori 应用间导航，传递上下文参数。使用 CrossApplicationNavigation 服务或 intent-based navigation，基于语义对象和操作进行导航。"
+    },
+    {
+      "id": 50,
+      "question": "在 BTP 开发中，如何调试部署的 CAP 应用？",
+      "options": {
+        "A": "使用 cf ssh 连接和远程调试",
+        "B": "只能在本地调试",
+        "C": "发送邮件询问",
+        "D": "无法调试"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "可以使用 cf ssh 连接到运行中的容器，配合 Node.js 调试器或日志输出进行调试。也可以配置远程调试端口，从本地 IDE 连接调试。结合 Application Logging 分析问题。"
+    }
+  ]
+}

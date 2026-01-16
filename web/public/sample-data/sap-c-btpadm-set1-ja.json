@@ -1,0 +1,660 @@
+{
+  "examId": "sap-c-btpadm-set1-ja",
+  "provider": "SAP",
+  "title": "SAP BTP 管理者 (C_BTPADM) 模擬試験 Set 1",
+  "description": "SAP Business Technology Platform 管理者認定模擬試験第1セット",
+  "icon": "sap",
+  "setNumber": 1,
+  "questions": [
+    {
+      "id": 1,
+      "question": "SAP BTP における Global Account とは何ですか？",
+      "options": {
+        "A": "アプリケーション開発用のランタイム環境",
+        "B": "SAP との商用契約を表す最上位エンティティ",
+        "C": "アプリケーションデータを格納するデータベースインスタンス",
+        "D": "ユーザーIDを管理する認証サービス"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Global Account は SAP BTP の最上位エンティティで、SAP との商用契約を表します。サブアカウント、クォータ、認可を管理するエントリーポイントです。すべてのサブアカウントは特定の Global Account に属します。"
+    },
+    {
+      "id": 2,
+      "question": "SAP BTP Subaccount の特性として正しいものはどれですか？",
+      "options": {
+        "A": "異なるリージョンと環境に割り当て可能",
+        "B": "Global Account から完全に独立している",
+        "C": "リソースとクォータは Global Account から割り当てられる",
+        "D": "独自のメンバーと認可管理を持てる"
+      },
+      "answer": ["A", "C", "D"],
+      "answerType": "multiple",
+      "explanation": "Subaccount は異なるリージョンや環境に割り当て可能(A正解)、リソースクォータは Global Account から割り当て(C正解)、独自のメンバーと認可を持てます(D正解)。ただし完全に独立ではなく Global Account に属します(B不正解)。"
+    },
+    {
+      "id": 3,
+      "question": "SAP BTP の Directory 機能は主に何に使用されますか？",
+      "options": {
+        "A": "アプリケーションファイルの保存",
+        "B": "Subaccount の階層構造を整理・管理",
+        "C": "ネットワークルーティングルールの設定",
+        "D": "データベース接続の管理"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Directory は SAP BTP で Subaccount を整理する機能です。階層構造を作成して Subaccount をグループ化・管理でき、大規模組織の管理に便利です。Directory はネストでき、ツリー構造を形成します。"
+    },
+    {
+      "id": 4,
+      "question": "SAP BTP Cockpit で管理者が実行できる操作はどれですか？",
+      "options": {
+        "A": "Subaccount の作成と管理",
+        "B": "サービスクォータと権限の割り当て",
+        "C": "アプリケーションコードの直接編集",
+        "D": "リソース使用状況の監視"
+      },
+      "answer": ["A", "B", "D"],
+      "answerType": "multiple",
+      "explanation": "BTP Cockpit では Subaccount の作成/管理(A)、クォータと権限の割り当て(B)、リソース監視(D)が可能です。ただしコードエディタではないため、アプリコードの直接編集はできません(C不正解)。コード開発には Business Application Studio などの IDE を使用します。"
+    },
+    {
+      "id": 5,
+      "question": "SAP BTP における Entitlement とは何を指しますか？",
+      "options": {
+        "A": "ユーザーのログイン資格情報",
+        "B": "アカウントが使用権限を持つサービスとクォータ",
+        "C": "アプリケーションのデプロイ設定",
+        "D": "データ転送の暗号化プロトコル"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Entitlement は、アカウントが使用できるサービスと使用可能なクォータ量を定義します。管理者は Entitlement Management を通じて、Global Account から Subaccount にサービスクォータを割り当てます。"
+    },
+    {
+      "id": 6,
+      "question": "SAP BTP の ID 認証設定で、Identity Provider (IdP) として通常使用されるサービスはどれですか？",
+      "options": {
+        "A": "SAP HANA Database",
+        "B": "SAP Identity Authentication Service (IAS)",
+        "C": "SAP Event Mesh",
+        "D": "SAP API Management"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "SAP Identity Authentication Service (IAS) は SAP BTP の標準 Identity Provider で、ユーザー認証を管理します。SAML 2.0、OpenID Connect など複数の認証方式をサポートし、エンタープライズ IdP（Active Directory など）との統合も可能です。"
+    },
+    {
+      "id": 7,
+      "question": "SAP BTP Cloud Foundry 環境における Space とは何ですか？",
+      "options": {
+        "A": "永続データを格納する領域",
+        "B": "Global Account 配下の組織単位",
+        "C": "Organization 内でアプリとサービスを分離する論理ユニット",
+        "D": "ネットワーク通信用の仮想プライベートクラウド"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "Cloud Foundry 環境では、Space は Organization 内の論理ユニットで、異なるアプリケーション、サービス、開発環境を分離するために使用されます。典型的な使用例は、開発・テスト・本番用に異なる Space を作成することです。"
+    },
+    {
+      "id": 8,
+      "question": "Cloud Foundry 環境で開発チームの権限を設定する際、Cloud Foundry の標準ロールはどれですか？",
+      "options": {
+        "A": "Space Developer",
+        "B": "Org Manager",
+        "C": "Global Administrator",
+        "D": "Space Manager"
+      },
+      "answer": ["A", "B", "D"],
+      "answerType": "multiple",
+      "explanation": "Cloud Foundry 標準ロールには Org Manager(組織管理)、Space Manager(Space管理)、Space Developer(アプリ開発・デプロイ)、Space Auditor(読み取り専用監査)があります。Global Administrator は Cloud Foundry ネイティブロールではありません(C不正解)。"
+    },
+    {
+      "id": 9,
+      "question": "SAP BTP の Kyma Runtime は主にどの技術に基づいていますか？",
+      "options": {
+        "A": "Cloud Foundry",
+        "B": "Kubernetes",
+        "C": "ABAP",
+        "D": "SAP HANA"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Kyma Runtime は Kubernetes ベースのランタイム環境で、コンテナ化アプリケーションのデプロイ、サービスメッシュ、イベント処理などクラウドネイティブ機能を提供します。任意のプログラミング言語でマイクロサービスを開発し、SAP ソリューションと統合できます。"
+    },
+    {
+      "id": 10,
+      "question": "SAP BTP における Service Binding の役割は何ですか？",
+      "options": {
+        "A": "サービスインスタンスをアプリケーションに接続し、アクセス資格情報を提供",
+        "B": "サービスへのネットワークアクセスを制限",
+        "C": "サービスの課金モデルを定義",
+        "D": "サービスの自動スケーリング戦略を設定"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Service Binding はサービスインスタンスをアプリケーションにバインドし、サービスへのアクセスに必要な資格情報と接続情報を提供します。バインド後、アプリは環境変数を通じてこれらの設定情報を取得できます。"
+    },
+    {
+      "id": 11,
+      "question": "SAP BTP の XSUAA サービスは主にどの機能を担当しますか？",
+      "options": {
+        "A": "データベース管理",
+        "B": "OAuth 2.0 認可とユーザー認証",
+        "C": "アプリケーションログ収集",
+        "D": "メッセージキュー処理"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "XSUAA (Authorization and Trust Management) サービスは OAuth 2.0 認可フレームワークを提供し、アプリケーションと API を保護します。ユーザー認証、トークン発行、スコープ検証などセキュリティ関連機能を処理します。"
+    },
+    {
+      "id": 12,
+      "question": "BTP 管理者としてアプリケーションパフォーマンスを監視する必要があります。使用できるツールはどれですか？",
+      "options": {
+        "A": "SAP Cloud ALM",
+        "B": "Application Logging Service",
+        "C": "SAP Event Mesh",
+        "D": "Dynatrace 統合"
+      },
+      "answer": ["A", "B", "D"],
+      "answerType": "multiple",
+      "explanation": "監視ツールには SAP Cloud ALM(運用監視)、Application Logging Service(ログ管理)、Dynatrace統合(APM監視)が含まれます。SAP Event Mesh はメッセージングサービスで、監視ツールではありません(C不正解)。"
+    },
+    {
+      "id": 13,
+      "question": "SAP BTP の Custom Domain サービスで管理者ができることは何ですか？",
+      "options": {
+        "A": "新しいデータセンターリージョンの作成",
+        "B": "アプリにカスタムドメイン名と SSL 証明書を設定",
+        "C": "アプリのプログラミング言語を変更",
+        "D": "サービスの料金プランを変更"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Custom Domain サービスにより、管理者は BTP アプリにカスタムドメイン名（app.yourcompany.com など）を設定でき、デフォルトの SAP ドメインを使用する必要がありません。また、安全な接続のための SSL/TLS 証明書の設定もサポートしています。"
+    },
+    {
+      "id": 14,
+      "question": "SAP BTP における Service Key とは何ですか？",
+      "options": {
+        "A": "データベースを暗号化するキー",
+        "B": "アプリ外部で使用できるサービスインスタンスのアクセス資格情報",
+        "C": "ユーザーログイン用のワンタイムパスワード",
+        "D": "API バージョン識別子"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Service Key はサービスインスタンス用に作成された独立した資格情報で、特定のアプリにバインドする必要がありません。外部システムから BTP サービスにアクセスする場合や、ローカル開発環境でサービス接続をテストする場合によく使用されます。"
+    },
+    {
+      "id": 15,
+      "question": "SAP BTP が提供するランタイム環境の種類はどれですか？",
+      "options": {
+        "A": "Cloud Foundry Environment",
+        "B": "Kyma Runtime",
+        "C": "ABAP Environment",
+        "D": "Neo Environment"
+      },
+      "answer": ["A", "B", "C", "D"],
+      "answerType": "multiple",
+      "explanation": "SAP BTP は複数のランタイム環境を提供：Cloud Foundry(多言語PaaS)、Kyma(Kubernetes)、ABAP Environment(クラウドABAP)、Neo Environment(レガシー環境、段階的に廃止予定)。管理者は要件に応じて適切な環境を選択する必要があります。"
+    },
+    {
+      "id": 16,
+      "question": "SAP BTP Connectivity サービス設定時、オンプレミスネットワークにインストールが必要なコンポーネントはどれですか？",
+      "options": {
+        "A": "SAP HANA Database",
+        "B": "Cloud Connector",
+        "C": "SAP Fiori Client",
+        "D": "SAP GUI"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Cloud Connector はオンプレミスネットワークにインストールする軽量コンポーネントで、SAP BTP とオンプレミスシステム間に安全なリバースコールトンネルを確立します。ファイアウォールでインバウンドポートを開く必要がなく、安全なクラウドからオンプレミスへの接続を提供します。"
+    },
+    {
+      "id": 17,
+      "question": "SAP BTP で Global Account Administrator 権限が必要な操作はどれですか？",
+      "options": {
+        "A": "新しい Subaccount の作成",
+        "B": "Entitlement 割り当ての管理",
+        "C": "Cloud Foundry Space へのアプリデプロイ",
+        "D": "Directory 構造の設定"
+      },
+      "answer": ["A", "B", "D"],
+      "answerType": "multiple",
+      "explanation": "Global Account Administrator の責任：Subaccount の作成(A)、Entitlement 管理(B)、Directory 設定(D)。CF Space へのアプリデプロイ(C)は通常 Space Developer 権限のみで可能です。"
+    },
+    {
+      "id": 18,
+      "question": "SAP BTP の Feature Set A と Feature Set B の主な違いは何ですか？",
+      "options": {
+        "A": "Feature Set B はより多くのプログラミング言語をサポート",
+        "B": "Feature Set B は Directory とより柔軟なアカウント管理をサポート",
+        "C": "Feature Set A の方がパフォーマンスが良い",
+        "D": "両者は完全に同じで、名前が違うだけ"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Feature Set B は新しいアカウントモデルで、Directory、Custom Properties、改善された Entitlement 管理などの機能をサポートしています。Feature Set A はレガシーモデルです。新しい Global Account はデフォルトで Feature Set B を使用します。"
+    },
+    {
+      "id": 19,
+      "question": "アプリの自動スケーリングを設定する必要があります。Cloud Foundry 環境では何を設定しますか？",
+      "options": {
+        "A": "Application Autoscaler サービス",
+        "B": "Service Mesh",
+        "C": "Destination サービス",
+        "D": "Audit Log サービス"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Application Autoscaler は BTP でアプリインスタンスを自動スケーリングするサービスです。管理者は CPU、メモリ、HTTP スループットなどのメトリクスに基づいてスケーリングポリシーを設定し、アプリの自動スケールアップ/ダウンを実現できます。"
+    },
+    {
+      "id": 20,
+      "question": "SAP BTP の Destination サービスは主に何に使用されますか？",
+      "options": {
+        "A": "アプリケーションの目標デプロイ場所を保存",
+        "B": "外部システムへの接続設定と資格情報を管理",
+        "C": "ユーザーのアクセス先ページを定義",
+        "D": "メール送信の宛先アドレスを設定"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Destination サービスは URL、認証方法、プロキシ設定などの接続設定を一元管理します。アプリケーションは Destination 名を通じて外部システムにアクセスし、接続情報をハードコードする必要がなく、メンテナンスとセキュリティ管理が容易になります。"
+    },
+    {
+      "id": 21,
+      "question": "SAP BTP で信頼設定を構成する際、正しい記述はどれですか？",
+      "options": {
+        "A": "各 Subaccount は1つの Identity Provider のみ設定可能",
+        "B": "SAP IAS とエンタープライズ IdP を同時に設定可能",
+        "C": "信頼設定は管理者ログインのみに影響",
+        "D": "信頼設定後は変更不可"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "SAP BTP は複数の Identity Provider 設定をサポートし、SAP IAS とエンタープライズ IdP（Azure AD、ADFS など）を同時に信頼できます。ユーザーはログイン時に異なる Identity Provider を選択できます。信頼設定はすべてのユーザーに影響し、いつでも変更可能です。"
+    },
+    {
+      "id": 22,
+      "question": "SAP BTP アカウントの使用コストを確認したい場合、どこで見ますか？",
+      "options": {
+        "A": "Global Account > Usage Analytics",
+        "B": "Application Logs",
+        "C": "Service Marketplace",
+        "D": "Cloud Connector"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "BTP Cockpit の Global Account レベルで、Usage Analytics がサービス使用量とコスト情報を提供します。管理者は Subaccount、サービスタイプなどの次元で使用状況と費用分布を確認できます。"
+    },
+    {
+      "id": 23,
+      "question": "SAP BTP における Role Collection とは何ですか？",
+      "options": {
+        "A": "アプリケーションログを収集するサービス",
+        "B": "複数のロールをまとめて割り当てを容易にする仕組み",
+        "C": "データベーステーブルのコレクション",
+        "D": "API エンドポイントのコレクション"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Role Collection はロールの集合で、認可管理を容易にします。管理者は複数の関連ロールを含む Role Collection を作成し、ユーザーやユーザーグループに一括で割り当てることで、権限管理を簡素化できます。"
+    },
+    {
+      "id": 24,
+      "question": "Cloud Connector を設定する際、必要な手順はどれですか？",
+      "options": {
+        "A": "Subaccount 接続情報の指定",
+        "B": "アクセスを許可するバックエンドシステムリソースの定義",
+        "C": "SAP HANA データベースのインストール",
+        "D": "システムマッピングの設定"
+      },
+      "answer": ["A", "B", "D"],
+      "answerType": "multiple",
+      "explanation": "Cloud Connector の設定には：Subaccount への接続(A)、アクセス可能なバックエンドリソースの定義(B)、システムマッピングの設定(D)が必要です。HANA のインストール(C)は不要で、Cloud Connector は独立したコンポーネントです。"
+    },
+    {
+      "id": 25,
+      "question": "SAP BTP における Service Plan は何を表しますか？",
+      "options": {
+        "A": "サービスのデプロイスケジュール",
+        "B": "サービスの異なる機能レベルと価格オプション",
+        "C": "サービスの技術ドキュメント",
+        "D": "サービスのユーザーマニュアル"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Service Plan はサービスの異なる機能レベルと価格オプションを定義します。例えば、同じサービスに lite（無料制限付き）、standard、premium などのプランがあります。管理者はサービスインスタンス作成時に適切な Plan を選択します。"
+    },
+    {
+      "id": 26,
+      "question": "マルチ環境アプリ用に共有サービスを設定する必要があります。Subaccount 間の共有をサポートするサービスはどれですか？",
+      "options": {
+        "A": "SAP HANA Cloud（共有データベース）",
+        "B": "Application Autoscaler",
+        "C": "Destination Service（共有先）",
+        "D": "HTML5 Application Repository"
+      },
+      "answer": ["A", "C"],
+      "answerType": "multiple",
+      "explanation": "一部のサービスは Subaccount 間の共有をサポート：HANA Cloud は共有データベースとして設定可能(A)、Destination は共有先として設定可能(C)。Autoscaler と HTML5 Repo は通常 Subaccount レベルのサービスです。"
+    },
+    {
+      "id": 27,
+      "question": "SAP BTP の Audit Log サービスの主な用途は何ですか？",
+      "options": {
+        "A": "アプリケーションのビジネスログを記録",
+        "B": "コンプライアンス監査用にセキュリティ関連イベントと管理操作を記録",
+        "C": "ユーザーのログインパスワードを保存",
+        "D": "ネットワークトラフィックを監視"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Audit Log サービスはセキュリティ関連イベント（ユーザーログイン、権限変更など）と管理操作を記録し、セキュリティ監査とコンプライアンス要件に使用されます。アプリケーションログとは異なり、監査可能なセキュリティイベントに焦点を当てています。"
+    },
+    {
+      "id": 28,
+      "question": "SAP BTP 管理者が特定の Subaccount で使用できるサービスを制限するにはどうしますか？",
+      "options": {
+        "A": "ネットワークファイアウォールルールで",
+        "B": "Entitlement 管理でクォータを割り当て",
+        "C": "アプリコードの変更で",
+        "D": "サービスドキュメントの削除で"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Entitlement 管理を通じて、Global Account Administrator は各 Subaccount が使用できるサービスとクォータ量を制御できます。Entitlement が割り当てられていないサービスは、その Subaccount では使用できません。"
+    },
+    {
+      "id": 29,
+      "question": "Cloud Foundry 環境で、アプリケーションログを表示するコマンドはどれですか？",
+      "options": {
+        "A": "cf apps",
+        "B": "cf logs <app-name>",
+        "C": "cf services",
+        "D": "cf marketplace"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "cf logs <app-name> コマンドは指定したアプリのログ出力を表示します。--recent パラメータを追加すると最近のログを表示、パラメータなしだとリアルタイムでログを追跡します。これはアプリの問題調査に重要なツールです。"
+    },
+    {
+      "id": 30,
+      "question": "SAP BTP の Alert Notification サービスでできることは何ですか？",
+      "options": {
+        "A": "アプリケーションエラー通知を指定チャネルに送信",
+        "B": "ユーザーインターフェースのポップアップを作成",
+        "C": "データベースレコードを修正",
+        "D": "アプリケーションをデプロイ"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Alert Notification サービスはアラートルールを設定でき、特定のイベント（アプリクラッシュ、リソース枯渇など）が発生した際に、メール、Slack、Webhook などのチャネルを通じて管理者や運用チームに通知を送信します。"
+    },
+    {
+      "id": 31,
+      "question": "Principal Propagation を設定する目的は何ですか？",
+      "options": {
+        "A": "クラウド側のユーザー ID をオンプレミスシステムに伝達",
+        "B": "アプリケーションパフォーマンスを向上",
+        "C": "ストレージ使用量を削減",
+        "D": "アプリデプロイプロセスを簡素化"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Principal Propagation により、認証済みのクラウド側ユーザー ID をオンプレミスシステムに安全に伝達し、エンドツーエンドのユーザーコンテキスト伝播を実現します。これによりオンプレミスシステムは実際の操作ユーザーを識別し、きめ細かい認可と監査が可能になります。"
+    },
+    {
+      "id": 32,
+      "question": "SAP BTP で Subaccount レベルの設定に含まれるものはどれですか？",
+      "options": {
+        "A": "Trust Configuration（信頼設定）",
+        "B": "Global Entitlements",
+        "C": "Cloud Foundry Organization/Space",
+        "D": "Destination"
+      },
+      "answer": ["A", "C", "D"],
+      "answerType": "multiple",
+      "explanation": "Subaccount レベルの設定には Trust Configuration(A)、CF Org/Space(C)、Destination(D)が含まれます。Global Entitlements(B)は Global Account レベルで、Subaccount への割り当てに使用されます。"
+    },
+    {
+      "id": 33,
+      "question": "SAP BTP の Credential Store サービスは何に使用されますか？",
+      "options": {
+        "A": "ユーザーのログイン履歴を保存",
+        "B": "アプリが必要とする機密資格情報を安全に保存",
+        "C": "データベースデータをバックアップ",
+        "D": "API レスポンスをキャッシュ"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Credential Store はパスワード、API キー、証明書などの機密情報を保存するセキュアな資格情報ストレージサービスです。アプリは実行時にこれらの資格情報を安全に取得でき、コードや設定ファイルに機密情報をハードコードする必要がありません。"
+    },
+    {
+      "id": 34,
+      "question": "Cloud Foundry アプリが頻繁に再起動している場合、考えられる原因はどれですか？",
+      "options": {
+        "A": "メモリ不足による OOM",
+        "B": "Health Check の失敗",
+        "C": "Entitlement クォータ不足",
+        "D": "アプリケーションコードの異常終了"
+      },
+      "answer": ["A", "B", "D"],
+      "answerType": "multiple",
+      "explanation": "アプリ再起動の原因：OOM(メモリ不足)(A)、Health Check 失敗によりプラットフォームがアプリを不健全と判断(B)、コード異常によるプロセス終了(D)。Entitlement クォータ不足(C)は新規インスタンス作成を阻止しますが、既存インスタンスの再起動は引き起こしません。"
+    },
+    {
+      "id": 35,
+      "question": "SAP BTP で OAuth 2.0 を設定する際、Scope とは何ですか？",
+      "options": {
+        "A": "アプリがアクセスできるリソースの範囲を定義",
+        "B": "データベーステーブルの可視範囲を指定",
+        "C": "ネットワーク接続の IP 範囲を制限",
+        "D": "ログ保持の期間を設定"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "OAuth 2.0 の Scope はアクセストークンがアクセスできるリソースと操作の範囲を定義します。アプリは xs-security.json で Scope を定義し、XSUAA は認可時にユーザーが必要な Scope を持っているかを検証します。"
+    },
+    {
+      "id": 36,
+      "question": "SAP BTP の Landscape Portal は主に何に使用されますか？",
+      "options": {
+        "A": "ユーザーインターフェースの設計",
+        "B": "ABAP Environment のシステムとテナントを管理",
+        "C": "ネットワーク遅延の監視",
+        "D": "アプリケーションコードの編集"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Landscape Portal は ABAP Environment の管理ツールで、システムライフサイクル管理、テナント作成、システム複製、ソフトウェア更新などの管理操作に使用されます。ABAP クラウドシステム管理者の主要な作業インターフェースです。"
+    },
+    {
+      "id": 37,
+      "question": "クロスリージョン災害復旧を設定する際、関連する考慮事項はどれですか？",
+      "options": {
+        "A": "複数のリージョンに Subaccount を作成",
+        "B": "データ複製戦略を設定",
+        "C": "単一の Space にすべてのアプリをデプロイ",
+        "D": "RTO と RPO 要件を評価"
+      },
+      "answer": ["A", "B", "D"],
+      "answerType": "multiple",
+      "explanation": "災害復旧には：マルチリージョン Subaccount(A)、データ複製戦略(B)、RTO/RPO要件(D)の考慮が必要です。単一 Space(C)は災害復旧に不利で、マルチリージョン分散デプロイが推奨されます。"
+    },
+    {
+      "id": 38,
+      "question": "SAP BTP における Trial Account とは何ですか？",
+      "options": {
+        "A": "本番環境用の上位アカウント",
+        "B": "機能と期間に制限がある無料のテスト・学習用アカウント",
+        "C": "SAP 社員専用のアカウント",
+        "D": "特別な承認が必要な企業アカウント"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Trial Account は SAP が提供する無料アカウントで、開発者や学習者が BTP プラットフォームを探索するために使用します。機能制限（利用可能なサービスが限定）、リソース制限（クォータが少ない）、期間制限（90日後に自動削除）があります。"
+    },
+    {
+      "id": 39,
+      "question": "SAP BTP 管理者が Content Security Policy (CSP) を設定するのは主に何の攻撃を防ぐためですか？",
+      "options": {
+        "A": "SQL インジェクション",
+        "B": "クロスサイトスクリプティング(XSS)",
+        "C": "サービス拒否攻撃(DDoS)",
+        "D": "中間者攻撃"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Content Security Policy (CSP) は主に XSS 攻撃を防ぐために使用され、スクリプト、スタイルなどのリソースをロードできるソースのホワイトリストを定義します。ブラウザは許可されていないソースからのコンテンツ実行をブロックし、Web アプリのセキュリティを向上させます。"
+    },
+    {
+      "id": 40,
+      "question": "Cloud Foundry でアプリのデプロイ設定を定義するファイルはどれですか？",
+      "options": {
+        "A": "package.json",
+        "B": "manifest.yml",
+        "C": "xs-security.json",
+        "D": "mta.yaml"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "manifest.yml は Cloud Foundry アプリのデプロイ設定ファイルで、アプリ名、メモリ、インスタンス数、ルート、環境変数、サービスバインディングなどのデプロイパラメータを定義します。cf push コマンドはこのファイルを読み取ってデプロイを実行します。"
+    },
+    {
+      "id": 41,
+      "question": "SAP BTP における MTA (Multi-Target Application) とは何ですか？",
+      "options": {
+        "A": "データベースの種類",
+        "B": "複数のモジュールと依存関係を含む複合アプリのパッケージ形式",
+        "C": "ネットワーク転送プロトコル",
+        "D": "ユーザー認証方式"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "MTA は SAP のマルチターゲットアプリケーション形式で、複数のアプリモジュール（フロントエンド、バックエンド、データベース）とサービス依存関係をまとめてパッケージ化できます。mta.yaml で依存関係を記述し、cf deploy で一括デプロイします。"
+    },
+    {
+      "id": 42,
+      "question": "アプリへのアクセスを特定の IP からのみに制限する必要があります。実現方法はどれですか？",
+      "options": {
+        "A": "Cloud Foundry Route Service を設定",
+        "B": "アプリコードに IP チェックを追加",
+        "C": "API Management ポリシーを使用",
+        "D": "Destination で制限を設定"
+      },
+      "answer": ["A", "C"],
+      "answerType": "multiple",
+      "explanation": "IP 制限は Route Service でトラフィックをプロキシしてフィルタリング(A)、API Management でアクセスポリシーを設定(C)で実現できます。コード変更(B)は技術的には可能ですが推奨されません。Destination(D)はアウトバウンド接続設定用で、インバウンド制限には不向きです。"
+    },
+    {
+      "id": 43,
+      "question": "SAP BTP の Job Scheduling サービスは何に使用されますか？",
+      "options": {
+        "A": "従業員の勤務スケジュール管理",
+        "B": "バックグラウンド定期タスクのスケジュールと実行",
+        "C": "コンピューティングリソースの割り当て",
+        "D": "ユーザーリクエストキューの処理"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Job Scheduling サービスはバックグラウンド定期タスクの作成、管理、監視を可能にします。管理者は cron 式、実行時間、リトライ戦略などを設定でき、データ同期、レポート生成、クリーンアップタスクなどのシナリオに適しています。"
+    },
+    {
+      "id": 44,
+      "question": "SAP BTP で API Management の主な機能はどれですか？",
+      "options": {
+        "A": "API トラフィック制御とレート制限",
+        "B": "API バージョン管理",
+        "C": "データベースインデックス最適化",
+        "D": "開発者ポータルとドキュメント"
+      },
+      "answer": ["A", "B", "D"],
+      "answerType": "multiple",
+      "explanation": "API Management の機能にはトラフィック制御/レート制限(A)、バージョン管理(B)、開発者ポータル(D)、認証、監視、分析などが含まれます。データベースインデックス(C)は API Management の機能ではありません。"
+    },
+    {
+      "id": 45,
+      "question": "SAP BTP 管理者がプラットフォームの更新とメンテナンス通知を受け取る方法はどれですか？",
+      "options": {
+        "A": "SAP Support Portal で通知を購読",
+        "B": "BTP Cockpit の通知センターを確認",
+        "C": "SAP ソーシャルメディアチャネル経由",
+        "D": "Cloud Status ページをチェック"
+      },
+      "answer": ["A", "B", "D"],
+      "answerType": "multiple",
+      "explanation": "更新通知の取得方法：SAP Support Portal メール購読(A)、BTP Cockpit 通知センター(B)、Cloud Status ページ(D)で計画メンテナンスや障害情報を確認。ソーシャルメディア(C)は公式通知チャネルではありません。"
+    },
+    {
+      "id": 46,
+      "question": "SAP BTP における Service Instance とは何ですか？",
+      "options": {
+        "A": "サービスのインストールパッケージ",
+        "B": "作成済みで使用可能なサービスのコピー",
+        "C": "サービスのソースコード",
+        "D": "サービスのドキュメントページ"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Service Instance は Service Plan から作成されたサービスインスタンスで、使用可能なサービスのコピーを表します。アプリケーションは Service Binding を通じて Service Instance に接続し、サービス機能を使用します。"
+    },
+    {
+      "id": 47,
+      "question": "SAP BTP と Active Directory の統合を設定する際、推奨される方法はどれですか？",
+      "options": {
+        "A": "LDAP 接続を直接設定",
+        "B": "SAP IAS をプロキシとして AD を統合",
+        "C": "各アプリで個別に AD を設定",
+        "D": "AD ユーザーを BTP データベースにエクスポート"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "SAP Identity Authentication Service (IAS) を ID プロキシとして AD を統合することが推奨されます。IAS はエンタープライズ IdP（AD/Azure AD など）とのフェデレーションをサポートし、統一的な ID 管理とシングルサインオン体験を提供します。"
+    },
+    {
+      "id": 48,
+      "question": "SAP BTP の Business Rules サービスでできることは何ですか？",
+      "options": {
+        "A": "設定可能なビジネスルールを定義・実行",
+        "B": "企業の組織構造を管理",
+        "C": "データベーステーブル構造を設計",
+        "D": "ユーザーインターフェーステンプレートを作成"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Business Rules サービスにより、ビジネスユーザーはビジュアルツールでビジネスルール（価格計算、承認条件など）を定義・維持でき、アプリコードを変更する必要がありません。ルールは実行時に更新可能で、ビジネスの俊敏性を提供します。"
+    },
+    {
+      "id": 49,
+      "question": "SAP BTP の高可用性を設定する際の重要な考慮事項はどれですか？",
+      "options": {
+        "A": "マルチインスタンスでアプリをデプロイ",
+        "B": "データベース複製を設定",
+        "C": "すべてのコンポーネントを単一の Space にデプロイ",
+        "D": "自動フェイルオーバーを有効化"
+      },
+      "answer": ["A", "B", "D"],
+      "answerType": "multiple",
+      "explanation": "高可用性設定には：マルチインスタンスデプロイ(A)で単一障害点を防止、データベース複製(B)でデータ保護、自動フェイルオーバー(D)でダウンタイム削減が含まれます。単一 Space(C)は高可用性の要件ではなく、むしろリスクを増加させる可能性があります。"
+    },
+    {
+      "id": 50,
+      "question": "SAP BTP 管理者がサービスのクォータ使用量を管理する方法はどれですか？",
+      "options": {
+        "A": "Global Account の Entitlement 設定で設定",
+        "B": "アプリコードの変更で",
+        "C": "Service Marketplace で追加クォータを購入",
+        "D": "Usage Analytics で監視し割り当てを調整"
+      },
+      "answer": ["A", "D"],
+      "answerType": "multiple",
+      "explanation": "クォータ管理は Entitlement 設定で Subaccount にクォータを割り当て(A)、Usage Analytics で使用状況を監視(D)します。コード変更(B)はクォータに影響しません。Marketplace(C)はサービス発見の場所で、直接クォータ購入はしません。"
+    }
+  ]
+}

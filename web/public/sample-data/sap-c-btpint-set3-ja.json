@@ -1,0 +1,660 @@
+{
+  "examId": "sap-c-btpint-set3-ja",
+  "provider": "SAP",
+  "title": "SAP BTP 統合 (C_BTPINT) 模擬問題 Set 3",
+  "description": "SAP Business Technology Platform 統合認定模擬試験第3セット",
+  "icon": "sap",
+  "setNumber": 3,
+  "questions": [
+    {
+      "id": 1,
+      "question": "SAP Integration SuiteのIntegration Flow Simulation機能は何に使用されますか？",
+      "options": {
+        "A": "デプロイせずにIntegration Flowロジックをテストする",
+        "B": "ネットワーク遅延をシミュレートする",
+        "C": "ユーザー行動をシミュレートする",
+        "D": "データベース操作をシミュレートする"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Simulationは設計時にIntegration Flowをテストできます：テスト入力メッセージを提供し、各ステップの処理結果を確認でき、ランタイム環境にデプロイする必要がありません。開発とデバッグを加速します。"
+    },
+    {
+      "id": 2,
+      "question": "Cloud IntegrationでWebhookをどのように設定しますか？",
+      "options": {
+        "A": "HTTPS Sender Adapterを使用してコールバックを受信するエンドポイントを公開する",
+        "B": "専用のWebhook Adapterを使用する",
+        "C": "ファイアウォールルールを設定する",
+        "D": "データベーストリガーを作成する"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "HTTPS Sender AdapterはエンドポイントURLを公開し、外部システム（GitHub、Stripeなど）がこのURLをWebhookとして設定します。コールバックを受信するとIntegration Flowの処理がトリガーされます。"
+    },
+    {
+      "id": 3,
+      "question": "SAP API ManagementのAPI Providerとは何の概念ですか？",
+      "options": {
+        "A": "バックエンドシステム接続情報を定義する設定",
+        "B": "API開発者",
+        "C": "API消費者",
+        "D": "APIゲートウェイ"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "API Providerはバックエンドシステムの論理表現です：バックエンドURL、認証方法、接続パラメータなどを設定。API Proxy作成時にProviderを選択し、複数API管理を簡素化します。"
+    },
+    {
+      "id": 4,
+      "question": "Cloud Integrationでメッセージ内容の条件付き選択をどのように実装しますか？",
+      "options": {
+        "A": "Content-Based RouterまたはScript内の条件を使用する",
+        "B": "データベースクエリを使用する",
+        "C": "ファイル読み取りを使用する",
+        "D": "手動で選択する"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Content-Based Routerはメッセージ内容（XPath、Header、Property）に基づいてルーティングを決定します。Groovy Scriptでより複雑な選択のための条件ロジックを記述することもできます。"
+    },
+    {
+      "id": 5,
+      "question": "SAP Integration SuiteのCloud Integrationはどのメッセージプロトコルをサポートしますか？",
+      "options": {
+        "A": "HTTP/HTTPS、SOAP、OData、SFTP、AS2、Mailなど",
+        "B": "HTTPのみ",
+        "C": "SOAPのみ",
+        "D": "ファイル転送のみ"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Cloud Integrationは複数のプロトコルをサポートします：HTTP/HTTPS（REST）、SOAP、OData、SFTP/FTP、AS2（B2B）、Mail、JMS、RFC、IDoc、SuccessFactorsなどの専用コネクタ。"
+    },
+    {
+      "id": 6,
+      "question": "API ManagementでFault Rulesは何に使用されますか？",
+      "options": {
+        "A": "APIエラー時の処理ロジックを定義する",
+        "B": "フェイルオーバールールを定義する",
+        "C": "負荷分散ルールを定義する",
+        "D": "キャッシュルールを定義する"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Fault RulesはAPI実行エラーをキャッチします：バックエンド失敗、ポリシー違反など。エラーレスポンス形式の定義、ログ記録、アラート送信が可能です。一貫したエラー処理体験を提供します。"
+    },
+    {
+      "id": 7,
+      "question": "Cloud IntegrationでJSONメッセージをどのように処理しますか？",
+      "options": {
+        "A": "JSON to XML Converterで変換してから処理するか、Scriptで直接処理する",
+        "B": "XMLのみ処理可能",
+        "C": "テキストに変換して処理する",
+        "D": "JSONはサポートされていない"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "JSON処理には2つの方法があります：XMLに変換して標準のMapping/XPathを使用；またはGroovy Scriptで直接JSONを解析（JsonSlurperを使用）。複雑さと好みに依存します。"
+    },
+    {
+      "id": 8,
+      "question": "SAP Integration SuiteのIntegration Packageとは何ですか？",
+      "options": {
+        "A": "事前構築された再利用可能な統合コンテンツのコレクション",
+        "B": "ソフトウェアインストールパッケージ",
+        "C": "データバックアップパッケージ",
+        "D": "ドキュメントコレクション"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Integration PackageはSAPまたはパートナーが提供する事前構築された統合コンテンツです：Integration Flow、Value Mapping、ドキュメントなどが含まれます。直接使用するか、カスタマイズ用のテンプレートとして使用できます。"
+    },
+    {
+      "id": 9,
+      "question": "Cloud IntegrationでSequential MulticastとParallel Multicastの違いは何ですか？",
+      "options": {
+        "A": "Sequentialはブランチを順番に実行、Parallelは同時に実行",
+        "B": "パフォーマンスは同じ",
+        "C": "機能は同じ",
+        "D": "一方は送信用、一方は受信用"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Sequential Multicastは定義された順序で各ブランチを順次実行し、1つ完了後に次を実行します。Parallel Multicastはすべてのブランチを同時に開始して並列実行します。選択はビジネス要件に依存します。"
+    },
+    {
+      "id": 10,
+      "question": "SAP API ManagementのAccess Tokenにはどのような種類がありますか？",
+      "options": {
+        "A": "Bearer Token、API Key、OAuth Tokenなど",
+        "B": "パスワードのみ",
+        "C": "証明書のみ",
+        "D": "Session IDのみ"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "API Managementは複数の認証方法をサポートします：API Key（シンプルトークン）、OAuth 2.0 Bearer Token（標準認可）、SAML、Basic Authなど。組み合わせて使用できます。"
+    },
+    {
+      "id": 11,
+      "question": "Cloud Integrationでメッセージの並列分割処理をどのように実装しますか？",
+      "options": {
+        "A": "Parallel Splitterを使用して並列処理を設定する",
+        "B": "複数のフローを使用する",
+        "C": "タイマーを使用する",
+        "D": "外部スケジューリングを使用する"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Parallel Splitterはメッセージを複数に分割して並列処理します：Parallel Processingを有効にし、Number of Concurrent Processesを定義します。マルチコアを活用して処理速度を向上させます。"
+    },
+    {
+      "id": 12,
+      "question": "SAP Integration SuiteのTenant Isolationはどのように実現されますか？",
+      "options": {
+        "A": "各テナントに独立したランタイムとデータストレージ",
+        "B": "すべてのリソースを共有する",
+        "C": "仮想ネットワークを使用する",
+        "D": "パスワードで分離する"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "マルチテナントアーキテクチャでは、各テナントは独立したランタイム環境、データストレージ、セキュリティマテリアルを持ちます。テナント間は完全に分離され、データのセキュリティとプライバシーが保証されます。"
+    },
+    {
+      "id": 13,
+      "question": "Cloud IntegrationでRetry戦略をどのように設定しますか？",
+      "options": {
+        "A": "Adapter Channelでリトライ回数と間隔を設定する",
+        "B": "コードでリトライを実装する",
+        "C": "外部サービスを使用する",
+        "D": "手動で再実行する"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Receiver Adapterでリトライを設定：Maximum Retries（最大リトライ回数）、Retry Interval（間隔時間）、Exponential Backoff（指数バックオフ）。一時的な障害を自動処理します。"
+    },
+    {
+      "id": 14,
+      "question": "SAP API ManagementのAPI Best Practicesには何が含まれますか？",
+      "options": {
+        "A": "バージョン管理、エラー処理の標準化、ドキュメントの完備、セキュリティ設計",
+        "B": "パフォーマンスのみに注力",
+        "C": "機能のみに注力",
+        "D": "コストのみに注力"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "APIベストプラクティス：セマンティックバージョニング、RESTful設計原則、統一されたエラーレスポンス形式、完全なOpenAPIドキュメント、OAuthセキュリティ、レート制限、監視と分析。"
+    },
+    {
+      "id": 15,
+      "question": "Cloud Integrationで多値Headerをどのように処理しますか？",
+      "options": {
+        "A": "Content ModifierのHeader操作またはScriptで処理する",
+        "B": "自動的にマージされる",
+        "C": "多値は無視される",
+        "D": "複数メッセージに分割される"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "多値Headerは特別な処理が必要です：Content ModifierでHeaderを設定/変更、ScriptでHeaderコレクションを反復処理。HTTP仕様の多値Header形式に注意が必要です。"
+    },
+    {
+      "id": 16,
+      "question": "SAP Integration SuiteのUsage Metering機能とは何ですか？",
+      "options": {
+        "A": "統合リソース使用量を監視してレポートする",
+        "B": "電力消費を計測する",
+        "C": "ネットワークトラフィックを計測する",
+        "D": "ストレージ容量を計測する"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Usage MeteringはIntegration Suiteのリソース使用を追跡します：メッセージ処理量、API呼び出し量、ストレージ使用量など。コスト分析、キャパシティプランニング、請求に使用します。"
+    },
+    {
+      "id": 17,
+      "question": "Cloud Integrationで添付ファイルをどのように処理しますか？",
+      "options": {
+        "A": "Attachment Handling設定と関連APIを使用する",
+        "B": "添付ファイルは破棄のみ可能",
+        "C": "テキストに変換する",
+        "D": "データベースに保存する"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "メッセージ添付ファイルはAttachment APIで処理します：添付コンテンツの読み取り、添付の追加、添付の変更。MIMEマルチパートメッセージはEncoder/Decoderで処理できます。"
+    },
+    {
+      "id": 18,
+      "question": "SAP API ManagementのShared Flowとは何ですか？",
+      "options": {
+        "A": "複数のAPI Proxyで再利用できるPolicyのコレクション",
+        "B": "共有ネットワーク",
+        "C": "共有データ",
+        "D": "共有ユーザー"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Shared Flowは再利用可能なPolicyシーケンスです：一度定義して複数のAPI Proxyが参照。認証ロジック、ログ記録、変換などの共通機能を共有するために使用します。"
+    },
+    {
+      "id": 19,
+      "question": "Cloud Integrationでメッセージの遅延処理をどのように実装しますか？",
+      "options": {
+        "A": "TimerまたはData Storeと組み合わせて遅延を実現する",
+        "B": "sleep関数を使用する",
+        "C": "ユーザー操作を待つ",
+        "D": "遅延はサポートされていない"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "遅延処理の方法：Timer Senderで定期的にトリガー；Data Storeに保存してスケジュールに従って処理；またはメッセージキューの遅延配信機能を使用。フロー内でThread.sleepを使用することは推奨されません。"
+    },
+    {
+      "id": 20,
+      "question": "SAP Integration SuiteでAPIのCORSサポートをどのように実装しますか？",
+      "options": {
+        "A": "API ManagementでCORS Policyを設定する",
+        "B": "バックエンドで設定する",
+        "C": "ブラウザで設定する",
+        "D": "設定は不要"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "CORS PolicyはAPI Proxyで設定します：許可されるOrigin、Methods、Headers、認証情報を許可するかどうかなど。ブラウザのクロスオリジンリクエスト制限を処理します。"
+    },
+    {
+      "id": 21,
+      "question": "Cloud Integrationでメッセージスループットをどのように監視しますか？",
+      "options": {
+        "A": "Monitoring DashboardのMessage Statisticsを使用する",
+        "B": "手動でカウントする",
+        "C": "外部ツールを使用する",
+        "D": "ログファイルを確認する"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Monitor Dashboardはメッセージ統計を提供します：処理量、成功/失敗数、処理時間分布など。時間範囲、Integration Flowでフィルタリングして表示できます。"
+    },
+    {
+      "id": 22,
+      "question": "SAP API ManagementのCustom Reports機能は何に使用されますか？",
+      "options": {
+        "A": "カスタム分析レポートと可視化を作成する",
+        "B": "財務レポートを生成する",
+        "C": "ユーザーレポートを生成する",
+        "D": "システムレポートを生成する"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Custom ReportsはAnalyticsデータに基づいてカスタムビューを作成します：ディメンションとメトリクスを選択、フィルター条件を定義、可視化チャートタイプを設定。特定のビジネス分析ニーズを満たします。"
+    },
+    {
+      "id": 23,
+      "question": "Cloud IntegrationでGeneral SplitterとIterating Splitterの違いは何ですか？",
+      "options": {
+        "A": "Generalは一度にすべて分割、Iteratingは1件ずつ処理",
+        "B": "違いはない",
+        "C": "パフォーマンスが異なる",
+        "D": "サポートする形式が異なる"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "General Splitterはメッセージを一度に複数に分割し、すべてをメモリに保持します。Iterating Splitterは1件ずつ反復処理し、メモリ消費が低く、大量データに適しています。"
+    },
+    {
+      "id": 24,
+      "question": "SAP Integration SuiteのSecure Storeは何に使用されますか？",
+      "options": {
+        "A": "機密設定と認証情報を安全に保存する",
+        "B": "ファイルを保存する",
+        "C": "メッセージを保存する",
+        "D": "ログを保存する"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Secure Store（Security Material）は安全に保存します：User Credentials、OAuth Credentials、Known Hosts、PGP Keys、Keystoreなどの機密情報。暗号化して保存し、アクセス制御されます。"
+    },
+    {
+      "id": 25,
+      "question": "Cloud IntegrationでEDIメッセージをどのように処理しますか？",
+      "options": {
+        "A": "EDI Splitter、Converter、Integration Advisorを使用する",
+        "B": "手動で解析する",
+        "C": "JSONに変換する",
+        "D": "EDI形式を無視する"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "EDI処理：EDI Splitterで交換内のメッセージを分割、EDI to XML Converterで形式を変換、Integration Advisorでメッセージガイドラインとマッピングを定義。EDIFACT、X12をサポートします。"
+    },
+    {
+      "id": 26,
+      "question": "SAP API ManagementでAPI Throttlingをどのように実装しますか？",
+      "options": {
+        "A": "QuotaとSpike Arrest Policyを組み合わせて使用する",
+        "B": "ファイアウォールを使用する",
+        "C": "ネットワーク帯域を制限する",
+        "D": "外部サービスのみ使用可能"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Throttlingは組み合わせて使用します：Quotaで時間枠内の総制限を設定、Spike Arrestで瞬時リクエストレートを制限。両方を組み合わせてバックエンドを過負荷から保護します。"
+    },
+    {
+      "id": 27,
+      "question": "Cloud IntegrationでScripting APIはどのような機能を提供しますか？",
+      "options": {
+        "A": "メッセージ内容、Headers、Properties、外部リソースへのアクセス",
+        "B": "ログ記録のみ",
+        "C": "メッセージボディの変更のみ",
+        "D": "REST API呼び出しのみ"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Scripting APIは包括的なアクセス機能を提供します：message.getBody()、message.getHeaders()、message.getProperties()、外部サービスの呼び出し、ValueMapping、SecureStoreへのアクセスなど。"
+    },
+    {
+      "id": 28,
+      "question": "SAP Integration SuiteのGit統合機能は何に使用されますか？",
+      "options": {
+        "A": "Integration ContentをGitリポジトリと同期する",
+        "B": "コードバージョン管理",
+        "C": "ユーザー管理",
+        "D": "データバックアップ"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Git統合によりIntegration Flowなどのコンテンツをgitリポジトリにエクスポートできます：バージョン管理、チームコラボレーション、CI/CD統合。Gitからテナントにコンテンツをインポートすることもサポートします。"
+    },
+    {
+      "id": 29,
+      "question": "Cloud Integrationでリクエスト認証をどのように実装しますか？",
+      "options": {
+        "A": "Sender AdapterのAuthenticationオプションを設定する",
+        "B": "メッセージボディでパスワードを渡す",
+        "C": "IPホワイトリストを使用する",
+        "D": "認証は不要"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Sender Adapterは複数の認証をサポートします：Basic Auth、Client Certificate、OAuth 2.0。設定後、リクエストを自動検証し、未認証アクセスを拒否します。"
+    },
+    {
+      "id": 30,
+      "question": "SAP API ManagementのAPI Proxy Endpoint URL構造は何ですか？",
+      "options": {
+        "A": "https://<virtual-host>/<base-path>/<resource-path>",
+        "B": "IPアドレスのみ",
+        "C": "ドメイン名のみ",
+        "D": "ランダムに生成"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "API Proxy URL構造：Virtual Hostでドメイン名を定義、Base PathでAPIルートパスを定義、Resource Pathで具体的なリソースを定義。例：https://api.company.com/v1/orders。"
+    },
+    {
+      "id": 31,
+      "question": "Cloud IntegrationでBinaryデータをどのように処理しますか？",
+      "options": {
+        "A": "Base64エンコードまたはInputStreamとして直接処理する",
+        "B": "テキストに変換する",
+        "C": "圧縮してから処理する",
+        "D": "破棄のみ可能"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Binaryデータ処理：Base64 Encoder/Decoderで変換、Script内でInputStream/OutputStreamを使用、一部のAdapter（SFTPなど）はBinaryをネイティブサポートします。"
+    },
+    {
+      "id": 32,
+      "question": "SAP Integration SuiteのRate LimitingとQuotaの違いは何ですか？",
+      "options": {
+        "A": "Rate Limitingは瞬時レート制限、Quotaは累積クォータ制限",
+        "B": "違いはない",
+        "C": "Rate Limitingの方が厳しい",
+        "D": "Quotaの方が速い"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Spike Arrest（Rate Limiting）は秒/分ごとのリクエストレートを制限し、トラフィックスパイクを防ぎます。Quotaは時間枠内の総リクエスト数を制限します（1日1000回など）。"
+    },
+    {
+      "id": 33,
+      "question": "Cloud IntegrationでSAP SuccessFactors接続をどのように設定しますか？",
+      "options": {
+        "A": "SuccessFactors AdapterでOAuth認証を設定する",
+        "B": "汎用HTTP Adapterを使用する",
+        "C": "データベース接続を使用する",
+        "D": "ファイル転送を使用する"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "SuccessFactors Adapterはネイティブ統合を提供します：OData API、SFAPI、OAuth 2.0 SAML Bearer認証をサポート。API Server、Company ID、OAuthパラメータを設定します。"
+    },
+    {
+      "id": 34,
+      "question": "SAP API ManagementのTarget SSL/TLS設定は何に使用されますか？",
+      "options": {
+        "A": "バックエンドシステムとのセキュア接続を設定する",
+        "B": "フロントエンド暗号化を設定する",
+        "C": "データベース暗号化を設定する",
+        "D": "ファイル暗号化を設定する"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Target SSL/TLSはバックエンド接続セキュリティを設定します：信頼するCA証明書、クライアント証明書（相互TLS）、TLSバージョン、暗号スイートなど。バックエンドとのセキュア通信を確保します。"
+    },
+    {
+      "id": 35,
+      "question": "Cloud Integrationでメッセージ優先度処理をどのように実装しますか？",
+      "options": {
+        "A": "複数のキューとRouterで振り分ける",
+        "B": "自動的に優先度でソートされる",
+        "C": "メッセージプロパティを設定する",
+        "D": "優先度はサポートされていない"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "優先度処理方式：メッセージ内容（顧客ランクなど）に基づいて異なるキューにルーティング、高優先度キューにより多くのコンシューマまたはより短い処理間隔を設定。ビジネスロジック設計が必要です。"
+    },
+    {
+      "id": 36,
+      "question": "SAP Integration SuiteのContent Type検出は何に基づいていますか？",
+      "options": {
+        "A": "メッセージContent-Type Headerとコンテンツ分析",
+        "B": "ファイル拡張子",
+        "C": "ユーザー設定",
+        "D": "ランダム推測"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Content TypeはHTTP Headerで宣言されます：application/xml、application/json、text/plainなど。一部のシナリオではコンテンツを分析して自動検出します。処理ステップはContent Typeに基づいて処理方法を選択します。"
+    },
+    {
+      "id": 37,
+      "question": "Cloud IntegrationでLocal Process CallとProcess Callの違いは何ですか？",
+      "options": {
+        "A": "Local Processは同じ実行スレッド、Process Callは同期または非同期が可能",
+        "B": "違いはない",
+        "C": "Local Processの方が遅い",
+        "D": "Process Callは非同期のみ"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Local Process Callはローカルサブプロセスを同期呼び出しし、コンテキストを共有します。Process Callは外部プロセスを呼び出すことができます。Local Processはモジュール組織用、Process Callはプロセス疎結合用です。"
+    },
+    {
+      "id": 38,
+      "question": "SAP API ManagementのExtension Calloutは何に使用されますか？",
+      "options": {
+        "A": "APIフローで外部サービスを呼び出して機能を拡張する",
+        "B": "ストレージ容量を拡張する",
+        "C": "ユーザー数を拡張する",
+        "D": "ネットワーク帯域を拡張する"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Service Callout PolicyはAPIフロー内で外部サービスを呼び出します：追加データの取得、情報の検証、通知のトリガーなど。レスポンスは後続処理やレスポンス拡充に使用できます。"
+    },
+    {
+      "id": 39,
+      "question": "Cloud Integrationで冪等性チェックをどのように実装しますか？",
+      "options": {
+        "A": "Idempotent Process Callまたはカスタム Data Storeチェックを使用する",
+        "B": "自動的に冪等性が保証される",
+        "C": "外部システムが保証する",
+        "D": "冪等性は不要"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Idempotent Process CallはメッセージIDを使用して既に処理済みかどうかをチェックします。Data Storeで処理済みIDを保存し、新しいメッセージは先にクエリしてから処理するかどうかを決定することもできます。"
+    },
+    {
+      "id": 40,
+      "question": "SAP Integration SuiteのAPI Business Hubとは何ですか？",
+      "options": {
+        "A": "SAPとパートナーのAPIの発見とテストプラットフォーム",
+        "B": "APIストア",
+        "C": "API開発ツール",
+        "D": "API管理コンソール"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "API Business HubはSAP APIの中央ディレクトリです：SAP製品のAPIを閲覧、ドキュメントと仕様を確認、オンラインテスト（Sandbox）、コードサンプルを取得。開発者がSAP APIを発見して使用するのを支援します。"
+    },
+    {
+      "id": 41,
+      "question": "Cloud IntegrationでXML Namespaceをどのように処理しますか？",
+      "options": {
+        "A": "XPathでNamespaceプレフィックスを宣言するかlocal-name()関数を使用する",
+        "B": "自動的に処理される",
+        "C": "Namespaceを削除する",
+        "D": "Namespaceを無視する"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "XML NamespaceはXPathで明示的に処理が必要です：Router/Filterでnsプレフィックスを宣言、//*[local-name()='element']でnamespaceを無視、MappingでNamespaceを正しく設定します。"
+    },
+    {
+      "id": 42,
+      "question": "SAP API ManagementのAnalytics Metricsには何が含まれますか？",
+      "options": {
+        "A": "リクエスト量、レスポンス時間、エラー率、地理的位置など",
+        "B": "リクエスト量のみ",
+        "C": "エラー数のみ",
+        "D": "ユーザー数のみ"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Analyticsは豊富なメトリクスを収集します：総リクエスト数、レスポンス時間分布、成功/失敗率、API/App/Developer別グループ、地理的分布、時間トレンド、Topランキングなど。"
+    },
+    {
+      "id": 43,
+      "question": "Cloud Integrationでメッセージ署名検証をどのように実装しますか？",
+      "options": {
+        "A": "XML Signature VerifierまたはPKCS7 Verifierを使用する",
+        "B": "手動で検証する",
+        "C": "パスワードで検証する",
+        "D": "Hash比較を使用する"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "署名検証ステップ：XML Signature VerifierでXMLデジタル署名を検証、PKCS#7 VerifierでS/MIME署名を検証。送信者の公開鍵証明書を使用して署名の完全性を検証します。"
+    },
+    {
+      "id": 44,
+      "question": "SAP Integration SuiteのCustom Tags機能は何に使用されますか？",
+      "options": {
+        "A": "Integration Contentにカスタム分類タグを追加する",
+        "B": "HTMLタグを追加する",
+        "C": "価格タグを追加する",
+        "D": "ユーザータグを追加する"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Custom TagsはIntegration Contentの整理を支援します：ビジネスドメイン、プロジェクト、チームなどのタグを追加。タグで検索とフィルタリングをサポートし、コンテンツ管理と発見を容易にします。"
+    },
+    {
+      "id": 45,
+      "question": "Cloud Integrationで循環依存をどのように処理しますか？",
+      "options": {
+        "A": "循環設計を避け、キューで疎結合化または非同期コールバックを使用する",
+        "B": "システムが自動処理する",
+        "C": "タイムアウトを増やす",
+        "D": "循環を無視する"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "循環依存はデッドロックまたは無限ループを引き起こします。解決策：フローを再構築して循環を避ける、メッセージキューで疎結合化、処理カウンターで無限ループを防ぐ、非同期モードを使用。"
+    },
+    {
+      "id": 46,
+      "question": "SAP API ManagementでBackend SSL Validationをどのように設定しますか？",
+      "options": {
+        "A": "Target EndpointでTrust Storeを設定する",
+        "B": "フロントエンドで設定する",
+        "C": "データベースで設定する",
+        "D": "設定は不要"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Target EndpointでSSL検証を設定：バックエンドCA証明書をTrust Storeにアップロード、Hostname検証を設定、TLSバージョンを設定。バックエンドとのセキュア通信を確保します。"
+    },
+    {
+      "id": 47,
+      "question": "Cloud Integrationで動的エンドポイント選択をどのように実装しますか？",
+      "options": {
+        "A": "Property/Headerを使用してReceiver AdapterのURLを動的に設定する",
+        "B": "固定エンドポイントのみ使用可能",
+        "C": "複数のフローを使用する",
+        "D": "ロードバランサーを使用する"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "動的エンドポイント：Adapter設定で${property.xxx}または${header.xxx}を使用して動的値を参照。実行時にメッセージ内容に基づいてターゲットエンドポイントを決定し、柔軟なルーティングを実現します。"
+    },
+    {
+      "id": 48,
+      "question": "SAP Integration SuiteのAudit Logは何を記録しますか？",
+      "options": {
+        "A": "ユーザー操作、設定変更、セキュリティイベントなど",
+        "B": "メッセージ内容のみ",
+        "C": "エラー情報のみ",
+        "D": "ネットワークトラフィックのみ"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Audit Logはセキュリティ関連イベントを記録します：ユーザーログイン/ログアウト、Integration Content変更、セキュリティマテリアル操作、権限変更など。コンプライアンス監査とセキュリティ分析に使用します。"
+    },
+    {
+      "id": 49,
+      "question": "Cloud Integrationでメッセージの条件付き保存をどのように実装しますか？",
+      "options": {
+        "A": "ScriptまたはRouter後に選択的にData Store Writeを呼び出す",
+        "B": "すべてのメッセージが自動保存される",
+        "C": "エラーメッセージのみ保存可能",
+        "D": "条件付き保存はサポートされていない"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "条件付き保存：Routerで条件に基づいて振り分け、一方のブランチでData Store Writeを実行；またはScript内で条件を判断してから保存するかどうかを決定。ビジネスルール駆動の保存を実現します。"
+    },
+    {
+      "id": 50,
+      "question": "SAP Integration Suiteの将来の発展方向は何ですか？",
+      "options": {
+        "A": "クラウドネイティブ、AI強化、ローコード/ノーコード、イベント駆動アーキテクチャ",
+        "B": "オンプレミスデプロイのみに注力",
+        "C": "ファイル転送のみに注力",
+        "D": "開発停止"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "SAP Integration Suite発展方向：完全なクラウドネイティブアーキテクチャ、AIによる統合提案とエラー診断支援、ローコード/ノーコード開発体験、イベント駆動統合の強化、SAP BTPサービスとの深い統合。"
+    }
+  ]
+}

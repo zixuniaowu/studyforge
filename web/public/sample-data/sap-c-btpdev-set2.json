@@ -1,0 +1,660 @@
+{
+  "examId": "sap-c-btpdev-set2",
+  "provider": "SAP",
+  "title": "SAP BTP 开发者 (C_BTPDEV) 模拟题 Set 2",
+  "description": "SAP Business Technology Platform 开发者认证模拟试题第二套",
+  "icon": "sap",
+  "setNumber": 2,
+  "questions": [
+    {
+      "id": 1,
+      "question": "在 CAP 项目中，如何使用 Actions 和 Functions？",
+      "options": {
+        "A": "在 CDS 服务中定义 action/function，在 JS 中实现处理程序",
+        "B": "直接在数据库中创建存储过程",
+        "C": "使用 REST API 注解",
+        "D": "修改 OData 元数据文件"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "在 CDS 中使用 action（可修改数据）或 function（只读）定义自定义操作。例如：action approve(orderID: UUID); 然后在服务实现文件中注册处理程序：this.on('approve', ...)。"
+    },
+    {
+      "id": 2,
+      "question": "SAP UI5 中的 Component.js 文件的主要作用是什么？",
+      "options": {
+        "A": "定义应用的入口点和组件配置",
+        "B": "存储用户数据",
+        "C": "配置数据库连接",
+        "D": "定义 CSS 样式"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Component.js 是 UI5 应用的入口点，继承自 UIComponent。它初始化应用、加载 manifest.json、创建根视图、设置路由。组件可以被嵌入其他应用或独立运行。"
+    },
+    {
+      "id": 3,
+      "question": "在 BTP 开发中，什么是 CQL (CDS Query Language)？",
+      "options": {
+        "A": "CAP 中用于查询数据的语言，类似 SQL",
+        "B": "CSS 查询语言",
+        "C": "用户界面查询",
+        "D": "网络协议"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "CQL 是 CAP 的查询语言，语法类似 SQL 但更简洁。支持 SELECT、INSERT、UPDATE、DELETE、UPSERT 操作。例如：SELECT.from('Books').where({price:{'>':100}})。"
+    },
+    {
+      "id": 4,
+      "question": "在 SAP UI5 中，如何处理后端 OData 服务的错误？",
+      "options": {
+        "A": "使用 error 回调或 Promise catch",
+        "B": "忽略错误",
+        "C": "重启应用",
+        "D": "清除浏览器缓存"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "OData 操作（如 read、create）通过 error 回调或 Promise 的 catch 方法处理错误。可以获取错误状态码、消息，使用 MessageBox 显示给用户或记录日志。"
+    },
+    {
+      "id": 5,
+      "question": "CAP 中的 @assert.range 注解用于什么？",
+      "options": {
+        "A": "验证数值在指定范围内",
+        "B": "设置数据库索引范围",
+        "C": "定义网络访问范围",
+        "D": "限制查询结果数量"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "@assert.range 用于验证字段值在指定范围内。例如：@assert.range: [0, 100] 限制值在 0-100 之间。验证失败时自动返回错误，无需手动检查。"
+    },
+    {
+      "id": 6,
+      "question": "在 SAP Fiori Elements 中，如何自定义 List Report 的过滤字段？",
+      "options": {
+        "A": "使用 @UI.SelectionFields 注解",
+        "B": "编辑 HTML 文件",
+        "C": "修改数据库表",
+        "D": "配置网络代理"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "@UI.SelectionFields 注解定义 List Report 过滤栏中显示的字段。例如：@UI.SelectionFields: [category, status, createdAt] 在过滤栏显示这三个字段。"
+    },
+    {
+      "id": 7,
+      "question": "在 BTP 中，如何实现应用的多语言支持？",
+      "options": {
+        "A": "使用 i18n 文件和 @title 注解",
+        "B": "创建多个应用版本",
+        "C": "使用机器翻译 API",
+        "D": "手动切换语言文件"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "CAP 和 UI5 都支持 i18n：创建 i18n.properties 和语言特定文件，使用 @title 注解引用。运行时根据用户语言自动加载对应的翻译。"
+    },
+    {
+      "id": 8,
+      "question": "SAP UI5 中的 Expression Binding 是什么？",
+      "options": {
+        "A": "在绑定中使用表达式进行简单计算或条件判断",
+        "B": "正则表达式匹配",
+        "C": "数学表达式计算器",
+        "D": "数据库表达式"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Expression Binding 允许在数据绑定中使用表达式，如条件判断：{= ${amount} > 100 ? 'High' : 'Low'}。支持比较、逻辑运算、三元表达式等，无需 formatter 函数。"
+    },
+    {
+      "id": 9,
+      "question": "在 CAP 中，如何实现数据的软删除？",
+      "options": {
+        "A": "使用 @cds.on.insert 添加删除标记字段",
+        "B": "删除数据库表",
+        "C": "清空所有数据",
+        "D": "修改网络配置"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "软删除通过添加 deleted 标记字段实现。使用 @cds.on.insert/@cds.on.update 自动设置标记，在读取时过滤已删除记录。也可以用 aspect 封装这一模式。"
+    },
+    {
+      "id": 10,
+      "question": "SAP BTP 中的 cf marketplace 命令显示什么？",
+      "options": {
+        "A": "可用的服务和计划列表",
+        "B": "在线商店产品",
+        "C": "应用程序日志",
+        "D": "用户列表"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "cf marketplace 列出当前 Space 中可用的服务及其计划。开发者可以查看服务名称、计划选项，然后使用 cf create-service 创建服务实例。"
+    },
+    {
+      "id": 11,
+      "question": "在 SAP UI5 中，BindingContext 的作用是什么？",
+      "options": {
+        "A": "关联控件与模型中特定数据的上下文",
+        "B": "存储用户会话",
+        "C": "配置网络连接",
+        "D": "定义样式规则"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "BindingContext 建立控件与模型数据的关联。例如表格行的 BindingContext 指向该行对应的数据对象，子控件可以通过相对路径访问上下文中的属性。"
+    },
+    {
+      "id": 12,
+      "question": "CAP 中的 @requires 注解用于什么？",
+      "options": {
+        "A": "指定访问资源所需的权限",
+        "B": "声明 npm 依赖",
+        "C": "引入外部模块",
+        "D": "配置数据库"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "@requires 注解指定访问实体或操作所需的权限范围。例如：@requires: 'Admin' 表示只有具有 Admin 权限的用户才能访问。与 xs-security.json 中定义的 scope 对应。"
+    },
+    {
+      "id": 13,
+      "question": "在 SAP UI5 中，如何实现视图的懒加载？",
+      "options": {
+        "A": "在路由配置中设置 target 的 viewLevel",
+        "B": "手动延迟加载脚本",
+        "C": "使用 setTimeout",
+        "D": "清除浏览器缓存"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "UI5 路由默认按需加载视图。通过配置 target 和 pattern，只有当用户导航到特定路由时才加载对应视图，减少初始加载时间。"
+    },
+    {
+      "id": 14,
+      "question": "在 CAP 中，如何扩展已有实体？",
+      "options": {
+        "A": "使用 extend 关键字",
+        "B": "修改原始文件",
+        "C": "创建数据库触发器",
+        "D": "使用 CSS 扩展"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "使用 extend 关键字可以扩展已定义的实体，添加新字段或注解，无需修改原始定义。例如：extend my.Books with { rating: Integer; @UI.Hidden: true };"
+    },
+    {
+      "id": 15,
+      "question": "SAP BTP 中的 cf create-service 命令做什么？",
+      "options": {
+        "A": "创建服务实例",
+        "B": "创建用户账户",
+        "C": "创建数据库表",
+        "D": "创建网络路由"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "cf create-service 创建指定服务的实例。语法：cf create-service <service> <plan> <instance-name>。例如：cf create-service xsuaa application my-xsuaa。"
+    },
+    {
+      "id": 16,
+      "question": "在 SAP UI5 中，ObjectPageLayout 的特点是什么？",
+      "options": {
+        "A": "支持固定标题区域和可滚动内容区域",
+        "B": "只能显示列表",
+        "C": "用于图表展示",
+        "D": "仅支持移动端"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "ObjectPageLayout 提供固定的标题区域（Header）和可滚动的内容区域（Sections）。支持动态标题模式、锚点导航、Section 折叠等功能，是详情页的标准布局。"
+    },
+    {
+      "id": 17,
+      "question": "CAP 中的 srv.reject() 方法用于什么？",
+      "options": {
+        "A": "在处理程序中返回错误拒绝请求",
+        "B": "拒绝网络连接",
+        "C": "删除数据",
+        "D": "清除缓存"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "srv.reject(code, message) 在处理程序中返回错误。例如：req.reject(403, 'Not authorized') 拒绝请求并返回 403 状态码。也可以抛出 Error 对象。"
+    },
+    {
+      "id": 18,
+      "question": "在 SAP UI5 中，如何使用 Fragment 创建可重用对话框？",
+      "options": {
+        "A": "定义 XML Fragment，使用 Fragment.load() 加载",
+        "B": "直接在视图中定义",
+        "C": "使用 JavaScript alert",
+        "D": "创建新应用"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "在 fragment 文件中定义 Dialog，使用 Fragment.load() 异步加载，返回的 Dialog 实例可以 open()。Fragment 不需要 Controller，事件处理由调用方提供。"
+    },
+    {
+      "id": 19,
+      "question": "在 BTP 开发中，mbt build 命令的作用是什么？",
+      "options": {
+        "A": "构建 MTA 项目生成部署包",
+        "B": "启动开发服务器",
+        "C": "运行测试",
+        "D": "部署到云端"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "mbt build 是 MTA Build Tool 命令，根据 mta.yaml 构建多目标应用，生成 .mtar 部署包。这个包包含所有模块和配置，可以用 cf deploy 部署。"
+    },
+    {
+      "id": 20,
+      "question": "SAP UI5 中的 busy indicator 用于什么？",
+      "options": {
+        "A": "显示加载状态，阻止用户操作",
+        "B": "显示错误消息",
+        "C": "播放音频",
+        "D": "显示广告"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Busy Indicator 在异步操作期间显示加载状态。可以设置控件或整个应用为 busy 状态，显示旋转图标并阻止用户交互，操作完成后取消。"
+    },
+    {
+      "id": 21,
+      "question": "在 CAP 中，如何定义虚拟字段（计算字段）？",
+      "options": {
+        "A": "使用 virtual 关键字或 @cds.persistence.skip",
+        "B": "创建数据库视图",
+        "C": "使用 JavaScript 计算",
+        "D": "在前端显示时计算"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "virtual 字段不存储在数据库中，运行时计算。定义：virtual fullName: String; 然后在 after handler 中填充值。也可以用 @cds.persistence.skip 标记非持久化字段。"
+    },
+    {
+      "id": 22,
+      "question": "SAP UI5 的 FlexBox 控件用于什么？",
+      "options": {
+        "A": "创建灵活的响应式布局",
+        "B": "存储数据",
+        "C": "网络通信",
+        "D": "文件操作"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "FlexBox 是基于 CSS Flexbox 的布局控件，支持灵活的子元素排列。可以设置方向、对齐、换行等属性，创建响应式布局，适应不同屏幕尺寸。"
+    },
+    {
+      "id": 23,
+      "question": "在 CAP 中，SELECT.one 与 SELECT 的区别是什么？",
+      "options": {
+        "A": "SELECT.one 只返回一条记录，SELECT 返回数组",
+        "B": "性能不同",
+        "C": "权限不同",
+        "D": "没有区别"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "SELECT 返回记录数组，SELECT.one 只返回第一条记录（或 null）。使用 SELECT.one 获取单个实体更简洁，不需要数组索引。例如：const book = await SELECT.one.from('Books').where({ID: id});"
+    },
+    {
+      "id": 24,
+      "question": "在 SAP UI5 中，OverflowToolbar 的特点是什么？",
+      "options": {
+        "A": "自动将溢出内容移入更多菜单",
+        "B": "固定显示所有内容",
+        "C": "隐藏所有内容",
+        "D": "只显示图标"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "OverflowToolbar 在空间不足时自动将内容移入溢出菜单（更多按钮）。可以设置各项的溢出优先级，重要按钮保持可见，次要按钮先移入菜单。"
+    },
+    {
+      "id": 25,
+      "question": "CAP 中的 @cds.autoexpose 注解有什么作用？",
+      "options": {
+        "A": "自动将实体暴露为 OData 端点",
+        "B": "自动生成文档",
+        "C": "自动创建索引",
+        "D": "自动备份数据"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "@cds.autoexpose 标记的实体（以及通过 Composition 关联的实体）自动作为服务的一部分暴露。无需在服务定义中显式列出，简化服务配置。"
+    },
+    {
+      "id": 26,
+      "question": "在 SAP BTP 中，如何查看应用的环境变量？",
+      "options": {
+        "A": "使用 cf env <app-name> 命令",
+        "B": "在浏览器控制台查看",
+        "C": "读取本地文件",
+        "D": "发送邮件查询"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "cf env <app-name> 显示应用的环境变量，包括用户定义变量和系统注入的 VCAP_SERVICES（服务绑定信息）、VCAP_APPLICATION 等。"
+    },
+    {
+      "id": 27,
+      "question": "在 UI5 中，sap.ui.core.format.DateFormat 用于什么？",
+      "options": {
+        "A": "格式化日期和时间显示",
+        "B": "存储日期",
+        "C": "计算日期差",
+        "D": "验证日期"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "DateFormat 用于将 Date 对象格式化为字符串或解析日期字符串。支持多种预定义样式和自定义模式，自动处理本地化（不同语言的日期格式）。"
+    },
+    {
+      "id": 28,
+      "question": "在 CAP 中，如何实现乐观锁？",
+      "options": {
+        "A": "添加带有 @cds.on.update 的时间戳字段",
+        "B": "使用数据库锁",
+        "C": "禁止并发访问",
+        "D": "忽略冲突"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "使用带有 @cds.on.update: $now 的时间戳字段作为 ETag 源，配合 @odata.etag 实现乐观锁。更新时自动检查时间戳，数据已被修改则返回 412 错误。"
+    },
+    {
+      "id": 29,
+      "question": "SAP UI5 的 SmartForm 控件的特点是什么？",
+      "options": {
+        "A": "自动从元数据生成表单布局",
+        "B": "手动配置每个字段",
+        "C": "只支持只读显示",
+        "D": "不支持验证"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "SmartForm 结合 SmartField 自动从 OData 元数据生成表单。字段类型、标签、验证规则等都基于后端元数据和注解自动配置，支持编辑模式切换。"
+    },
+    {
+      "id": 30,
+      "question": "在 BTP 开发中，cds deploy 命令的作用是什么？",
+      "options": {
+        "A": "将数据模型部署到数据库",
+        "B": "部署 UI 应用",
+        "C": "部署到生产环境",
+        "D": "创建备份"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "cds deploy 将 CDS 模型部署到目标数据库，创建或更新表结构。支持 SQLite（本地开发）和 SAP HANA。可以指定 --to hana 部署到 HANA。"
+    },
+    {
+      "id": 31,
+      "question": "在 SAP UI5 中，如何处理表单验证？",
+      "options": {
+        "A": "使用控件的 valueState 和 valueStateText 属性",
+        "B": "只能在后端验证",
+        "C": "使用 alert 提示",
+        "D": "禁用提交按钮"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "UI5 控件有 valueState（None/Error/Warning/Success）和 valueStateText 属性显示验证状态和消息。可以在 change 事件中验证，或使用 MessageManager 统一管理验证消息。"
+    },
+    {
+      "id": 32,
+      "question": "CAP 中的 srv.emit() 方法用于什么？",
+      "options": {
+        "A": "发布事件供异步处理",
+        "B": "发送邮件",
+        "C": "发出网络请求",
+        "D": "输出日志"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "srv.emit() 发布事件到消息队列（如 SAP Event Mesh）。用于异步场景：emit('OrderCreated', { orderID }) 发布事件，其他服务可以订阅处理。"
+    },
+    {
+      "id": 33,
+      "question": "在 SAP UI5 中，Table 控件的 growing 属性用于什么？",
+      "options": {
+        "A": "实现滚动加载更多数据",
+        "B": "自动增加列宽",
+        "C": "增加行高",
+        "D": "放大显示"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "设置 growing=true 启用增量加载。用户滚动到表格底部时自动加载更多数据。growingThreshold 设置每次加载的行数，配合后端分页使用。"
+    },
+    {
+      "id": 34,
+      "question": "在 CAP 中，如何定义枚举类型？",
+      "options": {
+        "A": "使用 type...enum 语法",
+        "B": "使用字符串数组",
+        "C": "使用数据库约束",
+        "D": "在前端定义"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "CDS 支持枚举类型：type Status: String enum { draft; active; closed }; 字段使用此类型会自动验证值是否在枚举范围内，UI 可以显示下拉选择。"
+    },
+    {
+      "id": 35,
+      "question": "SAP BTP 中的 cf scale 命令用于什么？",
+      "options": {
+        "A": "调整应用实例数量或资源",
+        "B": "缩放图片",
+        "C": "调整字体大小",
+        "D": "扩展存储空间"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "cf scale 调整应用资源：cf scale <app> -i 3 设置实例数为 3，cf scale <app> -m 512M 调整内存，cf scale <app> -k 1G 调整磁盘。"
+    },
+    {
+      "id": 36,
+      "question": "在 SAP UI5 中，如何实现深度链接（Deep Linking）？",
+      "options": {
+        "A": "通过路由配置和 URL hash",
+        "B": "使用 Cookie",
+        "C": "存储在数据库",
+        "D": "发送邮件链接"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "深度链接通过路由实现：URL hash（如 #/orders/123）映射到特定视图和数据。用户可以直接访问或分享特定页面的 URL，应用自动导航到对应状态。"
+    },
+    {
+      "id": 37,
+      "question": "CAP 中的 @mandatory 注解用于什么？",
+      "options": {
+        "A": "标记字段为必填",
+        "B": "强制加密",
+        "C": "强制备份",
+        "D": "强制排序"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "@mandatory 标记字段为必填。创建或更新时如果未提供该字段值，CAP 自动返回验证错误。在 OData 元数据中也会反映此约束。"
+    },
+    {
+      "id": 38,
+      "question": "在 SAP UI5 中，IconTabBar 用于什么？",
+      "options": {
+        "A": "创建带图标的选项卡式导航",
+        "B": "显示图标列表",
+        "C": "设置应用图标",
+        "D": "下载图标"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "IconTabBar 创建选项卡式导航，每个 Tab 可以有图标、文字、计数器。用于在同一页面内切换不同内容区域，常用于详情页的不同视角切换。"
+    },
+    {
+      "id": 39,
+      "question": "在 BTP 开发中，如何配置 CAP 使用 SAP HANA 数据库？",
+      "options": {
+        "A": "在 package.json 的 cds.requires 中指定 hana",
+        "B": "修改操作系统设置",
+        "C": "安装本地软件",
+        "D": "联系 SAP 支持"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "在 package.json 配置：\"cds\": { \"requires\": { \"db\": { \"kind\": \"hana\" } } }。同时需要绑定 hana 服务实例，运行时 CAP 自动连接到 HANA。"
+    },
+    {
+      "id": 40,
+      "question": "SAP UI5 的 XMLView 相比 JavaScript View 的优势是什么？",
+      "options": {
+        "A": "声明式语法更清晰，支持更好的工具支持",
+        "B": "性能更高",
+        "C": "支持更多控件",
+        "D": "不需要学习"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "XMLView 使用声明式 XML 语法定义 UI，结构清晰、易于阅读。支持更好的 IDE 工具（自动完成、验证）、预处理指令。是 UI5 推荐的视图定义方式。"
+    },
+    {
+      "id": 41,
+      "question": "在 CAP 中，如何处理批量操作（Batch Request）？",
+      "options": {
+        "A": "CAP 自动支持 OData Batch",
+        "B": "需要手动实现",
+        "C": "不支持批量操作",
+        "D": "使用第三方库"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "CAP 自动支持 OData $batch 请求，无需额外配置。客户端可以在单个 HTTP 请求中发送多个操作，CAP 框架解析并按顺序执行，支持事务。"
+    },
+    {
+      "id": 42,
+      "question": "在 SAP UI5 中，ColumnListItem 用于什么？",
+      "options": {
+        "A": "定义表格行的模板",
+        "B": "创建列标题",
+        "C": "设置列宽",
+        "D": "排序列"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "ColumnListItem 是 Table 控件中行的模板，定义每行包含的单元格。通过数据绑定，每条数据自动生成一个 ColumnListItem 实例。"
+    },
+    {
+      "id": 43,
+      "question": "CAP 中的 @Common.ValueList 注解用于什么？",
+      "options": {
+        "A": "定义字段的值帮助（下拉选择）",
+        "B": "设置默认值",
+        "C": "验证值范围",
+        "D": "排序显示顺序"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "@Common.ValueList 定义字段的值帮助，指向另一个实体作为选项来源。Fiori Elements 自动生成 Value Help 对话框，用户可以搜索和选择值。"
+    },
+    {
+      "id": 44,
+      "question": "在 SAP BTP 中，cf restage 命令的作用是什么？",
+      "options": {
+        "A": "重新构建应用的 droplet 而不重新上传代码",
+        "B": "重启服务器",
+        "C": "清除缓存",
+        "D": "备份数据"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "cf restage 使用已上传的代码重新构建应用。当修改环境变量或绑定新服务后需要 restage 使更改生效，比完整 push 更快。"
+    },
+    {
+      "id": 45,
+      "question": "在 SAP UI5 中，如何实现控件的响应式可见性？",
+      "options": {
+        "A": "使用 visible 属性结合 Device API 或媒体查询",
+        "B": "创建多个视图",
+        "C": "使用 CSS 隐藏",
+        "D": "只能固定显示"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "可以根据 sap.ui.Device 的设备检测设置 visible 属性，或使用 Expression Binding：visible=\"{= ${device>/system/desktop}}\". 也可以用 CSS media query。"
+    },
+    {
+      "id": 46,
+      "question": "在 CAP 中，INSERT.into() 方法的作用是什么？",
+      "options": {
+        "A": "构建插入数据的 CQL 语句",
+        "B": "插入 HTML 元素",
+        "C": "插入图片",
+        "D": "插入分页符"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "INSERT.into() 构建插入语句：await INSERT.into('Books').entries({title: 'New Book'})。支持插入单条或多条记录，与 srv.run() 配合执行。"
+    },
+    {
+      "id": 47,
+      "question": "SAP UI5 的 Dialog 控件有什么特点？",
+      "options": {
+        "A": "模态弹窗，阻止与背景交互",
+        "B": "非模态窗口",
+        "C": "只能显示文本",
+        "D": "无法关闭"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Dialog 是模态弹窗，打开时显示遮罩层阻止与背景交互。可以包含任意内容和按钮，用于确认操作、输入数据、显示详情等场景。"
+    },
+    {
+      "id": 48,
+      "question": "在 CAP 多租户应用中，@sap/cds-mtxs 模块提供什么功能？",
+      "options": {
+        "A": "租户生命周期管理和数据隔离",
+        "B": "用户界面组件",
+        "C": "网络加速",
+        "D": "日志管理"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "@sap/cds-mtxs 提供多租户支持：租户 onboarding/offboarding、按租户的数据库隔离、订阅管理。与 SaaS Provisioning Service 集成管理租户生命周期。"
+    },
+    {
+      "id": 49,
+      "question": "在 SAP UI5 中，sap.m.Input 的 liveChange 事件何时触发？",
+      "options": {
+        "A": "用户每次输入字符时",
+        "B": "输入框失去焦点时",
+        "C": "按回车键时",
+        "D": "页面加载时"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "liveChange 在每次输入变化时触发（每个字符），适合实时搜索。change 事件在失去焦点或按回车时触发。根据需求选择合适的事件。"
+    },
+    {
+      "id": 50,
+      "question": "在 BTP 开发中，如何为 CAP 应用添加单元测试？",
+      "options": {
+        "A": "使用 Jest 或 Mocha 测试框架",
+        "B": "手动测试",
+        "C": "只能在生产环境测试",
+        "D": "不需要测试"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "CAP 项目可以使用 Jest 或 Mocha 编写测试。cds.test 提供测试工具启动临时服务器。在 test 目录创建测试文件，使用 npm test 运行。"
+    }
+  ]
+}

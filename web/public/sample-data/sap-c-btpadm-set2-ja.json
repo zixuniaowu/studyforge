@@ -1,0 +1,660 @@
+{
+  "examId": "sap-c-btpadm-set2-ja",
+  "provider": "SAP",
+  "title": "SAP BTP 管理者 (C_BTPADM) 模擬試験 Set 2",
+  "description": "SAP Business Technology Platform 管理者認定模擬試験第2セット",
+  "icon": "sap",
+  "setNumber": 2,
+  "questions": [
+    {
+      "id": 1,
+      "question": "SAP BTP における Service Broker とは何ですか？",
+      "options": {
+        "A": "サービスインスタンスのライフサイクルを管理するコンポーネント",
+        "B": "ユーザーデータを格納するデータベース",
+        "C": "ネットワークロードバランサー",
+        "D": "ユーザーインターフェース設計ツール"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Service Broker は Open Service Broker API を実装するコンポーネントで、サービスインスタンスのライフサイクル操作（作成、更新、削除）およびサービスバインディングの作成・削除を担当します。BTP サービス管理の中核コンポーネントです。"
+    },
+    {
+      "id": 2,
+      "question": "SAP BTP のネットワークアクセス制御を設定する必要があります。利用可能なオプションはどれですか？",
+      "options": {
+        "A": "IP ホワイトリスト",
+        "B": "仮想ネットワーク (VPC) ピアリング",
+        "C": "プライベートリンク (Private Link)",
+        "D": "OS ファイアウォールの変更"
+      },
+      "answer": ["A", "B", "C"],
+      "answerType": "multiple",
+      "explanation": "BTP は複数のネットワーク制御オプションを提供：IP ホワイトリスト(A)でアクセス元を制限、VPC ピアリング(B)でプライベートネットワークに接続、Private Link(C)でプライベート接続を提供。管理者は OS ファイアウォール(D)に直接アクセスできません。"
+    },
+    {
+      "id": 3,
+      "question": "SAP BTP の Instance Manager サービスは何に使用されますか？",
+      "options": {
+        "A": "マルチテナントアプリのテナントサービスインスタンスを管理",
+        "B": "アプリケーションインスタンス数の監視",
+        "C": "仮想マシンインスタンスの設定",
+        "D": "データベースインデックスの管理"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Instance Manager は SaaS アプリの重要なサービスで、各テナントのサービスインスタンス（データベーススキーマなど）を管理します。テナントのオンボーディング/オフボーディングをサポートし、マルチテナントアプリで各テナントが独立したリソースを持つことを保証します。"
+    },
+    {
+      "id": 4,
+      "question": "Cloud Connector 設定時、Location ID とは何ですか？",
+      "options": {
+        "A": "Cloud Connector の地理的位置座標",
+        "B": "同一 Subaccount 下の複数の Cloud Connector を区別する識別子",
+        "C": "データセンターの物理アドレス",
+        "D": "IP アドレスのエイリアス"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Location ID は同じ Subaccount に接続する複数の Cloud Connector を区別するために使用されます。1つの Subaccount が複数のオンプレミスネットワークに接続する必要がある場合、各 Cloud Connector に異なる Location ID を設定し、アプリは Location ID で使用する接続を指定します。"
+    },
+    {
+      "id": 5,
+      "question": "SAP BTP の Subscription と Service Instance の違いは何ですか？",
+      "options": {
+        "A": "Subscription は SaaS アプリ用、Service Instance はバックエンドサービス用",
+        "B": "Subscription は無料、Service Instance は有料",
+        "C": "両者は完全に同じ",
+        "D": "Subscription は Kyma でのみ使用可能"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Subscription は SaaS アプリ（Business Application Studio など）をサブスクライブする方法で、アプリはプロバイダーが管理します。Service Instance はアプリが利用するバックエンドサービス（データベース、メッセージキューなど）のインスタンスを作成します。両者は異なるサービス利用モデルを表します。"
+    },
+    {
+      "id": 6,
+      "question": "アプリのブルーグリーンデプロイを実装する必要があります。Cloud Foundry での実現方法は？",
+      "options": {
+        "A": "cf push の --strategy rolling パラメータを使用",
+        "B": "ルートマッピングでトラフィックを切り替え",
+        "C": "新しい Subaccount を作成",
+        "D": "Autoscaler サービスを使用"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "ブルーグリーンデプロイはルートマッピングで実現：新バージョン(グリーン)をデプロイし、テスト後、旧バージョン(ブルー)から新バージョンにルートをマッピングし、旧バージョンを削除します。cf map-route と cf unmap-route コマンドでルートマッピングを管理します。"
+    },
+    {
+      "id": 7,
+      "question": "SAP BTP の HTML5 Application Repository サービスの主な用途は何ですか？",
+      "options": {
+        "A": "静的な HTML5 アプリコンテンツを保存・提供",
+        "B": "ユーザーがアップロードしたドキュメントを保存",
+        "C": "HTML テンプレートライブラリを管理",
+        "D": "HTML コードを編集"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "HTML5 Application Repository は HTML5 アプリの静的コンテンツ（HTML、CSS、JavaScript）を保存・配信します。Managed Application Router と連携して統一されたエントリーポイントと認証統合を提供し、SAP Fiori アプリデプロイの標準方式です。"
+    },
+    {
+      "id": 8,
+      "question": "SAP BTP で OAuth 2.0 を設定する際、標準の認可タイプ(Grant Type)はどれですか？",
+      "options": {
+        "A": "Client Credentials",
+        "B": "Authorization Code",
+        "C": "Password Grant",
+        "D": "JWT Bearer"
+      },
+      "answer": ["A", "B", "C", "D"],
+      "answerType": "multiple",
+      "explanation": "SAP BTP XSUAA は複数の OAuth 2.0 認可タイプをサポート：Client Credentials(マシン間)、Authorization Code(ユーザー認可)、Password Grant(直接ユーザーパスワード、非推奨)、JWT Bearer(トークン交換)。シナリオに応じて適切な認可タイプを選択します。"
+    },
+    {
+      "id": 9,
+      "question": "アプリのレスポンスが遅く、パフォーマンス分析が必要です。最適なツールはどれですか？",
+      "options": {
+        "A": "SAP Cloud ALM",
+        "B": "Cloud Connector ログ",
+        "C": "Service Marketplace",
+        "D": "Entitlement 設定"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "SAP Cloud ALM (Application Lifecycle Management) は包括的なアプリパフォーマンス監視・分析機能を提供し、トランザクショントレース、パフォーマンスメトリクス、異常検出を含みます。アプリパフォーマンス問題診断の主要ツールです。"
+    },
+    {
+      "id": 10,
+      "question": "SAP BTP の Transparent Proxy 機能とは何ですか？",
+      "options": {
+        "A": "オンプレミスシステムへの接続認証を自動処理",
+        "B": "すべてのネットワークトラフィックをプロキシ",
+        "C": "アプリの実際の IP を隠蔽",
+        "D": "ネットワークデータを圧縮"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Transparent Proxy は BTP Connectivity サービスの機能で、Kyma 環境でプロキシ層を提供し、オンプレミスシステムへの認証（Principal Propagation を含む）を自動処理します。アプリは宛先サービスを指定するだけで、プロキシ層が複雑な接続ロジックを処理します。"
+    },
+    {
+      "id": 11,
+      "question": "SAP BTP における Managed Application Router とは何ですか？",
+      "options": {
+        "A": "SAP がホストするアプリルーティングコンポーネント、自己デプロイ不要",
+        "B": "ネットワークスイッチ",
+        "C": "データベース接続プール",
+        "D": "メッセージルーティングサービス"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Managed Application Router は SAP がホストするルーティングサービスで、HTML5 アプリのエントリーポイントとして機能します。自分で Application Router をデプロイする場合と比べ、管理オーバーヘッドが削減され、認証、ルーティング設定、セッション管理が自動的に処理されます。"
+    },
+    {
+      "id": 12,
+      "question": "BTP の多要素認証(MFA)を設定する必要があります。どこで設定しますか？",
+      "options": {
+        "A": "SAP Identity Authentication Service (IAS)",
+        "B": "Cloud Foundry Organization 設定",
+        "C": "Subaccount セキュリティ設定",
+        "D": "アプリケーションコード"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "MFA は SAP Identity Authentication Service (IAS) で設定します。IAS はリスクベース認証を提供し、TOTP、SMS 検証などの MFA 方式をサポートします。設定後、その IdP を通じて認証するすべての BTP アプリに適用されます。"
+    },
+    {
+      "id": 13,
+      "question": "SAP BTP の Feature Toggle Service は何に使用されますか？",
+      "options": {
+        "A": "アプリ機能の動的なオン/オフを制御",
+        "B": "BTP アカウントタイプの切り替え",
+        "C": "Subaccount の有効化/無効化",
+        "D": "UI テーマの管理"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Feature Toggle Service は再デプロイなしにアプリ機能を実行時に動的に有効化/無効化できます。段階的リリース、A/B テスト、ユーザーやテナントベースの機能トグルをサポートし、リリースの柔軟性と安全性を向上させます。"
+    },
+    {
+      "id": 14,
+      "question": "BTP とオンプレミス SAP システムの統合設定時、Cloud Connector がサポートするプロトコルはどれですか？",
+      "options": {
+        "A": "HTTP/HTTPS",
+        "B": "RFC",
+        "C": "LDAP",
+        "D": "TCP"
+      },
+      "answer": ["A", "B", "C", "D"],
+      "answerType": "multiple",
+      "explanation": "Cloud Connector は複数のプロトコルをサポート：HTTP/HTTPS(Web サービス)、RFC(SAP リモートファンクションコール)、LDAP(ディレクトリサービス)、TCP(汎用 TCP 接続)。これにより様々なオンプレミスシステムやサービスに接続できます。"
+    },
+    {
+      "id": 15,
+      "question": "SAP BTP の Service Manager の役割は何ですか？",
+      "options": {
+        "A": "環境を跨いでサービスインスタンスを管理する統一インターフェース",
+        "B": "サービスデスクチケットの管理",
+        "C": "サービス価格の設定",
+        "D": "サービスインターフェースの設計"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Service Manager は BTP サービスインスタンスを管理する統一 API を提供し、Cloud Foundry、Kyma など異なる環境を跨いで動作します。マルチ環境シナリオでのサービス管理を簡素化し、自動化と Infrastructure as Code をサポートします。"
+    },
+    {
+      "id": 16,
+      "question": "開発チームに異なるリソースクォータを設定する必要があります。ベストプラクティスは何ですか？",
+      "options": {
+        "A": "各チームに独立した Subaccount を作成",
+        "B": "すべてのチームで1つの Space を共有",
+        "C": "開発者のログイン時間を制限",
+        "D": "不要なサービスを無効化"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "各チームに独立した Subaccount を作成するのがベストプラクティスで、リソースクォータの独立割り当て、コスト追跡、権限分離を実現できます。単一 Subaccount 内で分離を試みるより明確で管理しやすくなります。"
+    },
+    {
+      "id": 17,
+      "question": "SAP BTP の Application Logging Service が提供する機能は何ですか？",
+      "options": {
+        "A": "アプリケーションログの収集と検索",
+        "B": "アプリエラーの自動修復",
+        "C": "コードコメントの生成",
+        "D": "ユーザーセッションの管理"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Application Logging Service はアプリが生成したログを収集し、ログ検索と分析機能を提供します。Kibana インターフェースでログをクエリし、ログレベルを設定し、アラートサービスと統合できます。ログ保持期間は設定可能です。"
+    },
+    {
+      "id": 18,
+      "question": "BTP における SaaS Provisioning Service とは何ですか？",
+      "options": {
+        "A": "マルチテナント SaaS アプリのテナントサブスクリプションを管理",
+        "B": "無料トライアル版サービスを提供",
+        "C": "SaaS アプリコードを自動生成",
+        "D": "SaaS データをバックアップ"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "SaaS Provisioning Service はマルチテナント SaaS アプリのテナントライフサイクルを管理：テナントのサブスクリプション/解約処理、テナントオンボーディングコールバックのトリガー、テナント依存サービスインスタンスの管理。SaaS アプリ構築の中核サービスです。"
+    },
+    {
+      "id": 19,
+      "question": "アプリのヘルスチェックを設定する必要があります。Cloud Foundry がサポートするタイプはどれですか？",
+      "options": {
+        "A": "HTTP エンドポイントチェック",
+        "B": "プロセス生存チェック",
+        "C": "ポートリスニングチェック",
+        "D": "データベース接続チェック"
+      },
+      "answer": ["A", "B", "C"],
+      "answerType": "multiple",
+      "explanation": "Cloud Foundry は3種類のヘルスチェックをサポート：HTTP(指定エンドポイントが200を返すかチェック)、Process(プロセスが実行中かチェック)、Port(ポートがリッスンしているかチェック)。データベース接続チェック(D)はアプリ自身で実装し HTTP エンドポイントで公開する必要があります。"
+    },
+    {
+      "id": 20,
+      "question": "SAP BTP の Connectivity Proxy とは何ですか？",
+      "options": {
+        "A": "Kyma 環境でオンプレミスシステムに接続するコンポーネント",
+        "B": "ユーザー ID をプロキシするサービス",
+        "C": "ネットワークリクエストをキャッシュするコンポーネント",
+        "D": "データ転送を暗号化するツール"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Connectivity Proxy は Kyma 環境のコンポーネントで、Kubernetes アプリが Cloud Connector を通じてオンプレミスシステムにアクセスできるようにします。Kyma で Cloud Foundry Connectivity Service と同様の機能を提供します。"
+    },
+    {
+      "id": 21,
+      "question": "SAP BTP で CORS（クロスオリジンリソース共有）を設定する正しい場所はどこですか？",
+      "options": {
+        "A": "Application Router の設定ファイル",
+        "B": "データベース設定",
+        "C": "Cloud Connector",
+        "D": "Global Account 設定"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "CORS 設定は通常 Application Router の xs-app.json ファイルで行うか、アプリコードでレスポンスヘッダーを設定します。これによりどのドメインがブラウザ経由で API にアクセスできるかを制御します。Managed Application Router も CORS 設定をサポートしています。"
+    },
+    {
+      "id": 22,
+      "question": "SAP BTP の Document Management サービスは何に使用されますか？",
+      "options": {
+        "A": "ビジネスドキュメントコンテンツの保存と管理",
+        "B": "PDF レポートの生成",
+        "C": "Word ドキュメントの編集",
+        "D": "メール添付ファイルの送信"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Document Management Service はエンタープライズグレードのコンテンツ管理機能を提供し、ビジネスドキュメントの保存、整理、バージョン管理、検索に使用されます。CMIS 標準をサポートし、SAP アプリと統合し、コンプライアンス要件を満たします。"
+    },
+    {
+      "id": 23,
+      "question": "開発環境と本番環境の分離を設定する必要があります。推奨される方法は何ですか？",
+      "options": {
+        "A": "異なる Subaccount を使用",
+        "B": "同じ Space で異なるアプリ名を使用",
+        "C": "異なるデータベーススキーマを使用",
+        "D": "コードブランチを使用"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "異なる Subaccount で環境を分離することが推奨されます：開発と本番は独立したリソース、権限、設定を持ちます。これにより明確な分離が提供され、設定ミスが本番に影響するリスクが低減されます。異なるリージョンを使用して物理的な分離を追加することもできます。"
+    },
+    {
+      "id": 24,
+      "question": "SAP BTP の Work Zone サービスが提供する機能は何ですか？",
+      "options": {
+        "A": "統一されたビジネスウェブサイトポータルとアプリ集約",
+        "B": "プロジェクト管理ワークスペース",
+        "C": "コードコラボレーションプラットフォーム",
+        "D": "ビデオ会議ツール"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "SAP Build Work Zone は統一されたデジタルワークプレイスを提供し、SAP および非 SAP アプリ、ワークフロー、通知、コラボレーション機能を集約します。パーソナライズとモバイルアクセスをサポートする現代的なエンタープライズポータルソリューションです。"
+    },
+    {
+      "id": 25,
+      "question": "BTP でイベント処理を設定する際、イベント駆動アーキテクチャに使用するサービスはどれですか？",
+      "options": {
+        "A": "SAP Event Mesh",
+        "B": "Job Scheduling Service",
+        "C": "Document Management",
+        "D": "Credential Store"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "SAP Event Mesh はエンタープライズグレードのメッセージングとイベントサービスで、パブリッシュ/サブスクライブパターンをサポートします。イベント駆動のマイクロサービスアーキテクチャの構築、SAP およびサードパーティシステムとの統合、疎結合のシステム通信の実現に使用されます。"
+    },
+    {
+      "id": 26,
+      "question": "アプリのカスタムログフォーマットを設定する必要があります。Cloud Foundry での実現方法は？",
+      "options": {
+        "A": "アプリコードで構造化ログを出力",
+        "B": "Cloud Foundry システムファイルを変更",
+        "C": "Cockpit でログテンプレートを設定",
+        "D": "SAP サポートに連絡して変更"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "アプリはコード内で構造化ログ（JSON 形式など）を出力する必要があり、Application Logging Service がこれらのログを収集します。管理者は CF システムファイルを直接変更できず、アプリ設定とコードでログフォーマットを制御します。"
+    },
+    {
+      "id": 27,
+      "question": "SAP BTP の Forms Service は何に使用されますか？",
+      "options": {
+        "A": "PDF フォームドキュメントの生成と管理",
+        "B": "Web フォームインターフェースの作成",
+        "C": "データベーステーブルの管理",
+        "D": "フォームメールの送信"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "SAP Forms Service by Adobe は Adobe 技術ベースのインタラクティブ PDF フォームを生成するために使用されます。フォーム設計、データマージ、デジタル署名をサポートし、契約書や請求書などの正式な文書の生成によく使用されます。"
+    },
+    {
+      "id": 28,
+      "question": "BTP でセッション永続化を設定する際、正しいオプションはどれですか？",
+      "options": {
+        "A": "Redis などの外部セッションストアを使用",
+        "B": "セッションは自動的にデータベースに永続化される",
+        "C": "Cloud Foundry はネイティブでセッションレプリケーションをサポート",
+        "D": "各インスタンスが独立したセッションを維持"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Cloud Foundry はネイティブのセッションレプリケーションを提供しません。高可用性のセッション管理を実現するには、外部セッションストア（Redis など）を使用する必要があります。これにより複数のアプリインスタンスがセッションデータを共有し、ユーザーリクエストを任意のインスタンスにルーティングできます。"
+    },
+    {
+      "id": 29,
+      "question": "SAP BTP における Authorization と Authentication の違いは何ですか？",
+      "options": {
+        "A": "Authentication は ID を検証、Authorization は権限を制御",
+        "B": "両者は同義語",
+        "C": "Authorization が Authentication より先",
+        "D": "管理者のみ Authentication が必要"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Authentication（認証）はユーザー ID を検証し、「あなたは誰か」を確認します。Authorization（認可）はユーザー権限を制御し、「あなたは何ができるか」を決定します。BTP では IAS が認証を、XSUAA が認可を処理します。"
+    },
+    {
+      "id": 30,
+      "question": "災害復旧用に BTP 設定をエクスポートする必要があります。バックアップすべきものはどれですか？",
+      "options": {
+        "A": "Destination 設定",
+        "B": "Trust 設定",
+        "C": "サービスインスタンスメタデータ",
+        "D": "アプリケーションコード"
+      },
+      "answer": ["A", "B", "C", "D"],
+      "answerType": "multiple",
+      "explanation": "完全な災害復旧バックアップには Destination 設定(A)、Trust 設定(B)、サービスメタデータ(C)、アプリコード(D)を含める必要があります。環境変数、ロール割り当て、Entitlement 設定なども含めます。Infrastructure as Code で設定管理することを推奨します。"
+    },
+    {
+      "id": 31,
+      "question": "SAP BTP の Extension Suite とは何ですか？",
+      "options": {
+        "A": "SAP 標準アプリを拡張するためのプラットフォーム機能の集合",
+        "B": "ブラウザ拡張プラグイン",
+        "C": "ファイル拡張子の管理",
+        "D": "ハードウェア拡張インターフェース"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "SAP Extension Suite は BTP 上の機能の集合で、SAP S/4HANA、SuccessFactors などの標準アプリを拡張する開発ツールとランタイムを提供します。開発ツール、統合サービス、データ管理を含み、Side-by-Side 拡張を実現します。"
+    },
+    {
+      "id": 32,
+      "question": "BTP セキュリティ設定で、Security Descriptor (xs-security.json) とは何ですか？",
+      "options": {
+        "A": "アプリの OAuth スコープとロールを定義する設定ファイル",
+        "B": "パスワードを保存するファイル",
+        "C": "ネットワークセキュリティルールファイル",
+        "D": "ウイルススキャン設定"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "xs-security.json はアプリのセキュリティ記述ファイルで、xsappname、scopes、role-templates、attributes などの OAuth 2.0 設定を定義します。XSUAA はこのファイルに基づいてセキュリティ設定を作成し、アプリはこれにより細かい認可を実装します。"
+    },
+    {
+      "id": 33,
+      "question": "SAP BTP の Data Intelligence サービスは何に使用されますか？",
+      "options": {
+        "A": "データオーケストレーション、管理、インテリジェント処理",
+        "B": "ビジネスインテリジェンスレポート",
+        "C": "データベースバックアップ",
+        "D": "データ入力フォーム"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "SAP Data Intelligence は包括的なデータ管理プラットフォームで、データオーケストレーション（ETL/ELT）、データ品質、メタデータ管理、機械学習モデルの運用化をサポートします。様々なデータソースに接続し、データパイプラインを構築します。"
+    },
+    {
+      "id": 34,
+      "question": "アプリの環境変数を設定する必要があります。正しい方法はどれですか？",
+      "options": {
+        "A": "manifest.yml で定義",
+        "B": "cf set-env コマンドを使用",
+        "C": "サービスバインディングによる自動注入",
+        "D": "サーバー設定ファイルを直接編集"
+      },
+      "answer": ["A", "B", "C"],
+      "answerType": "multiple",
+      "explanation": "環境変数は manifest.yml で定義(A)、cf set-env コマンド(B)、サービスバインディング注入(C)で設定できます。サーバー設定ファイルの直接編集(D)はできません。CF はコンテナ化プラットフォームで、再起動のたびにイメージから起動するためです。"
+    },
+    {
+      "id": 35,
+      "question": "SAP BTP の Portal Service と Work Zone の関係は何ですか？",
+      "options": {
+        "A": "Portal Service は Work Zone の前身で、機能は統合された",
+        "B": "両者は完全に独立",
+        "C": "Work Zone は Portal Service のプラグイン",
+        "D": "Portal Service はモバイル専用"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "SAP Portal Service の機能は SAP Build Work Zone に統合されました。Work Zone はより現代的なポータル機能を提供し、コンテンツ管理、アプリ統合、コラボレーション機能を含みます。新しいプロジェクトでは Work Zone を使用すべきです。"
+    },
+    {
+      "id": 36,
+      "question": "BTP で API バージョン管理を設定する際、推奨されるサービスはどれですか？",
+      "options": {
+        "A": "SAP API Management",
+        "B": "Destination Service",
+        "C": "Job Scheduling Service",
+        "D": "Audit Log Service"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "SAP API Management は包括的な API ライフサイクル管理を提供し、バージョン管理、ルーティング、ポリシー適用、開発者ポータルを含みます。複数バージョンの API を並行して実行し、スムーズなバージョン移行を実現できます。"
+    },
+    {
+      "id": 37,
+      "question": "SAP BTP の Object Store サービスは何に使用されますか？",
+      "options": {
+        "A": "ファイルや画像などの非構造化データを保存",
+        "B": "JavaScript オブジェクトを保存",
+        "C": "ORM オブジェクトマッピングを管理",
+        "D": "API レスポンスをキャッシュ"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Object Store はクラウドネイティブのオブジェクトストレージサービスで、非構造化データ（ファイル、画像、動画、バックアップなど）を保存するために使用されます。高可用性でスケーラブルなストレージを提供し、大容量データや静的リソースの保存に適しています。"
+    },
+    {
+      "id": 38,
+      "question": "BTP サービスの稼働状態を監視する必要があります。公式ステータスページはどれですか？",
+      "options": {
+        "A": "SAP Trust Center / Cloud Status",
+        "B": "Google 検索",
+        "C": "ソーシャルメディア",
+        "D": "開発者フォーラム"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "SAP Trust Center と Cloud Status ページは BTP サービスのリアルタイムステータス、計画メンテナンス、履歴イベント情報を提供します。サービスの可用性と問題を把握するための公式チャネルです。"
+    },
+    {
+      "id": 39,
+      "question": "BTP でマルチテナントアプリを設定する際、Tenant Separator とは何ですか？",
+      "options": {
+        "A": "データベースでテナントデータを分離するメカニズム",
+        "B": "物理ネットワーク分離デバイス",
+        "C": "ユーザーロール名",
+        "D": "サービスプランタイプ"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Tenant Separator はマルチテナントアプリでテナントデータを分離するメカニズムです。一般的な方法には、スキーマ分離（テナントごとに独立スキーマ）、テーブル分離（共有スキーマだがテナント識別列を持つ）、データベース分離（テナントごとに独立データベース）があります。"
+    },
+    {
+      "id": 40,
+      "question": "SAP BTP の Machine Learning Foundation が提供するものは何ですか？",
+      "options": {
+        "A": "ML モデルのトレーニング、デプロイ、推論インフラストラクチャ",
+        "B": "ハードウェアサーバー管理",
+        "C": "データベース最適化",
+        "D": "ユーザーインターフェースフレームワーク"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "SAP AI Core/ML Foundation はエンタープライズグレードの機械学習インフラストラクチャを提供：モデルトレーニング、デプロイ、推論サービス、モデル管理。カスタムモデルと事前トレーニング済みモデルをサポートし、BTP アプリと統合します。"
+    },
+    {
+      "id": 41,
+      "question": "ゼロダウンタイムデプロイを実装する必要があります。実行可能な戦略はどれですか？",
+      "options": {
+        "A": "ブルーグリーンデプロイ",
+        "B": "ローリングアップデート",
+        "C": "カナリアリリース",
+        "D": "直接置換"
+      },
+      "answer": ["A", "B", "C"],
+      "answerType": "multiple",
+      "explanation": "ゼロダウンタイム戦略には、ブルーグリーンデプロイ(A)で2つのバージョンを並行、ローリングアップデート(B)でインスタンスを段階的に置換、カナリアリリース(C)で新バージョンに段階的にトラフィックを移行があります。直接置換(D)はダウンタイムが発生し、ゼロダウンタイム戦略ではありません。"
+    },
+    {
+      "id": 42,
+      "question": "SAP BTP の Workflow サービスは何に使用されますか？",
+      "options": {
+        "A": "ビジネスプロセスと承認ワークフローの定義・実行",
+        "B": "Git ワークフロー管理",
+        "C": "ネットワークデータフロー制御",
+        "D": "ファイル転送プロセス"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "SAP Workflow Service は承認フロー、複数ステップ処理などのビジネスプロセスを定義・実行するために使用されます。ビジュアルプロセスデザイナーを提供し、ユーザータスク、サービス呼び出し、条件分岐をサポートし、SAP アプリと統合します。"
+    },
+    {
+      "id": 43,
+      "question": "BTP で SAML 2.0 シングルサインオンを設定する際、必須の設定はどれですか？",
+      "options": {
+        "A": "Identity Provider メタデータ",
+        "B": "Service Provider エンティティ ID",
+        "C": "データベース接続文字列",
+        "D": "署名証明書"
+      },
+      "answer": ["A", "B", "D"],
+      "answerType": "multiple",
+      "explanation": "SAML 2.0 SSO 設定には、IdP メタデータ(A)で IdP エンドポイントと証明書を記述、SP エンティティ ID(B)でサービスプロバイダーを一意に識別、署名証明書(D)でメッセージ署名検証が必要です。データベース接続(C)は SAML 設定とは無関係です。"
+    },
+    {
+      "id": 44,
+      "question": "SAP BTP の Kyma Runtime における Service Mesh とは何ですか？",
+      "options": {
+        "A": "サービス間通信を管理するインフラストラクチャ層",
+        "B": "ネットワーク物理トポロジー",
+        "C": "サービスカタログ",
+        "D": "メッセージキュー"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Service Mesh（Istio）は Kyma でマイクロサービス間通信を管理するインフラストラクチャ層です。トラフィック管理、セキュリティ（mTLS）、可観測性を提供し、アプリコードを変更せずにサービス間通信を制御できます。"
+    },
+    {
+      "id": 45,
+      "question": "BTP のセキュリティ脆弱性スキャンを設定する必要があります。使用できるサービスはどれですか？",
+      "options": {
+        "A": "SAP Malware Scanning Service",
+        "B": "Cloud Connector",
+        "C": "Job Scheduling",
+        "D": "Destination Service"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "SAP Malware Scanning Service はアップロードされたコンテンツのマルウェアをスキャンするために使用されます。ファイルアップロードプロセスに統合でき、悪意のあるファイル攻撃からアプリを保護します。セキュリティコンプライアンスの重要なコンポーネントです。"
+    },
+    {
+      "id": 46,
+      "question": "BTP における Platform Identity Provider とは何ですか？",
+      "options": {
+        "A": "BTP プラットフォームレベルで使用される Identity Provider（SAP ID Service）",
+        "B": "アプリレベルの Identity Provider",
+        "C": "ハードウェア認証モジュール",
+        "D": "ネットワーク ID サービス"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Platform Identity Provider（デフォルトは SAP ID Service）は BTP Cockpit とプラットフォーム管理操作の認証に使用されます。アプリの Custom Identity Provider とは別で、管理者はエンタープライズ IdP を設定してデフォルトのプラットフォーム認証を置き換えることができます。"
+    },
+    {
+      "id": 47,
+      "question": "SAP BTP の Graph サービスは何に使用されますか？",
+      "options": {
+        "A": "統一 API で複数の SAP データソースにアクセス",
+        "B": "グラフを描画",
+        "C": "ナレッジグラフを管理",
+        "D": "ネットワークトポロジーを可視化"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "SAP Graph は統一された OData API 層を提供し、アプリが単一のエンドポイントから複数の SAP システム（S/4HANA、SuccessFactors など）のデータにアクセスできるようにします。データアクセスを簡素化し、データ関連クエリをサポートします。"
+    },
+    {
+      "id": 48,
+      "question": "アプリの自動再起動ポリシーを設定する必要があります。Cloud Foundry での実現方法は？",
+      "options": {
+        "A": "Health Check と restart ポリシーを設定",
+        "B": "cron ジョブを作成",
+        "C": "外部監視ツールを使用",
+        "D": "手動で再起動"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Cloud Foundry は Health Check を通じてアプリの健全性状態を自動検出し、不健全なインスタンスは自動的に再起動されます。health-check-type、health-check-http-endpoint、timeout などのパラメータでチェック動作を制御します。"
+    },
+    {
+      "id": 49,
+      "question": "SAP BTP の Print Service は何に使用されますか？",
+      "options": {
+        "A": "クラウドアプリから企業プリンターに印刷ジョブを送信",
+        "B": "スクリーンショット",
+        "C": "PDF プレビュー",
+        "D": "ログ出力"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "SAP Print Service はクラウドアプリがドキュメントを企業の印刷インフラストラクチャに送信できるようにします。クラウドアプリとオンプレミスプリンターを橋渡しし、印刷キュー管理、印刷ジョブ追跡をサポートし、SAP Output Management と統合します。"
+    },
+    {
+      "id": 50,
+      "question": "BTP アカウントセキュリティを設定する際、セキュリティベストプラクティスはどれですか？",
+      "options": {
+        "A": "多要素認証を有効化",
+        "B": "定期的な権限割り当てのレビュー",
+        "C": "共有管理者アカウントの使用",
+        "D": "セッションタイムアウトの設定"
+      },
+      "answer": ["A", "B", "D"],
+      "answerType": "multiple",
+      "explanation": "セキュリティベストプラクティス：MFA(A)で認証セキュリティを強化、定期的な権限レビュー(B)で最小権限の原則を確保、セッションタイムアウト(D)でセッションハイジャックを防止。共有管理者アカウント(C)は安全ではなく、個人アカウントを使用して操作ログを記録すべきです。"
+    }
+  ]
+}

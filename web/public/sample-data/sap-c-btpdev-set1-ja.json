@@ -1,0 +1,660 @@
+{
+  "examId": "sap-c-btpdev-set1-ja",
+  "provider": "SAP",
+  "title": "SAP BTP 開発者 (C_BTPDEV) 模擬試験 Set 1",
+  "description": "SAP Business Technology Platform 開発者認定模擬試験第1セット",
+  "icon": "sap",
+  "setNumber": 1,
+  "questions": [
+    {
+      "id": 1,
+      "question": "SAP BTP の CAP (Cloud Application Programming Model) でデータモデルを定義するために使用する言語は何ですか？",
+      "options": {
+        "A": "CDS (Core Data Services)",
+        "B": "JSON Schema",
+        "C": "XML",
+        "D": "YAML"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "CAP は CDS (Core Data Services) を使用してデータモデルとサービスを定義します。CDS は宣言型言語で、エンティティ、関連、ビュー、サービスインターフェースを定義するために使用されます。ターゲットデータベースの DDL と OData サービス定義にコンパイルされます。"
+    },
+    {
+      "id": 2,
+      "question": "CAP プロジェクトで、標準構造の一部であるファイル/ディレクトリはどれですか？",
+      "options": {
+        "A": "db/ - データモデル定義",
+        "B": "srv/ - サービス定義と実装",
+        "C": "app/ - UI アプリケーション",
+        "D": "lib/ - ライブラリファイル"
+      },
+      "answer": ["A", "B", "C"],
+      "answerType": "multiple",
+      "explanation": "CAP 標準プロジェクト構造：db/(A)はデータモデル CDS ファイルを含む、srv/(B)はサービス定義とカスタムハンドラーを含む、app/(C)はフロントエンド UI アプリを含む。lib/(D)は CAP 標準ディレクトリではありません。"
+    },
+    {
+      "id": 3,
+      "question": "SAP UI5 アプリにおける Controller とは何ですか？",
+      "options": {
+        "A": "ビューロジックとユーザー操作を処理する JavaScript モジュール",
+        "B": "データを格納するデータベーステーブル",
+        "C": "ネットワークリクエストハンドラー",
+        "D": "CSS スタイルファイル"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "SAP UI5 の MVC アーキテクチャでは、Controller はビューロジックを処理する JavaScript モジュールです。ユーザーイベントに応答し、バックエンドサービスを呼び出し、モデルデータを更新します。各ビューには通常対応する Controller があります。"
+    },
+    {
+      "id": 4,
+      "question": "SAP BTP 開発において、xs-app.json ファイルの役割は何ですか？",
+      "options": {
+        "A": "Application Router のルーティングルールを設定",
+        "B": "データベース接続を定義",
+        "C": "アプリケーションデータを保存",
+        "D": "CI/CD フローを設定"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "xs-app.json は Application Router の設定ファイルで、URL ルーティングルール、認証要件、ターゲットサービスマッピングなどを定義します。リクエストがどのように異なるバックエンドサービスにルーティングされるかを決定します。"
+    },
+    {
+      "id": 5,
+      "question": "CAP で、自動生成 UUID 主キーを持つエンティティを定義する方法は？",
+      "options": {
+        "A": "aspect cuid または key ID : UUID を使用",
+        "B": "GUID 文字列を手動生成",
+        "C": "データベースシーケンスを使用",
+        "D": "外部 UUID サービスを呼び出す"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "CAP は cuid aspect を提供して UUID 主キーを自動追加します。エンティティ定義時に 'entity MyEntity : cuid { }' を使用するか、'key ID : UUID' を @cds.autoexpose と組み合わせて自動生成を実現します。"
+    },
+    {
+      "id": 6,
+      "question": "SAP Fiori Elements の List Report テンプレートが提供する機能は何ですか？",
+      "options": {
+        "A": "データリスト表示、フィルタリング、ソート、検索",
+        "B": "複雑なチャート描画",
+        "C": "ビデオ再生",
+        "D": "ファイル編集"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "List Report は Fiori Elements の標準テンプレートで、データリスト表示、SmartFilterBar フィルタリング、テーブルソート、グローバル検索などの機能を提供します。開発者は OData アノテーションで動作を制御し、UI コードを書く必要がありません。"
+    },
+    {
+      "id": 7,
+      "question": "BTP 開発における HDI (HANA Deployment Infrastructure) Container とは何ですか？",
+      "options": {
+        "A": "HANA データベース内の分離されたデプロイメントユニット",
+        "B": "Docker コンテナ",
+        "C": "ネットワークストレージコンテナ",
+        "D": "ログ収集コンテナ"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "HDI Container は SAP HANA 内のデプロイメントユニットで、スキーマレベルの分離を提供します。各 HDI Container は独立したデータベースオブジェクト（テーブル、ビュー、ストアドプロシージャ）を持ち、設計時デプロイとバージョン管理をサポートします。"
+    },
+    {
+      "id": 8,
+      "question": "SAP UI5 で、標準のデータバインディングモードはどれですか？",
+      "options": {
+        "A": "One-Way（単方向）",
+        "B": "Two-Way（双方向）",
+        "C": "One-Time（ワンタイム）",
+        "D": "Three-Way（三方向）"
+      },
+      "answer": ["A", "B", "C"],
+      "answerType": "multiple",
+      "explanation": "UI5 は3つのバインディングモードをサポート：One-Way(A)モデル→ビュー、Two-Way(B)モデル⇔ビュー双方向同期、One-Time(C)初期化時に一度だけバインド。Three-Way(D)バインディングモードは存在しません。"
+    },
+    {
+      "id": 9,
+      "question": "CAP サービスで、カスタムの before/after ハンドラーを実装する方法は？",
+      "options": {
+        "A": "srv/*.js ファイルでハンドラー関数を登録",
+        "B": "データベーストリガーを修正",
+        "C": "OData メタデータを編集",
+        "D": "manifest.json を設定"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "CAP のカスタムロジックはサービス実装ファイル(*.js)で記述します。this.before('CREATE', 'Entity', handler) や this.after('READ', ...) を使用してハンドラーを登録し、OData 操作の前後でカスタムロジックを実行します。"
+    },
+    {
+      "id": 10,
+      "question": "SAP BTP の mta.yaml ファイルは何に使用されますか？",
+      "options": {
+        "A": "マルチターゲットアプリケーションのモジュール、リソース、依存関係を定義",
+        "B": "ユーザーパスワードを保存",
+        "C": "データベースインデックスを設定",
+        "D": "CSS スタイルを定義"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "mta.yaml はマルチターゲットアプリケーション(MTA)の記述子で、アプリのモジュール（approuter、srv、db など）、必要なリソース（サービスインスタンス）、モジュール間の依存関係を定義します。mbt build コマンドはこのファイルに基づいてデプロイパッケージをビルドします。"
+    },
+    {
+      "id": 11,
+      "question": "OData サービス開発時、エンティティ間の一対多関連を定義する方法は？",
+      "options": {
+        "A": "Composition または Association を使用",
+        "B": "外部キー制約を作成",
+        "C": "JOIN 文を使用",
+        "D": "ネットワークルーティングを設定"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "CDS では Composition で包含関係（親子関係、子レコードは親レコードと共に削除）または Association で通常の関連を定義します。例：Composition of many Items on item.order = $self;"
+    },
+    {
+      "id": 12,
+      "question": "SAP Business Application Studio の Dev Space とは何ですか？",
+      "options": {
+        "A": "事前設定されたクラウド開発環境",
+        "B": "コードリポジトリ",
+        "C": "デプロイターゲットサーバー",
+        "D": "テストデータセット"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Dev Space は Business Application Studio 内の開発環境コンテナで、特定タイプの開発に必要なツールと拡張機能が事前インストールされています。SAP Fiori Dev Space は UI5 ツールを、Full Stack Dev Space は CAP ツールを含みます。"
+    },
+    {
+      "id": 13,
+      "question": "SAP UI5 における Fragment の主な用途は何ですか？",
+      "options": {
+        "A": "再利用可能な UI コンポーネントフラグメントを定義",
+        "B": "データベースシャードを保存",
+        "C": "ネットワークデータパケットを分割",
+        "D": "ログファイルをセグメント化"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Fragment は UI5 で再利用可能な UI フラグメントを定義するメカニズムで、独自の Controller を持ちません。ダイアログ、ポップオーバー、複数のビューで共有される UI 部分によく使用されます。XML、JavaScript、HTML の3つの定義方法をサポートします。"
+    },
+    {
+      "id": 14,
+      "question": "CAP プロジェクトで、カスタムバリデーションロジックを追加する方法は？",
+      "options": {
+        "A": "before ハンドラーでデータを検証し、エラーをスロー",
+        "B": "データベース制約を修正",
+        "C": "package.json を編集",
+        "D": "CI/CD パイプラインを設定"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "カスタムバリデーションは before ハンドラーで実装：入力データをチェックし、条件を満たさない場合は req.reject() またはエラーをスローします。例：this.before('CREATE', 'Orders', req => { if(!req.data.customer) req.reject(400, 'Customer required'); });"
+    },
+    {
+      "id": 15,
+      "question": "SAP Fiori アプリの manifest.json ファイルに含まれる重要な設定はどれですか？",
+      "options": {
+        "A": "アプリメタデータとバージョン情報",
+        "B": "データソースとサービス設定",
+        "C": "ルーティングとナビゲーション設定",
+        "D": "データベース接続文字列"
+      },
+      "answer": ["A", "B", "C"],
+      "answerType": "multiple",
+      "explanation": "manifest.json（アプリ記述子）には、sap.app(A)のアプリメタデータ、sap.ui5.models(B)のデータソース設定、sap.ui5.routing(C)のルーティング設定が含まれます。データベース接続(D)はフロントエンド manifest には設定しません。"
+    },
+    {
+      "id": 16,
+      "question": "BTP 開発において、XSUAA の scope とは何ですか？",
+      "options": {
+        "A": "ユーザーが実行できる操作の権限範囲を定義",
+        "B": "JavaScript 変数スコープ",
+        "C": "データベースクエリ範囲",
+        "D": "ネットワークアクセス範囲"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "XSUAA scope は細粒度の権限を定義します（'Read'、'Write'、'Admin' など）。xs-security.json で定義し、アプリコードでは @requires アノテーションや req.user.is() を使用して、ユーザーが特定の scope を持っているかをチェックします。"
+    },
+    {
+      "id": 17,
+      "question": "SAP UI5 の ODataModel の read メソッドは何に使用されますか？",
+      "options": {
+        "A": "OData サービスからデータを読み取る",
+        "B": "ローカルファイルを読み取る",
+        "C": "ユーザー入力を読み取る",
+        "D": "ブラウザキャッシュを読み取る"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "ODataModel.read() メソッドは OData サービスから非同期でデータを読み取ります。エンティティパス、フィルター、ソートなどのパラメータを受け取り、返されたデータはコールバック関数で処理するか UI コントロールにバインドできます。"
+    },
+    {
+      "id": 18,
+      "question": "CAP の cds.connect.to() メソッドの役割は何ですか？",
+      "options": {
+        "A": "外部サービスまたはデータベースに接続",
+        "B": "ネットワーク接続を確立",
+        "C": "UI コンポーネントを接続",
+        "D": "ログサービスに接続"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "cds.connect.to() は外部サービスまたはデータベースへの接続を取得するために使用します。例えば cds.connect.to('db') でデータベースに接続、cds.connect.to('API_BUSINESS_PARTNER') で外部 API に接続。返されたサービスインスタンスでクエリを実行します。"
+    },
+    {
+      "id": 19,
+      "question": "SAP BTP 開発で、package.json の cds.requires は何を設定しますか？",
+      "options": {
+        "A": "CAP アプリが必要とするサービスとリソースを宣言",
+        "B": "npm 依存パッケージをリスト",
+        "C": "ビルドスクリプトを設定",
+        "D": "テストケースを定義"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "cds.requires は package.json で CAP アプリが依存するサービス（データベース、メッセージキュー、外部 API など）を宣言します。ランタイムで CAP フレームワークがこれらの接続を自動的に確立します。例：\"db\": { \"kind\": \"sql\" }。"
+    },
+    {
+      "id": 20,
+      "question": "SAP UI5 で国際化(i18n)を実装する方法は？",
+      "options": {
+        "A": "i18n リソースモデルと properties ファイルを使用",
+        "B": "多言語テキストをハードコード",
+        "C": "オンライン翻訳 API を使用",
+        "D": "複数のアプリバージョンを作成"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "UI5 の国際化は i18n リソースモデルで実装：i18n.properties（デフォルト）と i18n_zh.properties などの言語ファイルを作成し、ビューで {i18n>keyName} バインディングを使用します。ランタイムでユーザーの言語に応じて自動的にロードされます。"
+    },
+    {
+      "id": 21,
+      "question": "CAP の @readonly アノテーションの役割は何ですか？",
+      "options": {
+        "A": "エンティティまたはプロパティを読み取り専用にし、変更を禁止",
+        "B": "データを暗号化",
+        "C": "データをキャッシュ",
+        "D": "データを圧縮"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "@readonly アノテーションはエンティティまたはフィールドを読み取り専用としてマークします。エンティティに適用すると CREATE/UPDATE/DELETE 操作が禁止され、フィールドに適用するとそのフィールドは読み取りのみで書き込みできなくなります。権限制御を実装する簡便な方法です。"
+    },
+    {
+      "id": 22,
+      "question": "SAP Fiori Elements の Object Page テンプレートはどのようなシナリオに適していますか？",
+      "options": {
+        "A": "単一エンティティの詳細情報を表示",
+        "B": "バルクデータインポート",
+        "C": "ビデオ再生",
+        "D": "ファイルダウンロード"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Object Page は単一のビジネスオブジェクトの詳細情報を表示するテンプレートで、ヘッダー領域、複数のセクション（Section）、関連データリストを含みます。List Report と組み合わせてよく使用されます：リストで選択後、Object Page にナビゲートして詳細を表示します。"
+    },
+    {
+      "id": 23,
+      "question": "BTP 開発で、CAP アプリをローカルでテストする方法は？",
+      "options": {
+        "A": "cds watch コマンドで開発サーバーを起動",
+        "B": "クラウドへのデプロイが必須",
+        "C": "ブラウザ開発ツールを使用",
+        "D": "メールでテストリクエストを送信"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "cds watch はローカル開発サーバーを起動し、ホットリロードをサポートします。デフォルトで SQLite インメモリデータベースを使用し、サンプルデータ(csv ファイル)を自動ロードします。開発者はクラウドへデプロイせずにローカルで OData サービスをテストできます。"
+    },
+    {
+      "id": 24,
+      "question": "SAP UI5 の sap.ui.model.Filter は何に使用されますか？",
+      "options": {
+        "A": "データリストの表示内容をフィルタリング",
+        "B": "ネットワークリクエストをフィルタリング",
+        "C": "ログメッセージをフィルタリング",
+        "D": "ユーザーコメントをフィルタリング"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Filter オブジェクトはデータバインディング時に表示データをフィルタリングするために使用されます。シンプルなフィルターを作成したり、FilterOperator を使用して複雑な条件を組み合わせたりでき、ODataListBinding や JSONModel のリストバインディングに適用します。"
+    },
+    {
+      "id": 25,
+      "question": "CAP の srv.send() メソッドの用途は何ですか？",
+      "options": {
+        "A": "外部サービスにリクエストを送信",
+        "B": "メールを送信",
+        "C": "SMS を送信",
+        "D": "プッシュ通知を送信"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "srv.send() は接続済みの外部サービスにリクエストを送信するために使用します。例えば外部 API を呼び出す：const API = await cds.connect.to('API'); const result = await API.send('GET', '/endpoint');"
+    },
+    {
+      "id": 26,
+      "question": "SAP BTP の destinations 環境変数には何の情報が含まれていますか？",
+      "options": {
+        "A": "サービスバインディングで提供される宛先サービス設定",
+        "B": "アプリケーションソースコード",
+        "C": "ユーザーセッションデータ",
+        "D": "ログファイルパス"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "destinations 環境変数には destination サービスバインディングを通じて取得した設定情報が含まれ、宛先 URL、認証資格情報などが含まれます。アプリはランタイムでこれらの設定を読み取り、外部システムに接続できます。"
+    },
+    {
+      "id": 27,
+      "question": "SAP UI5 でカスタムコントロールを作成する方法は？",
+      "options": {
+        "A": "sap.ui.core.Control クラスを拡張",
+        "B": "CSS ファイルを編集",
+        "C": "ブラウザ設定を変更",
+        "D": "プラグインをインストール"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "カスタムコントロールは sap.ui.core.Control を拡張して作成します。プロパティ、アグリゲーション、イベントを定義し、renderer メソッドを実装して HTML をレンダリングします。カスタムコントロールは標準コントロールと同様にビューで使用できます。"
+    },
+    {
+      "id": 28,
+      "question": "CAP の @cds.persistence.skip アノテーションの役割は何ですか？",
+      "options": {
+        "A": "エンティティをデータベースに永続化しないことを示す",
+        "B": "バリデーションをスキップ",
+        "C": "ログ記録をスキップ",
+        "D": "テストをスキップ"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "@cds.persistence.skip はエンティティを非永続化としてマークし、データベースに対応するテーブルが作成されません。ランタイムで計算されるビュー、外部サービスプロキシエンティティなど、ローカルストレージが不要なエンティティの定義に使用されます。"
+    },
+    {
+      "id": 29,
+      "question": "SAP Fiori Launchpad の tile とは何ですか？",
+      "options": {
+        "A": "アプリエントリーポイントの視覚的な表現",
+        "B": "データベーステーブル",
+        "C": "ネットワークデータパケット",
+        "D": "ログエントリ"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Tile は Fiori Launchpad でアプリの視覚的なエントリーポイントです。アイコン、タイトル、サブタイトルを含み、動的データ（保留項目数など）を表示できます。ユーザーが tile をクリックすると対応する Fiori アプリが起動します。"
+    },
+    {
+      "id": 30,
+      "question": "BTP 開発で、cds build コマンドは何をしますか？",
+      "options": {
+        "A": "CDS モデルをコンパイルしてデプロイ成果物を生成",
+        "B": "Docker イメージをビルド",
+        "C": "C++ コードをコンパイル",
+        "D": "ハードウェアデバイスをビルド"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "cds build は CDS モデルをコンパイルし、ターゲット環境に必要な成果物を生成します：データベース DDL、OData メタデータ、Node.js または Java サービスコード。CAP アプリデプロイ準備の重要なステップです。"
+    },
+    {
+      "id": 31,
+      "question": "SAP UI5 の MessageToast は何に使用されますか？",
+      "options": {
+        "A": "短時間のメッセージヒントを表示",
+        "B": "メールを送信",
+        "C": "データを保存",
+        "D": "ドキュメントを印刷"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "MessageToast は UI5 のメッセージヒントコントロールで、画面上にメッセージを短時間表示した後自動的に消えます。操作成功のヒントによく使用されます（例：MessageToast.show('Data saved successfully')）。"
+    },
+    {
+      "id": 32,
+      "question": "CAP でページネーションクエリを実装する方法は？",
+      "options": {
+        "A": "$top と $skip OData パラメータを使用",
+        "B": "配列を手動で分割",
+        "C": "複数のサービスを作成",
+        "D": "データベース設定を変更"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "CAP は OData ページネーションパラメータを自動サポート：$top で返すレコード数を制限、$skip で指定数のレコードをスキップ。クライアントリクエスト例：/Books?$top=10&$skip=20 で3ページ目（1ページ10件）を取得。"
+    },
+    {
+      "id": 33,
+      "question": "SAP BTP の cf push コマンドは何をしますか？",
+      "options": {
+        "A": "アプリを Cloud Foundry にデプロイ",
+        "B": "Git コードをプッシュ",
+        "C": "通知を送信",
+        "D": "ファイルをアップロード"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "cf push は Cloud Foundry CLI コマンドで、アプリを CF 環境にデプロイします。manifest.yml 設定を読み取り、アプリコードをアップロードし、アプリインスタンスを作成し、サービスをバインドします。"
+    },
+    {
+      "id": 34,
+      "question": "SAP UI5 における Aggregation の役割は何ですか？",
+      "options": {
+        "A": "コントロールの子要素コレクションを定義",
+        "B": "データ合計を計算",
+        "C": "ログファイルを集約",
+        "D": "ネットワークリクエストをマージ"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Aggregation はコントロールが含むことができる子コントロールを定義します。例えば Table コントロールの items アグリゲーションは行を含み、List の items アグリゲーションはリスト項目を含みます。データバインディングを通じて動的に子コントロールを生成できます。"
+    },
+    {
+      "id": 35,
+      "question": "CAP の external サービス定義の用途は何ですか？",
+      "options": {
+        "A": "呼び出しのために外部 API の定義をインポート",
+        "B": "外部スタイルを定義",
+        "C": "外部ネットワークを設定",
+        "D": "外部プリンターに接続"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "外部サービス定義（EDMX からのインポートなど）により、CAP アプリが型安全に外部 OData サービスを呼び出せるようになります。cds import を使用して API 定義をインポートし、コード内で強く型付けされた方法で呼び出します。"
+    },
+    {
+      "id": 36,
+      "question": "SAP BTP の xs-security.json ファイルは何を定義しますか？",
+      "options": {
+        "A": "アプリの OAuth 2.0 セキュリティ設定",
+        "B": "データベースセキュリティ設定",
+        "C": "ネットワークファイアウォールルール",
+        "D": "ファイル暗号化キー"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "xs-security.json はアプリの XSUAA 設定を定義します。xsappname、scopes（権限範囲）、role-templates（ロールテンプレート）、attributes（ユーザー属性）を含みます。BTP アプリセキュリティの基本設定です。"
+    },
+    {
+      "id": 37,
+      "question": "SAP UI5 の JSONModel と ODataModel の主な違いは何ですか？",
+      "options": {
+        "A": "JSONModel はクライアントモデル、ODataModel はバックエンドサービスに接続",
+        "B": "JSONModel の方が高速",
+        "C": "ODataModel は読み取り専用のみサポート",
+        "D": "両者は完全に同じ"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "JSONModel はクライアントインメモリモデルで、データはブラウザに保存されます。ODataModel はバックエンド OData サービスに接続し、CRUD 操作がサーバーに自動同期されます。データソースに応じて適切なモデルを選択します。"
+    },
+    {
+      "id": 38,
+      "question": "CAP で同時変更の競合を処理する方法は？",
+      "options": {
+        "A": "@odata.etag で楽観的ロックを実装",
+        "B": "同時アクセスを禁止",
+        "C": "競合を無視",
+        "D": "手動でロック"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "CAP は ETag による楽観的同時実行制御をサポートします。エンティティに @odata.etag アノテーションのフィールドを追加すると、UPDATE 時に自動的に ETag がチェックされ、他のユーザーによってデータが変更されていた場合は更新が拒否されます。"
+    },
+    {
+      "id": 39,
+      "question": "SAP Fiori アプリの Smart Controls とは何ですか？",
+      "options": {
+        "A": "OData メタデータから UI を自動生成するスマートコントロール",
+        "B": "人工知能コントロール",
+        "C": "スマートホームコントロール",
+        "D": "リモートコントローラー"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Smart Controls（SmartTable、SmartField、SmartFilterBar など）は OData メタデータとアノテーションを自動的に読み取り、対応する UI を生成します。開発者はフィールドタイプやバリデーションルールを手動で設定する必要がありません。"
+    },
+    {
+      "id": 40,
+      "question": "BTP 開発で、カスタム OData アノテーションを追加する方法は？",
+      "options": {
+        "A": "CDS モデルで @ 構文を使用",
+        "B": "XML ファイルを編集",
+        "C": "データベースを変更",
+        "D": "ネットワークを設定"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "CDS は @ 構文を使用してアノテーションを追加できます（@UI.LineItem、@Common.Label など）。これらのアノテーションは OData メタデータにコンパイルされ、Fiori Elements などの UI フレームワークがインターフェースを自動生成するために使用します。"
+    },
+    {
+      "id": 41,
+      "question": "SAP UI5 の EventBus の役割は何ですか？",
+      "options": {
+        "A": "コンポーネント間でイベントを発行・購読",
+        "B": "交通イベントを管理",
+        "C": "ログイベントを記録",
+        "D": "データベースイベントを処理"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "EventBus は UI5 のイベントバスで、コンポーネント間の疎結合通信をサポートします。発行者は publish() でイベントを送信し、購読者は subscribe() でイベントを受信し、コンポーネントの分離を実現します。"
+    },
+    {
+      "id": 42,
+      "question": "CAP の srv.run() メソッドは何に使用されますか？",
+      "options": {
+        "A": "CQL クエリ文を実行",
+        "B": "物理プログラムを実行",
+        "C": "サーバーを起動",
+        "D": "テストを実行"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "srv.run() はサービス上で CQL（CDS Query Language）クエリを実行します。例：const books = await srv.run(SELECT.from('Books').where({author: 'John'}))。"
+    },
+    {
+      "id": 43,
+      "question": "SAP BTP の cf logs コマンドは何に使用されますか？",
+      "options": {
+        "A": "アプリケーションログを表示",
+        "B": "ログファイルをダウンロード",
+        "C": "ログを削除",
+        "D": "ログを作成"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "cf logs <app-name> は Cloud Foundry アプリのログ出力を表示します。--recent で履歴ログを表示、パラメータなしでリアルタイムログストリームを追跡します。デプロイ済みアプリのデバッグに重要なツールです。"
+    },
+    {
+      "id": 44,
+      "question": "SAP UI5 における Routing とは何ですか？",
+      "options": {
+        "A": "アプリ内のページナビゲーションを管理",
+        "B": "ネットワークルーティング設定",
+        "C": "メールルーティング",
+        "D": "データルーティング"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "UI5 Routing はシングルページアプリケーション(SPA)内のナビゲーションを管理します。manifest.json でルーティングルールを設定し、URL hash をビューにマッピングします。ナビゲーションパラメータ、ネストされたルーティング、ナビゲーションガードなどの機能をサポートします。"
+    },
+    {
+      "id": 45,
+      "question": "CAP の using...from 文の役割は何ですか？",
+      "options": {
+        "A": "外部 CDS 定義をインポート",
+        "B": "CSS スタイルをインポート",
+        "C": "画像をインポート",
+        "D": "動画をインポート"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "using...from は CDS で他のファイルの定義をインポートします。例：using {my.namespace} from '../db/schema'; でデータモデル定義をインポートし、モジュール化と再利用を実現します。"
+    },
+    {
+      "id": 46,
+      "question": "SAP BTP の cf bind-service コマンドは何をしますか？",
+      "options": {
+        "A": "サービスインスタンスをアプリにバインド",
+        "B": "IP アドレスをバインド",
+        "C": "ドメインをバインド",
+        "D": "ユーザーアカウントをバインド"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "cf bind-service は作成済みのサービスインスタンスをアプリにバインドします。バインド後、サービスの接続情報は VCAP_SERVICES 環境変数を通じてアプリに注入され、アプリはそのサービスを使用できます。"
+    },
+    {
+      "id": 47,
+      "question": "SAP UI5 の formatter 関数の用途は何ですか？",
+      "options": {
+        "A": "データバインディングでデータ形式を変換",
+        "B": "ハードディスクをフォーマット",
+        "C": "コードをフォーマット",
+        "D": "メールをフォーマット"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Formatter 関数はデータバインディングでモデルデータを表示形式に変換します。例えば日付オブジェクトを文字列にフォーマット、ステータス値に応じて異なるテキストを返すなど。Controller で定義し、ビューバインディングで参照します。"
+    },
+    {
+      "id": 48,
+      "question": "CAP マルチテナントアプリで、テナントデータ分離を実装する方法は？",
+      "options": {
+        "A": "HDI Container または Schema 分離を使用",
+        "B": "異なるサーバーを使用",
+        "C": "異なるドメインを使用",
+        "D": "異なるプログラミング言語を使用"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "CAP マルチテナントアプリは HDI Container（テナントごとに独立した container）または Schema 分離（共有 container 内の異なる schema）でデータ分離を実現します。@sap/cds-mtxs モジュールがテナントライフサイクル管理を提供します。"
+    },
+    {
+      "id": 49,
+      "question": "SAP Fiori アプリの cross-app navigation とは何ですか？",
+      "options": {
+        "A": "異なる Fiori アプリ間のナビゲーション",
+        "B": "クロスブラウザナビゲーション",
+        "C": "クロスデバイスナビゲーション",
+        "D": "クロスネットワークナビゲーション"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Cross-app navigation は Fiori アプリ間でナビゲーションし、コンテキストパラメータを渡すことを可能にします。CrossApplicationNavigation サービスまたは intent-based navigation を使用し、セマンティックオブジェクトとアクションに基づいてナビゲートします。"
+    },
+    {
+      "id": 50,
+      "question": "BTP 開発で、デプロイ済みの CAP アプリをデバッグする方法は？",
+      "options": {
+        "A": "cf ssh で接続してリモートデバッグ",
+        "B": "ローカルでのみデバッグ可能",
+        "C": "メールで問い合わせ",
+        "D": "デバッグ不可"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "cf ssh で実行中のコンテナに接続し、Node.js デバッガーやログ出力と組み合わせてデバッグできます。リモートデバッグポートを設定してローカル IDE から接続してデバッグすることも可能です。Application Logging と組み合わせて問題を分析します。"
+    }
+  ]
+}
