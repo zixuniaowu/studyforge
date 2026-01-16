@@ -398,6 +398,8 @@ export const HomePage: React.FC = () => {
             'sap-c-ts4fi-set1', 'sap-c-ts4fi-set2', 'sap-c-ts4fi-set3',
             'sap-c-ts4co-set1', 'sap-c-ts4co-set2', 'sap-c-ts4co-set3',
             'sap-c-ts450-set1', 'sap-c-ts450-set2', 'sap-c-ts450-set3',
+            'sap-c-ts460-set1', 'sap-c-ts460-set2', 'sap-c-ts460-set3',
+            'sap-c-ts4h-set1', 'sap-c-ts4h-set2', 'sap-c-ts4h-set3',
             'sap-c-ts410-set1', 'sap-c-ts410-set2', 'sap-c-ts410-set3',
             // SAP BTP
             'sap-c-btp-set1', 'sap-c-btp-set2', 'sap-c-btp-set3',
