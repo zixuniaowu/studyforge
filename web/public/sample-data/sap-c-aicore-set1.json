@@ -1,0 +1,660 @@
+{
+  "examId": "sap-c-aicore-set1",
+  "provider": "SAP",
+  "title": "SAP AI Core (C_AICORE) 模拟题 Set 1",
+  "description": "SAP AI Core 认证模拟考试第一套",
+  "icon": "sap",
+  "setNumber": 1,
+  "questions": [
+    {
+      "id": 1,
+      "question": "SAP AI Core 的主要用途是什么？",
+      "options": {
+        "A": "构建前端用户界面",
+        "B": "执行和管理 AI/ML 模型的生命周期",
+        "C": "管理企业财务数据",
+        "D": "设计数据库架构"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "SAP AI Core 是一个运行时环境，用于执行和管理 AI/ML 模型的完整生命周期，包括训练、部署和推理。"
+    },
+    {
+      "id": 2,
+      "question": "在 SAP AI Core 中，Resource Group 的作用是什么？",
+      "options": {
+        "A": "定义用户界面布局",
+        "B": "将 AI 资源（如配置、部署）进行逻辑分组和隔离",
+        "C": "存储数据库备份",
+        "D": "管理网络路由"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Resource Group 用于将 AI 资源进行逻辑分组和隔离，便于管理和访问控制。每个 Resource Group 可以有独立的配置和部署。"
+    },
+    {
+      "id": 3,
+      "question": "SAP AI Launchpad 提供哪些功能？（选择两个）",
+      "options": {
+        "A": "管理 AI Core 中的场景和部署",
+        "B": "编写 Python 机器学习代码",
+        "C": "监控 AI 模型的运行状态",
+        "D": "设计数据库表结构"
+      },
+      "answer": ["A", "C"],
+      "answerType": "multiple",
+      "explanation": "SAP AI Launchpad 是一个 UI 工具，用于管理 AI Core 中的场景、配置、部署，以及监控模型的运行状态和日志。它不用于编写代码或设计数据库。"
+    },
+    {
+      "id": 4,
+      "question": "在 SAP AI Core 的 Serving Template 中，spec.template.spec.containers 部分定义什么？",
+      "options": {
+        "A": "数据库连接信息",
+        "B": "要部署的 Docker 容器镜像和配置",
+        "C": "用户认证策略",
+        "D": "网络防火墙规则"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Serving Template 中的 containers 部分定义了要部署的 Docker 容器镜像、端口、环境变量等配置，用于模型推理服务。"
+    },
+    {
+      "id": 5,
+      "question": "SAP AI Core 中的 Object Store Secret 用于什么目的？",
+      "options": {
+        "A": "存储用户密码",
+        "B": "连接云存储服务（如 S3、Azure Blob）的凭证",
+        "C": "加密数据库内容",
+        "D": "保护网络通信"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Object Store Secret 存储连接云存储服务的凭证，用于在训练和推理过程中访问模型文件、数据集等资源。"
+    },
+    {
+      "id": 6,
+      "question": "在 SAP AI Core 中创建 Deployment 时，哪个字段是必需的？",
+      "options": {
+        "A": "description",
+        "B": "configurationId",
+        "C": "tags",
+        "D": "labels"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "创建 Deployment 时必须指定 configurationId，它引用之前创建的 Configuration，定义了部署的具体参数。"
+    },
+    {
+      "id": 7,
+      "question": "SAP AI Core 支持哪些超大规模云提供商作为后端？（选择三个）",
+      "options": {
+        "A": "Amazon Web Services (AWS)",
+        "B": "Microsoft Azure",
+        "C": "Google Cloud Platform (GCP)",
+        "D": "阿里云"
+      },
+      "answer": ["A", "B", "C"],
+      "answerType": "multiple",
+      "explanation": "SAP AI Core 目前支持 AWS、Azure 和 GCP 作为底层基础设施，可以在这些云平台上运行 AI 工作负载。"
+    },
+    {
+      "id": 8,
+      "question": "在 SAP AI Core 中，Scenario 代表什么？",
+      "options": {
+        "A": "用户登录场景",
+        "B": "AI 用例的业务场景，包含相关的 templates 和 workflows",
+        "C": "错误处理场景",
+        "D": "数据备份场景"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Scenario 代表一个 AI 用例的业务场景，它包含相关的 serving templates、workflow templates 和其他资源的逻辑分组。"
+    },
+    {
+      "id": 9,
+      "question": "SAP AI Core 使用什么技术来编排容器化的 AI 工作负载？",
+      "options": {
+        "A": "Docker Swarm",
+        "B": "Kubernetes",
+        "C": "OpenShift",
+        "D": "Mesos"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "SAP AI Core 基于 Kubernetes 构建，使用 Kubernetes 来编排和管理容器化的 AI 训练和推理工作负载。"
+    },
+    {
+      "id": 10,
+      "question": "在 SAP AI Core 的 Workflow Template 中，什么定义了训练任务的执行步骤？",
+      "options": {
+        "A": "spec.templates",
+        "B": "metadata.annotations",
+        "C": "spec.arguments",
+        "D": "metadata.labels"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Workflow Template 中的 spec.templates 部分定义了训练任务的执行步骤，包括容器配置、输入输出参数等。"
+    },
+    {
+      "id": 11,
+      "question": "SAP AI Core 中的 Configuration 对象用于什么？",
+      "options": {
+        "A": "配置数据库连接",
+        "B": "定义执行 AI 场景所需的参数值",
+        "C": "设置用户权限",
+        "D": "配置网络策略"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Configuration 定义了执行 AI 场景所需的具体参数值，如模型路径、输入数据位置等，供 Deployment 或 Execution 使用。"
+    },
+    {
+      "id": 12,
+      "question": "在 SAP AI Core 中同步 GitHub 仓库的主要目的是什么？",
+      "options": {
+        "A": "备份代码",
+        "B": "将 AI 场景的模板和工作流同步到 AI Core",
+        "C": "分享代码给其他开发者",
+        "D": "版本控制源代码"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "同步 GitHub 仓库将 AI 场景的 YAML 模板（Serving Templates、Workflow Templates）同步到 AI Core，使场景可用于创建配置和部署。"
+    },
+    {
+      "id": 13,
+      "question": "SAP AI Core 的 Execution 代表什么？",
+      "options": {
+        "A": "用户会话",
+        "B": "一次性运行的训练或批处理任务",
+        "C": "持久运行的推理服务",
+        "D": "数据库事务"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Execution 代表一次性运行的任务，如模型训练或批量推理。与 Deployment（持久运行的服务）不同，Execution 完成后会终止。"
+    },
+    {
+      "id": 14,
+      "question": "在 SAP AI Core 中，如何访问部署的模型推理端点？",
+      "options": {
+        "A": "直接通过公网 IP",
+        "B": "通过 AI Core 提供的 deploymentUrl 和认证令牌",
+        "C": "通过 FTP 协议",
+        "D": "通过数据库连接"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "部署的模型通过 AI Core 提供的 deploymentUrl 访问，需要使用 OAuth 认证令牌进行身份验证。"
+    },
+    {
+      "id": 15,
+      "question": "SAP AI Core 中的 Docker Registry Secret 用于什么？",
+      "options": {
+        "A": "存储 Docker 容器日志",
+        "B": "提供访问私有 Docker 镜像仓库的凭证",
+        "C": "配置 Docker 网络",
+        "D": "管理 Docker 数据卷"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Docker Registry Secret 存储访问私有 Docker 镜像仓库的凭证，使 AI Core 能够拉取私有镜像用于训练和推理。"
+    },
+    {
+      "id": 16,
+      "question": "在 SAP AI Core 的 Serving Template 中，annotations 中的 ai.sap.com/resourcePlan 指定什么？",
+      "options": {
+        "A": "用户权限级别",
+        "B": "计算资源配置（如 CPU、GPU、内存）",
+        "C": "数据存储位置",
+        "D": "网络带宽限制"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "resourcePlan 注解指定部署使用的计算资源配置，如 starter（基础）、basic（标准）或带 GPU 的配置。"
+    },
+    {
+      "id": 17,
+      "question": "SAP AI Core 中的 Artifact 代表什么？",
+      "options": {
+        "A": "用户界面组件",
+        "B": "训练产生的模型文件或数据集",
+        "C": "系统日志文件",
+        "D": "配置备份文件"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Artifact 代表 AI 工作流产生或使用的文件，如训练好的模型、数据集等。它们通常存储在 Object Store 中。"
+    },
+    {
+      "id": 18,
+      "question": "在 SAP AI Core 中，哪个 API 端点用于查看 Deployment 的日志？",
+      "options": {
+        "A": "/v2/lm/deployments/{deploymentId}/logs",
+        "B": "/v2/lm/deployments/{deploymentId}/status",
+        "C": "/v2/lm/configurations",
+        "D": "/v2/lm/scenarios"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "/v2/lm/deployments/{deploymentId}/logs 端点用于获取特定部署的运行日志，便于调试和监控。"
+    },
+    {
+      "id": 19,
+      "question": "SAP AI Core 中的多租户隔离是通过什么实现的？",
+      "options": {
+        "A": "物理服务器隔离",
+        "B": "Resource Group 和 Kubernetes namespace",
+        "C": "数据库分区",
+        "D": "网络 VLAN"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "SAP AI Core 通过 Resource Group 和底层 Kubernetes namespace 实现多租户的逻辑隔离，确保不同租户的资源相互独立。"
+    },
+    {
+      "id": 20,
+      "question": "在 SAP AI Core 中，什么是 Main Tenant？",
+      "options": {
+        "A": "最先注册的用户",
+        "B": "管理 AI Core 实例和 Resource Group 的主租户",
+        "C": "存储最多数据的租户",
+        "D": "付费最多的租户"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Main Tenant 是 AI Core 的管理租户，负责创建和管理 Resource Group、同步 Git 仓库、创建 secrets 等管理操作。"
+    },
+    {
+      "id": 21,
+      "question": "SAP AI Core 的 Serving Template 中，spec.template.spec.imagePullSecrets 的作用是什么？",
+      "options": {
+        "A": "指定镜像的版本号",
+        "B": "引用拉取私有镜像所需的 Docker Registry Secret",
+        "C": "配置镜像的环境变量",
+        "D": "设置镜像的启动命令"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "imagePullSecrets 引用之前创建的 Docker Registry Secret，使 Kubernetes 能够使用该凭证拉取私有 Docker 镜像。"
+    },
+    {
+      "id": 22,
+      "question": "在 SAP AI Core 中，Argo Workflows 用于什么目的？",
+      "options": {
+        "A": "管理用户界面",
+        "B": "编排多步骤的 AI 训练管道",
+        "C": "处理数据库事务",
+        "D": "监控网络流量"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "SAP AI Core 使用 Argo Workflows 来编排多步骤的 AI 训练管道，支持定义复杂的工作流程，包括数据准备、训练、验证等步骤。"
+    },
+    {
+      "id": 23,
+      "question": "SAP AI Core 中，如何定义模型训练的输入参数？",
+      "options": {
+        "A": "在 Deployment 中直接指定",
+        "B": "在 Workflow Template 的 spec.arguments.parameters 中定义",
+        "C": "在 Docker 镜像中硬编码",
+        "D": "在数据库表中配置"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "训练参数在 Workflow Template 的 spec.arguments.parameters 中定义，然后在 Configuration 中提供具体值。"
+    },
+    {
+      "id": 24,
+      "question": "SAP AI Core 支持哪种模型服务协议？（选择两个）",
+      "options": {
+        "A": "REST API",
+        "B": "gRPC",
+        "C": "SOAP",
+        "D": "GraphQL"
+      },
+      "answer": ["A", "B"],
+      "answerType": "multiple",
+      "explanation": "SAP AI Core 支持 REST API 和 gRPC 协议来访问部署的模型推理服务，这是机器学习领域的标准协议。"
+    },
+    {
+      "id": 25,
+      "question": "在 SAP AI Core 的 Configuration 中，inputArtifactBindings 用于什么？",
+      "options": {
+        "A": "绑定输出结果",
+        "B": "将 Artifact（如预训练模型）绑定为训练或推理的输入",
+        "C": "配置用户输入表单",
+        "D": "设置日志输出位置"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "inputArtifactBindings 将已有的 Artifact（如预训练模型或数据集）绑定为工作流或部署的输入，便于复用资源。"
+    },
+    {
+      "id": 26,
+      "question": "SAP AI Core 中的 Generic Secret 用途是什么？",
+      "options": {
+        "A": "专门存储数据库密码",
+        "B": "存储任意类型的敏感配置数据",
+        "C": "仅用于 Docker 认证",
+        "D": "仅用于 Object Store 连接"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Generic Secret 是通用的密钥存储，可以存储任意类型的敏感配置数据，如 API 密钥、自定义凭证等。"
+    },
+    {
+      "id": 27,
+      "question": "在 SAP AI Core 中，什么决定了 Deployment 的自动扩缩容行为？",
+      "options": {
+        "A": "用户手动配置",
+        "B": "annotations 中的 minReplicas 和 maxReplicas 设置",
+        "C": "数据库负载",
+        "D": "网络流量"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Serving Template annotations 中的 ai.sap.com/minReplicas 和 ai.sap.com/maxReplicas 定义了自动扩缩容的副本数范围。"
+    },
+    {
+      "id": 28,
+      "question": "SAP AI Core 的 MLOps 功能包括哪些？（选择两个）",
+      "options": {
+        "A": "模型版本管理",
+        "B": "前端界面设计",
+        "C": "模型性能监控",
+        "D": "数据库优化"
+      },
+      "answer": ["A", "C"],
+      "answerType": "multiple",
+      "explanation": "SAP AI Core 的 MLOps 功能包括模型版本管理（通过 Artifact 和 Scenario 版本）和模型性能监控（通过 AI Launchpad 和日志）。"
+    },
+    {
+      "id": 29,
+      "question": "在 SAP AI Core 中创建 Execution 后，如何检查训练任务的状态？",
+      "options": {
+        "A": "查看数据库表",
+        "B": "调用 GET /v2/lm/executions/{executionId} API",
+        "C": "检查电子邮件通知",
+        "D": "查看本地文件系统"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "通过调用 GET /v2/lm/executions/{executionId} API 可以检查 Execution 的当前状态，包括 PENDING、RUNNING、COMPLETED 等。"
+    },
+    {
+      "id": 30,
+      "question": "SAP AI Core 中的 Label 和 Annotation 有什么区别？",
+      "options": {
+        "A": "没有区别，可以互换使用",
+        "B": "Label 用于筛选和选择资源，Annotation 用于存储非标识性元数据",
+        "C": "Label 存储敏感信息，Annotation 存储普通信息",
+        "D": "Label 用于 UI 显示，Annotation 用于后端处理"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Label 是用于筛选和选择资源的键值对，支持查询；Annotation 用于存储非标识性的元数据信息，不用于选择器。"
+    },
+    {
+      "id": 31,
+      "question": "在 SAP AI Core 的 Serving Template 中，readinessProbe 的作用是什么？",
+      "options": {
+        "A": "检查用户是否准备好使用系统",
+        "B": "检查容器是否准备好接收流量",
+        "C": "检查数据是否准备完成",
+        "D": "检查网络是否就绪"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "readinessProbe 用于检查容器是否准备好接收流量。只有当探针成功时，Kubernetes 才会将流量路由到该容器。"
+    },
+    {
+      "id": 32,
+      "question": "SAP AI Core 如何处理模型推理的负载均衡？",
+      "options": {
+        "A": "手动配置每个请求的目标",
+        "B": "通过 Kubernetes Service 自动负载均衡到多个副本",
+        "C": "使用外部负载均衡器",
+        "D": "不支持负载均衡"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "SAP AI Core 基于 Kubernetes 构建，通过 Kubernetes Service 自动将推理请求负载均衡到多个部署副本。"
+    },
+    {
+      "id": 33,
+      "question": "在 SAP AI Core 中，如何实现模型的 A/B 测试？",
+      "options": {
+        "A": "在同一个 Deployment 中混合两个模型",
+        "B": "创建多个 Configuration 和 Deployment，分别引用不同版本的模型",
+        "C": "使用数据库标记",
+        "D": "修改源代码"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "通过创建多个 Configuration 和 Deployment，每个引用不同版本的模型，可以并行运行多个版本进行 A/B 测试。"
+    },
+    {
+      "id": 34,
+      "question": "SAP AI Core 中的 outputArtifactBindings 用于什么？",
+      "options": {
+        "A": "指定训练输入数据",
+        "B": "定义工作流输出的 Artifact 存储位置和名称",
+        "C": "配置日志输出格式",
+        "D": "设置用户界面输出"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "outputArtifactBindings 在 Configuration 中定义工作流执行后输出 Artifact 的名称和存储位置，如训练好的模型。"
+    },
+    {
+      "id": 35,
+      "question": "在 SAP AI Core 中，什么是 Executable？",
+      "options": {
+        "A": "可执行的二进制文件",
+        "B": "Scenario 中定义的可执行模板（Serving Template 或 Workflow Template）",
+        "C": "数据库存储过程",
+        "D": "前端脚本"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Executable 是 Scenario 中定义的可执行模板，包括用于推理的 Serving Template 和用于训练的 Workflow Template。"
+    },
+    {
+      "id": 36,
+      "question": "SAP AI Core 的 API 使用什么认证方式？",
+      "options": {
+        "A": "Basic Authentication",
+        "B": "OAuth 2.0 Client Credentials",
+        "C": "API Key",
+        "D": "SAML"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "SAP AI Core API 使用 OAuth 2.0 Client Credentials 流程进行认证，需要使用服务密钥获取访问令牌。"
+    },
+    {
+      "id": 37,
+      "question": "在 SAP AI Core 中，如何将训练好的模型注册为可复用的 Artifact？",
+      "options": {
+        "A": "手动上传到数据库",
+        "B": "在 Workflow Template 中使用 outputArtifacts 定义，执行后自动注册",
+        "C": "通过电子邮件发送",
+        "D": "使用 FTP 上传"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "在 Workflow Template 中通过 outputs.artifacts 定义输出，训练完成后 AI Core 会自动将输出注册为可追踪的 Artifact。"
+    },
+    {
+      "id": 38,
+      "question": "SAP AI Core 中的 livenessProbe 和 readinessProbe 有什么区别？",
+      "options": {
+        "A": "没有区别",
+        "B": "livenessProbe 检查容器是否存活，readinessProbe 检查容器是否准备好接收流量",
+        "C": "livenessProbe 用于训练，readinessProbe 用于推理",
+        "D": "livenessProbe 检查网络，readinessProbe 检查数据库"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "livenessProbe 检查容器是否存活，失败时 Kubernetes 会重启容器；readinessProbe 检查容器是否准备好接收请求，失败时不会收到流量。"
+    },
+    {
+      "id": 39,
+      "question": "在 SAP AI Core 的 Git 同步中，revision 参数的作用是什么？",
+      "options": {
+        "A": "指定 Git 仓库的 URL",
+        "B": "指定要同步的 Git 分支或标签",
+        "C": "指定 Git 用户名",
+        "D": "指定提交消息"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "revision 参数指定要同步的 Git 分支、标签或提交 SHA，允许精确控制哪个版本的模板被同步到 AI Core。"
+    },
+    {
+      "id": 40,
+      "question": "SAP AI Core 中的 Metrics 功能提供什么？（选择两个）",
+      "options": {
+        "A": "训练过程中的损失值和准确率跟踪",
+        "B": "前端性能监控",
+        "C": "模型推理的延迟和吞吐量监控",
+        "D": "数据库查询性能"
+      },
+      "answer": ["A", "C"],
+      "answerType": "multiple",
+      "explanation": "SAP AI Core Metrics 功能支持跟踪训练过程中的指标（如损失、准确率）和推理服务的性能指标（如延迟、吞吐量）。"
+    },
+    {
+      "id": 41,
+      "question": "在 SAP AI Core 中，如何停止正在运行的 Deployment？",
+      "options": {
+        "A": "删除数据库记录",
+        "B": "调用 DELETE /v2/lm/deployments/{deploymentId} 或 PATCH 将 targetStatus 设为 STOPPED",
+        "C": "关闭服务器电源",
+        "D": "等待自动超时"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "可以通过 DELETE API 删除部署，或通过 PATCH API 将 targetStatus 设置为 STOPPED 来停止 Deployment。"
+    },
+    {
+      "id": 42,
+      "question": "SAP AI Core 与 SAP AI Launchpad 的关系是什么？",
+      "options": {
+        "A": "它们是完全独立的产品",
+        "B": "AI Launchpad 是 AI Core 的图形化管理界面",
+        "C": "AI Core 是 AI Launchpad 的插件",
+        "D": "它们功能完全相同"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "SAP AI Launchpad 是 AI Core 的图形化管理界面，提供可视化的方式来管理场景、配置、部署和监控模型。"
+    },
+    {
+      "id": 43,
+      "question": "在 SAP AI Core 中，env 字段在容器定义中的作用是什么？",
+      "options": {
+        "A": "定义开发环境",
+        "B": "设置容器内的环境变量",
+        "C": "配置测试环境",
+        "D": "指定生产环境"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "容器定义中的 env 字段用于设置容器内的环境变量，可以传递配置参数、凭证引用等给运行的应用程序。"
+    },
+    {
+      "id": 44,
+      "question": "SAP AI Core 支持的 Workflow 引擎是什么？",
+      "options": {
+        "A": "Apache Airflow",
+        "B": "Argo Workflows",
+        "C": "Kubeflow Pipelines",
+        "D": "AWS Step Functions"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "SAP AI Core 使用 Argo Workflows 作为工作流引擎，Workflow Template 遵循 Argo Workflows 的 YAML 格式。"
+    },
+    {
+      "id": 45,
+      "question": "在 SAP AI Core 中，如何实现模型的蓝绿部署？",
+      "options": {
+        "A": "在同一个 Configuration 中配置两个镜像",
+        "B": "创建两个 Deployment，通过流量切换实现版本更新",
+        "C": "修改源代码",
+        "D": "使用数据库触发器"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "蓝绿部署通过创建两个独立的 Deployment（蓝色和绿色版本），在验证新版本后通过更新端点配置切换流量。"
+    },
+    {
+      "id": 46,
+      "question": "SAP AI Core 中的 Resource Plan 'infer.s' 代表什么？",
+      "options": {
+        "A": "大型训练计划",
+        "B": "小型推理资源配置",
+        "C": "存储计划",
+        "D": "网络计划"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "'infer.s' 是 SAP AI Core 的小型（small）推理资源计划，提供基础的 CPU 和内存配置，适合轻量级模型。"
+    },
+    {
+      "id": 47,
+      "question": "在 SAP AI Core 中，如何获取服务密钥（Service Key）？",
+      "options": {
+        "A": "通过电子邮件申请",
+        "B": "在 SAP BTP Cockpit 中为 AI Core 服务实例创建",
+        "C": "下载本地安装包",
+        "D": "使用默认密钥"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "服务密钥在 SAP BTP Cockpit 中为 AI Core 服务实例创建，包含了 API 端点和 OAuth 认证所需的凭证。"
+    },
+    {
+      "id": 48,
+      "question": "SAP AI Core 的 Batch Inference 和 Online Inference 有什么区别？",
+      "options": {
+        "A": "没有区别",
+        "B": "Batch Inference 是通过 Execution 运行的一次性批量任务，Online Inference 是通过 Deployment 运行的持久服务",
+        "C": "Batch Inference 更快",
+        "D": "Online Inference 成本更低"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Batch Inference 通过 Execution 运行，处理大量数据后结束；Online Inference 通过 Deployment 运行，提供实时的 REST API 服务。"
+    },
+    {
+      "id": 49,
+      "question": "在 SAP AI Core 的 Workflow Template 中，dag template 的用途是什么？",
+      "options": {
+        "A": "定义用户界面",
+        "B": "定义有向无环图形式的任务依赖关系",
+        "C": "配置数据库架构",
+        "D": "设置网络拓扑"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "dag（Directed Acyclic Graph）template 用于定义多个任务之间的依赖关系，允许并行执行独立任务并按顺序执行有依赖的任务。"
+    },
+    {
+      "id": 50,
+      "question": "SAP AI Core 中，什么情况下需要使用 GPU 资源计划？",
+      "options": {
+        "A": "所有情况都需要",
+        "B": "运行深度学习模型训练或推理时",
+        "C": "只在开发测试时使用",
+        "D": "只用于数据存储"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "GPU 资源计划适用于需要大量并行计算的深度学习模型训练或推理，如图像识别、自然语言处理等场景。"
+    }
+  ]
+}
