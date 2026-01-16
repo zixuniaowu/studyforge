@@ -1,0 +1,656 @@
+{
+  "examId": "sap-c-ts460",
+  "setNumber": 2,
+  "questions": [
+    {
+      "id": "sap-c-ts460-2-001",
+      "question": "在 SAP S/4HANA 中，'Access Sequence'（存取顺序）在定价中的作用是什么？",
+      "options": {
+        "A": "定义用户访问系统的顺序",
+        "B": "确定系统搜索条件记录的顺序",
+        "C": "控制凭证审批的流程",
+        "D": "管理库存盘点的顺序"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "存取顺序定义系统在价格确定时搜索条件记录的顺序。系统按照存取顺序中定义的条件表依次查找，直到找到匹配的条件记录。这确保了最具体的价格优先应用。"
+    },
+    {
+      "id": "sap-c-ts460-2-002",
+      "question": "SAP S/4HANA 中的'Condition Table'（条件表）定义什么？",
+      "options": {
+        "A": "数据库表的结构",
+        "B": "条件记录的键字段组合",
+        "C": "系统性能参数",
+        "D": "用户权限设置"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "条件表定义条件记录的键字段组合，如客户+物料、物料组+销售组织等。不同的条件表支持不同的定价场景，从最具体（客户+物料）到最一般（物料）。"
+    },
+    {
+      "id": "sap-c-ts460-2-003",
+      "question": "在 SAP S/4HANA 销售中，'Credit Exposure'（信用风险敞口）包括哪些金额？（选择两个）",
+      "options": {
+        "A": "未清销售订单金额",
+        "B": "已收款金额",
+        "C": "未清发票金额",
+        "D": "采购订单金额"
+      },
+      "answer": ["A", "C"],
+      "answerType": "multiple",
+      "explanation": "信用风险敞口包括未清销售订单金额（已确认但未交货/开票的订单）和未清发票金额（已开票但未收款的应收账款）。这些金额合计代表客户占用的信用额度。"
+    },
+    {
+      "id": "sap-c-ts460-2-004",
+      "question": "SAP S/4HANA 中的'Automatic Credit Control'（自动信用控制）可以执行哪些操作？",
+      "options": {
+        "A": "自动批准所有订单",
+        "B": "基于信用检查结果冻结或警告",
+        "C": "自动发送催款函",
+        "D": "自动调整信用限额"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "自动信用控制根据信用检查结果执行操作，如完全冻结订单（阻止进一步处理）、警告（显示警告但允许继续）或自动发送到信用审批工作流。"
+    },
+    {
+      "id": "sap-c-ts460-2-005",
+      "question": "在 SAP S/4HANA 中，'Quotation'（报价）与'Sales Order'（销售订单）的主要区别是什么？",
+      "options": {
+        "A": "报价不能转换为订单",
+        "B": "报价是非约束性的提议，订单是约束性承诺",
+        "C": "报价只能用于新客户",
+        "D": "两者没有区别"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "报价是向客户提供的非约束性价格和交货提议，有有效期限制。销售订单是客户确认后的约束性承诺，触发后续的交货和开票流程。报价可以转换为销售订单。"
+    },
+    {
+      "id": "sap-c-ts460-2-006",
+      "question": "SAP S/4HANA 中的'Contract'（合同）在销售中的用途是什么？",
+      "options": {
+        "A": "替代所有销售订单",
+        "B": "定义长期销售条款和目标数量/金额",
+        "C": "仅用于服务销售",
+        "D": "管理员工劳动合同"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "销售合同定义与客户的长期销售条款，包括价格、条件和目标数量或金额。实际销售通过参考合同的释放订单执行，系统跟踪合同完成进度。"
+    },
+    {
+      "id": "sap-c-ts460-2-007",
+      "question": "在 SAP S/4HANA 中，'Scheduling Agreement'（计划协议）与销售合同的区别是什么？",
+      "options": {
+        "A": "计划协议包含具体的交货日程",
+        "B": "计划协议不能定价",
+        "C": "计划协议只用于采购",
+        "D": "两者完全相同"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "销售计划协议包含具体的交货日程行，客户可以直接按日程提货，无需创建单独的释放订单。而销售合同需要通过释放订单来执行实际销售。"
+    },
+    {
+      "id": "sap-c-ts460-2-008",
+      "question": "SAP S/4HANA 中的'Rush Order'（加急订单）有什么特点？",
+      "options": {
+        "A": "跳过所有检查",
+        "B": "订单创建时立即创建交货",
+        "C": "不需要客户信息",
+        "D": "免费发货"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "加急订单是一种特殊的销售订单类型，在订单创建时系统立即自动创建交货凭证，简化了紧急订单的处理流程。它仍然执行正常的检查和定价。"
+    },
+    {
+      "id": "sap-c-ts460-2-009",
+      "question": "在 SAP S/4HANA 中，'Cash Sales'（现金销售）的特点是什么？（选择两个）",
+      "options": {
+        "A": "立即交货和开票",
+        "B": "不记录客户信息",
+        "C": "现场收款",
+        "D": "不能有多个行项目"
+      },
+      "answer": ["A", "C"],
+      "answerType": "multiple",
+      "explanation": "现金销售适用于客户现场提货并付款的场景。它的特点是立即交货（无库存预留）和开票，以及现场收款（通常是现金或即时支付）。"
+    },
+    {
+      "id": "sap-c-ts460-2-010",
+      "question": "SAP S/4HANA 中的'Debit Memo Request'（借项凭证请求）用于什么场景？",
+      "options": {
+        "A": "退款给客户",
+        "B": "向客户追加收费",
+        "C": "记录采购退货",
+        "D": "取消销售订单"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "借项凭证请求用于向客户追加收费的场景，如原发票金额不足、额外服务费、价格调整等。处理后生成借项凭证，增加客户的应付金额。"
+    },
+    {
+      "id": "sap-c-ts460-2-011",
+      "question": "在 SAP S/4HANA 中，'Credit Memo Request'（贷项凭证请求）通常在什么情况下使用？",
+      "options": {
+        "A": "客户提前付款",
+        "B": "给客户退款或减免",
+        "C": "增加销售价格",
+        "D": "创建新的销售机会"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "贷项凭证请求用于给客户退款或减免的场景，如退货、质量问题补偿、价格调整等。处理后生成贷项凭证，减少客户的应付金额。"
+    },
+    {
+      "id": "sap-c-ts460-2-012",
+      "question": "SAP S/4HANA 中的'Invoice Correction Request'（发票更正请求）的作用是什么？",
+      "options": {
+        "A": "删除错误发票",
+        "B": "创建取消和重新开票的组合凭证",
+        "C": "修改已过账发票的文本",
+        "D": "调整付款条款"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "发票更正请求用于更正已开具的发票错误。它创建一个取消原发票的贷项和一个正确的新借项的组合，净效果是发票金额的调整。"
+    },
+    {
+      "id": "sap-c-ts460-2-013",
+      "question": "在 SAP S/4HANA 中，'Pro Forma Invoice'（形式发票）的用途是什么？",
+      "options": {
+        "A": "正式收款凭证",
+        "B": "用于海关或预付款的非财务凭证",
+        "C": "替代商业发票",
+        "D": "内部转账凭证"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "形式发票是非财务凭证，不产生应收账款，主要用于海关清关、客户预付款申请或价值证明等目的。它提供与正式发票相似的信息但无会计影响。"
+    },
+    {
+      "id": "sap-c-ts460-2-014",
+      "question": "SAP S/4HANA 中的'Down Payment'（预付款）处理涉及哪些步骤？（选择两个）",
+      "options": {
+        "A": "创建预付款请求",
+        "B": "直接扣减库存",
+        "C": "清算预付款到最终发票",
+        "D": "自动发货"
+      },
+      "answer": ["A", "C"],
+      "answerType": "multiple",
+      "explanation": "预付款处理涉及创建预付款请求（记录预付款要求并收款），以及在最终发票时清算预付款（将已收预付款抵扣最终发票金额）。"
+    },
+    {
+      "id": "sap-c-ts460-2-015",
+      "question": "在 SAP S/4HANA 中，'Split Analysis'（拆分分析）在发票中的作用是什么？",
+      "options": {
+        "A": "拆分发票打印",
+        "B": "分析发票如何被拆分成多个凭证",
+        "C": "拆分付款",
+        "D": "分析销售渠道"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "拆分分析显示为什么交货或订单被拆分成多个发票。拆分可能基于付款条款、发票日期、付款方、合作伙伴功能等因素。这帮助理解发票处理逻辑。"
+    },
+    {
+      "id": "sap-c-ts460-2-016",
+      "question": "SAP S/4HANA 中的'Invoice List'（发票清单）用于什么？",
+      "options": {
+        "A": "列出所有待处理发票",
+        "B": "将多张发票合并为一张汇总单据",
+        "C": "发票的审批列表",
+        "D": "发票错误报告"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "发票清单将多张单独的发票合并为一张汇总单据发送给客户。这通常用于按周期（如每周、每月）向客户提供合并账单，简化客户的付款处理。"
+    },
+    {
+      "id": "sap-c-ts460-2-017",
+      "question": "在 SAP S/4HANA 中，'Milestone Billing'（里程碑计费）适用于什么类型的业务？",
+      "options": {
+        "A": "标准产品销售",
+        "B": "长期项目分阶段计费",
+        "C": "一次性服务",
+        "D": "零售业务"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "里程碑计费适用于长期项目，按项目进度的关键节点（里程碑）分阶段开票。这常用于工程项目、定制开发等需要分期收款的业务场景。"
+    },
+    {
+      "id": "sap-c-ts460-2-018",
+      "question": "SAP S/4HANA 中的'Resource-Related Billing'（基于资源的计费）用于什么？",
+      "options": {
+        "A": "按产品数量计费",
+        "B": "按实际工时和费用计费",
+        "C": "按客户信用计费",
+        "D": "按固定价格计费"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "基于资源的计费按实际消耗的工时、人工和费用计费，通常用于咨询、服务和项目业务。它从项目系统或服务管理获取实际消耗数据进行开票。"
+    },
+    {
+      "id": "sap-c-ts460-2-019",
+      "question": "在 SAP S/4HANA 中，'Delivery Group'（交货组）的作用是什么？",
+      "options": {
+        "A": "分组管理交货人员",
+        "B": "控制订单行项目是否必须一起交货",
+        "C": "定义交货区域",
+        "D": "管理运输公司"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "交货组控制销售订单的多个行项目是否必须一起交货。同一交货组的项目必须在同一个交货凭证中处理，确保客户一次收到完整的订单。"
+    },
+    {
+      "id": "sap-c-ts460-2-020",
+      "question": "SAP S/4HANA 中的'Partial Delivery'（部分交货）设置决定什么？",
+      "options": {
+        "A": "是否允许超量交货",
+        "B": "是否允许分批交货不足量",
+        "C": "是否允许跨仓库交货",
+        "D": "是否允许免费交货"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "部分交货设置决定是否允许分批交货订单数量。如果允许，可以在多个交货凭证中分批发货；如果不允许，必须等到全部数量可用才能交货。"
+    },
+    {
+      "id": "sap-c-ts460-2-021",
+      "question": "在 SAP S/4HANA 中，'Complete Delivery'（完整交货）标志的含义是什么？",
+      "options": {
+        "A": "交货已完成",
+        "B": "所有行项目必须同时交货",
+        "C": "交货已确认收货",
+        "D": "交货已开票"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "完整交货标志表示销售订单的所有行项目必须同时交货，不允许部分行项目先发货。这确保客户一次收到完整订单，常用于配套产品销售。"
+    },
+    {
+      "id": "sap-c-ts460-2-022",
+      "question": "SAP S/4HANA 中的'Warehouse Number'（仓库编号）在交货中的作用是什么？",
+      "options": {
+        "A": "电话号码",
+        "B": "连接 SD 和仓库管理（WM/EWM）",
+        "C": "发票编号",
+        "D": "客户编号"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "仓库编号用于连接销售分销（SD）模块和仓库管理（WM 或扩展仓库管理 EWM）。它确定交货在哪个仓库执行拣配和发货操作。"
+    },
+    {
+      "id": "sap-c-ts460-2-023",
+      "question": "在 SAP S/4HANA 中，'Serial Number Management'（序列号管理）在销售中的作用是什么？",
+      "options": {
+        "A": "管理订单编号顺序",
+        "B": "追踪单个产品的销售和售后",
+        "C": "排序客户列表",
+        "D": "生成报表序号"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "序列号管理用于追踪单个产品的完整生命周期，包括销售给哪个客户、安装信息、保修状态、维修历史等。这对高价值设备和需要售后服务的产品很重要。"
+    },
+    {
+      "id": "sap-c-ts460-2-024",
+      "question": "SAP S/4HANA 中的'Handling Unit'（处理单元）在交货中的用途是什么？",
+      "options": {
+        "A": "处理客户投诉的单位",
+        "B": "代表包装单位如托盘、箱子",
+        "C": "处理发票的部门",
+        "D": "计量单位转换"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "处理单元代表物流包装单位，如托盘、箱子、容器等。它将多个物料打包成一个处理单位，简化仓库操作和运输管理，支持整托盘拣配和跟踪。"
+    },
+    {
+      "id": "sap-c-ts460-2-025",
+      "question": "在 SAP S/4HANA 中，'Proof of Delivery'（交货证明）的作用是什么？",
+      "options": {
+        "A": "证明订单已创建",
+        "B": "确认客户已收到货物",
+        "C": "证明发票已发送",
+        "D": "确认付款已收到"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "交货证明（POD）确认客户已收到货物，通常包含收货人签名、收货日期、实际收货数量等信息。这是解决交货争议和触发发票的重要证据。"
+    },
+    {
+      "id": "sap-c-ts460-2-026",
+      "question": "SAP S/4HANA 中的'Transportation Planning'（运输计划）涉及哪些活动？（选择两个）",
+      "options": {
+        "A": "确定运输路线",
+        "B": "设定产品价格",
+        "C": "安排运输工具",
+        "D": "管理客户信用"
+      },
+      "answer": ["A", "C"],
+      "answerType": "multiple",
+      "explanation": "运输计划涉及确定运输路线（从发货点到收货点的最佳路径）和安排运输工具（选择卡车、火车、船舶等并安排装载）。这优化运输成本和效率。"
+    },
+    {
+      "id": "sap-c-ts460-2-027",
+      "question": "在 SAP S/4HANA 中，'Shipment'（运输）凭证与'Delivery'（交货）凭证的关系是什么？",
+      "options": {
+        "A": "一个运输只能包含一个交货",
+        "B": "一个运输可以合并多个交货",
+        "C": "两者是同一个凭证",
+        "D": "运输凭证替代交货凭证"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "一个运输凭证可以合并多个交货凭证，实现联合运输。例如，发往同一区域的多个交货可以合并到一个卡车运输中，优化运输资源利用。"
+    },
+    {
+      "id": "sap-c-ts460-2-028",
+      "question": "SAP S/4HANA 中的'Freight Cost Calculation'（运费计算）可以基于什么？（选择两个）",
+      "options": {
+        "A": "重量",
+        "B": "客户年龄",
+        "C": "距离",
+        "D": "订单创建日期"
+      },
+      "answer": ["A", "C"],
+      "answerType": "multiple",
+      "explanation": "运费计算通常基于重量（货物总重）和距离（运输里程），也可以基于体积、托盘数等。系统根据运费条件记录自动计算运费并添加到定价中。"
+    },
+    {
+      "id": "sap-c-ts460-2-029",
+      "question": "在 SAP S/4HANA 中，'Tax Determination'（税码确定）基于哪些因素？（选择两个）",
+      "options": {
+        "A": "客户所在国家/地区",
+        "B": "物料的税分类",
+        "C": "销售人员姓名",
+        "D": "订单创建时间"
+      },
+      "answer": ["A", "B"],
+      "answerType": "multiple",
+      "explanation": "税码确定基于客户所在国家/地区（确定适用的税法）和物料的税分类（不同产品可能有不同税率，如标准税率、减免税率、免税）。"
+    },
+    {
+      "id": "sap-c-ts460-2-030",
+      "question": "SAP S/4HANA 中的'Foreign Trade'（外贸）功能支持哪些活动？",
+      "options": {
+        "A": "仅国内销售",
+        "B": "出口申报、海关编码、贸易文档",
+        "C": "仅进口业务",
+        "D": "员工出差管理"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "外贸功能支持国际贸易活动，包括出口申报、海关商品编码（HS Code）、贸易文档（商业发票、装箱单、原产地证明）、出口许可证管理等。"
+    },
+    {
+      "id": "sap-c-ts460-2-031",
+      "question": "在 SAP S/4HANA 中，'Letter of Credit'（信用证）处理在销售中的作用是什么？",
+      "options": {
+        "A": "评估客户信用",
+        "B": "管理银行担保的付款方式",
+        "C": "发送营销信函",
+        "D": "内部信用审批"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "信用证是国际贸易中常用的银行担保付款方式。SAP 支持管理信用证条款、金额、有效期，并在交货和开票时验证是否符合信用证要求。"
+    },
+    {
+      "id": "sap-c-ts460-2-032",
+      "question": "SAP S/4HANA 中的'Complaints Processing'（投诉处理）通常从什么凭证开始？",
+      "options": {
+        "A": "采购订单",
+        "B": "销售订单或发票",
+        "C": "付款凭证",
+        "D": "生产订单"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "投诉处理通常参考原始的销售订单或发票开始，记录客户关于产品质量、数量差异、交货延迟等问题。投诉可能导致退货、贷项凭证或其他补偿措施。"
+    },
+    {
+      "id": "sap-c-ts460-2-033",
+      "question": "在 SAP S/4HANA 中，'Subsequent Free of Charge Delivery'（后续免费交货）用于什么场景？",
+      "options": {
+        "A": "促销活动",
+        "B": "补偿客户投诉中的缺失数量",
+        "C": "新客户首单免费",
+        "D": "员工福利"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "后续免费交货用于补偿客户投诉中的问题，如原交货数量不足、产品损坏等情况下，免费补发货物给客户而不产生额外收费。"
+    },
+    {
+      "id": "sap-c-ts460-2-034",
+      "question": "SAP S/4HANA 中的'Service Contract'（服务合同）管理什么？",
+      "options": {
+        "A": "产品销售条款",
+        "B": "售后服务条款和服务级别协议",
+        "C": "员工劳动合同",
+        "D": "供应商协议"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "服务合同管理与客户的售后服务协议，包括服务范围、响应时间、服务级别协议（SLA）、服务定价等。它支持设备维护、技术支持等服务业务。"
+    },
+    {
+      "id": "sap-c-ts460-2-035",
+      "question": "在 SAP S/4HANA 中，'Make-to-Order'（按订单生产）销售场景的特点是什么？",
+      "options": {
+        "A": "从现有库存发货",
+        "B": "收到订单后才开始生产",
+        "C": "批量生产后等待订单",
+        "D": "只销售服务"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "按订单生产场景中，产品在收到客户订单后才开始生产。销售订单直接触发生产订单，产品完成后专门交付给该客户。这用于定制产品或大型设备。"
+    },
+    {
+      "id": "sap-c-ts460-2-036",
+      "question": "SAP S/4HANA 中的'Individual Purchase Order'（单独采购订单）在销售中的用途是什么？",
+      "options": {
+        "A": "采购办公用品",
+        "B": "为特定销售订单专门采购物料",
+        "C": "个人消费采购",
+        "D": "替代标准采购"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "单独采购订单是为满足特定销售订单而专门创建的采购订单，建立销售订单和采购订单的直接关联。这用于非库存物料或需要特别采购的情况。"
+    },
+    {
+      "id": "sap-c-ts460-2-037",
+      "question": "在 SAP S/4HANA 中，'ATP Check with Planning'（带计划的 ATP 检查）考虑什么因素？",
+      "options": {
+        "A": "仅当前库存",
+        "B": "库存、计划收货和计划发货",
+        "C": "仅销售预测",
+        "D": "仅生产能力"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "带计划的 ATP 检查不仅考虑当前库存，还考虑计划收货（如计划中的采购订单、生产订单）和计划发货（如已确认的销售订单），提供更准确的可用性信息。"
+    },
+    {
+      "id": "sap-c-ts460-2-038",
+      "question": "SAP S/4HANA 中的'Backorder Processing'（欠单处理）的触发时机是什么？",
+      "options": {
+        "A": "订单创建时",
+        "B": "库存补充后重新分配库存",
+        "C": "发票创建时",
+        "D": "客户付款后"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "欠单处理在库存补充后触发，将新到库存重新分配给之前因缺货而未能完全确认的订单。系统按优先级或时间顺序处理等待中的订单。"
+    },
+    {
+      "id": "sap-c-ts460-2-039",
+      "question": "在 SAP S/4HANA 中，'Rescheduling'（重新计划）的作用是什么？",
+      "options": {
+        "A": "取消订单",
+        "B": "重新计算订单的交货日期",
+        "C": "重新定价",
+        "D": "更换客户"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "重新计划用于重新计算销售订单的交货日期。当可用性状况变化（如库存变动、生产延迟）时，可以运行重新计划更新确认的交货日期。"
+    },
+    {
+      "id": "sap-c-ts460-2-040",
+      "question": "SAP S/4HANA 中的'Account Determination'（科目确定）在销售中决定什么？",
+      "options": {
+        "A": "银行账户选择",
+        "B": "收入、成本过账的会计科目",
+        "C": "客户账户余额",
+        "D": "用户登录账户"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "科目确定在发票过账时决定销售收入、销售成本、应收账款等过账到哪些会计科目。它基于物料、客户、销售区域等因素自动确定科目。"
+    },
+    {
+      "id": "sap-c-ts460-2-041",
+      "question": "在 SAP S/4HANA 中，'Profitability Analysis'（获利能力分析）从销售获取什么数据？",
+      "options": {
+        "A": "仅数量数据",
+        "B": "销售收入、成本和利润数据",
+        "C": "仅客户地址",
+        "D": "仅发票编号"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "获利能力分析（CO-PA）从销售凭证获取收入、成本和利润数据，按产品、客户、销售区域等维度分析盈利能力。发票过账时自动更新 CO-PA。"
+    },
+    {
+      "id": "sap-c-ts460-2-042",
+      "question": "SAP S/4HANA 中的'Sales Information System'（销售信息系统）提供什么功能？",
+      "options": {
+        "A": "实时订单处理",
+        "B": "销售数据的标准报表和分析",
+        "C": "客户通信管理",
+        "D": "系统配置"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "销售信息系统（LIS）提供销售数据的标准报表和分析功能，包括订单、交货、发票的统计分析，支持按多种维度查询和比较销售业绩。"
+    },
+    {
+      "id": "sap-c-ts460-2-043",
+      "question": "在 SAP S/4HANA 中，'Business Partner'（业务伙伴）与传统客户主数据的区别是什么？",
+      "options": {
+        "A": "业务伙伴只用于供应商",
+        "B": "业务伙伴是统一的主数据模型",
+        "C": "业务伙伴不支持销售功能",
+        "D": "没有区别"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "业务伙伴是 S/4HANA 的统一主数据模型，整合了客户、供应商、联系人等不同角色。一个业务伙伴可以同时是客户和供应商，简化了主数据管理。"
+    },
+    {
+      "id": "sap-c-ts460-2-044",
+      "question": "SAP S/4HANA 中的'Customer-Material Info Record'（客户-物料信息记录）存储什么？",
+      "options": {
+        "A": "物料的库存数量",
+        "B": "客户特定的物料信息如客户物料编号",
+        "C": "物料的生产配方",
+        "D": "物料的采购价格"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "客户-物料信息记录存储特定客户的物料相关信息，如客户使用的物料编号（可能与公司编号不同）、客户特定描述、默认交货工厂等。"
+    },
+    {
+      "id": "sap-c-ts460-2-045",
+      "question": "在 SAP S/4HANA 中，'Output Type'（输出类型）定义什么？",
+      "options": {
+        "A": "产品输出数量",
+        "B": "要发送的凭证类型和内容",
+        "C": "报表输出格式",
+        "D": "库存输出方式"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "输出类型定义要发送的凭证类型（如订单确认、发货通知、发票）和内容格式。每种输出类型配置发送时机、介质（打印、邮件等）和格式模板。"
+    },
+    {
+      "id": "sap-c-ts460-2-046",
+      "question": "SAP S/4HANA 中的'Output Determination'（输出确定）基于什么条件？（选择两个）",
+      "options": {
+        "A": "凭证类型",
+        "B": "用户密码",
+        "C": "销售区域",
+        "D": "系统版本"
+      },
+      "answer": ["A", "C"],
+      "answerType": "multiple",
+      "explanation": "输出确定基于凭证类型（不同类型有不同的默认输出）和销售区域（不同地区可能有不同的输出要求）等条件。系统自动确定需要创建的输出。"
+    },
+    {
+      "id": "sap-c-ts460-2-047",
+      "question": "在 SAP S/4HANA 中，'EDI'（电子数据交换）在销售中的应用是什么？",
+      "options": {
+        "A": "内部邮件系统",
+        "B": "与客户系统自动交换订单和发票数据",
+        "C": "员工培训系统",
+        "D": "数据库备份"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "EDI 用于与客户系统自动交换业务数据，如自动接收客户的采购订单并创建销售订单、自动发送发票数据。这减少了人工输入，提高了准确性和效率。"
+    },
+    {
+      "id": "sap-c-ts460-2-048",
+      "question": "SAP S/4HANA 中的'Fiori Apps'（Fiori 应用）在销售中提供什么优势？",
+      "options": {
+        "A": "替代所有后台功能",
+        "B": "基于角色的简化用户界面",
+        "C": "仅用于报表查看",
+        "D": "仅用于移动设备"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "SAP Fiori 为销售用户提供基于角色的简化用户界面，如销售订单处理、交货监控、发票查询等。它支持桌面和移动设备，提供现代化的用户体验。"
+    },
+    {
+      "id": "sap-c-ts460-2-049",
+      "question": "在 SAP S/4HANA 中，'Advanced ATP'（高级 ATP）相比标准 ATP 有什么增强？",
+      "options": {
+        "A": "更简单的配置",
+        "B": "支持复杂的分配规则和预留",
+        "C": "仅支持单一仓库",
+        "D": "不支持生产计划"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "高级 ATP（aATP）相比标准 ATP 支持更复杂的可用性检查，包括基于规则的分配（如按客户优先级、区域）、预留、回溯和替代等高级功能。"
+    },
+    {
+      "id": "sap-c-ts460-2-050",
+      "question": "SAP S/4HANA 中的'Embedded Analytics'（嵌入式分析）在销售中的优势是什么？",
+      "options": {
+        "A": "需要单独的 BW 系统",
+        "B": "实时访问销售数据进行分析",
+        "C": "仅支持历史数据",
+        "D": "不支持自定义报表"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "嵌入式分析允许直接在 S/4HANA 系统中实时访问销售数据进行分析，无需将数据提取到单独的数据仓库。这提供了即时的业务洞察和决策支持。"
+    }
+  ]
+}
