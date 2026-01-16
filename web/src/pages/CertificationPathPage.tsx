@@ -464,6 +464,29 @@ export const CertificationPathPage: React.FC = () => {
     }
   }, [searchParams]);
 
+  // Auto-switch provider when career path is selected
+  // SAP career paths should auto-switch to SAP tab
+  useEffect(() => {
+    if (selectedCareerPath) {
+      if (selectedCareerPath.startsWith('sap-')) {
+        setSelectedProvider('SAP');
+      } else {
+        // For non-SAP career paths, check if current provider has certifications
+        // If not, switch to a provider that does
+        const path = careerPaths.find(p => p.id === selectedCareerPath);
+        if (path) {
+          const providers: Provider[] = ['AWS', 'Azure', 'GCP', 'SAP'];
+          const providersWithCerts = providers.filter(provider =>
+            path.certifications.some(c => c.provider === provider)
+          );
+          if (providersWithCerts.length > 0 && !providersWithCerts.includes(selectedProvider)) {
+            setSelectedProvider(providersWithCerts[0]);
+          }
+        }
+      }
+    }
+  }, [selectedCareerPath]);
+
   // Get current career path data
   const currentCareerPath = useMemo(() => {
     return careerPaths.find(p => p.id === selectedCareerPath);
@@ -567,21 +590,29 @@ export const CertificationPathPage: React.FC = () => {
             </div>
 
             {/* Provider Tabs - always visible */}
-            <div className="flex items-center gap-1 p-0.5 bg-white rounded-lg shadow-sm">
+            <div className="flex items-center gap-1 p-0.5 bg-white rounded-lg shadow-sm border border-gray-200">
               {(['AWS', 'Azure', 'GCP', 'SAP'] as Provider[]).map((provider) => {
                 const pConfig = providerConfig[provider];
                 const isActive = selectedProvider === provider;
+                // Check if selected career path has certs for this provider
+                const hasCareerCerts = selectedCareerPath && careerPaths
+                  .find(p => p.id === selectedCareerPath)
+                  ?.certifications.some(c => c.provider === provider);
                 return (
                   <button
                     key={provider}
                     onClick={() => setSelectedProvider(provider)}
-                    className={`px-3 py-1 rounded-md font-medium text-xs transition-all ${
+                    className={`relative px-3 py-1.5 rounded-md font-medium text-xs transition-all ${
                       isActive
-                        ? `${pConfig.activeBg} ${pConfig.activeText}`
+                        ? `${pConfig.activeBg} ${pConfig.activeText} shadow-sm`
                         : `text-gray-600 ${pConfig.hoverBg}`
-                    }`}
+                    } ${provider === 'SAP' && !isActive ? 'ring-1 ring-cyan-300' : ''}`}
                   >
                     {provider}
+                    {/* Indicator dot for career path match */}
+                    {hasCareerCerts && !isActive && (
+                      <span className="absolute -top-1 -right-1 w-2 h-2 bg-purple-500 rounded-full animate-pulse"></span>
+                    )}
                   </button>
                 );
               })}
