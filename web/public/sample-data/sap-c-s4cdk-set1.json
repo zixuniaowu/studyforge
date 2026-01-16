@@ -1,0 +1,656 @@
+{
+  "examId": "sap-c-s4cdk",
+  "setNumber": 1,
+  "questions": [
+    {
+      "id": "sap-c-s4cdk-1-001",
+      "question": "SAP Cloud SDK 的主要目的是什么？",
+      "options": {
+        "A": "管理 SAP 许可证",
+        "B": "简化 SAP S/4HANA 和 SAP BTP 扩展应用的开发",
+        "C": "替换 SAP GUI",
+        "D": "监控 SAP 系统性能"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "SAP Cloud SDK 是一套开发工具和库，旨在简化基于 SAP S/4HANA 和 SAP BTP 的云原生应用和扩展开发，提供类型安全的 API 和最佳实践。"
+    },
+    {
+      "id": "sap-c-s4cdk-1-002",
+      "question": "SAP Cloud SDK 支持哪些编程语言？（选择两个）",
+      "options": {
+        "A": "Java",
+        "B": "Python",
+        "C": "JavaScript/TypeScript",
+        "D": "C++"
+      },
+      "answer": ["A", "C"],
+      "answerType": "multiple",
+      "explanation": "SAP Cloud SDK 官方支持 Java 和 JavaScript/TypeScript，提供这两种语言的客户端库和工具，用于构建云原生应用。"
+    },
+    {
+      "id": "sap-c-s4cdk-1-003",
+      "question": "在 SAP Cloud SDK 中，'VDM'（Virtual Data Model）是什么？",
+      "options": {
+        "A": "虚拟服务器",
+        "B": "预生成的类型安全客户端库，用于访问 SAP API",
+        "C": "数据库模型",
+        "D": "用户界面框架"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "VDM 是 SAP Cloud SDK 提供的预生成的类型安全客户端库，映射 SAP S/4HANA 的 OData 服务，让开发者以强类型方式访问 SAP API。"
+    },
+    {
+      "id": "sap-c-s4cdk-1-004",
+      "question": "SAP Cloud SDK 的'Destination'概念用于什么？",
+      "options": {
+        "A": "定义应用程序的部署位置",
+        "B": "配置与 SAP 系统的连接信息",
+        "C": "定义数据存储位置",
+        "D": "设置用户目标"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Destination 是 SAP BTP 的概念，用于存储与 SAP 系统或外部系统的连接信息（如 URL、认证凭据），Cloud SDK 使用它建立安全连接。"
+    },
+    {
+      "id": "sap-c-s4cdk-1-005",
+      "question": "在 SAP Cloud SDK for Java 中，如何获取当前用户信息？",
+      "options": {
+        "A": "使用 CurrentUser 类",
+        "B": "使用 RequestAccessor.tryGetCurrentRequest()",
+        "C": "直接从数据库读取",
+        "D": "调用外部认证服务"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "在 SAP Cloud SDK for Java 中，通过 RequestAccessor 获取当前请求上下文，进而获取用户信息、租户信息等运行时上下文数据。"
+    },
+    {
+      "id": "sap-c-s4cdk-1-006",
+      "question": "SAP Cloud SDK 中的'Principal Propagation'是什么？",
+      "options": {
+        "A": "主要功能传播",
+        "B": "将用户身份从源系统传递到目标系统",
+        "C": "数据复制",
+        "D": "错误传播"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Principal Propagation 是将用户身份从源系统（如 SAP BTP）安全传递到目标系统（如 S/4HANA），实现单点登录和权限继承。"
+    },
+    {
+      "id": "sap-c-s4cdk-1-007",
+      "question": "在 SAP Cloud SDK 中，'OData Client'用于什么？",
+      "options": {
+        "A": "管理 OAuth 令牌",
+        "B": "调用 SAP 系统的 OData 服务",
+        "C": "创建数据库表",
+        "D": "发送邮件"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "OData Client 是 SAP Cloud SDK 提供的组件，用于以类型安全的方式调用 SAP 系统的 OData 服务，执行 CRUD 操作和复杂查询。"
+    },
+    {
+      "id": "sap-c-s4cdk-1-008",
+      "question": "SAP Cloud SDK 与 SAP CAP 的关系是什么？",
+      "options": {
+        "A": "完全相同",
+        "B": "Cloud SDK 专注于系统集成，CAP 专注于应用开发框架",
+        "C": "相互排斥",
+        "D": "Cloud SDK 已被 CAP 取代"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "SAP Cloud SDK 专注于简化与 SAP 系统的集成和 API 调用；SAP CAP 是完整的应用开发框架。两者可以结合使用，CAP 应用可以使用 Cloud SDK 调用 SAP API。"
+    },
+    {
+      "id": "sap-c-s4cdk-1-009",
+      "question": "在 SAP Cloud SDK 中，如何处理 S/4HANA API 调用的错误？",
+      "options": {
+        "A": "忽略所有错误",
+        "B": "使用 try-catch 捕获 ODataException",
+        "C": "重启应用程序",
+        "D": "联系 SAP 支持"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "SAP Cloud SDK 在 API 调用失败时抛出 ODataException 或其子类，开发者应使用 try-catch 捕获并适当处理这些异常。"
+    },
+    {
+      "id": "sap-c-s4cdk-1-010",
+      "question": "SAP Cloud SDK 的'Resilience'功能包括什么？（选择两个）",
+      "options": {
+        "A": "超时处理",
+        "B": "数据加密",
+        "C": "断路器模式",
+        "D": "代码编译"
+      },
+      "answer": ["A", "C"],
+      "answerType": "multiple",
+      "explanation": "SAP Cloud SDK 的弹性功能包括超时处理（防止无限等待）和断路器模式（在服务失败时快速失败），提高应用的稳定性。"
+    },
+    {
+      "id": "sap-c-s4cdk-1-011",
+      "question": "在 SAP Cloud SDK for JavaScript 中，如何配置本地开发环境？",
+      "options": {
+        "A": "安装 SAP GUI",
+        "B": "使用 .env 文件或环境变量配置 Destination",
+        "C": "购买 SAP 许可证",
+        "D": "连接生产系统"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "在本地开发时，可以使用 .env 文件或环境变量配置 Destination 信息，模拟云环境的连接配置，无需部署到 SAP BTP。"
+    },
+    {
+      "id": "sap-c-s4cdk-1-012",
+      "question": "SAP Cloud SDK 的'Batch Request'用于什么？",
+      "options": {
+        "A": "批量发送邮件",
+        "B": "将多个 OData 操作组合在一个 HTTP 请求中",
+        "C": "批量创建用户",
+        "D": "批量备份数据"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Batch Request 将多个 OData 操作（查询、创建、更新、删除）组合在一个 HTTP 请求中发送，减少网络往返，提高性能。"
+    },
+    {
+      "id": "sap-c-s4cdk-1-013",
+      "question": "在 SAP Cloud SDK 中，'Tenant'概念代表什么？",
+      "options": {
+        "A": "租房者",
+        "B": "多租户应用中的客户实例",
+        "C": "系统管理员",
+        "D": "数据表"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "在多租户应用中，Tenant 代表一个客户实例，每个租户有独立的数据和配置。SAP Cloud SDK 提供 API 获取当前租户信息。"
+    },
+    {
+      "id": "sap-c-s4cdk-1-014",
+      "question": "SAP Cloud SDK 支持哪种认证方式连接 S/4HANA？（选择两个）",
+      "options": {
+        "A": "OAuth 2.0",
+        "B": "基本认证（Basic Auth）",
+        "C": "指纹识别",
+        "D": "面部识别"
+      },
+      "answer": ["A", "B"],
+      "answerType": "multiple",
+      "explanation": "SAP Cloud SDK 支持多种认证方式连接 S/4HANA，包括 OAuth 2.0（推荐用于生产）和基本认证（用于开发测试）。"
+    },
+    {
+      "id": "sap-c-s4cdk-1-015",
+      "question": "在 SAP Cloud SDK 中，如何调用自定义 OData 服务？",
+      "options": {
+        "A": "只能调用标准服务",
+        "B": "使用 Generic OData Client 或生成自定义 VDM",
+        "C": "需要 SAP 特别授权",
+        "D": "无法调用自定义服务"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "除了预生成的 VDM，SAP Cloud SDK 还提供 Generic OData Client 调用任意 OData 服务，或使用生成器为自定义服务生成类型安全的客户端。"
+    },
+    {
+      "id": "sap-c-s4cdk-1-016",
+      "question": "SAP Cloud SDK 的'Caching'功能有什么好处？",
+      "options": {
+        "A": "减少磁盘使用",
+        "B": "减少对 SAP 系统的重复调用，提高性能",
+        "C": "增加安全性",
+        "D": "简化代码"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Caching 功能缓存 API 调用结果，减少对 SAP 系统的重复调用，降低延迟和系统负载，提高应用性能。"
+    },
+    {
+      "id": "sap-c-s4cdk-1-017",
+      "question": "在 SAP Cloud SDK for Java 中，如何执行 OData $filter 查询？",
+      "options": {
+        "A": "使用 SQL 语句",
+        "B": "使用流畅的 API（如 .filter()）",
+        "C": "手动构造 URL",
+        "D": "使用 XPath"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "SAP Cloud SDK 提供流畅的 API 构造 OData 查询，使用 .filter()、.select()、.expand() 等方法以类型安全的方式构建查询条件。"
+    },
+    {
+      "id": "sap-c-s4cdk-1-018",
+      "question": "SAP Cloud SDK 中的'Destination Service'位于哪里？",
+      "options": {
+        "A": "本地计算机",
+        "B": "SAP BTP Subaccount",
+        "C": "S/4HANA 系统",
+        "D": "第三方云"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Destination Service 是 SAP BTP 的服务，运行在 Subaccount 级别，集中管理与各种系统的连接配置，Cloud SDK 自动使用它。"
+    },
+    {
+      "id": "sap-c-s4cdk-1-019",
+      "question": "在 SAP Cloud SDK 中，'$expand'查询用于什么？",
+      "options": {
+        "A": "扩展服务器容量",
+        "B": "在一次请求中获取关联实体的数据",
+        "C": "扩展用户权限",
+        "D": "扩展数据字段"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "$expand 是 OData 查询选项，用于在一次请求中获取主实体及其关联实体的数据，减少多次 API 调用。"
+    },
+    {
+      "id": "sap-c-s4cdk-1-020",
+      "question": "SAP Cloud SDK 的'Business Partner API'用于什么？",
+      "options": {
+        "A": "管理合作伙伴关系",
+        "B": "访问和管理 S/4HANA 中的业务伙伴数据",
+        "C": "创建商业计划",
+        "D": "分析竞争对手"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Business Partner API 是 S/4HANA 的核心 API，用于访问和管理业务伙伴（客户、供应商）数据，Cloud SDK 提供预生成的 VDM 支持。"
+    },
+    {
+      "id": "sap-c-s4cdk-1-021",
+      "question": "在 SAP Cloud SDK 中，如何处理大量数据的分页？",
+      "options": {
+        "A": "一次获取所有数据",
+        "B": "使用 $top 和 $skip 参数或迭代器",
+        "C": "限制用户访问",
+        "D": "压缩数据"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "对于大量数据，使用 OData 的 $top 和 $skip 参数进行分页，或使用 SDK 提供的迭代器自动处理分页，避免内存溢出。"
+    },
+    {
+      "id": "sap-c-s4cdk-1-022",
+      "question": "SAP Cloud SDK 的'XSUAA'服务用于什么？",
+      "options": {
+        "A": "数据存储",
+        "B": "认证和授权",
+        "C": "日志记录",
+        "D": "性能监控"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "XSUAA（Extended User Account and Authentication）是 SAP BTP 的认证授权服务，Cloud SDK 集成它实现应用的用户认证和权限检查。"
+    },
+    {
+      "id": "sap-c-s4cdk-1-023",
+      "question": "在 SAP Cloud SDK for JavaScript 中，'@sap-cloud-sdk/core'包提供什么？",
+      "options": {
+        "A": "UI 组件",
+        "B": "核心功能如 HTTP 客户端、Destination 处理",
+        "C": "数据库连接",
+        "D": "测试工具"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "@sap-cloud-sdk/core（现已重构为多个包）提供核心功能，包括 HTTP 客户端、Destination 处理、认证、弹性等基础设施。"
+    },
+    {
+      "id": "sap-c-s4cdk-1-024",
+      "question": "SAP Cloud SDK 支持哪种 OData 版本？（选择两个）",
+      "options": {
+        "A": "OData V2",
+        "B": "OData V4",
+        "C": "OData V1",
+        "D": "OData V5"
+      },
+      "answer": ["A", "B"],
+      "answerType": "multiple",
+      "explanation": "SAP Cloud SDK 支持 OData V2（S/4HANA Cloud 和 On-Premise 使用）和 OData V4（新版 API 使用），提供两个版本的客户端库。"
+    },
+    {
+      "id": "sap-c-s4cdk-1-025",
+      "question": "在 SAP Cloud SDK 中，'Proxy'配置用于什么场景？",
+      "options": {
+        "A": "代理服务器管理",
+        "B": "通过 SAP Cloud Connector 连接本地 S/4HANA",
+        "C": "代理用户请求",
+        "D": "代理数据库连接"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Proxy 配置用于通过 SAP Cloud Connector 连接本地（On-Premise）S/4HANA 系统，Cloud Connector 作为反向代理提供安全通道。"
+    },
+    {
+      "id": "sap-c-s4cdk-1-026",
+      "question": "SAP Cloud SDK 的'Generator'工具用于什么？",
+      "options": {
+        "A": "生成测试数据",
+        "B": "根据 OData 服务元数据生成类型安全的客户端代码",
+        "C": "生成用户报告",
+        "D": "生成系统日志"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Generator 工具根据 OData 服务的 EDMX 元数据文件生成类型安全的客户端代码（VDM），支持自定义 OData 服务。"
+    },
+    {
+      "id": "sap-c-s4cdk-1-027",
+      "question": "在 SAP Cloud SDK 中，如何实现多租户数据隔离？",
+      "options": {
+        "A": "使用不同的数据库",
+        "B": "SDK 自动基于租户上下文隔离数据和 Destination",
+        "C": "手动在代码中过滤",
+        "D": "不支持多租户"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "SAP Cloud SDK 自动从请求上下文获取租户信息，自动选择对应租户的 Destination 和配置，实现多租户数据隔离。"
+    },
+    {
+      "id": "sap-c-s4cdk-1-028",
+      "question": "SAP Cloud SDK 中的'$select'查询有什么好处？",
+      "options": {
+        "A": "选择用户",
+        "B": "只返回需要的字段，减少数据传输量",
+        "C": "选择服务器",
+        "D": "选择数据库"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "$select 查询选项指定只返回需要的字段，减少不必要的数据传输，提高 API 调用性能和带宽效率。"
+    },
+    {
+      "id": "sap-c-s4cdk-1-029",
+      "question": "在 SAP Cloud SDK 中，'Deep Insert'操作是什么？",
+      "options": {
+        "A": "深度备份",
+        "B": "在一次请求中创建主实体和关联实体",
+        "C": "深度搜索",
+        "D": "深度删除"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Deep Insert 允许在一次 OData 请求中同时创建主实体及其关联的子实体，如创建销售订单时同时创建订单行项目。"
+    },
+    {
+      "id": "sap-c-s4cdk-1-030",
+      "question": "SAP Cloud SDK 的'Connectivity Service'提供什么？（选择两个）",
+      "options": {
+        "A": "管理与本地系统的连接",
+        "B": "社交网络连接",
+        "C": "提供 Cloud Connector 的位置信息",
+        "D": "连接电话网络"
+      },
+      "answer": ["A", "C"],
+      "answerType": "multiple",
+      "explanation": "Connectivity Service 管理与本地系统的连接，提供 Cloud Connector 的位置信息，使 Cloud SDK 能够通过安全通道访问本地系统。"
+    },
+    {
+      "id": "sap-c-s4cdk-1-031",
+      "question": "在 SAP Cloud SDK for Java 中，如何部署应用到 SAP BTP？",
+      "options": {
+        "A": "FTP 上传",
+        "B": "使用 CF CLI 或 MTA 部署",
+        "C": "邮件发送",
+        "D": "手动复制文件"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "SAP Cloud SDK 应用通常使用 Cloud Foundry CLI（cf push）或 MTA（Multi-Target Application）方式部署到 SAP BTP Cloud Foundry 环境。"
+    },
+    {
+      "id": "sap-c-s4cdk-1-032",
+      "question": "SAP Cloud SDK 的'Change Detection'功能用于什么？",
+      "options": {
+        "A": "检测代码变更",
+        "B": "识别实体属性的变化以优化更新请求",
+        "C": "检测系统变更",
+        "D": "检测用户变更"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Change Detection 追踪实体对象属性的变化，在更新时只发送实际变更的字段，减少网络传输和服务器处理。"
+    },
+    {
+      "id": "sap-c-s4cdk-1-033",
+      "question": "在 SAP Cloud SDK 中，如何处理日期和时间类型？",
+      "options": {
+        "A": "使用字符串",
+        "B": "使用 SDK 提供的日期时间类型或标准库",
+        "C": "使用整数时间戳",
+        "D": "忽略日期时间"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "SAP Cloud SDK 提供与 OData 日期时间类型对应的类型（如 LocalDate、ZonedDateTime），自动处理序列化和反序列化。"
+    },
+    {
+      "id": "sap-c-s4cdk-1-034",
+      "question": "SAP Cloud SDK 的'Logging'集成支持什么？",
+      "options": {
+        "A": "只支持控制台输出",
+        "B": "与 SAP BTP 日志服务和标准日志框架集成",
+        "C": "只支持文件日志",
+        "D": "不支持日志"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "SAP Cloud SDK 集成标准日志框架（如 SLF4J），并与 SAP BTP 的日志服务集成，支持结构化日志和日志分析。"
+    },
+    {
+      "id": "sap-c-s4cdk-1-035",
+      "question": "在 SAP Cloud SDK 中，'ETag'用于什么？",
+      "options": {
+        "A": "标记电子产品",
+        "B": "实现乐观锁，防止并发更新冲突",
+        "C": "标记邮件",
+        "D": "标记员工"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "ETag 是 OData 实现乐观锁的机制，在更新时检查实体是否被其他人修改，防止并发更新导致的数据冲突。"
+    },
+    {
+      "id": "sap-c-s4cdk-1-036",
+      "question": "SAP Cloud SDK 的'Unit Testing'支持包括什么？",
+      "options": {
+        "A": "不支持测试",
+        "B": "提供 Mock 服务器和测试工具",
+        "C": "只支持手动测试",
+        "D": "只支持集成测试"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "SAP Cloud SDK 提供 Mock 服务器和测试工具，允许在没有真实 SAP 系统的情况下进行单元测试，模拟 OData 响应。"
+    },
+    {
+      "id": "sap-c-s4cdk-1-037",
+      "question": "在 SAP Cloud SDK 中，'Destination Lookup'是什么过程？",
+      "options": {
+        "A": "查找目的地城市",
+        "B": "从环境变量或 Destination Service 获取连接配置",
+        "C": "查找用户",
+        "D": "查找数据"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Destination Lookup 是 Cloud SDK 从环境变量（本地开发）或 BTP Destination Service（云环境）获取连接配置的过程。"
+    },
+    {
+      "id": "sap-c-s4cdk-1-038",
+      "question": "SAP Cloud SDK 支持哪种部署模型？（选择两个）",
+      "options": {
+        "A": "SAP BTP Cloud Foundry",
+        "B": "本地部署",
+        "C": "SAP BTP Kyma",
+        "D": "仅限 AWS"
+      },
+      "answer": ["A", "C"],
+      "answerType": "multiple",
+      "explanation": "SAP Cloud SDK 支持在 SAP BTP Cloud Foundry 环境和 SAP BTP Kyma（Kubernetes）环境部署应用。"
+    },
+    {
+      "id": "sap-c-s4cdk-1-039",
+      "question": "在 SAP Cloud SDK 中，'Function Import'用于什么？",
+      "options": {
+        "A": "导入函数库",
+        "B": "调用 OData 服务中定义的函数（非 CRUD 操作）",
+        "C": "导入数据",
+        "D": "导入用户"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Function Import 调用 OData 服务中定义的自定义函数（非标准 CRUD 操作），如执行特定业务逻辑或返回计算结果。"
+    },
+    {
+      "id": "sap-c-s4cdk-1-040",
+      "question": "SAP Cloud SDK 的'Service Binding'概念是什么？",
+      "options": {
+        "A": "绑定服务器",
+        "B": "在 BTP 中将服务实例与应用关联",
+        "C": "绑定数据",
+        "D": "绑定用户"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Service Binding 是在 SAP BTP 中将服务实例（如 Destination Service、XSUAA）与应用关联，应用可以访问这些服务。"
+    },
+    {
+      "id": "sap-c-s4cdk-1-041",
+      "question": "在 SAP Cloud SDK 中，如何处理 OData Action？",
+      "options": {
+        "A": "不支持 Action",
+        "B": "使用 VDM 生成的 Action 方法或通用 API",
+        "C": "手动构造 HTTP 请求",
+        "D": "使用数据库触发器"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "OData Action 可以通过 VDM 生成的类型安全方法调用，或使用通用 OData 客户端 API 调用 OData V4 的 Action。"
+    },
+    {
+      "id": "sap-c-s4cdk-1-042",
+      "question": "SAP Cloud SDK 的'Retry Logic'提供什么？",
+      "options": {
+        "A": "代码重试",
+        "B": "API 调用失败时的自动重试机制",
+        "C": "用户重试",
+        "D": "数据库重试"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Retry Logic 在 API 调用因临时错误（如网络问题）失败时自动重试，结合退避策略避免服务过载。"
+    },
+    {
+      "id": "sap-c-s4cdk-1-043",
+      "question": "在 SAP Cloud SDK 中，'Audit Logging'用于什么？",
+      "options": {
+        "A": "财务审计",
+        "B": "记录安全相关事件以满足合规要求",
+        "C": "审计代码",
+        "D": "审计员工"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Audit Logging 记录安全相关事件（如数据访问、配置变更），满足 GDPR 等合规要求，Cloud SDK 集成 SAP 审计日志服务。"
+    },
+    {
+      "id": "sap-c-s4cdk-1-044",
+      "question": "SAP Cloud SDK 的'Currency Conversion'API 用于什么？",
+      "options": {
+        "A": "交换货币",
+        "B": "在 S/4HANA 中进行货币金额换算",
+        "C": "管理货币收藏",
+        "D": "创建新货币"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Currency Conversion API 调用 S/4HANA 的货币换算服务，根据汇率将金额从一种货币转换为另一种货币。"
+    },
+    {
+      "id": "sap-c-s4cdk-1-045",
+      "question": "在 SAP Cloud SDK 中，如何获取 OData 服务的元数据？",
+      "options": {
+        "A": "手动编写",
+        "B": "调用服务的 $metadata 端点",
+        "C": "从数据库读取",
+        "D": "联系 SAP"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "OData 服务的元数据通过调用服务的 $metadata 端点获取，返回 EDMX 格式的服务定义，Cloud SDK Generator 使用它生成代码。"
+    },
+    {
+      "id": "sap-c-s4cdk-1-046",
+      "question": "SAP Cloud SDK 的'Tenant Isolation'如何实现？",
+      "options": {
+        "A": "物理隔离服务器",
+        "B": "通过租户上下文和 Destination 配置实现逻辑隔离",
+        "C": "网络隔离",
+        "D": "不支持隔离"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "租户隔离通过租户上下文和租户特定的 Destination 配置实现逻辑隔离，每个租户的请求自动路由到对应的 SAP 系统。"
+    },
+    {
+      "id": "sap-c-s4cdk-1-047",
+      "question": "在 SAP Cloud SDK 中，'Header Customization'用于什么？",
+      "options": {
+        "A": "自定义页面标题",
+        "B": "添加自定义 HTTP 头到 API 请求",
+        "C": "自定义邮件头",
+        "D": "自定义文档头"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Header Customization 允许在 API 请求中添加自定义 HTTP 头，如传递特定参数、请求特定格式或满足 SAP 系统的特殊要求。"
+    },
+    {
+      "id": "sap-c-s4cdk-1-048",
+      "question": "SAP Cloud SDK 的'API Hub Integration'是什么？",
+      "options": {
+        "A": "物理集线器",
+        "B": "从 SAP API Business Hub 获取 API 规范和生成客户端",
+        "C": "网络交换",
+        "D": "数据中心连接"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "SAP Cloud SDK 可以从 SAP API Business Hub 获取 API 规范（EDMX），自动生成类型安全的客户端代码，简化开发流程。"
+    },
+    {
+      "id": "sap-c-s4cdk-1-049",
+      "question": "在 SAP Cloud SDK 中，'Environment Variables'如何使用？",
+      "options": {
+        "A": "设置系统时间",
+        "B": "配置 Destination、服务绑定等运行时参数",
+        "C": "设置用户偏好",
+        "D": "配置编程语言"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "环境变量用于配置运行时参数，如本地开发时的 Destination 配置、云环境中的服务绑定信息（VCAP_SERVICES）等。"
+    },
+    {
+      "id": "sap-c-s4cdk-1-050",
+      "question": "SAP Cloud SDK 的'Error Handling'最佳实践是什么？",
+      "options": {
+        "A": "忽略所有错误",
+        "B": "捕获具体异常、记录错误、返回有意义的错误响应",
+        "C": "重启系统",
+        "D": "联系用户"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "最佳实践包括捕获具体异常类型（如 ODataException）、记录错误详情用于调试、返回有意义的错误响应给调用者。"
+    }
+  ]
+}

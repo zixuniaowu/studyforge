@@ -1,0 +1,656 @@
+{
+  "examId": "sap-c-s4cdk",
+  "setNumber": 2,
+  "questions": [
+    {
+      "id": "sap-c-s4cdk-2-001",
+      "question": "在 SAP Cloud SDK 中，'OpenAPI Generator'用于什么？",
+      "options": {
+        "A": "生成 OpenAPI 文档",
+        "B": "根据 OpenAPI 规范生成类型安全的 REST 客户端",
+        "C": "生成数据库架构",
+        "D": "生成用户界面"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "OpenAPI Generator 根据 OpenAPI/Swagger 规范生成类型安全的 REST 客户端代码，用于调用非 OData 的 REST API。"
+    },
+    {
+      "id": "sap-c-s4cdk-2-002",
+      "question": "SAP Cloud SDK 的'Circuit Breaker'模式在什么情况下会打开？",
+      "options": {
+        "A": "系统启动时",
+        "B": "连续失败次数超过阈值时",
+        "C": "用户登录时",
+        "D": "数据库连接时"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Circuit Breaker 模式在连续失败次数超过配置的阈值时会打开，暂时阻止新请求发送到失败的服务，让服务有恢复时间。"
+    },
+    {
+      "id": "sap-c-s4cdk-2-003",
+      "question": "在 SAP Cloud SDK for JavaScript 中，'@sap-cloud-sdk/odata-v2'包提供什么？（选择两个）",
+      "options": {
+        "A": "OData V2 客户端功能",
+        "B": "数据库连接",
+        "C": "预生成的 S/4HANA VDM",
+        "D": "用户界面组件"
+      },
+      "answer": ["A", "C"],
+      "answerType": "multiple",
+      "explanation": "@sap-cloud-sdk/odata-v2 包提供 OData V2 协议的客户端功能以及预生成的 S/4HANA 服务 VDM（虚拟数据模型）。"
+    },
+    {
+      "id": "sap-c-s4cdk-2-004",
+      "question": "SAP Cloud SDK 的'Destination Fetch Strategy'有什么选项？",
+      "options": {
+        "A": "只有本地策略",
+        "B": "AlwaysFetch、CacheFirst、CurrentSystem 等",
+        "C": "只有远程策略",
+        "D": "没有策略选项"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Destination Fetch Strategy 有多种选项，包括 AlwaysFetch（每次都获取）、CacheFirst（优先使用缓存）、CurrentSystem（使用当前系统）等。"
+    },
+    {
+      "id": "sap-c-s4cdk-2-005",
+      "question": "在 SAP Cloud SDK 中，如何配置连接超时？",
+      "options": {
+        "A": "无法配置",
+        "B": "通过 Destination 属性或代码配置",
+        "C": "联系 SAP 支持",
+        "D": "修改系统注册表"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "连接超时可以在 Destination 配置中设置属性，或在代码中使用 SDK 提供的配置选项来覆盖默认超时值。"
+    },
+    {
+      "id": "sap-c-s4cdk-2-006",
+      "question": "SAP Cloud SDK 的'On-Behalf-Of User Flow'用于什么？",
+      "options": {
+        "A": "代表系统执行操作",
+        "B": "代表当前用户的身份调用后端系统",
+        "C": "代表管理员执行操作",
+        "D": "代表机器人执行操作"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "On-Behalf-Of User Flow 让应用程序代表当前登录用户的身份调用后端 SAP 系统，保持用户上下文和权限。"
+    },
+    {
+      "id": "sap-c-s4cdk-2-007",
+      "question": "在 SAP Cloud SDK 中，'$count'查询用于什么？",
+      "options": {
+        "A": "计数用户",
+        "B": "获取符合条件的实体总数",
+        "C": "计数服务器",
+        "D": "计数请求"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "$count 查询选项用于获取符合查询条件的实体总数，常用于分页时显示总记录数。"
+    },
+    {
+      "id": "sap-c-s4cdk-2-008",
+      "question": "SAP Cloud SDK 的'Technical User Authentication'适用于什么场景？",
+      "options": {
+        "A": "用户登录",
+        "B": "后台任务和系统间通信",
+        "C": "前端展示",
+        "D": "数据备份"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Technical User Authentication 使用技术用户凭据进行认证，适用于后台任务、定时作业和系统间通信等无人值守场景。"
+    },
+    {
+      "id": "sap-c-s4cdk-2-009",
+      "question": "在 SAP Cloud SDK 中，'$orderby'查询实现什么？",
+      "options": {
+        "A": "订购产品",
+        "B": "对查询结果进行排序",
+        "C": "排列服务器顺序",
+        "D": "订购服务"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "$orderby 查询选项用于对 OData 查询结果进行排序，可以指定一个或多个字段及升序/降序方向。"
+    },
+    {
+      "id": "sap-c-s4cdk-2-010",
+      "question": "SAP Cloud SDK 支持哪种 S/4HANA 部署模式？（选择两个）",
+      "options": {
+        "A": "S/4HANA Cloud",
+        "B": "S/4HANA On-Premise",
+        "C": "只支持 Cloud",
+        "D": "只支持 On-Premise"
+      },
+      "answer": ["A", "B"],
+      "answerType": "multiple",
+      "explanation": "SAP Cloud SDK 支持连接 S/4HANA Cloud 和 S/4HANA On-Premise，通过不同的 Destination 配置和连接方式。"
+    },
+    {
+      "id": "sap-c-s4cdk-2-011",
+      "question": "在 SAP Cloud SDK 中，'Custom Destination Property'用于什么？",
+      "options": {
+        "A": "定义旅游目的地",
+        "B": "存储自定义连接参数",
+        "C": "定义用户属性",
+        "D": "定义产品属性"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Custom Destination Property 允许在 Destination 中存储额外的自定义参数，应用程序可以读取这些参数用于特定逻辑。"
+    },
+    {
+      "id": "sap-c-s4cdk-2-012",
+      "question": "SAP Cloud SDK 的'SAP Passport'功能用于什么？",
+      "options": {
+        "A": "用户护照验证",
+        "B": "跨系统请求追踪和关联",
+        "C": "旅行管理",
+        "D": "身份认证"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "SAP Passport 是一种跨系统请求追踪机制，在请求头中传递唯一标识，便于在分布式系统中追踪和关联请求链。"
+    },
+    {
+      "id": "sap-c-s4cdk-2-013",
+      "question": "在 SAP Cloud SDK 中，如何处理 OData 中的导航属性？",
+      "options": {
+        "A": "忽略导航属性",
+        "B": "使用 $expand 或单独请求获取关联数据",
+        "C": "手动拼接数据",
+        "D": "使用数据库 JOIN"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "导航属性可以通过 $expand 在主请求中一起获取，或通过单独的请求获取关联实体的数据。"
+    },
+    {
+      "id": "sap-c-s4cdk-2-014",
+      "question": "SAP Cloud SDK 的'Client Credentials Flow'适用于什么？",
+      "options": {
+        "A": "用户登录",
+        "B": "应用程序之间的认证（无用户上下文）",
+        "C": "密码重置",
+        "D": "用户注册"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Client Credentials Flow 是 OAuth 2.0 的一种模式，用于应用程序之间的认证，不涉及用户上下文，适合后台服务调用。"
+    },
+    {
+      "id": "sap-c-s4cdk-2-015",
+      "question": "在 SAP Cloud SDK 中，'EntityBuilder'模式用于什么？",
+      "options": {
+        "A": "构建数据库表",
+        "B": "以流畅方式构建 OData 实体对象",
+        "C": "构建用户界面",
+        "D": "构建服务器"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "EntityBuilder 模式提供流畅的 API 来构建 OData 实体对象，设置属性值，便于创建或更新实体。"
+    },
+    {
+      "id": "sap-c-s4cdk-2-016",
+      "question": "SAP Cloud SDK 如何处理 OData 服务的版本差异？",
+      "options": {
+        "A": "不处理版本差异",
+        "B": "提供 V2 和 V4 不同的客户端库",
+        "C": "自动适配",
+        "D": "忽略版本"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "SAP Cloud SDK 为 OData V2 和 V4 提供不同的客户端库和 API，开发者根据目标服务的版本选择对应的库。"
+    },
+    {
+      "id": "sap-c-s4cdk-2-017",
+      "question": "在 SAP Cloud SDK 中，'Middleware'概念用于什么？",
+      "options": {
+        "A": "中间商管理",
+        "B": "在请求处理链中添加自定义逻辑",
+        "C": "中间件许可证",
+        "D": "中间数据存储"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Middleware 允许在 HTTP 请求处理链中添加自定义逻辑，如日志、认证检查、请求修改等。"
+    },
+    {
+      "id": "sap-c-s4cdk-2-018",
+      "question": "SAP Cloud SDK 的'Asynchronous Request'功能支持什么？",
+      "options": {
+        "A": "同步等待",
+        "B": "非阻塞 API 调用和并发处理",
+        "C": "异步通知",
+        "D": "异步存储"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Asynchronous Request 支持非阻塞的 API 调用，可以同时发起多个请求并并发处理，提高应用性能。"
+    },
+    {
+      "id": "sap-c-s4cdk-2-019",
+      "question": "在 SAP Cloud SDK 中，如何获取 S/4HANA 的业务逻辑错误信息？",
+      "options": {
+        "A": "查看控制台",
+        "B": "从 ODataException 中提取错误详情",
+        "C": "联系管理员",
+        "D": "重试操作"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "S/4HANA 的业务逻辑错误信息包含在 ODataException 中，可以提取错误代码、消息和详细信息进行处理。"
+    },
+    {
+      "id": "sap-c-s4cdk-2-020",
+      "question": "SAP Cloud SDK 的'Request Customizer'用于什么？",
+      "options": {
+        "A": "自定义用户请求",
+        "B": "在发送前修改 HTTP 请求",
+        "C": "自定义产品",
+        "D": "自定义报表"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Request Customizer 允许在 HTTP 请求发送到服务器之前进行修改，如添加头、修改 URL 参数等。"
+    },
+    {
+      "id": "sap-c-s4cdk-2-021",
+      "question": "在 SAP Cloud SDK 中，'Changeset'在批处理中有什么作用？",
+      "options": {
+        "A": "记录变更历史",
+        "B": "将多个写操作组合成原子事务",
+        "C": "设置变更规则",
+        "D": "变更系统配置"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Changeset 将批处理中的多个写操作（创建、更新、删除）组合成原子事务，要么全部成功，要么全部回滚。"
+    },
+    {
+      "id": "sap-c-s4cdk-2-022",
+      "question": "SAP Cloud SDK 的'Fluent API'设计有什么优点？（选择两个）",
+      "options": {
+        "A": "代码可读性更好",
+        "B": "执行更快",
+        "C": "支持方法链式调用",
+        "D": "减少内存使用"
+      },
+      "answer": ["A", "C"],
+      "answerType": "multiple",
+      "explanation": "Fluent API 设计让代码可读性更好，支持方法链式调用（如 .filter().select().execute()），使代码更简洁直观。"
+    },
+    {
+      "id": "sap-c-s4cdk-2-023",
+      "question": "在 SAP Cloud SDK 中，'Default Service Path'是什么？",
+      "options": {
+        "A": "默认文件路径",
+        "B": "OData 服务的默认 URL 路径",
+        "C": "默认用户路径",
+        "D": "默认数据路径"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Default Service Path 是 OData 服务的默认 URL 路径，VDM 类中通常包含服务的默认路径，也可以在运行时覆盖。"
+    },
+    {
+      "id": "sap-c-s4cdk-2-024",
+      "question": "SAP Cloud SDK 如何支持'$apply'聚合操作？",
+      "options": {
+        "A": "不支持",
+        "B": "在 OData V4 客户端中提供聚合查询支持",
+        "C": "使用 SQL",
+        "D": "只支持计数"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "OData V4 的 $apply 聚合操作（如 groupby、aggregate）在 Cloud SDK 的 V4 客户端中得到支持。"
+    },
+    {
+      "id": "sap-c-s4cdk-2-025",
+      "question": "在 SAP Cloud SDK 中，'Response Handler'用于什么？",
+      "options": {
+        "A": "处理客户响应",
+        "B": "自定义 HTTP 响应的处理逻辑",
+        "C": "处理员工反馈",
+        "D": "处理系统警告"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Response Handler 允许自定义 HTTP 响应的处理逻辑，如特殊的反序列化、错误处理或数据转换。"
+    },
+    {
+      "id": "sap-c-s4cdk-2-026",
+      "question": "SAP Cloud SDK 的'Subscription'功能在多租户中用于什么？",
+      "options": {
+        "A": "杂志订阅",
+        "B": "处理租户订阅和取消订阅事件",
+        "C": "服务订阅",
+        "D": "数据订阅"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "在多租户应用中，Subscription 回调处理租户订阅（新租户开通）和取消订阅（租户停用）事件，执行租户特定的初始化或清理。"
+    },
+    {
+      "id": "sap-c-s4cdk-2-027",
+      "question": "在 SAP Cloud SDK 中，如何处理 S/4HANA 的'Long Running Operations'？",
+      "options": {
+        "A": "同步等待",
+        "B": "使用异步模式和轮询机制",
+        "C": "增加超时时间",
+        "D": "放弃操作"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "对于长时间运行的操作，使用异步模式发起请求，然后通过轮询机制检查操作完成状态，避免超时。"
+    },
+    {
+      "id": "sap-c-s4cdk-2-028",
+      "question": "SAP Cloud SDK 的'Service Key'在本地开发中用于什么？",
+      "options": {
+        "A": "物理钥匙",
+        "B": "存储 BTP 服务的凭据用于本地测试",
+        "C": "加密密钥",
+        "D": "数据库密钥"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Service Key 包含 BTP 服务（如 XSUAA、Destination Service）的凭据，在本地开发时可以下载并配置用于测试。"
+    },
+    {
+      "id": "sap-c-s4cdk-2-029",
+      "question": "在 SAP Cloud SDK 中，'$search'查询功能用于什么？",
+      "options": {
+        "A": "搜索文件",
+        "B": "在 OData 服务中进行全文搜索",
+        "C": "搜索用户",
+        "D": "搜索服务器"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "$search 是 OData 查询选项，用于在服务支持的实体中进行全文搜索，搜索文本会匹配多个字段。"
+    },
+    {
+      "id": "sap-c-s4cdk-2-030",
+      "question": "SAP Cloud SDK 的'Trust Configuration'用于什么？",
+      "options": {
+        "A": "用户信任设置",
+        "B": "配置 BTP 与 S/4HANA 之间的信任关系",
+        "C": "网络信任",
+        "D": "数据信任"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Trust Configuration 配置 SAP BTP 与 S/4HANA 系统之间的信任关系，使 Principal Propagation 等高级认证方式成为可能。"
+    },
+    {
+      "id": "sap-c-s4cdk-2-031",
+      "question": "在 SAP Cloud SDK for Java 中，'ThreadContext'用于什么？",
+      "options": {
+        "A": "管理线程",
+        "B": "在请求处理期间存储和传递上下文信息",
+        "C": "线程安全",
+        "D": "线程同步"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "ThreadContext 在请求处理期间存储和传递租户、用户等上下文信息，确保在多线程环境中正确访问这些信息。"
+    },
+    {
+      "id": "sap-c-s4cdk-2-032",
+      "question": "SAP Cloud SDK 支持哪种类型的测试？（选择两个）",
+      "options": {
+        "A": "单元测试",
+        "B": "心理测试",
+        "C": "集成测试",
+        "D": "体能测试"
+      },
+      "answer": ["A", "C"],
+      "answerType": "multiple",
+      "explanation": "SAP Cloud SDK 支持单元测试（通过 Mock 服务）和集成测试（连接真实或沙盒系统），提供相应的测试工具和最佳实践。"
+    },
+    {
+      "id": "sap-c-s4cdk-2-033",
+      "question": "在 SAP Cloud SDK 中，'Custom Query Parameter'用于什么？",
+      "options": {
+        "A": "自定义搜索",
+        "B": "向 OData 请求添加自定义 URL 参数",
+        "C": "自定义数据库查询",
+        "D": "自定义用户查询"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Custom Query Parameter 允许向 OData 请求添加自定义 URL 参数，用于服务特定的功能或传递额外信息。"
+    },
+    {
+      "id": "sap-c-s4cdk-2-034",
+      "question": "SAP Cloud SDK 的'Connection Pool'功能有什么好处？",
+      "options": {
+        "A": "游泳池管理",
+        "B": "复用 HTTP 连接，减少连接开销",
+        "C": "数据池管理",
+        "D": "用户池管理"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Connection Pool 复用 HTTP 连接而不是每次请求都新建连接，减少连接建立的开销，提高性能。"
+    },
+    {
+      "id": "sap-c-s4cdk-2-035",
+      "question": "在 SAP Cloud SDK 中，如何处理'Nullable'字段？",
+      "options": {
+        "A": "忽略空值",
+        "B": "SDK 使用 Optional 或特殊类型表示可空字段",
+        "C": "总是设置默认值",
+        "D": "禁止空值"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "SAP Cloud SDK 使用 Optional（Java）或 nullable 类型（TypeScript）表示 OData 中的可空字段，安全处理空值情况。"
+    },
+    {
+      "id": "sap-c-s4cdk-2-036",
+      "question": "SAP Cloud SDK 的'Dependency Injection'支持什么框架？",
+      "options": {
+        "A": "不支持",
+        "B": "Spring Framework 等主流 DI 框架",
+        "C": "只支持自定义框架",
+        "D": "只支持手动注入"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "SAP Cloud SDK for Java 与 Spring Framework 等主流依赖注入框架集成，支持将 SDK 组件注入到应用中。"
+    },
+    {
+      "id": "sap-c-s4cdk-2-037",
+      "question": "在 SAP Cloud SDK 中，'Streaming'响应用于什么场景？",
+      "options": {
+        "A": "视频直播",
+        "B": "处理大型响应数据而不加载全部到内存",
+        "C": "音频流",
+        "D": "数据流分析"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Streaming 响应用于处理大型数据集，逐步处理数据而不是一次性加载全部到内存，避免内存溢出。"
+    },
+    {
+      "id": "sap-c-s4cdk-2-038",
+      "question": "SAP Cloud SDK 的'Null Check'自动处理什么？",
+      "options": {
+        "A": "数据库空值",
+        "B": "OData 响应中的空值字段",
+        "C": "用户输入空值",
+        "D": "系统空值"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "SDK 自动处理 OData 响应中的空值字段，将其映射为语言相应的空值表示（如 null、Optional.empty()）。"
+    },
+    {
+      "id": "sap-c-s4cdk-2-039",
+      "question": "在 SAP Cloud SDK 中，'$value'端点用于什么？",
+      "options": {
+        "A": "获取价值",
+        "B": "获取实体的原始值或媒体内容",
+        "C": "设置价值",
+        "D": "计算价值"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "$value 端点用于获取实体的原始值（如文本）或媒体实体的内容（如图片、文档）。"
+    },
+    {
+      "id": "sap-c-s4cdk-2-040",
+      "question": "SAP Cloud SDK 的'CSRF Token'处理是什么？",
+      "options": {
+        "A": "加密令牌",
+        "B": "自动获取和发送 CSRF 令牌防止跨站请求伪造",
+        "C": "用户令牌",
+        "D": "访问令牌"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "SAP Cloud SDK 自动处理 CSRF 令牌，在写操作前自动获取令牌并在请求中发送，防止跨站请求伪造攻击。"
+    },
+    {
+      "id": "sap-c-s4cdk-2-041",
+      "question": "在 SAP Cloud SDK 中，'Error Recovery'策略包括什么？",
+      "options": {
+        "A": "数据恢复",
+        "B": "重试、回退、熔断等",
+        "C": "系统恢复",
+        "D": "用户恢复"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Error Recovery 策略包括重试（再次尝试失败的请求）、回退（使用备选逻辑）、熔断（暂停失败的服务调用）等。"
+    },
+    {
+      "id": "sap-c-s4cdk-2-042",
+      "question": "SAP Cloud SDK 的'Custom Serializer'用于什么？",
+      "options": {
+        "A": "序列化用户",
+        "B": "自定义对象到 JSON/XML 的转换逻辑",
+        "C": "序列化配置",
+        "D": "序列化数据库"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Custom Serializer 允许自定义对象到 JSON/XML 的转换逻辑，处理特殊数据类型或格式要求。"
+    },
+    {
+      "id": "sap-c-s4cdk-2-043",
+      "question": "在 SAP Cloud SDK 中，'$ref'在 OData 中用于什么？",
+      "options": {
+        "A": "引用文档",
+        "B": "创建或修改实体之间的关联",
+        "C": "引用用户",
+        "D": "引用系统"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "$ref 用于创建或修改 OData 实体之间的关联关系，如将订单与客户关联。"
+    },
+    {
+      "id": "sap-c-s4cdk-2-044",
+      "question": "SAP Cloud SDK 的'Health Check'端点用于什么？",
+      "options": {
+        "A": "用户健康检查",
+        "B": "检查应用程序的运行状态",
+        "C": "数据健康检查",
+        "D": "网络健康检查"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Health Check 端点用于检查应用程序的运行状态，常被负载均衡器和 Kubernetes 用于判断应用是否健康。"
+    },
+    {
+      "id": "sap-c-s4cdk-2-045",
+      "question": "在 SAP Cloud SDK 中，'Enum Handling'是什么？",
+      "options": {
+        "A": "枚举用户",
+        "B": "处理 OData 服务中的枚举类型",
+        "C": "枚举文件",
+        "D": "枚举服务器"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Enum Handling 是 SDK 处理 OData 服务中枚举类型的方式，将其映射为语言中的枚举或常量。"
+    },
+    {
+      "id": "sap-c-s4cdk-2-046",
+      "question": "SAP Cloud SDK 的'Debug Mode'提供什么？",
+      "options": {
+        "A": "游戏调试",
+        "B": "详细的日志输出和请求/响应追踪",
+        "C": "代码调试器",
+        "D": "系统调试"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Debug Mode 提供详细的日志输出，包括请求/响应内容、头信息、URL 等，便于开发时排查问题。"
+    },
+    {
+      "id": "sap-c-s4cdk-2-047",
+      "question": "在 SAP Cloud SDK 中，'Token Exchange'用于什么？",
+      "options": {
+        "A": "交换礼品",
+        "B": "将一种安全令牌交换为另一种",
+        "C": "交换数据",
+        "D": "交换用户"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Token Exchange 将一种安全令牌（如 JWT）交换为另一种，用于不同系统或服务之间的认证传递。"
+    },
+    {
+      "id": "sap-c-s4cdk-2-048",
+      "question": "SAP Cloud SDK 的'Fallback Logic'在什么情况下执行？",
+      "options": {
+        "A": "正常情况",
+        "B": "主要操作失败时",
+        "C": "系统启动时",
+        "D": "用户登录时"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Fallback Logic 在主要操作失败（如熔断打开、超时、异常）时执行，提供备选的响应或默认值。"
+    },
+    {
+      "id": "sap-c-s4cdk-2-049",
+      "question": "在 SAP Cloud SDK 中，'Pregenerated Clients'包括什么？",
+      "options": {
+        "A": "预先配置的客户",
+        "B": "为 S/4HANA 标准 API 预生成的类型安全客户端",
+        "C": "预先注册的客户",
+        "D": "预先验证的客户"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Pregenerated Clients 是 SAP Cloud SDK 为 S/4HANA 标准 OData API 预先生成的类型安全客户端库（VDM）。"
+    },
+    {
+      "id": "sap-c-s4cdk-2-050",
+      "question": "SAP Cloud SDK 的'Performance Optimization'建议包括什么？（选择两个）",
+      "options": {
+        "A": "使用 $select 减少数据传输",
+        "B": "增加服务器数量",
+        "C": "使用批处理减少请求次数",
+        "D": "购买更快的网络"
+      },
+      "answer": ["A", "C"],
+      "answerType": "multiple",
+      "explanation": "性能优化建议包括使用 $select 只获取需要的字段、使用批处理将多个请求合并、使用缓存减少重复调用等。"
+    }
+  ]
+}
