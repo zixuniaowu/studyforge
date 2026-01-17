@@ -131,10 +131,11 @@ const CertificationPathSVG: React.FC<{
     expert: language === 'ja' ? 'エキスパート' : '专家'
   };
 
-  // Calculate SVG dimensions - use FIXED width for consistent font size across all providers
-  // Fixed viewBox width of 1800px ensures consistent scaling/font size
-  // This accommodates the largest provider (Azure with ~11 certs/level)
-  const svgWidth = 1800;
+  // Calculate SVG dimensions dynamically based on max certifications per level
+  // SAP has 17 Associate certifications, so we need dynamic width
+  const maxCertsInLevel = Math.max(...levels.map(level => certsByLevel[level].length));
+  const calculatedWidth = 100 + maxCertsInLevel * 160 + 100; // 100 left margin + nodes + 100 right margin
+  const svgWidth = Math.max(1800, calculatedWidth); // minimum 1800 for consistent look
   const svgHeight = 40 + levels.length * 95 + 20;
 
   return (
@@ -151,7 +152,7 @@ const CertificationPathSVG: React.FC<{
       </defs>
 
       {/* Background */}
-      <rect x="0" y="0" width="1800" height={svgHeight} fill="#FAFAFA" rx="12" />
+      <rect x="0" y="0" width={svgWidth} height={svgHeight} fill="#FAFAFA" rx="12" />
 
       {/* Level lanes - only levels with certifications */}
       {levels.map((level, i) => (
@@ -159,7 +160,7 @@ const CertificationPathSVG: React.FC<{
           <rect
             x="30"
             y={40 + i * 95}
-            width="1740"
+            width={svgWidth - 60}
             height="85"
             fill={i % 2 === 0 ? '#F8FAFC' : '#FFFFFF'}
             rx="8"
@@ -298,7 +299,7 @@ const CertificationPathSVG: React.FC<{
       ))}
 
       {/* Legend - positioned at bottom right */}
-      <g transform={`translate(1560, ${svgHeight - 25})`}>
+      <g transform={`translate(${svgWidth - 240}, ${svgHeight - 25})`}>
         <circle cx="0" cy="0" r="7" fill={config.pathColor} />
         <text x="15" y="5" fill="#6B7280" fontSize="12" fontWeight="500">
           {language === 'ja' ? '練習問題あり' : '有题库'}
