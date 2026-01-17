@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useMemo } from 'react';
+import React, { useEffect, useState, useMemo, useRef } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useExamStore } from '../stores/examStore';
 import { ExamCard } from '../components/Exam/ExamCard';
@@ -196,6 +196,7 @@ type ViewType = ProviderKey | AIToolKey | LearningKey | null;
 export const HomePage: React.FC = () => {
   const { exams, loading, error, loadExams, deleteExam } = useExamStore();
   const [importing, setImporting] = useState(false);
+  const hasCheckedImport = useRef(false);
   const [selectedView, setSelectedView] = useState<ViewType>(null);
   const [certCodeFilter, setCertCodeFilter] = useState<string | null>(null);
   const [stats, setStats] = useState({ totalQuestions: 0, totalExams: 0, wrongCount: 0 });
@@ -368,12 +369,19 @@ export const HomePage: React.FC = () => {
   }, [languageFilteredExams]);
 
   useEffect(() => {
+    // Reset check flag when language changes
+    hasCheckedImport.current = false;
+  }, [language]);
+
+  useEffect(() => {
     const autoImport = async () => {
-      // Always check for missing exams
-      if (!loading && !importing) {
-        const langSuffix = language === 'ja' ? '-ja' : '';
-        const existingIds = new Set(languageFilteredExams.map(e => e.id));
-        const examFiles = [
+      // Only check once per language change, and only after initial load
+      if (loading || importing || hasCheckedImport.current) return;
+
+      hasCheckedImport.current = true;
+      const langSuffix = language === 'ja' ? '-ja' : '';
+      const existingIds = new Set(languageFilteredExams.map(e => e.id));
+      const examFiles = [
             // AWS
             'aws-aif-c01-set1', 'aws-aif-c01-set2', 'aws-aif-c01-set3',
             'aws-ans-c01-set1', 'aws-ans-c01-set2', 'aws-ans-c01-set3',
@@ -474,10 +482,10 @@ export const HomePage: React.FC = () => {
               setImporting(false);
             }
           }
-      }
     };
     autoImport();
-  }, [loading, languageFilteredExams, importing, loadExams, language]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [loading, importing, language]);
 
   const handleDelete = async (examId: string) => {
     if (window.confirm(t.home.deleteConfirm)) {
