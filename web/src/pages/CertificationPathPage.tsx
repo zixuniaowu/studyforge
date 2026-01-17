@@ -630,18 +630,49 @@ export const CertificationPathPage: React.FC = () => {
               <div className="flex items-center justify-between mb-2">
                 <h2 className="text-base font-bold text-gray-900">{careerTitle}</h2>
               </div>
-              <div className="flex flex-wrap gap-2">
-                {careerPaths.map((path) => (
-                  <CareerPathCard
-                    key={path.id}
-                    path={path}
-                    language={lang}
-                    isSelected={selectedCareerPath === path.id}
-                    onClick={() => setSelectedCareerPath(
-                      selectedCareerPath === path.id ? null : path.id
-                    )}
-                  />
-                ))}
+              {/* Cloud Career Paths */}
+              <div className="mb-3">
+                <div className="flex items-center gap-2 mb-2">
+                  <span className="text-xs font-medium text-gray-500 bg-gray-100 px-2 py-0.5 rounded">
+                    {lang === 'ja' ? 'クラウド' : '云计算'}
+                  </span>
+                  <div className="flex-1 h-px bg-gray-200"></div>
+                </div>
+                <div className="flex flex-wrap gap-2">
+                  {careerPaths.filter(p => !p.id.startsWith('sap-')).map((path) => (
+                    <CareerPathCard
+                      key={path.id}
+                      path={path}
+                      language={lang}
+                      isSelected={selectedCareerPath === path.id}
+                      onClick={() => setSelectedCareerPath(
+                        selectedCareerPath === path.id ? null : path.id
+                      )}
+                    />
+                  ))}
+                </div>
+              </div>
+              {/* SAP Career Paths */}
+              <div>
+                <div className="flex items-center gap-2 mb-2">
+                  <span className="text-xs font-medium text-cyan-600 bg-cyan-50 px-2 py-0.5 rounded">
+                    SAP
+                  </span>
+                  <div className="flex-1 h-px bg-cyan-200"></div>
+                </div>
+                <div className="flex flex-wrap gap-2">
+                  {careerPaths.filter(p => p.id.startsWith('sap-')).map((path) => (
+                    <CareerPathCard
+                      key={path.id}
+                      path={path}
+                      language={lang}
+                      isSelected={selectedCareerPath === path.id}
+                      onClick={() => setSelectedCareerPath(
+                        selectedCareerPath === path.id ? null : path.id
+                      )}
+                    />
+                  ))}
+                </div>
               </div>
             </>
           ) : (
