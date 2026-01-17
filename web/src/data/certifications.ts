@@ -1,13 +1,19 @@
 // Cloud Certification Data for AWS, Azure, and GCP
 
+// Official certification providers (with real exams)
 export type Provider = 'AWS' | 'Azure' | 'GCP' | 'SAP';
+// AI tool providers (practice questions, not official certifications)
+export type AIToolProvider = 'n8n' | 'Dify';
+// All providers (for exam data storage)
+export type AllProvider = Provider | AIToolProvider;
+
 export type Level = 'foundational' | 'associate' | 'professional' | 'specialty' | 'expert';
-export type Category = 'cloud' | 'architecture' | 'developer' | 'devops' | 'data' | 'ai' | 'security' | 'networking' | 'database' | 'sap';
+export type Category = 'cloud' | 'architecture' | 'developer' | 'devops' | 'data' | 'ai' | 'security' | 'networking' | 'database' | 'sap' | 'automation' | 'llmops';
 
 export interface Certification {
   id: string;
   code: string;
-  provider: Provider;
+  provider: AllProvider;
   name: { zh: string; ja: string };
   fullName: { zh: string; ja: string };
   level: Level;
@@ -976,19 +982,208 @@ export const sapCertifications: Certification[] = [
     prerequisites: [],
     hasExamData: true,
     description: { zh: 'SAP 官方敏捷实施方法论认证，S/4HANA 迁移项目必备', ja: 'SAP 公式アジャイル導入方法論認定、S/4HANA 移行プロジェクトに必須' }
+  },
+
+  // ========== Additional SAP Certifications (5) ==========
+  {
+    id: 'sap-c-hanaimp',
+    code: 'C_HANAIMP',
+    provider: 'SAP',
+    name: { zh: 'SAP HANA 实施', ja: 'SAP HANA 導入' },
+    fullName: { zh: 'SAP Certified Technology Associate - SAP HANA 2.0 SPS06', ja: 'SAP 認定テクノロジーアソシエイト - SAP HANA 2.0 SPS06' },
+    level: 'associate',
+    category: 'database',
+    examDuration: 180,
+    questionCount: 80,
+    passingScore: 63,
+    prerequisites: [],
+    hasExamData: true,
+    description: { zh: 'SAP HANA 内存数据库安装、配置和管理认证', ja: 'SAP HANA インメモリデータベースのインストール・設定・管理認定' }
+  },
+  {
+    id: 'sap-c-s4cpr',
+    code: 'C_S4CPR',
+    provider: 'SAP',
+    name: { zh: 'S/4HANA Cloud 实施', ja: 'S/4HANA Cloud 導入' },
+    fullName: { zh: 'SAP Certified Associate - SAP S/4HANA Cloud Private Edition Implementation', ja: 'SAP 認定アソシエイト - SAP S/4HANA Cloud Private Edition 導入' },
+    level: 'professional',
+    category: 'sap',
+    examDuration: 180,
+    questionCount: 80,
+    passingScore: 65,
+    prerequisites: ['sap-c-ts410', 'sap-c-activate'],
+    hasExamData: true,
+    description: { zh: 'S/4HANA Cloud 私有版实施认证，覆盖迁移、配置、Go-Live', ja: 'S/4HANA Cloud Private Edition 導入認定、移行・設定・Go-Live' }
+  },
+  {
+    id: 'sap-c-fiord',
+    code: 'C_FIORD',
+    provider: 'SAP',
+    name: { zh: 'SAP Fiori 开发', ja: 'SAP Fiori 開発' },
+    fullName: { zh: 'SAP Certified Development Associate - SAP Fiori Application Developer', ja: 'SAP 認定開発アソシエイト - SAP Fiori アプリケーション開発者' },
+    level: 'associate',
+    category: 'developer',
+    examDuration: 180,
+    questionCount: 80,
+    passingScore: 65,
+    prerequisites: ['sap-c-btp'],
+    hasExamData: true,
+    description: { zh: 'SAP Fiori/SAPUI5 前端开发认证，Fiori Elements 和自定义应用', ja: 'SAP Fiori/SAPUI5 フロントエンド開発認定、Fiori Elements とカスタムアプリ' }
+  },
+  {
+    id: 'sap-c-s4cs',
+    code: 'C_S4CS',
+    provider: 'SAP',
+    name: { zh: 'S/4HANA Cloud 销售', ja: 'S/4HANA Cloud 販売' },
+    fullName: { zh: 'SAP Certified Associate - SAP S/4HANA Cloud Sales Implementation', ja: 'SAP 認定アソシエイト - SAP S/4HANA Cloud 販売導入' },
+    level: 'associate',
+    category: 'sap',
+    examDuration: 180,
+    questionCount: 80,
+    passingScore: 63,
+    prerequisites: ['sap-c-ts460'],
+    hasExamData: true,
+    description: { zh: 'S/4HANA Cloud 销售模块实施认证，公有云销售流程配置', ja: 'S/4HANA Cloud 販売モジュール導入認定、パブリッククラウド販売プロセス設定' }
+  },
+  {
+    id: 'sap-c-bowi',
+    code: 'C_BOWI',
+    provider: 'SAP',
+    name: { zh: 'SAP BusinessObjects BI', ja: 'SAP BusinessObjects BI' },
+    fullName: { zh: 'SAP Certified Associate - SAP BusinessObjects Web Intelligence', ja: 'SAP 認定アソシエイト - SAP BusinessObjects Web Intelligence' },
+    level: 'associate',
+    category: 'data',
+    examDuration: 180,
+    questionCount: 80,
+    passingScore: 63,
+    prerequisites: [],
+    hasExamData: true,
+    description: { zh: 'SAP BI 报表工具认证，Web Intelligence 报表设计和数据分析', ja: 'SAP BI レポートツール認定、Web Intelligence レポート設計・データ分析' }
   }
 ];
 
-// All certifications
-export const allCertifications = [...awsCertifications, ...azureCertifications, ...gcpCertifications, ...sapCertifications];
+// n8n Certifications (Workflow Automation)
+export const n8nCertifications: Certification[] = [
+  {
+    id: 'n8n-fundamentals',
+    code: 'N8N-FUND',
+    provider: 'n8n',
+    name: { zh: 'n8n 基础', ja: 'n8n 基礎' },
+    fullName: { zh: 'n8n Workflow Automation Fundamentals', ja: 'n8n ワークフロー自動化基礎' },
+    level: 'foundational',
+    category: 'automation',
+    examDuration: 60,
+    questionCount: 50,
+    passingScore: 70,
+    prerequisites: [],
+    hasExamData: true,
+    description: { zh: 'n8n 工作流自动化平台基础知识，节点操作和基本流程设计', ja: 'n8n ワークフロー自動化プラットフォームの基礎、ノード操作と基本フロー設計' }
+  },
+  {
+    id: 'n8n-advanced',
+    code: 'N8N-ADV',
+    provider: 'n8n',
+    name: { zh: 'n8n 高级工作流', ja: 'n8n 高度なワークフロー' },
+    fullName: { zh: 'n8n Advanced Workflow Development', ja: 'n8n 高度なワークフロー開発' },
+    level: 'associate',
+    category: 'automation',
+    examDuration: 90,
+    questionCount: 50,
+    passingScore: 70,
+    prerequisites: ['n8n-fundamentals'],
+    hasExamData: true,
+    description: { zh: 'n8n 高级工作流设计，错误处理、子工作流、自定义节点开发', ja: 'n8n 高度なワークフロー設計、エラー処理、サブワークフロー、カスタムノード開発' }
+  },
+  {
+    id: 'n8n-integration',
+    code: 'N8N-INT',
+    provider: 'n8n',
+    name: { zh: 'n8n 集成开发', ja: 'n8n 統合開発' },
+    fullName: { zh: 'n8n Integration and API Development', ja: 'n8n 統合と API 開発' },
+    level: 'professional',
+    category: 'automation',
+    examDuration: 120,
+    questionCount: 50,
+    passingScore: 70,
+    prerequisites: ['n8n-advanced'],
+    hasExamData: true,
+    description: { zh: 'n8n API 集成、Webhook、数据库连接、AI 集成和企业部署', ja: 'n8n API 統合、Webhook、データベース接続、AI 統合と企業デプロイ' }
+  }
+];
 
-// Get certifications by provider
+// Dify Certifications (AI Application Development)
+export const difyCertifications: Certification[] = [
+  {
+    id: 'dify-fundamentals',
+    code: 'DIFY-FUND',
+    provider: 'Dify',
+    name: { zh: 'Dify 基础', ja: 'Dify 基礎' },
+    fullName: { zh: 'Dify AI Application Platform Fundamentals', ja: 'Dify AI アプリケーションプラットフォーム基礎' },
+    level: 'foundational',
+    category: 'llmops',
+    examDuration: 60,
+    questionCount: 50,
+    passingScore: 70,
+    prerequisites: [],
+    hasExamData: true,
+    description: { zh: 'Dify AI 应用开发平台基础，Prompt 工程和基础应用构建', ja: 'Dify AI アプリ開発プラットフォームの基礎、プロンプトエンジニアリングと基本アプリ構築' }
+  },
+  {
+    id: 'dify-app-builder',
+    code: 'DIFY-APP',
+    provider: 'Dify',
+    name: { zh: 'Dify 应用构建', ja: 'Dify アプリ構築' },
+    fullName: { zh: 'Dify AI Application Builder', ja: 'Dify AI アプリケーションビルダー' },
+    level: 'associate',
+    category: 'llmops',
+    examDuration: 90,
+    questionCount: 50,
+    passingScore: 70,
+    prerequisites: ['dify-fundamentals'],
+    hasExamData: true,
+    description: { zh: 'Dify 聊天机器人、Agent、工作流和知识库应用开发', ja: 'Dify チャットボット、Agent、ワークフローとナレッジベースアプリ開発' }
+  },
+  {
+    id: 'dify-llmops',
+    code: 'DIFY-OPS',
+    provider: 'Dify',
+    name: { zh: 'Dify LLMOps', ja: 'Dify LLMOps' },
+    fullName: { zh: 'Dify LLMOps and Enterprise Deployment', ja: 'Dify LLMOps と企業デプロイメント' },
+    level: 'professional',
+    category: 'llmops',
+    examDuration: 120,
+    questionCount: 50,
+    passingScore: 70,
+    prerequisites: ['dify-app-builder'],
+    hasExamData: true,
+    description: { zh: 'Dify 企业部署、模型管理、RAG 优化和生产运维', ja: 'Dify 企業デプロイメント、モデル管理、RAG 最適化と本番運用' }
+  }
+];
+
+// All certifications (official + AI tools)
+export const allCertifications = [...awsCertifications, ...azureCertifications, ...gcpCertifications, ...sapCertifications, ...n8nCertifications, ...difyCertifications];
+
+// Official certifications only
+export const officialCertifications = [...awsCertifications, ...azureCertifications, ...gcpCertifications, ...sapCertifications];
+
+// AI tool practice questions only
+export const aiToolPractice = [...n8nCertifications, ...difyCertifications];
+
+// Get certifications by official provider
 export const getCertificationsByProvider = (provider: Provider): Certification[] => {
   switch (provider) {
     case 'AWS': return awsCertifications;
     case 'Azure': return azureCertifications;
     case 'GCP': return gcpCertifications;
     case 'SAP': return sapCertifications;
+  }
+};
+
+// Get AI tool practice by provider
+export const getAIToolPracticeByProvider = (provider: AIToolProvider): Certification[] => {
+  switch (provider) {
+    case 'n8n': return n8nCertifications;
+    case 'Dify': return difyCertifications;
   }
 };
 
@@ -1161,7 +1356,9 @@ export const careerPaths: CareerPath[] = [
       { provider: 'SAP', certId: 'sap-c-ts4fi' },
       { provider: 'SAP', certId: 'sap-c-ts4co' },
       { provider: 'SAP', certId: 'sap-c-ts450' },
-      { provider: 'SAP', certId: 'sap-c-ts460' }
+      { provider: 'SAP', certId: 'sap-c-ts460' },
+      { provider: 'SAP', certId: 'sap-c-s4cs' },
+      { provider: 'SAP', certId: 'sap-c-activate' }
     ]
   },
   {
@@ -1172,7 +1369,9 @@ export const careerPaths: CareerPath[] = [
       { provider: 'SAP', certId: 'sap-c-btp' },
       { provider: 'SAP', certId: 'sap-c-btpdev' },
       { provider: 'SAP', certId: 'sap-c-s4cdk' },
-      { provider: 'SAP', certId: 'sap-c-btpint' }
+      { provider: 'SAP', certId: 'sap-c-btpint' },
+      { provider: 'SAP', certId: 'sap-c-fiord' },
+      { provider: 'SAP', certId: 'sap-c-hanaimp' }
     ]
   },
   {
@@ -1183,9 +1382,25 @@ export const careerPaths: CareerPath[] = [
       { provider: 'SAP', certId: 'sap-c-btp' },
       { provider: 'SAP', certId: 'sap-c-datasph' },
       { provider: 'SAP', certId: 'sap-c-aicore' },
-      { provider: 'SAP', certId: 'sap-c-aibus' }
+      { provider: 'SAP', certId: 'sap-c-aibus' },
+      { provider: 'SAP', certId: 'sap-c-bowi' },
+      { provider: 'SAP', certId: 'sap-c-hanaimp' }
+    ]
+  },
+  {
+    id: 'sap-implementation',
+    name: { zh: 'SAP 实施顾问', ja: 'SAP 導入コンサルタント' },
+    description: { zh: 'SAP S/4HANA 项目实施和迁移专家', ja: 'SAP S/4HANA プロジェクト導入・移行の専門家' },
+    certifications: [
+      { provider: 'SAP', certId: 'sap-c-ts410' },
+      { provider: 'SAP', certId: 'sap-c-activate' },
+      { provider: 'SAP', certId: 'sap-c-s4cpr' },
+      { provider: 'SAP', certId: 'sap-c-ts4h' },
+      { provider: 'SAP', certId: 'sap-c-hanaimp' }
     ]
   }
+  // Note: n8n and Dify are not included in career paths as they are not official certifications
+  // They are available as practice questions in the "AI Tools Practice" section
 ];
 
 // Level display names
@@ -1208,5 +1423,7 @@ export const categoryNames = {
   security: { zh: '安全', ja: 'セキュリティ' },
   networking: { zh: '网络', ja: 'ネットワーク' },
   database: { zh: '数据库', ja: 'データベース' },
-  sap: { zh: 'SAP', ja: 'SAP' }
+  sap: { zh: 'SAP', ja: 'SAP' },
+  automation: { zh: '工作流自动化', ja: 'ワークフロー自動化' },
+  llmops: { zh: 'LLMOps', ja: 'LLMOps' }
 };

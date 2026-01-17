@@ -1,0 +1,773 @@
+{
+  "exam": {
+    "id": "sap-c-s4cpr-set1-ja",
+    "name": "SAP C_S4CPR 模擬試験 #1",
+    "code": "C_S4CPR",
+    "provider": "SAP",
+    "language": "ja",
+    "description": "SAP S/4HANA Cloud Private Edition 導入認定試験模擬問題 - 第1セット",
+    "totalQuestions": 50,
+    "passingScore": 65,
+    "examTime": 180,
+    "domains": [
+      { "id": 1, "name": "S/4HANA Cloud Private Edition Architecture", "weight": 20 },
+      { "id": 2, "name": "SAP Activate Methodology", "weight": 20 },
+      { "id": 3, "name": "System Conversion and Migration", "weight": 20 },
+      { "id": 4, "name": "Data Migration", "weight": 20 },
+      { "id": 5, "name": "Integration and Go-Live", "weight": 20 }
+    ],
+    "tags": ["SAP", "S/4HANA", "Cloud Private Edition", "Implementation", "認定試験"]
+  },
+  "questions": [
+    {
+      "id": "q1",
+      "domain": 1,
+      "question": "SAP S/4HANA Cloud Private Edition と Public Cloud 版と比較した場合、主な違いは何ですか？",
+      "options": {
+        "A": "Private Edition はカスタマイズ開発をサポートしない",
+        "B": "Private Edition はより高いカスタマイズ柔軟性と専用インフラストラクチャを提供する",
+        "C": "Private Edition はオンプレミスデータセンターにのみ導入可能",
+        "D": "Private Edition は SAP HANA データベースをサポートしない"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "S/4HANA Cloud Private Edition の特徴：\n- 専用インフラストラクチャ（シングルテナント）\n- 幅広いカスタマイズ開発をサポート\n- カスタムコードの実行が可能\n- SAP またはハイパースケーラーによるホスティング\n- On-Premise に近い柔軟性",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q2",
+      "domain": 1,
+      "question": "S/4HANA Cloud Private Edition において、SAP が管理責任を持つコンポーネントはどれですか？（2つ選択）",
+      "options": {
+        "A": "オペレーティングシステムのパッチ更新",
+        "B": "ビジネスプロセス設定",
+        "C": "SAP HANA データベースの保守",
+        "D": "エンドユーザートレーニング"
+      },
+      "answer": ["A", "C"],
+      "answerType": "multiple",
+      "explanation": "SAP のホスティング責任：\n- インフラストラクチャ管理\n- オペレーティングシステムのパッチと更新\n- SAP HANA データベースの保守\n- システム監視とバックアップ\n顧客の責任：\n- ビジネスプロセス設定\n- ユーザートレーニング\n- カスタム開発",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q3",
+      "domain": 1,
+      "question": "S/4HANA Cloud Private Edition がサポートする導入環境には何がありますか？",
+      "options": {
+        "A": "SAP データセンターのみサポート",
+        "B": "SAP データセンターと主要ハイパースケーラー",
+        "C": "顧客のオンプレミスデータセンターのみサポート",
+        "D": "AWS のみサポート"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "S/4HANA Cloud Private Edition の導入オプション：\n- SAP データセンター\n- Microsoft Azure\n- Amazon Web Services (AWS)\n- Google Cloud Platform (GCP)\n- 柔軟な導入場所の選択が可能",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q4",
+      "domain": 1,
+      "question": "S/4HANA Cloud Private Edition の更新戦略は何ですか？",
+      "options": {
+        "A": "毎週強制更新",
+        "B": "顧客が完全に更新時期を決定",
+        "C": "合意されたメンテナンスウィンドウに従って更新し、顧客にある程度のコントロール権がある",
+        "D": "更新は一切行わない"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "Private Edition の更新戦略：\n- 合意されたメンテナンスウィンドウで更新\n- 顧客は更新計画の策定に参加可能\n- 更新前のテスト検証をサポート\n- Public Cloud より柔軟な更新コントロール",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q5",
+      "domain": 1,
+      "question": "S/4HANA Cloud Private Edition において、Clean Core 戦略の目的は何ですか？（2つ選択）",
+      "options": {
+        "A": "すべてのカスタマイズを完全に禁止する",
+        "B": "拡張を SAP BTP に移行してコアシステムの安定性を維持する",
+        "C": "よりスムーズなアップグレードパスを確保する",
+        "D": "すべての履歴データを削除する"
+      },
+      "answer": ["B", "C"],
+      "answerType": "multiple",
+      "explanation": "Clean Core 戦略：\n- S/4HANA コアコードを変更しない\n- 拡張とカスタマイズを SAP BTP に移行\n- 標準 API と拡張ポイントを使用\n- アップグレードと保守を簡素化\n- システムの安定性を向上",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q6",
+      "domain": 2,
+      "question": "SAP Activate 方法論において、「Discover」フェーズの主な目標は何ですか？",
+      "options": {
+        "A": "システム本番稼働を完了する",
+        "B": "SAP ソリューションを理解し、ビジネス要件を特定する",
+        "C": "データ移行を実行する",
+        "D": "ユーザートレーニングを実施する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Discover フェーズの目標：\n- SAP ベストプラクティスを探索\n- SAP ソリューションの機能を理解\n- ビジネス要件とギャップを特定\n- 初期の実現可能性評価を実施\n- SAP Best Practices Explorer を使用",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q7",
+      "domain": 2,
+      "question": "SAP Activate の「Prepare」フェーズで完了する必要がある主要な活動は何ですか？（2つ選択）",
+      "options": {
+        "A": "プロジェクトガバナンス構造とチームを定義する",
+        "B": "本番データ移行を実行する",
+        "C": "プロジェクトインフラストラクチャとシステムをセットアップする",
+        "D": "すべてのユーザー受け入れテストを完了する"
+      },
+      "answer": ["A", "C"],
+      "answerType": "multiple",
+      "explanation": "Prepare フェーズの主要活動：\n- プロジェクト開始とガバナンス確立\n- チーム編成と役割分担\n- システムランドスケープ計画\n- 開発/テストシステムの構築\n- プロジェクト計画と方法論の確認",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q8",
+      "domain": 2,
+      "question": "Fit-to-Standard ワークショップの主な目的は何ですか？",
+      "options": {
+        "A": "システムの負荷テストを行う",
+        "B": "SAP 標準プロセスを紹介し、ビジネス要件とのギャップを特定する",
+        "C": "エンドユーザートレーニングを完了する",
+        "D": "データクレンジングを実行する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Fit-to-Standard ワークショップ：\n- SAP 標準ビジネスプロセスを紹介\n- ビジネス要件と比較\n- Fit（適合）と Gap（ギャップ）を特定\n- カスタマイズ要件を評価\n- 設定要件を記録",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q9",
+      "domain": 2,
+      "question": "SAP Activate の「Explore」フェーズの主な成果物は何ですか？",
+      "options": {
+        "A": "本番システムの稼働開始",
+        "B": "Fit-to-Standard 分析とソリューション設計",
+        "C": "最終データ移行",
+        "D": "運用サポート計画"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Explore フェーズの成果物：\n- Fit-to-Standard 分析の完了\n- ソリューション範囲の確定\n- ギャップの特定と確認\n- ソリューション設計ドキュメントの作成\n- 拡張とインターフェース要件の定義",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q10",
+      "domain": 2,
+      "question": "「Realize」フェーズにおける Sprint 0 の主な活動は何ですか？",
+      "options": {
+        "A": "すべてのユニットテストを実行する",
+        "B": "開発環境と初期設定をセットアップする",
+        "C": "ユーザートレーニングを完了する",
+        "D": "カットオーバー活動を実行する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Sprint 0 の活動：\n- システム環境の準備\n- SAP Best Practices の有効化\n- 設定基盤の構築\n- 開発ツールと方法論の準備\n- 継続的インテグレーションプロセスの確立",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q11",
+      "domain": 2,
+      "question": "SAP Activate の「Deploy」フェーズに含まれる主要な活動は何ですか？（2つ選択）",
+      "options": {
+        "A": "カットオーバーとデータ移行を実行する",
+        "B": "初期要件分析を行う",
+        "C": "ユーザー受け入れテスト（UAT）を完了する",
+        "D": "プロジェクトスコープを定義する"
+      },
+      "answer": ["A", "C"],
+      "answerType": "multiple",
+      "explanation": "Deploy フェーズの活動：\n- エンドユーザートレーニング\n- ユーザー受け入れテスト（UAT）\n- カットオーバー準備と実行\n- 本番データ移行\n- Go-Live チェックリストの実行",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q12",
+      "domain": 2,
+      "question": "SAP Activate の「Run」フェーズの主な目標は何ですか？",
+      "options": {
+        "A": "システム設定を完了する",
+        "B": "本番稼働後のサポートと継続的な最適化を提供する",
+        "C": "Fit-to-Standard 分析を行う",
+        "D": "プロジェクトチームを構築する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Run フェーズの目標：\n- ハイパーケアサポート\n- 問題解決と最適化\n- システムパフォーマンスの監視\n- ナレッジトランスファー\n- 継続的改善と運用移行",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q13",
+      "domain": 3,
+      "question": "SAP ECC から S/4HANA Cloud Private Edition への移行には、どのような主要なパスがありますか？（2つ選択）",
+      "options": {
+        "A": "システムコンバージョン（System Conversion）",
+        "B": "データベースの直接コピー",
+        "C": "新規導入（New Implementation）",
+        "D": "自動コード変換"
+      },
+      "answer": ["A", "C"],
+      "answerType": "multiple",
+      "explanation": "主要な移行パス：\n- System Conversion：既存の設定とデータを保持\n- New Implementation（Greenfield）：新規導入\n- Selective Data Transition：選択的データ移行\n- 選択はビジネス要件と既存システムの状態に依存",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q14",
+      "domain": 3,
+      "question": "System Conversion パスの主な利点は何ですか？",
+      "options": {
+        "A": "ビジネスプロセスを完全に再設計できる",
+        "B": "既存の設定、履歴データ、カスタマイズを保持する",
+        "C": "導入速度が最も速い",
+        "D": "テストが不要"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "System Conversion の利点：\n- 既存の設定を保持\n- 履歴トランザクションデータを保持\n- カスタム開発を保持（適応が必要）\n- ユーザーの習熟度が高い\n- 変更管理リスクが低い",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q15",
+      "domain": 3,
+      "question": "システムコンバージョン前の SAP Readiness Check の役割は何ですか？",
+      "options": {
+        "A": "コンバージョンを自動的に実行する",
+        "B": "システムの準備状況を評価し、必要な前処理ステップを特定する",
+        "C": "不要なデータを削除する",
+        "D": "ユーザートレーニング資料を作成する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "SAP Readiness Check の機能：\n- 既存システム設定の分析\n- 互換性のないカスタムコードの特定\n- ビジネス機能の使用状況評価\n- 簡素化項目の特定\n- 前処理の推奨事項を生成",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q16",
+      "domain": 3,
+      "question": "新規導入（Greenfield）アプローチの典型的なシナリオは何ですか？（2つ選択）",
+      "options": {
+        "A": "ビジネスプロセスの抜本的な再設計が必要",
+        "B": "すべての履歴トランザクションデータを保持する必要がある",
+        "C": "既存システムが高度にカスタマイズされ、保守が困難",
+        "D": "ビジネス変更を最小限に抑えたい"
+      },
+      "answer": ["A", "C"],
+      "answerType": "multiple",
+      "explanation": "Greenfield が適用されるシナリオ：\n- ビジネスプロセスに大きな変革が必要\n- 既存システムが過度に複雑\n- 履歴データの移行が不要\n- SAP ベストプラクティスを採用したい\n- 組織変更や合併のシナリオ",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q17",
+      "domain": 3,
+      "question": "カスタムコード分析ツール Custom Code Migration の主な機能は何ですか？",
+      "options": {
+        "A": "すべてのコードを HANA 互換コードに自動変換する",
+        "B": "カスタムコードを分析し、S/4HANA との互換性問題を特定する",
+        "C": "すべてのカスタムコードを削除する",
+        "D": "新しい ABAP プログラムを作成する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Custom Code Migration ツールの機能：\n- カスタム ABAP コードの分析\n- S/4HANA との互換性問題の特定\n- 変更が必要なコードにフラグを付ける\n- 適応の推奨事項を提供\n- コードクリーンアップと最適化をサポート",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q18",
+      "domain": 3,
+      "question": "S/4HANA コンバージョンにおける Simplification Items とは何を指しますか？",
+      "options": {
+        "A": "ユーザー数の削減",
+        "B": "S/4HANA で削除または変更された機能とオブジェクト",
+        "C": "システムハードウェア要件の軽減",
+        "D": "ユーザーインターフェースの簡素化"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Simplification Items：\n- S/4HANA で変更された機能\n- 削除されたテーブルとフィールド\n- 置き換えられた機能\n- 新しいデータモデル要件\n- コンバージョン前に対処する必要がある項目",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q19",
+      "domain": 3,
+      "question": "Selective Data Transition アプローチはどのようなシナリオに適していますか？",
+      "options": {
+        "A": "すべての履歴データを保持する必要がある",
+        "B": "選択した一部のデータのみを新システムに移行する必要がある",
+        "C": "データ移行が一切不要",
+        "D": "非 SAP システムにのみ適用される"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Selective Data Transition：\n- Brownfield+ または Shell Conversion とも呼ばれる\n- Greenfield と Brownfield の利点を組み合わせる\n- 設定とデータを選択的に移行\n- プロセス最適化が必要だが一部のデータを保持したいシナリオに適している\n- SAP S/4HANA Migration Cockpit を使用",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q20",
+      "domain": 3,
+      "question": "コンバージョンプロジェクトにおける SUM（Software Update Manager）ツールの役割は何ですか？",
+      "options": {
+        "A": "レポート生成のみに使用",
+        "B": "S/4HANA への技術的コンバージョンを実行する",
+        "C": "ユーザートレーニングを実施する",
+        "D": "テストスクリプトを作成する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "SUM ツールの機能：\n- システムコンバージョンの技術プロセスを実行\n- データベース移行（DMO）を管理\n- 必要なコンバージョンルールを適用\n- コードチェックと調整を実行\n- Unicode コンバージョンをサポート",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q21",
+      "domain": 4,
+      "question": "SAP S/4HANA Migration Cockpit がサポートするデータ移行方法は何ですか？（2つ選択）",
+      "options": {
+        "A": "Excel/CSV ファイルからのアップロード",
+        "B": "手動データ入力のみサポート",
+        "C": "SAP ソースシステムからの直接移行",
+        "D": "サードパーティ ETL ツールのみサポート"
+      },
+      "answer": ["A", "C"],
+      "answerType": "multiple",
+      "explanation": "Migration Cockpit がサポートする方法：\n- ファイルアップロード（Excel/CSV）\n- SAP ソースシステムからの直接移行\n- Staging Tables の使用\n- 複数のデータオブジェクト移行をサポート\n- テンプレートダウンロードを提供",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q22",
+      "domain": 4,
+      "question": "LTMC（Legacy Transfer Migration Cockpit）と LSMW を比較した場合の主な利点は何ですか？",
+      "options": {
+        "A": "LTMC はより少ないデータタイプのみサポート",
+        "B": "LTMC は事前定義された移行オブジェクトとより良い Fiori インターフェースを提供する",
+        "C": "LTMC はより多くのプログラミング知識が必要",
+        "D": "LTMC は旧バージョンの SAP でのみ使用可能"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "LTMC の利点：\n- 事前定義された移行オブジェクト\n- Fiori モダンユーザーインターフェース\n- ウィザード形式の移行プロセス\n- より良いデータ検証\n- S/4HANA 固有のデータ構造をサポート",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q23",
+      "domain": 4,
+      "question": "データ移行における Migration Object Modeler の役割は何ですか？",
+      "options": {
+        "A": "3D データモデルを作成する",
+        "B": "移行オブジェクトの構造を定義および拡張する",
+        "C": "データ削除のみに使用",
+        "D": "財務レポートを生成する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Migration Object Modeler：\n- カスタム移行オブジェクトの作成\n- 標準移行オブジェクトの拡張\n- フィールドマッピングの定義\n- データ変換ルールの設定\n- 複雑なデータ構造をサポート",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q24",
+      "domain": 4,
+      "question": "データ移行において、データクレンジングはいつ実施すべきですか？",
+      "options": {
+        "A": "Go-Live 後のみ",
+        "B": "データ抽出とロードの前",
+        "C": "データクレンジングは不要",
+        "D": "システム本番稼働の6ヶ月後のみ"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "データクレンジングのベストプラクティス：\n- ソースシステムで事前に実施\n- データ抽出前に完了\n- 移行データ量を削減\n- データ品質を向上\n- 移行プロセスを簡素化",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q25",
+      "domain": 4,
+      "question": "S/4HANA データ移行において、マスタデータとトランザクションデータの移行順序はどうあるべきですか？",
+      "options": {
+        "A": "トランザクションデータを先に移行し、次にマスタデータを移行する",
+        "B": "マスタデータを先に移行し、次にトランザクションデータを移行する",
+        "C": "すべてのデータを同時に移行する",
+        "D": "順序は重要ではない"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "データ移行の順序：\n1. 組織データと設定\n2. マスタデータ（得意先、仕入先、品目など）\n3. オープンアイテムと残高\n4. トランザクションデータ（必要な場合）\nマスタデータはトランザクションデータの基盤",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q26",
+      "domain": 4,
+      "question": "Rapid Data Migration 方法を使用するための前提条件は何ですか？（2つ選択）",
+      "options": {
+        "A": "ソースシステムが SAP システムである必要がある",
+        "B": "RFC 接続の設定が必要",
+        "C": "財務データのみ移行可能",
+        "D": "Migration Cockpit プラグインのインストールが必要"
+      },
+      "answer": ["A", "B"],
+      "answerType": "multiple",
+      "explanation": "Rapid Data Migration の前提条件：\n- ソースシステムが SAP システム\n- RFC 接続の設定\n- ソースシステムに対応コンポーネントをインストール\n- ネットワーク接続性\n- 適切な権限設定",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q27",
+      "domain": 4,
+      "question": "データ移行モックテスト（Mock Migration）の主な目的は何ですか？",
+      "options": {
+        "A": "最終本番移行として実施",
+        "B": "移行プロセスを検証し、潜在的な問題を特定する",
+        "C": "システムパフォーマンスのテストのみ",
+        "D": "ユーザーマニュアルを作成する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Mock Migration の目的：\n- 移行プロセスの検証\n- データ問題の特定\n- 移行時間の測定\n- 移行チームのトレーニング\n- 移行戦略の最適化\n複数回のモック移行を推奨",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q28",
+      "domain": 4,
+      "question": "S/4HANA におけるビジネスパートナー（Business Partner）マスタデータの移行で注意すべき点は何ですか？",
+      "options": {
+        "A": "得意先と仕入先は別々に移行する必要がある",
+        "B": "従来の得意先と仕入先をビジネスパートナーモデルに変換する必要がある",
+        "C": "ビジネスパートナーデータは移行不要",
+        "D": "ビジネスパートナーは手動でのみ作成可能"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "ビジネスパートナー移行：\n- S/4HANA は統一 BP モデルを使用\n- 既存の得意先/仕入先を変換する必要がある\n- CVI または移行ツールを使用\n- データマッピング関係に注意\n- 重複データ処理を検証",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q29",
+      "domain": 4,
+      "question": "カットオーバー期間中のデータ移行における重要な考慮事項は何ですか？（2つ選択）",
+      "options": {
+        "A": "ソースシステムとターゲットシステム間のデータ整合性を確保する",
+        "B": "すべてのビジネス操作を無視する",
+        "C": "ビジネス中断時間を最小化する",
+        "D": "すべての履歴レポートを削除する"
+      },
+      "answer": ["A", "C"],
+      "answerType": "multiple",
+      "explanation": "カットオーバー期間の重要な考慮事項：\n- データの整合性と完全性\n- ダウンタイムの最小化\n- 明確なカットオーバー計画\n- ロールバック戦略\n- 重要なビジネスの処理手配",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q30",
+      "domain": 4,
+      "question": "データ移行の品質検証には何が含まれるべきですか？",
+      "options": {
+        "A": "レコード数のチェックのみ",
+        "B": "数量、完全性、正確性、ビジネスロジックの検証",
+        "C": "ユーザーインターフェーステストのみ",
+        "D": "IT チームの承認のみが必要"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "データ品質検証：\n- レコード数の比較\n- フィールド完全性チェック\n- データ正確性の検証\n- ビジネスロジックの検証\n- キーユーザーの確認\n- レポートの照合",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q31",
+      "domain": 5,
+      "question": "SAP BTP（Business Technology Platform）と S/4HANA Cloud Private Edition の統合方法は何ですか？",
+      "options": {
+        "A": "完全に独立しており、統合できない",
+        "B": "API とイベント駆動アーキテクチャを通じて統合",
+        "C": "データベース直接接続のみ",
+        "D": "サードパーティミドルウェアの使用が必須"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "BTP と S/4HANA の統合：\n- RESTful API 統合\n- SAP Event Mesh によるイベント駆動\n- SAP Integration Suite による接続\n- Side-by-Side 拡張\n- 統一 ID 管理",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q32",
+      "domain": 5,
+      "question": "S/4HANA プロジェクトにおける SAP Integration Suite の主な機能は何ですか？（2つ選択）",
+      "options": {
+        "A": "API と統合フローを管理する",
+        "B": "データバックアップのみに使用",
+        "C": "A2A および B2B 統合シナリオを実現する",
+        "D": "SAP HANA データベースを置き換える"
+      },
+      "answer": ["A", "C"],
+      "answerType": "multiple",
+      "explanation": "SAP Integration Suite の機能：\n- API 管理と公開\n- 統合フロー設計\n- A2A（アプリケーション間）統合\n- B2B（企業間）統合\n- 事前構築された統合パッケージ",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q33",
+      "domain": 5,
+      "question": "Go-Live チェックリストはどのような側面をカバーすべきですか？",
+      "options": {
+        "A": "技術システムチェックのみ",
+        "B": "技術、機能、データ、ユーザー準備など複数の側面",
+        "C": "プロジェクトマネージャーの承認のみが必要",
+        "D": "財務決算の完了のみ"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Go-Live チェックリスト：\n- 技術システムの準備\n- 機能設定の完了\n- データ移行の検証\n- ユーザートレーニングの完了\n- インターフェーステストの合格\n- ロールバック計画の準備",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q34",
+      "domain": 5,
+      "question": "Cutover Plan（カットオーバー計画）に含めるべき主要な要素は何ですか？（2つ選択）",
+      "options": {
+        "A": "詳細な活動スケジュールと責任者",
+        "B": "IT システムリストのみ",
+        "C": "ロールバック戦略と緊急連絡先",
+        "D": "翌年度の予算計画"
+      },
+      "answer": ["A", "C"],
+      "answerType": "multiple",
+      "explanation": "Cutover Plan の要素：\n- 詳細な活動スケジュール\n- 責任分担マトリックス\n- ロールバック戦略\n- 緊急連絡先リスト\n- 意思決定チェックポイント\n- コミュニケーション計画",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q35",
+      "domain": 5,
+      "question": "Hypercare フェーズの継続期間は通常どのくらいですか？",
+      "options": {
+        "A": "1〜2日",
+        "B": "2〜4週間",
+        "C": "6ヶ月から1年",
+        "D": "固定期間なし"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Hypercare フェーズ：\n- 通常2〜4週間継続\n- 強化されたサポートを提供\n- 問題への迅速な対応\n- システムパフォーマンスの監視\n- 初期のユーザー問題に対処",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q36",
+      "domain": 5,
+      "question": "S/4HANA プロジェクトにおいて、変更管理（Change Management）の重要性はどこに現れますか？",
+      "options": {
+        "A": "技術コード変更の管理のみ",
+        "B": "ユーザーが新システムを受け入れ、新しいプロセスを成功裏に採用することを確保する",
+        "C": "プロジェクト予算管理のみに焦点を当てる",
+        "D": "コンプライアンス監査のみに使用"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "変更管理の重要性：\n- ユーザーの参加と受け入れを確保\n- 組織変革を管理\n- トレーニングと能力開発\n- コミュニケーションと期待管理\n- プロジェクト成功率を向上",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q37",
+      "domain": 5,
+      "question": "S/4HANA 導入における SAP Solution Manager の役割は何ですか？（2つ選択）",
+      "options": {
+        "A": "アプリケーションライフサイクル管理",
+        "B": "S/4HANA コアシステムを置き換える",
+        "C": "テスト管理と変更制御",
+        "D": "メール通知の送信のみに使用"
+      },
+      "answer": ["A", "C"],
+      "answerType": "multiple",
+      "explanation": "Solution Manager の役割：\n- アプリケーションライフサイクル管理（ALM）\n- テストスイート管理\n- 変更リクエスト管理\n- システム監視\n- プロセスドキュメント管理",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q38",
+      "domain": 5,
+      "question": "S/4HANA プロジェクト本番稼働後、システム最適化はどのような側面に焦点を当てるべきですか？",
+      "options": {
+        "A": "ハードウェアアップグレードのみに焦点を当てる",
+        "B": "パフォーマンス最適化、プロセス改善、ユーザーフィードバック処理",
+        "C": "すべての開発活動を停止する",
+        "D": "セキュリティ監査のみを実施"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "本番稼働後の最適化：\n- システムパフォーマンスチューニング\n- ビジネスプロセスの最適化\n- ユーザーフィードバックの収集と処理\n- 改善機会の特定\n- 継続的な学習とトレーニング",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q39",
+      "domain": 1,
+      "question": "S/4HANA Cloud Private Edition における RISE with SAP には何が含まれますか？",
+      "options": {
+        "A": "ハードウェア機器のみ",
+        "B": "技術とビジネスサポートを含むビジネス変革サービスパッケージ",
+        "C": "SAP トレーニングコースのみ",
+        "D": "サードパーティコンサルティングサービスのみ"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "RISE with SAP に含まれるもの：\n- S/4HANA Cloud サブスクリプション\n- SAP BTP サービス\n- SAP Business Network\n- ビジネスプロセスインテリジェンス\n- 変革支援サービス",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q40",
+      "domain": 1,
+      "question": "S/4HANA Cloud Private Edition において、システムランドスケープには通常どのような環境が含まれますか？（2つ選択）",
+      "options": {
+        "A": "開発環境（DEV）",
+        "B": "本番環境のみ",
+        "C": "品質保証環境（QAS）",
+        "D": "災害復旧環境のみ"
+      },
+      "answer": ["A", "C"],
+      "answerType": "multiple",
+      "explanation": "標準システムランドスケープ：\n- DEV（開発環境）\n- QAS（品質保証/テスト環境）\n- PRD（本番環境）\n- オプション：サンドボックス、トレーニング環境など\n移送パス管理に従う",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q41",
+      "domain": 2,
+      "question": "SAP Activate における Q-Gate の役割は何ですか？",
+      "options": {
+        "A": "技術品質チェックのみに使用",
+        "B": "プロジェクトフェーズ移行の品質チェックポイントと意思決定ゲート",
+        "C": "財務承認のみに使用",
+        "D": "ユーザー受け入れテストを置き換える"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Q-Gate（Quality Gate）：\n- フェーズ移行チェックポイント\n- フェーズ成果物の完了状況を評価\n- 次のフェーズへの準備を確認\n- リスクと問題を特定\n- 関係者の承認を取得",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q42",
+      "domain": 2,
+      "question": "Agile/Scrum 方法論は SAP Activate の Realize フェーズでどのように適用されますか？",
+      "options": {
+        "A": "すべての SAP 方法論を完全に置き換える",
+        "B": "Sprint イテレーションを通じて設定、開発、テストを実施する",
+        "C": "ドキュメント作成のみに使用",
+        "D": "プロジェクト終了時のみに使用"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Realize フェーズでの Agile 適用：\n- Sprint サイクル（通常2〜4週間）\n- 反復的な設定と開発\n- 継続的インテグレーションテスト\n- デイリースタンドアップ\n- Sprint レビューと振り返り",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q43",
+      "domain": 3,
+      "question": "DMO（Database Migration Option）の役割は何ですか？",
+      "options": {
+        "A": "データバックアップのみに使用",
+        "B": "システムコンバージョンプロセス中に SAP HANA へのデータベース移行を同時に実行する",
+        "C": "古いデータベースを削除する",
+        "D": "データ分析のみに使用"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "DMO の機能：\n- SUM ツールの一部\n- システムアップグレードと同時にデータベースを移行\n- 非 HANA データベースから HANA への移行\n- ダウンタイムの削減\n- Near-Zero Downtime 方式をサポート",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q44",
+      "domain": 3,
+      "question": "コード適応プロセスにおける ABAP Test Cockpit (ATC) の主な機能は何ですか？",
+      "options": {
+        "A": "コードフォーマットのチェックのみ",
+        "B": "コード品質と S/4HANA 互換性問題をチェックする",
+        "C": "すべてのコード問題を自動修正する",
+        "D": "コードドキュメントの生成のみ"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "ABAP Test Cockpit：\n- コード品質分析\n- S/4HANA 互換性チェック\n- パフォーマンス問題の特定\n- セキュリティ脆弱性の検出\n- コーディング規約の検証",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q45",
+      "domain": 4,
+      "question": "品目マスタデータの移行において、特に注意が必要なビューは何ですか？（2つ選択）",
+      "options": {
+        "A": "基本データビュー",
+        "B": "財務ビューのみ",
+        "C": "プラント/保管場所ビュー",
+        "D": "ユーザーインターフェース設定のみ"
+      },
+      "answer": ["A", "C"],
+      "answerType": "multiple",
+      "explanation": "品目マスタデータの重要なビュー：\n- 基本データ（説明、単位など）\n- プラント/保管場所データ\n- 購買ビュー\n- 販売ビュー\n- 財務/会計ビュー\n組織レベルごとに設定が必要",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q46",
+      "domain": 5,
+      "question": "インターフェーステストにおいて、エンドツーエンド（E2E）テストの目的は何ですか？",
+      "options": {
+        "A": "単一プログラム機能のテストのみ",
+        "B": "完全なビジネスプロセスがシステム間でデータと機能の正確性を検証する",
+        "C": "ユーザーインターフェースの外観チェックのみ",
+        "D": "ユニットテストを置き換える"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "E2E テストの目的：\n- 完全なビジネスプロセスの検証\n- システム間統合のチェック\n- データフローの正確性を確認\n- ビジネスシナリオの実現可能性を検証\n- 統合問題の特定",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q47",
+      "domain": 5,
+      "question": "SAP Cloud ALM と Solution Manager を比較した場合の利点は何ですか？",
+      "options": {
+        "A": "オンプレミス導入のみサポート",
+        "B": "クラウドネイティブソリューションであり、クラウド環境管理をより良くサポートする",
+        "C": "Solution Manager より機能が少ない",
+        "D": "S/4HANA をサポートしない"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "SAP Cloud ALM の利点：\n- クラウドネイティブ SaaS ソリューション\n- クラウド環境向けに最適化\n- 簡素化されたユーザーインターフェース\n- 自動更新\n- より優れたクラウド統合機能",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q48",
+      "domain": 1,
+      "question": "S/4HANA Cloud Private Edition と On-Premise 版の技術的な違いは何ですか？",
+      "options": {
+        "A": "完全に異なるコードベースを使用",
+        "B": "技術的にはほぼ同じで、主な違いはホスティングと運用方式",
+        "C": "Private Edition は ABAP をサポートしない",
+        "D": "Private Edition は異なるデータベースを使用"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "技術的な比較：\n- 同じ S/4HANA コードベース\n- 同じ SAP HANA データベース\n- 主な違いは運用責任\n- Private Edition は SAP がホスティング\n- On-Premise は顧客自身が管理",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q49",
+      "domain": 2,
+      "question": "SAP Activate において、Solution Validation テストはどのフェーズに属しますか？",
+      "options": {
+        "A": "Discover",
+        "B": "Prepare",
+        "C": "Realize",
+        "D": "Run"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "Realize フェーズでの Solution Validation：\n- 設定の正確性を検証\n- 機能テスト\n- 統合テスト\n- UAT の準備\n- ソリューションが要件を満たしていることを確認",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q50",
+      "domain": 5,
+      "question": "プロジェクトドキュメントとナレッジトランスファーはどのフェーズで完了しますか？（2つ選択）",
+      "options": {
+        "A": "Deploy フェーズ",
+        "B": "Discover フェーズのみ",
+        "C": "Run フェーズ",
+        "D": "ドキュメントは不要"
+      },
+      "answer": ["A", "C"],
+      "answerType": "multiple",
+      "explanation": "ドキュメントとナレッジトランスファー：\n- Deploy：プロジェクトドキュメントとトレーニングを完了\n- Run：運用チームへのナレッジトランスファー\n- ユーザーマニュアル、操作マニュアルを含む\n- システム設定ドキュメント\n- 運用プロセスドキュメント",
+      "difficulty": "easy"
+    }
+  ]
+}

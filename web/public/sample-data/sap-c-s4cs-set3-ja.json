@@ -1,0 +1,661 @@
+{
+  "examId": "sap-c-s4cs",
+  "examName": "SAP S/4HANA Cloud Sales Implementation (C_S4CS)",
+  "provider": "SAP",
+  "setNumber": 3,
+  "totalQuestions": 50,
+  "passingScore": 65,
+  "timeLimit": 120,
+  "questions": [
+    {
+      "id": 1,
+      "question": "SAP S/4HANA Cloud Public Edition で販売機能のベストプラクティス構成を有効にする方法は？",
+      "options": {
+        "A": "SPRO カスタマイズを通じて",
+        "B": "SAP Best Practices と Scope Items を通じて有効化",
+        "C": "ABAP プログラミングを通じて",
+        "D": "データベースを直接変更"
+      },
+      "answer": "B",
+      "explanation": "S/4HANA Cloud Public Edition は SAP Best Practices と Scope Items を使用してビジネス機能を有効化・構成します。Implementation Portal で関連する Scope Items を選択して販売機能を有効にします。",
+      "examTip": "Public Cloud = Scope Items による有効化、カスタムコードなし。"
+    },
+    {
+      "id": 2,
+      "question": "S/4HANA Cloud の Key User Extensibility で許可される拡張タイプは？",
+      "options": {
+        "A": "データベーステーブル拡張のみ",
+        "B": "カスタムフィールド、カスタムロジック、カスタムビジネスオブジェクト",
+        "C": "レポート拡張のみ",
+        "D": "ユーザーインターフェース変更のみ"
+      },
+      "answer": "B",
+      "explanation": "Key User Extensibility により、ビジネスユーザーはコードを記述せずに、標準ビジネスオブジェクトにカスタムフィールドを追加し、カスタムビジネスロジック（BAdI経由）を作成し、カスタムビジネスオブジェクトを作成できます。",
+      "examTip": "Key User 拡張 = ノーコードのビジネス拡張機能。"
+    },
+    {
+      "id": 3,
+      "question": "S/4HANA Cloud で販売注文の OData API は主にどのシナリオで使用されますか？",
+      "options": {
+        "A": "データベースバックアップ",
+        "B": "外部システム統合とモバイルアプリケーション",
+        "C": "内部レポート",
+        "D": "ユーザー権限管理"
+      },
+      "answer": "B",
+      "explanation": "OData API（A_SalesOrder など）は外部システム統合、モバイルアプリ開発、自動化シナリオに使用されます。販売注文の作成、読取、更新などの操作をサポートします。",
+      "examTip": "OData API = システム統合とモバイルアクセスの標準インターフェース。"
+    },
+    {
+      "id": 4,
+      "question": "S/4HANA Cloud の SAP Fiori Launchpad は販売モジュールでどのような役割を果たしますか？",
+      "options": {
+        "A": "データベース管理",
+        "B": "ロールベースの統一アプリケーションエントリポイントを提供",
+        "C": "コード開発",
+        "D": "サーバー監視"
+      },
+      "answer": "B",
+      "explanation": "SAP Fiori Launchpad はすべての Fiori アプリにアクセスするための統一エントリポイントです。ユーザーのビジネスロールに基づいて、注文作成、見積管理などの関連販売アプリタイルを表示します。",
+      "examTip": "Fiori Launchpad = ロールベースのアプリケーションポータル。"
+    },
+    {
+      "id": 5,
+      "question": "S/4HANA Cloud の販売モジュールと SAP Analytics Cloud の統合で何が実現できますか？",
+      "options": {
+        "A": "マスターデータ管理の代替",
+        "B": "高度な販売分析と予測",
+        "C": "注文処理の代替",
+        "D": "在庫管理の代替"
+      },
+      "answer": "B",
+      "explanation": "SAP Analytics Cloud と S/4HANA Cloud の統合により、販売トレンド分析、予測分析、インテリジェントインサイトなど、システム内蔵レポート機能を超える高度な分析機能が提供されます。",
+      "examTip": "SAC 統合 = 高度な分析 + 予測機能。"
+    },
+    {
+      "id": 6,
+      "question": "S/4HANA Cloud の Business Role と販売ユーザー権限の関係は？",
+      "options": {
+        "A": "関係なし",
+        "B": "Business Role には販売アプリとデータへのアクセス権限が含まれる",
+        "C": "価格のみを制御",
+        "D": "在庫のみを制御"
+      },
+      "answer": "B",
+      "explanation": "Business Role は S/4HANA Cloud の権限割り当て単位で、ユーザーがアクセスできる Fiori アプリ、ビジネスカタログ、データ権限が含まれます。Sales Manager などの販売ロールには関連する販売機能の権限が含まれます。",
+      "examTip": "Business Role = アプリアクセス + データ権限の組み合わせ。"
+    },
+    {
+      "id": 7,
+      "question": "S/4HANA Cloud 実装で Configure-Your-Solution アプリは何に使用されますか？",
+      "options": {
+        "A": "販売注文の作成",
+        "B": "ビジネスプロセスとシステム設定の構成",
+        "C": "ユーザーパスワード管理",
+        "D": "システムパフォーマンス監視"
+      },
+      "answer": "B",
+      "explanation": "Configure-Your-Solution は S/4HANA Cloud の構成ツールで、実装コンサルタントと管理者が販売伝票タイプ、価格設定プロセスなどのビジネスプロセス設定を構成できます。",
+      "examTip": "Configure Your Solution = Public Cloud の構成ツール。"
+    },
+    {
+      "id": 8,
+      "question": "S/4HANA Cloud の Communication Arrangement は何の目的で使用されますか？",
+      "options": {
+        "A": "ユーザー間のメッセージ送受信",
+        "B": "外部システムとの API 通信の構成",
+        "C": "内部メールシステム",
+        "D": "プリンター構成"
+      },
+      "answer": "B",
+      "explanation": "Communication Arrangement は S/4HANA Cloud と外部システム間の API 通信を構成するために使用され、認証方式、エンドポイント URL、通信ユーザーなどが含まれます。システム統合の重要な構成です。",
+      "examTip": "Communication Arrangement = API 統合の構成。"
+    },
+    {
+      "id": 9,
+      "question": "S/4HANA Cloud 販売モジュールで未処理販売注文を管理するための Fiori アプリは？",
+      "options": {
+        "A": "Create Sales Order",
+        "B": "Manage Sales Orders",
+        "C": "Sales Order Fulfillment",
+        "D": "Display Sales Order"
+      },
+      "answer": "B",
+      "explanation": "Manage Sales Orders アプリは未処理販売注文の表示、編集、管理に使用されます。フィルター、ソート、一括操作機能を提供し、日常の注文管理の主要アプリです。",
+      "examTip": "Manage = 既存データの管理/編集、Create = 新規データ作成。"
+    },
+    {
+      "id": 10,
+      "question": "S/4HANA Cloud の販売注文シミュレーション機能の目的は？",
+      "options": {
+        "A": "注文の永久保存",
+        "B": "実際に作成せずに注文結果をプレビュー",
+        "C": "注文の削除",
+        "D": "注文の印刷"
+      },
+      "answer": "B",
+      "explanation": "販売注文シミュレーションにより、ユーザーは注文データを入力して価格設定、可用性などの結果をプレビューできますが、実際には注文を作成しません。見積準備や注文事前チェックに使用されます。",
+      "examTip": "シミュレーション = 結果プレビュー、実データは生成されない。"
+    },
+    {
+      "id": 11,
+      "question": "S/4HANA Cloud の Advanced Available-to-Promise (aATP) が提供する強化機能は？",
+      "options": {
+        "A": "基本在庫チェックのみ",
+        "B": "製品割当、バックオーダー処理、代替製品提案",
+        "C": "価格計算のみ",
+        "D": "顧客管理のみ"
+      },
+      "answer": "B",
+      "explanation": "aATP は高度な可用性チェック機能を提供し、製品割当（特定顧客への利用可能数量制限）、バックオーダー管理、代替製品提案、マルチレベル可用性チェックなどが含まれます。",
+      "examTip": "aATP = 標準 ATP のインテリジェント強化。"
+    },
+    {
+      "id": 12,
+      "question": "S/4HANA Cloud の Sales Order Fulfillment Cockpit の主な用途は？",
+      "options": {
+        "A": "新規注文作成",
+        "B": "注文フルフィルメント進捗の監視と管理",
+        "C": "顧客マスターデータ管理",
+        "D": "システム設定構成"
+      },
+      "answer": "B",
+      "explanation": "Sales Order Fulfillment Cockpit は注文フルフィルメントの全体像を提供し、注文ステータス、配送進捗、問題注文などを表示し、ユーザーが能動的に注文フルフィルメントを管理できるようにします。",
+      "examTip": "Fulfillment Cockpit = 注文実行の監視センター。"
+    },
+    {
+      "id": 13,
+      "question": "S/4HANA Cloud で販売注文を複数の配送に自動分割する機能は？",
+      "options": {
+        "A": "注文拒否",
+        "B": "配送分割ルール",
+        "C": "注文凍結",
+        "D": "価格条件"
+      },
+      "answer": "B",
+      "explanation": "配送分割ルールは、異なる配送日、異なる出荷ポイント、異なるルートなどに基づいて、単一の販売注文をいつ複数の配送に分割するかを定義します。物流効率を確保します。",
+      "examTip": "配送分割 = 物流最適化のための自動分割。"
+    },
+    {
+      "id": 14,
+      "question": "S/4HANA Cloud の出力管理がサポートするチャネルは？",
+      "options": {
+        "A": "印刷のみ",
+        "B": "印刷、電子メール、EDI、電子文書",
+        "C": "電子メールのみ",
+        "D": "EDI のみ"
+      },
+      "answer": "B",
+      "explanation": "S/4HANA Cloud の出力管理は複数のチャネルをサポートします：従来の印刷、電子メール送信、EDI（電子データ交換）、電子文書形式。異なる顧客に対して異なる優先チャネルを構成できます。",
+      "examTip": "出力管理 = マルチチャネル文書配信。"
+    },
+    {
+      "id": 15,
+      "question": "S/4HANA Cloud で販売データのリアルタイムレポートを実現する方法は？",
+      "options": {
+        "A": "月末バッチ処理",
+        "B": "埋め込み分析と CDS View",
+        "C": "外部データウェアハウス",
+        "D": "手動エクスポート"
+      },
+      "answer": "B",
+      "explanation": "S/4HANA Cloud は CDS View に基づく埋め込み分析を使用し、運用データから直接リアルタイムレポートを生成します。データコピーやバッチ処理が不要で、データは即座に分析に利用できます。",
+      "examTip": "埋め込み分析 = リアルタイム運用データの即時レポート。"
+    },
+    {
+      "id": 16,
+      "question": "S/4HANA Cloud の Intelligent Situation Handling は販売でどのような機能を提供しますか？",
+      "options": {
+        "A": "注文の自動作成",
+        "B": "注意が必要なビジネス状況をプロアクティブに識別して通知",
+        "C": "自動価格設定",
+        "D": "自動出荷"
+      },
+      "answer": "B",
+      "explanation": "Intelligent Situation Handling はビジネスデータを自動的に監視し、注意が必要な状況（遅延注文、与信超過など）を識別し、関連ユーザーに通知してアクションを促します。",
+      "examTip": "Situation Handling = プロアクティブな問題識別とアラート。"
+    },
+    {
+      "id": 17,
+      "question": "S/4HANA Cloud の Product Allocation 機能はどのようなシナリオで使用されますか？",
+      "options": {
+        "A": "在庫増加",
+        "B": "供給不足時にルールに従って製品を異なる顧客に割り当てる",
+        "C": "価格引下げ",
+        "D": "注文キャンセル"
+      },
+      "answer": "B",
+      "explanation": "Product Allocation は製品供給が不足している場合に、事前定義されたルール（顧客優先度、割当量など）に従って利用可能な製品を公平に割り当てます。重要な顧客への供給を確保します。",
+      "examTip": "製品割当 = 希少リソースの公平な配分戦略。"
+    },
+    {
+      "id": 18,
+      "question": "S/4HANA Cloud の Backorder Processing は何を処理しますか？",
+      "options": {
+        "A": "完了した注文",
+        "B": "在庫不足で保留中の注文",
+        "C": "キャンセルされた注文",
+        "D": "請求済みの注文"
+      },
+      "answer": "B",
+      "explanation": "Backorder Processing は在庫不足のために即時配送できない注文を管理します。在庫が利用可能になったとき、これらの保留中の注文を一括処理して配送手配を最適化できます。",
+      "examTip": "バックオーダー処理 = 在庫入荷後の注文フルフィルメント。"
+    },
+    {
+      "id": 19,
+      "question": "S/4HANA Cloud 販売の Rescheduling 機能の役割は？",
+      "options": {
+        "A": "注文削除",
+        "B": "最新の可用性に基づいて配送日を再計算",
+        "C": "顧客変更",
+        "D": "製品変更"
+      },
+      "answer": "B",
+      "explanation": "Rescheduling 機能は現在の在庫と供給状況に基づいて注文の配送日を再計算します。バッチ実行可能で、注文日が実際に実現可能な配送計画を反映するようにします。",
+      "examTip": "リスケジュール = 供給に合わせて配送日を更新。"
+    },
+    {
+      "id": 20,
+      "question": "S/4HANA Cloud の Credit Limit Check はどのポイントで実行するよう構成できますか？",
+      "options": {
+        "A": "注文作成時のみ",
+        "B": "注文作成、注文変更、配送作成、請求書作成",
+        "C": "請求書作成時のみ",
+        "D": "配送作成時のみ"
+      },
+      "answer": "B",
+      "explanation": "与信チェックはビジネスプロセスの複数のポイントで実行するよう構成できます：注文作成時（フロントエンドチェック）、注文変更時、配送作成時、請求書作成時。柔軟なリスク管理を提供します。",
+      "examTip": "与信チェックポイント = 構成可能なマルチレベル管理。"
+    },
+    {
+      "id": 21,
+      "question": "S/4HANA Cloud の Sales Contract の Target Quantity の目的は？",
+      "options": {
+        "A": "価格定義",
+        "B": "契約期間中に購入予定の総数量を定義",
+        "C": "配送日定義",
+        "D": "支払条件定義"
+      },
+      "answer": "B",
+      "explanation": "Target Quantity は顧客が契約有効期間中にコミットまたは購入予定の総数量を定義します。システムは実際のリリース数量と目標数量を追跡比較し、契約履行監視に使用されます。",
+      "examTip": "目標数量 = 契約数量コミットメントの追跡基準。"
+    },
+    {
+      "id": 22,
+      "question": "S/4HANA Cloud の Value Contract と Quantity Contract の違いは？",
+      "options": {
+        "A": "違いなし",
+        "B": "Value Contract は金額ベース、Quantity Contract は数量ベース",
+        "C": "Value Contract は製品不要",
+        "D": "Quantity Contract は顧客不要"
+      },
+      "answer": "B",
+      "explanation": "Value Contract は顧客が契約期間中にコミットする購入金額を定義し、金額上限に達するまで任意の製品を購入できます。Quantity Contract は特定製品の購入数量を定義します。",
+      "examTip": "価値契約 = 金額フレームワーク、数量契約 = 製品数量フレームワーク。"
+    },
+    {
+      "id": 23,
+      "question": "S/4HANA Cloud の価格設定で Pricing Date は価格決定にどう影響しますか？",
+      "options": {
+        "A": "影響なし",
+        "B": "システムはその日付を使用して有効な価格条件レコードを検索",
+        "C": "支払日にのみ影響",
+        "D": "配送日にのみ影響"
+      },
+      "answer": "B",
+      "explanation": "Pricing Date は有効な価格条件レコードを検索するためにシステムが使用する日付を決定します。デフォルトは注文日ですが、他の日付（要求配送日など）に構成できます。",
+      "examTip": "価格設定日 = 価格有効性の参照時点。"
+    },
+    {
+      "id": 24,
+      "question": "S/4HANA Cloud の Requested Delivery Date と Confirmed Delivery Date の違いは？",
+      "options": {
+        "A": "同じ日付",
+        "B": "要求日は顧客の希望、確認日はシステムの約束",
+        "C": "形式のみ異なる",
+        "D": "実際の意味なし"
+      },
+      "answer": "B",
+      "explanation": "Requested Delivery Date は顧客が商品の受取を希望する日付です。Confirmed Delivery Date は可用性チェックと配送時間に基づいてシステムが計算した実際に配送可能な日付です。",
+      "examTip": "要求日 = 顧客の希望、確認日 = システムの約束。"
+    },
+    {
+      "id": 25,
+      "question": "S/4HANA Cloud で Sales Document Blocking は何に基づいて自動的にトリガーされますか？",
+      "options": {
+        "A": "手動設定のみ",
+        "B": "与信チェック、不完全性、カスタムチェック",
+        "C": "与信チェックのみ",
+        "D": "不完全性のみ"
+      },
+      "answer": "B",
+      "explanation": "販売伝票のブロックは複数の条件で自動的にトリガーできます：与信限度超過、伝票データ不完全、または BAdI で実装されたカスタムビジネスルールチェック。",
+      "examTip": "自動ブロック = 複数のリスク管理トリガー。"
+    },
+    {
+      "id": 26,
+      "question": "S/4HANA Cloud の Settlement Management は販売で何に使用されますか？",
+      "options": {
+        "A": "注文作成",
+        "B": "リベート、コミッション、報奨の計算と決済",
+        "C": "在庫管理",
+        "D": "ユーザー管理"
+      },
+      "answer": "B",
+      "explanation": "Settlement Management は販売実績に基づく各種報奨の計算と決済に使用されます：顧客リベート、販売コミッション、チャネル報奨など。販売を自動追跡しルールに従って決済します。",
+      "examTip": "決済管理 = 販売報奨の自動化処理。"
+    },
+    {
+      "id": 27,
+      "question": "S/4HANA Cloud の Order-to-Cash プロセスには何が含まれますか？",
+      "options": {
+        "A": "注文と回収のみ",
+        "B": "注文、配送、請求、回収",
+        "C": "請求と回収のみ",
+        "D": "配送と請求のみ"
+      },
+      "answer": "B",
+      "explanation": "Order-to-Cash は販売から回収までの完全なプロセスで、販売注文作成、配送処理（ピッキング、出荷）、請求、財務売掛金と回収処理が含まれます。",
+      "examTip": "O2C = 注文 → 配送 → 請求 → 回収の完全サイクル。"
+    },
+    {
+      "id": 28,
+      "question": "S/4HANA Cloud の Sales Order Status Profile の用途は？",
+      "options": {
+        "A": "価格定義",
+        "B": "販売注文のカスタムステータスとステータス遷移を定義",
+        "C": "顧客分類定義",
+        "D": "製品分類定義"
+      },
+      "answer": "B",
+      "explanation": "Status Profile により販売注文のカスタムステータス（承認中、確認済みなど）とその遷移ルールを定義できます。追加のビジネスプロセス制御と承認ワークフローの実装に使用されます。",
+      "examTip": "ステータスプロファイル = カスタムビジネスステータス管理。"
+    },
+    {
+      "id": 29,
+      "question": "S/4HANA Cloud で Release Strategy は販売注文にどう影響しますか？",
+      "options": {
+        "A": "自動注文作成",
+        "B": "注文を続行するには承認が必要",
+        "C": "自動価格設定",
+        "D": "自動配送"
+      },
+      "answer": "B",
+      "explanation": "Release Strategy は販売注文の承認プロセスを定義します。条件（注文金額、顧客タイプなど）に基づいて必要な承認ステップを決定し、注文は承認完了後に後続処理に進みます。",
+      "examTip": "リリース戦略 = 注文承認ワークフロー。"
+    },
+    {
+      "id": 30,
+      "question": "S/4HANA Cloud の Billing Due List の用途は？",
+      "options": {
+        "A": "販売注文作成",
+        "B": "請求準備が完了した配送と注文をリスト",
+        "C": "在庫管理",
+        "D": "システム構成"
+      },
+      "answer": "B",
+      "explanation": "Billing Due List は請求準備が完了したすべての販売伝票（出荷済み配送など）を表示します。一括選択と請求書作成をサポートし、請求効率を向上させます。",
+      "examTip": "請求期日リスト = 請求待ち伝票のワークプール。"
+    },
+    {
+      "id": 31,
+      "question": "S/4HANA Cloud で Revenue Recognition と Billing の関係は？",
+      "options": {
+        "A": "まったく同じ",
+        "B": "請求は売掛金を作成、収益認識は収益をいつ認識するかを決定",
+        "C": "まったく無関係",
+        "D": "収益認識が請求に代わる"
+      },
+      "answer": "B",
+      "explanation": "請求は請求書と売掛金を生成し、法的な回収権利です。収益認識は会計基準（IFRS 15など）に従って収益を損益計算書にいつ計上するかを決定し、両者のタイミングは異なる場合があります。",
+      "examTip": "請求 = 回収権利、収益認識 = 会計上の収益認識時点。"
+    },
+    {
+      "id": 32,
+      "question": "S/4HANA Cloud の Event-Based Revenue Recognition は何に基づいてトリガーされますか？",
+      "options": {
+        "A": "日付のみ",
+        "B": "出荷やサービス完了などのビジネスイベント",
+        "C": "金額のみ",
+        "D": "顧客要求のみ"
+      },
+      "answer": "B",
+      "explanation": "Event-Based Revenue Recognition はビジネスイベントに基づいて収益認識をトリガーします：出荷完了、サービス提供完了、マイルストーン達成など。履行義務に応じた収益認識の会計要件に準拠します。",
+      "examTip": "イベント駆動 = 履行完了時に収益認識。"
+    },
+    {
+      "id": 33,
+      "question": "S/4HANA Cloud で販売と MM の統合において、販売注文作成時にどの MM データに影響しますか？",
+      "options": {
+        "A": "購買発注",
+        "B": "利用可能在庫と需要予測",
+        "C": "仕入先評価",
+        "D": "購買価格"
+      },
+      "answer": "B",
+      "explanation": "販売注文作成時、可用性チェックは利用可能在庫を考慮し影響を与えます。同時に販売注文は需要として MRP 計画に入力され、購買と生産の需要予測に影響します。",
+      "examTip": "SD-MM 統合 = サプライチェーンへの需要シグナル伝達。"
+    },
+    {
+      "id": 34,
+      "question": "S/4HANA Cloud で販売注文と製造オーダーの統合ポイントは？",
+      "options": {
+        "A": "統合なし",
+        "B": "受注生産シナリオで販売注文が生産需要をトリガー",
+        "C": "レポート統合のみ",
+        "D": "権限統合のみ"
+      },
+      "answer": "B",
+      "explanation": "受注生産 (Make-to-Order) シナリオでは、販売注文が直接生産需要をトリガーします。製造オーダーは販売注文に関連付けられ、顧客の仕様と時間要件に従って生産されます。",
+      "examTip": "MTO 統合 = 販売が生産を駆動。"
+    },
+    {
+      "id": 35,
+      "question": "S/4HANA Cloud で Sales Order Confirmation 出力に含まれる内容は？",
+      "options": {
+        "A": "注文番号のみ",
+        "B": "注文詳細、価格、配送日などの完全な情報",
+        "C": "顧客住所のみ",
+        "D": "製品名のみ"
+      },
+      "answer": "B",
+      "explanation": "販売注文確認書は顧客に送信される正式な文書で、注文番号、注文明細、製品情報、数量、価格、確認済み配送日、支払条件などの完全な情報が含まれます。",
+      "examTip": "注文確認 = 顧客への正式な注文受領書。"
+    },
+    {
+      "id": 36,
+      "question": "S/4HANA Cloud の Partner Determination Procedure の用途は？",
+      "options": {
+        "A": "価格計算",
+        "B": "販売伝票のビジネスパートナーロールを自動決定",
+        "C": "在庫配分",
+        "D": "ユーザー認可"
+      },
+      "answer": "B",
+      "explanation": "Partner Determination Procedure は販売伝票の各種ビジネスパートナーロール（受注先、出荷先、支払先など）をどのように自動決定するかを定義し、顧客マスターデータや他のソースから導出できます。",
+      "examTip": "パートナー決定 = ビジネスロールの自動入力。"
+    },
+    {
+      "id": 37,
+      "question": "S/4HANA Cloud で Account Assignment Group は販売でどのような役割を果たしますか？",
+      "options": {
+        "A": "顧客分類",
+        "B": "販売収益を計上する会計勘定を決定",
+        "C": "製品分類",
+        "D": "倉庫割当"
+      },
+      "answer": "B",
+      "explanation": "Account Assignment Group（顧客と品目の）は販売取引と組み合わせて、販売収益、売上原価などを計上する会計勘定を決定します。SD-FI 勘定決定の重要な要素です。",
+      "examTip": "勘定設定グループ = 収益記帳の勘定決定要素。"
+    },
+    {
+      "id": 38,
+      "question": "S/4HANA Cloud の Schedule Line に含まれる主要情報は？",
+      "options": {
+        "A": "製品情報のみ",
+        "B": "配送日、数量、可用性確認",
+        "C": "価格情報のみ",
+        "D": "顧客情報のみ"
+      },
+      "answer": "B",
+      "explanation": "Schedule Line（納入日程行）には注文明細の配送計画情報が含まれます：予定配送日、確認数量、ATP 結果、品目利用可能日など。1つの明細に複数の納入日程行を持つことができます。",
+      "examTip": "納入日程行 = 配送の時間と数量のスケジュール。"
+    },
+    {
+      "id": 39,
+      "question": "S/4HANA Cloud の価格設定で Condition Class の役割は？",
+      "options": {
+        "A": "顧客カテゴリ定義",
+        "B": "条件タイプが価格、割引、サーチャージかを定義",
+        "C": "製品カテゴリ定義",
+        "D": "注文カテゴリ定義"
+      },
+      "answer": "B",
+      "explanation": "Condition Class は条件タイプ構成で条件の性質を定義します：基本価格 (A)、割引 (B)、費用 (C)、税金 (D)。価格設定プロセスでの条件の処理と集計方法に影響します。",
+      "examTip": "条件クラス = 条件のビジネス性質分類。"
+    },
+    {
+      "id": 40,
+      "question": "S/4HANA Cloud の Condition Update 機能の用途は？",
+      "options": {
+        "A": "価格削除",
+        "B": "販売伝票保存後に統計条件を更新",
+        "C": "新規価格作成",
+        "D": "価格表印刷"
+      },
+      "answer": "B",
+      "explanation": "Condition Update は販売伝票（請求書など）保存時に統計条件の累計値を更新するために使用されます（リベート基準金額の累積など）。リベート計算の基礎データ収集メカニズムです。",
+      "examTip": "条件更新 = 累計統計データの更新。"
+    },
+    {
+      "id": 41,
+      "question": "S/4HANA Cloud で Header Condition と Item Condition の違いは？",
+      "options": {
+        "A": "違いなし",
+        "B": "Header は注文全体に適用、Item は特定の明細に適用",
+        "C": "形式のみ異なる",
+        "D": "保存場所のみ異なる"
+      },
+      "answer": "B",
+      "explanation": "Header Condition は注文ヘッダーレベルで適用され、注文レベルの割引は各明細に比例配分されます。Item Condition は特定の明細レベルで直接適用され、その明細のみに影響します。",
+      "examTip": "ヘッダー条件 = 明細に配分、明細条件 = その明細のみに影響。"
+    },
+    {
+      "id": 42,
+      "question": "S/4HANA Cloud の Output Determination はどのように機能しますか？",
+      "options": {
+        "A": "各出力を手動作成",
+        "B": "条件技術に基づいて必要な出力を自動決定",
+        "C": "ユーザー要求のみに基づく",
+        "D": "システム日付のみに基づく"
+      },
+      "answer": "B",
+      "explanation": "Output Determination は条件技術を使用し、販売伝票の属性（伝票タイプ、顧客など）に基づいて生成が必要な出力（注文確認、出荷通知など）をチャネルとタイミングを含めて自動決定します。",
+      "examTip": "出力決定 = 条件技術駆動の自動文書生成。"
+    },
+    {
+      "id": 43,
+      "question": "S/4HANA Cloud の Invoice List 機能はどのようなシナリオで使用されますか？",
+      "options": {
+        "A": "単一請求書作成",
+        "B": "複数の請求書を集約して定期請求書を作成",
+        "C": "請求書削除",
+        "D": "請求書修正"
+      },
+      "answer": "B",
+      "explanation": "Invoice List は一定期間の複数の請求書を1つの請求書リストに集約し、顧客との定期決済に使用します。卸売や B2B ビジネスシナリオでよく使用され、照合を簡素化します。",
+      "examTip": "請求書リスト = 複数請求書の定期集約請求書。"
+    },
+    {
+      "id": 44,
+      "question": "S/4HANA Cloud の Intercompany Billing に関わるプロセスは？",
+      "options": {
+        "A": "外部顧客への請求のみ",
+        "B": "配送会社が販売会社に内部請求書を発行",
+        "C": "購買請求のみ",
+        "D": "サービス請求のみ"
+      },
+      "answer": "B",
+      "explanation": "会社間販売では、配送会社（製品を提供する会社）は販売会社（注文を受ける会社）に会社間決済のための内部請求書を発行する必要があります。これは法人間の内部収益認識です。",
+      "examTip": "会社間請求 = 法人間の内部決済。"
+    },
+    {
+      "id": 45,
+      "question": "S/4HANA Cloud で Customer Hierarchy Pricing はどのように機能しますか？",
+      "options": {
+        "A": "階層構造を無視",
+        "B": "階層内の顧客の位置に基づいて異なる価格条件を適用",
+        "C": "レポートのみに使用",
+        "D": "与信管理のみに使用"
+      },
+      "answer": "B",
+      "explanation": "Customer Hierarchy Pricing により、顧客階層の異なるレベル（グループ価格、地域価格、店舗価格など）で価格条件を維持でき、システムは階層に従って適用可能な価格を検索して適用します。",
+      "examTip": "階層価格設定 = 組織レベルによる差別化価格設定。"
+    },
+    {
+      "id": 46,
+      "question": "S/4HANA Cloud の Credit Exposure には何が含まれますか？",
+      "options": {
+        "A": "請求済み金額のみ",
+        "B": "未決済請求書、未請求配送、未処理注文の合計",
+        "C": "注文金額のみ",
+        "D": "支払金額のみ"
+      },
+      "answer": "B",
+      "explanation": "Credit Exposure（与信エクスポージャー）は顧客が現在占有している与信総額で、未決済売掛金（請求済み未払い）、出荷済み未請求金額、未処理注文金額が含まれます。",
+      "examTip": "与信エクスポージャー = 未決済請求書 + 未請求 + 未出荷注文。"
+    },
+    {
+      "id": 47,
+      "question": "S/4HANA Cloud 販売レポートで注文フルフィルメント品質を測定する KPI は？",
+      "options": {
+        "A": "売上高",
+        "B": "On-Time Delivery Rate",
+        "C": "顧客数",
+        "D": "製品数"
+      },
+      "answer": "B",
+      "explanation": "On-Time Delivery Rate（納期遵守率）は約束日またはそれ以前に配送完了した注文の割合を測定します。注文フルフィルメント品質と顧客サービスレベルを評価する重要な KPI です。",
+      "examTip": "OTDR = フルフィルメント品質の中核指標。"
+    },
+    {
+      "id": 48,
+      "question": "S/4HANA Cloud の Sales Order Cockpit が提供する機能は？",
+      "options": {
+        "A": "注文作成のみ",
+        "B": "注文の集中表示、監視、管理",
+        "C": "注文削除のみ",
+        "D": "注文印刷のみ"
+      },
+      "answer": "B",
+      "explanation": "Sales Order Cockpit は販売注文の集中管理インターフェースを提供し、検索、フィルター、ステータス監視、問題識別、一括操作をサポートします。販売オペレーションの日常作業プラットフォームです。",
+      "examTip": "Cockpit = 集中管理と監視のワークベンチ。"
+    },
+    {
+      "id": 49,
+      "question": "S/4HANA Cloud で Data Aging 機能は販売データにどう影響しますか？",
+      "options": {
+        "A": "すべてのデータを削除",
+        "B": "履歴データをアーカイブ領域に移動してパフォーマンスを最適化",
+        "C": "データを暗号化",
+        "D": "データをコピー"
+      },
+      "answer": "B",
+      "explanation": "Data Aging は古い履歴販売データ（数年前の完了注文など）をアーカイブ領域に移動し、オンラインデータ量を削減してシステムパフォーマンスを最適化しながら、データアクセス可能性を維持します。",
+      "examTip": "データエージング = パフォーマンス最適化のための履歴データアーカイブ。"
+    },
+    {
+      "id": 50,
+      "question": "S/4HANA Cloud と SAP Customer Experience の統合が提供する強化は？",
+      "options": {
+        "A": "販売機能の代替",
+        "B": "マーケティング、販売、サービスを接続するエンドツーエンドの顧客体験",
+        "C": "技術統合のみ",
+        "D": "データバックアップのみ"
+      },
+      "answer": "B",
+      "explanation": "SAP Customer Experience (CX) スイートとの統合により、マーケティングキャンペーン、販売実行、顧客サービスを接続するエンドツーエンドの顧客体験管理が提供され、統一された顧客ビューと一貫した体験を実現します。",
+      "examTip": "CX 統合 = フロントエンド顧客体験 + バックエンド注文フルフィルメント。"
+    }
+  ]
+}

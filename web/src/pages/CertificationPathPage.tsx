@@ -89,7 +89,8 @@ const careerIcons: Record<string, LucideIcon> = {
   // SAP career paths
   'sap-consultant': Building2,
   'sap-developer': Cog,
-  'sap-data-analyst': Database
+  'sap-data-analyst': Database,
+  'sap-implementation': Award
 };
 
 // Level badge colors

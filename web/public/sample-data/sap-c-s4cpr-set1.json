@@ -1,0 +1,773 @@
+{
+  "exam": {
+    "id": "sap-c-s4cpr-set1",
+    "name": "SAP C_S4CPR 模拟考试 #1",
+    "code": "C_S4CPR",
+    "provider": "SAP",
+    "language": "zh-CN",
+    "description": "SAP S/4HANA Cloud Private Edition 实施认证考试模拟题 - 第1套",
+    "totalQuestions": 50,
+    "passingScore": 65,
+    "examTime": 180,
+    "domains": [
+      { "id": 1, "name": "S/4HANA Cloud Private Edition Architecture", "weight": 20 },
+      { "id": 2, "name": "SAP Activate Methodology", "weight": 20 },
+      { "id": 3, "name": "System Conversion and Migration", "weight": 20 },
+      { "id": 4, "name": "Data Migration", "weight": 20 },
+      { "id": 5, "name": "Integration and Go-Live", "weight": 20 }
+    ],
+    "tags": ["SAP", "S/4HANA", "Cloud Private Edition", "Implementation", "认证考试"]
+  },
+  "questions": [
+    {
+      "id": "q1",
+      "domain": 1,
+      "question": "SAP S/4HANA Cloud Private Edition 与 Public Cloud 版本相比，主要区别是什么？",
+      "options": {
+        "A": "Private Edition 不支持定制化开发",
+        "B": "Private Edition 提供更高的定制灵活性和专用基础设施",
+        "C": "Private Edition 只能部署在本地数据中心",
+        "D": "Private Edition 不支持 SAP HANA 数据库"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "S/4HANA Cloud Private Edition 特点：\n- 专用基础设施（单租户）\n- 支持广泛的定制化开发\n- 可以运行自定义代码\n- 由 SAP 或超大规模云服务商托管\n- 更接近 On-Premise 的灵活性",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q2",
+      "domain": 1,
+      "question": "在 S/4HANA Cloud Private Edition 中，哪些组件是由 SAP 负责管理的？（选择两项）",
+      "options": {
+        "A": "操作系统补丁更新",
+        "B": "业务流程配置",
+        "C": "SAP HANA 数据库维护",
+        "D": "终端用户培训"
+      },
+      "answer": ["A", "C"],
+      "answerType": "multiple",
+      "explanation": "SAP 托管责任：\n- 基础设施管理\n- 操作系统补丁和更新\n- SAP HANA 数据库维护\n- 系统监控和备份\n客户责任：\n- 业务流程配置\n- 用户培训\n- 自定义开发",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q3",
+      "domain": 1,
+      "question": "S/4HANA Cloud Private Edition 支持的部署环境包括哪些？",
+      "options": {
+        "A": "只支持 SAP 数据中心",
+        "B": "SAP 数据中心和主要超大规模云服务商",
+        "C": "只支持客户本地数据中心",
+        "D": "只支持 AWS"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "S/4HANA Cloud Private Edition 部署选项：\n- SAP 数据中心\n- Microsoft Azure\n- Amazon Web Services (AWS)\n- Google Cloud Platform (GCP)\n- 提供灵活的部署位置选择",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q4",
+      "domain": 1,
+      "question": "S/4HANA Cloud Private Edition 的更新策略是什么？",
+      "options": {
+        "A": "每周强制更新",
+        "B": "客户完全自主决定更新时间",
+        "C": "按照协商的维护窗口进行更新，客户有一定控制权",
+        "D": "从不进行更新"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "Private Edition 更新策略：\n- 按照约定的维护窗口更新\n- 客户可以参与更新计划制定\n- 支持更新前的测试验证\n- 比 Public Cloud 更灵活的更新控制",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q5",
+      "domain": 1,
+      "question": "在 S/4HANA Cloud Private Edition 中，Clean Core 策略的目的是什么？（选择两项）",
+      "options": {
+        "A": "完全禁止所有定制化",
+        "B": "将扩展移至 SAP BTP 以保持核心系统稳定",
+        "C": "确保更平滑的升级路径",
+        "D": "删除所有历史数据"
+      },
+      "answer": ["B", "C"],
+      "answerType": "multiple",
+      "explanation": "Clean Core 策略：\n- 保持 S/4HANA 核心代码不被修改\n- 将扩展和定制迁移到 SAP BTP\n- 使用标准 API 和扩展点\n- 简化升级和维护\n- 提高系统稳定性",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q6",
+      "domain": 2,
+      "question": "SAP Activate 方法论中，\"Discover\" 阶段的主要目标是什么？",
+      "options": {
+        "A": "完成系统上线",
+        "B": "了解 SAP 解决方案并确定业务需求",
+        "C": "执行数据迁移",
+        "D": "进行用户培训"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Discover 阶段目标：\n- 探索 SAP 最佳实践\n- 理解 SAP 解决方案能力\n- 识别业务需求和差距\n- 进行初步的可行性评估\n- 使用 SAP Best Practices Explorer",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q7",
+      "domain": 2,
+      "question": "在 SAP Activate 的 \"Prepare\" 阶段，需要完成哪些关键活动？（选择两项）",
+      "options": {
+        "A": "定义项目治理结构和团队",
+        "B": "执行生产数据迁移",
+        "C": "设置项目基础设施和系统",
+        "D": "完成所有用户验收测试"
+      },
+      "answer": ["A", "C"],
+      "answerType": "multiple",
+      "explanation": "Prepare 阶段关键活动：\n- 项目启动和治理建立\n- 团队组建和角色分配\n- 系统景观规划\n- 开发/测试系统搭建\n- 项目计划和方法确认",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q8",
+      "domain": 2,
+      "question": "Fit-to-Standard 工作坊的主要目的是什么？",
+      "options": {
+        "A": "对系统进行压力测试",
+        "B": "展示 SAP 标准流程并识别与业务需求的差距",
+        "C": "完成最终用户培训",
+        "D": "执行数据清理"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Fit-to-Standard 工作坊：\n- 展示 SAP 标准业务流程\n- 与业务需求进行对比\n- 识别 Fit（适配）和 Gap（差距）\n- 评估定制化需求\n- 记录配置要求",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q9",
+      "domain": 2,
+      "question": "在 SAP Activate 的 \"Explore\" 阶段，主要交付成果是什么？",
+      "options": {
+        "A": "生产系统上线",
+        "B": "Fit-to-Standard 分析和解决方案设计",
+        "C": "最终数据迁移",
+        "D": "运维支持计划"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Explore 阶段交付成果：\n- 完成 Fit-to-Standard 分析\n- 确定解决方案范围\n- 识别并确认差距\n- 制定解决方案设计文档\n- 定义扩展和接口需求",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q10",
+      "domain": 2,
+      "question": "在 \"Realize\" 阶段，Sprint 0 的主要活动是什么？",
+      "options": {
+        "A": "执行所有单元测试",
+        "B": "设置开发环境和初始配置",
+        "C": "完成用户培训",
+        "D": "执行切换活动"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Sprint 0 活动：\n- 系统环境准备\n- 激活 SAP Best Practices\n- 设置配置基础\n- 准备开发工具和方法\n- 建立持续集成流程",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q11",
+      "domain": 2,
+      "question": "SAP Activate 中的 \"Deploy\" 阶段包含哪些关键活动？（选择两项）",
+      "options": {
+        "A": "执行切换和数据迁移",
+        "B": "进行初步需求分析",
+        "C": "完成用户验收测试（UAT）",
+        "D": "定义项目范围"
+      },
+      "answer": ["A", "C"],
+      "answerType": "multiple",
+      "explanation": "Deploy 阶段活动：\n- 最终用户培训\n- 用户验收测试（UAT）\n- 切换准备和执行\n- 生产数据迁移\n- Go-Live 检查清单执行",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q12",
+      "domain": 2,
+      "question": "SAP Activate 的 \"Run\" 阶段的主要目标是什么？",
+      "options": {
+        "A": "完成系统配置",
+        "B": "提供上线后支持和持续优化",
+        "C": "进行 Fit-to-Standard 分析",
+        "D": "建立项目团队"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Run 阶段目标：\n- 超级支持（Hypercare）\n- 问题解决和优化\n- 监控系统性能\n- 知识转移\n- 持续改进和运维移交",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q13",
+      "domain": 3,
+      "question": "从 SAP ECC 迁移到 S/4HANA Cloud Private Edition，有哪些主要路径？（选择两项）",
+      "options": {
+        "A": "系统转换（System Conversion）",
+        "B": "直接复制数据库",
+        "C": "新实施（New Implementation）",
+        "D": "自动代码转换"
+      },
+      "answer": ["A", "C"],
+      "answerType": "multiple",
+      "explanation": "主要迁移路径：\n- System Conversion：保留现有配置和数据\n- New Implementation（Greenfield）：全新实施\n- Selective Data Transition：选择性数据迁移\n- 选择取决于业务需求和现有系统状态",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q14",
+      "domain": 3,
+      "question": "System Conversion 路径的主要优势是什么？",
+      "options": {
+        "A": "可以完全重新设计业务流程",
+        "B": "保留现有配置、历史数据和定制",
+        "C": "实施速度最快",
+        "D": "不需要任何测试"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "System Conversion 优势：\n- 保留现有配置\n- 保留历史交易数据\n- 保留定制化开发（需要适配）\n- 用户熟悉度高\n- 较低的变更管理风险",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q15",
+      "domain": 3,
+      "question": "在系统转换之前，SAP Readiness Check 的作用是什么？",
+      "options": {
+        "A": "自动执行转换",
+        "B": "评估系统准备情况并识别必要的预处理步骤",
+        "C": "删除不需要的数据",
+        "D": "创建用户培训材料"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "SAP Readiness Check 功能：\n- 分析现有系统配置\n- 识别不兼容的定制代码\n- 评估业务功能使用情况\n- 识别简化项目\n- 生成预处理建议",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q16",
+      "domain": 3,
+      "question": "新实施（Greenfield）方法的典型场景是什么？（选择两项）",
+      "options": {
+        "A": "需要彻底重新设计业务流程",
+        "B": "需要保留所有历史交易数据",
+        "C": "现有系统高度定制且难以维护",
+        "D": "希望最小化业务变更"
+      },
+      "answer": ["A", "C"],
+      "answerType": "multiple",
+      "explanation": "Greenfield 适用场景：\n- 业务流程需要重大变革\n- 现有系统过于复杂\n- 不需要历史数据迁移\n- 希望采用 SAP 最佳实践\n- 组织变革或合并场景",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q17",
+      "domain": 3,
+      "question": "自定义代码分析工具 Custom Code Migration 的主要功能是什么？",
+      "options": {
+        "A": "自动将所有代码转换为 HANA 兼容代码",
+        "B": "分析自定义代码并识别 S/4HANA 兼容性问题",
+        "C": "删除所有自定义代码",
+        "D": "创建新的 ABAP 程序"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Custom Code Migration 工具功能：\n- 分析自定义 ABAP 代码\n- 识别与 S/4HANA 的兼容性问题\n- 标记需要修改的代码\n- 提供适配建议\n- 支持代码清理和优化",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q18",
+      "domain": 3,
+      "question": "在 S/4HANA 转换中，业务功能简化（Simplification Items）指的是什么？",
+      "options": {
+        "A": "减少用户数量",
+        "B": "S/4HANA 中删除或更改的功能和对象",
+        "C": "降低系统硬件要求",
+        "D": "简化用户界面"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Simplification Items：\n- S/4HANA 中变更的功能\n- 删除的表和字段\n- 替换的功能\n- 新的数据模型要求\n- 需要在转换前处理的项目",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q19",
+      "domain": 3,
+      "question": "Selective Data Transition 方法适用于哪种场景？",
+      "options": {
+        "A": "需要保留所有历史数据",
+        "B": "只需要迁移部分选定的数据到新系统",
+        "C": "不需要任何数据迁移",
+        "D": "只适用于非 SAP 系统"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Selective Data Transition：\n- 也称为 Brownfield+ 或 Shell Conversion\n- 结合 Greenfield 和 Brownfield 优点\n- 选择性迁移配置和数据\n- 适合需要流程优化但保留部分数据的场景\n- 使用 SAP S/4HANA Migration Cockpit",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q20",
+      "domain": 3,
+      "question": "在转换项目中，SUM（Software Update Manager）工具的作用是什么？",
+      "options": {
+        "A": "仅用于报表生成",
+        "B": "执行技术转换到 S/4HANA",
+        "C": "进行用户培训",
+        "D": "创建测试脚本"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "SUM 工具功能：\n- 执行系统转换的技术过程\n- 管理数据库迁移（DMO）\n- 应用必要的转换规则\n- 执行代码检查和调整\n- 支持 Unicode 转换",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q21",
+      "domain": 4,
+      "question": "SAP S/4HANA Migration Cockpit 支持哪些数据迁移方法？（选择两项）",
+      "options": {
+        "A": "从 Excel/CSV 文件上传",
+        "B": "仅支持手工数据录入",
+        "C": "从 SAP 源系统直接迁移",
+        "D": "仅支持第三方 ETL 工具"
+      },
+      "answer": ["A", "C"],
+      "answerType": "multiple",
+      "explanation": "Migration Cockpit 支持的方法：\n- 文件上传（Excel/CSV）\n- 从 SAP 源系统直接迁移\n- 使用 Staging Tables\n- 支持多种数据对象迁移\n- 提供模板下载",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q22",
+      "domain": 4,
+      "question": "LTMC（Legacy Transfer Migration Cockpit）与 LSMW 相比的主要优势是什么？",
+      "options": {
+        "A": "LTMC 只支持更少的数据类型",
+        "B": "LTMC 提供预定义的迁移对象和更好的 Fiori 界面",
+        "C": "LTMC 需要更多的编程知识",
+        "D": "LTMC 只能在旧版本 SAP 中使用"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "LTMC 优势：\n- 预定义的迁移对象\n- Fiori 现代化用户界面\n- 向导式迁移流程\n- 更好的数据验证\n- 支持 S/4HANA 特定数据结构",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q23",
+      "domain": 4,
+      "question": "在数据迁移中，Migration Object Modeler 的作用是什么？",
+      "options": {
+        "A": "创建 3D 数据模型",
+        "B": "定义和扩展迁移对象的结构",
+        "C": "仅用于删除数据",
+        "D": "生成财务报表"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Migration Object Modeler：\n- 创建自定义迁移对象\n- 扩展标准迁移对象\n- 定义字段映射\n- 配置数据转换规则\n- 支持复杂数据结构",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q24",
+      "domain": 4,
+      "question": "数据迁移中，数据清洗（Data Cleansing）应该在什么时候进行？",
+      "options": {
+        "A": "只在 Go-Live 之后",
+        "B": "在数据提取和加载之前",
+        "C": "不需要进行数据清洗",
+        "D": "只在系统上线 6 个月后"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "数据清洗最佳实践：\n- 在源系统中提前进行\n- 在提取数据之前完成\n- 减少迁移数据量\n- 提高数据质量\n- 简化迁移过程",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q25",
+      "domain": 4,
+      "question": "在 S/4HANA 数据迁移中，主数据和交易数据的迁移顺序应该是什么？",
+      "options": {
+        "A": "先迁移交易数据，后迁移主数据",
+        "B": "先迁移主数据，后迁移交易数据",
+        "C": "同时迁移所有数据",
+        "D": "顺序不重要"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "数据迁移顺序：\n1. 组织数据和配置\n2. 主数据（客户、供应商、物料等）\n3. 开放项目和余额\n4. 交易数据（如需要）\n主数据是交易数据的基础",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q26",
+      "domain": 4,
+      "question": "使用 Rapid Data Migration 方法的前提条件是什么？（选择两项）",
+      "options": {
+        "A": "源系统必须是 SAP 系统",
+        "B": "需要完成 RFC 连接配置",
+        "C": "只能迁移财务数据",
+        "D": "需要安装 Migration Cockpit 插件"
+      },
+      "answer": ["A", "B"],
+      "answerType": "multiple",
+      "explanation": "Rapid Data Migration 前提：\n- 源系统为 SAP 系统\n- 配置 RFC 连接\n- 源系统安装相应组件\n- 网络连通性\n- 适当的授权配置",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q27",
+      "domain": 4,
+      "question": "数据迁移模拟测试（Mock Migration）的主要目的是什么？",
+      "options": {
+        "A": "作为最终生产迁移",
+        "B": "验证迁移过程并识别潜在问题",
+        "C": "仅测试系统性能",
+        "D": "创建用户手册"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Mock Migration 目的：\n- 验证迁移流程\n- 识别数据问题\n- 测量迁移时间\n- 培训迁移团队\n- 优化迁移策略\n建议进行多轮模拟迁移",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q28",
+      "domain": 4,
+      "question": "在 S/4HANA 中，业务伙伴（Business Partner）主数据迁移需要注意什么？",
+      "options": {
+        "A": "客户和供应商必须分开迁移",
+        "B": "需要将传统客户和供应商转换为业务伙伴模型",
+        "C": "业务伙伴数据不需要迁移",
+        "D": "只能手工创建业务伙伴"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "业务伙伴迁移：\n- S/4HANA 使用统一的 BP 模型\n- 原客户/供应商需要转换\n- 使用 CVI 或迁移工具\n- 注意数据映射关系\n- 验证重复数据处理",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q29",
+      "domain": 4,
+      "question": "切换期间（Cutover Period）数据迁移的关键考虑因素是什么？（选择两项）",
+      "options": {
+        "A": "确保源系统和目标系统之间的数据一致性",
+        "B": "忽略所有业务操作",
+        "C": "最小化业务中断时间",
+        "D": "删除所有历史报表"
+      },
+      "answer": ["A", "C"],
+      "answerType": "multiple",
+      "explanation": "切换期关键考虑：\n- 数据一致性和完整性\n- 最小化停机时间\n- 清晰的切换计划\n- 回滚策略\n- 关键业务的处理安排",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q30",
+      "domain": 4,
+      "question": "数据迁移质量验证应包括哪些内容？",
+      "options": {
+        "A": "仅检查记录数量",
+        "B": "数量、完整性、准确性和业务逻辑验证",
+        "C": "仅进行用户界面测试",
+        "D": "只需要 IT 团队签字确认"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "数据质量验证：\n- 记录数量对比\n- 字段完整性检查\n- 数据准确性验证\n- 业务逻辑验证\n- 关键用户确认\n- 报表对账",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q31",
+      "domain": 5,
+      "question": "SAP BTP（Business Technology Platform）与 S/4HANA Cloud Private Edition 的集成方式是什么？",
+      "options": {
+        "A": "完全独立，无法集成",
+        "B": "通过 API 和事件驱动架构进行集成",
+        "C": "只能通过数据库直连",
+        "D": "必须使用第三方中间件"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "BTP 与 S/4HANA 集成：\n- RESTful API 集成\n- SAP Event Mesh 事件驱动\n- SAP Integration Suite 连接\n- Side-by-Side 扩展\n- 统一的身份管理",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q32",
+      "domain": 5,
+      "question": "在 S/4HANA 项目中，SAP Integration Suite 的主要功能是什么？（选择两项）",
+      "options": {
+        "A": "管理 API 和集成流程",
+        "B": "仅用于数据备份",
+        "C": "实现 A2A 和 B2B 集成场景",
+        "D": "替代 SAP HANA 数据库"
+      },
+      "answer": ["A", "C"],
+      "answerType": "multiple",
+      "explanation": "SAP Integration Suite 功能：\n- API 管理和发布\n- 集成流程设计\n- A2A（应用到应用）集成\n- B2B（企业对企业）集成\n- 预构建的集成包",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q33",
+      "domain": 5,
+      "question": "Go-Live 检查清单应该涵盖哪些方面？",
+      "options": {
+        "A": "仅技术系统检查",
+        "B": "技术、功能、数据、用户准备等多个方面",
+        "C": "只需要项目经理签字",
+        "D": "仅财务结算完成"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Go-Live 检查清单：\n- 技术系统就绪\n- 功能配置完成\n- 数据迁移验证\n- 用户培训完成\n- 接口测试通过\n- 回滚计划准备",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q34",
+      "domain": 5,
+      "question": "Cutover Plan（切换计划）应该包含哪些关键要素？（选择两项）",
+      "options": {
+        "A": "详细的活动时间表和责任人",
+        "B": "仅包含 IT 系统清单",
+        "C": "回滚策略和紧急联系人",
+        "D": "下一年度预算计划"
+      },
+      "answer": ["A", "C"],
+      "answerType": "multiple",
+      "explanation": "Cutover Plan 要素：\n- 详细活动时间表\n- 责任分配矩阵\n- 回滚策略\n- 紧急联系人列表\n- 决策检查点\n- 通信计划",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q35",
+      "domain": 5,
+      "question": "Hypercare 阶段的持续时间通常是多久？",
+      "options": {
+        "A": "1-2 天",
+        "B": "2-4 周",
+        "C": "6 个月到 1 年",
+        "D": "无固定期限"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Hypercare 阶段：\n- 通常持续 2-4 周\n- 提供增强的支持\n- 快速响应问题\n- 监控系统性能\n- 处理初期用户问题",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q36",
+      "domain": 5,
+      "question": "在 S/4HANA 项目中，变更管理（Change Management）的重要性体现在哪里？",
+      "options": {
+        "A": "仅管理技术代码变更",
+        "B": "确保用户接受新系统并成功采用新流程",
+        "C": "只关注项目预算控制",
+        "D": "仅用于合规审计"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "变更管理重要性：\n- 确保用户参与和接受\n- 管理组织变革\n- 培训和能力建设\n- 沟通和期望管理\n- 提高项目成功率",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q37",
+      "domain": 5,
+      "question": "SAP Solution Manager 在 S/4HANA 实施中的作用是什么？（选择两项）",
+      "options": {
+        "A": "应用生命周期管理",
+        "B": "替代 S/4HANA 核心系统",
+        "C": "测试管理和变更控制",
+        "D": "仅用于发送邮件通知"
+      },
+      "answer": ["A", "C"],
+      "answerType": "multiple",
+      "explanation": "Solution Manager 作用：\n- 应用生命周期管理（ALM）\n- 测试套件管理\n- 变更请求管理\n- 系统监控\n- 流程文档管理",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q38",
+      "domain": 5,
+      "question": "在 S/4HANA 项目上线后，系统优化应该关注哪些方面？",
+      "options": {
+        "A": "仅关注硬件升级",
+        "B": "性能优化、流程改进和用户反馈处理",
+        "C": "停止所有开发活动",
+        "D": "仅进行安全审计"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "上线后优化：\n- 系统性能调优\n- 业务流程优化\n- 收集和处理用户反馈\n- 识别改进机会\n- 持续学习和培训",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q39",
+      "domain": 1,
+      "question": "S/4HANA Cloud Private Edition 中的 RISE with SAP 包含什么？",
+      "options": {
+        "A": "仅硬件设备",
+        "B": "业务转型服务包，包含技术和业务支持",
+        "C": "仅 SAP 培训课程",
+        "D": "仅第三方咨询服务"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "RISE with SAP 包含：\n- S/4HANA Cloud 订阅\n- SAP BTP 服务\n- SAP Business Network\n- 业务流程智能\n- 转型支持服务",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q40",
+      "domain": 1,
+      "question": "在 S/4HANA Cloud Private Edition 中，系统景观（System Landscape）通常包括哪些环境？（选择两项）",
+      "options": {
+        "A": "开发环境（DEV）",
+        "B": "仅生产环境",
+        "C": "质量保证环境（QAS）",
+        "D": "仅灾难恢复环境"
+      },
+      "answer": ["A", "C"],
+      "answerType": "multiple",
+      "explanation": "标准系统景观：\n- DEV（开发环境）\n- QAS（质量保证/测试环境）\n- PRD（生产环境）\n- 可选：沙箱、培训环境等\n遵循传输路径管理",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q41",
+      "domain": 2,
+      "question": "在 SAP Activate 中，Q-Gate 的作用是什么？",
+      "options": {
+        "A": "仅用于技术质量检查",
+        "B": "项目阶段转换的质量检查点和决策门户",
+        "C": "仅用于财务审批",
+        "D": "替代用户验收测试"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Q-Gate（Quality Gate）：\n- 阶段转换检查点\n- 评估阶段交付物完成情况\n- 确认进入下一阶段的准备\n- 识别风险和问题\n- 获得相关方批准",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q42",
+      "domain": 2,
+      "question": "Agile/Scrum 方法在 SAP Activate Realize 阶段如何应用？",
+      "options": {
+        "A": "完全替代所有 SAP 方法论",
+        "B": "通过 Sprint 迭代进行配置、开发和测试",
+        "C": "仅用于文档编写",
+        "D": "只在项目结束时使用"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Agile 在 Realize 阶段应用：\n- Sprint 周期（通常 2-4 周）\n- 迭代配置和开发\n- 持续集成测试\n- 每日站会\n- Sprint 评审和回顾",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q43",
+      "domain": 3,
+      "question": "DMO（Database Migration Option）的作用是什么？",
+      "options": {
+        "A": "仅用于数据备份",
+        "B": "在系统转换过程中同时进行数据库迁移到 SAP HANA",
+        "C": "删除旧数据库",
+        "D": "仅用于数据分析"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "DMO 功能：\n- SUM 工具的一部分\n- 系统升级同时迁移数据库\n- 从非 HANA 数据库迁移到 HANA\n- 减少停机时间\n- 支持 Near-Zero Downtime 方案",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q44",
+      "domain": 3,
+      "question": "在代码适配过程中，ABAP Test Cockpit (ATC) 的主要功能是什么？",
+      "options": {
+        "A": "仅检查代码格式",
+        "B": "检查代码质量和 S/4HANA 兼容性问题",
+        "C": "自动修复所有代码问题",
+        "D": "仅生成代码文档"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "ABAP Test Cockpit：\n- 代码质量分析\n- S/4HANA 兼容性检查\n- 性能问题识别\n- 安全漏洞检测\n- 代码规范验证",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q45",
+      "domain": 4,
+      "question": "在物料主数据迁移中，哪些视图需要特别注意？（选择两项）",
+      "options": {
+        "A": "基本数据视图",
+        "B": "仅财务视图",
+        "C": "工厂/存储位置视图",
+        "D": "仅用户界面设置"
+      },
+      "answer": ["A", "C"],
+      "answerType": "multiple",
+      "explanation": "物料主数据关键视图：\n- 基本数据（描述、单位等）\n- 工厂/存储位置数据\n- 采购视图\n- 销售视图\n- 财务/会计视图\n需要按组织级别配置",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q46",
+      "domain": 5,
+      "question": "在接口测试中，端到端（E2E）测试的目的是什么？",
+      "options": {
+        "A": "仅测试单个程序功能",
+        "B": "验证完整业务流程跨系统的数据和功能正确性",
+        "C": "仅检查用户界面外观",
+        "D": "替代单元测试"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "E2E 测试目的：\n- 验证完整业务流程\n- 检查跨系统集成\n- 确认数据流正确性\n- 验证业务场景可行性\n- 识别集成问题",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q47",
+      "domain": 5,
+      "question": "SAP Cloud ALM 相比 Solution Manager 的优势是什么？",
+      "options": {
+        "A": "仅支持本地部署",
+        "B": "云原生解决方案，更好地支持云环境管理",
+        "C": "功能比 Solution Manager 更少",
+        "D": "不支持 S/4HANA"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "SAP Cloud ALM 优势：\n- 云原生 SaaS 解决方案\n- 针对云环境优化\n- 简化的用户界面\n- 自动更新\n- 更好的云集成能力",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q48",
+      "domain": 1,
+      "question": "S/4HANA Cloud Private Edition 与 On-Premise 版本的技术差异是什么？",
+      "options": {
+        "A": "使用完全不同的代码库",
+        "B": "技术上基本相同，主要区别在于托管和运维方式",
+        "C": "Private Edition 不支持 ABAP",
+        "D": "Private Edition 使用不同的数据库"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "技术对比：\n- 相同的 S/4HANA 代码库\n- 相同的 SAP HANA 数据库\n- 主要区别是运维责任\n- Private Edition 由 SAP 托管\n- On-Premise 由客户自己管理",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q49",
+      "domain": 2,
+      "question": "在 SAP Activate 中，Solution Validation 测试属于哪个阶段？",
+      "options": {
+        "A": "Discover",
+        "B": "Prepare",
+        "C": "Realize",
+        "D": "Run"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "Solution Validation 在 Realize 阶段：\n- 验证配置正确性\n- 功能测试\n- 集成测试\n- 为 UAT 做准备\n- 确保解决方案符合要求",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q50",
+      "domain": 5,
+      "question": "项目文档和知识转移在哪个阶段完成？（选择两项）",
+      "options": {
+        "A": "Deploy 阶段",
+        "B": "仅在 Discover 阶段",
+        "C": "Run 阶段",
+        "D": "从不需要文档"
+      },
+      "answer": ["A", "C"],
+      "answerType": "multiple",
+      "explanation": "文档和知识转移：\n- Deploy：完成项目文档和培训\n- Run：知识转移给运维团队\n- 包括用户手册、操作手册\n- 系统配置文档\n- 运维流程文档",
+      "difficulty": "easy"
+    }
+  ]
+}

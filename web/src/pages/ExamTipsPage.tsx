@@ -538,6 +538,47 @@ const examTipsData: Record<Provider, {
           { zh: 'Kaggle: 通过竞赛练习数据处理和模型训练', ja: 'Kaggle: コンペティションでデータ処理とモデル訓練を練習' },
           { zh: 'Hugging Face: 探索和使用开源模型', ja: 'Hugging Face: オープンソースモデルの探索と使用' }
         ]
+      },
+      {
+        title: { zh: 'n8n - AI 工作流自动化', ja: 'n8n - AIワークフロー自動化' },
+        icon: Zap,
+        color: 'text-purple-600 bg-purple-100',
+        tips: [
+          { zh: 'n8n 是开源的工作流自动化平台，支持 400+ 应用集成和 AI 代理构建', ja: 'n8nはオープンソースのワークフロー自動化プラットフォーム、400+アプリ統合とAIエージェント構築をサポート' },
+          { zh: '核心概念：节点（Node）、触发器（Trigger）、工作流（Workflow）、凭证（Credentials）', ja: 'コア概念：ノード（Node）、トリガー（Trigger）、ワークフロー（Workflow）、クレデンシャル（Credentials）' },
+          { zh: 'AI 功能：支持 OpenAI、Claude、Ollama 等 LLM 集成，可构建 RAG 和 AI Agent', ja: 'AI機能：OpenAI、Claude、Ollama等のLLM統合、RAGとAI Agentの構築が可能' },
+          { zh: '部署方式：自托管（Docker/npm）或使用 n8n Cloud 托管服务', ja: 'デプロイ方式：セルフホスト（Docker/npm）またはn8n Cloudマネージドサービス' },
+          { zh: '典型场景：数据同步、API 编排、聊天机器人、自动化报告、AI 辅助审批流程', ja: '典型シナリオ：データ同期、APIオーケストレーション、チャットボット、自動レポート、AI支援承認フロー' },
+          { zh: '学习路径：官方文档 → Starter Course → Community Templates → 自定义节点开发', ja: '学習パス：公式ドキュメント → Starter Course → Community Templates → カスタムノード開発' },
+          { zh: '与 Zapier/Make 对比：开源可自托管、无执行次数限制、支持复杂逻辑和代码节点', ja: 'Zapier/Makeとの比較：オープンソースでセルフホスト可能、実行回数制限なし、複雑なロジックとコードノードをサポート' }
+        ]
+      },
+      {
+        title: { zh: 'Dify - LLM 应用开发平台', ja: 'Dify - LLMアプリ開発プラットフォーム' },
+        icon: Brain,
+        color: 'text-purple-600 bg-purple-100',
+        tips: [
+          { zh: 'Dify 是开源的 LLMOps 平台，支持快速构建生成式 AI 应用（聊天助手、Agent、工作流）', ja: 'Difyはオープンソースの LLMOps プラットフォーム、生成AIアプリ（チャットアシスタント、Agent、ワークフロー）の迅速な構築をサポート' },
+          { zh: '核心功能：Prompt IDE、RAG Pipeline、Agent Framework、模型管理、可观测性', ja: 'コア機能：Prompt IDE、RAG Pipeline、Agent Framework、モデル管理、オブザーバビリティ' },
+          { zh: '支持多种 LLM：OpenAI、Claude、文心一言、通义千问、Llama、Mistral 等', ja: '複数LLMをサポート：OpenAI、Claude、文心一言、通義千問、Llama、Mistral等' },
+          { zh: 'RAG 增强：支持多种文档格式导入、向量数据库集成（Weaviate/Qdrant/Pinecone）', ja: 'RAG強化：多種ドキュメント形式のインポート、ベクトルDB統合（Weaviate/Qdrant/Pinecone）をサポート' },
+          { zh: 'Agent 模式：支持 ReAct、Function Calling、工具调用，可连接外部 API 和数据库', ja: 'Agentモード：ReAct、Function Calling、ツール呼び出しをサポート、外部APIとDBに接続可能' },
+          { zh: '工作流编排：可视化拖拽构建复杂 AI 流程，支持条件分支、循环、并行执行', ja: 'ワークフロー編成：可視化ドラッグ&ドロップで複雑なAIフローを構築、条件分岐、ループ、並列実行をサポート' },
+          { zh: '部署选项：Dify Cloud 托管、Docker Compose 自托管、Kubernetes 企业部署', ja: 'デプロイオプション：Dify Cloudマネージド、Docker Composeセルフホスト、Kubernetesエンタープライズ' },
+          { zh: '企业特性：SSO 集成、API 密钥管理、使用量统计、多租户支持', ja: 'エンタープライズ機能：SSO統合、APIキー管理、使用量統計、マルチテナントサポート' }
+        ]
+      },
+      {
+        title: { zh: 'AI 开发工具对比', ja: 'AI開発ツール比較' },
+        icon: Target,
+        color: 'text-purple-600 bg-purple-100',
+        tips: [
+          { zh: 'n8n vs Dify：n8n 偏向通用自动化（400+ 集成），Dify 专注 LLM 应用开发', ja: 'n8n vs Dify：n8nは汎用自動化（400+統合）、DifyはLLMアプリ開発に特化' },
+          { zh: 'LangChain vs Dify：LangChain 是代码框架，Dify 提供可视化低代码开发', ja: 'LangChain vs Dify：LangChainはコードフレームワーク、Difyは可視化ローコード開発を提供' },
+          { zh: 'Flowise vs Dify：Flowise 更轻量、Dify 功能更全面（Agent、可观测性）', ja: 'Flowise vs Dify：Flowiseはより軽量、Difyはより包括的（Agent、オブザーバビリティ）' },
+          { zh: '选择建议：简单自动化用 n8n，LLM 应用开发用 Dify，复杂定制用 LangChain', ja: '選択の推奨：シンプルな自動化はn8n、LLMアプリ開発はDify、複雑なカスタマイズはLangChain' },
+          { zh: '组合使用：n8n 做数据采集和触发，Dify 处理 AI 逻辑，形成完整自动化流水线', ja: '組み合わせ使用：n8nでデータ収集とトリガー、DifyでAIロジック処理、完全な自動化パイプラインを形成' }
+        ]
       }
     ]
   }

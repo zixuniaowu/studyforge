@@ -54,7 +54,8 @@ const careerIcons: Record<string, LucideIcon> = {
   // SAP career paths
   'sap-consultant': Building2,
   'sap-developer': Code2,
-  'sap-data-analyst': BarChart3
+  'sap-data-analyst': BarChart3,
+  'sap-implementation': Rocket
 };
 
 
@@ -114,6 +115,36 @@ const providerConfig = {
   }
 };
 
+// AI Tools Practice configuration (not official certifications)
+const aiToolsConfig = {
+  n8n: {
+    name: { zh: 'n8n', ja: 'n8n' },
+    shortName: 'n8n',
+    description: {
+      zh: 'n8n 工作流自动化平台练习，从基础到高级集成',
+      ja: 'n8n ワークフロー自動化プラットフォーム練習、基礎から高度な統合まで'
+    },
+    gradient: 'from-rose-600 to-pink-700',
+    bgGradient: 'from-slate-50 to-white',
+    borderColor: 'border-slate-200',
+    iconBg: 'bg-rose-600',
+    hoverShadow: 'hover:shadow-lg'
+  },
+  Dify: {
+    name: { zh: 'Dify', ja: 'Dify' },
+    shortName: 'Dify',
+    description: {
+      zh: 'Dify AI 应用开发平台练习，LLMOps 和智能应用构建',
+      ja: 'Dify AI アプリ開発プラットフォーム練習、LLMOps とインテリジェントアプリ構築'
+    },
+    gradient: 'from-violet-600 to-purple-700',
+    bgGradient: 'from-slate-50 to-white',
+    borderColor: 'border-slate-200',
+    iconBg: 'bg-violet-600',
+    hoverShadow: 'hover:shadow-lg'
+  }
+};
+
 // Learning category configuration - Professional colors
 const learningConfig = {
   'ai-intro': {
@@ -158,8 +189,9 @@ const learningConfig = {
 };
 
 type ProviderKey = keyof typeof providerConfig;
+type AIToolKey = keyof typeof aiToolsConfig;
 type LearningKey = keyof typeof learningConfig;
-type ViewType = ProviderKey | LearningKey | null;
+type ViewType = ProviderKey | AIToolKey | LearningKey | null;
 
 export const HomePage: React.FC = () => {
   const { exams, loading, error, loadExams, deleteExam } = useExamStore();
@@ -193,8 +225,8 @@ export const HomePage: React.FC = () => {
   // Handle navigation: read provider and certCode from state or reset view
   useEffect(() => {
     const state = location.state as { provider?: string; certCode?: string } | null;
-    if (state?.provider && ['AWS', 'Azure', 'GCP', 'SAP'].includes(state.provider)) {
-      setSelectedView(state.provider as ProviderKey);
+    if (state?.provider && ['AWS', 'Azure', 'GCP', 'SAP', 'n8n', 'Dify'].includes(state.provider)) {
+      setSelectedView(state.provider as ProviderKey | AIToolKey);
       setCertCodeFilter(state.certCode || null);
       // Clear the state so it doesn't persist on refresh
       window.history.replaceState({}, document.title);
@@ -319,6 +351,7 @@ export const HomePage: React.FC = () => {
 
   const filteredExams = useMemo(() => {
     if (!selectedView || selectedView in learningConfig) return [];
+    // Handle both certification providers and AI tools
     let result = languageFilteredExams.filter(exam => exam.provider === selectedView);
     // If certCode filter is set, filter by exam ID containing the cert code
     if (certCodeFilter) {
@@ -336,7 +369,7 @@ export const HomePage: React.FC = () => {
 
   useEffect(() => {
     const autoImport = async () => {
-      // Check if SAP exams are missing
+      // Check if any provider exams are missing
       const hasSapExams = languageFilteredExams.some(e => e.provider === 'SAP');
       const needsImport = languageFilteredExams.length === 0 || !hasSapExams;
 
@@ -409,7 +442,13 @@ export const HomePage: React.FC = () => {
             'sap-c-btpdev-set1', 'sap-c-btpdev-set2', 'sap-c-btpdev-set3',
             'sap-c-btpint-set1', 'sap-c-btpint-set2', 'sap-c-btpint-set3',
             // SAP Activate
-            'sap-c-activate-set1', 'sap-c-activate-set2', 'sap-c-activate-set3'
+            'sap-c-activate-set1', 'sap-c-activate-set2', 'sap-c-activate-set3',
+            // Additional SAP
+            'sap-c-hanaimp-set1', 'sap-c-hanaimp-set2', 'sap-c-hanaimp-set3',
+            'sap-c-s4cpr-set1', 'sap-c-s4cpr-set2', 'sap-c-s4cpr-set3',
+            'sap-c-fiord-set1', 'sap-c-fiord-set2', 'sap-c-fiord-set3',
+            'sap-c-s4cs-set1', 'sap-c-s4cs-set2', 'sap-c-s4cs-set3',
+            'sap-c-bowi-set1', 'sap-c-bowi-set2', 'sap-c-bowi-set3'
           ];
           for (const examFile of examFiles) {
             // Skip if already imported
@@ -520,7 +559,13 @@ export const HomePage: React.FC = () => {
           'sap-c-aibus-set1', 'sap-c-aibus-set2', 'sap-c-aibus-set3',
           'sap-c-datasph-set1', 'sap-c-datasph-set2', 'sap-c-datasph-set3',
           // SAP Activate
-          'sap-c-activate-set1', 'sap-c-activate-set2', 'sap-c-activate-set3'
+          'sap-c-activate-set1', 'sap-c-activate-set2', 'sap-c-activate-set3',
+          // Additional SAP
+          'sap-c-hanaimp-set1', 'sap-c-hanaimp-set2', 'sap-c-hanaimp-set3',
+          'sap-c-s4cpr-set1', 'sap-c-s4cpr-set2', 'sap-c-s4cpr-set3',
+          'sap-c-fiord-set1', 'sap-c-fiord-set2', 'sap-c-fiord-set3',
+          'sap-c-s4cs-set1', 'sap-c-s4cs-set2', 'sap-c-s4cs-set3',
+          'sap-c-bowi-set1', 'sap-c-bowi-set2', 'sap-c-bowi-set3'
         ];
         const languages = ['', '-ja'];
         for (const suffix of languages) {
@@ -560,9 +605,12 @@ export const HomePage: React.FC = () => {
     );
   }
 
-  // Exam list view (when provider is selected)
-  if (selectedView && selectedView in providerConfig) {
-    const config = providerConfig[selectedView as ProviderKey];
+  // Exam list view (when provider or AI tool is selected)
+  if (selectedView && (selectedView in providerConfig || selectedView in aiToolsConfig)) {
+    const config = selectedView in providerConfig
+      ? providerConfig[selectedView as ProviderKey]
+      : aiToolsConfig[selectedView as AIToolKey];
+    const isAITool = selectedView in aiToolsConfig;
     return (
       <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-indigo-50/30">
         <div className={`bg-gradient-to-r ${config.bgGradient} border-b ${config.borderColor}`}>
@@ -581,7 +629,7 @@ export const HomePage: React.FC = () => {
                 </div>
                 <div>
                   <h1 className="text-2xl lg:text-3xl font-bold text-gray-900">
-                    {config.shortName} {certCodeFilter ? certCodeFilter.toUpperCase() : (language === 'ja' ? '認定試験' : '认证考试')}
+                    {config.shortName} {certCodeFilter ? certCodeFilter.toUpperCase() : (isAITool ? (language === 'ja' ? '練習問題' : '练习题') : (language === 'ja' ? '認定試験' : '认证考试'))}
                   </h1>
                   <p className="text-gray-600 text-base">
                     {filteredExams.length} {language === 'ja' ? 'セット' : '套题库'}
@@ -610,7 +658,7 @@ export const HomePage: React.FC = () => {
           {filteredExams.length === 0 ? (
             <div className="text-center py-24 bg-white rounded-2xl border border-gray-200 shadow-sm">
               <div className="inline-flex p-5 bg-gray-100 rounded-2xl mb-6"><BookOpen size={56} className="text-gray-400" /></div>
-              <h3 className="text-2xl font-semibold text-gray-600 mb-4">{language === 'ja' ? 'この認定の試験がありません' : '暂无此认证的题库'}</h3>
+              <h3 className="text-2xl font-semibold text-gray-600 mb-4">{isAITool ? (language === 'ja' ? 'この練習問題がありません' : '暂无此工具的练习题') : (language === 'ja' ? 'この認定の試験がありません' : '暂无此认证的题库')}</h3>
               <p className="text-lg text-gray-500">{language === 'ja' ? '試験をインポートしてください' : '请导入题库'}</p>
             </div>
           ) : (
@@ -863,7 +911,7 @@ export const HomePage: React.FC = () => {
                     <div className="w-12 h-12 mx-auto rounded-xl bg-slate-700 flex items-center justify-center mb-3">
                       <IconComponent size={24} className="text-white" />
                     </div>
-                    <h3 className="text-sm font-medium text-slate-700 leading-tight">
+                    <h3 className="text-base font-medium text-slate-700 leading-tight">
                       {path.name[language === 'ja' ? 'ja' : 'zh']}
                     </h3>
                   </button>
@@ -990,62 +1038,43 @@ export const HomePage: React.FC = () => {
                 </div>
               </div>
 
-              {/* Recent Sessions Card */}
+              {/* Learning Progress Card - Combined view */}
               <div className="bg-white rounded-xl p-6 border border-slate-200">
-                <h3 className="text-base font-medium text-slate-500 mb-5 uppercase tracking-wide">
-                  {language === 'ja' ? '最近の学習' : '最近学习'}
+                <h3 className="text-lg font-medium text-slate-500 mb-5 uppercase tracking-wide flex items-center gap-2">
+                  <Award size={20} className="text-slate-400" />
+                  {language === 'ja' ? '学習進捗' : '学习进度'}
                 </h3>
-                {learningStats.recentSessions.length > 0 ? (
-                  <div className="space-y-3">
-                    {learningStats.recentSessions.slice(0, 4).map((session, i) => (
-                      <div key={i} className="flex items-center justify-between text-base">
-                        <div className="flex items-center gap-2">
-                          {session.mode === 'exam' ? (
-                            <FileCheck size={16} className="text-blue-500" />
-                          ) : (
-                            <Play size={16} className="text-emerald-500" />
-                          )}
-                          <span className="text-slate-600">{session.examName}</span>
+                {learningStats.certStats.length > 0 ? (
+                  <div className="space-y-4">
+                    {learningStats.certStats.slice(0, 3).map((cert, i) => (
+                      <div key={i} className="p-4 bg-slate-50 rounded-lg border border-slate-100">
+                        <div className="flex items-center justify-between mb-2">
+                          <span className="text-lg font-semibold text-slate-800">{cert.certCode}</span>
+                          <span className={`text-2xl font-bold ${cert.correctRate >= 70 ? 'text-emerald-600' : 'text-amber-600'}`}>
+                            {cert.correctRate}%
+                          </span>
                         </div>
-                        <span className={`font-medium ${session.score >= 70 ? 'text-emerald-600' : 'text-amber-600'}`}>
-                          {session.score}%
-                        </span>
+                        <div className="flex items-center justify-between text-base text-slate-500">
+                          <span>{cert.questionsAnswered} {language === 'ja' ? '問解答' : '题已答'}</span>
+                          <span>{language === 'ja' ? '最高' : '最高'} {cert.bestScore}%</span>
+                        </div>
+                        {/* Progress bar */}
+                        <div className="mt-3 h-3 bg-slate-200 rounded-full overflow-hidden">
+                          <div
+                            className={`h-full rounded-full ${cert.correctRate >= 70 ? 'bg-emerald-500' : 'bg-amber-500'}`}
+                            style={{ width: `${Math.min(cert.correctRate, 100)}%` }}
+                          />
+                        </div>
                       </div>
                     ))}
                   </div>
                 ) : (
-                  <div className="text-center text-base text-slate-400 py-4">
+                  <div className="text-center text-lg text-slate-400 py-4">
                     {language === 'ja' ? 'まだ学習記録がありません' : '暂无学习记录'}
                   </div>
                 )}
               </div>
             </div>
-
-            {/* Per-Certification Progress (show if has data) */}
-            {learningStats.certStats.length > 0 && (
-              <div className="mt-6">
-                <h3 className="text-base font-medium text-slate-500 mb-4 flex items-center gap-2">
-                  <Award size={20} className="text-slate-400" />
-                  {language === 'ja' ? '認定別進捗' : '认证进度'}
-                </h3>
-                <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
-                  {learningStats.certStats.slice(0, 6).map((cert, i) => (
-                    <div key={i} className="bg-white rounded-xl p-4 border border-slate-200">
-                      <div className="text-sm font-semibold text-slate-800 mb-2">{cert.certCode}</div>
-                      <div className="flex items-center justify-between text-sm">
-                        <span className="text-slate-500">{cert.questionsAnswered} {language === 'ja' ? '問' : '题'}</span>
-                        <span className={`font-medium ${cert.correctRate >= 70 ? 'text-emerald-600' : 'text-amber-600'}`}>
-                          {cert.correctRate}%
-                        </span>
-                      </div>
-                      <div className="text-sm text-slate-400 mt-2">
-                        {language === 'ja' ? '最高' : '最高'}: {cert.bestScore}%
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            )}
           </div>
 
           {/* Section 4: AI Learning Resources */}
@@ -1069,7 +1098,7 @@ export const HomePage: React.FC = () => {
                   </div>
                   <div className="flex-1">
                     <h3 className="text-base font-semibold text-slate-800">{language === 'ja' ? 'AI入門ガイド' : 'AI 入门指南'}</h3>
-                    <p className="text-sm text-slate-500">{language === 'ja' ? '5章・基礎から学ぶ' : '5章·从基础开始'}</p>
+                    <p className="text-base text-slate-500">{language === 'ja' ? '5章・基礎から学ぶ' : '5章·从基础开始'}</p>
                   </div>
                   <ChevronRight size={20} className="text-slate-400 group-hover:text-slate-600" />
                 </div>
@@ -1086,7 +1115,7 @@ export const HomePage: React.FC = () => {
                   </div>
                   <div className="flex-1">
                     <h3 className="text-base font-semibold text-slate-800">{language === 'ja' ? 'AI実践上級編' : 'AI 进阶实战'}</h3>
-                    <p className="text-sm text-slate-500">{language === 'ja' ? '3章・Agent、RAG' : '3章·Agent、RAG'}</p>
+                    <p className="text-base text-slate-500">{language === 'ja' ? 'Agent、RAG、n8n、Dify' : 'Agent、RAG、n8n、Dify'}</p>
                   </div>
                   <ChevronRight size={20} className="text-slate-400 group-hover:text-slate-600" />
                 </div>
@@ -1103,7 +1132,7 @@ export const HomePage: React.FC = () => {
                   </div>
                   <div className="flex-1">
                     <h3 className="text-base font-semibold text-slate-800">{language === 'ja' ? 'AIリソース' : 'AI 资源汇总'}</h3>
-                    <p className="text-sm text-slate-500">{language === 'ja' ? '9ツール・コード付' : '9工具·含代码'}</p>
+                    <p className="text-base text-slate-500">{language === 'ja' ? '9ツール・コード付' : '9工具·含代码'}</p>
                   </div>
                   <ChevronRight size={20} className="text-slate-400 group-hover:text-slate-600" />
                 </div>
@@ -1120,7 +1149,7 @@ export const HomePage: React.FC = () => {
                   </div>
                   <div className="flex-1">
                     <h3 className="text-base font-semibold text-slate-800">{language === 'ja' ? '試験攻略ガイド' : '考试攻略指南'}</h3>
-                    <p className="text-sm text-slate-500">{language === 'ja' ? '4社対応・高頻出問題' : '4厂商·高频考点'}</p>
+                    <p className="text-base text-slate-500">{language === 'ja' ? '4社対応・高頻出問題' : '4厂商·高频考点'}</p>
                   </div>
                   <ChevronRight size={20} className="text-slate-400 group-hover:text-slate-600" />
                 </div>
@@ -1137,7 +1166,7 @@ export const HomePage: React.FC = () => {
                   </div>
                   <div className="flex-1">
                     <h3 className="text-base font-semibold text-slate-800">{language === 'ja' ? 'コード実践例' : '代码实战'}</h3>
-                    <p className="text-sm text-slate-500">{language === 'ja' ? '5分野・コピペOK' : '5领域·即学即用'}</p>
+                    <p className="text-base text-slate-500">{language === 'ja' ? '5分野・コピペOK' : '5领域·即学即用'}</p>
                   </div>
                   <ChevronRight size={20} className="text-slate-400 group-hover:text-slate-600" />
                 </div>
@@ -1154,7 +1183,7 @@ export const HomePage: React.FC = () => {
                   </div>
                   <div className="flex-1">
                     <h3 className="text-base font-semibold text-cyan-800">{language === 'ja' ? 'SAP 学習コース' : 'SAP 学习课程'}</h3>
-                    <p className="text-sm text-teal-600">{language === 'ja' ? '6モジュール・S/4HANA & BTP' : '6模块·S/4HANA & BTP'}</p>
+                    <p className="text-base text-teal-600">{language === 'ja' ? '6モジュール・S/4HANA & BTP' : '6模块·S/4HANA & BTP'}</p>
                   </div>
                   <ChevronRight size={20} className="text-cyan-400 group-hover:text-cyan-600" />
                 </div>
@@ -1171,7 +1200,7 @@ export const HomePage: React.FC = () => {
                   </div>
                   <div className="flex-1">
                     <h3 className="text-base font-semibold text-cyan-800">{language === 'ja' ? 'SAP 移行ロードマップ' : 'SAP 迁移路线图'}</h3>
-                    <p className="text-sm text-teal-600">{language === 'ja' ? 'ECC→S/4HANA・3パス' : 'ECC→S/4HANA·3路径'}</p>
+                    <p className="text-base text-teal-600">{language === 'ja' ? 'ECC→S/4HANA・3パス' : 'ECC→S/4HANA·3路径'}</p>
                   </div>
                   <ChevronRight size={20} className="text-cyan-400 group-hover:text-cyan-600" />
                 </div>
@@ -1188,7 +1217,7 @@ export const HomePage: React.FC = () => {
                   </div>
                   <div className="flex-1">
                     <h3 className="text-base font-semibold text-pink-700">{language === 'ja' ? '子供AI教室' : '儿童AI课堂'}</h3>
-                    <p className="text-sm text-purple-500">{language === 'ja' ? '24レッスン・ゲーム化' : '24课时·游戏化学习'}</p>
+                    <p className="text-base text-purple-500">{language === 'ja' ? '24レッスン・ゲーム化' : '24课时·游戏化学习'}</p>
                   </div>
                   <ChevronRight size={20} className="text-pink-400 group-hover:text-pink-600" />
                 </div>

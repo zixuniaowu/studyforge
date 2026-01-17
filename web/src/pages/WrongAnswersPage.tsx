@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { ArrowLeft, CheckCircle, XCircle, Trash2, RefreshCw } from 'lucide-react';
+import { ArrowLeft, CheckCircle, XCircle, Trash2, RefreshCw, BookOpen } from 'lucide-react';
 import { db, wrongDB } from '../lib/db';
 import { WrongAnswer, Question, Exam } from '../types';
 import { useLanguageStore } from '../stores/languageStore';
@@ -129,20 +129,22 @@ export const WrongAnswersPage: React.FC = () => {
       <div className="px-6 lg:px-10 py-6">
         {wrongAnswers.length === 0 ? (
           <div className="text-center py-20">
-            <div className="w-20 h-20 mx-auto mb-6 bg-green-100 rounded-full flex items-center justify-center">
-              <CheckCircle size={40} className="text-green-600" />
+            <div className="w-20 h-20 mx-auto mb-6 bg-slate-100 rounded-full flex items-center justify-center">
+              <BookOpen size={40} className="text-slate-400" />
             </div>
             <h2 className="text-2xl font-bold text-gray-800 mb-2">
-              {language === 'ja' ? '間違いなし！' : '暂无错题！'}
+              {language === 'ja' ? '間違いノートは空です' : '错题本是空的'}
             </h2>
             <p className="text-gray-600 mb-6">
-              {language === 'ja' ? 'この調子で頑張りましょう！' : '继续加油！'}
+              {language === 'ja'
+                ? '練習問題を解いて間違えた問題がここに記録されます。\nまずは練習を始めましょう！'
+                : '做练习题时答错的题目会记录在这里。\n先去做一些练习吧！'}
             </p>
             <button
               onClick={() => navigate('/')}
               className="px-6 py-3 bg-indigo-600 text-white rounded-xl hover:bg-indigo-700 transition-colors"
             >
-              {language === 'ja' ? 'ホームに戻る' : '返回首页'}
+              {language === 'ja' ? '練習を始める' : '开始练习'}
             </button>
           </div>
         ) : (

@@ -1,0 +1,658 @@
+{
+  "examId": "sap-c-hanaimp",
+  "provider": "SAP",
+  "title": "SAP Certified Technology Associate - SAP HANA 2.0 (Set 1)",
+  "description": "SAP HANA 内存数据库安装、配置和管理认证 - 第一套",
+  "questions": [
+    {
+      "id": 1,
+      "question": "SAP HANA 使用哪种数据存储技术来实现高性能查询？",
+      "options": {
+        "A": "基于磁盘的行存储",
+        "B": "内存列存储",
+        "C": "文件系统存储",
+        "D": "混合云存储"
+      },
+      "answer": "B",
+      "explanation": "SAP HANA 使用内存列存储技术，数据主要存储在内存中，并采用列式存储格式以实现高性能的分析查询。",
+      "answerType": "single"
+    },
+    {
+      "id": 2,
+      "question": "在 SAP HANA 中，哪个服务负责处理 SQL 请求？",
+      "options": {
+        "A": "Name Server",
+        "B": "Index Server",
+        "C": "Compile Server",
+        "D": "Preprocessor Server"
+      },
+      "answer": "B",
+      "explanation": "Index Server 是 SAP HANA 的核心服务，负责处理 SQL 和 MDX 请求，执行查询并返回结果。",
+      "answerType": "single"
+    },
+    {
+      "id": 3,
+      "question": "SAP HANA Cockpit 主要用于什么目的？",
+      "options": {
+        "A": "应用程序开发",
+        "B": "数据可视化",
+        "C": "系统管理和监控",
+        "D": "数据迁移"
+      },
+      "answer": "C",
+      "explanation": "SAP HANA Cockpit 是一个基于 Web 的管理工具，用于监控和管理 SAP HANA 系统的性能、资源和配置。",
+      "answerType": "single"
+    },
+    {
+      "id": 4,
+      "question": "在 SAP HANA 系统复制中，哪种模式提供最低的 RTO（恢复时间目标）？",
+      "options": {
+        "A": "异步复制",
+        "B": "同步复制",
+        "C": "同步内存复制",
+        "D": "全同步复制"
+      },
+      "answer": "C",
+      "explanation": "同步内存复制 (SYNCMEM) 在主系统提交前将数据同步到备用系统内存，提供最低的 RTO，因为切换时无需从日志恢复。",
+      "answerType": "single"
+    },
+    {
+      "id": 5,
+      "question": "SAP HANA 中的 Delta Merge 操作的主要目的是什么？",
+      "options": {
+        "A": "压缩备份文件",
+        "B": "将 Delta 存储中的数据合并到 Main 存储",
+        "C": "同步多个节点的数据",
+        "D": "清理无效索引"
+      },
+      "answer": "B",
+      "explanation": "Delta Merge 将 Delta 存储（用于写入优化的行存储）中的数据合并到 Main 存储（读取优化的列存储），以保持查询性能。",
+      "answerType": "single"
+    },
+    {
+      "id": 6,
+      "question": "在 SAP HANA 中，哪个工具用于数据配置和建模？",
+      "options": {
+        "A": "SAP HANA Studio",
+        "B": "SAP HANA Cockpit",
+        "C": "SAP HANA XS Admin",
+        "D": "SAP Solution Manager"
+      },
+      "answer": "A",
+      "explanation": "SAP HANA Studio 是基于 Eclipse 的 IDE，用于数据建模、开发存储过程、创建计算视图等开发任务。",
+      "answerType": "single"
+    },
+    {
+      "id": 7,
+      "question": "SAP HANA 备份的类型有哪些？（选择两个）",
+      "options": {
+        "A": "数据备份",
+        "B": "索引备份",
+        "C": "日志备份",
+        "D": "模式备份"
+      },
+      "answer": ["A", "C"],
+      "explanation": "SAP HANA 支持数据备份（完整或增量）和日志备份。数据备份保存数据快照，日志备份保存 redo 日志用于时间点恢复。",
+      "answerType": "multiple"
+    },
+    {
+      "id": 8,
+      "question": "SAP HANA 多租户数据库容器（MDC）的主要特点是什么？",
+      "options": {
+        "A": "每个租户有独立的操作系统",
+        "B": "多个租户数据库共享单个 HANA 实例",
+        "C": "每个租户必须有独立的硬件",
+        "D": "租户之间可以直接共享数据"
+      },
+      "answer": "B",
+      "explanation": "MDC 允许多个独立的租户数据库在单个 SAP HANA 系统上运行，共享系统资源但数据和配置完全隔离。",
+      "answerType": "single"
+    },
+    {
+      "id": 9,
+      "question": "在 SAP HANA 中，什么是 Calculation View？",
+      "options": {
+        "A": "用于物理数据存储的表",
+        "B": "用于数据建模的虚拟数据模型",
+        "C": "用于用户认证的视图",
+        "D": "用于性能监控的仪表板"
+      },
+      "answer": "B",
+      "explanation": "Calculation View 是 SAP HANA 中最灵活的数据建模对象，可以组合多个数据源，执行聚合、投影、联接等操作。",
+      "answerType": "single"
+    },
+    {
+      "id": 10,
+      "question": "SAP HANA 系统的最低内存要求是多少？",
+      "options": {
+        "A": "16 GB",
+        "B": "32 GB",
+        "C": "64 GB",
+        "D": "128 GB"
+      },
+      "answer": "C",
+      "explanation": "SAP HANA 生产系统的最低内存要求是 64 GB，但实际需求取决于数据量和并发用户数。",
+      "answerType": "single"
+    },
+    {
+      "id": 11,
+      "question": "在 SAP HANA 中，Name Server 的主要功能是什么？",
+      "options": {
+        "A": "处理 SQL 查询",
+        "B": "管理系统元数据和拓扑信息",
+        "C": "执行数据备份",
+        "D": "处理用户认证"
+      },
+      "answer": "B",
+      "explanation": "Name Server 是分布式系统中的主服务器，维护系统拓扑信息、表分区位置和其他元数据。",
+      "answerType": "single"
+    },
+    {
+      "id": 12,
+      "question": "SAP HANA 支持哪些数据压缩技术？（选择两个）",
+      "options": {
+        "A": "字典压缩",
+        "B": "ZIP 压缩",
+        "C": "运行长度编码",
+        "D": "RAR 压缩"
+      },
+      "answer": ["A", "C"],
+      "explanation": "SAP HANA 使用多种列压缩技术，包括字典压缩（Dictionary Encoding）和运行长度编码（Run-length Encoding）来优化存储和查询性能。",
+      "answerType": "multiple"
+    },
+    {
+      "id": 13,
+      "question": "在 SAP HANA 系统复制中，Operation Mode 设置为 'logreplay' 时意味着什么？",
+      "options": {
+        "A": "备用系统实时同步所有数据",
+        "B": "备用系统仅接收和重放日志",
+        "C": "备用系统处于只读模式提供查询服务",
+        "D": "备用系统定期执行完整同步"
+      },
+      "answer": "B",
+      "explanation": "logreplay 模式下，备用系统接收主系统的 redo 日志并重放，数据不会预加载到内存，切换时需要加载数据。",
+      "answerType": "single"
+    },
+    {
+      "id": 14,
+      "question": "SAP HANA 中的 Savepoint 的作用是什么？",
+      "options": {
+        "A": "创建数据备份",
+        "B": "将内存中的数据持久化到磁盘",
+        "C": "同步多个系统的数据",
+        "D": "清理过期的日志文件"
+      },
+      "answer": "B",
+      "explanation": "Savepoint 是将内存中的数据页定期写入数据卷的过程，确保系统重启时可以从最近的一致性点恢复。",
+      "answerType": "single"
+    },
+    {
+      "id": 15,
+      "question": "在 SAP HANA XSA 架构中，哪个组件负责应用程序部署和生命周期管理？",
+      "options": {
+        "A": "SAP Web IDE",
+        "B": "Cloud Foundry Controller",
+        "C": "HANA Database",
+        "D": "SAP Router"
+      },
+      "answer": "B",
+      "explanation": "SAP HANA XSA 基于 Cloud Foundry 架构，Controller 负责应用程序的部署、扩展和生命周期管理。",
+      "answerType": "single"
+    },
+    {
+      "id": 16,
+      "question": "SAP HANA 动态分层（Dynamic Tiering）的主要用途是什么？",
+      "options": {
+        "A": "实现高可用性",
+        "B": "将冷数据存储在磁盘上以降低成本",
+        "C": "加速 OLTP 事务",
+        "D": "提供实时数据复制"
+      },
+      "answer": "B",
+      "explanation": "Dynamic Tiering 允许将访问频率较低的数据（温/冷数据）存储在磁盘上而非内存中，以优化总体拥有成本。",
+      "answerType": "single"
+    },
+    {
+      "id": 17,
+      "question": "在 SAP HANA 中，什么是 Table Partitioning 的好处？（选择两个）",
+      "options": {
+        "A": "提高大表的查询性能",
+        "B": "简化数据建模",
+        "C": "支持并行数据加载",
+        "D": "减少网络带宽使用"
+      },
+      "answer": ["A", "C"],
+      "explanation": "表分区可以提高大表的查询性能（通过分区裁剪）并支持并行处理，如并行数据加载和分区级别的操作。",
+      "answerType": "multiple"
+    },
+    {
+      "id": 18,
+      "question": "SAP HANA Studio 中的 'Administration Console' 透视图主要用于什么？",
+      "options": {
+        "A": "创建计算视图",
+        "B": "监控和管理 HANA 系统",
+        "C": "开发存储过程",
+        "D": "配置网络设置"
+      },
+      "answer": "B",
+      "explanation": "Administration Console 透视图提供系统监控、性能分析、备份管理、用户管理等系统管理功能。",
+      "answerType": "single"
+    },
+    {
+      "id": 19,
+      "question": "SAP HANA 中的 Row Store 表适合什么类型的工作负载？",
+      "options": {
+        "A": "大规模分析查询",
+        "B": "高频率 OLTP 事务",
+        "C": "数据仓库报表",
+        "D": "时间序列分析"
+      },
+      "answer": "B",
+      "explanation": "Row Store 针对 OLTP 工作负载优化，适合频繁的单行插入、更新和基于主键的访问。",
+      "answerType": "single"
+    },
+    {
+      "id": 20,
+      "question": "在 SAP HANA 中，什么是 'License Key'？",
+      "options": {
+        "A": "数据库加密密钥",
+        "B": "系统许可证文件",
+        "C": "用户认证令牌",
+        "D": "SSL 证书"
+      },
+      "answer": "B",
+      "explanation": "License Key 是 SAP 提供的系统许可证，定义了 SAP HANA 系统可使用的内存量和其他功能限制。",
+      "answerType": "single"
+    },
+    {
+      "id": 21,
+      "question": "SAP HANA Cockpit 2.0 与之前版本的主要区别是什么？",
+      "options": {
+        "A": "只支持单租户系统",
+        "B": "基于 SAP Fiori 界面设计",
+        "C": "仅支持命令行操作",
+        "D": "不再支持系统监控"
+      },
+      "answer": "B",
+      "explanation": "SAP HANA Cockpit 2.0 采用了 SAP Fiori 风格的现代用户界面，提供更直观的管理体验和改进的功能。",
+      "answerType": "single"
+    },
+    {
+      "id": 22,
+      "question": "在 SAP HANA 中，什么是 Smart Data Access (SDA)？",
+      "options": {
+        "A": "数据压缩技术",
+        "B": "虚拟访问远程数据源的技术",
+        "C": "数据加密方法",
+        "D": "用户访问控制机制"
+      },
+      "answer": "B",
+      "explanation": "Smart Data Access 允许 SAP HANA 通过虚拟表访问远程数据源（如 Oracle、SQL Server）的数据，无需物理复制。",
+      "answerType": "single"
+    },
+    {
+      "id": 23,
+      "question": "SAP HANA 系统的标准 SQL 端口号是多少？（实例号为 00）",
+      "options": {
+        "A": "30013",
+        "B": "30015",
+        "C": "30017",
+        "D": "30019"
+      },
+      "answer": "B",
+      "explanation": "SAP HANA SQL 端口遵循 3<instance>15 格式，实例号 00 的 SQL 端口为 30015。",
+      "answerType": "single"
+    },
+    {
+      "id": 24,
+      "question": "在 SAP HANA 高可用性配置中，什么是 Host Auto-Failover？",
+      "options": {
+        "A": "自动软件更新机制",
+        "B": "备用主机自动接管故障主机的角色",
+        "C": "数据自动备份功能",
+        "D": "负载均衡机制"
+      },
+      "answer": "B",
+      "explanation": "Host Auto-Failover 在主机发生故障时，备用主机会自动接管其服务，确保系统可用性。",
+      "answerType": "single"
+    },
+    {
+      "id": 25,
+      "question": "SAP HANA 中的 'Allocation Limit' 设置用于什么目的？",
+      "options": {
+        "A": "限制用户连接数",
+        "B": "限制表的最大行数",
+        "C": "限制 HANA 可使用的最大内存",
+        "D": "限制并发查询数"
+      },
+      "answer": "C",
+      "explanation": "Allocation Limit 定义了 SAP HANA 可以使用的最大内存量，防止系统使用超过分配的资源。",
+      "answerType": "single"
+    },
+    {
+      "id": 26,
+      "question": "在 SAP HANA 中执行数据恢复时，需要哪些组件？（选择两个）",
+      "options": {
+        "A": "数据备份",
+        "B": "系统配置文件",
+        "C": "日志备份",
+        "D": "用户列表"
+      },
+      "answer": ["A", "C"],
+      "explanation": "完整恢复需要数据备份（提供基础数据快照）和日志备份（提供增量更改），以恢复到特定时间点。",
+      "answerType": "multiple"
+    },
+    {
+      "id": 27,
+      "question": "SAP HANA 中的 AFL（Application Function Library）主要用于什么？",
+      "options": {
+        "A": "用户界面开发",
+        "B": "提供预构建的分析和预测函数",
+        "C": "数据库备份",
+        "D": "网络通信"
+      },
+      "answer": "B",
+      "explanation": "AFL 是 SAP HANA 的应用函数库，提供预测分析、业务函数和文本分析等高级分析功能。",
+      "answerType": "single"
+    },
+    {
+      "id": 28,
+      "question": "在 SAP HANA 中，什么命令用于手动触发 Delta Merge？",
+      "options": {
+        "A": "ALTER TABLE MERGE",
+        "B": "MERGE DELTA OF",
+        "C": "EXECUTE MERGE",
+        "D": "CALL MERGE_DELTA"
+      },
+      "answer": "B",
+      "explanation": "MERGE DELTA OF <table_name> 命令用于手动触发指定表的 Delta Merge 操作。",
+      "answerType": "single"
+    },
+    {
+      "id": 29,
+      "question": "SAP HANA Native Storage Extension (NSE) 的主要用途是什么？",
+      "options": {
+        "A": "扩展网络存储容量",
+        "B": "将温数据存储在磁盘缓冲区缓存中",
+        "C": "增加CPU处理能力",
+        "D": "提供数据加密"
+      },
+      "answer": "B",
+      "explanation": "NSE 允许将不常访问的数据存储在磁盘上并使用缓冲区缓存，同时保持在 HANA 内存池中的热数据，优化总体成本。",
+      "answerType": "single"
+    },
+    {
+      "id": 30,
+      "question": "在 SAP HANA 中，Persistence Layer 的主要功能是什么？",
+      "options": {
+        "A": "处理用户认证",
+        "B": "确保数据的持久性和恢复能力",
+        "C": "管理网络连接",
+        "D": "执行数据转换"
+      },
+      "answer": "B",
+      "explanation": "Persistence Layer 负责将内存数据持久化到磁盘（通过 Savepoint 和日志），确保系统重启后数据可以恢复。",
+      "answerType": "single"
+    },
+    {
+      "id": 31,
+      "question": "SAP HANA 的 Scale-Out 架构中，Worker 节点的主要作用是什么？",
+      "options": {
+        "A": "仅管理元数据",
+        "B": "存储和处理数据",
+        "C": "仅处理用户认证",
+        "D": "仅执行备份操作"
+      },
+      "answer": "B",
+      "explanation": "在 Scale-Out 配置中，Worker 节点托管 Index Server，负责存储数据和处理查询请求。",
+      "answerType": "single"
+    },
+    {
+      "id": 32,
+      "question": "在 SAP HANA 中，什么是 Analytic Privilege？",
+      "options": {
+        "A": "数据库管理员权限",
+        "B": "基于行或列的数据访问控制",
+        "C": "系统备份权限",
+        "D": "应用程序开发权限"
+      },
+      "answer": "B",
+      "explanation": "Analytic Privilege 是 SAP HANA 中的数据授权机制，用于控制用户对 Calculation View 中特定数据的访问。",
+      "answerType": "single"
+    },
+    {
+      "id": 33,
+      "question": "SAP HANA 中的 'Redo Log' 用于什么目的？",
+      "options": {
+        "A": "存储查询执行计划",
+        "B": "记录数据更改以支持恢复",
+        "C": "缓存频繁访问的数据",
+        "D": "存储用户会话信息"
+      },
+      "answer": "B",
+      "explanation": "Redo Log 记录所有数据更改操作，用于系统崩溃后的恢复和时间点恢复。",
+      "answerType": "single"
+    },
+    {
+      "id": 34,
+      "question": "在 SAP HANA 系统复制中，什么是 Takeover 操作？",
+      "options": {
+        "A": "备份数据到远程系统",
+        "B": "将备用系统提升为主系统",
+        "C": "同步配置文件",
+        "D": "重启所有服务"
+      },
+      "answer": "B",
+      "explanation": "Takeover 是将备用系统提升为新主系统的操作，通常在主系统故障或计划切换时执行。",
+      "answerType": "single"
+    },
+    {
+      "id": 35,
+      "question": "SAP HANA 中的 'Parameter' 表视图用于什么？",
+      "options": {
+        "A": "存储用户数据",
+        "B": "查看和修改系统配置参数",
+        "C": "记录查询历史",
+        "D": "管理数据备份"
+      },
+      "answer": "B",
+      "explanation": "M_INIFILE_CONTENTS 等系统视图允许查看系统配置参数，ALTER SYSTEM ALTER CONFIGURATION 用于修改参数。",
+      "answerType": "single"
+    },
+    {
+      "id": 36,
+      "question": "在 SAP HANA 中，什么是 'Data Aging'？",
+      "options": {
+        "A": "自动删除旧数据",
+        "B": "根据访问模式将数据分为热/温/冷层",
+        "C": "数据压缩技术",
+        "D": "数据加密方法"
+      },
+      "answer": "B",
+      "explanation": "Data Aging 是根据数据访问频率将数据分类并移动到不同存储层的策略，优化性能和成本。",
+      "answerType": "single"
+    },
+    {
+      "id": 37,
+      "question": "SAP HANA 的 'Workload Management' 功能用于什么？（选择两个）",
+      "options": {
+        "A": "控制不同用户的资源使用",
+        "B": "管理数据备份计划",
+        "C": "优先处理关键查询",
+        "D": "配置网络带宽"
+      },
+      "answer": ["A", "C"],
+      "explanation": "Workload Management 允许管理员定义工作负载类，控制资源分配和查询优先级，确保关键业务查询获得足够资源。",
+      "answerType": "multiple"
+    },
+    {
+      "id": 38,
+      "question": "在 SAP HANA 中，Statistics Server 的主要功能是什么？",
+      "options": {
+        "A": "执行 SQL 查询",
+        "B": "收集和存储系统监控数据",
+        "C": "管理用户认证",
+        "D": "处理数据备份"
+      },
+      "answer": "B",
+      "explanation": "Statistics Server 收集系统性能指标、资源使用情况等监控数据，支持系统分析和故障排除。",
+      "answerType": "single"
+    },
+    {
+      "id": 39,
+      "question": "SAP HANA 中的 'Table Replication' 用于什么场景？",
+      "options": {
+        "A": "备份单个表",
+        "B": "在 Scale-Out 节点间复制表以提高查询性能",
+        "C": "压缩表数据",
+        "D": "加密表数据"
+      },
+      "answer": "B",
+      "explanation": "在分布式系统中，表复制可以将表的副本放置在多个节点上，减少跨节点数据传输，提高联接查询性能。",
+      "answerType": "single"
+    },
+    {
+      "id": 40,
+      "question": "在 SAP HANA 中，什么是 'Memory Garbage Collection'？",
+      "options": {
+        "A": "删除未使用的数据库对象",
+        "B": "回收不再使用的内存空间",
+        "C": "清理过期的备份文件",
+        "D": "删除无效的用户会话"
+      },
+      "answer": "B",
+      "explanation": "Memory Garbage Collection 是自动回收不再使用的内存版本的过程，释放内存供新数据使用。",
+      "answerType": "single"
+    },
+    {
+      "id": 41,
+      "question": "SAP HANA 支持哪些身份验证方法？（选择两个）",
+      "options": {
+        "A": "内部密码认证",
+        "B": "文件系统认证",
+        "C": "SAML",
+        "D": "FTP认证"
+      },
+      "answer": ["A", "C"],
+      "explanation": "SAP HANA 支持多种认证方法，包括内部密码认证、Kerberos、SAML、X.509 证书等。",
+      "answerType": "multiple"
+    },
+    {
+      "id": 42,
+      "question": "在 SAP HANA 中，'Unload' 操作的作用是什么？",
+      "options": {
+        "A": "从磁盘删除表",
+        "B": "将表数据从内存释放到磁盘",
+        "C": "导出表结构",
+        "D": "压缩表数据"
+      },
+      "answer": "B",
+      "explanation": "Unload 将表的列数据从内存释放，下次访问时会自动从磁盘加载，用于内存管理。",
+      "answerType": "single"
+    },
+    {
+      "id": 43,
+      "question": "SAP HANA Deployment Infrastructure (HDI) 的主要用途是什么？",
+      "options": {
+        "A": "管理硬件资源",
+        "B": "管理数据库对象的部署和版本控制",
+        "C": "监控系统性能",
+        "D": "处理用户请求"
+      },
+      "answer": "B",
+      "explanation": "HDI 是 SAP HANA 的容器化数据库对象管理工具，提供声明式的对象部署和版本管理功能。",
+      "answerType": "single"
+    },
+    {
+      "id": 44,
+      "question": "在 SAP HANA 中，什么是 'Statement Memory Limit'？",
+      "options": {
+        "A": "限制总体系统内存",
+        "B": "限制单个 SQL 语句可使用的最大内存",
+        "C": "限制并发连接数",
+        "D": "限制存储过程数量"
+      },
+      "answer": "B",
+      "explanation": "Statement Memory Limit 限制单个 SQL 语句执行时可使用的最大内存，防止单个查询消耗过多资源。",
+      "answerType": "single"
+    },
+    {
+      "id": 45,
+      "question": "SAP HANA 中的 'Full Text Index' 用于什么？",
+      "options": {
+        "A": "加速数值计算",
+        "B": "支持文本搜索和分析",
+        "C": "压缩文本数据",
+        "D": "加密文本字段"
+      },
+      "answer": "B",
+      "explanation": "Full Text Index 为文本列创建索引，支持模糊搜索、语言处理和文本分析功能。",
+      "answerType": "single"
+    },
+    {
+      "id": 46,
+      "question": "在 SAP HANA 中执行在线备份时，系统会怎样？",
+      "options": {
+        "A": "停止所有事务处理",
+        "B": "继续正常处理事务",
+        "C": "只允许只读访问",
+        "D": "自动切换到备用系统"
+      },
+      "answer": "B",
+      "explanation": "SAP HANA 支持在线备份，备份过程中系统继续正常处理事务，不会中断业务操作。",
+      "answerType": "single"
+    },
+    {
+      "id": 47,
+      "question": "SAP HANA 中的 'Service Allocation Limit' 用于什么？",
+      "options": {
+        "A": "限制服务端口数量",
+        "B": "限制单个服务可使用的内存",
+        "C": "限制网络带宽",
+        "D": "限制并发用户数"
+      },
+      "answer": "B",
+      "explanation": "Service Allocation Limit 定义单个 HANA 服务（如 Index Server）可使用的最大内存量。",
+      "answerType": "single"
+    },
+    {
+      "id": 48,
+      "question": "在 SAP HANA 中，什么是 'Hint'？",
+      "options": {
+        "A": "错误提示信息",
+        "B": "用于影响查询优化器决策的指令",
+        "C": "用户帮助文档",
+        "D": "系统警告消息"
+      },
+      "answer": "B",
+      "explanation": "Hint 是 SQL 语句中的特殊注释，用于向查询优化器提供执行建议，影响查询计划的生成。",
+      "answerType": "single"
+    },
+    {
+      "id": 49,
+      "question": "SAP HANA 的 'Plan Stability' 功能用于什么？",
+      "options": {
+        "A": "确保系统稳定运行",
+        "B": "保持 SQL 查询使用固定的执行计划",
+        "C": "稳定网络连接",
+        "D": "保护数据完整性"
+      },
+      "answer": "B",
+      "explanation": "Plan Stability 允许捕获和强制使用特定的查询执行计划，防止统计信息变化导致计划回归。",
+      "answerType": "single"
+    },
+    {
+      "id": 50,
+      "question": "在 SAP HANA 中，什么是 'Trace File'？",
+      "options": {
+        "A": "数据备份文件",
+        "B": "包含诊断和调试信息的日志文件",
+        "C": "用户数据导出文件",
+        "D": "配置文件"
+      },
+      "answer": "B",
+      "explanation": "Trace File 是 SAP HANA 生成的诊断日志，包含系统操作、错误和调试信息，用于问题分析和故障排除。",
+      "answerType": "single"
+    }
+  ]
+}

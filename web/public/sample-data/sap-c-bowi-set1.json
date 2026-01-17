@@ -1,0 +1,774 @@
+{
+  "exam": {
+    "id": "sap-c-bowi-set1",
+    "name": "SAP C_BOWI 模拟考试 #1",
+    "code": "C_BOWI",
+    "provider": "SAP",
+    "language": "zh-CN",
+    "description": "SAP BusinessObjects Web Intelligence 认证考试模拟题 - 第1套",
+    "totalQuestions": 50,
+    "passingScore": 65,
+    "examTime": 180,
+    "domains": [
+      { "id": 1, "name": "Web Intelligence Interface and Navigation", "weight": 15 },
+      { "id": 2, "name": "Creating and Designing Reports", "weight": 20 },
+      { "id": 3, "name": "Query Panel and Data Providers", "weight": 20 },
+      { "id": 4, "name": "Universes and Semantic Layer", "weight": 15 },
+      { "id": 5, "name": "Formulas and Variables", "weight": 15 },
+      { "id": 6, "name": "Charts, Filters, and Formatting", "weight": 15 }
+    ],
+    "tags": ["SAP", "BusinessObjects", "Web Intelligence", "BI", "认证考试"]
+  },
+  "questions": [
+    {
+      "id": "q1",
+      "domain": 1,
+      "question": "在 SAP BusinessObjects Web Intelligence 中，用户可以通过哪种方式访问报表？",
+      "options": {
+        "A": "仅通过 BI Launchpad",
+        "B": "通过 BI Launchpad 或 Web Intelligence Rich Client",
+        "C": "仅通过桌面客户端",
+        "D": "仅通过移动应用"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "SAP BusinessObjects Web Intelligence 支持多种访问方式：\n- BI Launchpad：基于浏览器的门户界面\n- Web Intelligence Rich Client：安装在本地的客户端应用\n- 两种方式都可以创建、编辑和查看报表\n- 还可以通过移动端访问，但不是唯一方式",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q2",
+      "domain": 1,
+      "question": "Web Intelligence 中的 Reading 模式和 Design 模式有什么区别？",
+      "options": {
+        "A": "Reading 模式只能查看报表，Design 模式可以编辑报表",
+        "B": "两种模式功能完全相同",
+        "C": "Reading 模式用于创建新报表",
+        "D": "Design 模式只能查看报表"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Web Intelligence 有两种主要模式：\n- Reading 模式：用于查看报表、应用筛选器、导航数据，但不能修改报表结构\n- Design 模式：完整的编辑功能，可以修改查询、添加对象、设计报表布局\n- 用户需要适当的权限才能进入 Design 模式",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q3",
+      "domain": 1,
+      "question": "在 BI Launchpad 中，用户如何组织和管理自己的报表？",
+      "options": {
+        "A": "使用个人文件夹（My Favorites）",
+        "B": "只能保存在公共文件夹",
+        "C": "无法组织报表",
+        "D": "只能使用标签"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "BI Launchpad 提供多种报表组织方式：\n- My Favorites（我的收藏夹）：个人文件夹，用于保存常用报表\n- 公共文件夹：由管理员设置，用于共享报表\n- 类别：可以为报表添加分类标签\n- 搜索功能：快速查找报表",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q4",
+      "domain": 2,
+      "question": "创建新的 Web Intelligence 报表时，首先需要选择什么？",
+      "options": {
+        "A": "报表模板",
+        "B": "数据源（Universe 或其他数据提供程序）",
+        "C": "输出格式",
+        "D": "打印设置"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "创建 Web Intelligence 报表的第一步是选择数据源：\n- Universe：语义层，最常用的数据源\n- BEx 查询：从 SAP BW 获取数据\n- Excel 文件：导入本地数据\n- 没有数据源就无法创建有意义的报表",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q5",
+      "domain": 2,
+      "question": "在 Web Intelligence 报表中，表格（Table）和交叉表（Crosstab）的主要区别是什么？",
+      "options": {
+        "A": "表格只能显示数字，交叉表可以显示文本",
+        "B": "表格是垂直显示数据，交叉表可以在行和列上同时显示维度",
+        "C": "交叉表不能包含度量值",
+        "D": "两者没有区别"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "表格和交叉表的区别：\n- 表格（Table）：垂直列表形式，每列一个对象\n- 交叉表（Crosstab）：类似数据透视表，可以在行和列上放置维度，单元格显示度量值\n- 交叉表适合多维分析和比较\n- 两者都可以显示文本和数字",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q6",
+      "domain": 2,
+      "question": "如何在 Web Intelligence 报表中添加新的报表页签（Report Tab）？",
+      "options": {
+        "A": "右键点击现有页签，选择\"插入报表\"",
+        "B": "从文件菜单选择\"新建报表\"",
+        "C": "无法添加新页签",
+        "D": "只能通过复制现有页签"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "添加新报表页签的方法：\n- 右键点击现有页签 → 选择\"插入报表\"\n- 使用工具栏中的\"插入\"菜单\n- 新页签会使用相同的数据提供程序\n- 可以在不同页签上创建不同的视图和分析",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q7",
+      "domain": 3,
+      "question": "在 Web Intelligence 查询面板中，Result Objects（结果对象）区域用于放置什么？",
+      "options": {
+        "A": "只放置筛选条件",
+        "B": "放置要在报表中显示的维度和度量",
+        "C": "只放置度量值",
+        "D": "放置排序条件"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Result Objects 区域的用途：\n- 放置要在报表中显示的所有对象\n- 包括维度（如客户、产品、日期）\n- 包括度量（如销售额、数量）\n- 这些对象将从数据库中检索并显示在报表中",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q8",
+      "domain": 3,
+      "question": "在查询面板中，Query Filters（查询筛选器）和 Report Filters（报表筛选器）有什么区别？",
+      "options": {
+        "A": "没有区别，只是名称不同",
+        "B": "查询筛选器在数据库级别过滤数据，报表筛选器在本地数据上过滤",
+        "C": "报表筛选器性能更好",
+        "D": "查询筛选器只能用于文本字段"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "两种筛选器的区别：\n- Query Filters：在 SQL 执行时过滤，减少从数据库返回的数据量\n- Report Filters：在已检索的数据上过滤，不影响查询性能\n- Query Filters 可以显著提高性能\n- Report Filters 提供更灵活的交互式筛选",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q9",
+      "domain": 3,
+      "question": "什么是 Web Intelligence 中的 Prompts（提示）？",
+      "options": {
+        "A": "系统错误消息",
+        "B": "运行查询时要求用户输入参数值的交互式筛选器",
+        "C": "报表标题",
+        "D": "数据验证规则"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Prompts（提示）是交互式参数：\n- 在运行报表时提示用户输入值\n- 常用于日期范围、产品类别等筛选条件\n- 可以设置默认值和值列表\n- 使报表更加灵活和可重用\n- 减少需要创建的报表数量",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q10",
+      "domain": 3,
+      "question": "如何在一个 Web Intelligence 文档中创建多个查询（Multiple Queries）？",
+      "options": {
+        "A": "Web Intelligence 只支持一个查询",
+        "B": "在查询面板中点击\"添加查询\"或\"合并查询\"",
+        "C": "必须创建多个文档",
+        "D": "只能通过导入实现"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Web Intelligence 支持多个查询：\n- 使用\"添加查询\"创建独立的数据提供程序\n- 使用\"合并查询\"合并多个查询的结果\n- 不同查询可以基于相同或不同的 Universe\n- 可以在同一报表中使用多个数据源的数据",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q11",
+      "domain": 4,
+      "question": "SAP BusinessObjects Universe 的主要作用是什么？",
+      "options": {
+        "A": "存储报表数据",
+        "B": "提供数据库和业务用户之间的语义层",
+        "C": "执行 ETL 操作",
+        "D": "管理用户权限"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Universe 是语义层（Semantic Layer）：\n- 将复杂的数据库结构转换为业务术语\n- 业务用户无需了解 SQL 或数据库结构\n- 定义维度、度量、层次结构等业务对象\n- 封装数据库连接和 SQL 生成逻辑",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q12",
+      "domain": 4,
+      "question": "在 Universe 中，Dimension（维度）和 Measure（度量）有什么区别？",
+      "options": {
+        "A": "维度是数值型，度量是文本型",
+        "B": "维度用于分组和分类，度量用于聚合计算",
+        "C": "两者完全相同",
+        "D": "度量不能用于筛选"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "维度和度量的区别：\n- Dimension（维度）：分类属性，如客户名称、产品类别、日期\n- Measure（度量）：可聚合的数值，如销售额、数量、利润\n- 维度决定分析的粒度\n- 度量自动按维度聚合",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q13",
+      "domain": 4,
+      "question": "什么是 Universe 中的 Hierarchy（层次结构）？",
+      "options": {
+        "A": "数据库表之间的关系",
+        "B": "定义对象之间的父子关系，支持钻取分析",
+        "C": "用户权限级别",
+        "D": "报表排序规则"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Hierarchy（层次结构）定义：\n- 表示对象之间的父子关系\n- 例如：年 → 季度 → 月 → 日\n- 或：国家 → 地区 → 城市\n- 支持报表中的钻取功能\n- 用户可以从汇总级别钻取到明细",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q14",
+      "domain": 4,
+      "question": ".unx 和 .unv 文件格式有什么区别？",
+      "options": {
+        "A": "没有区别",
+        "B": ".unx 是新格式（Information Design Tool），.unv 是旧格式（Universe Designer）",
+        "C": ".unv 是新格式",
+        "D": ".unx 只用于 SAP HANA"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "两种 Universe 格式的区别：\n- .unv：传统格式，使用 Universe Designer 创建\n- .unx：新格式，使用 Information Design Tool 创建\n- .unx 支持多数据源、更好的性能和新功能\n- 两种格式都可以在 Web Intelligence 中使用",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q15",
+      "domain": 4,
+      "question": "Universe 中的 Context（上下文）用于解决什么问题？",
+      "options": {
+        "A": "提高查询性能",
+        "B": "解决多对多关系和循环连接问题",
+        "C": "定义用户权限",
+        "D": "设置默认值"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Context（上下文）的作用：\n- 解决星型模式中的多对多关系\n- 避免循环连接导致的错误结果\n- 定义特定的 join 路径\n- 例如：分开\"销售\"和\"预算\"两个事实表的分析路径",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q16",
+      "domain": 5,
+      "question": "在 Web Intelligence 中，如何创建一个新的变量（Variable）？",
+      "options": {
+        "A": "在查询面板中定义",
+        "B": "在报表中右键选择\"创建变量\"或使用公式编辑器",
+        "C": "只能在 Universe 中定义",
+        "D": "无法创建新变量"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "创建变量的方法：\n- 右键点击报表 → 选择\"创建变量\"\n- 使用公式编辑器定义计算逻辑\n- 变量可以是维度、度量或详细信息类型\n- 变量在报表级别定义，与 Universe 对象不同",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q17",
+      "domain": 5,
+      "question": "Sum()、Count() 和 Average() 函数属于哪类函数？",
+      "options": {
+        "A": "字符串函数",
+        "B": "聚合函数",
+        "C": "日期函数",
+        "D": "逻辑函数"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "聚合函数用于汇总数据：\n- Sum()：求和\n- Count()：计数\n- Average()：平均值\n- Max()、Min()：最大值、最小值\n- 这些函数根据当前的维度上下文自动聚合",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q18",
+      "domain": 5,
+      "question": "If-Then-Else 公式在 Web Intelligence 中的正确语法是什么？",
+      "options": {
+        "A": "IF condition THEN result1 ELSE result2",
+        "B": "=If(condition, result1, result2)",
+        "C": "CASE WHEN condition THEN result END",
+        "D": "If(condition) Then result1 Else result2"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Web Intelligence 的 If 函数语法：\n- =If(condition, true_result, false_result)\n- 例如：=If([Revenue]>1000000, \"高\", \"低\")\n- 可以嵌套多个 If 函数\n- 与 Excel 的 IF 函数语法类似",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q19",
+      "domain": 5,
+      "question": "在 Web Intelligence 中，Running 函数（如 RunningSum）的作用是什么？",
+      "options": {
+        "A": "执行存储过程",
+        "B": "计算累计值（如运行总计）",
+        "C": "启动后台作业",
+        "D": "刷新数据"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Running 函数用于计算累计值：\n- RunningSum()：累计求和\n- RunningCount()：累计计数\n- RunningAverage()：累计平均\n- 常用于趋势分析和进度跟踪\n- 需要指定计算的维度上下文",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q20",
+      "domain": 5,
+      "question": "Previous() 函数用于做什么？",
+      "options": {
+        "A": "返回上一次保存的版本",
+        "B": "返回同一维度上一行的值",
+        "C": "撤销上一步操作",
+        "D": "返回去年的数据"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Previous() 函数的作用：\n- 返回指定对象在前一行的值\n- 常用于计算环比变化\n- 例如：[Revenue] - Previous([Revenue]) 计算收入增减\n- 可以指定偏移量，如 Previous([Revenue]; 2) 获取前两行的值",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q21",
+      "domain": 6,
+      "question": "Web Intelligence 支持哪些图表类型？",
+      "options": {
+        "A": "只有柱状图和折线图",
+        "B": "柱状图、折线图、饼图、散点图、地图等多种类型",
+        "C": "不支持图表",
+        "D": "只有表格形式"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Web Intelligence 支持丰富的图表类型：\n- 柱状图、条形图、堆叠图\n- 折线图、面积图\n- 饼图、圆环图\n- 散点图、气泡图\n- 雷达图、瀑布图\n- 地理地图等",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q22",
+      "domain": 6,
+      "question": "如何将表格转换为图表？",
+      "options": {
+        "A": "必须删除表格后重新创建图表",
+        "B": "选择表格后，使用\"转换为\"功能选择图表类型",
+        "C": "无法转换",
+        "D": "只能通过复制粘贴"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "转换表格为图表的方法：\n- 选择要转换的表格\n- 右键选择\"转换为\"或使用工具栏\n- 选择目标图表类型\n- 系统会自动映射维度和度量\n- 也可以反向将图表转换为表格",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q23",
+      "domain": 6,
+      "question": "Report Filter（报表筛选器）和 Block Filter（块筛选器）有什么区别？",
+      "options": {
+        "A": "没有区别",
+        "B": "报表筛选器影响整个报表页签，块筛选器只影响特定的表格或图表",
+        "C": "块筛选器性能更好",
+        "D": "报表筛选器只能用于数字"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "两种筛选器的作用范围：\n- Report Filter：应用于整个报表页签的所有数据块\n- Block Filter：只影响应用它的特定表格或图表\n- 使用块筛选器可以在同一页签上显示不同筛选条件的数据",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q24",
+      "domain": 6,
+      "question": "如何在报表中设置条件格式（Conditional Formatting）？",
+      "options": {
+        "A": "只能在 Universe 中设置",
+        "B": "选择对象，使用\"格式\"菜单中的条件格式功能",
+        "C": "Web Intelligence 不支持条件格式",
+        "D": "必须使用公式"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "设置条件格式的步骤：\n- 选择要应用条件格式的对象\n- 使用\"格式\"菜单 → 条件格式\n- 定义条件规则（如：值>100时显示绿色）\n- 可以设置字体、颜色、图标等格式\n- 也可以使用 Alerter 功能",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q25",
+      "domain": 6,
+      "question": "Section（节）在 Web Intelligence 报表中的作用是什么？",
+      "options": {
+        "A": "分页打印",
+        "B": "按维度值分组数据，创建分节报表",
+        "C": "添加页眉页脚",
+        "D": "创建子报表"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Section（节）的功能：\n- 按一个或多个维度分组数据\n- 为每个维度值创建单独的部分\n- 可以在每个节中放置表格、图表等\n- 例如：按地区分节，每个地区显示独立的销售分析\n- 支持节的嵌套",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q26",
+      "domain": 1,
+      "question": "Web Intelligence 中的 Data Tracking（数据跟踪）功能用于什么？",
+      "options": {
+        "A": "记录用户操作日志",
+        "B": "显示数据刷新前后的变化",
+        "C": "跟踪数据源变更",
+        "D": "监控查询性能"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Data Tracking 功能：\n- 比较数据刷新前后的变化\n- 用颜色标识新增、删除、修改的数据\n- 帮助用户快速识别关键变化\n- 特别适用于定期更新的报表\n- 可以配置显示哪些类型的变化",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q27",
+      "domain": 2,
+      "question": "如何在 Web Intelligence 报表中创建主从报表（Master-Detail Report）？",
+      "options": {
+        "A": "使用链接多个文档",
+        "B": "使用节（Section）和表格结合",
+        "C": "必须使用子查询",
+        "D": "Web Intelligence 不支持主从报表"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "创建主从报表的方法：\n- 使用 Section 作为主数据（如客户）\n- 在 Section 内放置表格显示详细数据（如订单）\n- 每个 Section 自动筛选对应的详细记录\n- 可以嵌套多层 Section 创建多级主从关系",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q28",
+      "domain": 3,
+      "question": "查询中的 Scope of Analysis（分析范围）有什么作用？",
+      "options": {
+        "A": "定义报表的访问权限",
+        "B": "预先加载额外的维度层级数据，支持报表中的钻取",
+        "C": "限制返回的行数",
+        "D": "设置查询超时时间"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Scope of Analysis 的作用：\n- 预先检索比 Result Objects 更详细的数据\n- 支持报表中的钻取操作而无需重新查询\n- 可以设置钻取层级数\n- 会增加初始查询的数据量\n- 在性能和功能之间需要权衡",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q29",
+      "domain": 3,
+      "question": "如何在 Web Intelligence 中合并来自不同查询的数据？",
+      "options": {
+        "A": "只能在 Universe 中合并",
+        "B": "使用 Merge Dimensions（合并维度）功能",
+        "C": "无法合并不同查询的数据",
+        "D": "使用 UNION 操作符"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Merge Dimensions 功能：\n- 将不同查询中相似的维度合并\n- 创建同步的数据视图\n- 允许在同一表格中使用来自不同查询的度量\n- 需要确保合并的维度具有匹配的值\n- 是多源分析的关键功能",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q30",
+      "domain": 4,
+      "question": "Universe 中的 Derived Table（派生表）是什么？",
+      "options": {
+        "A": "数据库中的物理表",
+        "B": "在 Universe 中使用 SQL 定义的虚拟表",
+        "C": "报表中的表格",
+        "D": "临时存储区"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Derived Table（派生表）：\n- 使用 SQL SELECT 语句在 Universe 中定义\n- 不需要在数据库中创建物理表\n- 可以进行复杂的数据转换和聚合\n- 作为虚拟表参与 Universe 的设计\n- 提高灵活性和性能",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q31",
+      "domain": 5,
+      "question": "FormatNumber() 函数用于什么？",
+      "options": {
+        "A": "将文本转换为数字",
+        "B": "按指定格式显示数字（如添加千分位、小数位）",
+        "C": "对数字进行排序",
+        "D": "计算数字的格式类型"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "FormatNumber() 函数：\n- 按指定格式显示数值\n- 例如：FormatNumber([Revenue], \"#,##0.00\") 显示千分位和两位小数\n- 支持多种数字格式模式\n- 返回文本类型\n- 用于报表展示优化",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q32",
+      "domain": 5,
+      "question": "在计算上下文中，In、ForEach 和 ForAll 运算符有什么作用？",
+      "options": {
+        "A": "循环遍历数据",
+        "B": "控制聚合函数的计算维度上下文",
+        "C": "定义筛选条件",
+        "D": "排序数据"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "上下文运算符的作用：\n- In：指定计算的精确维度上下文\n- ForEach：添加维度到当前上下文\n- ForAll：从当前上下文移除维度\n- 例如：Sum([Revenue] In ([Year])) 按年汇总\n- 是高级计算的核心概念",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q33",
+      "domain": 6,
+      "question": "如何在 Web Intelligence 中创建输入控件（Input Controls）？",
+      "options": {
+        "A": "只能在 Universe 中创建",
+        "B": "使用报表的\"输入控件\"功能创建下拉框、滑块等交互组件",
+        "C": "需要编写 JavaScript",
+        "D": "Web Intelligence 不支持输入控件"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Input Controls（输入控件）功能：\n- 提供交互式筛选界面\n- 类型包括：下拉框、列表框、复选框、单选按钮、滑块等\n- 可以与报表筛选器关联\n- 用户可以直接在报表上进行数据筛选\n- 提升用户体验和交互性",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q34",
+      "domain": 1,
+      "question": "Web Intelligence 文档可以导出为哪些格式？",
+      "options": {
+        "A": "只有 PDF",
+        "B": "PDF、Excel、CSV、文本等多种格式",
+        "C": "只有 Excel",
+        "D": "不支持导出"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Web Intelligence 支持多种导出格式：\n- PDF：用于分享和打印\n- Excel：用于进一步分析和处理\n- CSV：纯数据导出\n- 文本：简单格式\n- 还可以保存为 Web Intelligence 格式分享",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q35",
+      "domain": 2,
+      "question": "如何在报表中添加自由单元格（Free-Standing Cell）？",
+      "options": {
+        "A": "只能在表格中添加单元格",
+        "B": "从工具栏拖放\"空白单元格\"或使用插入菜单",
+        "C": "无法添加独立的单元格",
+        "D": "必须先创建表格再移除"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Free-Standing Cell 的用途和添加方法：\n- 从工具栏或插入菜单添加\n- 可以放置在报表的任意位置\n- 用于显示单独的值（如 KPI 数字）\n- 可以包含公式计算\n- 常用于报表标题、汇总值展示",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q36",
+      "domain": 3,
+      "question": "Combined Query（组合查询）的类型有哪些？（选择两项）",
+      "options": {
+        "A": "UNION 和 INTERSECT",
+        "B": "JOIN 和 MERGE",
+        "C": "MINUS 和 EXCEPT",
+        "D": "GROUP 和 SORT"
+      },
+      "answer": ["A", "C"],
+      "answerType": "multiple",
+      "explanation": "Combined Query 支持的操作类型：\n- UNION：合并两个查询的结果，去除重复\n- INTERSECT：返回两个查询都有的记录\n- MINUS/EXCEPT：返回第一个查询有但第二个没有的记录\n- JOIN 是在数据库层面进行的\n- MERGE 是在报表层面合并维度",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q37",
+      "domain": 4,
+      "question": "@Aggregate_Aware 函数在 Universe 中的作用是什么？",
+      "options": {
+        "A": "创建聚合函数",
+        "B": "让查询自动选择最合适的聚合表以提高性能",
+        "C": "计算平均值",
+        "D": "定义默认排序"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "@Aggregate_Aware 函数：\n- 在 Universe 对象定义中使用\n- 根据查询中使用的维度自动选择合适的聚合表\n- 优先使用汇总表而非明细表\n- 显著提高查询性能\n- 是 Universe 性能优化的重要技术",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q38",
+      "domain": 5,
+      "question": "Concatenation（字符串连接）在 Web Intelligence 中如何实现？",
+      "options": {
+        "A": "使用 CONCAT 函数或 + 运算符",
+        "B": "使用 & 运算符",
+        "C": "使用 || 运算符",
+        "D": "以上都不正确"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Web Intelligence 中的字符串连接：\n- 使用 + 运算符：[FirstName] + \" \" + [LastName]\n- 使用 Concatenation() 函数：Concatenation([FirstName]; \" \"; [LastName])\n- 两种方法效果相同\n- 注意处理 null 值的情况",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q39",
+      "domain": 6,
+      "question": "Alerter（警报器）功能用于什么？",
+      "options": {
+        "A": "发送电子邮件通知",
+        "B": "根据条件突出显示数据（条件格式的另一种实现方式）",
+        "C": "设置数据刷新提醒",
+        "D": "创建系统警报"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Alerter（警报器）功能：\n- 根据条件设置数据的视觉格式\n- 类似于条件格式\n- 可以改变字体、颜色、背景等\n- 帮助用户快速识别重要数据\n- 可以设置多个条件和优先级",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q40",
+      "domain": 1,
+      "question": "在 BI Launchpad 中，如何安排报表定时刷新和分发？",
+      "options": {
+        "A": "使用 Schedule（计划）功能",
+        "B": "只能手动刷新",
+        "C": "需要第三方工具",
+        "D": "在 Universe 中设置"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "报表计划功能：\n- 使用 BI Launchpad 的 Schedule 功能\n- 设置运行时间（一次性或定期）\n- 选择输出格式和目标位置\n- 可以设置邮件分发\n- 支持各种触发条件",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q41",
+      "domain": 2,
+      "question": "如何在 Web Intelligence 中创建超链接（Hyperlink）？",
+      "options": {
+        "A": "无法创建超链接",
+        "B": "选择单元格，使用\"链接\"功能添加 URL 或文档链接",
+        "C": "只能链接到外部网站",
+        "D": "必须使用 HTML 代码"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "创建超链接的方法：\n- 选择单元格或对象\n- 使用\"创建超链接\"功能\n- 可以链接到 URL、其他文档或邮件地址\n- 支持动态 URL（使用公式）\n- 可用于报表导航和钻取",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q42",
+      "domain": 3,
+      "question": "Optional Prompt（可选提示）与 Mandatory Prompt（必填提示）有什么区别？",
+      "options": {
+        "A": "没有区别",
+        "B": "可选提示允许用户不输入值就运行查询，必填提示必须输入",
+        "C": "必填提示性能更好",
+        "D": "可选提示只能用于日期"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "两种提示类型的区别：\n- Mandatory Prompt：用户必须提供值才能运行查询\n- Optional Prompt：用户可以跳过，查询会忽略该筛选条件\n- 可选提示提供更大的灵活性\n- 必填提示确保数据范围可控",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q43",
+      "domain": 4,
+      "question": "List of Values（LOV，值列表）在 Universe 中的作用是什么？",
+      "options": {
+        "A": "存储计算结果",
+        "B": "为对象提供可选值列表，用于提示和筛选",
+        "C": "定义排序规则",
+        "D": "创建索引"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "List of Values（值列表）：\n- 为维度对象提供可选值的列表\n- 用于 Prompt 时显示可选项\n- 用于报表筛选器的下拉选择\n- 可以是动态（从数据库查询）或静态（预定义）\n- 可以设置层次结构（级联 LOV）",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q44",
+      "domain": 5,
+      "question": "NoFilter() 函数的作用是什么？",
+      "options": {
+        "A": "移除所有筛选器",
+        "B": "在计算中忽略报表筛选器的影响",
+        "C": "禁用筛选功能",
+        "D": "创建无筛选的查询"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "NoFilter() 函数：\n- 在计算中忽略报表筛选器\n- 常用于计算总计与筛选后数据的比较\n- 例如：计算筛选后销售额占总销售额的比例\n- 语法：NoFilter([Measure])\n- 是计算百分比和占比的重要工具",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q45",
+      "domain": 6,
+      "question": "Drill Through（钻透）和 Drill Down（钻取）有什么区别？",
+      "options": {
+        "A": "没有区别",
+        "B": "Drill Down 在同一报表内按层次展开，Drill Through 跳转到另一个报表",
+        "C": "Drill Through 是同一报表内操作",
+        "D": "两者都需要新查询"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "两种钻取方式的区别：\n- Drill Down：在层次结构中向下展开（如年→季度→月）\n- Drill Through：跳转到另一个详细报表\n- Drill Down 使用 Scope of Analysis 中的预加载数据\n- Drill Through 通常触发新的查询\n- OpenDocument 函数用于实现 Drill Through",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q46",
+      "domain": 1,
+      "question": "Web Intelligence 中的 Shared Elements（共享元素）功能用于什么？",
+      "options": {
+        "A": "与其他用户共享报表",
+        "B": "跨报表重用自定义元素（如变量、表格模板）",
+        "C": "共享数据库连接",
+        "D": "创建公共文件夹"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Shared Elements 功能：\n- 允许在多个报表中重用元素\n- 可以共享的元素包括：变量公式、表格模板、图表等\n- 提高开发效率和一致性\n- 修改共享元素会影响所有使用它的报表\n- 是企业级报表标准化的工具",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q47",
+      "domain": 2,
+      "question": "如何在表格中添加 Break（分组分隔）？",
+      "options": {
+        "A": "无法添加分隔",
+        "B": "选择维度列，右键选择\"设置分隔\"或使用工具栏",
+        "C": "只能在 Universe 中设置",
+        "D": "必须使用节（Section）"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "添加 Break（分组分隔）：\n- 选择要分组的维度列\n- 右键选择\"设置分隔\"或使用分析工具栏\n- 相同值的行会被合并显示\n- 可以在分隔处显示小计\n- 可以设置页眉和页脚\n- 与 Section 不同，Break 在表格内显示",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q48",
+      "domain": 3,
+      "question": "Subquery（子查询）在 Web Intelligence 查询面板中的作用是什么？",
+      "options": {
+        "A": "创建嵌套报表",
+        "B": "使用一个查询的结果作为另一个查询的筛选条件",
+        "C": "提高查询性能",
+        "D": "合并多个数据源"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Subquery（子查询）功能：\n- 使用内部查询的结果来筛选外部查询\n- 例如：查找销售额超过平均值的产品\n- 支持 IN、NOT IN、EXISTS 等操作符\n- 在数据库级别执行，性能较好\n- 适合复杂的筛选逻辑",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q49",
+      "domain": 5,
+      "question": "Rank() 函数用于什么？",
+      "options": {
+        "A": "对数据进行排序",
+        "B": "计算数据的排名位置",
+        "C": "过滤前N名",
+        "D": "创建层次结构"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Rank() 函数：\n- 计算值在数据集中的排名\n- 语法：Rank([Measure])\n- 可以按升序或降序排名\n- 常用于Top N分析\n- 可以与筛选结合使用显示排名前几的数据\n- 与 SQL 的 RANK() 函数类似",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q50",
+      "domain": 6,
+      "question": "如何将 Web Intelligence 报表发布到 SAP BusinessObjects BI Platform？",
+      "options": {
+        "A": "使用\"保存到企业\"或\"保存到收藏夹\"",
+        "B": "只能通过 FTP 上传",
+        "C": "需要使用命令行工具",
+        "D": "无法发布到平台"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "发布报表到 BI Platform：\n- 使用\"保存到企业\"保存到公共文件夹\n- 使用\"保存到收藏夹\"保存到个人区域\n- 可以设置报表的类别和关键字\n- 管理员可以控制文件夹访问权限\n- 发布后其他用户可以根据权限访问报表",
+      "difficulty": "easy"
+    }
+  ]
+}

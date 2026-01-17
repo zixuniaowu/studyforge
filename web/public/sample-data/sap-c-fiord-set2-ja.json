@@ -1,0 +1,748 @@
+{
+  "exam": {
+    "id": "sap-c-fiord-set2-ja",
+    "name": "SAP C_FIORD 模擬試験 #2",
+    "code": "C_FIORD",
+    "provider": "SAP",
+    "language": "ja",
+    "description": "SAP Fiori Application Developer認定模擬問題 - 第2套",
+    "totalQuestions": 50,
+    "passingScore": 70,
+    "examTime": 180,
+    "domains": [
+      {
+        "id": 1,
+        "name": "SAPUI5フレームワークとアーキテクチャ",
+        "weight": 20
+      },
+      {
+        "id": 2,
+        "name": "Fioriデザインガイドライン",
+        "weight": 15
+      },
+      {
+        "id": 3,
+        "name": "Fiori Elements",
+        "weight": 20
+      },
+      {
+        "id": 4,
+        "name": "ODataサービスとアノテーション",
+        "weight": 20
+      },
+      {
+        "id": 5,
+        "name": "開発ツールとデプロイメント",
+        "weight": 25
+      }
+    ],
+    "tags": [
+      "SAP",
+      "Fiori",
+      "SAPUI5",
+      "認定試験"
+    ]
+  },
+  "questions": [
+    {
+      "id": "q1",
+      "domain": 1,
+      "question": "SAPUI5におけるJSONModelとODataModelの主な違いは何ですか？",
+      "options": {
+        "A": "JSONModelはバックエンド通信をサポートし、ODataModelはローカルデータのみに使用",
+        "B": "ODataModelはバックエンドODataサービスとの通信をサポートし、JSONModelはクライアントデータに使用",
+        "C": "両者の機能は完全に同じ",
+        "D": "JSONModelはXML形式のみをサポート"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "SAPUI5データモデルの違い：\n- ODataModel：バックエンドODataサービスと通信し、CRUD操作をサポート\n- JSONModel：クライアント側データモデル、データはブラウザメモリに保存\n- ResourceModel：国際化テキストに使用\n\nODataModelはSAPバックエンドに接続する主要な方法です"
+    },
+    {
+      "id": "q2",
+      "domain": 1,
+      "question": "SAPUI5アプリケーションにおいて、コントローラー内でビュー要素を正しく参照する方法は？",
+      "options": {
+        "A": "document.getElementById()",
+        "B": "this.byId()",
+        "C": "jQuery.find()",
+        "D": "window.getElement()"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "SAPUI5でビュー要素を取得する正しい方法：\n- this.byId(sId)：コントローラー内でビュー内の要素を取得\n- this.getView().byId(sId)：同等の書き方\n- ネイティブDOM操作は避ける\n- IDがコンポーネントスコープ内で一意であることを確保"
+    },
+    {
+      "id": "q3",
+      "domain": 1,
+      "question": "SAPUI5のライフサイクルフックにおいて、onInitとonAfterRenderingの違いは何ですか？",
+      "options": {
+        "A": "onInitはビューレンダリング後に呼ばれ、onAfterRenderingは初期化時に呼ばれる",
+        "B": "onInitはコントローラー初期化時に一度だけ呼ばれ、onAfterRenderingは毎回レンダリング後に呼ばれる",
+        "C": "両者は同時に呼ばれる",
+        "D": "onInitのみが呼ばれる"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "SAPUI5コントローラーのライフサイクル：\n- onInit：コントローラー初期化時に一度だけ呼ばれる\n- onBeforeRendering：毎回レンダリング前に呼ばれる\n- onAfterRendering：毎回レンダリング完了後に呼ばれる\n- onExit：コントローラー破棄時に呼ばれる\n\nonInitは初期設定に、onAfterRenderingはDOM操作に適しています"
+    },
+    {
+      "id": "q4",
+      "domain": 1,
+      "question": "SAPUI5におけるExpression Bindingの構文は何ですか？",
+      "options": {
+        "A": "{= expression}",
+        "B": "{# expression}",
+        "C": "{@ expression}",
+        "D": "{$ expression}"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "SAPUI5バインディング構文：\n- {path}：プロパティバインディング\n- {= expression}：式バインディング、JavaScript式をサポート\n- {:= expression}：ワンタイム式バインディング\n\n例：{= ${price} * ${quantity}}"
+    },
+    {
+      "id": "q5",
+      "domain": 1,
+      "question": "SAPUI5において、sap.ui.defineとsap.ui.requireの違いは何ですか？（2つ選択）",
+      "options": {
+        "A": "sap.ui.defineは新しいモジュールを定義するために使用",
+        "B": "sap.ui.requireは新しいモジュールを定義するために使用",
+        "C": "sap.ui.requireは非同期でモジュールを読み込むために使用",
+        "D": "両者の機能は完全に同じ"
+      },
+      "answer": ["A", "C"],
+      "answerType": "multiple",
+      "explanation": "SAPUI5モジュールシステム：\n- sap.ui.define：新しいモジュールを定義し、依存関係を宣言してエクスポート\n- sap.ui.require：非同期でモジュールを読み込み、新しいモジュールを作成しない\n\nsap.ui.defineはコントローラー、フォーマッターなどの作成に使用\nsap.ui.requireはオンデマンドで機能を読み込むために使用"
+    },
+    {
+      "id": "q6",
+      "domain": 2,
+      "question": "SAP Fioriデザインにおいて、'Shell Bar'とは何ですか？",
+      "options": {
+        "A": "コマンドラインインターフェース",
+        "B": "アプリケーション上部のナビゲーションとブランディング領域",
+        "C": "下部ツールバー",
+        "D": "サイドメニュー"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Shell Bar（シェルバー）はFioriアプリケーションの標準ヘッダーです：\n- 製品/会社ロゴを表示\n- グローバルナビゲーションと検索を提供\n- ユーザーメニューと通知を含む\n- Fiori Launchpadの一部\n- アプリケーション間で一貫した体験を確保"
+    },
+    {
+      "id": "q7",
+      "domain": 2,
+      "question": "Fioriデザインガイドラインによると、Tableコントロールはモバイルデバイスでどのように振る舞うべきですか？",
+      "options": {
+        "A": "常にすべての列を表示",
+        "B": "画面幅に応じて重要度の低い列を非表示にする",
+        "C": "完全に表示しない",
+        "D": "自動的にリストに変換"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Fioriレスポンシブテーブルデザイン：\n- 列のimportanceプロパティで優先度を設定\n- 画面が小さくなると低優先度の列を自動的に非表示\n- ユーザーはポップアップで非表示コンテンツを確認可能\n- コア情報を常に表示"
+    },
+    {
+      "id": "q8",
+      "domain": 2,
+      "question": "SAP Fioriの'Semantic Colors'はどのような目的で使用されますか？",
+      "options": {
+        "A": "ページの装飾",
+        "B": "ビジネスの意味と状態を伝える",
+        "C": "異なるユーザーを区別",
+        "D": "会社のブランドを表示"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Semantic Colors（セマンティックカラー）の用途：\n- ビジネス状態を伝える（成功、警告、エラー）\n- 緑：成功/ポジティブ\n- 黄色/オレンジ：警告/注意\n- 赤：エラー/ネガティブ\n- 即座の視覚的フィードバックを提供"
+    },
+    {
+      "id": "q9",
+      "domain": 2,
+      "question": "Fioriデザインにおいて、ユーザーが操作を完了した後、どのようにフィードバックを提供すべきですか？",
+      "options": {
+        "A": "フィードバック不要",
+        "B": "常にポップアップダイアログを使用",
+        "C": "操作の重要性に応じて適切なフィードバック方法を選択",
+        "D": "コンソールログのみを使用"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "Fioriフィードバックデザイン原則：\n- 軽量な操作：MessageToastを使用\n- 重要な操作：MessageBoxダイアログを使用\n- エラー状況：MessageStripまたはMessagePageを使用\n- コンテキストに応じて適切な方法を選択"
+    },
+    {
+      "id": "q10",
+      "domain": 2,
+      "question": "SAP Fioriの'Busy Indicator'はいつ表示すべきですか？",
+      "options": {
+        "A": "常に表示",
+        "B": "操作が一定のしきい値を超えた場合",
+        "C": "ページ読み込み時のみ",
+        "D": "表示しない"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Busy Indicatorの使用原則：\n- 操作が300msを超えた場合に表示\n- 頻繁な点滅を避ける\n- ローカル（コントロールレベル）またはグローバル（ページレベル）が可能\n- システムが処理中であることをユーザーに通知"
+    },
+    {
+      "id": "q11",
+      "domain": 3,
+      "question": "Fiori Elementsにおいて、CDSアノテーションを使用してスマートフィールドの値ヘルプを定義するにはどうしますか？",
+      "options": {
+        "A": "@UI.valueHelp",
+        "B": "@Consumption.valueHelpDefinition",
+        "C": "@ObjectModel.valueHelp",
+        "D": "@Search.valueHelp"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "CDS値ヘルプアノテーション：\n- @Consumption.valueHelpDefinition：フィールドの値ヘルプを定義\n- 値ヘルプエンティティと関連フィールドを指定\n- フィルタリングと検索をサポート\n- Fiori Elementsアプリケーションに自動統合"
+    },
+    {
+      "id": "q12",
+      "domain": 3,
+      "question": "Fiori Elementsにおいて、テーブル列のデフォルトの並べ替えをどのように定義しますか？",
+      "options": {
+        "A": "JavaScriptでコーディング",
+        "B": "@UI.lineItemのpositionプロパティを使用",
+        "C": "@UI.presentationVariantアノテーションを使用",
+        "D": "CSSで定義"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "@UI.presentationVariantアノテーションの用途：\n- デフォルトの並べ替え（sortOrder）を定義\n- デフォルトのグループ化を定義\n- 可視化バリアントを設定\n- 初期データ表示方法を制御"
+    },
+    {
+      "id": "q13",
+      "domain": 3,
+      "question": "Fiori Elements Object PageにおいてHeader Facetには通常どのようなコンテンツが表示されますか？",
+      "options": {
+        "A": "ナビゲーションメニュー",
+        "B": "主要なビジネス指標と状態情報",
+        "C": "詳細データテーブル",
+        "D": "画像ギャラリー"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Object Page Header Facetの典型的なコンテンツ：\n- 主要なビジネス指標（KPI）\n- 状態情報と進捗\n- 評価とレーティング\n- クイック概要情報\n- 詳細データ表示には使用しません"
+    },
+    {
+      "id": "q14",
+      "domain": 3,
+      "question": "Fiori Elements List Reportで複数選択機能を有効にするにはどうしますか？",
+      "options": {
+        "A": "manifest.jsonのtableSettings.selectionModeを設定",
+        "B": "ODataサービスを修正",
+        "C": "CSSクラスを追加",
+        "D": "JavaScriptコードを書く"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Fiori Elementsテーブル選択モードの設定：\n- manifest.jsonのsettingsで設定\n- tableSettings.selectionMode：None/Single/Multi\n- バッチ操作をサポート\n- コードを書く必要なし"
+    },
+    {
+      "id": "q15",
+      "domain": 3,
+      "question": "Fiori ElementsアプリケーションにおけるSide Effectsの役割は何ですか？",
+      "options": {
+        "A": "視覚的エフェクト",
+        "B": "フィールド値の変更時に他のフィールドの更新をトリガー",
+        "C": "副作用コードの処理",
+        "D": "アニメーション効果"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Side Effects（副作用）機能：\n- フィールドAが変更されたときに自動的にフィールドBを更新\n- CDSアノテーション@ObjectModel.virtualElementで設定\n- または@odata.draft.enabledを使用\n- データの一貫性を確保"
+    },
+    {
+      "id": "q16",
+      "domain": 4,
+      "question": "ODataサービスにおいて、$metadataリクエストは何を返しますか？",
+      "options": {
+        "A": "ビジネスデータ",
+        "B": "サービスの構造定義（エンティティ、プロパティ、アソシエーション）",
+        "C": "ユーザー情報",
+        "D": "エラーログ"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "$metadataはODataサービスの構造を返します：\n- Entity Type定義（プロパティ、型）\n- Entity Set定義\n- Association（アソシエーション）定義\n- Function Import定義\n- SAPUI5がモデルを生成する基盤です"
+    },
+    {
+      "id": "q17",
+      "domain": 4,
+      "question": "CDSビューにおける@cds.persistence.skipアノテーションの役割は何ですか？",
+      "options": {
+        "A": "データ永続化をスキップし、純粋な計算ビューを作成",
+        "B": "認可チェックをスキップ",
+        "C": "バリデーションをスキップ",
+        "D": "インデックスをスキップ"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "@cds.persistence.skipアノテーション：\n- このビューがデータベーステーブルに対応しないことを示す\n- 純粋な計算またはプロジェクションビューに使用\n- データは他のビューまたはサービスから取得\n- CAPでよく使用されます"
+    },
+    {
+      "id": "q18",
+      "domain": 4,
+      "question": "OData $batchリクエストの主な利点は何ですか？",
+      "options": {
+        "A": "データ量の削減",
+        "B": "複数のリクエストを1回のHTTP呼び出しに統合",
+        "C": "データの暗号化",
+        "D": "データのキャッシュ"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "$batchリクエストの利点：\n- 複数の操作を1回のHTTPリクエストに統合\n- ネットワークラウンドトリップを削減\n- トランザクションの一貫性をサポート\n- パフォーマンスを向上\n- Change Setで原子性を確保"
+    },
+    {
+      "id": "q19",
+      "domain": 4,
+      "question": "CDSアノテーション@UI.hiddenの役割は何ですか？",
+      "options": {
+        "A": "データベースでフィールドを非表示",
+        "B": "UIでフィールドを非表示",
+        "C": "フィールドを暗号化",
+        "D": "フィールドを無効化"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "@UI.hiddenアノテーション：\n- Fiori Elements UIでフィールドを非表示\n- フィールドはODataサービスでは引き続き利用可能\n- 内部フィールドや計算フィールドに使用可能\n- データアクセスには影響しません"
+    },
+    {
+      "id": "q20",
+      "domain": 4,
+      "question": "OData V4において、Deep Insert（深層挿入）をどのように実装しますか？",
+      "options": {
+        "A": "$deepInsertパラメータを使用",
+        "B": "POSTリクエストボディに関連エンティティデータを含める",
+        "C": "特別なHTTPメソッドを使用",
+        "D": "実装不可能"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "OData深層挿入：\n- POSTリクエストボディに関連エンティティをネスト\n- 1回のリクエストで親エンティティと子エンティティを作成\n- サーバー側でアソシエーション関係を維持\n- データの一貫性を確保"
+    },
+    {
+      "id": "q21",
+      "domain": 4,
+      "question": "CDSビューにおける@Semantics.currencyCodeアノテーションの役割は何ですか？",
+      "options": {
+        "A": "通貨換算レートを定義",
+        "B": "フィールドを通貨コードタイプとして識別",
+        "C": "通貨表示をフォーマット",
+        "D": "通貨値を検証"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "@Semantics.currencyCodeアノテーション：\n- フィールドを通貨コード（USD、EURなど）として識別\n- @Semantics.amountと組み合わせて使用\n- Fioriが金額と通貨を自動的に関連付け\n- 正しい通貨フォーマット表示を確保"
+    },
+    {
+      "id": "q22",
+      "domain": 5,
+      "question": "SAP Business Application StudioのDev Spaceとは何ですか？",
+      "options": {
+        "A": "コードリポジトリ",
+        "B": "分離された開発環境コンテナ",
+        "C": "デプロイメントターゲット",
+        "D": "ファイルストレージ"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Dev Space（開発スペース）の特徴：\n- 事前設定された開発環境コンテナ\n- 特定のシナリオに必要なツールを含む\n- 相互に分離され、リソースが独立\n- 異なるタイプを選択可能（Fiori、CAP、Full Stackなど）"
+    },
+    {
+      "id": "q23",
+      "domain": 5,
+      "question": "FioriアプリケーションのMock Serverはどのような目的で使用されますか？",
+      "options": {
+        "A": "本番環境デプロイメント",
+        "B": "フロントエンド開発のためにバックエンドODataサービスをシミュレート",
+        "C": "セキュリティテスト",
+        "D": "パフォーマンス監視"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Mock Serverの用途：\n- バックエンドサービスがない場合にODataレスポンスをシミュレート\n- ローカルJSONデータを使用\n- CRUD操作のシミュレーションをサポート\n- フロントエンド開発を加速\n- $metadataからモックデータを生成"
+    },
+    {
+      "id": "q24",
+      "domain": 5,
+      "question": "SAP Fioriアプリケーションにおいて、クロスオリジン問題を解決するためにプロキシをどのように設定しますか？",
+      "options": {
+        "A": "ブラウザ設定を変更",
+        "B": "ui5.yamlでプロキシを設定",
+        "C": "VPNを使用",
+        "D": "セキュリティチェックを無効化"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "開発時のクロスオリジン問題の解決：\n- ui5.yamlでproxyミドルウェアを設定\n- APIリクエストをバックエンドサーバーにプロキシ\n- またはfiori-tools-proxyを使用\n- 本番環境では統一されたエントリポイントでクロスオリジンを回避"
+    },
+    {
+      "id": "q25",
+      "domain": 5,
+      "question": "SAP Fiori LaunchpadのTarget Mappingは何を設定しますか？",
+      "options": {
+        "A": "データベースマッピング",
+        "B": "セマンティックオブジェクトとアクションから具体的なアプリケーションへのマッピング",
+        "C": "URL書き換えルール",
+        "D": "ユーザー権限"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Target Mappingの設定：\n- セマンティックオブジェクト+アクションを具体的なアプリケーションにマッピング\n- 例：Customer-display → /sap/bc/ui5_ui5/....\n- パラメータの受け渡しをサポート\n- Fioriナビゲーションの核心設定"
+    },
+    {
+      "id": "q26",
+      "domain": 5,
+      "question": "FioriアプリケーションのTheme Designerは何に使用されますか？",
+      "options": {
+        "A": "データベーススキーマの設計",
+        "B": "アプリケーションの視覚的テーマとスタイルのカスタマイズ",
+        "C": "バックエンドロジックの設計",
+        "D": "ネットワークアーキテクチャの設計"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "UI Theme Designerの機能：\n- Fioriアプリケーションの色、フォント、スタイルをカスタマイズ\n- 企業ブランドテーマを作成\n- 標準テーマをベースに修正\n- カスタムCSSを生成"
+    },
+    {
+      "id": "q27",
+      "domain": 1,
+      "question": "SAPUI5のsap.ui.model.Filterはどのように使用されますか？",
+      "options": {
+        "A": "UIコントロールをフィルタリング",
+        "B": "ODataリクエストのデータクエリ条件を作成",
+        "C": "ログ情報をフィルタリング",
+        "D": "ユーザー権限をフィルタリング"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "sap.ui.model.Filterの用途：\n- ODataクエリの$filter条件を構築\n- 様々な演算子（EQ、Containsなど）をサポート\n- 複数の条件を組み合わせ可能（AND/OR）\n- リストバインディングに適用してデータをフィルタリング"
+    },
+    {
+      "id": "q28",
+      "domain": 1,
+      "question": "SAPUI5のControlにおけるaggregationとは何の概念ですか？",
+      "options": {
+        "A": "データ集計計算",
+        "B": "コントロールが含むことができる子コントロールのコレクション",
+        "C": "イベント集約",
+        "D": "スタイル集約"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Aggregation（アグリゲーション）の概念：\n- コントロールが含むことができる子コントロールを定義\n- 例：Listのitemsアグリゲーションに ListItemを含む\n- 単一または複数の子コントロールをサポート\n- コントロール構成の核心メカニズム"
+    },
+    {
+      "id": "q29",
+      "domain": 1,
+      "question": "SAPUI5において、非同期操作を正しく処理する方法は？",
+      "options": {
+        "A": "同期XMLHttpRequestを使用",
+        "B": "Promiseとasync/awaitを使用",
+        "C": "setTimeoutでシミュレート",
+        "D": "非同期問題を無視"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "SAPUI5非同期処理のベストプラクティス：\n- Promiseで非同期操作を処理\n- async/await構文をサポート\n- ODataModelメソッドはPromiseを返す\n- コールバック地獄を避ける"
+    },
+    {
+      "id": "q30",
+      "domain": 1,
+      "question": "SAPUI5のDevice APIは何に使用されますか？",
+      "options": {
+        "A": "外部デバイスに接続",
+        "B": "デバイスタイプと画面特性を検出",
+        "C": "デバイスドライバーを管理",
+        "D": "デバイスハードウェアを制御"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "sap.ui.Device APIの機能：\n- デバイスタイプ（デスクトップ、タブレット、スマートフォン）を検出\n- 画面サイズと向きを取得\n- ブラウザタイプを検出\n- レスポンシブデザインの決定をサポート"
+    },
+    {
+      "id": "q31",
+      "domain": 2,
+      "question": "SAP Fioriの'Growing'リストモードとは何ですか？",
+      "options": {
+        "A": "リストの高さが自動的に増加",
+        "B": "下までスクロールするとより多くのデータを自動読み込み",
+        "C": "リスト項目が自動的に拡大",
+        "D": "リストに新しい項目を追加"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Growing（グローイング）モード：\n- 下までスクロールするとより多くのデータを読み込み\n- 一度に大量のデータを読み込むことを避ける\n- 初期読み込みパフォーマンスを向上\n- growingとgrowingThresholdプロパティで設定"
+    },
+    {
+      "id": "q32",
+      "domain": 2,
+      "question": "Fioriデザインの'Master-Detail'パターンはどのようなシナリオに適していますか？",
+      "options": {
+        "A": "リストのみを表示",
+        "B": "左側にリスト、右側に選択した項目の詳細を表示",
+        "C": "フルスクリーンフォーム",
+        "D": "純粋なチャート表示"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Master-Detailパターンの特徴：\n- 左側のMasterエリアにリストを表示\n- 右側のDetailエリアに選択した項目の詳細を表示\n- ブラウジング効率を向上\n- タブレットとデスクトップデバイスで特に効果的"
+    },
+    {
+      "id": "q33",
+      "domain": 2,
+      "question": "SAP FioriのAction Sheetは何に使用されますか？",
+      "options": {
+        "A": "データテーブルを表示",
+        "B": "モバイルデバイスで操作オプションリストを表示",
+        "C": "Excelエクスポート",
+        "D": "ドキュメント印刷"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Action Sheetの特徴：\n- 下からスライドアップする操作パネル\n- モバイルデバイスのタッチ操作に適している\n- 複数の操作オプションを表示\n- 通常、長押しまたは「その他」ボタンでトリガー"
+    },
+    {
+      "id": "q34",
+      "domain": 3,
+      "question": "Fiori ElementsのOverview Page Cardsにはどのような種類がありますか？（2つ選択）",
+      "options": {
+        "A": "Table Card",
+        "B": "Video Card",
+        "C": "List Card",
+        "D": "Audio Card"
+      },
+      "answer": ["A", "C"],
+      "answerType": "multiple",
+      "explanation": "Overview Pageがサポートするカードタイプ：\n- Table Card：テーブル形式でデータを表示\n- List Card：リスト形式でデータを表示\n- Chart Card：チャート形式\n- Stack Card：展開可能なカードグループ\n\nVideo CardとAudio Cardはサポートされていません"
+    },
+    {
+      "id": "q35",
+      "domain": 3,
+      "question": "Fiori Elementsにおいて、@UI.identificationアノテーションの役割は何ですか？",
+      "options": {
+        "A": "ログイン認証を定義",
+        "B": "Object Page詳細ページの操作と表示を定義",
+        "C": "一意識別子を定義",
+        "D": "アイデンティティ認証を定義"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "@UI.identificationアノテーション：\n- Object Page詳細エリアのコンテンツを定義\n- 操作ボタンを設定\n- フィールド表示順序を設定\n- @UI.lineItemとは区別される（lineItemはリスト用）"
+    },
+    {
+      "id": "q36",
+      "domain": 3,
+      "question": "Fiori Elementsアプリケーションでフィールドの条件付き表示をどのように実装しますか？",
+      "options": {
+        "A": "CSSメディアクエリを使用",
+        "B": "@UI.hiddenと式バインディングを使用",
+        "C": "JavaScriptを使用",
+        "D": "実装不可能"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "条件付き表示の実装方法：\n- @UI.hiddenと動的式を組み合わせ\n- manifest.jsonで拡張を使用\n- フィールド値に基づいて表示/非表示を制御\n- 宣言的な開発スタイルを維持"
+    },
+    {
+      "id": "q37",
+      "domain": 4,
+      "question": "ODataサービスにおけるFunction ImportとActionの違いは何ですか？",
+      "options": {
+        "A": "Functionは副作用がなく、Actionは副作用がある可能性がある",
+        "B": "両者は完全に同じ",
+        "C": "Actionはデータの読み取りのみ",
+        "D": "Functionはデータを変更"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "OData操作タイプの違い：\n- Function：副作用なし、GETで呼び出し可能\n- Action：副作用の可能性あり、POSTで呼び出し\n\n例：価格計算（Function） vs 注文送信（Action）"
+    },
+    {
+      "id": "q38",
+      "domain": 4,
+      "question": "CDSビューにおける@AbapCatalog.sqlViewNameアノテーションの役割は何ですか？",
+      "options": {
+        "A": "データベースビュー名を定義",
+        "B": "サービス名を定義",
+        "C": "アプリケーション名を定義",
+        "D": "テーブル名を定義"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "@AbapCatalog.sqlViewNameアノテーション：\n- データベースに生成されるSQLビュー名を定義\n- 16文字制限（ABAP命名制限）\n- 従来のSQLアクセスに使用\n- CDSビューの識別子"
+    },
+    {
+      "id": "q39",
+      "domain": 4,
+      "question": "OData $skipと$topパラメータはどのようにページネーションを実装しますか？",
+      "options": {
+        "A": "$skipは返却数を指定し、$topはレコードをスキップ",
+        "B": "$skipはレコード数をスキップし、$topは返却数を制限",
+        "C": "両方を同時に使用するとエラーになる",
+        "D": "単独でのみ使用可能"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "ODataページネーションパラメータ：\n- $skip=N：最初のN件のレコードをスキップ\n- $top=M：M件のレコードを返却\n- 組み合わせて使用：?$skip=10&$top=10（2ページ目、1ページ10件）\n- ページネーション実装の標準的な方法"
+    },
+    {
+      "id": "q40",
+      "domain": 4,
+      "question": "CDS Access Controlの役割は何ですか？",
+      "options": {
+        "A": "コードアクセスを制御",
+        "B": "行レベルのデータ権限を定義",
+        "C": "ネットワークアクセスを制御",
+        "D": "ファイルアクセスを制御"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "CDS Access Controlの機能：\n- DCL（Data Control Language）を定義\n- 行レベルのデータ権限を実装\n- ユーザーロールに基づいてデータをフィルタリング\n- データベースレイヤーで実行、優れたパフォーマンス"
+    },
+    {
+      "id": "q41",
+      "domain": 5,
+      "question": "SAP FioriアプリケーションにおけるESLintの役割は何ですか？",
+      "options": {
+        "A": "コードをコンパイル",
+        "B": "コード品質と規範をチェック",
+        "C": "コードを圧縮",
+        "D": "コードをデプロイ"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "ESLintのFiori開発における役割：\n- 静的コード分析\n- コード規範とエラーをチェック\n- SAP UI5ルールセットをサポート\n- コード品質を向上"
+    },
+    {
+      "id": "q42",
+      "domain": 5,
+      "question": "Cloud Foundryのcf pushコマンドは何を行いますか？",
+      "options": {
+        "A": "Gitコミットをプッシュ",
+        "B": "アプリケーションをCloud Foundryにデプロイ",
+        "C": "通知をプッシュ",
+        "D": "ファイルを同期"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "cf pushコマンド：\n- アプリケーションをCloud Foundryにデプロイ\n- manifest.yaml設定を読み取り\n- アプリケーションインスタンスを作成/更新\n- リソースとルートを割り当て"
+    },
+    {
+      "id": "q43",
+      "domain": 5,
+      "question": "SAP FioriアプリケーションのDestinationは何を設定しますか？",
+      "options": {
+        "A": "メールの宛先",
+        "B": "バックエンドサービスの接続情報",
+        "C": "ファイルストレージの場所",
+        "D": "ログ出力場所"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "SAP BTP Destinationの設定：\n- バックエンドサービスURLを定義\n- 認証方式を設定\n- プロキシと証明書を設定\n- アプリケーションはDestination名でサービスにアクセス"
+    },
+    {
+      "id": "q44",
+      "domain": 1,
+      "question": "SAPUI5でCustom Controlをどのように作成しますか？",
+      "options": {
+        "A": "sap.ui.core.Controlを継承してrenderメソッドを実装",
+        "B": "HTML要素を直接作成",
+        "C": "CSSで作成",
+        "D": "JSONで定義"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "カスタムコントロール作成手順：\n- sap.ui.core.Controlまたは既存コントロールを継承\n- プロパティ、アグリゲーション、イベントを定義\n- rendererでHTMLをレンダリング\n- SAPUI5コントロールのライフサイクルに従う"
+    },
+    {
+      "id": "q45",
+      "domain": 2,
+      "question": "Fioriデザインの'Variant Management'機能とは何ですか？",
+      "options": {
+        "A": "コードバージョン管理",
+        "B": "ユーザーがパーソナライズされたビュー設定を保存および切り替え",
+        "C": "テーマバリアント",
+        "D": "データバージョン管理"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Variant Management（バリアント管理）：\n- ユーザーがパーソナライズされたフィルター、並べ替え、列設定を保存\n- 複数のバリアントを作成可能\n- デフォルトバリアントを設定可能\n- ユーザー効率を向上"
+    },
+    {
+      "id": "q46",
+      "domain": 3,
+      "question": "Fiori ElementsのQuick Viewは何に使用されますか？",
+      "options": {
+        "A": "クイックナビゲーション",
+        "B": "ポップアップで関連オブジェクトのサマリー情報を表示",
+        "C": "クイック検索",
+        "D": "クイック編集"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Quick Viewの機能：\n- ホバーまたはクリックでポップアップカードを表示\n- 関連オブジェクトの主要情報を表示\n- ナビゲーションせずにプレビュー可能\n- @UI.quickViewFacetで設定"
+    },
+    {
+      "id": "q47",
+      "domain": 4,
+      "question": "CDSにおけるAssociationとCompositionの違いは何ですか？",
+      "options": {
+        "A": "Associationは強い依存関係、Compositionは弱い依存関係",
+        "B": "Compositionは親子関係（ライフサイクルがバインド）、Associationは一般的な関連",
+        "C": "両者は完全に同じ",
+        "D": "AssociationはOData用、CompositionはABAP用"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "CDS関連タイプの違い：\n- Composition：構成関係、子エンティティのライフサイクルが親エンティティに依存\n- Association：関連関係、独立したエンティティの参照\n\n親エンティティを削除するとCompositionの子エンティティはカスケード削除"
+    },
+    {
+      "id": "q48",
+      "domain": 4,
+      "question": "ODataのETagは何に使用されますか？",
+      "options": {
+        "A": "データ暗号化",
+        "B": "楽観的並行性制御",
+        "C": "データタグ",
+        "D": "バージョン番号表示"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "OData ETagの機能：\n- 楽観的並行性制御を実装\n- 更新時にデータが他者によって変更されていないかを検証\n- 他者の変更を上書きすることを防止\n- If-Matchヘッダーで渡す"
+    },
+    {
+      "id": "q49",
+      "domain": 5,
+      "question": "SAP FioriアプリケーションのSAPUI5 Flexibility機能とは何ですか？",
+      "options": {
+        "A": "コードの柔軟性",
+        "B": "Key Userがコードなしでのカスタマイズをサポート",
+        "C": "フレキシブルレイアウト",
+        "D": "エラスティックコンピューティング"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "SAPUI5 Flexibility/UI Adaptation：\n- Key Userが開発スキルなしでUI調整をサポート\n- フィールドの追加/非表示/移動\n- ラベルとデフォルト値の変更\n- 変更はバックエンドに保存"
+    },
+    {
+      "id": "q50",
+      "domain": 5,
+      "question": "SAP Fiori開発において、'Extension Point'とは何ですか？",
+      "options": {
+        "A": "ネットワークエンドポイント",
+        "B": "標準アプリケーションで予約されたカスタム拡張ポイント",
+        "C": "ブレークポイントデバッグ",
+        "D": "APIエンドポイント"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Extension Pointの概念：\n- SAP標準アプリケーションで予約された拡張ポイント\n- 顧客がカスタムロジックまたはUIを追加可能\n- 標準コードを変更しない\n- アップグレードセーフ"
+    }
+  ]
+}
