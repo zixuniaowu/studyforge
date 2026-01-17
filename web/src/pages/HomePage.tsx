@@ -446,6 +446,10 @@ export const HomePage: React.FC = () => {
             'sap-c-btpint-set1', 'sap-c-btpint-set2', 'sap-c-btpint-set3',
             // SAP Activate
             'sap-c-activate-set1', 'sap-c-activate-set2', 'sap-c-activate-set3',
+            // SAP AI/ML
+            'sap-c-aicore-set1', 'sap-c-aicore-set2', 'sap-c-aicore-set3',
+            'sap-c-aibus-set1', 'sap-c-aibus-set2', 'sap-c-aibus-set3',
+            'sap-c-datasph-set1', 'sap-c-datasph-set2', 'sap-c-datasph-set3',
             // Additional SAP
             'sap-c-hanaimp-set1', 'sap-c-hanaimp-set2', 'sap-c-hanaimp-set3',
             'sap-c-s4cpr-set1', 'sap-c-s4cpr-set2', 'sap-c-s4cpr-set3',
