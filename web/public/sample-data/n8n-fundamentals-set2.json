@@ -1,0 +1,772 @@
+{
+  "exam": {
+    "id": "n8n-fundamentals-set2",
+    "name": "n8n 基础 模拟考试 #2",
+    "code": "N8N-FUND",
+    "provider": "n8n",
+    "language": "zh-CN",
+    "description": "n8n 工作流自动化平台基础认证 - 第2套",
+    "totalQuestions": 50,
+    "passingScore": 70,
+    "examTime": 60,
+    "domains": [
+      { "id": 1, "name": "n8n Basics", "weight": 25 },
+      { "id": 2, "name": "Workflow Design", "weight": 25 },
+      { "id": 3, "name": "Nodes and Connections", "weight": 25 },
+      { "id": 4, "name": "Data Handling", "weight": 25 }
+    ],
+    "tags": ["n8n", "workflow", "automation", "认证考试"]
+  },
+  "questions": [
+    {
+      "id": "q1",
+      "domain": 1,
+      "question": "n8n 的名称代表什么含义？",
+      "options": {
+        "A": "Node to Node",
+        "B": "Nodemation (Node + Automation)",
+        "C": "Next 8 Nodes",
+        "D": "Network 8 Nodes"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "n8n 代表 'Nodemation'，是 'Node' 和 'Automation' 的组合词。数字 8 代替了中间的字母，类似于 i18n（internationalization）的命名方式。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q2",
+      "domain": 1,
+      "question": "n8n 可以通过哪些方式安装？（选择两个）",
+      "options": {
+        "A": "npm 全局安装",
+        "B": "仅通过应用商店",
+        "C": "Docker 容器",
+        "D": "只能编译源码"
+      },
+      "answer": ["A", "C"],
+      "answerType": "multiple",
+      "explanation": "n8n 可以通过 npm 全局安装（npm install n8n -g）或使用 Docker 容器运行。这两种方式都很常见，npm 适合开发环境，Docker 适合生产部署。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q3",
+      "domain": 1,
+      "question": "n8n 的 Credentials（凭证）用于什么目的？",
+      "options": {
+        "A": "登录 n8n 界面",
+        "B": "存储连接外部服务所需的认证信息",
+        "C": "加密工作流数据",
+        "D": "管理用户权限"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Credentials（凭证）用于存储连接外部服务所需的认证信息，如 API 密钥、OAuth 令牌、用户名密码等。凭证在 n8n 中加密存储，可被多个工作流重复使用。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q4",
+      "domain": 1,
+      "question": "n8n 社区版和企业版的主要区别是什么？",
+      "options": {
+        "A": "社区版不能自托管",
+        "B": "企业版提供额外的安全功能、SSO 和技术支持",
+        "C": "社区版没有任何节点",
+        "D": "企业版不支持自定义节点"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "n8n 企业版提供额外的安全功能（如 SSO、LDAP 集成）、高级执行功能、SLA 保证的技术支持等。社区版已包含所有核心功能，可以免费自托管使用。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q5",
+      "domain": 1,
+      "question": "以下哪个环境变量用于设置 n8n 的加密密钥？",
+      "options": {
+        "A": "N8N_SECRET_KEY",
+        "B": "N8N_ENCRYPTION_KEY",
+        "C": "N8N_PASSWORD",
+        "D": "N8N_CRYPTO_KEY"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "N8N_ENCRYPTION_KEY 环境变量用于设置加密密钥，用于加密存储的凭证和其他敏感数据。这个密钥对于生产环境非常重要，应该妥善保管。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q6",
+      "domain": 2,
+      "question": "创建新工作流时，第一步通常是什么？",
+      "options": {
+        "A": "添加一个 Set 节点",
+        "B": "添加一个触发器节点",
+        "C": "配置凭证",
+        "D": "设置变量"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "创建新工作流时，第一步通常是添加一个触发器节点。触发器定义了工作流何时以及如何启动，是工作流的入口点。没有触发器，工作流只能手动执行。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q7",
+      "domain": 2,
+      "question": "n8n 中的 Manual Trigger 节点有什么特点？",
+      "options": {
+        "A": "只能在测试时使用",
+        "B": "允许手动点击执行工作流",
+        "C": "自动每分钟触发",
+        "D": "只能通过 API 调用"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Manual Trigger 节点允许用户手动点击执行工作流。它常用于测试或需要人工干预启动的场景。在激活的工作流中，它也可以通过界面触发。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q8",
+      "domain": 2,
+      "question": "如何在 n8n 中实现工作流的错误处理？",
+      "options": {
+        "A": "只能忽略错误",
+        "B": "使用 Error Trigger 节点或节点的错误输出",
+        "C": "错误会自动修复",
+        "D": "必须写代码处理"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "n8n 提供多种错误处理方式：Error Trigger 节点可以捕获工作流执行错误，各节点也可以配置错误输出分支来处理该节点的错误，实现优雅的错误处理。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q9",
+      "domain": 2,
+      "question": "工作流中的节点连接线代表什么？",
+      "options": {
+        "A": "只是视觉装饰",
+        "B": "数据流动的方向和顺序",
+        "C": "节点的优先级",
+        "D": "执行时间"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "工作流中的节点连接线代表数据流动的方向和顺序。数据从一个节点的输出流向下一个节点的输入，连接线定义了执行的路径和数据传递关系。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q10",
+      "domain": 2,
+      "question": "n8n 工作流可以包含循环吗？",
+      "options": {
+        "A": "不支持任何形式的循环",
+        "B": "可以通过 Loop Over Items 节点或递归调用实现",
+        "C": "只能循环一次",
+        "D": "必须使用外部程序"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "n8n 支持循环操作，可以通过 Loop Over Items 节点对数据集进行迭代，也可以通过 Execute Workflow 节点递归调用自身来实现更复杂的循环逻辑。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q11",
+      "domain": 3,
+      "question": "HTTP Request 节点支持哪些 HTTP 方法？（选择三个）",
+      "options": {
+        "A": "GET",
+        "B": "POST",
+        "C": "DELETE",
+        "D": "COPY"
+      },
+      "answer": ["A", "B", "C"],
+      "answerType": "multiple",
+      "explanation": "HTTP Request 节点支持所有标准 HTTP 方法，包括 GET、POST、PUT、PATCH、DELETE、HEAD、OPTIONS 等。COPY 不是标准的 HTTP 方法。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q12",
+      "domain": 3,
+      "question": "Gmail 节点可以执行哪些操作？（选择两个）",
+      "options": {
+        "A": "发送邮件",
+        "B": "获取邮件列表",
+        "C": "创建日历事件",
+        "D": "编辑 Google 文档"
+      },
+      "answer": ["A", "B"],
+      "answerType": "multiple",
+      "explanation": "Gmail 节点专门用于邮件操作，包括发送邮件、获取邮件列表、读取邮件内容、添加标签等。日历事件需要使用 Google Calendar 节点，文档编辑需要使用 Google Docs 节点。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q13",
+      "domain": 3,
+      "question": "Slack 节点的 Channel 操作可以做什么？",
+      "options": {
+        "A": "只能发送消息",
+        "B": "发送消息、获取频道信息、管理频道成员等",
+        "C": "只能读取消息",
+        "D": "只能创建频道"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Slack 节点的 Channel 操作支持多种功能：发送消息、获取频道信息、获取频道成员列表、创建频道、归档频道、邀请用户加入频道等。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q14",
+      "domain": 3,
+      "question": "Spreadsheet File 节点可以处理哪些文件格式？（选择两个）",
+      "options": {
+        "A": "CSV",
+        "B": "Excel (.xlsx)",
+        "C": "Word (.docx)",
+        "D": "PowerPoint (.pptx)"
+      },
+      "answer": ["A", "B"],
+      "answerType": "multiple",
+      "explanation": "Spreadsheet File 节点可以读取和写入电子表格文件，包括 CSV 和 Excel (.xlsx, .xls) 格式。它不处理 Word 或 PowerPoint 文件。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q15",
+      "domain": 3,
+      "question": "Crypto 节点的主要功能是什么？",
+      "options": {
+        "A": "交易加密货币",
+        "B": "对数据进行哈希或加密/解密",
+        "C": "生成密码",
+        "D": "验证 SSL 证书"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Crypto 节点用于对数据进行加密操作，包括各种哈希算法（MD5、SHA256 等）、HMAC 签名、以及数据加密和解密功能。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q16",
+      "domain": 3,
+      "question": "Read Binary File 节点的用途是什么？",
+      "options": {
+        "A": "读取纯文本文件",
+        "B": "从文件系统读取二进制文件",
+        "C": "读取数据库",
+        "D": "读取网页内容"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Read Binary File 节点用于从文件系统读取二进制文件，如图片、PDF、视频等。读取的内容存储在 item 的 binary 属性中，可以传递给其他节点处理。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q17",
+      "domain": 3,
+      "question": "Compare Datasets 节点的作用是什么？",
+      "options": {
+        "A": "比较两个字符串",
+        "B": "比较两组数据并找出差异",
+        "C": "比较文件大小",
+        "D": "比较执行时间"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Compare Datasets 节点用于比较两组数据并找出差异。它可以识别新增、删除、修改的记录，常用于数据同步场景，如识别数据库或 API 返回数据的变化。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q18",
+      "domain": 4,
+      "question": "在 n8n 中，每个 item 包含哪些主要属性？",
+      "options": {
+        "A": "只有 data 属性",
+        "B": "json 和可选的 binary 属性",
+        "C": "只有 text 属性",
+        "D": "只有 value 属性"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "每个 n8n item 包含两个主要属性：json（用于存储结构化数据）和可选的 binary（用于存储文件等二进制数据）。这种设计允许同时处理结构化数据和文件。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q19",
+      "domain": 4,
+      "question": "表达式 {{ $json.items.length }} 返回什么？",
+      "options": {
+        "A": "items 字段的类型",
+        "B": "items 数组的元素数量",
+        "C": "items 的第一个元素",
+        "D": "items 的最后一个元素"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "{{ $json.items.length }} 使用 JavaScript 的 length 属性返回 items 数组的元素数量。这是检查数组大小的标准方法。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q20",
+      "domain": 4,
+      "question": "$input.first() 返回什么？",
+      "options": {
+        "A": "第一个节点的数据",
+        "B": "输入数据的第一个 item",
+        "C": "第一个执行的数据",
+        "D": "第一个错误"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "$input.first() 返回输入数据的第一个 item。这在只需要处理第一条数据或数据只有一条时很有用。对应的 $input.last() 返回最后一个 item。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q21",
+      "domain": 4,
+      "question": "如何在表达式中使用条件逻辑？",
+      "options": {
+        "A": "不支持条件逻辑",
+        "B": "使用三元运算符或 if 语句",
+        "C": "只能使用 IF 节点",
+        "D": "使用 SQL CASE 语句"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "在 n8n 表达式中可以使用 JavaScript 的条件逻辑，包括三元运算符（condition ? value1 : value2）和 if 语句。例如 {{ $json.age >= 18 ? '成人' : '未成年' }}。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q22",
+      "domain": 4,
+      "question": "$workflow 变量包含什么信息？",
+      "options": {
+        "A": "只有工作流 ID",
+        "B": "工作流的元数据，如 ID、名称、是否激活等",
+        "C": "所有节点的列表",
+        "D": "执行历史"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "$workflow 变量包含当前工作流的元数据，包括 $workflow.id（工作流ID）、$workflow.name（工作流名称）、$workflow.active（是否激活）等信息。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q23",
+      "domain": 1,
+      "question": "n8n 中的 Queue Mode 是什么？",
+      "options": {
+        "A": "排队等待用户输入",
+        "B": "使用消息队列（如 Redis）来处理工作流执行",
+        "C": "按顺序执行所有工作流",
+        "D": "限制并发执行数"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Queue Mode 允许 n8n 使用消息队列（如 Redis 或 RabbitMQ）来管理工作流执行。这可以实现水平扩展，多个 worker 可以从队列中获取任务并执行。",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q24",
+      "domain": 1,
+      "question": "如何备份 n8n 的工作流和凭证？",
+      "options": {
+        "A": "只能手动逐个导出",
+        "B": "导出工作流 JSON 文件和备份数据库",
+        "C": "不支持备份",
+        "D": "只能通过截图保存"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "可以通过导出工作流 JSON 文件来备份工作流，同时应该备份 n8n 使用的数据库（包含凭证等数据）。对于 Docker 部署，备份挂载的数据卷即可。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q25",
+      "domain": 1,
+      "question": "N8N_BASIC_AUTH_ACTIVE 环境变量的作用是什么？",
+      "options": {
+        "A": "启用 OAuth 认证",
+        "B": "启用 n8n 界面的基本身份验证",
+        "C": "启用 API 密钥",
+        "D": "启用 SSL"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "N8N_BASIC_AUTH_ACTIVE=true 环境变量用于启用 n8n Web 界面的基本身份验证。配合 N8N_BASIC_AUTH_USER 和 N8N_BASIC_AUTH_PASSWORD 设置用户名和密码。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q26",
+      "domain": 2,
+      "question": "什么是 n8n 中的 Sub-workflow？",
+      "options": {
+        "A": "较小的工作流",
+        "B": "被另一个工作流调用的可重用工作流",
+        "C": "工作流的子节点",
+        "D": "工作流的一部分"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Sub-workflow（子工作流）是被另一个工作流通过 Execute Workflow 节点调用的可重用工作流。这允许模块化设计，将常用的逻辑封装成独立工作流供多处调用。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q27",
+      "domain": 2,
+      "question": "如何向 Sub-workflow 传递参数？",
+      "options": {
+        "A": "不支持传参",
+        "B": "通过 Execute Workflow 节点的输入数据",
+        "C": "只能通过全局变量",
+        "D": "只能通过文件"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "通过 Execute Workflow 节点的输入数据向子工作流传递参数。子工作流使用 Execute Workflow Trigger 节点接收这些数据，并可通过 Return 节点返回结果。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q28",
+      "domain": 2,
+      "question": "工作流的 Settings 中可以配置什么？（选择两个）",
+      "options": {
+        "A": "错误处理方式",
+        "B": "超时时间",
+        "C": "节点颜色",
+        "D": "用户界面主题"
+      },
+      "answer": ["A", "B"],
+      "answerType": "multiple",
+      "explanation": "工作流 Settings 中可以配置错误处理方式（如失败时重试）、执行超时时间、保存执行数据的选项等。节点颜色在节点属性中设置，界面主题是全局设置。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q29",
+      "domain": 2,
+      "question": "如何在 n8n 中创建定时执行的工作流？",
+      "options": {
+        "A": "只能使用外部定时器",
+        "B": "使用 Schedule Trigger 节点并设置 Cron 表达式或间隔",
+        "C": "在工作流设置中配置",
+        "D": "使用 Wait 节点"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "使用 Schedule Trigger 节点创建定时执行的工作流。可以设置 Cron 表达式定义精确的执行时间，或设置固定间隔（如每小时、每天）。工作流需要激活才能按计划执行。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q30",
+      "domain": 3,
+      "question": "Airtable 节点支持哪些操作？（选择两个）",
+      "options": {
+        "A": "创建记录",
+        "B": "搜索记录",
+        "C": "创建数据库",
+        "D": "管理用户"
+      },
+      "answer": ["A", "B"],
+      "answerType": "multiple",
+      "explanation": "Airtable 节点支持对表格数据进行 CRUD 操作，包括创建记录、读取/搜索记录、更新记录、删除记录等。创建数据库和管理用户需要通过 Airtable 界面或 API 直接操作。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q31",
+      "domain": 3,
+      "question": "MySQL 节点的 'Execute Query' 操作可以做什么？",
+      "options": {
+        "A": "只能执行 SELECT 查询",
+        "B": "执行任意 SQL 语句",
+        "C": "只能执行存储过程",
+        "D": "只能创建表"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "MySQL 节点的 'Execute Query' 操作可以执行任意 SQL 语句，包括 SELECT、INSERT、UPDATE、DELETE、CREATE TABLE 等。这提供了最大的灵活性来操作数据库。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q32",
+      "domain": 3,
+      "question": "MongoDB 节点使用什么语法进行查询？",
+      "options": {
+        "A": "SQL 语法",
+        "B": "MongoDB 查询语法（JSON 格式）",
+        "C": "GraphQL",
+        "D": "自定义 DSL"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "MongoDB 节点使用 MongoDB 原生的查询语法，即 JSON 格式的查询文档。例如 { \"status\": \"active\", \"age\": { \"$gt\": 18 } } 查找状态为 active 且年龄大于 18 的文档。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q33",
+      "domain": 3,
+      "question": "RSS Read 节点的功能是什么？",
+      "options": {
+        "A": "发布 RSS 源",
+        "B": "读取和解析 RSS/Atom Feed",
+        "C": "创建 RSS 文件",
+        "D": "转换 RSS 格式"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "RSS Read 节点用于读取和解析 RSS 或 Atom Feed。它可以获取博客、新闻网站等的最新内容，常用于内容聚合和监控更新的自动化场景。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q34",
+      "domain": 3,
+      "question": "XML 节点可以执行什么操作？",
+      "options": {
+        "A": "只能读取 XML",
+        "B": "在 JSON 和 XML 之间转换",
+        "C": "只能写入 XML",
+        "D": "只能验证 XML"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "XML 节点可以在 JSON 和 XML 格式之间相互转换。可以将 JSON 数据转换为 XML 格式，也可以将 XML 解析为 JSON 格式，便于在 n8n 中处理 XML 数据。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q35",
+      "domain": 4,
+      "question": "表达式 {{ $json.name || 'Unknown' }} 的含义是什么？",
+      "options": {
+        "A": "name 和 'Unknown' 的连接",
+        "B": "如果 name 为空则返回 'Unknown'",
+        "C": "检查 name 是否等于 'Unknown'",
+        "D": "将 name 设为 'Unknown'"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "这是 JavaScript 的逻辑或运算符。如果 $json.name 是 falsy 值（undefined、null、空字符串等），则返回 'Unknown'。这是设置默认值的常用方式。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q36",
+      "domain": 4,
+      "question": "如何在表达式中访问数组的第一个元素？",
+      "options": {
+        "A": "$json.array.first",
+        "B": "$json.array[0]",
+        "C": "$json.array.get(0)",
+        "D": "$json.array.first()"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "使用方括号索引访问数组元素，索引从 0 开始。{{ $json.array[0] }} 访问数组的第一个元素，{{ $json.array[1] }} 访问第二个元素，以此类推。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q37",
+      "domain": 4,
+      "question": "$today 变量返回什么？",
+      "options": {
+        "A": "当前时间戳",
+        "B": "今天日期的 DateTime 对象（午夜时间）",
+        "C": "今天的日期字符串",
+        "D": "今天是周几"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "$today 返回今天日期的 Luxon DateTime 对象，时间设为午夜（00:00:00）。与 $now 不同，$today 不包含当前时间，只有日期。可用于日期比较和计算。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q38",
+      "domain": 4,
+      "question": "如何使用表达式格式化日期为 'YYYY-MM-DD' 格式？",
+      "options": {
+        "A": "{{ $now.format('YYYY-MM-DD') }}",
+        "B": "{{ $now.toFormat('yyyy-MM-dd') }}",
+        "C": "{{ $now.toString('YYYY-MM-DD') }}",
+        "D": "{{ formatDate($now, 'YYYY-MM-DD') }}"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "n8n 使用 Luxon 库处理日期，使用 toFormat() 方法格式化日期。注意格式字符串中年份用小写 'yyyy'，月份用大写 'MM'，日期用小写 'dd'。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q39",
+      "domain": 1,
+      "question": "n8n 的 Webhook URL 格式通常是什么样的？",
+      "options": {
+        "A": "https://n8n.io/webhook/xxx",
+        "B": "https://your-domain/webhook/workflow-id",
+        "C": "https://your-domain/webhook/unique-path",
+        "D": "https://api.n8n.io/hooks/xxx"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "n8n 的 Webhook URL 格式为 https://your-domain/webhook/unique-path，其中 unique-path 是在 Webhook 节点中配置的路径。自托管时域名是你自己的服务器地址。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q40",
+      "domain": 1,
+      "question": "如何更新 n8n 到最新版本（npm 安装）？",
+      "options": {
+        "A": "npm update n8n",
+        "B": "npm install -g n8n@latest",
+        "C": "n8n update",
+        "D": "npm upgrade n8n"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "使用 npm install -g n8n@latest 可以更新到最新版本的 n8n。-g 表示全局安装，@latest 指定安装最新版本。更新前建议备份数据。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q41",
+      "domain": 2,
+      "question": "Webhook 节点的 'Test' URL 和 'Production' URL 有什么区别？",
+      "options": {
+        "A": "没有区别",
+        "B": "Test URL 只在编辑器测试时有效，Production URL 需要激活工作流",
+        "C": "Test URL 更安全",
+        "D": "Production URL 更快"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Test URL 用于在编辑器中测试工作流，只有在等待执行时才会响应。Production URL 只有在工作流激活后才能使用，用于生产环境接收真实的 Webhook 请求。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q42",
+      "domain": 2,
+      "question": "如何在 n8n 中处理并行执行的多个分支？",
+      "options": {
+        "A": "n8n 不支持并行",
+        "B": "一个节点输出连接到多个节点会并行执行",
+        "C": "必须使用特殊的并行节点",
+        "D": "需要创建多个工作流"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "当一个节点的输出连接到多个下游节点时，这些分支会并行执行。n8n 会同时处理所有分支，可以使用 Merge 节点在需要时合并结果。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q43",
+      "domain": 3,
+      "question": "Respond to Webhook 节点的作用是什么？",
+      "options": {
+        "A": "创建新的 Webhook",
+        "B": "自定义 Webhook 请求的响应内容",
+        "C": "验证 Webhook 请求",
+        "D": "记录 Webhook 日志"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Respond to Webhook 节点允许自定义返回给 Webhook 请求的响应内容。可以设置响应状态码、响应体和响应头，而不是使用默认的成功响应。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q44",
+      "domain": 3,
+      "question": "Filter 节点与 IF 节点的主要区别是什么？",
+      "options": {
+        "A": "Filter 保留或丢弃 items，IF 分流到不同路径",
+        "B": "没有区别",
+        "C": "Filter 更快",
+        "D": "IF 只能处理数字"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Filter 节点根据条件保留或丢弃 items，只有一个输出。IF 节点根据条件将 items 分流到 true 或 false 两个不同的路径，所有 items 都会被保留但流向不同分支。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q45",
+      "domain": 4,
+      "question": "如何在表达式中将字符串转换为数字？",
+      "options": {
+        "A": "{{ toNumber($json.value) }}",
+        "B": "{{ Number($json.value) }} 或 {{ parseInt($json.value) }}",
+        "C": "{{ $json.value.toNumber() }}",
+        "D": "{{ cast($json.value, 'number') }}"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "使用 JavaScript 的 Number() 函数或 parseInt()/parseFloat() 方法将字符串转换为数字。Number('123') 返回 123，parseInt('123.45') 返回 123，parseFloat('123.45') 返回 123.45。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q46",
+      "domain": 4,
+      "question": "$node['NodeName'].item 可以访问什么？",
+      "options": {
+        "A": "节点的配置",
+        "B": "指定节点输出的当前 item",
+        "C": "节点的所有输出",
+        "D": "节点的执行时间"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "$node['NodeName'].item 访问指定节点名称输出的当前 item（与当前处理的 item 索引对应）。这允许在表达式中引用非直接前驱节点的特定输出数据。",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q47",
+      "domain": 2,
+      "question": "Stop and Error 节点的作用是什么？",
+      "options": {
+        "A": "暂停工作流",
+        "B": "故意停止执行并抛出自定义错误",
+        "C": "处理错误后继续",
+        "D": "记录错误但继续执行"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Stop and Error 节点用于故意停止工作流执行并抛出自定义错误消息。这在检测到无效数据或需要触发错误处理流程时很有用。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q48",
+      "domain": 3,
+      "question": "Edit Image 节点可以执行哪些操作？（选择两个）",
+      "options": {
+        "A": "调整图片大小",
+        "B": "添加水印文字",
+        "C": "识别图片中的文字 (OCR)",
+        "D": "分析图片内容 (AI)"
+      },
+      "answer": ["A", "B"],
+      "answerType": "multiple",
+      "explanation": "Edit Image 节点可以执行基本的图片编辑操作，如调整大小、裁剪、旋转、添加文字/水印、调整颜色等。OCR 和 AI 图片分析需要使用专门的服务节点。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q49",
+      "domain": 1,
+      "question": "n8n 的社区节点是什么？",
+      "options": {
+        "A": "官方开发的节点",
+        "B": "由社区贡献的第三方节点",
+        "C": "用于社交媒体的节点",
+        "D": "免费节点"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "社区节点是由 n8n 社区成员开发和贡献的第三方节点。它们扩展了 n8n 的功能，可以通过 npm 包安装。使用前应评估其质量和安全性。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q50",
+      "domain": 4,
+      "question": "表达式 {{ Object.keys($json) }} 返回什么？",
+      "options": {
+        "A": "JSON 对象的值",
+        "B": "JSON 对象的所有键名数组",
+        "C": "键值对数量",
+        "D": "第一个键名"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Object.keys() 是 JavaScript 方法，返回对象所有键名组成的数组。例如，如果 $json 是 {name: 'John', age: 30}，则返回 ['name', 'age']。",
+      "difficulty": "medium"
+    }
+  ]
+}

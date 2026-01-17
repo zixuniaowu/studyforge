@@ -1,0 +1,772 @@
+{
+  "exam": {
+    "id": "n8n-fundamentals-set1",
+    "name": "n8n 基础 模拟考试 #1",
+    "code": "N8N-FUND",
+    "provider": "n8n",
+    "language": "zh-CN",
+    "description": "n8n 工作流自动化平台基础认证 - 第1套",
+    "totalQuestions": 50,
+    "passingScore": 70,
+    "examTime": 60,
+    "domains": [
+      { "id": 1, "name": "n8n Basics", "weight": 25 },
+      { "id": 2, "name": "Workflow Design", "weight": 25 },
+      { "id": 3, "name": "Nodes and Connections", "weight": 25 },
+      { "id": 4, "name": "Data Handling", "weight": 25 }
+    ],
+    "tags": ["n8n", "workflow", "automation", "认证考试"]
+  },
+  "questions": [
+    {
+      "id": "q1",
+      "domain": 1,
+      "question": "n8n 是什么类型的平台？",
+      "options": {
+        "A": "数据库管理系统",
+        "B": "工作流自动化平台",
+        "C": "前端开发框架",
+        "D": "操作系统"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "n8n 是一个开源的工作流自动化平台，允许用户通过可视化界面连接不同的应用程序和服务，创建自动化工作流。它类似于 Zapier 或 Make，但可以自托管。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q2",
+      "domain": 1,
+      "question": "n8n 的核心优势之一是什么？",
+      "options": {
+        "A": "只能在云端运行",
+        "B": "支持自托管部署",
+        "C": "不支持 API 集成",
+        "D": "仅支持单一编程语言"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "n8n 的核心优势之一是支持自托管部署，用户可以将其部署在自己的服务器上，完全控制数据和工作流，这对于有数据隐私要求的企业尤为重要。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q3",
+      "domain": 1,
+      "question": "在 n8n 中，什么是 'Node'？",
+      "options": {
+        "A": "工作流的执行日志",
+        "B": "执行特定操作的功能块",
+        "C": "用户界面的主题设置",
+        "D": "数据库连接字符串"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "在 n8n 中，Node（节点）是执行特定操作的功能块。每个节点代表一个特定的操作，如发送 HTTP 请求、读取数据库、发送邮件等。工作流由多个节点连接组成。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q4",
+      "domain": 1,
+      "question": "n8n 使用什么方式来存储工作流配置？",
+      "options": {
+        "A": "纯文本文件",
+        "B": "JSON 格式",
+        "C": "XML 格式",
+        "D": "二进制格式"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "n8n 使用 JSON 格式来存储工作流配置。这使得工作流可以轻松导出、导入和版本控制。JSON 格式人类可读，便于调试和分享。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q5",
+      "domain": 1,
+      "question": "n8n 的默认 Web 界面运行在哪个端口？",
+      "options": {
+        "A": "3000",
+        "B": "5678",
+        "C": "8080",
+        "D": "443"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "n8n 的默认 Web 界面运行在端口 5678。可以通过环境变量 N8N_PORT 来修改此端口。访问 http://localhost:5678 即可打开 n8n 界面。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q6",
+      "domain": 2,
+      "question": "在 n8n 工作流中，哪种节点类型用于启动工作流？",
+      "options": {
+        "A": "Action 节点",
+        "B": "Trigger 节点",
+        "C": "Transform 节点",
+        "D": "Output 节点"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Trigger（触发器）节点用于启动工作流。它可以是定时触发、Webhook 触发、或者监听特定事件触发。每个工作流至少需要一个触发器节点作为起点。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q7",
+      "domain": 2,
+      "question": "一个 n8n 工作流可以有多少个触发器节点？",
+      "options": {
+        "A": "只能有一个",
+        "B": "可以有多个",
+        "C": "最多三个",
+        "D": "不需要触发器"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "一个 n8n 工作流可以有多个触发器节点。当任何一个触发器被激活时，工作流就会执行。这允许从多个入口点启动同一个工作流。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q8",
+      "domain": 2,
+      "question": "在 n8n 中，如何手动测试工作流？",
+      "options": {
+        "A": "只能等待触发器触发",
+        "B": "点击 'Execute Workflow' 按钮",
+        "C": "必须通过 API 调用",
+        "D": "需要重启 n8n 服务"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "在 n8n 编辑器中，可以点击 'Execute Workflow' 按钮手动测试工作流。这会执行整个工作流，让您可以查看每个节点的输入和输出数据，便于调试。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q9",
+      "domain": 2,
+      "question": "n8n 工作流的执行模式有哪些？（选择两个）",
+      "options": {
+        "A": "生产模式",
+        "B": "调试模式",
+        "C": "手动执行模式",
+        "D": "自动触发模式"
+      },
+      "answer": ["C", "D"],
+      "answerType": "multiple",
+      "explanation": "n8n 工作流有两种执行模式：手动执行模式（通过点击执行按钮）和自动触发模式（通过触发器节点自动启动）。这两种模式允许灵活地测试和运行工作流。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q10",
+      "domain": 2,
+      "question": "在 n8n 中，什么是 'Sticky Note'？",
+      "options": {
+        "A": "用于存储凭证的节点",
+        "B": "用于添加注释和说明的可视化元素",
+        "C": "用于发送通知的节点",
+        "D": "用于暂停工作流的节点"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Sticky Note（便签）是 n8n 中用于添加注释和说明的可视化元素。它可以帮助记录工作流的目的、逻辑或注意事项，使工作流更易于理解和维护。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q11",
+      "domain": 3,
+      "question": "HTTP Request 节点的主要用途是什么？",
+      "options": {
+        "A": "读取本地文件",
+        "B": "发送 HTTP/HTTPS 请求到外部 API",
+        "C": "管理数据库连接",
+        "D": "生成随机数据"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "HTTP Request 节点用于发送 HTTP/HTTPS 请求到外部 API 或 Web 服务。它支持 GET、POST、PUT、DELETE 等各种 HTTP 方法，是 n8n 中最常用的节点之一。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q12",
+      "domain": 3,
+      "question": "Set 节点的主要功能是什么？",
+      "options": {
+        "A": "设置工作流的执行时间",
+        "B": "设置或修改数据字段的值",
+        "C": "设置用户权限",
+        "D": "设置数据库连接"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Set 节点用于设置或修改数据字段的值。它可以添加新字段、修改现有字段的值、或删除不需要的字段，是数据转换的基础工具。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q13",
+      "domain": 3,
+      "question": "IF 节点的作用是什么？",
+      "options": {
+        "A": "循环执行操作",
+        "B": "根据条件分支执行不同路径",
+        "C": "合并多个数据流",
+        "D": "等待用户输入"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "IF 节点用于根据条件分支执行不同路径。它有两个输出：true 和 false。根据设定的条件评估结果，数据会流向相应的分支，实现条件逻辑。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q14",
+      "domain": 3,
+      "question": "Merge 节点可以执行哪些操作？（选择两个）",
+      "options": {
+        "A": "合并来自多个分支的数据",
+        "B": "根据条件过滤数据",
+        "C": "等待多个分支完成后继续",
+        "D": "发送 HTTP 请求"
+      },
+      "answer": ["A", "C"],
+      "answerType": "multiple",
+      "explanation": "Merge 节点用于合并来自多个分支的数据，并可以等待多个分支完成后继续执行。它支持多种合并模式，如追加、连接、或根据键值合并。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q15",
+      "domain": 3,
+      "question": "Code 节点支持哪种编程语言？",
+      "options": {
+        "A": "只支持 Python",
+        "B": "只支持 JavaScript",
+        "C": "同时支持 JavaScript 和 Python",
+        "D": "只支持 SQL"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "n8n 的 Code 节点同时支持 JavaScript 和 Python 两种编程语言。用户可以根据需要选择使用哪种语言来处理数据或执行自定义逻辑。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q16",
+      "domain": 3,
+      "question": "Schedule Trigger 节点的作用是什么？",
+      "options": {
+        "A": "发送定时邮件",
+        "B": "按设定的时间计划触发工作流",
+        "C": "记录执行时间",
+        "D": "延迟工作流执行"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Schedule Trigger 节点用于按设定的时间计划触发工作流。可以使用 Cron 表达式或简单的间隔设置来定义执行时间，实现定时任务自动化。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q17",
+      "domain": 3,
+      "question": "Switch 节点与 IF 节点有什么区别？",
+      "options": {
+        "A": "没有区别",
+        "B": "Switch 节点支持多个条件分支",
+        "C": "Switch 节点只能处理数字",
+        "D": "IF 节点支持更多分支"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Switch 节点与 IF 节点的主要区别是 Switch 节点支持多个条件分支（多路分支），而 IF 节点只支持两个分支（true/false）。当需要根据多个条件路由数据时，使用 Switch 节点更合适。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q18",
+      "domain": 4,
+      "question": "在 n8n 中，数据如何在节点之间传递？",
+      "options": {
+        "A": "通过全局变量",
+        "B": "通过 items（项目）数组",
+        "C": "通过数据库",
+        "D": "通过文件系统"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "在 n8n 中，数据通过 items（项目）数组在节点之间传递。每个节点接收输入 items，处理后输出新的 items。每个 item 包含 json 和可选的 binary 属性。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q19",
+      "domain": 4,
+      "question": "n8n 表达式使用什么语法？",
+      "options": {
+        "A": "SQL 语法",
+        "B": "双花括号语法 {{ }}",
+        "C": "美元符号语法 ${ }",
+        "D": "方括号语法 [ ]"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "n8n 表达式使用双花括号语法 {{ }}。在花括号内可以编写 JavaScript 表达式来访问和处理数据，例如 {{ $json.name }} 用于访问当前 item 的 name 字段。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q20",
+      "domain": 4,
+      "question": "如何在 n8n 表达式中访问前一个节点的输出数据？",
+      "options": {
+        "A": "$previous.data",
+        "B": "$json",
+        "C": "$input.data",
+        "D": "$node.output"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "$json 是访问前一个节点输出数据的快捷方式。它指向当前正在处理的 item 的 json 属性。例如，{{ $json.email }} 获取邮箱字段。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q21",
+      "domain": 4,
+      "question": "在 n8n 中，$('NodeName') 语法的作用是什么？",
+      "options": {
+        "A": "删除指定的节点",
+        "B": "访问指定节点名称的输出数据",
+        "C": "创建新节点",
+        "D": "修改节点设置"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "$('NodeName') 语法用于访问指定节点名称的输出数据。这在需要访问非直接前驱节点的数据时非常有用，例如 {{ $('HTTP Request').item.json.data }}。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q22",
+      "domain": 4,
+      "question": "什么是 n8n 中的 Binary Data？",
+      "options": {
+        "A": "只包含0和1的数据",
+        "B": "文件和媒体等非文本数据",
+        "C": "加密后的数据",
+        "D": "压缩后的数据"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Binary Data（二进制数据）指文件和媒体等非文本数据，如图片、PDF、视频等。n8n 的 item 可以同时包含 json 数据和 binary 数据，便于处理文件操作。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q23",
+      "domain": 1,
+      "question": "n8n 是基于什么技术栈构建的？",
+      "options": {
+        "A": "Python + Django",
+        "B": "Node.js + TypeScript",
+        "C": "Java + Spring",
+        "D": "Ruby + Rails"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "n8n 是基于 Node.js 和 TypeScript 构建的。前端使用 Vue.js，后端使用 Node.js。这使得 n8n 在 JavaScript 生态系统中有很好的兼容性。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q24",
+      "domain": 1,
+      "question": "n8n 支持哪些数据库作为后端存储？（选择两个）",
+      "options": {
+        "A": "SQLite",
+        "B": "PostgreSQL",
+        "C": "Redis",
+        "D": "Cassandra"
+      },
+      "answer": ["A", "B"],
+      "answerType": "multiple",
+      "explanation": "n8n 支持 SQLite 和 PostgreSQL 作为后端存储数据库。SQLite 是默认选项，适合小型部署。PostgreSQL 适合生产环境和大规模部署。MySQL 也被支持。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q25",
+      "domain": 1,
+      "question": "如何在 Docker 中运行 n8n？",
+      "options": {
+        "A": "docker run -it n8n",
+        "B": "docker run -p 5678:5678 n8nio/n8n",
+        "C": "docker start n8n",
+        "D": "docker pull n8n && docker execute"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "使用 docker run -p 5678:5678 n8nio/n8n 命令可以在 Docker 中运行 n8n。-p 5678:5678 将容器的 5678 端口映射到主机，n8nio/n8n 是官方 Docker 镜像。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q26",
+      "domain": 2,
+      "question": "工作流被激活(Activate)后意味着什么？",
+      "options": {
+        "A": "工作流被删除",
+        "B": "触发器节点开始监听事件",
+        "C": "工作流立即执行一次",
+        "D": "工作流被锁定不可编辑"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "工作流被激活后，其触发器节点开始监听事件。只有激活的工作流才能响应外部事件（如 Webhook 请求、定时触发等）自动执行。未激活的工作流只能手动执行。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q27",
+      "domain": 2,
+      "question": "n8n 中的 Pinned Data 功能有什么用途？",
+      "options": {
+        "A": "永久保存工作流",
+        "B": "固定测试数据用于调试",
+        "C": "锁定节点位置",
+        "D": "标记重要工作流"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Pinned Data（固定数据）功能用于固定测试数据进行调试。当节点的输出被固定后，后续执行将使用固定的数据而不是实际执行该节点，便于调试下游节点。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q28",
+      "domain": 2,
+      "question": "如何在 n8n 中复制现有工作流？",
+      "options": {
+        "A": "只能手动重建",
+        "B": "使用 Duplicate 功能",
+        "C": "必须通过 API",
+        "D": "不支持复制"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "n8n 提供 Duplicate（复制）功能来复制现有工作流。在工作流列表中右键点击或使用菜单可以找到此选项。复制后的工作流可以独立编辑。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q29",
+      "domain": 2,
+      "question": "n8n 工作流执行失败时，默认会发生什么？",
+      "options": {
+        "A": "自动重试无限次",
+        "B": "静默失败不通知",
+        "C": "记录错误并停止执行",
+        "D": "自动删除工作流"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "当 n8n 工作流执行失败时，默认会记录错误并停止执行。错误信息会显示在执行日志中。可以配置错误处理节点或设置自定义的失败通知。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q30",
+      "domain": 3,
+      "question": "Webhook 节点的主要作用是什么？",
+      "options": {
+        "A": "发送 Webhook 请求到外部服务",
+        "B": "接收来自外部服务的 HTTP 请求",
+        "C": "监控网站状态",
+        "D": "管理 Webhook 订阅"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Webhook 节点用于接收来自外部服务的 HTTP 请求。它作为触发器节点，当外部系统发送请求到 n8n 提供的 Webhook URL 时，工作流会被触发执行。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q31",
+      "domain": 3,
+      "question": "在 HTTP Request 节点中，如何添加认证信息？",
+      "options": {
+        "A": "只能在 URL 中添加",
+        "B": "使用 Credentials（凭证）配置",
+        "C": "只能在请求体中添加",
+        "D": "不支持认证"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "在 HTTP Request 节点中，通过 Credentials（凭证）配置来添加认证信息。n8n 支持多种认证类型，如 API Key、OAuth2、Basic Auth 等。凭证安全存储，可重复使用。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q32",
+      "domain": 3,
+      "question": "Wait 节点的功能是什么？",
+      "options": {
+        "A": "等待用户手动确认",
+        "B": "在工作流中添加时间延迟",
+        "C": "等待数据库查询完成",
+        "D": "等待文件上传完成"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Wait 节点用于在工作流中添加时间延迟。可以设置等待固定时间或等待到特定时间点。这在需要限制 API 调用频率或等待外部处理完成时很有用。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q33",
+      "domain": 3,
+      "question": "Item Lists 节点可以执行哪些操作？（选择两个）",
+      "options": {
+        "A": "拆分数组为多个 items",
+        "B": "合并多个 items 为数组",
+        "C": "发送 HTTP 请求",
+        "D": "删除数据库记录"
+      },
+      "answer": ["A", "B"],
+      "answerType": "multiple",
+      "explanation": "Item Lists 节点用于处理数据集合。它可以将数组拆分为多个 items（Split Out），也可以将多个 items 合并为单个数组（Aggregate）。还支持排序、限制数量等操作。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q34",
+      "domain": 3,
+      "question": "Function 节点与 Code 节点有什么关系？",
+      "options": {
+        "A": "它们是完全相同的节点",
+        "B": "Function 是 Code 节点的旧版本名称",
+        "C": "Function 只支持 Python",
+        "D": "没有任何关系"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Function 节点是 Code 节点的旧版本名称。在新版 n8n 中，Function 节点已被 Code 节点替代。Code 节点功能更强大，同时支持 JavaScript 和 Python。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q35",
+      "domain": 4,
+      "question": "在 n8n 中，如何访问所有输入 items？",
+      "options": {
+        "A": "$all",
+        "B": "$items",
+        "C": "$input.all()",
+        "D": "$data.items"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "$input.all() 返回所有输入 items 的数组。这在需要一次处理所有数据（如聚合计算）时非常有用。每个 item 包含 json 和可选的 binary 属性。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q36",
+      "domain": 4,
+      "question": "n8n 表达式中 $now 代表什么？",
+      "options": {
+        "A": "工作流创建时间",
+        "B": "当前的日期时间对象",
+        "C": "上次执行时间",
+        "D": "服务器启动时间"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "$now 返回当前的日期时间对象（Luxon DateTime）。可以用它进行日期运算和格式化，例如 {{ $now.toFormat('yyyy-MM-dd') }} 输出今天的日期。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q37",
+      "domain": 4,
+      "question": "如何在 n8n 中处理 JSON 数据中的嵌套字段？",
+      "options": {
+        "A": "只能使用 Code 节点",
+        "B": "使用点表示法访问，如 $json.user.name",
+        "C": "不支持嵌套字段",
+        "D": "必须先展平数据"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "使用点表示法可以访问嵌套字段，如 {{ $json.user.name }} 访问 user 对象中的 name 字段。也可以使用方括号表示法 {{ $json['user']['name'] }}。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q38",
+      "domain": 4,
+      "question": "n8n 中的 $runIndex 代表什么？",
+      "options": {
+        "A": "当前工作流的总执行次数",
+        "B": "当前循环的迭代索引",
+        "C": "当前节点在工作流中的位置",
+        "D": "当前 item 的索引"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "$runIndex 返回当前 item 的索引（从 0 开始）。当节点处理多个 items 时，可以用它来区分不同的 items 或进行基于位置的操作。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q39",
+      "domain": 1,
+      "question": "n8n 的许可证类型是什么？",
+      "options": {
+        "A": "完全闭源商业软件",
+        "B": "采用 Fair-code 许可的开源软件",
+        "C": "MIT 完全开源",
+        "D": "GPL 许可证"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "n8n 采用 Fair-code 许可模式，源代码公开可见，个人和小团队可免费使用。但商业使用有一定限制。这种模式平衡了开源精神和商业可持续性。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q40",
+      "domain": 1,
+      "question": "n8n Cloud 和自托管版本的主要区别是什么？",
+      "options": {
+        "A": "功能完全不同",
+        "B": "Cloud 由 n8n 托管，自托管需要自己维护服务器",
+        "C": "自托管不支持所有节点",
+        "D": "Cloud 不支持自定义节点"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "n8n Cloud 由 n8n 官方托管和维护，用户无需管理服务器。自托管版本需要用户自己部署和维护服务器，但可以完全控制数据和环境。核心功能是相同的。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q41",
+      "domain": 2,
+      "question": "工作流标签(Tags)的用途是什么？",
+      "options": {
+        "A": "控制工作流执行顺序",
+        "B": "分类和组织工作流便于管理",
+        "C": "设置工作流权限",
+        "D": "触发工作流执行"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "工作流标签用于分类和组织工作流，便于管理。可以根据项目、类型、状态等添加标签，然后通过标签筛选快速找到需要的工作流。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q42",
+      "domain": 2,
+      "question": "n8n 工作流版本历史功能可以做什么？",
+      "options": {
+        "A": "只能查看版本号",
+        "B": "查看和恢复之前的工作流版本",
+        "C": "比较不同用户的修改",
+        "D": "自动合并版本冲突"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "n8n 的版本历史功能允许查看和恢复之前的工作流版本。每次保存工作流都会创建新版本，可以回溯到任意历史版本，避免意外修改造成的损失。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q43",
+      "domain": 3,
+      "question": "Date & Time 节点的主要功能是什么？",
+      "options": {
+        "A": "获取当前时间",
+        "B": "格式化和转换日期时间",
+        "C": "设置工作流定时",
+        "D": "计算时区差异"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Date & Time 节点用于格式化和转换日期时间。可以将日期从一种格式转换为另一种格式、添加或减去时间、比较日期等。支持多种日期格式和时区。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q44",
+      "domain": 3,
+      "question": "No Operation (NoOp) 节点的用途是什么？",
+      "options": {
+        "A": "删除所有数据",
+        "B": "作为占位符传递数据而不做任何处理",
+        "C": "停止工作流执行",
+        "D": "重置节点状态"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "NoOp（No Operation）节点作为占位符，传递数据而不做任何处理。它在需要合并多个分支但不需要处理数据时很有用，或者用于工作流设计中的占位。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q45",
+      "domain": 4,
+      "question": "在 n8n 表达式中，如何将字符串转换为大写？",
+      "options": {
+        "A": "{{ $json.text.upper() }}",
+        "B": "{{ $json.text.toUpperCase() }}",
+        "C": "{{ UPPER($json.text) }}",
+        "D": "{{ $json.text.uppercase }}"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "使用 JavaScript 的 toUpperCase() 方法可以将字符串转换为大写。例如 {{ $json.name.toUpperCase() }} 会将 name 字段的值转换为全大写字母。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q46",
+      "domain": 4,
+      "question": "n8n 中如何使用表达式进行字符串模板？",
+      "options": {
+        "A": "使用 + 连接字符串",
+        "B": "使用反引号和 ${} 语法",
+        "C": "在 {{ }} 内直接组合文本和变量",
+        "D": "只能使用 concat() 方法"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "在 n8n 中，可以在 {{ }} 内直接组合文本和变量创建字符串模板。例如 {{ 'Hello, ' + $json.name + '!' }} 或使用 JavaScript 模板字符串。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q47",
+      "domain": 2,
+      "question": "n8n 中的 Execute Workflow 节点有什么作用？",
+      "options": {
+        "A": "执行操作系统命令",
+        "B": "调用另一个 n8n 工作流作为子工作流",
+        "C": "执行 SQL 查询",
+        "D": "执行 JavaScript 代码"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Execute Workflow 节点用于调用另一个 n8n 工作流作为子工作流。这允许创建可重用的工作流组件，实现模块化设计，并可以传递参数和接收返回值。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q48",
+      "domain": 3,
+      "question": "Split In Batches 节点的主要用途是什么？",
+      "options": {
+        "A": "将文件分割成多个部分",
+        "B": "将 items 分批处理以避免超过 API 限制",
+        "C": "分割字符串",
+        "D": "创建多个工作流副本"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Split In Batches 节点用于将 items 分批处理。这在需要避免超过 API 速率限制或处理大量数据时非常有用。可以设置每批的大小和批次之间的延迟。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q49",
+      "domain": 1,
+      "question": "如何查看 n8n 工作流的执行历史？",
+      "options": {
+        "A": "只能查看最后一次执行",
+        "B": "通过 Executions 菜单查看所有历史执行",
+        "C": "只能通过 API 查询",
+        "D": "n8n 不保存执行历史"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "通过 n8n 界面的 Executions 菜单可以查看所有历史执行记录。可以看到每次执行的状态、时间、持续时间等信息，还可以查看详细的输入输出数据用于调试。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q50",
+      "domain": 4,
+      "question": "n8n 中的 $execution 变量包含什么信息？",
+      "options": {
+        "A": "只有执行 ID",
+        "B": "当前执行的元数据，如 ID、模式、时间戳等",
+        "C": "所有节点的执行结果",
+        "D": "用户登录信息"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "$execution 变量包含当前执行的元数据，包括执行 ID ($execution.id)、执行模式 ($execution.mode)、重试次数等信息。这在需要追踪或记录执行信息时很有用。",
+      "difficulty": "medium"
+    }
+  ]
+}

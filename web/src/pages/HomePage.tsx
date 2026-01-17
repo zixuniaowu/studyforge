@@ -369,16 +369,11 @@ export const HomePage: React.FC = () => {
 
   useEffect(() => {
     const autoImport = async () => {
-      // Check if any provider exams are missing
-      const hasSapExams = languageFilteredExams.some(e => e.provider === 'SAP');
-      const needsImport = languageFilteredExams.length === 0 || !hasSapExams;
-
-      if (!loading && needsImport && !importing) {
-        setImporting(true);
-        try {
-          const langSuffix = language === 'ja' ? '-ja' : '';
-          const existingIds = new Set(languageFilteredExams.map(e => e.id));
-          const examFiles = [
+      // Always check for missing exams
+      if (!loading && !importing) {
+        const langSuffix = language === 'ja' ? '-ja' : '';
+        const existingIds = new Set(languageFilteredExams.map(e => e.id));
+        const examFiles = [
             // AWS
             'aws-aif-c01-set1', 'aws-aif-c01-set2', 'aws-aif-c01-set3',
             'aws-ans-c01-set1', 'aws-ans-c01-set2', 'aws-ans-c01-set3',
@@ -450,27 +445,35 @@ export const HomePage: React.FC = () => {
             'sap-c-s4cs-set1', 'sap-c-s4cs-set2', 'sap-c-s4cs-set3',
             'sap-c-bowi-set1', 'sap-c-bowi-set2', 'sap-c-bowi-set3'
           ];
-          for (const examFile of examFiles) {
-            // Skip if already imported
-            const expectedId = langSuffix ? `${examFile}-ja` : examFile;
-            if (existingIds.has(expectedId)) continue;
 
+          // Check if there are any missing exams
+          const missingExams = examFiles.filter(examFile => {
+            const expectedId = langSuffix ? `${examFile}-ja` : examFile;
+            return !existingIds.has(expectedId);
+          });
+
+          // Only import if there are missing exams
+          if (missingExams.length > 0) {
+            setImporting(true);
             try {
-              const res = await fetch(`./sample-data/${examFile}${langSuffix}.json`);
-              if (res.ok) {
-                const data = await res.json();
-                await importExamFromJson(data);
+              for (const examFile of missingExams) {
+                try {
+                  const res = await fetch(`./sample-data/${examFile}${langSuffix}.json`);
+                  if (res.ok) {
+                    const data = await res.json();
+                    await importExamFromJson(data);
+                  }
+                } catch (e) {
+                  console.error(`Failed to import ${examFile}:`, e);
+                }
               }
+              await loadExams();
             } catch (e) {
-              console.error(`Failed to import ${examFile}:`, e);
+              console.error('Auto-import failed:', e);
+            } finally {
+              setImporting(false);
             }
           }
-          await loadExams();
-        } catch (e) {
-          console.error('Auto-import failed:', e);
-        } finally {
-          setImporting(false);
-        }
       }
     };
     autoImport();
@@ -899,8 +902,13 @@ export const HomePage: React.FC = () => {
                 <ChevronRight size={18} />
               </button>
             </div>
-            <div className="grid grid-cols-2 sm:grid-cols-5 gap-4">
-              {careerPaths.slice(0, 5).map((path) => {
+
+            {/* Cloud Career Paths (AWS/Azure/GCP) */}
+            <p className="text-base text-slate-500 mb-3">
+              {language === 'ja' ? 'クラウド認定 (AWS / Azure / GCP)' : '云认证 (AWS / Azure / GCP)'}
+            </p>
+            <div className="grid grid-cols-2 sm:grid-cols-5 gap-4 mb-6">
+              {careerPaths.filter(p => !p.id.startsWith('sap-')).slice(0, 10).map((path) => {
                 const IconComponent = careerIcons[path.id] || Building2;
                 return (
                   <button
@@ -912,6 +920,30 @@ export const HomePage: React.FC = () => {
                       <IconComponent size={24} className="text-white" />
                     </div>
                     <h3 className="text-base font-medium text-slate-700 leading-tight">
+                      {path.name[language === 'ja' ? 'ja' : 'zh']}
+                    </h3>
+                  </button>
+                );
+              })}
+            </div>
+
+            {/* SAP Career Paths */}
+            <p className="text-base text-slate-500 mb-3">
+              {language === 'ja' ? 'SAP 認定' : 'SAP 认证'}
+            </p>
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+              {careerPaths.filter(p => p.id.startsWith('sap-')).map((path) => {
+                const IconComponent = careerIcons[path.id] || Building2;
+                return (
+                  <button
+                    key={path.id}
+                    onClick={() => navigate(`/certification-path?career=${path.id}`)}
+                    className="group bg-gradient-to-br from-cyan-50 to-teal-50 rounded-xl p-5 border border-cyan-200 hover:border-cyan-300 hover:shadow-md transition-all text-center"
+                  >
+                    <div className="w-12 h-12 mx-auto rounded-xl bg-cyan-600 flex items-center justify-center mb-3">
+                      <IconComponent size={24} className="text-white" />
+                    </div>
+                    <h3 className="text-base font-medium text-cyan-800 leading-tight">
                       {path.name[language === 'ja' ? 'ja' : 'zh']}
                     </h3>
                   </button>

@@ -1,0 +1,772 @@
+{
+  "exam": {
+    "id": "dify-app-builder-set1",
+    "name": "Dify 应用构建师 模拟考试 #1",
+    "code": "DIFY-APPB",
+    "provider": "Dify",
+    "language": "zh-CN",
+    "description": "Dify 应用构建师认证 - 第1套",
+    "totalQuestions": 50,
+    "passingScore": 70,
+    "examTime": 75,
+    "domains": [
+      { "id": 1, "name": "Chatbot Design", "weight": 25 },
+      { "id": 2, "name": "Agent & Tools", "weight": 25 },
+      { "id": 3, "name": "Workflow Orchestration", "weight": 25 },
+      { "id": 4, "name": "Knowledge Base & RAG", "weight": 25 }
+    ],
+    "tags": ["Dify", "App Builder", "AI", "认证考试"]
+  },
+  "questions": [
+    {
+      "id": "q1",
+      "domain": 1,
+      "question": "设计一个客服 Chatbot 时，如何确保回答的一致性？",
+      "options": {
+        "A": "使用高 Temperature 值",
+        "B": "制定详细的 System Prompt 和回答规范",
+        "C": "不使用知识库",
+        "D": "让模型自由发挥"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "确保回答一致性的方法：\n- 制定详细的 System Prompt\n- 定义回答格式和风格规范\n- 使用低 Temperature 值\n- 利用知识库提供标准答案\n- 使用注解回复处理高频问题",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q2",
+      "domain": 1,
+      "question": "Chatbot 的\"记忆窗口\"设置有什么影响？",
+      "options": {
+        "A": "影响存储空间",
+        "B": "决定保留多少轮对话历史作为上下文",
+        "C": "控制响应速度",
+        "D": "影响模型选择"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "记忆窗口的影响：\n- 决定发送给模型的历史消息数量\n- 窗口越大，上下文越完整\n- 但会增加 token 消耗\n- 需要平衡上下文完整性和成本\n\n通常设置 5-10 轮对话历史。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q3",
+      "domain": 1,
+      "question": "如何在 Chatbot 中实现多语言支持？（选择两项）",
+      "options": {
+        "A": "在 System Prompt 中说明支持的语言",
+        "B": "根据用户语言动态调整回复语言",
+        "C": "只能支持英文",
+        "D": "每种语言创建独立应用"
+      },
+      "answer": ["A", "B"],
+      "answerType": "multiple",
+      "explanation": "多语言支持的实现：\n- 在 System Prompt 中声明语言能力\n- 指示模型识别并使用用户的语言回复\n- 可以设置默认语言\n- 多语言知识库支持不同语言的内容\n\n无需为每种语言创建独立应用。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q4",
+      "domain": 1,
+      "question": "什么是 Chatbot 的\"敏感词过滤\"功能？",
+      "options": {
+        "A": "翻译敏感词",
+        "B": "检测并拦截包含敏感内容的输入或输出",
+        "C": "加密敏感词",
+        "D": "高亮显示敏感词"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "敏感词过滤功能：\n- 检测用户输入中的敏感内容\n- 过滤模型输出中的不当内容\n- 可自定义敏感词列表\n- 可配置拦截或替换策略\n\n这是保证应用安全合规的重要功能。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q5",
+      "domain": 1,
+      "question": "如何优化 Chatbot 对长对话的处理？",
+      "options": {
+        "A": "增加记忆窗口到最大",
+        "B": "使用对话摘要技术压缩历史",
+        "C": "删除所有历史",
+        "D": "切换到更便宜的模型"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "优化长对话处理：\n- 使用对话摘要压缩历史\n- 只保留关键信息\n- 设置合理的记忆窗口\n- 使用会话变量保存重要状态\n\n这样既保留上下文又控制 token 消耗。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q6",
+      "domain": 2,
+      "question": "创建自定义工具时，工具描述应该包含什么？（选择两项）",
+      "options": {
+        "A": "工具的功能说明",
+        "B": "参数的格式和含义",
+        "C": "模型的训练数据",
+        "D": "开发者联系方式"
+      },
+      "answer": ["A", "B"],
+      "answerType": "multiple",
+      "explanation": "工具描述应包含：\n- 清晰的功能说明（做什么）\n- 使用场景（何时使用）\n- 参数格式和含义\n- 返回值说明\n\n好的描述帮助 Agent 正确决定何时调用工具。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q7",
+      "domain": 2,
+      "question": "Agent 的 Function Calling 失败时应该如何处理？",
+      "options": {
+        "A": "忽略错误继续",
+        "B": "设计错误处理逻辑，提供友好的错误信息",
+        "C": "直接结束对话",
+        "D": "重启整个应用"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Function Calling 错误处理：\n- 捕获工具调用异常\n- 向用户提供友好的错误信息\n- 可以尝试重试\n- 记录错误日志便于排查\n\n良好的错误处理提升用户体验。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q8",
+      "domain": 2,
+      "question": "如何在 Agent 中集成外部 API 作为工具？",
+      "options": {
+        "A": "只能使用内置工具",
+        "B": "通过自定义工具配置 API 端点和参数",
+        "C": "需要修改源代码",
+        "D": "不支持外部 API"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "集成外部 API 的步骤：\n1. 创建自定义工具\n2. 配置 API 端点 URL\n3. 定义请求方法和参数\n4. 设置认证信息（如需要）\n5. 编写工具描述\n\n无需修改代码，通过界面即可配置。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q9",
+      "domain": 2,
+      "question": "Agent 应用中，如何控制工具调用的成本？",
+      "options": {
+        "A": "无法控制",
+        "B": "限制迭代次数和设置超时时间",
+        "C": "禁用所有工具",
+        "D": "使用免费模型"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "控制工具调用成本的方法：\n- 设置最大迭代次数\n- 配置超时时间\n- 选择性启用必要的工具\n- 监控工具调用频率\n- 优化工具描述减少错误调用",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q10",
+      "domain": 2,
+      "question": "什么是工具的\"参数验证\"？",
+      "options": {
+        "A": "检查密码强度",
+        "B": "确保传入参数符合预期格式和范围",
+        "C": "加密参数",
+        "D": "压缩参数"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "参数验证的作用：\n- 确保参数类型正确（字符串、数字等）\n- 验证必填参数是否提供\n- 检查参数值范围\n- 防止无效调用\n\n在工具定义中指定参数类型和约束。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q11",
+      "domain": 3,
+      "question": "Workflow 中的\"知识检索\"节点如何配置？",
+      "options": {
+        "A": "无需配置",
+        "B": "选择知识库、设置检索参数和查询变量",
+        "C": "只能检索文本",
+        "D": "必须使用默认配置"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "知识检索节点配置：\n- 选择要检索的知识库\n- 配置检索模式（向量/全文/混合）\n- 设置 Top-K 和 Score 阈值\n- 指定查询变量来源\n- 可选 Rerank 配置",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q12",
+      "domain": 3,
+      "question": "如何在 Workflow 中实现 A/B 测试？",
+      "options": {
+        "A": "不支持 A/B 测试",
+        "B": "使用条件分支随机分配不同的处理路径",
+        "C": "只能手动测试",
+        "D": "需要第三方工具"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Workflow 中实现 A/B 测试：\n- 使用条件分支节点\n- 根据随机值或用户属性分流\n- 不同分支使用不同的处理逻辑\n- 收集结果进行对比分析\n\n可用于测试不同 Prompt 或模型的效果。",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q13",
+      "domain": 3,
+      "question": "Workflow 的\"代码执行\"节点有什么限制？",
+      "options": {
+        "A": "没有任何限制",
+        "B": "受沙箱限制，不能访问文件系统和网络",
+        "C": "只能执行一行代码",
+        "D": "需要安装额外插件"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "代码执行节点的限制：\n- 运行在安全沙箱中\n- 不能直接访问文件系统\n- 不能直接发起网络请求\n- 执行时间有限制\n- 可用的库有限\n\n这些限制是为了安全考虑。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q14",
+      "domain": 3,
+      "question": "如何在 Workflow 中处理大批量数据？",
+      "options": {
+        "A": "一次性处理所有数据",
+        "B": "使用循环节点分批处理",
+        "C": "不支持批量处理",
+        "D": "导出到外部处理"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "处理大批量数据的方法：\n- 使用循环节点遍历数据\n- 设置合理的批次大小\n- 控制并发数量\n- 处理中间结果\n\n循环节点支持对数组/列表进行迭代处理。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q15",
+      "domain": 3,
+      "question": "Workflow 中如何实现超时控制？",
+      "options": {
+        "A": "不支持超时控制",
+        "B": "在节点或全局设置超时时间",
+        "C": "只能手动中断",
+        "D": "使用外部定时器"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "超时控制的实现：\n- 单个节点可设置执行超时\n- HTTP 请求节点有请求超时\n- 整个 Workflow 可设置总超时\n- 超时后可触发异常处理分支",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q16",
+      "domain": 4,
+      "question": "如何提高知识库问答的准确性？（选择两项）",
+      "options": {
+        "A": "优化文档切片策略",
+        "B": "使用 Rerank 模型重排序",
+        "C": "删除所有文档重新上传",
+        "D": "关闭向量检索"
+      },
+      "answer": ["A", "B"],
+      "answerType": "multiple",
+      "explanation": "提高准确性的方法：\n- 优化切片大小和重叠度\n- 使用 Rerank 模型改进排序\n- 选择合适的 Embedding 模型\n- 优化检索参数（Top-K、阈值）\n- 使用混合检索模式",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q17",
+      "domain": 4,
+      "question": "知识库中如何处理 PDF 文件的表格和图片？",
+      "options": {
+        "A": "自动完美解析所有内容",
+        "B": "表格会尝试解析，图片中的文字可能需要 OCR 支持",
+        "C": "完全忽略表格和图片",
+        "D": "只支持纯文本 PDF"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "PDF 内容处理：\n- 表格会尝试解析并保留结构\n- 复杂表格可能需要手动整理\n- 图片中的文字需要 OCR\n- 嵌入式图片可能无法提取\n\n建议对关键表格内容添加文字说明。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q18",
+      "domain": 4,
+      "question": "如何管理知识库的版本和更新？",
+      "options": {
+        "A": "不支持版本管理",
+        "B": "通过增量更新和文档版本跟踪",
+        "C": "每次全量重建",
+        "D": "只能手动管理"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "知识库版本管理：\n- 支持文档增量更新\n- 可追踪文档版本变化\n- 删除或更新单个文档\n- 保留变更历史\n\n无需每次全量重建索引。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q19",
+      "domain": 4,
+      "question": "什么情况下应该使用多个知识库而不是一个？",
+      "options": {
+        "A": "永远使用一个知识库",
+        "B": "当内容主题差异大或需要不同访问权限时",
+        "C": "文档数量超过10个时",
+        "D": "知识库不支持多个"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "使用多个知识库的场景：\n- 不同业务领域/主题的内容\n- 不同的访问权限需求\n- 不同的更新频率\n- 不同的检索配置需求\n\n合理分离可以提高检索精度和管理效率。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q20",
+      "domain": 4,
+      "question": "知识库的\"分段标识符\"配置有什么作用？",
+      "options": {
+        "A": "给文档编号",
+        "B": "指定文档分段的边界符号",
+        "C": "加密分段",
+        "D": "翻译分段"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "分段标识符的作用：\n- 指定切片的分割点\n- 常用分隔符：段落、标题、特殊符号\n- 保持语义完整性\n- 自定义分割规则\n\n例如：使用 ## 作为分隔符按章节切片。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q21",
+      "domain": 1,
+      "question": "如何设计 Chatbot 的\"降级策略\"？",
+      "options": {
+        "A": "不需要降级策略",
+        "B": "当主模型不可用时自动切换到备用方案",
+        "C": "直接返回错误",
+        "D": "关闭应用"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "降级策略设计：\n- 监控主模型状态\n- 配置备用模型\n- 超时或错误时自动切换\n- 可以返回预设回复\n- 通知用户当前状态\n\n保证服务可用性的重要手段。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q22",
+      "domain": 1,
+      "question": "Chatbot 中的\"会话预设问题\"功能有什么用？",
+      "options": {
+        "A": "测试模型性能",
+        "B": "引导用户开始对话，展示可用功能",
+        "C": "限制用户输入",
+        "D": "收集用户信息"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "预设问题的作用：\n- 在对话开始时显示建议问题\n- 引导用户了解助手功能\n- 降低用户使用门槛\n- 提高首次交互成功率\n\n类似常见的\"您可能想问...\"。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q23",
+      "domain": 2,
+      "question": "如何测试 Agent 工具的可靠性？",
+      "options": {
+        "A": "只测试一次",
+        "B": "设计多种输入场景，验证工具响应",
+        "C": "不需要测试",
+        "D": "让用户来测试"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "测试工具可靠性：\n- 正常输入测试\n- 边界值测试\n- 异常输入测试\n- 并发调用测试\n- 超时场景测试\n\n充分的测试确保生产环境稳定。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q24",
+      "domain": 2,
+      "question": "Agent 中的\"工具优先级\"如何设置？",
+      "options": {
+        "A": "无法设置优先级",
+        "B": "通过工具描述的详细程度影响选择",
+        "C": "按添加顺序自动排序",
+        "D": "随机选择"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "影响工具选择的因素：\n- 工具描述的准确性和详细程度\n- 描述与用户意图的匹配度\n- 可以在描述中说明适用场景\n\n通过优化描述引导 Agent 做出正确选择。",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q25",
+      "domain": 2,
+      "question": "如何在 Agent 中实现多步骤任务的状态追踪？",
+      "options": {
+        "A": "不支持状态追踪",
+        "B": "使用变量保存任务状态和中间结果",
+        "C": "只能依赖对话历史",
+        "D": "需要外部数据库"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "状态追踪方法：\n- 使用变量存储任务进度\n- 记录已完成的步骤\n- 保存中间结果\n- 在后续推理中使用这些状态\n\n这样 Agent 可以处理复杂的多步骤任务。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q26",
+      "domain": 3,
+      "question": "Workflow 中如何实现并发限制？",
+      "options": {
+        "A": "不支持并发限制",
+        "B": "通过配置并行分支的数量",
+        "C": "只能串行执行",
+        "D": "需要修改代码"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "并发控制方法：\n- 控制并行分支的数量\n- 在循环中设置批次大小\n- 配置最大并发执行数\n- 平衡性能和资源消耗\n\n避免过高并发导致资源耗尽。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q27",
+      "domain": 3,
+      "question": "如何在 Workflow 中集成第三方服务？",
+      "options": {
+        "A": "不支持第三方集成",
+        "B": "使用 HTTP 请求节点调用外部 API",
+        "C": "只能使用内置服务",
+        "D": "需要重新开发"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "集成第三方服务：\n- 使用 HTTP 请求节点\n- 配置 API 端点和认证\n- 设置请求头和请求体\n- 处理响应数据\n\n可以集成任何提供 API 的服务。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q28",
+      "domain": 3,
+      "question": "Workflow 的调试模式提供什么功能？",
+      "options": {
+        "A": "只显示最终结果",
+        "B": "查看每个节点的输入输出和执行状态",
+        "C": "自动修复错误",
+        "D": "只记录错误"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "调试模式功能：\n- 查看每个节点的输入\n- 查看每个节点的输出\n- 显示执行状态和耗时\n- 追踪变量变化\n- 定位问题节点\n\n是开发和排错的重要工具。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q29",
+      "domain": 3,
+      "question": "如何在 Workflow 中实现重试逻辑？",
+      "options": {
+        "A": "不支持重试",
+        "B": "配置节点的重试次数和间隔",
+        "C": "手动重新执行",
+        "D": "使用外部调度器"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "重试逻辑实现：\n- 配置节点失败后的重试次数\n- 设置重试间隔时间\n- 可以配置指数退避\n- 超过重试次数后触发错误处理\n\n提高 Workflow 的容错能力。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q30",
+      "domain": 3,
+      "question": "Workflow 的\"结果聚合\"如何处理多个输出？",
+      "options": {
+        "A": "只保留第一个",
+        "B": "将多个分支或循环的输出合并为数组或对象",
+        "C": "随机选择一个",
+        "D": "不支持多输出"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "结果聚合方式：\n- 并行分支输出合并为数组\n- 循环结果收集为列表\n- 可以进行进一步处理\n- 支持自定义聚合逻辑\n\n便于处理多路结果的汇总。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q31",
+      "domain": 4,
+      "question": "如何处理知识库中的多语言文档？",
+      "options": {
+        "A": "只支持单语言",
+        "B": "分语言创建知识库或使用多语言 Embedding 模型",
+        "C": "自动翻译所有内容",
+        "D": "忽略非英文内容"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "多语言文档处理：\n- 可按语言分别创建知识库\n- 使用多语言 Embedding 模型\n- 在检索时考虑语言匹配\n- 可以在文档中添加语言标签\n\n选择合适的策略取决于具体需求。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q32",
+      "domain": 4,
+      "question": "知识库的\"Q&A 对提取\"功能如何使用？",
+      "options": {
+        "A": "手动逐条录入",
+        "B": "从文档中自动提取问答对用于检索",
+        "C": "只支持 FAQ 格式",
+        "D": "需要编写代码"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Q&A 对提取功能：\n- 自动从文档中识别问答对\n- 用于优化检索匹配\n- 可以手动编辑提取结果\n- 结合向量检索提高准确性\n\n适合包含问答内容的文档。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q33",
+      "domain": 1,
+      "question": "如何在 Chatbot 中实现用户身份验证？",
+      "options": {
+        "A": "Chatbot 不支持身份验证",
+        "B": "通过 API 传递用户标识，在 Prompt 中使用",
+        "C": "只能使用用户名密码",
+        "D": "需要重新开发"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "用户身份验证方式：\n- API 调用时传递用户 ID\n- 可以在 Prompt 中使用用户信息\n- 结合外部认证系统\n- 在知识库中使用用户权限过滤\n\n实现个性化和权限控制。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q34",
+      "domain": 1,
+      "question": "Chatbot 的\"回复置信度\"功能有什么用？",
+      "options": {
+        "A": "评估用户满意度",
+        "B": "显示模型对回答的确定程度",
+        "C": "计算成本",
+        "D": "控制响应速度"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "回复置信度的作用：\n- 反映模型对回答的确信程度\n- 低置信度可能需要人工介入\n- 可用于路由决策\n- 帮助评估回答质量\n\n对于需要高准确性的场景很有价值。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q35",
+      "domain": 2,
+      "question": "Agent 如何处理工具返回的大量数据？",
+      "options": {
+        "A": "直接全部发送给模型",
+        "B": "对结果进行摘要或分页处理",
+        "C": "忽略多余数据",
+        "D": "不支持大数据量"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "处理大量数据的方法：\n- 对工具返回结果进行摘要\n- 实现分页返回\n- 只提取关键信息\n- 控制上下文长度\n\n避免超出模型上下文限制。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q36",
+      "domain": 2,
+      "question": "如何设计 Agent 的\"任务确认\"机制？",
+      "options": {
+        "A": "不需要确认直接执行",
+        "B": "在执行敏感操作前要求用户确认",
+        "C": "全部操作都需确认",
+        "D": "只在失败时确认"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "任务确认机制设计：\n- 识别敏感或不可逆操作\n- 执行前展示操作详情\n- 要求用户明确确认\n- 提供取消选项\n\n平衡效率和安全性。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q37",
+      "domain": 3,
+      "question": "Workflow 中的\"文件解析\"节点支持哪些格式？",
+      "options": {
+        "A": "只支持文本文件",
+        "B": "PDF、Word、Excel 等多种格式",
+        "C": "只支持 JSON",
+        "D": "不支持文件解析"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "文件解析支持的格式：\n- PDF 文档\n- Word 文档 (.docx)\n- Excel 表格\n- Markdown 文件\n- 纯文本文件\n\n可以在 Workflow 中处理各种文档。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q38",
+      "domain": 3,
+      "question": "如何在 Workflow 中实现内容审核？",
+      "options": {
+        "A": "不支持内容审核",
+        "B": "使用 LLM 节点进行内容检测和分类",
+        "C": "只能人工审核",
+        "D": "需要第三方服务"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "内容审核实现：\n- 使用 LLM 节点分析内容\n- 设计审核 Prompt 检测违规\n- 根据结果分流处理\n- 可结合规则引擎\n\n实现自动化内容合规检查。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q39",
+      "domain": 4,
+      "question": "如何优化知识库的检索速度？",
+      "options": {
+        "A": "增加更多文档",
+        "B": "优化索引配置和使用高效的向量数据库",
+        "C": "减少用户查询长度",
+        "D": "关闭检索功能"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "优化检索速度的方法：\n- 选择高效的向量数据库\n- 优化索引配置\n- 使用合适的 Embedding 模型\n- 控制切片数量和大小\n- 使用向量索引加速",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q40",
+      "domain": 4,
+      "question": "知识库中如何处理时效性内容？",
+      "options": {
+        "A": "不支持时效性内容",
+        "B": "设置过期时间或定期更新，在 Prompt 中说明时效",
+        "C": "忽略时间因素",
+        "D": "只保留最新版本"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "处理时效性内容：\n- 文档添加时间标签\n- 定期更新过时内容\n- 在 Prompt 中说明知识库时效\n- 对时间敏感问题额外提醒\n\n避免返回过时信息。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q41",
+      "domain": 1,
+      "question": "如何收集和分析 Chatbot 的用户反馈？",
+      "options": {
+        "A": "不支持反馈收集",
+        "B": "启用点赞/点踩功能，分析反馈改进应用",
+        "C": "只能看对话记录",
+        "D": "需要第三方工具"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "用户反馈收集：\n- 启用对话反馈功能（赞/踩）\n- 收集用户的改进建议\n- 分析低评分对话\n- 识别需要改进的场景\n- 持续优化应用\n\nDify 内置支持反馈收集功能。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q42",
+      "domain": 1,
+      "question": "Chatbot 中如何处理用户的敏感信息？",
+      "options": {
+        "A": "直接保存所有信息",
+        "B": "脱敏处理或不保存敏感数据",
+        "C": "加密后发送给模型",
+        "D": "忽略敏感信息"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "敏感信息处理：\n- 识别敏感信息（身份证、手机号等）\n- 在日志中进行脱敏处理\n- 可选择不发送给模型\n- 符合隐私保护要求\n\n保护用户隐私的重要措施。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q43",
+      "domain": 2,
+      "question": "如何为 Agent 添加定时任务能力？",
+      "options": {
+        "A": "Agent 内置定时功能",
+        "B": "结合外部调度器触发 Agent 执行",
+        "C": "不支持定时任务",
+        "D": "只能手动触发"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "实现定时任务：\n- 使用外部调度器（如 Cron）\n- 定时调用 Agent API\n- 传入任务参数\n- Agent 执行后返回结果\n\n可以实现定期报告生成等场景。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q44",
+      "domain": 2,
+      "question": "Agent 的\"思考可见性\"如何影响用户体验？",
+      "options": {
+        "A": "没有影响",
+        "B": "让用户了解 Agent 的推理过程，增加透明度",
+        "C": "降低响应速度",
+        "D": "增加成本"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "思考可见性的影响：\n- 用户能看到推理过程\n- 增加信任和透明度\n- 帮助用户理解结果\n- 便于调试和改进\n\n但也可以选择隐藏以简化界面。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q45",
+      "domain": 3,
+      "question": "Workflow 中如何实现动态路由？",
+      "options": {
+        "A": "不支持动态路由",
+        "B": "根据变量值使用条件分支选择不同路径",
+        "C": "只能固定路由",
+        "D": "需要编写代码"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "动态路由实现：\n- 使用条件分支节点\n- 根据输入变量值判断\n- 可以有多个分支路径\n- 支持复杂条件组合\n\n实现灵活的业务流程。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q46",
+      "domain": 3,
+      "question": "如何在 Workflow 中处理外部 API 的认证？",
+      "options": {
+        "A": "不支持认证",
+        "B": "在 HTTP 请求节点配置 API Key 或 OAuth",
+        "C": "只支持公开 API",
+        "D": "需要额外插件"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "API 认证配置：\n- 支持 API Key 认证\n- 支持 Bearer Token\n- 支持 Basic Auth\n- 可在请求头中添加认证信息\n\n安全调用需要认证的外部服务。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q47",
+      "domain": 4,
+      "question": "如何评估知识库的质量？",
+      "options": {
+        "A": "只看文档数量",
+        "B": "通过测试查询、检索准确率和用户反馈",
+        "C": "看存储大小",
+        "D": "无法评估"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "评估知识库质量：\n- 设计测试查询集\n- 评估检索准确率和召回率\n- 收集用户反馈\n- 分析回答质量\n- 持续优化改进",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q48",
+      "domain": 4,
+      "question": "知识库的\"引用来源\"功能有什么作用？",
+      "options": {
+        "A": "装饰性功能",
+        "B": "显示回答依据的原文出处，增加可信度",
+        "C": "统计文档使用次数",
+        "D": "版权保护"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "引用来源的作用：\n- 展示回答的依据来源\n- 增加回答的可信度\n- 方便用户查阅原文\n- 帮助验证回答准确性\n\n提升用户对 AI 回答的信任。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q49",
+      "domain": 1,
+      "question": "如何设计 Chatbot 的\"上下文切换\"功能？",
+      "options": {
+        "A": "不支持上下文切换",
+        "B": "检测用户意图变化，适时清空或保留上下文",
+        "C": "每次都清空上下文",
+        "D": "永远保留所有上下文"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "上下文切换设计：\n- 识别用户切换话题的意图\n- 决定是否保留之前的上下文\n- 可以使用变量标记话题\n- 提供用户主动清空的选项\n\n提供更智能的对话体验。",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q50",
+      "domain": 2,
+      "question": "如何监控 Agent 的运行状态？",
+      "options": {
+        "A": "无法监控",
+        "B": "通过日志查看执行过程、工具调用和耗时",
+        "C": "只能看最终结果",
+        "D": "需要第三方工具"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Agent 监控方式：\n- 查看执行日志\n- 跟踪工具调用记录\n- 监控响应时间\n- 分析 token 消耗\n- 识别异常和错误\n\n帮助优化和排错。",
+      "difficulty": "easy"
+    }
+  ]
+}

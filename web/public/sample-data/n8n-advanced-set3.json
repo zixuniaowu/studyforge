@@ -1,0 +1,772 @@
+{
+  "exam": {
+    "id": "n8n-advanced-set3",
+    "name": "n8n 高级 模拟考试 #3",
+    "code": "N8N-ADV",
+    "provider": "n8n",
+    "language": "zh-CN",
+    "description": "n8n 工作流自动化平台高级认证 - 第3套",
+    "totalQuestions": 50,
+    "passingScore": 75,
+    "examTime": 90,
+    "domains": [
+      { "id": 1, "name": "Error Handling", "weight": 20 },
+      { "id": 2, "name": "Sub-workflows & Architecture", "weight": 25 },
+      { "id": 3, "name": "Custom Development", "weight": 30 },
+      { "id": 4, "name": "Environment & Deployment", "weight": 25 }
+    ],
+    "tags": ["n8n", "workflow", "automation", "advanced", "认证考试"]
+  },
+  "questions": [
+    {
+      "id": "q1",
+      "domain": 1,
+      "question": "在n8n中，如何实现工作流级别的全局错误处理？",
+      "options": {
+        "A": "在每个节点添加错误处理",
+        "B": "使用Error Trigger节点创建专用错误处理工作流",
+        "C": "配置环境变量ERROR_HANDLER",
+        "D": "在设置中启用全局错误日志"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Error Trigger节点可以捕获任何工作流中的错误，实现集中式错误处理，可以发送通知、记录日志或触发恢复流程。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q2",
+      "domain": 1,
+      "question": "当n8n工作流需要处理可能失败的外部API调用时，最佳实践是什么？",
+      "options": {
+        "A": "忽略错误继续执行",
+        "B": "使用try/catch表达式包装调用",
+        "C": "配置节点的重试机制和错误输出",
+        "D": "使用同步调用确保成功"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "n8n节点支持配置重试次数、重试间隔和错误输出分支，这是处理不稳定API的标准做法。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q3",
+      "domain": 2,
+      "question": "在设计大型n8n自动化系统时，如何组织多个相关工作流？",
+      "options": {
+        "A": "将所有逻辑放在一个大工作流中",
+        "B": "使用Execute Workflow节点实现模块化",
+        "C": "复制粘贴相同的节点到各个工作流",
+        "D": "使用外部脚本协调工作流"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Execute Workflow节点允许工作流调用其他工作流，实现代码复用和模块化设计，便于维护和测试。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q4",
+      "domain": 3,
+      "question": "在n8n中开发自定义节点时，必须实现哪个核心方法？",
+      "options": {
+        "A": "run()",
+        "B": "execute()",
+        "C": "process()",
+        "D": "handle()"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "自定义节点必须实现execute()方法，这是节点执行逻辑的入口点，接收输入数据并返回处理结果。",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q5",
+      "domain": 4,
+      "question": "在生产环境中部署n8n时，推荐使用什么方式存储工作流数据？",
+      "options": {
+        "A": "默认的SQLite数据库",
+        "B": "PostgreSQL或MySQL等生产级数据库",
+        "C": "文件系统JSON文件",
+        "D": "内存存储"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "生产环境应使用PostgreSQL或MySQL等企业级数据库，提供更好的并发处理、数据持久性和备份恢复能力。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q6",
+      "domain": 1,
+      "question": "n8n中的断路器模式(Circuit Breaker)可以通过什么方式实现？",
+      "options": {
+        "A": "使用内置的Circuit Breaker节点",
+        "B": "结合错误计数和条件判断手动实现",
+        "C": "配置全局断路器设置",
+        "D": "使用第三方插件"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "n8n没有内置断路器节点，需要通过记录错误次数（如使用静态数据或外部存储）和IF节点实现断路器逻辑。",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q7",
+      "domain": 2,
+      "question": "如何在n8n子工作流中访问父工作流传递的参数？",
+      "options": {
+        "A": "使用$workflow.parameters",
+        "B": "使用$executionData.parameters",
+        "C": "子工作流的触发器节点输出中包含参数",
+        "D": "使用全局变量"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "当通过Execute Workflow节点调用子工作流时，传递的参数会作为子工作流触发器节点的输出数据。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q8",
+      "domain": 3,
+      "question": "自定义n8n节点的description属性中，displayOptions用于什么目的？",
+      "options": {
+        "A": "设置节点在画布上的显示样式",
+        "B": "控制属性字段的条件显示",
+        "C": "定义节点的输出格式",
+        "D": "配置节点的错误消息"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "displayOptions允许根据其他字段的值动态显示或隐藏属性字段，实现条件表单逻辑。",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q9",
+      "domain": 4,
+      "question": "在n8n中使用环境变量的正确语法是什么？",
+      "options": {
+        "A": "process.env.VARIABLE_NAME",
+        "B": "$env.VARIABLE_NAME",
+        "C": "{{$env.VARIABLE_NAME}}",
+        "D": "${VARIABLE_NAME}"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "在n8n表达式中，使用{{$env.VARIABLE_NAME}}语法访问环境变量，这是n8n的标准表达式格式。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q10",
+      "domain": 1,
+      "question": "当n8n工作流执行失败时，如何确保已处理的数据不会重复处理？",
+      "options": {
+        "A": "使用事务性数据库操作",
+        "B": "实现幂等性检查和去重逻辑",
+        "C": "禁用工作流重试",
+        "D": "使用同步执行模式"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "通过记录已处理的唯一标识符并在处理前检查，可以确保工作流重试时不会重复处理相同数据。",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q11",
+      "domain": 2,
+      "question": "n8n中的静态数据(Static Data)有什么用途？",
+      "options": {
+        "A": "存储工作流的配置信息",
+        "B": "在工作流执行之间持久化数据",
+        "C": "缓存API响应",
+        "D": "存储用户凭证"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "静态数据允许在同一工作流的不同执行之间保存和读取数据，适合存储状态信息如上次处理时间或计数器。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q12",
+      "domain": 3,
+      "question": "在n8n自定义节点中，如何定义凭证类型？",
+      "options": {
+        "A": "在节点的credentials数组中引用凭证类型名称",
+        "B": "直接在节点代码中硬编码凭证",
+        "C": "使用环境变量传递凭证",
+        "D": "在package.json中定义"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "自定义节点通过credentials属性数组声明所需的凭证类型，n8n会自动处理凭证的获取和注入。",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q13",
+      "domain": 4,
+      "question": "如何配置n8n以支持高可用性部署？",
+      "options": {
+        "A": "运行多个n8n实例共享同一数据库",
+        "B": "使用主从复制模式",
+        "C": "配置负载均衡器分发Webhook请求",
+        "D": "A和C都正确"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "高可用部署需要多个n8n实例共享数据库（使用queue模式），并通过负载均衡器分发传入的Webhook请求。",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q14",
+      "domain": 1,
+      "question": "n8n中的continueOnFail选项会产生什么效果？",
+      "options": {
+        "A": "忽略所有错误并继续执行",
+        "B": "节点失败时使用空数据继续",
+        "C": "节点失败时输出错误信息但继续后续节点",
+        "D": "记录错误但停止工作流"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "启用continueOnFail后，节点失败时会将错误信息作为输出传递给下一个节点，工作流继续执行而不是终止。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q15",
+      "domain": 2,
+      "question": "在n8n中实现事件驱动架构的最佳方式是什么？",
+      "options": {
+        "A": "使用轮询触发器定期检查事件",
+        "B": "使用Webhook触发器接收实时事件",
+        "C": "使用Schedule触发器定时执行",
+        "D": "使用手动触发器"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Webhook触发器允许外部系统实时推送事件到n8n，实现真正的事件驱动处理，比轮询更高效。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q16",
+      "domain": 3,
+      "question": "n8n自定义节点的INodeType接口中，trigger属性表示什么？",
+      "options": {
+        "A": "节点是触发器类型",
+        "B": "节点可以触发其他工作流",
+        "C": "节点需要手动触发",
+        "D": "节点支持定时触发"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "当trigger属性设置为true时，表示该节点是触发器节点，可以作为工作流的起始节点。",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q17",
+      "domain": 4,
+      "question": "在Docker中运行n8n时，如何正确处理时区问题？",
+      "options": {
+        "A": "设置TZ环境变量",
+        "B": "修改容器内的时区文件",
+        "C": "使用宿主机时区挂载",
+        "D": "设置GENERIC_TIMEZONE环境变量"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "n8n使用GENERIC_TIMEZONE环境变量设置时区，这影响调度触发器和时间相关的操作。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q18",
+      "domain": 1,
+      "question": "如何在n8n中实现部分批量处理失败后的恢复？",
+      "options": {
+        "A": "从头重新执行整个批次",
+        "B": "使用SplitInBatches节点配合错误追踪",
+        "C": "手动删除已处理的数据后重试",
+        "D": "使用事务回滚"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "SplitInBatches节点可以将大批量数据分割处理，配合错误追踪可以只重试失败的批次，提高恢复效率。",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q19",
+      "domain": 2,
+      "question": "在n8n中，如何实现工作流之间的异步通信？",
+      "options": {
+        "A": "使用Execute Workflow节点的同步调用",
+        "B": "使用消息队列（如RabbitMQ）作为中介",
+        "C": "使用共享数据库表",
+        "D": "B和C都可以"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "异步通信可以通过消息队列实现解耦，也可以使用共享数据库表记录任务状态，由不同工作流轮询处理。",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q20",
+      "domain": 3,
+      "question": "在开发n8n自定义节点时，如何处理分页API？",
+      "options": {
+        "A": "使用循环节点手动处理",
+        "B": "在execute方法中实现循环获取所有页",
+        "C": "只获取第一页数据",
+        "D": "使用webhook等待用户手动翻页"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "自定义节点应在execute方法中实现完整的分页逻辑，循环获取所有页面数据并合并返回。",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q21",
+      "domain": 4,
+      "question": "n8n的EXECUTIONS_DATA_PRUNE设置用于什么目的？",
+      "options": {
+        "A": "限制并发执行数量",
+        "B": "自动清理历史执行数据",
+        "C": "优化执行性能",
+        "D": "压缩执行日志"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "启用EXECUTIONS_DATA_PRUNE后，n8n会自动删除超过指定时间的执行历史数据，防止数据库无限增长。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q22",
+      "domain": 1,
+      "question": "n8n中如何实现死信队列(Dead Letter Queue)模式？",
+      "options": {
+        "A": "使用内置的DLQ节点",
+        "B": "配置错误工作流将失败消息写入专用队列",
+        "C": "启用全局DLQ设置",
+        "D": "使用Error Trigger自动重试"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "n8n没有内置DLQ功能，需要通过Error Trigger捕获失败，然后将失败消息写入专用的队列或数据库表。",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q23",
+      "domain": 2,
+      "question": "在设计n8n工作流时，如何有效管理复杂的条件分支？",
+      "options": {
+        "A": "使用嵌套的IF节点",
+        "B": "使用Switch节点处理多条件分支",
+        "C": "将每个分支拆分为独立工作流",
+        "D": "使用Code节点实现复杂逻辑"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Switch节点可以根据条件将数据路由到多个输出，比嵌套IF节点更清晰易维护。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q24",
+      "domain": 3,
+      "question": "n8n自定义节点中的loadOptions方法用于什么？",
+      "options": {
+        "A": "加载节点的初始配置",
+        "B": "动态加载下拉选项列表",
+        "C": "加载外部依赖",
+        "D": "加载凭证数据"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "loadOptions方法用于动态获取选项列表，如从API获取可选的项目、用户等，填充下拉选择框。",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q25",
+      "domain": 4,
+      "question": "如何监控n8n工作流的执行性能？",
+      "options": {
+        "A": "查看内置的执行历史",
+        "B": "配置Prometheus指标导出",
+        "C": "使用日志分析工具",
+        "D": "以上都可以"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "n8n提供执行历史查看、Prometheus指标导出，结合日志分析可以全面监控工作流性能。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q26",
+      "domain": 1,
+      "question": "在n8n中处理超时问题的最佳策略是什么？",
+      "options": {
+        "A": "增加全局超时时间",
+        "B": "为长时间运行的操作配置适当的超时和重试策略",
+        "C": "禁用超时检查",
+        "D": "使用异步执行模式"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "应该根据操作的实际需求配置合理的超时时间，并设置重试策略来处理临时性超时问题。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q27",
+      "domain": 2,
+      "question": "n8n中的pinData功能在什么场景下最有用？",
+      "options": {
+        "A": "生产环境数据备份",
+        "B": "开发调试时固定测试数据",
+        "C": "实现数据缓存",
+        "D": "跨工作流数据共享"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "pinData允许固定节点的输出数据，在开发调试时不需要实际执行节点就能测试后续流程。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q28",
+      "domain": 3,
+      "question": "自定义n8n节点如何支持OAuth2认证？",
+      "options": {
+        "A": "手动处理OAuth流程",
+        "B": "创建继承OAuth2的凭证类型",
+        "C": "使用HTTP Request节点处理",
+        "D": "调用外部OAuth服务"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "n8n提供OAuth2凭证基类，自定义凭证可以继承它并配置必要的参数，n8n自动处理OAuth流程。",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q29",
+      "domain": 4,
+      "question": "在n8n集群部署中，QUEUE_BULL_REDIS_HOST配置的作用是什么？",
+      "options": {
+        "A": "存储工作流数据",
+        "B": "协调多实例间的任务队列",
+        "C": "缓存API响应",
+        "D": "存储用户会话"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "在queue模式下，Redis用于存储任务队列，协调多个n8n worker实例之间的任务分配。",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q30",
+      "domain": 1,
+      "question": "如何在n8n中实现优雅的服务降级？",
+      "options": {
+        "A": "直接返回错误给用户",
+        "B": "使用IF节点检查服务状态，失败时返回缓存数据或默认值",
+        "C": "重试直到成功",
+        "D": "停止整个工作流"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "服务降级应该在服务不可用时提供备选方案，如返回缓存数据或默认值，而不是让用户等待或看到错误。",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q31",
+      "domain": 2,
+      "question": "n8n中如何实现工作流的版本控制？",
+      "options": {
+        "A": "使用内置的版本历史功能",
+        "B": "导出JSON并提交到Git仓库",
+        "C": "使用n8n的备份功能",
+        "D": "以上都可以结合使用"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "n8n提供版本历史，工作流也可以导出为JSON进行Git版本控制，备份功能可以作为额外保护。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q32",
+      "domain": 3,
+      "question": "在n8n自定义节点中，this.helpers.request的作用是什么？",
+      "options": {
+        "A": "发送HTTP请求并自动处理凭证",
+        "B": "请求用户输入",
+        "C": "请求其他节点的数据",
+        "D": "请求系统资源"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "this.helpers.request是n8n提供的HTTP请求帮助方法，会自动注入配置的凭证，简化API调用。",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q33",
+      "domain": 4,
+      "question": "n8n的N8N_ENCRYPTION_KEY环境变量用于什么？",
+      "options": {
+        "A": "加密工作流定义",
+        "B": "加密存储的凭证数据",
+        "C": "加密通信传输",
+        "D": "加密执行日志"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "N8N_ENCRYPTION_KEY用于加密存储在数据库中的凭证数据，确保敏感信息安全。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q34",
+      "domain": 1,
+      "question": "在n8n中，如何处理需要人工介入的异常情况？",
+      "options": {
+        "A": "发送通知并暂停工作流等待人工处理",
+        "B": "自动重试直到成功",
+        "C": "忽略错误继续执行",
+        "D": "终止工作流并记录错误"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "对于需要人工介入的情况，应发送通知（如邮件、Slack消息），并可以使用Wait节点暂停工作流等待人工操作。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q35",
+      "domain": 2,
+      "question": "n8n中如何实现工作流的A/B测试？",
+      "options": {
+        "A": "使用Switch节点随机路由到不同处理分支",
+        "B": "创建两个独立工作流手动切换",
+        "C": "使用Code节点实现随机选择",
+        "D": "A和C都可以"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "A/B测试可以通过Switch节点配合随机值实现，也可以使用Code节点实现更复杂的分配逻辑。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q36",
+      "domain": 3,
+      "question": "n8n自定义节点的webhook方法用于什么场景？",
+      "options": {
+        "A": "发送webhook请求",
+        "B": "接收外部webhook回调",
+        "C": "注册webhook端点",
+        "D": "B和C都正确"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "webhook方法用于处理外部系统发来的webhook回调，同时在节点激活时注册webhook端点。",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q37",
+      "domain": 4,
+      "question": "如何配置n8n使用外部队列处理执行？",
+      "options": {
+        "A": "设置EXECUTIONS_MODE=queue",
+        "B": "设置N8N_QUEUE_MODE=redis",
+        "C": "设置QUEUE_BULL_REDIS_HOST",
+        "D": "A和C都需要配置"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "使用队列模式需要设置EXECUTIONS_MODE=queue启用队列模式，并配置Redis连接信息。",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q38",
+      "domain": 1,
+      "question": "n8n中如何实现请求限流保护外部API？",
+      "options": {
+        "A": "使用内置的限流节点",
+        "B": "使用SplitInBatches配合Wait节点",
+        "C": "依赖API自身的限流",
+        "D": "使用Code节点实现限流逻辑"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "通过SplitInBatches分批处理，配合Wait节点添加延迟，可以有效控制请求频率，保护外部API。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q39",
+      "domain": 2,
+      "question": "在n8n中，如何实现工作流的条件激活？",
+      "options": {
+        "A": "在触发器后添加IF节点过滤",
+        "B": "使用Schedule触发器的条件设置",
+        "C": "通过API动态启用/禁用工作流",
+        "D": "以上都可以"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "条件激活可以在触发器后过滤、使用Schedule的时间条件、或通过API动态控制工作流状态。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q40",
+      "domain": 3,
+      "question": "开发n8n自定义节点时，如何实现节点的多输出？",
+      "options": {
+        "A": "在description中定义多个outputs",
+        "B": "execute方法返回多维数组",
+        "C": "使用分支节点拆分输出",
+        "D": "A和B都需要"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "多输出节点需要在description的outputs中定义输出数量和名称，execute方法返回对应的多维数组。",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q41",
+      "domain": 4,
+      "question": "n8n的WEBHOOK_URL配置在什么情况下必须设置？",
+      "options": {
+        "A": "使用任何webhook功能时",
+        "B": "在反向代理后运行n8n时",
+        "C": "使用OAuth认证时",
+        "D": "B和C都需要"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "当n8n在反向代理后运行或需要OAuth回调时，必须设置正确的WEBHOOK_URL以确保外部可以访问。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q42",
+      "domain": 1,
+      "question": "如何在n8n中实现事务性操作回滚？",
+      "options": {
+        "A": "使用内置事务节点",
+        "B": "在错误分支中执行补偿操作",
+        "C": "依赖数据库事务",
+        "D": "B和C结合使用"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "n8n没有内置事务节点，需要在错误处理分支中实现补偿逻辑，或依赖数据库的事务支持。",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q43",
+      "domain": 2,
+      "question": "n8n中如何实现定时任务的错峰执行？",
+      "options": {
+        "A": "为每个任务设置不同的触发时间",
+        "B": "使用随机延迟",
+        "C": "使用队列控制并发",
+        "D": "以上都可以"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "错峰执行可以通过设置不同触发时间、添加随机延迟或使用队列控制并发来实现。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q44",
+      "domain": 3,
+      "question": "n8n自定义节点的poll方法用于什么类型的触发器？",
+      "options": {
+        "A": "Webhook触发器",
+        "B": "定时轮询触发器",
+        "C": "手动触发器",
+        "D": "事件触发器"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "poll方法用于实现定时轮询触发器，按配置的间隔检查数据源是否有新数据。",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q45",
+      "domain": 4,
+      "question": "如何配置n8n的日志级别？",
+      "options": {
+        "A": "修改配置文件",
+        "B": "设置N8N_LOG_LEVEL环境变量",
+        "C": "在UI中配置",
+        "D": "使用命令行参数"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "通过设置N8N_LOG_LEVEL环境变量（如debug、info、warn、error）可以控制n8n的日志详细程度。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q46",
+      "domain": 1,
+      "question": "在n8n错误处理中，$json和$error有什么区别？",
+      "options": {
+        "A": "没有区别，都是错误信息",
+        "B": "$json是正常数据，$error包含详细错误信息",
+        "C": "$error只在Error Trigger中可用",
+        "D": "B和C都正确"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "$json包含正常的数据输出，$error在错误处理流程中包含详细的错误信息（消息、堆栈等），主要在Error Trigger中使用。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q47",
+      "domain": 2,
+      "question": "如何在n8n中实现工作流的蓝绿部署？",
+      "options": {
+        "A": "使用两个独立的n8n实例",
+        "B": "维护两个版本的工作流，通过标签切换",
+        "C": "使用负载均衡器切换流量",
+        "D": "A和C结合使用"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "蓝绿部署最佳实践是使用两个n8n实例分别运行不同版本，通过负载均衡器切换流量。",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q48",
+      "domain": 3,
+      "question": "n8n自定义节点如何访问其他节点的输出数据？",
+      "options": {
+        "A": "使用this.getNodeParameter获取",
+        "B": "使用this.getInputData获取输入数据",
+        "C": "使用$node表达式",
+        "D": "直接访问全局变量"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "在自定义节点的execute方法中，使用this.getInputData()获取连接到该节点的上游节点输出数据。",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q49",
+      "domain": 4,
+      "question": "n8n的N8N_METRICS配置启用后可以获取什么信息？",
+      "options": {
+        "A": "工作流定义统计",
+        "B": "Prometheus格式的性能指标",
+        "C": "用户活动日志",
+        "D": "API调用统计"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "启用N8N_METRICS后，n8n会暴露Prometheus格式的指标端点，包含执行次数、持续时间等性能数据。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q50",
+      "domain": 1,
+      "question": "在n8n中如何实现跨工作流的错误追踪？",
+      "options": {
+        "A": "使用全局错误日志",
+        "B": "在Execute Workflow调用时传递correlation ID",
+        "C": "使用Error Trigger收集所有错误",
+        "D": "B和C结合使用"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "跨工作流错误追踪需要传递关联ID以链接相关执行，同时使用Error Trigger集中收集和处理所有错误。",
+      "difficulty": "hard"
+    }
+  ]
+}

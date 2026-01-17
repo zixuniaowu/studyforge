@@ -1,0 +1,772 @@
+{
+  "exam": {
+    "id": "n8n-integration-set1",
+    "name": "n8n 集成 模拟考试 #1",
+    "code": "N8N-INT",
+    "provider": "n8n",
+    "language": "zh-CN",
+    "description": "n8n 工作流自动化平台集成认证 - 第1套",
+    "totalQuestions": 50,
+    "passingScore": 75,
+    "examTime": 90,
+    "domains": [
+      { "id": 1, "name": "API Integration", "weight": 25 },
+      { "id": 2, "name": "Webhooks", "weight": 20 },
+      { "id": 3, "name": "Database Connections", "weight": 25 },
+      { "id": 4, "name": "AI/LLM Integration", "weight": 30 }
+    ],
+    "tags": ["n8n", "workflow", "automation", "integration", "认证考试"]
+  },
+  "questions": [
+    {
+      "id": "q1",
+      "domain": 1,
+      "question": "在n8n中使用HTTP Request节点调用REST API时，如何正确设置Bearer Token认证？",
+      "options": {
+        "A": "在URL参数中添加token",
+        "B": "在Header中添加Authorization: Bearer <token>",
+        "C": "使用Generic Credential Type配置",
+        "D": "B和C都可以"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "Bearer Token可以手动在Header中设置，也可以使用n8n的Generic Credential Type安全存储和自动注入。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q2",
+      "domain": 1,
+      "question": "当集成的API返回分页数据时，n8n中推荐的处理方式是什么？",
+      "options": {
+        "A": "只获取第一页数据",
+        "B": "使用Loop Over Items节点配合HTTP Request循环获取",
+        "C": "手动执行多次工作流",
+        "D": "使用Code节点一次性获取所有数据"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Loop Over Items节点可以配合HTTP Request节点循环调用API，逐页获取数据直到所有页面处理完成。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q3",
+      "domain": 2,
+      "question": "n8n的Webhook节点支持哪些HTTP方法？",
+      "options": {
+        "A": "只有GET和POST",
+        "B": "GET, POST, PUT, DELETE",
+        "C": "GET, POST, PUT, PATCH, DELETE, HEAD, OPTIONS",
+        "D": "所有标准HTTP方法"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "n8n的Webhook节点支持常见的HTTP方法：GET、POST、PUT、PATCH、DELETE、HEAD和OPTIONS。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q4",
+      "domain": 3,
+      "question": "在n8n中连接MySQL数据库时，以下哪个配置是必需的？",
+      "options": {
+        "A": "只需要主机地址",
+        "B": "主机地址、端口、数据库名、用户名和密码",
+        "C": "只需要连接字符串",
+        "D": "主机地址和数据库名"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "MySQL连接需要完整的配置信息：主机地址、端口（默认3306）、数据库名、认证用户名和密码。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q5",
+      "domain": 4,
+      "question": "在n8n中集成OpenAI API时，如何配置API密钥？",
+      "options": {
+        "A": "直接在节点中输入API密钥",
+        "B": "使用OpenAI凭证类型安全存储",
+        "C": "通过环境变量传递",
+        "D": "以上都可以，但B最安全"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "虽然可以直接输入或使用环境变量，但使用n8n的凭证管理系统最安全，可以加密存储和集中管理API密钥。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q6",
+      "domain": 1,
+      "question": "当API响应包含嵌套JSON结构时，如何在n8n中提取深层数据？",
+      "options": {
+        "A": "使用Set节点手动解析",
+        "B": "使用点号表示法如$json.data.items[0].name",
+        "C": "使用Code节点编写JavaScript",
+        "D": "B和C都可以"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "n8n的表达式支持点号表示法访问嵌套数据，对于复杂操作也可以使用Code节点编写自定义逻辑。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q7",
+      "domain": 2,
+      "question": "如何在n8n中验证incoming Webhook请求的合法性？",
+      "options": {
+        "A": "无法验证",
+        "B": "使用Webhook节点的Authentication选项",
+        "C": "在后续节点中检查签名",
+        "D": "B和C都可以"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "Webhook节点内置支持Basic Auth、Header Auth等认证方式，也可以在后续节点中验证请求签名或HMAC。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q8",
+      "domain": 3,
+      "question": "在n8n中执行复杂SQL查询时，如何防止SQL注入？",
+      "options": {
+        "A": "使用参数化查询",
+        "B": "手动转义特殊字符",
+        "C": "限制用户输入长度",
+        "D": "使用存储过程"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "参数化查询是防止SQL注入的最佳实践，n8n的数据库节点支持使用占位符传递参数值。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q9",
+      "domain": 4,
+      "question": "在n8n中使用AI节点进行文本分类时，如何优化Token使用？",
+      "options": {
+        "A": "使用最大上下文长度",
+        "B": "精简prompt并只发送必要的文本",
+        "C": "使用最便宜的模型",
+        "D": "批量处理所有文本"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "优化Token使用的关键是精简prompt、只发送必要的输入文本，并合理控制输出长度限制。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q10",
+      "domain": 1,
+      "question": "当集成的API有请求频率限制(Rate Limiting)时，n8n中应如何处理？",
+      "options": {
+        "A": "忽略限制快速发送请求",
+        "B": "使用SplitInBatches和Wait节点控制请求频率",
+        "C": "购买更高级的API计划",
+        "D": "使用多个API密钥轮换"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "使用SplitInBatches分批处理，配合Wait节点添加延迟，可以有效控制请求频率，遵守API限制。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q11",
+      "domain": 2,
+      "question": "n8n中的Respond to Webhook节点有什么作用？",
+      "options": {
+        "A": "发送Webhook请求",
+        "B": "自定义Webhook的响应内容和状态码",
+        "C": "验证Webhook请求",
+        "D": "记录Webhook日志"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Respond to Webhook节点允许自定义返回给Webhook调用者的响应内容、HTTP状态码和响应头。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q12",
+      "domain": 3,
+      "question": "在n8n中如何实现数据库事务操作？",
+      "options": {
+        "A": "使用内置事务节点",
+        "B": "在单个SQL查询中包含BEGIN和COMMIT",
+        "C": "使用Execute Query节点执行事务SQL",
+        "D": "n8n不支持数据库事务"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "可以通过Execute Query节点执行包含事务控制语句(BEGIN, COMMIT, ROLLBACK)的SQL来实现事务操作。",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q13",
+      "domain": 4,
+      "question": "在n8n中使用LangChain进行RAG(检索增强生成)时，需要哪些组件？",
+      "options": {
+        "A": "只需要LLM节点",
+        "B": "向量数据库、嵌入模型和LLM",
+        "C": "只需要向量数据库",
+        "D": "文档加载器和LLM"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "RAG系统需要向量数据库存储文档嵌入、嵌入模型将查询转换为向量、LLM生成基于检索结果的回答。",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q14",
+      "domain": 1,
+      "question": "如何在n8n中处理API返回的二进制数据（如图片）？",
+      "options": {
+        "A": "作为JSON字符串处理",
+        "B": "使用HTTP Request节点的Binary选项",
+        "C": "无法处理二进制数据",
+        "D": "必须先保存到文件系统"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "HTTP Request节点支持设置响应为Binary格式，可以直接接收和处理二进制数据如图片、PDF等。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q15",
+      "domain": 2,
+      "question": "如何配置n8n Webhook以支持CORS跨域请求？",
+      "options": {
+        "A": "自动支持，无需配置",
+        "B": "在Webhook节点设置中配置CORS选项",
+        "C": "通过Respond to Webhook节点设置响应头",
+        "D": "需要在反向代理层配置"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "可以使用Respond to Webhook节点设置Access-Control-Allow-Origin等CORS响应头，也可以在反向代理层统一配置。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q16",
+      "domain": 3,
+      "question": "在n8n中连接MongoDB时，如何执行聚合查询？",
+      "options": {
+        "A": "使用Find操作",
+        "B": "使用Aggregate操作并定义pipeline",
+        "C": "使用Raw Query",
+        "D": "B和C都可以"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "MongoDB节点提供专门的Aggregate操作，也可以使用Raw Query执行任意MongoDB命令包括聚合。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q17",
+      "domain": 4,
+      "question": "在n8n的AI Agent中，Memory组件的作用是什么？",
+      "options": {
+        "A": "存储工作流数据",
+        "B": "保持对话上下文和历史",
+        "C": "缓存API响应",
+        "D": "存储用户偏好设置"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "AI Agent的Memory组件用于保持对话历史和上下文，使Agent能够记住之前的交互并提供连贯的响应。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q18",
+      "domain": 1,
+      "question": "在集成GraphQL API时，n8n中应使用哪个节点？",
+      "options": {
+        "A": "专用的GraphQL节点",
+        "B": "HTTP Request节点配置POST请求",
+        "C": "只能使用Code节点",
+        "D": "n8n不支持GraphQL"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "n8n没有专用GraphQL节点，但可以使用HTTP Request节点发送POST请求，body中包含query和variables。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q19",
+      "domain": 2,
+      "question": "如何测试n8n中的Webhook工作流？",
+      "options": {
+        "A": "只能等待真实请求",
+        "B": "使用Webhook节点的Test URL功能",
+        "C": "使用外部工具如Postman发送请求",
+        "D": "B和C都可以"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "n8n提供Test URL用于开发测试，也可以使用Postman等工具向Production URL发送测试请求。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q20",
+      "domain": 3,
+      "question": "在n8n中实现数据库连接池的最佳实践是什么？",
+      "options": {
+        "A": "每次查询创建新连接",
+        "B": "依赖n8n自动管理的连接池",
+        "C": "使用外部连接池服务",
+        "D": "手动在Code节点中管理连接"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "n8n的数据库节点内部管理连接池，会自动复用连接，无需手动管理。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q21",
+      "domain": 4,
+      "question": "如何在n8n中实现AI模型的流式响应(Streaming)？",
+      "options": {
+        "A": "所有AI节点自动支持流式",
+        "B": "使用支持流式的特定AI节点或HTTP Streaming",
+        "C": "n8n不支持流式响应",
+        "D": "需要使用WebSocket节点"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "n8n的某些AI节点和Chat触发器支持流式响应，也可以通过HTTP Request配合SSE实现。",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q22",
+      "domain": 1,
+      "question": "当API需要OAuth 2.0认证时，n8n中如何配置？",
+      "options": {
+        "A": "手动获取token并设置Header",
+        "B": "使用n8n内置的OAuth2凭证类型",
+        "C": "只能使用已集成的应用节点",
+        "D": "使用外部OAuth服务"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "n8n内置OAuth2凭证类型，支持配置授权URL、Token URL、回调等，自动处理OAuth流程和Token刷新。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q23",
+      "domain": 2,
+      "question": "n8n中Webhook的Production URL和Test URL有什么区别？",
+      "options": {
+        "A": "没有区别",
+        "B": "Production URL需要工作流激活，Test URL用于编辑器中测试",
+        "C": "Test URL更安全",
+        "D": "Production URL性能更好"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Test URL在编辑器中测试时使用，无需激活工作流；Production URL需要工作流激活后才能接收请求。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q24",
+      "domain": 3,
+      "question": "在n8n中如何处理大量数据的数据库插入操作？",
+      "options": {
+        "A": "逐条插入",
+        "B": "使用批量插入(Bulk Insert)操作",
+        "C": "使用SplitInBatches分批插入",
+        "D": "B和C结合使用效果最佳"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "大量数据应该使用批量插入提高效率，同时配合SplitInBatches控制每批大小，避免内存问题。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q25",
+      "domain": 4,
+      "question": "在n8n中使用向量数据库Pinecone时，如何优化查询性能？",
+      "options": {
+        "A": "增加返回结果数量",
+        "B": "使用合适的topK值和过滤条件",
+        "C": "始终使用最大向量维度",
+        "D": "禁用元数据过滤"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "优化Pinecone查询应设置合适的topK值（返回结果数），使用元数据过滤缩小搜索范围，平衡准确性和性能。",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q26",
+      "domain": 1,
+      "question": "如何在n8n中处理API的重试和退避策略？",
+      "options": {
+        "A": "手动实现重试逻辑",
+        "B": "使用HTTP Request节点的内置重试选项",
+        "C": "依赖API自身的重试",
+        "D": "使用Error Trigger重新执行整个工作流"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "HTTP Request节点支持配置重试次数和重试间隔，可以实现指数退避策略处理临时性失败。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q27",
+      "domain": 2,
+      "question": "如何在n8n中实现Webhook请求的去重？",
+      "options": {
+        "A": "Webhook自动去重",
+        "B": "使用唯一标识符检查并存储已处理的请求",
+        "C": "设置请求超时",
+        "D": "限制并发请求数"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "应该在工作流中提取请求的唯一标识符（如事件ID），检查是否已处理过，实现幂等性。",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q28",
+      "domain": 3,
+      "question": "在n8n中如何安全地存储数据库连接凭证？",
+      "options": {
+        "A": "直接在节点中输入",
+        "B": "使用n8n的凭证管理系统",
+        "C": "存储在环境变量中",
+        "D": "B和C都是推荐做法"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "n8n凭证管理系统提供加密存储，环境变量也是安全的方式，两者都优于直接在节点中输入明文。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q29",
+      "domain": 4,
+      "question": "在n8n中构建聊天机器人时，如何处理多轮对话？",
+      "options": {
+        "A": "每次对话都是独立的",
+        "B": "使用会话ID和Memory节点保持上下文",
+        "C": "将所有历史消息发送给AI",
+        "D": "使用数据库存储对话历史"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "使用会话ID标识用户会话，配合Memory节点自动管理对话历史，实现高效的多轮对话。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q30",
+      "domain": 1,
+      "question": "在n8n中调用SOAP Web Service的推荐方式是什么？",
+      "options": {
+        "A": "使用专用SOAP节点",
+        "B": "使用HTTP Request节点发送XML请求",
+        "C": "不支持SOAP",
+        "D": "只能使用Code节点"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "n8n可以使用HTTP Request节点发送SOAP请求，设置Content-Type为text/xml，body中包含SOAP信封。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q31",
+      "domain": 2,
+      "question": "如何在n8n中处理Webhook请求超时？",
+      "options": {
+        "A": "增加服务器超时设置",
+        "B": "立即返回响应，异步处理请求",
+        "C": "使用队列处理",
+        "D": "B和C都是好方法"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "对于长时间处理的Webhook，应立即返回202 Accepted，使用队列或另一个工作流异步处理实际任务。",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q32",
+      "domain": 3,
+      "question": "在n8n中如何实现数据库的增量同步？",
+      "options": {
+        "A": "每次全量同步",
+        "B": "使用时间戳或版本号字段追踪更改",
+        "C": "依赖数据库触发器",
+        "D": "使用数据库的CDC功能"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "增量同步通常使用updated_at时间戳或版本号字段，在查询时只获取上次同步后的更改记录。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q33",
+      "domain": 4,
+      "question": "如何在n8n中实现AI工具调用(Function Calling)？",
+      "options": {
+        "A": "手动解析AI响应",
+        "B": "使用AI Agent节点配合Tools",
+        "C": "使用Code节点调用API",
+        "D": "n8n不支持工具调用"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "n8n的AI Agent节点支持配置Tools，AI可以根据需要调用这些工具，实现Function Calling功能。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q34",
+      "domain": 1,
+      "question": "在n8n中如何处理API的版本管理？",
+      "options": {
+        "A": "硬编码API版本",
+        "B": "使用环境变量或凭证存储版本信息",
+        "C": "始终使用最新版本",
+        "D": "在URL路径中动态指定版本"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "使用环境变量或凭证管理API版本，便于在不同环境中使用不同版本，也便于版本升级。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q35",
+      "domain": 2,
+      "question": "n8n中如何实现Webhook的负载均衡？",
+      "options": {
+        "A": "使用n8n内置负载均衡",
+        "B": "配置外部负载均衡器分发请求到多个n8n实例",
+        "C": "使用DNS轮询",
+        "D": "B和C都可以"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "Webhook负载均衡需要外部实现，可以使用Nginx、AWS ALB等负载均衡器，或DNS轮询分发请求。",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q36",
+      "domain": 3,
+      "question": "在n8n中连接Redis时，主要用于什么场景？",
+      "options": {
+        "A": "作为主数据库",
+        "B": "缓存、队列和会话存储",
+        "C": "文件存储",
+        "D": "日志记录"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Redis在n8n中常用于缓存API响应、实现任务队列、存储会话状态等场景，而非主数据库。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q37",
+      "domain": 4,
+      "question": "在n8n中使用文档加载器处理PDF时，有什么注意事项？",
+      "options": {
+        "A": "所有PDF都可以直接处理",
+        "B": "需要考虑文件大小、页数限制和OCR需求",
+        "C": "只能处理纯文本PDF",
+        "D": "需要先转换为Word格式"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "处理PDF需要考虑文件大小限制、页数分块策略，扫描版PDF可能需要OCR处理提取文本。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q38",
+      "domain": 1,
+      "question": "如何在n8n中实现API响应的缓存？",
+      "options": {
+        "A": "n8n自动缓存所有响应",
+        "B": "使用Redis或数据库存储响应，查询前先检查缓存",
+        "C": "使用Code节点实现内存缓存",
+        "D": "使用静态数据存储缓存"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "推荐使用Redis等外部缓存存储API响应，在调用API前检查缓存，减少API调用次数。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q39",
+      "domain": 2,
+      "question": "如何保护n8n Webhook免受恶意请求？",
+      "options": {
+        "A": "公开所有Webhook无需保护",
+        "B": "使用认证、IP白名单、签名验证",
+        "C": "限制请求大小",
+        "D": "B和C都是安全措施"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "保护Webhook应使用多层安全措施：认证（Basic Auth/API Key）、IP白名单、请求签名验证、请求大小限制。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q40",
+      "domain": 3,
+      "question": "在n8n中如何处理数据库查询的空结果？",
+      "options": {
+        "A": "让工作流失败",
+        "B": "使用IF节点检查结果是否为空并处理",
+        "C": "忽略空结果继续执行",
+        "D": "使用默认值替换空结果"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "应该使用IF节点检查查询结果是否为空，根据业务需求决定是使用默认值、跳过后续处理还是发送通知。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q41",
+      "domain": 4,
+      "question": "在n8n中如何实现多模型AI推理？",
+      "options": {
+        "A": "只能使用单一模型",
+        "B": "串联多个AI节点，每个使用不同模型",
+        "C": "使用路由逻辑选择不同模型",
+        "D": "B和C都可以实现"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "可以串联多个AI节点实现模型协作，也可以使用条件判断根据任务类型路由到不同模型。",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q42",
+      "domain": 1,
+      "question": "在n8n中集成Stripe支付API时，如何处理Webhook事件？",
+      "options": {
+        "A": "定期轮询Stripe API",
+        "B": "配置Stripe发送Webhook到n8n，并验证签名",
+        "C": "手动检查支付状态",
+        "D": "使用Stripe内置通知"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Stripe最佳实践是配置Webhook接收实时事件通知，并使用Stripe签名验证确保请求合法性。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q43",
+      "domain": 2,
+      "question": "如何在n8n中实现Webhook的请求日志记录？",
+      "options": {
+        "A": "n8n自动记录所有请求",
+        "B": "将请求数据写入数据库或日志服务",
+        "C": "使用外部日志服务",
+        "D": "B和C都是推荐方法"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "应该将Webhook请求记录到数据库或专用日志服务（如ELK、Datadog），便于审计和问题排查。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q44",
+      "domain": 3,
+      "question": "在n8n中如何实现跨数据库的数据同步？",
+      "options": {
+        "A": "使用单一数据库节点",
+        "B": "使用多个数据库节点，先读取源数据库再写入目标数据库",
+        "C": "使用数据库复制功能",
+        "D": "n8n不支持跨数据库操作"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "n8n支持连接多种数据库，可以从一个数据库读取数据，经过转换后写入另一个数据库实现同步。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q45",
+      "domain": 4,
+      "question": "在n8n中如何处理AI生成内容的安全审核？",
+      "options": {
+        "A": "信任AI生成的所有内容",
+        "B": "添加内容审核节点检查敏感内容",
+        "C": "使用AI的内置安全过滤",
+        "D": "B和C结合使用"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "应该使用AI提供商的安全过滤功能，同时添加额外的内容审核步骤，双重保障内容安全。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q46",
+      "domain": 1,
+      "question": "在n8n中如何处理API的并发请求限制？",
+      "options": {
+        "A": "不考虑并发限制",
+        "B": "使用队列控制并发数",
+        "C": "设置节点的并发执行数",
+        "D": "B和C都可以"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "可以使用外部队列（如Redis）控制并发，也可以配置SplitInBatches节点限制同时处理的数量。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q47",
+      "domain": 2,
+      "question": "如何在n8n中处理大文件的Webhook上传？",
+      "options": {
+        "A": "直接接收大文件",
+        "B": "使用流式处理或分块上传",
+        "C": "限制文件大小并拒绝大文件",
+        "D": "先上传到云存储，Webhook只接收URL"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "大文件应该先上传到S3等云存储，Webhook只接收文件URL，避免超时和内存问题。",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q48",
+      "domain": 3,
+      "question": "在n8n中使用PostgreSQL的JSONB字段时，如何查询JSON数据？",
+      "options": {
+        "A": "使用普通SQL查询",
+        "B": "使用PostgreSQL的JSON操作符如->和->>",
+        "C": "先提取为普通字段再查询",
+        "D": "n8n不支持JSONB查询"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "PostgreSQL的JSONB支持使用->（获取JSON对象）和->>（获取文本值）操作符进行查询。",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q49",
+      "domain": 4,
+      "question": "在n8n中如何优化长文本的AI处理？",
+      "options": {
+        "A": "发送完整文本给AI",
+        "B": "使用文本分块并分别处理，然后汇总结果",
+        "C": "截断文本到模型限制",
+        "D": "使用更大上下文的模型"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "长文本应该分块处理，每块独立调用AI，最后汇总结果。这比截断更能保留完整信息。",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q50",
+      "domain": 1,
+      "question": "在n8n中如何实现API的健康检查监控？",
+      "options": {
+        "A": "手动定期检查",
+        "B": "使用Schedule触发器定期调用健康端点",
+        "C": "使用外部监控服务",
+        "D": "B和C都是好方法"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "可以使用n8n Schedule定期检查API健康状态，也可以使用专业监控服务如Datadog、Pingdom进行全面监控。",
+      "difficulty": "medium"
+    }
+  ]
+}

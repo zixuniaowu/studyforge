@@ -1,0 +1,772 @@
+{
+  "exam": {
+    "id": "n8n-advanced-set3-ja",
+    "name": "n8n 上級 模擬試験 #3",
+    "code": "N8N-ADV",
+    "provider": "n8n",
+    "language": "ja",
+    "description": "n8n ワークフロー自動化プラットフォーム上級認定 - 第3セット",
+    "totalQuestions": 50,
+    "passingScore": 75,
+    "examTime": 90,
+    "domains": [
+      { "id": 1, "name": "Error Handling", "weight": 20 },
+      { "id": 2, "name": "Sub-workflows & Architecture", "weight": 25 },
+      { "id": 3, "name": "Custom Development", "weight": 30 },
+      { "id": 4, "name": "Environment & Deployment", "weight": 25 }
+    ],
+    "tags": ["n8n", "workflow", "automation", "advanced", "認定試験"]
+  },
+  "questions": [
+    {
+      "id": "q1",
+      "domain": 1,
+      "question": "n8nでワークフローレベルのグローバルエラーハンドリングを実装するにはどうすればよいですか？",
+      "options": {
+        "A": "各ノードにエラーハンドリングを追加する",
+        "B": "Error Triggerノードを使用して専用のエラーハンドリングワークフローを作成する",
+        "C": "環境変数ERROR_HANDLERを設定する",
+        "D": "設定でグローバルエラーログを有効にする"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Error Triggerノードは任意のワークフローでエラーをキャッチし、集中的なエラーハンドリングを実現できます。通知の送信、ログの記録、リカバリープロセスのトリガーが可能です。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q2",
+      "domain": 1,
+      "question": "n8nワークフローで失敗する可能性のある外部API呼び出しを処理する際のベストプラクティスは何ですか？",
+      "options": {
+        "A": "エラーを無視して実行を継続する",
+        "B": "try/catch式で呼び出しをラップする",
+        "C": "ノードのリトライメカニズムとエラー出力を設定する",
+        "D": "同期呼び出しを使用して成功を確保する"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "n8nノードはリトライ回数、リトライ間隔、エラー出力ブランチの設定をサポートしており、これは不安定なAPIを処理するための標準的な方法です。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q3",
+      "domain": 2,
+      "question": "大規模なn8n自動化システムを設計する際、複数の関連ワークフローをどのように整理すべきですか？",
+      "options": {
+        "A": "すべてのロジックを1つの大きなワークフローに入れる",
+        "B": "Execute Workflowノードを使用してモジュール化する",
+        "C": "同じノードを各ワークフローにコピー＆ペーストする",
+        "D": "外部スクリプトを使用してワークフローを調整する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Execute Workflowノードを使用すると、ワークフローから他のワークフローを呼び出すことができ、コードの再利用とモジュラー設計が可能になり、保守とテストが容易になります。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q4",
+      "domain": 3,
+      "question": "n8nでカスタムノードを開発する際、実装必須のコアメソッドはどれですか？",
+      "options": {
+        "A": "run()",
+        "B": "execute()",
+        "C": "process()",
+        "D": "handle()"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "カスタムノードはexecute()メソッドを実装する必要があります。これはノード実行ロジックのエントリーポイントであり、入力データを受け取り処理結果を返します。",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q5",
+      "domain": 4,
+      "question": "本番環境でn8nをデプロイする際、ワークフローデータの保存に推奨される方法は何ですか？",
+      "options": {
+        "A": "デフォルトのSQLiteデータベース",
+        "B": "PostgreSQLやMySQLなどの本番グレードデータベース",
+        "C": "ファイルシステムのJSONファイル",
+        "D": "メモリストレージ"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "本番環境では、PostgreSQLやMySQLなどのエンタープライズグレードデータベースを使用すべきです。より良い同時実行処理、データの永続性、バックアップリカバリー機能を提供します。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q6",
+      "domain": 1,
+      "question": "n8nでサーキットブレーカーパターンはどのように実装できますか？",
+      "options": {
+        "A": "組み込みのCircuit Breakerノードを使用する",
+        "B": "エラーカウントと条件判断を組み合わせて手動で実装する",
+        "C": "グローバルサーキットブレーカー設定を構成する",
+        "D": "サードパーティプラグインを使用する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "n8nには組み込みのサーキットブレーカーノードがありません。エラー回数を記録し（静的データや外部ストレージを使用）、IFノードでサーキットブレーカーロジックを実装する必要があります。",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q7",
+      "domain": 2,
+      "question": "n8nのサブワークフローで親ワークフローから渡されたパラメータにアクセスするにはどうすればよいですか？",
+      "options": {
+        "A": "$workflow.parametersを使用する",
+        "B": "$executionData.parametersを使用する",
+        "C": "サブワークフローのトリガーノードの出力にパラメータが含まれる",
+        "D": "グローバル変数を使用する"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "Execute Workflowノードを通じてサブワークフローを呼び出すと、渡されたパラメータはサブワークフローのトリガーノードの出力データとして利用できます。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q8",
+      "domain": 3,
+      "question": "カスタムn8nノードのdescriptionプロパティにおいて、displayOptionsは何のために使用されますか？",
+      "options": {
+        "A": "キャンバス上のノードの表示スタイルを設定する",
+        "B": "プロパティフィールドの条件付き表示を制御する",
+        "C": "ノードの出力形式を定義する",
+        "D": "ノードのエラーメッセージを設定する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "displayOptionsを使用すると、他のフィールドの値に基づいてプロパティフィールドを動的に表示/非表示にでき、条件付きフォームロジックを実現できます。",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q9",
+      "domain": 4,
+      "question": "n8nで環境変数を使用するための正しい構文は何ですか？",
+      "options": {
+        "A": "process.env.VARIABLE_NAME",
+        "B": "$env.VARIABLE_NAME",
+        "C": "{{$env.VARIABLE_NAME}}",
+        "D": "${VARIABLE_NAME}"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "n8n式では、{{$env.VARIABLE_NAME}}構文を使用して環境変数にアクセスします。これはn8nの標準的な式フォーマットです。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q10",
+      "domain": 1,
+      "question": "n8nワークフローの実行が失敗した場合、処理済みデータの重複処理を防ぐにはどうすればよいですか？",
+      "options": {
+        "A": "トランザクショナルなデータベース操作を使用する",
+        "B": "冪等性チェックと重複排除ロジックを実装する",
+        "C": "ワークフローのリトライを無効にする",
+        "D": "同期実行モードを使用する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "処理済みの一意識別子を記録し、処理前にチェックすることで、ワークフローのリトライ時に同じデータが重複処理されないようにできます。",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q11",
+      "domain": 2,
+      "question": "n8nの静的データ（Static Data）はどのような用途がありますか？",
+      "options": {
+        "A": "ワークフローの設定情報を保存する",
+        "B": "ワークフロー実行間でデータを永続化する",
+        "C": "API応答をキャッシュする",
+        "D": "ユーザー認証情報を保存する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "静的データは同じワークフローの異なる実行間でデータを保存・読み取りでき、最終処理時間やカウンターなどの状態情報を保存するのに適しています。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q12",
+      "domain": 3,
+      "question": "n8nカスタムノードで認証情報タイプを定義するにはどうすればよいですか？",
+      "options": {
+        "A": "ノードのcredentials配列で認証情報タイプ名を参照する",
+        "B": "ノードコード内に認証情報を直接ハードコードする",
+        "C": "環境変数を使用して認証情報を渡す",
+        "D": "package.jsonで定義する"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "カスタムノードはcredentialsプロパティ配列で必要な認証情報タイプを宣言し、n8nが自動的に認証情報の取得と注入を処理します。",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q13",
+      "domain": 4,
+      "question": "高可用性デプロイメントをサポートするようにn8nを構成するにはどうすればよいですか？",
+      "options": {
+        "A": "同じデータベースを共有する複数のn8nインスタンスを実行する",
+        "B": "マスター・スレーブレプリケーションモードを使用する",
+        "C": "ロードバランサーを設定してWebhookリクエストを分散する",
+        "D": "AとCの両方が正しい"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "高可用性デプロイメントには、複数のn8nインスタンスがデータベースを共有し（queueモードを使用）、ロードバランサーを通じて受信Webhookリクエストを分散する必要があります。",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q14",
+      "domain": 1,
+      "question": "n8nのcontinueOnFailオプションはどのような効果がありますか？",
+      "options": {
+        "A": "すべてのエラーを無視して実行を継続する",
+        "B": "ノードが失敗した場合、空のデータで継続する",
+        "C": "ノードが失敗した場合、エラー情報を出力して後続ノードを継続する",
+        "D": "エラーを記録するがワークフローを停止する"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "continueOnFailを有効にすると、ノードが失敗した場合にエラー情報を出力として次のノードに渡し、ワークフローは終了せずに実行を継続します。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q15",
+      "domain": 2,
+      "question": "n8nでイベント駆動アーキテクチャを実装する最良の方法は何ですか？",
+      "options": {
+        "A": "ポーリングトリガーを使用して定期的にイベントをチェックする",
+        "B": "Webhookトリガーを使用してリアルタイムイベントを受信する",
+        "C": "Scheduleトリガーを使用して定期実行する",
+        "D": "手動トリガーを使用する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Webhookトリガーは外部システムからリアルタイムでイベントをn8nにプッシュでき、真のイベント駆動処理を実現し、ポーリングよりも効率的です。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q16",
+      "domain": 3,
+      "question": "n8nカスタムノードのINodeTypeインターフェースで、triggerプロパティは何を示しますか？",
+      "options": {
+        "A": "ノードがトリガータイプである",
+        "B": "ノードが他のワークフローをトリガーできる",
+        "C": "ノードは手動トリガーが必要",
+        "D": "ノードがスケジュールトリガーをサポートする"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "triggerプロパティがtrueに設定されている場合、そのノードはトリガーノードであり、ワークフローの開始ノードとして使用できることを示します。",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q17",
+      "domain": 4,
+      "question": "Dockerでn8nを実行する際、タイムゾーンの問題を正しく処理するにはどうすればよいですか？",
+      "options": {
+        "A": "TZ環境変数を設定する",
+        "B": "コンテナ内のタイムゾーンファイルを変更する",
+        "C": "ホストマシンのタイムゾーンをマウントする",
+        "D": "GENERIC_TIMEZONE環境変数を設定する"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "n8nはGENERIC_TIMEZONE環境変数を使用してタイムゾーンを設定します。これはスケジュールトリガーと時間関連の操作に影響します。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q18",
+      "domain": 1,
+      "question": "n8nで部分的なバッチ処理が失敗した後のリカバリーをどのように実装しますか？",
+      "options": {
+        "A": "バッチ全体を最初から再実行する",
+        "B": "SplitInBatchesノードとエラー追跡を組み合わせて使用する",
+        "C": "処理済みデータを手動で削除してからリトライする",
+        "D": "トランザクションロールバックを使用する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "SplitInBatchesノードで大量データを分割処理し、エラー追跡と組み合わせることで、失敗したバッチのみをリトライでき、リカバリー効率が向上します。",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q19",
+      "domain": 2,
+      "question": "n8nでワークフロー間の非同期通信をどのように実装しますか？",
+      "options": {
+        "A": "Execute Workflowノードの同期呼び出しを使用する",
+        "B": "メッセージキュー（RabbitMQなど）を仲介として使用する",
+        "C": "共有データベーステーブルを使用する",
+        "D": "BとCの両方が可能"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "非同期通信はメッセージキューを介して疎結合を実現でき、また共有データベーステーブルを使用してタスクステータスを記録し、異なるワークフローがポーリングして処理することもできます。",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q20",
+      "domain": 3,
+      "question": "n8nカスタムノードを開発する際、ページネーションAPIをどのように処理しますか？",
+      "options": {
+        "A": "ループノードを使用して手動で処理する",
+        "B": "executeメソッド内でループですべてのページを取得する",
+        "C": "最初のページのデータのみを取得する",
+        "D": "webhookを使用してユーザーが手動でページ送りするのを待つ"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "カスタムノードはexecuteメソッド内で完全なページネーションロジックを実装し、すべてのページデータをループで取得してマージして返す必要があります。",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q21",
+      "domain": 4,
+      "question": "n8nのEXECUTIONS_DATA_PRUNE設定はどのような目的で使用されますか？",
+      "options": {
+        "A": "同時実行数を制限する",
+        "B": "履歴実行データを自動的にクリーンアップする",
+        "C": "実行パフォーマンスを最適化する",
+        "D": "実行ログを圧縮する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "EXECUTIONS_DATA_PRUNEを有効にすると、n8nは指定した時間を超えた実行履歴データを自動的に削除し、データベースの無限の増大を防ぎます。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q22",
+      "domain": 1,
+      "question": "n8nでデッドレターキュー（Dead Letter Queue）パターンをどのように実装しますか？",
+      "options": {
+        "A": "組み込みのDLQノードを使用する",
+        "B": "エラーワークフローを設定して失敗メッセージを専用キューに書き込む",
+        "C": "グローバルDLQ設定を有効にする",
+        "D": "Error Triggerを使用して自動リトライする"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "n8nには組み込みのDLQ機能がありません。Error Triggerで失敗をキャッチし、失敗メッセージを専用のキューまたはデータベーステーブルに書き込む必要があります。",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q23",
+      "domain": 2,
+      "question": "n8nワークフローを設計する際、複雑な条件分岐をどのように効果的に管理しますか？",
+      "options": {
+        "A": "ネストされたIFノードを使用する",
+        "B": "Switchノードを使用して複数条件分岐を処理する",
+        "C": "各分岐を独立したワークフローに分割する",
+        "D": "Codeノードを使用して複雑なロジックを実装する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Switchノードは条件に基づいてデータを複数の出力にルーティングでき、ネストされたIFノードよりも明確で保守しやすくなります。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q24",
+      "domain": 3,
+      "question": "n8nカスタムノードのloadOptionsメソッドは何に使用されますか？",
+      "options": {
+        "A": "ノードの初期設定をロードする",
+        "B": "ドロップダウンオプションリストを動的にロードする",
+        "C": "外部依存関係をロードする",
+        "D": "認証情報データをロードする"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "loadOptionsメソッドはオプションリストを動的に取得するために使用されます。例えば、APIから利用可能なプロジェクトやユーザーを取得してドロップダウン選択ボックスに表示します。",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q25",
+      "domain": 4,
+      "question": "n8nワークフローの実行パフォーマンスをどのように監視しますか？",
+      "options": {
+        "A": "組み込みの実行履歴を確認する",
+        "B": "Prometheusメトリクスエクスポートを設定する",
+        "C": "ログ分析ツールを使用する",
+        "D": "上記すべて使用可能"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "n8nは実行履歴の確認、Prometheusメトリクスのエクスポートを提供し、ログ分析と組み合わせることでワークフローパフォーマンスを包括的に監視できます。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q26",
+      "domain": 1,
+      "question": "n8nでタイムアウト問題を処理する最良の戦略は何ですか？",
+      "options": {
+        "A": "グローバルタイムアウト時間を延長する",
+        "B": "長時間実行される操作に適切なタイムアウトとリトライ戦略を設定する",
+        "C": "タイムアウトチェックを無効にする",
+        "D": "非同期実行モードを使用する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "操作の実際のニーズに応じて適切なタイムアウト時間を設定し、一時的なタイムアウト問題を処理するためのリトライ戦略を設定する必要があります。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q27",
+      "domain": 2,
+      "question": "n8nのpinData機能はどのようなシナリオで最も役立ちますか？",
+      "options": {
+        "A": "本番環境のデータバックアップ",
+        "B": "開発デバッグ時にテストデータを固定する",
+        "C": "データキャッシュの実装",
+        "D": "ワークフロー間のデータ共有"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "pinDataを使用するとノードの出力データを固定でき、開発デバッグ時にノードを実際に実行しなくても後続のフローをテストできます。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q28",
+      "domain": 3,
+      "question": "カスタムn8nノードはどのようにOAuth2認証をサポートしますか？",
+      "options": {
+        "A": "OAuthフローを手動で処理する",
+        "B": "OAuth2を継承した認証情報タイプを作成する",
+        "C": "HTTP Requestノードを使用して処理する",
+        "D": "外部OAuthサービスを呼び出す"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "n8nはOAuth2認証情報ベースクラスを提供しており、カスタム認証情報はそれを継承して必要なパラメータを設定でき、n8nが自動的にOAuthフローを処理します。",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q29",
+      "domain": 4,
+      "question": "n8nクラスターデプロイメントで、QUEUE_BULL_REDIS_HOST設定の役割は何ですか？",
+      "options": {
+        "A": "ワークフローデータを保存する",
+        "B": "複数インスタンス間のタスクキューを調整する",
+        "C": "API応答をキャッシュする",
+        "D": "ユーザーセッションを保存する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "queueモードでは、Redisはタスクキューの保存に使用され、複数のn8n workerインスタンス間のタスク割り当てを調整します。",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q30",
+      "domain": 1,
+      "question": "n8nで優雅なサービスデグレードをどのように実装しますか？",
+      "options": {
+        "A": "ユーザーに直接エラーを返す",
+        "B": "IFノードでサービス状態をチェックし、失敗時にキャッシュデータまたはデフォルト値を返す",
+        "C": "成功するまでリトライする",
+        "D": "ワークフロー全体を停止する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "サービスデグレードは、サービスが利用できないときに代替案（キャッシュデータやデフォルト値など）を提供すべきであり、ユーザーを待たせたりエラーを表示したりすべきではありません。",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q31",
+      "domain": 2,
+      "question": "n8nでワークフローのバージョン管理をどのように実装しますか？",
+      "options": {
+        "A": "組み込みのバージョン履歴機能を使用する",
+        "B": "JSONをエクスポートしてGitリポジトリにコミットする",
+        "C": "n8nのバックアップ機能を使用する",
+        "D": "上記すべてを組み合わせて使用可能"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "n8nはバージョン履歴を提供し、ワークフローはJSONとしてエクスポートしてGitでバージョン管理でき、バックアップ機能は追加の保護として使用できます。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q32",
+      "domain": 3,
+      "question": "n8nカスタムノードで、this.helpers.requestの役割は何ですか？",
+      "options": {
+        "A": "HTTPリクエストを送信し、認証情報を自動的に処理する",
+        "B": "ユーザー入力をリクエストする",
+        "C": "他のノードのデータをリクエストする",
+        "D": "システムリソースをリクエストする"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "this.helpers.requestはn8nが提供するHTTPリクエストヘルパーメソッドであり、設定された認証情報を自動的に注入し、API呼び出しを簡素化します。",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q33",
+      "domain": 4,
+      "question": "n8nのN8N_ENCRYPTION_KEY環境変数は何に使用されますか？",
+      "options": {
+        "A": "ワークフロー定義を暗号化する",
+        "B": "保存された認証情報データを暗号化する",
+        "C": "通信を暗号化する",
+        "D": "実行ログを暗号化する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "N8N_ENCRYPTION_KEYはデータベースに保存される認証情報データの暗号化に使用され、機密情報のセキュリティを確保します。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q34",
+      "domain": 1,
+      "question": "n8nで人間の介入が必要な例外状況をどのように処理しますか？",
+      "options": {
+        "A": "通知を送信してワークフローを一時停止し、人間の処理を待つ",
+        "B": "成功するまで自動リトライする",
+        "C": "エラーを無視して実行を継続する",
+        "D": "ワークフローを終了してエラーを記録する"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "人間の介入が必要な状況では、通知（メール、Slackメッセージなど）を送信し、Waitノードを使用してワークフローを一時停止し人間の操作を待つことができます。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q35",
+      "domain": 2,
+      "question": "n8nでワークフローのA/Bテストをどのように実装しますか？",
+      "options": {
+        "A": "Switchノードを使用して異なる処理ブランチにランダムにルーティングする",
+        "B": "2つの独立したワークフローを作成して手動で切り替える",
+        "C": "Codeノードを使用してランダム選択を実装する",
+        "D": "AとCの両方が可能"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "A/BテストはSwitchノードとランダム値を組み合わせて実装でき、Codeノードを使用してより複雑な割り当てロジックを実装することもできます。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q36",
+      "domain": 3,
+      "question": "n8nカスタムノードのwebhookメソッドはどのようなシナリオで使用されますか？",
+      "options": {
+        "A": "webhookリクエストを送信する",
+        "B": "外部webhookコールバックを受信する",
+        "C": "webhookエンドポイントを登録する",
+        "D": "BとCの両方が正しい"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "webhookメソッドは外部システムから送られてきたwebhookコールバックを処理するために使用され、同時にノードがアクティブになったときにwebhookエンドポイントを登録します。",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q37",
+      "domain": 4,
+      "question": "n8nを外部キューで実行するように設定するにはどうすればよいですか？",
+      "options": {
+        "A": "EXECUTIONS_MODE=queueを設定する",
+        "B": "N8N_QUEUE_MODE=redisを設定する",
+        "C": "QUEUE_BULL_REDIS_HOSTを設定する",
+        "D": "AとCの両方を設定する必要がある"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "キューモードを使用するにはEXECUTIONS_MODE=queueを設定してキューモードを有効にし、Redis接続情報を設定する必要があります。",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q38",
+      "domain": 1,
+      "question": "n8nで外部APIを保護するためのリクエストレート制限をどのように実装しますか？",
+      "options": {
+        "A": "組み込みのレート制限ノードを使用する",
+        "B": "SplitInBatchesとWaitノードを組み合わせて使用する",
+        "C": "API自体のレート制限に依存する",
+        "D": "Codeノードを使用してレート制限ロジックを実装する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "SplitInBatchesでバッチ処理し、Waitノードで遅延を追加することで、リクエスト頻度を効果的に制御し、外部APIを保護できます。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q39",
+      "domain": 2,
+      "question": "n8nでワークフローの条件付きアクティベーションをどのように実装しますか？",
+      "options": {
+        "A": "トリガーの後にIFノードを追加してフィルタリングする",
+        "B": "Scheduleトリガーの条件設定を使用する",
+        "C": "APIを通じてワークフローを動的に有効/無効にする",
+        "D": "上記すべて使用可能"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "条件付きアクティベーションはトリガー後のフィルタリング、Scheduleの時間条件の使用、またはAPIを通じたワークフロー状態の動的制御で実現できます。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q40",
+      "domain": 3,
+      "question": "n8nカスタムノードを開発する際、ノードの複数出力をどのように実装しますか？",
+      "options": {
+        "A": "descriptionで複数のoutputsを定義する",
+        "B": "executeメソッドで多次元配列を返す",
+        "C": "分岐ノードを使用して出力を分割する",
+        "D": "AとBの両方が必要"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "複数出力ノードはdescriptionのoutputsで出力数と名前を定義し、executeメソッドで対応する多次元配列を返す必要があります。",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q41",
+      "domain": 4,
+      "question": "n8nのWEBHOOK_URL設定はどのような状況で設定が必要ですか？",
+      "options": {
+        "A": "任意のwebhook機能を使用するとき",
+        "B": "リバースプロキシの背後でn8nを実行するとき",
+        "C": "OAuth認証を使用するとき",
+        "D": "BとCの両方で必要"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "n8nがリバースプロキシの背後で実行されている場合やOAuthコールバックが必要な場合は、外部からアクセスできるように正しいWEBHOOK_URLを設定する必要があります。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q42",
+      "domain": 1,
+      "question": "n8nでトランザクション操作のロールバックをどのように実装しますか？",
+      "options": {
+        "A": "組み込みのトランザクションノードを使用する",
+        "B": "エラーブランチで補償操作を実行する",
+        "C": "データベーストランザクションに依存する",
+        "D": "BとCを組み合わせて使用する"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "n8nには組み込みのトランザクションノードがありません。エラーハンドリングブランチで補償ロジックを実装するか、データベースのトランザクションサポートに依存する必要があります。",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q43",
+      "domain": 2,
+      "question": "n8nで定期タスクのオフピーク実行をどのように実装しますか？",
+      "options": {
+        "A": "各タスクに異なるトリガー時間を設定する",
+        "B": "ランダム遅延を使用する",
+        "C": "キューを使用して同時実行を制御する",
+        "D": "上記すべて使用可能"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "オフピーク実行は、異なるトリガー時間の設定、ランダム遅延の追加、またはキューを使用した同時実行の制御で実現できます。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q44",
+      "domain": 3,
+      "question": "n8nカスタムノードのpollメソッドはどのタイプのトリガーに使用されますか？",
+      "options": {
+        "A": "Webhookトリガー",
+        "B": "定期ポーリングトリガー",
+        "C": "手動トリガー",
+        "D": "イベントトリガー"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "pollメソッドは定期ポーリングトリガーの実装に使用され、設定された間隔でデータソースに新しいデータがあるかチェックします。",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q45",
+      "domain": 4,
+      "question": "n8nのログレベルをどのように設定しますか？",
+      "options": {
+        "A": "設定ファイルを変更する",
+        "B": "N8N_LOG_LEVEL環境変数を設定する",
+        "C": "UIで設定する",
+        "D": "コマンドライン引数を使用する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "N8N_LOG_LEVEL環境変数（debug、info、warn、errorなど）を設定することで、n8nのログの詳細度を制御できます。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q46",
+      "domain": 1,
+      "question": "n8nのエラーハンドリングで、$jsonと$errorにはどのような違いがありますか？",
+      "options": {
+        "A": "違いはなく、どちらもエラー情報",
+        "B": "$jsonは通常のデータ、$errorには詳細なエラー情報が含まれる",
+        "C": "$errorはError Triggerでのみ使用可能",
+        "D": "BとCの両方が正しい"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "$jsonは通常のデータ出力を含み、$errorはエラーハンドリングフローで詳細なエラー情報（メッセージ、スタックなど）を含み、主にError Triggerで使用されます。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q47",
+      "domain": 2,
+      "question": "n8nでワークフローのブルーグリーンデプロイメントをどのように実装しますか？",
+      "options": {
+        "A": "2つの独立したn8nインスタンスを使用する",
+        "B": "2つのバージョンのワークフローを維持し、タグで切り替える",
+        "C": "ロードバランサーを使用してトラフィックを切り替える",
+        "D": "AとCを組み合わせて使用する"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "ブルーグリーンデプロイメントのベストプラクティスは、2つのn8nインスタンスを使用してそれぞれ異なるバージョンを実行し、ロードバランサーを通じてトラフィックを切り替えることです。",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q48",
+      "domain": 3,
+      "question": "n8nカスタムノードで他のノードの出力データにどのようにアクセスしますか？",
+      "options": {
+        "A": "this.getNodeParameterを使用して取得する",
+        "B": "this.getInputDataを使用して入力データを取得する",
+        "C": "$node式を使用する",
+        "D": "グローバル変数に直接アクセスする"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "カスタムノードのexecuteメソッド内で、this.getInputData()を使用して、そのノードに接続されている上流ノードの出力データを取得します。",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q49",
+      "domain": 4,
+      "question": "n8nのN8N_METRICS設定を有効にすると、どのような情報を取得できますか？",
+      "options": {
+        "A": "ワークフロー定義の統計",
+        "B": "Prometheus形式のパフォーマンスメトリクス",
+        "C": "ユーザーアクティビティログ",
+        "D": "API呼び出し統計"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "N8N_METRICSを有効にすると、n8nはPrometheus形式のメトリクスエンドポイントを公開し、実行回数、所要時間などのパフォーマンスデータを含みます。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q50",
+      "domain": 1,
+      "question": "n8nでワークフロー間のエラー追跡をどのように実装しますか？",
+      "options": {
+        "A": "グローバルエラーログを使用する",
+        "B": "Execute Workflow呼び出し時にcorrelation IDを渡す",
+        "C": "Error Triggerを使用してすべてのエラーを収集する",
+        "D": "BとCを組み合わせて使用する"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "ワークフロー間のエラー追跡には、関連する実行をリンクするためのcorrelation IDを渡し、同時にError Triggerを使用してすべてのエラーを集中的に収集・処理する必要があります。",
+      "difficulty": "hard"
+    }
+  ]
+}
