@@ -355,9 +355,11 @@ export const HomePage: React.FC = () => {
     // Handle both certification providers and AI tools
     let result = languageFilteredExams.filter(exam => exam.provider === selectedView);
     // If certCode filter is set, filter by exam ID containing the cert code
+    // Note: cert codes use underscores (C_TS4FI) but exam IDs use hyphens (sap-c-ts4fi-set1)
     if (certCodeFilter) {
+      const normalizedFilter = certCodeFilter.toLowerCase().replace(/_/g, '-');
       result = result.filter(exam =>
-        exam.id.toLowerCase().includes(certCodeFilter.toLowerCase())
+        exam.id.toLowerCase().includes(normalizedFilter)
       );
     }
     return result;
