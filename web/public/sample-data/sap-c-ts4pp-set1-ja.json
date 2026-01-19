@@ -1,0 +1,773 @@
+{
+  "exam": {
+    "id": "sap-c-ts4pp-set1-ja",
+    "name": "SAP C_TS4PP 模擬試験 #1",
+    "code": "C_TS4PP",
+    "provider": "SAP",
+    "language": "ja",
+    "description": "SAP S/4HANA 生産計画認定試験 模擬問題 - 第1セット",
+    "totalQuestions": 50,
+    "passingScore": 65,
+    "examTime": 180,
+    "domains": [
+      { "id": 1, "name": "マスタデータ設定", "weight": 25 },
+      { "id": 2, "name": "需要管理", "weight": 20 },
+      { "id": 3, "name": "MRP計画", "weight": 25 },
+      { "id": 4, "name": "製造指図", "weight": 20 },
+      { "id": 5, "name": "能力計画", "weight": 10 }
+    ],
+    "tags": ["SAP", "S/4HANA", "PP", "生産計画", "MRP", "認定試験"]
+  },
+  "questions": [
+    {
+      "id": "q1",
+      "domain": 1,
+      "question": "SAP S/4HANA において、部品表（BOM）の主な用途は何ですか？",
+      "options": {
+        "A": "品目の調達元を定義",
+        "B": "製品の製造に必要な全ての構成品目をリスト",
+        "C": "品目の販売価格を設定",
+        "D": "倉庫の保管場所を定義"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "部品表（BOM）：\n- 製品製造に必要な全ての構成品目と数量をリスト\n- 生産計画と原価計算の基礎\n- 調達元や価格設定には使用しない\n- 作業手順と連携して使用",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q2",
+      "domain": 1,
+      "question": "作業手順（Routing）にはどのような情報が含まれますか？（2つ選択）",
+      "options": {
+        "A": "製造工程の順序",
+        "B": "品目の購買価格",
+        "C": "作業区の割当",
+        "D": "得意先の与信限度額"
+      },
+      "answer": ["A", "C"],
+      "answerType": "multiple",
+      "explanation": "作業手順の内容：\n- A正解：製造作業の順序を定義\n- C正解：作業を実行する作業区を指定\n- 標準時間、工具要件なども含む\n- 購買や得意先情報は含まない",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q3",
+      "domain": 1,
+      "question": "生産計画における作業区は何を表しますか？",
+      "options": {
+        "A": "保管場所",
+        "B": "製造作業を実行するリソース（機械、人員）",
+        "C": "購買部門",
+        "D": "品質検査ステーション"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "作業区：\n- 生産リソースを表す\n- 機械、生産ライン、または作業グループ\n- 能力と原価率を定義\n- 作業手順の作業と関連付け",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q4",
+      "domain": 2,
+      "question": "計画独立所要量（PIR）の主な発生元は何ですか？",
+      "options": {
+        "A": "製造指図",
+        "B": "販売予測または販売計画",
+        "C": "購買発注",
+        "D": "棚卸"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "計画独立所要量の発生元：\n- 販売予測に基づいて作成\n- MTS（見込生産）戦略で使用\n- MRP計画を駆動\n- 実際の受注需要とは異なる",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q5",
+      "domain": 2,
+      "question": "需要管理における「消費モード」の役割は何ですか？",
+      "options": {
+        "A": "品目の使用期限を定義",
+        "B": "実際の需要が予測需要をどのように消費するかを制御",
+        "C": "在庫消費制限を設定",
+        "D": "製品返品プロセスを決定"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "消費モード：\n- 受注が計画独立所要量をどのように消費するかを定義\n- 前方、後方、または期間内消費\n- 需要の重複計算を回避\n- MRP計画結果に影響",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q6",
+      "domain": 3,
+      "question": "MRP 実行の主な出力は何ですか？（2つ選択）",
+      "options": {
+        "A": "計画手配",
+        "B": "会計伝票",
+        "C": "購買依頼",
+        "D": "販売請求書"
+      },
+      "answer": ["A", "C"],
+      "answerType": "multiple",
+      "explanation": "MRP出力：\n- A正解：自製品目に対して計画手配を作成\n- C正解：外部調達品目に対して購買依頼を作成\n- 納入日程も作成可能\n- 会計伝票や請求書は作成しない",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q7",
+      "domain": 3,
+      "question": "MRP タイプ「PD」は何を表しますか？",
+      "options": {
+        "A": "消費ベースMRP",
+        "B": "予測ベースの確定的MRP",
+        "C": "手動発注点",
+        "D": "MRP対象外"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "MRPタイプ PD：\n- 確定的MRP（需要ベース）\n- 全ての需要と入庫を考慮\n- 一般的に使用されるMRPタイプ\n- 発注点計画とは異なる",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q8",
+      "domain": 3,
+      "question": "MRPにおける「ローレベルコード」の役割は何ですか？",
+      "options": {
+        "A": "品目の品質等級を定義",
+        "B": "MRPが品目を処理する順序を決定",
+        "C": "最低在庫レベルを設定",
+        "D": "ユーザーアクセス権限を制限"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "ローレベルコード：\n- BOMにおける品目の最低階層を決定\n- MRPは高いものから低いものへ処理\n- 構成品目の所要量が親品目の前に計算されることを保証\n- システムが自動的に管理",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q9",
+      "domain": 4,
+      "question": "製造指図の主な機能は何ですか？",
+      "options": {
+        "A": "販売取引の記録",
+        "B": "特定製品の製造を承認し追跡",
+        "C": "仕入先情報の管理",
+        "D": "従業員給与の処理"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "製造指図の機能：\n- 特定数量の製品製造を承認\n- 製造進捗と原価を追跡\n- 必要な構成品目を予約\n- 実績製造データを記録",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q10",
+      "domain": 4,
+      "question": "計画手配を製造指図に変換すると何が発生しますか？",
+      "options": {
+        "A": "在庫が自動的に増加",
+        "B": "構成品目が自動的に在庫から出庫",
+        "C": "正式な製造承認が作成され、構成品目の予約が可能",
+        "D": "製品が自動的に得意先に出荷"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "計画手配から製造指図への変換：\n- 正式な製造伝票を作成\n- 構成品目の予約が可能\n- 自動的に出庫や在庫増加はしない\n- 後続の出庫と入庫作業が必要",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q11",
+      "domain": 5,
+      "question": "能力計画評価の主な目的は何ですか？",
+      "options": {
+        "A": "製品原価の計算",
+        "B": "計画が利用可能能力を超えていないかチェック",
+        "C": "仕入先パフォーマンスの評価",
+        "D": "販売トレンドの分析"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "能力評価の目的：\n- 計画負荷と利用可能能力を比較\n- 能力ボトルネックを識別\n- 生産スケジューリング決定をサポート\n- 計画の実現可能性を確保",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q12",
+      "domain": 1,
+      "question": "BOM の「品目カテゴリ」は何を制御しますか？",
+      "options": {
+        "A": "構成品目の価格",
+        "B": "製造と原価計算における構成品目の処理方法",
+        "C": "構成品目の保管場所",
+        "D": "構成品目の仕入先"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "品目カテゴリ：\n- L 在庫品目（標準）\n- N 非在庫品目\n- T テキスト品目\n- 製造出庫と原価処理に影響",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q13",
+      "domain": 1,
+      "question": "「ファントム組立」とは何ですか？",
+      "options": {
+        "A": "存在しない仮想構成品目",
+        "B": "製造プロセスで個別に在庫管理しない中間組立品",
+        "C": "削除された構成品目",
+        "D": "テスト用構成品目"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "ファントム組立：\n- 中間組立ステップを表す\n- 個別に在庫管理しない\n- BOM構成品目が親品目に直接展開\n- 在庫管理を簡素化",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q14",
+      "domain": 2,
+      "question": "MTS（見込生産）と MTO（受注生産）戦略の主な違いは何ですか？",
+      "options": {
+        "A": "MTSの方がコストが高い",
+        "B": "MTSは予測に基づいて生産、MTOは受注に基づいて生産",
+        "C": "MTOにはBOMが不要",
+        "D": "MTSはサービス業にのみ使用"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "MTS vs MTO：\n- MTSは予測に基づいて事前に在庫生産\n- MTOは受注後に生産開始\n- 計画と在庫戦略に影響\n- どちらもBOMと作業手順が必要",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q15",
+      "domain": 2,
+      "question": "製造指図における「利用可能在庫チェック」は何をチェックしますか？",
+      "options": {
+        "A": "作業者が利用可能かどうか",
+        "B": "構成品目と能力が製造需要を満たすかどうか",
+        "C": "得意先与信が十分かどうか",
+        "D": "ITシステムが正常かどうか"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "利用可能在庫チェック：\n- 構成品目在庫の利用可能性をチェック\n- 能力の利用可能性もチェック可能\n- 確認数量と日付を返す\n- 製造指図の確認に影響",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q16",
+      "domain": 3,
+      "question": "MRPにおける「安全在庫」の役割は何ですか？",
+      "options": {
+        "A": "在庫コストの削減",
+        "B": "需要変動と供給不確実性に対するバッファ",
+        "C": "最大在庫の制限",
+        "D": "生産速度の向上"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "安全在庫：\n- 不確実性に対するバッファ\n- MRPがこの最低レベルを維持\n- 在庫コストは増加するが欠品リスクを低減\n- 品目マスタで設定",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q17",
+      "domain": 3,
+      "question": "MRP 実行範囲はどのレベルで設定できますか？（2つ選択）",
+      "options": {
+        "A": "単一品目",
+        "B": "得意先レベル",
+        "C": "プラントレベル",
+        "D": "会社CEO レベル"
+      },
+      "answer": ["A", "C"],
+      "answerType": "multiple",
+      "explanation": "MRP実行範囲：\n- 単一品目（単一レベルMRP）\n- MRP管理者\n- プラントレベル\n- 総合計画または選択的計画が可能",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q18",
+      "domain": 3,
+      "question": "MRPにおける「計画タイムフェンス」の意味は何ですか？",
+      "options": {
+        "A": "計画の総期間",
+        "B": "この期間内はシステムが既存オーダーを自動変更しない",
+        "C": "計画更新の頻度",
+        "D": "データ保持期限"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "計画タイムフェンス：\n- 凍結期間の概念\n- 近い将来の確定済み計画を保護\n- 頻繁な変更が生産に影響するのを防止\n- 品目マスタで設定可能",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q19",
+      "domain": 4,
+      "question": "製造指図における「構成品目出庫」のトランザクションコードは何ですか？",
+      "options": {
+        "A": "CO01",
+        "B": "MIGO",
+        "C": "MB1A",
+        "D": "CO11N"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "構成品目出庫トランザクション：\n- MIGO は汎用在庫移動\n- 製造指図出庫に使用可能\n- MB1A も使用可能（旧トランザクション）\n- CO01 は指図登録、CO11N は確認",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q20",
+      "domain": 4,
+      "question": "製造指図「確認」の役割は何ですか？",
+      "options": {
+        "A": "指図作成の承認",
+        "B": "実際の製造数量、時間、活動を記録",
+        "C": "得意先支払の確認",
+        "D": "品目納入の確認"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "製造指図確認：\n- 実際の完成数量を記録\n- 実際の作業時間を記録\n- 指図ステータスを更新\n- 原価計算の基礎となる",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q21",
+      "domain": 5,
+      "question": "作業区の「利用可能能力」は何によって決まりますか？",
+      "options": {
+        "A": "オーダー数量",
+        "B": "稼働時間、シフト、能力稼働率",
+        "C": "品目在庫",
+        "D": "仕入先数"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "利用可能能力の計算：\n- 稼働カレンダーとシフトに基づく\n- 能力稼働率を考慮\n- 複数の能力バージョンが可能\n- 能力所要量計画に使用",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q22",
+      "domain": 1,
+      "question": "BOM用途「1」は何を表しますか？",
+      "options": {
+        "A": "販売",
+        "B": "製造",
+        "C": "原価計算",
+        "D": "エンジニアリング"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "BOM用途コード：\n- 1 製造\n- 2 エンジニアリング\n- 3 汎用BOM\n- 5 販売/流通",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q23",
+      "domain": 1,
+      "question": "作業手順における「標準値」の役割は何ですか？",
+      "options": {
+        "A": "製品価格の定義",
+        "B": "作業に必要な時間とリソースの定義",
+        "C": "品質基準の設定",
+        "D": "梱包仕様の決定"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "標準値：\n- 時間を設定（段取り、機械、作業）\n- スケジューリングと原価計算に使用\n- 固定または変動が可能\n- 作業の予定リソース消費を定義",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q24",
+      "domain": 2,
+      "question": "品目マスタにおける「計画戦略グループ」の役割は何ですか？",
+      "options": {
+        "A": "購買戦略の定義",
+        "B": "生産計画と需要管理方法の定義",
+        "C": "販売戦略の設定",
+        "D": "価格戦略の決定"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "計画戦略グループ：\n- MTS/MTO/ATO などの戦略を定義\n- 需要管理方法に影響\n- 消費モードを決定\n- MRPビューで設定",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q25",
+      "domain": 2,
+      "question": "S/4HANA において、需要管理はどのアプリケーションを使用しますか？",
+      "options": {
+        "A": "SAP GUI",
+        "B": "SAP Fiori - 需要管理",
+        "C": "Excel インポート",
+        "D": "メールシステム"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "S/4HANA 需要管理：\n- Fiori アプリ「Manage Demand」\n- 従来の MD61/MD62 を置き換え\n- ユーザーフレンドリーな画面\n- リアルタイムデータ更新",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q26",
+      "domain": 3,
+      "question": "「ロットサイズ」EX は何を表しますか？",
+      "options": {
+        "A": "固定ロットサイズ",
+        "B": "精確ロットサイズ（所要量数量に基づく）",
+        "C": "経済ロットサイズ",
+        "D": "最大ロットサイズ"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "ロットサイズ EX：\n- Exact Lot Size\n- 計画手配数量 = 所要量数量\n- MTO 生産に適している\n- ロット経済性は考慮しない",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q27",
+      "domain": 3,
+      "question": "MRP 例外メッセージ「06」は通常何を示しますか？",
+      "options": {
+        "A": "品目不足",
+        "B": "オーダー日付が過去",
+        "C": "最大在庫超過",
+        "D": "BOM 欠落"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "MRP 例外メッセージ：\n- 06 オーダー開始日が過去\n- スケジュール調整が必要\n- 一般的な警告メッセージ\n- MD04 で確認可能",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q28",
+      "domain": 3,
+      "question": "「正味変更計画」と「再生計画」の違いは何ですか？",
+      "options": {
+        "A": "正味変更は新規品目のみ計画",
+        "B": "正味変更は変更のある品目のみ計画、再生は全て",
+        "C": "再生計画の方が高速",
+        "D": "違いはない"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "MRP 計画タイプ：\n- 正味変更は変動のある品目のみ処理\n- 再生計画は全品目を処理\n- 正味変更の方が効率的で頻繁な実行に適している\n- 再生計画は完全な再計画に使用",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q29",
+      "domain": 4,
+      "question": "製造指図タイプ「PP01」は通常何に使用されますか？",
+      "options": {
+        "A": "標準製造指図",
+        "B": "手直し指図",
+        "C": "外注指図",
+        "D": "保全指図"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "指図タイプ PP01：\n- 標準製造指図\n- 個別製造で最も一般的に使用\n- 他のタイプはカスタマイズ可能\n- 例：PP02 は手直しに使用可能",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q30",
+      "domain": 4,
+      "question": "製造指図の「技術完了」ステータスは何を示しますか？",
+      "options": {
+        "A": "指図が開始可能",
+        "B": "全ての製造と原価活動が完了し、指図がクローズ",
+        "C": "指図作成が完了",
+        "D": "品質検査が完了"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "技術完了（TECO）：\n- 指図がアクティブでなくなる\n- 残りの予約を解除\n- 原価収集をクローズ\n- 指図ライフサイクルの最終ステータス",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q31",
+      "domain": 5,
+      "question": "「有限能力計画」と「無限能力計画」の違いは何ですか？",
+      "options": {
+        "A": "有限計画は能力制約を考慮",
+        "B": "無限計画の方が正確",
+        "C": "有限計画には作業区が不要",
+        "D": "違いはない"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "能力計画タイプ：\n- 有限：能力制約を考慮\n- 無限：能力が無限と仮定\n- MRP はデフォルトで無限能力\n- 有限には追加設定が必要",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q32",
+      "domain": 1,
+      "question": "BOM における「共通構成品目」の概念は何ですか？",
+      "options": {
+        "A": "複数の製品で共用される構成品目",
+        "B": "汎用代替構成品目",
+        "C": "複数のプラントで使用可能な構成品目",
+        "D": "廃棄構成品目"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "共通構成品目：\n- 複数の BOM に登場する同一構成品目\n- 共通性分析で設計を最適化可能\n- 購買と在庫戦略に影響\n- 製品設計の考慮事項",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q33",
+      "domain": 1,
+      "question": "「代替 BOM」の用途は何ですか？",
+      "options": {
+        "A": "バックアップ製造方法",
+        "B": "状況に応じて選択可能な異なるバージョンの部品表",
+        "C": "廃棄品目処理",
+        "D": "テスト用途"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "代替 BOM：\n- 同一製品の異なる構成品目の組み合わせ\n- 利用可能性やコストに基づいて選択可能\n- 例：季節性代替材料\n- 製造の柔軟性を向上",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q34",
+      "domain": 2,
+      "question": "「受注在庫」と通常在庫の違いは何ですか？",
+      "options": {
+        "A": "価格が異なる",
+        "B": "特定の受注用に予約され、他の受注には使用不可",
+        "C": "保管場所が異なる",
+        "D": "違いはない"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "受注在庫：\n- 特定の受注用に製造\n- 他の受注には使用不可\n- MTO 戦略に属する\n- 特殊在庫識別を使用",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q35",
+      "domain": 2,
+      "question": "需要管理における「バージョン」の役割は何ですか？",
+      "options": {
+        "A": "ソフトウェアバージョン管理",
+        "B": "比較のための複数の計画シナリオを作成可能",
+        "C": "製品バージョン管理",
+        "D": "ユーザーバージョン設定"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "計画バージョン：\n- 複数の「もしも」シナリオを作成\n- 異なる計画結果を比較\n- 最良のバージョンを選択して有効化\n- 00 は通常アクティブバージョン",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q36",
+      "domain": 3,
+      "question": "MRP における「リードタイムスケジューリング」の役割は何ですか？",
+      "options": {
+        "A": "購買納入時間の計算",
+        "B": "リードタイムに基づいてオーダーの開始日と完了日を決定",
+        "C": "得意先納入時間の設定",
+        "D": "従業員残業時間の計算"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "リードタイムスケジューリング：\n- 所要日から逆算して開始日を算出\n- 製造と購買リードタイムを考慮\n- MRP 計画の基礎\n- 詳細スケジューリングとは異なる",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q37",
+      "domain": 3,
+      "question": "MRP 実行後、計画結果はどのように確認しますか？",
+      "options": {
+        "A": "MD04/在庫所要量リスト",
+        "B": "MM03/品目照会",
+        "C": "CO03/製造指図照会",
+        "D": "VA03/受注照会"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "MRP 結果の確認：\n- MD04 在庫/所要量リスト\n- 全ての MRP エレメントを表示\n- 所要量、入庫、在庫を含む\n- 例外メッセージの処理が可能",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q38",
+      "domain": 3,
+      "question": "MRP における「調達タイプ」は何を決定しますか？",
+      "options": {
+        "A": "仕入先選択",
+        "B": "品目が自製、外部調達、または両方かどうか",
+        "C": "支払方法",
+        "D": "配送方法"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "調達タイプ：\n- F 外部調達\n- E 自製\n- X 両方可能\n- MRP が作成するオーダータイプに影響",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q39",
+      "domain": 4,
+      "question": "製造指図「リリース」後は何ができますか？",
+      "options": {
+        "A": "照会のみ",
+        "B": "出庫、確認などの製造作業を実行可能",
+        "C": "削除可能",
+        "D": "再作成が必要"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "指図リリース後：\n- 作業伝票の印刷が可能\n- 構成品目の出庫が可能\n- 製造確認が可能\n- 正式な実行の前提条件",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q40",
+      "domain": 4,
+      "question": "「バックフラッシュ」出庫の特徴は何ですか？",
+      "options": {
+        "A": "出庫数量の手動入力が必要",
+        "B": "製造確認時に生産量に基づいて構成品目を自動計算して出庫",
+        "C": "返品にのみ使用",
+        "D": "承認が必要"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "バックフラッシュ出庫：\n- BOM と生産量に基づいて自動計算\n- 確認作業時に実行\n- 現場作業を簡素化\n- 繰返し製造に適している",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q41",
+      "domain": 5,
+      "question": "能力「過負荷」の状況では、どのような対策が可能ですか？（2つ選択）",
+      "options": {
+        "A": "再スケジューリング",
+        "B": "シフト増加または残業",
+        "C": "過負荷を無視",
+        "D": "作業区を削除"
+      },
+      "answer": ["A", "B"],
+      "answerType": "multiple",
+      "explanation": "能力過負荷の解決：\n- A正解：製造順序の再調整\n- B正解：利用可能能力の増加\n- 一部作業の外注\n- オーダー優先順位の調整",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q42",
+      "domain": 1,
+      "question": "BOM「有効期間」の役割は何ですか？",
+      "options": {
+        "A": "品目の消費期限",
+        "B": "BOM が特定の日付範囲で有効",
+        "C": "ユーザーアクセス有効期間",
+        "D": "システムメンテナンス期間"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "BOM 有効期間：\n- 設計変更管理をサポート\n- 異なる時期に異なる BOM バージョンを使用\n- 履歴追跡\n- 計画は正しいバージョンを使用",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q43",
+      "domain": 1,
+      "question": "作業手順における「管理キー」の役割は何ですか？",
+      "options": {
+        "A": "アクセス制御",
+        "B": "作業のスケジューリングと原価計算方法を制御",
+        "C": "品質管理",
+        "D": "在庫管理"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "管理キー：\n- 作業のスケジューリング方法を定義\n- 原価計算に影響\n- 確認方法を制御\n- 作業の重要な設定",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q44",
+      "domain": 2,
+      "question": "計画戦略「40」は何を表しますか？",
+      "options": {
+        "A": "純粋な MTS",
+        "B": "最終組立を伴う計画（MTO）",
+        "C": "計画なし",
+        "D": "予測のみ"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "戦略 40：\n- 最終組立を伴う計画\n- 受注が最終組立をトリガー\n- 構成品目は事前に在庫生産可能\n- MTS と MTO の利点を組み合わせ",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q45",
+      "domain": 3,
+      "question": "MRP における「総リードタイム」にはどの時間が含まれますか？",
+      "options": {
+        "A": "製造時間のみ",
+        "B": "製造時間に内部処理時間と入庫処理時間を加えたもの",
+        "C": "納入時間のみ",
+        "D": "待ち時間のみ"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "総リードタイム：\n- 内部製造時間\n- 入庫処理時間\n- 待ち時間を含む可能性\n- MRP スケジューリングに使用",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q46",
+      "domain": 3,
+      "question": "「MRP エリア」の概念は何ですか？",
+      "options": {
+        "A": "地理的エリア",
+        "B": "単一プラント内でより細かい計画エリアを定義",
+        "C": "販売エリア",
+        "D": "得意先エリア"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "MRP エリア：\n- S/4HANA の新機能\n- プラント内の計画を細分化\n- 例：生産ラインまたは倉庫エリア\n- より詳細な在庫可視性",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q47",
+      "domain": 4,
+      "question": "製造指図「差異分析」は何をチェックしますか？",
+      "options": {
+        "A": "品質差異",
+        "B": "計画原価と実際原価の差異",
+        "C": "在庫差異",
+        "D": "時間差異"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "差異分析：\n- 計画と実績の原価を比較\n- 価格差異、数量差異を含む\n- 原価管理をサポート\n- 指図決済前に実行",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q48",
+      "domain": 4,
+      "question": "製造指図「決済」の役割は何ですか？",
+      "options": {
+        "A": "仕入先への支払",
+        "B": "指図原価を受取対象（原価センタや在庫など）に振替",
+        "C": "得意先契約の終了",
+        "D": "給与計算"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "指図決済：\n- 収集した原価を振替\n- 在庫に決済可能（製品原価）\n- 原価センタに決済可能（差異）\n- 期末の必須ステップ",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q49",
+      "domain": 5,
+      "question": "能力計画における「オーバーラップ」とは何を指しますか？",
+      "options": {
+        "A": "代替構成品目",
+        "B": "複数の作業区を連結する作業に使用",
+        "C": "廃棄構成品目",
+        "D": "輸入構成品目"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "オーバーラップ/重複作業：\n- 作業の部分的な重複を許可\n- 総製造時間を短縮\n- バッチ処理など\n- スケジューリングと能力負荷に影響",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q50",
+      "domain": 5,
+      "question": "作業区「能力種別」001 は通常何を表しますか？",
+      "options": {
+        "A": "機械能力",
+        "B": "作業能力",
+        "C": "総能力",
+        "D": "外注能力"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "能力種別：\n- 001 機械能力\n- 002 作業能力\n- 複数の能力を定義可能\n- 異なる能力評価に使用",
+      "difficulty": "medium"
+    }
+  ]
+}

@@ -1,0 +1,773 @@
+{
+  "exam": {
+    "id": "sap-c-c4c-sales-set3",
+    "name": "SAP C_C4C_SALES 模拟考试 #3",
+    "code": "C_C4C_SALES",
+    "provider": "SAP",
+    "language": "zh-CN",
+    "description": "SAP Sales Cloud 认证模拟考试第三套 - 实施与高级应用",
+    "totalQuestions": 50,
+    "passingScore": 65,
+    "examTime": 180,
+    "domains": [
+      { "name": "实施与部署", "percentage": 25 },
+      { "name": "高级定制开发", "percentage": 25 },
+      { "name": "复杂集成场景", "percentage": 20 },
+      { "name": "最佳实践与优化", "percentage": 15 },
+      { "name": "故障排除与支持", "percentage": 15 }
+    ],
+    "tags": ["SAP", "Sales Cloud", "C_C4C_SALES", "Implementation", "Integration", "SDK"]
+  },
+  "questions": [
+    {
+      "id": "sap-c-c4c-sales-set3-q1",
+      "domain": "实施与部署",
+      "question": "SAP Sales Cloud 实施项目通常遵循什么方法论？",
+      "options": {
+        "A": "瀑布模型",
+        "B": "SAP Activate 方法论",
+        "C": "PRINCE2",
+        "D": "六西格玛"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "SAP Sales Cloud 实施推荐使用 SAP Activate 方法论，这是一种敏捷驱动的实施方法。它包括 Discover（发现）、Prepare（准备）、Explore（探索）、Realize（实现）、Deploy（部署）和 Run（运维）阶段。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "sap-c-c4c-sales-set3-q2",
+      "domain": "实施与部署",
+      "question": "在 SAP Sales Cloud 实施中，Fit-to-Standard 原则意味着什么？",
+      "options": {
+        "A": "完全定制系统",
+        "B": "优先使用标准功能，减少自定义",
+        "C": "使用第三方软件",
+        "D": "跳过配置步骤"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Fit-to-Standard 原则强调优先使用 SAP 标准功能，将业务流程适配到系统最佳实践，而不是大量定制系统。这降低了实施复杂性、维护成本，并确保能及时获得产品更新。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "sap-c-c4c-sales-set3-q3",
+      "domain": "实施与部署",
+      "question": "SAP Sales Cloud 的 Tenant 是什么概念？",
+      "options": {
+        "A": "租户/房客",
+        "B": "一个独立的系统实例环境",
+        "C": "用户账号",
+        "D": "数据表"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Tenant 是一个独立的 SAP Sales Cloud 系统实例。企业通常有多个 Tenant：开发/测试 Tenant 用于配置和测试，生产 Tenant 用于日常业务。每个 Tenant 有独立的数据和配置。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "sap-c-c4c-sales-set3-q4",
+      "domain": "实施与部署",
+      "question": "在 SAP Sales Cloud 实施中，Transport Management 的作用是什么？",
+      "options": {
+        "A": "管理物流运输",
+        "B": "在不同环境之间传输配置和自定义",
+        "C": "管理员工出差",
+        "D": "配置网络传输"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Transport Management 用于在 Tenant 之间传输配置和自定义（如从测试环境传输到生产环境）。它确保配置变更经过测试后才应用到生产系统，降低风险。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "sap-c-c4c-sales-set3-q5",
+      "domain": "实施与部署",
+      "question": "SAP Sales Cloud 实施的 Data Migration 阶段包括哪些关键活动？（选择两项）",
+      "options": {
+        "A": "数据清洗和转换",
+        "B": "开发新产品",
+        "C": "使用模板导入历史数据",
+        "D": "培训销售人员"
+      },
+      "answer": ["A", "C"],
+      "answerType": "multiple",
+      "explanation": "Data Migration 关键活动包括：1) 数据清洗和转换：准备源数据，确保质量和格式符合要求；2) 使用迁移模板导入数据：按 SAP 提供的模板格式导入客户、联系人、商机等历史数据。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "sap-c-c4c-sales-set3-q6",
+      "domain": "实施与部署",
+      "question": "在 SAP Sales Cloud 实施中，UAT（User Acceptance Testing）的目的是什么？",
+      "options": {
+        "A": "测试服务器性能",
+        "B": "验证系统是否满足业务需求",
+        "C": "测试网络安全",
+        "D": "验证代码质量"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "UAT 由业务用户执行，目的是验证配置好的系统是否满足实际业务需求和流程。用户按照真实业务场景测试系统功能，确认在上线前一切正常工作。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "sap-c-c4c-sales-set3-q7",
+      "domain": "实施与部署",
+      "question": "SAP Sales Cloud 的 Go-Live Checklist 通常包括什么？",
+      "options": {
+        "A": "只有技术检查项",
+        "B": "数据迁移完成、用户培训、集成测试、权限配置等",
+        "C": "只有业务流程检查",
+        "D": "只有安全检查"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Go-Live Checklist 是上线前的综合检查清单，包括：数据迁移完成验证、用户培训完成、集成测试通过、权限和角色配置、备份策略、支持计划等各方面的准备确认。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "sap-c-c4c-sales-set3-q8",
+      "domain": "实施与部署",
+      "question": "在 SAP Sales Cloud 实施中，Change Management 为什么重要？",
+      "options": {
+        "A": "管理系统版本变更",
+        "B": "帮助用户适应新系统，提高采用率",
+        "C": "管理代码变更",
+        "D": "处理客户需求变更"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Change Management（变革管理）关注人员层面，帮助组织和用户适应新系统带来的变化。包括沟通策略、培训计划、获取管理层支持、处理阻力等，这对于系统成功采用至关重要。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "sap-c-c4c-sales-set3-q9",
+      "domain": "实施与部署",
+      "question": "SAP Sales Cloud 的 Cutover 计划是什么？",
+      "options": {
+        "A": "裁员计划",
+        "B": "从旧系统切换到新系统的详细步骤",
+        "C": "系统关闭计划",
+        "D": "预算削减计划"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Cutover 计划详细定义了从旧系统切换到 SAP Sales Cloud 的具体步骤、时间表、责任人和回退方案。包括最终数据迁移、系统切换、验证测试等活动的精确安排。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "sap-c-c4c-sales-set3-q10",
+      "domain": "实施与部署",
+      "question": "在 SAP Sales Cloud 实施中，Super User/Key User 的角色是什么？",
+      "options": {
+        "A": "系统管理员",
+        "B": "业务部门的专家用户，协助培训和支持",
+        "C": "项目经理",
+        "D": "外部顾问"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Super User/Key User 是业务部门选出的专家用户，深入参与实施过程，理解系统配置。他们负责培训本部门同事、提供一线支持、收集反馈，是实施团队和最终用户之间的桥梁。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "sap-c-c4c-sales-set3-q11",
+      "domain": "实施与部署",
+      "question": "SAP Sales Cloud 的 Release Update 机制是什么？",
+      "options": {
+        "A": "需要手动安装更新",
+        "B": "SAP 定期自动发布更新",
+        "C": "客户决定何时更新",
+        "D": "不提供更新"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "作为 SaaS 产品，SAP Sales Cloud 由 SAP 定期自动发布更新（通常每季度一次主要更新）。客户自动获得新功能和改进，无需自行管理升级过程。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "sap-c-c4c-sales-set3-q12",
+      "domain": "实施与部署",
+      "question": "在 SAP Sales Cloud 实施中，Sandbox Tenant 的用途是什么？",
+      "options": {
+        "A": "生产数据存储",
+        "B": "用于实验和测试，不影响其他环境",
+        "C": "备份存储",
+        "D": "用户培训"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Sandbox Tenant 是一个独立的实验环境，用于测试新配置、尝试新功能或进行概念验证，而不会影响开发、测试或生产环境。它提供了安全的实验空间。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "sap-c-c4c-sales-set3-q13",
+      "domain": "高级定制开发",
+      "question": "SAP Sales Cloud SDK 的主要用途是什么？",
+      "options": {
+        "A": "管理用户账号",
+        "B": "开发自定义扩展和集成",
+        "C": "配置标准功能",
+        "D": "创建报表"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "SAP Cloud Applications Studio (SDK) 用于开发超出标准配置能力的自定义扩展，包括自定义业务对象、逻辑、UI 扩展、外部服务集成等，满足复杂的业务需求。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "sap-c-c4c-sales-set3-q14",
+      "domain": "高级定制开发",
+      "question": "在 SAP Sales Cloud 中，Extension Field 和 Custom Business Object 的区别是什么？",
+      "options": {
+        "A": "两者相同",
+        "B": "Extension Field 扩展现有对象，Custom BO 创建全新对象",
+        "C": "Extension Field 用于集成，Custom BO 用于配置",
+        "D": "Extension Field 需要编码，Custom BO 不需要"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Extension Field 在现有标准对象（如 Account、Opportunity）上添加自定义字段。Custom Business Object (CBO) 则是创建全新的业务对象来存储标准对象无法满足的数据结构。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "sap-c-c4c-sales-set3-q15",
+      "domain": "高级定制开发",
+      "question": "SAP Sales Cloud 中的 ABSL（Advanced Business Script Language）用于什么？",
+      "options": {
+        "A": "数据库查询",
+        "B": "编写自定义业务逻辑",
+        "C": "UI 设计",
+        "D": "报表开发"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "ABSL 是 SAP Cloud Applications Studio 中用于编写自定义业务逻辑的脚本语言。用于定义验证规则、计算逻辑、触发操作等，类似于 ABAP 但专为云环境设计。",
+      "difficulty": "hard"
+    },
+    {
+      "id": "sap-c-c4c-sales-set3-q16",
+      "domain": "高级定制开发",
+      "question": "在 SAP Sales Cloud 定制中，Determination 的作用是什么？",
+      "options": {
+        "A": "确定用户权限",
+        "B": "自动计算或填充字段值",
+        "C": "确定数据存储位置",
+        "D": "确定报表类型"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Determination 是在特定时机（如保存前、状态变更时）自动执行的逻辑，用于计算或填充字段值。例如，根据客户类型自动设置折扣率，或根据产品自动填充默认值。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "sap-c-c4c-sales-set3-q17",
+      "domain": "高级定制开发",
+      "question": "SAP Sales Cloud 中的 Validation 用于什么？",
+      "options": {
+        "A": "验证用户身份",
+        "B": "在保存前检查数据是否满足业务规则",
+        "C": "验证系统性能",
+        "D": "验证许可证"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Validation 在保存数据前检查是否满足定义的业务规则。如果验证失败，显示错误消息并阻止保存。例如，验证必填字段、检查金额范围、确保日期逻辑正确等。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "sap-c-c4c-sales-set3-q18",
+      "domain": "高级定制开发",
+      "question": "在 SAP Sales Cloud 中，Action 的概念是什么？",
+      "options": {
+        "A": "动作电影",
+        "B": "用户可触发的自定义业务操作",
+        "C": "系统日志",
+        "D": "报表操作"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Action 是可以由用户通过按钮触发或被其他逻辑调用的自定义业务操作。例如，创建"发送报价"按钮，点击后执行生成 PDF、发送邮件等一系列操作。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "sap-c-c4c-sales-set3-q19",
+      "domain": "高级定制开发",
+      "question": "SAP Sales Cloud 的 UI Flexibility 允许做什么？（选择两项）",
+      "options": {
+        "A": "隐藏或重排 UI 元素",
+        "B": "完全重写应用程序",
+        "C": "添加自定义字段到界面",
+        "D": "更换数据库"
+      },
+      "answer": ["A", "C"],
+      "answerType": "multiple",
+      "explanation": "UI Flexibility 允许：1) 隐藏、显示或重新排列 UI 元素，调整页面布局；2) 将扩展字段和自定义业务对象的字段添加到用户界面。这些自定义通过配置实现，无需代码。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "sap-c-c4c-sales-set3-q20",
+      "domain": "高级定制开发",
+      "question": "在 SAP Sales Cloud 中，Mashup 的用途是什么？",
+      "options": {
+        "A": "混合音乐",
+        "B": "将外部 Web 内容或应用嵌入到 Sales Cloud",
+        "C": "数据压缩",
+        "D": "混合数据"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Mashup 允许将外部 Web 内容、网站或应用程序嵌入到 SAP Sales Cloud 界面中。例如，嵌入外部地图显示客户位置，或嵌入公司内部系统的信息。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "sap-c-c4c-sales-set3-q21",
+      "domain": "高级定制开发",
+      "question": "SAP Sales Cloud 的 External Service Integration 是什么？",
+      "options": {
+        "A": "外部保安服务",
+        "B": "调用外部 Web 服务并使用其数据",
+        "C": "外部存储服务",
+        "D": "外部打印服务"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "External Service Integration 允许 Sales Cloud 调用外部 Web 服务（REST/OData/SOAP），获取或发送数据。例如，调用外部信用评估服务获取客户信用分，或调用地址验证服务。",
+      "difficulty": "hard"
+    },
+    {
+      "id": "sap-c-c4c-sales-set3-q22",
+      "domain": "高级定制开发",
+      "question": "在 SAP Sales Cloud 定制中，Event 的概念是什么？",
+      "options": {
+        "A": "公司活动",
+        "B": "系统中发生的可触发后续操作的事件",
+        "C": "日历事件",
+        "D": "销售活动"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Event 是系统中发生的特定事件（如记录创建、状态变更、保存前），可以触发后续操作（Determination、Validation、Workflow 等）。事件驱动的架构允许灵活的业务逻辑扩展。",
+      "difficulty": "hard"
+    },
+    {
+      "id": "sap-c-c4c-sales-set3-q23",
+      "domain": "高级定制开发",
+      "question": "SAP Sales Cloud 的 Code List Restriction 功能做什么？",
+      "options": {
+        "A": "限制代码行数",
+        "B": "根据条件动态过滤下拉列表选项",
+        "C": "限制编程语言",
+        "D": "限制用户数量"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Code List Restriction 允许根据上下文条件（如客户类型、用户角色）动态过滤下拉列表中显示的选项。例如，特定行业的客户只显示相关的产品类别选项。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "sap-c-c4c-sales-set3-q24",
+      "domain": "高级定制开发",
+      "question": "在 SAP Sales Cloud 中，Association 用于什么？",
+      "options": {
+        "A": "用户组织",
+        "B": "定义业务对象之间的关联关系",
+        "C": "协会会员管理",
+        "D": "文档关联"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Association 定义业务对象之间的关联关系，如自定义对象与标准对象（Account、Opportunity）的关联，或自定义对象之间的关联。这使得数据模型可以反映真实的业务关系。",
+      "difficulty": "hard"
+    },
+    {
+      "id": "sap-c-c4c-sales-set3-q25",
+      "domain": "高级定制开发",
+      "question": "SAP Sales Cloud 的 PDF Form Template 用于什么？",
+      "options": {
+        "A": "存储 PDF 文件",
+        "B": "自定义报价单、合同等输出文档的格式",
+        "C": "转换文件格式",
+        "D": "压缩文档"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "PDF Form Template 允许自定义输出文档（如报价单、合同、确认函）的格式和布局，添加公司 Logo、调整字段位置、定义条件显示规则等，生成符合企业品牌标准的专业文档。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "sap-c-c4c-sales-set3-q26",
+      "domain": "复杂集成场景",
+      "question": "SAP Sales Cloud 与 SAP S/4HANA 集成的推荐方式是什么？",
+      "options": {
+        "A": "直接数据库连接",
+        "B": "使用 SAP Integration Suite (CPI) 中间件",
+        "C": "手动数据导入导出",
+        "D": "文件共享"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "推荐使用 SAP Integration Suite（Cloud Platform Integration）作为中间件进行集成。它提供预建的集成内容包、数据映射、错误处理和监控功能，确保可靠的数据同步。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "sap-c-c4c-sales-set3-q27",
+      "domain": "复杂集成场景",
+      "question": "在 SAP Sales Cloud 集成中，主数据复制 (Master Data Replication) 通常如何配置？",
+      "options": {
+        "A": "手动复制",
+        "B": "配置复制模型定义数据范围和频率",
+        "C": "自动复制所有数据",
+        "D": "只在初始加载时复制"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Master Data Replication 通过配置复制模型来定义：复制哪些数据（客户、产品等）、数据范围（筛选条件）、复制频率（实时/定期）、复制方向（单向/双向）等参数。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "sap-c-c4c-sales-set3-q28",
+      "domain": "复杂集成场景",
+      "question": "SAP Sales Cloud 的 A2X Services 是什么？",
+      "options": {
+        "A": "应用到应用的集成服务",
+        "B": "分析服务",
+        "C": "认证服务",
+        "D": "审计服务"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "A2X (Application to X) Services 是 SAP 提供的预建集成服务，用于 Sales Cloud 与其他 SAP 应用（如 S/4HANA、ECC）之间的标准化集成。它简化了常见集成场景的实现。",
+      "difficulty": "hard"
+    },
+    {
+      "id": "sap-c-c4c-sales-set3-q29",
+      "domain": "复杂集成场景",
+      "question": "在 Sales Cloud 到 ERP 的订单集成中，通常如何处理错误？",
+      "options": {
+        "A": "忽略错误",
+        "B": "自动重试、错误日志记录和通知",
+        "C": "手动重新输入",
+        "D": "删除失败的订单"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "订单集成的错误处理通常包括：自动重试机制（处理临时网络问题）、详细的错误日志记录（便于排查）、向相关人员发送通知、提供手动重发或修正的界面。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "sap-c-c4c-sales-set3-q30",
+      "domain": "复杂集成场景",
+      "question": "SAP Sales Cloud 的 Real-time Pricing (RTP) 集成用于什么？",
+      "options": {
+        "A": "实时股票价格",
+        "B": "从 ERP 获取实时产品价格和折扣",
+        "C": "实时汇率",
+        "D": "实时运费计算"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Real-time Pricing 集成在创建报价时调用 ERP 系统计算实时价格，考虑客户特定价格、数量折扣、促销等复杂定价逻辑，确保报价准确性与 ERP 一致。",
+      "difficulty": "hard"
+    },
+    {
+      "id": "sap-c-c4c-sales-set3-q31",
+      "domain": "复杂集成场景",
+      "question": "在 SAP Sales Cloud 集成中，OAuth 2.0 用于什么？",
+      "options": {
+        "A": "数据加密",
+        "B": "API 认证和授权",
+        "C": "数据压缩",
+        "D": "日志记录"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "OAuth 2.0 是 API 集成的认证和授权协议。外部系统通过 OAuth 2.0 获取访问令牌，使用令牌调用 Sales Cloud API，无需在每次请求中传递用户凭证，提高安全性。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "sap-c-c4c-sales-set3-q32",
+      "domain": "复杂集成场景",
+      "question": "SAP Sales Cloud 的 iFlow 是什么？",
+      "options": {
+        "A": "苹果产品",
+        "B": "SAP Integration Suite 中的集成流程",
+        "C": "工作流程",
+        "D": "数据流"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "iFlow (Integration Flow) 是 SAP Integration Suite 中定义集成逻辑的单元。它包含消息处理步骤、数据映射、路由规则等，定义数据如何从源系统转换并传递到目标系统。",
+      "difficulty": "hard"
+    },
+    {
+      "id": "sap-c-c4c-sales-set3-q33",
+      "domain": "复杂集成场景",
+      "question": "在 Sales Cloud 与第三方系统集成时，Webhook 的作用是什么？",
+      "options": {
+        "A": "钩子编程",
+        "B": "当 Sales Cloud 中发生事件时主动通知外部系统",
+        "C": "网页设计",
+        "D": "数据钩取"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Webhook 允许 Sales Cloud 在特定事件发生时（如商机创建、状态变更）主动向外部系统发送通知。外部系统注册一个 URL，Sales Cloud 将事件数据推送到该 URL。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "sap-c-c4c-sales-set3-q34",
+      "domain": "复杂集成场景",
+      "question": "SAP Sales Cloud 集成的 Idempotency 概念是什么？",
+      "options": {
+        "A": "独立性",
+        "B": "重复执行相同操作产生相同结果，防止重复处理",
+        "C": "身份验证",
+        "D": "数据完整性"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Idempotency（幂等性）确保同一消息被处理多次（由于重试）不会产生重复数据。例如，同一订单消息重复发送不会创建多个订单。这对于可靠的集成至关重要。",
+      "difficulty": "hard"
+    },
+    {
+      "id": "sap-c-c4c-sales-set3-q35",
+      "domain": "复杂集成场景",
+      "question": "在 Sales Cloud 与 CTI（电话系统）集成中，通常实现什么功能？",
+      "options": {
+        "A": "视频通话",
+        "B": "来电弹屏显示客户信息",
+        "C": "短信发送",
+        "D": "传真"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "CTI 集成的核心功能是来电弹屏：当客户来电时，系统根据来电号码自动识别客户，在销售人员屏幕上弹出客户信息和历史互动记录，提高服务效率。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "sap-c-c4c-sales-set3-q36",
+      "domain": "最佳实践与优化",
+      "question": "提高 SAP Sales Cloud 用户采用率的最佳实践包括什么？（选择两项）",
+      "options": {
+        "A": "强制使用",
+        "B": "提供充分的培训和支持",
+        "C": "获取管理层支持和参与",
+        "D": "减少系统功能"
+      },
+      "answer": ["B", "C"],
+      "answerType": "multiple",
+      "explanation": "提高采用率的最佳实践：1) 提供充分培训，确保用户理解系统价值和使用方法；2) 获取管理层支持，领导示范使用系统并将其纳入业务流程。还包括收集反馈、持续改进等。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "sap-c-c4c-sales-set3-q37",
+      "domain": "最佳实践与优化",
+      "question": "在 SAP Sales Cloud 中，如何优化数据质量？",
+      "options": {
+        "A": "允许任意数据输入",
+        "B": "定义验证规则、必填字段和重复检查",
+        "C": "减少数据字段",
+        "D": "禁止数据修改"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "优化数据质量的方法：定义数据验证规则（格式、范围检查）、设置必填字段（确保关键数据不遗漏）、启用重复检查（防止重复记录）、定期数据清洗和审计。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "sap-c-c4c-sales-set3-q38",
+      "domain": "最佳实践与优化",
+      "question": "SAP Sales Cloud 性能优化的建议包括什么？",
+      "options": {
+        "A": "加载所有可用字段",
+        "B": "优化数据加载、减少不必要的自定义",
+        "C": "禁用缓存",
+        "D": "增加网络延迟"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "性能优化建议：优化数据加载（只加载需要的字段和记录）、减少不必要的自定义（过多的 Determination/Validation 影响性能）、使用适当的数据分页、优化集成调用频率等。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "sap-c-c4c-sales-set3-q39",
+      "domain": "最佳实践与优化",
+      "question": "在 SAP Sales Cloud 中，Reporting 最佳实践是什么？",
+      "options": {
+        "A": "创建尽可能多的报表",
+        "B": "根据用户角色提供相关报表，避免信息过载",
+        "C": "所有人看到所有报表",
+        "D": "禁用报表功能"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Reporting 最佳实践：根据用户角色和需求提供相关报表、使用仪表板展示关键 KPI、避免信息过载、定期审查报表使用情况并优化、培训用户如何解读数据。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "sap-c-c4c-sales-set3-q40",
+      "domain": "最佳实践与优化",
+      "question": "SAP Sales Cloud 的 Center of Excellence (CoE) 模式是什么？",
+      "options": {
+        "A": "奖励优秀销售员",
+        "B": "建立专门团队负责系统管理、优化和持续改进",
+        "C": "外包系统管理",
+        "D": "减少系统投资"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Center of Excellence 是建立专门的内部团队，负责 Sales Cloud 的日常管理、用户支持、持续优化、新功能评估和变更管理。这确保了系统的长期成功和价值最大化。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "sap-c-c4c-sales-set3-q41",
+      "domain": "最佳实践与优化",
+      "question": "在 SAP Sales Cloud 中，移动端优化的最佳实践是什么？",
+      "options": {
+        "A": "禁用移动访问",
+        "B": "简化界面、优化离线数据同步范围",
+        "C": "显示所有字段和功能",
+        "D": "只在 WiFi 下使用"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "移动端优化：简化界面，只显示移动场景最需要的信息；配置合理的离线同步范围，平衡数据完整性和同步效率；优化表单便于触摸操作；测试不同网络条件下的性能。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "sap-c-c4c-sales-set3-q42",
+      "domain": "最佳实践与优化",
+      "question": "SAP Sales Cloud 的 Continuous Improvement 策略应该包括什么？",
+      "options": {
+        "A": "实施后不再改变",
+        "B": "收集反馈、评估新功能、定期审查流程",
+        "C": "持续增加自定义",
+        "D": "减少用户培训"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "持续改进策略：定期收集用户反馈、评估 SAP 发布的新功能是否适用、审查业务流程是否需要优化、监控系统使用情况和性能指标、定期培训和知识更新。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "sap-c-c4c-sales-set3-q43",
+      "domain": "最佳实践与优化",
+      "question": "在 SAP Sales Cloud 中，如何管理系统配置的版本控制？",
+      "options": {
+        "A": "不需要版本控制",
+        "B": "记录配置变更、使用 Transport 系统、维护文档",
+        "C": "随意修改配置",
+        "D": "只在生产环境配置"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "配置版本控制：详细记录每次配置变更（原因、内容、时间）、使用 Transport 系统在环境间传输配置、维护配置文档、在测试环境验证后再应用到生产。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "sap-c-c4c-sales-set3-q44",
+      "domain": "故障排除与支持",
+      "question": "当 SAP Sales Cloud 用户报告数据不显示时，首先应该检查什么？",
+      "options": {
+        "A": "重装系统",
+        "B": "检查用户权限和访问规则",
+        "C": "联系 SAP 支持",
+        "D": "清除所有数据"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "数据不显示通常是权限问题。首先检查：用户的业务角色是否正确、访问规则是否限制了数据范围、Territory 配置是否正确。这是最常见的原因，应该首先排查。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "sap-c-c4c-sales-set3-q45",
+      "domain": "故障排除与支持",
+      "question": "SAP Sales Cloud 的 Incident Management 流程是什么？",
+      "options": {
+        "A": "忽略问题",
+        "B": "记录、分类、诊断、解决、关闭问题",
+        "C": "直接联系开发商",
+        "D": "重置系统"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Incident Management 流程：记录问题详情（症状、影响范围）、分类优先级、诊断根本原因、实施解决方案、验证修复、记录解决方案并关闭工单。这确保了问题的系统化处理。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "sap-c-c4c-sales-set3-q46",
+      "domain": "故障排除与支持",
+      "question": "在 SAP Sales Cloud 中，如何排查集成失败的问题？",
+      "options": {
+        "A": "忽略错误继续",
+        "B": "检查集成日志、错误消息和连接状态",
+        "C": "删除集成配置",
+        "D": "重建所有数据"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "排查集成问题：检查集成监控日志（在 Integration Suite 或 Sales Cloud 中）、分析错误消息、验证连接凭证和端点状态、检查数据格式是否正确、测试单独的集成步骤。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "sap-c-c4c-sales-set3-q47",
+      "domain": "故障排除与支持",
+      "question": "SAP 支持门户（SAP Support Portal）提供什么功能？（选择两项）",
+      "options": {
+        "A": "创建和跟踪支持工单",
+        "B": "购买硬件",
+        "C": "访问知识库文章",
+        "D": "招聘员工"
+      },
+      "answer": ["A", "C"],
+      "answerType": "multiple",
+      "explanation": "SAP Support Portal 提供：1) 创建、跟踪和管理支持工单与 SAP 支持团队沟通；2) 访问知识库文章（SAP Notes）查找已知问题的解决方案。还包括软件下载、系统监控等功能。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "sap-c-c4c-sales-set3-q48",
+      "domain": "故障排除与支持",
+      "question": "当 SAP Sales Cloud 性能变慢时，应该检查什么？",
+      "options": {
+        "A": "只检查网络",
+        "B": "检查自定义代码、数据量、浏览器和网络",
+        "C": "只检查服务器",
+        "D": "只检查用户数量"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "性能问题排查：检查自定义代码是否有性能问题（低效的 ABSL）、数据量是否过大（需要分页或筛选）、浏览器是否兼容和缓存状态、网络连接质量、是否存在资源密集的后台作业。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "sap-c-c4c-sales-set3-q49",
+      "domain": "故障排除与支持",
+      "question": "SAP Sales Cloud 的 Health Check 功能用于什么？",
+      "options": {
+        "A": "员工体检",
+        "B": "检查系统配置和性能状态",
+        "C": "检查数据健康",
+        "D": "检查网络健康"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Health Check 是一种系统诊断工具，检查系统配置、性能指标、最佳实践遵循情况等。它帮助识别潜在问题和优化机会，定期运行可以主动发现和解决问题。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "sap-c-c4c-sales-set3-q50",
+      "domain": "故障排除与支持",
+      "question": "在 SAP Sales Cloud 中，如何处理 Release Update 后出现的问题？",
+      "options": {
+        "A": "等待下次更新修复",
+        "B": "检查 Release Notes、测试受影响功能、联系支持",
+        "C": "回滚到旧版本",
+        "D": "禁用所有自定义"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "更新后问题处理：首先检查 Release Notes 了解变更内容、测试受影响的功能确认问题、检查自定义是否与新功能冲突、如果是产品问题则创建支持工单报告给 SAP。SaaS 产品通常不能回滚版本。",
+      "difficulty": "medium"
+    }
+  ]
+}

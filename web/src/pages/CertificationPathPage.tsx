@@ -13,7 +13,12 @@ import {
   Shield,
   Play,
   Lock,
-  LucideIcon
+  LucideIcon,
+  Users,
+  Truck,
+  Store,
+  Factory,
+  FileCheck
 } from 'lucide-react';
 import {
   awsCertifications,
@@ -90,7 +95,12 @@ const careerIcons: Record<string, LucideIcon> = {
   'sap-consultant': Building2,
   'sap-developer': Cog,
   'sap-data-analyst': Database,
-  'sap-implementation': Award
+  'sap-implementation': Award,
+  'sap-hr-consultant': Users,
+  'sap-supply-chain': Truck,
+  'sap-cx-consultant': Store,
+  'sap-manufacturing': Factory,
+  'sap-governance': FileCheck
 };
 
 // Level badge colors
@@ -131,12 +141,39 @@ const CertificationPathSVG: React.FC<{
     expert: language === 'ja' ? 'エキスパート' : '专家'
   };
 
-  // Calculate SVG dimensions dynamically based on max certifications per level
-  // SAP has 17 Associate certifications, so we need dynamic width
-  const maxCertsInLevel = Math.max(...levels.map(level => certsByLevel[level].length));
-  const calculatedWidth = 100 + maxCertsInLevel * 160 + 100; // 100 left margin + nodes + 100 right margin
-  const svgWidth = Math.max(1800, calculatedWidth); // minimum 1800 for consistent look
-  const svgHeight = 40 + levels.length * 95 + 20;
+  // Multi-row layout configuration
+  const maxCertsPerRow = 8; // Maximum certifications per row
+  const nodeWidth = 140;
+  const nodeHeight = 70;
+  const nodeGapX = 10;
+  const nodeGapY = 10;
+  const rowHeight = nodeHeight + nodeGapY;
+  const levelPadding = 20; // Extra padding between levels
+
+  // Calculate rows needed for each level
+  const levelRowCounts = levels.map(level => Math.ceil(certsByLevel[level].length / maxCertsPerRow));
+
+  // Calculate cumulative row offset for each level
+  const levelYOffsets: number[] = [];
+  let cumulativeOffset = 0;
+  for (let i = 0; i < levels.length; i++) {
+    levelYOffsets.push(cumulativeOffset);
+    cumulativeOffset += levelRowCounts[i] * rowHeight + levelPadding;
+  }
+
+  // Calculate SVG dimensions
+  const svgWidth = 120 + maxCertsPerRow * (nodeWidth + nodeGapX);
+  const svgHeight = 60 + cumulativeOffset + 40; // header + content + footer
+
+  // Helper function to get certification position
+  const getCertPosition = (level: Level, certIndex: number) => {
+    const levelIndex = levels.indexOf(level);
+    const row = Math.floor(certIndex / maxCertsPerRow);
+    const col = certIndex % maxCertsPerRow;
+    const x = 100 + col * (nodeWidth + nodeGapX);
+    const y = 50 + levelYOffsets[levelIndex] + row * rowHeight;
+    return { x, y, row, col };
+  };
 
   return (
     <svg viewBox={`0 0 ${svgWidth} ${svgHeight}`} className="w-full h-auto" xmlns="http://www.w3.org/2000/svg">
@@ -154,28 +191,45 @@ const CertificationPathSVG: React.FC<{
       {/* Background */}
       <rect x="0" y="0" width={svgWidth} height={svgHeight} fill="#FAFAFA" rx="12" />
 
-      {/* Level lanes - only levels with certifications */}
-      {levels.map((level, i) => (
-        <g key={level}>
-          <rect
-            x="30"
-            y={40 + i * 95}
-            width={svgWidth - 60}
-            height="85"
-            fill={i % 2 === 0 ? '#F8FAFC' : '#FFFFFF'}
-            rx="8"
-          />
-          <text
-            x="50"
-            y={70 + i * 95}
-            fill="#6B7280"
-            fontSize="13"
-            fontWeight="600"
-          >
-            {levelLabels[level as Level]}
-          </text>
-        </g>
-      ))}
+      {/* Level lanes - with multi-row support */}
+      {levels.map((level, i) => {
+        const rowCount = levelRowCounts[i];
+        const laneHeight = rowCount * rowHeight + 10;
+        const laneY = 40 + levelYOffsets[i];
+
+        return (
+          <g key={level}>
+            <rect
+              x="20"
+              y={laneY}
+              width={svgWidth - 40}
+              height={laneHeight}
+              fill={i % 2 === 0 ? '#F8FAFC' : '#FFFFFF'}
+              rx="8"
+            />
+            <text
+              x="35"
+              y={laneY + 20}
+              fill="#6B7280"
+              fontSize="13"
+              fontWeight="600"
+            >
+              {levelLabels[level as Level]}
+            </text>
+            {/* Show row count if multiple rows */}
+            {rowCount > 1 && (
+              <text
+                x="35"
+                y={laneY + 36}
+                fill="#9CA3AF"
+                fontSize="10"
+              >
+                ({certsByLevel[level].length} {language === 'ja' ? '件' : '个'})
+              </text>
+            )}
+          </g>
+        );
+      })}
 
       {/* Connection paths */}
       {certifications.map((cert) => {
@@ -184,20 +238,20 @@ const CertificationPathSVG: React.FC<{
           const prereq = certifications.find(c => c.id === prereqId);
           if (!prereq) return null;
 
-          const fromLevel = levels.indexOf(prereq.level);
-          const toLevel = levels.indexOf(cert.level);
           const fromIndex = certsByLevel[prereq.level].indexOf(prereq);
           const toIndex = certsByLevel[cert.level].indexOf(cert);
+          const fromPos = getCertPosition(prereq.level, fromIndex);
+          const toPos = getCertPosition(cert.level, toIndex);
 
-          const fromX = 150 + fromIndex * 160;
-          const fromY = 85 + fromLevel * 95;
-          const toX = 150 + toIndex * 160;
-          const toY = 60 + toLevel * 95;
+          const fromX = fromPos.x + nodeWidth / 2;
+          const fromY = fromPos.y + nodeHeight;
+          const toX = toPos.x + nodeWidth / 2;
+          const toY = toPos.y;
 
           return (
             <path
               key={`${cert.id}-${prereqId}`}
-              d={`M ${fromX} ${fromY} C ${fromX} ${fromY + 30}, ${toX} ${toY - 30}, ${toX} ${toY}`}
+              d={`M ${fromX} ${fromY} C ${fromX} ${fromY + 20}, ${toX} ${toY - 20}, ${toX} ${toY}`}
               fill="none"
               stroke={config.pathColor}
               strokeWidth="2"
@@ -209,10 +263,9 @@ const CertificationPathSVG: React.FC<{
       })}
 
       {/* Certification nodes */}
-      {levels.map((level, levelIndex) => (
+      {levels.map((level) => (
         certsByLevel[level].map((cert, certIndex) => {
-          const x = 100 + certIndex * 160;
-          const y = 55 + levelIndex * 95;
+          const { x, y } = getCertPosition(level, certIndex);
           const isHighlighted = !hasHighlight || (highlightedCertIds && highlightedCertIds.includes(cert.id));
           const nodeOpacity = hasHighlight && !isHighlighted ? 0.4 : 1;
           const isClickable = cert.hasExamData && onCertClick;
@@ -231,8 +284,8 @@ const CertificationPathSVG: React.FC<{
               <rect
                 x="0"
                 y="0"
-                width="130"
-                height="60"
+                width={nodeWidth - 10}
+                height={nodeHeight - 10}
                 rx="10"
                 fill="white"
                 stroke={isHighlighted && cert.hasExamData ? config.pathColor : (isHighlighted ? '#9CA3AF' : '#E5E7EB')}
@@ -243,8 +296,8 @@ const CertificationPathSVG: React.FC<{
                 <rect
                   x="0"
                   y="0"
-                  width="130"
-                  height="60"
+                  width={nodeWidth - 10}
+                  height={nodeHeight - 10}
                   rx="10"
                   fill={config.pathColor}
                   opacity="0.15"
@@ -255,8 +308,8 @@ const CertificationPathSVG: React.FC<{
                 <rect
                   x="-3"
                   y="-3"
-                  width="136"
-                  height="66"
+                  width={nodeWidth - 4}
+                  height={nodeHeight - 4}
                   rx="12"
                   fill="none"
                   stroke="#8B5CF6"
@@ -266,31 +319,31 @@ const CertificationPathSVG: React.FC<{
                 />
               )}
               <text
-                x="65"
-                y="24"
+                x={(nodeWidth - 10) / 2}
+                y="22"
                 textAnchor="middle"
                 fill={isHighlighted ? '#374151' : '#9CA3AF'}
-                fontSize="14"
+                fontSize="13"
                 fontWeight="700"
               >
                 {cert.code}
               </text>
               <text
-                x="65"
-                y="44"
+                x={(nodeWidth - 10) / 2}
+                y="42"
                 textAnchor="middle"
                 fill={isHighlighted ? '#6B7280' : '#D1D5DB'}
-                fontSize="12"
+                fontSize="11"
                 fontWeight="500"
               >
                 {cert.name[language].length > 10 ? cert.name[language].slice(0, 10) + '...' : cert.name[language]}
               </text>
               {cert.hasExamData && (
                 <g>
-                  <circle cx="115" cy="12" r="8" fill={isHighlighted ? config.pathColor : '#D1D5DB'}>
+                  <circle cx={nodeWidth - 25} cy="12" r="8" fill={isHighlighted ? config.pathColor : '#D1D5DB'}>
                     <title>{language === 'ja' ? 'クリックして練習' : '点击练习'}</title>
                   </circle>
-                  <text x="115" y="16" textAnchor="middle" fill="white" fontSize="10" fontWeight="bold">▶</text>
+                  <text x={nodeWidth - 25} y="16" textAnchor="middle" fill="white" fontSize="10" fontWeight="bold">▶</text>
                 </g>
               )}
             </g>

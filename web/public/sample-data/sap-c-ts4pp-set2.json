@@ -1,0 +1,773 @@
+{
+  "exam": {
+    "id": "sap-c-ts4pp-set2",
+    "name": "SAP C_TS4PP 模拟考试 #2",
+    "code": "C_TS4PP",
+    "provider": "SAP",
+    "language": "zh-CN",
+    "description": "SAP S/4HANA 生产计划认证考试模拟题 - 第2套",
+    "totalQuestions": 50,
+    "passingScore": 65,
+    "examTime": 180,
+    "domains": [
+      { "id": 1, "name": "主数据配置", "weight": 25 },
+      { "id": 2, "name": "需求管理", "weight": 20 },
+      { "id": 3, "name": "MRP计划", "weight": 25 },
+      { "id": 4, "name": "生产订单", "weight": 20 },
+      { "id": 5, "name": "产能计划", "weight": 10 }
+    ],
+    "tags": ["SAP", "S/4HANA", "PP", "生产计划", "MRP", "认证考试"]
+  },
+  "questions": [
+    {
+      "id": "q1",
+      "domain": 1,
+      "question": "在 SAP S/4HANA 中，BOM 组件的\"固定数量\"标志的作用是什么？",
+      "options": {
+        "A": "无论生产批量大小，组件数量保持不变",
+        "B": "组件价格固定",
+        "C": "组件不能被替代",
+        "D": "组件必须手动发货"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "固定数量标志：\n- 组件数量不随生产批量变化\n- 如固定的设置材料\n- 与可变组件区分\n- 影响成本计算",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q2",
+      "domain": 1,
+      "question": "工艺路线中的\"参考操作集\"用于什么？",
+      "options": {
+        "A": "定义物料价格",
+        "B": "在多个工艺路线中重用标准操作序列",
+        "C": "记录生产历史",
+        "D": "管理用户权限"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "参考操作集：\n- 可重用的标准操作序列\n- 减少维护工作量\n- 确保操作标准化\n- 可被多个工艺路线引用",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q3",
+      "domain": 1,
+      "question": "工作中心的\"公式\"用于什么？",
+      "options": {
+        "A": "计算物料成本",
+        "B": "根据标准值和批量计算执行时间",
+        "C": "确定存储位置",
+        "D": "计算员工工资"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "工作中心公式：\n- 定义时间计算方法\n- 如：时间 = 设置时间 + (数量 × 单件时间)\n- 用于排程和成本核算\n- 可自定义不同公式",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q4",
+      "domain": 2,
+      "question": "\"可用性检查组\"在物料主数据中的作用是什么？",
+      "options": {
+        "A": "定义物料的质量检验组",
+        "B": "控制可用性检查的范围和元素",
+        "C": "设置采购组",
+        "D": "定义存储条件"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "可用性检查组：\n- 定义检查考虑哪些库存元素\n- 如：是否考虑在途库存、预留等\n- 影响ATP计算结果\n- 与检查规则配合使用",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q5",
+      "domain": 2,
+      "question": "\"计划策略20\"代表什么生产方式？",
+      "options": {
+        "A": "按库存生产（MTS）",
+        "B": "按订单生产（MTO）",
+        "C": "按项目生产",
+        "D": "不进行生产"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "计划策略20：\n- 纯MTS（按库存生产）\n- 基于预测进行生产\n- 销售订单消耗库存\n- 不触发新的生产",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q6",
+      "domain": 3,
+      "question": "MRP 参数\"重新计划范围\"的作用是什么？",
+      "options": {
+        "A": "定义数据保留期限",
+        "B": "限制MRP可以重新排程现有订单的时间范围",
+        "C": "设置报表显示范围",
+        "D": "控制用户访问范围"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "重新计划范围：\n- 在此期间内MRP可以调整订单日期\n- 超出此范围只创建新订单\n- 保护近期已确定的计划\n- 减少计划波动",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q7",
+      "domain": 3,
+      "question": "批量程序\"PK\"代表什么？",
+      "options": {
+        "A": "精确批量",
+        "B": "固定批量",
+        "C": "周期批量（按期间合并需求）",
+        "D": "最大批量"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "批量程序PK（Period Lot Size）：\n- 按期间合并需求\n- 如按周或月合并\n- 减少订单数量\n- 适合稳定需求情况",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q8",
+      "domain": 3,
+      "question": "在MRP中，\"净需求计算\"的步骤顺序是什么？",
+      "options": {
+        "A": "需求 - 库存 - 收货 = 净需求",
+        "B": "需求 - 库存 - 已计划收货 + 安全库存 = 净需求",
+        "C": "需求 + 库存 = 净需求",
+        "D": "需求 × 安全系数 = 净需求"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "净需求计算：\n- 总需求 - 可用库存 - 已确认收货\n- 加上安全库存要求\n- 得出需要补充的数量\n- 是MRP的核心计算",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q9",
+      "domain": 4,
+      "question": "生产订单中\"订单分割\"的用途是什么？",
+      "options": {
+        "A": "将订单金额分给多个成本中心",
+        "B": "将一个订单的生产数量分配到多个批次",
+        "C": "将订单分给多个供应商",
+        "D": "将订单分给多个客户"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "订单分割：\n- 同一订单分多批生产\n- 考虑产能或批量限制\n- 每批可独立排程\n- 提高生产灵活性",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q10",
+      "domain": 4,
+      "question": "生产订单状态\"REL\"表示什么？",
+      "options": {
+        "A": "已删除",
+        "B": "已发布（Released）",
+        "C": "已完成",
+        "D": "已创建"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "订单状态REL：\n- Released（已发布）\n- 可以执行生产操作\n- 可以发货和确认\n- 是执行阶段的开始",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q11",
+      "domain": 5,
+      "question": "产能\"调平\"的目的是什么？",
+      "options": {
+        "A": "删除过载",
+        "B": "将负荷均匀分配，避免峰谷波动",
+        "C": "增加产能",
+        "D": "减少产能"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "产能调平：\n- 平滑负荷分布\n- 避免某些时段过载\n- 提高资源利用率\n- 通过重新排程实现",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q12",
+      "domain": 1,
+      "question": "\"生产版本\"包含哪些主数据的组合？",
+      "options": {
+        "A": "只有BOM",
+        "B": "BOM和工艺路线的组合",
+        "C": "只有工艺路线",
+        "D": "物料和供应商"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "生产版本：\n- 定义BOM和工艺路线的组合\n- 指定生产数量范围\n- 一个物料可有多个生产版本\n- 支持不同生产方式选择",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q13",
+      "domain": 1,
+      "question": "BOM\"级别\"标识用于什么？",
+      "options": {
+        "A": "质量等级",
+        "B": "在BOM层次结构中的位置（单级、多级）",
+        "C": "重要性级别",
+        "D": "审批级别"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "BOM级别：\n- 标识组件在结构中的位置\n- 单级显示直接组件\n- 多级显示完整结构\n- 影响MRP展开方式",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q14",
+      "domain": 2,
+      "question": "\"需求类别\"在计划中控制什么？",
+      "options": {
+        "A": "客户类型",
+        "B": "需求如何参与计划和消耗",
+        "C": "产品类别",
+        "D": "价格类别"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "需求类别：\n- 控制需求在MRP中的处理\n- 定义是否参与消耗\n- 影响可用性检查\n- 由计划策略确定",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q15",
+      "domain": 2,
+      "question": "\"总计计划\"的主要用途是什么？",
+      "options": {
+        "A": "财务汇总",
+        "B": "在产品组或产品系列级别进行长期计划",
+        "C": "员工考勤汇总",
+        "D": "库存盘点"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "总计计划（SOP）：\n- 产品组级别的计划\n- 长期产能和资源计划\n- 可分解到详细产品\n- 是战略计划的一部分",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q16",
+      "domain": 3,
+      "question": "MRP例外消息\"10\"通常表示什么？",
+      "options": {
+        "A": "日期在过去",
+        "B": "需要重新排程（订单开始日期可以推后）",
+        "C": "缺少BOM",
+        "D": "超过库存上限"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "MRP例外消息10：\n- 建议推后订单日期\n- 需求推迟或减少\n- 可能导致库存过高\n- 需要评估是否调整",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q17",
+      "domain": 3,
+      "question": "\"MRP清单\"（MD05）与\"库存需求清单\"（MD04）的区别是什么？",
+      "options": {
+        "A": "MD05更详细",
+        "B": "MD05是静态快照，MD04是动态实时视图",
+        "C": "MD04只显示库存",
+        "D": "没有区别"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "MRP清单vs库存需求清单：\n- MD05是MRP运行时的快照\n- MD04是当前实时状态\n- MD05不随后续变化更新\n- 用于比较MRP前后变化",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q18",
+      "domain": 3,
+      "question": "\"特殊采购类型\"50代表什么？",
+      "options": {
+        "A": "标准采购",
+        "B": "外包（Subcontracting）",
+        "C": "虚幻组件",
+        "D": "直接生产"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "特殊采购类型50：\n- 外包生产\n- 向供应商提供组件\n- 供应商完成加工\n- 成品返回",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q19",
+      "domain": 4,
+      "question": "生产订单\"可用性检查\"失败时会发生什么？",
+      "options": {
+        "A": "订单自动删除",
+        "B": "系统显示警告，用户可决定是否继续",
+        "C": "订单自动推迟",
+        "D": "系统自动采购缺少的组件"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "可用性检查失败：\n- 显示缺货组件信息\n- 用户可以选择继续或取消\n- 不自动删除或推迟订单\n- 提供决策支持",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q20",
+      "domain": 4,
+      "question": "\"联合产品\"（Co-product）和\"副产品\"（By-product）的区别是什么？",
+      "options": {
+        "A": "联合产品有计划价值，副产品只是废料",
+        "B": "联合产品是计划的主要产出之一，副产品是附带产出",
+        "C": "没有区别",
+        "D": "副产品质量更高"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "联合产品vs副产品：\n- 联合产品是有意产出\n- 副产品是附带产出（可能有价值）\n- 联合产品可触发需求\n- 成本分配方式不同",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q21",
+      "domain": 5,
+      "question": "\"产能需求计划\"（CRP）与MRP的关系是什么？",
+      "options": {
+        "A": "CRP替代MRP",
+        "B": "CRP评估MRP计划结果的产能可行性",
+        "C": "MRP包含CRP",
+        "D": "两者无关"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "CRP与MRP关系：\n- MRP生成物料计划\n- CRP评估产能需求\n- 发现产能问题后调整计划\n- 是迭代优化过程",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q22",
+      "domain": 1,
+      "question": "BOM组件的\"废品\"百分比用于什么？",
+      "options": {
+        "A": "定义退货比例",
+        "B": "增加组件数量以补偿预期损失",
+        "C": "计算废品收入",
+        "D": "设置质量标准"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "组件废品百分比：\n- 增加需求数量\n- 补偿生产中的预期损失\n- 确保有足够材料完成生产\n- 影响成本计算",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q23",
+      "domain": 1,
+      "question": "工艺路线中\"排序\"功能的作用是什么？",
+      "options": {
+        "A": "对物料进行排序",
+        "B": "在一组工作中心中选择最佳资源",
+        "C": "排列客户订单",
+        "D": "分配员工工作"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "排序功能：\n- 选择满足要求的最佳工作中心\n- 考虑可用性和效率\n- 支持柔性制造\n- 优化资源利用",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q24",
+      "domain": 2,
+      "question": "\"可承诺量\"（ATP）检查的时间段由什么控制？",
+      "options": {
+        "A": "物料类型",
+        "B": "检查范围和检查规则",
+        "C": "用户权限",
+        "D": "会计期间"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "ATP检查时间段：\n- 由检查范围定义前推时间\n- 检查规则定义具体逻辑\n- 可自定义配置\n- 影响承诺结果",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q25",
+      "domain": 2,
+      "question": "\"总量预测\"与\"详细预测\"的区别是什么？",
+      "options": {
+        "A": "总量更准确",
+        "B": "总量在产品组级别，详细在单品级别",
+        "C": "详细需要更多系统资源",
+        "D": "没有区别"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "预测级别区别：\n- 总量预测更适合长期规划\n- 详细预测用于短期执行\n- 总量可分解为详细\n- 两者服务不同计划层次",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q26",
+      "domain": 3,
+      "question": "MRP\"实时处理\"与\"后台处理\"的区别是什么？",
+      "options": {
+        "A": "后台更准确",
+        "B": "实时立即执行，后台在计划任务中执行",
+        "C": "实时需要更多权限",
+        "D": "没有区别"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "MRP处理模式：\n- 实时：立即交互执行\n- 后台：可调度定时运行\n- 后台适合大批量运行\n- 实时适合单物料快速更新",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q27",
+      "domain": 3,
+      "question": "\"直接采购\"标志对MRP的影响是什么？",
+      "options": {
+        "A": "物料不参与MRP",
+        "B": "MRP直接创建采购订单而非采购申请",
+        "C": "从供应商直接发货给客户",
+        "D": "自动选择供应商"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "直接采购标志：\n- 跳过采购申请步骤\n- MRP直接创建采购订单\n- 加快采购流程\n- 适用于标准重复采购",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q28",
+      "domain": 3,
+      "question": "物料主数据中\"计划交货时间\"与\"GR处理时间\"的区别是什么？",
+      "options": {
+        "A": "没有区别",
+        "B": "计划交货时间是从供应商到达时间，GR处理时间是到达后到可用的时间",
+        "C": "计划交货时间更长",
+        "D": "GR处理时间只用于自制物料"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "两种前置时间：\n- 计划交货时间：订单到收货\n- GR处理时间：收货到可用\n- 总时间是两者之和\n- 分别配置不同的缓冲",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q29",
+      "domain": 4,
+      "question": "生产订单\"收货\"操作使用什么移动类型？",
+      "options": {
+        "A": "101",
+        "B": "261",
+        "C": "201",
+        "D": "301"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "生产订单收货移动类型：\n- 101 收货到非限制库存\n- 261 是组件发货\n- 201 是到成本中心发货\n- 收货增加成品库存",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q30",
+      "domain": 4,
+      "question": "\"里程碑确认\"与\"标准确认\"的区别是什么？",
+      "options": {
+        "A": "里程碑更详细",
+        "B": "里程碑同时确认多个操作到指定点",
+        "C": "标准确认更快",
+        "D": "没有区别"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "里程碑确认：\n- 确认一个操作时同时确认之前的所有操作\n- 适合流水线生产\n- 减少确认工作量\n- 需要在操作中设置里程碑标志",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q31",
+      "domain": 5,
+      "question": "工作中心的\"效率\"参数影响什么？",
+      "options": {
+        "A": "只影响成本",
+        "B": "影响排程时间计算",
+        "C": "只影响质量",
+        "D": "影响物料消耗"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "效率参数：\n- 调整标准时间\n- 效率100%使用标准时间\n- 效率低于100%时间更长\n- 反映实际生产能力",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q32",
+      "domain": 1,
+      "question": "\"递归BOM\"是什么？",
+      "options": {
+        "A": "循环引用的BOM（组件引用自身）",
+        "B": "重复的BOM",
+        "C": "历史BOM",
+        "D": "测试BOM"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "递归BOM：\n- 组件直接或间接引用自身\n- 系统不允许这种情况\n- 会导致无限循环\n- 创建时会检查并报错",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q33",
+      "domain": 1,
+      "question": "工艺路线的\"操作拆分\"用于什么？",
+      "options": {
+        "A": "将一个操作分成多个独立操作",
+        "B": "在多个资源上并行处理同一操作",
+        "C": "删除部分操作",
+        "D": "复制操作"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "操作拆分：\n- 将订单数量分配给多个资源\n- 并行处理以缩短时间\n- 适用于大批量生产\n- 需要工作中心支持",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q34",
+      "domain": 2,
+      "question": "\"预测消耗\"的作用是什么？",
+      "options": {
+        "A": "删除预测",
+        "B": "用实际需求逐渐替代预测数量",
+        "C": "增加预测",
+        "D": "锁定预测"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "预测消耗：\n- 销售订单消耗预测数量\n- 避免重复计算需求\n- 随着实际订单增加，预测减少\n- 是需求管理的关键功能",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q35",
+      "domain": 2,
+      "question": "\"按库存装配\"（ATO）策略的特点是什么？",
+      "options": {
+        "A": "完全按订单生产",
+        "B": "组件预先生产到库存，最终装配按订单",
+        "C": "完全按库存生产",
+        "D": "不需要预测"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "ATO策略：\n- 组件按预测生产\n- 收到订单后进行最终装配\n- 平衡响应速度和库存\n- 适合可配置产品",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q36",
+      "domain": 3,
+      "question": "MRP参数\"处理代码\"的作用是什么？",
+      "options": {
+        "A": "定义物料编码规则",
+        "B": "控制MRP如何处理物料（如是否展开BOM）",
+        "C": "设置用户权限代码",
+        "D": "定义成本代码"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "MRP处理代码：\n- 控制MRP处理方式\n- 如NETCH（净改变）\n- NETPL（净计划）\n- 影响计划范围和深度",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q37",
+      "domain": 3,
+      "question": "\"安全时间\"与\"安全库存\"的区别是什么？",
+      "options": {
+        "A": "没有区别",
+        "B": "安全时间提前需求日期，安全库存增加数量缓冲",
+        "C": "安全时间更贵",
+        "D": "安全库存只用于外购物料"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "两种安全方式：\n- 安全时间：提前计划日期\n- 安全库存：增加数量缓冲\n- 应对不同类型的不确定性\n- 可以组合使用",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q38",
+      "domain": 3,
+      "question": "物料主数据中\"MRP控制者\"的作用是什么？",
+      "options": {
+        "A": "定义物料价格的控制者",
+        "B": "分配负责该物料计划的人员",
+        "C": "控制物料质量",
+        "D": "管理物料存储"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "MRP控制者：\n- 分配计划责任人\n- 用于例外消息分配\n- 便于按责任人处理计划问题\n- 支持工作分配",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q39",
+      "domain": 4,
+      "question": "生产订单\"预算控制\"的作用是什么？",
+      "options": {
+        "A": "限制材料消耗",
+        "B": "检查订单成本是否超过预算",
+        "C": "控制产能使用",
+        "D": "限制订单数量"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "预算控制：\n- 检查计划成本vs预算\n- 超预算可发警告或阻止\n- 与控制模块集成\n- 支持成本管理",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q40",
+      "domain": 4,
+      "question": "\"触发点\"确认的概念是什么？",
+      "options": {
+        "A": "特定时间点的确认",
+        "B": "在操作中设置的点，到达时自动触发某些动作",
+        "C": "手动触发确认",
+        "D": "批量确认"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "触发点：\n- 操作中的预定义点\n- 可触发倒冲发货等动作\n- 支持自动化处理\n- 减少手动操作",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q41",
+      "domain": 5,
+      "question": "\"瓶颈资源\"在产能计划中的处理方式是什么？",
+      "options": {
+        "A": "忽略瓶颈",
+        "B": "优先考虑瓶颈资源进行排程",
+        "C": "删除瓶颈资源",
+        "D": "复制瓶颈资源"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "瓶颈资源处理：\n- 识别系统的关键约束\n- 优先为瓶颈排程\n- 其他资源配合瓶颈\n- 最大化整体产出",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q42",
+      "domain": 1,
+      "question": "BOM组件的\"替代组\"用于什么？",
+      "options": {
+        "A": "定义备选组件，可在生产中互换",
+        "B": "组件分类",
+        "C": "颜色分组",
+        "D": "价格分组"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "替代组：\n- 定义可互换的组件\n- 根据可用性或成本选择\n- 提高生产灵活性\n- 需要配置替代策略",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q43",
+      "domain": 1,
+      "question": "工作中心的\"成本中心\"关联用于什么？",
+      "options": {
+        "A": "定义工作中心位置",
+        "B": "收集工作中心活动的成本",
+        "C": "限制访问权限",
+        "D": "定义班次"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "成本中心关联：\n- 活动成本记入成本中心\n- 支持作业成本法\n- 用于内部核算\n- 是CO集成的基础",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q44",
+      "domain": 2,
+      "question": "\"客户独立需求\"与\"客户依赖需求\"的区别是什么？",
+      "options": {
+        "A": "没有区别",
+        "B": "独立需求来自销售预测，依赖需求来自实际订单",
+        "C": "独立需求更多",
+        "D": "依赖需求不参与计划"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "需求类型区分：\n- 独立需求：预测或计划\n- 依赖需求：实际销售订单\n- 两者可能共存\n- 消耗模式处理两者关系",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q45",
+      "domain": 3,
+      "question": "\"计划订单到期转换\"功能的作用是什么？",
+      "options": {
+        "A": "自动删除过期计划订单",
+        "B": "在计划订单开始日期临近时自动转换为生产订单",
+        "C": "延长计划订单有效期",
+        "D": "冻结计划订单"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "自动转换功能：\n- 可配置时间触发转换\n- 减少手动工作\n- 确保及时执行\n- 需要配置转换规则",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q46",
+      "domain": 3,
+      "question": "MRP\"跨工厂计划\"的功能是什么？",
+      "options": {
+        "A": "只在一个工厂计划",
+        "B": "考虑多工厂之间的供应关系进行计划",
+        "C": "忽略工厂差异",
+        "D": "复制工厂数据"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "跨工厂计划：\n- 考虑工厂间转储关系\n- 一个工厂可从另一工厂补货\n- 优化整体库存\n- 使用特殊采购类型配置",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q47",
+      "domain": 4,
+      "question": "生产订单\"工艺路线变更\"后，订单会发生什么？",
+      "options": {
+        "A": "订单自动更新",
+        "B": "已创建的订单不变，需要手动重新调度",
+        "C": "订单被删除",
+        "D": "所有订单立即更新"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "工艺路线变更影响：\n- 新订单使用新工艺路线\n- 现有订单保持不变\n- 可手动重新调度以应用更改\n- 保护进行中的生产",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q48",
+      "domain": 4,
+      "question": "生产订单\"打印控制\"的作用是什么？",
+      "options": {
+        "A": "控制订单价格",
+        "B": "控制车间文档的打印内容和时间",
+        "C": "打印客户发票",
+        "D": "打印采购订单"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "打印控制：\n- 定义打印的车间文档\n- 如生产订单卡、领料单\n- 控制打印时间点\n- 与输出管理集成",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q49",
+      "domain": 5,
+      "question": "\"中期产能计划\"的时间范围通常是多长？",
+      "options": {
+        "A": "几天",
+        "B": "几周到几个月",
+        "C": "几年",
+        "D": "几小时"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "中期产能计划：\n- 时间范围几周到几个月\n- 介于长期和短期之间\n- 支持资源和人员规划\n- 与MRP时间范围匹配",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q50",
+      "domain": 5,
+      "question": "产能计划中\"负荷百分比\"的计算方式是什么？",
+      "options": {
+        "A": "负荷 / 产能 × 100%",
+        "B": "产能 / 负荷 × 100%",
+        "C": "负荷 × 产能",
+        "D": "负荷 - 产能"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "负荷百分比计算：\n- 计划负荷除以可用产能\n- 乘以100%得百分比\n- 超过100%表示过载\n- 用于评估产能情况",
+      "difficulty": "easy"
+    }
+  ]
+}

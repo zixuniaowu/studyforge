@@ -1,0 +1,673 @@
+{
+  "exam": {
+    "id": "sap-c-ariba-proc-set2-ja",
+    "name": "SAP C_ARIBA_PROC 模擬試験 #2",
+    "code": "C_ARIBA_PROC",
+    "provider": "SAP",
+    "language": "ja",
+    "description": "SAP Ariba Procurement 認定試験の模擬問題セット2です。請求書処理、システム統合、レポートと分析、高度な設定をカバーしています。",
+    "totalQuestions": 50,
+    "passingScore": 65,
+    "examTime": 180,
+    "domains": [
+      { "name": "請求書処理と決済", "percentage": 25 },
+      { "name": "システム統合", "percentage": 25 },
+      { "name": "レポートと分析", "percentage": 20 },
+      { "name": "高度な設定", "percentage": 15 },
+      { "name": "Ariba Network", "percentage": 15 }
+    ],
+    "tags": ["SAP", "Ariba", "Procurement", "請求書", "統合"]
+  },
+  "questions": [
+    {
+      "id": 1,
+      "question": "SAP Ariba における Invoice Automation の主な機能は何ですか？",
+      "options": {
+        "A": "すべての請求書データを手動入力",
+        "B": "サプライヤー請求書の自動キャプチャ、検証、処理",
+        "C": "請求書画像の保存のみ",
+        "D": "すべての請求書を手動承認"
+      },
+      "answer": "B",
+      "explanation": "Invoice Automation は、OCR と機械学習を使用して請求書データを自動的にキャプチャし、発注書との照合を検証し、処理フローを自動化して効率を向上させます。",
+      "difficulty": "easy"
+    },
+    {
+      "id": 2,
+      "question": "SAP Ariba における Two-Way Matching と Three-Way Matching の違いは何ですか？",
+      "options": {
+        "A": "両者は完全に同じ",
+        "B": "Two-Way は PO と請求書のみを照合、Three-Way は受領も照合",
+        "C": "Two-Way はより多くの承認が必要",
+        "D": "Three-Way は発注書が不要"
+      },
+      "answer": "B",
+      "explanation": "Two-Way Matching は請求書と発注書を照合し、Three-Way Matching はこれに加えて受領確認も照合して、商品が実際に受領されたことを確認します。",
+      "difficulty": "medium"
+    },
+    {
+      "id": 3,
+      "question": "SAP Ariba における請求書許容差（Invoice Tolerance）の役割は何ですか？",
+      "options": {
+        "A": "すべての金額差異を許可",
+        "B": "請求書と PO の間で許容される金額または割合の差異範囲を定義",
+        "C": "金額差異を一切許可しない",
+        "D": "すべての請求書を自動拒否"
+      },
+      "answer": "B",
+      "explanation": "請求書許容差は、請求書金額と発注書の間で許容される差異範囲（金額または割合）を定義し、許容範囲内の差異は自動通過し、超過した場合は手動レビューが必要です。",
+      "difficulty": "medium"
+    },
+    {
+      "id": 4,
+      "question": "SAP Ariba における Evaluated Receipt Settlement (ERS) とは何ですか？",
+      "options": {
+        "A": "サプライヤー評価システム",
+        "B": "受領に基づいて支払いを自動作成、サプライヤー請求書不要",
+        "C": "受領検査プロセス",
+        "D": "返品処理システム"
+      },
+      "answer": "B",
+      "explanation": "ERS は自己決済方式で、システムが受領と発注書に基づいて支払い伝票を自動作成し、サプライヤーが請求書を提出する必要がなく、決済プロセスを簡素化します。",
+      "difficulty": "hard"
+    },
+    {
+      "id": 5,
+      "question": "SAP Ariba において Credit Memo（貸方伝票）は何に使用されますか？",
+      "options": {
+        "A": "買掛金の増加",
+        "B": "買掛金の減少または返金処理",
+        "C": "新規発注書の作成",
+        "D": "サプライヤーパフォーマンスの評価"
+      },
+      "answer": "B",
+      "explanation": "Credit Memo は買掛金を減少させるために使用され、返品、価格調整、品質問題による返金や割引の処理に一般的に使用されます。",
+      "difficulty": "easy"
+    },
+    {
+      "id": 6,
+      "question": "SAP Ariba と SAP ERP の統合で最もよく使用される統合モードはどれですか？（2つ選択）",
+      "options": {
+        "A": "リアルタイム統合（同期）",
+        "B": "手動データエクスポートのみ",
+        "C": "バッチ統合（非同期）",
+        "D": "統合なし"
+      },
+      "answer": ["A", "C"],
+      "explanation": "SAP Ariba と ERP の統合では、通常リアルタイム統合（PO などの重要なビジネスデータ用）とバッチ統合（マスターデータ同期などの大量データ用）の2つのモードが使用されます。",
+      "difficulty": "medium"
+    },
+    {
+      "id": 7,
+      "question": "SAP Ariba 統合における Mediated Integration の特徴は何ですか？",
+      "options": {
+        "A": "直接的なポイントツーポイント接続",
+        "B": "ミドルウェア（SAP CPI など）を介したデータ変換とルーティング",
+        "C": "設定不要",
+        "D": "ファイル転送のみをサポート"
+      },
+      "answer": "B",
+      "explanation": "Mediated Integration は、ミドルウェア（SAP Cloud Platform Integration など）を介してデータ変換、マッピング、ルーティングを行い、より複雑な統合シナリオとデータ処理をサポートします。",
+      "difficulty": "medium"
+    },
+    {
+      "id": 8,
+      "question": "SAP Ariba 統合における Master Data Replication（マスターデータ複製）にはどのようなデータが含まれますか？（2つ選択）",
+      "options": {
+        "A": "サプライヤーマスターデータ",
+        "B": "ソーシャルメディアの投稿",
+        "C": "コストセンターと勘定科目",
+        "D": "従業員の写真"
+      },
+      "answer": ["A", "C"],
+      "explanation": "マスターデータ複製には、サプライヤーマスターデータ、品目マスターデータ、コストセンター、勘定科目、税コードなどの重要なビジネスデータの同期が含まれます。",
+      "difficulty": "medium"
+    },
+    {
+      "id": 9,
+      "question": "SAP Ariba における Integration Toolkit の用途は何ですか？",
+      "options": {
+        "A": "モバイルアプリの開発",
+        "B": "ERP システムとの統合の設定とテスト",
+        "C": "ユーザーインターフェースの設計",
+        "D": "サプライヤーカタログの管理"
+      },
+      "answer": "B",
+      "explanation": "Integration Toolkit は、Ariba が提供するツールで、バックエンド ERP システムとの統合接続の設定、テスト、監視に使用されます。",
+      "difficulty": "easy"
+    },
+    {
+      "id": 10,
+      "question": "SAP Ariba の Web Services 統合はどのような標準をサポートしていますか？",
+      "options": {
+        "A": "CSV ファイルのみ",
+        "B": "SOAP と REST API",
+        "C": "メールのみ",
+        "D": "FTP 転送のみ"
+      },
+      "answer": "B",
+      "explanation": "SAP Ariba は、外部システムとのリアルタイムデータ交換に使用される SOAP と REST API の両方の Web Services 標準をサポートしています。",
+      "difficulty": "medium"
+    },
+    {
+      "id": 11,
+      "question": "SAP Ariba の Spend Analysis レポートはどのようなインサイトを提供できますか？（2つ選択）",
+      "options": {
+        "A": "カテゴリとサプライヤー別の支出分布",
+        "B": "従業員の勤怠データ",
+        "C": "契約コンプライアンス率とコスト削減機会",
+        "D": "ソーシャルメディアのエンゲージメント"
+      },
+      "answer": ["A", "C"],
+      "explanation": "Spend Analysis は、カテゴリ、サプライヤー、部門別の支出分布分析、契約コンプライアンス率、価格変動トレンド、コスト削減機会の特定を提供します。",
+      "difficulty": "medium"
+    },
+    {
+      "id": 12,
+      "question": "SAP Ariba における KPI Dashboard の主な機能は何ですか？",
+      "options": {
+        "A": "過去データのみを表示",
+        "B": "主要業績指標とビジネストレンドをリアルタイムで表示",
+        "C": "データエクスポートのみに使用",
+        "D": "管理者のみが使用"
+      },
+      "answer": "B",
+      "explanation": "KPI Dashboard は、調達サイクルタイム、コンプライアンス率、コスト削減額などの主要業績指標をリアルタイムで表示し、管理者がビジネスパフォーマンスとトレンドを監視するのに役立ちます。",
+      "difficulty": "easy"
+    },
+    {
+      "id": 13,
+      "question": "SAP Ariba における Operational Reporting と Strategic Reporting の違いは何ですか？",
+      "options": {
+        "A": "両者は完全に同じ",
+        "B": "Operational は日常取引に焦点、Strategic は長期トレンドと意思決定支援に焦点",
+        "C": "Operational は財務部門のみで使用",
+        "D": "Strategic はデータ不要"
+      },
+      "answer": "B",
+      "explanation": "Operational Reporting は日常の取引処理と実行状況に焦点を当て、Strategic Reporting は長期的な支出トレンド、コスト削減分析、戦略的意思決定支援に焦点を当てています。",
+      "difficulty": "medium"
+    },
+    {
+      "id": 14,
+      "question": "SAP Ariba における Self-Service Reporting ではユーザーは何ができますか？",
+      "options": {
+        "A": "事前定義されたレポートの閲覧のみ",
+        "B": "レポートのカスタム作成と修正",
+        "C": "システムデータの削除",
+        "D": "システム設定の変更"
+      },
+      "answer": "B",
+      "explanation": "Self-Service Reporting は、ビジネスユーザーがニーズに応じてレポートをカスタム作成、修正、保存することを IT 部門の介入なしに可能にします。",
+      "difficulty": "easy"
+    },
+    {
+      "id": 15,
+      "question": "SAP Ariba Analytics の Drill-Down 機能は何に使用されますか？",
+      "options": {
+        "A": "データの削除",
+        "B": "集計データから詳細情報への掘り下げ表示",
+        "C": "Excel へのデータエクスポート",
+        "D": "新規レポートの作成"
+      },
+      "answer": "B",
+      "explanation": "Drill-Down 機能は、ユーザーが集計レベル（総支出など）から段階的に詳細情報（サプライヤー別、製品別など）へ掘り下げて表示することを可能にします。",
+      "difficulty": "easy"
+    },
+    {
+      "id": 16,
+      "question": "SAP Ariba における Approval Rules（承認ルール）はどのような条件に基づいて設定できますか？（2つ選択）",
+      "options": {
+        "A": "金額しきい値と商品カテゴリ",
+        "B": "天候状況",
+        "C": "組織構造とコストセンター",
+        "D": "ユーザーのソーシャルメディアアカウント"
+      },
+      "answer": ["A", "C"],
+      "explanation": "承認ルールは、金額しきい値、商品カテゴリ、組織構造、コストセンター、サプライヤータイプなどのビジネス条件に基づいて設定できます。",
+      "difficulty": "medium"
+    },
+    {
+      "id": 17,
+      "question": "SAP Ariba の Workflow Builder では管理者は何ができますか？",
+      "options": {
+        "A": "既存のワークフローの閲覧のみ",
+        "B": "カスタム承認ワークフローの設計と設定",
+        "C": "すべての承認プロセスの削除",
+        "D": "サプライヤーカタログの管理"
+      },
+      "answer": "B",
+      "explanation": "Workflow Builder は、管理者がプログラミングなしでカスタム承認ワークフローを設計、設定、修正できるビジュアルツールです。",
+      "difficulty": "medium"
+    },
+    {
+      "id": 18,
+      "question": "SAP Ariba における User Field Configuration（ユーザーフィールド設定）の用途は何ですか？",
+      "options": {
+        "A": "ユーザーインターフェースの色の変更のみ",
+        "B": "ビジネスニーズに合わせてフォームのフィールドを追加または非表示",
+        "C": "ユーザーアカウントの削除",
+        "D": "システムバックアップの管理"
+      },
+      "answer": "B",
+      "explanation": "User Field Configuration は、管理者がビジネスニーズに応じてカスタムフィールドを追加したり、不要なフィールドを非表示にしたり、フィールドの必須属性を設定することを可能にします。",
+      "difficulty": "easy"
+    },
+    {
+      "id": 19,
+      "question": "SAP Ariba における Document Routing（ドキュメントルーティング）は何に基づいて送信先を決定しますか？（2つ選択）",
+      "options": {
+        "A": "サプライヤーの Ariba Network 接続状態",
+        "B": "ランダム選択",
+        "C": "商品カテゴリまたはドキュメントタイプのルール",
+        "D": "ユーザーの画面解像度"
+      },
+      "answer": ["A", "C"],
+      "explanation": "ドキュメントルーティングは、サプライヤーが Ariba Network に接続しているかどうか、商品カテゴリ、ドキュメントタイプなどのルールに基づいてドキュメントの送信方法と送信先を決定します。",
+      "difficulty": "medium"
+    },
+    {
+      "id": 20,
+      "question": "SAP Ariba における Conditional Field Configuration の機能は何ですか？",
+      "options": {
+        "A": "すべてのフォームフィールドを削除",
+        "B": "条件に基づいてフィールドを動的に表示または非表示",
+        "C": "すべてのフィールドを必須に固定",
+        "D": "フォーム送信を無効化"
+      },
+      "answer": "B",
+      "explanation": "Conditional Field Configuration は、特定の条件（商品カテゴリ、金額など）に基づいてフォームフィールドを動的に表示または非表示にし、ユーザーインターフェースを簡素化します。",
+      "difficulty": "medium"
+    },
+    {
+      "id": 21,
+      "question": "SAP Ariba Network における ANID とは何ですか？",
+      "options": {
+        "A": "従業員の身分証明番号",
+        "B": "Ariba Network 上のサプライヤーの一意の識別子",
+        "C": "製品シリアル番号",
+        "D": "取引日"
+      },
+      "answer": "B",
+      "explanation": "ANID（Ariba Network ID）は、Ariba Network 上のサプライヤーの一意の識別子で、サプライヤーアカウントの識別と接続に使用されます。",
+      "difficulty": "easy"
+    },
+    {
+      "id": 22,
+      "question": "SAP Ariba Network における Trading Relationship の確立には何が必要ですか？",
+      "options": {
+        "A": "自動的に確立、操作不要",
+        "B": "バイヤーとサプライヤー双方の確認と承諾",
+        "C": "バイヤーの操作のみ",
+        "D": "サプライヤーの操作のみ"
+      },
+      "answer": "B",
+      "explanation": "Trading Relationship の確立には、バイヤーが招待を送りサプライヤーが承諾するか、またはサプライヤーが申請を送りバイヤーが承認する必要があります。",
+      "difficulty": "easy"
+    },
+    {
+      "id": 23,
+      "question": "SAP Ariba Network の Order Collaboration 機能にはどのようなものが含まれますか？（2つ選択）",
+      "options": {
+        "A": "発注確認と拒否",
+        "B": "従業員のパフォーマンス評価",
+        "C": "出荷通知（ASN）",
+        "D": "ソーシャルメディアマーケティング"
+      },
+      "answer": ["A", "C"],
+      "explanation": "Order Collaboration 機能には、サプライヤーによる発注の確認/拒否/変更要求、および出荷通知（ASN）の送信と追跡が含まれます。",
+      "difficulty": "medium"
+    },
+    {
+      "id": 24,
+      "question": "SAP Ariba Network における Supplier Portal ではサプライヤーは何ができますか？",
+      "options": {
+        "A": "発注書の閲覧のみ",
+        "B": "発注、請求書、出荷、アカウント情報の管理",
+        "C": "バイヤーのシステム設定の変更",
+        "D": "バイヤーの財務データへのアクセス"
+      },
+      "answer": "B",
+      "explanation": "Supplier Portal は、サプライヤーが発注の管理（確認、更新）、請求書の作成と提出、出荷通知の送信、アカウント情報の維持を行うことを可能にします。",
+      "difficulty": "easy"
+    },
+    {
+      "id": 25,
+      "question": "SAP Ariba Network の Flip PO to Invoice 機能の利点は何ですか？",
+      "options": {
+        "A": "請求書作成時間の増加",
+        "B": "サプライヤーが PO に基づいて素早く請求書を作成、データ入力エラーを削減",
+        "C": "すべての請求書を自動拒否",
+        "D": "すべての PO 情報の再入力が必要"
+      },
+      "answer": "B",
+      "explanation": "Flip PO to Invoice は、サプライヤーが発注書データを請求書に直接コピーすることを可能にし、手動入力を減らし、効率を向上させ、エラー率を低減します。",
+      "difficulty": "medium"
+    },
+    {
+      "id": 26,
+      "question": "SAP Ariba における Spend Classification はどのような技術を使用して分類を行いますか？",
+      "options": {
+        "A": "手動分類のみ",
+        "B": "機械学習とルールエンジン",
+        "C": "ランダム割り当て",
+        "D": "アルファベット順"
+      },
+      "answer": "B",
+      "explanation": "Spend Classification は、機械学習アルゴリズムとビジネスルールエンジンを使用して、支出データを標準的な商品分類体系に自動的に分類します。",
+      "difficulty": "medium"
+    },
+    {
+      "id": 27,
+      "question": "SAP Ariba の Compliance Score は何を測定しますか？",
+      "options": {
+        "A": "従業員の出勤率",
+        "B": "調達活動のポリシーと契約への遵守度",
+        "C": "システムの稼働時間",
+        "D": "サプライヤー数"
+      },
+      "answer": "B",
+      "explanation": "Compliance Score は、調達活動が企業の調達ポリシー、優先サプライヤー、契約条件にどの程度遵守しているかを測定し、非準拠調達を特定します。",
+      "difficulty": "easy"
+    },
+    {
+      "id": 28,
+      "question": "SAP Ariba において Contract Leakage とは何ですか？",
+      "options": {
+        "A": "契約情報が競合他社に漏洩",
+        "B": "契約を通じて調達すべきところを契約を使用しなかった支出",
+        "C": "契約ドキュメントの紛失",
+        "D": "契約承認の遅延"
+      },
+      "answer": "B",
+      "explanation": "Contract Leakage は、既存の契約を通じて調達すべきところを契約を使用しなかった（非契約サプライヤーを選択したり、より高い価格で購入したりした）支出の損失を指します。",
+      "difficulty": "medium"
+    },
+    {
+      "id": 29,
+      "question": "SAP Ariba の Savings Tracking 機能はどのようなタイプの削減を追跡できますか？（2つ選択）",
+      "options": {
+        "A": "交渉による削減（初期見積との比較）",
+        "B": "従業員の給与削減",
+        "C": "契約コンプライアンスによる削減（非契約価格との比較）",
+        "D": "オフィススペースの削減"
+      },
+      "answer": ["A", "C"],
+      "explanation": "Savings Tracking は、交渉による削減（サプライヤーの初期見積と比較した値下げ）と契約コンプライアンスによる削減（契約価格 vs 標準価格の使用）を追跡します。",
+      "difficulty": "medium"
+    },
+    {
+      "id": 30,
+      "question": "SAP Ariba における Benchmark Data はどのような価値を提供しますか？",
+      "options": {
+        "A": "従業員のパフォーマンス比較",
+        "B": "業界標準や同業他社との調達パフォーマンス比較",
+        "C": "製品品質テストデータ",
+        "D": "システムパフォーマンステストデータ"
+      },
+      "answer": "B",
+      "explanation": "Benchmark Data は、業界標準や同業他社との調達パフォーマンス比較を提供し、改善機会とベストプラクティスの特定に役立ちます。",
+      "difficulty": "easy"
+    },
+    {
+      "id": 31,
+      "question": "SAP Ariba における Service Entry Sheet は何に使用されますか？",
+      "options": {
+        "A": "製品品質の評価",
+        "B": "受領したサービスとその価値の記録と確認",
+        "C": "新規発注書の作成",
+        "D": "サプライヤーカタログの管理"
+      },
+      "answer": "B",
+      "explanation": "Service Entry Sheet は、受領したサービスの詳細（工数、マイルストーン完了状況など）を記録・確認するために使用され、サービス請求書照合の根拠となります。",
+      "difficulty": "medium"
+    },
+    {
+      "id": 32,
+      "question": "SAP Ariba において Contingent Labor Management とは何ですか？",
+      "options": {
+        "A": "正社員管理",
+        "B": "派遣労働者と外注人員の調達と管理",
+        "C": "設備メンテナンス管理",
+        "D": "在庫管理"
+      },
+      "answer": "B",
+      "explanation": "Contingent Labor Management は、派遣社員、契約社員、外注人員の調達、オンボーディング、勤怠追跡、支払いを管理するソリューションです。",
+      "difficulty": "medium"
+    },
+    {
+      "id": 33,
+      "question": "SAP Ariba における Requisition Aggregation 機能の役割は何ですか？",
+      "options": {
+        "A": "複数の購買依頼を分割",
+        "B": "複数の購買依頼を1つの発注書にまとめてコスト削減",
+        "C": "すべての購買依頼を拒否",
+        "D": "すべての購買依頼を遅延"
+      },
+      "answer": "B",
+      "explanation": "Requisition Aggregation は、同じサプライヤーへの複数の購買依頼を1つの発注書にまとめ、発注処理コストを削減し、ボリュームディスカウントを得られる可能性があります。",
+      "difficulty": "medium"
+    },
+    {
+      "id": 34,
+      "question": "SAP Ariba における Purchase Order Acknowledgment の目的は何ですか？",
+      "options": {
+        "A": "バイヤーが発注を確認",
+        "B": "サプライヤーが発注の受領を確認し、承諾または変更を提案",
+        "C": "発注のキャンセル",
+        "D": "支払いの完了"
+      },
+      "answer": "B",
+      "explanation": "Purchase Order Acknowledgment は、サプライヤーが発注書を受け取ったことを確認し、承諾、拒否、または変更要求を示す応答です。",
+      "difficulty": "easy"
+    },
+    {
+      "id": 35,
+      "question": "SAP Ariba の Advance Ship Notice (ASN) にはどのような情報が含まれますか？（2つ選択）",
+      "options": {
+        "A": "出荷日と予定到着日",
+        "B": "従業員の勤怠データ",
+        "C": "商品数量と追跡情報",
+        "D": "サプライヤーの財務諸表"
+      },
+      "answer": ["A", "C"],
+      "explanation": "ASN（出荷通知）には、出荷日、予定到着日、商品数量、梱包情報、輸送追跡番号などの情報が含まれます。",
+      "difficulty": "medium"
+    },
+    {
+      "id": 36,
+      "question": "SAP Ariba において Punch-Out 統合とは何ですか？",
+      "options": {
+        "A": "ユーザーが出勤を記録",
+        "B": "ユーザーが Ariba からサプライヤーサイトに移動して製品を選択し、Ariba に戻って精算",
+        "C": "サプライヤーが Ariba Network から退出",
+        "D": "サプライヤー関係の終了"
+      },
+      "answer": "B",
+      "explanation": "Punch-Out 統合は、ユーザーが Ariba 調達システムからサプライヤーの e コマースサイトに移動して製品を閲覧・選択し、カート情報を Ariba に戻して承認と処理を行うことを可能にします。",
+      "difficulty": "easy"
+    },
+    {
+      "id": 37,
+      "question": "SAP Ariba の Guided Buying はコンプライアンスの向上にどのように役立ちますか？（2つ選択）",
+      "options": {
+        "A": "ユーザーを優先サプライヤーの選択に誘導",
+        "B": "任意の非準拠調達を許可",
+        "C": "契約製品とカタログ商品を推奨",
+        "D": "すべての調達活動を禁止"
+      },
+      "answer": ["A", "C"],
+      "explanation": "Guided Buying は、ユーザーを優先サプライヤーの選択に誘導し、契約製品/カタログ商品を推奨することで、非準拠調達行動を削減します。",
+      "difficulty": "medium"
+    },
+    {
+      "id": 38,
+      "question": "SAP Ariba における Invoice Exception の一般的なタイプにはどのようなものがありますか？",
+      "options": {
+        "A": "数量差異のみ",
+        "B": "価格差異、数量差異、税額差異、PO 参照の欠落",
+        "C": "フォーマットエラーのみ",
+        "D": "重複請求書のみ"
+      },
+      "answer": "B",
+      "explanation": "請求書例外のタイプには、価格差異、数量差異、税額差異、発注書参照の欠落、重複請求書、サプライヤー情報の不一致などが含まれます。",
+      "difficulty": "medium"
+    },
+    {
+      "id": 39,
+      "question": "SAP Ariba における Payment Terms Discount はどのように計算されますか？",
+      "options": {
+        "A": "ランダムな割合で計算",
+        "B": "支払条件で定義された割引率と支払いタイミングに基づく",
+        "C": "すべての請求書に一律10%割引",
+        "D": "高額請求書のみに適用"
+      },
+      "answer": "B",
+      "explanation": "支払条件割引は、定義された条件に基づいて計算されます。例えば「2/10 Net 30」は、10日以内に支払えば2%割引、そうでなければ30日以内に全額支払いを意味します。",
+      "difficulty": "medium"
+    },
+    {
+      "id": 40,
+      "question": "SAP Ariba において Payment Batch とは何ですか？",
+      "options": {
+        "A": "単一の支払い",
+        "B": "複数の支払いを1回の処理にまとめて効率を向上",
+        "C": "支払いの遅延",
+        "D": "支払いのキャンセル"
+      },
+      "answer": "B",
+      "explanation": "Payment Batch は、複数の支払い待ち請求書を1回のバッチ処理にまとめ、支払い効率を向上させ、銀行取引手数料を削減します。",
+      "difficulty": "easy"
+    },
+    {
+      "id": 41,
+      "question": "SAP Ariba における Supplier Enablement プログラムの目標は何ですか？",
+      "options": {
+        "A": "サプライヤー数の削減",
+        "B": "サプライヤーが登録して Ariba Network で電子取引を開始できるよう支援",
+        "C": "サプライヤーの財務状況の評価",
+        "D": "サプライヤーとの関係終了"
+      },
+      "answer": "B",
+      "explanation": "Supplier Enablement プログラムは、サプライヤーが Ariba Network に正常に登録し、電子取引機能を設定し、バイヤーとの電子化されたビジネス取引を開始できるよう支援することを目的としています。",
+      "difficulty": "easy"
+    },
+    {
+      "id": 42,
+      "question": "SAP Ariba における Account Hierarchy（アカウント階層）の用途は何ですか？",
+      "options": {
+        "A": "組織構造の表示のみ",
+        "B": "企業グループ内の複数の調達組織の関係とアクセス権限を管理",
+        "C": "レポート表示のみに使用",
+        "D": "製品カタログの管理"
+      },
+      "answer": "B",
+      "explanation": "Account Hierarchy は、企業グループ内の複数の調達組織（子会社、支社）の関係を管理し、データアクセスと共有権限を制御するために使用されます。",
+      "difficulty": "medium"
+    },
+    {
+      "id": 43,
+      "question": "SAP Ariba の Data File Import 機能はどのような操作をサポートしていますか？（2つ選択）",
+      "options": {
+        "A": "ユーザーデータの一括インポート",
+        "B": "ソーシャルメディアの投稿のインポート",
+        "C": "サプライヤー情報の一括更新",
+        "D": "ビデオファイルのインポート"
+      },
+      "answer": ["A", "C"],
+      "explanation": "Data File Import は、ユーザーデータ、サプライヤー情報、商品分類、コストセンターなどのマスターデータの一括インポートと更新をサポートします。",
+      "difficulty": "medium"
+    },
+    {
+      "id": 44,
+      "question": "SAP Ariba における Security Policy ではどのような設定を構成できますか？",
+      "options": {
+        "A": "ユーザーインターフェースの色のみ",
+        "B": "パスワードポリシー、セッションタイムアウト、IP アクセス制限",
+        "C": "レポートフォーマットのみ",
+        "D": "カタログのソート順のみ"
+      },
+      "answer": "B",
+      "explanation": "Security Policy では、パスワードの複雑さ要件、パスワード有効期限ポリシー、セッションタイムアウト時間、IP アクセスホワイトリストなどのセキュリティ設定を構成できます。",
+      "difficulty": "medium"
+    },
+    {
+      "id": 45,
+      "question": "SAP Ariba における Event Messaging は何に使用されますか？",
+      "options": {
+        "A": "マーケティングメールの送信",
+        "B": "特定のビジネスイベント発生時に通知を送信",
+        "C": "ユーザーアクティビティの管理",
+        "D": "レポートの作成"
+      },
+      "answer": "B",
+      "explanation": "Event Messaging は、特定のビジネスイベント（発注作成、請求書期限、承認待ちなど）が発生した際に、関係者に自動的に通知を送信します。",
+      "difficulty": "easy"
+    },
+    {
+      "id": 46,
+      "question": "SAP Ariba において Document Versioning とは何ですか？",
+      "options": {
+        "A": "古いバージョンのドキュメントを削除",
+        "B": "ドキュメントの複数バージョンを保持し、変更履歴を追跡",
+        "C": "最新バージョンのみを保持",
+        "D": "複数のドキュメントを結合"
+      },
+      "answer": "B",
+      "explanation": "Document Versioning は、ドキュメント（契約、購買依頼など）の複数バージョンを保持し、各修正の内容、日時、修正者を記録して、監査追跡をサポートします。",
+      "difficulty": "easy"
+    },
+    {
+      "id": 47,
+      "question": "SAP Ariba の Audit Trail はどのような情報を提供しますか？（2つ選択）",
+      "options": {
+        "A": "すべてのユーザー操作とシステムイベントの記録",
+        "B": "従業員の休暇情報",
+        "C": "ドキュメントステータス変更履歴",
+        "D": "マーケティングデータ"
+      },
+      "answer": ["A", "C"],
+      "explanation": "Audit Trail は、完全なユーザー操作記録（作成、修正、承認など）とドキュメントステータス変更履歴を提供し、コンプライアンス監査をサポートします。",
+      "difficulty": "medium"
+    },
+    {
+      "id": 48,
+      "question": "SAP Ariba の導入において Cut-Over Planning の目的は何ですか？",
+      "options": {
+        "A": "プロジェクトのキャンセル",
+        "B": "旧システムから新システムへのスムーズな移行を計画",
+        "C": "プロジェクト予算の増加",
+        "D": "ユーザー数の削減"
+      },
+      "answer": "B",
+      "explanation": "Cut-Over Planning は、旧システムから Ariba への移行ステップを詳細に計画し、データ移行、ユーザートレーニング、テスト、稼働開始のスケジュールを含みます。",
+      "difficulty": "medium"
+    },
+    {
+      "id": 49,
+      "question": "SAP Ariba における System Integration Testing (SIT) は何を検証しますか？",
+      "options": {
+        "A": "単一機能の独立した動作",
+        "B": "Ariba と他のシステム（ERP など）間の統合の正確性",
+        "C": "ユーザーインターフェースのデザイン",
+        "D": "システムハードウェアのパフォーマンス"
+      },
+      "answer": "B",
+      "explanation": "SIT は、Ariba とバックエンド ERP システムおよびその他の統合システム間のデータ交換とビジネスプロセス統合が正しく機能しているかを検証します。",
+      "difficulty": "medium"
+    },
+    {
+      "id": 50,
+      "question": "SAP Ariba における User Acceptance Testing (UAT) は誰が実行しますか？",
+      "options": {
+        "A": "開発チームのみ",
+        "B": "ビジネスユーザーがシステムがビジネス要件を満たしているかを検証",
+        "C": "システム管理者のみ",
+        "D": "サプライヤー"
+      },
+      "answer": "B",
+      "explanation": "UAT はビジネスユーザーによって実行され、設定された Ariba システムがビジネス要件を満たしているか、プロセスが期待通りかを検証します。",
+      "difficulty": "easy"
+    }
+  ]
+}

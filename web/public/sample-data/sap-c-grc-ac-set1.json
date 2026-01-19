@@ -1,0 +1,773 @@
+{
+  "exam": {
+    "id": "sap-c-grc-ac-set1",
+    "name": "SAP C_GRC_AC 模拟考试 #1",
+    "code": "C_GRC_AC",
+    "provider": "SAP",
+    "language": "zh-CN",
+    "description": "SAP GRC Access Control 访问控制认证模拟考试第一套，涵盖访问风险分析、访问请求管理、业务角色管理、紧急访问管理等核心领域。",
+    "totalQuestions": 50,
+    "passingScore": 65,
+    "examTime": 180,
+    "domains": [
+      { "name": "访问风险分析与修复", "percentage": 25 },
+      { "name": "访问请求管理", "percentage": 25 },
+      { "name": "业务角色管理", "percentage": 20 },
+      { "name": "紧急访问管理", "percentage": 15 },
+      { "name": "系统配置与集成", "percentage": 15 }
+    ],
+    "tags": ["SAP", "GRC", "Access Control", "风险管理", "合规", "访问控制"]
+  },
+  "questions": [
+    {
+      "id": 1,
+      "question": "在 SAP GRC Access Control 中，职责分离 (SoD) 风险分析的主要目的是什么？",
+      "options": {
+        "A": "监控用户登录活动",
+        "B": "识别用户或角色中存在的冲突权限组合",
+        "C": "管理用户密码策略",
+        "D": "配置系统连接参数"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "职责分离 (Segregation of Duties, SoD) 风险分析的主要目的是识别用户或角色中存在的冲突权限组合。例如，一个用户同时拥有创建供应商和审批付款的权限就构成 SoD 风险，因为这可能导致欺诈行为。",
+      "difficulty": "easy",
+      "domain": "访问风险分析与修复"
+    },
+    {
+      "id": 2,
+      "question": "在 Access Request Management 中，访问请求的典型生命周期包括哪些阶段？（选择三个）",
+      "options": {
+        "A": "请求创建",
+        "B": "数据库备份",
+        "C": "审批工作流",
+        "D": "权限配置"
+      },
+      "answer": ["A", "C", "D"],
+      "answerType": "multiple",
+      "explanation": "访问请求的典型生命周期包括：请求创建（用户或管理员发起访问请求）、审批工作流（通过配置的审批路径进行批准）、权限配置（批准后自动或手动在目标系统中配置权限）。数据库备份不属于访问请求生命周期。",
+      "difficulty": "medium",
+      "domain": "访问请求管理"
+    },
+    {
+      "id": 3,
+      "question": "Business Role Management (BRM) 中，业务角色的主要组成部分是什么？",
+      "options": {
+        "A": "用户主数据",
+        "B": "技术角色和权限的集合",
+        "C": "系统配置参数",
+        "D": "审计日志记录"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "在 Business Role Management 中，业务角色是技术角色和权限的集合。业务角色将一个或多个技术角色（如 SAP 单一角色、复合角色）组合在一起，代表特定的业务职能，便于管理和分配。",
+      "difficulty": "medium",
+      "domain": "业务角色管理"
+    },
+    {
+      "id": 4,
+      "question": "SAP GRC Emergency Access Management (EAM/Firefighter) 的核心功能是什么？",
+      "options": {
+        "A": "自动创建用户账户",
+        "B": "提供受控的临时高权限访问",
+        "C": "管理用户密码重置",
+        "D": "配置网络防火墙规则"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Emergency Access Management（也称为 Firefighter）的核心功能是提供受控的临时高权限访问。它允许用户在紧急情况下获得额外权限来执行特定任务，同时记录所有活动以供审计，确保紧急访问的可追溯性。",
+      "difficulty": "easy",
+      "domain": "紧急访问管理"
+    },
+    {
+      "id": 5,
+      "question": "在 SAP GRC Access Control 中，连接到后端 SAP 系统需要配置什么？",
+      "options": {
+        "A": "仅需要系统 IP 地址",
+        "B": "RFC 连接和连接器配置",
+        "C": "只需要用户名和密码",
+        "D": "无需配置，自动连接"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "SAP GRC Access Control 连接到后端 SAP 系统需要配置 RFC (Remote Function Call) 连接和相应的连接器配置。这包括定义连接参数、认证方式、系统类型等，以确保 GRC 系统能够与目标系统通信并执行权限分析和配置。",
+      "difficulty": "medium",
+      "domain": "系统配置与集成"
+    },
+    {
+      "id": 6,
+      "question": "在 Access Risk Analysis 中，\"关键操作\"(Critical Action) 指的是什么？",
+      "options": {
+        "A": "任何用户执行的常规操作",
+        "B": "单独执行就可能构成风险的高敏感操作",
+        "C": "系统维护操作",
+        "D": "用户登录操作"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "关键操作 (Critical Action) 是指单独执行就可能构成风险的高敏感操作，不需要与其他操作组合。例如，更改银行主数据、删除审计日志等。这与 SoD 风险不同，后者需要两个或多个权限的组合才构成风险。",
+      "difficulty": "medium",
+      "domain": "访问风险分析与修复"
+    },
+    {
+      "id": 7,
+      "question": "在 Access Request Management 中，以下哪些是请求类型？（选择三个）",
+      "options": {
+        "A": "新建用户请求",
+        "B": "角色变更请求",
+        "C": "系统备份请求",
+        "D": "用户删除请求"
+      },
+      "answer": ["A", "B", "D"],
+      "answerType": "multiple",
+      "explanation": "Access Request Management 支持多种请求类型，包括：新建用户请求（创建新用户账户）、角色变更请求（添加或删除用户角色）、用户删除请求（停用或删除用户）。系统备份不属于访问请求管理的范围。",
+      "difficulty": "easy",
+      "domain": "访问请求管理"
+    },
+    {
+      "id": 8,
+      "question": "在 Business Role Management 中，角色派生的主要好处是什么？",
+      "options": {
+        "A": "减少系统存储空间",
+        "B": "基于主角色自动创建带有组织级别限制的派生角色",
+        "C": "提高系统性能",
+        "D": "简化用户登录流程"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "角色派生允许基于主角色 (Master Role) 自动创建带有组织级别限制的派生角色 (Derived Role)。派生角色继承主角色的事务和权限，但应用不同的组织值（如公司代码、工厂），从而简化角色管理和维护。",
+      "difficulty": "hard",
+      "domain": "业务角色管理"
+    },
+    {
+      "id": 9,
+      "question": "Firefighter 日志记录了用户在紧急访问期间执行的哪些信息？",
+      "options": {
+        "A": "仅用户登录时间",
+        "B": "执行的事务、更改的数据、访问时间和持续时间",
+        "C": "只有失败的操作",
+        "D": "系统性能指标"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Firefighter 日志全面记录紧急访问期间的所有活动，包括：执行的事务代码、更改的数据（旧值和新值）、访问开始和结束时间、持续时间等。这些详细记录确保紧急访问的可审计性。",
+      "difficulty": "medium",
+      "domain": "紧急访问管理"
+    },
+    {
+      "id": 10,
+      "question": "SAP GRC Access Control 支持与哪些类型的系统集成？（选择两个）",
+      "options": {
+        "A": "SAP ERP 系统",
+        "B": "物理门禁系统",
+        "C": "非 SAP 系统（通过连接器）",
+        "D": "电子邮件服务器"
+      },
+      "answer": ["A", "C"],
+      "answerType": "multiple",
+      "explanation": "SAP GRC Access Control 支持与多种系统集成：SAP ERP 系统（如 S/4HANA、ECC）通过原生集成，非 SAP 系统（如 Oracle、PeopleSoft）通过连接器框架。物理门禁和邮件服务器不在访问控制的范围内。",
+      "difficulty": "medium",
+      "domain": "系统配置与集成"
+    },
+    {
+      "id": 11,
+      "question": "风险分析报告中，\"缓解控制\" (Mitigating Control) 的作用是什么？",
+      "options": {
+        "A": "完全消除识别的风险",
+        "B": "记录并监控已接受的风险，降低其影响",
+        "C": "自动删除冲突的权限",
+        "D": "创建新的用户账户"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "缓解控制用于记录并监控已接受的风险，降低其影响。当 SoD 风险由于业务需要无法完全消除时，可以分配缓解控制来记录风险、定义监控措施和责任人，确保风险在可接受范围内。",
+      "difficulty": "medium",
+      "domain": "访问风险分析与修复"
+    },
+    {
+      "id": 12,
+      "question": "在配置访问请求工作流时，可以使用哪些审批方式？（选择三个）",
+      "options": {
+        "A": "基于角色所有者的审批",
+        "B": "基于组织层次的管理者审批",
+        "C": "自动审批（无需人工）",
+        "D": "基于用户生日的审批"
+      },
+      "answer": ["A", "B", "C"],
+      "answerType": "multiple",
+      "explanation": "Access Request Management 支持多种审批方式：基于角色所有者的审批、基于组织层次的管理者审批、自动审批（对于低风险请求可配置自动批准）。用户生日不是有效的审批条件。",
+      "difficulty": "medium",
+      "domain": "访问请求管理"
+    },
+    {
+      "id": 13,
+      "question": "在 BRM 中，\"角色挖掘\" (Role Mining) 功能的目的是什么？",
+      "options": {
+        "A": "查找用户密码",
+        "B": "分析现有权限使用情况以建议最优角色设计",
+        "C": "删除未使用的角色",
+        "D": "备份角色配置"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "角色挖掘功能分析组织中用户的实际权限使用情况和模式，基于这些数据建议最优的角色设计。这帮助组织设计更符合实际业务需求的角色，减少过度授权。",
+      "difficulty": "hard",
+      "domain": "业务角色管理"
+    },
+    {
+      "id": 14,
+      "question": "Firefighter ID 和 Firefighter 角色的关系是什么？",
+      "options": {
+        "A": "它们是完全相同的概念",
+        "B": "Firefighter ID 是用于访问的特殊用户 ID，Firefighter 角色定义其权限",
+        "C": "Firefighter 角色是用户的日常角色",
+        "D": "它们没有任何关系"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Firefighter ID 是一个特殊的用户账户，用于紧急访问场景。Firefighter 角色定义了该 ID 拥有的权限。用户通过 Firefighter 功能临时使用 Firefighter ID 来获得其角色所授予的权限，所有活动都被记录。",
+      "difficulty": "medium",
+      "domain": "紧急访问管理"
+    },
+    {
+      "id": 15,
+      "question": "在 SAP GRC Access Control 中，\"后台作业\" (Background Job) 主要用于什么？（选择两个）",
+      "options": {
+        "A": "定期执行风险分析",
+        "B": "显示用户界面",
+        "C": "同步用户和角色数据",
+        "D": "创建图形报表"
+      },
+      "answer": ["A", "C"],
+      "answerType": "multiple",
+      "explanation": "后台作业在 SAP GRC 中用于：定期执行风险分析（自动化合规检查）、同步用户和角色数据（保持 GRC 与后端系统数据一致）。用户界面显示和图形报表是前端功能，不通过后台作业执行。",
+      "difficulty": "medium",
+      "domain": "系统配置与集成"
+    },
+    {
+      "id": 16,
+      "question": "在风险分析中，\"权限级别分析\" 和 \"操作级别分析\" 的主要区别是什么？",
+      "options": {
+        "A": "它们完全相同",
+        "B": "操作级别只检查事务代码，权限级别还检查授权对象和字段值",
+        "C": "权限级别只检查用户名",
+        "D": "操作级别分析更准确"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "操作级别分析只检查事务代码（T-Code）层面的冲突，而权限级别分析更深入，还检查授权对象和字段值层面的冲突。权限级别分析更精确，因为两个用户可能有相同的事务代码但由于字段值限制实际上并不存在风险。",
+      "difficulty": "hard",
+      "domain": "访问风险分析与修复"
+    },
+    {
+      "id": 17,
+      "question": "访问请求中的 \"风险分析模拟\" 功能有什么作用？",
+      "options": {
+        "A": "模拟系统故障",
+        "B": "在请求批准前预测授予请求的权限将产生的风险",
+        "C": "测试网络连接",
+        "D": "模拟用户登录"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "风险分析模拟允许在访问请求批准前预测如果授予请求的权限将产生什么风险。这帮助审批者做出知情决定，了解批准请求对用户 SoD 风险状况的影响。",
+      "difficulty": "medium",
+      "domain": "访问请求管理"
+    },
+    {
+      "id": 18,
+      "question": "在 BRM 中设计业务角色时，应遵循什么原则？",
+      "options": {
+        "A": "尽可能包含更多权限",
+        "B": "最小权限原则，只授予执行工作所需的权限",
+        "C": "所有用户使用相同的角色",
+        "D": "避免使用任何限制"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "业务角色设计应遵循最小权限原则 (Principle of Least Privilege)，只授予用户执行其工作职能所需的最少权限。这减少了安全风险和 SoD 冲突的可能性。",
+      "difficulty": "easy",
+      "domain": "业务角色管理"
+    },
+    {
+      "id": 19,
+      "question": "Firefighter 控制器 (Controller) 的职责是什么？",
+      "options": {
+        "A": "执行紧急访问任务",
+        "B": "审查和监控 Firefighter 活动日志",
+        "C": "管理系统备份",
+        "D": "配置网络设置"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Firefighter 控制器负责审查和监控 Firefighter 活动日志。控制器定期检查 Firefighter 用户在紧急访问期间执行的操作，确保这些访问是适当的和授权的，发现任何异常活动。",
+      "difficulty": "medium",
+      "domain": "紧急访问管理"
+    },
+    {
+      "id": 20,
+      "question": "SAP GRC Access Control 的风险规则 (Rule Set) 包含什么？（选择两个）",
+      "options": {
+        "A": "SoD 风险定义",
+        "B": "用户密码规则",
+        "C": "关键操作定义",
+        "D": "网络安全规则"
+      },
+      "answer": ["A", "C"],
+      "answerType": "multiple",
+      "explanation": "风险规则集包含：SoD 风险定义（定义哪些权限组合构成冲突）、关键操作定义（定义单独执行就有风险的操作）。密码规则和网络安全规则不在 GRC 风险规则集的范围内。",
+      "difficulty": "medium",
+      "domain": "系统配置与集成"
+    },
+    {
+      "id": 21,
+      "question": "在访问风险分析中，\"风险优先级\" 的主要用途是什么？",
+      "options": {
+        "A": "确定用户的薪资级别",
+        "B": "帮助确定哪些风险需要优先处理和修复",
+        "C": "排序用户列表",
+        "D": "决定系统升级顺序"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "风险优先级（通常分为高、中、低）帮助组织确定哪些风险需要优先处理和修复。高优先级风险应该首先解决，因为它们可能导致更严重的合规问题或潜在损失。",
+      "difficulty": "easy",
+      "domain": "访问风险分析与修复"
+    },
+    {
+      "id": 22,
+      "question": "访问请求的 \"代理请求\" (Proxy Request) 功能允许什么？",
+      "options": {
+        "A": "配置网络代理",
+        "B": "允许授权人员代表其他用户提交访问请求",
+        "C": "创建虚拟用户",
+        "D": "加速网络连接"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "代理请求功能允许授权人员（如人事部门或IT管理员）代表其他用户提交访问请求。这在新员工入职或批量用户变更时特别有用，提高了请求处理效率。",
+      "difficulty": "medium",
+      "domain": "访问请求管理"
+    },
+    {
+      "id": 23,
+      "question": "BRM 中的 \"角色命名约定\" 的重要性是什么？",
+      "options": {
+        "A": "没有任何重要性",
+        "B": "帮助快速识别角色的用途、所属系统和组织",
+        "C": "减少系统存储",
+        "D": "提高网络速度"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "角色命名约定非常重要，它帮助快速识别角色的用途、所属系统和组织。良好的命名约定（如包含系统ID、业务功能、组织代码）使角色管理更加透明和高效。",
+      "difficulty": "medium",
+      "domain": "业务角色管理"
+    },
+    {
+      "id": 24,
+      "question": "在 Firefighter 配置中，\"访问原因\" (Reason Code) 的目的是什么？",
+      "options": {
+        "A": "记录系统错误",
+        "B": "要求用户说明使用紧急访问的业务原因",
+        "C": "配置显示颜色",
+        "D": "设置密码复杂度"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "访问原因码要求用户在使用 Firefighter 紧急访问时说明业务原因。这是审计控制的重要部分，记录为什么需要紧急访问，便于后续审查和合规检查。",
+      "difficulty": "easy",
+      "domain": "紧急访问管理"
+    },
+    {
+      "id": 25,
+      "question": "SAP GRC Access Control 中的 \"同步\" 操作用于什么？",
+      "options": {
+        "A": "同步系统时间",
+        "B": "将后端系统的用户、角色和组织数据同步到 GRC 系统",
+        "C": "同步用户密码",
+        "D": "同步邮件服务器"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "同步操作将后端 SAP 系统（如 ECC、S/4HANA）的用户、角色、组织结构等数据同步到 GRC 系统中。这确保 GRC 拥有最新数据用于风险分析和访问管理。",
+      "difficulty": "medium",
+      "domain": "系统配置与集成"
+    },
+    {
+      "id": 26,
+      "question": "风险分析报告中，\"交叉系统风险\" (Cross-System Risk) 指的是什么？",
+      "options": {
+        "A": "单一系统内的风险",
+        "B": "跨越多个系统的权限组合产生的风险",
+        "C": "系统硬件故障风险",
+        "D": "网络安全风险"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "交叉系统风险是指跨越多个系统的权限组合产生的风险。例如，用户在 ERP 系统中有创建采购订单的权限，在另一个系统中有批准付款的权限，虽然单独看每个系统没有 SoD，但跨系统组合存在风险。",
+      "difficulty": "hard",
+      "domain": "访问风险分析与修复"
+    },
+    {
+      "id": 27,
+      "question": "在访问请求管理中，\"批量请求\" 功能的用途是什么？",
+      "options": {
+        "A": "一次性为多个用户提交相似的访问请求",
+        "B": "增加系统存储容量",
+        "C": "批量删除用户",
+        "D": "备份数据库"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "批量请求功能允许一次性为多个用户提交相似的访问请求。这在部门重组、批量入职或角色标准化项目中非常有用，大大提高了处理效率。",
+      "difficulty": "medium",
+      "domain": "访问请求管理"
+    },
+    {
+      "id": 28,
+      "question": "BRM 中 \"角色认证\" (Role Certification) 的目的是什么？",
+      "options": {
+        "A": "为角色颁发证书",
+        "B": "定期审查角色内容和用户分配，确保其仍然适当",
+        "C": "测试角色性能",
+        "D": "加密角色数据"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "角色认证是定期审查角色内容（包含的权限）和用户分配的过程，确保角色设计仍然适当，用户分配仍然有效。这是持续合规管理的重要组成部分。",
+      "difficulty": "medium",
+      "domain": "业务角色管理"
+    },
+    {
+      "id": 29,
+      "question": "Firefighter 使用后的 \"强制注销\" 设置的作用是什么？",
+      "options": {
+        "A": "强制所有用户退出系统",
+        "B": "在指定时间后自动终止紧急访问会话",
+        "C": "删除用户账户",
+        "D": "重启系统"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "强制注销设置用于在指定时间（如2小时或1天）后自动终止紧急访问会话。这确保 Firefighter 访问不会无限期持续，是控制紧急访问风险的重要机制。",
+      "difficulty": "medium",
+      "domain": "紧急访问管理"
+    },
+    {
+      "id": 30,
+      "question": "在 GRC 配置中，\"组织规则\" (Organizational Rule) 用于什么？",
+      "options": {
+        "A": "定义公司组织结构",
+        "B": "基于用户的组织属性自动确定审批路径",
+        "C": "创建组织图表",
+        "D": "管理办公室位置"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "组织规则用于基于用户的组织属性（如部门、成本中心、地点）自动确定审批路径。例如，配置规则让财务部门的请求自动路由给财务经理审批。",
+      "difficulty": "hard",
+      "domain": "系统配置与集成"
+    },
+    {
+      "id": 31,
+      "question": "风险分析中的 \"修复\" (Remediation) 过程包括什么？（选择两个）",
+      "options": {
+        "A": "移除导致风险的权限",
+        "B": "增加更多权限",
+        "C": "分配缓解控制",
+        "D": "删除风险报告"
+      },
+      "answer": ["A", "C"],
+      "answerType": "multiple",
+      "explanation": "风险修复过程包括：移除导致风险的权限（消除风险根源）、分配缓解控制（当无法移除权限时降低风险影响）。增加权限会增加风险，删除报告不是有效的修复方法。",
+      "difficulty": "medium",
+      "domain": "访问风险分析与修复"
+    },
+    {
+      "id": 32,
+      "question": "访问请求工作流中的 \"升级\" (Escalation) 机制用于什么？",
+      "options": {
+        "A": "提升用户级别",
+        "B": "当审批者未在规定时间内处理时将请求升级到其他人",
+        "C": "增加系统权限",
+        "D": "升级软件版本"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "升级机制用于处理审批延迟问题。当指定的审批者未在规定时间内处理请求时，系统自动将请求升级到备用审批者或更高级别的管理者，确保请求不会无限期等待。",
+      "difficulty": "medium",
+      "domain": "访问请求管理"
+    },
+    {
+      "id": 33,
+      "question": "BRM 中的 \"角色层次结构\" (Role Hierarchy) 提供什么功能？",
+      "options": {
+        "A": "定义用户的薪资层次",
+        "B": "创建父子角色关系，实现权限继承",
+        "C": "排序用户列表",
+        "D": "管理网络拓扑"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "角色层次结构允许创建父子角色关系，子角色可以继承父角色的权限。这简化了角色设计和维护，当父角色更新时，变更自动传递到子角色。",
+      "difficulty": "hard",
+      "domain": "业务角色管理"
+    },
+    {
+      "id": 34,
+      "question": "在 Emergency Access Management 中，\"预批准\" (Pre-Approved) 访问意味着什么？",
+      "options": {
+        "A": "访问永久有效",
+        "B": "用户已预先获得使用特定 Firefighter ID 的授权，无需每次审批",
+        "C": "所有用户都可以访问",
+        "D": "无需记录日志"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "预批准访问意味着用户已预先获得使用特定 Firefighter ID 的授权，可以直接使用而无需每次都经过审批流程。但所有访问仍然被记录和监控，且通常有时间限制。",
+      "difficulty": "medium",
+      "domain": "紧急访问管理"
+    },
+    {
+      "id": 35,
+      "question": "GRC 连接器 (Connector) 的作用是什么？",
+      "options": {
+        "A": "连接网络电缆",
+        "B": "使 GRC 系统能够与不同类型的后端系统通信",
+        "C": "连接打印机",
+        "D": "连接数据库服务器"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "GRC 连接器使 GRC 系统能够与不同类型的后端系统通信，包括 SAP 系统和非 SAP 系统。连接器负责数据同步、风险分析执行和权限配置的通信。",
+      "difficulty": "easy",
+      "domain": "系统配置与集成"
+    },
+    {
+      "id": 36,
+      "question": "在访问风险分析中，什么是 \"补救\" (Remediation) 和 \"缓解\" (Mitigation) 的区别？",
+      "options": {
+        "A": "它们是相同的概念",
+        "B": "补救是消除风险，缓解是在无法消除时降低风险影响",
+        "C": "补救更快，缓解更慢",
+        "D": "补救用于用户，缓解用于角色"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "补救是通过移除冲突权限来消除风险，是首选方法。缓解是在由于业务需要无法消除风险时采用的方法，通过分配监控控制来降低风险影响，并记录接受风险的业务理由。",
+      "difficulty": "hard",
+      "domain": "访问风险分析与修复"
+    },
+    {
+      "id": 37,
+      "question": "在 ARM 中，\"自助服务\" (Self-Service) 功能允许用户做什么？",
+      "options": {
+        "A": "自己修复系统错误",
+        "B": "直接为自己提交访问请求",
+        "C": "配置系统参数",
+        "D": "管理其他用户账户"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "自助服务功能允许用户直接为自己提交访问请求，无需通过 IT 部门或管理员。这提高了效率，同时请求仍然需要通过配置的审批工作流。",
+      "difficulty": "easy",
+      "domain": "访问请求管理"
+    },
+    {
+      "id": 38,
+      "question": "BRM 中的 \"角色比较\" 功能用于什么？",
+      "options": {
+        "A": "比较用户的工作表现",
+        "B": "比较两个或多个角色的权限差异",
+        "C": "比较系统性能",
+        "D": "比较网络速度"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "角色比较功能允许比较两个或多个角色的权限差异，识别它们之间的共同权限和差异。这在角色审计、合并角色或分析权限分配时非常有用。",
+      "difficulty": "medium",
+      "domain": "业务角色管理"
+    },
+    {
+      "id": 39,
+      "question": "Firefighter 日志审查应由谁执行？",
+      "options": {
+        "A": "使用 Firefighter 的用户本人",
+        "B": "独立于 Firefighter 用户的控制器或审计员",
+        "C": "系统自动执行",
+        "D": "任何人都可以"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Firefighter 日志审查应由独立于 Firefighter 用户的控制器或审计员执行，确保职责分离。用户审查自己的日志会损害控制的有效性。",
+      "difficulty": "medium",
+      "domain": "紧急访问管理"
+    },
+    {
+      "id": 40,
+      "question": "SAP GRC 中的 \"规则集版本控制\" 有什么好处？（选择两个）",
+      "options": {
+        "A": "跟踪规则更改历史",
+        "B": "提高网络速度",
+        "C": "能够回滚到以前的版本",
+        "D": "减少存储空间"
+      },
+      "answer": ["A", "C"],
+      "answerType": "multiple",
+      "explanation": "规则集版本控制的好处包括：跟踪规则更改历史（谁在什么时候做了什么更改）、能够回滚到以前的版本（如果新规则有问题）。这不影响网络速度或存储空间。",
+      "difficulty": "medium",
+      "domain": "系统配置与集成"
+    },
+    {
+      "id": 41,
+      "question": "在风险分析中，\"用户级分析\" 和 \"角色级分析\" 的区别是什么？",
+      "options": {
+        "A": "它们完全相同",
+        "B": "用户级分析检查具体用户的风险，角色级分析检查角色定义的内在风险",
+        "C": "用户级分析更慢",
+        "D": "角色级分析只用于新角色"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "用户级分析检查具体用户实际拥有的权限组合产生的风险，角色级分析检查角色定义本身是否存在内在的权限冲突。角色级分析可以在角色分配给用户之前发现问题。",
+      "difficulty": "medium",
+      "domain": "访问风险分析与修复"
+    },
+    {
+      "id": 42,
+      "question": "访问请求中的 \"有效期\" (Validity Period) 设置用于什么？",
+      "options": {
+        "A": "设置密码有效期",
+        "B": "定义请求的权限何时过期并自动撤销",
+        "C": "设置系统运行时间",
+        "D": "定义工作时间"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "有效期设置定义请求的权限何时过期并自动撤销。这对于临时权限、项目性工作或合同工非常有用，确保权限在不再需要时自动被收回。",
+      "difficulty": "medium",
+      "domain": "访问请求管理"
+    },
+    {
+      "id": 43,
+      "question": "在 BRM 中，\"业务流程\" (Business Process) 如何与角色关联？",
+      "options": {
+        "A": "每个角色只能关联一个业务流程",
+        "B": "业务角色可以标记为支持特定的业务流程，便于管理和审计",
+        "C": "业务流程和角色没有关系",
+        "D": "业务流程自动创建角色"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "在 BRM 中，业务角色可以标记为支持特定的业务流程（如采购到付款、订单到收款）。这帮助组织从业务流程角度管理和审计角色，确保角色设计与业务需求一致。",
+      "difficulty": "hard",
+      "domain": "业务角色管理"
+    },
+    {
+      "id": 44,
+      "question": "在 Firefighter 配置中，\"通知\" 设置用于什么？",
+      "options": {
+        "A": "发送系统升级通知",
+        "B": "在紧急访问开始或结束时通知相关人员（如所有者、控制器）",
+        "C": "发送营销邮件",
+        "D": "通知网络管理员"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "通知设置用于在紧急访问开始或结束时自动通知相关人员，如 Firefighter 所有者、控制器或其他指定人员。这确保适当的监督和及时的日志审查。",
+      "difficulty": "easy",
+      "domain": "紧急访问管理"
+    },
+    {
+      "id": 45,
+      "question": "SAP GRC Access Control 的 \"仪表板\" (Dashboard) 提供什么信息？（选择三个）",
+      "options": {
+        "A": "风险状况概览",
+        "B": "天气预报",
+        "C": "待处理请求数量",
+        "D": "合规趋势"
+      },
+      "answer": ["A", "C", "D"],
+      "answerType": "multiple",
+      "explanation": "GRC 仪表板提供关键管理信息：风险状况概览（各系统的风险分布）、待处理请求数量（需要审批的请求）、合规趋势（风险随时间的变化）。天气预报不在 GRC 功能范围内。",
+      "difficulty": "easy",
+      "domain": "系统配置与集成"
+    },
+    {
+      "id": 46,
+      "question": "在风险分析中，\"函数\" (Function) 的定义是什么？",
+      "options": {
+        "A": "数学计算公式",
+        "B": "一组相关的事务、授权对象和字段值的集合，代表特定业务活动",
+        "C": "编程代码",
+        "D": "用户界面组件"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "在 GRC 风险分析中，函数是一组相关的事务、授权对象和字段值的集合，代表特定的业务活动（如创建采购订单、审批付款）。函数是构建 SoD 风险规则的基础单元。",
+      "difficulty": "hard",
+      "domain": "访问风险分析与修复"
+    },
+    {
+      "id": 47,
+      "question": "访问请求工作流中可以配置的条件类型包括什么？（选择两个）",
+      "options": {
+        "A": "基于请求的风险级别",
+        "B": "基于当天温度",
+        "C": "基于请求的角色类型",
+        "D": "基于用户身高"
+      },
+      "answer": ["A", "C"],
+      "answerType": "multiple",
+      "explanation": "工作流条件可以基于：请求的风险级别（高风险请求需要更多审批）、请求的角色类型（敏感角色需要特殊审批）。温度和身高不是有效的业务条件。",
+      "difficulty": "medium",
+      "domain": "访问请求管理"
+    },
+    {
+      "id": 48,
+      "question": "BRM 中的 \"技术角色\" 和 \"业务角色\" 的关系是什么？",
+      "options": {
+        "A": "它们是相同的",
+        "B": "业务角色包含一个或多个技术角色，提供业务层面的抽象",
+        "C": "技术角色包含业务角色",
+        "D": "它们没有关系"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "业务角色是更高层次的抽象，包含一个或多个技术角色（如 SAP 单一角色或复合角色）。业务角色代表业务职能，便于业务用户理解，而技术角色包含实际的系统权限。",
+      "difficulty": "medium",
+      "domain": "业务角色管理"
+    },
+    {
+      "id": 49,
+      "question": "Firefighter 的 \"集中式\" 和 \"分散式\" 日志记录有什么区别？",
+      "options": {
+        "A": "没有区别",
+        "B": "集中式将日志存储在 GRC 系统，分散式将日志存储在后端系统",
+        "C": "集中式更慢",
+        "D": "分散式不记录日志"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "集中式日志记录将所有 Firefighter 活动日志集中存储在 GRC 系统中，便于统一审查。分散式日志记录将日志存储在各自的后端系统中。集中式通常更便于管理和审计。",
+      "difficulty": "hard",
+      "domain": "紧急访问管理"
+    },
+    {
+      "id": 50,
+      "question": "在 SAP GRC Access Control 实施中，\"传输管理\" (Transport Management) 用于什么？",
+      "options": {
+        "A": "管理实物运输",
+        "B": "在开发、测试和生产系统之间迁移 GRC 配置",
+        "C": "管理用户交通补贴",
+        "D": "配置网络路由"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "传输管理用于在开发、测试和生产系统之间迁移 GRC 配置，包括风险规则集、工作流配置、连接器设置等。这确保配置变更经过适当测试后再部署到生产环境。",
+      "difficulty": "medium",
+      "domain": "系统配置与集成"
+    }
+  ]
+}

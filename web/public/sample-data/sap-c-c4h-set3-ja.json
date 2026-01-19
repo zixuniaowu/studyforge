@@ -1,0 +1,773 @@
+{
+  "exam": {
+    "id": "sap-c-c4h-set3-ja",
+    "name": "SAP C_C4H 模擬試験 #3",
+    "code": "C_C4H",
+    "provider": "SAP",
+    "language": "ja",
+    "description": "SAP Commerce Cloud 認定模擬試験第3セット - エンタープライズ アプリケーション",
+    "totalQuestions": 50,
+    "passingScore": 65,
+    "examTime": 180,
+    "domains": [
+      { "name": "エンタープライズデプロイメントと運用", "percentage": 25 },
+      { "name": "B2B 高度な機能", "percentage": 25 },
+      { "name": "マイクロサービスとクラウドネイティブ", "percentage": 20 },
+      { "name": "データ管理と分析", "percentage": 15 },
+      { "name": "ベストプラクティスとアーキテクチャ", "percentage": 15 }
+    ],
+    "tags": ["SAP", "Commerce Cloud", "C_C4H", "B2B", "Cloud Native", "Enterprise"]
+  },
+  "questions": [
+    {
+      "id": "sap-c-c4h-set3-ja-q1",
+      "domain": "エンタープライズデプロイメントと運用",
+      "question": "SAP Commerce Cloud の Cloud Portal は主に何に使用されますか？",
+      "options": {
+        "A": "コードの開発",
+        "B": "クラウド環境のデプロイメント、ビルド、監視の管理",
+        "C": "製品データの編集",
+        "D": "マーケティングキャンペーンの作成"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Cloud Portal は SAP Commerce Cloud (CCv2) の管理インターフェースで、クラウド環境のライフサイクル全体を管理します：ビルドパッケージの作成とデプロイ、異なる環境（開発、ステージング、本番）の管理、システムステータスの監視、エンドポイントとサービスの構成。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "sap-c-c4h-set3-ja-q2",
+      "domain": "エンタープライズデプロイメントと運用",
+      "question": "Commerce Cloud CCv2 で manifest.json ファイルの役割は何ですか？",
+      "options": {
+        "A": "フロントエンドコンポーネントの定義",
+        "B": "データベース接続の構成",
+        "C": "デプロイメント構成と拡張機能の定義",
+        "D": "ユーザー認証情報の保存"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "manifest.json は CCv2 デプロイメントのコア構成ファイルで、以下を定義します：デプロイする拡張機能のリスト、各環境固有の構成、Web アプリケーション設定、プロパティのオーバーライド、必要なアドオン（Solr、Media サービスなど）。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "sap-c-c4h-set3-ja-q3",
+      "domain": "エンタープライズデプロイメントと運用",
+      "question": "Commerce Cloud のブルーグリーンデプロイメント戦略の主な利点は何ですか？",
+      "options": {
+        "A": "サーバー数の削減",
+        "B": "ゼロダウンタイムデプロイメントと迅速なロールバック機能",
+        "C": "ライセンスコストの削減",
+        "D": "コード開発の簡素化"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "ブルーグリーンデプロイメントは2セットの環境を維持することでゼロダウンタイム更新を実現します：新バージョンを非アクティブ環境（グリーン）にデプロイし、検証後にトラフィックを切り替えます。問題が発生した場合、すぐに元の環境（ブルー）に切り替えて迅速にロールバックできます。これは CCv2 の標準デプロイメント戦略です。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "sap-c-c4h-set3-ja-q4",
+      "domain": "エンタープライズデプロイメントと運用",
+      "question": "Commerce Cloud で自動化 CI/CD プロセスをどのように実装しますか？",
+      "options": {
+        "A": "手動デプロイのみ可能",
+        "B": "Cloud Portal API を使用して Jenkins/GitLab CI と統合",
+        "C": "組み込みの CI/CD ツールを使用",
+        "D": "FTP でコードをアップロード"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Commerce Cloud は Cloud Portal API を提供し、Jenkins、GitLab CI、Azure DevOps などの CI/CD ツールと統合できます。API を通じてビルドの自動トリガー、指定環境へのデプロイ、デプロイメントステータスの取得が可能で、完全な自動化パイプラインを実現します。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "sap-c-c4h-set3-ja-q5",
+      "domain": "エンタープライズデプロイメントと運用",
+      "question": "Commerce Cloud の Hot Folder 機能はどのようなシナリオで使用されますか？",
+      "options": {
+        "A": "一時ファイルの保存",
+        "B": "指定ディレクトリに配置されたファイルの自動処理（データインポートなど）",
+        "C": "ホットデータのキャッシュ",
+        "D": "ログファイルの保存"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Hot Folder は指定ディレクトリに配置されたファイルを自動処理するファイル監視メカニズムです。データインポートシナリオでよく使用されます：CSV/ImpEx ファイルを Hot Folder に配置すると、システムが自動的に検出してインポートを実行します。プロセッサとエラー処理戦略の構成をサポートします。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "sap-c-c4h-set3-ja-q6",
+      "domain": "エンタープライズデプロイメントと運用",
+      "question": "CCv2 で機密構成プロパティをどのように管理しますか？（2つ選択）",
+      "options": {
+        "A": "ソースコードにハードコード",
+        "B": "Cloud Portal の環境変数を使用",
+        "C": "manifest.json にプレーンテキストで保存",
+        "D": "SAP Credential Store サービスを使用"
+      },
+      "answer": ["B", "D"],
+      "answerType": "multiple",
+      "explanation": "CCv2 は機密構成を安全に保存する複数の方法を提供します：1) Cloud Portal 環境変数：Portal で設定し、コードリポジトリには保存されない、2) SAP Credential Store：専用の認証情報管理サービスで、暗号化ストレージとアクセス制御をサポート。機密情報はハードコードしたり manifest.json に置いたりすべきではありません。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "sap-c-c4h-set3-ja-q7",
+      "domain": "エンタープライズデプロイメントと運用",
+      "question": "Commerce Cloud の水平スケーリングはどのように実現されますか？",
+      "options": {
+        "A": "単一サーバーの CPU とメモリを増加",
+        "B": "アプリケーションサーバーノードを追加",
+        "C": "より高速なデータベースを使用",
+        "D": "同時ユーザー数を減少"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "水平スケーリングは、より高い負荷を処理するためにアプリケーションサーバーノードを追加することで実現されます。Commerce Cloud は複数の POD（アプリケーションインスタンス）の構成をサポートし、ロードバランサーが自動的にリクエストを分散します。これは垂直スケーリングよりも弾力性があり、コスト効率が高いです。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "sap-c-c4h-set3-ja-q8",
+      "domain": "エンタープライズデプロイメントと運用",
+      "question": "Commerce Cloud で HAC (Hybris Administration Console) は本番環境でどのように構成すべきですか？",
+      "options": {
+        "A": "完全にオープンアクセス",
+        "B": "IP アクセスを制限し強力な認証を有効化",
+        "C": "完全に無効化",
+        "D": "デフォルトパスワードを使用"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "HAC は強力な管理機能を提供するため、本番環境では厳重に保護する必要があります：アクセス可能な IP 範囲の制限、強力なパスワードの強制、二要素認証の検討、危険な機能（スクリプト実行など）の無効化。完全に無効化すると運用に影響し、完全にオープンにするとセキュリティリスクがあります。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "sap-c-c4h-set3-ja-q9",
+      "domain": "エンタープライズデプロイメントと運用",
+      "question": "Commerce Cloud のログ管理ベストプラクティスには何が含まれますか？（2つ選択）",
+      "options": {
+        "A": "すべてのユーザーパスワードを記録",
+        "B": "適切なログレベルを構成",
+        "C": "集中ログ収集（ELK など）を使用",
+        "D": "パフォーマンス向上のためすべてのログを無効化"
+      },
+      "answer": ["B", "C"],
+      "answerType": "multiple",
+      "explanation": "ログ管理のベストプラクティス：1) 環境に応じて適切なログレベルを構成（本番環境は INFO/WARN、開発環境は DEBUG）、2) ELK や同様のツールを使用して集中的にログを収集・分析。機密情報（パスワード）を記録すべきではなく、重要なログを無効にすべきでもありません。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "sap-c-c4h-set3-ja-q10",
+      "domain": "エンタープライズデプロイメントと運用",
+      "question": "Commerce Cloud の Maintenance Mode 機能は何に使用されますか？",
+      "options": {
+        "A": "システムエラーの自動修復",
+        "B": "メンテナンス期間中にユーザーにフレンドリーな通知ページを表示",
+        "C": "期限切れデータのクリーンアップ",
+        "D": "データベースのアップグレード"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Maintenance Mode は、システムメンテナンス期間中（デプロイ、データ移行など）にエラーメッセージではなくフレンドリーなメンテナンスページをユーザーに表示するために使用されます。カスタムメンテナンスページの内容と予想復旧時間を構成でき、ユーザーエクスペリエンスを向上させます。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "sap-c-c4h-set3-ja-q11",
+      "domain": "エンタープライズデプロイメントと運用",
+      "question": "Commerce Cloud でデータベースマイグレーションをどのように実装しますか？",
+      "options": {
+        "A": "本番データベースで直接 SQL を実行",
+        "B": "System Update (Update Running System) を使用",
+        "C": "データファイルを手動で修正",
+        "D": "データベースを再構築"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Commerce Cloud は System Update メカニズムを使用してデータベースマイグレーションを処理します。Type System が変更された場合、HAC またはコマンドラインから Update Running System を実行すると、システムが必要なデータベース変更スクリプトを自動的に生成・実行し、データの整合性を保証します。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "sap-c-c4h-set3-ja-q12",
+      "domain": "エンタープライズデプロイメントと運用",
+      "question": "Commerce Cloud のバックアップ戦略には何を含めるべきですか？",
+      "options": {
+        "A": "コードのみバックアップ",
+        "B": "データベースのみバックアップ",
+        "C": "データベース、メディアファイル、Solr インデックス",
+        "D": "ユーザーデータのみバックアップ"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "完全なバックアップ戦略には以下を含めるべきです：1) データベース：コアビジネスデータ、2) メディアファイル：製品画像など、3) Solr インデックス：再構築可能だが時間がかかる。コードはバージョン管理システムで管理されるため、個別にバックアップする必要はありません。CCv2 は自動バックアップ機能を提供します。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "sap-c-c4h-set3-ja-q13",
+      "domain": "B2B 高度な機能",
+      "question": "Commerce Cloud B2B の Organization モデルはどの階層をサポートしていますか？",
+      "options": {
+        "A": "単一組織のみサポート",
+        "B": "複数レベルの組織単位（Unit）階層構造をサポート",
+        "C": "2階層構造のみサポート",
+        "D": "組織構造をサポートしない"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "B2B Commerce は複雑な複数レベルの組織モデルをサポートしています。Organization の下に複数レベルの Unit（組織単位）を作成でき、各 Unit はサブ Unit を持つことができ、ツリー構造を形成します。ユーザーと予算は特定の Unit に関連付けられ、階層管理と権限制御を実現します。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "sap-c-c4h-set3-ja-q14",
+      "domain": "B2B 高度な機能",
+      "question": "B2B Commerce の Budget 機能は何に使用されますか？",
+      "options": {
+        "A": "プロジェクトコスト見積もり",
+        "B": "組織またはユーザーの購買支出限度額を制御",
+        "C": "製品原価の計算",
+        "D": "プロモーション予算の管理"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Budget 機能により、組織単位またはユーザーに購買予算制限を設定できます。ユーザーが注文する際にシステムが予算残高をチェックし、予算を超える注文は承認が必要か拒否されます。期間（月/四半期/年）ごとの予算設定をサポートします。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "sap-c-c4h-set3-ja-q15",
+      "domain": "B2B 高度な機能",
+      "question": "Commerce Cloud B2B の注文承認プロセスはどのように構成されますか？",
+      "options": {
+        "A": "システムにハードコード",
+        "B": "Approval Permission と Order Threshold ルールを定義",
+        "C": "デフォルトプロセスのみ使用可能",
+        "D": "データベースの修正が必要"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "B2B 承認プロセスは構成によって実装されます：承認者に割り当てる Approval Permission（承認権限）を定義、承認をトリガーする Order Threshold（注文閾値）を設定、金額、製品カテゴリなどの条件に基づいて複数レベルの承認プロセスを構成できます。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "sap-c-c4h-set3-ja-q16",
+      "domain": "B2B 高度な機能",
+      "question": "B2B Commerce の Cost Center 機能の役割は何ですか？",
+      "options": {
+        "A": "送料の計算",
+        "B": "購買支出を異なるコストセンターに割り当てて財務会計に使用",
+        "C": "倉庫コストの管理",
+        "D": "プロモーションコストの計算"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Cost Center（コストセンター）により、B2B バイヤーは注文時に支出をどのコストセンターに割り当てるかを選択できます。これは企業の財務システムと連携し、原価計算と部門予算管理を容易にします。注文データにはコストセンター情報が含まれ、バックエンドシステムに渡されます。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "sap-c-c4h-set3-ja-q17",
+      "domain": "B2B 高度な機能",
+      "question": "Commerce Cloud B2B の Quick Order 機能はどのように効率を向上させますか？",
+      "options": {
+        "A": "製品数を減らす",
+        "B": "SKU と数量を入力して複数の製品を素早く追加できる",
+        "C": "注文を自動承認",
+        "D": "支払いステップをスキップ"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Quick Order は B2B でよく使われる機能で、プロの購買担当者が製品 SKU（またはバーコードスキャン）と数量を直接入力して、製品カタログを閲覧せずに複数の製品をカートに素早く追加できます。注文インポート用の CSV ファイルの一括アップロードをサポートします。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "sap-c-c4h-set3-ja-q18",
+      "domain": "B2B 高度な機能",
+      "question": "B2B Commerce の Quote（見積もり）機能はどのようなシナリオをサポートしますか？（2つ選択）",
+      "options": {
+        "A": "請求書の自動生成",
+        "B": "バイヤーがカスタム見積もりを依頼",
+        "C": "在庫管理",
+        "D": "セラーとバイヤーの価格交渉"
+      },
+      "answer": ["B", "D"],
+      "answerType": "multiple",
+      "explanation": "Quote 機能は B2B で一般的な見積依頼と価格交渉シナリオをサポートします：1) バイヤーは特定の製品と数量を含むカスタム見積もりを依頼できる、2) セラーは価格を調整し割引を提供して回答できる、3) 双方は合意に達するまで複数回交渉できる。Quote は正式な注文に変換できます。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "sap-c-c4h-set3-ja-q19",
+      "domain": "B2B 高度な機能",
+      "question": "Commerce Cloud B2B の Saved Cart 機能の用途は何ですか？",
+      "options": {
+        "A": "バックアップ専用",
+        "B": "よく購入する商品リストを保存して繰り返し購買を容易に",
+        "C": "注文履歴の保存",
+        "D": "カートプロモーションの管理"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Saved Cart により、B2B ユーザーはよく購入する商品の組み合わせを保存して、後で繰り返し購買しやすくできます。例えば、定期的に同じオフィス用品を購入する企業はカートテンプレートを保存し、ワンクリックで復元して注文を送信でき、購買効率が大幅に向上します。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "sap-c-c4h-set3-ja-q20",
+      "domain": "B2B 高度な機能",
+      "question": "B2B Commerce における User Group と Permission の関係は何ですか？",
+      "options": {
+        "A": "関係なし",
+        "B": "Permission は User Group に割り当てられ、ユーザーは Group に参加して権限を取得",
+        "C": "Permission はユーザーに直接のみ割り当て可能",
+        "D": "User Group は自動的にすべての Permission を持つ"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "B2B 権限は User Group を通じて管理されます：異なる User Group（購買担当者、承認者、管理者など）を定義し、Group に対応する Permission を割り当てます。ユーザーは特定の Group に参加することでそのグループの権限を継承し、権限管理を簡素化します。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "sap-c-c4h-set3-ja-q21",
+      "domain": "B2B 高度な機能",
+      "question": "Commerce Cloud B2B の Account Summary 機能はどのような情報を提供しますか？",
+      "options": {
+        "A": "ユーザーログイン履歴",
+        "B": "組織の財務概要（未払金、与信限度額など）",
+        "C": "製品カタログ統計",
+        "D": "システムパフォーマンス指標"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Account Summary は B2B バイヤーに組織の財務概要を提供します：現在の未払金、利用可能な与信限度額、延滞金、最近の取引履歴など。これらのデータは通常 ERP システムから同期され、購買担当者が財務状況を把握するのに役立ちます。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "sap-c-c4h-set3-ja-q22",
+      "domain": "B2B 高度な機能",
+      "question": "B2B Commerce における Contract（契約）機能の主な用途は何ですか？",
+      "options": {
+        "A": "従業員契約の管理",
+        "B": "顧客専用価格と製品範囲の定義",
+        "C": "サプライヤー契約の管理",
+        "D": "法的文書の保存"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "B2B Contract は特定の顧客との商業契約を管理するために使用されます：契約期間中の専用価格、適用される製品範囲、最小/最大注文数量、支払条件などを定義します。システムは契約に従って対応する価格とルールを自動的に適用します。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "sap-c-c4h-set3-ja-q23",
+      "domain": "B2B 高度な機能",
+      "question": "Commerce Cloud B2B の Punchout 統合とは何ですか？",
+      "options": {
+        "A": "タイムカードシステム統合",
+        "B": "顧客調達システム（Ariba、SAP SRM など）との直接統合",
+        "C": "決済ゲートウェイ統合",
+        "D": "物流システム統合"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Punchout は B2B eコマース標準で、バイヤーが調達システム（SAP Ariba、Oracle、Coupa など）からサプライヤーのストアに直接アクセスできます。バイヤーはサプライヤーの Web サイトで商品を選択し、カートデータが自動的に調達システムに戻されて注文プロセスを完了します。",
+      "difficulty": "hard"
+    },
+    {
+      "id": "sap-c-c4h-set3-ja-q24",
+      "domain": "B2B 高度な機能",
+      "question": "B2B Commerce で顧客固有の製品カタログをどのように実装しますか？",
+      "options": {
+        "A": "各顧客用に独立したデータベースを作成",
+        "B": "Catalog Version と Product Visibility の構成を使用",
+        "C": "製品カタログ全体をコピー",
+        "D": "手動で製品を非表示"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "構成によって顧客固有のカタログを実装します：1) 複数の Catalog Version を使用し、異なる顧客グループが異なるバージョンにアクセス、2) Product Visibility ルールを構成し、顧客属性に基づいて製品の可視性を制御、3) Search Restriction を使用して検索結果をフィルタリング。",
+      "difficulty": "hard"
+    },
+    {
+      "id": "sap-c-c4h-set3-ja-q25",
+      "domain": "B2B 高度な機能",
+      "question": "Commerce Cloud B2B の Re-Order 機能はどのように動作しますか？",
+      "options": {
+        "A": "すべての履歴注文を自動的に繰り返す",
+        "B": "履歴注文から素早く新しい注文を作成できる",
+        "C": "送信済みの注文を修正",
+        "D": "注文をキャンセルして再送信"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Re-Order 機能により、ユーザーは履歴注文を表示し、再購入したい注文を選択して、ワンクリックでその商品を現在のカートに追加できます。システムは製品の在庫状況と価格変更をチェックし、ユーザーは送信前に数量を調整できます。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "sap-c-c4h-set3-ja-q26",
+      "domain": "マイクロサービスとクラウドネイティブ",
+      "question": "SAP Commerce Cloud の Extension Pack 更新モデルの特徴は何ですか？",
+      "options": {
+        "A": "すべてのコンポーネントを一度にアップグレードする必要がある",
+        "B": "特定の機能モジュールを個別に更新できる",
+        "C": "更新をサポートしない",
+        "D": "アップグレードではなくダウングレードのみ可能"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Extension Pack モデルにより、プラットフォーム全体をアップグレードせずに Commerce Cloud の特定機能モジュール（決済、検索、パーソナライゼーションなど）を個別に更新できます。これにより柔軟性が向上し、アップグレードリスクが軽減されます。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "sap-c-c4h-set3-ja-q27",
+      "domain": "マイクロサービスとクラウドネイティブ",
+      "question": "Commerce Cloud と SAP BTP の統合は主に何を通じて実現されますか？",
+      "options": {
+        "A": "直接データベース接続",
+        "B": "ファイル転送",
+        "C": "SAP BTP Connectivity と Destination サービス",
+        "D": "手動データインポート"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "Commerce Cloud と SAP BTP の統合は Connectivity サービスを通じてセキュアな接続を確立し、Destination サービスでターゲットシステム情報（URL、認証など）を構成します。これにより Commerce は BTP 上のサービスを呼び出したり、BTP アプリケーションから呼び出されたりできます。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "sap-c-c4h-set3-ja-q28",
+      "domain": "マイクロサービスとクラウドネイティブ",
+      "question": "Commerce Cloud の API-First 設計原則は何を意味しますか？",
+      "options": {
+        "A": "API 経由でのみアクセス可能",
+        "B": "すべての機能が API を通じて優先的に公開され、Headless アーキテクチャをサポート",
+        "C": "UI を提供しない",
+        "D": "API が UI より重要"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "API-First は Commerce Cloud のすべてのコア機能が OCC API を通じて公開され、あらゆるフロントエンド（Web、モバイル、IoT、音声）からアクセスできることを意味します。これは Headless Commerce アーキテクチャをサポートし、フロントエンドとバックエンドを完全に分離して、より大きな柔軟性を提供します。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "sap-c-c4h-set3-ja-q29",
+      "domain": "マイクロサービスとクラウドネイティブ",
+      "question": "Commerce Cloud の Composable Commerce コンセプトとは何ですか？",
+      "options": {
+        "A": "音楽作成機能",
+        "B": "最適なコンポーネントを組み合わせてカスタマイズされたコマースソリューションを構築",
+        "C": "UI コンポーネントライブラリ",
+        "D": "データ集約機能"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Composable Commerce は、単一ベンダーの完全なスイートを使用するのではなく、異なるベンダーの最適なコンポーネント（決済、検索、CMS、OMS など）を組み合わせてカスタマイズされたコマースソリューションを構築できるアーキテクチャアプローチです。Commerce Cloud は API と統合機能を通じてこのモデルをサポートします。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "sap-c-c4h-set3-ja-q30",
+      "domain": "マイクロサービスとクラウドネイティブ",
+      "question": "Commerce Cloud で GraphQL を使用する主な利点は何ですか？",
+      "options": {
+        "A": "セキュリティの向上",
+        "B": "クライアントが必要なデータを正確に指定でき、オーバーフェッチを削減",
+        "C": "サーバー処理の高速化",
+        "D": "コード量の削減"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "GraphQL により、クライアントは1つのリクエストで必要なフィールドと関連データを正確に指定でき、REST API で一般的なオーバーフェッチや複数リクエストの問題を回避できます。これはモバイルで特に価値があり、データ転送量とリクエスト数を削減できます。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "sap-c-c4h-set3-ja-q31",
+      "domain": "マイクロサービスとクラウドネイティブ",
+      "question": "Commerce Cloud の Event Mesh 統合はどのようなシナリオで使用されますか？（2つ選択）",
+      "options": {
+        "A": "同期データベース操作",
+        "B": "他のシステムがサブスクライブできるコマースイベントの発行",
+        "C": "ユーザーインターフェースの管理",
+        "D": "システム間の非同期通信の実装"
+      },
+      "answer": ["B", "D"],
+      "answerType": "multiple",
+      "explanation": "Event Mesh（SAP Integration Suite の一部）は以下に使用されます：1) Commerce がビジネスイベント（注文作成、在庫変更など）を発行し、他のシステムがサブスクライブして処理、2) 非同期通信を実装してシステムを分離し、信頼性とスケーラビリティを向上。",
+      "difficulty": "hard"
+    },
+    {
+      "id": "sap-c-c4h-set3-ja-q32",
+      "domain": "マイクロサービスとクラウドネイティブ",
+      "question": "Commerce Cloud の Microservices Extension アーキテクチャの特徴は何ですか？",
+      "options": {
+        "A": "すべての機能が単一プロセス内",
+        "B": "拡張機能を独立したマイクロサービスとしてデプロイ・スケーリング可能",
+        "C": "拡張機能をサポートしない",
+        "D": "拡張機能はコアと一緒にデプロイする必要がある"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Microservices Extension により、カスタム拡張機能を Commerce Cloud コアから分離して独立したマイクロサービスとしてデプロイできます。これらの拡張機能は独立してスケール、更新、管理でき、API を通じてコアと通信し、柔軟性と保守性を向上させます。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "sap-c-c4h-set3-ja-q33",
+      "domain": "マイクロサービスとクラウドネイティブ",
+      "question": "Commerce Cloud におけるコンテナ化デプロイメントの利点は何ですか？",
+      "options": {
+        "A": "機能の削減",
+        "B": "環境の一貫性と迅速なスケーリング",
+        "C": "セキュリティの低下",
+        "D": "複雑さの増加のみでメリットなし"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "コンテナ化（CCv2 は Kubernetes を使用）は複数の利点を提供します：開発/テスト/本番環境の一貫性、迅速な水平スケーリング、リソースの分離、ローリング更新、障害の自動回復など。これは現代のクラウドネイティブアーキテクチャの基盤です。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "sap-c-c4h-set3-ja-q34",
+      "domain": "マイクロサービスとクラウドネイティブ",
+      "question": "Commerce Cloud の Multi-Tenant アーキテクチャは何を意味しますか？",
+      "options": {
+        "A": "複数のテナントがインフラを共有するがデータは分離",
+        "B": "各テナントが独立したサーバーを持つ",
+        "C": "マルチテナントをサポートしない",
+        "D": "すべてのテナントがデータを共有"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Multi-Tenant アーキテクチャでは、複数の顧客（テナント）がコストを削減するために同じインフラ（サーバー、データベース）を共有しますが、データは厳密に分離され、各テナントは自分のデータにのみアクセスできます。Commerce Cloud クラウドバージョンはこのアーキテクチャを採用しています。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "sap-c-c4h-set3-ja-q35",
+      "domain": "マイクロサービスとクラウドネイティブ",
+      "question": "Commerce Cloud の Progressive Web App (PWA) サポートはどのような機能を提供しますか？",
+      "options": {
+        "A": "デスクトップでのみ使用可能",
+        "B": "オフラインアクセス、プッシュ通知、ネイティブアプリのような体験",
+        "C": "モバイルアプリの代替",
+        "D": "テスト専用"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Spartacus は PWA 機能をサポートしています：Service Worker によるオフラインアクセスとキャッシング、Web Push プッシュ通知、ホーム画面への追加によるネイティブアプリのような体験。これは従来のレスポンシブ Web サイトよりも優れたモバイル体験を提供しながら、ネイティブアプリの開発と配布コストを回避できます。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "sap-c-c4h-set3-ja-q36",
+      "domain": "データ管理と分析",
+      "question": "Commerce Cloud における FlexibleSearch と SQL の主な違いは何ですか？",
+      "options": {
+        "A": "FlexibleSearch はデータベーステーブルに直接アクセス",
+        "B": "FlexibleSearch は Type System モデルをクエリし、特定のデータベースに依存しない",
+        "C": "FlexibleSearch はパフォーマンスが低い",
+        "D": "SQL の方が安全"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "FlexibleSearch は Commerce Cloud のクエリ言語で、データベーステーブルではなく Type System で定義されたモデルをクエリします。データベース非依存性（異なるデータベース間で移行可能）、多言語とキャッシュの自動処理、セキュリティフレームワークとの統合を提供します。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "sap-c-c4h-set3-ja-q37",
+      "domain": "データ管理と分析",
+      "question": "Commerce Cloud の Reporting 機能は通常どのように実装されますか？",
+      "options": {
+        "A": "本番データベースで直接クエリ",
+        "B": "データウェアハウスまたは BI ツールを使用してエクスポートデータを分析",
+        "C": "ログの表示のみ",
+        "D": "レポートをサポートしない"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "ベストプラクティスは本番データベースで複雑なレポートクエリを直接実行しないこと（パフォーマンスに影響）です。通常、データをデータウェアハウス（SAP BW、Snowflake など）にエクスポートし、BI ツール（SAP Analytics Cloud など）で分析するか、読み取り専用レプリカを使用します。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "sap-c-c4h-set3-ja-q38",
+      "domain": "データ管理と分析",
+      "question": "Commerce Cloud の Audit Trail 機能は何に使用されますか？",
+      "options": {
+        "A": "財務諸表の監査",
+        "B": "コンプライアンス要件を満たすためのデータ変更履歴の記録",
+        "C": "コード品質の監査",
+        "D": "システムパフォーマンスの監視"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Audit Trail は誰がいつどのデータにどのような変更を行ったかを記録します。これはコンプライアンス監査（SOX、GDPR など）に不可欠です。Commerce Cloud は特定のタイプとプロパティの変更履歴を追跡するための構成オプションを提供します。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "sap-c-c4h-set3-ja-q39",
+      "domain": "データ管理と分析",
+      "question": "Commerce Cloud の Data Retention 戦略の役割は何ですか？",
+      "options": {
+        "A": "データストレージの増加",
+        "B": "データ保持期間を定義し、期限切れデータを自動的にアーカイブまたは削除",
+        "C": "データ品質の向上",
+        "D": "データの暗号化"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Data Retention 戦略は異なるタイプのデータの保持期間を定義します：注文は7年保持、ログは90日保持など。期限切れデータは自動的にアーカイブ（低コストストレージに移動）または削除できます。これはコンプライアンス（GDPR の過度な保持禁止）とストレージコスト管理に役立ちます。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "sap-c-c4h-set3-ja-q40",
+      "domain": "データ管理と分析",
+      "question": "Commerce Cloud の A/B Testing 機能はビジネス意思決定にどのように役立ちますか？",
+      "options": {
+        "A": "エラーの自動修復",
+        "B": "異なるバージョンの効果を比較してデータ駆動の意思決定",
+        "C": "システムパフォーマンスのテスト",
+        "D": "ユーザー認証の検証"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "A/B Testing（SmartEdit またはサードパーティツール経由）により、ページやコンポーネントの複数バージョンを作成し、異なるユーザーグループにランダムに割り当て、コンバージョン率やクリック率などのデータを収集し、統計分析でどのバージョンが効果的かを判断して、データ駆動の最適化を実現できます。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "sap-c-c4h-set3-ja-q41",
+      "domain": "データ管理と分析",
+      "question": "Commerce Cloud における Customer Data Platform (CDP) 統合はどのような機能を提供しますか？",
+      "options": {
+        "A": "データベースの代替",
+        "B": "統一された顧客ビューと高度な顧客分析",
+        "C": "製品データの管理",
+        "D": "決済処理"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "CDP（SAP Customer Data Platform など）統合は以下を提供します：360度の顧客ビュー（オンラインとオフラインのデータを統合）、顧客セグメンテーション、行動分析、予測的インサイト。Commerce はこれらのインサイトを使用してパーソナライズされた体験と精密なマーケティングを提供できます。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "sap-c-c4h-set3-ja-q42",
+      "domain": "データ管理と分析",
+      "question": "Commerce Cloud から SAP S/4HANA へのデータ同期には通常どのようなデータが含まれますか？（2つ選択）",
+      "options": {
+        "A": "ユーザーパスワード",
+        "B": "注文データ",
+        "C": "ソースコード",
+        "D": "顧客マスターデータ"
+      },
+      "answer": ["B", "D"],
+      "answerType": "multiple",
+      "explanation": "Commerce と S/4HANA 間で同期される典型的なデータには以下が含まれます：1) 注文データ：Commerce の注文を S/4HANA に同期してフルフィルメントと財務処理、2) 顧客マスターデータ：双方向同期で一貫性を維持。製品と価格は通常 S/4HANA から Commerce に同期されます。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "sap-c-c4h-set3-ja-q43",
+      "domain": "データ管理と分析",
+      "question": "Commerce Cloud の Real-Time Analytics はどのように実現されますか？",
+      "options": {
+        "A": "定期的なバッチ処理",
+        "B": "ストリーム処理技術を使用してイベントデータをリアルタイム分析",
+        "C": "手動レポート生成",
+        "D": "履歴データ分析のみサポート"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "リアルタイム分析はストリーム処理技術によって実現されます：Commerce イベント（ページビュー、クリック、購入）が分析プラットフォーム（SAP Analytics Cloud、Adobe Analytics など）にリアルタイムで送信され、リアルタイムダッシュボード、アラート、即時のインサイトを提供して、市場の変化への迅速な対応をサポートします。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "sap-c-c4h-set3-ja-q44",
+      "domain": "ベストプラクティスとアーキテクチャ",
+      "question": "Commerce Cloud プロジェクトにおける Code Review のベストプラクティスには何が含まれますか？",
+      "options": {
+        "A": "速度向上のためコードレビューをスキップ",
+        "B": "パフォーマンス、セキュリティ、コーディング標準への準拠をチェック",
+        "C": "UI コードのみレビュー",
+        "D": "プロジェクト終了時のみレビュー"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "効果的な Code Review では以下をチェックすべきです：パフォーマンス（N+1 クエリなどを回避）、セキュリティ（入力検証、CSRF 保護）、コーディング標準（命名規則、コード構造）、保守性、テストカバレッジ。プロジェクト終了時ではなく、各 Pull Request 時に実施すべきです。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "sap-c-c4h-set3-ja-q45",
+      "domain": "ベストプラクティスとアーキテクチャ",
+      "question": "Commerce Cloud Extension 開発のベストプラクティスは何ですか？",
+      "options": {
+        "A": "コアコードを直接修正",
+        "B": "拡張メカニズムを通じて動作をオーバーライドし、コアは変更しない",
+        "C": "コアコードを新しい拡張機能にコピー",
+        "D": "データベースレイヤーで修正"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "コアコードを修正せず、Commerce の拡張メカニズム（継承、Spring Bean オーバーライド、Aspect）を使用して動作をカスタマイズすべきです。これによりアップグレード可能性が保証されます：コアが更新されてもカスタム拡張機能は影響を受けません。コアコードのコピーは避け、単一のコードソースを維持します。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "sap-c-c4h-set3-ja-q46",
+      "domain": "ベストプラクティスとアーキテクチャ",
+      "question": "Commerce Cloud テスト戦略にはどのレベルを含めるべきですか？（2つ選択）",
+      "options": {
+        "A": "手動テストのみ実施",
+        "B": "ビジネスロジックをカバーするユニットテスト",
+        "C": "統合テストをスキップ",
+        "D": "重要なビジネスフローを検証するエンドツーエンドテスト"
+      },
+      "answer": ["B", "D"],
+      "answerType": "multiple",
+      "explanation": "包括的なテスト戦略には複数のレベルが含まれます：1) ユニットテスト：ビジネスロジックをカバー、JUnit/Mockito を使用、2) 統合テスト：コンポーネント間の相互作用を検証、3) エンドツーエンドテスト：完全なビジネスフロー（チェックアウトフローなど）を検証、Selenium/Cypress を使用。自動化テストは CI/CD に統合されます。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "sap-c-c4h-set3-ja-q47",
+      "domain": "ベストプラクティスとアーキテクチャ",
+      "question": "Commerce Cloud 高可用性アーキテクチャの主要コンポーネントは何ですか？",
+      "options": {
+        "A": "単一サーバー",
+        "B": "ロードバランシング、マルチノードデプロイメント、フェイルオーバーメカニズム",
+        "C": "キャッシュのみ使用",
+        "D": "安定性向上のため機能を削減"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "高可用性アーキテクチャの主要コンポーネント：1) ロードバランシング：リクエストを複数ノードに分散、2) マルチノードデプロイメント：単一障害点を排除、3) フェイルオーバー：ノード障害時の自動切り替え、4) データベースクラスター、5) 分散キャッシュ、6) ヘルスチェックと自動回復。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "sap-c-c4h-set3-ja-q48",
+      "domain": "ベストプラクティスとアーキテクチャ",
+      "question": "Commerce Cloud 国際化プロジェクトのベストプラクティスには何が含まれますか？",
+      "options": {
+        "A": "すべてのテキストをハードコード",
+        "B": "Resource Bundle を使用し、マルチカレンシー・マルチ言語をサポート",
+        "C": "各国用に独立したシステムを作成",
+        "D": "英語のみサポート"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "国際化のベストプラクティス：Resource Bundle で翻訳テキストを管理、マルチカレンシーと為替換算をサポート、多言語製品データを処理、地域固有の税率と送料を構成、各地の規制（GDPR、Cookie ポリシー）に準拠。単一システムで複数の国/地域をサポートします。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "sap-c-c4h-set3-ja-q49",
+      "domain": "ベストプラクティスとアーキテクチャ",
+      "question": "Commerce Cloud プロジェクトにおける技術的負債管理戦略は何ですか？",
+      "options": {
+        "A": "技術的負債を無視",
+        "B": "定期的に評価、優先順位付けし、返済時間を割り当て",
+        "C": "すべての負債を一度に解決",
+        "D": "技術的負債はプロジェクトに影響しない"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "技術的負債管理：ツール（SonarQube）を使用して定期的にコード品質と負債を評価、リスクと影響に基づいて優先順位を付け、Sprint で一定の割合の時間を返済に割り当て（例：20%）、機能開発と同時に関連コードをリファクタリング。負債を無視すると長期的なメンテナンスコストが増加します。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "sap-c-c4h-set3-ja-q50",
+      "domain": "ベストプラクティスとアーキテクチャ",
+      "question": "Commerce Cloud の Disaster Recovery（災害復旧）計画には何を含めるべきですか？",
+      "options": {
+        "A": "バックアップのみ必要",
+        "B": "RTO/RPO 目標、バックアップ戦略、復旧手順、定期的な訓練",
+        "C": "災害復旧計画は不要",
+        "D": "クラウドプロバイダーにのみ依存"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "完全な DR 計画には以下を含めるべきです：RTO（目標復旧時間）と RPO（目標復旧時点）の定義、バックアップ戦略の策定とテスト、復旧手順と責任者の文書化、計画の有効性を検証する定期的な DR 訓練の実施、クロスリージョン災害対策の検討。CCv2 はマルチアベイラビリティゾーンデプロイメントをサポートしています。",
+      "difficulty": "hard"
+    }
+  ]
+}

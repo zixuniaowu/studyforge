@@ -1,0 +1,673 @@
+{
+  "exam": {
+    "id": "sap-c-sac-set2-ja",
+    "name": "SAP C_SAC 模擬試験 #2",
+    "code": "C_SAC",
+    "provider": "SAP",
+    "language": "ja",
+    "description": "SAP Analytics Cloud (SAC) 認定試験の模擬問題セット2です。高度なデータモデリング、計画機能、拡張分析、アプリケーション設計などの上級トピックをカバーしています。",
+    "totalQuestions": 50,
+    "passingScore": 65,
+    "examTime": 180,
+    "domains": [
+      { "name": "高度なデータモデリング", "percentage": 25 },
+      { "name": "エンタープライズ計画", "percentage": 25 },
+      { "name": "拡張分析と予測", "percentage": 20 },
+      { "name": "アプリケーションデザイナー", "percentage": 15 },
+      { "name": "統合とAPI", "percentage": 15 }
+    ],
+    "tags": ["SAP", "SAC", "Analytics Cloud", "計画", "予測"]
+  },
+  "questions": [
+    {
+      "id": 1,
+      "question": "SAP Analytics Cloud において Generic Dimension（汎用ディメンション）と Organization Dimension（組織ディメンション）の違いは何ですか？",
+      "options": {
+        "A": "違いはない",
+        "B": "Organization ディメンションは所有者属性とノード権限をサポート",
+        "C": "Generic ディメンションは数値のみを保存できる",
+        "D": "Organization ディメンションは階層をサポートしない"
+      },
+      "answer": "B",
+      "explanation": "Organization Dimension は特別なディメンションタイプで、所有者属性とノードベースの権限制御をサポートし、会社の組織構造を表すのによく使用されます。",
+      "difficulty": "medium"
+    },
+    {
+      "id": 2,
+      "question": "SAP Analytics Cloud モデルにおいて Private Dimension と Public Dimension の違いは何ですか？（2つ選択）",
+      "options": {
+        "A": "Private Dimension は単一のモデル内でのみ使用",
+        "B": "Private Dimension は複数のモデル間で共有可能",
+        "C": "Public Dimension は複数のモデル間で共有可能",
+        "D": "Public Dimension は階層をサポートしない"
+      },
+      "answer": ["A", "C"],
+      "explanation": "Private Dimension は定義されたモデル内でのみ使用され、Public Dimension は独立したオブジェクトとして複数のモデル間で共有・再利用できます。",
+      "difficulty": "medium"
+    },
+    {
+      "id": 3,
+      "question": "SAP Analytics Cloud における Data Foundation の用途は何ですか？",
+      "options": {
+        "A": "ユーザー設定の保存のみ",
+        "B": "モデルのデータストレージ構造とディメンション関係の定義",
+        "C": "レポート表示のみに使用",
+        "D": "ユーザー認証のみに使用"
+      },
+      "answer": "B",
+      "explanation": "Data Foundation は、モデルの基盤となるデータストレージ構造を定義し、ファクトテーブルとディメンションテーブルの関係、主キーと外部キーの関連付けを含みます。",
+      "difficulty": "hard"
+    },
+    {
+      "id": 4,
+      "question": "SAP Analytics Cloud の Calculated Dimension（計算ディメンション）ではどのようなタイプのメンバーを作成できますか？",
+      "options": {
+        "A": "静的メンバーのみ",
+        "B": "数式に基づいて動的に計算される仮想メンバー",
+        "C": "数値メンバーのみ",
+        "D": "日付メンバーのみ"
+      },
+      "answer": "B",
+      "explanation": "Calculated Dimension は、数式に基づいて動的に計算される仮想メンバーの作成を可能にします。例えば、日付を四半期にグループ化したり、条件に基づいて分類を作成したりできます。",
+      "difficulty": "medium"
+    },
+    {
+      "id": 5,
+      "question": "SAP Analytics Cloud Planning モデルにおける Category ディメンションの役割は何ですか？",
+      "options": {
+        "A": "製品カテゴリの保存",
+        "B": "実績データ、予算データ、予測データの区別",
+        "C": "ユーザーカテゴリの定義",
+        "D": "レポートカテゴリの管理"
+      },
+      "answer": "B",
+      "explanation": "Category ディメンションは Planning モデルのシステムディメンションで、Actual（実績）、Budget（予算）、Forecast（予測）など、異なるタイプのデータバージョンを区別するために使用されます。",
+      "difficulty": "easy"
+    },
+    {
+      "id": 6,
+      "question": "SAP Analytics Cloud Planning における Data Lock（データロック）機能は何に使用されますか？（2つ選択）",
+      "options": {
+        "A": "特定のデータ領域への変更を防止",
+        "B": "データ転送の暗号化",
+        "C": "計画サイクル終了後のデータロック",
+        "D": "ユーザーアカウントのロック"
+      },
+      "answer": ["A", "C"],
+      "explanation": "Data Lock は特定のデータ領域への変更を防止でき、計画サイクル終了後に承認された予算や実績データをロックするためによく使用されます。",
+      "difficulty": "medium"
+    },
+    {
+      "id": 7,
+      "question": "SAP Analytics Cloud における Multi-Action の用途は何ですか？",
+      "options": {
+        "A": "複数のユーザーを作成",
+        "B": "複数の Data Action を実行可能なフローに組み合わせる",
+        "C": "複数のファイルをインポート",
+        "D": "複数のメールを送信"
+      },
+      "answer": "B",
+      "explanation": "Multi-Action は、複数の Data Action を連結して実行可能な自動化フローに組み合わせることを可能にし、複雑なデータ処理ロジックをサポートします。",
+      "difficulty": "medium"
+    },
+    {
+      "id": 8,
+      "question": "SAP Analytics Cloud Planning における Disaggregation（分解）機能はどのように動作しますか？",
+      "options": {
+        "A": "集計データを削除",
+        "B": "入力された集計データを詳細レベルに自動配分",
+        "C": "複数のデータソースを統合",
+        "D": "データストレージを圧縮"
+      },
+      "answer": "B",
+      "explanation": "Disaggregation は、データ入力時に入力された集計値を定義された重みやルールに従って、より詳細なレベルに自動的に配分します。",
+      "difficulty": "medium"
+    },
+    {
+      "id": 9,
+      "question": "SAP Analytics Cloud における Value Driver Tree（バリュードライバーツリー）の用途は何ですか？",
+      "options": {
+        "A": "組織構造の表示",
+        "B": "KPI 間の因果関係と影響要因の可視化",
+        "C": "ファイルディレクトリの管理",
+        "D": "システム設定の構成"
+      },
+      "answer": "B",
+      "explanation": "Value Driver Tree は、KPI 間の因果関係と影響要因をツリー構造で可視化し、ビジネス指標がどのように相互に影響するかを理解するのに役立ちます。",
+      "difficulty": "medium"
+    },
+    {
+      "id": 10,
+      "question": "SAP Analytics Cloud Planning における Process（プロセス）機能は何をサポートしていますか？（2つ選択）",
+      "options": {
+        "A": "計画ワークフローと承認プロセスの定義",
+        "B": "ビデオ処理",
+        "C": "タスク割り当てと進捗追跡",
+        "D": "画像編集"
+      },
+      "answer": ["A", "C"],
+      "explanation": "Process 機能は、計画ワークフロー、承認プロセス、タスク割り当て、進捗追跡の定義をサポートし、エンタープライズ計画活動を調整します。",
+      "difficulty": "medium"
+    },
+    {
+      "id": 11,
+      "question": "SAP Analytics Cloud における Predictive Scenario（予測シナリオ）ではどのような分析を実行できますか？",
+      "options": {
+        "A": "過去データの閲覧のみ",
+        "B": "時系列予測と回帰分析",
+        "C": "データインポートのみ",
+        "D": "ユーザー管理のみ"
+      },
+      "answer": "B",
+      "explanation": "Predictive Scenario は、時系列予測（過去のトレンドに基づいて将来値を予測）と回帰分析（変数間の関係を分析）をサポートします。",
+      "difficulty": "medium"
+    },
+    {
+      "id": 12,
+      "question": "SAP Analytics Cloud の Smart Predict 機能はどのような技術を使用していますか？",
+      "options": {
+        "A": "手動ルール",
+        "B": "機械学習による自動モデリング",
+        "C": "単純な平均計算",
+        "D": "静的な数式"
+      },
+      "answer": "B",
+      "explanation": "Smart Predict は機械学習技術を使用した自動モデリングを行い、自動特徴選択、モデルトレーニング、評価を含み、予測分析プロセスを簡素化します。",
+      "difficulty": "easy"
+    },
+    {
+      "id": 13,
+      "question": "SAP Analytics Cloud における Time Series Forecasting にはどのようなタイプのデータが必要ですか？",
+      "options": {
+        "A": "静的なスナップショットデータ",
+        "B": "時系列順に並べられた過去データ",
+        "C": "テキストデータのみ",
+        "D": "画像データのみ"
+      },
+      "answer": "B",
+      "explanation": "Time Series Forecasting には、時系列順に並べられた過去データポイントが必要で、トレンド、季節性、周期パターンを特定して予測を行います。",
+      "difficulty": "easy"
+    },
+    {
+      "id": 14,
+      "question": "SAP Analytics Cloud の予測モデルの精度評価指標にはどのようなものがありますか？（2つ選択）",
+      "options": {
+        "A": "MAPE（平均絶対パーセント誤差）",
+        "B": "ユーザーログイン数",
+        "C": "R²（決定係数）",
+        "D": "ファイルサイズ"
+      },
+      "answer": ["A", "C"],
+      "explanation": "予測モデルの精度は、MAPE（予測誤差の割合）、R²（モデルが説明する分散の割合）などの指標で評価されます。",
+      "difficulty": "hard"
+    },
+    {
+      "id": 15,
+      "question": "SAP Analytics Cloud における Smart Grouping 機能の役割は何ですか？",
+      "options": {
+        "A": "データを手動でグループ化",
+        "B": "AI を使用してデータ内の類似パターンを自動識別しグループ化",
+        "C": "アルファベット順にグループ化",
+        "D": "日付でグループ化"
+      },
+      "answer": "B",
+      "explanation": "Smart Grouping は AI/ML 技術を使用してデータ内の類似パターンとクラスターを自動識別し、隠れたグループ構造の発見を支援します。",
+      "difficulty": "medium"
+    },
+    {
+      "id": 16,
+      "question": "SAP Analytics Cloud Application Designer の Widget（ウィジェット）タイプにはどのようなものがありますか？（2つ選択）",
+      "options": {
+        "A": "Chart と Table",
+        "B": "音楽プレーヤー",
+        "C": "Button と Dropdown",
+        "D": "ビデオレコーダー"
+      },
+      "answer": ["A", "C"],
+      "explanation": "Application Designer は、Chart、Table などのデータ可視化コンポーネントや Button、Dropdown などのインタラクティブコントロールを含む複数のウィジェットタイプを提供します。",
+      "difficulty": "easy"
+    },
+    {
+      "id": 17,
+      "question": "Application Designer における Script Variable（スクリプト変数）の用途は何ですか？",
+      "options": {
+        "A": "定数の保存のみ",
+        "B": "スクリプト内で動的な値を保存・受け渡し",
+        "C": "チャートスタイルのみに使用",
+        "D": "ユーザー認証のみに使用"
+      },
+      "answer": "B",
+      "explanation": "Script Variable は、スクリプト内で動的な値を保存・受け渡しするために使用され、異なるイベントやコンポーネント間でデータを共有できます。",
+      "difficulty": "medium"
+    },
+    {
+      "id": 18,
+      "question": "SAP Analytics Cloud Application Designer のイベント（Event）タイプにはどのようなものがありますか？",
+      "options": {
+        "A": "onClick イベントのみ",
+        "B": "onClick、onSelect、onInitialize など複数のイベント",
+        "C": "システム起動イベントのみ",
+        "D": "データロードイベントのみ"
+      },
+      "answer": "B",
+      "explanation": "Application Designer は、onClick（クリック）、onSelect（選択）、onInitialize（初期化）など、複数のイベントタイプをサポートしています。",
+      "difficulty": "medium"
+    },
+    {
+      "id": 19,
+      "question": "Application Designer でページ間ナビゲーションを実装するにはどうすればよいですか？",
+      "options": {
+        "A": "Application.openPage() メソッドを使用",
+        "B": "メールリンクを使用",
+        "C": "コンテンツをコピー＆ペースト",
+        "D": "アプリケーションを再作成"
+      },
+      "answer": "A",
+      "explanation": "スクリプト内の Application.openPage() メソッドを使用して、アプリケーション内でページ間のナビゲーション遷移を実装できます。",
+      "difficulty": "medium"
+    },
+    {
+      "id": 20,
+      "question": "SAP Analytics Cloud の REST API はどのような操作に使用できますか？（2つ選択）",
+      "options": {
+        "A": "データのインポートとエクスポート",
+        "B": "ビデオ再生",
+        "C": "管理タスクの自動化",
+        "D": "オーディオ編集"
+      },
+      "answer": ["A", "C"],
+      "explanation": "SAC REST API は、データのインポート/エクスポート、モデル管理、Story 管理、管理タスクの自動化などの操作をサポートしています。",
+      "difficulty": "medium"
+    },
+    {
+      "id": 21,
+      "question": "SAP Analytics Cloud における OData Service 接続の特徴は何ですか？",
+      "options": {
+        "A": "SAP システムのみをサポート",
+        "B": "OData プロトコルをサポートする任意のデータソースに接続可能",
+        "C": "ローカルデータのみをサポート",
+        "D": "リアルタイムデータをサポートしない"
+      },
+      "answer": "B",
+      "explanation": "OData Service 接続は、SAP および非 SAP システムを含む、OData プロトコルをサポートする任意のデータソースに接続できます。",
+      "difficulty": "easy"
+    },
+    {
+      "id": 22,
+      "question": "SAP Analytics Cloud と SAP Data Warehouse Cloud の統合方式は何ですか？",
+      "options": {
+        "A": "CSV エクスポートのみ",
+        "B": "Live Connection によるデータへの直接アクセス",
+        "C": "メール添付のみ",
+        "D": "レポート印刷のみ"
+      },
+      "answer": "B",
+      "explanation": "SAC は Live Connection を通じて SAP Data Warehouse Cloud のデータに直接アクセスでき、データのコピーは不要です。",
+      "difficulty": "medium"
+    },
+    {
+      "id": 23,
+      "question": "SAP Analytics Cloud における SAML 2.0 統合は何に使用されますか？",
+      "options": {
+        "A": "データ暗号化",
+        "B": "シングルサインオン認証",
+        "C": "データ圧縮",
+        "D": "レポート印刷"
+      },
+      "answer": "B",
+      "explanation": "SAML 2.0 統合は、シングルサインオン（SSO）を実装するために使用され、ユーザーが企業の ID プロバイダーを使用して認証できるようにします。",
+      "difficulty": "easy"
+    },
+    {
+      "id": 24,
+      "question": "SAP Analytics Cloud の Export API はどのようなエクスポート形式をサポートしていますか？（2つ選択）",
+      "options": {
+        "A": "CSV",
+        "B": "ビデオ形式",
+        "C": "PDF",
+        "D": "オーディオ形式"
+      },
+      "answer": ["A", "C"],
+      "explanation": "Export API は、Story とデータを CSV（データ）および PDF（レポート）形式でエクスポートすることをサポートしています。",
+      "difficulty": "easy"
+    },
+    {
+      "id": 25,
+      "question": "SAP Analytics Cloud における Data Quality 機能は何をチェックしますか？",
+      "options": {
+        "A": "ファイル形式のみ",
+        "B": "データの完全性、一貫性、有効性",
+        "C": "ユーザー権限のみ",
+        "D": "ネットワーク接続のみ"
+      },
+      "answer": "B",
+      "explanation": "Data Quality 機能は、データの完全性（欠損値がない）、一貫性（形式が統一されている）、有効性（値が有効な範囲内にある）をチェックします。",
+      "difficulty": "medium"
+    },
+    {
+      "id": 26,
+      "question": "SAP Analytics Cloud Planning における Comment（コメント）機能は何をサポートしていますか？（2つ選択）",
+      "options": {
+        "A": "データセルにメモを追加",
+        "B": "ビデオコメントの再生",
+        "C": "計画の前提条件と意思決定理由の追跡",
+        "D": "音声コメントの録音"
+      },
+      "answer": ["A", "C"],
+      "explanation": "Comment 機能は、データセルにメモを追加し、計画の前提条件、ビジネス上の理由、意思決定の根拠を追跡し、コラボレーションを強化します。",
+      "difficulty": "medium"
+    },
+    {
+      "id": 27,
+      "question": "SAP Analytics Cloud における Audit 機能はどのような情報を記録しますか？",
+      "options": {
+        "A": "ユーザーログインのみ",
+        "B": "データ変更履歴、誰がいつ何を変更したか",
+        "C": "システムパフォーマンスのみ",
+        "D": "レポートアクセスのみ"
+      },
+      "answer": "B",
+      "explanation": "Audit 機能は、データ変更履歴を記録し、誰がいつどのデータにどのような変更を行ったかを含み、コンプライアンス監査とトレーサビリティをサポートします。",
+      "difficulty": "medium"
+    },
+    {
+      "id": 28,
+      "question": "SAP Analytics Cloud における Alert（アラート）機能は何に基づいてトリガーできますか？",
+      "options": {
+        "A": "手動トリガーのみ",
+        "B": "データが定義されたしきい値に達したか超えた場合",
+        "C": "時間スケジュールのみ",
+        "D": "ユーザーリクエストのみ"
+      },
+      "answer": "B",
+      "explanation": "Alert は、データ値が定義されたしきい値に達したか超えた場合に自動的にトリガーされ、ユーザーに異常状況への注意を促します。",
+      "difficulty": "easy"
+    },
+    {
+      "id": 29,
+      "question": "SAP Analytics Cloud における Story Linking の役割は何ですか？",
+      "options": {
+        "A": "Story のコピー",
+        "B": "異なる Story 間のナビゲーションリンクの作成",
+        "C": "Story の削除",
+        "D": "Story の非表示"
+      },
+      "answer": "B",
+      "explanation": "Story Linking は、異なる Story 間にナビゲーションリンクを作成し、ある Story から別の関連 Story への遷移を可能にします。",
+      "difficulty": "easy"
+    },
+    {
+      "id": 30,
+      "question": "SAP Analytics Cloud における Bookmarks（ブックマーク）機能は何に使用されますか？（2つ選択）",
+      "options": {
+        "A": "現在のビュー状態（フィルター、選択）の保存",
+        "B": "Web ページのブックマーク",
+        "C": "特定のデータビューを他者と共有",
+        "D": "音楽のお気に入り登録"
+      },
+      "answer": ["A", "C"],
+      "explanation": "Bookmarks は Story の現在のビュー状態（フィルターと選択を含む）を保存し、特定のデータビューを他者と共有できます。",
+      "difficulty": "easy"
+    },
+    {
+      "id": 31,
+      "question": "SAP Analytics Cloud における R Visualization 拡張機能は何を可能にしますか？",
+      "options": {
+        "A": "R 言語スクリプトを実行してカスタム可視化を作成",
+        "B": "ビデオの録画",
+        "C": "画像の編集",
+        "D": "オーディオの再生"
+      },
+      "answer": "A",
+      "explanation": "R Visualization 拡張機能は、R 言語スクリプトを使用して SAC ネイティブでサポートされていないカスタム可視化タイプを作成することを可能にします。",
+      "difficulty": "hard"
+    },
+    {
+      "id": 32,
+      "question": "SAP Analytics Cloud における Version Management は Planning でどのように機能しますか？",
+      "options": {
+        "A": "最新バージョンのみを保持",
+        "B": "複数のデータバージョンの作成、比較、管理をサポート",
+        "C": "古いバージョンを自動削除",
+        "D": "ドキュメント管理のみに使用"
+      },
+      "answer": "B",
+      "explanation": "Version Management は、複数のデータバージョン（予算 v1、v2 など）の作成、バージョン比較と差異分析、バージョンライフサイクルの管理をサポートします。",
+      "difficulty": "medium"
+    },
+    {
+      "id": 33,
+      "question": "SAP Analytics Cloud における Allocation Step のタイプにはどのようなものがありますか？（2つ選択）",
+      "options": {
+        "A": "Copy（コピー）",
+        "B": "ビデオ変換",
+        "C": "Distribute（配分）",
+        "D": "オーディオミックス"
+      },
+      "answer": ["A", "C"],
+      "explanation": "Allocation Step のタイプには、Copy（元の値でコピー）、Distribute（重みに従って配分）、Clear（クリア）などの操作が含まれます。",
+      "difficulty": "medium"
+    },
+    {
+      "id": 34,
+      "question": "SAP Analytics Cloud における Variance Analysis（差異分析）チャートは何を表示しますか？",
+      "options": {
+        "A": "過去データのみ",
+        "B": "2つのデータバージョンまたは期間の差異",
+        "C": "予測データのみ",
+        "D": "ユーザーリストのみ"
+      },
+      "answer": "B",
+      "explanation": "Variance Analysis チャートは、2つのデータバージョン（実績 vs 予算など）または2つの期間（今年 vs 昨年など）の差異を表示します。",
+      "difficulty": "easy"
+    },
+    {
+      "id": 35,
+      "question": "SAP Analytics Cloud における Reference Data とは何ですか？",
+      "options": {
+        "A": "参考ドキュメント",
+        "B": "計算に使用される読み取り専用のデータソースで、直接編集できない",
+        "C": "ユーザー参照マニュアル",
+        "D": "システム参照設定"
+      },
+      "answer": "B",
+      "explanation": "Reference Data は、計画で使用される読み取り専用のデータソース（為替レート、単価など）で、計算に使用されますが、計画プロセスで直接編集することはできません。",
+      "difficulty": "medium"
+    },
+    {
+      "id": 36,
+      "question": "SAP Analytics Cloud における Aggregation Type（集計タイプ）オプションにはどのようなものがありますか？（2つ選択）",
+      "options": {
+        "A": "SUM（合計）",
+        "B": "ビデオ編集",
+        "C": "AVERAGE（平均）",
+        "D": "オーディオミックス"
+      },
+      "answer": ["A", "C"],
+      "explanation": "集計タイプには、SUM（合計）、AVERAGE（平均）、COUNT（カウント）、MIN、MAX、LAST など、複数のオプションがあります。",
+      "difficulty": "easy"
+    },
+    {
+      "id": 37,
+      "question": "SAP Analytics Cloud における Formatting Rule（書式設定ルール）は何を実現できますか？",
+      "options": {
+        "A": "フォントサイズの変更のみ",
+        "B": "データ値に基づいて条件付きでセルの色と書式を変更",
+        "C": "背景画像の変更のみ",
+        "D": "ページレイアウトの変更のみ"
+      },
+      "answer": "B",
+      "explanation": "Formatting Rule（条件付き書式設定）は、データ値や条件に基づいてセルの色、アイコン、書式を動的に変更し、重要な情報を強調表示できます。",
+      "difficulty": "easy"
+    },
+    {
+      "id": 38,
+      "question": "SAP Analytics Cloud における Story Filter と Page Filter の違いは何ですか？",
+      "options": {
+        "A": "違いはない",
+        "B": "Story Filter は Story 全体に影響、Page Filter は現在のページのみに影響",
+        "C": "Page Filter は Story 全体に影響",
+        "D": "どちらも単一のチャートのみに影響"
+      },
+      "answer": "B",
+      "explanation": "Story Filter は Story のすべてのページに適用され、Page Filter は現在のページの可視化のみに影響します。",
+      "difficulty": "medium"
+    },
+    {
+      "id": 39,
+      "question": "SAP Analytics Cloud における Linked Dimension（リンクディメンション）の役割は何ですか？",
+      "options": {
+        "A": "ディメンションのコピーを作成",
+        "B": "一貫性を維持するためにモデル内で Public Dimension を参照",
+        "C": "ディメンションを削除",
+        "D": "ディメンションを非表示"
+      },
+      "answer": "B",
+      "explanation": "Linked Dimension は、モデル内で定義済みの Public Dimension を参照し、複数のモデルが同じディメンション定義を使用して一貫性を維持することを保証します。",
+      "difficulty": "medium"
+    },
+    {
+      "id": 40,
+      "question": "SAP Analytics Cloud における Currency Variable は何に使用されますか？",
+      "options": {
+        "A": "パスワードの保存",
+        "B": "分析時にユーザーが表示する通貨を選択できるようにする",
+        "C": "為替レートの計算",
+        "D": "銀行口座の管理"
+      },
+      "answer": "B",
+      "explanation": "Currency Variable は、レポートを表示する際にユーザーがターゲット通貨を選択できるようにし、システムが自動的に通貨換算を行います。",
+      "difficulty": "medium"
+    },
+    {
+      "id": 41,
+      "question": "SAP Analytics Cloud における Storyboard（ストーリーボード）モードは何を提供しますか？",
+      "options": {
+        "A": "コード編集環境",
+        "B": "PPT のようなプレゼンテーションレイアウトとナビゲーション",
+        "C": "データベース管理インターフェース",
+        "D": "システム設定インターフェース"
+      },
+      "answer": "B",
+      "explanation": "Storyboard モードは、PowerPoint に似たスライド形式のレイアウトを提供し、順次プレゼンテーションとナビゲーションの作成をサポートします。",
+      "difficulty": "easy"
+    },
+    {
+      "id": 42,
+      "question": "SAP Analytics Cloud Planning における Snapshot（スナップショット）機能は何に使用されますか？",
+      "options": {
+        "A": "スクリーンショットの撮影",
+        "B": "特定の時点でのデータ状態の保存",
+        "C": "ユーザー写真の作成",
+        "D": "システム設定の保存"
+      },
+      "answer": "B",
+      "explanation": "Snapshot 機能は、特定の時点でのデータ状態を保存し、異なる時点のデータ比較や以前の状態へのロールバックに使用できます。",
+      "difficulty": "medium"
+    },
+    {
+      "id": 43,
+      "question": "SAP Analytics Cloud における Custom Widget はどのような方法で作成できますか？",
+      "options": {
+        "A": "組み込みテンプレートのみを使用",
+        "B": "SDK を使用してカスタムコンポーネントを開発",
+        "C": "インポートのみ",
+        "D": "コピーのみ"
+      },
+      "answer": "B",
+      "explanation": "Custom Widget は、SAC SDK を使用して HTML5、CSS、JavaScript でカスタムコンポーネントを開発し、機能を拡張できます。",
+      "difficulty": "hard"
+    },
+    {
+      "id": 44,
+      "question": "SAP Analytics Cloud における Data Change Log は何を記録しますか？（2つ選択）",
+      "options": {
+        "A": "データセル値の変更",
+        "B": "ユーザーの閲覧履歴",
+        "C": "変更のタイムスタンプとユーザー",
+        "D": "ネットワークトラフィック"
+      },
+      "answer": ["A", "C"],
+      "explanation": "Data Change Log は、データセル値の変更を記録し、旧値、新値、変更時間、変更を行ったユーザーを含みます。",
+      "difficulty": "medium"
+    },
+    {
+      "id": 45,
+      "question": "SAP Analytics Cloud における Performance Management コンテンツパッケージは何を提供しますか？",
+      "options": {
+        "A": "システムパフォーマンス監視",
+        "B": "事前構築された KPI、ダッシュボード、ベストプラクティス",
+        "C": "ネットワーク帯域幅監視",
+        "D": "ハードウェアパフォーマンステスト"
+      },
+      "answer": "B",
+      "explanation": "Performance Management コンテンツパッケージは、事前構築された KPI 定義、ダッシュボードテンプレート、ビジネスプロセスのベストプラクティスを提供し、導入を加速します。",
+      "difficulty": "medium"
+    },
+    {
+      "id": 46,
+      "question": "SAP Analytics Cloud におけるテーブルでの Data Region の役割は何ですか？",
+      "options": {
+        "A": "地理的地域の定義",
+        "B": "編集可能なデータ入力領域の定義",
+        "C": "印刷領域の定義",
+        "D": "ユーザーアクセス領域の定義"
+      },
+      "answer": "B",
+      "explanation": "Data Region は、Planning テーブルで特定の編集可能なデータ入力領域を定義し、ユーザーがデータを入力できるセル範囲を制御します。",
+      "difficulty": "medium"
+    },
+    {
+      "id": 47,
+      "question": "SAP Analytics Cloud における Cross Calculation（クロス計算）は何に使用されますか？",
+      "options": {
+        "A": "システム間のデータ転送",
+        "B": "複数のメジャーまたはディメンションにまたがる計算",
+        "C": "ユーザー間でのデータ共有",
+        "D": "ネットワークアクセス"
+      },
+      "answer": "B",
+      "explanation": "Cross Calculation は、複数のメジャーまたはディメンションメンバーにまたがる計算の作成を可能にします。例えば、異なる製品ラインの利益率の差を計算できます。",
+      "difficulty": "hard"
+    },
+    {
+      "id": 48,
+      "question": "SAP Analytics Cloud の Mobile App はどのような Planning 機能をサポートしていますか？（2つ選択）",
+      "options": {
+        "A": "データ入力と編集",
+        "B": "ビデオ録画",
+        "C": "承認ワークフロー",
+        "D": "オーディオ編集"
+      },
+      "answer": ["A", "C"],
+      "explanation": "SAC Mobile App は、データ入力と編集、承認ワークフローへの参加を含む Planning 機能をサポートしています。",
+      "difficulty": "medium"
+    },
+    {
+      "id": 49,
+      "question": "SAP Analytics Cloud における What-If Analysis（仮定分析）はどのように実現されますか？",
+      "options": {
+        "A": "静的レポートを使用",
+        "B": "Input Controls を使用してパラメータを動的に変更し影響を確認",
+        "C": "過去データのみを使用",
+        "D": "印刷レポートのみを使用"
+      },
+      "answer": "B",
+      "explanation": "What-If Analysis は、Input Controls（スライダー、入力ボックスなど）を使用して仮定パラメータを動的に変更し、ビジネス指標への影響をリアルタイムで確認します。",
+      "difficulty": "medium"
+    },
+    {
+      "id": 50,
+      "question": "SAP Analytics Cloud の Analytic Application と Story の主な違いは何ですか？",
+      "options": {
+        "A": "違いはない",
+        "B": "Analytic Application はスクリプトプログラミングとより複雑なインタラクションロジックをサポート",
+        "C": "Story は複雑なアプリケーションにより適している",
+        "D": "Analytic Application はチャートをサポートしない"
+      },
+      "answer": "B",
+      "explanation": "Analytic Application は Application Designer を使用して作成され、スクリプトプログラミングとより複雑なインタラクションロジックをサポートし、カスタマイズされたアプリケーションの構築に適しています。",
+      "difficulty": "medium"
+    }
+  ]
+}

@@ -1,0 +1,773 @@
+{
+  "exam": {
+    "id": "sap-c-c4h-set3",
+    "name": "SAP C_C4H 模拟考试 #3",
+    "code": "C_C4H",
+    "provider": "SAP",
+    "language": "zh-CN",
+    "description": "SAP Commerce Cloud 认证模拟考试第三套 - 企业级应用",
+    "totalQuestions": 50,
+    "passingScore": 65,
+    "examTime": 180,
+    "domains": [
+      { "name": "企业级部署与运维", "percentage": 25 },
+      { "name": "B2B 高级功能", "percentage": 25 },
+      { "name": "微服务与云原生", "percentage": 20 },
+      { "name": "数据管理与分析", "percentage": 15 },
+      { "name": "最佳实践与架构", "percentage": 15 }
+    ],
+    "tags": ["SAP", "Commerce Cloud", "C_C4H", "B2B", "Cloud Native", "Enterprise"]
+  },
+  "questions": [
+    {
+      "id": "sap-c-c4h-set3-q1",
+      "domain": "企业级部署与运维",
+      "question": "SAP Commerce Cloud 的 Cloud Portal 主要用于什么？",
+      "options": {
+        "A": "开发代码",
+        "B": "管理云环境的部署、构建和监控",
+        "C": "编辑产品数据",
+        "D": "创建营销活动"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Cloud Portal 是 SAP Commerce Cloud (CCv2) 的管理界面，用于管理云环境的全生命周期：创建和部署构建包、管理不同环境（开发、预发布、生产）、监控系统状态、配置端点和服务。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "sap-c-c4h-set3-q2",
+      "domain": "企业级部署与运维",
+      "question": "在 Commerce Cloud CCv2 中，manifest.json 文件的作用是什么？",
+      "options": {
+        "A": "定义前端组件",
+        "B": "配置数据库连接",
+        "C": "定义部署配置和扩展",
+        "D": "存储用户凭证"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "manifest.json 是 CCv2 部署的核心配置文件，定义了：要部署的扩展列表、各环境的特定配置、Web 应用设置、属性覆盖、以及需要的加载项（如 Solr、Media 服务）。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "sap-c-c4h-set3-q3",
+      "domain": "企业级部署与运维",
+      "question": "Commerce Cloud 的蓝绿部署 (Blue-Green Deployment) 策略的主要优势是什么？",
+      "options": {
+        "A": "减少服务器数量",
+        "B": "零停机时间部署和快速回滚能力",
+        "C": "降低许可成本",
+        "D": "简化代码开发"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "蓝绿部署通过维护两套环境实现零停机更新：新版本部署到非活动环境（绿），验证后切换流量。如果出现问题，可以立即切换回原环境（蓝），实现快速回滚。这是 CCv2 的标准部署策略。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "sap-c-c4h-set3-q4",
+      "domain": "企业级部署与运维",
+      "question": "在 Commerce Cloud 中，如何实现自动化 CI/CD 流程？",
+      "options": {
+        "A": "只能手动部署",
+        "B": "使用 Cloud Portal API 集成 Jenkins/GitLab CI",
+        "C": "使用内置的 CI/CD 工具",
+        "D": "通过 FTP 上传代码"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Commerce Cloud 提供 Cloud Portal API，可以与 Jenkins、GitLab CI、Azure DevOps 等 CI/CD 工具集成。通过 API 可以自动触发构建、部署到指定环境、获取部署状态，实现完整的自动化流水线。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "sap-c-c4h-set3-q5",
+      "domain": "企业级部署与运维",
+      "question": "Commerce Cloud 的 Hot Folder 功能用于什么场景？",
+      "options": {
+        "A": "存储临时文件",
+        "B": "自动处理放入指定目录的文件（如数据导入）",
+        "C": "缓存热点数据",
+        "D": "存储日志文件"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Hot Folder 是文件监控机制，自动处理放入指定目录的文件。常用于数据导入场景：将 CSV/ImpEx 文件放入 Hot Folder，系统自动检测并执行导入。支持配置处理器和错误处理策略。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "sap-c-c4h-set3-q6",
+      "domain": "企业级部署与运维",
+      "question": "在 CCv2 中，如何管理敏感配置属性？（选择两项）",
+      "options": {
+        "A": "硬编码在源代码中",
+        "B": "使用 Cloud Portal 的环境变量",
+        "C": "存储在 manifest.json 明文中",
+        "D": "使用 SAP Credential Store 服务"
+      },
+      "answer": ["B", "D"],
+      "answerType": "multiple",
+      "explanation": "CCv2 提供多种安全存储敏感配置的方式：1) Cloud Portal 环境变量：在 Portal 中设置，不存储在代码仓库；2) SAP Credential Store：专门的凭证管理服务，支持加密存储和访问控制。敏感信息不应硬编码或放在 manifest.json 中。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "sap-c-c4h-set3-q7",
+      "domain": "企业级部署与运维",
+      "question": "Commerce Cloud 的水平扩展 (Horizontal Scaling) 是如何实现的？",
+      "options": {
+        "A": "增加单个服务器的 CPU 和内存",
+        "B": "添加更多应用服务器节点",
+        "C": "使用更快的数据库",
+        "D": "减少并发用户数"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "水平扩展通过添加更多应用服务器节点来处理更高的负载。Commerce Cloud 支持配置多个 POD（应用实例），负载均衡器自动分发请求。这比垂直扩展更具弹性和成本效益。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "sap-c-c4h-set3-q8",
+      "domain": "企业级部署与运维",
+      "question": "在 Commerce Cloud 中，HAC (Hybris Administration Console) 在生产环境应该如何配置？",
+      "options": {
+        "A": "完全开放访问",
+        "B": "限制 IP 访问并启用强认证",
+        "C": "完全禁用",
+        "D": "使用默认密码"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "HAC 提供强大的管理功能，在生产环境必须严格保护：限制可访问的 IP 范围、强制使用强密码、考虑启用双因素认证、禁用危险功能（如脚本执行）。完全禁用会影响运维，完全开放会带来安全风险。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "sap-c-c4h-set3-q9",
+      "domain": "企业级部署与运维",
+      "question": "Commerce Cloud 的日志管理最佳实践包括哪些？（选择两项）",
+      "options": {
+        "A": "记录所有用户密码",
+        "B": "配置合适的日志级别",
+        "C": "使用集中式日志收集（如 ELK）",
+        "D": "禁用所有日志以提高性能"
+      },
+      "answer": ["B", "C"],
+      "answerType": "multiple",
+      "explanation": "日志管理最佳实践：1) 根据环境配置合适的日志级别（生产环境用 INFO/WARN，开发环境可用 DEBUG）；2) 使用 ELK 或类似工具集中收集和分析日志。不应记录敏感信息（密码），也不应禁用重要日志。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "sap-c-c4h-set3-q10",
+      "domain": "企业级部署与运维",
+      "question": "Commerce Cloud 的 Maintenance Mode 功能用于什么？",
+      "options": {
+        "A": "自动修复系统错误",
+        "B": "在维护期间向用户显示友好提示页面",
+        "C": "清理过期数据",
+        "D": "升级数据库"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Maintenance Mode 用于在系统维护期间（如部署、数据迁移）向用户展示友好的维护页面，而不是错误信息。可以配置自定义维护页面内容和预计恢复时间，提升用户体验。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "sap-c-c4h-set3-q11",
+      "domain": "企业级部署与运维",
+      "question": "在 Commerce Cloud 中，如何实现数据库迁移？",
+      "options": {
+        "A": "直接在生产数据库执行 SQL",
+        "B": "使用 System Update (Update Running System)",
+        "C": "手动修改数据文件",
+        "D": "重建数据库"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Commerce Cloud 使用 System Update 机制处理数据库迁移。当 Type System 变更时，通过 HAC 或命令行执行 Update Running System，系统会自动生成并执行必要的数据库变更脚本，保证数据完整性。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "sap-c-c4h-set3-q12",
+      "domain": "企业级部署与运维",
+      "question": "Commerce Cloud 的备份策略应该包括哪些内容？",
+      "options": {
+        "A": "只备份代码",
+        "B": "只备份数据库",
+        "C": "数据库、媒体文件和 Solr 索引",
+        "D": "只备份用户数据"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "完整的备份策略应包括：1) 数据库：核心业务数据；2) 媒体文件：产品图片等；3) Solr 索引：可以重建但费时。代码在版本控制系统中管理，不需要单独备份。CCv2 提供自动备份功能。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "sap-c-c4h-set3-q13",
+      "domain": "B2B 高级功能",
+      "question": "Commerce Cloud B2B 中的 Organization 模型支持哪些层级？",
+      "options": {
+        "A": "只支持单一组织",
+        "B": "支持多级组织单元（Unit）层级结构",
+        "C": "只支持两级结构",
+        "D": "不支持组织结构"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "B2B Commerce 支持复杂的多级组织模型。Organization 下可以创建多级 Unit（组织单元），每个 Unit 可以有子 Unit，形成树形结构。用户和预算关联到特定 Unit，实现分级管理和权限控制。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "sap-c-c4h-set3-q14",
+      "domain": "B2B 高级功能",
+      "question": "B2B Commerce 中的 Budget 功能用于什么？",
+      "options": {
+        "A": "项目成本估算",
+        "B": "控制组织或用户的采购支出额度",
+        "C": "计算产品成本",
+        "D": "管理促销预算"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Budget 功能允许为组织单元或用户设置采购预算限额。用户下单时系统检查预算余额，超出预算的订单需要审批或被拒绝。支持按时间周期（月/季/年）设置预算。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "sap-c-c4h-set3-q15",
+      "domain": "B2B 高级功能",
+      "question": "Commerce Cloud B2B 的订单审批流程如何配置？",
+      "options": {
+        "A": "硬编码在系统中",
+        "B": "通过定义 Approval Permission 和 Order Threshold 规则",
+        "C": "只能使用默认流程",
+        "D": "通过修改数据库"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "B2B 审批流程通过配置实现：定义 Approval Permission（审批权限）分配给审批者；设置 Order Threshold（订单阈值）触发审批；可以根据金额、产品类别等条件配置多级审批流程。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "sap-c-c4h-set3-q16",
+      "domain": "B2B 高级功能",
+      "question": "B2B Commerce 中的 Cost Center 功能的作用是什么？",
+      "options": {
+        "A": "计算运费",
+        "B": "将采购支出分配到不同的成本中心进行财务核算",
+        "C": "管理仓库成本",
+        "D": "计算促销成本"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Cost Center（成本中心）允许 B2B 买家在下单时选择将支出分配到哪个成本中心。这与企业的财务系统对接，便于成本核算和部门预算管理。订单数据会包含成本中心信息传递给后端系统。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "sap-c-c4h-set3-q17",
+      "domain": "B2B 高级功能",
+      "question": "Commerce Cloud B2B 中的 Quick Order 功能如何提高效率？",
+      "options": {
+        "A": "减少产品数量",
+        "B": "允许通过输入 SKU 和数量快速添加多个产品",
+        "C": "自动审批订单",
+        "D": "跳过支付步骤"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Quick Order 是 B2B 常用功能，允许专业买家直接输入产品 SKU（或扫描条码）和数量，快速添加多个产品到购物车，无需浏览产品目录。支持批量上传 CSV 文件导入订单。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "sap-c-c4h-set3-q18",
+      "domain": "B2B 高级功能",
+      "question": "B2B Commerce 的 Quote（报价）功能支持哪些场景？（选择两项）",
+      "options": {
+        "A": "自动生成发票",
+        "B": "买家请求定制报价",
+        "C": "管理库存",
+        "D": "卖家与买家协商价格"
+      },
+      "answer": ["B", "D"],
+      "answerType": "multiple",
+      "explanation": "Quote 功能支持 B2B 常见的询价和议价场景：1) 买家可以请求定制报价，包含特定产品和数量；2) 卖家可以调整价格、提供折扣后回复；3) 双方可以多轮协商直到达成一致。Quote 可转换为正式订单。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "sap-c-c4h-set3-q19",
+      "domain": "B2B 高级功能",
+      "question": "Commerce Cloud B2B 中的 Saved Cart 功能有什么用途？",
+      "options": {
+        "A": "只用于备份",
+        "B": "保存常购商品列表便于重复采购",
+        "C": "存储历史订单",
+        "D": "管理购物车促销"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Saved Cart 允许 B2B 用户保存常购商品组合，便于日后重复采购。例如，定期采购相同办公用品的企业可以保存购物车模板，一键恢复后提交订单，大大提高采购效率。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "sap-c-c4h-set3-q20",
+      "domain": "B2B 高级功能",
+      "question": "B2B Commerce 中的 User Group 和 Permission 的关系是什么？",
+      "options": {
+        "A": "没有关系",
+        "B": "Permission 分配给 User Group，用户通过加入 Group 获得权限",
+        "C": "Permission 只能直接分配给用户",
+        "D": "User Group 自动拥有所有 Permission"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "B2B 权限通过 User Group 管理：定义不同的 User Group（如采购员、审批者、管理员），为 Group 分配相应的 Permission。用户加入特定 Group 后继承该组的权限，简化权限管理。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "sap-c-c4h-set3-q21",
+      "domain": "B2B 高级功能",
+      "question": "Commerce Cloud B2B 的 Account Summary 功能提供什么信息？",
+      "options": {
+        "A": "用户登录历史",
+        "B": "组织的财务概览（应付账款、信用额度等）",
+        "C": "产品目录统计",
+        "D": "系统性能指标"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Account Summary 为 B2B 买家提供组织财务概览：当前应付账款、可用信用额度、逾期款项、最近交易记录等。这些数据通常从 ERP 系统同步，帮助采购人员了解财务状况。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "sap-c-c4h-set3-q22",
+      "domain": "B2B 高级功能",
+      "question": "B2B Commerce 中的 Contract（合同）功能的主要用途是什么？",
+      "options": {
+        "A": "管理员工合同",
+        "B": "定义客户专属价格和产品范围",
+        "C": "管理供应商合同",
+        "D": "存储法律文档"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "B2B Contract 用于管理与特定客户的商业协议：定义合同期内的专属价格、适用的产品范围、最小/最大订购量、付款条件等。系统根据合同自动应用相应的价格和规则。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "sap-c-c4h-set3-q23",
+      "domain": "B2B 高级功能",
+      "question": "Commerce Cloud B2B 的 Punchout 集成是什么？",
+      "options": {
+        "A": "打卡系统集成",
+        "B": "与客户采购系统（如 Ariba、SAP SRM）的直接集成",
+        "C": "支付网关集成",
+        "D": "物流系统集成"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Punchout 是 B2B 电商标准，允许买家从其采购系统（如 SAP Ariba、Oracle、Coupa）直接访问供应商商城。买家在供应商网站选购商品，购物车数据自动传回采购系统完成订单流程。",
+      "difficulty": "hard"
+    },
+    {
+      "id": "sap-c-c4h-set3-q24",
+      "domain": "B2B 高级功能",
+      "question": "B2B Commerce 中，如何实现客户特定的产品目录？",
+      "options": {
+        "A": "为每个客户创建独立数据库",
+        "B": "使用 Catalog Version 和 Product Visibility 配置",
+        "C": "复制整个产品目录",
+        "D": "手动隐藏产品"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "通过配置实现客户特定目录：1) 使用多个 Catalog Version，不同客户组访问不同版本；2) 配置 Product Visibility 规则，根据客户属性控制产品可见性；3) 使用 Search Restriction 过滤搜索结果。",
+      "difficulty": "hard"
+    },
+    {
+      "id": "sap-c-c4h-set3-q25",
+      "domain": "B2B 高级功能",
+      "question": "Commerce Cloud B2B 的 Re-Order 功能如何工作？",
+      "options": {
+        "A": "自动重复所有历史订单",
+        "B": "允许从历史订单快速创建新订单",
+        "C": "修改已提交的订单",
+        "D": "取消并重新提交订单"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Re-Order 功能允许用户查看历史订单，选择要重复购买的订单，一键将其中的商品添加到当前购物车。系统会检查产品可用性和价格变化，用户可以在提交前调整数量。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "sap-c-c4h-set3-q26",
+      "domain": "微服务与云原生",
+      "question": "SAP Commerce Cloud 的 Extension Pack 更新模式有什么特点？",
+      "options": {
+        "A": "必须一次性升级所有组件",
+        "B": "可以独立更新特定功能模块",
+        "C": "不支持更新",
+        "D": "只能降级不能升级"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Extension Pack 模式允许独立更新 Commerce Cloud 的特定功能模块（如支付、搜索、个性化），而不需要升级整个平台。这提供了更大的灵活性，降低了升级风险。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "sap-c-c4h-set3-q27",
+      "domain": "微服务与云原生",
+      "question": "Commerce Cloud 与 SAP BTP 的集成主要通过什么实现？",
+      "options": {
+        "A": "直接数据库连接",
+        "B": "文件传输",
+        "C": "SAP BTP Connectivity 和 Destination 服务",
+        "D": "手动数据导入"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "Commerce Cloud 与 SAP BTP 集成通过 Connectivity 服务建立安全连接，使用 Destination 服务配置目标系统信息（URL、认证等）。这允许 Commerce 调用 BTP 上的服务，或被 BTP 应用调用。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "sap-c-c4h-set3-q28",
+      "domain": "微服务与云原生",
+      "question": "Commerce Cloud 的 API-First 设计原则意味着什么？",
+      "options": {
+        "A": "只能通过 API 访问",
+        "B": "所有功能都优先通过 API 暴露，支持 Headless 架构",
+        "C": "不提供 UI",
+        "D": "API 比 UI 更重要"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "API-First 意味着 Commerce Cloud 的所有核心功能都通过 OCC API 暴露，允许任何前端（Web、移动、IoT、语音）访问。这支持 Headless Commerce 架构，前后端完全解耦，提供更大的灵活性。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "sap-c-c4h-set3-q29",
+      "domain": "微服务与云原生",
+      "question": "Commerce Cloud 的 Composable Commerce 概念是什么？",
+      "options": {
+        "A": "音乐创作功能",
+        "B": "通过组合最佳组件构建定制化商务解决方案",
+        "C": "UI 组件库",
+        "D": "数据聚合功能"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Composable Commerce 是一种架构方法，允许企业通过组合不同供应商的最佳组件（支付、搜索、CMS、OMS 等）构建定制化商务解决方案，而不是使用单一厂商的全套产品。Commerce Cloud 通过 API 和集成能力支持此模式。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "sap-c-c4h-set3-q30",
+      "domain": "微服务与云原生",
+      "question": "在 Commerce Cloud 中使用 GraphQL 的主要优势是什么？",
+      "options": {
+        "A": "更好的安全性",
+        "B": "客户端可以精确指定需要的数据，减少过度获取",
+        "C": "更快的服务器处理",
+        "D": "更小的代码量"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "GraphQL 允许客户端在一个请求中精确指定需要的字段和关联数据，避免 REST API 中常见的过度获取或多次请求问题。这对移动端特别有价值，可以减少数据传输量和请求次数。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "sap-c-c4h-set3-q31",
+      "domain": "微服务与云原生",
+      "question": "Commerce Cloud 的 Event Mesh 集成用于什么场景？（选择两项）",
+      "options": {
+        "A": "同步数据库操作",
+        "B": "发布商务事件供其他系统订阅",
+        "C": "管理用户界面",
+        "D": "实现系统间的异步通信"
+      },
+      "answer": ["B", "D"],
+      "answerType": "multiple",
+      "explanation": "Event Mesh（SAP Integration Suite 的一部分）用于：1) Commerce 发布业务事件（如订单创建、库存变化），其他系统订阅处理；2) 实现异步通信，解耦系统，提高可靠性和扩展性。",
+      "difficulty": "hard"
+    },
+    {
+      "id": "sap-c-c4h-set3-q32",
+      "domain": "微服务与云原生",
+      "question": "Commerce Cloud 的 Microservices Extension 架构的特点是什么？",
+      "options": {
+        "A": "所有功能在单一进程中",
+        "B": "扩展可以作为独立微服务部署和扩展",
+        "C": "不支持扩展",
+        "D": "扩展必须与核心一起部署"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Microservices Extension 允许自定义扩展作为独立的微服务部署，与 Commerce Cloud 核心解耦。这些扩展可以独立扩展、更新和管理，通过 API 与核心通信，提高灵活性和可维护性。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "sap-c-c4h-set3-q33",
+      "domain": "微服务与云原生",
+      "question": "Commerce Cloud 中的容器化部署有什么优势？",
+      "options": {
+        "A": "减少功能",
+        "B": "环境一致性和快速扩展",
+        "C": "降低安全性",
+        "D": "增加复杂性但无收益"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "容器化（CCv2 使用 Kubernetes）提供多种优势：开发/测试/生产环境一致性、快速水平扩展、资源隔离、滚动更新、故障自动恢复等。这是现代云原生架构的基础。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "sap-c-c4h-set3-q34",
+      "domain": "微服务与云原生",
+      "question": "Commerce Cloud 的 Multi-Tenant 架构意味着什么？",
+      "options": {
+        "A": "多个租户共享基础设施但数据隔离",
+        "B": "每个租户有独立的服务器",
+        "C": "不支持多租户",
+        "D": "所有租户共享数据"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Multi-Tenant 架构中，多个客户（租户）共享同一套基础设施（服务器、数据库）以降低成本，但数据严格隔离，每个租户只能访问自己的数据。Commerce Cloud 云版本采用此架构。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "sap-c-c4h-set3-q35",
+      "domain": "微服务与云原生",
+      "question": "Commerce Cloud 的 Progressive Web App (PWA) 支持提供什么能力？",
+      "options": {
+        "A": "只能在桌面使用",
+        "B": "离线访问、推送通知、类原生体验",
+        "C": "替代移动应用",
+        "D": "仅用于测试"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Spartacus 支持 PWA 特性：Service Worker 实现离线访问和缓存、Web Push 推送通知、可添加到主屏幕获得类原生体验。这提供了比传统响应式网站更好的移动体验，同时避免原生应用的开发和分发成本。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "sap-c-c4h-set3-q36",
+      "domain": "数据管理与分析",
+      "question": "Commerce Cloud 中的 FlexibleSearch 和 SQL 的主要区别是什么？",
+      "options": {
+        "A": "FlexibleSearch 直接访问数据库表",
+        "B": "FlexibleSearch 查询 Type System 模型，不依赖具体数据库",
+        "C": "FlexibleSearch 性能更低",
+        "D": "SQL 更安全"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "FlexibleSearch 是 Commerce Cloud 的查询语言，查询 Type System 定义的模型而非数据库表。它提供数据库无关性（可以在不同数据库间迁移）、自动处理多语言和缓存，并与安全框架集成。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "sap-c-c4h-set3-q37",
+      "domain": "数据管理与分析",
+      "question": "Commerce Cloud 的 Reporting 功能通常如何实现？",
+      "options": {
+        "A": "在生产数据库直接查询",
+        "B": "使用数据仓库或 BI 工具分析导出的数据",
+        "C": "只能查看日志",
+        "D": "不支持报表"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "最佳实践是不在生产数据库直接运行复杂报表查询（影响性能）。通常将数据导出到数据仓库（如 SAP BW、Snowflake），使用 BI 工具（如 SAP Analytics Cloud）进行分析，或使用只读副本。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "sap-c-c4h-set3-q38",
+      "domain": "数据管理与分析",
+      "question": "Commerce Cloud 中的 Audit Trail 功能用于什么？",
+      "options": {
+        "A": "审计财务报表",
+        "B": "记录数据变更历史以满足合规要求",
+        "C": "审核代码质量",
+        "D": "监控系统性能"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Audit Trail 记录谁在什么时间对哪些数据做了什么变更。这对合规审计至关重要（如 SOX、GDPR）。Commerce Cloud 提供配置选项来跟踪特定类型和属性的变更历史。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "sap-c-c4h-set3-q39",
+      "domain": "数据管理与分析",
+      "question": "Commerce Cloud 中的 Data Retention 策略的作用是什么？",
+      "options": {
+        "A": "增加数据存储",
+        "B": "定义数据保留期限，自动归档或删除过期数据",
+        "C": "提高数据质量",
+        "D": "加密数据"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Data Retention 策略定义不同类型数据的保留期限：订单保留 7 年、日志保留 90 天等。过期数据可以自动归档（移至低成本存储）或删除。这有助于合规（GDPR 要求不过度保留）和控制存储成本。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "sap-c-c4h-set3-q40",
+      "domain": "数据管理与分析",
+      "question": "Commerce Cloud 的 A/B Testing 功能如何帮助业务决策？",
+      "options": {
+        "A": "自动修复错误",
+        "B": "对比不同版本的效果以数据驱动决策",
+        "C": "测试系统性能",
+        "D": "验证用户身份"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "A/B Testing（通过 SmartEdit 或第三方工具）允许创建页面或组件的多个版本，随机分配给不同用户组，收集转化率、点击率等数据，通过统计分析确定哪个版本效果更好，实现数据驱动的优化。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "sap-c-c4h-set3-q41",
+      "domain": "数据管理与分析",
+      "question": "Commerce Cloud 中的 Customer Data Platform (CDP) 集成提供什么功能？",
+      "options": {
+        "A": "替代数据库",
+        "B": "统一客户视图和高级客户分析",
+        "C": "管理产品数据",
+        "D": "处理支付"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "CDP（如 SAP Customer Data Platform）集成提供：360 度客户视图（整合线上线下数据）、客户细分、行为分析、预测性洞察。Commerce 可以使用这些洞察提供个性化体验和精准营销。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "sap-c-c4h-set3-q42",
+      "domain": "数据管理与分析",
+      "question": "Commerce Cloud 的数据同步到 SAP S/4HANA 通常包括哪些数据？（选择两项）",
+      "options": {
+        "A": "用户密码",
+        "B": "订单数据",
+        "C": "源代码",
+        "D": "客户主数据"
+      },
+      "answer": ["B", "D"],
+      "answerType": "multiple",
+      "explanation": "Commerce 与 S/4HANA 同步的典型数据包括：1) 订单数据：Commerce 订单同步到 S/4HANA 进行履行和财务处理；2) 客户主数据：双向同步保持一致性。产品和价格通常从 S/4HANA 同步到 Commerce。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "sap-c-c4h-set3-q43",
+      "domain": "数据管理与分析",
+      "question": "Commerce Cloud 中的 Real-Time Analytics 如何实现？",
+      "options": {
+        "A": "定期批量处理",
+        "B": "使用流处理技术实时分析事件数据",
+        "C": "手动生成报表",
+        "D": "只支持历史数据分析"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "实时分析通过流处理技术实现：Commerce 事件（页面浏览、点击、购买）实时发送到分析平台（如 SAP Analytics Cloud、Adobe Analytics），提供实时仪表板、告警和即时洞察，支持快速响应市场变化。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "sap-c-c4h-set3-q44",
+      "domain": "最佳实践与架构",
+      "question": "Commerce Cloud 项目中的 Code Review 最佳实践包括什么？",
+      "options": {
+        "A": "跳过代码审查以加快速度",
+        "B": "检查性能、安全和编码标准合规性",
+        "C": "只审查 UI 代码",
+        "D": "只在项目结束时审查"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "有效的 Code Review 应检查：性能（避免 N+1 查询等）、安全（输入验证、CSRF 保护）、编码标准（命名规范、代码结构）、可维护性、测试覆盖。应在每次 Pull Request 时进行，而非项目结束时。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "sap-c-c4h-set3-q45",
+      "domain": "最佳实践与架构",
+      "question": "Commerce Cloud Extension 开发的最佳实践是什么？",
+      "options": {
+        "A": "直接修改核心代码",
+        "B": "通过扩展机制覆盖行为，保持核心不变",
+        "C": "复制核心代码到新扩展",
+        "D": "在数据库层面修改"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "应使用 Commerce 的扩展机制（继承、Spring Bean 覆盖、Aspect）定制行为，而不是修改核心代码。这保证了可升级性：核心更新时自定义扩展不受影响。避免复制核心代码，保持单一代码来源。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "sap-c-c4h-set3-q46",
+      "domain": "最佳实践与架构",
+      "question": "Commerce Cloud 测试策略应该包括哪些层级？（选择两项）",
+      "options": {
+        "A": "只进行手动测试",
+        "B": "单元测试覆盖业务逻辑",
+        "C": "跳过集成测试",
+        "D": "端到端测试验证关键业务流程"
+      },
+      "answer": ["B", "D"],
+      "answerType": "multiple",
+      "explanation": "全面的测试策略包括多层级：1) 单元测试：覆盖业务逻辑，使用 JUnit/Mockito；2) 集成测试：验证组件间交互；3) 端到端测试：验证完整业务流程（如结账流程），使用 Selenium/Cypress。自动化测试集成到 CI/CD 中。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "sap-c-c4h-set3-q47",
+      "domain": "最佳实践与架构",
+      "question": "Commerce Cloud 高可用架构的关键组件是什么？",
+      "options": {
+        "A": "单一服务器",
+        "B": "负载均衡、多节点部署、故障转移机制",
+        "C": "只使用缓存",
+        "D": "减少功能以提高稳定性"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "高可用架构的关键组件：1) 负载均衡：分发请求到多个节点；2) 多节点部署：消除单点故障；3) 故障转移：节点失败时自动切换；4) 数据库集群；5) 分布式缓存；6) 健康检查和自动恢复。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "sap-c-c4h-set3-q48",
+      "domain": "最佳实践与架构",
+      "question": "Commerce Cloud 国际化项目的最佳实践包括什么？",
+      "options": {
+        "A": "硬编码所有文本",
+        "B": "使用 Resource Bundle、支持多币种多语言",
+        "C": "为每个国家创建独立系统",
+        "D": "只支持英语"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "国际化最佳实践：使用 Resource Bundle 管理翻译文本、支持多币种和汇率转换、处理多语言产品数据、配置地区特定的税率和运费、遵守各地法规（如 GDPR、Cookie 政策）。单一系统支持多个国家/地区。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "sap-c-c4h-set3-q49",
+      "domain": "最佳实践与架构",
+      "question": "Commerce Cloud 项目中的技术债务管理策略是什么？",
+      "options": {
+        "A": "忽略技术债务",
+        "B": "定期评估、优先级排序并分配时间偿还",
+        "C": "一次性解决所有债务",
+        "D": "技术债务不影响项目"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "技术债务管理：定期使用工具（SonarQube）评估代码质量和债务、根据风险和影响排序优先级、在 Sprint 中分配一定比例时间偿还（如 20%）、在功能开发同时重构相关代码。忽略债务会导致长期维护成本增加。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "sap-c-c4h-set3-q50",
+      "domain": "最佳实践与架构",
+      "question": "Commerce Cloud 的 Disaster Recovery (灾难恢复) 计划应该包括什么？",
+      "options": {
+        "A": "只需要备份",
+        "B": "RTO/RPO 目标、备份策略、恢复流程、定期演练",
+        "C": "无需灾难恢复计划",
+        "D": "只依赖云提供商"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "完整的 DR 计划包括：定义 RTO（恢复时间目标）和 RPO（恢复点目标）、制定和测试备份策略、记录恢复流程和责任人、定期进行 DR 演练验证计划有效性、考虑跨区域容灾。CCv2 提供多可用区部署支持。",
+      "difficulty": "hard"
+    }
+  ]
+}

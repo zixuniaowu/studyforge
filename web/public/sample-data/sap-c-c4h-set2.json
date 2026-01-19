@@ -1,0 +1,773 @@
+{
+  "exam": {
+    "id": "sap-c-c4h-set2",
+    "name": "SAP C_C4H 模拟考试 #2",
+    "code": "C_C4H",
+    "provider": "SAP",
+    "language": "zh-CN",
+    "description": "SAP Commerce Cloud 认证模拟考试第二套 - 高级主题",
+    "totalQuestions": 50,
+    "passingScore": 65,
+    "examTime": 180,
+    "domains": [
+      { "name": "Backoffice Framework", "percentage": 25 },
+      { "name": "搜索与个性化", "percentage": 25 },
+      { "name": "多渠道与集成", "percentage": 20 },
+      { "name": "性能优化", "percentage": 15 },
+      { "name": "安全与合规", "percentage": 15 }
+    ],
+    "tags": ["SAP", "Commerce Cloud", "C_C4H", "Backoffice", "Solr", "OCC"]
+  },
+  "questions": [
+    {
+      "id": "sap-c-c4h-set2-q1",
+      "domain": "Backoffice Framework",
+      "question": "在 SAP Commerce Cloud Backoffice 中，哪个文件用于定义自定义 Widget？",
+      "options": {
+        "A": "widgets.xml",
+        "B": "backoffice-widgets.xml",
+        "C": "definition.xml",
+        "D": "widget-definition.xml"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "在 Backoffice Framework 中，definition.xml 文件用于定义 Widget 的结构、属性和行为。每个 Widget 必须在其根目录下包含此文件，它定义了 Widget 的 ID、名称、控制器和视图等核心配置。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "sap-c-c4h-set2-q2",
+      "domain": "Backoffice Framework",
+      "question": "Backoffice 中的 Cockpit NG 使用哪种技术栈构建用户界面？",
+      "options": {
+        "A": "Angular",
+        "B": "React",
+        "C": "ZK Framework",
+        "D": "Vue.js"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "Backoffice 基于 ZK Framework 构建，这是一个基于 Java 的 AJAX Web 框架。ZK 允许开发者使用 XML (ZUML) 和 Java 创建丰富的 Web 应用程序，支持服务器端事件处理和组件模型。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "sap-c-c4h-set2-q3",
+      "domain": "Backoffice Framework",
+      "question": "在 Backoffice 中，如何实现自定义编辑器来编辑特定类型的属性？",
+      "options": {
+        "A": "创建新的 ItemType",
+        "B": "实现 PropertyEditor 接口",
+        "C": "配置 editorArea 组件",
+        "D": "扩展 DefaultEditor 类"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "在 Backoffice 中，通过在 backoffice-config.xml 中配置 editorArea 组件来自定义属性编辑器。可以指定使用哪个 Widget 来编辑特定类型或特定属性，实现高度可定制的编辑体验。",
+      "difficulty": "hard"
+    },
+    {
+      "id": "sap-c-c4h-set2-q4",
+      "domain": "Backoffice Framework",
+      "question": "Backoffice 中的 Advanced Search 功能基于什么实现？",
+      "options": {
+        "A": "FlexibleSearch",
+        "B": "Solr Query",
+        "C": "Generic Search",
+        "D": "SQL Direct Query"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "Backoffice 的 Advanced Search 功能基于 Generic Search 实现，它提供了一个抽象层来构建复杂的搜索条件。Generic Search 最终会转换为 FlexibleSearch 查询执行，但提供了更友好的 API 和 UI 集成。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "sap-c-c4h-set2-q5",
+      "domain": "Backoffice Framework",
+      "question": "在 Backoffice 配置中，Context 的作用是什么？",
+      "options": {
+        "A": "定义用户权限",
+        "B": "存储会话数据",
+        "C": "根据条件动态配置 UI",
+        "D": "管理数据库连接"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "Backoffice 中的 Context 允许根据特定条件（如用户角色、当前对象类型等）动态配置 UI。通过定义不同的 Context，可以为不同场景提供不同的 Widget 配置、布局和行为。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "sap-c-c4h-set2-q6",
+      "domain": "Backoffice Framework",
+      "question": "如何在 Backoffice 中创建自定义的 Action？",
+      "options": {
+        "A": "实现 ActionRenderer 接口",
+        "B": "创建 Action Bean 并在 backoffice-config.xml 中注册",
+        "C": "扩展 AbstractAction 类",
+        "D": "配置 action-definition.xml"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "创建自定义 Action 需要：1) 创建一个实现 Action 接口的 Java Bean；2) 在 Spring 配置中注册该 Bean；3) 在 backoffice-config.xml 中配置 Action 的显示位置和触发条件。",
+      "difficulty": "hard"
+    },
+    {
+      "id": "sap-c-c4h-set2-q7",
+      "domain": "Backoffice Framework",
+      "question": "Backoffice 中的 Socket 机制用于什么目的？",
+      "options": {
+        "A": "实现 WebSocket 通信",
+        "B": "连接外部系统",
+        "C": "Widget 之间的通信",
+        "D": "数据库连接池管理"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "Backoffice 中的 Socket 是 Widget 通信的核心机制。每个 Widget 可以定义输入和输出 Socket，通过 Socket 连接实现 Widget 之间的数据传递和事件通知，形成松耦合的组件架构。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "sap-c-c4h-set2-q8",
+      "domain": "Backoffice Framework",
+      "question": "在 Backoffice 中，哪个注解用于标记需要在 UI 线程中执行的方法？",
+      "options": {
+        "A": "@UIThread",
+        "B": "@SocketEvent",
+        "C": "@ViewEvent",
+        "D": "@Async"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "@ViewEvent 注解用于标记处理 UI 事件的方法，这些方法会在 UI 线程中执行。它常与 @SocketEvent 配合使用，后者用于处理来自其他 Widget 的 Socket 事件。",
+      "difficulty": "hard"
+    },
+    {
+      "id": "sap-c-c4h-set2-q9",
+      "domain": "Backoffice Framework",
+      "question": "如何在 Backoffice 中实现国际化 (i18n)？",
+      "options": {
+        "A": "使用 JavaScript i18n 库",
+        "B": "在 labels.properties 文件中定义翻译",
+        "C": "配置 i18n-config.xml",
+        "D": "使用数据库存储翻译"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Backoffice 国际化通过 labels.properties 文件实现。每个语言创建对应的属性文件（如 labels_zh.properties），在 Widget 的 view 中使用 ${labels.key} 语法引用翻译。系统根据用户语言设置自动加载对应文件。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "sap-c-c4h-set2-q10",
+      "domain": "Backoffice Framework",
+      "question": "Backoffice Application Orchestrator 的主要功能是什么？（选择两项）",
+      "options": {
+        "A": "管理后台作业调度",
+        "B": "配置 Backoffice 应用的显示和访问权限",
+        "C": "监控系统性能",
+        "D": "自定义导航区域和视图"
+      },
+      "answer": ["B", "D"],
+      "answerType": "multiple",
+      "explanation": "Application Orchestrator 是 Backoffice 的配置工具，允许管理员：1) 配置哪些应用和区域对特定用户组可见；2) 自定义导航结构、视图布局和 Widget 配置。它不涉及作业调度或性能监控。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "sap-c-c4h-set2-q11",
+      "domain": "Backoffice Framework",
+      "question": "在 Backoffice 中，如何实现列表视图的自定义列？",
+      "options": {
+        "A": "修改数据库 schema",
+        "B": "在 backoffice-config.xml 中配置 listColumn",
+        "C": "创建自定义 ItemType",
+        "D": "扩展 ListColumnRenderer"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "通过在 backoffice-config.xml 中配置 listColumn 元素来自定义列表视图的列。可以指定显示哪些属性、列的顺序、宽度、排序方式，以及使用自定义的渲染器来格式化显示内容。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "sap-c-c4h-set2-q12",
+      "domain": "Backoffice Framework",
+      "question": "Backoffice 中的 Perspective 概念代表什么？",
+      "options": {
+        "A": "用户的视角或角色",
+        "B": "3D 渲染视图",
+        "C": "数据库视图",
+        "D": "一组相关功能的工作区"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "Perspective 在 Backoffice 中代表一组相关功能的工作区。例如，Product Cockpit perspective 包含产品管理相关的所有 Widget 和功能。用户可以在不同 Perspective 之间切换以访问不同的功能集。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "sap-c-c4h-set2-q13",
+      "domain": "搜索与个性化",
+      "question": "SAP Commerce Cloud 默认使用哪个搜索引擎？",
+      "options": {
+        "A": "Elasticsearch",
+        "B": "Apache Solr",
+        "C": "Algolia",
+        "D": "Azure Cognitive Search"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "SAP Commerce Cloud 默认使用 Apache Solr 作为搜索引擎。Solr 提供全文搜索、faceted 导航、拼写检查等功能。Commerce Cloud 提供了与 Solr 的深度集成，包括索引、查询和 facet 配置。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "sap-c-c4h-set2-q14",
+      "domain": "搜索与个性化",
+      "question": "在 SAP Commerce Cloud 中，Solr 索引配置定义在哪里？",
+      "options": {
+        "A": "solr.properties",
+        "B": "solrconfig.xml",
+        "C": "通过 Backoffice 或 ImpEx",
+        "D": "schema.xml"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "Solr 索引配置在 Commerce Cloud 中通过 Backoffice 的 Solr 管理功能或 ImpEx 文件定义。配置包括 SolrIndexedType（索引类型）、SolrIndexedProperty（索引属性）和 SolrSearchQueryTemplate（查询模板）等。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "sap-c-c4h-set2-q15",
+      "domain": "搜索与个性化",
+      "question": "什么是 Solr Facet？",
+      "options": {
+        "A": "搜索结果的排序方式",
+        "B": "搜索过滤条件的分类展示",
+        "C": "搜索性能优化技术",
+        "D": "搜索结果的分页机制"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Solr Facet 是搜索过滤条件的分类展示，允许用户通过点击分类值来细化搜索结果。例如，产品搜索中可以按品牌、价格范围、颜色等进行 facet 导航，每个 facet 值显示匹配的结果数量。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "sap-c-c4h-set2-q16",
+      "domain": "搜索与个性化",
+      "question": "在 Commerce Cloud 中，如何配置 Solr 的 Boost 规则？",
+      "options": {
+        "A": "编辑 solrconfig.xml 文件",
+        "B": "在 SolrIndexedProperty 中设置 boost 值",
+        "C": "创建 Boost Rule 并关联到 Search Profile",
+        "D": "修改 Solr schema"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "Commerce Cloud 提供了 Boost Rule 功能，可以通过 Backoffice 创建规则来提升特定产品或类别的搜索排名。Boost Rule 关联到 Search Profile，可以基于时间、用户群体等条件动态应用。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "sap-c-c4h-set2-q17",
+      "domain": "搜索与个性化",
+      "question": "Commerce Cloud 中的 Adaptive Search 提供了哪些功能？（选择两项）",
+      "options": {
+        "A": "自动索引优化",
+        "B": "搜索结果的个性化排序",
+        "C": "分布式搜索集群",
+        "D": "基于业务规则的搜索调整"
+      },
+      "answer": ["B", "D"],
+      "answerType": "multiple",
+      "explanation": "Adaptive Search 允许商户在不修改代码的情况下调整搜索行为：1) 个性化排序：根据用户行为和偏好调整结果顺序；2) 业务规则：如促销商品置顶、季节性调整等。它不直接处理索引优化或集群配置。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "sap-c-c4h-set2-q18",
+      "domain": "搜索与个性化",
+      "question": "SAP Commerce Cloud 中的 Context-Driven Services (CDS) 用于什么？",
+      "options": {
+        "A": "管理上下文菜单",
+        "B": "提供实时个性化推荐",
+        "C": "处理多语言内容",
+        "D": "管理用户会话"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Context-Driven Services (CDS) 是 Commerce Cloud 的个性化引擎，基于用户行为、偏好和上下文数据提供实时个性化推荐。CDS 可以在产品页面、购物车等位置展示相关商品推荐。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "sap-c-c4h-set2-q19",
+      "domain": "搜索与个性化",
+      "question": "在 Solr 配置中，SolrIndexedProperty 的 'sortable' 属性的作用是什么？",
+      "options": {
+        "A": "允许该属性用于搜索过滤",
+        "B": "允许该属性作为 facet",
+        "C": "允许搜索结果按该属性排序",
+        "D": "允许该属性参与全文搜索"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "SolrIndexedProperty 的 'sortable' 属性设为 true 时，允许搜索结果按该字段排序。Solr 会为该属性创建专门的排序字段，用户可以在搜索结果页面选择按价格、评分等排序。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "sap-c-c4h-set2-q20",
+      "domain": "搜索与个性化",
+      "question": "Commerce Cloud 的 Intelligent Selling Services (ISS) 提供什么功能？",
+      "options": {
+        "A": "库存管理",
+        "B": "基于 AI 的产品推荐",
+        "C": "销售报表",
+        "D": "价格管理"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Intelligent Selling Services (ISS) 使用机器学习和 AI 技术提供智能产品推荐。它分析用户行为、购买历史和产品关联，生成个性化的 'Similar Products'、'Frequently Bought Together' 等推荐。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "sap-c-c4h-set2-q21",
+      "domain": "搜索与个性化",
+      "question": "如何在 Commerce Cloud 中实现搜索同义词功能？",
+      "options": {
+        "A": "配置 Solr 的 synonyms.txt",
+        "B": "在 Backoffice 中配置 SolrSynonymConfig",
+        "C": "使用 FlexibleSearch 的 LIKE 操作",
+        "D": "创建自定义 SearchService"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Commerce Cloud 通过 SolrSynonymConfig 在 Backoffice 中配置搜索同义词。可以定义单向或双向同义词（如 'sofa' = 'couch'），索引更新时会自动应用同义词配置到 Solr。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "sap-c-c4h-set2-q22",
+      "domain": "搜索与个性化",
+      "question": "在 Solr 全文索引中，哪种分析器配置对中文搜索最重要？",
+      "options": {
+        "A": "Stemmer",
+        "B": "Stop Words Filter",
+        "C": "CJK Tokenizer",
+        "D": "Phonetic Filter"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "中文没有空格分词，需要专门的分词器。CJK (Chinese-Japanese-Korean) Tokenizer 或更高级的中文分词器（如 IK Analyzer）对中文搜索至关重要，它能正确将中文文本分割成有意义的词语。",
+      "difficulty": "hard"
+    },
+    {
+      "id": "sap-c-c4h-set2-q23",
+      "domain": "搜索与个性化",
+      "question": "Commerce Cloud 的 Search Restriction 功能用于什么？",
+      "options": {
+        "A": "限制搜索请求频率",
+        "B": "基于用户权限过滤搜索结果",
+        "C": "限制索引大小",
+        "D": "控制 Solr 资源使用"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Search Restriction 用于基于用户权限和业务规则过滤搜索结果。例如，B2B 场景中只显示用户所属组织可以购买的产品，或根据用户所在地区过滤可用商品。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "sap-c-c4h-set2-q24",
+      "domain": "搜索与个性化",
+      "question": "在 Commerce Cloud 中配置 Personalization 功能时，什么是 Variation？",
+      "options": {
+        "A": "产品变体",
+        "B": "个性化内容的不同版本",
+        "C": "价格变动",
+        "D": "A/B 测试组"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "在 Personalization 中，Variation 是针对特定目标用户群展示的内容版本。一个 Customization 可以包含多个 Variation，每个 Variation 关联不同的目标条件（Segment）和展示内容（Action）。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "sap-c-c4h-set2-q25",
+      "domain": "搜索与个性化",
+      "question": "Solr 增量索引（Delta Index）的主要优势是什么？",
+      "options": {
+        "A": "减少磁盘空间使用",
+        "B": "只更新变化的数据，提高索引效率",
+        "C": "提高搜索查询速度",
+        "D": "支持更多数据类型"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "增量索引只处理自上次索引以来发生变化的数据，而不是重建整个索引。这大大减少了索引时间和系统资源消耗，特别适合数据量大但变化频率相对较低的场景。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "sap-c-c4h-set2-q26",
+      "domain": "多渠道与集成",
+      "question": "SAP Commerce Cloud 的 OCC (Omni Commerce Connect) API 是什么类型的接口？",
+      "options": {
+        "A": "SOAP Web Service",
+        "B": "RESTful API",
+        "C": "GraphQL API",
+        "D": "gRPC"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "OCC 是 Commerce Cloud 的 RESTful API 层，提供统一的接口供各种客户端（Web、移动应用、POS 等）访问商务功能。OCC 遵循 REST 原则，使用 JSON 格式交换数据，支持 OAuth 认证。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "sap-c-c4h-set2-q27",
+      "domain": "多渠道与集成",
+      "question": "在 Commerce Cloud 中，如何实现自定义 OCC API 端点？",
+      "options": {
+        "A": "修改 OCC Extension 源代码",
+        "B": "创建新 Extension 并使用 @Controller 注解",
+        "C": "配置 occ-config.xml",
+        "D": "在 Backoffice 中配置 API Endpoint"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "自定义 OCC API 通过创建新 Extension 实现。使用 Spring MVC 的 @Controller 或 @RestController 注解定义端点，配合 @RequestMapping 设置 URL 路径。需要遵循 OCC 的安全和响应格式规范。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "sap-c-c4h-set2-q28",
+      "domain": "多渠道与集成",
+      "question": "Spartacus 是什么？",
+      "options": {
+        "A": "Commerce Cloud 的管理后台",
+        "B": "基于 Angular 的店面框架",
+        "C": "订单管理系统",
+        "D": "支付网关"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Spartacus 是 SAP Commerce Cloud 的开源 JavaScript 店面框架，基于 Angular 构建。它是一个无头（Headless）实现，通过 OCC API 与 Commerce Cloud 后端通信，支持 PWA 和服务器端渲染。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "sap-c-c4h-set2-q29",
+      "domain": "多渠道与集成",
+      "question": "Commerce Cloud 与 SAP S/4HANA 集成时，通常使用什么中间件？",
+      "options": {
+        "A": "SAP PI/PO",
+        "B": "SAP Integration Suite (CPI)",
+        "C": "MuleSoft",
+        "D": "Apache Camel"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "SAP Integration Suite（Cloud Platform Integration, CPI）是推荐的集成中间件，提供预建的 Commerce Cloud 与 S/4HANA 集成包。它支持实时和批量数据同步，包括产品、价格、库存和订单等。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "sap-c-c4h-set2-q30",
+      "domain": "多渠道与集成",
+      "question": "在 Commerce Cloud 中，Data Hub 的主要用途是什么？",
+      "options": {
+        "A": "数据分析和报表",
+        "B": "数据导入和转换中转站",
+        "C": "数据备份",
+        "D": "数据加密"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Data Hub 是 Commerce Cloud 的数据导入中转站，用于从外部系统（ERP、PIM 等）导入数据。它支持数据转换、验证和规范化，可以处理增量更新，并在导入前进行数据质量检查。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "sap-c-c4h-set2-q31",
+      "domain": "多渠道与集成",
+      "question": "Commerce Cloud 的 Kyma 集成提供了什么能力？（选择两项）",
+      "options": {
+        "A": "服务器虚拟化",
+        "B": "事件驱动的扩展开发",
+        "C": "数据库管理",
+        "D": "Serverless 函数执行"
+      },
+      "answer": ["B", "D"],
+      "answerType": "multiple",
+      "explanation": "Kyma（SAP BTP, Kyma Runtime）为 Commerce Cloud 提供：1) 事件驱动架构：响应 Commerce 事件（如订单创建）触发自定义逻辑；2) Serverless 函数：无需管理服务器即可运行自定义代码。",
+      "difficulty": "hard"
+    },
+    {
+      "id": "sap-c-c4h-set2-q32",
+      "domain": "多渠道与集成",
+      "question": "在 Commerce Cloud 中，如何配置多个销售渠道（Base Store）？",
+      "options": {
+        "A": "每个渠道部署独立实例",
+        "B": "通过 Backoffice 创建多个 BaseStore 对象",
+        "C": "在 local.properties 中配置",
+        "D": "使用不同的数据库"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Commerce Cloud 支持多 BaseStore 架构。每个 BaseStore 代表一个销售渠道，可以有独立的产品目录、价格、支付方式和配送选项。在 Backoffice 中创建和配置 BaseStore，关联到相应的 CMSSite。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "sap-c-c4h-set2-q33",
+      "domain": "多渠道与集成",
+      "question": "Commerce Cloud 的 Webhooks 功能用于什么场景？",
+      "options": {
+        "A": "定时任务调度",
+        "B": "实时通知外部系统业务事件",
+        "C": "用户身份验证",
+        "D": "文件上传"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Webhooks 允许 Commerce Cloud 在特定业务事件发生时（如订单创建、库存变化）实时通知外部系统。外部系统提供一个 HTTP 端点，Commerce Cloud 会推送事件数据到该端点。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "sap-c-c4h-set2-q34",
+      "domain": "多渠道与集成",
+      "question": "Accelerator 模板和 Spartacus 的主要区别是什么？",
+      "options": {
+        "A": "Accelerator 是付费的，Spartacus 是免费的",
+        "B": "Accelerator 是服务器端渲染，Spartacus 是客户端 SPA",
+        "C": "Accelerator 只支持 B2C，Spartacus 只支持 B2B",
+        "D": "Accelerator 使用 React，Spartacus 使用 Angular"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Accelerator 是传统的服务器端渲染店面，使用 JSP 和 Spring MVC，HTML 在服务器生成。Spartacus 是现代 SPA（单页应用），基于 Angular，通过 OCC API 与后端通信，支持更好的用户体验和 PWA。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "sap-c-c4h-set2-q35",
+      "domain": "多渠道与集成",
+      "question": "在 Commerce Cloud B2B 场景中，Purchase Order (PO) Number 有什么作用？",
+      "options": {
+        "A": "内部订单跟踪",
+        "B": "客户提供的采购单号，用于与其 ERP 对账",
+        "C": "支付验证码",
+        "D": "物流追踪号"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "在 B2B 场景中，PO Number 是客户在其采购系统中的订单编号。客户在下单时提供 PO Number，用于后续与其 ERP 系统对账和发票处理。这是 B2B 商务流程的重要部分。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "sap-c-c4h-set2-q36",
+      "domain": "性能优化",
+      "question": "Commerce Cloud 中的 Region Cache 用于什么？",
+      "options": {
+        "A": "缓存地理位置数据",
+        "B": "跨节点的分布式缓存",
+        "C": "区域性内容缓存",
+        "D": "数据库连接池"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Region Cache 是 Commerce Cloud 的分布式缓存解决方案，使用 Hazelcast 实现。它允许在集群的多个节点之间共享缓存数据，确保缓存一致性，同时减少数据库查询。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "sap-c-c4h-set2-q37",
+      "domain": "性能优化",
+      "question": "在 Commerce Cloud 中，哪种缓存策略可以显著提高产品详情页的加载速度？",
+      "options": {
+        "A": "禁用所有缓存",
+        "B": "使用 CDN 缓存静态资源",
+        "C": "增加数据库连接数",
+        "D": "减少服务器内存"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "CDN（内容分发网络）缓存静态资源（图片、CSS、JS）可以显著提高页面加载速度。资源从离用户最近的边缘节点提供，减少延迟。Commerce Cloud Cloud 版本默认集成 CDN。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "sap-c-c4h-set2-q38",
+      "domain": "性能优化",
+      "question": "Commerce Cloud 的 FlexibleSearch 查询优化建议包括哪些？（选择两项）",
+      "options": {
+        "A": "尽量使用 SELECT *",
+        "B": "使用索引字段作为查询条件",
+        "C": "避免在 WHERE 子句中使用函数",
+        "D": "总是使用子查询"
+      },
+      "answer": ["B", "C"],
+      "answerType": "multiple",
+      "explanation": "FlexibleSearch 优化建议：1) 使用索引字段作为查询条件，确保数据库可以利用索引；2) 避免在 WHERE 子句中对字段使用函数，这会导致全表扫描。应避免 SELECT *，只查询需要的字段。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "sap-c-c4h-set2-q39",
+      "domain": "性能优化",
+      "question": "Commerce Cloud 中的 Session Failover 机制是如何实现的？",
+      "options": {
+        "A": "会话数据存储在 Cookie 中",
+        "B": "使用 Sticky Session",
+        "C": "会话数据存储在分布式缓存中",
+        "D": "每次请求都查询数据库"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "Commerce Cloud 使用分布式缓存（如 Redis 或 Hazelcast）存储会话数据，实现 Session Failover。当一个节点故障时，用户请求可以路由到其他节点，会话数据仍然可用，确保用户体验不中断。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "sap-c-c4h-set2-q40",
+      "domain": "性能优化",
+      "question": "在高并发场景下，如何优化 Commerce Cloud 的数据库性能？",
+      "options": {
+        "A": "减少数据库连接池大小",
+        "B": "使用读写分离和数据库副本",
+        "C": "禁用事务",
+        "D": "增加网络延迟"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "读写分离通过将读操作分发到数据库副本来减轻主库压力。Commerce Cloud 支持配置只读数据源，将报表查询和非关键读操作路由到副本，提高整体系统吞吐量。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "sap-c-c4h-set2-q41",
+      "domain": "性能优化",
+      "question": "Commerce Cloud 的 CronJob 性能优化建议是什么？",
+      "options": {
+        "A": "所有 CronJob 同时执行",
+        "B": "错峰调度，避免与高峰期重叠",
+        "C": "增加 CronJob 执行频率",
+        "D": "在单个 CronJob 中处理所有任务"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "CronJob 应错峰调度，避免在业务高峰期执行资源密集型任务（如全量索引、数据同步）。将重型 CronJob 安排在低峰时段执行，确保系统资源优先服务用户请求。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "sap-c-c4h-set2-q42",
+      "domain": "性能优化",
+      "question": "如何监控 Commerce Cloud 的性能指标？",
+      "options": {
+        "A": "只能通过日志文件",
+        "B": "使用 HAC 的监控功能和 Dynatrace",
+        "C": "没有内置监控功能",
+        "D": "只能使用第三方工具"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Commerce Cloud 提供多种监控方式：1) HAC 内置的监控功能，显示内存、线程、缓存等指标；2) 云版本集成 Dynatrace APM，提供详细的性能分析和追踪；3) 还可以配置自定义指标输出到监控系统。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "sap-c-c4h-set2-q43",
+      "domain": "性能优化",
+      "question": "Commerce Cloud 中的 Lazy Loading 策略在什么场景下特别重要？",
+      "options": {
+        "A": "加载用户配置",
+        "B": "加载具有大量关联关系的对象",
+        "C": "加载静态配置",
+        "D": "加载日志数据"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Lazy Loading 对于具有大量关联关系的对象特别重要。例如，Product 可能关联 Category、Media、Review 等多个对象。使用 Lazy Loading 可以避免一次性加载所有关联数据，只在需要时才查询。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "sap-c-c4h-set2-q44",
+      "domain": "安全与合规",
+      "question": "Commerce Cloud 中的 CSRF 保护是如何实现的？",
+      "options": {
+        "A": "使用 CAPTCHA",
+        "B": "验证 Referer 头",
+        "C": "使用 CSRF Token",
+        "D": "IP 地址白名单"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "Commerce Cloud 使用 CSRF Token 防护跨站请求伪造攻击。服务器为每个会话生成唯一的 Token，表单提交时必须包含此 Token。服务器验证 Token 有效性，拒绝没有有效 Token 的请求。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "sap-c-c4h-set2-q45",
+      "domain": "安全与合规",
+      "question": "Commerce Cloud 的 Access Rights 和 Restrictions 有什么区别？",
+      "options": {
+        "A": "Access Rights 控制 UI，Restrictions 控制 API",
+        "B": "Access Rights 定义可以做什么，Restrictions 定义不能访问什么数据",
+        "C": "它们是相同的概念",
+        "D": "Access Rights 用于 B2C，Restrictions 用于 B2B"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Access Rights 定义用户组对类型和属性的操作权限（读、写、创建、删除）。Restrictions 则是数据级别的过滤，定义用户可以访问哪些数据记录（如只能看到自己的订单）。两者配合实现完整的权限控制。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "sap-c-c4h-set2-q46",
+      "domain": "安全与合规",
+      "question": "在 Commerce Cloud 中，如何安全地存储敏感配置（如 API 密钥）？",
+      "options": {
+        "A": "存储在源代码中",
+        "B": "存储在数据库明文字段",
+        "C": "使用环境变量和 Vault 服务",
+        "D": "存储在日志文件中"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "敏感配置不应硬编码在源代码或明文存储。Commerce Cloud 云版本支持使用环境变量和 Vault 服务（如 SAP Credential Store）安全存储 API 密钥、数据库密码等敏感信息。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "sap-c-c4h-set2-q47",
+      "domain": "安全与合规",
+      "question": "GDPR 合规要求 Commerce Cloud 实现哪些功能？（选择两项）",
+      "options": {
+        "A": "用户数据导出",
+        "B": "自动数据销售",
+        "C": "用户数据删除（被遗忘权）",
+        "D": "禁止所有 Cookie"
+      },
+      "answer": ["A", "C"],
+      "answerType": "multiple",
+      "explanation": "GDPR 要求：1) 数据可携权：用户可以导出自己的个人数据；2) 被遗忘权：用户可以要求删除其个人数据。Commerce Cloud 提供 GDPR Erasure 框架和数据导出功能来满足这些要求。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "sap-c-c4h-set2-q48",
+      "domain": "安全与合规",
+      "question": "Commerce Cloud 的 OAuth 2.0 实现主要用于什么场景？",
+      "options": {
+        "A": "用户登录认证",
+        "B": "OCC API 的客户端认证和授权",
+        "C": "数据库连接认证",
+        "D": "文件上传验证"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Commerce Cloud 使用 OAuth 2.0 保护 OCC API。客户端（如移动应用、Spartacus）通过 OAuth 流程获取 Access Token，使用该 Token 访问受保护的 API 端点。支持多种授权模式如 Client Credentials 和 Password Grant。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "sap-c-c4h-set2-q49",
+      "domain": "安全与合规",
+      "question": "在 Commerce Cloud 中，如何防止 SQL 注入攻击？",
+      "options": {
+        "A": "使用原生 SQL 查询",
+        "B": "FlexibleSearch 自动参数化查询",
+        "C": "手动转义所有输入",
+        "D": "禁用数据库查询"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "FlexibleSearch 使用参数化查询自动防止 SQL 注入。查询参数通过 ? 占位符传递，由框架安全处理，不会直接拼接到 SQL 语句中。开发者应始终使用参数化查询，避免字符串拼接。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "sap-c-c4h-set2-q50",
+      "domain": "安全与合规",
+      "question": "Commerce Cloud 的 Content Security Policy (CSP) 配置的作用是什么？",
+      "options": {
+        "A": "加密存储内容",
+        "B": "控制页面可以加载哪些外部资源",
+        "C": "压缩页面内容",
+        "D": "缓存内容策略"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Content Security Policy (CSP) 是安全 HTTP 头，定义页面可以加载哪些来源的资源（脚本、样式、图片等）。它可以有效防止 XSS 攻击，阻止恶意脚本注入。Commerce Cloud 支持配置 CSP 头来增强前端安全。",
+      "difficulty": "medium"
+    }
+  ]
+}
