@@ -13,6 +13,14 @@ license: mit
 
 **高效考试备考平台 | Efficient Exam Preparation Platform**
 
+## 🚀 Live Demo
+
+**Hugging Face Spaces:** [https://jackywangsh-studyforge.hf.space](https://jackywangsh-studyforge.hf.space)
+
+> 📦 自动部署：GitHub 推送后自动同步到 Hugging Face Spaces
+>
+> ⚡ 静态托管：纯前端应用，无需后端服务器，加载速度快
+
 ## Features
 
 ### 🎯 Exam Practice
@@ -42,17 +50,42 @@ license: mit
 
 ## Currently Available Exams
 
-- **AWS AIF-C01** - AWS Certified AI Practitioner (3 sets × 50 questions each)
+### ☁️ Cloud Certifications
+
+| Provider | Certifications | Question Sets |
+|----------|---------------|---------------|
+| **AWS** | AI Practitioner, Solutions Architect, ML Specialty 等 12 个 | 72 套 |
+| **Azure** | AI-900, AI-102, AZ-900, AZ-104, AZ-204 等 12 个 | 72 套 |
+| **GCP** | Cloud Digital Leader, ACE, PCA, PDE, ML Engineer 等 10 个 | 60 套 |
+| **SAP** | S/4HANA, BTP, AI/ML, HR, CX, SCM, GRC 等 38 个 | 228 套 |
+
+### 🔧 Low-Code/No-Code Platforms
+
+| Platform | Certifications | Question Sets |
+|----------|---------------|---------------|
+| **n8n** | Fundamentals, Advanced, Integration | 18 套 |
+| **Dify** | Fundamentals, App Builder, LLMOps | 18 套 |
+
+### 📊 Total
+
+- **75+ 认证考试**
+- **450+ 题库套卷**
+- **22,500+ 道练习题**
+- **中文 + 日文双语支持**
 
 ## Tech Stack
 
-- **Frontend**: React + TypeScript + Vite + Tailwind CSS
+### Frontend (主应用)
+- **Framework**: React 18 + TypeScript + Vite
+- **UI**: Tailwind CSS + shadcn/ui
 - **State Management**: Zustand
-- **Local Storage**: IndexedDB (Dexie)
-- **Backend**: FastAPI (Python)
-- **Database**: Supabase (PostgreSQL)
-- **Video**: edge-tts + MoviePy + Playwright
-- **Deployment**: Hugging Face Spaces (Docker)
+- **Local Storage**: IndexedDB (Dexie.js)
+- **Deployment**: Hugging Face Spaces (Docker/Nginx)
+
+### Video Generator (本地工具)
+- **Backend**: Python + edge-tts
+- **Rendering**: Playwright + Jinja2
+- **Compositing**: MoviePy
 
 ## Project Structure
 
@@ -156,10 +189,35 @@ docker-compose up
 
 ## Deployment to Hugging Face Spaces
 
+### 🔄 自动部署 (当前配置)
+
+本项目已配置 GitHub → Hugging Face 自动同步：
+
+1. **推送到 GitHub** → 自动触发同步
+2. **Hugging Face 构建** → Docker 镜像构建 (约 2-3 分钟)
+3. **部署完成** → 访问 [jackywangsh-studyforge.hf.space](https://jackywangsh-studyforge.hf.space)
+
+### 📦 手动部署
+
 1. Create a new Space with Docker SDK
 2. Push this repository to the Space
 3. Set environment variables in Space settings
 4. The app will be available at `https://huggingface.co/spaces/<username>/<space-name>`
+
+### 🌐 部署架构
+
+```
+GitHub Repository
+       │
+       ▼ (自动同步)
+Hugging Face Spaces
+       │
+       ▼ (Docker Build)
+Static Frontend (Nginx)
+       │
+       ▼
+用户访问 jackywangsh-studyforge.hf.space
+```
 
 ## Adding New Exams
 
