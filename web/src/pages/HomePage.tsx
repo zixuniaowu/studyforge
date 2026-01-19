@@ -457,7 +457,39 @@ export const HomePage: React.FC = () => {
             'sap-c-s4cpr-set1', 'sap-c-s4cpr-set2', 'sap-c-s4cpr-set3',
             'sap-c-fiord-set1', 'sap-c-fiord-set2', 'sap-c-fiord-set3',
             'sap-c-s4cs-set1', 'sap-c-s4cs-set2', 'sap-c-s4cs-set3',
-            'sap-c-bowi-set1', 'sap-c-bowi-set2', 'sap-c-bowi-set3'
+            'sap-c-bowi-set1', 'sap-c-bowi-set2', 'sap-c-bowi-set3',
+            // SAP S/4HANA Additional Modules
+            'sap-c-ts4mm-set1', 'sap-c-ts4mm-set2', 'sap-c-ts4mm-set3',
+            'sap-c-ts4pp-set1', 'sap-c-ts4pp-set2', 'sap-c-ts4pp-set3',
+            'sap-c-ts4qm-set1', 'sap-c-ts4qm-set2', 'sap-c-ts4qm-set3',
+            'sap-c-ts4pm-set1', 'sap-c-ts4pm-set2', 'sap-c-ts4pm-set3',
+            // SAP SuccessFactors (HR)
+            'sap-c-thr-ec-set1', 'sap-c-thr-ec-set2', 'sap-c-thr-ec-set3',
+            'sap-c-thr-rcm-set1', 'sap-c-thr-rcm-set2', 'sap-c-thr-rcm-set3',
+            'sap-c-thr-onb-set1', 'sap-c-thr-onb-set2', 'sap-c-thr-onb-set3',
+            'sap-c-thr-pms-set1', 'sap-c-thr-pms-set2', 'sap-c-thr-pms-set3',
+            'sap-c-thr-cmp-set1', 'sap-c-thr-cmp-set2', 'sap-c-thr-cmp-set3',
+            'sap-c-thr-lms-set1', 'sap-c-thr-lms-set2', 'sap-c-thr-lms-set3',
+            'sap-c-thr-wfa-set1', 'sap-c-thr-wfa-set2', 'sap-c-thr-wfa-set3',
+            'sap-c-thr-tal-set1', 'sap-c-thr-tal-set2', 'sap-c-thr-tal-set3',
+            // SAP Customer Experience (CX)
+            'sap-c-c4h-set1', 'sap-c-c4h-set2', 'sap-c-c4h-set3',
+            'sap-c-c4c-sales-set1', 'sap-c-c4c-sales-set2', 'sap-c-c4c-sales-set3',
+            'sap-c-c4c-service-set1', 'sap-c-c4c-service-set2', 'sap-c-c4c-service-set3',
+            'sap-c-c4c-marketing-set1', 'sap-c-c4c-marketing-set2', 'sap-c-c4c-marketing-set3',
+            // SAP Supply Chain
+            'sap-c-ibp-set1', 'sap-c-ibp-set2', 'sap-c-ibp-set3',
+            'sap-c-tm-set1', 'sap-c-tm-set2', 'sap-c-tm-set3',
+            'sap-c-ariba-proc-set1', 'sap-c-ariba-proc-set2', 'sap-c-ariba-proc-set3',
+            'sap-c-ariba-src-set1', 'sap-c-ariba-src-set2', 'sap-c-ariba-src-set3',
+            'sap-c-ariba-sup-set1', 'sap-c-ariba-sup-set2', 'sap-c-ariba-sup-set3',
+            // SAP Analytics
+            'sap-c-sac-set1', 'sap-c-sac-set2', 'sap-c-sac-set3',
+            'sap-c-lumira-set1', 'sap-c-lumira-set2', 'sap-c-lumira-set3',
+            // SAP Governance
+            'sap-c-grc-ac-set1', 'sap-c-grc-ac-set2', 'sap-c-grc-ac-set3',
+            'sap-c-grc-pc-set1', 'sap-c-grc-pc-set2', 'sap-c-grc-pc-set3',
+            'sap-c-mdg-set1', 'sap-c-mdg-set2', 'sap-c-mdg-set3'
           ];
 
           // Check if there are any missing exams
@@ -582,7 +614,39 @@ export const HomePage: React.FC = () => {
           'sap-c-s4cpr-set1', 'sap-c-s4cpr-set2', 'sap-c-s4cpr-set3',
           'sap-c-fiord-set1', 'sap-c-fiord-set2', 'sap-c-fiord-set3',
           'sap-c-s4cs-set1', 'sap-c-s4cs-set2', 'sap-c-s4cs-set3',
-          'sap-c-bowi-set1', 'sap-c-bowi-set2', 'sap-c-bowi-set3'
+          'sap-c-bowi-set1', 'sap-c-bowi-set2', 'sap-c-bowi-set3',
+          // SAP S/4HANA Additional Modules
+          'sap-c-ts4mm-set1', 'sap-c-ts4mm-set2', 'sap-c-ts4mm-set3',
+          'sap-c-ts4pp-set1', 'sap-c-ts4pp-set2', 'sap-c-ts4pp-set3',
+          'sap-c-ts4qm-set1', 'sap-c-ts4qm-set2', 'sap-c-ts4qm-set3',
+          'sap-c-ts4pm-set1', 'sap-c-ts4pm-set2', 'sap-c-ts4pm-set3',
+          // SAP SuccessFactors (HR)
+          'sap-c-thr-ec-set1', 'sap-c-thr-ec-set2', 'sap-c-thr-ec-set3',
+          'sap-c-thr-rcm-set1', 'sap-c-thr-rcm-set2', 'sap-c-thr-rcm-set3',
+          'sap-c-thr-onb-set1', 'sap-c-thr-onb-set2', 'sap-c-thr-onb-set3',
+          'sap-c-thr-pms-set1', 'sap-c-thr-pms-set2', 'sap-c-thr-pms-set3',
+          'sap-c-thr-cmp-set1', 'sap-c-thr-cmp-set2', 'sap-c-thr-cmp-set3',
+          'sap-c-thr-lms-set1', 'sap-c-thr-lms-set2', 'sap-c-thr-lms-set3',
+          'sap-c-thr-wfa-set1', 'sap-c-thr-wfa-set2', 'sap-c-thr-wfa-set3',
+          'sap-c-thr-tal-set1', 'sap-c-thr-tal-set2', 'sap-c-thr-tal-set3',
+          // SAP Customer Experience (CX)
+          'sap-c-c4h-set1', 'sap-c-c4h-set2', 'sap-c-c4h-set3',
+          'sap-c-c4c-sales-set1', 'sap-c-c4c-sales-set2', 'sap-c-c4c-sales-set3',
+          'sap-c-c4c-service-set1', 'sap-c-c4c-service-set2', 'sap-c-c4c-service-set3',
+          'sap-c-c4c-marketing-set1', 'sap-c-c4c-marketing-set2', 'sap-c-c4c-marketing-set3',
+          // SAP Supply Chain
+          'sap-c-ibp-set1', 'sap-c-ibp-set2', 'sap-c-ibp-set3',
+          'sap-c-tm-set1', 'sap-c-tm-set2', 'sap-c-tm-set3',
+          'sap-c-ariba-proc-set1', 'sap-c-ariba-proc-set2', 'sap-c-ariba-proc-set3',
+          'sap-c-ariba-src-set1', 'sap-c-ariba-src-set2', 'sap-c-ariba-src-set3',
+          'sap-c-ariba-sup-set1', 'sap-c-ariba-sup-set2', 'sap-c-ariba-sup-set3',
+          // SAP Analytics
+          'sap-c-sac-set1', 'sap-c-sac-set2', 'sap-c-sac-set3',
+          'sap-c-lumira-set1', 'sap-c-lumira-set2', 'sap-c-lumira-set3',
+          // SAP Governance
+          'sap-c-grc-ac-set1', 'sap-c-grc-ac-set2', 'sap-c-grc-ac-set3',
+          'sap-c-grc-pc-set1', 'sap-c-grc-pc-set2', 'sap-c-grc-pc-set3',
+          'sap-c-mdg-set1', 'sap-c-mdg-set2', 'sap-c-mdg-set3'
         ];
         const languages = ['', '-ja'];
         for (const suffix of languages) {
