@@ -1,0 +1,660 @@
+{
+  "examId": "sap-c-btpadm-set1",
+  "provider": "SAP",
+  "title": "SAP BTP 管理员 (C_BTPADM) 模拟题 Set 1",
+  "description": "SAP Business Technology Platform 管理员认证模拟试题第一套",
+  "icon": "sap",
+  "setNumber": 1,
+  "questions": [
+    {
+      "id": 1,
+      "question": "在 SAP BTP 中，什么是 Global Account？",
+      "options": {
+        "A": "用于开发应用的运行时环境",
+        "B": "与 SAP 签订商业合同的最高级别实体",
+        "C": "存储应用数据的数据库实例",
+        "D": "管理用户身份的认证服务"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Global Account 是 SAP BTP 中的最高级别实体，代表与 SAP 签订的商业合同。它是管理子账户、配额和授权的入口点。所有子账户都归属于某个 Global Account。"
+    },
+    {
+      "id": 2,
+      "question": "以下哪些是 SAP BTP Subaccount 的特性？",
+      "options": {
+        "A": "可以分配到不同的区域和环境",
+        "B": "完全独立于 Global Account",
+        "C": "资源和配额从 Global Account 分配",
+        "D": "可以拥有自己的成员和授权管理"
+      },
+      "answer": ["A", "C", "D"],
+      "answerType": "multiple",
+      "explanation": "Subaccount 可以分配到不同区域和环境(A正确)，资源配额从 Global Account 分配(C正确)，可以有独立的成员和授权(D正确)。但 Subaccount 不是完全独立的，它归属于 Global Account(B错误)。"
+    },
+    {
+      "id": 3,
+      "question": "SAP BTP 中的 Directory 功能主要用于什么？",
+      "options": {
+        "A": "存储应用程序文件",
+        "B": "组织和管理 Subaccount 的层级结构",
+        "C": "配置网络路由规则",
+        "D": "管理数据库连接"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Directory 是 SAP BTP 中用于组织 Subaccount 的功能。它允许创建层级结构来分组和管理 Subaccount，便于大型组织的管理。Directory 可以嵌套，形成树状结构。"
+    },
+    {
+      "id": 4,
+      "question": "在 SAP BTP Cockpit 中，管理员可以执行哪些操作？",
+      "options": {
+        "A": "创建和管理 Subaccount",
+        "B": "分配服务配额和权限",
+        "C": "直接编辑应用程序代码",
+        "D": "监控资源使用情况"
+      },
+      "answer": ["A", "B", "D"],
+      "answerType": "multiple",
+      "explanation": "BTP Cockpit 允许管理员创建/管理 Subaccount(A)、分配配额和权限(B)、监控资源使用(D)。但 Cockpit 不是代码编辑器，不能直接编辑应用代码(C错误)，代码开发需要使用 Business Application Studio 或其他 IDE。"
+    },
+    {
+      "id": 5,
+      "question": "SAP BTP 中的 Entitlement 指的是什么？",
+      "options": {
+        "A": "用户的登录凭证",
+        "B": "账户有权使用的服务和配额",
+        "C": "应用程序的部署配置",
+        "D": "数据传输的加密协议"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Entitlement 定义了账户有权使用哪些服务以及可使用的配额数量。管理员通过 Entitlement Management 将服务配额从 Global Account 分配到 Subaccount。"
+    },
+    {
+      "id": 6,
+      "question": "在配置 SAP BTP 的身份认证时，以下哪个服务通常用作身份提供商(IdP)？",
+      "options": {
+        "A": "SAP HANA Database",
+        "B": "SAP Identity Authentication Service (IAS)",
+        "C": "SAP Event Mesh",
+        "D": "SAP API Management"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "SAP Identity Authentication Service (IAS) 是 SAP BTP 中的标准身份提供商，用于管理用户身份验证。它支持多种认证方式，包括 SAML 2.0、OpenID Connect，并可与企业 IdP（如 Active Directory）集成。"
+    },
+    {
+      "id": 7,
+      "question": "SAP BTP Cloud Foundry 环境中，什么是 Space？",
+      "options": {
+        "A": "存储持久化数据的区域",
+        "B": "Global Account 下的组织单位",
+        "C": "Organization 内用于隔离应用和服务的逻辑单元",
+        "D": "用于网络通信的虚拟私有云"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "在 Cloud Foundry 环境中，Space 是 Organization 内的逻辑单元，用于隔离不同的应用、服务和开发环境。典型的使用方式是为开发、测试、生产创建不同的 Space。"
+    },
+    {
+      "id": 8,
+      "question": "管理员需要为 Cloud Foundry 环境中的开发团队设置权限。以下哪些角色是 Cloud Foundry 的标准角色？",
+      "options": {
+        "A": "Space Developer",
+        "B": "Org Manager",
+        "C": "Global Administrator",
+        "D": "Space Manager"
+      },
+      "answer": ["A", "B", "D"],
+      "answerType": "multiple",
+      "explanation": "Cloud Foundry 标准角色包括：Org Manager(管理组织)、Space Manager(管理空间)、Space Developer(开发部署应用)、Space Auditor(只读审计)。Global Administrator 不是 Cloud Foundry 原生角色(C错误)。"
+    },
+    {
+      "id": 9,
+      "question": "SAP BTP 中的 Kyma Runtime 主要基于哪项技术？",
+      "options": {
+        "A": "Cloud Foundry",
+        "B": "Kubernetes",
+        "C": "ABAP",
+        "D": "SAP HANA"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Kyma Runtime 是基于 Kubernetes 的运行时环境，提供容器化应用部署、服务网格、事件处理等云原生能力。它允许使用任何编程语言开发微服务，并与 SAP 解决方案集成。"
+    },
+    {
+      "id": 10,
+      "question": "在 SAP BTP 中，Service Binding 的作用是什么？",
+      "options": {
+        "A": "将服务实例与应用程序连接，提供访问凭证",
+        "B": "限制服务的网络访问",
+        "C": "定义服务的计费模式",
+        "D": "配置服务的自动扩展策略"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Service Binding 将服务实例绑定到应用程序，为应用提供访问服务所需的凭证和连接信息。绑定后，应用可以通过环境变量获取这些配置信息。"
+    },
+    {
+      "id": 11,
+      "question": "SAP BTP 中的 XSUAA 服务主要负责什么功能？",
+      "options": {
+        "A": "数据库管理",
+        "B": "OAuth 2.0 授权和用户认证",
+        "C": "应用程序日志收集",
+        "D": "消息队列处理"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "XSUAA (Authorization and Trust Management) 服务提供 OAuth 2.0 授权框架，用于保护应用程序和 API。它处理用户认证、令牌发放、范围验证等安全相关功能。"
+    },
+    {
+      "id": 12,
+      "question": "作为 BTP 管理员，您需要监控应用程序性能。以下哪些工具可以使用？",
+      "options": {
+        "A": "SAP Cloud ALM",
+        "B": "Application Logging Service",
+        "C": "SAP Event Mesh",
+        "D": "Dynatrace 集成"
+      },
+      "answer": ["A", "B", "D"],
+      "answerType": "multiple",
+      "explanation": "监控工具包括：SAP Cloud ALM(运维监控)、Application Logging Service(日志管理)、Dynatrace集成(APM监控)。SAP Event Mesh 是消息服务，不是监控工具(C错误)。"
+    },
+    {
+      "id": 13,
+      "question": "SAP BTP 中的 Custom Domain 服务允许管理员做什么？",
+      "options": {
+        "A": "创建新的数据中心区域",
+        "B": "为应用配置自定义域名和 SSL 证书",
+        "C": "修改应用的编程语言",
+        "D": "更改服务的定价计划"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Custom Domain 服务允许管理员为 BTP 应用配置自定义域名（如 app.yourcompany.com）而不是使用默认的 SAP 域名，同时支持配置 SSL/TLS 证书以确保安全连接。"
+    },
+    {
+      "id": 14,
+      "question": "在 SAP BTP 中，什么是 Service Key？",
+      "options": {
+        "A": "用于加密数据库的密钥",
+        "B": "服务实例的访问凭证，可在应用外部使用",
+        "C": "用户登录的一次性密码",
+        "D": "API 版本标识符"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Service Key 是为服务实例创建的独立凭证，不需要绑定到特定应用。它常用于外部系统访问 BTP 服务，或者在本地开发环境中测试服务连接。"
+    },
+    {
+      "id": 15,
+      "question": "SAP BTP 提供哪些类型的运行时环境？",
+      "options": {
+        "A": "Cloud Foundry Environment",
+        "B": "Kyma Runtime",
+        "C": "ABAP Environment",
+        "D": "Neo Environment"
+      },
+      "answer": ["A", "B", "C", "D"],
+      "answerType": "multiple",
+      "explanation": "SAP BTP 提供多种运行时环境：Cloud Foundry(多语言PaaS)、Kyma(Kubernetes)、ABAP Environment(云端ABAP)、Neo Environment(遗留环境，正在被逐步替代)。管理员需要根据需求选择合适的环境。"
+    },
+    {
+      "id": 16,
+      "question": "管理员在配置 SAP BTP Connectivity 服务时，以下哪个组件需要安装在本地网络中？",
+      "options": {
+        "A": "SAP HANA Database",
+        "B": "Cloud Connector",
+        "C": "SAP Fiori Client",
+        "D": "SAP GUI"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Cloud Connector 是安装在本地网络中的轻量级组件，用于在 SAP BTP 和本地系统之间建立安全的反向调用隧道。它不需要防火墙打开入站端口，提供安全的云到本地连接。"
+    },
+    {
+      "id": 17,
+      "question": "在 SAP BTP 中，以下哪些操作需要 Global Account Administrator 权限？",
+      "options": {
+        "A": "创建新的 Subaccount",
+        "B": "管理 Entitlement 分配",
+        "C": "部署应用到 Cloud Foundry Space",
+        "D": "配置 Directory 结构"
+      },
+      "answer": ["A", "B", "D"],
+      "answerType": "multiple",
+      "explanation": "Global Account Administrator 负责：创建 Subaccount(A)、管理 Entitlement(B)、配置 Directory(D)。部署应用到 CF Space(C) 通常只需要 Space Developer 权限。"
+    },
+    {
+      "id": 18,
+      "question": "SAP BTP 中的 Feature Set A 和 Feature Set B 有什么主要区别？",
+      "options": {
+        "A": "Feature Set B 支持更多编程语言",
+        "B": "Feature Set B 支持 Directory 和更灵活的账户管理",
+        "C": "Feature Set A 提供更好的性能",
+        "D": "两者完全相同，只是名称不同"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Feature Set B 是较新的账户模型，支持 Directory、Custom Properties、改进的 Entitlement 管理等功能。Feature Set A 是遗留模型。新的 Global Account 默认使用 Feature Set B。"
+    },
+    {
+      "id": 19,
+      "question": "管理员需要设置应用的自动扩展。在 Cloud Foundry 环境中，这需要配置什么？",
+      "options": {
+        "A": "Application Autoscaler 服务",
+        "B": "Service Mesh",
+        "C": "Destination 服务",
+        "D": "Audit Log 服务"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Application Autoscaler 是 BTP 中用于自动伸缩应用实例的服务。管理员可以基于 CPU、内存、HTTP 吞吐量等指标配置伸缩策略，实现应用的自动扩容和缩容。"
+    },
+    {
+      "id": 20,
+      "question": "SAP BTP 中的 Destination 服务主要用于什么？",
+      "options": {
+        "A": "存储应用程序的目标部署位置",
+        "B": "管理到外部系统的连接配置和凭证",
+        "C": "定义用户的访问目标页面",
+        "D": "配置邮件发送的目标地址"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Destination 服务用于集中管理连接配置，包括 URL、认证方式、代理设置等。应用程序通过 Destination 名称访问外部系统，无需硬编码连接信息，便于维护和安全管理。"
+    },
+    {
+      "id": 21,
+      "question": "在 SAP BTP 中设置信任配置时，以下说法正确的是？",
+      "options": {
+        "A": "每个 Subaccount 只能配置一个身份提供商",
+        "B": "可以同时配置 SAP IAS 和企业 IdP",
+        "C": "信任配置仅影响管理员登录",
+        "D": "配置信任后无法修改"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "SAP BTP 支持多身份提供商配置，可以同时信任 SAP IAS 和企业 IdP（如 Azure AD、ADFS）。用户登录时可以选择不同的身份提供商。信任配置影响所有用户，且可以随时修改。"
+    },
+    {
+      "id": 22,
+      "question": "管理员想要查看 SAP BTP 账户的使用成本。应该在哪里查看？",
+      "options": {
+        "A": "Global Account > Usage Analytics",
+        "B": "Application Logs",
+        "C": "Service Marketplace",
+        "D": "Cloud Connector"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "在 BTP Cockpit 的 Global Account 级别，Usage Analytics 提供服务使用量和成本信息。管理员可以按 Subaccount、服务类型等维度查看使用情况和费用分布。"
+    },
+    {
+      "id": 23,
+      "question": "SAP BTP 中的 Role Collection 是什么？",
+      "options": {
+        "A": "收集应用程序日志的服务",
+        "B": "将多个角色组合在一起便于分配的机制",
+        "C": "数据库表的集合",
+        "D": "API 端点的集合"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Role Collection 是一组角色的集合，便于授权管理。管理员可以创建 Role Collection 包含多个相关角色，然后一次性分配给用户或用户组，简化权限管理。"
+    },
+    {
+      "id": 24,
+      "question": "在配置 Cloud Connector 时，以下哪些是必要的步骤？",
+      "options": {
+        "A": "指定 Subaccount 连接信息",
+        "B": "定义允许访问的后端系统资源",
+        "C": "安装 SAP HANA 数据库",
+        "D": "配置系统映射（System Mapping）"
+      },
+      "answer": ["A", "B", "D"],
+      "answerType": "multiple",
+      "explanation": "配置 Cloud Connector 需要：连接到 Subaccount(A)、定义可访问的后端资源(B)、配置系统映射(D)。不需要安装 HANA(C)，Cloud Connector 是独立组件。"
+    },
+    {
+      "id": 25,
+      "question": "SAP BTP 中的 Service Plan 代表什么？",
+      "options": {
+        "A": "服务的部署时间表",
+        "B": "服务的不同功能层级和定价选项",
+        "C": "服务的技术文档",
+        "D": "服务的用户手册"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Service Plan 定义了服务的不同功能层级和价格选项。例如，同一服务可能有 lite（免费受限）、standard、premium 等计划。管理员在创建服务实例时选择适合的 Plan。"
+    },
+    {
+      "id": 26,
+      "question": "管理员需要为多环境应用配置共享服务。以下哪个服务支持跨 Subaccount 共享？",
+      "options": {
+        "A": "SAP HANA Cloud（共享数据库）",
+        "B": "Application Autoscaler",
+        "C": "Destination Service（共享目标）",
+        "D": "HTML5 Application Repository"
+      },
+      "answer": ["A", "C"],
+      "answerType": "multiple",
+      "explanation": "某些服务支持跨 Subaccount 共享：HANA Cloud 可配置为共享数据库(A)、Destination 可配置为共享目标(C)。Autoscaler 和 HTML5 Repo 通常是 Subaccount 级别的服务。"
+    },
+    {
+      "id": 27,
+      "question": "在 SAP BTP 中，Audit Log 服务的主要用途是什么？",
+      "options": {
+        "A": "记录应用程序的业务日志",
+        "B": "记录安全相关事件和管理操作用于合规审计",
+        "C": "存储用户的登录密码",
+        "D": "监控网络流量"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Audit Log 服务记录安全相关事件（如用户登录、权限变更）和管理操作，用于安全审计和合规要求。它不同于应用程序日志，专注于可审计的安全事件。"
+    },
+    {
+      "id": 28,
+      "question": "SAP BTP 管理员如何限制特定 Subaccount 可使用的服务？",
+      "options": {
+        "A": "通过网络防火墙规则",
+        "B": "通过 Entitlement 管理分配配额",
+        "C": "通过修改应用代码",
+        "D": "通过删除服务文档"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "通过 Entitlement 管理，Global Account Administrator 可以控制每个 Subaccount 有权使用哪些服务以及使用多少配额。未分配 Entitlement 的服务在该 Subaccount 中不可用。"
+    },
+    {
+      "id": 29,
+      "question": "在 Cloud Foundry 环境中，以下哪个命令用于查看应用程序日志？",
+      "options": {
+        "A": "cf apps",
+        "B": "cf logs <app-name>",
+        "C": "cf services",
+        "D": "cf marketplace"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "cf logs <app-name> 命令用于查看指定应用的日志输出。添加 --recent 参数可查看最近的日志，不加参数则实时跟踪日志。这是排查应用问题的重要工具。"
+    },
+    {
+      "id": 30,
+      "question": "SAP BTP 中的 Alert Notification 服务可以做什么？",
+      "options": {
+        "A": "发送应用程序错误通知到指定渠道",
+        "B": "创建用户界面弹窗",
+        "C": "修改数据库记录",
+        "D": "部署应用程序"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Alert Notification 服务允许配置告警规则，当发生特定事件（如应用崩溃、资源耗尽）时，通过邮件、Slack、Webhook 等渠道发送通知给管理员或运维团队。"
+    },
+    {
+      "id": 31,
+      "question": "管理员配置 Principal Propagation 的目的是什么？",
+      "options": {
+        "A": "将云端用户身份传递到本地系统",
+        "B": "加速应用程序性能",
+        "C": "减少存储使用量",
+        "D": "简化应用部署流程"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Principal Propagation 允许将已认证的云端用户身份安全地传递到本地系统，实现端到端的用户上下文传递。这样本地系统可以识别实际操作用户，进行细粒度授权和审计。"
+    },
+    {
+      "id": 32,
+      "question": "在 SAP BTP 中，以下哪些属于 Subaccount 级别的配置？",
+      "options": {
+        "A": "Trust Configuration（信任配置）",
+        "B": "Global Entitlements",
+        "C": "Cloud Foundry Organization/Space",
+        "D": "Destination"
+      },
+      "answer": ["A", "C", "D"],
+      "answerType": "multiple",
+      "explanation": "Subaccount 级别配置包括：Trust Configuration(A)、CF Org/Space(C)、Destination(D)。Global Entitlements(B) 是 Global Account 级别的，用于向 Subaccount 分配。"
+    },
+    {
+      "id": 33,
+      "question": "SAP BTP 的 Credential Store 服务用于什么？",
+      "options": {
+        "A": "存储用户的登录历史",
+        "B": "安全存储应用所需的敏感凭证",
+        "C": "备份数据库数据",
+        "D": "缓存 API 响应"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Credential Store 是安全的凭证存储服务，用于存储密码、API 密钥、证书等敏感信息。应用可以在运行时安全地获取这些凭证，避免在代码或配置文件中硬编码敏感信息。"
+    },
+    {
+      "id": 34,
+      "question": "管理员发现 Cloud Foundry 应用频繁重启。以下哪些可能是原因？",
+      "options": {
+        "A": "应用内存不足导致 OOM",
+        "B": "Health Check 失败",
+        "C": "Entitlement 配额不足",
+        "D": "应用程序代码异常退出"
+      },
+      "answer": ["A", "B", "D"],
+      "answerType": "multiple",
+      "explanation": "应用重启原因可能是：OOM(内存不足)(A)、Health Check 失败导致平台认为应用不健康(B)、代码异常导致进程退出(D)。Entitlement 配额不足(C)会阻止新建实例，但不会导致现有实例重启。"
+    },
+    {
+      "id": 35,
+      "question": "在 SAP BTP 中配置 OAuth 2.0 时，什么是 Scope？",
+      "options": {
+        "A": "定义应用可以访问的资源范围",
+        "B": "指定数据库表的可见范围",
+        "C": "限制网络连接的 IP 范围",
+        "D": "设置日志保留的时间范围"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "OAuth 2.0 中的 Scope 定义了访问令牌可以访问的资源和操作范围。应用在 xs-security.json 中定义 Scope，XSUAA 在授权时验证用户是否拥有所需的 Scope。"
+    },
+    {
+      "id": 36,
+      "question": "SAP BTP 中的 Landscape Portal 主要用于什么？",
+      "options": {
+        "A": "设计用户界面",
+        "B": "管理 ABAP Environment 的系统和租户",
+        "C": "监控网络延迟",
+        "D": "编辑应用程序代码"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Landscape Portal 是 ABAP Environment 的管理工具，用于管理系统生命周期、创建租户、执行系统复制、软件更新等管理操作。它是 ABAP 云系统管理员的主要工作界面。"
+    },
+    {
+      "id": 37,
+      "question": "管理员需要设置跨区域灾难恢复。以下哪些是相关考虑因素？",
+      "options": {
+        "A": "在多个区域创建 Subaccount",
+        "B": "配置数据复制策略",
+        "C": "使用单一 Space 部署所有应用",
+        "D": "评估 RTO 和 RPO 要求"
+      },
+      "answer": ["A", "B", "D"],
+      "answerType": "multiple",
+      "explanation": "灾难恢复需要考虑：多区域 Subaccount(A)、数据复制策略(B)、RTO/RPO要求(D)。使用单一 Space(C) 不利于灾难恢复，应该在多区域分布部署。"
+    },
+    {
+      "id": 38,
+      "question": "在 SAP BTP 中，什么是 Trial Account？",
+      "options": {
+        "A": "用于生产环境的高级账户",
+        "B": "免费的测试和学习账户，有功能和时间限制",
+        "C": "仅供 SAP 员工使用的账户",
+        "D": "需要特殊审批的企业账户"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Trial Account 是 SAP 提供的免费账户，供开发者和学习者探索 BTP 平台。它有功能限制（可用服务受限）、资源限制（配额较少）和时间限制（90天后自动删除）。"
+    },
+    {
+      "id": 39,
+      "question": "SAP BTP 管理员需要配置内容安全策略(CSP)。这主要是为了防止什么攻击？",
+      "options": {
+        "A": "SQL 注入",
+        "B": "跨站脚本攻击(XSS)",
+        "C": "拒绝服务攻击(DDoS)",
+        "D": "中间人攻击"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Content Security Policy (CSP) 主要用于防止 XSS 攻击，通过定义允许加载脚本、样式等资源的来源白名单。浏览器会阻止未经授权来源的内容执行，提高 Web 应用安全性。"
+    },
+    {
+      "id": 40,
+      "question": "在 Cloud Foundry 中，以下哪个文件用于定义应用部署配置？",
+      "options": {
+        "A": "package.json",
+        "B": "manifest.yml",
+        "C": "xs-security.json",
+        "D": "mta.yaml"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "manifest.yml 是 Cloud Foundry 应用的部署配置文件，定义应用名称、内存、实例数、路由、环境变量、服务绑定等部署参数。cf push 命令会读取此文件执行部署。"
+    },
+    {
+      "id": 41,
+      "question": "SAP BTP 中的 MTA (Multi-Target Application) 是什么？",
+      "options": {
+        "A": "一种数据库类型",
+        "B": "包含多个模块和依赖的复合应用打包格式",
+        "C": "网络传输协议",
+        "D": "用户认证方式"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "MTA 是 SAP 的多目标应用格式，允许将多个应用模块（前端、后端、数据库）和服务依赖打包在一起。使用 mta.yaml 描述依赖关系，通过 cf deploy 一次性部署整个应用。"
+    },
+    {
+      "id": 42,
+      "question": "管理员需要限制应用只能从特定 IP 访问。以下哪种方式可以实现？",
+      "options": {
+        "A": "配置 Cloud Foundry Route Service",
+        "B": "修改应用代码添加 IP 检查",
+        "C": "使用 API Management 策略",
+        "D": "在 Destination 中设置限制"
+      },
+      "answer": ["A", "C"],
+      "answerType": "multiple",
+      "explanation": "IP 限制可以通过：Route Service 代理流量并过滤(A)、API Management 配置访问策略(C)。虽然修改代码(B)技术上可行但不推荐。Destination(D) 用于出站连接配置，不适用于入站限制。"
+    },
+    {
+      "id": 43,
+      "question": "SAP BTP 中的 Job Scheduling 服务用于什么？",
+      "options": {
+        "A": "管理员工工作安排",
+        "B": "调度和执行后台定时任务",
+        "C": "分配计算资源",
+        "D": "处理用户请求队列"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Job Scheduling 服务允许创建、管理和监控后台定时任务。管理员可以配置 cron 表达式、执行时间、重试策略等，适用于数据同步、报表生成、清理任务等场景。"
+    },
+    {
+      "id": 44,
+      "question": "在 SAP BTP 中，以下哪些是 API Management 的主要功能？",
+      "options": {
+        "A": "API 流量控制和限速",
+        "B": "API 版本管理",
+        "C": "数据库索引优化",
+        "D": "开发者门户和文档"
+      },
+      "answer": ["A", "B", "D"],
+      "answerType": "multiple",
+      "explanation": "API Management 功能包括：流量控制/限速(A)、版本管理(B)、开发者门户(D)，以及认证、监控、分析等。数据库索引(C)不是 API Management 的功能。"
+    },
+    {
+      "id": 45,
+      "question": "SAP BTP 管理员如何获取平台更新和维护通知？",
+      "options": {
+        "A": "通过 SAP Support Portal 订阅通知",
+        "B": "在 BTP Cockpit 查看通知中心",
+        "C": "通过 SAP 社交媒体渠道",
+        "D": "检查 Cloud Status 页面"
+      },
+      "answer": ["A", "B", "D"],
+      "answerType": "multiple",
+      "explanation": "获取更新通知的方式包括：SAP Support Portal 邮件订阅(A)、BTP Cockpit 通知中心(B)、Cloud Status 页面(D)查看计划维护和故障信息。社交媒体(C)不是官方通知渠道。"
+    },
+    {
+      "id": 46,
+      "question": "在 SAP BTP 中，什么是 Service Instance？",
+      "options": {
+        "A": "服务的安装包",
+        "B": "已创建的可使用的服务副本",
+        "C": "服务的源代码",
+        "D": "服务的文档页面"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Service Instance 是从 Service Plan 创建的服务实例，代表一个可用的服务副本。应用通过 Service Binding 连接到 Service Instance 来使用服务功能。"
+    },
+    {
+      "id": 47,
+      "question": "管理员需要配置 SAP BTP 与 Active Directory 的集成。以下哪种方式是推荐的？",
+      "options": {
+        "A": "直接配置 LDAP 连接",
+        "B": "通过 SAP IAS 作为代理集成 AD",
+        "C": "在每个应用中单独配置 AD",
+        "D": "导出 AD 用户到 BTP 数据库"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "推荐通过 SAP Identity Authentication Service (IAS) 作为身份代理集成 AD。IAS 支持与企业 IdP（如 AD/Azure AD）的联合，提供统一的身份管理和单点登录体验。"
+    },
+    {
+      "id": 48,
+      "question": "SAP BTP 中的 Business Rules 服务允许做什么？",
+      "options": {
+        "A": "定义和执行可配置的业务规则",
+        "B": "管理企业组织架构",
+        "C": "设计数据库表结构",
+        "D": "创建用户界面模板"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Business Rules 服务允许业务用户通过可视化工具定义和维护业务规则（如价格计算、审批条件），无需修改应用代码。规则可以在运行时更新，提供业务敏捷性。"
+    },
+    {
+      "id": 49,
+      "question": "在配置 SAP BTP 高可用时，以下哪些是重要考虑因素？",
+      "options": {
+        "A": "使用多实例部署应用",
+        "B": "配置数据库复制",
+        "C": "将所有组件部署在单一 Space",
+        "D": "启用自动故障转移"
+      },
+      "answer": ["A", "B", "D"],
+      "answerType": "multiple",
+      "explanation": "高可用配置包括：多实例部署(A)确保单点故障不影响服务、数据库复制(B)保护数据、自动故障转移(D)减少停机时间。单一 Space(C)不是高可用的要求，反而可能增加风险。"
+    },
+    {
+      "id": 50,
+      "question": "SAP BTP 管理员如何管理服务的配额使用？",
+      "options": {
+        "A": "在 Global Account 的 Entitlement 配置中设置",
+        "B": "通过修改应用代码",
+        "C": "在 Service Marketplace 购买更多配额",
+        "D": "通过 Usage Analytics 监控并调整分配"
+      },
+      "answer": ["A", "D"],
+      "answerType": "multiple",
+      "explanation": "配额管理通过：Entitlement 配置分配配额到 Subaccount(A)、Usage Analytics 监控使用情况(D)。修改代码(B)不影响配额。Marketplace(C)是发现服务的地方，不直接购买配额。"
+    }
+  ]
+}

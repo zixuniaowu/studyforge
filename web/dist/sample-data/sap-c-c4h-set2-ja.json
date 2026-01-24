@@ -1,0 +1,773 @@
+{
+  "exam": {
+    "id": "sap-c-c4h-set2-ja",
+    "name": "SAP C_C4H 模擬試験 #2",
+    "code": "C_C4H",
+    "provider": "SAP",
+    "language": "ja",
+    "description": "SAP Commerce Cloud 認定模擬試験第2セット - 上級トピック",
+    "totalQuestions": 50,
+    "passingScore": 65,
+    "examTime": 180,
+    "domains": [
+      { "name": "Backoffice Framework", "percentage": 25 },
+      { "name": "検索とパーソナライゼーション", "percentage": 25 },
+      { "name": "マルチチャネルと統合", "percentage": 20 },
+      { "name": "パフォーマンス最適化", "percentage": 15 },
+      { "name": "セキュリティとコンプライアンス", "percentage": 15 }
+    ],
+    "tags": ["SAP", "Commerce Cloud", "C_C4H", "Backoffice", "Solr", "OCC"]
+  },
+  "questions": [
+    {
+      "id": "sap-c-c4h-set2-ja-q1",
+      "domain": "Backoffice Framework",
+      "question": "SAP Commerce Cloud Backoffice でカスタム Widget を定義するために使用されるファイルはどれですか？",
+      "options": {
+        "A": "widgets.xml",
+        "B": "backoffice-widgets.xml",
+        "C": "definition.xml",
+        "D": "widget-definition.xml"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "Backoffice Framework では、definition.xml ファイルが Widget の構造、プロパティ、動作を定義するために使用されます。各 Widget は、そのルートディレクトリにこのファイルを含める必要があり、Widget の ID、名前、コントローラー、ビューなどのコア構成を定義します。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "sap-c-c4h-set2-ja-q2",
+      "domain": "Backoffice Framework",
+      "question": "Backoffice の Cockpit NG はどのテクノロジースタックを使用してユーザーインターフェースを構築していますか？",
+      "options": {
+        "A": "Angular",
+        "B": "React",
+        "C": "ZK Framework",
+        "D": "Vue.js"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "Backoffice は ZK Framework をベースに構築されています。これは Java ベースの AJAX Web フレームワークです。ZK により、開発者は XML (ZUML) と Java を使用してリッチな Web アプリケーションを作成でき、サーバーサイドイベント処理とコンポーネントモデルをサポートします。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "sap-c-c4h-set2-ja-q3",
+      "domain": "Backoffice Framework",
+      "question": "Backoffice で特定のタイプのプロパティを編集するためのカスタムエディターを実装するにはどうすればよいですか？",
+      "options": {
+        "A": "新しい ItemType を作成する",
+        "B": "PropertyEditor インターフェースを実装する",
+        "C": "editorArea コンポーネントを構成する",
+        "D": "DefaultEditor クラスを拡張する"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "Backoffice では、backoffice-config.xml で editorArea コンポーネントを構成することでカスタムプロパティエディターを実装できます。特定のタイプまたは特定のプロパティを編集するためにどの Widget を使用するかを指定でき、高度にカスタマイズ可能な編集エクスペリエンスを実現できます。",
+      "difficulty": "hard"
+    },
+    {
+      "id": "sap-c-c4h-set2-ja-q4",
+      "domain": "Backoffice Framework",
+      "question": "Backoffice の Advanced Search 機能は何に基づいて実装されていますか？",
+      "options": {
+        "A": "FlexibleSearch",
+        "B": "Solr Query",
+        "C": "Generic Search",
+        "D": "SQL Direct Query"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "Backoffice の Advanced Search 機能は Generic Search に基づいて実装されており、複雑な検索条件を構築するための抽象レイヤーを提供します。Generic Search は最終的に FlexibleSearch クエリに変換されて実行されますが、より使いやすい API と UI 統合を提供します。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "sap-c-c4h-set2-ja-q5",
+      "domain": "Backoffice Framework",
+      "question": "Backoffice 構成における Context の役割は何ですか？",
+      "options": {
+        "A": "ユーザー権限を定義する",
+        "B": "セッションデータを保存する",
+        "C": "条件に基づいて UI を動的に構成する",
+        "D": "データベース接続を管理する"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "Backoffice の Context は、特定の条件（ユーザーロール、現在のオブジェクトタイプなど）に基づいて UI を動的に構成できます。異なる Context を定義することで、異なるシナリオに対して異なる Widget 構成、レイアウト、動作を提供できます。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "sap-c-c4h-set2-ja-q6",
+      "domain": "Backoffice Framework",
+      "question": "Backoffice でカスタム Action を作成するにはどうすればよいですか？",
+      "options": {
+        "A": "ActionRenderer インターフェースを実装する",
+        "B": "Action Bean を作成し backoffice-config.xml に登録する",
+        "C": "AbstractAction クラスを拡張する",
+        "D": "action-definition.xml を構成する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "カスタム Action を作成するには：1) Action インターフェースを実装する Java Bean を作成、2) Spring 構成でその Bean を登録、3) backoffice-config.xml で Action の表示位置とトリガー条件を構成します。",
+      "difficulty": "hard"
+    },
+    {
+      "id": "sap-c-c4h-set2-ja-q7",
+      "domain": "Backoffice Framework",
+      "question": "Backoffice の Socket メカニズムは何の目的で使用されますか？",
+      "options": {
+        "A": "WebSocket 通信を実装する",
+        "B": "外部システムに接続する",
+        "C": "Widget 間の通信",
+        "D": "データベース接続プール管理"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "Backoffice の Socket は Widget 通信の中核メカニズムです。各 Widget は入力と出力の Socket を定義でき、Socket 接続を通じて Widget 間のデータ転送とイベント通知を実現し、疎結合のコンポーネントアーキテクチャを形成します。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "sap-c-c4h-set2-ja-q8",
+      "domain": "Backoffice Framework",
+      "question": "Backoffice で UI スレッドで実行する必要があるメソッドをマークするために使用されるアノテーションはどれですか？",
+      "options": {
+        "A": "@UIThread",
+        "B": "@SocketEvent",
+        "C": "@ViewEvent",
+        "D": "@Async"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "@ViewEvent アノテーションは UI イベントを処理するメソッドをマークするために使用され、これらのメソッドは UI スレッドで実行されます。他の Widget からの Socket イベントを処理する @SocketEvent とよく組み合わせて使用されます。",
+      "difficulty": "hard"
+    },
+    {
+      "id": "sap-c-c4h-set2-ja-q9",
+      "domain": "Backoffice Framework",
+      "question": "Backoffice で国際化 (i18n) を実装するにはどうすればよいですか？",
+      "options": {
+        "A": "JavaScript i18n ライブラリを使用する",
+        "B": "labels.properties ファイルで翻訳を定義する",
+        "C": "i18n-config.xml を構成する",
+        "D": "データベースに翻訳を保存する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Backoffice の国際化は labels.properties ファイルで実装されます。各言語用に対応するプロパティファイル（例：labels_ja.properties）を作成し、Widget の view で ${labels.key} 構文を使用して翻訳を参照します。システムはユーザーの言語設定に基づいて対応するファイルを自動的にロードします。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "sap-c-c4h-set2-ja-q10",
+      "domain": "Backoffice Framework",
+      "question": "Backoffice Application Orchestrator の主な機能は何ですか？（2つ選択）",
+      "options": {
+        "A": "バックグラウンドジョブのスケジューリングを管理する",
+        "B": "Backoffice アプリケーションの表示とアクセス権限を構成する",
+        "C": "システムパフォーマンスを監視する",
+        "D": "ナビゲーションエリアとビューをカスタマイズする"
+      },
+      "answer": ["B", "D"],
+      "answerType": "multiple",
+      "explanation": "Application Orchestrator は Backoffice の構成ツールで、管理者は以下を行えます：1) 特定のユーザーグループに対してどのアプリケーションとエリアを表示するかを構成、2) ナビゲーション構造、ビューレイアウト、Widget 構成をカスタマイズ。ジョブスケジューリングやパフォーマンス監視は含まれません。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "sap-c-c4h-set2-ja-q11",
+      "domain": "Backoffice Framework",
+      "question": "Backoffice でリストビューのカスタム列を実装するにはどうすればよいですか？",
+      "options": {
+        "A": "データベーススキーマを修正する",
+        "B": "backoffice-config.xml で listColumn を構成する",
+        "C": "カスタム ItemType を作成する",
+        "D": "ListColumnRenderer を拡張する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "backoffice-config.xml で listColumn 要素を構成することでリストビューの列をカスタマイズできます。どのプロパティを表示するか、列の順序、幅、ソート方法、カスタムレンダラーを使用した表示内容のフォーマットを指定できます。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "sap-c-c4h-set2-ja-q12",
+      "domain": "Backoffice Framework",
+      "question": "Backoffice における Perspective の概念は何を表していますか？",
+      "options": {
+        "A": "ユーザーの視点またはロール",
+        "B": "3D レンダリングビュー",
+        "C": "データベースビュー",
+        "D": "関連する機能のセットを持つワークスペース"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "Backoffice の Perspective は関連する機能のセットを持つワークスペースを表します。例えば、Product Cockpit perspective には製品管理に関連するすべての Widget と機能が含まれています。ユーザーは異なる Perspective を切り替えて異なる機能セットにアクセスできます。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "sap-c-c4h-set2-ja-q13",
+      "domain": "検索とパーソナライゼーション",
+      "question": "SAP Commerce Cloud でデフォルトで使用される検索エンジンはどれですか？",
+      "options": {
+        "A": "Elasticsearch",
+        "B": "Apache Solr",
+        "C": "Algolia",
+        "D": "Azure Cognitive Search"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "SAP Commerce Cloud はデフォルトで Apache Solr を検索エンジンとして使用します。Solr はフルテキスト検索、ファセットナビゲーション、スペルチェックなどの機能を提供します。Commerce Cloud は Solr との深い統合を提供し、インデックス作成、クエリ、ファセット構成が含まれます。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "sap-c-c4h-set2-ja-q14",
+      "domain": "検索とパーソナライゼーション",
+      "question": "SAP Commerce Cloud で Solr インデックス構成はどこで定義されますか？",
+      "options": {
+        "A": "solr.properties",
+        "B": "solrconfig.xml",
+        "C": "Backoffice または ImpEx 経由",
+        "D": "schema.xml"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "Solr インデックス構成は Commerce Cloud で Backoffice の Solr 管理機能または ImpEx ファイルを通じて定義されます。構成には SolrIndexedType（インデックスタイプ）、SolrIndexedProperty（インデックスプロパティ）、SolrSearchQueryTemplate（クエリテンプレート）などが含まれます。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "sap-c-c4h-set2-ja-q15",
+      "domain": "検索とパーソナライゼーション",
+      "question": "Solr Facet とは何ですか？",
+      "options": {
+        "A": "検索結果のソート方法",
+        "B": "検索フィルター条件のカテゴリ別表示",
+        "C": "検索パフォーマンス最適化技術",
+        "D": "検索結果のページネーションメカニズム"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Solr Facet は検索フィルター条件のカテゴリ別表示で、ユーザーがカテゴリ値をクリックして検索結果を絞り込むことができます。例えば、製品検索ではブランド、価格帯、色などでファセットナビゲーションを行い、各ファセット値にはマッチする結果数が表示されます。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "sap-c-c4h-set2-ja-q16",
+      "domain": "検索とパーソナライゼーション",
+      "question": "Commerce Cloud で Solr の Boost ルールを構成するにはどうすればよいですか？",
+      "options": {
+        "A": "solrconfig.xml ファイルを編集する",
+        "B": "SolrIndexedProperty で boost 値を設定する",
+        "C": "Boost Rule を作成し Search Profile に関連付ける",
+        "D": "Solr スキーマを修正する"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "Commerce Cloud は Boost Rule 機能を提供し、Backoffice でルールを作成して特定の製品やカテゴリの検索ランキングを上げることができます。Boost Rule は Search Profile に関連付けられ、時間やユーザーグループなどの条件に基づいて動的に適用できます。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "sap-c-c4h-set2-ja-q17",
+      "domain": "検索とパーソナライゼーション",
+      "question": "Commerce Cloud の Adaptive Search はどの機能を提供しますか？（2つ選択）",
+      "options": {
+        "A": "自動インデックス最適化",
+        "B": "検索結果のパーソナライズされたソート",
+        "C": "分散検索クラスター",
+        "D": "ビジネスルールに基づく検索調整"
+      },
+      "answer": ["B", "D"],
+      "answerType": "multiple",
+      "explanation": "Adaptive Search により、マーチャントはコードを変更せずに検索動作を調整できます：1) パーソナライズされたソート：ユーザーの行動や好みに基づいて結果の順序を調整、2) ビジネスルール：プロモーション商品を上位に、季節調整など。インデックス最適化やクラスター構成は直接扱いません。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "sap-c-c4h-set2-ja-q18",
+      "domain": "検索とパーソナライゼーション",
+      "question": "SAP Commerce Cloud の Context-Driven Services (CDS) は何に使用されますか？",
+      "options": {
+        "A": "コンテキストメニューの管理",
+        "B": "リアルタイムのパーソナライズされた推奨の提供",
+        "C": "多言語コンテンツの処理",
+        "D": "ユーザーセッションの管理"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Context-Driven Services (CDS) は Commerce Cloud のパーソナライゼーションエンジンで、ユーザーの行動、好み、コンテキストデータに基づいてリアルタイムのパーソナライズされた推奨を提供します。CDS は製品ページやカートなどの場所で関連商品の推奨を表示できます。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "sap-c-c4h-set2-ja-q19",
+      "domain": "検索とパーソナライゼーション",
+      "question": "Solr 構成で SolrIndexedProperty の 'sortable' プロパティの役割は何ですか？",
+      "options": {
+        "A": "そのプロパティを検索フィルターに使用できるようにする",
+        "B": "そのプロパティをファセットとして使用できるようにする",
+        "C": "検索結果をそのプロパティでソートできるようにする",
+        "D": "そのプロパティをフルテキスト検索に参加させる"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "SolrIndexedProperty の 'sortable' プロパティを true に設定すると、検索結果をそのフィールドでソートできます。Solr はそのプロパティ用の専用ソートフィールドを作成し、ユーザーは検索結果ページで価格や評価などでソートできます。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "sap-c-c4h-set2-ja-q20",
+      "domain": "検索とパーソナライゼーション",
+      "question": "Commerce Cloud の Intelligent Selling Services (ISS) はどの機能を提供しますか？",
+      "options": {
+        "A": "在庫管理",
+        "B": "AI ベースの製品推奨",
+        "C": "販売レポート",
+        "D": "価格管理"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Intelligent Selling Services (ISS) は機械学習と AI 技術を使用してスマートな製品推奨を提供します。ユーザーの行動、購入履歴、製品の関連性を分析し、'Similar Products'、'Frequently Bought Together' などのパーソナライズされた推奨を生成します。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "sap-c-c4h-set2-ja-q21",
+      "domain": "検索とパーソナライゼーション",
+      "question": "Commerce Cloud で検索シノニム機能を実装するにはどうすればよいですか？",
+      "options": {
+        "A": "Solr の synonyms.txt を構成する",
+        "B": "Backoffice で SolrSynonymConfig を構成する",
+        "C": "FlexibleSearch の LIKE 操作を使用する",
+        "D": "カスタム SearchService を作成する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Commerce Cloud は Backoffice で SolrSynonymConfig を通じて検索シノニムを構成します。一方向または双方向のシノニム（例：'sofa' = 'couch'）を定義でき、インデックス更新時にシノニム構成が自動的に Solr に適用されます。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "sap-c-c4h-set2-ja-q22",
+      "domain": "検索とパーソナライゼーション",
+      "question": "Solr フルテキストインデックスで、日本語検索に最も重要なアナライザー構成はどれですか？",
+      "options": {
+        "A": "Stemmer",
+        "B": "Stop Words Filter",
+        "C": "CJK Tokenizer",
+        "D": "Phonetic Filter"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "日本語にはスペースによる単語区切りがないため、専用のトークナイザーが必要です。CJK (Chinese-Japanese-Korean) Tokenizer またはより高度な日本語トークナイザー（例：Kuromoji）は日本語検索に不可欠で、日本語テキストを意味のある単語に正しく分割できます。",
+      "difficulty": "hard"
+    },
+    {
+      "id": "sap-c-c4h-set2-ja-q23",
+      "domain": "検索とパーソナライゼーション",
+      "question": "Commerce Cloud の Search Restriction 機能は何に使用されますか？",
+      "options": {
+        "A": "検索リクエストの頻度を制限する",
+        "B": "ユーザー権限に基づいて検索結果をフィルタリングする",
+        "C": "インデックスサイズを制限する",
+        "D": "Solr リソースの使用を制御する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Search Restriction はユーザー権限とビジネスルールに基づいて検索結果をフィルタリングするために使用されます。例えば、B2B シナリオではユーザーが所属する組織が購入できる製品のみを表示したり、ユーザーの地域に基づいて利用可能な商品をフィルタリングしたりできます。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "sap-c-c4h-set2-ja-q24",
+      "domain": "検索とパーソナライゼーション",
+      "question": "Commerce Cloud で Personalization 機能を構成する際、Variation とは何ですか？",
+      "options": {
+        "A": "製品バリアント",
+        "B": "パーソナライズされたコンテンツの異なるバージョン",
+        "C": "価格変動",
+        "D": "A/B テストグループ"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Personalization では、Variation は特定のターゲットユーザーグループに表示されるコンテンツバージョンです。1つの Customization には複数の Variation を含めることができ、各 Variation は異なるターゲット条件（Segment）と表示コンテンツ（Action）に関連付けられます。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "sap-c-c4h-set2-ja-q25",
+      "domain": "検索とパーソナライゼーション",
+      "question": "Solr 増分インデックス（Delta Index）の主な利点は何ですか？",
+      "options": {
+        "A": "ディスク容量の使用を削減する",
+        "B": "変更されたデータのみを更新し、インデックス効率を向上させる",
+        "C": "検索クエリ速度を向上させる",
+        "D": "より多くのデータタイプをサポートする"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "増分インデックスは前回のインデックス作成以降に変更されたデータのみを処理し、インデックス全体を再構築しません。これにより、インデックス作成時間とシステムリソース消費が大幅に削減され、特にデータ量が多いが変更頻度が比較的低いシナリオに適しています。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "sap-c-c4h-set2-ja-q26",
+      "domain": "マルチチャネルと統合",
+      "question": "SAP Commerce Cloud の OCC (Omni Commerce Connect) API はどのタイプのインターフェースですか？",
+      "options": {
+        "A": "SOAP Web Service",
+        "B": "RESTful API",
+        "C": "GraphQL API",
+        "D": "gRPC"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "OCC は Commerce Cloud の RESTful API レイヤーで、様々なクライアント（Web、モバイルアプリ、POS など）がコマース機能にアクセスするための統一インターフェースを提供します。OCC は REST 原則に従い、JSON 形式でデータを交換し、OAuth 認証をサポートします。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "sap-c-c4h-set2-ja-q27",
+      "domain": "マルチチャネルと統合",
+      "question": "Commerce Cloud でカスタム OCC API エンドポイントを実装するにはどうすればよいですか？",
+      "options": {
+        "A": "OCC Extension のソースコードを修正する",
+        "B": "新しい Extension を作成し @Controller アノテーションを使用する",
+        "C": "occ-config.xml を構成する",
+        "D": "Backoffice で API Endpoint を構成する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "カスタム OCC API は新しい Extension を作成することで実装します。Spring MVC の @Controller または @RestController アノテーションを使用してエンドポイントを定義し、@RequestMapping で URL パスを設定します。OCC のセキュリティとレスポンスフォーマット規約に従う必要があります。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "sap-c-c4h-set2-ja-q28",
+      "domain": "マルチチャネルと統合",
+      "question": "Spartacus とは何ですか？",
+      "options": {
+        "A": "Commerce Cloud の管理バックエンド",
+        "B": "Angular ベースのストアフロントフレームワーク",
+        "C": "注文管理システム",
+        "D": "決済ゲートウェイ"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Spartacus は SAP Commerce Cloud のオープンソース JavaScript ストアフロントフレームワークで、Angular をベースに構築されています。ヘッドレス実装で、OCC API を通じて Commerce Cloud バックエンドと通信し、PWA とサーバーサイドレンダリングをサポートします。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "sap-c-c4h-set2-ja-q29",
+      "domain": "マルチチャネルと統合",
+      "question": "Commerce Cloud と SAP S/4HANA を統合する際、通常どのミドルウェアが使用されますか？",
+      "options": {
+        "A": "SAP PI/PO",
+        "B": "SAP Integration Suite (CPI)",
+        "C": "MuleSoft",
+        "D": "Apache Camel"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "SAP Integration Suite（Cloud Platform Integration, CPI）は推奨される統合ミドルウェアで、Commerce Cloud と S/4HANA の事前構築された統合パッケージを提供します。製品、価格、在庫、注文などのリアルタイムおよびバッチデータ同期をサポートします。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "sap-c-c4h-set2-ja-q30",
+      "domain": "マルチチャネルと統合",
+      "question": "Commerce Cloud における Data Hub の主な用途は何ですか？",
+      "options": {
+        "A": "データ分析とレポート",
+        "B": "データインポートと変換の中継ステーション",
+        "C": "データバックアップ",
+        "D": "データ暗号化"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Data Hub は Commerce Cloud のデータインポート中継ステーションで、外部システム（ERP、PIM など）からデータをインポートするために使用されます。データの変換、検証、正規化をサポートし、増分更新を処理でき、インポート前にデータ品質チェックを行えます。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "sap-c-c4h-set2-ja-q31",
+      "domain": "マルチチャネルと統合",
+      "question": "Commerce Cloud の Kyma 統合はどのような機能を提供しますか？（2つ選択）",
+      "options": {
+        "A": "サーバー仮想化",
+        "B": "イベント駆動の拡張開発",
+        "C": "データベース管理",
+        "D": "サーバーレス関数の実行"
+      },
+      "answer": ["B", "D"],
+      "answerType": "multiple",
+      "explanation": "Kyma（SAP BTP, Kyma Runtime）は Commerce Cloud に以下を提供します：1) イベント駆動アーキテクチャ：Commerce イベント（注文作成など）に応答してカスタムロジックをトリガー、2) サーバーレス関数：サーバー管理なしでカスタムコードを実行。",
+      "difficulty": "hard"
+    },
+    {
+      "id": "sap-c-c4h-set2-ja-q32",
+      "domain": "マルチチャネルと統合",
+      "question": "Commerce Cloud で複数の販売チャネル（Base Store）を構成するにはどうすればよいですか？",
+      "options": {
+        "A": "各チャネルに独立したインスタンスをデプロイする",
+        "B": "Backoffice で複数の BaseStore オブジェクトを作成する",
+        "C": "local.properties で構成する",
+        "D": "異なるデータベースを使用する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Commerce Cloud は複数 BaseStore アーキテクチャをサポートします。各 BaseStore は1つの販売チャネルを表し、独立した製品カタログ、価格、支払い方法、配送オプションを持つことができます。Backoffice で BaseStore を作成・構成し、対応する CMSSite に関連付けます。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "sap-c-c4h-set2-ja-q33",
+      "domain": "マルチチャネルと統合",
+      "question": "Commerce Cloud の Webhooks 機能はどのシナリオで使用されますか？",
+      "options": {
+        "A": "定時タスクのスケジューリング",
+        "B": "外部システムへのビジネスイベントのリアルタイム通知",
+        "C": "ユーザー認証",
+        "D": "ファイルアップロード"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Webhooks により、Commerce Cloud は特定のビジネスイベント発生時（注文作成、在庫変更など）に外部システムにリアルタイムで通知できます。外部システムは HTTP エンドポイントを提供し、Commerce Cloud はそのエンドポイントにイベントデータをプッシュします。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "sap-c-c4h-set2-ja-q34",
+      "domain": "マルチチャネルと統合",
+      "question": "Accelerator テンプレートと Spartacus の主な違いは何ですか？",
+      "options": {
+        "A": "Accelerator は有料、Spartacus は無料",
+        "B": "Accelerator はサーバーサイドレンダリング、Spartacus はクライアントサイド SPA",
+        "C": "Accelerator は B2C のみ、Spartacus は B2B のみをサポート",
+        "D": "Accelerator は React、Spartacus は Angular を使用"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Accelerator は従来のサーバーサイドレンダリングストアフロントで、JSP と Spring MVC を使用し、HTML はサーバーで生成されます。Spartacus は現代的な SPA（シングルページアプリケーション）で、Angular をベースに、OCC API を通じてバックエンドと通信し、より良いユーザーエクスペリエンスと PWA をサポートします。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "sap-c-c4h-set2-ja-q35",
+      "domain": "マルチチャネルと統合",
+      "question": "Commerce Cloud B2B シナリオで、Purchase Order (PO) Number の役割は何ですか？",
+      "options": {
+        "A": "内部注文トラッキング",
+        "B": "顧客が提供する発注番号、ERP との照合に使用",
+        "C": "支払い検証コード",
+        "D": "物流追跡番号"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "B2B シナリオでは、PO Number は顧客の調達システムにおける注文番号です。顧客は注文時に PO Number を提供し、後で ERP システムとの照合や請求処理に使用します。これは B2B コマースプロセスの重要な部分です。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "sap-c-c4h-set2-ja-q36",
+      "domain": "パフォーマンス最適化",
+      "question": "Commerce Cloud の Region Cache は何に使用されますか？",
+      "options": {
+        "A": "地理位置データのキャッシュ",
+        "B": "ノード間の分散キャッシュ",
+        "C": "地域コンテンツのキャッシュ",
+        "D": "データベース接続プール"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Region Cache は Hazelcast を使用して実装された Commerce Cloud の分散キャッシュソリューションです。クラスター内の複数のノード間でキャッシュデータを共有でき、キャッシュの一貫性を確保しながらデータベースクエリを削減します。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "sap-c-c4h-set2-ja-q37",
+      "domain": "パフォーマンス最適化",
+      "question": "Commerce Cloud で、製品詳細ページの読み込み速度を大幅に向上させることができるキャッシュ戦略はどれですか？",
+      "options": {
+        "A": "すべてのキャッシュを無効にする",
+        "B": "CDN を使用して静的リソースをキャッシュする",
+        "C": "データベース接続数を増やす",
+        "D": "サーバーメモリを削減する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "CDN（コンテンツデリバリーネットワーク）で静的リソース（画像、CSS、JS）をキャッシュすると、ページの読み込み速度が大幅に向上します。リソースはユーザーに最も近いエッジノードから提供され、レイテンシが削減されます。Commerce Cloud Cloud バージョンはデフォルトで CDN と統合されています。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "sap-c-c4h-set2-ja-q38",
+      "domain": "パフォーマンス最適化",
+      "question": "Commerce Cloud の FlexibleSearch クエリ最適化の推奨事項にはどれが含まれますか？（2つ選択）",
+      "options": {
+        "A": "SELECT * をできるだけ使用する",
+        "B": "インデックスフィールドをクエリ条件として使用する",
+        "C": "WHERE 句で関数を使用しない",
+        "D": "常にサブクエリを使用する"
+      },
+      "answer": ["B", "C"],
+      "answerType": "multiple",
+      "explanation": "FlexibleSearch 最適化の推奨事項：1) インデックスフィールドをクエリ条件として使用し、データベースがインデックスを利用できるようにする、2) WHERE 句でフィールドに関数を使用しない、これはフルテーブルスキャンを引き起こす。SELECT * は避け、必要なフィールドのみをクエリすべきです。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "sap-c-c4h-set2-ja-q39",
+      "domain": "パフォーマンス最適化",
+      "question": "Commerce Cloud の Session Failover メカニズムはどのように実装されていますか？",
+      "options": {
+        "A": "セッションデータを Cookie に保存する",
+        "B": "Sticky Session を使用する",
+        "C": "セッションデータを分散キャッシュに保存する",
+        "D": "リクエストごとにデータベースをクエリする"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "Commerce Cloud は分散キャッシュ（Redis や Hazelcast など）を使用してセッションデータを保存し、Session Failover を実装しています。1つのノードが障害を起こした場合、ユーザーリクエストは他のノードにルーティングでき、セッションデータは引き続き利用可能で、ユーザーエクスペリエンスが中断されません。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "sap-c-c4h-set2-ja-q40",
+      "domain": "パフォーマンス最適化",
+      "question": "高並行シナリオで Commerce Cloud のデータベースパフォーマンスを最適化するにはどうすればよいですか？",
+      "options": {
+        "A": "データベース接続プールサイズを削減する",
+        "B": "読み書き分離とデータベースレプリカを使用する",
+        "C": "トランザクションを無効にする",
+        "D": "ネットワークレイテンシを増加させる"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "読み書き分離は、読み取り操作をデータベースレプリカに分散させることでマスターデータベースの負荷を軽減します。Commerce Cloud は読み取り専用データソースの構成をサポートし、レポートクエリや重要でない読み取り操作をレプリカにルーティングして、全体的なシステムスループットを向上させます。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "sap-c-c4h-set2-ja-q41",
+      "domain": "パフォーマンス最適化",
+      "question": "Commerce Cloud の CronJob パフォーマンス最適化の推奨事項は何ですか？",
+      "options": {
+        "A": "すべての CronJob を同時に実行する",
+        "B": "ピーク時間をずらしてスケジュールする",
+        "C": "CronJob の実行頻度を増やす",
+        "D": "1つの CronJob ですべてのタスクを処理する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "CronJob はピーク時間をずらしてスケジュールし、ビジネスピーク時にリソース集約型タスク（フルインデックス、データ同期など）を実行しないようにすべきです。重い CronJob はオフピーク時間にスケジュールし、システムリソースがユーザーリクエストに優先的に使用されるようにします。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "sap-c-c4h-set2-ja-q42",
+      "domain": "パフォーマンス最適化",
+      "question": "Commerce Cloud のパフォーマンス指標をどのように監視しますか？",
+      "options": {
+        "A": "ログファイルのみ",
+        "B": "HAC の監視機能と Dynatrace を使用する",
+        "C": "内蔵の監視機能はない",
+        "D": "サードパーティツールのみ使用可能"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Commerce Cloud は複数の監視方法を提供します：1) HAC 内蔵の監視機能、メモリ、スレッド、キャッシュなどの指標を表示、2) クラウドバージョンは Dynatrace APM と統合し、詳細なパフォーマンス分析とトレースを提供、3) カスタム指標を監視システムに出力するよう構成も可能です。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "sap-c-c4h-set2-ja-q43",
+      "domain": "パフォーマンス最適化",
+      "question": "Commerce Cloud の Lazy Loading 戦略はどのようなシナリオで特に重要ですか？",
+      "options": {
+        "A": "ユーザー構成のロード",
+        "B": "多数の関連関係を持つオブジェクトのロード",
+        "C": "静的構成のロード",
+        "D": "ログデータのロード"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Lazy Loading は多数の関連関係を持つオブジェクトで特に重要です。例えば、Product は Category、Media、Review など複数のオブジェクトに関連付けられている場合があります。Lazy Loading を使用すると、すべての関連データを一度にロードすることを避け、必要なときにのみクエリできます。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "sap-c-c4h-set2-ja-q44",
+      "domain": "セキュリティとコンプライアンス",
+      "question": "Commerce Cloud の CSRF 保護はどのように実装されていますか？",
+      "options": {
+        "A": "CAPTCHA を使用する",
+        "B": "Referer ヘッダーを検証する",
+        "C": "CSRF Token を使用する",
+        "D": "IP アドレスホワイトリスト"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "Commerce Cloud は CSRF Token を使用してクロスサイトリクエストフォージェリ攻撃を防止します。サーバーは各セッションに固有の Token を生成し、フォーム送信時にこの Token を含める必要があります。サーバーは Token の有効性を検証し、有効な Token がないリクエストを拒否します。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "sap-c-c4h-set2-ja-q45",
+      "domain": "セキュリティとコンプライアンス",
+      "question": "Commerce Cloud の Access Rights と Restrictions の違いは何ですか？",
+      "options": {
+        "A": "Access Rights は UI を制御、Restrictions は API を制御",
+        "B": "Access Rights は何ができるかを定義、Restrictions はどのデータにアクセスできないかを定義",
+        "C": "同じ概念である",
+        "D": "Access Rights は B2C 用、Restrictions は B2B 用"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Access Rights はユーザーグループのタイプとプロパティに対する操作権限（読み取り、書き込み、作成、削除）を定義します。Restrictions はデータレベルのフィルタリングで、ユーザーがアクセスできるデータレコードを定義します（例：自分の注文のみ表示）。両方を組み合わせることで完全な権限制御を実現します。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "sap-c-c4h-set2-ja-q46",
+      "domain": "セキュリティとコンプライアンス",
+      "question": "Commerce Cloud で機密構成（API キーなど）を安全に保存するにはどうすればよいですか？",
+      "options": {
+        "A": "ソースコードに保存する",
+        "B": "データベースの平文フィールドに保存する",
+        "C": "環境変数と Vault サービスを使用する",
+        "D": "ログファイルに保存する"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "機密構成はソースコードにハードコードしたり平文で保存したりすべきではありません。Commerce Cloud クラウドバージョンは環境変数と Vault サービス（SAP Credential Store など）を使用して、API キー、データベースパスワードなどの機密情報を安全に保存することをサポートします。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "sap-c-c4h-set2-ja-q47",
+      "domain": "セキュリティとコンプライアンス",
+      "question": "GDPR コンプライアンスのために Commerce Cloud はどの機能を実装する必要がありますか？（2つ選択）",
+      "options": {
+        "A": "ユーザーデータのエクスポート",
+        "B": "自動データ販売",
+        "C": "ユーザーデータの削除（忘れられる権利）",
+        "D": "すべての Cookie の禁止"
+      },
+      "answer": ["A", "C"],
+      "answerType": "multiple",
+      "explanation": "GDPR の要件：1) データポータビリティ：ユーザーは自分の個人データをエクスポートできる、2) 忘れられる権利：ユーザーは個人データの削除を要求できる。Commerce Cloud はこれらの要件を満たすために GDPR Erasure フレームワークとデータエクスポート機能を提供しています。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "sap-c-c4h-set2-ja-q48",
+      "domain": "セキュリティとコンプライアンス",
+      "question": "Commerce Cloud の OAuth 2.0 実装は主にどのシナリオで使用されますか？",
+      "options": {
+        "A": "ユーザーログイン認証",
+        "B": "OCC API のクライアント認証と認可",
+        "C": "データベース接続認証",
+        "D": "ファイルアップロード検証"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Commerce Cloud は OAuth 2.0 を使用して OCC API を保護します。クライアント（モバイルアプリ、Spartacus など）は OAuth フローを通じて Access Token を取得し、そのトークンを使用して保護された API エンドポイントにアクセスします。Client Credentials や Password Grant などの複数の認可モードをサポートしています。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "sap-c-c4h-set2-ja-q49",
+      "domain": "セキュリティとコンプライアンス",
+      "question": "Commerce Cloud で SQL インジェクション攻撃を防ぐにはどうすればよいですか？",
+      "options": {
+        "A": "ネイティブ SQL クエリを使用する",
+        "B": "FlexibleSearch がクエリを自動的にパラメータ化する",
+        "C": "すべての入力を手動でエスケープする",
+        "D": "データベースクエリを無効にする"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "FlexibleSearch はパラメータ化クエリを使用して SQL インジェクションを自動的に防止します。クエリパラメータは ? プレースホルダーを通じて渡され、フレームワークによって安全に処理され、SQL 文に直接連結されません。開発者は常にパラメータ化クエリを使用し、文字列連結を避けるべきです。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "sap-c-c4h-set2-ja-q50",
+      "domain": "セキュリティとコンプライアンス",
+      "question": "Commerce Cloud の Content Security Policy (CSP) 構成の役割は何ですか？",
+      "options": {
+        "A": "コンテンツを暗号化して保存する",
+        "B": "ページがロードできる外部リソースを制御する",
+        "C": "ページコンテンツを圧縮する",
+        "D": "コンテンツキャッシュポリシー"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Content Security Policy (CSP) はセキュリティ HTTP ヘッダーで、ページがロードできるリソースのソース（スクリプト、スタイル、画像など）を定義します。XSS 攻撃を効果的に防止し、悪意のあるスクリプトの注入をブロックできます。Commerce Cloud は CSP ヘッダーを構成してフロントエンドセキュリティを強化することをサポートしています。",
+      "difficulty": "medium"
+    }
+  ]
+}

@@ -1,0 +1,748 @@
+{
+  "exam": {
+    "id": "sap-c-fiord-set1",
+    "name": "SAP C_FIORD 模拟考试 #1",
+    "code": "C_FIORD",
+    "provider": "SAP",
+    "language": "zh-CN",
+    "description": "SAP Fiori Application Developer认证模拟题 - 第1套",
+    "totalQuestions": 50,
+    "passingScore": 70,
+    "examTime": 180,
+    "domains": [
+      {
+        "id": 1,
+        "name": "SAPUI5 Framework and Architecture",
+        "weight": 20
+      },
+      {
+        "id": 2,
+        "name": "Fiori Design Guidelines",
+        "weight": 15
+      },
+      {
+        "id": 3,
+        "name": "Fiori Elements",
+        "weight": 20
+      },
+      {
+        "id": 4,
+        "name": "OData Services and Annotations",
+        "weight": 20
+      },
+      {
+        "id": 5,
+        "name": "Development Tools and Deployment",
+        "weight": 25
+      }
+    ],
+    "tags": [
+      "SAP",
+      "Fiori",
+      "SAPUI5",
+      "认证考试"
+    ]
+  },
+  "questions": [
+    {
+      "id": "q1",
+      "domain": 1,
+      "question": "在SAPUI5中，MVC架构的哪个组件负责定义用户界面的布局和外观？",
+      "options": {
+        "A": "Model（模型）",
+        "B": "View（视图）",
+        "C": "Controller（控制器）",
+        "D": "Router（路由器）"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "在SAPUI5的MVC架构中：\n- View（视图）负责定义UI布局和外观，通常使用XML、JSON或JavaScript定义\n- Model（模型）负责数据管理和业务逻辑\n- Controller（控制器）处理用户交互和事件\n- Router用于导航，不是MVC的核心组件"
+    },
+    {
+      "id": "q2",
+      "domain": 1,
+      "question": "SAPUI5中的sap.m库主要用于什么目的？",
+      "options": {
+        "A": "提供后端服务连接",
+        "B": "提供移动优先的响应式UI控件",
+        "C": "管理数据模型",
+        "D": "处理OData请求"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "sap.m库是SAPUI5的主要UI库：\n- 'm'代表'mobile'（移动）\n- 提供移动优先、响应式设计的UI控件\n- 控件可自适应不同屏幕尺寸\n- 是开发Fiori应用的首选UI库"
+    },
+    {
+      "id": "q3",
+      "domain": 1,
+      "question": "在SAPUI5应用中，manifest.json文件的主要作用是什么？",
+      "options": {
+        "A": "定义应用的样式表",
+        "B": "存储应用的业务数据",
+        "C": "作为应用描述符，定义应用的配置和元数据",
+        "D": "编译应用代码"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "manifest.json是SAPUI5应用的核心配置文件：\n- 作为应用描述符（Application Descriptor）\n- 定义应用ID、版本、依赖项\n- 配置数据源、模型、路由\n- 声明资源和国际化设置\n- 是SAP Fiori应用的标准配置方式"
+    },
+    {
+      "id": "q4",
+      "domain": 1,
+      "question": "SAPUI5中的数据绑定类型有哪些？（选择两个）",
+      "options": {
+        "A": "One-Way Binding（单向绑定）",
+        "B": "Two-Way Binding（双向绑定）",
+        "C": "Three-Way Binding（三向绑定）",
+        "D": "Static Binding（静态绑定）"
+      },
+      "answer": ["A", "B"],
+      "answerType": "multiple",
+      "explanation": "SAPUI5支持三种数据绑定模式：\n- One-Way Binding：数据从模型流向视图\n- Two-Way Binding：数据在模型和视图间双向同步\n- One-Time Binding：初始化时绑定一次\n\n不存在Three-Way Binding和Static Binding这些概念"
+    },
+    {
+      "id": "q5",
+      "domain": 1,
+      "question": "在SAPUI5中，sap.ui.core.Component的主要用途是什么？",
+      "options": {
+        "A": "定义单个UI控件",
+        "B": "作为可重用的独立软件单元封装应用",
+        "C": "处理HTTP请求",
+        "D": "管理CSS样式"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "sap.ui.core.Component是SAPUI5应用的核心概念：\n- 封装完整的应用功能为独立单元\n- 支持应用的模块化和重用\n- 可嵌入到其他应用中（如Fiori Launchpad）\n- 包含自己的视图、控制器、模型和路由"
+    },
+    {
+      "id": "q6",
+      "domain": 2,
+      "question": "根据SAP Fiori设计指南，哪种Fiori应用类型最适合处理简单的数据输入任务？",
+      "options": {
+        "A": "Analytical App",
+        "B": "Transactional App",
+        "C": "Factsheet App",
+        "D": "Overview Page"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Fiori应用类型分类：\n- Transactional App：用于事务处理和数据输入\n- Analytical App：用于数据分析和报表\n- Factsheet App：用于显示对象详情\n- Overview Page：提供业务概览和导航\n\n简单数据输入属于事务处理场景"
+    },
+    {
+      "id": "q7",
+      "domain": 2,
+      "question": "SAP Fiori设计原则中，'1-1-3'规则指的是什么？",
+      "options": {
+        "A": "1个用户，1个设备，3个应用",
+        "B": "1个用户，1个用例，3次点击",
+        "C": "1个页面，1个任务，3个按钮",
+        "D": "1个应用，1个数据源，3个视图"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "SAP Fiori的1-1-3规则是核心设计原则：\n- 1个用户：以用户为中心设计\n- 1个用例：专注于单一业务场景\n- 3次点击：用户应能在3次点击内完成任务\n\n这体现了Fiori简洁高效的设计理念"
+    },
+    {
+      "id": "q8",
+      "domain": 2,
+      "question": "在SAP Fiori应用中，Object Page的主要用途是什么？",
+      "options": {
+        "A": "显示列表数据",
+        "B": "显示单个业务对象的详细信息",
+        "C": "创建图表和分析报告",
+        "D": "管理用户权限"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Object Page是Fiori的核心页面类型：\n- 用于显示单个业务对象的完整详情\n- 包含Header（标题区）和Section（内容区）\n- 支持折叠/展开的子部分\n- 常与List Report配合使用形成Master-Detail模式"
+    },
+    {
+      "id": "q9",
+      "domain": 2,
+      "question": "SAP Fiori设计中的'Responsive Design'主要解决什么问题？",
+      "options": {
+        "A": "提高服务器响应速度",
+        "B": "使应用能适应不同屏幕尺寸",
+        "C": "加快数据加载速度",
+        "D": "减少代码复杂度"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Responsive Design（响应式设计）的核心目标：\n- 使UI自动适应不同设备（桌面、平板、手机）\n- 根据屏幕尺寸调整布局和控件大小\n- 提供一致的用户体验\n- 是SAP Fiori跨设备策略的基础"
+    },
+    {
+      "id": "q10",
+      "domain": 2,
+      "question": "根据SAP Fiori设计指南，Message Page通常用于什么场景？",
+      "options": {
+        "A": "显示成功的操作结果",
+        "B": "显示错误状态或空状态",
+        "C": "显示业务报表",
+        "D": "显示用户配置"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Message Page的典型使用场景：\n- 显示错误状态（如权限不足、资源不存在）\n- 显示空状态（如搜索无结果）\n- 提供用户指引或建议操作\n- 不用于正常业务数据展示"
+    },
+    {
+      "id": "q11",
+      "domain": 3,
+      "question": "SAP Fiori Elements的主要优势是什么？",
+      "options": {
+        "A": "需要大量自定义代码",
+        "B": "基于元数据和注解自动生成UI",
+        "C": "只支持桌面设备",
+        "D": "不支持OData服务"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Fiori Elements的核心优势：\n- 基于CDS注解和OData元数据自动生成UI\n- 大幅减少前端开发工作量\n- 确保应用符合Fiori设计规范\n- 支持快速开发标准化应用\n- 内置响应式设计支持所有设备"
+    },
+    {
+      "id": "q12",
+      "domain": 3,
+      "question": "哪种Fiori Elements模板最适合显示项目列表并支持筛选和排序？",
+      "options": {
+        "A": "Object Page",
+        "B": "List Report",
+        "C": "Overview Page",
+        "D": "Wizard"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "List Report模板特点：\n- 以表格形式展示数据列表\n- 内置筛选栏（Filter Bar）支持条件筛选\n- 支持排序、分组功能\n- 通常与Object Page组合使用\n- 是最常用的Fiori Elements模板之一"
+    },
+    {
+      "id": "q13",
+      "domain": 3,
+      "question": "在Fiori Elements的Analytical List Page中，哪个区域用于显示聚合数据和KPI？",
+      "options": {
+        "A": "Filter Bar",
+        "B": "Visual Filter",
+        "C": "Chart Area",
+        "D": "Table Area"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "Analytical List Page的布局结构：\n- Filter Bar/Visual Filter：用于数据筛选\n- Chart Area：显示图表、KPI和聚合数据\n- Table Area：显示详细数据列表\n\n图表区域专门用于可视化分析数据"
+    },
+    {
+      "id": "q14",
+      "domain": 3,
+      "question": "Fiori Elements Worklist模板与List Report模板的主要区别是什么？",
+      "options": {
+        "A": "Worklist不支持分页",
+        "B": "Worklist没有Filter Bar",
+        "C": "Worklist只支持移动设备",
+        "D": "Worklist不支持导航"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Worklist与List Report的区别：\n- Worklist：简化的列表视图，没有Filter Bar\n- List Report：完整的列表报表，包含Filter Bar\n\nWorklist适用于：\n- 简单的任务列表\n- 无需复杂筛选的场景\n- 快速数据浏览"
+    },
+    {
+      "id": "q15",
+      "domain": 3,
+      "question": "在Fiori Elements中，如何定义Object Page的Header区域内容？",
+      "options": {
+        "A": "在JavaScript控制器中编码",
+        "B": "通过CDS注解@UI.headerInfo",
+        "C": "在CSS文件中定义",
+        "D": "在manifest.json中配置"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Fiori Elements的UI配置方式：\n- 使用CDS注解定义UI结构\n- @UI.headerInfo注解定义Object Page的标题区\n- 包括标题、副标题、图片等信息\n- 这是元数据驱动开发的核心特性"
+    },
+    {
+      "id": "q16",
+      "domain": 4,
+      "question": "OData服务中，$filter参数的作用是什么？",
+      "options": {
+        "A": "指定返回的字段",
+        "B": "对结果进行排序",
+        "C": "根据条件筛选数据",
+        "D": "设置分页大小"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "OData查询参数说明：\n- $filter：根据条件筛选数据\n- $select：指定返回的字段\n- $orderby：排序结果\n- $top/$skip：分页控制\n\n例如：$filter=Name eq 'John'"
+    },
+    {
+      "id": "q17",
+      "domain": 4,
+      "question": "在CDS视图中，哪个注解用于定义实体的UI标签和描述？",
+      "options": {
+        "A": "@UI.lineItem",
+        "B": "@EndUserText.label",
+        "C": "@ObjectModel.text",
+        "D": "@Semantics.amount"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "CDS注解用途：\n- @EndUserText.label：定义字段的显示标签\n- @UI.lineItem：定义列表中显示的列\n- @ObjectModel.text：关联文本实体\n- @Semantics.amount：标记金额字段\n\n@EndUserText系列注解用于本地化文本"
+    },
+    {
+      "id": "q18",
+      "domain": 4,
+      "question": "OData V4与V2相比，哪些是主要改进？（选择两个）",
+      "options": {
+        "A": "支持JSON格式",
+        "B": "支持批处理请求（$batch）",
+        "C": "更简化的URL约定",
+        "D": "新增$apply参数支持聚合"
+      },
+      "answer": ["C", "D"],
+      "answerType": "multiple",
+      "explanation": "OData V4的主要改进：\n- 简化的URL约定和元数据结构\n- $apply参数支持聚合（groupby、aggregate）\n- 改进的批处理机制\n\nJSON格式和$batch在V2中已支持，V4进行了优化但不是新增功能"
+    },
+    {
+      "id": "q19",
+      "domain": 4,
+      "question": "在SAPUI5中，如何在manifest.json中定义OData数据源？",
+      "options": {
+        "A": "在sap.ui节点下",
+        "B": "在sap.app.dataSources节点下",
+        "C": "在sap.ui5.models节点下",
+        "D": "在sap.cloud节点下"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "manifest.json的数据源配置：\n- sap.app.dataSources：定义数据源（OData服务URL等）\n- sap.ui5.models：引用dataSources创建模型\n\n配置步骤：\n1. 在dataSources定义服务\n2. 在models引用并命名模型"
+    },
+    {
+      "id": "q20",
+      "domain": 4,
+      "question": "CDS注解@UI.selectionField用于什么目的？",
+      "options": {
+        "A": "定义Object Page的标题",
+        "B": "在Filter Bar中显示该字段",
+        "C": "设置字段的默认值",
+        "D": "定义字段的数据类型"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "@UI.selectionField注解的作用：\n- 将字段添加到Filter Bar中\n- 用户可使用该字段进行数据筛选\n- position属性控制字段顺序\n\n例如：@UI.selectionField: [{ position: 10 }]"
+    },
+    {
+      "id": "q21",
+      "domain": 4,
+      "question": "在OData服务中，$expand参数的作用是什么？",
+      "options": {
+        "A": "增加返回结果的数量",
+        "B": "加载关联实体的数据",
+        "C": "扩展字段的宽度",
+        "D": "启用全文搜索"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "$expand参数用于：\n- 在一次请求中加载关联实体\n- 减少网络往返次数\n- 类似SQL的JOIN操作\n\n例如：/Orders?$expand=OrderItems"
+    },
+    {
+      "id": "q22",
+      "domain": 5,
+      "question": "SAP Business Application Studio的主要用途是什么？",
+      "options": {
+        "A": "管理SAP用户权限",
+        "B": "开发SAP业务应用程序",
+        "C": "监控系统性能",
+        "D": "备份SAP数据"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "SAP Business Application Studio (BAS)是：\n- SAP官方的云端开发环境\n- 基于Eclipse Theia开发\n- 专为SAP业务应用开发优化\n- 支持SAPUI5、Fiori Elements、CAP等\n- 提供向导、模板和内置工具"
+    },
+    {
+      "id": "q23",
+      "domain": 5,
+      "question": "在SAP Business Application Studio中创建Fiori Elements应用时，哪个向导最常用？",
+      "options": {
+        "A": "Template Wizard",
+        "B": "Fiori Elements Application Generator",
+        "C": "SAPUI5 Application Wizard",
+        "D": "Cloud Foundry Wizard"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Fiori Elements Application Generator：\n- 是创建Fiori Elements应用的标准工具\n- 提供多种模板（List Report、Object Page等）\n- 自动生成应用骨架代码\n- 集成OData服务配置"
+    },
+    {
+      "id": "q24",
+      "domain": 5,
+      "question": "Fiori应用部署到SAP BTP时，通常使用什么方式进行构建和部署？",
+      "options": {
+        "A": "手动复制文件",
+        "B": "使用MTA（Multi-Target Application）构建",
+        "C": "通过电子邮件发送",
+        "D": "使用USB驱动器"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "MTA (Multi-Target Application)：\n- SAP标准的应用打包格式\n- 支持多模块应用（UI、服务、数据库等）\n- mta.yaml定义构建配置\n- 使用mbt build生成.mtar部署包\n- 通过cf deploy部署到Cloud Foundry"
+    },
+    {
+      "id": "q25",
+      "domain": 5,
+      "question": "Fiori Launchpad的主要功能是什么？",
+      "options": {
+        "A": "编译SAPUI5代码",
+        "B": "提供统一的应用入口和用户体验",
+        "C": "管理数据库",
+        "D": "监控网络流量"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "SAP Fiori Launchpad的功能：\n- 统一的应用启动门户\n- 基于角色的应用访问\n- 个性化的Tile和Group\n- 支持通知和用户设置\n- 提供一致的Fiori用户体验"
+    },
+    {
+      "id": "q26",
+      "domain": 5,
+      "question": "在SAP系统中，如何将Fiori应用注册到Launchpad？",
+      "options": {
+        "A": "创建SICF服务",
+        "B": "配置Catalog和Group",
+        "C": "修改ABAP代码",
+        "D": "更新数据库表"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Fiori Launchpad配置步骤：\n- 创建Tile（应用入口）\n- 将Tile添加到Catalog（目录）\n- 将Catalog分配给Group（组）\n- 将Group分配给Role（角色）\n\n这确保基于角色的应用访问控制"
+    },
+    {
+      "id": "q27",
+      "domain": 1,
+      "question": "SAPUI5中的Formatter的作用是什么？",
+      "options": {
+        "A": "格式化代码缩进",
+        "B": "转换和格式化绑定数据的显示",
+        "C": "压缩JavaScript文件",
+        "D": "验证用户输入"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "SAPUI5 Formatter的用途：\n- 转换模型数据的显示格式\n- 如日期格式化、货币格式化\n- 条件性显示（如状态颜色）\n- 在绑定表达式中调用\n\n例如：format: { formatter: '.formatter.formatDate' }"
+    },
+    {
+      "id": "q28",
+      "domain": 1,
+      "question": "在SAPUI5中，Fragment的主要用途是什么？",
+      "options": {
+        "A": "存储数据库数据",
+        "B": "定义可重用的UI片段",
+        "C": "处理网络请求",
+        "D": "管理用户会话"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Fragment（片段）特点：\n- 定义可重用的UI部分\n- 可在多个视图中使用\n- 没有自己的Controller\n- 支持XML、HTML、JavaScript定义\n- 常用于对话框、弹出窗口"
+    },
+    {
+      "id": "q29",
+      "domain": 1,
+      "question": "SAPUI5应用中，i18n文件的用途是什么？",
+      "options": {
+        "A": "定义应用图标",
+        "B": "存储多语言翻译文本",
+        "C": "配置路由规则",
+        "D": "定义CSS样式"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "i18n（国际化）文件特点：\n- 存储UI文本的多语言翻译\n- 文件名格式：i18n_[语言代码].properties\n- 使用{i18n>key}在视图中引用\n- 支持参数化文本\n- 是Fiori多语言支持的基础"
+    },
+    {
+      "id": "q30",
+      "domain": 1,
+      "question": "SAPUI5中的Event Bus用于什么目的？",
+      "options": {
+        "A": "管理公共交通数据",
+        "B": "组件间的事件通信",
+        "C": "存储事件日志",
+        "D": "调度后台任务"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Event Bus的作用：\n- 实现组件间的松耦合通信\n- 发布-订阅模式\n- 允许不相关的组件交换信息\n- 通过sap.ui.getCore().getEventBus()获取"
+    },
+    {
+      "id": "q31",
+      "domain": 2,
+      "question": "SAP Fiori设计中，什么是'Adaptive Design'？",
+      "options": {
+        "A": "适应不同用户偏好的设计",
+        "B": "根据设备类型提供不同UI布局",
+        "C": "自动调整字体大小",
+        "D": "适应不同网络速度"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Adaptive Design（自适应设计）：\n- 为不同设备类型提供优化的布局\n- 桌面、平板、手机有不同的UI\n- 与Responsive Design互补\n- 确保最佳的设备体验"
+    },
+    {
+      "id": "q32",
+      "domain": 2,
+      "question": "在Fiori设计中，Smart Table控件的主要特点是什么？",
+      "options": {
+        "A": "只能显示文本数据",
+        "B": "基于OData元数据自动生成列",
+        "C": "不支持排序",
+        "D": "只能在移动设备使用"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Smart Table特点：\n- 基于OData元数据自动生成列\n- 读取服务注解配置显示\n- 支持排序、过滤、分组\n- 与Smart Filter Bar配合使用\n- 是Fiori Elements的核心控件"
+    },
+    {
+      "id": "q33",
+      "domain": 2,
+      "question": "根据Fiori设计指南，Draft功能的主要目的是什么？",
+      "options": {
+        "A": "自动保存未完成的用户输入",
+        "B": "创建文档草稿",
+        "C": "设计UI原型",
+        "D": "压缩数据"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "SAP Fiori Draft功能：\n- 自动保存用户未完成的输入\n- 防止数据丢失\n- 支持继续编辑\n- 需要后端RAP或BOPF支持\n- 提升用户体验"
+    },
+    {
+      "id": "q34",
+      "domain": 3,
+      "question": "在Fiori Elements List Report中，如何添加自定义操作按钮？",
+      "options": {
+        "A": "修改OData服务代码",
+        "B": "使用manifest.json的扩展配置",
+        "C": "直接编辑生成的HTML",
+        "D": "创建新的ABAP类"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Fiori Elements扩展方式：\n- 通过manifest.json配置扩展\n- 使用extends节点定义自定义\n- 可添加自定义按钮、列、区域\n- 保持与标准模板的兼容性"
+    },
+    {
+      "id": "q35",
+      "domain": 3,
+      "question": "Fiori Elements中的Flexible Column Layout适用于什么场景？",
+      "options": {
+        "A": "只显示单个列表",
+        "B": "Master-Detail-Detail多级导航",
+        "C": "全屏图表显示",
+        "D": "登录页面"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Flexible Column Layout：\n- 支持多列并排显示\n- 典型场景：List → Object → Sub-object\n- 最多支持3列\n- 自动响应屏幕宽度\n- 提高工作效率"
+    },
+    {
+      "id": "q36",
+      "domain": 3,
+      "question": "在Fiori Elements Object Page中，Section和Subsection的关系是什么？",
+      "options": {
+        "A": "Section包含Subsection",
+        "B": "Subsection包含Section",
+        "C": "它们是相同的概念",
+        "D": "它们互不相关"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Object Page结构层次：\n- Header：标题区域\n- Section：主要内容分区\n- Subsection：Section内的子分区\n- Facet：Subsection内的具体内容\n\n这形成了清晰的内容组织层次"
+    },
+    {
+      "id": "q37",
+      "domain": 4,
+      "question": "CDS注解@UI.lineItem用于什么目的？",
+      "options": {
+        "A": "定义行高",
+        "B": "定义列表表格中显示的列",
+        "C": "定义行背景色",
+        "D": "定义行间距"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "@UI.lineItem注解：\n- 定义List Report表格中显示的列\n- position属性控制列顺序\n- importance属性控制响应式显示\n- 可设置label覆盖默认标签"
+    },
+    {
+      "id": "q38",
+      "domain": 4,
+      "question": "OData服务中的NavigationProperty用于什么？",
+      "options": {
+        "A": "定义URL路径",
+        "B": "定义实体间的关联关系",
+        "C": "配置浏览器导航",
+        "D": "设置页面跳转"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "NavigationProperty的作用：\n- 定义实体之间的关联关系\n- 类似数据库的外键关系\n- 支持$expand加载关联数据\n- 例如：Order到OrderItems的关联"
+    },
+    {
+      "id": "q39",
+      "domain": 4,
+      "question": "在CDS视图中，@ObjectModel.readOnly注解的作用是什么？",
+      "options": {
+        "A": "标记视图为只读",
+        "B": "锁定数据库记录",
+        "C": "禁止用户登录",
+        "D": "加密数据"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "@ObjectModel.readOnly注解：\n- 标记CDS视图或字段为只读\n- 前端无法修改该数据\n- 用于计算字段或审计字段\n- 提供数据完整性保护"
+    },
+    {
+      "id": "q40",
+      "domain": 4,
+      "question": "OData V4中的$count参数返回什么？",
+      "options": {
+        "A": "所有字段的数量",
+        "B": "匹配查询条件的记录总数",
+        "C": "服务器计数器",
+        "D": "用户访问次数"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "$count参数用途：\n- 返回匹配查询条件的总记录数\n- 常用于分页显示总数\n- OData V4语法：/EntitySet/$count\n- 或在结果中包含：?$count=true"
+    },
+    {
+      "id": "q41",
+      "domain": 5,
+      "question": "SAP Cloud Transport Management的作用是什么？",
+      "options": {
+        "A": "管理物流运输",
+        "B": "管理应用的跨环境部署",
+        "C": "传输数据文件",
+        "D": "管理邮件发送"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "SAP Cloud Transport Management：\n- 管理应用在不同环境间的传输\n- 支持开发→测试→生产的部署流程\n- 提供变更追踪和审批\n- 与CI/CD流程集成"
+    },
+    {
+      "id": "q42",
+      "domain": 5,
+      "question": "在SAPUI5应用开发中，ui5.yaml文件的作用是什么？",
+      "options": {
+        "A": "定义应用样式",
+        "B": "配置UI5 Tooling的构建和开发设置",
+        "C": "存储用户数据",
+        "D": "定义数据库结构"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "ui5.yaml文件作用：\n- 配置UI5 CLI工具\n- 定义构建任务（minify、预加载等）\n- 设置开发服务器配置\n- 配置代理和Mock服务器"
+    },
+    {
+      "id": "q43",
+      "domain": 5,
+      "question": "Fiori应用的预加载（Component-preload.js）文件包含什么？",
+      "options": {
+        "A": "用户配置",
+        "B": "打包后的应用所有资源",
+        "C": "数据库备份",
+        "D": "服务器日志"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Component-preload.js特点：\n- 包含应用的所有JavaScript和视图\n- 减少HTTP请求数量\n- 提高应用加载速度\n- 由构建工具自动生成\n- 是生产环境优化的关键"
+    },
+    {
+      "id": "q44",
+      "domain": 1,
+      "question": "在SAPUI5中，MessageToast和MessageBox的主要区别是什么？",
+      "options": {
+        "A": "MessageToast需要用户确认，MessageBox自动关闭",
+        "B": "MessageToast自动关闭，MessageBox需要用户确认",
+        "C": "它们功能完全相同",
+        "D": "MessageToast只能显示错误"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "SAPUI5消息控件区别：\n- MessageToast：轻量级通知，自动消失\n- MessageBox：模态对话框，需用户操作\n\nMessageToast适用于非关键信息\nMessageBox适用于需要用户确认的重要信息"
+    },
+    {
+      "id": "q45",
+      "domain": 2,
+      "question": "Fiori设计中，什么是'Floorplan'？",
+      "options": {
+        "A": "建筑设计图",
+        "B": "标准化的页面布局模式",
+        "C": "地板材料选择",
+        "D": "服务器配置"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Fiori Floorplan（楼层图）：\n- 标准化的页面布局模式\n- 如List Report、Object Page、Overview Page\n- 确保应用间的一致体验\n- 是Fiori Elements的基础"
+    },
+    {
+      "id": "q46",
+      "domain": 3,
+      "question": "Fiori Elements应用如何实现字段级别的权限控制？",
+      "options": {
+        "A": "在前端JavaScript中检查",
+        "B": "通过CDS注解和后端授权",
+        "C": "在CSS中隐藏字段",
+        "D": "使用浏览器扩展"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Fiori Elements字段权限控制：\n- 使用CDS Access Control定义授权\n- @Consumption.hidden注解控制显示\n- 后端服务进行权限验证\n- 前端根据元数据响应权限"
+    },
+    {
+      "id": "q47",
+      "domain": 4,
+      "question": "CDS注解@UI.facet用于什么目的？",
+      "options": {
+        "A": "定义数据库索引",
+        "B": "定义Object Page的内容区域",
+        "C": "配置网络设置",
+        "D": "设置文件权限"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "@UI.facet注解用途：\n- 定义Object Page的Facet结构\n- 配置Header Facet和内容Facet\n- 支持嵌套和引用\n- 控制Object Page的整体布局"
+    },
+    {
+      "id": "q48",
+      "domain": 4,
+      "question": "在OData服务中，什么是Entity Set？",
+      "options": {
+        "A": "数据库表的别名",
+        "B": "同类型Entity的集合",
+        "C": "用户组",
+        "D": "设置参数集"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "OData Entity Set：\n- 代表同类型Entity的集合\n- 类似数据库表的概念\n- 通过URL访问：/odata/v4/service/EntitySet\n- 支持CRUD操作"
+    },
+    {
+      "id": "q49",
+      "domain": 5,
+      "question": "SAP Fiori Tools Extension Pack在VS Code中提供什么功能？（选择两个）",
+      "options": {
+        "A": "可视化页面编辑器",
+        "B": "数据库管理",
+        "C": "Guided Development向导",
+        "D": "视频编辑"
+      },
+      "answer": ["A", "C"],
+      "answerType": "multiple",
+      "explanation": "SAP Fiori Tools Extension Pack提供：\n- Page Map：可视化页面编辑器\n- Guided Development：引导式开发向导\n- Service Modeler：服务建模\n- XML Annotation LSP：注解编辑支持\n\n是VS Code开发Fiori应用的必备扩展"
+    },
+    {
+      "id": "q50",
+      "domain": 5,
+      "question": "在SAP BTP上部署Fiori应用时，HTML5 Application Repository的作用是什么？",
+      "options": {
+        "A": "存储后端ABAP代码",
+        "B": "托管和提供静态Web内容",
+        "C": "管理数据库",
+        "D": "发送电子邮件"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "HTML5 Application Repository：\n- 托管Fiori应用的静态资源\n- 提供CDN加速\n- 支持版本管理\n- 与Managed Application Router集成\n- 是BTP上Fiori应用托管的标准方式"
+    }
+  ]
+}

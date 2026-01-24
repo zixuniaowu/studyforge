@@ -1,0 +1,772 @@
+{
+  "exam": {
+    "id": "n8n-integration-set3",
+    "name": "n8n 集成 模拟考试 #3",
+    "code": "N8N-INT",
+    "provider": "n8n",
+    "language": "zh-CN",
+    "description": "n8n 工作流自动化平台集成认证 - 第3套",
+    "totalQuestions": 50,
+    "passingScore": 75,
+    "examTime": 90,
+    "domains": [
+      { "id": 1, "name": "API Integration", "weight": 25 },
+      { "id": 2, "name": "Webhooks", "weight": 20 },
+      { "id": 3, "name": "Database Connections", "weight": 25 },
+      { "id": 4, "name": "AI/LLM Integration", "weight": 30 }
+    ],
+    "tags": ["n8n", "workflow", "automation", "integration", "认证考试"]
+  },
+  "questions": [
+    {
+      "id": "q1",
+      "domain": 1,
+      "question": "在n8n中集成Salesforce API时，推荐的认证方式是什么？",
+      "options": {
+        "A": "使用用户名和密码",
+        "B": "使用Salesforce OAuth2凭证",
+        "C": "使用API Token直接调用",
+        "D": "使用Session ID"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Salesforce推荐使用OAuth2认证，n8n提供专门的Salesforce凭证类型，自动处理token刷新等流程。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q2",
+      "domain": 1,
+      "question": "如何在n8n中处理API返回的嵌套数组数据进行批量操作？",
+      "options": {
+        "A": "手动遍历每个元素",
+        "B": "使用Item Lists节点的Split Out操作",
+        "C": "使用Code节点展开数组",
+        "D": "B和C都可以"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "Item Lists节点的Split Out可以将嵌套数组展开为独立item，Code节点也可以实现自定义的数组展开逻辑。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q3",
+      "domain": 2,
+      "question": "在n8n中如何实现Webhook的签名验证（如GitHub Webhook）？",
+      "options": {
+        "A": "使用内置签名验证功能",
+        "B": "在后续节点中使用crypto计算HMAC并比较",
+        "C": "配置Webhook的secret即可",
+        "D": "依赖发送方的IP验证"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "需要在Code节点中使用crypto模块计算请求body的HMAC签名，与Header中的签名比较验证。",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q4",
+      "domain": 3,
+      "question": "在n8n中执行批量数据库插入时，如何处理部分记录失败的情况？",
+      "options": {
+        "A": "全部回滚",
+        "B": "使用INSERT IGNORE或ON CONFLICT跳过冲突",
+        "C": "分批处理并记录失败记录",
+        "D": "取决于业务需求选择B或C"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "根据业务需求可以选择跳过冲突继续处理，或分批处理并收集失败记录用于后续重试或告警。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q5",
+      "domain": 4,
+      "question": "在n8n中使用AI进行文档问答时，如何处理超长文档？",
+      "options": {
+        "A": "直接发送整个文档",
+        "B": "先进行文档分块和向量索引，查询时检索相关片段",
+        "C": "截断文档到模型限制",
+        "D": "使用多次调用逐段处理"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "超长文档应该先分块建立向量索引，查询时检索最相关的片段提供给AI，这是RAG的标准做法。",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q6",
+      "domain": 1,
+      "question": "在n8n中如何处理API的分页游标(cursor-based pagination)？",
+      "options": {
+        "A": "使用页码参数",
+        "B": "将返回的游标作为下一次请求的参数，循环直到无更多数据",
+        "C": "一次获取所有数据",
+        "D": "手动拼接URL"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "游标分页需要使用返回的next_cursor作为下一次请求的参数，循环调用直到返回空游标或无更多数据。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q7",
+      "domain": 2,
+      "question": "如何在n8n中实现Webhook的延迟响应？",
+      "options": {
+        "A": "使用Wait节点延迟",
+        "B": "使用Respond to Webhook节点配合工作流逻辑",
+        "C": "在返回前Sleep",
+        "D": "无法延迟响应"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "可以使用Respond to Webhook节点在工作流任意位置返回响应，之前可以添加处理逻辑。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q8",
+      "domain": 3,
+      "question": "在n8n中连接Elasticsearch时，如何执行全文搜索？",
+      "options": {
+        "A": "使用SQL查询",
+        "B": "使用Elasticsearch的Query DSL",
+        "C": "使用正则表达式",
+        "D": "使用LIKE语句"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Elasticsearch使用自己的Query DSL进行搜索，支持match、multi_match等全文搜索查询类型。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q9",
+      "domain": 4,
+      "question": "在n8n中构建AI Agent时，如何限制Agent的工具使用范围？",
+      "options": {
+        "A": "无法限制，Agent会使用所有可用工具",
+        "B": "只配置需要的Tools，并在System Prompt中说明使用规则",
+        "C": "使用权限系统控制",
+        "D": "在运行时动态禁用"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "通过只配置必要的Tools并在System Prompt中明确说明何时使用哪个工具，可以有效控制Agent行为。",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q10",
+      "domain": 1,
+      "question": "在n8n中如何实现API请求的请求体压缩？",
+      "options": {
+        "A": "n8n自动压缩",
+        "B": "在Header中设置Content-Encoding并手动压缩body",
+        "C": "使用gzip节点",
+        "D": "API不支持压缩"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "需要在Header中设置Content-Encoding: gzip，并使用Code节点或Compression节点压缩请求体。",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q11",
+      "domain": 2,
+      "question": "n8n中如何处理Webhook的并发请求导致的数据竞争？",
+      "options": {
+        "A": "n8n自动处理",
+        "B": "使用数据库锁或分布式锁",
+        "C": "使用队列序列化处理",
+        "D": "B和C都是解决方案"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "并发问题需要业务层解决，可以使用数据库锁保护关键资源，或使用队列将并发请求序列化处理。",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q12",
+      "domain": 3,
+      "question": "在n8n中如何监控数据库查询性能？",
+      "options": {
+        "A": "查看n8n执行日志",
+        "B": "使用数据库的慢查询日志",
+        "C": "添加计时逻辑记录执行时间",
+        "D": "以上都可以帮助分析"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "可以结合n8n执行历史、数据库慢查询日志和自定义计时来全面分析查询性能。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q13",
+      "domain": 4,
+      "question": "在n8n中如何实现AI对话的上下文窗口滑动？",
+      "options": {
+        "A": "发送所有历史消息",
+        "B": "Memory节点自动管理，保留最近N条消息",
+        "C": "手动删除旧消息",
+        "D": "使用摘要压缩旧对话"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Memory节点可以配置保留的消息数量，自动维护滑动窗口，老消息会被自动移除。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q14",
+      "domain": 1,
+      "question": "在n8n中如何实现API调用的请求去重？",
+      "options": {
+        "A": "不需要去重",
+        "B": "使用缓存检查请求是否已处理",
+        "C": "依赖API的幂等性",
+        "D": "B和C结合使用"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "可以使用缓存记录已处理的请求避免重复调用，同时利用API的幂等特性确保重复调用不会产生副作用。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q15",
+      "domain": 2,
+      "question": "如何在n8n中实现Webhook的请求优先级处理？",
+      "options": {
+        "A": "n8n按接收顺序处理",
+        "B": "在请求中添加优先级标记，使用不同队列处理",
+        "C": "使用多个Webhook端点分优先级",
+        "D": "B和C都可以"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "可以在请求中携带优先级信息路由到不同处理队列，或使用不同的Webhook端点区分优先级。",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q16",
+      "domain": 3,
+      "question": "在n8n中如何实现数据库的分片查询？",
+      "options": {
+        "A": "单个查询访问所有分片",
+        "B": "根据分片键确定目标分片，只查询相关分片",
+        "C": "使用数据库中间件",
+        "D": "n8n不支持分片"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "分片查询需要根据分片键计算目标分片，然后路由到正确的数据库实例查询，避免跨分片查询。",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q17",
+      "domain": 4,
+      "question": "在n8n中如何处理AI模型的速率限制？",
+      "options": {
+        "A": "忽略限制快速调用",
+        "B": "使用队列控制调用频率",
+        "C": "捕获429错误并实现退避重试",
+        "D": "B和C结合使用"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "应该使用队列控制调用频率避免触发限制，同时实现429错误的退避重试作为兜底策略。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q18",
+      "domain": 1,
+      "question": "在n8n中如何实现API的服务发现？",
+      "options": {
+        "A": "硬编码服务地址",
+        "B": "从配置中心或服务注册中心获取地址",
+        "C": "使用DNS解析",
+        "D": "B和C都可以"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "服务发现可以通过查询Consul、Eureka等注册中心，或使用DNS SRV记录来动态获取服务地址。",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q19",
+      "domain": 2,
+      "question": "如何在n8n中处理Webhook的请求体校验失败？",
+      "options": {
+        "A": "忽略继续处理",
+        "B": "返回400 Bad Request并记录日志",
+        "C": "静默丢弃请求",
+        "D": "重试请求"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "请求体校验失败应返回明确的错误状态码（400），并记录日志用于问题追踪和审计。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q20",
+      "domain": 3,
+      "question": "在n8n中如何实现数据库的读取后锁定(SELECT FOR UPDATE)？",
+      "options": {
+        "A": "使用普通SELECT",
+        "B": "在SQL查询中添加FOR UPDATE子句",
+        "C": "使用应用层锁",
+        "D": "n8n不支持行锁"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "在Execute Query节点中可以执行带FOR UPDATE的SQL语句，实现悲观锁定防止并发修改。",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q21",
+      "domain": 4,
+      "question": "在n8n中如何实现AI生成内容的缓存？",
+      "options": {
+        "A": "每次都调用AI生成",
+        "B": "使用相同输入的哈希作为key缓存结果",
+        "C": "使用语义相似度匹配缓存",
+        "D": "B和C都是有效策略"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "精确匹配使用输入哈希缓存，模糊匹配可以用语义相似度检索相近问题的缓存答案。",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q22",
+      "domain": 1,
+      "question": "在n8n中如何处理API的双向TLS(mTLS)认证？",
+      "options": {
+        "A": "不支持mTLS",
+        "B": "在HTTP Request节点配置客户端证书和密钥",
+        "C": "使用外部代理处理",
+        "D": "B和C都可以"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "HTTP Request节点支持配置客户端证书，也可以使用外部代理（如Envoy）处理mTLS。",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q23",
+      "domain": 2,
+      "question": "如何在n8n中实现Webhook的流量复制用于测试？",
+      "options": {
+        "A": "无法复制流量",
+        "B": "在工作流中将请求同时发送到测试环境",
+        "C": "使用反向代理层镜像流量",
+        "D": "B和C都可以"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "可以在工作流中异步发送请求到测试环境，也可以在Nginx等反向代理层配置流量镜像。",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q24",
+      "domain": 3,
+      "question": "在n8n中如何处理数据库的死锁？",
+      "options": {
+        "A": "增加超时时间",
+        "B": "捕获死锁异常并重试事务",
+        "C": "优化事务顺序减少死锁概率",
+        "D": "B和C都是解决方案"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "应该在代码中处理死锁异常并重试，同时从设计层面优化事务访问顺序减少死锁发生。",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q25",
+      "domain": 4,
+      "question": "在n8n中如何实现AI的多步推理(Chain of Thought)？",
+      "options": {
+        "A": "让AI一步得出结论",
+        "B": "在prompt中要求AI展示推理过程",
+        "C": "使用多个AI节点串联处理",
+        "D": "B和C都是实现方式"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "可以在prompt中要求AI展示思考过程(CoT)，也可以将复杂问题拆分为多个AI调用串联处理。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q26",
+      "domain": 1,
+      "question": "在n8n中如何实现API的灰度发布调用？",
+      "options": {
+        "A": "始终调用生产API",
+        "B": "根据条件（如用户ID哈希）路由到不同版本",
+        "C": "手动切换API版本",
+        "D": "使用API网关控制"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "可以在工作流中根据用户ID哈希等条件决定调用哪个版本的API，实现客户端侧的灰度控制。",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q27",
+      "domain": 2,
+      "question": "如何在n8n中处理Webhook的请求解密？",
+      "options": {
+        "A": "不支持加密请求",
+        "B": "在Code节点中使用crypto模块解密",
+        "C": "配置n8n内置解密",
+        "D": "在反向代理层解密"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "加密的请求体需要在Code节点中使用适当的加密库（如crypto）进行解密处理。",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q28",
+      "domain": 3,
+      "question": "在n8n中如何实现数据库的数据归档？",
+      "options": {
+        "A": "手动删除旧数据",
+        "B": "将旧数据移动到归档表，然后删除原表数据",
+        "C": "使用分区表自动管理",
+        "D": "B和C都是归档策略"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "数据归档可以通过移动数据到归档表实现，也可以使用分区表配合分区切换实现自动化归档。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q29",
+      "domain": 4,
+      "question": "在n8n中如何评估AI生成内容的质量？",
+      "options": {
+        "A": "完全信任AI输出",
+        "B": "使用另一个AI模型评估输出质量",
+        "C": "设置人工审核环节",
+        "D": "B和C结合使用"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "可以使用AI进行自动化质量评估，同时对重要内容设置人工审核环节确保质量。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q30",
+      "domain": 1,
+      "question": "在n8n中如何处理API的请求链路追踪？",
+      "options": {
+        "A": "不需要追踪",
+        "B": "在请求Header中传递trace ID",
+        "C": "使用外部追踪系统（如Jaeger）",
+        "D": "B和C结合使用"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "分布式追踪需要在请求中传递trace ID，配合追踪系统（如Jaeger、Zipkin）收集和展示调用链。",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q31",
+      "domain": 2,
+      "question": "如何在n8n中实现Webhook的请求聚合？",
+      "options": {
+        "A": "每个请求独立处理",
+        "B": "缓存多个请求后批量处理",
+        "C": "使用时间窗口聚合",
+        "D": "B和C都可以"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "请求聚合可以按数量批次或时间窗口实现，减少后端调用次数提高效率。",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q32",
+      "domain": 3,
+      "question": "在n8n中如何处理数据库字符编码问题？",
+      "options": {
+        "A": "使用默认编码",
+        "B": "在连接参数中指定字符集",
+        "C": "在查询中设置字符集",
+        "D": "B和C都应该配置"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "应该在连接时指定正确的字符集（如UTF-8），某些情况下还需要在查询中设置确保一致性。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q33",
+      "domain": 4,
+      "question": "在n8n中如何实现AI的自我修正？",
+      "options": {
+        "A": "直接使用AI首次输出",
+        "B": "让AI检查自己的输出并修正错误",
+        "C": "使用验证逻辑检测错误后重新生成",
+        "D": "B和C都是实现方式"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "AI自我修正可以通过让AI反思检查自己的输出，或使用程序验证发现问题后要求重新生成。",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q34",
+      "domain": 1,
+      "question": "在n8n中如何实现API的契约测试？",
+      "options": {
+        "A": "手动测试API",
+        "B": "使用schema验证请求和响应格式",
+        "C": "使用Pact等契约测试工具",
+        "D": "B和C都是方法"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "契约测试可以通过JSON Schema验证实现，也可以集成专业的契约测试工具如Pact。",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q35",
+      "domain": 2,
+      "question": "如何在n8n中处理Webhook的多租户隔离？",
+      "options": {
+        "A": "所有租户共用相同处理流程",
+        "B": "在Webhook路径或Header中包含租户标识，分别处理",
+        "C": "为每个租户创建独立工作流",
+        "D": "B和C根据需求选择"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "多租户可以通过请求中的租户标识路由处理，简单场景可以用单工作流，复杂场景可能需要独立工作流。",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q36",
+      "domain": 3,
+      "question": "在n8n中如何实现数据库的双写一致性？",
+      "options": {
+        "A": "先写主库再写副本",
+        "B": "使用分布式事务",
+        "C": "使用消息队列异步同步",
+        "D": "B和C根据一致性要求选择"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "强一致性需要分布式事务（如2PC），最终一致性可以使用消息队列异步同步，根据业务选择。",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q37",
+      "domain": 4,
+      "question": "在n8n中如何处理AI的输出长度控制？",
+      "options": {
+        "A": "不控制长度",
+        "B": "设置max_tokens参数",
+        "C": "在prompt中明确要求输出长度",
+        "D": "B和C结合使用效果更好"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "通过API参数设置max_tokens硬限制，同时在prompt中明确要求长度或格式，双重控制更有效。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q38",
+      "domain": 1,
+      "question": "在n8n中如何实现API的请求合并？",
+      "options": {
+        "A": "逐个发送请求",
+        "B": "使用batch API一次发送多个请求",
+        "C": "使用GraphQL合并多个查询",
+        "D": "B和C都可以减少请求次数"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "许多API提供batch端点合并多个操作，GraphQL天然支持在一个请求中执行多个查询。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q39",
+      "domain": 2,
+      "question": "如何在n8n中实现Webhook的请求体转换？",
+      "options": {
+        "A": "直接使用原始请求体",
+        "B": "使用Set节点重组数据",
+        "C": "使用Code节点进行复杂转换",
+        "D": "B和C根据复杂度选择"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "简单转换用Set节点映射字段即可，复杂转换需要Code节点编写自定义逻辑。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q40",
+      "domain": 3,
+      "question": "在n8n中如何实现数据库的热备份？",
+      "options": {
+        "A": "停止服务进行备份",
+        "B": "使用数据库的在线备份功能",
+        "C": "复制数据文件",
+        "D": "n8n不参与备份"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "热备份应使用数据库的在线备份功能（如pg_dump、mysqldump --single-transaction），n8n可以触发但不直接参与。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q41",
+      "domain": 4,
+      "question": "在n8n中如何实现AI对话的角色扮演？",
+      "options": {
+        "A": "在每条消息中重复角色描述",
+        "B": "在System Prompt中定义AI角色和行为规范",
+        "C": "使用专门的角色扮演模型",
+        "D": "B是标准做法"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "System Prompt中定义角色背景、性格特点、行为规范是实现角色扮演的标准方式。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q42",
+      "domain": 1,
+      "question": "在n8n中如何处理API的降级策略？",
+      "options": {
+        "A": "API失败时停止流程",
+        "B": "提供默认响应或调用备用服务",
+        "C": "无限重试直到成功",
+        "D": "告警后人工处理"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "降级策略应该在主服务不可用时提供备选方案，如返回缓存数据或调用备用服务，保证业务连续性。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q43",
+      "domain": 2,
+      "question": "如何在n8n中实现Webhook的请求追踪？",
+      "options": {
+        "A": "不进行追踪",
+        "B": "为每个请求生成唯一ID并贯穿整个处理流程",
+        "C": "使用外部APM工具",
+        "D": "B和C都是好的实践"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "应该为每个请求生成唯一ID记录在日志中，配合APM工具可以实现完整的请求追踪。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q44",
+      "domain": 3,
+      "question": "在n8n中如何处理数据库的跨库查询？",
+      "options": {
+        "A": "使用单个查询访问多个库",
+        "B": "分别查询各库后在n8n中合并结果",
+        "C": "使用数据库federation",
+        "D": "B和C取决于数据库类型"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "某些数据库支持federation跨库查询，不支持的情况下需要分别查询后在应用层合并。",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q45",
+      "domain": 4,
+      "question": "在n8n中如何实现AI的多模态输入？",
+      "options": {
+        "A": "只支持文本输入",
+        "B": "使用支持vision的模型同时处理文本和图像",
+        "C": "先将图像转换为文本描述",
+        "D": "B和C都可以处理多模态"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "现代AI模型（如GPT-4V）直接支持图像输入，也可以先用图像描述模型转换后再处理。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q46",
+      "domain": 1,
+      "question": "在n8n中如何实现API的请求去敏感化？",
+      "options": {
+        "A": "发送完整数据",
+        "B": "在发送前对敏感字段进行脱敏处理",
+        "C": "依赖API端进行脱敏",
+        "D": "使用加密传输"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "敏感数据应该在发送前进行脱敏（如手机号中间四位替换为*），避免敏感信息泄露到日志或第三方。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q47",
+      "domain": 2,
+      "question": "如何在n8n中实现Webhook的流量控制？",
+      "options": {
+        "A": "接受所有流量",
+        "B": "使用令牌桶算法限制每秒请求数",
+        "C": "使用漏桶算法平滑流量",
+        "D": "B和C都是流量控制方法"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "令牌桶允许突发流量，漏桶输出固定速率，根据业务特点选择合适的流量控制算法。",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q48",
+      "domain": 3,
+      "question": "在n8n中如何实现数据库的Schema版本管理？",
+      "options": {
+        "A": "手动执行DDL",
+        "B": "使用迁移脚本并记录版本",
+        "C": "使用Flyway/Liquibase等工具",
+        "D": "B和C都是版本管理方法"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "数据库Schema变更应该使用版本化的迁移脚本，可以手动管理或使用专业工具自动执行和追踪。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q49",
+      "domain": 4,
+      "question": "在n8n中如何处理AI的输出解析错误？",
+      "options": {
+        "A": "直接使用原始输出",
+        "B": "捕获解析错误，要求AI重新生成符合格式的输出",
+        "C": "使用正则提取需要的内容",
+        "D": "B和C结合使用"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "首先尝试正则等方式容错解析，失败时可以将错误信息反馈给AI要求重新生成符合格式的输出。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q50",
+      "domain": 1,
+      "question": "在n8n中如何实现API调用的成本控制？",
+      "options": {
+        "A": "不限制调用次数",
+        "B": "设置每日/每月调用配额",
+        "C": "优化调用逻辑减少不必要的调用",
+        "D": "B和C都是成本控制措施"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "成本控制应该从配额限制和调用优化两方面入手，减少不必要的调用并设置预算上限。",
+      "difficulty": "medium"
+    }
+  ]
+}

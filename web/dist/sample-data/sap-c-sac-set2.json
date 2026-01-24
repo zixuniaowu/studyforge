@@ -1,0 +1,673 @@
+{
+  "exam": {
+    "id": "sap-c-sac-set2",
+    "name": "SAP C_SAC 模拟考试 #2",
+    "code": "C_SAC",
+    "provider": "SAP",
+    "language": "zh-CN",
+    "description": "SAP Analytics Cloud (SAC) 认证考试模拟题第二套。涵盖高级数据建模、计划功能、增强分析和应用设计等进阶内容。",
+    "totalQuestions": 50,
+    "passingScore": 65,
+    "examTime": 180,
+    "domains": [
+      { "name": "高级数据建模", "percentage": 25 },
+      { "name": "企业计划", "percentage": 25 },
+      { "name": "增强分析与预测", "percentage": 20 },
+      { "name": "应用设计器", "percentage": 15 },
+      { "name": "集成与API", "percentage": 15 }
+    ],
+    "tags": ["SAP", "SAC", "Analytics Cloud", "计划", "预测"]
+  },
+  "questions": [
+    {
+      "id": 1,
+      "question": "在 SAP Analytics Cloud 中，Generic Dimension（通用维度）和 Organization Dimension（组织维度）的区别是什么？",
+      "options": {
+        "A": "没有区别",
+        "B": "Organization 维度支持所有者属性和节点权限",
+        "C": "Generic 维度只能存储数字",
+        "D": "Organization 维度不支持层级"
+      },
+      "answer": "B",
+      "explanation": "Organization Dimension 是特殊维度类型，支持所有者属性和基于节点的权限控制，常用于表示公司组织结构。",
+      "difficulty": "medium"
+    },
+    {
+      "id": 2,
+      "question": "SAP Analytics Cloud 模型中的 Private Dimension 和 Public Dimension 有什么区别？（2个选择）",
+      "options": {
+        "A": "Private Dimension 仅在单个模型中使用",
+        "B": "Private Dimension 可以跨多个模型共享",
+        "C": "Public Dimension 可以在多个模型之间共享",
+        "D": "Public Dimension 不支持层级"
+      },
+      "answer": ["A", "C"],
+      "explanation": "Private Dimension 仅在定义它的模型中使用，Public Dimension 可以作为独立对象在多个模型之间共享和重用。",
+      "difficulty": "medium"
+    },
+    {
+      "id": 3,
+      "question": "在 SAP Analytics Cloud 中，Data Foundation 的用途是什么？",
+      "options": {
+        "A": "仅存储用户设置",
+        "B": "定义模型的数据存储结构和维度关系",
+        "C": "仅用于报表展示",
+        "D": "仅用于用户认证"
+      },
+      "answer": "B",
+      "explanation": "Data Foundation 定义了模型的底层数据存储结构，包括事实表和维度表的关系、主键和外键关联。",
+      "difficulty": "hard"
+    },
+    {
+      "id": 4,
+      "question": "SAP Analytics Cloud 中的 Calculated Dimension（计算维度）可以创建什么类型的成员？",
+      "options": {
+        "A": "仅静态成员",
+        "B": "基于公式动态计算的虚拟成员",
+        "C": "仅数值成员",
+        "D": "仅日期成员"
+      },
+      "answer": "B",
+      "explanation": "Calculated Dimension 允许创建基于公式动态计算的虚拟成员，如将日期分组为季度或基于条件创建分类。",
+      "difficulty": "medium"
+    },
+    {
+      "id": 5,
+      "question": "在 SAP Analytics Cloud Planning 模型中，Category 维度的作用是什么？",
+      "options": {
+        "A": "存储产品类别",
+        "B": "区分实际数据、预算数据和预测数据",
+        "C": "定义用户类别",
+        "D": "管理报表类别"
+      },
+      "answer": "B",
+      "explanation": "Category 维度是 Planning 模型的系统维度，用于区分不同类型的数据版本，如 Actual（实际）、Budget（预算）、Forecast（预测）。",
+      "difficulty": "easy"
+    },
+    {
+      "id": 6,
+      "question": "SAP Analytics Cloud Planning 中的 Data Lock（数据锁定）功能用于什么？（2个选择）",
+      "options": {
+        "A": "防止对特定数据区域的修改",
+        "B": "加密数据传输",
+        "C": "在计划周期结束后锁定数据",
+        "D": "锁定用户账户"
+      },
+      "answer": ["A", "C"],
+      "explanation": "Data Lock 可以防止对特定数据区域的修改，常用于在计划周期结束后锁定已批准的预算或实际数据。",
+      "difficulty": "medium"
+    },
+    {
+      "id": 7,
+      "question": "在 SAP Analytics Cloud 中，Multi-Action 的用途是什么？",
+      "options": {
+        "A": "创建多个用户",
+        "B": "将多个 Data Action 组合成一个可执行的流程",
+        "C": "导入多个文件",
+        "D": "发送多封邮件"
+      },
+      "answer": "B",
+      "explanation": "Multi-Action 允许将多个 Data Action 串联组合成一个可执行的自动化流程，支持复杂的数据处理逻辑。",
+      "difficulty": "medium"
+    },
+    {
+      "id": 8,
+      "question": "SAP Analytics Cloud Planning 中的 Disaggregation（分解）功能如何工作？",
+      "options": {
+        "A": "删除汇总数据",
+        "B": "将输入的汇总数据自动分配到详细级别",
+        "C": "合并多个数据源",
+        "D": "压缩数据存储"
+      },
+      "answer": "B",
+      "explanation": "Disaggregation 在数据输入时自动将输入的汇总值按照定义的权重或规则分配到更详细的级别。",
+      "difficulty": "medium"
+    },
+    {
+      "id": 9,
+      "question": "在 SAP Analytics Cloud 中，Value Driver Tree（价值驱动树）的用途是什么？",
+      "options": {
+        "A": "显示组织架构",
+        "B": "可视化 KPI 之间的因果关系和驱动因素",
+        "C": "管理文件目录",
+        "D": "配置系统设置"
+      },
+      "answer": "B",
+      "explanation": "Value Driver Tree 以树形结构可视化 KPI 之间的因果关系和驱动因素，帮助理解业务指标如何相互影响。",
+      "difficulty": "medium"
+    },
+    {
+      "id": 10,
+      "question": "SAP Analytics Cloud Planning 中的 Process（流程）功能支持什么？（2个选择）",
+      "options": {
+        "A": "定义计划工作流和审批流程",
+        "B": "视频处理",
+        "C": "任务分配和进度跟踪",
+        "D": "图像编辑"
+      },
+      "answer": ["A", "C"],
+      "explanation": "Process 功能支持定义计划工作流、审批流程、任务分配和进度跟踪，协调企业计划活动。",
+      "difficulty": "medium"
+    },
+    {
+      "id": 11,
+      "question": "在 SAP Analytics Cloud 中，Predictive Scenario（预测场景）可以执行什么分析？",
+      "options": {
+        "A": "仅历史数据查看",
+        "B": "时间序列预测和回归分析",
+        "C": "仅数据导入",
+        "D": "仅用户管理"
+      },
+      "answer": "B",
+      "explanation": "Predictive Scenario 支持时间序列预测（基于历史趋势预测未来值）和回归分析（分析变量之间的关系）。",
+      "difficulty": "medium"
+    },
+    {
+      "id": 12,
+      "question": "SAP Analytics Cloud 的 Smart Predict 功能使用什么技术？",
+      "options": {
+        "A": "手动规则",
+        "B": "机器学习自动建模",
+        "C": "简单平均计算",
+        "D": "静态公式"
+      },
+      "answer": "B",
+      "explanation": "Smart Predict 使用机器学习技术自动建模，包括自动特征选择、模型训练和评估，简化预测分析流程。",
+      "difficulty": "easy"
+    },
+    {
+      "id": 13,
+      "question": "在 SAP Analytics Cloud 中，Time Series Forecasting 需要什么类型的数据？",
+      "options": {
+        "A": "静态快照数据",
+        "B": "按时间顺序排列的历史数据",
+        "C": "仅文本数据",
+        "D": "仅图像数据"
+      },
+      "answer": "B",
+      "explanation": "Time Series Forecasting 需要按时间顺序排列的历史数据点，以识别趋势、季节性和周期性模式进行预测。",
+      "difficulty": "easy"
+    },
+    {
+      "id": 14,
+      "question": "SAP Analytics Cloud 预测模型的准确性评估指标包括哪些？（2个选择）",
+      "options": {
+        "A": "MAPE（平均绝对百分比误差）",
+        "B": "用户登录次数",
+        "C": "R² (决定系数)",
+        "D": "文件大小"
+      },
+      "answer": ["A", "C"],
+      "explanation": "预测模型准确性通过 MAPE（预测误差百分比）、R²（模型解释变异的比例）等指标评估。",
+      "difficulty": "hard"
+    },
+    {
+      "id": 15,
+      "question": "在 SAP Analytics Cloud 中，Smart Grouping 功能的作用是什么？",
+      "options": {
+        "A": "手动分组数据",
+        "B": "使用 AI 自动识别数据中的相似模式并分组",
+        "C": "按字母排序分组",
+        "D": "按日期分组"
+      },
+      "answer": "B",
+      "explanation": "Smart Grouping 使用 AI/ML 技术自动识别数据中的相似模式和聚类，帮助发现隐藏的分组结构。",
+      "difficulty": "medium"
+    },
+    {
+      "id": 16,
+      "question": "SAP Analytics Cloud Application Designer 中的 Widget（组件）类型包括哪些？（2个选择）",
+      "options": {
+        "A": "Chart 和 Table",
+        "B": "音乐播放器",
+        "C": "Button 和 Dropdown",
+        "D": "视频录制器"
+      },
+      "answer": ["A", "C"],
+      "explanation": "Application Designer 提供多种组件类型，包括 Chart、Table 等数据可视化组件和 Button、Dropdown 等交互控件。",
+      "difficulty": "easy"
+    },
+    {
+      "id": 17,
+      "question": "在 Application Designer 中，Script Variable（脚本变量）的用途是什么？",
+      "options": {
+        "A": "仅用于存储常量",
+        "B": "在脚本中存储和传递动态值",
+        "C": "仅用于图表样式",
+        "D": "仅用于用户认证"
+      },
+      "answer": "B",
+      "explanation": "Script Variable 用于在脚本中存储和传递动态值，可以在不同事件和组件之间共享数据。",
+      "difficulty": "medium"
+    },
+    {
+      "id": 18,
+      "question": "SAP Analytics Cloud Application Designer 的事件（Event）类型包括什么？",
+      "options": {
+        "A": "仅 onClick 事件",
+        "B": "onClick、onSelect、onInitialize 等多种事件",
+        "C": "仅系统启动事件",
+        "D": "仅数据加载事件"
+      },
+      "answer": "B",
+      "explanation": "Application Designer 支持多种事件类型，包括 onClick（点击）、onSelect（选择）、onInitialize（初始化）等。",
+      "difficulty": "medium"
+    },
+    {
+      "id": 19,
+      "question": "在 Application Designer 中，如何实现跨页面导航？",
+      "options": {
+        "A": "使用 Application.openPage() 方法",
+        "B": "使用电子邮件链接",
+        "C": "复制粘贴内容",
+        "D": "重新创建应用"
+      },
+      "answer": "A",
+      "explanation": "使用脚本中的 Application.openPage() 方法可以在应用内实现页面之间的导航跳转。",
+      "difficulty": "medium"
+    },
+    {
+      "id": 20,
+      "question": "SAP Analytics Cloud 的 REST API 可以用于什么操作？（2个选择）",
+      "options": {
+        "A": "导入和导出数据",
+        "B": "播放视频",
+        "C": "自动化管理任务",
+        "D": "编辑音频"
+      },
+      "answer": ["A", "C"],
+      "explanation": "SAC REST API 支持数据导入/导出、模型管理、Story 管理和自动化管理任务等操作。",
+      "difficulty": "medium"
+    },
+    {
+      "id": 21,
+      "question": "在 SAP Analytics Cloud 中，OData Service 连接的特点是什么？",
+      "options": {
+        "A": "仅支持 SAP 系统",
+        "B": "可以连接任何支持 OData 协议的数据源",
+        "C": "仅支持本地数据",
+        "D": "不支持实时数据"
+      },
+      "answer": "B",
+      "explanation": "OData Service 连接可以连接任何支持 OData 协议的数据源，包括 SAP 和非 SAP 系统。",
+      "difficulty": "easy"
+    },
+    {
+      "id": 22,
+      "question": "SAP Analytics Cloud 与 SAP Data Warehouse Cloud 的集成方式是什么？",
+      "options": {
+        "A": "仅导出 CSV",
+        "B": "Live Connection 直接访问数据",
+        "C": "仅邮件附件",
+        "D": "仅打印报表"
+      },
+      "answer": "B",
+      "explanation": "SAC 可以通过 Live Connection 直接访问 SAP Data Warehouse Cloud 中的数据，无需数据复制。",
+      "difficulty": "medium"
+    },
+    {
+      "id": 23,
+      "question": "在 SAP Analytics Cloud 中，SAML 2.0 集成用于什么目的？",
+      "options": {
+        "A": "数据加密",
+        "B": "单点登录身份验证",
+        "C": "数据压缩",
+        "D": "报表打印"
+      },
+      "answer": "B",
+      "explanation": "SAML 2.0 集成用于实现单点登录（SSO），允许用户使用企业身份提供者进行身份验证。",
+      "difficulty": "easy"
+    },
+    {
+      "id": 24,
+      "question": "SAP Analytics Cloud 的 Export API 支持哪些导出格式？（2个选择）",
+      "options": {
+        "A": "CSV",
+        "B": "视频格式",
+        "C": "PDF",
+        "D": "音频格式"
+      },
+      "answer": ["A", "C"],
+      "explanation": "Export API 支持将 Story 和数据导出为 CSV（数据）和 PDF（报表）格式。",
+      "difficulty": "easy"
+    },
+    {
+      "id": 25,
+      "question": "在 SAP Analytics Cloud 中，Data Quality 功能检查什么？",
+      "options": {
+        "A": "仅文件格式",
+        "B": "数据完整性、一致性和有效性",
+        "C": "仅用户权限",
+        "D": "仅网络连接"
+      },
+      "answer": "B",
+      "explanation": "Data Quality 功能检查数据的完整性（无缺失值）、一致性（格式统一）和有效性（值在有效范围内）。",
+      "difficulty": "medium"
+    },
+    {
+      "id": 26,
+      "question": "SAP Analytics Cloud Planning 中的 Comment（评论）功能支持什么？（2个选择）",
+      "options": {
+        "A": "在数据单元格上添加备注",
+        "B": "播放视频评论",
+        "C": "跟踪计划假设和决策理由",
+        "D": "录制语音评论"
+      },
+      "answer": ["A", "C"],
+      "explanation": "Comment 功能允许在数据单元格上添加备注，跟踪计划假设、业务理由和决策依据，增强协作。",
+      "difficulty": "medium"
+    },
+    {
+      "id": 27,
+      "question": "在 SAP Analytics Cloud 中，Audit 功能记录什么信息？",
+      "options": {
+        "A": "仅用户登录",
+        "B": "数据更改历史、谁在何时做了什么修改",
+        "C": "仅系统性能",
+        "D": "仅报表访问"
+      },
+      "answer": "B",
+      "explanation": "Audit 功能记录数据更改历史，包括谁在何时对哪些数据做了什么修改，支持合规审计和追溯。",
+      "difficulty": "medium"
+    },
+    {
+      "id": 28,
+      "question": "SAP Analytics Cloud 中的 Alert（警报）功能可以基于什么触发？",
+      "options": {
+        "A": "仅手动触发",
+        "B": "数据达到或超过定义的阈值",
+        "C": "仅时间计划",
+        "D": "仅用户请求"
+      },
+      "answer": "B",
+      "explanation": "Alert 可以基于数据值达到或超过定义的阈值自动触发，通知用户关注异常情况。",
+      "difficulty": "easy"
+    },
+    {
+      "id": 29,
+      "question": "在 SAP Analytics Cloud 中，Story Linking 的作用是什么？",
+      "options": {
+        "A": "复制 Story",
+        "B": "在不同 Story 之间创建导航链接",
+        "C": "删除 Story",
+        "D": "隐藏 Story"
+      },
+      "answer": "B",
+      "explanation": "Story Linking 允许在不同 Story 之间创建导航链接，实现从一个 Story 跳转到另一个相关 Story。",
+      "difficulty": "easy"
+    },
+    {
+      "id": 30,
+      "question": "SAP Analytics Cloud 中的 Bookmarks（书签）功能用于什么？（2个选择）",
+      "options": {
+        "A": "保存当前视图状态（筛选器、选择）",
+        "B": "书签网页",
+        "C": "与他人分享特定的数据视图",
+        "D": "收藏音乐"
+      },
+      "answer": ["A", "C"],
+      "explanation": "Bookmarks 保存 Story 的当前视图状态（包括筛选器和选择），可以与他人分享特定的数据视图。",
+      "difficulty": "easy"
+    },
+    {
+      "id": 31,
+      "question": "在 SAP Analytics Cloud 中，R Visualization 扩展允许什么？",
+      "options": {
+        "A": "运行 R 语言脚本创建自定义可视化",
+        "B": "录制视频",
+        "C": "编辑图片",
+        "D": "播放音频"
+      },
+      "answer": "A",
+      "explanation": "R Visualization 扩展允许使用 R 语言脚本创建 SAC 原生不支持的自定义可视化类型。",
+      "difficulty": "hard"
+    },
+    {
+      "id": 32,
+      "question": "SAP Analytics Cloud 中的 Version Management 在 Planning 中如何工作？",
+      "options": {
+        "A": "仅保留最新版本",
+        "B": "支持创建、比较和管理多个数据版本",
+        "C": "自动删除旧版本",
+        "D": "仅用于文档管理"
+      },
+      "answer": "B",
+      "explanation": "Version Management 支持创建多个数据版本（如预算v1、v2），进行版本比较和差异分析，管理版本生命周期。",
+      "difficulty": "medium"
+    },
+    {
+      "id": 33,
+      "question": "在 SAP Analytics Cloud 中，Allocation Step 的类型包括哪些？（2个选择）",
+      "options": {
+        "A": "Copy（复制）",
+        "B": "视频转换",
+        "C": "Distribute（分配）",
+        "D": "音频混合"
+      },
+      "answer": ["A", "C"],
+      "explanation": "Allocation Step 类型包括 Copy（按原值复制）、Distribute（按权重分配）、Clear（清除）等操作。",
+      "difficulty": "medium"
+    },
+    {
+      "id": 34,
+      "question": "SAP Analytics Cloud 中的 Variance Analysis（差异分析）图表显示什么？",
+      "options": {
+        "A": "仅历史数据",
+        "B": "两个数据版本或时期之间的差异",
+        "C": "仅预测数据",
+        "D": "仅用户列表"
+      },
+      "answer": "B",
+      "explanation": "Variance Analysis 图表显示两个数据版本（如实际vs预算）或两个时期（如本年vs去年）之间的差异。",
+      "difficulty": "easy"
+    },
+    {
+      "id": 35,
+      "question": "在 SAP Analytics Cloud 中，什么是 Reference Data？",
+      "options": {
+        "A": "参考文档",
+        "B": "用于计算的只读数据源，不能直接编辑",
+        "C": "用户参考手册",
+        "D": "系统参考配置"
+      },
+      "answer": "B",
+      "explanation": "Reference Data 是计划中使用的只读数据源（如汇率、单位成本），用于计算但不能在计划流程中直接编辑。",
+      "difficulty": "medium"
+    },
+    {
+      "id": 36,
+      "question": "SAP Analytics Cloud 中的 Aggregation Type（聚合类型）选项包括哪些？（2个选择）",
+      "options": {
+        "A": "SUM（求和）",
+        "B": "视频编辑",
+        "C": "AVERAGE（平均）",
+        "D": "音频混合"
+      },
+      "answer": ["A", "C"],
+      "explanation": "聚合类型包括 SUM（求和）、AVERAGE（平均）、COUNT（计数）、MIN、MAX、LAST 等多种选项。",
+      "difficulty": "easy"
+    },
+    {
+      "id": 37,
+      "question": "在 SAP Analytics Cloud 中，Formatting Rule（格式化规则）可以实现什么？",
+      "options": {
+        "A": "仅更改字体大小",
+        "B": "基于数据值条件性地更改单元格颜色和格式",
+        "C": "仅更改背景图片",
+        "D": "仅更改页面布局"
+      },
+      "answer": "B",
+      "explanation": "Formatting Rule（条件格式化）可以基于数据值或条件动态更改单元格的颜色、图标和格式，突出显示重要信息。",
+      "difficulty": "easy"
+    },
+    {
+      "id": 38,
+      "question": "SAP Analytics Cloud 的 Story Filter 和 Page Filter 的区别是什么？",
+      "options": {
+        "A": "没有区别",
+        "B": "Story Filter 影响整个 Story，Page Filter 仅影响当前页面",
+        "C": "Page Filter 影响整个 Story",
+        "D": "两者都只影响单个图表"
+      },
+      "answer": "B",
+      "explanation": "Story Filter 应用于整个 Story 的所有页面，Page Filter 仅影响当前页面上的可视化。",
+      "difficulty": "medium"
+    },
+    {
+      "id": 39,
+      "question": "在 SAP Analytics Cloud 中，Linked Dimension（链接维度）的作用是什么？",
+      "options": {
+        "A": "创建维度副本",
+        "B": "在模型中引用 Public Dimension 以保持一致性",
+        "C": "删除维度",
+        "D": "隐藏维度"
+      },
+      "answer": "B",
+      "explanation": "Linked Dimension 在模型中引用已定义的 Public Dimension，确保多个模型使用相同的维度定义保持一致性。",
+      "difficulty": "medium"
+    },
+    {
+      "id": 40,
+      "question": "SAP Analytics Cloud 中的 Currency Variable 用于什么？",
+      "options": {
+        "A": "存储密码",
+        "B": "允许用户在分析时选择显示的货币",
+        "C": "计算汇率",
+        "D": "管理银行账户"
+      },
+      "answer": "B",
+      "explanation": "Currency Variable 允许用户在查看报表时选择显示的目标货币，系统自动进行货币转换。",
+      "difficulty": "medium"
+    },
+    {
+      "id": 41,
+      "question": "在 SAP Analytics Cloud 中，Storyboard（故事板）模式提供什么？",
+      "options": {
+        "A": "代码编辑环境",
+        "B": "类似 PPT 的演示布局和导航",
+        "C": "数据库管理界面",
+        "D": "系统配置界面"
+      },
+      "answer": "B",
+      "explanation": "Storyboard 模式提供类似 PowerPoint 的幻灯片式布局，支持创建顺序演示和导航。",
+      "difficulty": "easy"
+    },
+    {
+      "id": 42,
+      "question": "SAP Analytics Cloud Planning 中的 Snapshot（快照）功能用于什么？",
+      "options": {
+        "A": "拍摄屏幕截图",
+        "B": "保存数据在特定时间点的状态",
+        "C": "创建用户照片",
+        "D": "保存系统配置"
+      },
+      "answer": "B",
+      "explanation": "Snapshot 功能保存数据在特定时间点的状态，可用于比较不同时间点的数据或回滚到之前的状态。",
+      "difficulty": "medium"
+    },
+    {
+      "id": 43,
+      "question": "在 SAP Analytics Cloud 中，Custom Widget 可以通过什么方式创建？",
+      "options": {
+        "A": "仅使用内置模板",
+        "B": "使用 SDK 开发自定义组件",
+        "C": "仅通过导入",
+        "D": "仅通过复制"
+      },
+      "answer": "B",
+      "explanation": "Custom Widget 可以通过 SAC SDK 使用 HTML5、CSS 和 JavaScript 开发自定义组件扩展功能。",
+      "difficulty": "hard"
+    },
+    {
+      "id": 44,
+      "question": "SAP Analytics Cloud 中的 Data Change Log 记录什么？（2个选择）",
+      "options": {
+        "A": "数据单元格值的更改",
+        "B": "用户浏览历史",
+        "C": "更改的时间戳和用户",
+        "D": "网络流量"
+      },
+      "answer": ["A", "C"],
+      "explanation": "Data Change Log 记录数据单元格值的更改，包括旧值、新值、更改时间和进行更改的用户。",
+      "difficulty": "medium"
+    },
+    {
+      "id": 45,
+      "question": "在 SAP Analytics Cloud 中，Performance Management 内容包提供什么？",
+      "options": {
+        "A": "系统性能监控",
+        "B": "预构建的 KPI、仪表板和最佳实践",
+        "C": "网络带宽监控",
+        "D": "硬件性能测试"
+      },
+      "answer": "B",
+      "explanation": "Performance Management 内容包提供预构建的 KPI 定义、仪表板模板和业务流程最佳实践，加速实施。",
+      "difficulty": "medium"
+    },
+    {
+      "id": 46,
+      "question": "SAP Analytics Cloud 中的 Data Region 在表格中的作用是什么？",
+      "options": {
+        "A": "定义地理区域",
+        "B": "定义可编辑的数据输入区域",
+        "C": "定义打印区域",
+        "D": "定义用户访问区域"
+      },
+      "answer": "B",
+      "explanation": "Data Region 在 Planning 表格中定义特定的可编辑数据输入区域，控制用户可以输入数据的单元格范围。",
+      "difficulty": "medium"
+    },
+    {
+      "id": 47,
+      "question": "在 SAP Analytics Cloud 中，Cross Calculation（交叉计算）用于什么？",
+      "options": {
+        "A": "跨系统数据传输",
+        "B": "跨多个度量或维度进行计算",
+        "C": "跨用户共享数据",
+        "D": "跨网络访问"
+      },
+      "answer": "B",
+      "explanation": "Cross Calculation 允许创建跨多个度量或维度成员的计算，如计算不同产品线的利润率差异。",
+      "difficulty": "hard"
+    },
+    {
+      "id": 48,
+      "question": "SAP Analytics Cloud 的 Mobile App 支持什么 Planning 功能？（2个选择）",
+      "options": {
+        "A": "数据输入和编辑",
+        "B": "视频录制",
+        "C": "审批工作流",
+        "D": "音频编辑"
+      },
+      "answer": ["A", "C"],
+      "explanation": "SAC Mobile App 支持 Planning 功能，包括数据输入和编辑以及参与审批工作流。",
+      "difficulty": "medium"
+    },
+    {
+      "id": 49,
+      "question": "在 SAP Analytics Cloud 中，What-If Analysis（假设分析）如何实现？",
+      "options": {
+        "A": "使用静态报表",
+        "B": "使用 Input Controls 动态修改参数并查看影响",
+        "C": "仅使用历史数据",
+        "D": "仅使用打印报表"
+      },
+      "answer": "B",
+      "explanation": "What-If Analysis 通过 Input Controls（如滑块、输入框）动态修改假设参数，实时查看对业务指标的影响。",
+      "difficulty": "medium"
+    },
+    {
+      "id": 50,
+      "question": "SAP Analytics Cloud 的 Analytic Application 与 Story 的主要区别是什么？",
+      "options": {
+        "A": "没有区别",
+        "B": "Analytic Application 支持脚本编程和更复杂的交互逻辑",
+        "C": "Story 更适合复杂应用",
+        "D": "Analytic Application 不支持图表"
+      },
+      "answer": "B",
+      "explanation": "Analytic Application 使用 Application Designer 创建，支持脚本编程和更复杂的交互逻辑，适合构建定制化应用。",
+      "difficulty": "medium"
+    }
+  ]
+}

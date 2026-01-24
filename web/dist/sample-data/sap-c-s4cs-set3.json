@@ -1,0 +1,661 @@
+{
+  "examId": "sap-c-s4cs",
+  "examName": "SAP S/4HANA Cloud Sales Implementation (C_S4CS)",
+  "provider": "SAP",
+  "setNumber": 3,
+  "totalQuestions": 50,
+  "passingScore": 65,
+  "timeLimit": 120,
+  "questions": [
+    {
+      "id": 1,
+      "question": "在 SAP S/4HANA Cloud Public Edition 中，如何激活销售功能的最佳实践配置？",
+      "options": {
+        "A": "通过 SPRO 自定义",
+        "B": "通过 SAP Best Practices 和 Scope Items 激活",
+        "C": "通过 ABAP 编程",
+        "D": "通过数据库直接修改"
+      },
+      "answer": "B",
+      "explanation": "S/4HANA Cloud Public Edition 使用 SAP Best Practices 和 Scope Items 来激活和配置业务功能。通过 Implementation Portal 选择相关的 Scope Items 来启用销售功能。",
+      "examTip": "Public Cloud = Scope Items 激活，无自定义代码。"
+    },
+    {
+      "id": 2,
+      "question": "S/4HANA Cloud 中的 Key User Extensibility 允许什么类型的扩展？",
+      "options": {
+        "A": "仅数据库表扩展",
+        "B": "自定义字段、自定义逻辑和自定义业务对象",
+        "C": "仅报表扩展",
+        "D": "仅用户界面更改"
+      },
+      "answer": "B",
+      "explanation": "Key User Extensibility 允许业务用户添加自定义字段到标准业务对象、创建自定义业务逻辑（通过 BAdIs）以及创建自定义业务对象，无需编写代码。",
+      "examTip": "Key User 扩展 = 无代码的业务扩展能力。"
+    },
+    {
+      "id": 3,
+      "question": "在 S/4HANA Cloud 中，销售订单的 OData API 主要用于什么场景？",
+      "options": {
+        "A": "数据库备份",
+        "B": "与外部系统集成和移动应用",
+        "C": "内部报表",
+        "D": "用户权限管理"
+      },
+      "answer": "B",
+      "explanation": "OData API（如 A_SalesOrder）用于与外部系统集成、移动应用开发和自动化场景。支持创建、读取、更新销售订单等操作。",
+      "examTip": "OData API = 系统集成和移动访问的标准接口。"
+    },
+    {
+      "id": 4,
+      "question": "S/4HANA Cloud 的 SAP Fiori Launchpad 在销售模块中的作用是什么？",
+      "options": {
+        "A": "数据库管理",
+        "B": "提供基于角色的统一应用入口",
+        "C": "代码开发",
+        "D": "服务器监控"
+      },
+      "answer": "B",
+      "explanation": "SAP Fiori Launchpad 是用户访问所有 Fiori 应用的统一入口。它根据用户的业务角色显示相关的销售应用磁贴，如创建订单、管理报价等。",
+      "examTip": "Fiori Launchpad = 基于角色的应用门户。"
+    },
+    {
+      "id": 5,
+      "question": "在 S/4HANA Cloud 中，销售模块与 SAP Analytics Cloud 集成可以实现什么？",
+      "options": {
+        "A": "替代主数据管理",
+        "B": "高级销售分析和预测",
+        "C": "替代订单处理",
+        "D": "替代库存管理"
+      },
+      "answer": "B",
+      "explanation": "SAP Analytics Cloud 与 S/4HANA Cloud 集成提供高级分析能力，包括销售趋势分析、预测性分析、智能洞察等，超越系统内置的报表功能。",
+      "examTip": "SAC 集成 = 高级分析 + 预测能力。"
+    },
+    {
+      "id": 6,
+      "question": "S/4HANA Cloud 中的 Business Role 与销售用户权限有什么关系？",
+      "options": {
+        "A": "无关系",
+        "B": "Business Role 包含访问销售应用和数据的授权",
+        "C": "仅控制价格",
+        "D": "仅控制库存"
+      },
+      "answer": "B",
+      "explanation": "Business Role 是 S/4HANA Cloud 的授权分配单位，包含用户可以访问的 Fiori 应用、业务目录和数据权限。销售角色如 Sales Manager 包含相关的销售功能授权。",
+      "examTip": "Business Role = 应用访问 + 数据权限的组合。"
+    },
+    {
+      "id": 7,
+      "question": "在 S/4HANA Cloud 实施中，Configure - Your - Solution 应用用于什么？",
+      "options": {
+        "A": "创建销售订单",
+        "B": "配置业务流程和系统设置",
+        "C": "管理用户密码",
+        "D": "监控系统性能"
+      },
+      "answer": "B",
+      "explanation": "Configure - Your - Solution 是 S/4HANA Cloud 的配置工具，允许实施顾问和管理员配置业务流程设置，如销售凭证类型、定价过程等系统参数。",
+      "examTip": "Configure Your Solution = Public Cloud 的配置工具。"
+    },
+    {
+      "id": 8,
+      "question": "S/4HANA Cloud 中的 Communication Arrangement 用于什么目的？",
+      "options": {
+        "A": "用户之间的消息传递",
+        "B": "配置与外部系统的 API 通信",
+        "C": "内部邮件系统",
+        "D": "打印机配置"
+      },
+      "answer": "B",
+      "explanation": "Communication Arrangement 用于配置 S/4HANA Cloud 与外部系统之间的 API 通信，包括认证方式、端点 URL、通信用户等。是系统集成的关键配置。",
+      "examTip": "Communication Arrangement = API 集成的配置。"
+    },
+    {
+      "id": 9,
+      "question": "在 S/4HANA Cloud 销售模块中，哪个 Fiori 应用用于管理未清销售订单？",
+      "options": {
+        "A": "Create Sales Order",
+        "B": "Manage Sales Orders",
+        "C": "Sales Order Fulfillment",
+        "D": "Display Sales Order"
+      },
+      "answer": "B",
+      "explanation": "Manage Sales Orders 应用用于查看、编辑和管理未清销售订单。提供过滤、排序和批量操作功能，是日常订单管理的主要应用。",
+      "examTip": "Manage = 管理/编辑现有数据，Create = 创建新数据。"
+    },
+    {
+      "id": 10,
+      "question": "S/4HANA Cloud 中的销售订单模拟 (Simulation) 功能用于什么？",
+      "options": {
+        "A": "永久保存订单",
+        "B": "预览订单结果而不实际创建",
+        "C": "删除订单",
+        "D": "打印订单"
+      },
+      "answer": "B",
+      "explanation": "销售订单模拟允许用户输入订单数据并预览定价、可用性等结果，而不实际创建订单。用于报价准备或订单预检。",
+      "examTip": "模拟 = 预览结果，不产生实际数据。"
+    },
+    {
+      "id": 11,
+      "question": "在 S/4HANA Cloud 中，Advanced Available-to-Promise (aATP) 提供什么增强功能？",
+      "options": {
+        "A": "仅基本库存检查",
+        "B": "产品分配、延期交货处理和替代产品建议",
+        "C": "仅价格计算",
+        "D": "仅客户管理"
+      },
+      "answer": "B",
+      "explanation": "aATP 提供高级可用性检查功能，包括产品分配（限制特定客户的可用量）、延期交货管理、替代产品建议、多级可用性检查等。",
+      "examTip": "aATP = 标准 ATP 的智能增强。"
+    },
+    {
+      "id": 12,
+      "question": "S/4HANA Cloud 中的 Sales Order Fulfillment Cockpit 的主要用途是什么？",
+      "options": {
+        "A": "创建新订单",
+        "B": "监控和管理订单履行进度",
+        "C": "管理客户主数据",
+        "D": "配置系统设置"
+      },
+      "answer": "B",
+      "explanation": "Sales Order Fulfillment Cockpit 提供订单履行的全景视图，显示订单状态、交货进度、问题订单等，帮助用户主动管理订单履行。",
+      "examTip": "Fulfillment Cockpit = 订单执行的监控中心。"
+    },
+    {
+      "id": 13,
+      "question": "在 S/4HANA Cloud 中，哪个功能支持销售订单的自动分割到多个交货？",
+      "options": {
+        "A": "订单拒绝",
+        "B": "交货拆分规则",
+        "C": "订单冻结",
+        "D": "价格条件"
+      },
+      "answer": "B",
+      "explanation": "交货拆分规则定义何时将单个销售订单拆分为多个交货，如基于不同交货日期、不同出货点、不同路线等。确保物流效率。",
+      "examTip": "交货拆分 = 优化物流的自动分单。"
+    },
+    {
+      "id": 14,
+      "question": "S/4HANA Cloud 中的输出管理 (Output Management) 支持哪些渠道？",
+      "options": {
+        "A": "仅打印",
+        "B": "打印、电子邮件、EDI 和电子文档",
+        "C": "仅电子邮件",
+        "D": "仅 EDI"
+      },
+      "answer": "B",
+      "explanation": "S/4HANA Cloud 输出管理支持多种渠道：传统打印、电子邮件发送、EDI（电子数据交换）以及电子文档格式。可以为不同客户配置不同的首选渠道。",
+      "examTip": "输出管理 = 多渠道文档分发。"
+    },
+    {
+      "id": 15,
+      "question": "在 S/4HANA Cloud 中，如何实现销售数据的实时报表？",
+      "options": {
+        "A": "通过月末批处理",
+        "B": "通过嵌入式分析和 CDS View",
+        "C": "通过外部数据仓库",
+        "D": "通过手动导出"
+      },
+      "answer": "B",
+      "explanation": "S/4HANA Cloud 使用嵌入式分析，基于 CDS View 直接从运营数据生成实时报表。无需数据复制或批处理，数据即时可用于分析。",
+      "examTip": "嵌入式分析 = 实时运营数据的即时报表。"
+    },
+    {
+      "id": 16,
+      "question": "S/4HANA Cloud 的 Intelligent Situation Handling 在销售中提供什么功能？",
+      "options": {
+        "A": "自动创建订单",
+        "B": "主动识别和通知需要关注的业务情况",
+        "C": "自动定价",
+        "D": "自动发货"
+      },
+      "answer": "B",
+      "explanation": "Intelligent Situation Handling 自动监控业务数据，识别需要关注的情况（如延迟订单、信用超限），并通过通知提醒相关用户采取行动。",
+      "examTip": "Situation Handling = 主动问题识别和提醒。"
+    },
+    {
+      "id": 17,
+      "question": "在 S/4HANA Cloud 中，Product Allocation 功能用于什么场景？",
+      "options": {
+        "A": "增加库存",
+        "B": "在供应紧张时按规则分配产品给不同客户",
+        "C": "降低价格",
+        "D": "取消订单"
+      },
+      "answer": "B",
+      "explanation": "Product Allocation 用于在产品供应紧张时，按预定义规则（如客户优先级、配额）公平分配可用产品。确保重要客户的供应保障。",
+      "examTip": "产品分配 = 稀缺资源的公平分配策略。"
+    },
+    {
+      "id": 18,
+      "question": "S/4HANA Cloud 中的 Backorder Processing 用于处理什么？",
+      "options": {
+        "A": "已完成的订单",
+        "B": "因库存不足而等待的订单",
+        "C": "已取消的订单",
+        "D": "已开票的订单"
+      },
+      "answer": "B",
+      "explanation": "Backorder Processing 用于管理因库存不足而无法立即交货的订单。当库存可用时，可以批量处理这些待处理订单，优化交货安排。",
+      "examTip": "延期订单处理 = 库存到货后的订单履行。"
+    },
+    {
+      "id": 19,
+      "question": "在 S/4HANA Cloud 销售中，Rescheduling 功能的作用是什么？",
+      "options": {
+        "A": "删除订单",
+        "B": "根据最新可用性重新计算交货日期",
+        "C": "更改客户",
+        "D": "更改产品"
+      },
+      "answer": "B",
+      "explanation": "Rescheduling 功能根据当前的库存和供应情况重新计算订单的交货日期。可以批量运行，确保订单日期反映实际可行的交货计划。",
+      "examTip": "重新计划 = 更新交货日期以匹配供应。"
+    },
+    {
+      "id": 20,
+      "question": "S/4HANA Cloud 中的 Credit Limit Check 可以配置在哪些点执行？",
+      "options": {
+        "A": "仅订单创建",
+        "B": "订单创建、订单更改、交货创建和发票创建",
+        "C": "仅发票创建",
+        "D": "仅交货创建"
+      },
+      "answer": "B",
+      "explanation": "信用检查可以配置在业务流程的多个点执行：订单创建时（前端检查）、订单更改时、交货创建时和发票创建时。提供灵活的风险控制。",
+      "examTip": "信用检查点 = 可配置的多级控制。"
+    },
+    {
+      "id": 21,
+      "question": "在 S/4HANA Cloud 中，Sales Contract 的 Target Quantity 有什么用途？",
+      "options": {
+        "A": "定义价格",
+        "B": "定义合同期内预计采购的总数量",
+        "C": "定义交货日期",
+        "D": "定义付款条款"
+      },
+      "answer": "B",
+      "explanation": "Target Quantity 定义客户在合同有效期内承诺或预计采购的总数量。系统跟踪实际释放量与目标量的对比，用于合同履行监控。",
+      "examTip": "目标数量 = 合同数量承诺的跟踪基准。"
+    },
+    {
+      "id": 22,
+      "question": "S/4HANA Cloud 中的 Value Contract 与 Quantity Contract 的区别是什么？",
+      "options": {
+        "A": "没有区别",
+        "B": "Value Contract 基于金额，Quantity Contract 基于数量",
+        "C": "Value Contract 不需要产品",
+        "D": "Quantity Contract 不需要客户"
+      },
+      "answer": "B",
+      "explanation": "Value Contract 定义客户在合同期内承诺的采购金额，可以购买任何产品直到达到金额限制。Quantity Contract 则针对特定产品定义采购数量。",
+      "examTip": "价值合同 = 金额框架，数量合同 = 产品数量框架。"
+    },
+    {
+      "id": 23,
+      "question": "在 S/4HANA Cloud 定价中，Pricing Date 如何影响价格确定？",
+      "options": {
+        "A": "不影响",
+        "B": "系统使用该日期查找有效的价格条件记录",
+        "C": "仅影响付款日期",
+        "D": "仅影响交货日期"
+      },
+      "answer": "B",
+      "explanation": "Pricing Date 决定系统使用哪个日期来查找有效的价格条件记录。默认为订单日期，但可以配置为其他日期（如请求交货日期）。",
+      "examTip": "定价日期 = 价格有效性的参考时点。"
+    },
+    {
+      "id": 24,
+      "question": "S/4HANA Cloud 中的 Requested Delivery Date 与 Confirmed Delivery Date 的区别是什么？",
+      "options": {
+        "A": "相同的日期",
+        "B": "请求日期是客户期望，确认日期是系统承诺",
+        "C": "仅格式不同",
+        "D": "无实际意义"
+      },
+      "answer": "B",
+      "explanation": "Requested Delivery Date 是客户希望收到货物的日期。Confirmed Delivery Date 是系统根据可用性检查和交货时间计算后确认可以实际交货的日期。",
+      "examTip": "请求日期 = 客户期望，确认日期 = 系统承诺。"
+    },
+    {
+      "id": 25,
+      "question": "在 S/4HANA Cloud 中，Sales Document Blocking 可以基于什么条件自动触发？",
+      "options": {
+        "A": "仅手动设置",
+        "B": "信用检查、不完整性和自定义检查",
+        "C": "仅信用检查",
+        "D": "仅不完整性"
+      },
+      "answer": "B",
+      "explanation": "销售凭证阻止可以通过多种条件自动触发：信用限额超限、凭证数据不完整、或通过 BAdI 实现的自定义业务规则检查。",
+      "examTip": "自动阻止 = 多种风险控制触发器。"
+    },
+    {
+      "id": 26,
+      "question": "S/4HANA Cloud 中的 Settlement Management 在销售中用于什么？",
+      "options": {
+        "A": "订单创建",
+        "B": "返利、佣金和奖励的计算与结算",
+        "C": "库存管理",
+        "D": "用户管理"
+      },
+      "answer": "B",
+      "explanation": "Settlement Management 用于计算和结算基于销售业绩的各种奖励，包括客户返利、销售佣金、渠道奖励等。自动跟踪销售并按规则结算。",
+      "examTip": "结算管理 = 销售奖励的自动化处理。"
+    },
+    {
+      "id": 27,
+      "question": "在 S/4HANA Cloud 中，Order-to-Cash 流程包括哪些主要步骤？",
+      "options": {
+        "A": "仅订单和收款",
+        "B": "订单、交货、开票和收款",
+        "C": "仅开票和收款",
+        "D": "仅交货和开票"
+      },
+      "answer": "B",
+      "explanation": "Order-to-Cash 是完整的销售到收款流程，包括：销售订单创建、交货处理（拣配、发货）、开票、以及财务应收款和收款处理。",
+      "examTip": "O2C = 订单 → 交货 → 开票 → 收款的完整周期。"
+    },
+    {
+      "id": 28,
+      "question": "S/4HANA Cloud 中的 Sales Order Status Profile 用于什么？",
+      "options": {
+        "A": "定义价格",
+        "B": "为销售订单定义自定义状态和状态转换",
+        "C": "定义客户分类",
+        "D": "定义产品分类"
+      },
+      "answer": "B",
+      "explanation": "Status Profile 允许为销售订单定义自定义状态（如审批中、已确认等）及其转换规则。用于实现额外的业务流程控制和审批工作流。",
+      "examTip": "状态配置文件 = 自定义业务状态管理。"
+    },
+    {
+      "id": 29,
+      "question": "在 S/4HANA Cloud 中，Release Strategy 对销售订单有什么影响？",
+      "options": {
+        "A": "自动创建订单",
+        "B": "需要审批才能继续处理订单",
+        "C": "自动定价",
+        "D": "自动交货"
+      },
+      "answer": "B",
+      "explanation": "Release Strategy 定义销售订单的审批流程。基于条件（如订单金额、客户类型）确定需要哪些审批步骤，订单必须完成审批才能进入后续处理。",
+      "examTip": "释放策略 = 订单审批工作流。"
+    },
+    {
+      "id": 30,
+      "question": "S/4HANA Cloud 中的 Billing Due List 用于什么？",
+      "options": {
+        "A": "创建销售订单",
+        "B": "列出准备开票的交货和订单",
+        "C": "管理库存",
+        "D": "配置系统"
+      },
+      "answer": "B",
+      "explanation": "Billing Due List 显示所有准备好进行开票的销售凭证（如已发货的交货）。支持批量选择和创建发票，提高开票效率。",
+      "examTip": "开票到期清单 = 待开票凭证的工作池。"
+    },
+    {
+      "id": 31,
+      "question": "在 S/4HANA Cloud 中，Revenue Recognition 与 Billing 的关系是什么？",
+      "options": {
+        "A": "完全相同",
+        "B": "开票创建应收账款，收入确认决定何时确认收入",
+        "C": "完全无关",
+        "D": "收入确认替代开票"
+      },
+      "answer": "B",
+      "explanation": "开票生成发票和应收账款，是法律上的收款权利。收入确认则根据会计准则（如 IFRS 15）决定收入在何时计入损益表，两者时点可能不同。",
+      "examTip": "开票 = 收款权利，收入确认 = 会计收入确认时点。"
+    },
+    {
+      "id": 32,
+      "question": "S/4HANA Cloud 中的 Event-Based Revenue Recognition 基于什么触发？",
+      "options": {
+        "A": "仅日期",
+        "B": "业务事件如发货或服务完成",
+        "C": "仅金额",
+        "D": "仅客户请求"
+      },
+      "answer": "B",
+      "explanation": "Event-Based Revenue Recognition 根据业务事件触发收入确认，如发货完成、服务提供完毕、里程碑达成等。符合按履约义务确认收入的会计要求。",
+      "examTip": "事件驱动 = 履约完成时确认收入。"
+    },
+    {
+      "id": 33,
+      "question": "在 S/4HANA Cloud 销售与 MM 集成中，销售订单创建时会影响什么 MM 数据？",
+      "options": {
+        "A": "采购订单",
+        "B": "可用库存和需求预测",
+        "C": "供应商评估",
+        "D": "采购价格"
+      },
+      "answer": "B",
+      "explanation": "销售订单创建时，可用性检查会考虑和影响可用库存，同时销售订单作为需求输入到 MRP 计划，影响采购和生产需求预测。",
+      "examTip": "SD-MM 集成 = 需求信号传递到供应链。"
+    },
+    {
+      "id": 34,
+      "question": "S/4HANA Cloud 中的销售订单与生产订单的集成点是什么？",
+      "options": {
+        "A": "无集成",
+        "B": "按订单生产场景中销售订单触发生产需求",
+        "C": "仅报表集成",
+        "D": "仅权限集成"
+      },
+      "answer": "B",
+      "explanation": "在按订单生产 (Make-to-Order) 场景中，销售订单直接触发生产需求。生产订单与销售订单关联，确保按客户规格和时间要求生产。",
+      "examTip": "MTO 集成 = 销售驱动生产。"
+    },
+    {
+      "id": 35,
+      "question": "在 S/4HANA Cloud 中，Sales Order Confirmation 输出的内容包括什么？",
+      "options": {
+        "A": "仅订单号",
+        "B": "订单详情、价格、交货日期等完整信息",
+        "C": "仅客户地址",
+        "D": "仅产品名称"
+      },
+      "answer": "B",
+      "explanation": "销售订单确认书是发送给客户的正式文档，包含订单号、订单行项目、产品信息、数量、价格、确认的交货日期、付款条款等完整信息。",
+      "examTip": "订单确认 = 给客户的正式订单回执。"
+    },
+    {
+      "id": 36,
+      "question": "S/4HANA Cloud 中的 Partner Determination Procedure 用于什么？",
+      "options": {
+        "A": "价格计算",
+        "B": "自动确定销售凭证中的业务伙伴角色",
+        "C": "库存分配",
+        "D": "用户授权"
+      },
+      "answer": "B",
+      "explanation": "Partner Determination Procedure 定义如何自动确定销售凭证中的各种业务伙伴角色（如售达方、送达方、付款方等），可从客户主数据或其他来源派生。",
+      "examTip": "伙伴确定 = 自动填充业务角色。"
+    },
+    {
+      "id": 37,
+      "question": "在 S/4HANA Cloud 中，Account Assignment Group 在销售中的作用是什么？",
+      "options": {
+        "A": "客户分类",
+        "B": "确定销售收入记入的会计科目",
+        "C": "产品分类",
+        "D": "仓库分配"
+      },
+      "answer": "B",
+      "explanation": "Account Assignment Group（客户和物料的）与销售交易相结合，确定销售收入、销货成本等应记入的会计科目。是 SD-FI 科目确定的关键元素。",
+      "examTip": "科目分配组 = 收入记账的科目决定因素。"
+    },
+    {
+      "id": 38,
+      "question": "S/4HANA Cloud 中的 Schedule Line 包含哪些关键信息？",
+      "options": {
+        "A": "仅产品信息",
+        "B": "交货日期、数量和可用性确认",
+        "C": "仅价格信息",
+        "D": "仅客户信息"
+      },
+      "answer": "B",
+      "explanation": "Schedule Line（计划行）包含订单行项目的交货计划信息：计划交货日期、确认数量、ATP 结果、物料可用日期等。一个行项目可有多个计划行。",
+      "examTip": "计划行 = 交货的时间和数量安排。"
+    },
+    {
+      "id": 39,
+      "question": "在 S/4HANA Cloud 定价中，Condition Class 的作用是什么？",
+      "options": {
+        "A": "定义客户类别",
+        "B": "定义条件类型是价格、折扣还是附加费等",
+        "C": "定义产品类别",
+        "D": "定义订单类别"
+      },
+      "answer": "B",
+      "explanation": "Condition Class 在条件类型配置中定义条件的性质：是基础价格 (A)、折扣 (B)、费用 (C) 还是税金 (D)。影响条件在定价过程中的处理和汇总方式。",
+      "examTip": "条件类 = 条件的业务性质分类。"
+    },
+    {
+      "id": 40,
+      "question": "S/4HANA Cloud 中的 Condition Update 功能用于什么？",
+      "options": {
+        "A": "删除价格",
+        "B": "在销售凭证保存后更新统计条件",
+        "C": "创建新价格",
+        "D": "打印价格列表"
+      },
+      "answer": "B",
+      "explanation": "Condition Update 用于在销售凭证（如发票）保存时更新统计条件的累计值，如返利基础金额的累加。是返利计算的基础数据收集机制。",
+      "examTip": "条件更新 = 累计统计数据的更新。"
+    },
+    {
+      "id": 41,
+      "question": "在 S/4HANA Cloud 中，Header Condition 与 Item Condition 的区别是什么？",
+      "options": {
+        "A": "没有区别",
+        "B": "Header 适用于整个订单，Item 适用于特定行项目",
+        "C": "仅格式不同",
+        "D": "仅存储位置不同"
+      },
+      "answer": "B",
+      "explanation": "Header Condition 在订单抬头级别应用，如订单级折扣会按比例分摊到各行项目。Item Condition 直接在特定行项目级别应用，仅影响该行项目。",
+      "examTip": "抬头条件 = 分摊到行，行条件 = 仅影响本行。"
+    },
+    {
+      "id": 42,
+      "question": "S/4HANA Cloud 中的 Output Determination 如何工作？",
+      "options": {
+        "A": "手动创建每个输出",
+        "B": "基于条件技术自动确定需要的输出",
+        "C": "仅基于用户请求",
+        "D": "仅基于系统日期"
+      },
+      "answer": "B",
+      "explanation": "Output Determination 使用条件技术，根据销售凭证的属性（如凭证类型、客户）自动确定需要生成的输出（如订单确认、发货通知），包括渠道和时机。",
+      "examTip": "输出确定 = 条件技术驱动的自动文档生成。"
+    },
+    {
+      "id": 43,
+      "question": "在 S/4HANA Cloud 中，Invoice List 功能用于什么场景？",
+      "options": {
+        "A": "创建单个发票",
+        "B": "汇总多张发票创建定期账单",
+        "C": "删除发票",
+        "D": "修改发票"
+      },
+      "answer": "B",
+      "explanation": "Invoice List 将一定期间内的多张发票汇总到一个发票清单中，用于与客户进行定期结算。常用于批发或 B2B 业务场景，简化对账。",
+      "examTip": "发票清单 = 多张发票的定期汇总账单。"
+    },
+    {
+      "id": 44,
+      "question": "S/4HANA Cloud 中的 Intercompany Billing 涉及什么流程？",
+      "options": {
+        "A": "仅外部客户开票",
+        "B": "交货公司向销售公司开具内部发票",
+        "C": "仅采购开票",
+        "D": "仅服务开票"
+      },
+      "answer": "B",
+      "explanation": "在跨公司销售中，交货公司（提供产品的公司）需要向销售公司（接受订单的公司）开具内部发票进行公司间结算。这是法律实体间的内部收入确认。",
+      "examTip": "公司间开票 = 法律实体间的内部结算。"
+    },
+    {
+      "id": 45,
+      "question": "在 S/4HANA Cloud 中，Customer Hierarchy Pricing 如何运作？",
+      "options": {
+        "A": "忽略层次结构",
+        "B": "根据客户在层次中的位置应用不同的价格条件",
+        "C": "仅用于报表",
+        "D": "仅用于信用管理"
+      },
+      "answer": "B",
+      "explanation": "Customer Hierarchy Pricing 允许在客户层次的不同级别维护价格条件（如集团价格、区域价格、门店价格），系统按层次查找并应用适用的价格。",
+      "examTip": "层次定价 = 按组织层级的差异化定价。"
+    },
+    {
+      "id": 46,
+      "question": "S/4HANA Cloud 中的 Credit Exposure 包括什么？",
+      "options": {
+        "A": "仅已开票金额",
+        "B": "未清发票、未开票交货和未处理订单的总和",
+        "C": "仅订单金额",
+        "D": "仅付款金额"
+      },
+      "answer": "B",
+      "explanation": "Credit Exposure（信用敞口）是客户当前占用的信用总额，包括：未清应收账款（已开票未付款）、已发货未开票金额、以及未处理订单金额。",
+      "examTip": "信用敞口 = 未清发票 + 待开票 + 待发货订单。"
+    },
+    {
+      "id": 47,
+      "question": "在 S/4HANA Cloud 销售报表中，哪个 KPI 衡量订单履行质量？",
+      "options": {
+        "A": "销售额",
+        "B": "On-Time Delivery Rate",
+        "C": "客户数量",
+        "D": "产品数量"
+      },
+      "answer": "B",
+      "explanation": "On-Time Delivery Rate（准时交货率）衡量在承诺日期或之前完成交货的订单比例。是评估订单履行质量和客户服务水平的关键 KPI。",
+      "examTip": "OTDR = 履约质量的核心指标。"
+    },
+    {
+      "id": 48,
+      "question": "S/4HANA Cloud 中的 Sales Order Cockpit 提供什么功能？",
+      "options": {
+        "A": "仅创建订单",
+        "B": "订单的集中查看、监控和管理",
+        "C": "仅删除订单",
+        "D": "仅打印订单"
+      },
+      "answer": "B",
+      "explanation": "Sales Order Cockpit 提供销售订单的集中管理界面，支持搜索、过滤、状态监控、问题识别和批量操作。是销售运营的日常工作平台。",
+      "examTip": "Cockpit = 集中管理和监控的工作台。"
+    },
+    {
+      "id": 49,
+      "question": "在 S/4HANA Cloud 中，Data Aging 功能对销售数据有什么影响？",
+      "options": {
+        "A": "删除所有数据",
+        "B": "将历史数据移动到归档区域以优化性能",
+        "C": "加密数据",
+        "D": "复制数据"
+      },
+      "answer": "B",
+      "explanation": "Data Aging 将老化的历史销售数据（如多年前的已完成订单）移动到归档区域，减少在线数据量，优化系统性能，同时保留数据可访问性。",
+      "examTip": "数据老化 = 历史数据归档以优化性能。"
+    },
+    {
+      "id": 50,
+      "question": "S/4HANA Cloud 的 Integration with SAP Customer Experience 提供什么增强？",
+      "options": {
+        "A": "替代销售功能",
+        "B": "端到端的客户体验，连接营销、销售、服务",
+        "C": "仅技术集成",
+        "D": "仅数据备份"
+      },
+      "answer": "B",
+      "explanation": "与 SAP Customer Experience (CX) 套件的集成提供端到端的客户体验管理，连接营销活动、销售执行、客户服务，实现统一的客户视图和一致的体验。",
+      "examTip": "CX 集成 = 前端客户体验 + 后端订单履行。"
+    }
+  ]
+}

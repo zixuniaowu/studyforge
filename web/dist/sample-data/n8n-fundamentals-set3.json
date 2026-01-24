@@ -1,0 +1,772 @@
+{
+  "exam": {
+    "id": "n8n-fundamentals-set3",
+    "name": "n8n 基础 模拟考试 #3",
+    "code": "N8N-FUND",
+    "provider": "n8n",
+    "language": "zh-CN",
+    "description": "n8n 工作流自动化平台基础认证 - 第3套",
+    "totalQuestions": 50,
+    "passingScore": 70,
+    "examTime": 60,
+    "domains": [
+      { "id": 1, "name": "n8n Basics", "weight": 25 },
+      { "id": 2, "name": "Workflow Design", "weight": 25 },
+      { "id": 3, "name": "Nodes and Connections", "weight": 25 },
+      { "id": 4, "name": "Data Handling", "weight": 25 }
+    ],
+    "tags": ["n8n", "workflow", "automation", "认证考试"]
+  },
+  "questions": [
+    {
+      "id": "q1",
+      "domain": 1,
+      "question": "n8n 的开发语言是什么？",
+      "options": {
+        "A": "Python",
+        "B": "Java",
+        "C": "TypeScript",
+        "D": "Go"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "n8n 使用 TypeScript 开发，这是 JavaScript 的超集，提供类型安全。后端运行在 Node.js 上，前端使用 Vue.js 框架。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q2",
+      "domain": 1,
+      "question": "n8n 的执行历史默认保存多长时间？",
+      "options": {
+        "A": "永久保存",
+        "B": "根据配置和存储空间",
+        "C": "只保存最后一次",
+        "D": "24小时"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "n8n 执行历史的保存时间取决于配置和存储空间。可以通过环境变量如 EXECUTIONS_DATA_MAX_AGE 配置保存时长，也可以设置执行数量限制。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q3",
+      "domain": 1,
+      "question": "如何在 n8n 中查看节点的可用版本？",
+      "options": {
+        "A": "通过 npm 查询",
+        "B": "在节点设置中查看 Node Version 选项",
+        "C": "只有一个版本",
+        "D": "通过 API 查询"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "某些节点有多个版本，可以在节点设置中的 Node Version 选项查看和切换。不同版本可能有不同的功能或参数选项。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q4",
+      "domain": 1,
+      "question": "n8n 提供哪种类型的 API？",
+      "options": {
+        "A": "GraphQL API",
+        "B": "REST API",
+        "C": "SOAP API",
+        "D": "gRPC API"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "n8n 提供 REST API，允许程序化地管理工作流、执行、凭证等。API 需要配置 API 密钥进行认证才能使用。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q5",
+      "domain": 1,
+      "question": "以下哪个环境变量用于设置 n8n 的时区？",
+      "options": {
+        "A": "N8N_TIME",
+        "B": "GENERIC_TIMEZONE",
+        "C": "N8N_TZ",
+        "D": "TIMEZONE"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "GENERIC_TIMEZONE 环境变量用于设置 n8n 的时区，例如 GENERIC_TIMEZONE=Asia/Shanghai。这影响定时触发器和日期时间显示。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q6",
+      "domain": 2,
+      "question": "工作流的 Sharing 功能允许做什么？",
+      "options": {
+        "A": "将工作流发布到互联网",
+        "B": "与其他 n8n 用户共享工作流访问权限",
+        "C": "生成工作流的链接",
+        "D": "导出工作流模板"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Sharing 功能允许与其他 n8n 用户共享工作流访问权限。可以设置不同的权限级别，如只读或编辑权限，实现团队协作。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q7",
+      "domain": 2,
+      "question": "如何在工作流中使用变量？（选择两个）",
+      "options": {
+        "A": "使用表达式 {{ $vars.variableName }}",
+        "B": "使用环境变量",
+        "C": "只能使用节点输出",
+        "D": "变量不被支持"
+      },
+      "answer": ["A", "B"],
+      "answerType": "multiple",
+      "explanation": "n8n 支持使用变量，可以通过 {{ $vars.variableName }} 访问在 Settings > Variables 中定义的变量，也可以通过环境变量传递配置值。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q8",
+      "domain": 2,
+      "question": "工作流的 'Save Execution Progress' 设置有什么作用？",
+      "options": {
+        "A": "保存当前进度以便继续",
+        "B": "在执行过程中保存每个节点的数据，便于调试长工作流",
+        "C": "自动保存工作流设计",
+        "D": "保存用户操作历史"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "'Save Execution Progress' 设置会在执行过程中保存每个节点的数据。对于长时间运行的工作流，即使中途失败也能查看已完成节点的输出数据。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q9",
+      "domain": 2,
+      "question": "什么是 n8n 中的 'Always Output Data' 节点设置？",
+      "options": {
+        "A": "强制输出空数据",
+        "B": "即使没有匹配数据也输出一个空 item",
+        "C": "始终输出所有数据",
+        "D": "忽略所有错误"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "'Always Output Data' 设置使节点即使没有匹配数据也输出一个空 item。这可以防止下游节点因为没有输入而不执行。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q10",
+      "domain": 2,
+      "question": "Error Workflow 设置的作用是什么？",
+      "options": {
+        "A": "显示错误信息",
+        "B": "当工作流执行失败时触发指定的错误处理工作流",
+        "C": "记录错误日志",
+        "D": "发送错误邮件"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Error Workflow 设置允许指定一个工作流，当当前工作流执行失败时自动触发该工作流。可以用来发送通知、记录日志或执行清理操作。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q11",
+      "domain": 3,
+      "question": "Notion 节点可以操作哪些资源？（选择两个）",
+      "options": {
+        "A": "页面 (Page)",
+        "B": "数据库 (Database)",
+        "C": "用户账户",
+        "D": "工作区设置"
+      },
+      "answer": ["A", "B"],
+      "answerType": "multiple",
+      "explanation": "Notion 节点可以操作页面和数据库资源，包括创建、读取、更新页面和数据库记录。用户账户和工作区设置通常通过 Notion 界面管理。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q12",
+      "domain": 3,
+      "question": "Telegram 节点可以发送什么类型的消息？（选择三个）",
+      "options": {
+        "A": "文本消息",
+        "B": "图片",
+        "C": "位置信息",
+        "D": "银行转账"
+      },
+      "answer": ["A", "B", "C"],
+      "answerType": "multiple",
+      "explanation": "Telegram 节点支持发送多种类型的消息，包括文本、图片、文档、音频、视频、位置信息、联系人等。银行转账不是消息类型。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q13",
+      "domain": 3,
+      "question": "Google Sheets 节点的 'Append' 操作做什么？",
+      "options": {
+        "A": "创建新的工作表",
+        "B": "在表格末尾追加新行",
+        "C": "合并两个表格",
+        "D": "删除空白行"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Google Sheets 节点的 'Append' 操作用于在表格末尾追加新行。这是添加新数据记录的常用方式，不会覆盖现有数据。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q14",
+      "domain": 3,
+      "question": "FTP 节点支持哪些操作？（选择两个）",
+      "options": {
+        "A": "上传文件",
+        "B": "下载文件",
+        "C": "压缩文件",
+        "D": "加密文件"
+      },
+      "answer": ["A", "B"],
+      "answerType": "multiple",
+      "explanation": "FTP 节点支持基本的 FTP 操作，包括上传文件、下载文件、列出目录、删除文件等。压缩和加密需要使用其他节点完成。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q15",
+      "domain": 3,
+      "question": "Compression 节点可以做什么？",
+      "options": {
+        "A": "只能压缩图片",
+        "B": "压缩和解压缩文件（如 ZIP、GZIP）",
+        "C": "压缩数据库",
+        "D": "压缩视频"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Compression 节点用于压缩和解压缩文件，支持 ZIP、GZIP、TAR 等格式。可以将多个文件打包成压缩包，或解压现有的压缩文件。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q16",
+      "domain": 3,
+      "question": "HTML Extract 节点的用途是什么？",
+      "options": {
+        "A": "创建 HTML 页面",
+        "B": "从 HTML 内容中提取特定数据",
+        "C": "验证 HTML 格式",
+        "D": "美化 HTML 代码"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "HTML Extract 节点用于从 HTML 内容中提取特定数据，使用 CSS 选择器定位元素。常用于网页抓取场景，提取标题、链接、文本等内容。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q17",
+      "domain": 3,
+      "question": "Interval 节点的作用是什么？",
+      "options": {
+        "A": "计算时间间隔",
+        "B": "按固定时间间隔触发工作流",
+        "C": "延迟执行",
+        "D": "等待外部事件"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Interval 节点（现已被 Schedule Trigger 取代）用于按固定时间间隔触发工作流，如每5分钟、每小时执行一次。是实现定时任务的基础。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q18",
+      "domain": 4,
+      "question": "如何在表达式中连接两个字符串？",
+      "options": {
+        "A": "使用 & 符号",
+        "B": "使用 + 运算符或模板字符串",
+        "C": "使用 . 符号",
+        "D": "使用 concat 关键字"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "使用 JavaScript 的 + 运算符或模板字符串连接字符串。例如 {{ $json.first + ' ' + $json.last }} 或 {{ `${$json.first} ${$json.last}` }}。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q19",
+      "domain": 4,
+      "question": "表达式 {{ $json.items?.length ?? 0 }} 的含义是什么？",
+      "options": {
+        "A": "计算 items 的长度",
+        "B": "如果 items 存在则返回其长度，否则返回 0",
+        "C": "设置默认长度为 0",
+        "D": "检查 items 是否为空"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "这使用了可选链 (?.) 和空值合并运算符 (??)。如果 $json.items 存在则返回其 length，如果 items 为 null/undefined 则返回 0，避免错误。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q20",
+      "domain": 4,
+      "question": "如何使用表达式过滤数组？",
+      "options": {
+        "A": "{{ $json.array.filter(item => item.active) }}",
+        "B": "{{ FILTER($json.array, 'active') }}",
+        "C": "{{ $json.array WHERE active }}",
+        "D": "不支持在表达式中过滤"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "使用 JavaScript 的 filter() 方法过滤数组。{{ $json.items.filter(item => item.status === 'active') }} 返回所有 status 为 'active' 的元素。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q21",
+      "domain": 4,
+      "question": "表达式 {{ $json.values.map(v => v * 2) }} 做什么？",
+      "options": {
+        "A": "将数组中的每个值乘以2",
+        "B": "将数组长度乘以2",
+        "C": "复制数组两次",
+        "D": "过滤出大于2的值"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "map() 方法对数组中的每个元素应用给定函数并返回新数组。这里将 values 数组中的每个值乘以2，返回一个包含新值的数组。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q22",
+      "domain": 4,
+      "question": "$prevNode 变量返回什么？",
+      "options": {
+        "A": "前一个节点的配置",
+        "B": "前一个节点的元数据，如名称和类型",
+        "C": "前一个节点的输出数据",
+        "D": "前一个节点的执行时间"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "$prevNode 返回前一个节点的元数据，包括 $prevNode.name（节点名称）、$prevNode.outputIndex（输出索引）等。用于获取关于连接的上游节点的信息。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q23",
+      "domain": 1,
+      "question": "n8n 如何处理敏感数据的存储？",
+      "options": {
+        "A": "明文存储",
+        "B": "使用 AES-256 加密存储凭证",
+        "C": "不保存任何敏感数据",
+        "D": "仅使用 Base64 编码"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "n8n 使用 AES-256-CBC 加密算法存储凭证等敏感数据。加密密钥通过 N8N_ENCRYPTION_KEY 环境变量设置，确保凭证安全存储。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q24",
+      "domain": 1,
+      "question": "如何在 n8n 中启用 Webhook 的 HTTPS？",
+      "options": {
+        "A": "n8n 自动提供 HTTPS",
+        "B": "使用反向代理（如 Nginx）或配置 SSL 证书",
+        "C": "不支持 HTTPS",
+        "D": "付费功能"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "n8n 可以通过反向代理（如 Nginx、Caddy）实现 HTTPS，或直接配置 SSL 证书。对于生产环境，强烈建议使用 HTTPS 保护 Webhook 安全。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q25",
+      "domain": 1,
+      "question": "N8N_PAYLOAD_SIZE_MAX 环境变量控制什么？",
+      "options": {
+        "A": "工作流数量限制",
+        "B": "Webhook 请求的最大负载大小",
+        "C": "执行历史保存数量",
+        "D": "节点输出大小"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "N8N_PAYLOAD_SIZE_MAX 环境变量控制 Webhook 请求可接受的最大负载大小，单位是 MB。默认值通常足够大多数用例，处理大文件时可能需要增加。",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q26",
+      "domain": 2,
+      "question": "如何重命名工作流中的节点？",
+      "options": {
+        "A": "不能重命名",
+        "B": "双击节点标题或在节点设置中修改",
+        "C": "只能通过 API",
+        "D": "删除后重新创建"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "可以双击节点标题直接编辑名称，或在节点设置面板中修改 Name 字段。良好的命名有助于理解工作流逻辑。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q27",
+      "domain": 2,
+      "question": "工作流模板 (Templates) 的来源是什么？",
+      "options": {
+        "A": "只有官方模板",
+        "B": "官方模板和社区贡献的模板",
+        "C": "只有付费模板",
+        "D": "只有用户自己创建的"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "n8n 的工作流模板包括官方创建的模板和社区用户贡献的模板。模板可以作为起点，快速创建常见自动化场景的工作流。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q28",
+      "domain": 2,
+      "question": "Cron 表达式 '0 9 * * 1-5' 代表什么时间？",
+      "options": {
+        "A": "每天上午9点",
+        "B": "工作日（周一到周五）上午9点",
+        "C": "每周一到周五的每分钟",
+        "D": "每月1号到5号的上午9点"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "这个 Cron 表达式表示：分钟=0，小时=9，日期=*（任意），月份=*（任意），星期=1-5（周一到周五）。即工作日每天上午9点整执行。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q29",
+      "domain": 2,
+      "question": "如何临时禁用工作流中的某个节点？",
+      "options": {
+        "A": "删除节点",
+        "B": "使用节点的 Disable 功能",
+        "C": "断开连接线",
+        "D": "不能禁用单个节点"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "可以使用节点的 Disable 功能临时禁用节点。禁用的节点在执行时会被跳过，数据会直接传递给下一个节点，便于调试或临时修改逻辑。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q30",
+      "domain": 3,
+      "question": "Postgres 节点如何执行参数化查询？",
+      "options": {
+        "A": "直接在 SQL 中写入值",
+        "B": "使用 $1, $2 占位符和 Query Parameters",
+        "C": "只能用模板字符串",
+        "D": "不支持参数化查询"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Postgres 节点支持使用 $1, $2 等占位符进行参数化查询，然后在 Query Parameters 中按顺序提供值。这可以防止 SQL 注入，提高安全性。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q31",
+      "domain": 3,
+      "question": "S3 节点可以执行哪些操作？（选择两个）",
+      "options": {
+        "A": "上传对象",
+        "B": "下载对象",
+        "C": "管理 IAM 用户",
+        "D": "配置 CloudFront"
+      },
+      "answer": ["A", "B"],
+      "answerType": "multiple",
+      "explanation": "S3 节点支持对 S3 存储桶的基本操作，包括上传对象、下载对象、列出对象、删除对象、获取对象 URL 等。IAM 和 CloudFront 是不同的 AWS 服务。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q32",
+      "domain": 3,
+      "question": "Discord 节点可以发送什么类型的内容？（选择两个）",
+      "options": {
+        "A": "文本消息",
+        "B": "嵌入消息 (Embed)",
+        "C": "创建服务器",
+        "D": "管理用户角色"
+      },
+      "answer": ["A", "B"],
+      "answerType": "multiple",
+      "explanation": "Discord 节点可以发送文本消息和嵌入消息（带有标题、颜色、字段的格式化消息）。创建服务器和管理角色需要机器人具有相应权限，但通常不在基本消息操作中。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q33",
+      "domain": 3,
+      "question": "Jira 节点可以操作哪些资源？",
+      "options": {
+        "A": "只有问题 (Issue)",
+        "B": "问题、评论、用户等多种资源",
+        "C": "只有项目",
+        "D": "只有看板"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Jira 节点可以操作多种资源，包括问题（创建、更新、搜索）、评论、附件、用户信息等。这提供了全面的 Jira 集成能力。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q34",
+      "domain": 3,
+      "question": "Convert to File 节点的功能是什么？",
+      "options": {
+        "A": "转换文件格式",
+        "B": "将 JSON 数据转换为文件（如 CSV、JSON 文件）",
+        "C": "压缩文件",
+        "D": "读取文件"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Convert to File 节点用于将 JSON 数据转换为文件，支持 CSV、JSON、ICS、HTML 等多种格式。生成的文件存储在 item 的 binary 属性中。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q35",
+      "domain": 4,
+      "question": "如何在表达式中获取当前日期的月份？",
+      "options": {
+        "A": "{{ $now.getMonth() }}",
+        "B": "{{ $now.month }}",
+        "C": "{{ $now.toFormat('MM') }}",
+        "D": "B 和 C 都正确"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "可以使用 $now.month 获取月份数字，或使用 $now.toFormat('MM') 获取两位数的月份字符串。n8n 使用 Luxon DateTime 对象，提供丰富的日期处理方法。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q36",
+      "domain": 4,
+      "question": "表达式 {{ $json.text.split(',') }} 返回什么？",
+      "options": {
+        "A": "删除所有逗号的字符串",
+        "B": "以逗号分割的字符串数组",
+        "C": "逗号的数量",
+        "D": "逗号的位置"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "split() 方法将字符串按指定分隔符分割成数组。例如 'a,b,c'.split(',') 返回 ['a', 'b', 'c']。常用于解析 CSV 格式的数据。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q37",
+      "domain": 4,
+      "question": "如何在表达式中将数组转换为逗号分隔的字符串？",
+      "options": {
+        "A": "{{ $json.array.toString() }}",
+        "B": "{{ $json.array.join(',') }}",
+        "C": "{{ $json.array.merge(',') }}",
+        "D": "{{ $json.array.concat(',') }}"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "join() 方法将数组元素连接成字符串，使用指定的分隔符。['a', 'b', 'c'].join(',') 返回 'a,b,c'。可以使用任何字符串作为分隔符。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q38",
+      "domain": 4,
+      "question": "$itemIndex 和 $runIndex 有什么区别？",
+      "options": {
+        "A": "没有区别",
+        "B": "$itemIndex 是所有 items 中的绝对索引，$runIndex 是当前处理的相对索引",
+        "C": "$itemIndex 用于循环，$runIndex 用于条件",
+        "D": "两者已被弃用"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "$itemIndex 表示当前 item 在所有输入 items 中的绝对位置索引，而在某些上下文中 $runIndex 可能表示不同的概念。在大多数情况下使用 $itemIndex 获取当前处理 item 的索引。",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q39",
+      "domain": 1,
+      "question": "n8n 的外部 Hooks 功能用于什么？",
+      "options": {
+        "A": "添加自定义 Webhook",
+        "B": "在工作流生命周期事件时执行外部代码",
+        "C": "连接外部数据库",
+        "D": "调用外部 API"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "外部 Hooks 允许在 n8n 的特定生命周期事件（如工作流执行前后）时执行自定义代码。这是高级功能，用于扩展 n8n 的行为。",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q40",
+      "domain": 1,
+      "question": "如何在 n8n 中使用环境变量？",
+      "options": {
+        "A": "不支持环境变量",
+        "B": "通过 {{ $env.VARIABLE_NAME }} 表达式访问",
+        "C": "只能在启动时使用",
+        "D": "只有付费版支持"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "可以通过 {{ $env.VARIABLE_NAME }} 表达式在工作流中访问环境变量。需要先在 n8n 配置中允许访问环境变量（N8N_BLOCK_ENV_ACCESS_IN_NODE=false）。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q41",
+      "domain": 2,
+      "question": "工作流的 'Retry On Fail' 设置做什么？",
+      "options": {
+        "A": "失败时重新激活工作流",
+        "B": "节点执行失败时自动重试",
+        "C": "失败时发送通知",
+        "D": "失败时保存数据"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "'Retry On Fail' 设置允许节点在执行失败时自动重试。可以配置重试次数和重试间隔，适用于处理临时网络问题或 API 限流的场景。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q42",
+      "domain": 2,
+      "question": "什么是 n8n 中的 Input/Output Labels？",
+      "options": {
+        "A": "数据类型标签",
+        "B": "为节点的输入输出连接点添加描述性名称",
+        "C": "错误类型标签",
+        "D": "性能监控标签"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Input/Output Labels 允许为节点的输入输出连接点添加描述性名称。对于有多个输入或输出的节点（如 IF、Switch），标签帮助理解每个分支的用途。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q43",
+      "domain": 3,
+      "question": "Markdown 节点的功能是什么？",
+      "options": {
+        "A": "编辑 Markdown 文件",
+        "B": "在 Markdown 和 HTML 之间转换",
+        "C": "显示 Markdown 预览",
+        "D": "验证 Markdown 语法"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Markdown 节点用于在 Markdown 和 HTML 格式之间转换。可以将 Markdown 文本渲染为 HTML，或将 HTML 转换为 Markdown 格式。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q44",
+      "domain": 3,
+      "question": "Send Email 节点（SMTP）需要什么配置？",
+      "options": {
+        "A": "只需要收件人地址",
+        "B": "SMTP 服务器凭证和邮件内容",
+        "C": "只需要发件人地址",
+        "D": "OAuth 认证"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Send Email 节点需要配置 SMTP 服务器凭证（服务器地址、端口、用户名、密码）以及邮件内容（收件人、主题、正文等）。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q45",
+      "domain": 4,
+      "question": "如何在表达式中检查字符串是否包含特定文本？",
+      "options": {
+        "A": "{{ $json.text.has('word') }}",
+        "B": "{{ $json.text.includes('word') }}",
+        "C": "{{ $json.text.contains('word') }}",
+        "D": "{{ $json.text.find('word') }}"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "使用 JavaScript 的 includes() 方法检查字符串是否包含特定文本。{{ $json.text.includes('hello') }} 返回 true 或 false。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q46",
+      "domain": 4,
+      "question": "表达式 {{ Math.round($json.value) }} 做什么？",
+      "options": {
+        "A": "向下取整",
+        "B": "四舍五入取整",
+        "C": "向上取整",
+        "D": "取绝对值"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Math.round() 对数值进行四舍五入取整。例如 Math.round(4.5) 返回 5，Math.round(4.4) 返回 4。相关方法还有 Math.floor()（向下）和 Math.ceil()（向上）。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q47",
+      "domain": 2,
+      "question": "Rename Keys 节点的作用是什么？",
+      "options": {
+        "A": "重命名工作流",
+        "B": "重命名 JSON 数据中的字段名",
+        "C": "重命名文件",
+        "D": "重命名节点"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Rename Keys 节点用于重命名 JSON 数据中的字段名。可以批量修改键名，在需要调整数据结构以匹配目标格式时很有用。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q48",
+      "domain": 3,
+      "question": "Execute Command 节点可以做什么？",
+      "options": {
+        "A": "执行 n8n 命令",
+        "B": "在服务器上执行 shell 命令",
+        "C": "执行 SQL 命令",
+        "D": "执行 API 调用"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Execute Command 节点用于在 n8n 服务器上执行 shell 命令。可以运行脚本、系统命令等。需要注意安全性，避免执行不信任的命令。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q49",
+      "domain": 1,
+      "question": "n8n 的日志级别可以设置为什么？（选择两个）",
+      "options": {
+        "A": "info",
+        "B": "debug",
+        "C": "verbose",
+        "D": "critical"
+      },
+      "answer": ["A", "B"],
+      "answerType": "multiple",
+      "explanation": "n8n 支持多种日志级别，包括 error、warn、info、debug 等。通过 N8N_LOG_LEVEL 环境变量设置。debug 级别会输出更详细的调试信息。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q50",
+      "domain": 4,
+      "question": "如何使用表达式对数组进行去重？",
+      "options": {
+        "A": "{{ $json.array.unique() }}",
+        "B": "{{ [...new Set($json.array)] }}",
+        "C": "{{ $json.array.distinct() }}",
+        "D": "n8n 表达式不支持去重"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "使用 JavaScript 的 Set 对象和展开运算符可以对数组去重。{{ [...new Set($json.array)] }} 会返回一个只包含唯一值的新数组。",
+      "difficulty": "medium"
+    }
+  ]
+}

@@ -1,0 +1,748 @@
+{
+  "exam": {
+    "id": "sap-c-fiord-set1-ja",
+    "name": "SAP C_FIORD 模擬試験 #1",
+    "code": "C_FIORD",
+    "provider": "SAP",
+    "language": "ja",
+    "description": "SAP Fiori Application Developer認定模擬問題 - 第1套",
+    "totalQuestions": 50,
+    "passingScore": 70,
+    "examTime": 180,
+    "domains": [
+      {
+        "id": 1,
+        "name": "SAPUI5フレームワークとアーキテクチャ",
+        "weight": 20
+      },
+      {
+        "id": 2,
+        "name": "Fioriデザインガイドライン",
+        "weight": 15
+      },
+      {
+        "id": 3,
+        "name": "Fiori Elements",
+        "weight": 20
+      },
+      {
+        "id": 4,
+        "name": "ODataサービスとアノテーション",
+        "weight": 20
+      },
+      {
+        "id": 5,
+        "name": "開発ツールとデプロイメント",
+        "weight": 25
+      }
+    ],
+    "tags": [
+      "SAP",
+      "Fiori",
+      "SAPUI5",
+      "認定試験"
+    ]
+  },
+  "questions": [
+    {
+      "id": "q1",
+      "domain": 1,
+      "question": "SAPUI5において、MVCアーキテクチャのどのコンポーネントがユーザーインターフェースのレイアウトと外観を定義する責任がありますか？",
+      "options": {
+        "A": "Model（モデル）",
+        "B": "View（ビュー）",
+        "C": "Controller（コントローラー）",
+        "D": "Router（ルーター）"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "SAPUI5のMVCアーキテクチャにおいて：\n- View（ビュー）はUIレイアウトと外観の定義を担当し、通常XML、JSON、またはJavaScriptで定義されます\n- Model（モデル）はデータ管理とビジネスロジックを担当\n- Controller（コントローラー）はユーザー操作とイベント処理を担当\n- RouterはナビゲーションのためのコンポーネントでMVCの核心部分ではありません"
+    },
+    {
+      "id": "q2",
+      "domain": 1,
+      "question": "SAPUI5のsap.mライブラリは主にどのような目的で使用されますか？",
+      "options": {
+        "A": "バックエンドサービス接続の提供",
+        "B": "モバイルファーストのレスポンシブUIコントロールの提供",
+        "C": "データモデルの管理",
+        "D": "ODataリクエストの処理"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "sap.mライブラリはSAPUI5の主要なUIライブラリです：\n- 'm'は'mobile'（モバイル）を意味します\n- モバイルファースト、レスポンシブデザインのUIコントロールを提供\n- コントロールは異なる画面サイズに自動適応可能\n- Fioriアプリ開発の主要なUIライブラリです"
+    },
+    {
+      "id": "q3",
+      "domain": 1,
+      "question": "SAPUI5アプリケーションにおいて、manifest.jsonファイルの主な役割は何ですか？",
+      "options": {
+        "A": "アプリケーションのスタイルシートを定義する",
+        "B": "アプリケーションのビジネスデータを保存する",
+        "C": "アプリケーション記述子として、設定とメタデータを定義する",
+        "D": "アプリケーションコードをコンパイルする"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "manifest.jsonはSAPUI5アプリケーションの核心設定ファイルです：\n- アプリケーション記述子（Application Descriptor）として機能\n- アプリケーションID、バージョン、依存関係を定義\n- データソース、モデル、ルーティングを設定\n- リソースと国際化設定を宣言\n- SAP Fioriアプリケーションの標準設定方式です"
+    },
+    {
+      "id": "q4",
+      "domain": 1,
+      "question": "SAPUI5のデータバインディングタイプにはどれがありますか？（2つ選択）",
+      "options": {
+        "A": "One-Way Binding（一方向バインディング）",
+        "B": "Two-Way Binding（双方向バインディング）",
+        "C": "Three-Way Binding（三方向バインディング）",
+        "D": "Static Binding（静的バインディング）"
+      },
+      "answer": ["A", "B"],
+      "answerType": "multiple",
+      "explanation": "SAPUI5は3つのデータバインディングモードをサポートしています：\n- One-Way Binding：データがモデルからビューへ流れる\n- Two-Way Binding：モデルとビュー間でデータが双方向に同期\n- One-Time Binding：初期化時に一度だけバインド\n\nThree-Way BindingとStatic Bindingという概念は存在しません"
+    },
+    {
+      "id": "q5",
+      "domain": 1,
+      "question": "SAPUI5において、sap.ui.core.Componentの主な用途は何ですか？",
+      "options": {
+        "A": "単一のUIコントロールを定義する",
+        "B": "再利用可能な独立したソフトウェアユニットとしてアプリケーションをカプセル化する",
+        "C": "HTTPリクエストを処理する",
+        "D": "CSSスタイルを管理する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "sap.ui.core.ComponentはSAPUI5アプリケーションの核心概念です：\n- 完全なアプリケーション機能を独立したユニットとしてカプセル化\n- アプリケーションのモジュール化と再利用をサポート\n- 他のアプリケーション（Fiori Launchpadなど）に埋め込み可能\n- 独自のビュー、コントローラー、モデル、ルーティングを含みます"
+    },
+    {
+      "id": "q6",
+      "domain": 2,
+      "question": "SAP Fioriデザインガイドラインによると、単純なデータ入力タスクの処理に最も適したFioriアプリタイプはどれですか？",
+      "options": {
+        "A": "Analytical App",
+        "B": "Transactional App",
+        "C": "Factsheet App",
+        "D": "Overview Page"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Fioriアプリタイプの分類：\n- Transactional App：トランザクション処理とデータ入力に使用\n- Analytical App：データ分析とレポートに使用\n- Factsheet App：オブジェクトの詳細表示に使用\n- Overview Page：ビジネス概要とナビゲーションを提供\n\n単純なデータ入力はトランザクション処理のシナリオに属します"
+    },
+    {
+      "id": "q7",
+      "domain": 2,
+      "question": "SAP Fioriデザイン原則において、'1-1-3'ルールとは何を指しますか？",
+      "options": {
+        "A": "1人のユーザー、1つのデバイス、3つのアプリケーション",
+        "B": "1人のユーザー、1つのユースケース、3クリック",
+        "C": "1ページ、1タスク、3ボタン",
+        "D": "1アプリケーション、1データソース、3ビュー"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "SAP Fioriの1-1-3ルールは核心的なデザイン原則です：\n- 1人のユーザー：ユーザー中心の設計\n- 1つのユースケース：単一のビジネスシナリオに集中\n- 3クリック：ユーザーは3クリック以内でタスクを完了できるべき\n\nこれはFioriのシンプルで効率的なデザイン理念を体現しています"
+    },
+    {
+      "id": "q8",
+      "domain": 2,
+      "question": "SAP Fioriアプリケーションにおいて、Object Pageの主な用途は何ですか？",
+      "options": {
+        "A": "リストデータを表示する",
+        "B": "単一のビジネスオブジェクトの詳細情報を表示する",
+        "C": "チャートと分析レポートを作成する",
+        "D": "ユーザー権限を管理する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Object PageはFioriの核心的なページタイプです：\n- 単一のビジネスオブジェクトの完全な詳細を表示するために使用\n- Header（ヘッダー領域）とSection（コンテンツ領域）を含む\n- 折りたたみ/展開可能なサブセクションをサポート\n- 通常List Reportと組み合わせてMaster-Detailパターンを形成します"
+    },
+    {
+      "id": "q9",
+      "domain": 2,
+      "question": "SAP Fioriデザインにおける'Responsive Design'は主にどのような問題を解決しますか？",
+      "options": {
+        "A": "サーバーレスポンス速度の向上",
+        "B": "アプリケーションを異なる画面サイズに適応させる",
+        "C": "データ読み込み速度の高速化",
+        "D": "コードの複雑さの軽減"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Responsive Design（レスポンシブデザイン）の核心的な目標：\n- UIを異なるデバイス（デスクトップ、タブレット、スマートフォン）に自動適応させる\n- 画面サイズに応じてレイアウトとコントロールサイズを調整\n- 一貫したユーザー体験を提供\n- SAP Fioriのクロスデバイス戦略の基盤です"
+    },
+    {
+      "id": "q10",
+      "domain": 2,
+      "question": "SAP Fioriデザインガイドラインによると、Message Pageは通常どのようなシナリオで使用されますか？",
+      "options": {
+        "A": "成功した操作結果の表示",
+        "B": "エラー状態または空の状態の表示",
+        "C": "ビジネスレポートの表示",
+        "D": "ユーザー設定の表示"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Message Pageの典型的な使用シナリオ：\n- エラー状態の表示（権限不足、リソースが存在しないなど）\n- 空の状態の表示（検索結果なしなど）\n- ユーザーへのガイダンスまたは推奨アクションの提供\n- 通常のビジネスデータ表示には使用しません"
+    },
+    {
+      "id": "q11",
+      "domain": 3,
+      "question": "SAP Fiori Elementsの主な利点は何ですか？",
+      "options": {
+        "A": "大量のカスタムコードが必要",
+        "B": "メタデータとアノテーションに基づいてUIを自動生成",
+        "C": "デスクトップデバイスのみをサポート",
+        "D": "ODataサービスをサポートしない"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Fiori Elementsの核心的な利点：\n- CDSアノテーションとODataメタデータに基づいてUIを自動生成\n- フロントエンド開発作業を大幅に削減\n- アプリケーションがFioriデザイン規範に準拠することを保証\n- 標準化されたアプリケーションの迅速な開発をサポート\n- 組み込みのレスポンシブデザインですべてのデバイスをサポート"
+    },
+    {
+      "id": "q12",
+      "domain": 3,
+      "question": "項目リストを表示し、フィルタリングと並べ替えをサポートするのに最も適したFiori Elementsテンプレートはどれですか？",
+      "options": {
+        "A": "Object Page",
+        "B": "List Report",
+        "C": "Overview Page",
+        "D": "Wizard"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "List Reportテンプレートの特徴：\n- テーブル形式でデータリストを表示\n- 組み込みのFilter Bar（フィルターバー）が条件フィルタリングをサポート\n- 並べ替え、グループ化機能をサポート\n- 通常Object Pageと組み合わせて使用\n- 最も一般的に使用されるFiori Elementsテンプレートの1つ"
+    },
+    {
+      "id": "q13",
+      "domain": 3,
+      "question": "Fiori ElementsのAnalytical List Pageにおいて、集計データとKPIを表示するために使用されるエリアはどれですか？",
+      "options": {
+        "A": "Filter Bar",
+        "B": "Visual Filter",
+        "C": "Chart Area",
+        "D": "Table Area"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "Analytical List Pageのレイアウト構造：\n- Filter Bar/Visual Filter：データフィルタリングに使用\n- Chart Area：チャート、KPI、集計データを表示\n- Table Area：詳細データリストを表示\n\nチャートエリアは分析データの可視化専用です"
+    },
+    {
+      "id": "q14",
+      "domain": 3,
+      "question": "Fiori Elements WorklistテンプレートとList Reportテンプレートの主な違いは何ですか？",
+      "options": {
+        "A": "Worklistはページネーションをサポートしない",
+        "B": "WorklistにはFilter Barがない",
+        "C": "Worklistはモバイルデバイスのみをサポート",
+        "D": "Worklistはナビゲーションをサポートしない"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "WorklistとList Reportの違い：\n- Worklist：シンプルなリストビュー、Filter Barなし\n- List Report：完全なリストレポート、Filter Barを含む\n\nWorklistは以下に適しています：\n- シンプルなタスクリスト\n- 複雑なフィルタリングが不要なシナリオ\n- 素早いデータ閲覧"
+    },
+    {
+      "id": "q15",
+      "domain": 3,
+      "question": "Fiori Elementsにおいて、Object PageのHeader領域のコンテンツをどのように定義しますか？",
+      "options": {
+        "A": "JavaScriptコントローラーでコーディング",
+        "B": "CDSアノテーション@UI.headerInfoを使用",
+        "C": "CSSファイルで定義",
+        "D": "manifest.jsonで設定"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Fiori ElementsのUI設定方式：\n- CDSアノテーションを使用してUI構造を定義\n- @UI.headerInfoアノテーションでObject Pageのタイトル領域を定義\n- タイトル、サブタイトル、画像などの情報を含む\n- これはメタデータ駆動開発の核心的な特徴です"
+    },
+    {
+      "id": "q16",
+      "domain": 4,
+      "question": "ODataサービスにおいて、$filterパラメータの役割は何ですか？",
+      "options": {
+        "A": "返却するフィールドを指定する",
+        "B": "結果を並べ替える",
+        "C": "条件に基づいてデータをフィルタリングする",
+        "D": "ページサイズを設定する"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "ODataクエリパラメータの説明：\n- $filter：条件に基づいてデータをフィルタリング\n- $select：返却するフィールドを指定\n- $orderby：結果を並べ替え\n- $top/$skip：ページング制御\n\n例：$filter=Name eq 'John'"
+    },
+    {
+      "id": "q17",
+      "domain": 4,
+      "question": "CDSビューにおいて、エンティティのUIラベルと説明を定義するために使用されるアノテーションはどれですか？",
+      "options": {
+        "A": "@UI.lineItem",
+        "B": "@EndUserText.label",
+        "C": "@ObjectModel.text",
+        "D": "@Semantics.amount"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "CDSアノテーションの用途：\n- @EndUserText.label：フィールドの表示ラベルを定義\n- @UI.lineItem：リストに表示される列を定義\n- @ObjectModel.text：テキストエンティティを関連付け\n- @Semantics.amount：金額フィールドをマーク\n\n@EndUserText系のアノテーションはローカライズテキストに使用されます"
+    },
+    {
+      "id": "q18",
+      "domain": 4,
+      "question": "OData V4とV2を比較した場合、主な改善点はどれですか？（2つ選択）",
+      "options": {
+        "A": "JSON形式のサポート",
+        "B": "バッチリクエスト（$batch）のサポート",
+        "C": "より簡素化されたURL規約",
+        "D": "集計をサポートする新しい$applyパラメータ"
+      },
+      "answer": ["C", "D"],
+      "answerType": "multiple",
+      "explanation": "OData V4の主な改善点：\n- 簡素化されたURL規約とメタデータ構造\n- $applyパラメータが集計をサポート（groupby、aggregate）\n- 改善されたバッチ処理メカニズム\n\nJSON形式と$batchはV2ですでにサポートされており、V4では最適化されましたが新機能ではありません"
+    },
+    {
+      "id": "q19",
+      "domain": 4,
+      "question": "SAPUI5において、manifest.jsonでODataデータソースをどのように定義しますか？",
+      "options": {
+        "A": "sap.uiノード配下",
+        "B": "sap.app.dataSourcesノード配下",
+        "C": "sap.ui5.modelsノード配下",
+        "D": "sap.cloudノード配下"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "manifest.jsonのデータソース設定：\n- sap.app.dataSources：データソース（ODataサービスURLなど）を定義\n- sap.ui5.models：dataSourcesを参照してモデルを作成\n\n設定手順：\n1. dataSourcesでサービスを定義\n2. modelsで参照してモデルに名前を付ける"
+    },
+    {
+      "id": "q20",
+      "domain": 4,
+      "question": "CDSアノテーション@UI.selectionFieldはどのような目的で使用されますか？",
+      "options": {
+        "A": "Object Pageのタイトルを定義する",
+        "B": "Filter Barにそのフィールドを表示する",
+        "C": "フィールドのデフォルト値を設定する",
+        "D": "フィールドのデータ型を定義する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "@UI.selectionFieldアノテーションの役割：\n- フィールドをFilter Barに追加\n- ユーザーがそのフィールドでデータをフィルタリング可能\n- positionプロパティでフィールドの順序を制御\n\n例：@UI.selectionField: [{ position: 10 }]"
+    },
+    {
+      "id": "q21",
+      "domain": 4,
+      "question": "ODataサービスにおいて、$expandパラメータの役割は何ですか？",
+      "options": {
+        "A": "返却結果の数を増やす",
+        "B": "関連エンティティのデータを読み込む",
+        "C": "フィールドの幅を拡張する",
+        "D": "全文検索を有効にする"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "$expandパラメータの用途：\n- 1回のリクエストで関連エンティティを読み込む\n- ネットワークラウンドトリップ回数を削減\n- SQLのJOIN操作に類似\n\n例：/Orders?$expand=OrderItems"
+    },
+    {
+      "id": "q22",
+      "domain": 5,
+      "question": "SAP Business Application Studioの主な用途は何ですか？",
+      "options": {
+        "A": "SAPユーザー権限の管理",
+        "B": "SAPビジネスアプリケーションの開発",
+        "C": "システムパフォーマンスの監視",
+        "D": "SAPデータのバックアップ"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "SAP Business Application Studio (BAS)とは：\n- SAPの公式クラウド開発環境\n- Eclipse Theiaをベースに開発\n- SAPビジネスアプリケーション開発に最適化\n- SAPUI5、Fiori Elements、CAPなどをサポート\n- ウィザード、テンプレート、組み込みツールを提供"
+    },
+    {
+      "id": "q23",
+      "domain": 5,
+      "question": "SAP Business Application StudioでFiori Elementsアプリケーションを作成する際、最も一般的に使用されるウィザードはどれですか？",
+      "options": {
+        "A": "Template Wizard",
+        "B": "Fiori Elements Application Generator",
+        "C": "SAPUI5 Application Wizard",
+        "D": "Cloud Foundry Wizard"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Fiori Elements Application Generator：\n- Fiori Elementsアプリケーション作成の標準ツール\n- 複数のテンプレート（List Report、Object Pageなど）を提供\n- アプリケーションのスケルトンコードを自動生成\n- ODataサービス設定を統合"
+    },
+    {
+      "id": "q24",
+      "domain": 5,
+      "question": "SAP BTPにFioriアプリケーションをデプロイする際、通常どのような方法でビルドとデプロイを行いますか？",
+      "options": {
+        "A": "手動でファイルをコピー",
+        "B": "MTA（Multi-Target Application）ビルドを使用",
+        "C": "電子メールで送信",
+        "D": "USBドライブを使用"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "MTA (Multi-Target Application)：\n- SAP標準のアプリケーションパッケージ形式\n- マルチモジュールアプリケーション（UI、サービス、データベースなど）をサポート\n- mta.yamlでビルド設定を定義\n- mbt buildで.mtarデプロイパッケージを生成\n- cf deployでCloud Foundryにデプロイ"
+    },
+    {
+      "id": "q25",
+      "domain": 5,
+      "question": "Fiori Launchpadの主な機能は何ですか？",
+      "options": {
+        "A": "SAPUI5コードのコンパイル",
+        "B": "統一されたアプリケーションエントリポイントとユーザー体験の提供",
+        "C": "データベースの管理",
+        "D": "ネットワークトラフィックの監視"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "SAP Fiori Launchpadの機能：\n- 統一されたアプリケーション起動ポータル\n- ロールベースのアプリケーションアクセス\n- パーソナライズされたTileとGroup\n- 通知とユーザー設定をサポート\n- 一貫したFioriユーザー体験を提供"
+    },
+    {
+      "id": "q26",
+      "domain": 5,
+      "question": "SAPシステムにおいて、FioriアプリケーションをLaunchpadに登録するにはどうしますか？",
+      "options": {
+        "A": "SICFサービスを作成する",
+        "B": "CatalogとGroupを設定する",
+        "C": "ABAPコードを修正する",
+        "D": "データベーステーブルを更新する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Fiori Launchpad設定手順：\n- Tile（アプリケーションエントリ）を作成\n- TileをCatalog（カタログ）に追加\n- CatalogをGroup（グループ）に割り当て\n- GroupをRole（ロール）に割り当て\n\nこれによりロールベースのアプリケーションアクセス制御を確保します"
+    },
+    {
+      "id": "q27",
+      "domain": 1,
+      "question": "SAPUI5におけるFormatterの役割は何ですか？",
+      "options": {
+        "A": "コードのインデントをフォーマットする",
+        "B": "バインドデータの表示を変換およびフォーマットする",
+        "C": "JavaScriptファイルを圧縮する",
+        "D": "ユーザー入力を検証する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "SAPUI5 Formatterの用途：\n- モデルデータの表示形式を変換\n- 例：日付フォーマット、通貨フォーマット\n- 条件付き表示（ステータスカラーなど）\n- バインディング式で呼び出し\n\n例：format: { formatter: '.formatter.formatDate' }"
+    },
+    {
+      "id": "q28",
+      "domain": 1,
+      "question": "SAPUI5において、Fragmentの主な用途は何ですか？",
+      "options": {
+        "A": "データベースデータを保存する",
+        "B": "再利用可能なUI部品を定義する",
+        "C": "ネットワークリクエストを処理する",
+        "D": "ユーザーセッションを管理する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Fragment（フラグメント）の特徴：\n- 再利用可能なUI部分を定義\n- 複数のビューで使用可能\n- 独自のControllerを持たない\n- XML、HTML、JavaScriptでの定義をサポート\n- ダイアログ、ポップアップでよく使用されます"
+    },
+    {
+      "id": "q29",
+      "domain": 1,
+      "question": "SAPUI5アプリケーションにおいて、i18nファイルの用途は何ですか？",
+      "options": {
+        "A": "アプリケーションアイコンを定義する",
+        "B": "多言語翻訳テキストを保存する",
+        "C": "ルーティングルールを設定する",
+        "D": "CSSスタイルを定義する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "i18n（国際化）ファイルの特徴：\n- UIテキストの多言語翻訳を保存\n- ファイル名形式：i18n_[言語コード].properties\n- ビューで{i18n>key}を使用して参照\n- パラメータ化されたテキストをサポート\n- Fioriの多言語サポートの基盤です"
+    },
+    {
+      "id": "q30",
+      "domain": 1,
+      "question": "SAPUI5のEvent Busはどのような目的で使用されますか？",
+      "options": {
+        "A": "公共交通機関のデータを管理する",
+        "B": "コンポーネント間のイベント通信",
+        "C": "イベントログを保存する",
+        "D": "バックグラウンドタスクをスケジュールする"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Event Busの役割：\n- コンポーネント間の疎結合通信を実現\n- パブリッシュ-サブスクライブパターン\n- 無関係なコンポーネントが情報を交換可能\n- sap.ui.getCore().getEventBus()で取得"
+    },
+    {
+      "id": "q31",
+      "domain": 2,
+      "question": "SAP Fioriデザインにおいて、'Adaptive Design'とは何ですか？",
+      "options": {
+        "A": "異なるユーザー好みに適応する設計",
+        "B": "デバイスタイプに応じて異なるUIレイアウトを提供する",
+        "C": "フォントサイズを自動調整する",
+        "D": "異なるネットワーク速度に適応する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Adaptive Design（アダプティブデザイン）：\n- 異なるデバイスタイプに最適化されたレイアウトを提供\n- デスクトップ、タブレット、スマートフォンで異なるUI\n- Responsive Designを補完\n- 最適なデバイス体験を確保"
+    },
+    {
+      "id": "q32",
+      "domain": 2,
+      "question": "Fioriデザインにおいて、Smart Tableコントロールの主な特徴は何ですか？",
+      "options": {
+        "A": "テキストデータのみ表示可能",
+        "B": "ODataメタデータに基づいて列を自動生成",
+        "C": "並べ替えをサポートしない",
+        "D": "モバイルデバイスでのみ使用可能"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Smart Tableの特徴：\n- ODataメタデータに基づいて列を自動生成\n- サービスアノテーションを読み取って表示を設定\n- 並べ替え、フィルタリング、グループ化をサポート\n- Smart Filter Barと組み合わせて使用\n- Fiori Elementsの核心コントロール"
+    },
+    {
+      "id": "q33",
+      "domain": 2,
+      "question": "Fioriデザインガイドラインによると、Draft機能の主な目的は何ですか？",
+      "options": {
+        "A": "未完了のユーザー入力を自動保存する",
+        "B": "ドキュメントの下書きを作成する",
+        "C": "UIプロトタイプを設計する",
+        "D": "データを圧縮する"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "SAP Fiori Draft機能：\n- 未完了のユーザー入力を自動保存\n- データ損失を防止\n- 編集の継続をサポート\n- バックエンドのRAPまたはBOPFサポートが必要\n- ユーザー体験を向上"
+    },
+    {
+      "id": "q34",
+      "domain": 3,
+      "question": "Fiori Elements List Reportにカスタムアクションボタンを追加するにはどうしますか？",
+      "options": {
+        "A": "ODataサービスコードを修正する",
+        "B": "manifest.jsonの拡張設定を使用する",
+        "C": "生成されたHTMLを直接編集する",
+        "D": "新しいABAPクラスを作成する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Fiori Elementsの拡張方法：\n- manifest.jsonで拡張を設定\n- extendsノードを使用してカスタマイズを定義\n- カスタムボタン、列、領域を追加可能\n- 標準テンプレートとの互換性を維持"
+    },
+    {
+      "id": "q35",
+      "domain": 3,
+      "question": "Fiori ElementsのFlexible Column Layoutはどのようなシナリオに適していますか？",
+      "options": {
+        "A": "単一のリストのみを表示",
+        "B": "Master-Detail-Detailの多レベルナビゲーション",
+        "C": "フルスクリーンチャート表示",
+        "D": "ログインページ"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Flexible Column Layout：\n- 複数列の並列表示をサポート\n- 典型的なシナリオ：List → Object → Sub-object\n- 最大3列をサポート\n- 画面幅に自動対応\n- 作業効率を向上"
+    },
+    {
+      "id": "q36",
+      "domain": 3,
+      "question": "Fiori Elements Object Pageにおいて、SectionとSubsectionの関係は何ですか？",
+      "options": {
+        "A": "SectionがSubsectionを含む",
+        "B": "SubsectionがSectionを含む",
+        "C": "同じ概念である",
+        "D": "相互に無関係"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Object Pageの構造階層：\n- Header：タイトル領域\n- Section：主要なコンテンツ区分\n- Subsection：Section内のサブ区分\n- Facet：Subsection内の具体的なコンテンツ\n\nこれにより明確なコンテンツ組織階層が形成されます"
+    },
+    {
+      "id": "q37",
+      "domain": 4,
+      "question": "CDSアノテーション@UI.lineItemはどのような目的で使用されますか？",
+      "options": {
+        "A": "行の高さを定義する",
+        "B": "リストテーブルに表示される列を定義する",
+        "C": "行の背景色を定義する",
+        "D": "行間隔を定義する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "@UI.lineItemアノテーション：\n- List Reportテーブルに表示される列を定義\n- positionプロパティで列の順序を制御\n- importanceプロパティでレスポンシブ表示を制御\n- labelでデフォルトラベルを上書き可能"
+    },
+    {
+      "id": "q38",
+      "domain": 4,
+      "question": "ODataサービスのNavigationPropertyは何に使用されますか？",
+      "options": {
+        "A": "URLパスを定義する",
+        "B": "エンティティ間の関連関係を定義する",
+        "C": "ブラウザナビゲーションを設定する",
+        "D": "ページ遷移を設定する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "NavigationPropertyの役割：\n- エンティティ間の関連関係を定義\n- データベースの外部キー関係に類似\n- $expandで関連データの読み込みをサポート\n- 例：OrderからOrderItemsへの関連"
+    },
+    {
+      "id": "q39",
+      "domain": 4,
+      "question": "CDSビューにおいて、@ObjectModel.readOnlyアノテーションの役割は何ですか？",
+      "options": {
+        "A": "ビューを読み取り専用としてマークする",
+        "B": "データベースレコードをロックする",
+        "C": "ユーザーログインを禁止する",
+        "D": "データを暗号化する"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "@ObjectModel.readOnlyアノテーション：\n- CDSビューまたはフィールドを読み取り専用としてマーク\n- フロントエンドでそのデータを変更不可\n- 計算フィールドや監査フィールドに使用\n- データ整合性保護を提供"
+    },
+    {
+      "id": "q40",
+      "domain": 4,
+      "question": "OData V4の$countパラメータは何を返しますか？",
+      "options": {
+        "A": "すべてのフィールドの数",
+        "B": "クエリ条件に一致するレコードの総数",
+        "C": "サーバーカウンター",
+        "D": "ユーザーアクセス数"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "$countパラメータの用途：\n- クエリ条件に一致する総レコード数を返す\n- ページネーションで総数を表示するためによく使用\n- OData V4構文：/EntitySet/$count\n- または結果に含める：?$count=true"
+    },
+    {
+      "id": "q41",
+      "domain": 5,
+      "question": "SAP Cloud Transport Managementの役割は何ですか？",
+      "options": {
+        "A": "物流輸送の管理",
+        "B": "環境間のアプリケーションデプロイメントを管理",
+        "C": "データファイルの転送",
+        "D": "メール送信の管理"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "SAP Cloud Transport Management：\n- 異なる環境間でのアプリケーション移送を管理\n- 開発→テスト→本番のデプロイメントフローをサポート\n- 変更追跡と承認を提供\n- CI/CDプロセスと統合"
+    },
+    {
+      "id": "q42",
+      "domain": 5,
+      "question": "SAPUI5アプリケーション開発において、ui5.yamlファイルの役割は何ですか？",
+      "options": {
+        "A": "アプリケーションスタイルを定義する",
+        "B": "UI5 Toolingのビルドおよび開発設定を構成する",
+        "C": "ユーザーデータを保存する",
+        "D": "データベース構造を定義する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "ui5.yamlファイルの役割：\n- UI5 CLIツールを設定\n- ビルドタスク（minify、プリロードなど）を定義\n- 開発サーバー設定を構成\n- プロキシとモックサーバーを設定"
+    },
+    {
+      "id": "q43",
+      "domain": 5,
+      "question": "Fioriアプリケーションのプリロード（Component-preload.js）ファイルには何が含まれていますか？",
+      "options": {
+        "A": "ユーザー設定",
+        "B": "パッケージ化されたアプリケーションのすべてのリソース",
+        "C": "データベースバックアップ",
+        "D": "サーバーログ"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Component-preload.jsの特徴：\n- アプリケーションのすべてのJavaScriptとビューを含む\n- HTTPリクエスト数を削減\n- アプリケーションの読み込み速度を向上\n- ビルドツールによって自動生成\n- 本番環境最適化の鍵"
+    },
+    {
+      "id": "q44",
+      "domain": 1,
+      "question": "SAPUI5において、MessageToastとMessageBoxの主な違いは何ですか？",
+      "options": {
+        "A": "MessageToastはユーザー確認が必要、MessageBoxは自動的に閉じる",
+        "B": "MessageToastは自動的に閉じる、MessageBoxはユーザー確認が必要",
+        "C": "機能は完全に同じ",
+        "D": "MessageToastはエラーのみ表示可能"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "SAPUI5メッセージコントロールの違い：\n- MessageToast：軽量な通知、自動的に消える\n- MessageBox：モーダルダイアログ、ユーザー操作が必要\n\nMessageToastは重要でない情報に適しています\nMessageBoxはユーザー確認が必要な重要な情報に適しています"
+    },
+    {
+      "id": "q45",
+      "domain": 2,
+      "question": "Fioriデザインにおいて、'Floorplan'とは何ですか？",
+      "options": {
+        "A": "建築設計図",
+        "B": "標準化されたページレイアウトパターン",
+        "C": "床材の選択",
+        "D": "サーバー設定"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Fiori Floorplan（フロアプラン）：\n- 標準化されたページレイアウトパターン\n- 例：List Report、Object Page、Overview Page\n- アプリケーション間で一貫した体験を確保\n- Fiori Elementsの基盤です"
+    },
+    {
+      "id": "q46",
+      "domain": 3,
+      "question": "Fiori Elementsアプリケーションでフィールドレベルの権限制御をどのように実装しますか？",
+      "options": {
+        "A": "フロントエンドのJavaScriptでチェック",
+        "B": "CDSアノテーションとバックエンド認可を通じて",
+        "C": "CSSでフィールドを非表示に",
+        "D": "ブラウザ拡張機能を使用"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Fiori Elementsフィールド権限制御：\n- CDS Access Controlで認可を定義\n- @Consumption.hiddenアノテーションで表示を制御\n- バックエンドサービスで権限検証\n- フロントエンドはメタデータに基づいて権限に対応"
+    },
+    {
+      "id": "q47",
+      "domain": 4,
+      "question": "CDSアノテーション@UI.facetはどのような目的で使用されますか？",
+      "options": {
+        "A": "データベースインデックスを定義する",
+        "B": "Object Pageのコンテンツ領域を定義する",
+        "C": "ネットワーク設定を構成する",
+        "D": "ファイル権限を設定する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "@UI.facetアノテーションの用途：\n- Object PageのFacet構造を定義\n- Header Facetとコンテンツ Facetを設定\n- ネストと参照をサポート\n- Object Pageの全体的なレイアウトを制御"
+    },
+    {
+      "id": "q48",
+      "domain": 4,
+      "question": "ODataサービスにおいて、Entity Setとは何ですか？",
+      "options": {
+        "A": "データベーステーブルのエイリアス",
+        "B": "同じタイプのEntityのコレクション",
+        "C": "ユーザーグループ",
+        "D": "設定パラメータのセット"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "OData Entity Set：\n- 同じタイプのEntityのコレクションを表す\n- データベーステーブルの概念に類似\n- URLでアクセス：/odata/v4/service/EntitySet\n- CRUD操作をサポート"
+    },
+    {
+      "id": "q49",
+      "domain": 5,
+      "question": "SAP Fiori Tools Extension PackはVS Codeでどのような機能を提供しますか？（2つ選択）",
+      "options": {
+        "A": "ビジュアルページエディター",
+        "B": "データベース管理",
+        "C": "Guided Developmentウィザード",
+        "D": "ビデオ編集"
+      },
+      "answer": ["A", "C"],
+      "answerType": "multiple",
+      "explanation": "SAP Fiori Tools Extension Packが提供するもの：\n- Page Map：ビジュアルページエディター\n- Guided Development：ガイド付き開発ウィザード\n- Service Modeler：サービスモデリング\n- XML Annotation LSP：アノテーション編集サポート\n\nVS CodeでFioriアプリケーションを開発するための必須拡張機能です"
+    },
+    {
+      "id": "q50",
+      "domain": 5,
+      "question": "SAP BTPにFioriアプリケーションをデプロイする際、HTML5 Application Repositoryの役割は何ですか？",
+      "options": {
+        "A": "バックエンドABAPコードを保存する",
+        "B": "静的Webコンテンツをホスティングおよび提供する",
+        "C": "データベースを管理する",
+        "D": "電子メールを送信する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "HTML5 Application Repository：\n- Fioriアプリケーションの静的リソースをホスティング\n- CDN加速を提供\n- バージョン管理をサポート\n- Managed Application Routerと統合\n- BTP上のFioriアプリケーションホスティングの標準方式です"
+    }
+  ]
+}

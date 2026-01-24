@@ -1,0 +1,774 @@
+{
+  "exam": {
+    "id": "sap-c-bowi-set3",
+    "name": "SAP C_BOWI 模拟考试 #3",
+    "code": "C_BOWI",
+    "provider": "SAP",
+    "language": "zh-CN",
+    "description": "SAP BusinessObjects Web Intelligence 认证考试模拟题 - 第3套",
+    "totalQuestions": 50,
+    "passingScore": 65,
+    "examTime": 180,
+    "domains": [
+      { "id": 1, "name": "Web Intelligence Interface and Navigation", "weight": 15 },
+      { "id": 2, "name": "Creating and Designing Reports", "weight": 20 },
+      { "id": 3, "name": "Query Panel and Data Providers", "weight": 20 },
+      { "id": 4, "name": "Universes and Semantic Layer", "weight": 15 },
+      { "id": 5, "name": "Formulas and Variables", "weight": 15 },
+      { "id": 6, "name": "Charts, Filters, and Formatting", "weight": 15 }
+    ],
+    "tags": ["SAP", "BusinessObjects", "Web Intelligence", "BI", "认证考试"]
+  },
+  "questions": [
+    {
+      "id": "q1",
+      "domain": 1,
+      "question": "Web Intelligence 文档的默认文件扩展名是什么？",
+      "options": {
+        "A": ".xlsx",
+        "B": ".wid",
+        "C": ".unv",
+        "D": ".pdf"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Web Intelligence 文档格式：\n- .wid 是 Web Intelligence Document 的标准扩展名\n- 可以保存到 BI 平台或本地\n- .unv 和 .unx 是 Universe 文件格式\n- 可以导出为 .xlsx、.pdf 等其他格式",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q2",
+      "domain": 1,
+      "question": "在 BI Launchpad 中，如何找到最近访问的文档？",
+      "options": {
+        "A": "在\"最近文档\"或\"最近查看\"区域查看",
+        "B": "只能通过搜索",
+        "C": "在收藏夹中查找",
+        "D": "需要记住文件夹路径"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "访问最近文档：\n- BI Launchpad 自动记录最近访问的文档\n- 在\"最近文档\"或主页上的\"最近查看\"区域\n- 显示最近打开的报表列表\n- 可以快速重新打开常用报表\n- 历史记录有一定的保留期限",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q3",
+      "domain": 1,
+      "question": "Web Intelligence 的 Application Mode 和 Applet Mode 有什么区别？",
+      "options": {
+        "A": "Application Mode 使用 HTML5/JavaScript，Applet Mode 使用 Java Applet",
+        "B": "两者功能不同",
+        "C": "Applet Mode 是新技术",
+        "D": "Application Mode 不支持编辑"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "两种模式的区别：\n- Application Mode：基于 HTML5 和 JavaScript，现代浏览器原生支持\n- Applet Mode：需要 Java 插件，逐渐被淘汰\n- Application Mode 是推荐的方式\n- 功能上基本相同\n- Application Mode 兼容性更好",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q4",
+      "domain": 2,
+      "question": "如何在 Web Intelligence 报表中复制整个表格到另一个页签？",
+      "options": {
+        "A": "无法复制表格",
+        "B": "选择表格，使用复制/粘贴功能",
+        "C": "只能重新创建",
+        "D": "需要导出再导入"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "复制表格的方法：\n- 选择要复制的表格\n- 使用 Ctrl+C 或右键菜单复制\n- 切换到目标页签\n- 使用 Ctrl+V 或右键菜单粘贴\n- 包括格式和公式都会被复制",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q5",
+      "domain": 2,
+      "question": "Vertical Table 和 Horizontal Table 有什么区别？",
+      "options": {
+        "A": "Vertical Table 列名在顶部，Horizontal Table 列名在左侧",
+        "B": "只是显示方向不同，功能相同",
+        "C": "Horizontal Table 不能包含度量",
+        "D": "Vertical Table 是默认类型"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "两种表格类型：\n- Vertical Table：传统布局，列标题在顶部，数据向下显示\n- Horizontal Table：列标题在左侧，数据向右显示\n- 根据数据展示需求选择\n- 都可以包含维度和度量\n- 可以相互转换",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q6",
+      "domain": 2,
+      "question": "如何在报表中固定表格的表头（Header）以便滚动时保持可见？",
+      "options": {
+        "A": "无法固定表头",
+        "B": "在表格属性中设置\"冻结表头\"选项",
+        "C": "使用特殊公式",
+        "D": "只能在打印时固定"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "固定表头功能：\n- 在表格的属性或格式设置中\n- 启用\"冻结表头\"或类似选项\n- 滚动时表头保持可见\n- 提高大数据表格的可读性\n- 类似 Excel 的冻结窗格功能",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q7",
+      "domain": 3,
+      "question": "在创建查询时，如何使用 Optional Prompt（可选提示）？",
+      "options": {
+        "A": "在筛选器属性中勾选\"可选\"",
+        "B": "可选提示不需要特殊设置",
+        "C": "只有在 Universe 中才能设置",
+        "D": "使用特殊语法"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "设置可选提示：\n- 创建筛选器并添加提示\n- 在筛选器或提示的属性中\n- 勾选\"可选\"选项\n- 用户可以跳过该提示\n- 查询会忽略未填写的可选筛选",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q8",
+      "domain": 3,
+      "question": "什么是 Custom SQL（自定义 SQL）在 Universe 对象中的应用？",
+      "options": {
+        "A": "替代 Universe 连接",
+        "B": "在对象的 SELECT 定义中使用自定义的 SQL 表达式",
+        "C": "完全绕过 Universe",
+        "D": "只用于存储过程"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Custom SQL 在 Universe 对象中：\n- 在对象的 SELECT 语句中使用 SQL 表达式\n- 可以实现复杂的数据转换\n- 可以使用数据库函数\n- 例如：CASE WHEN 表达式\n- 保持 Universe 作为数据访问层",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q9",
+      "domain": 3,
+      "question": "Purge Data（清除数据）操作会做什么？",
+      "options": {
+        "A": "删除报表设计",
+        "B": "清除文档中已检索的数据，只保留结构",
+        "C": "删除 Universe 连接",
+        "D": "清除用户数据"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Purge Data 操作：\n- 删除文档中已检索的数据\n- 保留报表结构、查询定义和格式\n- 减小文档文件大小\n- 用于发送模板或敏感数据处理\n- 下次打开需要重新运行查询",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q10",
+      "domain": 3,
+      "question": "如何在 Web Intelligence 中使用 BEx 查询作为数据源？",
+      "options": {
+        "A": "不支持 BEx 查询",
+        "B": "创建新文档时选择 BEx 查询作为数据提供程序",
+        "C": "必须先转换为 Universe",
+        "D": "需要额外的插件"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "使用 BEx 查询：\n- 创建新文档或添加查询时\n- 选择 BEx 查询作为数据源类型\n- 浏览并选择 SAP BW 中的 BEx 查询\n- 支持 BEx 查询的特性如变量\n- 是访问 SAP BW 数据的直接方式",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q11",
+      "domain": 4,
+      "question": "Universe 中的 Outer Join（外连接）有什么作用？",
+      "options": {
+        "A": "连接外部数据源",
+        "B": "返回一个表的所有记录，即使另一个表没有匹配",
+        "C": "提高查询性能",
+        "D": "只返回匹配的记录"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Outer Join（外连接）：\n- Left Outer Join：返回左表所有记录\n- Right Outer Join：返回右表所有记录\n- 保留没有匹配的记录\n- 显示 NULL 值对于无匹配的情况\n- 与 Inner Join 形成对比",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q12",
+      "domain": 4,
+      "question": "什么是 Universe 中的 Fan Trap（扇形陷阱）？",
+      "options": {
+        "A": "数据库设计问题",
+        "B": "一对多关系可能导致的数据重复膨胀问题",
+        "C": "安全漏洞",
+        "D": "性能问题"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Fan Trap（扇形陷阱）：\n- 当一个表与多个一对多关系的表连接时\n- 可能导致度量值的不正确重复\n- 例如：一个客户有多个订单和多个付款\n- 使用 Context 或别名表解决\n- 是 Universe 设计中的常见问题",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q13",
+      "domain": 4,
+      "question": "什么是 Chasm Trap（深渊陷阱）？",
+      "options": {
+        "A": "网络连接问题",
+        "B": "两个多对一关系汇聚到一个表，可能导致笛卡尔积",
+        "C": "数据丢失",
+        "D": "权限问题"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Chasm Trap（深渊陷阱）：\n- 两个多对一关系指向同一个表\n- 可能产生笛卡尔积，导致错误结果\n- 解决方法：使用多个查询或 Context\n- 是 Universe 设计中另一个常见陷阱\n- 需要在设计阶段识别和处理",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q14",
+      "domain": 4,
+      "question": "如何在 Universe 中创建 Alias Table（别名表）？",
+      "options": {
+        "A": "重命名现有表",
+        "B": "为同一个物理表创建多个逻辑引用",
+        "C": "创建视图",
+        "D": "复制表结构"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Alias Table（别名表）：\n- 为同一物理表创建多个逻辑引用\n- 用于解决自连接或循环连接问题\n- 每个别名可以有不同的连接关系\n- 在 Data Foundation 中创建\n- 解决 Fan Trap 的常用方法",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q15",
+      "domain": 4,
+      "question": "Universe 中的 Mandatory Filter（强制筛选器）有什么作用？",
+      "options": {
+        "A": "必须由用户输入",
+        "B": "自动应用于所有使用该 Universe 的查询",
+        "C": "用于测试查询",
+        "D": "提高性能"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Mandatory Filter（强制筛选器）：\n- 在 Universe 层面定义\n- 自动应用于所有查询\n- 用户无法移除或绕过\n- 用于安全性或数据范围控制\n- 例如：只允许查看当前年度数据",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q16",
+      "domain": 5,
+      "question": "CurrentDate() 和 CurrentTime() 函数返回什么？",
+      "options": {
+        "A": "数据库服务器的日期和时间",
+        "B": "当前系统的日期和时间",
+        "C": "报表创建的日期和时间",
+        "D": "上次刷新的日期和时间"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "日期时间函数：\n- CurrentDate()：返回当前日期\n- CurrentTime()：返回当前时间\n- 基于运行报表的系统\n- 每次刷新会更新\n- 常用于报表页眉或时间戳",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q17",
+      "domain": 5,
+      "question": "Min() 和 Max() 函数在报表中如何工作？",
+      "options": {
+        "A": "只能用于数字",
+        "B": "根据当前维度上下文返回最小和最大值",
+        "C": "返回整个数据集的最小最大值",
+        "D": "只能用于日期"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Min() 和 Max() 函数：\n- 根据当前维度上下文聚合\n- 可用于数字、日期和文本\n- 例如：在按月分组时，返回每月的最大销售额\n- 是标准聚合函数\n- 可以与上下文运算符配合使用",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q18",
+      "domain": 5,
+      "question": "如何使用 IsNull() 函数处理空值？",
+      "options": {
+        "A": "删除空值行",
+        "B": "检测值是否为 NULL 并返回布尔结果",
+        "C": "将空值替换为0",
+        "D": "计算空值数量"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "IsNull() 函数：\n- 检查值是否为 NULL\n- 返回 True 或 False\n- 常与 If 配合使用\n- 例如：If(IsNull([Value]), 0, [Value])\n- 用于空值处理和数据清洗",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q19",
+      "domain": 5,
+      "question": "Last() 和 First() 函数的作用是什么？",
+      "options": {
+        "A": "返回排序后的第一个和最后一个值",
+        "B": "返回当前维度上下文中的第一行和最后一行的值",
+        "C": "跳转到第一页和最后一页",
+        "D": "删除第一行和最后一行"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "First() 和 Last() 函数：\n- First()：返回块中第一行的值\n- Last()：返回块中最后一行的值\n- 基于当前显示顺序\n- 常用于比较或摘要\n- 可以指定重置维度",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q20",
+      "domain": 5,
+      "question": "Variance() 和 StdDev() 函数用于什么统计计算？",
+      "options": {
+        "A": "平均值计算",
+        "B": "方差和标准差计算",
+        "C": "中位数计算",
+        "D": "众数计算"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "统计函数：\n- Variance()：计算方差\n- StdDev()：计算标准差\n- 衡量数据的离散程度\n- 用于高级统计分析\n- 根据当前上下文计算",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q21",
+      "domain": 6,
+      "question": "如何在图表中设置次坐标轴（Secondary Axis）？",
+      "options": {
+        "A": "图表不支持次坐标轴",
+        "B": "选择度量，在图表设置中分配到次坐标轴",
+        "C": "必须创建两个图表",
+        "D": "只有柱状图支持"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "设置次坐标轴：\n- 选择要放在次轴上的度量\n- 在图表格式设置中\n- 将该度量分配到次坐标轴\n- 适合不同量级的数据比较\n- 常见于组合图",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q22",
+      "domain": 6,
+      "question": "Gauge Chart（仪表盘图）适合展示什么类型的数据？",
+      "options": {
+        "A": "时间序列数据",
+        "B": "单个 KPI 值与目标的对比",
+        "C": "多维度分析",
+        "D": "地理分布"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Gauge Chart（仪表盘图）：\n- 显示单个指标的当前值\n- 与目标或阈值进行比较\n- 类似汽车仪表盘\n- 适合 KPI 和绩效监控\n- 直观显示好/中/差状态",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q23",
+      "domain": 6,
+      "question": "如何在表格中实现分页（Pagination）？",
+      "options": {
+        "A": "自动分页无需设置",
+        "B": "在表格属性中设置每页显示的行数",
+        "C": "只在打印时分页",
+        "D": "使用分节功能"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "表格分页设置：\n- 在表格属性中找到分页选项\n- 设置每页显示的行数\n- 提供翻页导航控件\n- 适合大数据量的表格\n- 提高报表性能和可读性",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q24",
+      "domain": 6,
+      "question": "Sort（排序）和 Ranking（排名）在报表中有什么区别？",
+      "options": {
+        "A": "没有区别",
+        "B": "Sort 改变显示顺序，Ranking 筛选 Top/Bottom N",
+        "C": "Ranking 只能用于数字",
+        "D": "Sort 只能升序"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Sort 和 Ranking 的区别：\n- Sort：改变数据的显示顺序\n- Ranking：筛选排名前/后 N 的记录\n- Sort 显示所有数据\n- Ranking 限制显示的数据量\n- 两者可以组合使用",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q25",
+      "domain": 6,
+      "question": "如何在 Web Intelligence 中创建 Treemap（树图）？",
+      "options": {
+        "A": "不支持 Treemap",
+        "B": "插入图表并选择 Treemap 类型",
+        "C": "需要自定义代码",
+        "D": "使用多个矩形组合"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "创建 Treemap：\n- 在图表类型中选择 Treemap\n- 用矩形大小表示数值\n- 适合显示层次结构数据\n- 可以用颜色表示另一个度量\n- 用于占比分析和组成分析",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q26",
+      "domain": 1,
+      "question": "如何在 Web Intelligence 中使用键盘快捷键提高效率？",
+      "options": {
+        "A": "不支持快捷键",
+        "B": "支持常用快捷键如 Ctrl+C、Ctrl+V、Ctrl+S 等",
+        "C": "需要自定义配置",
+        "D": "只在 Rich Client 中支持"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Web Intelligence 快捷键：\n- Ctrl+C / Ctrl+V：复制/粘贴\n- Ctrl+S：保存\n- Ctrl+Z / Ctrl+Y：撤销/重做\n- Ctrl+A：全选\n- F5：刷新数据",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q27",
+      "domain": 2,
+      "question": "如何在报表中使用 Relative Position（相对定位）？",
+      "options": {
+        "A": "手动拖放元素",
+        "B": "设置元素相对于其他元素的位置",
+        "C": "使用坐标系统",
+        "D": "只能绝对定位"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "相对定位：\n- 定义元素相对于其他元素的位置\n- 当关联元素移动时自动调整\n- 保持报表布局的一致性\n- 在元素属性中设置\n- 适合动态大小的元素",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q28",
+      "domain": 3,
+      "question": "同步和异步查询执行有什么区别？",
+      "options": {
+        "A": "没有区别",
+        "B": "同步等待查询完成，异步在后台运行",
+        "C": "异步查询更快",
+        "D": "同步查询不支持提示"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "同步和异步执行：\n- 同步：等待查询完成后才能继续操作\n- 异步：查询在后台运行，用户可以继续工作\n- 多查询文档可能支持异步执行\n- 减少用户等待时间\n- 取决于系统配置和查询类型",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q29",
+      "domain": 3,
+      "question": "如何处理查询超时问题？",
+      "options": {
+        "A": "无法处理",
+        "B": "优化查询、增加超时时间或添加筛选减少数据量",
+        "C": "只能重试",
+        "D": "联系数据库管理员"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "处理查询超时：\n- 添加筛选器减少返回数据量\n- 优化查询逻辑\n- 在系统或查询属性中增加超时时间\n- 使用聚合表提高性能\n- 与管理员协调解决底层问题",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q30",
+      "domain": 4,
+      "question": "Universe 中的 Derived Object（派生对象）是什么？",
+      "options": {
+        "A": "从数据库直接获取的对象",
+        "B": "基于其他 Universe 对象计算得出的对象",
+        "C": "导入的对象",
+        "D": "临时对象"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Derived Object（派生对象）：\n- 基于其他 Universe 对象定义\n- 在业务层使用现有对象进行计算\n- 不直接引用数据库列\n- 例如：利润 = 收入 - 成本\n- 提高重用性和一致性",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q31",
+      "domain": 5,
+      "question": "ReportFilterSummary() 函数用于什么？",
+      "options": {
+        "A": "创建筛选摘要报表",
+        "B": "返回当前应用的报表筛选器的文本摘要",
+        "C": "汇总筛选后的数据",
+        "D": "删除所有筛选器"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "ReportFilterSummary() 函数：\n- 返回当前报表筛选器的描述\n- 显示用户应用了哪些筛选\n- 常用于报表标题或页眉\n- 帮助用户了解数据范围\n- 自动更新当筛选器变化时",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q32",
+      "domain": 5,
+      "question": "Floor()、Ceiling() 和 Round() 函数有什么区别？",
+      "options": {
+        "A": "都是四舍五入",
+        "B": "Floor 向下取整，Ceiling 向上取整，Round 四舍五入",
+        "C": "只用于整数",
+        "D": "功能相同"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "取整函数的区别：\n- Floor()：向下取整（地板）\n- Ceiling()：向上取整（天花板）\n- Round()：四舍五入\n- Round 可以指定小数位数\n- 用于数值格式化和计算",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q33",
+      "domain": 6,
+      "question": "如何导出报表为多个 Excel 工作表？",
+      "options": {
+        "A": "不支持多工作表导出",
+        "B": "在导出选项中选择\"每个报表页签一个工作表\"",
+        "C": "需要手动拆分",
+        "D": "使用 VBA 脚本"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "导出为多工作表：\n- 选择导出到 Excel\n- 在导出选项中设置\n- 可以选择每个报表页签导出为单独工作表\n- 保持报表结构\n- 便于后续 Excel 处理",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q34",
+      "domain": 1,
+      "question": "如何在 Web Intelligence 中使用模板（Template）？",
+      "options": {
+        "A": "不支持模板",
+        "B": "将设计好的报表保存为模板，新建报表时选择使用",
+        "C": "只能使用系统模板",
+        "D": "需要管理员创建"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "使用报表模板：\n- 设计好格式和布局的报表\n- 清除数据后保存为模板\n- 新建报表时可以基于模板创建\n- 保持企业报表风格一致\n- 提高报表开发效率",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q35",
+      "domain": 2,
+      "question": "如何在报表中使用 Image（图像）元素？",
+      "options": {
+        "A": "不支持图像",
+        "B": "插入静态图像或使用 URL 链接动态图像",
+        "C": "只能使用公司 Logo",
+        "D": "需要特殊权限"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "使用图像元素：\n- 从本地插入静态图像\n- 使用 URL 链接外部图像\n- 可以基于数据动态显示图像\n- 常用于公司标识、产品图片\n- 支持多种图像格式",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q36",
+      "domain": 3,
+      "question": "如何在 Web Intelligence 中使用存储过程作为数据源？",
+      "options": {
+        "A": "不支持存储过程",
+        "B": "通过 Universe 封装存储过程或使用 Freehand SQL",
+        "C": "直接调用存储过程",
+        "D": "只能查看结果"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "使用存储过程：\n- Universe 可以基于存储过程创建\n- 使用 Freehand SQL 调用存储过程\n- 存储过程必须返回结果集\n- 可以传递参数\n- 适合复杂的服务器端处理",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q37",
+      "domain": 4,
+      "question": "Information Design Tool 和 Universe Designer 有什么区别？",
+      "options": {
+        "A": "功能完全相同",
+        "B": "IDT 创建 .unx 格式，支持更多功能；Universe Designer 创建 .unv 格式",
+        "C": "Universe Designer 是新工具",
+        "D": "IDT 只能编辑不能创建"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "两种工具的区别：\n- Information Design Tool (IDT)：创建 .unx 格式\n- 支持多数据源、更好的安全性\n- Universe Designer：创建 .unv 格式（传统）\n- IDT 是推荐的现代工具\n- .unx 支持更多高级功能",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q38",
+      "domain": 5,
+      "question": "Mod() 函数用于什么？",
+      "options": {
+        "A": "修改数据",
+        "B": "计算除法的余数（取模）",
+        "C": "修改格式",
+        "D": "模式匹配"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Mod() 函数：\n- 计算除法的余数\n- 语法：Mod(dividend, divisor)\n- 例如：Mod(10, 3) = 1\n- 用于周期性分组、奇偶判断等\n- 常用于交替行着色的条件",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q39",
+      "domain": 6,
+      "question": "如何在 Web Intelligence 中创建散点图（Scatter Plot）？",
+      "options": {
+        "A": "不支持散点图",
+        "B": "插入图表并选择散点图类型，需要两个度量",
+        "C": "需要第三方工具",
+        "D": "只能显示一个维度"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "创建散点图：\n- 选择散点图类型\n- 需要两个数值度量（X轴和Y轴）\n- 可以用维度进行分组着色\n- 用于分析两个变量的相关性\n- 可以添加趋势线",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q40",
+      "domain": 1,
+      "question": "如何配置 Web Intelligence 的默认设置（Preferences）？",
+      "options": {
+        "A": "无法配置",
+        "B": "在 BI Launchpad 的用户首选项中设置",
+        "C": "只能由管理员配置",
+        "D": "在每个报表中单独设置"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "配置用户首选项：\n- 在 BI Launchpad 访问首选项\n- 设置默认视图模式\n- 配置钻取选项\n- 设置区域和语言偏好\n- 自定义界面外观",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q41",
+      "domain": 2,
+      "question": "Auto-fit（自动调整）功能对表格有什么作用？",
+      "options": {
+        "A": "自动保存",
+        "B": "根据内容自动调整列宽和行高",
+        "C": "自动排序",
+        "D": "自动筛选"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Auto-fit（自动调整）：\n- 自动调整列宽以适应内容\n- 自动调整行高\n- 确保内容完整显示\n- 在表格格式选项中启用\n- 提高报表可读性",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q42",
+      "domain": 3,
+      "question": "如何在查询中使用常量值（Constant Value）作为筛选条件？",
+      "options": {
+        "A": "不支持常量",
+        "B": "在筛选器中直接输入固定值",
+        "C": "只能使用变量",
+        "D": "需要在 Universe 中定义"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "使用常量筛选：\n- 在查询筛选器中添加对象\n- 选择操作符（=, >, < 等）\n- 直接输入固定值\n- 不同于 Prompt 的动态输入\n- 每次运行使用相同值",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q43",
+      "domain": 4,
+      "question": "Universe 参数（Parameter）有什么作用？",
+      "options": {
+        "A": "定义数据库连接参数",
+        "B": "设置 Universe 生成 SQL 的行为和性能选项",
+        "C": "定义用户参数",
+        "D": "设置报表参数"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Universe 参数：\n- 控制 SQL 生成行为\n- 设置查询限制（最大行数、时间）\n- 配置性能选项\n- 定义默认连接属性\n- 影响所有使用该 Universe 的查询",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q44",
+      "domain": 5,
+      "question": "Truncate() 函数和 Round() 函数有什么区别？",
+      "options": {
+        "A": "功能相同",
+        "B": "Truncate 直接截断小数，Round 进行四舍五入",
+        "C": "Round 截断小数",
+        "D": "Truncate 只能取整数"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "两个函数的区别：\n- Truncate()：直接截断到指定小数位\n- Round()：按规则四舍五入\n- 例如：Truncate(3.79, 1) = 3.7，Round(3.79, 1) = 3.8\n- Truncate 不考虑被截断部分的大小\n- 根据业务需求选择使用",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q45",
+      "domain": 6,
+      "question": "如何在报表中实现页面跳转（Navigation）？",
+      "options": {
+        "A": "只能使用页签",
+        "B": "使用超链接或元素链接实现页面或报表跳转",
+        "C": "不支持跳转",
+        "D": "只能跳转到外部网站"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "实现页面跳转：\n- 使用超链接跳转到报表页签\n- 使用 OpenDocument 跳转到其他报表\n- Element Linking 实现交互式导航\n- 可以传递参数和上下文\n- 创建导航式仪表板",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q46",
+      "domain": 1,
+      "question": "什么是 Web Intelligence 的 Discussion（讨论）功能？",
+      "options": {
+        "A": "论坛功能",
+        "B": "允许用户在报表上添加注释和协作讨论",
+        "C": "聊天功能",
+        "D": "报表评分"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Discussion（讨论）功能：\n- 在报表元素上添加注释\n- 支持多用户协作讨论\n- 注释与特定数据点关联\n- 保留讨论历史\n- 增强团队协作能力",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q47",
+      "domain": 2,
+      "question": "如何在表格中设置 Totals（合计）和 Subtotals（小计）？",
+      "options": {
+        "A": "手动添加汇总行",
+        "B": "右键选择插入合计/小计或使用工具栏",
+        "C": "只能使用公式",
+        "D": "在查询中设置"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "设置合计和小计：\n- 选择表格或列\n- 右键选择\"插入合计\"或\"插入小计\"\n- 或使用分析工具栏\n- 自动计算 Sum、Count、Avg 等\n- 与 Break 配合显示分组小计",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q48",
+      "domain": 3,
+      "question": "如何使用 Web Intelligence 连接到 SAP HANA 视图？",
+      "options": {
+        "A": "不支持 HANA",
+        "B": "使用 SAP HANA 作为数据源或通过 Universe 连接",
+        "C": "需要转换为 SQL",
+        "D": "只能使用 BW"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "连接 SAP HANA：\n- 直接使用 SAP HANA 视图作为数据源\n- 或通过基于 HANA 的 Universe\n- 支持 HANA 计算视图\n- 利用 HANA 的实时计算能力\n- 是现代数据分析的推荐方式",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q49",
+      "domain": 5,
+      "question": "NameOf() 函数返回什么？",
+      "options": {
+        "A": "对象的值",
+        "B": "对象的名称（作为文本）",
+        "C": "用户名称",
+        "D": "报表名称"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "NameOf() 函数：\n- 返回对象的名称字符串\n- 语法：NameOf([ObjectName])\n- 用于动态标签和标题\n- 自动适应对象重命名\n- 帮助创建灵活的报表设计",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q50",
+      "domain": 6,
+      "question": "如何使用 Cell Spacing（单元格间距）和 Cell Padding（单元格填充）？",
+      "options": {
+        "A": "不支持这些设置",
+        "B": "在表格格式中设置单元格之间和内部的间距",
+        "C": "只能在 CSS 中设置",
+        "D": "使用公式"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "单元格间距和填充：\n- Cell Spacing：单元格之间的距离\n- Cell Padding：单元格边框与内容的距离\n- 在表格格式属性中设置\n- 影响表格的整体外观\n- 提高可读性和美观度",
+      "difficulty": "easy"
+    }
+  ]
+}

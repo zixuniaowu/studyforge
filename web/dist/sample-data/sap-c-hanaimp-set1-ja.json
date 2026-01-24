@@ -1,0 +1,658 @@
+{
+  "examId": "sap-c-hanaimp",
+  "provider": "SAP",
+  "title": "SAP Certified Technology Associate - SAP HANA 2.0 (Set 1)",
+  "description": "SAP HANA インメモリデータベースのインストール・設定・管理認定 - 第1セット",
+  "questions": [
+    {
+      "id": 1,
+      "question": "SAP HANA は高性能クエリを実現するためにどのようなデータストレージ技術を使用していますか？",
+      "options": {
+        "A": "ディスクベースの行ストレージ",
+        "B": "インメモリ列ストレージ",
+        "C": "ファイルシステムストレージ",
+        "D": "ハイブリッドクラウドストレージ"
+      },
+      "answer": "B",
+      "explanation": "SAP HANA はインメモリ列ストレージ技術を使用し、データは主にメモリに格納され、高性能な分析クエリを実現するために列形式で保存されます。",
+      "answerType": "single"
+    },
+    {
+      "id": 2,
+      "question": "SAP HANA において、SQL リクエストを処理するサービスはどれですか？",
+      "options": {
+        "A": "Name Server",
+        "B": "Index Server",
+        "C": "Compile Server",
+        "D": "Preprocessor Server"
+      },
+      "answer": "B",
+      "explanation": "Index Server は SAP HANA のコアサービスで、SQL および MDX リクエストを処理し、クエリを実行して結果を返します。",
+      "answerType": "single"
+    },
+    {
+      "id": 3,
+      "question": "SAP HANA Cockpit は主にどのような目的で使用されますか？",
+      "options": {
+        "A": "アプリケーション開発",
+        "B": "データ可視化",
+        "C": "システム管理と監視",
+        "D": "データ移行"
+      },
+      "answer": "C",
+      "explanation": "SAP HANA Cockpit は Web ベースの管理ツールで、SAP HANA システムのパフォーマンス、リソース、設定を監視・管理するために使用されます。",
+      "answerType": "single"
+    },
+    {
+      "id": 4,
+      "question": "SAP HANA システムレプリケーションにおいて、最も低い RTO（目標復旧時間）を提供するモードはどれですか？",
+      "options": {
+        "A": "非同期レプリケーション",
+        "B": "同期レプリケーション",
+        "C": "同期メモリレプリケーション",
+        "D": "フル同期レプリケーション"
+      },
+      "answer": "C",
+      "explanation": "同期メモリレプリケーション (SYNCMEM) はプライマリシステムがコミットする前にデータをスタンバイシステムのメモリに同期し、切り替え時にログからの復旧が不要なため最も低い RTO を提供します。",
+      "answerType": "single"
+    },
+    {
+      "id": 5,
+      "question": "SAP HANA における Delta Merge 操作の主な目的は何ですか？",
+      "options": {
+        "A": "バックアップファイルの圧縮",
+        "B": "Delta ストレージのデータを Main ストレージにマージ",
+        "C": "複数ノード間のデータ同期",
+        "D": "無効なインデックスのクリーンアップ"
+      },
+      "answer": "B",
+      "explanation": "Delta Merge は Delta ストレージ（書き込み最適化の行ストレージ）のデータを Main ストレージ（読み取り最適化の列ストレージ）にマージし、クエリパフォーマンスを維持します。",
+      "answerType": "single"
+    },
+    {
+      "id": 6,
+      "question": "SAP HANA において、データ設定とモデリングに使用されるツールはどれですか？",
+      "options": {
+        "A": "SAP HANA Studio",
+        "B": "SAP HANA Cockpit",
+        "C": "SAP HANA XS Admin",
+        "D": "SAP Solution Manager"
+      },
+      "answer": "A",
+      "explanation": "SAP HANA Studio は Eclipse ベースの IDE で、データモデリング、ストアドプロシージャの開発、Calculation View の作成などの開発タスクに使用されます。",
+      "answerType": "single"
+    },
+    {
+      "id": 7,
+      "question": "SAP HANA バックアップの種類には何がありますか？（2つ選択）",
+      "options": {
+        "A": "データバックアップ",
+        "B": "インデックスバックアップ",
+        "C": "ログバックアップ",
+        "D": "スキーマバックアップ"
+      },
+      "answer": ["A", "C"],
+      "explanation": "SAP HANA はデータバックアップ（完全または増分）とログバックアップをサポートしています。データバックアップはデータのスナップショットを保存し、ログバックアップはポイントインタイムリカバリのために redo ログを保存します。",
+      "answerType": "multiple"
+    },
+    {
+      "id": 8,
+      "question": "SAP HANA マルチテナントデータベースコンテナ（MDC）の主な特徴は何ですか？",
+      "options": {
+        "A": "各テナントに独立した OS がある",
+        "B": "複数のテナントデータベースが単一の HANA インスタンスを共有",
+        "C": "各テナントに独立したハードウェアが必要",
+        "D": "テナント間でデータを直接共有できる"
+      },
+      "answer": "B",
+      "explanation": "MDC により、複数の独立したテナントデータベースが単一の SAP HANA システム上で実行でき、システムリソースを共有しながらデータと設定は完全に分離されます。",
+      "answerType": "single"
+    },
+    {
+      "id": 9,
+      "question": "SAP HANA における Calculation View とは何ですか？",
+      "options": {
+        "A": "物理データストレージ用のテーブル",
+        "B": "データモデリング用の仮想データモデル",
+        "C": "ユーザー認証用のビュー",
+        "D": "パフォーマンス監視用のダッシュボード"
+      },
+      "answer": "B",
+      "explanation": "Calculation View は SAP HANA で最も柔軟なデータモデリングオブジェクトで、複数のデータソースを組み合わせ、集約、投影、結合などの操作を実行できます。",
+      "answerType": "single"
+    },
+    {
+      "id": 10,
+      "question": "SAP HANA システムの最小メモリ要件はいくらですか？",
+      "options": {
+        "A": "16 GB",
+        "B": "32 GB",
+        "C": "64 GB",
+        "D": "128 GB"
+      },
+      "answer": "C",
+      "explanation": "SAP HANA 本番システムの最小メモリ要件は 64 GB ですが、実際の要件はデータ量と同時ユーザー数によって異なります。",
+      "answerType": "single"
+    },
+    {
+      "id": 11,
+      "question": "SAP HANA において、Name Server の主な機能は何ですか？",
+      "options": {
+        "A": "SQL クエリの処理",
+        "B": "システムメタデータとトポロジ情報の管理",
+        "C": "データバックアップの実行",
+        "D": "ユーザー認証の処理"
+      },
+      "answer": "B",
+      "explanation": "Name Server は分散システムのマスターサーバーで、システムトポロジ情報、テーブルパーティションの場所、その他のメタデータを維持します。",
+      "answerType": "single"
+    },
+    {
+      "id": 12,
+      "question": "SAP HANA はどのようなデータ圧縮技術をサポートしていますか？（2つ選択）",
+      "options": {
+        "A": "辞書圧縮",
+        "B": "ZIP 圧縮",
+        "C": "ランレングス符号化",
+        "D": "RAR 圧縮"
+      },
+      "answer": ["A", "C"],
+      "explanation": "SAP HANA は辞書エンコーディング（Dictionary Encoding）やランレングス符号化（Run-length Encoding）など、複数の列圧縮技術を使用してストレージとクエリパフォーマンスを最適化します。",
+      "answerType": "multiple"
+    },
+    {
+      "id": 13,
+      "question": "SAP HANA システムレプリケーションで Operation Mode を 'logreplay' に設定した場合、どういう意味ですか？",
+      "options": {
+        "A": "スタンバイシステムがすべてのデータをリアルタイム同期",
+        "B": "スタンバイシステムがログの受信と再生のみを行う",
+        "C": "スタンバイシステムが読み取り専用モードでクエリサービスを提供",
+        "D": "スタンバイシステムが定期的に完全同期を実行"
+      },
+      "answer": "B",
+      "explanation": "logreplay モードでは、スタンバイシステムはプライマリシステムの redo ログを受信して再生し、データはメモリにプリロードされないため、切り替え時にデータのロードが必要です。",
+      "answerType": "single"
+    },
+    {
+      "id": 14,
+      "question": "SAP HANA における Savepoint の役割は何ですか？",
+      "options": {
+        "A": "データバックアップの作成",
+        "B": "メモリ内のデータをディスクに永続化",
+        "C": "複数システム間のデータ同期",
+        "D": "期限切れのログファイルのクリーンアップ"
+      },
+      "answer": "B",
+      "explanation": "Savepoint はメモリ内のデータページを定期的にデータボリュームに書き込むプロセスで、システム再起動時に最新の一貫性ポイントから復旧できることを保証します。",
+      "answerType": "single"
+    },
+    {
+      "id": 15,
+      "question": "SAP HANA XSA アーキテクチャにおいて、アプリケーションのデプロイとライフサイクル管理を担当するコンポーネントはどれですか？",
+      "options": {
+        "A": "SAP Web IDE",
+        "B": "Cloud Foundry Controller",
+        "C": "HANA Database",
+        "D": "SAP Router"
+      },
+      "answer": "B",
+      "explanation": "SAP HANA XSA は Cloud Foundry アーキテクチャに基づいており、Controller がアプリケーションのデプロイ、スケーリング、ライフサイクル管理を担当します。",
+      "answerType": "single"
+    },
+    {
+      "id": 16,
+      "question": "SAP HANA Dynamic Tiering の主な用途は何ですか？",
+      "options": {
+        "A": "高可用性の実現",
+        "B": "コールドデータをディスクに保存してコストを削減",
+        "C": "OLTP トランザクションの高速化",
+        "D": "リアルタイムデータレプリケーションの提供"
+      },
+      "answer": "B",
+      "explanation": "Dynamic Tiering により、アクセス頻度の低いデータ（ウォーム/コールドデータ）をメモリではなくディスクに保存し、総所有コストを最適化できます。",
+      "answerType": "single"
+    },
+    {
+      "id": 17,
+      "question": "SAP HANA における Table Partitioning のメリットは何ですか？（2つ選択）",
+      "options": {
+        "A": "大規模テーブルのクエリパフォーマンス向上",
+        "B": "データモデリングの簡素化",
+        "C": "並列データロードのサポート",
+        "D": "ネットワーク帯域幅使用量の削減"
+      },
+      "answer": ["A", "C"],
+      "explanation": "テーブルパーティショニングにより、大規模テーブルのクエリパフォーマンスが向上し（パーティションプルーニングによる）、並列データロードやパーティションレベルの操作など並列処理をサポートします。",
+      "answerType": "multiple"
+    },
+    {
+      "id": 18,
+      "question": "SAP HANA Studio の 'Administration Console' パースペクティブは主に何に使用されますか？",
+      "options": {
+        "A": "Calculation View の作成",
+        "B": "HANA システムの監視と管理",
+        "C": "ストアドプロシージャの開発",
+        "D": "ネットワーク設定の構成"
+      },
+      "answer": "B",
+      "explanation": "Administration Console パースペクティブは、システム監視、パフォーマンス分析、バックアップ管理、ユーザー管理などのシステム管理機能を提供します。",
+      "answerType": "single"
+    },
+    {
+      "id": 19,
+      "question": "SAP HANA の Row Store テーブルはどのようなワークロードに適していますか？",
+      "options": {
+        "A": "大規模分析クエリ",
+        "B": "高頻度 OLTP トランザクション",
+        "C": "データウェアハウスレポート",
+        "D": "時系列分析"
+      },
+      "answer": "B",
+      "explanation": "Row Store は OLTP ワークロード向けに最適化されており、頻繁な単一行の挿入、更新、主キーベースのアクセスに適しています。",
+      "answerType": "single"
+    },
+    {
+      "id": 20,
+      "question": "SAP HANA における 'License Key' とは何ですか？",
+      "options": {
+        "A": "データベース暗号化キー",
+        "B": "システムライセンスファイル",
+        "C": "ユーザー認証トークン",
+        "D": "SSL 証明書"
+      },
+      "answer": "B",
+      "explanation": "License Key は SAP が提供するシステムライセンスで、SAP HANA システムが使用できるメモリ量やその他の機能制限を定義します。",
+      "answerType": "single"
+    },
+    {
+      "id": 21,
+      "question": "SAP HANA Cockpit 2.0 と以前のバージョンの主な違いは何ですか？",
+      "options": {
+        "A": "シングルテナントシステムのみサポート",
+        "B": "SAP Fiori インターフェースデザインに基づく",
+        "C": "コマンドライン操作のみサポート",
+        "D": "システム監視をサポートしなくなった"
+      },
+      "answer": "B",
+      "explanation": "SAP HANA Cockpit 2.0 は SAP Fiori スタイルのモダンなユーザーインターフェースを採用し、より直感的な管理エクスペリエンスと改善された機能を提供します。",
+      "answerType": "single"
+    },
+    {
+      "id": 22,
+      "question": "SAP HANA における Smart Data Access (SDA) とは何ですか？",
+      "options": {
+        "A": "データ圧縮技術",
+        "B": "リモートデータソースに仮想アクセスする技術",
+        "C": "データ暗号化方法",
+        "D": "ユーザーアクセス制御メカニズム"
+      },
+      "answer": "B",
+      "explanation": "Smart Data Access により、SAP HANA は仮想テーブルを通じてリモートデータソース（Oracle、SQL Server など）のデータに物理的なレプリケーションなしでアクセスできます。",
+      "answerType": "single"
+    },
+    {
+      "id": 23,
+      "question": "SAP HANA システムの標準 SQL ポート番号は何ですか？（インスタンス番号 00 の場合）",
+      "options": {
+        "A": "30013",
+        "B": "30015",
+        "C": "30017",
+        "D": "30019"
+      },
+      "answer": "B",
+      "explanation": "SAP HANA SQL ポートは 3<instance>15 形式に従い、インスタンス番号 00 の SQL ポートは 30015 です。",
+      "answerType": "single"
+    },
+    {
+      "id": 24,
+      "question": "SAP HANA 高可用性構成において、Host Auto-Failover とは何ですか？",
+      "options": {
+        "A": "自動ソフトウェア更新メカニズム",
+        "B": "スタンバイホストが障害ホストの役割を自動的に引き継ぐ",
+        "C": "自動データバックアップ機能",
+        "D": "負荷分散メカニズム"
+      },
+      "answer": "B",
+      "explanation": "Host Auto-Failover はホスト障害時にスタンバイホストが自動的にそのサービスを引き継ぎ、システムの可用性を確保します。",
+      "answerType": "single"
+    },
+    {
+      "id": 25,
+      "question": "SAP HANA における 'Allocation Limit' 設定は何のために使用されますか？",
+      "options": {
+        "A": "ユーザー接続数の制限",
+        "B": "テーブルの最大行数の制限",
+        "C": "HANA が使用できる最大メモリの制限",
+        "D": "同時クエリ数の制限"
+      },
+      "answer": "C",
+      "explanation": "Allocation Limit は SAP HANA が使用できる最大メモリ量を定義し、システムが割り当てられたリソースを超えて使用することを防ぎます。",
+      "answerType": "single"
+    },
+    {
+      "id": 26,
+      "question": "SAP HANA でデータリカバリを実行する際に必要なコンポーネントはどれですか？（2つ選択）",
+      "options": {
+        "A": "データバックアップ",
+        "B": "システム設定ファイル",
+        "C": "ログバックアップ",
+        "D": "ユーザーリスト"
+      },
+      "answer": ["A", "C"],
+      "explanation": "完全なリカバリには、データバックアップ（基本データスナップショットを提供）とログバックアップ（増分変更を提供）が必要で、特定の時点に復旧できます。",
+      "answerType": "multiple"
+    },
+    {
+      "id": 27,
+      "question": "SAP HANA における AFL（Application Function Library）は主に何に使用されますか？",
+      "options": {
+        "A": "ユーザーインターフェース開発",
+        "B": "事前構築された分析・予測関数の提供",
+        "C": "データベースバックアップ",
+        "D": "ネットワーク通信"
+      },
+      "answer": "B",
+      "explanation": "AFL は SAP HANA のアプリケーション関数ライブラリで、予測分析、ビジネス関数、テキスト分析などの高度な分析機能を提供します。",
+      "answerType": "single"
+    },
+    {
+      "id": 28,
+      "question": "SAP HANA で手動で Delta Merge をトリガーするコマンドは何ですか？",
+      "options": {
+        "A": "ALTER TABLE MERGE",
+        "B": "MERGE DELTA OF",
+        "C": "EXECUTE MERGE",
+        "D": "CALL MERGE_DELTA"
+      },
+      "answer": "B",
+      "explanation": "MERGE DELTA OF <table_name> コマンドは指定されたテーブルの Delta Merge 操作を手動でトリガーするために使用されます。",
+      "answerType": "single"
+    },
+    {
+      "id": 29,
+      "question": "SAP HANA Native Storage Extension (NSE) の主な用途は何ですか？",
+      "options": {
+        "A": "ネットワークストレージ容量の拡張",
+        "B": "ウォームデータをディスクバッファキャッシュに保存",
+        "C": "CPU 処理能力の増加",
+        "D": "データ暗号化の提供"
+      },
+      "answer": "B",
+      "explanation": "NSE により、アクセス頻度の低いデータをディスクに保存しバッファキャッシュを使用しながら、ホットデータを HANA メモリプールに保持し、総合コストを最適化できます。",
+      "answerType": "single"
+    },
+    {
+      "id": 30,
+      "question": "SAP HANA における Persistence Layer の主な機能は何ですか？",
+      "options": {
+        "A": "ユーザー認証の処理",
+        "B": "データの永続性とリカバリ能力の確保",
+        "C": "ネットワーク接続の管理",
+        "D": "データ変換の実行"
+      },
+      "answer": "B",
+      "explanation": "Persistence Layer はメモリデータをディスクに永続化（Savepoint とログを通じて）し、システム再起動後にデータを復旧できることを保証します。",
+      "answerType": "single"
+    },
+    {
+      "id": 31,
+      "question": "SAP HANA の Scale-Out アーキテクチャにおいて、Worker ノードの主な役割は何ですか？",
+      "options": {
+        "A": "メタデータの管理のみ",
+        "B": "データの保存と処理",
+        "C": "ユーザー認証の処理のみ",
+        "D": "バックアップ操作の実行のみ"
+      },
+      "answer": "B",
+      "explanation": "Scale-Out 構成では、Worker ノードは Index Server をホストし、データの保存とクエリリクエストの処理を担当します。",
+      "answerType": "single"
+    },
+    {
+      "id": 32,
+      "question": "SAP HANA における Analytic Privilege とは何ですか？",
+      "options": {
+        "A": "データベース管理者権限",
+        "B": "行または列ベースのデータアクセス制御",
+        "C": "システムバックアップ権限",
+        "D": "アプリケーション開発権限"
+      },
+      "answer": "B",
+      "explanation": "Analytic Privilege は SAP HANA のデータ認可メカニズムで、Calculation View 内の特定データへのユーザーアクセスを制御するために使用されます。",
+      "answerType": "single"
+    },
+    {
+      "id": 33,
+      "question": "SAP HANA における 'Redo Log' は何のために使用されますか？",
+      "options": {
+        "A": "クエリ実行計画の保存",
+        "B": "リカバリをサポートするためのデータ変更の記録",
+        "C": "頻繁にアクセスされるデータのキャッシュ",
+        "D": "ユーザーセッション情報の保存"
+      },
+      "answer": "B",
+      "explanation": "Redo Log はすべてのデータ変更操作を記録し、システムクラッシュ後のリカバリとポイントインタイムリカバリに使用されます。",
+      "answerType": "single"
+    },
+    {
+      "id": 34,
+      "question": "SAP HANA システムレプリケーションにおいて、Takeover 操作とは何ですか？",
+      "options": {
+        "A": "リモートシステムへのデータバックアップ",
+        "B": "スタンバイシステムをプライマリシステムに昇格",
+        "C": "設定ファイルの同期",
+        "D": "すべてのサービスの再起動"
+      },
+      "answer": "B",
+      "explanation": "Takeover はスタンバイシステムを新しいプライマリシステムに昇格する操作で、通常プライマリシステムの障害時や計画的な切り替え時に実行されます。",
+      "answerType": "single"
+    },
+    {
+      "id": 35,
+      "question": "SAP HANA における 'Parameter' テーブルビューは何に使用されますか？",
+      "options": {
+        "A": "ユーザーデータの保存",
+        "B": "システム設定パラメータの表示と変更",
+        "C": "クエリ履歴の記録",
+        "D": "データバックアップの管理"
+      },
+      "answer": "B",
+      "explanation": "M_INIFILE_CONTENTS などのシステムビューでシステム設定パラメータを確認でき、ALTER SYSTEM ALTER CONFIGURATION でパラメータを変更できます。",
+      "answerType": "single"
+    },
+    {
+      "id": 36,
+      "question": "SAP HANA における 'Data Aging' とは何ですか？",
+      "options": {
+        "A": "古いデータの自動削除",
+        "B": "アクセスパターンに基づいてデータをホット/ウォーム/コールド層に分類",
+        "C": "データ圧縮技術",
+        "D": "データ暗号化方法"
+      },
+      "answer": "B",
+      "explanation": "Data Aging はデータアクセス頻度に基づいてデータを分類し、異なるストレージ層に移動する戦略で、パフォーマンスとコストを最適化します。",
+      "answerType": "single"
+    },
+    {
+      "id": 37,
+      "question": "SAP HANA の 'Workload Management' 機能は何に使用されますか？（2つ選択）",
+      "options": {
+        "A": "異なるユーザーのリソース使用量の制御",
+        "B": "データバックアップスケジュールの管理",
+        "C": "重要なクエリの優先処理",
+        "D": "ネットワーク帯域幅の設定"
+      },
+      "answer": ["A", "C"],
+      "explanation": "Workload Management により、管理者はワークロードクラスを定義し、リソース割り当てとクエリ優先度を制御して、重要なビジネスクエリに十分なリソースを確保できます。",
+      "answerType": "multiple"
+    },
+    {
+      "id": 38,
+      "question": "SAP HANA における Statistics Server の主な機能は何ですか？",
+      "options": {
+        "A": "SQL クエリの実行",
+        "B": "システム監視データの収集と保存",
+        "C": "ユーザー認証の管理",
+        "D": "データバックアップの処理"
+      },
+      "answer": "B",
+      "explanation": "Statistics Server はシステムパフォーマンス指標やリソース使用状況などの監視データを収集し、システム分析とトラブルシューティングをサポートします。",
+      "answerType": "single"
+    },
+    {
+      "id": 39,
+      "question": "SAP HANA における 'Table Replication' はどのようなシナリオで使用されますか？",
+      "options": {
+        "A": "単一テーブルのバックアップ",
+        "B": "Scale-Out ノード間でテーブルを複製してクエリパフォーマンスを向上",
+        "C": "テーブルデータの圧縮",
+        "D": "テーブルデータの暗号化"
+      },
+      "answer": "B",
+      "explanation": "分散システムでは、テーブルレプリケーションにより複数ノードにテーブルのコピーを配置でき、ノード間のデータ転送を削減して結合クエリパフォーマンスを向上させます。",
+      "answerType": "single"
+    },
+    {
+      "id": 40,
+      "question": "SAP HANA における 'Memory Garbage Collection' とは何ですか？",
+      "options": {
+        "A": "未使用のデータベースオブジェクトの削除",
+        "B": "使用されなくなったメモリスペースの回収",
+        "C": "期限切れバックアップファイルのクリーンアップ",
+        "D": "無効なユーザーセッションの削除"
+      },
+      "answer": "B",
+      "explanation": "Memory Garbage Collection は使用されなくなったメモリバージョンを自動的に回収するプロセスで、新しいデータ用にメモリを解放します。",
+      "answerType": "single"
+    },
+    {
+      "id": 41,
+      "question": "SAP HANA はどの認証方法をサポートしていますか？（2つ選択）",
+      "options": {
+        "A": "内部パスワード認証",
+        "B": "ファイルシステム認証",
+        "C": "SAML",
+        "D": "FTP 認証"
+      },
+      "answer": ["A", "C"],
+      "explanation": "SAP HANA は内部パスワード認証、Kerberos、SAML、X.509 証明書など、複数の認証方法をサポートしています。",
+      "answerType": "multiple"
+    },
+    {
+      "id": 42,
+      "question": "SAP HANA における 'Unload' 操作の役割は何ですか？",
+      "options": {
+        "A": "ディスクからテーブルを削除",
+        "B": "テーブルデータをメモリからディスクに解放",
+        "C": "テーブル構造のエクスポート",
+        "D": "テーブルデータの圧縮"
+      },
+      "answer": "B",
+      "explanation": "Unload はテーブルの列データをメモリから解放し、次回アクセス時にディスクから自動的にロードします。メモリ管理に使用されます。",
+      "answerType": "single"
+    },
+    {
+      "id": 43,
+      "question": "SAP HANA Deployment Infrastructure (HDI) の主な用途は何ですか？",
+      "options": {
+        "A": "ハードウェアリソースの管理",
+        "B": "データベースオブジェクトのデプロイとバージョン管理",
+        "C": "システムパフォーマンスの監視",
+        "D": "ユーザーリクエストの処理"
+      },
+      "answer": "B",
+      "explanation": "HDI は SAP HANA のコンテナ化データベースオブジェクト管理ツールで、宣言的なオブジェクトデプロイとバージョン管理機能を提供します。",
+      "answerType": "single"
+    },
+    {
+      "id": 44,
+      "question": "SAP HANA における 'Statement Memory Limit' とは何ですか？",
+      "options": {
+        "A": "全体的なシステムメモリの制限",
+        "B": "単一 SQL 文が使用できる最大メモリの制限",
+        "C": "同時接続数の制限",
+        "D": "ストアドプロシージャ数の制限"
+      },
+      "answer": "B",
+      "explanation": "Statement Memory Limit は単一 SQL 文の実行時に使用できる最大メモリを制限し、単一クエリがリソースを過剰に消費することを防ぎます。",
+      "answerType": "single"
+    },
+    {
+      "id": 45,
+      "question": "SAP HANA における 'Full Text Index' は何に使用されますか？",
+      "options": {
+        "A": "数値計算の高速化",
+        "B": "テキスト検索と分析のサポート",
+        "C": "テキストデータの圧縮",
+        "D": "テキストフィールドの暗号化"
+      },
+      "answer": "B",
+      "explanation": "Full Text Index はテキスト列にインデックスを作成し、ファジー検索、言語処理、テキスト分析機能をサポートします。",
+      "answerType": "single"
+    },
+    {
+      "id": 46,
+      "question": "SAP HANA でオンラインバックアップを実行中、システムはどうなりますか？",
+      "options": {
+        "A": "すべてのトランザクション処理を停止",
+        "B": "通常通りトランザクションを処理し続ける",
+        "C": "読み取り専用アクセスのみ許可",
+        "D": "自動的にスタンバイシステムに切り替え"
+      },
+      "answer": "B",
+      "explanation": "SAP HANA はオンラインバックアップをサポートしており、バックアッププロセス中もシステムは通常通りトランザクションを処理し、ビジネス操作を中断しません。",
+      "answerType": "single"
+    },
+    {
+      "id": 47,
+      "question": "SAP HANA における 'Service Allocation Limit' は何に使用されますか？",
+      "options": {
+        "A": "サービスポート数の制限",
+        "B": "単一サービスが使用できるメモリの制限",
+        "C": "ネットワーク帯域幅の制限",
+        "D": "同時ユーザー数の制限"
+      },
+      "answer": "B",
+      "explanation": "Service Allocation Limit は単一 HANA サービス（Index Server など）が使用できる最大メモリ量を定義します。",
+      "answerType": "single"
+    },
+    {
+      "id": 48,
+      "question": "SAP HANA における 'Hint' とは何ですか？",
+      "options": {
+        "A": "エラー提示メッセージ",
+        "B": "クエリオプティマイザの決定に影響を与える指令",
+        "C": "ユーザーヘルプドキュメント",
+        "D": "システム警告メッセージ"
+      },
+      "answer": "B",
+      "explanation": "Hint は SQL 文内の特別なコメントで、クエリオプティマイザに実行提案を提供し、クエリプランの生成に影響を与えます。",
+      "answerType": "single"
+    },
+    {
+      "id": 49,
+      "question": "SAP HANA の 'Plan Stability' 機能は何に使用されますか？",
+      "options": {
+        "A": "システムの安定稼働の確保",
+        "B": "SQL クエリに固定の実行プランを使用させる",
+        "C": "ネットワーク接続の安定化",
+        "D": "データ整合性の保護"
+      },
+      "answer": "B",
+      "explanation": "Plan Stability により特定のクエリ実行プランをキャプチャして強制使用でき、統計情報の変更によるプラン回帰を防ぎます。",
+      "answerType": "single"
+    },
+    {
+      "id": 50,
+      "question": "SAP HANA における 'Trace File' とは何ですか？",
+      "options": {
+        "A": "データバックアップファイル",
+        "B": "診断とデバッグ情報を含むログファイル",
+        "C": "ユーザーデータエクスポートファイル",
+        "D": "設定ファイル"
+      },
+      "answer": "B",
+      "explanation": "Trace File は SAP HANA が生成する診断ログで、システム操作、エラー、デバッグ情報を含み、問題分析とトラブルシューティングに使用されます。",
+      "answerType": "single"
+    }
+  ]
+}

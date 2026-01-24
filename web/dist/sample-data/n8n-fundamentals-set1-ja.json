@@ -1,0 +1,772 @@
+{
+  "exam": {
+    "id": "n8n-fundamentals-set1-ja",
+    "name": "n8n 基礎 模擬試験 #1",
+    "code": "N8N-FUND",
+    "provider": "n8n",
+    "language": "ja",
+    "description": "n8n ワークフロー自動化プラットフォーム基礎認定 - 第1セット",
+    "totalQuestions": 50,
+    "passingScore": 70,
+    "examTime": 60,
+    "domains": [
+      { "id": 1, "name": "n8n Basics", "weight": 25 },
+      { "id": 2, "name": "Workflow Design", "weight": 25 },
+      { "id": 3, "name": "Nodes and Connections", "weight": 25 },
+      { "id": 4, "name": "Data Handling", "weight": 25 }
+    ],
+    "tags": ["n8n", "workflow", "automation", "認定試験"]
+  },
+  "questions": [
+    {
+      "id": "q1",
+      "domain": 1,
+      "question": "n8n はどのようなタイプのプラットフォームですか？",
+      "options": {
+        "A": "データベース管理システム",
+        "B": "ワークフロー自動化プラットフォーム",
+        "C": "フロントエンド開発フレームワーク",
+        "D": "オペレーティングシステム"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "n8n はオープンソースのワークフロー自動化プラットフォームで、ビジュアルインターフェースを通じて異なるアプリケーションやサービスを接続し、自動化ワークフローを作成できます。Zapier や Make に似ていますが、セルフホスティングが可能です。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q2",
+      "domain": 1,
+      "question": "n8n の核心的な利点の1つは何ですか？",
+      "options": {
+        "A": "クラウドでのみ実行可能",
+        "B": "セルフホスティングデプロイメントをサポート",
+        "C": "API 統合をサポートしない",
+        "D": "単一のプログラミング言語のみをサポート"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "n8n の核心的な利点の1つは、セルフホスティングデプロイメントをサポートしていることです。ユーザーは自分のサーバーにデプロイし、データとワークフローを完全にコントロールできます。これはデータプライバシー要件のある企業にとって特に重要です。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q3",
+      "domain": 1,
+      "question": "n8n において、'Node' とは何ですか？",
+      "options": {
+        "A": "ワークフローの実行ログ",
+        "B": "特定の操作を実行する機能ブロック",
+        "C": "ユーザーインターフェースのテーマ設定",
+        "D": "データベース接続文字列"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "n8n において、Node（ノード）は特定の操作を実行する機能ブロックです。各ノードは、HTTP リクエストの送信、データベースの読み取り、メールの送信など、特定の操作を表します。ワークフローは複数のノードの接続で構成されます。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q4",
+      "domain": 1,
+      "question": "n8n はワークフロー設定を保存するためにどの方式を使用しますか？",
+      "options": {
+        "A": "プレーンテキストファイル",
+        "B": "JSON 形式",
+        "C": "XML 形式",
+        "D": "バイナリ形式"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "n8n は JSON 形式を使用してワークフロー設定を保存します。これにより、ワークフローを簡単にエクスポート、インポート、バージョン管理できます。JSON 形式は人間が読みやすく、デバッグや共有が容易です。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q5",
+      "domain": 1,
+      "question": "n8n のデフォルト Web インターフェースはどのポートで実行されますか？",
+      "options": {
+        "A": "3000",
+        "B": "5678",
+        "C": "8080",
+        "D": "443"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "n8n のデフォルト Web インターフェースはポート 5678 で実行されます。環境変数 N8N_PORT でこのポートを変更できます。http://localhost:5678 にアクセスすると n8n インターフェースが開きます。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q6",
+      "domain": 2,
+      "question": "n8n ワークフローにおいて、ワークフローを開始するために使用されるノードタイプはどれですか？",
+      "options": {
+        "A": "Action ノード",
+        "B": "Trigger ノード",
+        "C": "Transform ノード",
+        "D": "Output ノード"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Trigger（トリガー）ノードはワークフローを開始するために使用されます。定時トリガー、Webhook トリガー、または特定のイベントを監視するトリガーなどがあります。各ワークフローには少なくとも1つのトリガーノードが必要です。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q7",
+      "domain": 2,
+      "question": "1つの n8n ワークフローにはいくつのトリガーノードを持つことができますか？",
+      "options": {
+        "A": "1つのみ",
+        "B": "複数可能",
+        "C": "最大3つ",
+        "D": "トリガーは不要"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "1つの n8n ワークフローには複数のトリガーノードを持つことができます。いずれかのトリガーがアクティブになると、ワークフローが実行されます。これにより、複数のエントリーポイントから同じワークフローを開始できます。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q8",
+      "domain": 2,
+      "question": "n8n でワークフローを手動でテストするにはどうすればよいですか？",
+      "options": {
+        "A": "トリガーが発火するのを待つしかない",
+        "B": "'Execute Workflow' ボタンをクリックする",
+        "C": "API 呼び出しで行う必要がある",
+        "D": "n8n サービスを再起動する必要がある"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "n8n エディターで 'Execute Workflow' ボタンをクリックすると、ワークフローを手動でテストできます。これによりワークフロー全体が実行され、各ノードの入出力データを確認でき、デバッグに便利です。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q9",
+      "domain": 2,
+      "question": "n8n ワークフローの実行モードにはどのようなものがありますか？（2つ選択）",
+      "options": {
+        "A": "本番モード",
+        "B": "デバッグモード",
+        "C": "手動実行モード",
+        "D": "自動トリガーモード"
+      },
+      "answer": ["C", "D"],
+      "answerType": "multiple",
+      "explanation": "n8n ワークフローには2つの実行モードがあります：手動実行モード（実行ボタンをクリック）と自動トリガーモード（トリガーノードによる自動開始）。これら2つのモードにより、柔軟にワークフローをテストおよび実行できます。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q10",
+      "domain": 2,
+      "question": "n8n における 'Sticky Note' とは何ですか？",
+      "options": {
+        "A": "認証情報を保存するノード",
+        "B": "注釈や説明を追加するためのビジュアル要素",
+        "C": "通知を送信するノード",
+        "D": "ワークフローを一時停止するノード"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Sticky Note（付箋）は n8n で注釈や説明を追加するためのビジュアル要素です。ワークフローの目的、ロジック、注意事項を記録するのに役立ち、ワークフローをより理解しやすく、保守しやすくします。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q11",
+      "domain": 3,
+      "question": "HTTP Request ノードの主な用途は何ですか？",
+      "options": {
+        "A": "ローカルファイルを読み取る",
+        "B": "外部 API に HTTP/HTTPS リクエストを送信する",
+        "C": "データベース接続を管理する",
+        "D": "ランダムデータを生成する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "HTTP Request ノードは外部 API や Web サービスに HTTP/HTTPS リクエストを送信するために使用されます。GET、POST、PUT、DELETE など、さまざまな HTTP メソッドをサポートし、n8n で最もよく使用されるノードの1つです。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q12",
+      "domain": 3,
+      "question": "Set ノードの主な機能は何ですか？",
+      "options": {
+        "A": "ワークフローの実行時間を設定する",
+        "B": "データフィールドの値を設定または変更する",
+        "C": "ユーザー権限を設定する",
+        "D": "データベース接続を設定する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Set ノードはデータフィールドの値を設定または変更するために使用されます。新しいフィールドの追加、既存フィールドの値の変更、不要なフィールドの削除ができ、データ変換の基本ツールです。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q13",
+      "domain": 3,
+      "question": "IF ノードの役割は何ですか？",
+      "options": {
+        "A": "操作をループ実行する",
+        "B": "条件に基づいて異なるパスに分岐する",
+        "C": "複数のデータフローを結合する",
+        "D": "ユーザー入力を待つ"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "IF ノードは条件に基づいて異なるパスに分岐するために使用されます。true と false の2つの出力があります。設定された条件の評価結果に応じて、データは対応する分岐に流れ、条件ロジックを実現します。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q14",
+      "domain": 3,
+      "question": "Merge ノードはどのような操作を実行できますか？（2つ選択）",
+      "options": {
+        "A": "複数の分岐からのデータを結合する",
+        "B": "条件に基づいてデータをフィルタリングする",
+        "C": "複数の分岐が完了するのを待ってから続行する",
+        "D": "HTTP リクエストを送信する"
+      },
+      "answer": ["A", "C"],
+      "answerType": "multiple",
+      "explanation": "Merge ノードは複数の分岐からのデータを結合し、複数の分岐が完了するのを待ってから実行を続行できます。追加、連結、キー値に基づくマージなど、さまざまなマージモードをサポートしています。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q15",
+      "domain": 3,
+      "question": "Code ノードはどのプログラミング言語をサポートしていますか？",
+      "options": {
+        "A": "Python のみ",
+        "B": "JavaScript のみ",
+        "C": "JavaScript と Python の両方",
+        "D": "SQL のみ"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "n8n の Code ノードは JavaScript と Python の両方のプログラミング言語をサポートしています。ユーザーはニーズに応じてどちらの言語を使用するか選択し、データ処理やカスタムロジックを実行できます。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q16",
+      "domain": 3,
+      "question": "Schedule Trigger ノードの役割は何ですか？",
+      "options": {
+        "A": "定時メールを送信する",
+        "B": "設定されたスケジュールに従ってワークフローをトリガーする",
+        "C": "実行時間を記録する",
+        "D": "ワークフロー実行を遅延させる"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Schedule Trigger ノードは設定されたスケジュールに従ってワークフローをトリガーするために使用されます。Cron 式やシンプルな間隔設定を使用して実行時間を定義し、定時タスクの自動化を実現できます。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q17",
+      "domain": 3,
+      "question": "Switch ノードと IF ノードの違いは何ですか？",
+      "options": {
+        "A": "違いはない",
+        "B": "Switch ノードは複数の条件分岐をサポートする",
+        "C": "Switch ノードは数値のみを処理できる",
+        "D": "IF ノードはより多くの分岐をサポートする"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Switch ノードと IF ノードの主な違いは、Switch ノードが複数の条件分岐（多方向分岐）をサポートするのに対し、IF ノードは2つの分岐（true/false）のみをサポートすることです。複数の条件に基づいてデータをルーティングする場合は、Switch ノードがより適切です。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q18",
+      "domain": 4,
+      "question": "n8n において、データはノード間でどのように渡されますか？",
+      "options": {
+        "A": "グローバル変数を通じて",
+        "B": "items（アイテム）配列を通じて",
+        "C": "データベースを通じて",
+        "D": "ファイルシステムを通じて"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "n8n において、データは items（アイテム）配列を通じてノード間で渡されます。各ノードは入力 items を受け取り、処理後に新しい items を出力します。各 item には json とオプションの binary プロパティが含まれます。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q19",
+      "domain": 4,
+      "question": "n8n 式はどのような構文を使用しますか？",
+      "options": {
+        "A": "SQL 構文",
+        "B": "二重波括弧構文 {{ }}",
+        "C": "ドル記号構文 ${ }",
+        "D": "角括弧構文 [ ]"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "n8n 式は二重波括弧構文 {{ }} を使用します。波括弧内で JavaScript 式を記述してデータにアクセスし、処理できます。例えば {{ $json.name }} は現在の item の name フィールドにアクセスします。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q20",
+      "domain": 4,
+      "question": "n8n 式で前のノードの出力データにアクセスするにはどうすればよいですか？",
+      "options": {
+        "A": "$previous.data",
+        "B": "$json",
+        "C": "$input.data",
+        "D": "$node.output"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "$json は前のノードの出力データにアクセスするためのショートカットです。現在処理中の item の json プロパティを指します。例えば、{{ $json.email }} でメールフィールドを取得します。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q21",
+      "domain": 4,
+      "question": "n8n において、$('NodeName') 構文の役割は何ですか？",
+      "options": {
+        "A": "指定されたノードを削除する",
+        "B": "指定されたノード名の出力データにアクセスする",
+        "C": "新しいノードを作成する",
+        "D": "ノード設定を変更する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "$('NodeName') 構文は指定されたノード名の出力データにアクセスするために使用されます。直接の先行ノード以外のデータにアクセスする必要がある場合に非常に便利です。例えば {{ $('HTTP Request').item.json.data }}。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q22",
+      "domain": 4,
+      "question": "n8n における Binary Data とは何ですか？",
+      "options": {
+        "A": "0と1のみを含むデータ",
+        "B": "ファイルやメディアなどの非テキストデータ",
+        "C": "暗号化されたデータ",
+        "D": "圧縮されたデータ"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Binary Data（バイナリデータ）は、画像、PDF、ビデオなどのファイルやメディアなどの非テキストデータを指します。n8n の item は json データと binary データを同時に含むことができ、ファイル操作の処理に便利です。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q23",
+      "domain": 1,
+      "question": "n8n はどの技術スタックで構築されていますか？",
+      "options": {
+        "A": "Python + Django",
+        "B": "Node.js + TypeScript",
+        "C": "Java + Spring",
+        "D": "Ruby + Rails"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "n8n は Node.js と TypeScript で構築されています。フロントエンドは Vue.js、バックエンドは Node.js を使用しています。これにより、n8n は JavaScript エコシステムで優れた互換性を持っています。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q24",
+      "domain": 1,
+      "question": "n8n はバックエンドストレージとしてどのデータベースをサポートしていますか？（2つ選択）",
+      "options": {
+        "A": "SQLite",
+        "B": "PostgreSQL",
+        "C": "Redis",
+        "D": "Cassandra"
+      },
+      "answer": ["A", "B"],
+      "answerType": "multiple",
+      "explanation": "n8n はバックエンドストレージデータベースとして SQLite と PostgreSQL をサポートしています。SQLite はデフォルトのオプションで、小規模なデプロイメントに適しています。PostgreSQL は本番環境や大規模なデプロイメントに適しています。MySQL もサポートされています。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q25",
+      "domain": 1,
+      "question": "Docker で n8n を実行するにはどうすればよいですか？",
+      "options": {
+        "A": "docker run -it n8n",
+        "B": "docker run -p 5678:5678 n8nio/n8n",
+        "C": "docker start n8n",
+        "D": "docker pull n8n && docker execute"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "docker run -p 5678:5678 n8nio/n8n コマンドを使用すると、Docker で n8n を実行できます。-p 5678:5678 はコンテナのポート 5678 をホストにマッピングし、n8nio/n8n は公式 Docker イメージです。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q26",
+      "domain": 2,
+      "question": "ワークフローがアクティブ化（Activate）されると何を意味しますか？",
+      "options": {
+        "A": "ワークフローが削除される",
+        "B": "トリガーノードがイベントの監視を開始する",
+        "C": "ワークフローが直ちに1回実行される",
+        "D": "ワークフローがロックされて編集不可になる"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "ワークフローがアクティブ化されると、そのトリガーノードがイベントの監視を開始します。アクティブ化されたワークフローのみが外部イベント（Webhook リクエスト、定時トリガーなど）に応答して自動実行できます。非アクティブなワークフローは手動でのみ実行できます。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q27",
+      "domain": 2,
+      "question": "n8n の Pinned Data 機能にはどのような用途がありますか？",
+      "options": {
+        "A": "ワークフローを永久保存する",
+        "B": "デバッグ用にテストデータを固定する",
+        "C": "ノードの位置をロックする",
+        "D": "重要なワークフローをマークする"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Pinned Data（固定データ）機能はデバッグ用にテストデータを固定するために使用されます。ノードの出力が固定されると、後続の実行ではそのノードを実際に実行せずに固定データを使用し、下流ノードのデバッグが容易になります。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q28",
+      "domain": 2,
+      "question": "n8n で既存のワークフローをコピーするにはどうすればよいですか？",
+      "options": {
+        "A": "手動で再構築するしかない",
+        "B": "Duplicate 機能を使用する",
+        "C": "API 経由で行う必要がある",
+        "D": "コピーはサポートされていない"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "n8n は既存のワークフローをコピーするための Duplicate（複製）機能を提供しています。ワークフローリストで右クリックするか、メニューを使用してこのオプションを見つけることができます。コピーされたワークフローは独立して編集できます。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q29",
+      "domain": 2,
+      "question": "n8n ワークフローの実行が失敗した場合、デフォルトで何が起こりますか？",
+      "options": {
+        "A": "無限に自動リトライする",
+        "B": "サイレントに失敗して通知しない",
+        "C": "エラーを記録して実行を停止する",
+        "D": "ワークフローを自動削除する"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "n8n ワークフローの実行が失敗した場合、デフォルトでエラーを記録して実行を停止します。エラー情報は実行ログに表示されます。エラーハンドリングノードを設定したり、カスタムの失敗通知を設定したりできます。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q30",
+      "domain": 3,
+      "question": "Webhook ノードの主な役割は何ですか？",
+      "options": {
+        "A": "外部サービスに Webhook リクエストを送信する",
+        "B": "外部サービスからの HTTP リクエストを受信する",
+        "C": "ウェブサイトの状態を監視する",
+        "D": "Webhook サブスクリプションを管理する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Webhook ノードは外部サービスからの HTTP リクエストを受信するために使用されます。トリガーノードとして機能し、外部システムが n8n が提供する Webhook URL にリクエストを送信すると、ワークフローがトリガーされて実行されます。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q31",
+      "domain": 3,
+      "question": "HTTP Request ノードで認証情報を追加するにはどうすればよいですか？",
+      "options": {
+        "A": "URL にのみ追加できる",
+        "B": "Credentials（認証情報）設定を使用する",
+        "C": "リクエストボディにのみ追加できる",
+        "D": "認証はサポートされていない"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "HTTP Request ノードでは、Credentials（認証情報）設定を使用して認証情報を追加します。n8n は API Key、OAuth2、Basic Auth など、複数の認証タイプをサポートしています。認証情報は安全に保存され、再利用できます。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q32",
+      "domain": 3,
+      "question": "Wait ノードの機能は何ですか？",
+      "options": {
+        "A": "ユーザーの手動確認を待つ",
+        "B": "ワークフローに時間遅延を追加する",
+        "C": "データベースクエリの完了を待つ",
+        "D": "ファイルアップロードの完了を待つ"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Wait ノードはワークフローに時間遅延を追加するために使用されます。固定時間待機するか、特定の時刻まで待機するように設定できます。これは API 呼び出しのレート制限や外部処理の完了を待つ必要がある場合に便利です。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q33",
+      "domain": 3,
+      "question": "Item Lists ノードはどのような操作を実行できますか？（2つ選択）",
+      "options": {
+        "A": "配列を複数の items に分割する",
+        "B": "複数の items を配列に結合する",
+        "C": "HTTP リクエストを送信する",
+        "D": "データベースレコードを削除する"
+      },
+      "answer": ["A", "B"],
+      "answerType": "multiple",
+      "explanation": "Item Lists ノードはデータコレクションを処理するために使用されます。配列を複数の items に分割（Split Out）したり、複数の items を単一の配列に結合（Aggregate）したりできます。ソート、数量制限などの操作もサポートしています。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q34",
+      "domain": 3,
+      "question": "Function ノードと Code ノードの関係は何ですか？",
+      "options": {
+        "A": "まったく同じノードである",
+        "B": "Function は Code ノードの旧バージョン名である",
+        "C": "Function は Python のみサポート",
+        "D": "関係はない"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Function ノードは Code ノードの旧バージョン名です。新しいバージョンの n8n では、Function ノードは Code ノードに置き換えられました。Code ノードはより強力で、JavaScript と Python の両方をサポートしています。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q35",
+      "domain": 4,
+      "question": "n8n ですべての入力 items にアクセスするにはどうすればよいですか？",
+      "options": {
+        "A": "$all",
+        "B": "$items",
+        "C": "$input.all()",
+        "D": "$data.items"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "$input.all() はすべての入力 items の配列を返します。これはすべてのデータを一度に処理する必要がある場合（集計計算など）に非常に便利です。各 item には json とオプションの binary プロパティが含まれます。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q36",
+      "domain": 4,
+      "question": "n8n 式における $now は何を表しますか？",
+      "options": {
+        "A": "ワークフロー作成時間",
+        "B": "現在の日時オブジェクト",
+        "C": "最終実行時間",
+        "D": "サーバー起動時間"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "$now は現在の日時オブジェクト（Luxon DateTime）を返します。日付の計算やフォーマットに使用できます。例えば {{ $now.toFormat('yyyy-MM-dd') }} は今日の日付を出力します。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q37",
+      "domain": 4,
+      "question": "n8n で JSON データのネストされたフィールドを処理するにはどうすればよいですか？",
+      "options": {
+        "A": "Code ノードでのみ可能",
+        "B": "ドット表記を使用してアクセス、例えば $json.user.name",
+        "C": "ネストされたフィールドはサポートされていない",
+        "D": "まずデータをフラット化する必要がある"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "ドット表記を使用してネストされたフィールドにアクセスできます。例えば {{ $json.user.name }} は user オブジェクト内の name フィールドにアクセスします。ブラケット表記 {{ $json['user']['name'] }} も使用できます。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q38",
+      "domain": 4,
+      "question": "n8n における $runIndex は何を表しますか？",
+      "options": {
+        "A": "現在のワークフローの総実行回数",
+        "B": "現在のループの反復インデックス",
+        "C": "ワークフロー内の現在のノードの位置",
+        "D": "現在の item のインデックス"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "$runIndex は現在の item のインデックス（0から開始）を返します。ノードが複数の items を処理する場合、異なる items を区別したり、位置に基づいた操作を行ったりするために使用できます。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q39",
+      "domain": 1,
+      "question": "n8n のライセンスタイプは何ですか？",
+      "options": {
+        "A": "完全クローズドソースの商用ソフトウェア",
+        "B": "Fair-code ライセンスを採用したオープンソースソフトウェア",
+        "C": "MIT 完全オープンソース",
+        "D": "GPL ライセンス"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "n8n は Fair-code ライセンスモデルを採用しており、ソースコードは公開されており、個人や小規模チームは無料で使用できます。ただし、商用利用には一定の制限があります。このモデルはオープンソースの精神と商業的持続可能性のバランスを取っています。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q40",
+      "domain": 1,
+      "question": "n8n Cloud とセルフホスト版の主な違いは何ですか？",
+      "options": {
+        "A": "機能が完全に異なる",
+        "B": "Cloud は n8n がホスティングし、セルフホストは自分でサーバーを維持する必要がある",
+        "C": "セルフホストはすべてのノードをサポートしない",
+        "D": "Cloud はカスタムノードをサポートしない"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "n8n Cloud は n8n 公式がホスティングおよび維持し、ユーザーはサーバーを管理する必要がありません。セルフホスト版はユーザーが自分でサーバーをデプロイおよび維持する必要がありますが、データと環境を完全にコントロールできます。コア機能は同じです。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q41",
+      "domain": 2,
+      "question": "ワークフロータグ（Tags）の用途は何ですか？",
+      "options": {
+        "A": "ワークフローの実行順序を制御する",
+        "B": "ワークフローを分類・整理して管理を容易にする",
+        "C": "ワークフロー権限を設定する",
+        "D": "ワークフロー実行をトリガーする"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "ワークフロータグはワークフローを分類・整理して管理を容易にするために使用されます。プロジェクト、タイプ、ステータスなどに基づいてタグを追加し、タグでフィルタリングして必要なワークフローをすばやく見つけることができます。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q42",
+      "domain": 2,
+      "question": "n8n ワークフローのバージョン履歴機能で何ができますか？",
+      "options": {
+        "A": "バージョン番号の表示のみ",
+        "B": "以前のワークフローバージョンを表示および復元する",
+        "C": "異なるユーザーの変更を比較する",
+        "D": "バージョン競合を自動マージする"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "n8n のバージョン履歴機能では、以前のワークフローバージョンを表示および復元できます。ワークフローを保存するたびに新しいバージョンが作成され、任意の履歴バージョンに戻すことができ、誤った変更による損失を防ぎます。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q43",
+      "domain": 3,
+      "question": "Date & Time ノードの主な機能は何ですか？",
+      "options": {
+        "A": "現在時刻を取得する",
+        "B": "日時をフォーマットおよび変換する",
+        "C": "ワークフローの定時を設定する",
+        "D": "タイムゾーン差を計算する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Date & Time ノードは日時をフォーマットおよび変換するために使用されます。日付を1つのフォーマットから別のフォーマットに変換したり、時間を加算または減算したり、日付を比較したりできます。複数の日付フォーマットとタイムゾーンをサポートしています。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q44",
+      "domain": 3,
+      "question": "No Operation (NoOp) ノードの用途は何ですか？",
+      "options": {
+        "A": "すべてのデータを削除する",
+        "B": "プレースホルダーとしてデータを処理せずに渡す",
+        "C": "ワークフロー実行を停止する",
+        "D": "ノードの状態をリセットする"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "NoOp（No Operation）ノードはプレースホルダーとして機能し、データを処理せずに渡します。複数の分岐をマージする必要があるがデータ処理が不要な場合や、ワークフロー設計におけるプレースホルダーとして便利です。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q45",
+      "domain": 4,
+      "question": "n8n 式で文字列を大文字に変換するにはどうすればよいですか？",
+      "options": {
+        "A": "{{ $json.text.upper() }}",
+        "B": "{{ $json.text.toUpperCase() }}",
+        "C": "{{ UPPER($json.text) }}",
+        "D": "{{ $json.text.uppercase }}"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "JavaScript の toUpperCase() メソッドを使用して文字列を大文字に変換できます。例えば {{ $json.name.toUpperCase() }} は name フィールドの値をすべて大文字に変換します。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q46",
+      "domain": 4,
+      "question": "n8n で式を使用して文字列テンプレートを作成するにはどうすればよいですか？",
+      "options": {
+        "A": "+ を使用して文字列を連結する",
+        "B": "バックティックと ${} 構文を使用する",
+        "C": "{{ }} 内でテキストと変数を直接組み合わせる",
+        "D": "concat() メソッドのみ使用可能"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "n8n では、{{ }} 内でテキストと変数を直接組み合わせて文字列テンプレートを作成できます。例えば {{ 'Hello, ' + $json.name + '!' }} や JavaScript テンプレート文字列を使用できます。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q47",
+      "domain": 2,
+      "question": "n8n の Execute Workflow ノードにはどのような役割がありますか？",
+      "options": {
+        "A": "オペレーティングシステムコマンドを実行する",
+        "B": "別の n8n ワークフローをサブワークフローとして呼び出す",
+        "C": "SQL クエリを実行する",
+        "D": "JavaScript コードを実行する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Execute Workflow ノードは別の n8n ワークフローをサブワークフローとして呼び出すために使用されます。これにより、再利用可能なワークフローコンポーネントを作成し、モジュール設計を実現し、パラメータを渡して戻り値を受け取ることができます。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q48",
+      "domain": 3,
+      "question": "Split In Batches ノードの主な用途は何ですか？",
+      "options": {
+        "A": "ファイルを複数の部分に分割する",
+        "B": "API 制限を超えないように items をバッチ処理する",
+        "C": "文字列を分割する",
+        "D": "複数のワークフローコピーを作成する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Split In Batches ノードは items をバッチ処理するために使用されます。これは API レート制限を超えないようにしたり、大量のデータを処理したりする場合に非常に便利です。各バッチのサイズとバッチ間の遅延を設定できます。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q49",
+      "domain": 1,
+      "question": "n8n ワークフローの実行履歴を表示するにはどうすればよいですか？",
+      "options": {
+        "A": "最後の実行のみ表示可能",
+        "B": "Executions メニューからすべての履歴実行を表示する",
+        "C": "API クエリでのみ可能",
+        "D": "n8n は実行履歴を保存しない"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "n8n インターフェースの Executions メニューからすべての履歴実行記録を表示できます。各実行のステータス、時間、期間などの情報を確認でき、詳細な入出力データを表示してデバッグに使用することもできます。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q50",
+      "domain": 4,
+      "question": "n8n における $execution 変数にはどのような情報が含まれていますか？",
+      "options": {
+        "A": "実行 ID のみ",
+        "B": "ID、モード、タイムスタンプなど、現在の実行のメタデータ",
+        "C": "すべてのノードの実行結果",
+        "D": "ユーザーログイン情報"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "$execution 変数には、実行 ID（$execution.id）、実行モード（$execution.mode）、リトライ回数など、現在の実行のメタデータが含まれています。これは実行情報を追跡または記録する必要がある場合に便利です。",
+      "difficulty": "medium"
+    }
+  ]
+}

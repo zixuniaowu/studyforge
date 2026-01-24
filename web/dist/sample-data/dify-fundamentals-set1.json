@@ -1,0 +1,772 @@
+{
+  "exam": {
+    "id": "dify-fundamentals-set1",
+    "name": "Dify 基础认证 模拟考试 #1",
+    "code": "DIFY-FUND",
+    "provider": "Dify",
+    "language": "zh-CN",
+    "description": "Dify AI应用开发平台基础认证 - 第1套",
+    "totalQuestions": 50,
+    "passingScore": 70,
+    "examTime": 60,
+    "domains": [
+      { "id": 1, "name": "Dify Platform Basics", "weight": 25 },
+      { "id": 2, "name": "Prompt Engineering", "weight": 25 },
+      { "id": 3, "name": "Application Types", "weight": 25 },
+      { "id": 4, "name": "Basic Configuration", "weight": 25 }
+    ],
+    "tags": ["Dify", "LLMOps", "AI", "认证考试"]
+  },
+  "questions": [
+    {
+      "id": "q1",
+      "domain": 1,
+      "question": "Dify 是什么类型的平台？",
+      "options": {
+        "A": "纯代码开发框架",
+        "B": "LLM应用开发平台，支持可视化编排和API服务",
+        "C": "仅用于模型训练的平台",
+        "D": "数据库管理系统"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Dify是一个开源的LLM应用开发平台，提供：\n- 可视化的Prompt编排界面\n- 多种应用类型支持（聊天机器人、Agent、工作流等）\n- RAG知识库管理\n- API服务能力\n\n它不仅仅是代码框架，也不是模型训练平台。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q2",
+      "domain": 1,
+      "question": "Dify 支持哪些部署方式？（选择两项）",
+      "options": {
+        "A": "Docker Compose 本地部署",
+        "B": "Dify Cloud 云服务",
+        "C": "仅支持Windows本地安装",
+        "D": "必须购买专用硬件"
+      },
+      "answer": ["A", "B"],
+      "answerType": "multiple",
+      "explanation": "Dify支持多种部署方式：\n- Docker Compose：适合本地开发和小规模部署\n- Dify Cloud：官方提供的云服务，开箱即用\n- Kubernetes：企业级大规模部署\n\nDify是跨平台的，不限于Windows，也不需要专用硬件。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q3",
+      "domain": 1,
+      "question": "在 Dify 中，Workspace（工作空间）的主要作用是什么？",
+      "options": {
+        "A": "存储用户密码",
+        "B": "隔离不同项目的应用、模型配置和知识库",
+        "C": "仅用于计费管理",
+        "D": "存储日志文件"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Workspace是Dify中的资源隔离单元：\n- 每个工作空间可以有独立的应用\n- 独立的模型提供商配置\n- 独立的知识库\n- 独立的团队成员管理\n\n这样可以有效隔离不同项目或团队的资源。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q4",
+      "domain": 1,
+      "question": "Dify 中如何添加新的模型提供商？",
+      "options": {
+        "A": "在应用中直接编写代码",
+        "B": "通过设置页面配置API密钥",
+        "C": "发送邮件给Dify团队申请",
+        "D": "无法添加新的模型提供商"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "在Dify中添加模型提供商非常简单：\n1. 进入设置 > 模型提供商\n2. 选择要配置的提供商（OpenAI、Azure、Anthropic等）\n3. 输入API密钥和相关配置\n4. 保存后即可在应用中使用\n\n无需编写代码，通过界面即可完成配置。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q5",
+      "domain": 1,
+      "question": "Dify 支持哪些主流的模型提供商？（选择三项）",
+      "options": {
+        "A": "OpenAI",
+        "B": "Anthropic Claude",
+        "C": "本地Ollama模型",
+        "D": "仅支持开源模型"
+      },
+      "answer": ["A", "B", "C"],
+      "answerType": "multiple",
+      "explanation": "Dify支持众多模型提供商：\n- OpenAI (GPT系列)\n- Anthropic (Claude系列)\n- Azure OpenAI\n- Google Gemini\n- 本地模型 (Ollama, LocalAI)\n- 国内模型 (通义千问、文心一言等)\n\nDify同时支持商业模型和开源模型。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q6",
+      "domain": 2,
+      "question": "在 Dify 的 Prompt 编辑器中，变量使用什么语法表示？",
+      "options": {
+        "A": "${variable}",
+        "B": "{{variable}}",
+        "C": "[variable]",
+        "D": "<variable>"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Dify使用Jinja2模板语法，变量用双大括号表示：\n- {{query}} - 用户输入\n- {{context}} - 知识库检索结果\n- {{conversation_history}} - 对话历史\n\n这种语法简洁直观，易于理解和使用。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q7",
+      "domain": 2,
+      "question": "什么是 System Prompt（系统提示词）？",
+      "options": {
+        "A": "用户每次输入的问题",
+        "B": "定义AI助手角色、行为和规则的预设指令",
+        "C": "模型返回的回答",
+        "D": "数据库查询语句"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "System Prompt是预设给AI的指令：\n- 定义AI的角色（如：你是一个专业的客服助手）\n- 设定行为规则（如：回答要简洁专业）\n- 指定输出格式（如：使用Markdown格式）\n- 设置限制（如：只回答产品相关问题）\n\n它在每次对话开始时发送，影响AI的整体表现。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q8",
+      "domain": 2,
+      "question": "在 Prompt 工程中，Few-shot Learning 是什么意思？",
+      "options": {
+        "A": "不提供任何示例让模型自己推断",
+        "B": "在提示词中提供少量示例来指导模型输出",
+        "C": "训练一个新模型",
+        "D": "减少模型参数数量"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Few-shot Learning（少样本学习）：\n- 在Prompt中提供2-5个输入输出示例\n- 模型通过这些示例理解任务模式\n- 无需重新训练模型\n\n示例：\n输入：苹果 → 输出：水果\n输入：汽车 → 输出：交通工具\n输入：猫 → 输出：？\n\n模型会推断输出\"动物\"。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q9",
+      "domain": 2,
+      "question": "Temperature 参数对模型输出有什么影响？",
+      "options": {
+        "A": "温度越高，输出越随机和创造性",
+        "B": "温度越高，输出越确定和保守",
+        "C": "温度参数不影响输出",
+        "D": "温度只影响响应速度"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Temperature控制输出的随机性：\n- 低温度(0-0.3)：输出更确定、一致，适合事实性问答\n- 中温度(0.5-0.7)：平衡创造性和一致性\n- 高温度(0.8-1.0)：输出更随机、创造性，适合创意写作\n\n选择合适的温度取决于应用场景。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q10",
+      "domain": 2,
+      "question": "Top-P（核采样）参数的作用是什么？",
+      "options": {
+        "A": "限制最大输出长度",
+        "B": "控制考虑的token概率累积阈值",
+        "C": "设置API请求超时时间",
+        "D": "定义对话轮次上限"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Top-P（核采样）：\n- 设定概率累积阈值（如0.9）\n- 模型只从累积概率达到阈值的token中采样\n- Top-P=0.9意味着从概率最高的90%token中选择\n\n与Temperature类似，用于控制输出多样性，但机制不同。通常建议只调整其中一个。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q11",
+      "domain": 2,
+      "question": "Max Tokens 参数控制什么？",
+      "options": {
+        "A": "输入的最大长度",
+        "B": "模型生成的最大token数量",
+        "C": "对话历史的保留数量",
+        "D": "并发请求数量"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Max Tokens控制模型输出的最大长度：\n- 防止生成过长的回复\n- 控制API成本（按token计费）\n- 需要根据应用场景设置合适的值\n\n注意：这是输出的上限，不是输入的限制。输入长度由模型的上下文窗口决定。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q12",
+      "domain": 2,
+      "question": "什么是 Prompt 注入攻击？",
+      "options": {
+        "A": "向数据库注入恶意SQL",
+        "B": "用户通过输入特殊指令试图覆盖系统提示词",
+        "C": "增加更多示例提高准确性",
+        "D": "优化提示词结构"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Prompt注入攻击是LLM应用的安全威胁：\n- 用户尝试在输入中加入\"忽略之前的指令\"等内容\n- 试图让模型执行未授权的操作\n- 可能泄露系统提示词或敏感信息\n\n防御措施：输入过滤、提示词强化、输出审核等。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q13",
+      "domain": 3,
+      "question": "Dify 中的 Text Generator（文本生成器）应用类型的主要特点是什么？",
+      "options": {
+        "A": "支持多轮对话和上下文记忆",
+        "B": "单次输入输出，无对话历史",
+        "C": "自动执行复杂任务流程",
+        "D": "只能处理图片输入"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Text Generator（文本生成器）特点：\n- 单次请求-响应模式\n- 不保留对话历史\n- 适合独立的文本处理任务\n- 如：翻译、摘要、格式转换等\n\n与Chatbot不同，它不支持多轮对话。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q14",
+      "domain": 3,
+      "question": "Chatbot（聊天机器人）应用相比 Text Generator 的主要区别是什么？",
+      "options": {
+        "A": "无法使用知识库",
+        "B": "支持多轮对话和上下文记忆",
+        "C": "只能使用开源模型",
+        "D": "不支持流式输出"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Chatbot的核心特点：\n- 多轮对话支持\n- 自动维护对话历史\n- 上下文感知的回复\n- 可配置记忆窗口大小\n\nChatbot可以使用知识库、商业模型，也支持流式输出。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q15",
+      "domain": 3,
+      "question": "Agent（智能体）应用的核心能力是什么？",
+      "options": {
+        "A": "只能进行简单问答",
+        "B": "自主规划、使用工具、完成复杂任务",
+        "C": "仅用于数据分析",
+        "D": "不支持外部API调用"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Agent（智能体）的核心能力：\n- 自主任务规划和分解\n- 调用工具执行具体操作\n- 根据执行结果调整策略\n- 完成复杂多步骤任务\n\n工具可以包括：网页搜索、代码执行、API调用、数据库查询等。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q16",
+      "domain": 3,
+      "question": "Workflow（工作流）应用适合什么场景？",
+      "options": {
+        "A": "简单的一问一答",
+        "B": "需要多步骤处理、条件分支的复杂流程",
+        "C": "只能用于数据导入",
+        "D": "仅支持同步处理"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Workflow适合复杂流程场景：\n- 多步骤的数据处理流程\n- 条件分支和循环逻辑\n- 多模型协作\n- 人工审核节点\n\n例如：内容审核流程、自动化报告生成、多语言翻译管道等。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q17",
+      "domain": 3,
+      "question": "在选择应用类型时，如果需求是\"智能客服，需要记住用户之前说过的内容\"，应该选择哪种类型？",
+      "options": {
+        "A": "Text Generator",
+        "B": "Chatbot",
+        "C": "Workflow",
+        "D": "以上都不适合"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "智能客服需要：\n- 多轮对话支持 → Chatbot\n- 记住上下文 → Chatbot的对话历史功能\n- 可结合知识库回答产品问题\n\nText Generator不支持对话历史，Workflow更适合后台处理流程。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q18",
+      "domain": 3,
+      "question": "Chatflow 和 Workflow 的主要区别是什么？",
+      "options": {
+        "A": "Chatflow支持对话交互，Workflow是后台处理流程",
+        "B": "两者完全相同",
+        "C": "Workflow不能使用LLM节点",
+        "D": "Chatflow不支持知识库"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Chatflow vs Workflow：\n\nChatflow：\n- 支持对话式交互\n- 有对话历史\n- 用户可以持续对话\n\nWorkflow：\n- 后台批处理流程\n- 无对话上下文\n- 适合自动化任务\n\n两者都支持LLM节点和知识库。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q19",
+      "domain": 4,
+      "question": "在 Dify 中，如何为应用启用知识库？",
+      "options": {
+        "A": "在代码中编写RAG逻辑",
+        "B": "在应用配置中添加并关联知识库",
+        "C": "只能使用API调用",
+        "D": "知识库功能需要额外付费插件"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "启用知识库的步骤：\n1. 创建知识库并上传文档\n2. 在应用编排界面找到\"上下文\"或\"知识库\"配置\n3. 添加要关联的知识库\n4. 在Prompt中使用{{context}}变量\n\n无需编写代码，通过界面即可配置RAG功能。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q20",
+      "domain": 4,
+      "question": "知识库文档切片的主要目的是什么？",
+      "options": {
+        "A": "减少存储空间",
+        "B": "将长文档分割成适合检索和LLM处理的片段",
+        "C": "加密文档内容",
+        "D": "翻译文档语言"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "文档切片的目的：\n- LLM有上下文长度限制\n- 长文档需要分割成小片段\n- 便于向量检索找到相关内容\n- 提高检索精度和响应速度\n\n常见切片策略：按段落、按句子、按固定字数等。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q21",
+      "domain": 4,
+      "question": "Dify 知识库支持哪些文档格式？（选择三项）",
+      "options": {
+        "A": "PDF文件",
+        "B": "Markdown文件",
+        "C": "Word文档",
+        "D": "只支持纯文本"
+      },
+      "answer": ["A", "B", "C"],
+      "answerType": "multiple",
+      "explanation": "Dify知识库支持多种格式：\n- PDF (.pdf)\n- Markdown (.md)\n- Word (.docx)\n- 纯文本 (.txt)\n- HTML网页\n- CSV/Excel表格\n\n系统会自动解析这些格式并提取文本内容。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q22",
+      "domain": 4,
+      "question": "Embedding（嵌入向量）在知识库中的作用是什么？",
+      "options": {
+        "A": "压缩文档大小",
+        "B": "将文本转换为向量表示以支持语义检索",
+        "C": "加密文档内容",
+        "D": "翻译文档语言"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Embedding的作用：\n- 将文本转换为高维向量\n- 语义相似的文本向量距离更近\n- 支持语义检索（不仅仅是关键词匹配）\n- 用户问题也会转换为向量进行匹配\n\n这是RAG系统的核心技术之一。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q23",
+      "domain": 4,
+      "question": "在 Dify 中，如何测试应用效果？",
+      "options": {
+        "A": "只能通过API调用测试",
+        "B": "使用内置的预览和调试功能",
+        "C": "必须部署到生产环境才能测试",
+        "D": "需要编写单元测试代码"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Dify提供便捷的测试方式：\n- 编排界面右侧的实时预览\n- 调试模式查看处理过程\n- 查看变量值和中间结果\n- 模拟不同输入测试效果\n\n无需部署或编写代码即可进行测试。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q24",
+      "domain": 4,
+      "question": "Dify 应用的 API 访问方式是什么？",
+      "options": {
+        "A": "只支持GraphQL",
+        "B": "RESTful API，使用API密钥认证",
+        "C": "只能通过SDK调用",
+        "D": "不支持API访问"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Dify提供标准的RESTful API：\n- 每个应用有唯一的API端点\n- 使用API密钥进行身份验证\n- 支持同步和流式响应\n- 提供完整的API文档\n\n可以轻松集成到任何支持HTTP的应用中。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q25",
+      "domain": 4,
+      "question": "会话变量（Conversation Variables）的作用是什么？",
+      "options": {
+        "A": "存储模型权重",
+        "B": "在对话过程中保存和传递信息",
+        "C": "加密对话内容",
+        "D": "统计对话次数"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "会话变量的用途：\n- 保存用户偏好（如语言、姓名）\n- 传递上下文信息\n- 跨轮次保持状态\n- 实现个性化对话体验\n\n例如：用户说\"我叫张三\"，将姓名存入变量，后续对话可以使用。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q26",
+      "domain": 1,
+      "question": "Dify 的开源协议是什么？",
+      "options": {
+        "A": "MIT License",
+        "B": "Apache 2.0 License",
+        "C": "GPL License",
+        "D": "闭源商业软件"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Dify采用Apache 2.0开源协议：\n- 允许商业使用\n- 允许修改和分发\n- 需要保留版权声明\n- 对企业友好的开源协议\n\n社区版完全开源，企业版提供额外功能和支持。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q27",
+      "domain": 1,
+      "question": "Dify 使用什么数据库存储应用数据？",
+      "options": {
+        "A": "MongoDB",
+        "B": "PostgreSQL",
+        "C": "MySQL",
+        "D": "SQLite"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Dify使用PostgreSQL作为主数据库：\n- 存储应用配置\n- 用户和工作空间信息\n- 对话历史记录\n- 配合Redis用于缓存\n- 向量数据存储在专门的向量数据库中",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q28",
+      "domain": 1,
+      "question": "Dify 支持哪些向量数据库？（选择两项）",
+      "options": {
+        "A": "Weaviate",
+        "B": "Qdrant",
+        "C": "MySQL",
+        "D": "MongoDB"
+      },
+      "answer": ["A", "B"],
+      "answerType": "multiple",
+      "explanation": "Dify支持多种向量数据库：\n- Weaviate\n- Qdrant\n- Milvus\n- Pinecone\n- Chroma\n- pgvector (PostgreSQL扩展)\n\nMySQL和MongoDB是传统数据库，不是专门的向量数据库。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q29",
+      "domain": 2,
+      "question": "什么是 Zero-shot Prompting？",
+      "options": {
+        "A": "提供大量示例进行训练",
+        "B": "不提供任何示例，直接描述任务让模型完成",
+        "C": "关闭模型的推理能力",
+        "D": "使用随机参数"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Zero-shot Prompting（零样本提示）：\n- 不提供任何示例\n- 直接描述任务需求\n- 依赖模型的预训练知识\n\n示例：\"请将以下英文翻译成中文：Hello World\"\n模型依靠训练时学到的知识完成翻译。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q30",
+      "domain": 2,
+      "question": "Chain-of-Thought (CoT) 提示技术的核心思想是什么？",
+      "options": {
+        "A": "让模型直接给出最终答案",
+        "B": "引导模型展示推理过程，逐步得出结论",
+        "C": "使用多个模型串联",
+        "D": "压缩提示词长度"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Chain-of-Thought（思维链）：\n- 引导模型\"逐步思考\"\n- 展示中间推理步骤\n- 提高复杂问题的准确性\n\n典型提示词：\"让我们一步一步思考...\"\n\n对数学、逻辑推理等任务效果显著。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q31",
+      "domain": 2,
+      "question": "在设计 Prompt 时，角色设定（Role）的作用是什么？",
+      "options": {
+        "A": "增加API调用成本",
+        "B": "定义AI的专业背景和回答风格",
+        "C": "加密对话内容",
+        "D": "限制模型的参数数量"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "角色设定的作用：\n- 定义AI的专业领域（如：你是一个资深Python开发者）\n- 设定回答风格（如：友好、专业、简洁）\n- 建立行为边界（如：只回答编程相关问题）\n\n好的角色设定能显著提升回答质量和一致性。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q32",
+      "domain": 3,
+      "question": "Agent 应用中的\"工具\"（Tools）可以包括哪些？（选择三项）",
+      "options": {
+        "A": "网页搜索",
+        "B": "代码执行器",
+        "C": "自定义API调用",
+        "D": "只能使用内置工具"
+      },
+      "answer": ["A", "B", "C"],
+      "answerType": "multiple",
+      "explanation": "Agent可以使用多种工具：\n- 网页搜索（获取最新信息）\n- 代码执行器（运行Python代码）\n- 自定义API（调用外部服务）\n- 数据库查询\n- 文件操作\n- 内置工具（如计算器、天气查询）\n\nDify支持自定义工具，不限于内置工具。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q33",
+      "domain": 3,
+      "question": "Workflow 中的 LLM 节点的作用是什么？",
+      "options": {
+        "A": "存储数据到数据库",
+        "B": "调用大语言模型进行文本处理",
+        "C": "发送邮件通知",
+        "D": "创建图表"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "LLM节点是Workflow的核心节点：\n- 调用配置的语言模型\n- 可设置独立的Prompt模板\n- 处理输入变量\n- 输出处理结果供下游节点使用\n\n一个Workflow可以包含多个LLM节点，实现复杂的处理流程。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q34",
+      "domain": 3,
+      "question": "Workflow 中的条件分支节点可以实现什么功能？",
+      "options": {
+        "A": "无条件执行所有分支",
+        "B": "根据条件判断走不同的处理路径",
+        "C": "只能做数值比较",
+        "D": "暂停工作流执行"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "条件分支节点：\n- 根据变量值进行条件判断\n- 支持多种比较操作（等于、包含、大于等）\n- 可以有多个分支路径\n- 实现复杂的业务逻辑\n\n例如：如果用户意图是\"投诉\"走人工处理，否则走自动回复。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q35",
+      "domain": 3,
+      "question": "在创建 Chatbot 时，\"开场白\"（Opening Statement）的作用是什么？",
+      "options": {
+        "A": "用于SEO优化",
+        "B": "对话开始时AI主动发送的欢迎消息",
+        "C": "加密对话内容",
+        "D": "统计用户数量"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "开场白的作用：\n- 用户打开对话时自动显示\n- 介绍AI助手的功能\n- 引导用户如何使用\n- 提升用户体验\n\n例如：\"您好！我是XX客服助手，可以帮您查询订单、解答产品问题。请问有什么可以帮您？\"",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q36",
+      "domain": 4,
+      "question": "Dify 的 Recall Mode（召回模式）有哪些选项？",
+      "options": {
+        "A": "只有向量检索",
+        "B": "向量检索、全文检索、混合检索",
+        "C": "只有关键词匹配",
+        "D": "只有语义检索"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Dify支持三种召回模式：\n\n1. 向量检索：基于语义相似度\n2. 全文检索：基于关键词匹配\n3. 混合检索：结合两者优势\n\n混合检索通常效果最好，兼顾语义理解和精确匹配。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q37",
+      "domain": 4,
+      "question": "Top-K 参数在知识库检索中的含义是什么？",
+      "options": {
+        "A": "最大返回文档片段数量",
+        "B": "文档切片大小",
+        "C": "向量维度",
+        "D": "检索超时时间"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Top-K参数：\n- 控制返回最相关的K个文档片段\n- K值越大，提供的上下文越多\n- 但可能增加噪音和token消耗\n- 需要根据场景平衡精度和成本\n\n常见设置：3-10个片段。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q38",
+      "domain": 4,
+      "question": "Score Threshold（分数阈值）的作用是什么？",
+      "options": {
+        "A": "设置用户评分标准",
+        "B": "过滤掉相关性分数过低的检索结果",
+        "C": "限制API调用次数",
+        "D": "设置响应时间上限"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Score Threshold的作用：\n- 设置最低相关性分数\n- 低于阈值的结果被过滤\n- 提高检索质量\n- 避免返回不相关内容\n\n例如：设置0.7，只返回相关性分数>0.7的片段。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q39",
+      "domain": 1,
+      "question": "Dify 中的成员角色有哪些？（选择三项）",
+      "options": {
+        "A": "Owner（所有者）",
+        "B": "Admin（管理员）",
+        "C": "Member（成员）",
+        "D": "Viewer（只读访客）"
+      },
+      "answer": ["A", "B", "C"],
+      "answerType": "multiple",
+      "explanation": "Dify的团队成员角色：\n- Owner：工作空间所有者，最高权限\n- Admin：管理员，可以管理大部分设置\n- Member：普通成员，可以创建和编辑应用\n\n不同角色有不同的权限范围，便于团队协作管理。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q40",
+      "domain": 1,
+      "question": "如何将 Dify 应用嵌入到外部网站？",
+      "options": {
+        "A": "只能使用API调用",
+        "B": "使用iframe嵌入或Web组件",
+        "C": "必须重新开发前端",
+        "D": "不支持嵌入外部网站"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Dify提供多种嵌入方式：\n- iframe嵌入：直接在网页中嵌入对话界面\n- Web组件：使用提供的JavaScript代码\n- API集成：自定义前端调用后端API\n\n在应用设置中可以找到嵌入代码和配置选项。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q41",
+      "domain": 2,
+      "question": "Presence Penalty 参数的作用是什么？",
+      "options": {
+        "A": "增加重复内容的概率",
+        "B": "惩罚已出现过的token，减少重复",
+        "C": "增加响应速度",
+        "D": "限制输出语言"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Presence Penalty（存在惩罚）：\n- 降低已出现token再次出现的概率\n- 值越高，重复越少\n- 适合避免冗余表述\n- 范围通常是0-2\n\n与Frequency Penalty（频率惩罚）类似，但计算方式略有不同。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q42",
+      "domain": 2,
+      "question": "设计 Prompt 时，\"具体明确\"原则的含义是什么？",
+      "options": {
+        "A": "使用尽可能短的提示词",
+        "B": "清晰描述任务要求、格式和约束条件",
+        "C": "只使用英文提示词",
+        "D": "避免使用标点符号"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "\"具体明确\"原则：\n- 明确说明任务目标\n- 指定输出格式（JSON、列表、段落等）\n- 设定约束条件（字数、范围、禁止事项）\n- 提供必要的背景信息\n\n模糊的提示会导致不可预期的输出。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q43",
+      "domain": 3,
+      "question": "Agent 的 ReAct 模式是什么？",
+      "options": {
+        "A": "一种前端框架",
+        "B": "推理(Reasoning)和行动(Acting)交替进行的工作模式",
+        "C": "一种数据库查询语言",
+        "D": "代码编译方式"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "ReAct模式（Reasoning + Acting）：\n- 推理：分析当前情况，决定下一步\n- 行动：调用工具执行具体操作\n- 观察：获取执行结果\n- 循环：根据观察继续推理和行动\n\n这种模式让Agent能够处理复杂的多步骤任务。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q44",
+      "domain": 3,
+      "question": "Function Calling（函数调用）功能的作用是什么？",
+      "options": {
+        "A": "训练模型的数学函数",
+        "B": "让模型根据需要调用预定义的外部函数/API",
+        "C": "压缩模型大小",
+        "D": "加密通信内容"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Function Calling：\n- 向模型描述可用的函数及其参数\n- 模型判断是否需要调用函数\n- 生成函数调用的参数\n- 应用程序执行函数并返回结果\n\n这是Agent实现工具调用的核心机制。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q45",
+      "domain": 4,
+      "question": "知识库的\"自动\"切片模式有什么特点？",
+      "options": {
+        "A": "完全随机切片",
+        "B": "根据文档结构自动识别合适的切片点",
+        "C": "固定按1000字切片",
+        "D": "不进行任何切片"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "自动切片模式：\n- 智能识别段落、章节边界\n- 保持内容语义完整性\n- 自动调整切片大小\n- 适合大多数文档类型\n\n也可以选择\"自定义\"模式手动设置切片规则。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q46",
+      "domain": 4,
+      "question": "Rerank（重排序）模型的作用是什么？",
+      "options": {
+        "A": "对文档进行排版",
+        "B": "对初始检索结果进行二次排序，提高相关性",
+        "C": "压缩文档大小",
+        "D": "翻译文档内容"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Rerank模型的作用：\n- 对向量检索的初始结果进行重新排序\n- 使用更精准的模型评估相关性\n- 将最相关的内容排在前面\n- 提高RAG系统的回答质量\n\n常用的Rerank模型如Cohere Rerank、bge-reranker等。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q47",
+      "domain": 1,
+      "question": "Dify 的日志功能可以查看什么信息？",
+      "options": {
+        "A": "只有错误信息",
+        "B": "用户对话记录、模型调用详情、token消耗等",
+        "C": "只有系统启动日志",
+        "D": "只有API访问记录"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Dify日志功能提供：\n- 完整对话历史\n- 模型输入输出\n- Token消耗统计\n- 响应延迟\n- 知识库检索结果\n- 工具调用记录\n\n这些信息对于调试和优化应用非常有价值。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q48",
+      "domain": 2,
+      "question": "什么是 Prompt 的\"结构化\"设计？",
+      "options": {
+        "A": "使用尽可能少的文字",
+        "B": "将提示词分成角色、任务、约束、格式等明确部分",
+        "C": "只使用代码格式",
+        "D": "避免使用换行"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "结构化Prompt设计：\n- 角色：定义AI身份\n- 任务：说明要完成的工作\n- 约束：设定限制条件\n- 格式：指定输出格式\n- 示例：提供参考样本\n\n结构化设计使Prompt更清晰、可维护、效果更稳定。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q49",
+      "domain": 3,
+      "question": "Workflow 中的\"代码执行\"节点可以运行什么语言？",
+      "options": {
+        "A": "只支持JavaScript",
+        "B": "Python和JavaScript",
+        "C": "只支持Python",
+        "D": "只支持SQL"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Dify的代码执行节点：\n- 支持Python代码\n- 支持JavaScript代码\n- 可以进行数据处理、计算等操作\n- 有安全沙箱限制\n\n适合在Workflow中进行自定义的数据处理逻辑。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q50",
+      "domain": 4,
+      "question": "如何优化知识库检索的准确性？（选择两项）",
+      "options": {
+        "A": "调整切片大小和重叠度",
+        "B": "使用Rerank模型进行二次排序",
+        "C": "关闭所有检索功能",
+        "D": "删除所有文档"
+      },
+      "answer": ["A", "B"],
+      "answerType": "multiple",
+      "explanation": "优化知识库检索的方法：\n- 调整切片参数（大小、重叠度）\n- 使用Rerank模型提高排序质量\n- 优化Embedding模型选择\n- 设置合适的Top-K和Score阈值\n- 使用混合检索模式\n\n需要根据具体场景反复测试调优。",
+      "difficulty": "medium"
+    }
+  ]
+}

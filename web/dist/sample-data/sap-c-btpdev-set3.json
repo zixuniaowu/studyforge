@@ -1,0 +1,660 @@
+{
+  "examId": "sap-c-btpdev-set3",
+  "provider": "SAP",
+  "title": "SAP BTP 开发者 (C_BTPDEV) 模拟题 Set 3",
+  "description": "SAP Business Technology Platform 开发者认证模拟试题第三套",
+  "icon": "sap",
+  "setNumber": 3,
+  "questions": [
+    {
+      "id": 1,
+      "question": "在 SAP Build 中，如何创建低代码应用？",
+      "options": {
+        "A": "使用可视化编辑器拖放组件，配置数据绑定",
+        "B": "编写纯 JavaScript 代码",
+        "C": "修改操作系统设置",
+        "D": "安装本地软件"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "SAP Build 提供可视化开发环境，通过拖放 UI 组件、配置数据源和业务逻辑创建应用。无需编写复杂代码即可构建企业级应用。"
+    },
+    {
+      "id": 2,
+      "question": "CAP 中的 cds.context 提供什么功能？",
+      "options": {
+        "A": "访问当前请求的上下文信息（用户、租户等）",
+        "B": "定义 UI 布局",
+        "C": "配置网络设置",
+        "D": "存储文件"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "cds.context 提供请求级上下文，包括当前用户（cds.context.user）、租户（cds.context.tenant）、语言设置等。在异步操作中保持上下文传递。"
+    },
+    {
+      "id": 3,
+      "question": "在 SAP UI5 中，MessageToast 和 MessageBox 的区别是什么？",
+      "options": {
+        "A": "MessageToast 是非阻塞提示，MessageBox 是模态对话框",
+        "B": "功能完全相同",
+        "C": "MessageToast 只能显示错误",
+        "D": "MessageBox 不能包含按钮"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "MessageToast 显示短暂的非阻塞提示，几秒后自动消失，不打断用户操作。MessageBox 是模态对话框，需要用户交互（点击按钮）才能关闭。"
+    },
+    {
+      "id": 4,
+      "question": "在 BTP 开发中，@sap/approuter 的作用是什么？",
+      "options": {
+        "A": "提供应用路由和认证功能",
+        "B": "数据库管理",
+        "C": "文件存储",
+        "D": "日志收集"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "@sap/approuter 是 BTP 应用的入口点，处理路由规则、JWT 认证、XSUAA 集成。根据 xs-app.json 配置将请求转发到后端服务。"
+    },
+    {
+      "id": 5,
+      "question": "CAP 中的 srv.before() 和 srv.on() 处理程序有什么区别？",
+      "options": {
+        "A": "before 在操作执行前运行，on 是主处理程序",
+        "B": "顺序相同",
+        "C": "before 只能读取数据",
+        "D": "on 不能修改请求"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "srv.before() 在主处理程序之前执行，用于验证、数据转换。srv.on() 是主处理程序，实现核心业务逻辑。还有 srv.after() 在主处理后执行。"
+    },
+    {
+      "id": 6,
+      "question": "在 SAP UI5 中，如何实现组件间通信？",
+      "options": {
+        "A": "使用 EventBus 或共享模型",
+        "B": "只能通过 URL 参数",
+        "C": "修改全局变量",
+        "D": "使用 Cookie"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "EventBus 提供发布/订阅模式的组件通信。也可以使用共享的 JSON Model 在组件间传递数据。Owner Component 还可以通过 API 直接调用子组件方法。"
+    },
+    {
+      "id": 7,
+      "question": "SAP BTP 中的 Service Key 用于什么？",
+      "options": {
+        "A": "获取服务凭据供外部应用使用",
+        "B": "加密数据",
+        "C": "生成 SSH 密钥",
+        "D": "创建用户"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Service Key 是服务实例的凭据集，包含 URL、client ID/secret 等。用于本地开发或外部系统访问 BTP 服务，而无需将应用部署到 Cloud Foundry。"
+    },
+    {
+      "id": 8,
+      "question": "在 CAP 中，如何处理长时间运行的任务？",
+      "options": {
+        "A": "使用异步处理和消息队列",
+        "B": "增加请求超时",
+        "C": "多次重试",
+        "D": "忽略任务"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "对于长时间任务，使用 cds.spawn() 创建后台任务，或通过 SAP Event Mesh 发送消息进行异步处理。避免阻塞 HTTP 请求，提供更好的用户体验。"
+    },
+    {
+      "id": 9,
+      "question": "SAP UI5 的 Personalization 功能用于什么？",
+      "options": {
+        "A": "保存用户自定义的表格列、过滤器设置",
+        "B": "修改应用代码",
+        "C": "更改系统语言",
+        "D": "安装插件"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Personalization 允许用户自定义 UI 设置（表格列顺序/可见性、过滤条件等）并持久化。使用 FlexibleColumnLayout 的 P13n 服务存储用户偏好。"
+    },
+    {
+      "id": 10,
+      "question": "在 BTP 开发中，hybrid profile 有什么用途？",
+      "options": {
+        "A": "本地运行应用同时连接云端服务",
+        "B": "混合数据库模式",
+        "C": "多云部署",
+        "D": "离线访问"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "hybrid profile 使本地开发的 CAP 应用连接到 BTP 上的真实服务（如 HANA、XSUAA）。使用 cds bind --exec 绑定服务并以 hybrid 模式启动。"
+    },
+    {
+      "id": 11,
+      "question": "CAP 中的 @Core.MediaType 注解用于什么？",
+      "options": {
+        "A": "指定字段存储的媒体类型（如 image/png）",
+        "B": "定义 UI 样式",
+        "C": "设置网络协议",
+        "D": "配置日志格式"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "@Core.MediaType 标记字段存储二进制媒体内容的 MIME 类型。与 @Core.ContentDisposition 配合使用，支持文件上传和下载功能。"
+    },
+    {
+      "id": 12,
+      "question": "在 SAP UI5 中，StandardListItem 的 type 属性有什么作用？",
+      "options": {
+        "A": "定义列表项的交互类型（如可导航、可选中）",
+        "B": "设置字体大小",
+        "C": "定义数据类型",
+        "D": "配置网络类型"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "type 属性定义列表项行为：Navigation（显示箭头，点击触发导航）、Active（点击高亮）、Inactive（纯显示）、Detail（显示详情按钮）等。"
+    },
+    {
+      "id": 13,
+      "question": "SAP BTP 中的 cf ssh 命令用于什么？",
+      "options": {
+        "A": "SSH 连接到运行中的应用容器",
+        "B": "创建 SSH 密钥",
+        "C": "配置防火墙",
+        "D": "发送邮件"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "cf ssh 允许开发者 SSH 到应用容器内进行调试。可以检查文件系统、环境变量、运行诊断命令。需要应用启用 SSH 访问。"
+    },
+    {
+      "id": 14,
+      "question": "在 CAP 中，如何使用外部 API 服务？",
+      "options": {
+        "A": "导入 API 定义，使用 srv.connect() 连接",
+        "B": "直接发送 HTTP 请求",
+        "C": "修改数据库",
+        "D": "安装本地软件"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "使用 cds import 导入外部 API 定义（如 edmx 文件），配置 Destination。在代码中通过 srv.connect('API_NAME') 获取连接，使用 CQL 语法查询外部数据。"
+    },
+    {
+      "id": 15,
+      "question": "SAP UI5 的 XMLTemplateProcessor 用于什么？",
+      "options": {
+        "A": "在 XML 视图中使用模板逻辑（条件渲染、循环）",
+        "B": "压缩 XML 文件",
+        "C": "验证 XML 格式",
+        "D": "转换 XML 到 JSON"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "XMLTemplateProcessor 支持在 XML 视图中使用 template:if、template:repeat 等指令实现条件渲染和循环。可以根据数据动态生成 UI 结构。"
+    },
+    {
+      "id": 16,
+      "question": "在 BTP 开发中，cds watch 的 --port 参数用于什么？",
+      "options": {
+        "A": "指定开发服务器监听的端口",
+        "B": "配置数据库端口",
+        "C": "设置代理端口",
+        "D": "定义 HTTPS 端口"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "cds watch --port 4005 指定开发服务器端口（默认 4004）。多个 CAP 项目同时开发时可以使用不同端口避免冲突。"
+    },
+    {
+      "id": 17,
+      "question": "CAP 中的 @readonly 注解有什么效果？",
+      "options": {
+        "A": "标记实体或字段为只读，禁止 CUD 操作",
+        "B": "加密数据",
+        "C": "压缩存储",
+        "D": "启用缓存"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "@readonly 标记的实体只允许 READ 操作，CREATE/UPDATE/DELETE 会被拒绝。用于只读数据视图或受保护的系统数据。也可以应用于单个字段。"
+    },
+    {
+      "id": 18,
+      "question": "在 SAP UI5 中，NavContainer 的作用是什么？",
+      "options": {
+        "A": "管理页面导航和动画转换",
+        "B": "存储导航历史",
+        "C": "配置路由规则",
+        "D": "显示导航菜单"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "NavContainer 是页面容器，管理子页面的显示和导航转换动画。通过 to()/back() 方法在页面间导航，支持滑动、淡入等过渡效果。"
+    },
+    {
+      "id": 19,
+      "question": "SAP BTP 中的 cf events 命令显示什么？",
+      "options": {
+        "A": "应用相关的最近事件和活动",
+        "B": "系统日历事件",
+        "C": "用户预约",
+        "D": "网络事件"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "cf events <app-name> 显示应用的最近事件：启动、停止、崩溃、扩展等。用于监控应用状态和排查问题，如查看崩溃原因。"
+    },
+    {
+      "id": 20,
+      "question": "在 CAP 中，如何定义 Composition 关系？",
+      "options": {
+        "A": "使用 Composition of 语法表示包含关系",
+        "B": "使用 JOIN 语句",
+        "C": "创建外键",
+        "D": "使用 JavaScript 链接"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Composition 表示强包含关系（父子）：entity Order { Items: Composition of many OrderItem; }。子实体随父实体一起创建/删除，OData 深度插入/级联删除自动处理。"
+    },
+    {
+      "id": 21,
+      "question": "SAP UI5 的 Fiori Launchpad 是什么？",
+      "options": {
+        "A": "企业应用的统一入口和应用集成平台",
+        "B": "代码编辑器",
+        "C": "数据库管理工具",
+        "D": "版本控制系统"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Fiori Launchpad 是 SAP 企业应用的中央入口，提供统一的应用导航、个性化磁贴、通知中心、搜索等功能。应用以磁贴形式展示，用户按角色分配应用。"
+    },
+    {
+      "id": 22,
+      "question": "在 BTP 开发中，package.json 的 cds.build 配置用于什么？",
+      "options": {
+        "A": "定义构建任务和输出目录",
+        "B": "设置运行时环境",
+        "C": "配置测试框架",
+        "D": "指定入口文件"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "cds.build 配置构建行为：tasks 定义构建任务（如 hana 部署），dest 指定输出目录。cds build 命令读取此配置生成部署产物。"
+    },
+    {
+      "id": 23,
+      "question": "CAP 中的 srv.tx() 方法用于什么？",
+      "options": {
+        "A": "开启数据库事务",
+        "B": "发送文本消息",
+        "C": "转换数据格式",
+        "D": "加密数据"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "srv.tx(req) 获取请求的事务上下文，确保多个操作在同一事务中执行。出错时自动回滚，成功时提交。对于数据一致性至关重要。"
+    },
+    {
+      "id": 24,
+      "question": "在 SAP UI5 中，如何检测设备类型？",
+      "options": {
+        "A": "使用 sap.ui.Device API",
+        "B": "检查 User-Agent 字符串",
+        "C": "发送服务器请求",
+        "D": "使用 GPS"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "sap.ui.Device 提供设备信息：Device.system（desktop/phone/tablet）、Device.browser、Device.os 等。用于响应式设计和适配不同设备的 UI 布局。"
+    },
+    {
+      "id": 25,
+      "question": "SAP BTP 中的 cf logs 命令的 --recent 参数有什么作用？",
+      "options": {
+        "A": "显示最近的日志而非实时流",
+        "B": "显示最近的用户",
+        "C": "列出最近的部署",
+        "D": "显示最近的错误"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "cf logs <app> --recent 显示应用的最近日志历史（而非实时跟踪）。用于查看应用启动日志、已发生的错误等历史记录。"
+    },
+    {
+      "id": 26,
+      "question": "在 CAP 中，@odata.singleton 注解用于什么？",
+      "options": {
+        "A": "将实体定义为 OData 单例",
+        "B": "创建单例模式类",
+        "C": "限制并发访问",
+        "D": "启用单点登录"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "@odata.singleton 使实体成为 OData 单例，只有一个实例而非集合。适用于配置设置、用户偏好等场景，访问路径直接是实体名而非集合名。"
+    },
+    {
+      "id": 27,
+      "question": "SAP UI5 的 ResourceBundle 用于什么？",
+      "options": {
+        "A": "加载和访问 i18n 翻译文本",
+        "B": "打包静态资源",
+        "C": "管理图标资源",
+        "D": "压缩文件"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "ResourceBundle 是 i18n 的核心类，加载 properties 文件并提供 getText() 方法获取翻译。支持参数替换：getText('greeting', [userName])。"
+    },
+    {
+      "id": 28,
+      "question": "在 BTP 开发中，如何配置多环境部署？",
+      "options": {
+        "A": "使用 mta.yaml 的 parameters 和 properties",
+        "B": "创建多个项目",
+        "C": "修改源代码",
+        "D": "使用不同的 Git 分支"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "mta.yaml 支持参数化配置：使用 parameters 定义变量，通过 properties 注入环境特定值。部署时使用 extension descriptor 文件覆盖不同环境的参数。"
+    },
+    {
+      "id": 29,
+      "question": "CAP 中的 @assert.unique 注解用于什么？",
+      "options": {
+        "A": "确保字段组合的唯一性",
+        "B": "生成唯一 ID",
+        "C": "创建唯一索引",
+        "D": "验证 UUID 格式"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "@assert.unique 定义唯一性约束：@assert.unique: {code} 或 @assert.unique: [field1, field2]。创建或更新时自动检查，重复则返回错误。"
+    },
+    {
+      "id": 30,
+      "question": "在 SAP UI5 中，如何在表格中实现内联编辑？",
+      "options": {
+        "A": "使用 Table 的 mode 属性和编辑控件",
+        "B": "创建弹出编辑框",
+        "C": "使用 ContentEditable",
+        "D": "只能在详情页编辑"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "设置 Table mode 为 Edit，在 cells 中使用 Input、DatePicker 等编辑控件。通过 editable 属性控制编辑状态，使用 OData 批量提交更改。"
+    },
+    {
+      "id": 31,
+      "question": "SAP BTP 中的 cf set-env 命令用于什么？",
+      "options": {
+        "A": "设置应用的环境变量",
+        "B": "配置系统环境",
+        "C": "设置开发环境",
+        "D": "配置网络环境"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "cf set-env <app> <var> <value> 设置应用环境变量。设置后需要 cf restage 使变量生效。用于配置应用行为而无需修改代码。"
+    },
+    {
+      "id": 32,
+      "question": "在 CAP 中，如何处理大文件上传？",
+      "options": {
+        "A": "使用流式处理和 @Core.MediaType",
+        "B": "增加内存限制",
+        "C": "压缩文件",
+        "D": "分块存储在数据库"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "CAP 支持媒体流处理，使用 @Core.MediaType 注解字段。大文件以流方式处理，不需要全部加载到内存。配合 Object Store 服务存储二进制数据。"
+    },
+    {
+      "id": 33,
+      "question": "SAP UI5 的 sap.ui.model.Sorter 用于什么？",
+      "options": {
+        "A": "定义数据排序规则",
+        "B": "整理 UI 控件",
+        "C": "排列图标",
+        "D": "排序文件"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Sorter 定义绑定数据的排序：new Sorter('fieldName', true/false) 指定排序字段和方向。可以传给 binding 的 sorter 参数实现动态排序。"
+    },
+    {
+      "id": 34,
+      "question": "在 BTP 开发中，xs-security.json 文件的作用是什么？",
+      "options": {
+        "A": "定义 XSUAA 安全配置（scopes、role-templates）",
+        "B": "配置 SSL 证书",
+        "C": "设置网络安全",
+        "D": "定义数据加密"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "xs-security.json 定义应用的安全描述符：scopes（权限）、role-templates（角色模板）、role-collections（角色集合）。创建 XSUAA 服务时使用此配置。"
+    },
+    {
+      "id": 35,
+      "question": "CAP 中的 @insertonly 注解用于什么？",
+      "options": {
+        "A": "限制实体只能创建，不能更新或删除",
+        "B": "优化插入性能",
+        "C": "强制批量插入",
+        "D": "启用插入日志"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "@insertonly 使实体只允许 INSERT 操作，UPDATE 和 DELETE 被禁止。适用于审计日志、事件记录等只能追加不能修改的数据。"
+    },
+    {
+      "id": 36,
+      "question": "在 SAP UI5 中，SmartTable 相比普通 Table 的优势是什么？",
+      "options": {
+        "A": "自动从 OData 元数据生成列和功能",
+        "B": "性能更高",
+        "C": "支持更多行",
+        "D": "占用更少内存"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "SmartTable 自动从 OData 元数据和注解生成表格列、排序、过滤、分组功能。开发者只需提供实体名，无需手动配置每个列。"
+    },
+    {
+      "id": 37,
+      "question": "SAP BTP 中的 cf create-service-key 命令用于什么？",
+      "options": {
+        "A": "创建服务密钥用于外部访问",
+        "B": "创建 SSH 密钥",
+        "C": "生成加密密钥",
+        "D": "创建 API 密钥"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "cf create-service-key <service> <key-name> 创建服务密钥，包含访问服务所需的凭据。用于本地开发或外部系统访问 BTP 服务。"
+    },
+    {
+      "id": 38,
+      "question": "在 CAP 中，如何实现数据变更审计？",
+      "options": {
+        "A": "使用 @cds.audit 注解",
+        "B": "手动记录每次修改",
+        "C": "使用数据库触发器",
+        "D": "编写审计服务"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "@cds.audit 启用实体的变更审计。所有 CUD 操作自动记录到审计日志，包括操作类型、时间、用户、变更内容。可以查询审计历史。"
+    },
+    {
+      "id": 39,
+      "question": "SAP UI5 的 ODataListBinding 与 JSONListBinding 的区别是什么？",
+      "options": {
+        "A": "ODataListBinding 支持服务端操作（排序、过滤）",
+        "B": "性能完全相同",
+        "C": "ODataListBinding 不支持本地操作",
+        "D": "JSONListBinding 支持远程数据"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "ODataListBinding 可以将排序/过滤/分页请求发送到服务器处理（applicationFilters），也可以在本地处理（controlFilters）。JSONListBinding 只支持本地操作。"
+    },
+    {
+      "id": 40,
+      "question": "在 BTP 开发中，destination 配置的 proxyType 属性用于什么？",
+      "options": {
+        "A": "指定通过互联网还是 Cloud Connector 访问",
+        "B": "设置代理服务器",
+        "C": "配置负载均衡",
+        "D": "定义缓存策略"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "proxyType 定义访问方式：Internet（直接互联网访问）或 OnPremise（通过 Cloud Connector 访问内网系统）。对于连接 SAP S/4HANA On-Premise 需要选择 OnPremise。"
+    },
+    {
+      "id": 41,
+      "question": "CAP 中的 SELECT.forUpdate() 用于什么？",
+      "options": {
+        "A": "获取记录并锁定以防止并发修改",
+        "B": "选择要更新的字段",
+        "C": "准备更新语句",
+        "D": "检查更新权限"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "SELECT.forUpdate() 在读取记录时获取悲观锁，其他事务无法同时修改这些记录。用于需要确保数据一致性的并发场景。"
+    },
+    {
+      "id": 42,
+      "question": "在 SAP UI5 中，DynamicPage 的 headerContentPinnable 属性用于什么？",
+      "options": {
+        "A": "允许用户固定头部内容",
+        "B": "自动隐藏头部",
+        "C": "禁用头部",
+        "D": "设置头部高度"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "headerContentPinnable=true 时用户可以固定（pin）头部内容区域，滚动时头部保持显示。false 时头部随内容滚动自动折叠。"
+    },
+    {
+      "id": 43,
+      "question": "SAP BTP 中的 cf run-task 命令用于什么？",
+      "options": {
+        "A": "运行一次性任务（不影响主应用）",
+        "B": "启动定时任务",
+        "C": "运行测试",
+        "D": "执行数据库脚本"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "cf run-task 在新容器中运行一次性任务，与主应用独立。适用于数据迁移、批处理作业等。任务完成后容器自动停止。"
+    },
+    {
+      "id": 44,
+      "question": "在 CAP 中，如何使用 HANA 计算视图？",
+      "options": {
+        "A": "在 CDS 中定义为外部实体并映射",
+        "B": "直接 SQL 查询",
+        "C": "通过 REST API",
+        "D": "无法使用"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "使用 @cds.persistence.exists 标记外部实体映射到 HANA 计算视图。定义实体结构匹配视图输出，CAP 查询会转发到计算视图。"
+    },
+    {
+      "id": 45,
+      "question": "SAP UI5 的 Control.prototype.invalidate() 方法用于什么？",
+      "options": {
+        "A": "标记控件需要重新渲染",
+        "B": "使控件无效",
+        "C": "删除控件",
+        "D": "禁用控件"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "invalidate() 标记控件为无效状态，触发下次渲染周期重绘。当控件内部状态改变需要更新 DOM 时调用。UI5 会批量处理失效控件以优化性能。"
+    },
+    {
+      "id": 46,
+      "question": "在 BTP 开发中，cf push 的 --strategy 参数用于什么？",
+      "options": {
+        "A": "指定部署策略（rolling、blue-green）",
+        "B": "选择存储策略",
+        "C": "配置缓存策略",
+        "D": "定义路由策略"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "--strategy rolling 实现滚动更新，逐步替换实例；--strategy blue-green（需要 v3 API）支持蓝绿部署。用于生产环境零停机更新。"
+    },
+    {
+      "id": 47,
+      "question": "CAP 中的 @protocol: 'none' 注解用于什么？",
+      "options": {
+        "A": "服务不暴露任何协议端点",
+        "B": "禁用网络",
+        "C": "不使用 HTTPS",
+        "D": "跳过认证"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "@protocol: 'none' 使服务纯内部使用，不暴露 OData 或 REST 端点。用于定义只被其他服务内部调用的业务逻辑。"
+    },
+    {
+      "id": 48,
+      "question": "在 SAP UI5 中，如何处理大量数据的虚拟化渲染？",
+      "options": {
+        "A": "使用 Table 的 growing 特性或 Grid Table",
+        "B": "加载所有数据",
+        "C": "分页显示",
+        "D": "使用图表替代"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "sap.ui.table.Table（Grid Table）支持虚拟滚动，只渲染可见行。sap.m.Table 使用 growing 特性实现渐进加载。避免一次性渲染大量 DOM 元素。"
+    },
+    {
+      "id": 49,
+      "question": "SAP BTP 中的 cf delete-service 命令做什么？",
+      "options": {
+        "A": "删除服务实例",
+        "B": "删除服务定义",
+        "C": "删除服务计划",
+        "D": "删除服务代理"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "cf delete-service <instance-name> 删除服务实例。删除前需要先解绑所有使用此服务的应用（cf unbind-service）。某些服务可能需要 -f 强制删除。"
+    },
+    {
+      "id": 50,
+      "question": "在 CAP 中，如何实现请求速率限制？",
+      "options": {
+        "A": "使用中间件或 API Management",
+        "B": "修改数据库配置",
+        "C": "增加服务器内存",
+        "D": "CAP 不支持速率限制"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "CAP 本身不内置速率限制。可以使用 Express 中间件（如 express-rate-limit）或 SAP API Management 服务在入口处实现 API 速率限制和配额管理。"
+    }
+  ]
+}

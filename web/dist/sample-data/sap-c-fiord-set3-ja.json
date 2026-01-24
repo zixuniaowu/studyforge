@@ -1,0 +1,748 @@
+{
+  "exam": {
+    "id": "sap-c-fiord-set3-ja",
+    "name": "SAP C_FIORD 模擬試験 #3",
+    "code": "C_FIORD",
+    "provider": "SAP",
+    "language": "ja",
+    "description": "SAP Fiori Application Developer認定模擬問題 - 第3套",
+    "totalQuestions": 50,
+    "passingScore": 70,
+    "examTime": 180,
+    "domains": [
+      {
+        "id": 1,
+        "name": "SAPUI5フレームワークとアーキテクチャ",
+        "weight": 20
+      },
+      {
+        "id": 2,
+        "name": "Fioriデザインガイドライン",
+        "weight": 15
+      },
+      {
+        "id": 3,
+        "name": "Fiori Elements",
+        "weight": 20
+      },
+      {
+        "id": 4,
+        "name": "ODataサービスとアノテーション",
+        "weight": 20
+      },
+      {
+        "id": 5,
+        "name": "開発ツールとデプロイメント",
+        "weight": 25
+      }
+    ],
+    "tags": [
+      "SAP",
+      "Fiori",
+      "SAPUI5",
+      "認定試験"
+    ]
+  },
+  "questions": [
+    {
+      "id": "q1",
+      "domain": 1,
+      "question": "SAPUI5におけるRoutingはどのように機能しますか？",
+      "options": {
+        "A": "サーバーサイドリダイレクトを通じて",
+        "B": "URLハッシュの変更によってビューナビゲーションをトリガー",
+        "C": "ページ全体を更新して",
+        "D": "WebSocket接続を通じて"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "SAPUI5 Routingメカニズム：\n- URLハッシュ（#以降の部分）の変更に基づく\n- ページを更新せずにSPAナビゲーションを実現\n- manifest.jsonでルーティングルールを設定\n- パラメータ渡しとネストルーティングをサポート\n- ブラウザ履歴を維持"
+    },
+    {
+      "id": "q2",
+      "domain": 1,
+      "question": "SAPUI5におけるXMLViewとJSViewの違いは何ですか？",
+      "options": {
+        "A": "XMLViewのパフォーマンスが悪い",
+        "B": "XMLViewは宣言的で、JSViewは命令的",
+        "C": "JSViewが公式に推奨される方法",
+        "D": "両者に違いはない"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "SAPUI5ビュータイプの違い：\n- XMLView：宣言的で、より読みやすくメンテナンスしやすい\n- JSView：命令的で、JavaScriptでコントロールを作成\n- XMLViewはSAPが推奨する方法\n- XMLViewはより良いツールサポートと前処理をサポート"
+    },
+    {
+      "id": "q3",
+      "domain": 1,
+      "question": "SAPUI5において、sap.ui.core.BusyIndicatorとコントロールのsetBusyの違いは何ですか？",
+      "options": {
+        "A": "機能は完全に同じ",
+        "B": "BusyIndicatorはグローバルで、setBusyはコントロールレベル",
+        "C": "setBusyはグローバルで、BusyIndicatorはローカル",
+        "D": "両方ともグローバル"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Busyインジケーターの違い：\n- sap.ui.core.BusyIndicator：グローバルなビジーインジケーター、アプリケーション全体をカバー\n- control.setBusy(true)：コントロールレベル、そのコントロールのみを無効化\n- グローバルはページ読み込みに、ローカルは特定の操作に使用"
+    },
+    {
+      "id": "q4",
+      "domain": 1,
+      "question": "SAPUI5においてCustom Control内のMetadataは何に使用されますか？",
+      "options": {
+        "A": "ビジネスデータを保存",
+        "B": "コントロールのプロパティ、アグリゲーション、イベント、アソシエーションを定義",
+        "C": "サーバー接続を設定",
+        "D": "ユーザーセッションを管理"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "SAPUI5 Control Metadata定義：\n- properties：コントロールプロパティ（text、visibleなど）\n- aggregations：子コントロールのコレクション\n- events：トリガー可能なイベント\n- associations：他のコントロールとのアソシエーション\n- コントロールAPIのブループリント"
+    },
+    {
+      "id": "q5",
+      "domain": 1,
+      "question": "SAPUI5アプリケーションで国際化（i18n）日付と数値のフォーマットをどのように実装しますか？",
+      "options": {
+        "A": "手動でフォーマットコードを作成",
+        "B": "sap.ui.core.formatライブラリを使用",
+        "C": "正規表現を使用",
+        "D": "ブラウザ設定に依存"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "SAPUI5フォーマットクラスライブラリ：\n- DateFormat：日付フォーマット\n- NumberFormat：数値と通貨のフォーマット\n- ユーザーのロケール設定に自動適応\n- カスタムフォーマットパターンをサポート"
+    },
+    {
+      "id": "q6",
+      "domain": 2,
+      "question": "SAP Fioriの'Personalization'機能には何が含まれますか？（2つ選択）",
+      "options": {
+        "A": "ユーザーがテーブル列の順序を調整可能",
+        "B": "ユーザーがバックエンドコードを変更可能",
+        "C": "ユーザーがフィルター条件を保存可能",
+        "D": "ユーザーがデータベース構造を変更可能"
+      },
+      "answer": ["A", "C"],
+      "answerType": "multiple",
+      "explanation": "Fioriパーソナライゼーション機能：\n- テーブル列の順序と表示を調整\n- フィルターと並べ替え条件を保存\n- カスタムビューバリアントを作成\n- バックエンドコードやデータベース変更は含まれない"
+    },
+    {
+      "id": "q7",
+      "domain": 2,
+      "question": "Fioriアプリケーションにおいて、Footer Barには通常どのタイプのボタンが配置されますか？",
+      "options": {
+        "A": "ナビゲーションボタン",
+        "B": "アクションボタン（保存、キャンセルなど）",
+        "C": "検索ボタン",
+        "D": "ヘルプボタン"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Footer Barの使用原則：\n- 主要なアクションボタン（Save、Cancelなど）を配置\n- ページレベルの操作に使用\n- 右から左へ重要度順に配置\n- モバイルデバイスでのアクセシビリティを確保"
+    },
+    {
+      "id": "q8",
+      "domain": 2,
+      "question": "SAP Fioriの'Responsive Padding'とは何の概念ですか？",
+      "options": {
+        "A": "固定のパディング",
+        "B": "画面サイズに応じて自動調整されるスペーシング",
+        "C": "マージン設定",
+        "D": "ボーダー幅"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Responsive Paddingの特性：\n- デバイスの画面サイズに応じて自動調整\n- デスクトップでは大きく、モバイルでは小さく\n- sapUiResponsivePaddingなどのCSSクラスを使用\n- 異なるデバイスで最適な視覚効果を確保"
+    },
+    {
+      "id": "q9",
+      "domain": 2,
+      "question": "Fioriデザインにおいて、'Cozy'と'Compact'モードとは何ですか？",
+      "options": {
+        "A": "2種類のデータ圧縮方式",
+        "B": "2種類のコントロール密度で、異なる入力方式に適している",
+        "C": "2種類のコーディングスタイル",
+        "D": "2種類のデプロイメントモード"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "コントロール密度モード：\n- Cozy：大きなコントロールとスペーシング、タッチ操作に適している\n- Compact：小さなコントロールとスペーシング、マウス操作に適している\n- CSSクラスで切り替え可能\n- 異なるデバイスでのユーザー体験を向上"
+    },
+    {
+      "id": "q10",
+      "domain": 2,
+      "question": "SAP Fioriアプリケーションにおいて、Navigation Barの主な用途は何ですか？",
+      "options": {
+        "A": "広告を表示",
+        "B": "アプリ内の異なるページ間をナビゲート",
+        "C": "時刻を表示",
+        "D": "音楽を再生"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Navigation Barの機能：\n- アプリ内ページナビゲーションを提供\n- 現在位置を表示（パンくずリスト）\n- クイックジャンプをサポート\n- Fiori Launchpadで統合管理"
+    },
+    {
+      "id": "q11",
+      "domain": 3,
+      "question": "Fiori Elementsでテーブルのデフォルト表示列をどのように定義しますか？",
+      "options": {
+        "A": "CSSで設定",
+        "B": "@UI.lineItemアノテーションを使用しimportanceを設定",
+        "C": "JavaScriptでコーディング",
+        "D": "HTMLで設定"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "@UI.lineItemの設定：\n- position：列の順序\n- importance：High/Medium/Low\n- High重要度の列はデフォルトで表示\n- Low重要度の列は小さい画面で非表示"
+    },
+    {
+      "id": "q12",
+      "domain": 3,
+      "question": "Fiori Elementsアプリケーションでフォームバリデーションをどのように実装しますか？",
+      "options": {
+        "A": "フロントエンドJavaScriptでのみバリデーション",
+        "B": "CDSアノテーションとバックエンドバリデーションを組み合わせ",
+        "C": "バリデーションはサポートされない",
+        "D": "バックエンドでのみバリデーション"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Fiori Elementsバリデーションメカニズム：\n- @assertアノテーションで制約を定義\n- バックエンドから返されたエラーを自動表示\n- 必須フィールドは@Mandatoryでマーク\n- フロントエンドとバックエンドを組み合わせてデータ整合性を確保"
+    },
+    {
+      "id": "q13",
+      "domain": 3,
+      "question": "Fiori Elementsでカスタムフィルターフィールドを追加するにはどうしますか？",
+      "options": {
+        "A": "sap.mライブラリを変更",
+        "B": "manifest.jsonのcontrolConfiguration拡張を使用",
+        "C": "新しいデータベーステーブルを作成",
+        "D": "追加不可能"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "カスタムフィルターの設定：\n- manifest.jsonでcontrolConfigurationを使用\n- filterFieldsの設定を指定\n- フィルターフィールドの追加、削除、変更が可能\n- 宣言的な開発スタイルを維持"
+    },
+    {
+      "id": "q14",
+      "domain": 3,
+      "question": "Fiori ElementsのTree Tableはどのようなタイプのデータ表示をサポートしますか？",
+      "options": {
+        "A": "フラットデータのみをサポート",
+        "B": "階層構造データ",
+        "C": "2レベルのデータのみをサポート",
+        "D": "どのデータもサポートしない"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Tree Tableの特性：\n- 階層構造データを表示\n- ノードの展開/折りたたみをサポート\n- バックエンドが階層関係を提供する必要がある\n- 組織構造、製品カタログなどのシナリオに適している"
+    },
+    {
+      "id": "q15",
+      "domain": 3,
+      "question": "Fiori ElementsのMicro Chartはどのような目的で使用されますか？",
+      "options": {
+        "A": "完全な分析レポートを表示",
+        "B": "限られたスペース内で主要指標を素早く可視化",
+        "C": "ビデオを再生",
+        "D": "地図を表示"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Micro Chartの特徴：\n- 小型でコンパクトなチャート\n- 主要なデータトレンドを素早く伝える\n- テーブルセルやカード内に適している\n- タイプにはBullet、Radial、Lineなどが含まれる"
+    },
+    {
+      "id": "q16",
+      "domain": 4,
+      "question": "ODataサービスにおける$searchパラメータの役割は何ですか？",
+      "options": {
+        "A": "メタデータを検索",
+        "B": "すべての検索可能フィールドで全文検索を実行",
+        "C": "ファイルシステムを検索",
+        "D": "ユーザーを検索"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "$searchパラメータの機能：\n- 複数のフィールドにまたがる全文検索\n- サーバーがどのフィールドを検索するか決定\n- $filterよりシンプルな検索方法\n- バックエンドのサポートが必要"
+    },
+    {
+      "id": "q17",
+      "domain": 4,
+      "question": "CDSビューにおける@Analytics.dataCategoryアノテーションの役割は何ですか？",
+      "options": {
+        "A": "データ保存場所を定義",
+        "B": "ビューの分析タイプ（CUBE、DIMENSIONなど）を識別",
+        "C": "データ暗号化を設定",
+        "D": "データバックアップを設定"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "@Analytics.dataCategoryアノテーション：\n- #CUBE：多次元分析ファクトデータ\n- #DIMENSION：ディメンションデータ\n- #FACT：ファクトデータ\n- 分析アプリケーションとレポートに使用"
+    },
+    {
+      "id": "q18",
+      "domain": 4,
+      "question": "ODataサービスにおいて、$applyパラメータはどのような操作をサポートしますか？（2つ選択）",
+      "options": {
+        "A": "groupby（グループ化）",
+        "B": "encrypt（暗号化）",
+        "C": "aggregate（集計）",
+        "D": "compress（圧縮）"
+      },
+      "answer": ["A", "C"],
+      "answerType": "multiple",
+      "explanation": "OData V4 $applyがサポートする変換：\n- groupby：フィールドでグループ化\n- aggregate：集計計算（sum、averageなど）\n- filter：変換内でフィルタリング\n- 分析とレポートのシナリオに使用"
+    },
+    {
+      "id": "q19",
+      "domain": 4,
+      "question": "CDSアノテーション@UI.chartはどのような目的で使用されますか？",
+      "options": {
+        "A": "文字セットを定義",
+        "B": "分析チャートの設定を定義",
+        "C": "画像の位置を定義",
+        "D": "ドキュメント構造を定義"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "@UI.chartアノテーション：\n- チャートタイプ（棒グラフ、折れ線グラフなど）を定義\n- メジャーとディメンションを指定\n- チャートのタイトルと説明を設定\n- Analytical List PageとOverview Pageに使用"
+    },
+    {
+      "id": "q20",
+      "domain": 4,
+      "question": "CDSビューでエンティティ間の1:N関係をどのように定義しますか？",
+      "options": {
+        "A": "@OneToManyアノテーションを使用",
+        "B": "associationまたはcompositionで定義",
+        "C": "外部キー制約を使用",
+        "D": "定義不可能"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "CDSアソシエーションの定義：\n- association to *: 1:Nアソシエーション\n- composition of *: 1:Nコンポジション\n- on条件で関連フィールドを指定\n- cardinalityを設定可能"
+    },
+    {
+      "id": "q21",
+      "domain": 4,
+      "question": "ODataサービスにおけるDelta Tokenは何に使用されますか？",
+      "options": {
+        "A": "ユーザー認証",
+        "B": "増分データ同期、変更されたデータのみを取得",
+        "C": "データ暗号化",
+        "D": "セッション管理"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Delta Tokenの機能：\n- データスナップショットのタイムポイントをマーク\n- 後続のリクエストは変更データのみを返す\n- データ転送量を削減\n- データ同期シナリオに適している"
+    },
+    {
+      "id": "q22",
+      "domain": 5,
+      "question": "SAP Business Application StudioのPage Editorは何に使用されますか？",
+      "options": {
+        "A": "HTMLページを編集",
+        "B": "Fiori Elementsページをビジュアルで設定",
+        "C": "PDFドキュメントを編集",
+        "D": "データベースを編集"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Page Editorの機能：\n- Fiori Elementsページをビジュアルで設定\n- ドラッグ&ドロップでフィールドと領域を追加\n- アノテーションを手動で書く必要なし\n- 設定を自動的にmanifest.jsonに生成"
+    },
+    {
+      "id": "q23",
+      "domain": 5,
+      "question": "FioriアプリケーションのAdaptation Projectとは何ですか？",
+      "options": {
+        "A": "新規プロジェクト",
+        "B": "SAP標準Fioriアプリケーションを拡張するプロジェクト",
+        "C": "データ移行プロジェクト",
+        "D": "テストプロジェクト"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Adaptation Projectの特徴：\n- SAP標準Fioriアプリケーションをベース\n- 元のコードを変更せずにカスタム拡張を追加\n- アップグレードセーフ\n- Adaptation Editorで設定"
+    },
+    {
+      "id": "q24",
+      "domain": 5,
+      "question": "SAP FioriアプリケーションにおけるContent Densityとは何を指しますか？",
+      "options": {
+        "A": "データ密度",
+        "B": "UIコントロールのスペーシングとサイズ設定（Cozy/Compact）",
+        "C": "ファイル圧縮率",
+        "D": "ネットワーク帯域幅"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Content Densityの設定：\n- Cozy：タッチ操作に適した大きなコントロール\n- Compact：マウス操作に適したコンパクトなコントロール\n- manifest.jsonで設定可能\n- アプリケーション全体の視覚的な表現に影響"
+    },
+    {
+      "id": "q25",
+      "domain": 5,
+      "question": "SAPUI5アプリケーションにおけるxs-app.jsonファイルは何に使用されますか？",
+      "options": {
+        "A": "アプリケーションスタイルを定義",
+        "B": "Application Routerのルーティングルールを設定",
+        "C": "ユーザーデータを保存",
+        "D": "データベース接続を定義"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "xs-app.jsonの用途：\n- Application Routerを設定\n- URLルーティングルールを定義\n- 認証要件を設定\n- バックエンドサービスプロキシを設定"
+    },
+    {
+      "id": "q26",
+      "domain": 5,
+      "question": "SAP FioriのTileにはどのようなタイプがありますか？（2つ選択）",
+      "options": {
+        "A": "Static Tile（静的タイル）",
+        "B": "Video Tile（ビデオタイル）",
+        "C": "Dynamic Tile（動的タイル）",
+        "D": "Audio Tile（オーディオタイル）"
+      },
+      "answer": ["A", "C"],
+      "answerType": "multiple",
+      "explanation": "Fiori Tileのタイプ：\n- Static Tile：固定コンテンツのタイル\n- Dynamic Tile：リアルタイムデータを表示するタイル\n- KPI Tile：主要指標を表示\n- News Tile：ニュース情報を表示"
+    },
+    {
+      "id": "q27",
+      "domain": 1,
+      "question": "SAPUI5のsap.ui.core.theming.Parametersは何に使用されますか？",
+      "options": {
+        "A": "サーバーパラメータを設定",
+        "B": "現在のテーマのCSS変数値を取得",
+        "C": "ユーザーパラメータを設定",
+        "D": "ネットワークパラメータを設定"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Theming Parametersの用途：\n- 現在のテーマの色、フォントなどのCSS値を取得\n- JavaScriptでテーマ変数を使用\n- カスタムスタイルがテーマと一貫していることを確保\n- ランタイムでのテーマ切り替えをサポート"
+    },
+    {
+      "id": "q28",
+      "domain": 1,
+      "question": "SAPUI5のListBindingとContextBindingの違いは何ですか？",
+      "options": {
+        "A": "ListBindingは単一オブジェクトに使用、ContextBindingはコレクションに使用",
+        "B": "ListBindingはコレクションに使用、ContextBindingは単一オブジェクトに使用",
+        "C": "両者は完全に同じ",
+        "D": "どちらもデータバインディングには使用されない"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "SAPUI5バインディングタイプ：\n- ListBinding：データコレクションにバインド（/Ordersなど）\n- ContextBinding：単一エンティティにバインド（/Orders(1)など）\n- PropertyBinding：単一プロパティにバインド"
+    },
+    {
+      "id": "q29",
+      "domain": 1,
+      "question": "SAPUI5でディープリンク（Deep Linking）をどのように実装しますか？",
+      "options": {
+        "A": "iframeを使用",
+        "B": "Routerでハッシュパラメータを設定",
+        "C": "Cookieを使用",
+        "D": "ブラウザ履歴を無効化"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "ディープリンクの実装：\n- Routerでパラメータ付きルートを定義\n- URLハッシュにページとパラメータ情報を含める\n- ユーザーがアプリ内の特定ページに直接アクセス可能\n- ブックマークとリンク共有をサポート"
+    },
+    {
+      "id": "q30",
+      "domain": 1,
+      "question": "SAPUI5のObjectStatusコントロールは何に使用されますか？",
+      "options": {
+        "A": "オブジェクトのメモリ状態を表示",
+        "B": "ビジネスオブジェクトの状態情報を表示",
+        "C": "ネットワーク接続状態を表示",
+        "D": "ユーザーのオンライン状態を表示"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "ObjectStatusコントロール：\n- ビジネス状態を表示（注文状態など）\n- セマンティックカラー（成功、警告、エラー）をサポート\n- アイコンとテキストを含むことができる\n- リストとObject Pageでよく使用される"
+    },
+    {
+      "id": "q31",
+      "domain": 2,
+      "question": "SAP FioriのSplit Screenレイアウトはどのデバイスに適していますか？",
+      "options": {
+        "A": "スマートフォンのみ",
+        "B": "デスクトップPCのみ",
+        "C": "タブレットとデスクトップデバイス",
+        "D": "スマートウォッチのみ"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "Split Screenレイアウトの特徴：\n- 左右2列を同時に表示\n- 大きな画面のデバイスに適している\n- スマートフォンでは自動的にフルスクリーンに切り替わる\n- 作業効率を向上"
+    },
+    {
+      "id": "q32",
+      "domain": 2,
+      "question": "Fioriデザインの'Wizard'コントロールはどのようなシナリオに適していますか？",
+      "options": {
+        "A": "シンプルなデータクエリ",
+        "B": "ステップバイステップの複雑なプロセス",
+        "C": "リアルタイムデータ監視",
+        "D": "ドキュメント閲覧"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Wizardコントロールの適用シナリオ：\n- マルチステップの複雑なタスク\n- ユーザーをプロセス完了に導く\n- 進捗インジケーターを表示\n- ステップバリデーションとナビゲーションをサポート"
+    },
+    {
+      "id": "q33",
+      "domain": 2,
+      "question": "SAP Fioriの'Global Actions'はどこに配置すべきですか？",
+      "options": {
+        "A": "ページ下部中央",
+        "B": "Shell Barまたはページ右上",
+        "C": "サイドバー下部",
+        "D": "ページ左下"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Global Actionsの位置：\n- Shell Bar内のグローバルアクション\n- ページ右上のアクションボタン\n- 設定、ヘルプ、ユーザーメニューなど\n- アプリケーション全体でアクセス可能"
+    },
+    {
+      "id": "q34",
+      "domain": 3,
+      "question": "Fiori ElementsのValue Helpダイアログをどのように設定しますか？",
+      "options": {
+        "A": "HTMLで設定",
+        "B": "CDSアノテーション@Consumption.valueHelpDefinitionを使用",
+        "C": "CSSで設定",
+        "D": "設定不可能"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Value Helpの設定：\n- @Consumption.valueHelpDefinitionアノテーションを使用\n- 値ヘルプエンティティとフィールドマッピングを指定\n- 依存値ヘルプをサポート\n- 検索とフィルタリングを自動統合"
+    },
+    {
+      "id": "q35",
+      "domain": 3,
+      "question": "Fiori Elements List Reportでエクスポート機能をどのように実装しますか？",
+      "options": {
+        "A": "完全にカスタム開発が必要",
+        "B": "組み込みサポートがあり、設定で有効化",
+        "C": "エクスポートはサポートされない",
+        "D": "バックエンドの変更が必要"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "List Reportのエクスポート機能：\n- 組み込みのExcelエクスポートサポート\n- manifest.jsonで有効化\n- エクスポートする列とデータ量を設定可能\n- カスタムコード不要"
+    },
+    {
+      "id": "q36",
+      "domain": 3,
+      "question": "Fiori ElementsでObject PageのSectionのデフォルト折りたたみ状態をどのように実装しますか？",
+      "options": {
+        "A": "JavaScriptで制御",
+        "B": "@UI.facetアノテーションのinitiallyExpandedプロパティを使用",
+        "C": "CSSを使用",
+        "D": "制御不可能"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Section折りたたみ状態の設定：\n- @UI.facetアノテーションを使用\n- initiallyExpandedプロパティで初期状態を設定\n- trueで展開、falseで折りたたみ\n- ユーザー体験を向上"
+    },
+    {
+      "id": "q37",
+      "domain": 4,
+      "question": "ODataサービスのActionとFunctionはURLでどのように呼び出しますか？",
+      "options": {
+        "A": "両方ともGETメソッドを使用",
+        "B": "FunctionはGET、ActionはPOSTを使用",
+        "C": "両方ともPOSTメソッドを使用",
+        "D": "DELETEメソッドを使用"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "OData操作の呼び出し方式：\n- Function：GETメソッドを使用、副作用なし\n- Action：POSTメソッドを使用、副作用の可能性あり\n- URL形式：/EntitySet(key)/Namespace.ActionName"
+    },
+    {
+      "id": "q38",
+      "domain": 4,
+      "question": "CDSアノテーション@UI.fieldGroupはどのような目的で使用されますか？",
+      "options": {
+        "A": "データベースフィールドをグループ化",
+        "B": "Object Pageで関連フィールドをグループ化して表示",
+        "C": "ユーザーをグループ化",
+        "D": "サービスをグループ化"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "@UI.fieldGroupアノテーション：\n- 関連フィールドをグループ化\n- Object Pageで1つのユニットとして表示\n- qualifierで異なるグループを区別\n- フォームの可読性を向上"
+    },
+    {
+      "id": "q39",
+      "domain": 4,
+      "question": "ODataサービスの$orderbyパラメータで降順並べ替えをどのように指定しますか？",
+      "options": {
+        "A": "$orderby=Field -",
+        "B": "$orderby=Field desc",
+        "C": "$orderby=Field DESC()",
+        "D": "$orderby=-Field"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "$orderby構文：\n- 昇順：$orderby=Field または $orderby=Field asc\n- 降順：$orderby=Field desc\n- 複数フィールド：$orderby=Field1 asc, Field2 desc"
+    },
+    {
+      "id": "q40",
+      "domain": 4,
+      "question": "CDSビューにおける@ObjectModel.transactionalProcessingEnabledアノテーションの役割は何ですか？",
+      "options": {
+        "A": "ロギングを有効化",
+        "B": "作成・更新・削除操作のサポートを有効化",
+        "C": "キャッシュを有効化",
+        "D": "圧縮を有効化"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "@ObjectModel.transactionalProcessingEnabled：\n- trueに設定してトランザクション処理を有効化\n- Create、Update、Delete操作をサポート\n- 他のアノテーションと組み合わせて使用する必要がある\n- 編集可能なビジネスエンティティに使用"
+    },
+    {
+      "id": "q41",
+      "domain": 5,
+      "question": "SAP Fioriアプリケーションテストにおいて、OPA5はどのタイプのテストに使用されますか？",
+      "options": {
+        "A": "単体テスト",
+        "B": "統合テストとエンドツーエンドテスト",
+        "C": "負荷テスト",
+        "D": "セキュリティテスト"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "OPA5テストフレームワーク：\n- UI統合テストに使用\n- ユーザーインタラクションをシミュレート\n- ページ要素とフローを検証\n- 非同期操作テストをサポート"
+    },
+    {
+      "id": "q42",
+      "domain": 5,
+      "question": "SAP FioriアプリケーションにおけるQUnitは何に使用されますか？",
+      "options": {
+        "A": "UIスタイルテスト",
+        "B": "JavaScript単体テスト",
+        "C": "パフォーマンステスト",
+        "D": "セキュリティテスト"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "QUnitテストフレームワーク：\n- JavaScript単体テスト\n- 関数とモジュールをテスト\n- ビジネスロジックを検証\n- Sinonと組み合わせてモックを実行"
+    },
+    {
+      "id": "q43",
+      "domain": 5,
+      "question": "FioriアプリケーションのCache Busterとは何ですか？",
+      "options": {
+        "A": "キャッシュクリーニングツール",
+        "B": "ブラウザが最新バージョンのリソースを読み込むことを確保するメカニズム",
+        "C": "CPUアクセラレーター",
+        "D": "メモリオプティマイザー"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Cache Busterメカニズム：\n- URLにバージョンパラメータを追加\n- アプリケーション更新後に新しいリソースを読み込むことを確保\n- ブラウザが古いバージョンをキャッシュすることを防止\n- ビルド時に自動生成"
+    },
+    {
+      "id": "q44",
+      "domain": 1,
+      "question": "SAPUI5のPlugInメカニズムは何に使用されますか？",
+      "options": {
+        "A": "外部ハードウェアに接続",
+        "B": "診断やサポートなどのコア機能を拡張",
+        "C": "ビデオを再生",
+        "D": "データベースを管理"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "SAPUI5 PlugIn：\n- コア機能を拡張\n- Support Assistant、Diagnosticsなど\n- ブートストラップ時に読み込み\n- 開発とデバッグのサポートを提供"
+    },
+    {
+      "id": "q45",
+      "domain": 2,
+      "question": "Fioriデザインの'Input Assistance'には何が含まれますか？（2つ選択）",
+      "options": {
+        "A": "Value Help（値ヘルプ）",
+        "B": "Type-ahead（タイプアヘッド）",
+        "C": "音声入力",
+        "D": "ジェスチャー認識"
+      },
+      "answer": ["A", "B"],
+      "answerType": "multiple",
+      "explanation": "Input Assistanceの機能：\n- Value Help：ポップアップ選択ダイアログ\n- Type-ahead：入力時の自動候補表示\n- データ入力効率を向上\n- 入力エラーを削減"
+    },
+    {
+      "id": "q46",
+      "domain": 3,
+      "question": "Fiori ElementsのChart Visualizationはどのようなチャートタイプをサポートしますか？（2つ選択）",
+      "options": {
+        "A": "Column Chart（棒グラフ）",
+        "B": "3Dアニメーション",
+        "C": "Line Chart（折れ線グラフ）",
+        "D": "バーチャルリアリティチャート"
+      },
+      "answer": ["A", "C"],
+      "answerType": "multiple",
+      "explanation": "Fiori Elementsがサポートするチャート：\n- Column Chart：棒グラフ\n- Line Chart：折れ線グラフ\n- Pie Chart：円グラフ\n- Donut Chart：ドーナツグラフ\n- Bubble Chart：バブルチャート"
+    },
+    {
+      "id": "q47",
+      "domain": 4,
+      "question": "ODataサービスの$selectパラメータのパフォーマンス最適化効果は何ですか？",
+      "options": {
+        "A": "データベースを選択",
+        "B": "指定したフィールドのみを返し、データ転送を削減",
+        "C": "サーバーを選択",
+        "D": "ユーザーを選択"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "$selectパフォーマンス最適化：\n- 必要なフィールドのみを返す\n- ネットワーク転送量を削減\n- バックエンドの負荷を軽減\n- 例：?$select=Name,Price"
+    },
+    {
+      "id": "q48",
+      "domain": 4,
+      "question": "CDSアノテーション@Consumption.filterはどのように使用しますか？",
+      "options": {
+        "A": "ファイルフィルタリングを設定",
+        "B": "フィールドがフィルター条件として使用できるかを制御",
+        "C": "ログをフィルタリング",
+        "D": "ユーザーをフィルタリング"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "@Consumption.filterアノテーション：\n- #MANDATORY：フィルタリング必須\n- #INTERVAL：区間フィルタリング\n- hidden: trueでフィルターオプションを非表示\n- Filter Bar内のフィルタリング動作を制御"
+    },
+    {
+      "id": "q49",
+      "domain": 5,
+      "question": "SAP Fioriアプリケーションの Accessibility（アクセシビリティ）サポートには何が含まれますか？",
+      "options": {
+        "A": "視覚表示のみをサポート",
+        "B": "ARIAラベル、キーボードナビゲーション、スクリーンリーダーサポート",
+        "C": "マウス操作のみをサポート",
+        "D": "アクセシビリティ機能はサポートされない"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Fioriアクセシビリティサポート：\n- ARIAラベルとロール\n- 完全なキーボードナビゲーション\n- スクリーンリーダー互換\n- ハイコントラストテーマ\n- WCAG標準に準拠"
+    },
+    {
+      "id": "q50",
+      "domain": 5,
+      "question": "SAP BTP CockpitでFioriアプリケーションの稼働状況をどのように監視しますか？",
+      "options": {
+        "A": "コードのみ閲覧可能",
+        "B": "Application LogsとMetricsで監視",
+        "C": "監視不可能",
+        "D": "メール送信のみ可能"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "BTPアプリケーション監視：\n- Application Logs：実行ログを閲覧\n- Metrics：パフォーマンス指標の監視\n- Audit Log：監査ログ\n- Health Check：ヘルスチェック"
+    }
+  ]
+}

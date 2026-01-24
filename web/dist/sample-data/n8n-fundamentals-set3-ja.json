@@ -1,0 +1,772 @@
+{
+  "exam": {
+    "id": "n8n-fundamentals-set3-ja",
+    "name": "n8n 基礎 模擬試験 #3",
+    "code": "N8N-FUND",
+    "provider": "n8n",
+    "language": "ja",
+    "description": "n8n ワークフロー自動化プラットフォーム基礎認定 - 第3セット",
+    "totalQuestions": 50,
+    "passingScore": 70,
+    "examTime": 60,
+    "domains": [
+      { "id": 1, "name": "n8n Basics", "weight": 25 },
+      { "id": 2, "name": "Workflow Design", "weight": 25 },
+      { "id": 3, "name": "Nodes and Connections", "weight": 25 },
+      { "id": 4, "name": "Data Handling", "weight": 25 }
+    ],
+    "tags": ["n8n", "workflow", "automation", "認定試験"]
+  },
+  "questions": [
+    {
+      "id": "q1",
+      "domain": 1,
+      "question": "n8n の開発言語は何ですか？",
+      "options": {
+        "A": "Python",
+        "B": "Java",
+        "C": "TypeScript",
+        "D": "Go"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "n8n は TypeScript で開発されており、これは型安全性を提供する JavaScript のスーパーセットです。バックエンドは Node.js で実行され、フロントエンドは Vue.js フレームワークを使用しています。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q2",
+      "domain": 1,
+      "question": "n8n の実行履歴はデフォルトでどのくらいの期間保存されますか？",
+      "options": {
+        "A": "永久に保存",
+        "B": "設定とストレージ容量に依存",
+        "C": "最後の1回のみ保存",
+        "D": "24時間"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "n8n の実行履歴の保存期間は設定とストレージ容量に依存します。EXECUTIONS_DATA_MAX_AGE などの環境変数で保存期間を設定したり、実行数の制限を設定したりできます。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q3",
+      "domain": 1,
+      "question": "n8n でノードの利用可能なバージョンを表示するにはどうすればよいですか？",
+      "options": {
+        "A": "npm でクエリする",
+        "B": "ノード設定で Node Version オプションを確認する",
+        "C": "バージョンは1つだけ",
+        "D": "API でクエリする"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "一部のノードには複数のバージョンがあり、ノード設定の Node Version オプションで確認および切り替えできます。異なるバージョンには異なる機能やパラメータオプションがある場合があります。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q4",
+      "domain": 1,
+      "question": "n8n はどのタイプの API を提供していますか？",
+      "options": {
+        "A": "GraphQL API",
+        "B": "REST API",
+        "C": "SOAP API",
+        "D": "gRPC API"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "n8n は REST API を提供しており、ワークフロー、実行、認証情報などをプログラムで管理できます。API を使用するには API キーを設定して認証する必要があります。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q5",
+      "domain": 1,
+      "question": "n8n のタイムゾーンを設定するために使用される環境変数はどれですか？",
+      "options": {
+        "A": "N8N_TIME",
+        "B": "GENERIC_TIMEZONE",
+        "C": "N8N_TZ",
+        "D": "TIMEZONE"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "GENERIC_TIMEZONE 環境変数は n8n のタイムゾーンを設定するために使用されます。例えば GENERIC_TIMEZONE=Asia/Tokyo。これはスケジュールトリガーや日時表示に影響します。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q6",
+      "domain": 2,
+      "question": "ワークフローの Sharing 機能で何ができますか？",
+      "options": {
+        "A": "ワークフローをインターネットに公開する",
+        "B": "他の n8n ユーザーとワークフローへのアクセス権を共有する",
+        "C": "ワークフローへのリンクを生成する",
+        "D": "ワークフローテンプレートをエクスポートする"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Sharing 機能は、他の n8n ユーザーとワークフローへのアクセス権を共有できます。読み取り専用や編集など、異なる権限レベルを設定して、チームコラボレーションを実現できます。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q7",
+      "domain": 2,
+      "question": "ワークフローで変数を使用するにはどうすればよいですか？（2つ選択）",
+      "options": {
+        "A": "式 {{ $vars.variableName }} を使用",
+        "B": "環境変数を使用",
+        "C": "ノード出力のみ使用可能",
+        "D": "変数はサポートされていない"
+      },
+      "answer": ["A", "B"],
+      "answerType": "multiple",
+      "explanation": "n8n は変数の使用をサポートしており、{{ $vars.variableName }} で Settings > Variables で定義した変数にアクセスしたり、環境変数で設定値を渡したりできます。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q8",
+      "domain": 2,
+      "question": "ワークフローの 'Save Execution Progress' 設定にはどのような役割がありますか？",
+      "options": {
+        "A": "現在の進行状況を保存して続行する",
+        "B": "実行中に各ノードのデータを保存し、長いワークフローのデバッグに役立つ",
+        "C": "ワークフロー設計を自動保存する",
+        "D": "ユーザー操作履歴を保存する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "'Save Execution Progress' 設定は、実行中に各ノードのデータを保存します。長時間実行されるワークフローでは、途中で失敗しても完了したノードの出力データを確認できます。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q9",
+      "domain": 2,
+      "question": "n8n の 'Always Output Data' ノード設定とは何ですか？",
+      "options": {
+        "A": "空のデータを強制的に出力する",
+        "B": "マッチするデータがなくても空の item を出力する",
+        "C": "常にすべてのデータを出力する",
+        "D": "すべてのエラーを無視する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "'Always Output Data' 設定は、ノードがマッチするデータがなくても空の item を出力するようにします。これにより、下流ノードが入力がないために実行されないことを防ぎます。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q10",
+      "domain": 2,
+      "question": "Error Workflow 設定の役割は何ですか？",
+      "options": {
+        "A": "エラー情報を表示する",
+        "B": "ワークフロー実行が失敗したときに指定されたエラー処理ワークフローをトリガーする",
+        "C": "エラーログを記録する",
+        "D": "エラーメールを送信する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Error Workflow 設定は、現在のワークフローの実行が失敗したときに自動的にトリガーされるワークフローを指定できます。通知の送信、ログの記録、クリーンアップ操作の実行に使用できます。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q11",
+      "domain": 3,
+      "question": "Notion ノードはどのリソースを操作できますか？（2つ選択）",
+      "options": {
+        "A": "ページ (Page)",
+        "B": "データベース (Database)",
+        "C": "ユーザーアカウント",
+        "D": "ワークスペース設定"
+      },
+      "answer": ["A", "B"],
+      "answerType": "multiple",
+      "explanation": "Notion ノードはページとデータベースリソースを操作でき、ページやデータベースレコードの作成、読み取り、更新が含まれます。ユーザーアカウントとワークスペース設定は通常 Notion インターフェースで管理します。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q12",
+      "domain": 3,
+      "question": "Telegram ノードはどのタイプのメッセージを送信できますか？（3つ選択）",
+      "options": {
+        "A": "テキストメッセージ",
+        "B": "画像",
+        "C": "位置情報",
+        "D": "銀行振込"
+      },
+      "answer": ["A", "B", "C"],
+      "answerType": "multiple",
+      "explanation": "Telegram ノードは、テキスト、画像、ドキュメント、オーディオ、ビデオ、位置情報、連絡先など、複数のタイプのメッセージの送信をサポートしています。銀行振込はメッセージタイプではありません。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q13",
+      "domain": 3,
+      "question": "Google Sheets ノードの 'Append' 操作は何をしますか？",
+      "options": {
+        "A": "新しいワークシートを作成する",
+        "B": "テーブルの末尾に新しい行を追加する",
+        "C": "2つのテーブルをマージする",
+        "D": "空白行を削除する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Google Sheets ノードの 'Append' 操作は、テーブルの末尾に新しい行を追加するために使用されます。これは新しいデータレコードを追加する一般的な方法で、既存のデータを上書きしません。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q14",
+      "domain": 3,
+      "question": "FTP ノードはどのような操作をサポートしていますか？（2つ選択）",
+      "options": {
+        "A": "ファイルのアップロード",
+        "B": "ファイルのダウンロード",
+        "C": "ファイルの圧縮",
+        "D": "ファイルの暗号化"
+      },
+      "answer": ["A", "B"],
+      "answerType": "multiple",
+      "explanation": "FTP ノードは、ファイルのアップロード、ダウンロード、ディレクトリのリスト、ファイルの削除など、基本的な FTP 操作をサポートしています。圧縮と暗号化には他のノードが必要です。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q15",
+      "domain": 3,
+      "question": "Compression ノードは何ができますか？",
+      "options": {
+        "A": "画像の圧縮のみ",
+        "B": "ファイルの圧縮と解凍（ZIP、GZIP など）",
+        "C": "データベースの圧縮",
+        "D": "ビデオの圧縮"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Compression ノードはファイルの圧縮と解凍に使用され、ZIP、GZIP、TAR などのフォーマットをサポートしています。複数のファイルを圧縮アーカイブにパッケージ化したり、既存の圧縮ファイルを解凍したりできます。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q16",
+      "domain": 3,
+      "question": "HTML Extract ノードの用途は何ですか？",
+      "options": {
+        "A": "HTML ページを作成する",
+        "B": "HTML コンテンツから特定のデータを抽出する",
+        "C": "HTML フォーマットを検証する",
+        "D": "HTML コードを整形する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "HTML Extract ノードは、CSS セレクターを使用して要素を特定し、HTML コンテンツから特定のデータを抽出するために使用されます。Web スクレイピングシナリオでよく使用され、タイトル、リンク、テキストなどを抽出します。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q17",
+      "domain": 3,
+      "question": "Interval ノードの役割は何ですか？",
+      "options": {
+        "A": "時間間隔を計算する",
+        "B": "固定の時間間隔でワークフローをトリガーする",
+        "C": "実行を遅延させる",
+        "D": "外部イベントを待つ"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Interval ノード（現在は Schedule Trigger に置き換えられています）は、5分ごと、毎時など、固定の時間間隔でワークフローをトリガーするために使用されます。定時タスクを実装するための基礎です。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q18",
+      "domain": 4,
+      "question": "式で2つの文字列を連結するにはどうすればよいですか？",
+      "options": {
+        "A": "& 記号を使用",
+        "B": "+ 演算子またはテンプレート文字列を使用",
+        "C": ". 記号を使用",
+        "D": "concat キーワードを使用"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "JavaScript の + 演算子またはテンプレート文字列を使用して文字列を連結します。例えば {{ $json.first + ' ' + $json.last }} または {{ `${$json.first} ${$json.last}` }}。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q19",
+      "domain": 4,
+      "question": "式 {{ $json.items?.length ?? 0 }} の意味は何ですか？",
+      "options": {
+        "A": "items の長さを計算する",
+        "B": "items が存在する場合はその長さを返し、そうでなければ 0 を返す",
+        "C": "デフォルトの長さを 0 に設定する",
+        "D": "items が空かどうかをチェックする"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "これはオプショナルチェーン (?.) とヌル合体演算子 (??) を使用しています。$json.items が存在する場合はその length を返し、items が null/undefined の場合は 0 を返し、エラーを回避します。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q20",
+      "domain": 4,
+      "question": "式を使用して配列をフィルタリングするにはどうすればよいですか？",
+      "options": {
+        "A": "{{ $json.array.filter(item => item.active) }}",
+        "B": "{{ FILTER($json.array, 'active') }}",
+        "C": "{{ $json.array WHERE active }}",
+        "D": "式でのフィルタリングはサポートされていない"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "JavaScript の filter() メソッドを使用して配列をフィルタリングします。{{ $json.items.filter(item => item.status === 'active') }} は status が 'active' のすべての要素を返します。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q21",
+      "domain": 4,
+      "question": "式 {{ $json.values.map(v => v * 2) }} は何をしますか？",
+      "options": {
+        "A": "配列の各値を2倍にする",
+        "B": "配列の長さを2倍にする",
+        "C": "配列を2回コピーする",
+        "D": "2より大きい値をフィルタリングする"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "map() メソッドは配列の各要素に指定された関数を適用し、新しい配列を返します。ここでは values 配列の各値を2倍にして、新しい値を含む配列を返します。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q22",
+      "domain": 4,
+      "question": "$prevNode 変数は何を返しますか？",
+      "options": {
+        "A": "前のノードの設定",
+        "B": "名前やタイプなど、前のノードのメタデータ",
+        "C": "前のノードの出力データ",
+        "D": "前のノードの実行時間"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "$prevNode は、$prevNode.name（ノード名）、$prevNode.outputIndex（出力インデックス）など、前のノードのメタデータを返します。接続された上流ノードに関する情報を取得するために使用されます。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q23",
+      "domain": 1,
+      "question": "n8n は機密データの保存をどのように処理しますか？",
+      "options": {
+        "A": "プレーンテキストで保存",
+        "B": "AES-256 暗号化を使用して認証情報を保存",
+        "C": "機密データは一切保存しない",
+        "D": "Base64 エンコーディングのみ使用"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "n8n は AES-256-CBC 暗号化アルゴリズムを使用して認証情報などの機密データを保存します。暗号化キーは N8N_ENCRYPTION_KEY 環境変数で設定され、認証情報の安全な保存を確保します。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q24",
+      "domain": 1,
+      "question": "n8n で Webhook の HTTPS を有効にするにはどうすればよいですか？",
+      "options": {
+        "A": "n8n は自動的に HTTPS を提供する",
+        "B": "リバースプロキシ（Nginx など）を使用するか、SSL 証明書を設定する",
+        "C": "HTTPS はサポートされていない",
+        "D": "有料機能"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "n8n はリバースプロキシ（Nginx、Caddy など）を通じて HTTPS を実現するか、SSL 証明書を直接設定できます。本番環境では、Webhook のセキュリティを保護するために HTTPS を使用することを強くお勧めします。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q25",
+      "domain": 1,
+      "question": "N8N_PAYLOAD_SIZE_MAX 環境変数は何を制御しますか？",
+      "options": {
+        "A": "ワークフロー数の制限",
+        "B": "Webhook リクエストの最大ペイロードサイズ",
+        "C": "実行履歴の保存数",
+        "D": "ノード出力サイズ"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "N8N_PAYLOAD_SIZE_MAX 環境変数は、Webhook リクエストが受け入れる最大ペイロードサイズを MB 単位で制御します。デフォルト値はほとんどのユースケースに十分ですが、大きなファイルを処理する場合は増やす必要があるかもしれません。",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q26",
+      "domain": 2,
+      "question": "ワークフロー内のノードの名前を変更するにはどうすればよいですか？",
+      "options": {
+        "A": "名前変更はできない",
+        "B": "ノードのタイトルをダブルクリックするか、ノード設定で変更する",
+        "C": "API 経由のみ",
+        "D": "削除して再作成する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "ノードのタイトルをダブルクリックして直接名前を編集するか、ノード設定パネルで Name フィールドを変更できます。適切な命名はワークフローのロジックを理解するのに役立ちます。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q27",
+      "domain": 2,
+      "question": "ワークフローテンプレート (Templates) のソースは何ですか？",
+      "options": {
+        "A": "公式テンプレートのみ",
+        "B": "公式テンプレートとコミュニティ提供のテンプレート",
+        "C": "有料テンプレートのみ",
+        "D": "ユーザーが作成したもののみ"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "n8n のワークフローテンプレートには、公式が作成したテンプレートとコミュニティユーザーが提供したテンプレートが含まれています。テンプレートは出発点として使用でき、一般的な自動化シナリオのワークフローをすばやく作成できます。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q28",
+      "domain": 2,
+      "question": "Cron 式 '0 9 * * 1-5' はどの時間を表しますか？",
+      "options": {
+        "A": "毎日午前9時",
+        "B": "平日（月曜から金曜）の午前9時",
+        "C": "月曜から金曜の毎分",
+        "D": "毎月1日から5日の午前9時"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "この Cron 式は、分=0、時=9、日=*（任意）、月=*（任意）、曜日=1-5（月曜から金曜）を意味します。つまり、平日の毎日午前9時ちょうどに実行されます。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q29",
+      "domain": 2,
+      "question": "ワークフロー内の特定のノードを一時的に無効にするにはどうすればよいですか？",
+      "options": {
+        "A": "ノードを削除する",
+        "B": "ノードの Disable 機能を使用する",
+        "C": "接続線を切断する",
+        "D": "個々のノードを無効にすることはできない"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "ノードの Disable 機能を使用してノードを一時的に無効にできます。無効にされたノードは実行時にスキップされ、データは次のノードに直接渡されるため、デバッグやロジックの一時的な変更に便利です。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q30",
+      "domain": 3,
+      "question": "Postgres ノードはパラメータ化クエリをどのように実行しますか？",
+      "options": {
+        "A": "SQL に直接値を書き込む",
+        "B": "$1, $2 プレースホルダーと Query Parameters を使用",
+        "C": "テンプレート文字列のみ使用可能",
+        "D": "パラメータ化クエリはサポートされていない"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Postgres ノードは $1, $2 などのプレースホルダーを使用したパラメータ化クエリをサポートし、Query Parameters で順番に値を提供します。これにより SQL インジェクションを防ぎ、セキュリティを向上させます。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q31",
+      "domain": 3,
+      "question": "S3 ノードはどのような操作を実行できますか？（2つ選択）",
+      "options": {
+        "A": "オブジェクトをアップロード",
+        "B": "オブジェクトをダウンロード",
+        "C": "IAM ユーザーを管理",
+        "D": "CloudFront を設定"
+      },
+      "answer": ["A", "B"],
+      "answerType": "multiple",
+      "explanation": "S3 ノードは、オブジェクトのアップロード、ダウンロード、リスト、削除、オブジェクト URL の取得など、S3 バケットの基本操作をサポートしています。IAM と CloudFront は異なる AWS サービスです。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q32",
+      "domain": 3,
+      "question": "Discord ノードはどのタイプのコンテンツを送信できますか？（2つ選択）",
+      "options": {
+        "A": "テキストメッセージ",
+        "B": "埋め込みメッセージ (Embed)",
+        "C": "サーバーの作成",
+        "D": "ユーザーロールの管理"
+      },
+      "answer": ["A", "B"],
+      "answerType": "multiple",
+      "explanation": "Discord ノードはテキストメッセージと埋め込みメッセージ（タイトル、色、フィールド付きのフォーマットされたメッセージ）を送信できます。サーバーの作成とロールの管理にはボットに対応する権限が必要ですが、通常は基本的なメッセージ操作には含まれません。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q33",
+      "domain": 3,
+      "question": "Jira ノードはどのリソースを操作できますか？",
+      "options": {
+        "A": "課題 (Issue) のみ",
+        "B": "課題、コメント、ユーザーなど複数のリソース",
+        "C": "プロジェクトのみ",
+        "D": "ボードのみ"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Jira ノードは、課題（作成、更新、検索）、コメント、添付ファイル、ユーザー情報など、複数のリソースを操作できます。これにより包括的な Jira 統合機能が提供されます。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q34",
+      "domain": 3,
+      "question": "Convert to File ノードの機能は何ですか？",
+      "options": {
+        "A": "ファイル形式を変換する",
+        "B": "JSON データをファイル（CSV、JSON ファイルなど）に変換する",
+        "C": "ファイルを圧縮する",
+        "D": "ファイルを読み取る"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Convert to File ノードは JSON データをファイルに変換するために使用され、CSV、JSON、ICS、HTML などの複数のフォーマットをサポートしています。生成されたファイルは item の binary プロパティに保存されます。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q35",
+      "domain": 4,
+      "question": "式を使用して現在の日付の月を取得するにはどうすればよいですか？",
+      "options": {
+        "A": "{{ $now.getMonth() }}",
+        "B": "{{ $now.month }}",
+        "C": "{{ $now.toFormat('MM') }}",
+        "D": "B と C 両方正しい"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "$now.month で月の数値を取得するか、$now.toFormat('MM') で2桁の月の文字列を取得できます。n8n は Luxon DateTime オブジェクトを使用し、豊富な日付処理メソッドを提供しています。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q36",
+      "domain": 4,
+      "question": "式 {{ $json.text.split(',') }} は何を返しますか？",
+      "options": {
+        "A": "すべてのカンマを削除した文字列",
+        "B": "カンマで分割された文字列の配列",
+        "C": "カンマの数",
+        "D": "カンマの位置"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "split() メソッドは指定された区切り文字で文字列を配列に分割します。例えば 'a,b,c'.split(',') は ['a', 'b', 'c'] を返します。CSV 形式のデータを解析するためによく使用されます。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q37",
+      "domain": 4,
+      "question": "式を使用して配列をカンマ区切りの文字列に変換するにはどうすればよいですか？",
+      "options": {
+        "A": "{{ $json.array.toString() }}",
+        "B": "{{ $json.array.join(',') }}",
+        "C": "{{ $json.array.merge(',') }}",
+        "D": "{{ $json.array.concat(',') }}"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "join() メソッドは指定された区切り文字を使用して配列要素を文字列に連結します。['a', 'b', 'c'].join(',') は 'a,b,c' を返します。任意の文字列を区切り文字として使用できます。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q38",
+      "domain": 4,
+      "question": "$itemIndex と $runIndex の違いは何ですか？",
+      "options": {
+        "A": "違いはない",
+        "B": "$itemIndex はすべての items の絶対インデックス、$runIndex は現在処理中の相対インデックス",
+        "C": "$itemIndex はループ用、$runIndex は条件用",
+        "D": "両方とも非推奨"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "$itemIndex はすべての入力 items における現在の item の絶対位置インデックスを表し、一部のコンテキストでは $runIndex は異なる概念を表す場合があります。ほとんどの場合、現在処理中の item のインデックスを取得するには $itemIndex を使用します。",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q39",
+      "domain": 1,
+      "question": "n8n の外部 Hooks 機能は何のために使用されますか？",
+      "options": {
+        "A": "カスタム Webhook を追加する",
+        "B": "ワークフローのライフサイクルイベント時に外部コードを実行する",
+        "C": "外部データベースに接続する",
+        "D": "外部 API を呼び出す"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "外部 Hooks は、ワークフロー実行の前後など、n8n の特定のライフサイクルイベント時にカスタムコードを実行できます。これは n8n の動作を拡張するための高度な機能です。",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q40",
+      "domain": 1,
+      "question": "n8n で環境変数を使用するにはどうすればよいですか？",
+      "options": {
+        "A": "環境変数はサポートされていない",
+        "B": "{{ $env.VARIABLE_NAME }} 式でアクセス",
+        "C": "起動時のみ使用可能",
+        "D": "有料版のみサポート"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "{{ $env.VARIABLE_NAME }} 式でワークフロー内の環境変数にアクセスできます。まず n8n 設定で環境変数へのアクセスを許可する必要があります（N8N_BLOCK_ENV_ACCESS_IN_NODE=false）。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q41",
+      "domain": 2,
+      "question": "ワークフローの 'Retry On Fail' 設定は何をしますか？",
+      "options": {
+        "A": "失敗時にワークフローを再アクティブ化する",
+        "B": "ノードの実行が失敗したときに自動的にリトライする",
+        "C": "失敗時に通知を送信する",
+        "D": "失敗時にデータを保存する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "'Retry On Fail' 設定は、ノードの実行が失敗したときに自動的にリトライできます。リトライ回数とリトライ間隔を設定でき、一時的なネットワーク問題や API レート制限の処理に適しています。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q42",
+      "domain": 2,
+      "question": "n8n の Input/Output Labels とは何ですか？",
+      "options": {
+        "A": "データ型のラベル",
+        "B": "ノードの入出力接続ポイントに説明的な名前を追加する",
+        "C": "エラー型のラベル",
+        "D": "パフォーマンス監視のラベル"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Input/Output Labels は、ノードの入出力接続ポイントに説明的な名前を追加できます。複数の入力または出力を持つノード（IF、Switch など）では、ラベルが各分岐の目的を理解するのに役立ちます。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q43",
+      "domain": 3,
+      "question": "Markdown ノードの機能は何ですか？",
+      "options": {
+        "A": "Markdown ファイルを編集する",
+        "B": "Markdown と HTML 間で変換する",
+        "C": "Markdown プレビューを表示する",
+        "D": "Markdown 構文を検証する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Markdown ノードは Markdown と HTML 形式間で変換するために使用されます。Markdown テキストを HTML にレンダリングしたり、HTML を Markdown 形式に変換したりできます。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q44",
+      "domain": 3,
+      "question": "Send Email ノード（SMTP）にはどのような設定が必要ですか？",
+      "options": {
+        "A": "受信者アドレスのみ",
+        "B": "SMTP サーバー認証情報とメール内容",
+        "C": "送信者アドレスのみ",
+        "D": "OAuth 認証"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Send Email ノードには、SMTP サーバー認証情報（サーバーアドレス、ポート、ユーザー名、パスワード）とメール内容（受信者、件名、本文など）の設定が必要です。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q45",
+      "domain": 4,
+      "question": "式で文字列が特定のテキストを含むかどうかをチェックするにはどうすればよいですか？",
+      "options": {
+        "A": "{{ $json.text.has('word') }}",
+        "B": "{{ $json.text.includes('word') }}",
+        "C": "{{ $json.text.contains('word') }}",
+        "D": "{{ $json.text.find('word') }}"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "JavaScript の includes() メソッドを使用して文字列が特定のテキストを含むかどうかをチェックします。{{ $json.text.includes('hello') }} は true または false を返します。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q46",
+      "domain": 4,
+      "question": "式 {{ Math.round($json.value) }} は何をしますか？",
+      "options": {
+        "A": "切り捨て",
+        "B": "四捨五入",
+        "C": "切り上げ",
+        "D": "絶対値を取得"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Math.round() は数値を四捨五入して整数にします。例えば Math.round(4.5) は 5 を返し、Math.round(4.4) は 4 を返します。関連するメソッドには Math.floor()（切り捨て）と Math.ceil()（切り上げ）があります。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q47",
+      "domain": 2,
+      "question": "Rename Keys ノードの役割は何ですか？",
+      "options": {
+        "A": "ワークフローの名前を変更する",
+        "B": "JSON データのフィールド名を変更する",
+        "C": "ファイルの名前を変更する",
+        "D": "ノードの名前を変更する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Rename Keys ノードは JSON データのフィールド名を変更するために使用されます。キー名を一括で変更でき、ターゲット形式に合わせてデータ構造を調整する必要がある場合に便利です。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q48",
+      "domain": 3,
+      "question": "Execute Command ノードは何ができますか？",
+      "options": {
+        "A": "n8n コマンドを実行する",
+        "B": "サーバーで shell コマンドを実行する",
+        "C": "SQL コマンドを実行する",
+        "D": "API 呼び出しを実行する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Execute Command ノードは n8n サーバーで shell コマンドを実行するために使用されます。スクリプトやシステムコマンドを実行できます。信頼できないコマンドの実行を避けるため、セキュリティに注意が必要です。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q49",
+      "domain": 1,
+      "question": "n8n のログレベルは何に設定できますか？（2つ選択）",
+      "options": {
+        "A": "info",
+        "B": "debug",
+        "C": "verbose",
+        "D": "critical"
+      },
+      "answer": ["A", "B"],
+      "answerType": "multiple",
+      "explanation": "n8n は error、warn、info、debug など、複数のログレベルをサポートしています。N8N_LOG_LEVEL 環境変数で設定します。debug レベルはより詳細なデバッグ情報を出力します。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q50",
+      "domain": 4,
+      "question": "式を使用して配列から重複を削除するにはどうすればよいですか？",
+      "options": {
+        "A": "{{ $json.array.unique() }}",
+        "B": "{{ [...new Set($json.array)] }}",
+        "C": "{{ $json.array.distinct() }}",
+        "D": "n8n 式では重複削除はサポートされていない"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "JavaScript の Set オブジェクトとスプレッド演算子を使用して配列から重複を削除できます。{{ [...new Set($json.array)] }} は一意の値のみを含む新しい配列を返します。",
+      "difficulty": "medium"
+    }
+  ]
+}

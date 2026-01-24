@@ -1,0 +1,748 @@
+{
+  "exam": {
+    "id": "sap-c-fiord-set3",
+    "name": "SAP C_FIORD 模拟考试 #3",
+    "code": "C_FIORD",
+    "provider": "SAP",
+    "language": "zh-CN",
+    "description": "SAP Fiori Application Developer认证模拟题 - 第3套",
+    "totalQuestions": 50,
+    "passingScore": 70,
+    "examTime": 180,
+    "domains": [
+      {
+        "id": 1,
+        "name": "SAPUI5 Framework and Architecture",
+        "weight": 20
+      },
+      {
+        "id": 2,
+        "name": "Fiori Design Guidelines",
+        "weight": 15
+      },
+      {
+        "id": 3,
+        "name": "Fiori Elements",
+        "weight": 20
+      },
+      {
+        "id": 4,
+        "name": "OData Services and Annotations",
+        "weight": 20
+      },
+      {
+        "id": 5,
+        "name": "Development Tools and Deployment",
+        "weight": 25
+      }
+    ],
+    "tags": [
+      "SAP",
+      "Fiori",
+      "SAPUI5",
+      "认证考试"
+    ]
+  },
+  "questions": [
+    {
+      "id": "q1",
+      "domain": 1,
+      "question": "SAPUI5中的Routing是如何工作的？",
+      "options": {
+        "A": "通过服务器端重定向",
+        "B": "通过URL hash变化触发视图导航",
+        "C": "通过刷新整个页面",
+        "D": "通过WebSocket连接"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "SAPUI5 Routing机制：\n- 基于URL hash（#后的部分）变化\n- 不刷新页面，实现SPA导航\n- 在manifest.json中配置路由规则\n- 支持参数传递和嵌套路由\n- 保持浏览器历史记录"
+    },
+    {
+      "id": "q2",
+      "domain": 1,
+      "question": "SAPUI5中的XMLView和JSView有什么区别？",
+      "options": {
+        "A": "XMLView性能更差",
+        "B": "XMLView是声明式的，JSView是命令式的",
+        "C": "JSView是官方推荐的方式",
+        "D": "两者没有区别"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "SAPUI5视图类型区别：\n- XMLView：声明式，更易读和维护\n- JSView：命令式，使用JavaScript创建控件\n- XMLView是SAP推荐的方式\n- XMLView支持更好的工具支持和预处理"
+    },
+    {
+      "id": "q3",
+      "domain": 1,
+      "question": "在SAPUI5中，sap.ui.core.BusyIndicator和控件的setBusy有什么区别？",
+      "options": {
+        "A": "功能完全相同",
+        "B": "BusyIndicator是全局的，setBusy是控件级别的",
+        "C": "setBusy是全局的，BusyIndicator是局部的",
+        "D": "两者都是全局的"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Busy指示器区别：\n- sap.ui.core.BusyIndicator：全局忙碌指示，覆盖整个应用\n- control.setBusy(true)：控件级别，只禁用该控件\n- 全局用于页面加载，局部用于特定操作"
+    },
+    {
+      "id": "q4",
+      "domain": 1,
+      "question": "SAPUI5中的Metadata在Custom Control中用于什么？",
+      "options": {
+        "A": "存储业务数据",
+        "B": "定义控件的属性、聚合、事件和关联",
+        "C": "配置服务器连接",
+        "D": "管理用户会话"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "SAPUI5 Control Metadata定义：\n- properties：控件属性（如text、visible）\n- aggregations：子控件集合\n- events：可触发的事件\n- associations：与其他控件的关联\n- 是控件API的蓝图"
+    },
+    {
+      "id": "q5",
+      "domain": 1,
+      "question": "SAPUI5应用中如何实现国际化（i18n）日期和数字格式化？",
+      "options": {
+        "A": "手动编写格式化代码",
+        "B": "使用sap.ui.core.format库",
+        "C": "使用正则表达式",
+        "D": "依赖浏览器设置"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "SAPUI5格式化类库：\n- DateFormat：日期格式化\n- NumberFormat：数字和货币格式化\n- 自动适应用户区域设置\n- 支持自定义格式模式"
+    },
+    {
+      "id": "q6",
+      "domain": 2,
+      "question": "SAP Fiori中的'Personalization'功能包括什么？（选择两个）",
+      "options": {
+        "A": "用户可以调整表格列顺序",
+        "B": "用户可以修改后端代码",
+        "C": "用户可以保存筛选条件",
+        "D": "用户可以修改数据库结构"
+      },
+      "answer": ["A", "C"],
+      "answerType": "multiple",
+      "explanation": "Fiori个性化功能：\n- 调整表格列顺序和可见性\n- 保存筛选和排序条件\n- 自定义视图变体\n- 不涉及后端代码或数据库修改"
+    },
+    {
+      "id": "q7",
+      "domain": 2,
+      "question": "Fiori应用中的Footer Bar通常放置什么类型的按钮？",
+      "options": {
+        "A": "导航按钮",
+        "B": "操作按钮（如保存、取消）",
+        "C": "搜索按钮",
+        "D": "帮助按钮"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Footer Bar使用原则：\n- 放置主要操作按钮（Save、Cancel等）\n- 用于页面级别的操作\n- 遵循从右到左的重要性顺序\n- 确保移动设备上的可访问性"
+    },
+    {
+      "id": "q8",
+      "domain": 2,
+      "question": "SAP Fiori的'Responsive Padding'是什么概念？",
+      "options": {
+        "A": "固定的内边距",
+        "B": "根据屏幕尺寸自动调整的间距",
+        "C": "外边距设置",
+        "D": "边框宽度"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Responsive Padding特性：\n- 根据设备屏幕尺寸自动调整\n- 桌面端更大，移动端更小\n- 使用CSS类如sapUiResponsivePadding\n- 确保不同设备上的最佳视觉效果"
+    },
+    {
+      "id": "q9",
+      "domain": 2,
+      "question": "Fiori设计中，什么是'Cozy'和'Compact'模式？",
+      "options": {
+        "A": "两种数据压缩方式",
+        "B": "两种控件密度，适合不同输入方式",
+        "C": "两种代码编写风格",
+        "D": "两种部署模式"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "控件密度模式：\n- Cozy：较大的控件和间距，适合触摸操作\n- Compact：较小的控件和间距，适合鼠标操作\n- 可通过CSS类切换\n- 提高不同设备上的用户体验"
+    },
+    {
+      "id": "q10",
+      "domain": 2,
+      "question": "在SAP Fiori应用中，Navigation Bar的主要用途是什么？",
+      "options": {
+        "A": "显示广告",
+        "B": "在应用内不同页面间导航",
+        "C": "显示时间",
+        "D": "播放音乐"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Navigation Bar功能：\n- 提供应用内页面导航\n- 显示当前位置（面包屑）\n- 支持快速跳转\n- 在Fiori Launchpad中统一管理"
+    },
+    {
+      "id": "q11",
+      "domain": 3,
+      "question": "Fiori Elements中如何定义表格的默认可见列？",
+      "options": {
+        "A": "在CSS中设置",
+        "B": "使用@UI.lineItem注解并设置importance",
+        "C": "在JavaScript中编码",
+        "D": "在HTML中配置"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "@UI.lineItem配置：\n- position：列顺序\n- importance：High/Medium/Low\n- High重要性的列默认显示\n- Low重要性的列在小屏幕上隐藏"
+    },
+    {
+      "id": "q12",
+      "domain": 3,
+      "question": "Fiori Elements应用如何实现表单验证？",
+      "options": {
+        "A": "只能在前端JavaScript验证",
+        "B": "通过CDS注解和后端验证结合",
+        "C": "不支持验证",
+        "D": "只能在后端验证"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Fiori Elements验证机制：\n- 使用@assert注解定义约束\n- 后端返回的错误自动显示\n- 必填字段通过@Mandatory标记\n- 结合前后端确保数据完整性"
+    },
+    {
+      "id": "q13",
+      "domain": 3,
+      "question": "在Fiori Elements中，如何添加自定义过滤器字段？",
+      "options": {
+        "A": "修改sap.m库",
+        "B": "使用manifest.json中的controlConfiguration扩展",
+        "C": "创建新的数据库表",
+        "D": "无法添加"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "自定义过滤器配置：\n- 在manifest.json中使用controlConfiguration\n- 指定filterFields配置\n- 可添加、移除或修改过滤字段\n- 保持声明式开发风格"
+    },
+    {
+      "id": "q14",
+      "domain": 3,
+      "question": "Fiori Elements的Tree Table支持什么类型的数据展示？",
+      "options": {
+        "A": "只支持扁平数据",
+        "B": "层级结构数据",
+        "C": "只支持两级数据",
+        "D": "不支持任何数据"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Tree Table特性：\n- 展示层级结构数据\n- 支持展开/折叠节点\n- 需要后端提供层级关系\n- 适合组织结构、产品目录等场景"
+    },
+    {
+      "id": "q15",
+      "domain": 3,
+      "question": "Fiori Elements中的Micro Chart用于什么目的？",
+      "options": {
+        "A": "显示完整的分析报表",
+        "B": "在有限空间内快速可视化关键指标",
+        "C": "播放视频",
+        "D": "显示地图"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Micro Chart特点：\n- 小型、紧凑的图表\n- 快速传达关键数据趋势\n- 适合表格单元格或卡片中\n- 类型包括Bullet、Radial、Line等"
+    },
+    {
+      "id": "q16",
+      "domain": 4,
+      "question": "OData服务中$search参数的作用是什么？",
+      "options": {
+        "A": "搜索元数据",
+        "B": "在所有可搜索字段中进行全文搜索",
+        "C": "搜索文件系统",
+        "D": "搜索用户"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "$search参数功能：\n- 跨多个字段进行全文搜索\n- 服务器决定搜索哪些字段\n- 比$filter更简单的搜索方式\n- 需要后端支持"
+    },
+    {
+      "id": "q17",
+      "domain": 4,
+      "question": "CDS视图中@Analytics.dataCategory注解的作用是什么？",
+      "options": {
+        "A": "定义数据存储位置",
+        "B": "标识视图的分析类型（如CUBE、DIMENSION）",
+        "C": "设置数据加密",
+        "D": "配置数据备份"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "@Analytics.dataCategory注解：\n- #CUBE：多维分析事实数据\n- #DIMENSION：维度数据\n- #FACT：事实数据\n- 用于分析应用和报表"
+    },
+    {
+      "id": "q18",
+      "domain": 4,
+      "question": "OData服务中，$apply参数支持哪些操作？（选择两个）",
+      "options": {
+        "A": "groupby（分组）",
+        "B": "encrypt（加密）",
+        "C": "aggregate（聚合）",
+        "D": "compress（压缩）"
+      },
+      "answer": ["A", "C"],
+      "answerType": "multiple",
+      "explanation": "OData V4 $apply支持的转换：\n- groupby：按字段分组\n- aggregate：聚合计算（sum、average等）\n- filter：在转换中过滤\n- 用于分析和报表场景"
+    },
+    {
+      "id": "q19",
+      "domain": 4,
+      "question": "CDS注解@UI.chart用于什么目的？",
+      "options": {
+        "A": "定义字符集",
+        "B": "定义分析图表的配置",
+        "C": "定义图片位置",
+        "D": "定义文档结构"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "@UI.chart注解：\n- 定义图表类型（柱状图、折线图等）\n- 指定度量和维度\n- 配置图表标题和描述\n- 用于Analytical List Page和Overview Page"
+    },
+    {
+      "id": "q20",
+      "domain": 4,
+      "question": "在CDS视图中，如何定义实体间的1:N关系？",
+      "options": {
+        "A": "使用@OneToMany注解",
+        "B": "使用association或composition定义",
+        "C": "使用外键约束",
+        "D": "无法定义"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "CDS关联定义：\n- association to *: 1:N关联\n- composition of *: 1:N组合\n- 通过on条件指定关联字段\n- 可设置cardinality"
+    },
+    {
+      "id": "q21",
+      "domain": 4,
+      "question": "OData服务中的Delta Token用于什么？",
+      "options": {
+        "A": "用户认证",
+        "B": "增量数据同步，只获取变更的数据",
+        "C": "数据加密",
+        "D": "会话管理"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Delta Token功能：\n- 标记数据快照时间点\n- 后续请求只返回变更数据\n- 减少数据传输量\n- 适合数据同步场景"
+    },
+    {
+      "id": "q22",
+      "domain": 5,
+      "question": "SAP Business Application Studio中的Page Editor用于什么？",
+      "options": {
+        "A": "编辑HTML页面",
+        "B": "可视化配置Fiori Elements页面",
+        "C": "编辑PDF文档",
+        "D": "编辑数据库"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Page Editor功能：\n- 可视化配置Fiori Elements页面\n- 拖拽添加字段和区域\n- 无需手动编写注解\n- 自动生成配置到manifest.json"
+    },
+    {
+      "id": "q23",
+      "domain": 5,
+      "question": "Fiori应用的Adaptation Project是什么？",
+      "options": {
+        "A": "新建项目",
+        "B": "对SAP标准Fiori应用进行扩展的项目",
+        "C": "数据迁移项目",
+        "D": "测试项目"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Adaptation Project特点：\n- 基于SAP标准Fiori应用\n- 添加自定义扩展而不修改原代码\n- 升级安全\n- 通过Adaptation Editor进行配置"
+    },
+    {
+      "id": "q24",
+      "domain": 5,
+      "question": "SAP Fiori应用中的Content Density指什么？",
+      "options": {
+        "A": "数据密度",
+        "B": "UI控件的间距和大小设置（Cozy/Compact）",
+        "C": "文件压缩率",
+        "D": "网络带宽"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Content Density设置：\n- Cozy：适合触摸操作的大控件\n- Compact：适合鼠标操作的紧凑控件\n- 可在manifest.json中配置\n- 影响整个应用的视觉呈现"
+    },
+    {
+      "id": "q25",
+      "domain": 5,
+      "question": "SAPUI5应用中的xs-app.json文件用于什么？",
+      "options": {
+        "A": "定义应用样式",
+        "B": "配置Application Router路由规则",
+        "C": "存储用户数据",
+        "D": "定义数据库连接"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "xs-app.json用途：\n- 配置Application Router\n- 定义URL路由规则\n- 设置认证要求\n- 配置后端服务代理"
+    },
+    {
+      "id": "q26",
+      "domain": 5,
+      "question": "SAP Fiori的Tile有哪些类型？（选择两个）",
+      "options": {
+        "A": "Static Tile（静态磁贴）",
+        "B": "Video Tile（视频磁贴）",
+        "C": "Dynamic Tile（动态磁贴）",
+        "D": "Audio Tile（音频磁贴）"
+      },
+      "answer": ["A", "C"],
+      "answerType": "multiple",
+      "explanation": "Fiori Tile类型：\n- Static Tile：固定内容的磁贴\n- Dynamic Tile：显示实时数据的磁贴\n- KPI Tile：显示关键指标\n- News Tile：显示新闻信息"
+    },
+    {
+      "id": "q27",
+      "domain": 1,
+      "question": "SAPUI5中的sap.ui.core.theming.Parameters用于什么？",
+      "options": {
+        "A": "配置服务器参数",
+        "B": "获取当前主题的CSS变量值",
+        "C": "设置用户参数",
+        "D": "配置网络参数"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Theming Parameters用途：\n- 获取当前主题的颜色、字体等CSS值\n- 在JavaScript中使用主题变量\n- 确保自定义样式与主题一致\n- 支持运行时主题切换"
+    },
+    {
+      "id": "q28",
+      "domain": 1,
+      "question": "SAPUI5的ListBinding和ContextBinding有什么区别？",
+      "options": {
+        "A": "ListBinding用于单个对象，ContextBinding用于集合",
+        "B": "ListBinding用于集合，ContextBinding用于单个对象",
+        "C": "两者完全相同",
+        "D": "都不用于数据绑定"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "SAPUI5绑定类型：\n- ListBinding：绑定到数据集合（如/Orders）\n- ContextBinding：绑定到单个实体（如/Orders(1)）\n- PropertyBinding：绑定到单个属性"
+    },
+    {
+      "id": "q29",
+      "domain": 1,
+      "question": "在SAPUI5中如何实现深度链接（Deep Linking）？",
+      "options": {
+        "A": "使用iframe",
+        "B": "通过Router配置hash参数",
+        "C": "使用Cookie",
+        "D": "禁用浏览器历史"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "深度链接实现：\n- 在Router中定义带参数的路由\n- URL hash包含页面和参数信息\n- 用户可直接访问应用内的特定页面\n- 支持书签和链接分享"
+    },
+    {
+      "id": "q30",
+      "domain": 1,
+      "question": "SAPUI5的ObjectStatus控件用于什么？",
+      "options": {
+        "A": "显示对象的内存状态",
+        "B": "显示业务对象的状态信息",
+        "C": "显示网络连接状态",
+        "D": "显示用户在线状态"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "ObjectStatus控件：\n- 显示业务状态（如订单状态）\n- 支持语义颜色（成功、警告、错误）\n- 可包含图标和文本\n- 常用于列表和Object Page"
+    },
+    {
+      "id": "q31",
+      "domain": 2,
+      "question": "SAP Fiori中的Split Screen布局适用于什么设备？",
+      "options": {
+        "A": "仅手机",
+        "B": "仅台式电脑",
+        "C": "平板和桌面设备",
+        "D": "仅智能手表"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "Split Screen布局特点：\n- 左右两栏同时显示\n- 适合较大屏幕设备\n- 在手机上自动切换为全屏\n- 提高工作效率"
+    },
+    {
+      "id": "q32",
+      "domain": 2,
+      "question": "Fiori设计中的'Wizard'控件适用于什么场景？",
+      "options": {
+        "A": "简单的数据查询",
+        "B": "分步骤的复杂流程",
+        "C": "实时数据监控",
+        "D": "文档阅读"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Wizard控件适用场景：\n- 多步骤的复杂任务\n- 引导用户完成流程\n- 显示进度指示\n- 支持步骤验证和导航"
+    },
+    {
+      "id": "q33",
+      "domain": 2,
+      "question": "SAP Fiori的'Global Actions'应该放在什么位置？",
+      "options": {
+        "A": "页面底部中间",
+        "B": "Shell Bar或页面右上角",
+        "C": "侧边栏底部",
+        "D": "页面左下角"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Global Actions位置：\n- Shell Bar中的全局操作\n- 页面右上角的操作按钮\n- 如设置、帮助、用户菜单\n- 在整个应用中可访问"
+    },
+    {
+      "id": "q34",
+      "domain": 3,
+      "question": "Fiori Elements中的Value Help对话框如何配置？",
+      "options": {
+        "A": "使用HTML配置",
+        "B": "使用CDS注解@Consumption.valueHelpDefinition",
+        "C": "使用CSS配置",
+        "D": "无法配置"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Value Help配置：\n- 使用@Consumption.valueHelpDefinition注解\n- 指定值帮助实体和字段映射\n- 支持依赖值帮助\n- 自动集成搜索和过滤"
+    },
+    {
+      "id": "q35",
+      "domain": 3,
+      "question": "Fiori Elements List Report如何实现导出功能？",
+      "options": {
+        "A": "需要完全自定义开发",
+        "B": "内置支持，通过设置启用",
+        "C": "不支持导出",
+        "D": "需要修改后端"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "List Report导出功能：\n- 内置Excel导出支持\n- 在manifest.json中启用\n- 可配置导出的列和数据量\n- 无需自定义代码"
+    },
+    {
+      "id": "q36",
+      "domain": 3,
+      "question": "Fiori Elements中如何实现Object Page的Section折叠默认状态？",
+      "options": {
+        "A": "使用JavaScript控制",
+        "B": "使用@UI.facet注解的initiallyExpanded属性",
+        "C": "使用CSS",
+        "D": "无法控制"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Section折叠状态配置：\n- 使用@UI.facet注解\n- initiallyExpanded属性设置初始状态\n- true为展开，false为折叠\n- 提升用户体验"
+    },
+    {
+      "id": "q37",
+      "domain": 4,
+      "question": "OData服务中的Action和Function如何在URL中调用？",
+      "options": {
+        "A": "都使用GET方法",
+        "B": "Function用GET，Action用POST",
+        "C": "都使用POST方法",
+        "D": "使用DELETE方法"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "OData操作调用方式：\n- Function：使用GET方法，无副作用\n- Action：使用POST方法，可能有副作用\n- URL格式：/EntitySet(key)/Namespace.ActionName"
+    },
+    {
+      "id": "q38",
+      "domain": 4,
+      "question": "CDS注解@UI.fieldGroup用于什么目的？",
+      "options": {
+        "A": "分组数据库字段",
+        "B": "在Object Page中将相关字段分组显示",
+        "C": "分组用户",
+        "D": "分组服务"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "@UI.fieldGroup注解：\n- 将相关字段分组\n- 在Object Page中作为一个单元显示\n- 使用qualifier区分不同分组\n- 提高表单的可读性"
+    },
+    {
+      "id": "q39",
+      "domain": 4,
+      "question": "OData服务的$orderby参数如何指定降序排序？",
+      "options": {
+        "A": "$orderby=Field -",
+        "B": "$orderby=Field desc",
+        "C": "$orderby=Field DESC()",
+        "D": "$orderby=-Field"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "$orderby语法：\n- 升序：$orderby=Field 或 $orderby=Field asc\n- 降序：$orderby=Field desc\n- 多字段：$orderby=Field1 asc, Field2 desc"
+    },
+    {
+      "id": "q40",
+      "domain": 4,
+      "question": "CDS视图中@ObjectModel.transactionalProcessingEnabled注解的作用是什么？",
+      "options": {
+        "A": "启用日志记录",
+        "B": "启用增删改操作支持",
+        "C": "启用缓存",
+        "D": "启用压缩"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "@ObjectModel.transactionalProcessingEnabled：\n- 设置为true启用事务处理\n- 支持Create、Update、Delete操作\n- 需要配合其他注解使用\n- 用于可编辑的业务实体"
+    },
+    {
+      "id": "q41",
+      "domain": 5,
+      "question": "在SAP Fiori应用测试中，OPA5用于什么类型的测试？",
+      "options": {
+        "A": "单元测试",
+        "B": "集成测试和端到端测试",
+        "C": "负载测试",
+        "D": "安全测试"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "OPA5测试框架：\n- 用于UI集成测试\n- 模拟用户交互\n- 验证页面元素和流程\n- 支持异步操作测试"
+    },
+    {
+      "id": "q42",
+      "domain": 5,
+      "question": "SAP Fiori应用中的QUnit用于什么？",
+      "options": {
+        "A": "UI样式测试",
+        "B": "JavaScript单元测试",
+        "C": "性能测试",
+        "D": "安全测试"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "QUnit测试框架：\n- JavaScript单元测试\n- 测试函数和模块\n- 验证业务逻辑\n- 与Sinon配合进行mock"
+    },
+    {
+      "id": "q43",
+      "domain": 5,
+      "question": "Fiori应用的Cache Buster是什么？",
+      "options": {
+        "A": "缓存清理工具",
+        "B": "确保浏览器加载最新版本资源的机制",
+        "C": "CPU加速器",
+        "D": "内存优化器"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Cache Buster机制：\n- 在URL中添加版本参数\n- 确保应用更新后加载新资源\n- 避免浏览器缓存旧版本\n- 在构建时自动生成"
+    },
+    {
+      "id": "q44",
+      "domain": 1,
+      "question": "SAPUI5中的PlugIn机制用于什么？",
+      "options": {
+        "A": "连接外部硬件",
+        "B": "扩展核心功能，如诊断和支持",
+        "C": "播放视频",
+        "D": "管理数据库"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "SAPUI5 PlugIn：\n- 扩展核心功能\n- 如Support Assistant、Diagnostics\n- 在bootstrap时加载\n- 提供开发和调试支持"
+    },
+    {
+      "id": "q45",
+      "domain": 2,
+      "question": "Fiori设计中的'Input Assistance'包括什么？（选择两个）",
+      "options": {
+        "A": "值帮助（Value Help）",
+        "B": "自动完成（Type-ahead）",
+        "C": "语音输入",
+        "D": "手势识别"
+      },
+      "answer": ["A", "B"],
+      "answerType": "multiple",
+      "explanation": "Input Assistance功能：\n- Value Help：弹出选择对话框\n- Type-ahead：输入时自动建议\n- 提高数据输入效率\n- 减少输入错误"
+    },
+    {
+      "id": "q46",
+      "domain": 3,
+      "question": "Fiori Elements中的Chart Visualization支持哪些图表类型？（选择两个）",
+      "options": {
+        "A": "柱状图（Column Chart）",
+        "B": "3D动画",
+        "C": "折线图（Line Chart）",
+        "D": "虚拟现实图"
+      },
+      "answer": ["A", "C"],
+      "answerType": "multiple",
+      "explanation": "Fiori Elements支持的图表：\n- Column Chart：柱状图\n- Line Chart：折线图\n- Pie Chart：饼图\n- Donut Chart：环形图\n- Bubble Chart：气泡图"
+    },
+    {
+      "id": "q47",
+      "domain": 4,
+      "question": "OData服务中$select参数的性能优化作用是什么？",
+      "options": {
+        "A": "选择数据库",
+        "B": "只返回指定字段，减少数据传输",
+        "C": "选择服务器",
+        "D": "选择用户"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "$select性能优化：\n- 只返回需要的字段\n- 减少网络传输量\n- 降低后端负载\n- 例如：?$select=Name,Price"
+    },
+    {
+      "id": "q48",
+      "domain": 4,
+      "question": "CDS注解@Consumption.filter如何使用？",
+      "options": {
+        "A": "配置文件过滤",
+        "B": "控制字段是否可作为过滤条件",
+        "C": "过滤日志",
+        "D": "过滤用户"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "@Consumption.filter注解：\n- #MANDATORY：必须过滤\n- #INTERVAL：区间过滤\n- hidden: true隐藏过滤选项\n- 控制Filter Bar中的过滤行为"
+    },
+    {
+      "id": "q49",
+      "domain": 5,
+      "question": "SAP Fiori应用的Accessibility（无障碍）支持包括什么？",
+      "options": {
+        "A": "只支持视觉显示",
+        "B": "ARIA标签、键盘导航、屏幕阅读器支持",
+        "C": "只支持鼠标操作",
+        "D": "不支持无障碍功能"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Fiori无障碍支持：\n- ARIA标签和角色\n- 完整的键盘导航\n- 屏幕阅读器兼容\n- 高对比度主题\n- 符合WCAG标准"
+    },
+    {
+      "id": "q50",
+      "domain": 5,
+      "question": "在SAP BTP Cockpit中，如何监控Fiori应用的运行状况？",
+      "options": {
+        "A": "只能查看代码",
+        "B": "使用Application Logs和Metrics监控",
+        "C": "无法监控",
+        "D": "只能发送邮件"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "BTP应用监控：\n- Application Logs：查看运行日志\n- Metrics：性能指标监控\n- Audit Log：审计日志\n- Health Check：健康检查"
+    }
+  ]
+}

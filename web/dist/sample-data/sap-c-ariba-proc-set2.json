@@ -1,0 +1,673 @@
+{
+  "exam": {
+    "id": "sap-c-ariba-proc-set2",
+    "name": "SAP C_ARIBA_PROC 模拟考试 #2",
+    "code": "C_ARIBA_PROC",
+    "provider": "SAP",
+    "language": "zh-CN",
+    "description": "SAP Ariba Procurement 认证考试模拟题第二套。涵盖发票处理、系统集成、报表分析和高级配置等内容。",
+    "totalQuestions": 50,
+    "passingScore": 65,
+    "examTime": 180,
+    "domains": [
+      { "name": "发票处理与结算", "percentage": 25 },
+      { "name": "系统集成", "percentage": 25 },
+      { "name": "报表与分析", "percentage": 20 },
+      { "name": "高级配置", "percentage": 15 },
+      { "name": "Ariba Network", "percentage": 15 }
+    ],
+    "tags": ["SAP", "Ariba", "Procurement", "发票", "集成"]
+  },
+  "questions": [
+    {
+      "id": 1,
+      "question": "在 SAP Ariba 中，Invoice Automation 的主要功能是什么？",
+      "options": {
+        "A": "手动输入所有发票数据",
+        "B": "自动捕获、验证和处理供应商发票",
+        "C": "仅存储发票图像",
+        "D": "手动审批所有发票"
+      },
+      "answer": "B",
+      "explanation": "Invoice Automation 通过 OCR 和机器学习自动捕获发票数据，验证与采购订单的匹配，并自动化处理流程以提高效率。",
+      "difficulty": "easy"
+    },
+    {
+      "id": 2,
+      "question": "SAP Ariba 中的 Two-Way Matching 和 Three-Way Matching 有什么区别？",
+      "options": {
+        "A": "两者完全相同",
+        "B": "Two-Way 仅匹配 PO 和发票，Three-Way 还需匹配收货",
+        "C": "Two-Way 需要更多审批",
+        "D": "Three-Way 不需要采购订单"
+      },
+      "answer": "B",
+      "explanation": "Two-Way Matching 将发票与采购订单匹配，Three-Way Matching 在此基础上还需匹配收货确认，确保货物已实际收到。",
+      "difficulty": "medium"
+    },
+    {
+      "id": 3,
+      "question": "在 SAP Ariba 中，发票容差（Invoice Tolerance）的作用是什么？",
+      "options": {
+        "A": "允许所有金额差异",
+        "B": "定义发票与 PO 之间允许的金额或百分比差异范围",
+        "C": "禁止任何金额差异",
+        "D": "自动拒绝所有发票"
+      },
+      "answer": "B",
+      "explanation": "发票容差定义了发票金额与采购订单之间允许的差异范围（金额或百分比），在容差内的差异可自动通过，超出则需人工审核。",
+      "difficulty": "medium"
+    },
+    {
+      "id": 4,
+      "question": "SAP Ariba 中的 Evaluated Receipt Settlement (ERS) 是什么？",
+      "options": {
+        "A": "供应商评估系统",
+        "B": "基于收货自动创建付款，无需供应商发票",
+        "C": "收货检验流程",
+        "D": "退货处理系统"
+      },
+      "answer": "B",
+      "explanation": "ERS 是一种自结算方式，系统基于收货和采购订单自动创建付款凭证，无需供应商提交发票，简化了结算流程。",
+      "difficulty": "hard"
+    },
+    {
+      "id": 5,
+      "question": "在 SAP Ariba 中，Credit Memo（贷项凭证）用于什么目的？",
+      "options": {
+        "A": "增加应付金额",
+        "B": "减少应付金额或处理退款",
+        "C": "创建新的采购订单",
+        "D": "评估供应商绩效"
+      },
+      "answer": "B",
+      "explanation": "Credit Memo 用于减少应付金额，常用于处理退货、价格调整或质量问题导致的退款和折扣。",
+      "difficulty": "easy"
+    },
+    {
+      "id": 6,
+      "question": "SAP Ariba 与 SAP ERP 集成时，哪种集成模式最常用？（2个选择）",
+      "options": {
+        "A": "实时集成（同步）",
+        "B": "仅手动数据导出",
+        "C": "批量集成（异步）",
+        "D": "完全不集成"
+      },
+      "answer": ["A", "C"],
+      "explanation": "SAP Ariba 与 ERP 的集成通常使用实时集成（用于关键业务数据如 PO）和批量集成（用于大量数据如主数据同步）两种模式。",
+      "difficulty": "medium"
+    },
+    {
+      "id": 7,
+      "question": "在 SAP Ariba 集成中，Mediated Integration 的特点是什么？",
+      "options": {
+        "A": "直接点对点连接",
+        "B": "通过中间件（如 SAP CPI）进行数据转换和路由",
+        "C": "不需要任何配置",
+        "D": "仅支持文件传输"
+      },
+      "answer": "B",
+      "explanation": "Mediated Integration 通过中间件（如 SAP Cloud Platform Integration）进行数据转换、映射和路由，支持更复杂的集成场景和数据处理。",
+      "difficulty": "medium"
+    },
+    {
+      "id": 8,
+      "question": "SAP Ariba 集成中的 Master Data Replication（主数据复制）包括哪些数据？（2个选择）",
+      "options": {
+        "A": "供应商主数据",
+        "B": "社交媒体帖子",
+        "C": "成本中心和总账科目",
+        "D": "员工照片"
+      },
+      "answer": ["A", "C"],
+      "explanation": "主数据复制包括供应商主数据、物料主数据、成本中心、总账科目、税码等关键业务数据的同步。",
+      "difficulty": "medium"
+    },
+    {
+      "id": 9,
+      "question": "在 SAP Ariba 中，Integration Toolkit 的用途是什么？",
+      "options": {
+        "A": "开发移动应用",
+        "B": "配置和测试与 ERP 系统的集成",
+        "C": "设计用户界面",
+        "D": "管理供应商目录"
+      },
+      "answer": "B",
+      "explanation": "Integration Toolkit 是 Ariba 提供的工具，用于配置、测试和监控与后端 ERP 系统的集成连接。",
+      "difficulty": "easy"
+    },
+    {
+      "id": 10,
+      "question": "SAP Ariba 中的 Web Services 集成支持哪些标准？",
+      "options": {
+        "A": "仅 CSV 文件",
+        "B": "SOAP 和 REST API",
+        "C": "仅电子邮件",
+        "D": "仅 FTP 传输"
+      },
+      "answer": "B",
+      "explanation": "SAP Ariba 支持 SOAP 和 REST API 两种 Web Services 标准，用于与外部系统进行实时数据交换。",
+      "difficulty": "medium"
+    },
+    {
+      "id": 11,
+      "question": "SAP Ariba 的 Spend Analysis 报表可以提供哪些洞察？（2个选择）",
+      "options": {
+        "A": "支出按类别和供应商的分布",
+        "B": "员工考勤数据",
+        "C": "合同合规率和节省机会",
+        "D": "社交媒体参与度"
+      },
+      "answer": ["A", "C"],
+      "explanation": "Spend Analysis 提供支出按类别、供应商、部门的分布分析，以及合同合规率、价格变化趋势和节省机会识别。",
+      "difficulty": "medium"
+    },
+    {
+      "id": 12,
+      "question": "在 SAP Ariba 中，KPI Dashboard 的主要功能是什么？",
+      "options": {
+        "A": "仅显示历史数据",
+        "B": "实时展示关键绩效指标和业务趋势",
+        "C": "仅用于数据导出",
+        "D": "仅供管理员使用"
+      },
+      "answer": "B",
+      "explanation": "KPI Dashboard 实时展示关键绩效指标，如采购周期时间、合规率、节省金额等，帮助管理层监控业务绩效和趋势。",
+      "difficulty": "easy"
+    },
+    {
+      "id": 13,
+      "question": "SAP Ariba 中的 Operational Reporting 和 Strategic Reporting 的区别是什么？",
+      "options": {
+        "A": "两者完全相同",
+        "B": "Operational 关注日常交易，Strategic 关注长期趋势和决策支持",
+        "C": "Operational 仅用于财务部门",
+        "D": "Strategic 不需要数据"
+      },
+      "answer": "B",
+      "explanation": "Operational Reporting 关注日常交易处理和执行状态，Strategic Reporting 关注长期支出趋势、节省分析和战略决策支持。",
+      "difficulty": "medium"
+    },
+    {
+      "id": 14,
+      "question": "在 SAP Ariba 中，Self-Service Reporting 允许用户做什么？",
+      "options": {
+        "A": "仅查看预定义报表",
+        "B": "自定义创建和修改报表",
+        "C": "删除系统数据",
+        "D": "修改系统配置"
+      },
+      "answer": "B",
+      "explanation": "Self-Service Reporting 允许业务用户根据需要自定义创建、修改和保存报表，无需 IT 部门参与。",
+      "difficulty": "easy"
+    },
+    {
+      "id": 15,
+      "question": "SAP Ariba Analytics 中的 Drill-Down 功能用于什么？",
+      "options": {
+        "A": "删除数据",
+        "B": "从汇总数据深入查看详细信息",
+        "C": "导出数据到 Excel",
+        "D": "创建新报表"
+      },
+      "answer": "B",
+      "explanation": "Drill-Down 功能允许用户从汇总级别（如总支出）逐级深入查看更详细的信息（如按供应商、按产品）。",
+      "difficulty": "easy"
+    },
+    {
+      "id": 16,
+      "question": "在 SAP Ariba 中，Approval Rules（审批规则）可以基于哪些条件配置？（2个选择）",
+      "options": {
+        "A": "金额阈值和商品类别",
+        "B": "天气情况",
+        "C": "组织结构和成本中心",
+        "D": "用户的社交媒体账户"
+      },
+      "answer": ["A", "C"],
+      "explanation": "审批规则可以基于金额阈值、商品类别、组织结构、成本中心、供应商类型等业务条件进行配置。",
+      "difficulty": "medium"
+    },
+    {
+      "id": 17,
+      "question": "SAP Ariba 中的 Workflow Builder 允许管理员做什么？",
+      "options": {
+        "A": "仅查看现有工作流",
+        "B": "设计和配置自定义审批工作流",
+        "C": "删除所有审批流程",
+        "D": "管理供应商目录"
+      },
+      "answer": "B",
+      "explanation": "Workflow Builder 是一个可视化工具，允许管理员设计、配置和修改自定义审批工作流，无需编程。",
+      "difficulty": "medium"
+    },
+    {
+      "id": 18,
+      "question": "在 SAP Ariba 中，User Field Configuration（用户字段配置）的用途是什么？",
+      "options": {
+        "A": "仅修改用户界面颜色",
+        "B": "添加或隐藏表单中的字段以满足业务需求",
+        "C": "删除用户账户",
+        "D": "管理系统备份"
+      },
+      "answer": "B",
+      "explanation": "User Field Configuration 允许管理员根据业务需求添加自定义字段、隐藏不需要的字段或设置字段的必填属性。",
+      "difficulty": "easy"
+    },
+    {
+      "id": 19,
+      "question": "SAP Ariba 中的 Document Routing（文档路由）基于什么决定发送目标？（2个选择）",
+      "options": {
+        "A": "供应商的 Ariba Network 连接状态",
+        "B": "随机选择",
+        "C": "商品类别或文档类型规则",
+        "D": "用户的屏幕分辨率"
+      },
+      "answer": ["A", "C"],
+      "explanation": "文档路由根据供应商是否连接到 Ariba Network、商品类别、文档类型等规则决定文档的发送方式和目标。",
+      "difficulty": "medium"
+    },
+    {
+      "id": 20,
+      "question": "在 SAP Ariba 中，Conditional Field Configuration 的功能是什么？",
+      "options": {
+        "A": "删除所有表单字段",
+        "B": "根据条件动态显示或隐藏字段",
+        "C": "固定所有字段为必填",
+        "D": "禁用表单提交"
+      },
+      "answer": "B",
+      "explanation": "Conditional Field Configuration 根据特定条件（如商品类别、金额等）动态显示或隐藏表单字段，简化用户界面。",
+      "difficulty": "medium"
+    },
+    {
+      "id": 21,
+      "question": "SAP Ariba Network 中的 ANID 是什么？",
+      "options": {
+        "A": "员工身份证号",
+        "B": "供应商在 Ariba Network 上的唯一标识符",
+        "C": "产品序列号",
+        "D": "交易日期"
+      },
+      "answer": "B",
+      "explanation": "ANID（Ariba Network ID）是供应商在 Ariba Network 上的唯一标识符，用于识别和连接供应商账户。",
+      "difficulty": "easy"
+    },
+    {
+      "id": 22,
+      "question": "在 SAP Ariba Network 中，Trading Relationship 的建立需要什么？",
+      "options": {
+        "A": "自动建立，无需任何操作",
+        "B": "买家和供应商双方的确认和接受",
+        "C": "仅买家的操作",
+        "D": "仅供应商的操作"
+      },
+      "answer": "B",
+      "explanation": "Trading Relationship 的建立需要买家发起邀请并由供应商接受，或供应商发起申请并由买家批准。",
+      "difficulty": "easy"
+    },
+    {
+      "id": 23,
+      "question": "SAP Ariba Network 中的 Order Collaboration 功能包括哪些？（2个选择）",
+      "options": {
+        "A": "订单确认和拒绝",
+        "B": "员工绩效评估",
+        "C": "发货通知（ASN）",
+        "D": "社交媒体营销"
+      },
+      "answer": ["A", "C"],
+      "explanation": "Order Collaboration 功能包括供应商对订单的确认/拒绝/变更请求，以及发货通知（ASN）的发送和跟踪。",
+      "difficulty": "medium"
+    },
+    {
+      "id": 24,
+      "question": "在 SAP Ariba Network 中，Supplier Portal 允许供应商做什么？",
+      "options": {
+        "A": "仅查看采购订单",
+        "B": "管理订单、发票、发货和账户信息",
+        "C": "修改买家的系统设置",
+        "D": "访问买家的财务数据"
+      },
+      "answer": "B",
+      "explanation": "Supplier Portal 允许供应商管理订单（确认、更新）、创建和提交发票、发送发货通知以及维护账户信息。",
+      "difficulty": "easy"
+    },
+    {
+      "id": 25,
+      "question": "SAP Ariba Network 中的 Flip PO to Invoice 功能有什么优势？",
+      "options": {
+        "A": "增加发票创建时间",
+        "B": "供应商可基于 PO 快速创建发票，减少数据输入错误",
+        "C": "自动拒绝所有发票",
+        "D": "需要重新输入所有 PO 信息"
+      },
+      "answer": "B",
+      "explanation": "Flip PO to Invoice 允许供应商将采购订单数据直接复制到发票，减少手动输入，提高效率并降低错误率。",
+      "difficulty": "medium"
+    },
+    {
+      "id": 26,
+      "question": "在 SAP Ariba 中，Spend Classification 使用什么技术进行分类？",
+      "options": {
+        "A": "仅手动分类",
+        "B": "机器学习和规则引擎",
+        "C": "随机分配",
+        "D": "按字母顺序"
+      },
+      "answer": "B",
+      "explanation": "Spend Classification 使用机器学习算法和业务规则引擎，自动将支出数据分类到标准商品分类体系中。",
+      "difficulty": "medium"
+    },
+    {
+      "id": 27,
+      "question": "SAP Ariba 中的 Compliance Score 衡量什么？",
+      "options": {
+        "A": "员工出勤率",
+        "B": "采购活动对政策和合同的遵从程度",
+        "C": "系统正常运行时间",
+        "D": "供应商数量"
+      },
+      "answer": "B",
+      "explanation": "Compliance Score 衡量采购活动对企业采购政策、首选供应商和合同条款的遵从程度，识别非合规采购。",
+      "difficulty": "easy"
+    },
+    {
+      "id": 28,
+      "question": "在 SAP Ariba 中，什么是 Contract Leakage？",
+      "options": {
+        "A": "合同信息泄露给竞争对手",
+        "B": "本应使用合同采购但未使用合同的支出",
+        "C": "合同文档丢失",
+        "D": "合同审批延迟"
+      },
+      "answer": "B",
+      "explanation": "Contract Leakage 指本应通过现有合同采购但未使用合同（如选择了非合同供应商或更高价格）的支出损失。",
+      "difficulty": "medium"
+    },
+    {
+      "id": 29,
+      "question": "SAP Ariba 中的 Savings Tracking 功能可以追踪哪些类型的节省？（2个选择）",
+      "options": {
+        "A": "谈判节省（vs 初始报价）",
+        "B": "员工工资节省",
+        "C": "合同合规节省（vs 非合同价格）",
+        "D": "办公空间节省"
+      },
+      "answer": ["A", "C"],
+      "explanation": "Savings Tracking 追踪谈判节省（与供应商初始报价相比的降价）和合同合规节省（使用合同价格 vs 标准价格）。",
+      "difficulty": "medium"
+    },
+    {
+      "id": 30,
+      "question": "在 SAP Ariba 中，Benchmark Data 提供什么价值？",
+      "options": {
+        "A": "员工绩效比较",
+        "B": "与行业标准和同行的采购绩效比较",
+        "C": "产品质量测试数据",
+        "D": "系统性能测试数据"
+      },
+      "answer": "B",
+      "explanation": "Benchmark Data 提供与行业标准和同行企业的采购绩效比较，帮助识别改进机会和最佳实践。",
+      "difficulty": "easy"
+    },
+    {
+      "id": 31,
+      "question": "SAP Ariba 中的 Service Entry Sheet 用于什么？",
+      "options": {
+        "A": "评估产品质量",
+        "B": "记录和确认已接收的服务及其价值",
+        "C": "创建新的采购订单",
+        "D": "管理供应商目录"
+      },
+      "answer": "B",
+      "explanation": "Service Entry Sheet 用于记录和确认已接收服务的详情（如工时、里程碑完成情况），作为服务发票匹配的依据。",
+      "difficulty": "medium"
+    },
+    {
+      "id": 32,
+      "question": "在 SAP Ariba 中，什么是 Contingent Labor Management？",
+      "options": {
+        "A": "正式员工管理",
+        "B": "临时劳动力和外包人员的采购和管理",
+        "C": "设备维护管理",
+        "D": "库存管理"
+      },
+      "answer": "B",
+      "explanation": "Contingent Labor Management 是管理临时员工、合同工和外包人员的采购、入职、工时跟踪和付款的解决方案。",
+      "difficulty": "medium"
+    },
+    {
+      "id": 33,
+      "question": "SAP Ariba 中的 Requisition Aggregation 功能的作用是什么？",
+      "options": {
+        "A": "将多个采购申请分拆",
+        "B": "将多个采购申请合并为单个采购订单以降低成本",
+        "C": "拒绝所有采购申请",
+        "D": "延迟所有采购申请"
+      },
+      "answer": "B",
+      "explanation": "Requisition Aggregation 将同一供应商的多个采购申请合并为单个采购订单，减少订单处理成本并可能获得批量折扣。",
+      "difficulty": "medium"
+    },
+    {
+      "id": 34,
+      "question": "在 SAP Ariba 中，Purchase Order Acknowledgment 的目的是什么？",
+      "options": {
+        "A": "买家确认订单",
+        "B": "供应商确认收到订单并接受或提出变更",
+        "C": "取消订单",
+        "D": "完成付款"
+      },
+      "answer": "B",
+      "explanation": "Purchase Order Acknowledgment 是供应商确认收到采购订单并表示接受、拒绝或提出变更请求的响应。",
+      "difficulty": "easy"
+    },
+    {
+      "id": 35,
+      "question": "SAP Ariba 中的 Advance Ship Notice (ASN) 包含哪些信息？（2个选择）",
+      "options": {
+        "A": "发货日期和预计到达日期",
+        "B": "员工考勤数据",
+        "C": "货物数量和追踪信息",
+        "D": "供应商财务报表"
+      },
+      "answer": ["A", "C"],
+      "explanation": "ASN（发货通知）包含发货日期、预计到达日期、货物数量、包装信息和运输追踪号等信息。",
+      "difficulty": "medium"
+    },
+    {
+      "id": 36,
+      "question": "在 SAP Ariba 中，什么是 Punch-Out 集成？",
+      "options": {
+        "A": "用户打卡上班",
+        "B": "用户从 Ariba 跳转到供应商网站选购产品后返回 Ariba 结账",
+        "C": "供应商退出 Ariba Network",
+        "D": "终止供应商关系"
+      },
+      "answer": "B",
+      "explanation": "Punch-Out 集成允许用户从 Ariba 采购系统跳转到供应商的电子商务网站浏览和选择产品，然后将购物车信息返回 Ariba 进行审批和处理。",
+      "difficulty": "easy"
+    },
+    {
+      "id": 37,
+      "question": "SAP Ariba 中的 Guided Buying 如何帮助提高合规性？（2个选择）",
+      "options": {
+        "A": "引导用户选择首选供应商",
+        "B": "允许任意非合规采购",
+        "C": "推荐合同产品和目录商品",
+        "D": "禁止所有采购活动"
+      },
+      "answer": ["A", "C"],
+      "explanation": "Guided Buying 通过引导用户优先选择首选供应商和推荐合同产品/目录商品，减少非合规采购行为。",
+      "difficulty": "medium"
+    },
+    {
+      "id": 38,
+      "question": "在 SAP Ariba 中，Invoice Exception 的常见类型包括哪些？",
+      "options": {
+        "A": "仅数量差异",
+        "B": "价格差异、数量差异、税额差异和缺少 PO 引用",
+        "C": "仅格式错误",
+        "D": "仅重复发票"
+      },
+      "answer": "B",
+      "explanation": "发票例外类型包括价格差异、数量差异、税额差异、缺少采购订单引用、重复发票和供应商信息不匹配等。",
+      "difficulty": "medium"
+    },
+    {
+      "id": 39,
+      "question": "SAP Ariba 中的 Payment Terms Discount 如何计算？",
+      "options": {
+        "A": "按随机比例计算",
+        "B": "基于付款条款定义的折扣比例和付款时间",
+        "C": "所有发票统一10%折扣",
+        "D": "仅适用于大额发票"
+      },
+      "answer": "B",
+      "explanation": "付款条款折扣基于定义的条件计算，如"2/10 Net 30"表示10天内付款可获得2%折扣，否则30天内全额支付。",
+      "difficulty": "medium"
+    },
+    {
+      "id": 40,
+      "question": "在 SAP Ariba 中，什么是 Payment Batch？",
+      "options": {
+        "A": "单笔付款",
+        "B": "将多笔付款合并为一次处理以提高效率",
+        "C": "延迟付款",
+        "D": "取消付款"
+      },
+      "answer": "B",
+      "explanation": "Payment Batch 将多笔待付款发票合并为一次批量处理，提高付款效率并降低银行交易费用。",
+      "difficulty": "easy"
+    },
+    {
+      "id": 41,
+      "question": "SAP Ariba 中的 Supplier Enablement 计划的目标是什么？",
+      "options": {
+        "A": "减少供应商数量",
+        "B": "帮助供应商注册并开始使用 Ariba Network 进行电子交易",
+        "C": "评估供应商财务状况",
+        "D": "终止与供应商的关系"
+      },
+      "answer": "B",
+      "explanation": "Supplier Enablement 计划旨在帮助供应商成功注册 Ariba Network、配置电子交易能力并开始与买家进行电子化业务往来。",
+      "difficulty": "easy"
+    },
+    {
+      "id": 42,
+      "question": "在 SAP Ariba 中，Account Hierarchy（账户层级）的用途是什么？",
+      "options": {
+        "A": "仅显示组织架构",
+        "B": "管理企业集团下多个采购组织的关系和访问权限",
+        "C": "仅用于报表显示",
+        "D": "管理产品目录"
+      },
+      "answer": "B",
+      "explanation": "Account Hierarchy 用于管理企业集团内多个采购组织（子公司、分公司）的关系，控制数据访问和共享权限。",
+      "difficulty": "medium"
+    },
+    {
+      "id": 43,
+      "question": "SAP Ariba 中的 Data File Import 功能支持哪些操作？（2个选择）",
+      "options": {
+        "A": "批量导入用户数据",
+        "B": "导入社交媒体帖子",
+        "C": "批量更新供应商信息",
+        "D": "导入视频文件"
+      },
+      "answer": ["A", "C"],
+      "explanation": "Data File Import 支持批量导入和更新用户数据、供应商信息、商品分类、成本中心等主数据。",
+      "difficulty": "medium"
+    },
+    {
+      "id": 44,
+      "question": "在 SAP Ariba 中，Security Policy 可以配置哪些设置？",
+      "options": {
+        "A": "仅用户界面颜色",
+        "B": "密码策略、会话超时和 IP 访问限制",
+        "C": "仅报表格式",
+        "D": "仅目录排序"
+      },
+      "answer": "B",
+      "explanation": "Security Policy 可配置密码复杂性要求、密码过期策略、会话超时时间、IP 访问白名单等安全设置。",
+      "difficulty": "medium"
+    },
+    {
+      "id": 45,
+      "question": "SAP Ariba 中的 Event Messaging 用于什么？",
+      "options": {
+        "A": "发送营销邮件",
+        "B": "在特定业务事件发生时发送通知",
+        "C": "管理用户活动",
+        "D": "创建报表"
+      },
+      "answer": "B",
+      "explanation": "Event Messaging 在特定业务事件（如订单创建、发票到期、审批待处理）发生时自动向相关方发送通知。",
+      "difficulty": "easy"
+    },
+    {
+      "id": 46,
+      "question": "在 SAP Ariba 中，什么是 Document Versioning？",
+      "options": {
+        "A": "删除旧版本文档",
+        "B": "保留文档的多个版本并追踪变更历史",
+        "C": "仅保留最新版本",
+        "D": "合并多个文档"
+      },
+      "answer": "B",
+      "explanation": "Document Versioning 保留文档（如合同、采购申请）的多个版本，记录每次修改的内容、时间和修改人，支持审计追踪。",
+      "difficulty": "easy"
+    },
+    {
+      "id": 47,
+      "question": "SAP Ariba 中的 Audit Trail 提供什么信息？（2个选择）",
+      "options": {
+        "A": "所有用户操作和系统事件的记录",
+        "B": "员工休假信息",
+        "C": "文档状态变更历史",
+        "D": "市场营销数据"
+      },
+      "answer": ["A", "C"],
+      "explanation": "Audit Trail 提供完整的用户操作记录（如创建、修改、审批）和文档状态变更历史，支持合规审计。",
+      "difficulty": "medium"
+    },
+    {
+      "id": 48,
+      "question": "在 SAP Ariba 实施中，Cut-Over Planning 的目的是什么？",
+      "options": {
+        "A": "取消项目",
+        "B": "规划从旧系统到新系统的平稳过渡",
+        "C": "增加项目预算",
+        "D": "减少用户数量"
+      },
+      "answer": "B",
+      "explanation": "Cut-Over Planning 详细规划从旧系统到 Ariba 的过渡步骤，包括数据迁移、用户培训、测试和上线时间安排。",
+      "difficulty": "medium"
+    },
+    {
+      "id": 49,
+      "question": "SAP Ariba 中的 System Integration Testing (SIT) 验证什么？",
+      "options": {
+        "A": "单个功能的独立运行",
+        "B": "Ariba 与其他系统（如 ERP）之间的集成正确性",
+        "C": "用户界面设计",
+        "D": "系统硬件性能"
+      },
+      "answer": "B",
+      "explanation": "SIT 验证 Ariba 与后端 ERP 系统及其他集成系统之间的数据交换和业务流程集成是否正确工作。",
+      "difficulty": "medium"
+    },
+    {
+      "id": 50,
+      "question": "在 SAP Ariba 中，User Acceptance Testing (UAT) 由谁执行？",
+      "options": {
+        "A": "仅开发团队",
+        "B": "业务用户验证系统是否满足业务需求",
+        "C": "仅系统管理员",
+        "D": "供应商"
+      },
+      "answer": "B",
+      "explanation": "UAT 由业务用户执行，验证配置好的 Ariba 系统是否满足业务需求，流程是否符合预期。",
+      "difficulty": "easy"
+    }
+  ]
+}

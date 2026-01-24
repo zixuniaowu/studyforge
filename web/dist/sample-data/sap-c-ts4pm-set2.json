@@ -1,0 +1,773 @@
+{
+  "exam": {
+    "id": "sap-c-ts4pm-set2",
+    "name": "SAP C_TS4PM 模拟考试 #2",
+    "code": "C_TS4PM",
+    "provider": "SAP",
+    "language": "zh-CN",
+    "description": "SAP S/4HANA 工厂维护认证考试模拟题 - 第2套",
+    "totalQuestions": 50,
+    "passingScore": 65,
+    "examTime": 180,
+    "domains": [
+      { "id": 1, "name": "工厂维护基础", "percentage": 20 },
+      { "id": 2, "name": "维护计划与通知", "percentage": 25 },
+      { "id": 3, "name": "维护工单", "percentage": 25 },
+      { "id": 4, "name": "技术对象管理", "percentage": 15 },
+      { "id": 5, "name": "S/4HANA PM集成", "percentage": 15 }
+    ],
+    "tags": ["SAP", "S/4HANA", "PM", "工厂维护", "设备管理"]
+  },
+  "questions": [
+    {
+      "id": "q1",
+      "domain": 1,
+      "question": "在SAP PM中，功能位置的"结构指示器"（Structure Indicator）的用途是什么？",
+      "options": {
+        "A": "定义功能位置层次结构的编号规则",
+        "B": "指示建筑物的结构类型",
+        "C": "标识组织结构",
+        "D": "定义财务结构"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "结构指示器定义了功能位置编号的层次结构规则，包括层级数量、每级的字符长度和分隔符等。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q2",
+      "domain": 2,
+      "question": "单周期维护计划与多周期维护计划的区别是什么？",
+      "options": {
+        "A": "单周期只有一个维护间隔，多周期有多个不同间隔",
+        "B": "单周期更贵",
+        "C": "多周期只用于大型设备",
+        "D": "没有区别"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "单周期计划以固定间隔执行相同维护，多周期计划（通过策略）可以定义多个不同间隔的维护包，如每月检查、每年大修。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q3",
+      "domain": 3,
+      "question": "维护工单的"计划成本"如何计算？",
+      "options": {
+        "A": "根据计划工时、材料和外部服务估算",
+        "B": "从历史数据自动复制",
+        "C": "由财务部门手动输入",
+        "D": "系统随机生成"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "计划成本基于工单中的计划工序工时、计划材料数量和计划的外部服务，结合相应的费率计算得出。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q4",
+      "domain": 4,
+      "question": "设备安装到功能位置时，系统记录什么信息？（选择2个）",
+      "options": {
+        "A": "安装日期和时间",
+        "B": "员工薪资信息",
+        "C": "安装的功能位置",
+        "D": "客户联系方式"
+      },
+      "answer": ["A", "C"],
+      "answerType": "multiple",
+      "explanation": "系统记录设备的安装位置变更，包括安装日期、时间和目标功能位置，形成设备的位置变更历史。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q5",
+      "domain": 5,
+      "question": "S/4HANA中PM与项目管理的集成如何体现？",
+      "options": {
+        "A": "大型维护活动可以作为项目管理，工单链接到项目",
+        "B": "自动创建项目计划",
+        "C": "管理项目预算",
+        "D": "处理项目招标"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "复杂的维护活动（如设备大修）可以在项目系统中管理，维护工单可以分配到项目或WBS元素进行综合管理。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q6",
+      "domain": 1,
+      "question": "在SAP PM中，"ABC指示器"（ABC Indicator）用于什么？",
+      "options": {
+        "A": "对设备按重要性或关键程度进行分类",
+        "B": "按字母顺序排列设备",
+        "C": "定义成本类别",
+        "D": "分类员工技能"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "ABC指示器用于对技术对象进行重要性分类（如A=关键、B=重要、C=一般），帮助确定维护优先级和资源分配。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q7",
+      "domain": 2,
+      "question": "维护计划的"排程参数"包括哪些设置？（选择2个）",
+      "options": {
+        "A": "调度期间（向前排程的时间范围）",
+        "B": "员工休假安排",
+        "C": "提前调用天数（容差）",
+        "D": "办公室装修计划"
+      },
+      "answer": ["A", "C"],
+      "answerType": "multiple",
+      "explanation": "排程参数包括调度期间（系统向前查看多长时间来安排维护）和调用容差（提前多少天创建调用对象）。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q8",
+      "domain": 3,
+      "question": "维护工单中的"活动类型"（Activity Type）与成本的关系是什么？",
+      "options": {
+        "A": "活动类型关联费率，用于计算人工成本",
+        "B": "活动类型与成本无关",
+        "C": "活动类型决定材料价格",
+        "D": "活动类型决定供应商选择"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "活动类型定义了工作类型（如维修工作、检查工作），每种活动类型在成本中心有对应的费率，用于计算人工成本。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q9",
+      "domain": 4,
+      "question": "在SAP PM中，"保修"（Warranty）管理功能提供什么能力？",
+      "options": {
+        "A": "跟踪设备的保修期限和保修条款",
+        "B": "管理产品质保",
+        "C": "处理客户索赔",
+        "D": "计算保险费用"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "保修管理允许为设备记录保修信息（如保修开始日期、结束日期、保修条款），在维护时提醒是否在保修期内。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q10",
+      "domain": 5,
+      "question": "S/4HANA的"预测性维护"功能基于什么？",
+      "options": {
+        "A": "分析设备数据预测潜在故障",
+        "B": "随机预测",
+        "C": "员工预测",
+        "D": "财务预测"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "预测性维护利用IoT传感器数据、机器学习模型分析设备运行状态，预测潜在故障，在故障发生前进行维护。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q11",
+      "domain": 1,
+      "question": "SAP PM中的"设备类别"（Equipment Category）定义什么？",
+      "options": {
+        "A": "设备的类型和可用的屏幕字段",
+        "B": "设备的物理尺寸",
+        "C": "设备的价格范围",
+        "D": "设备的颜色"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "设备类别控制设备主数据的屏幕布局、可用字段和数据输入，不同类别可以有不同的数据结构。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q12",
+      "domain": 2,
+      "question": "维护通知的"紧急程度"与"优先级"如何配合使用？",
+      "options": {
+        "A": "紧急程度自动映射到优先级，控制响应时间",
+        "B": "两者没有关系",
+        "C": "紧急程度取代优先级",
+        "D": "优先级决定紧急程度"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "通知的紧急程度可以通过配置自动映射到特定的优先级，优先级进一步定义响应时间要求和处理顺序。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q13",
+      "domain": 3,
+      "question": "维护工单的"拆分"（Split）功能用于什么场景？",
+      "options": {
+        "A": "将一个工单分成多个子工单分别处理",
+        "B": "拆分维护成本",
+        "C": "拆分工作时间",
+        "D": "拆分材料清单"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "工单拆分允许将一个工单分成多个子工单，当原工单包含的工作需要由不同团队或在不同时间执行时使用。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q14",
+      "domain": 4,
+      "question": "在SAP PM中，"参考对象"（Reference Object）的作用是什么？",
+      "options": {
+        "A": "在通知或工单中指定维护活动针对的技术对象",
+        "B": "参考其他公司的设备",
+        "C": "参考财务凭证",
+        "D": "参考员工档案"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "参考对象指定维护活动针对的功能位置或设备，确保维护记录与正确的技术对象关联，支持历史追踪。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q15",
+      "domain": 5,
+      "question": "S/4HANA中PM与资产管理（AA）的集成功能是什么？",
+      "options": {
+        "A": "设备可以链接到固定资产，共享主数据",
+        "B": "自动计算资产折旧",
+        "C": "管理资产采购",
+        "D": "处理资产销售"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "PM中的设备可以与资产会计中的固定资产建立链接，实现技术视角和财务视角的数据同步。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q16",
+      "domain": 1,
+      "question": "SAP PM中的"搜索帮助"（Search Help）如何辅助设备查找？",
+      "options": {
+        "A": "提供多种条件组合快速定位设备",
+        "B": "只按编号搜索",
+        "C": "只按名称搜索",
+        "D": "不支持搜索"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "搜索帮助提供多种搜索条件（如位置、类别、状态、分类特性等），支持快速精确地定位需要的设备。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q17",
+      "domain": 2,
+      "question": "维护计划的"完成确认"机制如何影响后续排程？",
+      "options": {
+        "A": "确认信息用于计算下次维护的到期日期",
+        "B": "确认与排程无关",
+        "C": "确认会删除计划",
+        "D": "确认会暂停计划"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "工单完成确认后，系统使用确认的日期或计数器值来更新计划，计算下一次维护的到期日期。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q18",
+      "domain": 3,
+      "question": "维护工单中的"子工单"（Suborder）的用途是什么？",
+      "options": {
+        "A": "在主工单下创建详细的工作分解",
+        "B": "替换主工单",
+        "C": "取消主工单",
+        "D": "备份主工单"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "子工单允许将复杂的维护工作分解为更小的可管理单元，每个子工单可以独立跟踪进度和成本。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q19",
+      "domain": 4,
+      "question": "在SAP PM中，"测量文档"（Measurement Document）记录什么？",
+      "options": {
+        "A": "在测量点上记录的实际测量值",
+        "B": "文档管理系统的文件",
+        "C": "测量设备的规格",
+        "D": "测量员的资质"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "测量文档是在测量点上记录实际测量值的凭证，包含测量时间、测量值、测量人员等信息。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q20",
+      "domain": 5,
+      "question": "S/4HANA的移动应用如何支持现场维护？",
+      "options": {
+        "A": "技术人员可以在现场查看、更新工单和记录确认",
+        "B": "只能查看工单",
+        "C": "只用于审批",
+        "D": "不支持现场操作"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "S/4HANA移动应用允许现场技术人员通过移动设备查看工单详情、记录确认、更新设备数据和创建通知。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q21",
+      "domain": 1,
+      "question": "在SAP PM中，"合作伙伴"（Partner）功能的用途是什么？",
+      "options": {
+        "A": "在技术对象上记录相关方信息（如制造商、服务商）",
+        "B": "管理业务合作伙伴",
+        "C": "处理合同谈判",
+        "D": "跟踪竞争对手"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "合作伙伴功能允许在设备或功能位置上记录相关方信息，如设备制造商、服务提供商、内部联系人等。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q22",
+      "domain": 2,
+      "question": "维护通知的"长文本"可以用于什么？",
+      "options": {
+        "A": "详细描述问题情况和相关信息",
+        "B": "存储员工简历",
+        "C": "保存财务数据",
+        "D": "记录会议纪要"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "长文本允许输入详细的问题描述、发现情况、相关背景等信息，补充短文本字段的限制。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q23",
+      "domain": 3,
+      "question": "维护工单的"服务采购"流程如何运作？",
+      "options": {
+        "A": "通过外部工序创建服务采购订单给供应商",
+        "B": "自动选择供应商",
+        "C": "只能手动采购",
+        "D": "不支持服务采购"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "当工单包含外部服务工序时，可以创建服务采购订单，与外部供应商签约执行特定的维护工作。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q24",
+      "domain": 4,
+      "question": "在SAP PM中，如何管理"关键备件"？",
+      "options": {
+        "A": "在设备BOM中标识关键部件并设置库存策略",
+        "B": "只记录在文档中",
+        "C": "由员工记忆",
+        "D": "不需要特别管理"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "关键备件可以在设备BOM中识别，并通过物料管理设置安全库存、再订货点等策略确保可用性。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q25",
+      "domain": 5,
+      "question": "S/4HANA中PM与采购（MM）的服务采购集成流程是什么？",
+      "options": {
+        "A": "工单→服务采购订单→服务入库→发票验证",
+        "B": "直接付款给供应商",
+        "C": "只创建订单不跟踪",
+        "D": "手动处理所有步骤"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "外部维护服务的完整流程包括从工单创建服务采购订单、服务完成后的入库确认、以及发票验证付款。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q26",
+      "domain": 1,
+      "question": "SAP PM中的"状态概览"（Status Overview）显示什么信息？",
+      "options": {
+        "A": "技术对象的系统状态和用户状态汇总",
+        "B": "只显示系统状态",
+        "C": "只显示财务状态",
+        "D": "显示员工状态"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "状态概览汇总显示技术对象的当前状态，包括系统自动设置的状态和用户自定义的状态。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q27",
+      "domain": 2,
+      "question": "维护计划的"模拟"（Simulation）功能的用途是什么？",
+      "options": {
+        "A": "预览未来一段时间的计划维护日期",
+        "B": "模拟设备故障",
+        "C": "模拟成本变化",
+        "D": "模拟员工排班"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "计划模拟允许用户预览在指定时间范围内将产生的维护调用，帮助评估资源需求和工作负荷。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q28",
+      "domain": 3,
+      "question": "维护工单的"阶段控制"（Milestone）如何使用？",
+      "options": {
+        "A": "在工序上设置里程碑控制关键进度点",
+        "B": "控制项目阶段",
+        "C": "管理产品生命周期",
+        "D": "标记员工晋升"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "在工单工序上设置里程碑，可以在关键工序完成时自动触发预定义的动作，如发送通知或更新状态。",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q29",
+      "domain": 4,
+      "question": "在SAP PM中，"许可证明"（Permit to Work）流程如何运作？",
+      "options": {
+        "A": "创建许可请求→审批→执行→完成→关闭",
+        "B": "自动批准所有许可",
+        "C": "不需要流程",
+        "D": "只有大型工厂需要"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "许可证明是一个受控流程，需要在执行危险维护活动前申请、获得审批，执行后完成并关闭许可。",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q30",
+      "domain": 5,
+      "question": "S/4HANA中的"维护调度板"（Maintenance Scheduling Board）提供什么功能？",
+      "options": {
+        "A": "图形化界面管理维护工单的时间安排",
+        "B": "只显示甘特图",
+        "C": "只用于生产调度",
+        "D": "不支持拖放操作"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "维护调度板提供图形化的调度界面，支持通过拖放调整工单时间、查看资源负荷和优化维护安排。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q31",
+      "domain": 1,
+      "question": "在SAP PM中，功能位置的"继承"机制如何工作？",
+      "options": {
+        "A": "子位置可以继承父位置的某些属性设置",
+        "B": "子位置必须重新输入所有信息",
+        "C": "不支持继承",
+        "D": "只继承财务信息"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "功能位置层次结构支持属性继承，子位置可以从父位置继承某些设置（如成本中心、维护计划组等）。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q32",
+      "domain": 2,
+      "question": "维护通知的"目录"（Catalog）功能用于什么？",
+      "options": {
+        "A": "提供标准化的代码选择（如故障代码、原因代码）",
+        "B": "存储产品目录",
+        "C": "管理供应商目录",
+        "D": "展示设备图片"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "通知目录提供预定义的标准代码（故障代码、原因代码、活动代码等），确保数据录入的一致性和可分析性。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q33",
+      "domain": 3,
+      "question": "维护工单的"能力需求"（Capacity Requirements）如何计算？",
+      "options": {
+        "A": "根据工序的计划工时和工作中心自动计算",
+        "B": "手动输入",
+        "C": "从历史数据复制",
+        "D": "由系统随机生成"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "系统根据工单工序中的计划工时和分配的工作中心的能力参数，自动计算能力需求用于调度。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q34",
+      "domain": 4,
+      "question": "在SAP PM中，"物料序列号"与"设备"的区别是什么？",
+      "options": {
+        "A": "序列号是物料的跟踪方式，设备是独立的技术对象",
+        "B": "两者完全相同",
+        "C": "序列号更重要",
+        "D": "设备就是序列号"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "物料序列号是物料管理中跟踪个体物料的方式，设备是PM中独立的技术对象，两者可以建立链接但概念不同。",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q35",
+      "domain": 5,
+      "question": "S/4HANA的"技术对象360度视图"显示什么？",
+      "options": {
+        "A": "设备的全面信息（历史、当前状态、关联对象等）",
+        "B": "只显示基本信息",
+        "C": "只显示财务信息",
+        "D": "只显示位置信息"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "360度视图在单一界面集成显示技术对象的所有相关信息，包括主数据、历史通知/工单、测量数据等。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q36",
+      "domain": 1,
+      "question": "SAP PM中的"工厂数据收集"（PDC）集成的作用是什么？",
+      "options": {
+        "A": "自动收集现场设备的运行数据",
+        "B": "收集员工考勤",
+        "C": "收集财务数据",
+        "D": "收集客户反馈"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "PDC集成允许从车间终端或传感器自动收集设备运行数据，如运行时间、产量计数等，减少手动录入。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q37",
+      "domain": 2,
+      "question": "维护计划的"偏移量"（Offset）设置的用途是什么？",
+      "options": {
+        "A": "错开同一策略中不同维护包的执行时间",
+        "B": "调整时区",
+        "C": "设置成本偏差",
+        "D": "调整员工班次"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "偏移量用于在策略中错开不同维护包的执行时间，避免所有维护活动集中在同一时间点。",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q38",
+      "domain": 3,
+      "question": "维护工单的"打印"控制功能用于什么？",
+      "options": {
+        "A": "生成工单作业文档供现场使用",
+        "B": "打印财务报表",
+        "C": "打印员工信息",
+        "D": "打印会议记录"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "工单打印功能生成作业指导文档（如工单打印、材料清单、作业指南等），供现场维护人员使用。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q39",
+      "domain": 4,
+      "question": "在SAP PM中，"设备历史"显示哪些信息？",
+      "options": {
+        "A": "设备的所有维护活动、位置变更和故障记录",
+        "B": "只显示故障记录",
+        "C": "只显示维护工单",
+        "D": "只显示财务信息"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "设备历史综合显示设备的完整历史，包括通知、工单、确认、位置变更、测量记录等所有相关活动。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q40",
+      "domain": 5,
+      "question": "S/4HANA中PM与物联网（IoT）的集成如何支持维护？",
+      "options": {
+        "A": "实时接收传感器数据用于状态监测和预测",
+        "B": "只用于资产定位",
+        "C": "只收集环境数据",
+        "D": "不支持IoT"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "IoT集成允许实时接收设备传感器数据（如温度、振动、能耗等），用于状态监测、异常检测和预测性维护。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q41",
+      "domain": 1,
+      "question": "在SAP PM中，"维护作业库"（Task List Library）的作用是什么？",
+      "options": {
+        "A": "存储可重用的标准维护作业模板",
+        "B": "管理图书馆资源",
+        "C": "存储员工培训资料",
+        "D": "保存客户资料"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "作业列表库是存储和管理标准维护作业模板的中央仓库，可以在创建工单时复制使用，确保作业标准化。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q42",
+      "domain": 2,
+      "question": "维护通知的"完成控制"如何工作？",
+      "options": {
+        "A": "只有满足完成条件（如所有任务完成）才能关闭通知",
+        "B": "任何时候都可以关闭",
+        "C": "系统自动关闭",
+        "D": "由财务部门控制"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "通知的完成控制可以设置关闭条件，如要求所有任务都标记完成后才能将通知设为完成状态。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q43",
+      "domain": 3,
+      "question": "维护工单的"预算"功能如何使用？",
+      "options": {
+        "A": "为工单设置成本上限并监控实际支出",
+        "B": "自动分配预算",
+        "C": "只用于报表",
+        "D": "与成本无关"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "可以为维护工单设置预算金额，系统在成本发生时检查是否超出预算，支持成本控制。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q44",
+      "domain": 4,
+      "question": "在SAP PM中，"功能位置标签"（Functional Location Label）用于什么？",
+      "options": {
+        "A": "标识和描述功能位置，便于现场识别",
+        "B": "物料标签",
+        "C": "员工工号牌",
+        "D": "财务标记"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "功能位置标签是功能位置的标识符，可以打印或显示，便于现场人员识别和定位维护位置。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q45",
+      "domain": 5,
+      "question": "S/4HANA的"维护分析"功能提供什么洞察？（选择2个）",
+      "options": {
+        "A": "设备停机时间和可用性分析",
+        "B": "员工绩效排名",
+        "C": "维护成本趋势分析",
+        "D": "销售业绩分析"
+      },
+      "answer": ["A", "C"],
+      "answerType": "multiple",
+      "explanation": "维护分析提供关键维护KPI的分析，包括设备可用性、停机时间、维护成本趋势、故障分析等。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q46",
+      "domain": 1,
+      "question": "SAP PM中的"授权对象"（Authorization Object）控制什么？",
+      "options": {
+        "A": "用户对PM功能和数据的访问权限",
+        "B": "设备的访问控制",
+        "C": "物理门禁",
+        "D": "网络权限"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "授权对象控制用户在PM模块中可以执行的操作和访问的数据范围，如按工厂、设备类别等限制权限。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q47",
+      "domain": 2,
+      "question": "维护计划的"多项计划"（Multiple Plans）功能用于什么？",
+      "options": {
+        "A": "在一个计划中包含多个维护项（不同的技术对象）",
+        "B": "创建多个独立计划",
+        "C": "复制计划",
+        "D": "删除多余计划"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "多项计划允许在单一维护计划中定义多个维护项，每项针对不同的技术对象，共享相同的调度设置。",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q48",
+      "domain": 3,
+      "question": "维护工单中的"不足处理"（Under-delivery Processing）如何运作？",
+      "options": {
+        "A": "控制是否允许在未完成全部工作时完成工单",
+        "B": "处理材料短缺",
+        "C": "管理人员不足",
+        "D": "处理预算不足"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "不足处理控制当工单中的工作未全部完成时是否允许将工单设为完成状态，提供灵活性或强制完整性。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q49",
+      "domain": 4,
+      "question": "在SAP PM中，"设备拆卸"（Dismantling）操作的结果是什么？",
+      "options": {
+        "A": "设备从功能位置解除安装，记录位置变更",
+        "B": "设备被删除",
+        "C": "设备被报废",
+        "D": "设备被销售"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "拆卸操作将设备从当前安装的功能位置解除，设备仍存在于系统中但不再与该位置关联。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q50",
+      "domain": 5,
+      "question": "S/4HANA的"维护成本中心报表"分析什么？",
+      "options": {
+        "A": "按成本中心汇总的维护支出和资源使用",
+        "B": "只显示总成本",
+        "C": "只分析人工成本",
+        "D": "只分析材料采购"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "该报表提供按成本中心维度的维护成本分析，包括人工、材料、外部服务等成本类型的汇总和明细。",
+      "difficulty": "easy"
+    }
+  ]
+}

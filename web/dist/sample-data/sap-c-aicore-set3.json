@@ -1,0 +1,660 @@
+{
+  "examId": "sap-c-aicore-set3",
+  "provider": "SAP",
+  "title": "SAP AI Core (C_AICORE) 模拟题 Set 3",
+  "description": "SAP AI Core 认证模拟考试第三套",
+  "icon": "sap",
+  "setNumber": 3,
+  "questions": [
+    {
+      "id": 1,
+      "question": "在 SAP AI Core 中，如何配置 Deployment 的自定义域名？",
+      "options": {
+        "A": "直接在 Serving Template 中配置",
+        "B": "需要在 SAP BTP 中配置自定义域名服务，AI Core 使用 BTP 提供的端点",
+        "C": "在 Configuration 中指定域名",
+        "D": "通过数据库配置"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "SAP AI Core 部署的端点由 BTP 平台管理。自定义域名需要通过 SAP BTP 的自定义域名服务进行配置。"
+    },
+    {
+      "id": 2,
+      "question": "SAP AI Core 中的 Model Registry 功能主要用于什么？",
+      "options": {
+        "A": "注册用户账号",
+        "B": "存储和管理不同版本的 ML 模型 Artifact",
+        "C": "注册数据库连接",
+        "D": "管理网络域名"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Model Registry 用于存储和管理机器学习模型的不同版本，支持模型的版本追踪、元数据管理和部署引用。"
+    },
+    {
+      "id": 3,
+      "question": "在 SAP AI Core 的 Workflow 中，如何实现条件分支执行？",
+      "options": {
+        "A": "使用 if-else 语句",
+        "B": "通过 Argo Workflows 的 when 条件表达式",
+        "C": "使用数据库触发器",
+        "D": "不支持条件分支"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "SAP AI Core 使用 Argo Workflows，可以通过 when 条件表达式实现条件分支执行，根据前序步骤的输出决定后续执行路径。"
+    },
+    {
+      "id": 4,
+      "question": "SAP AI Core 支持的 GPU 类型包括哪些？（选择两个）",
+      "options": {
+        "A": "NVIDIA Tesla T4",
+        "B": "NVIDIA Tesla V100",
+        "C": "AMD Radeon",
+        "D": "Intel Xe"
+      },
+      "answer": ["A", "B"],
+      "answerType": "multiple",
+      "explanation": "SAP AI Core 主要支持 NVIDIA GPU，包括 Tesla T4 和 V100 等型号，用于深度学习训练和推理加速。"
+    },
+    {
+      "id": 5,
+      "question": "在 SAP AI Core 中，如何实现模型的金丝雀发布（Canary Release）？",
+      "options": {
+        "A": "自动支持，无需配置",
+        "B": "创建新旧两个 Deployment，通过流量权重控制逐步切换",
+        "C": "修改现有 Deployment 配置",
+        "D": "使用数据库标记"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "金丝雀发布需要创建新版本的 Deployment，并通过外部流量管理工具（如 API Gateway）控制流量权重，逐步将流量从旧版本切换到新版本。"
+    },
+    {
+      "id": 6,
+      "question": "SAP AI Core 的 Serving Template 中，command 字段的作用是什么？",
+      "options": {
+        "A": "定义 API 命令",
+        "B": "覆盖 Docker 镜像的默认入口点命令",
+        "C": "发送用户指令",
+        "D": "配置数据库命令"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "command 字段用于覆盖 Docker 镜像中定义的默认 ENTRYPOINT，指定容器启动时执行的命令。"
+    },
+    {
+      "id": 7,
+      "question": "在 SAP AI Core 中，如何监控资源使用情况？",
+      "options": {
+        "A": "只能通过日志查看",
+        "B": "通过 SAP AI Launchpad 查看资源仪表板或使用 Metrics API",
+        "C": "需要安装第三方监控工具",
+        "D": "不支持资源监控"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "SAP AI Launchpad 提供资源使用仪表板，也可以通过 Metrics API 程序化获取 CPU、内存、GPU 等资源使用数据。"
+    },
+    {
+      "id": 8,
+      "question": "SAP AI Core 中的 Prompt Registry 功能是什么？",
+      "options": {
+        "A": "存储用户提示信息",
+        "B": "管理和版本控制生成式 AI 应用的 Prompt 模板",
+        "C": "记录命令行历史",
+        "D": "存储错误提示"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Prompt Registry 用于管理生成式 AI 应用的 Prompt 模板，支持版本控制、复用和 A/B 测试不同的 Prompt 变体。"
+    },
+    {
+      "id": 9,
+      "question": "在 SAP AI Core 的 Workflow 中，artifacts 参数的作用是什么？（选择两个）",
+      "options": {
+        "A": "定义工作流的输入数据源",
+        "B": "定义工作流的输出数据目标",
+        "C": "配置用户界面元素",
+        "D": "设置网络参数"
+      },
+      "answer": ["A", "B"],
+      "answerType": "multiple",
+      "explanation": "Workflow Template 中的 artifacts 参数用于定义工作流的输入（inputs.artifacts）和输出（outputs.artifacts），指定数据的来源和存储位置。"
+    },
+    {
+      "id": 10,
+      "question": "SAP AI Core 中，如何处理模型推理请求的批量处理？",
+      "options": {
+        "A": "只能逐个请求处理",
+        "B": "通过 Batch Inference 的 Execution 进行批量处理",
+        "C": "自动批量处理所有请求",
+        "D": "需要修改模型代码"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "对于大规模数据的批量推理，可以创建 Execution 运行 Batch Inference 任务，而不是使用 Online Inference 的 Deployment。"
+    },
+    {
+      "id": 11,
+      "question": "在 SAP AI Core 中，volumeMounts 的作用是什么？",
+      "options": {
+        "A": "配置网络存储",
+        "B": "将外部存储卷挂载到容器内的指定路径",
+        "C": "设置音量级别",
+        "D": "管理文件权限"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "volumeMounts 用于将 Secret 或 ConfigMap 等外部存储卷挂载到容器内的指定路径，使容器可以访问外部数据。"
+    },
+    {
+      "id": 12,
+      "question": "SAP AI Core 与 SAP HANA 的集成方式是什么？",
+      "options": {
+        "A": "直接内置集成",
+        "B": "通过标准数据库连接或 SAP HANA ML 库进行集成",
+        "C": "不支持集成",
+        "D": "需要购买额外许可"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "SAP AI Core 可以通过标准数据库连接访问 HANA 数据，也可以使用 SAP HANA ML 库将 HANA 中的数据用于 AI 训练和推理。"
+    },
+    {
+      "id": 13,
+      "question": "在 SAP AI Core 中，如何实现模型服务的速率限制？",
+      "options": {
+        "A": "在 Serving Template 中直接配置",
+        "B": "通过 SAP API Management 或自定义中间件实现",
+        "C": "自动限制所有请求",
+        "D": "不支持速率限制"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "SAP AI Core 本身不直接提供速率限制功能，需要通过 SAP API Management 或在容器内实现自定义中间件来控制请求频率。"
+    },
+    {
+      "id": 14,
+      "question": "SAP AI Core 的 Execution 超时机制是什么？",
+      "options": {
+        "A": "永不超时",
+        "B": "可以在 Workflow Template 中通过 activeDeadlineSeconds 配置超时时间",
+        "C": "固定为 1 小时",
+        "D": "由数据库控制"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Workflow Template 中可以通过 activeDeadlineSeconds 参数设置执行的最大超时时间，超时后任务会被终止。"
+    },
+    {
+      "id": 15,
+      "question": "在 SAP AI Core 中，如何配置跨区域的容灾？",
+      "options": {
+        "A": "自动跨区域复制",
+        "B": "需要在多个区域部署独立的 AI Core 实例并配置数据同步",
+        "C": "通过单一配置启用",
+        "D": "不支持跨区域"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "跨区域容灾需要在多个 SAP BTP 区域部署独立的 AI Core 实例，并通过对象存储同步模型和数据，配置流量切换机制。"
+    },
+    {
+      "id": 16,
+      "question": "SAP AI Core 中的 Grounding 服务是什么？",
+      "options": {
+        "A": "接地电路保护",
+        "B": "将 LLM 输出与企业数据进行关联验证的服务",
+        "C": "网络基础设施服务",
+        "D": "数据库连接服务"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Grounding 服务用于将大型语言模型（LLM）的输出与企业知识库、文档等数据进行关联，减少幻觉并提高答案的准确性和相关性。"
+    },
+    {
+      "id": 17,
+      "question": "在 SAP AI Core 的 Serving Template 中，terminationGracePeriodSeconds 的作用是什么？",
+      "options": {
+        "A": "设置容器启动时间",
+        "B": "设置容器停止前的优雅终止等待时间",
+        "C": "配置会话超时",
+        "D": "设置数据备份时间"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "terminationGracePeriodSeconds 定义了容器在收到终止信号后的优雅关闭等待时间，允许容器完成正在处理的请求。"
+    },
+    {
+      "id": 18,
+      "question": "SAP AI Core 如何支持联邦学习（Federated Learning）？",
+      "options": {
+        "A": "内置联邦学习功能",
+        "B": "通过自定义容器实现联邦学习算法，AI Core 提供编排能力",
+        "C": "不支持联邦学习",
+        "D": "需要购买专门模块"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "SAP AI Core 不内置联邦学习功能，但可以通过自定义容器部署联邦学习框架，利用 AI Core 的编排和调度能力。"
+    },
+    {
+      "id": 19,
+      "question": "在 SAP AI Core 中，如何实现模型的解释性（Explainability）？",
+      "options": {
+        "A": "自动提供所有模型的解释",
+        "B": "在自定义模型服务中集成 SHAP、LIME 等解释工具",
+        "C": "通过数据库查询获取解释",
+        "D": "不支持模型解释"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "模型解释性需要在自定义容器中集成 SHAP、LIME 等解释性工具，并在推理端点中提供解释功能。"
+    },
+    {
+      "id": 20,
+      "question": "SAP AI Core 中的 Data Binding 功能是什么？",
+      "options": {
+        "A": "数据可视化绑定",
+        "B": "将外部数据源（如 Object Store 中的数据）绑定到训练或推理任务",
+        "C": "数据库连接绑定",
+        "D": "用户界面数据绑定"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Data Binding 允许将 Object Store 中的数据集或模型文件绑定为训练或推理任务的输入，通过 Configuration 的 inputArtifactBindings 配置。"
+    },
+    {
+      "id": 21,
+      "question": "在 SAP AI Core 中，如何配置容器的资源请求（resource requests）？",
+      "options": {
+        "A": "通过 annotations 配置",
+        "B": "通过 spec.containers.resources.requests 定义最低资源需求",
+        "C": "自动分配资源",
+        "D": "通过数据库配置"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "在容器规格中通过 resources.requests 定义容器的最低资源需求（CPU、内存），Kubernetes 会确保分配至少这些资源。"
+    },
+    {
+      "id": 22,
+      "question": "SAP AI Core 的 Vector Engine 功能是什么？",
+      "options": {
+        "A": "图形渲染引擎",
+        "B": "用于存储和检索向量嵌入的服务，支持语义搜索",
+        "C": "数学计算引擎",
+        "D": "网络路由引擎"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Vector Engine 是用于存储和高效检索向量嵌入的服务，支持 RAG（检索增强生成）应用中的语义相似度搜索。"
+    },
+    {
+      "id": 23,
+      "question": "在 SAP AI Core 中，如何处理模型输入数据的预处理？",
+      "options": {
+        "A": "AI Core 自动处理所有预处理",
+        "B": "在自定义容器的推理代码中实现预处理逻辑",
+        "C": "通过配置文件定义预处理规则",
+        "D": "使用数据库存储过程"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "数据预处理逻辑需要在自定义容器的推理服务代码中实现，包括数据清洗、特征工程、格式转换等操作。"
+    },
+    {
+      "id": 24,
+      "question": "SAP AI Core 中的 Orchestration Service 提供什么功能？（选择两个）",
+      "options": {
+        "A": "协调多个 LLM 调用的复杂工作流",
+        "B": "管理容器编排",
+        "C": "提供 Prompt 链式执行能力",
+        "D": "配置网络路由"
+      },
+      "answer": ["A", "C"],
+      "answerType": "multiple",
+      "explanation": "Orchestration Service 用于协调复杂的生成式 AI 工作流，支持多个 LLM 调用的编排和 Prompt 的链式执行。"
+    },
+    {
+      "id": 25,
+      "question": "在 SAP AI Core 中，如何配置自动日志收集？",
+      "options": {
+        "A": "需要手动配置每个容器",
+        "B": "AI Core 自动收集容器的 stdout 和 stderr 输出到日志系统",
+        "C": "不支持日志收集",
+        "D": "需要安装额外的日志代理"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "SAP AI Core 自动收集容器的标准输出（stdout）和标准错误（stderr）流到日志系统，可通过 API 或 AI Launchpad 查看。"
+    },
+    {
+      "id": 26,
+      "question": "SAP AI Core 支持的模型框架包括哪些？（选择三个）",
+      "options": {
+        "A": "TensorFlow",
+        "B": "PyTorch",
+        "C": "scikit-learn",
+        "D": "只支持 SAP 专有框架"
+      },
+      "answer": ["A", "B", "C"],
+      "answerType": "multiple",
+      "explanation": "SAP AI Core 通过容器化支持任何 ML 框架，包括 TensorFlow、PyTorch、scikit-learn 等主流框架，不限于特定框架。"
+    },
+    {
+      "id": 27,
+      "question": "在 SAP AI Core 中，initContainers 的作用是什么？",
+      "options": {
+        "A": "定义初始化用户界面",
+        "B": "在主容器启动前运行的初始化容器，用于准备环境",
+        "C": "配置数据库初始化",
+        "D": "设置网络初始化"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "initContainers 是在主容器启动前运行的初始化容器，可用于下载数据、配置文件、检查依赖等准备工作。"
+    },
+    {
+      "id": 28,
+      "question": "SAP AI Core 的 Content Filtering 功能是什么？",
+      "options": {
+        "A": "过滤网络内容",
+        "B": "对生成式 AI 输出进行安全过滤，检测有害内容",
+        "C": "过滤数据库查询结果",
+        "D": "过滤用户输入"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Content Filtering 用于检测和过滤生成式 AI 模型输出中的有害、不当或敏感内容，确保 AI 应用的安全合规。"
+    },
+    {
+      "id": 29,
+      "question": "在 SAP AI Core 中，如何配置 Deployment 的环境变量来自 ConfigMap？",
+      "options": {
+        "A": "直接在 env 中写入值",
+        "B": "使用 configMapKeyRef 引用 ConfigMap 中的键值",
+        "C": "不支持 ConfigMap",
+        "D": "通过数据库配置"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "可以在环境变量配置中使用 configMapKeyRef 引用预先创建的 ConfigMap 中的特定键值。"
+    },
+    {
+      "id": 30,
+      "question": "SAP AI Core 中的 Model Monitoring 功能包括什么？（选择两个）",
+      "options": {
+        "A": "检测模型性能漂移（drift）",
+        "B": "监控用户界面性能",
+        "C": "追踪推理请求的延迟和吞吐量",
+        "D": "监控数据库连接"
+      },
+      "answer": ["A", "C"],
+      "answerType": "multiple",
+      "explanation": "Model Monitoring 功能包括检测模型性能漂移（数据分布变化导致的准确率下降）和追踪推理服务的性能指标。"
+    },
+    {
+      "id": 31,
+      "question": "在 SAP AI Core 中，如何实现模型的 Shadow 部署？",
+      "options": {
+        "A": "使用特殊配置启用",
+        "B": "创建 Shadow Deployment 并行接收请求但不返回结果给客户端",
+        "C": "自动为所有部署创建影子",
+        "D": "不支持 Shadow 部署"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Shadow 部署需要创建额外的 Deployment 来镜像生产流量，用于测试新模型而不影响用户。需要自行实现流量复制逻辑。"
+    },
+    {
+      "id": 32,
+      "question": "SAP AI Core 中的 AI API 版本当前主要使用哪个？",
+      "options": {
+        "A": "v1",
+        "B": "v2",
+        "C": "v3",
+        "D": "beta"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "SAP AI Core 当前主要使用 v2 版本的 AI API（/v2/lm/...），提供了完整的生命周期管理功能。"
+    },
+    {
+      "id": 33,
+      "question": "在 SAP AI Core 中，如何配置 Workflow 的重试策略？",
+      "options": {
+        "A": "不支持重试",
+        "B": "通过 retryStrategy 配置重试次数和退避策略",
+        "C": "自动重试所有失败任务",
+        "D": "通过数据库配置"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Argo Workflows 支持 retryStrategy 配置，可以定义重试次数、退避策略（exponential、linear）等，处理临时性失败。"
+    },
+    {
+      "id": 34,
+      "question": "SAP AI Core 的 Embeddings 服务提供什么功能？",
+      "options": {
+        "A": "嵌入式系统开发",
+        "B": "将文本转换为向量嵌入，用于语义搜索和相似度计算",
+        "C": "嵌入数据库",
+        "D": "嵌入网页组件"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Embeddings 服务将文本转换为高维向量表示，用于语义搜索、文档相似度计算、聚类等 NLP 任务。"
+    },
+    {
+      "id": 35,
+      "question": "在 SAP AI Core 中，如何实现多阶段训练管道？",
+      "options": {
+        "A": "创建多个独立的 Execution",
+        "B": "在 Workflow Template 中定义包含多个步骤的 DAG",
+        "C": "不支持多阶段训练",
+        "D": "使用数据库调度"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "通过在 Workflow Template 中定义 DAG（有向无环图），可以编排多阶段的训练管道，包括数据预处理、特征工程、模型训练、评估等步骤。"
+    },
+    {
+      "id": 36,
+      "question": "SAP AI Core 中的 Usage Tracking 功能是什么？",
+      "options": {
+        "A": "跟踪用户登录",
+        "B": "追踪 AI 资源的使用量，用于计费和成本管理",
+        "C": "追踪代码变更",
+        "D": "追踪网络流量"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Usage Tracking 追踪 AI 资源（计算时间、API 调用次数等）的使用量，支持成本分析、预算管理和计费报告。"
+    },
+    {
+      "id": 37,
+      "question": "在 SAP AI Core 中，如何配置 Pod 的亲和性（Affinity）？",
+      "options": {
+        "A": "在 Serving Template 中使用 affinity 配置节点选择规则",
+        "B": "自动由系统决定",
+        "C": "通过数据库配置",
+        "D": "不支持亲和性配置"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "可以在 Serving Template 的 Pod 规格中配置 affinity，定义节点亲和性规则，控制 Pod 调度到特定类型的节点。"
+    },
+    {
+      "id": 38,
+      "question": "SAP AI Core 的 Document Grounding 功能是什么？",
+      "options": {
+        "A": "文档存储服务",
+        "B": "将 LLM 回答与企业文档内容进行关联，提供有据可查的答案",
+        "C": "文档格式转换",
+        "D": "文档签名服务"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Document Grounding 将 LLM 生成的答案与企业文档进行关联，提供引用来源，减少幻觉并增强答案的可信度。"
+    },
+    {
+      "id": 39,
+      "question": "在 SAP AI Core 中，如何配置容器的安全上下文（Security Context）？",
+      "options": {
+        "A": "不支持安全配置",
+        "B": "通过 securityContext 配置运行用户、文件系统权限等",
+        "C": "安全设置由 SAP 固定配置",
+        "D": "通过数据库管理"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "可以在容器规格中配置 securityContext，设置运行用户 ID、组 ID、只读文件系统等安全选项。"
+    },
+    {
+      "id": 40,
+      "question": "SAP AI Core 中的 Scenario 版本管理遵循什么策略？",
+      "options": {
+        "A": "只保留最新版本",
+        "B": "支持多版本共存，通过版本标签区分",
+        "C": "自动删除旧版本",
+        "D": "不支持版本管理"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "SAP AI Core 支持 Scenario 的多版本共存，通过 metadata.labels 中的 ai.sap.com/version 标签区分不同版本，支持并行部署。"
+    },
+    {
+      "id": 41,
+      "question": "在 SAP AI Core 中，如何实现模型服务的灰度发布？",
+      "options": {
+        "A": "修改现有部署配置",
+        "B": "创建新版本 Deployment 并通过流量管理逐步切换用户比例",
+        "C": "使用数据库控制",
+        "D": "自动灰度发布"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "灰度发布需要创建新版本 Deployment，通过 API Gateway 或自定义路由逻辑，逐步将一定比例的流量切换到新版本。"
+    },
+    {
+      "id": 42,
+      "question": "SAP AI Core 的 Function Calling 功能是什么？",
+      "options": {
+        "A": "调用系统函数",
+        "B": "允许 LLM 调用预定义的外部工具和 API 来完成任务",
+        "C": "数据库函数调用",
+        "D": "网络函数调用"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Function Calling 允许大型语言模型根据用户需求选择并调用预定义的外部工具或 API，扩展 AI 的能力范围。"
+    },
+    {
+      "id": 43,
+      "question": "在 SAP AI Core 中，如何配置持久化存储？",
+      "options": {
+        "A": "自动提供持久化存储",
+        "B": "通过 Object Store 配置外部存储，容器本身是无状态的",
+        "C": "使用本地磁盘",
+        "D": "通过数据库存储"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "SAP AI Core 容器是无状态的，持久化数据应存储在 Object Store（如 S3）中，通过 Artifact 和配置进行引用。"
+    },
+    {
+      "id": 44,
+      "question": "SAP AI Core 中的 Compliance 功能包括什么？（选择两个）",
+      "options": {
+        "A": "审计日志记录",
+        "B": "前端样式检查",
+        "C": "数据驻留和隐私合规",
+        "D": "代码语法检查"
+      },
+      "answer": ["A", "C"],
+      "answerType": "multiple",
+      "explanation": "SAP AI Core 的合规功能包括完整的审计日志记录（所有操作可追溯）和数据驻留及隐私合规（符合 GDPR 等法规）。"
+    },
+    {
+      "id": 45,
+      "question": "在 SAP AI Core 中，如何处理模型推理的并发请求？",
+      "options": {
+        "A": "只能串行处理",
+        "B": "通过多副本部署和 Kubernetes 负载均衡自动处理",
+        "C": "需要手动分配请求",
+        "D": "不支持并发"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "SAP AI Core 通过部署多个副本（replicas）并利用 Kubernetes 的负载均衡功能，自动将并发请求分发到不同副本处理。"
+    },
+    {
+      "id": 46,
+      "question": "SAP AI Core 的 Fine-tuning Service 提供什么功能？",
+      "options": {
+        "A": "调整系统参数",
+        "B": "对基础模型进行领域特定的微调训练",
+        "C": "调整用户界面",
+        "D": "调整网络配置"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Fine-tuning Service 允许用户使用自己的数据对基础模型（Foundation Model）进行领域特定的微调，提升模型在特定任务上的表现。"
+    },
+    {
+      "id": 47,
+      "question": "在 SAP AI Core 中，如何配置服务账号（Service Account）？",
+      "options": {
+        "A": "在模板中指定 serviceAccountName",
+        "B": "自动使用默认服务账号",
+        "C": "不支持服务账号",
+        "D": "通过数据库配置"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "可以在 Pod 规格中通过 serviceAccountName 指定使用的 Kubernetes 服务账号，控制容器的权限和访问能力。"
+    },
+    {
+      "id": 48,
+      "question": "SAP AI Core 中的 RAG（Retrieval-Augmented Generation）实现需要哪些组件？（选择两个）",
+      "options": {
+        "A": "Vector Engine 存储文档嵌入",
+        "B": "前端界面组件",
+        "C": "LLM 生成最终答案",
+        "D": "数据库触发器"
+      },
+      "answer": ["A", "C"],
+      "answerType": "multiple",
+      "explanation": "RAG 实现需要 Vector Engine 存储文档的向量嵌入用于检索相关内容，以及 LLM 根据检索到的上下文生成最终答案。"
+    },
+    {
+      "id": 49,
+      "question": "在 SAP AI Core 中，如何实现跨 Resource Group 的资源共享？",
+      "options": {
+        "A": "自动共享所有资源",
+        "B": "通过 Main Tenant 级别的 Artifact 共享，或使用共享 Object Store",
+        "C": "不支持跨 Resource Group 共享",
+        "D": "通过数据库链接"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "跨 Resource Group 的资源共享可以通过 Main Tenant 级别注册的 Artifact 或使用共享的 Object Store 路径实现。"
+    },
+    {
+      "id": 50,
+      "question": "SAP AI Core 与 SAP Analytics Cloud 的集成方式是什么？",
+      "options": {
+        "A": "直接内置集成",
+        "B": "通过 API 调用将 AI 预测结果集成到 SAC 的分析和报表中",
+        "C": "不支持集成",
+        "D": "需要购买额外许可"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "SAP AI Core 可以通过 API 与 SAP Analytics Cloud 集成，将 AI 预测结果和洞察嵌入到 SAC 的仪表板、报表和计划功能中。"
+    }
+  ]
+}

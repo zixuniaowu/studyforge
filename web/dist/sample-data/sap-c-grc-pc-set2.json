@@ -1,0 +1,724 @@
+{
+  "exam": {
+    "id": "sap-c-grc-pc-set2",
+    "name": "SAP C_GRC_PC 模拟考试 #2",
+    "code": "C_GRC_PC",
+    "provider": "SAP",
+    "language": "zh-CN",
+    "description": "SAP GRC 流程控制认证模拟考试第二套，涵盖高级监控配置、工作流定制、合规报告等进阶领域",
+    "totalQuestions": 50,
+    "passingScore": 65,
+    "examTime": 180,
+    "domains": [
+      { "name": "高级 CCM 配置", "percentage": 25 },
+      { "name": "工作流与审批定制", "percentage": 20 },
+      { "name": "合规报告与认证", "percentage": 20 },
+      { "name": "风险控制矩阵管理", "percentage": 20 },
+      { "name": "跨系统集成", "percentage": 15 }
+    ],
+    "tags": ["SAP", "GRC", "Process Control", "CCM", "Compliance Reporting"]
+  },
+  "questions": [
+    {
+      "id": 1,
+      "question": "在 CCM 中配置复杂业务规则时，什么是规则链（Rule Chain）的作用？",
+      "options": {
+        "A": "存储规则执行历史",
+        "B": "将多个规则按顺序连接，实现复杂的检查逻辑",
+        "C": "管理规则版本控制",
+        "D": "限制规则执行权限"
+      },
+      "answer": "B",
+      "explanation": "规则链允许将多个规则按顺序连接，实现复杂的检查逻辑，前一个规则的输出可以作为后一个规则的输入条件。",
+      "difficulty": "hard",
+      "answerType": "single"
+    },
+    {
+      "id": 2,
+      "question": "以下哪些是 CCM 数据源配置的高级选项？",
+      "options": {
+        "A": "增量数据提取",
+        "B": "数据过滤条件",
+        "C": "数据转换规则",
+        "D": "连接池配置"
+      },
+      "answer": ["A", "B", "C", "D"],
+      "explanation": "CCM 数据源的高级配置选项包括增量数据提取（只获取变更数据）、数据过滤条件、数据转换规则和连接池配置等。",
+      "difficulty": "medium",
+      "answerType": "multiple"
+    },
+    {
+      "id": 3,
+      "question": "在 Process Control 工作流中，什么是并行审批（Parallel Approval）？",
+      "options": {
+        "A": "多个审批人同时处理不同任务",
+        "B": "同一任务需要多个审批人同时审批才能通过",
+        "C": "审批任务自动分配给多个人",
+        "D": "审批可以跳过某些步骤"
+      },
+      "answer": "B",
+      "explanation": "并行审批是指同一任务需要多个审批人同时审批才能通过，与串行审批（逐个审批）形成对比。",
+      "difficulty": "medium",
+      "answerType": "single"
+    },
+    {
+      "id": 4,
+      "question": "Process Control 的管理层认证（Management Certification）流程包括哪些阶段？",
+      "options": {
+        "A": "准备阶段",
+        "B": "评估阶段",
+        "C": "签核阶段",
+        "D": "发布阶段"
+      },
+      "answer": ["A", "B", "C"],
+      "explanation": "管理层认证流程包括准备阶段（定义范围和时间）、评估阶段（完成控制评估）和签核阶段（管理层正式确认），通常不包含公开发布阶段。",
+      "difficulty": "medium",
+      "answerType": "multiple"
+    },
+    {
+      "id": 5,
+      "question": "什么是 Process Control 中的风险控制矩阵（RCM）自动生成功能？",
+      "options": {
+        "A": "自动创建新的风险",
+        "B": "基于已定义的风险和控制关联自动生成矩阵视图",
+        "C": "自动删除无效控制",
+        "D": "自动分配控制所有者"
+      },
+      "answer": "B",
+      "explanation": "风险控制矩阵自动生成功能基于已定义的风险和控制关联自动生成矩阵视图，显示哪些控制覆盖哪些风险。",
+      "difficulty": "medium",
+      "answerType": "single"
+    },
+    {
+      "id": 6,
+      "question": "在配置 CCM 异常阈值时，以下哪些是常见的阈值类型？",
+      "options": {
+        "A": "固定阈值（超过特定金额）",
+        "B": "动态阈值（基于历史数据计算）",
+        "C": "百分比阈值（超过某百分比）",
+        "D": "组合阈值（多条件组合）"
+      },
+      "answer": ["A", "B", "C", "D"],
+      "explanation": "CCM 支持多种阈值类型：固定阈值使用绝对值，动态阈值基于历史数据计算，百分比阈值使用相对值，组合阈值结合多个条件。",
+      "difficulty": "medium",
+      "answerType": "multiple"
+    },
+    {
+      "id": 7,
+      "question": "Process Control 与 SAP S/4HANA 集成时，主要使用什么技术？",
+      "options": {
+        "A": "仅 BAPI",
+        "B": "仅 IDOC",
+        "C": "RFC 和 BAPI",
+        "D": "仅 Web 服务"
+      },
+      "answer": "C",
+      "explanation": "Process Control 与 SAP S/4HANA 集成主要使用 RFC（远程函数调用）和 BAPI（业务应用编程接口）技术。",
+      "difficulty": "medium",
+      "answerType": "single"
+    },
+    {
+      "id": 8,
+      "question": "以下哪些是工作流自定义的常见场景？",
+      "options": {
+        "A": "基于金额大小动态选择审批人",
+        "B": "基于控制类型选择不同审批路径",
+        "C": "设置自动升级规则",
+        "D": "配置休假代理自动切换"
+      },
+      "answer": ["A", "B", "C", "D"],
+      "explanation": "工作流自定义常见场景包括：基于金额的动态审批人选择、基于控制类型的路径选择、自动升级规则和休假代理配置。",
+      "difficulty": "medium",
+      "answerType": "multiple"
+    },
+    {
+      "id": 9,
+      "question": "在 Process Control 报告中，什么是控制成熟度（Control Maturity）指标？",
+      "options": {
+        "A": "控制的使用年限",
+        "B": "衡量控制从初始到优化的发展水平",
+        "C": "控制测试通过率",
+        "D": "控制执行人员的经验水平"
+      },
+      "answer": "B",
+      "explanation": "控制成熟度指标衡量控制从初始到优化的发展水平，通常包括初始、可重复、已定义、已管理、优化等级别。",
+      "difficulty": "medium",
+      "answerType": "single"
+    },
+    {
+      "id": 10,
+      "question": "SOX 404 合规要求中，以下哪些是关于财务报告内部控制（ICFR）的要求？",
+      "options": {
+        "A": "管理层评估和认证",
+        "B": "外部审计师鉴证",
+        "C": "控制文档完整性",
+        "D": "重大缺陷披露"
+      },
+      "answer": ["A", "B", "C", "D"],
+      "explanation": "SOX 404 对 ICFR 的要求包括管理层评估和认证、外部审计师鉴证、控制文档完整性要求以及重大缺陷披露。",
+      "difficulty": "hard",
+      "answerType": "multiple"
+    },
+    {
+      "id": 11,
+      "question": "在 CCM 中，什么是样本规则（Sample Rule）？",
+      "options": {
+        "A": "用于测试的示例规则",
+        "B": "从数据集中抽取样本进行检查的规则",
+        "C": "只运行一次的规则",
+        "D": "低优先级规则"
+      },
+      "answer": "B",
+      "explanation": "样本规则是从数据集中抽取样本进行检查的规则，适用于大数据量场景，不需要检查所有记录。",
+      "difficulty": "medium",
+      "answerType": "single"
+    },
+    {
+      "id": 12,
+      "question": "Process Control 的趋势分析报告可以展示哪些内容？",
+      "options": {
+        "A": "控制有效性随时间的变化",
+        "B": "异常数量的趋势",
+        "C": "问题解决率的趋势",
+        "D": "评估完成率的趋势"
+      },
+      "answer": ["A", "B", "C", "D"],
+      "explanation": "趋势分析报告可以展示多种指标随时间的变化：控制有效性、异常数量、问题解决率、评估完成率等。",
+      "difficulty": "easy",
+      "answerType": "multiple"
+    },
+    {
+      "id": 13,
+      "question": "在配置跨系统 CCM 规则时，什么是数据一致性检查的关键？",
+      "options": {
+        "A": "只检查单一系统数据",
+        "B": "使用关联键匹配不同系统的数据",
+        "C": "忽略时间戳差异",
+        "D": "不考虑数据格式差异"
+      },
+      "answer": "B",
+      "explanation": "跨系统 CCM 规则的关键是使用关联键（如文档编号、物料号）匹配不同系统的数据，确保比较的是对应的记录。",
+      "difficulty": "hard",
+      "answerType": "single"
+    },
+    {
+      "id": 14,
+      "question": "以下哪些是 Process Control 支持的认证类型？",
+      "options": {
+        "A": "控制所有者认证",
+        "B": "流程所有者认证",
+        "C": "实体级认证",
+        "D": "企业级认证"
+      },
+      "answer": ["A", "B", "C", "D"],
+      "explanation": "Process Control 支持多层级认证：控制所有者认证（单个控制）、流程所有者认证（整个流程）、实体级认证（组织单元）、企业级认证（整个组织）。",
+      "difficulty": "medium",
+      "answerType": "multiple"
+    },
+    {
+      "id": 15,
+      "question": "什么是 Process Control 中的控制评估模板（Assessment Template）？",
+      "options": {
+        "A": "生成报告的模板",
+        "B": "定义评估问题和评分标准的可重用配置",
+        "C": "邮件通知模板",
+        "D": "数据导入模板"
+      },
+      "answer": "B",
+      "explanation": "评估模板是定义评估问题、评分标准和证据要求的可重用配置，确保评估过程的一致性。",
+      "difficulty": "medium",
+      "answerType": "single"
+    },
+    {
+      "id": 16,
+      "question": "在 Process Control 中配置自动邮件通知时，以下哪些是可配置的触发条件？",
+      "options": {
+        "A": "评估任务到期前提醒",
+        "B": "CCM 异常产生时通知",
+        "C": "问题状态变化时通知",
+        "D": "签核完成时通知"
+      },
+      "answer": ["A", "B", "C", "D"],
+      "explanation": "自动邮件通知可配置的触发条件包括：评估任务到期提醒、CCM 异常通知、问题状态变化通知、签核完成通知等。",
+      "difficulty": "easy",
+      "answerType": "multiple"
+    },
+    {
+      "id": 17,
+      "question": "风险控制矩阵中的控制覆盖度（Control Coverage）如何计算？",
+      "options": {
+        "A": "已测试控制数 / 总控制数",
+        "B": "有控制覆盖的风险数 / 总风险数",
+        "C": "有效控制数 / 总控制数",
+        "D": "关键控制数 / 总控制数"
+      },
+      "answer": "B",
+      "explanation": "控制覆盖度计算为有控制覆盖的风险数除以总风险数，衡量风险被控制覆盖的程度。",
+      "difficulty": "medium",
+      "answerType": "single"
+    },
+    {
+      "id": 18,
+      "question": "以下哪些是 CCM 规则优化的最佳实践？",
+      "options": {
+        "A": "使用增量数据提取减少处理量",
+        "B": "合理设置阈值避免过多误报",
+        "C": "按业务重要性设置规则优先级",
+        "D": "定期审查和更新规则逻辑"
+      },
+      "answer": ["A", "B", "C", "D"],
+      "explanation": "CCM 规则优化最佳实践包括：使用增量提取、合理设置阈值、设置规则优先级和定期审查更新规则。",
+      "difficulty": "medium",
+      "answerType": "multiple"
+    },
+    {
+      "id": 19,
+      "question": "在 Process Control 中，什么是级联评估（Cascading Assessment）？",
+      "options": {
+        "A": "评估结果自动复制到下级",
+        "B": "下级实体评估结果自动汇总到上级",
+        "C": "评估任务同时分配给所有级别",
+        "D": "评估失败时自动重试"
+      },
+      "answer": "B",
+      "explanation": "级联评估是指下级实体的评估结果自动汇总到上级，支持从底向上的控制状态汇总。",
+      "difficulty": "hard",
+      "answerType": "single"
+    },
+    {
+      "id": 20,
+      "question": "Process Control 与 Risk Management 模块的集成可以实现哪些功能？",
+      "options": {
+        "A": "共享风险库",
+        "B": "控制有效性影响风险评级",
+        "C": "共享组织架构",
+        "D": "统一的问题管理"
+      },
+      "answer": ["A", "B", "C", "D"],
+      "explanation": "Process Control 与 Risk Management 集成可实现：共享风险库、控制有效性影响风险评级、共享组织架构和统一问题管理。",
+      "difficulty": "medium",
+      "answerType": "multiple"
+    },
+    {
+      "id": 21,
+      "question": "在配置工作流代理规则时，什么是角色代理（Role-Based Proxy）？",
+      "options": {
+        "A": "基于用户姓名指定代理",
+        "B": "基于组织角色自动确定代理人",
+        "C": "系统自动选择任意用户代理",
+        "D": "代理人只能查看不能操作"
+      },
+      "answer": "B",
+      "explanation": "角色代理基于组织角色自动确定代理人，如控制所有者的代理自动是其上级或指定的备份角色。",
+      "difficulty": "medium",
+      "answerType": "single"
+    },
+    {
+      "id": 22,
+      "question": "以下哪些是控制测试工作底稿（Work Paper）应包含的内容？",
+      "options": {
+        "A": "测试目标和范围",
+        "B": "测试步骤和方法",
+        "C": "测试证据和发现",
+        "D": "测试结论和建议"
+      },
+      "answer": ["A", "B", "C", "D"],
+      "explanation": "控制测试工作底稿应包含完整的测试文档：目标和范围、步骤和方法、证据和发现、结论和建议。",
+      "difficulty": "easy",
+      "answerType": "multiple"
+    },
+    {
+      "id": 23,
+      "question": "什么是 Process Control 中的控制测试抽样方法论？",
+      "options": {
+        "A": "只测试最近的记录",
+        "B": "基于风险和统计原理确定样本量和选择方法",
+        "C": "测试所有记录",
+        "D": "随机选择任意数量"
+      },
+      "answer": "B",
+      "explanation": "控制测试抽样方法论基于风险和统计原理确定样本量和选择方法，确保测试结果具有代表性和可信度。",
+      "difficulty": "medium",
+      "answerType": "single"
+    },
+    {
+      "id": 24,
+      "question": "在 Process Control 仪表板中，以下哪些是常见的关键绩效指标（KPI）？",
+      "options": {
+        "A": "评估完成率",
+        "B": "控制有效性比率",
+        "C": "开放问题数量",
+        "D": "CCM 异常处理时间"
+      },
+      "answer": ["A", "B", "C", "D"],
+      "explanation": "常见的仪表板 KPI 包括：评估完成率、控制有效性比率、开放问题数量、CCM 异常处理时间等。",
+      "difficulty": "easy",
+      "answerType": "multiple"
+    },
+    {
+      "id": 25,
+      "question": "在配置 CCM 跨公司代码检查时，主要挑战是什么？",
+      "options": {
+        "A": "不同公司代码可能使用不同的科目表",
+        "B": "数据量太大",
+        "C": "网络延迟",
+        "D": "用户权限限制"
+      },
+      "answer": "A",
+      "explanation": "跨公司代码 CCM 检查的主要挑战是不同公司代码可能使用不同的科目表、币种等，需要进行数据标准化。",
+      "difficulty": "hard",
+      "answerType": "single"
+    },
+    {
+      "id": 26,
+      "question": "Process Control 的实体风险评级（Entity Risk Rating）功能有什么作用？",
+      "options": {
+        "A": "对实体进行信用评级",
+        "B": "基于控制状态和风险暴露对实体进行风险分级",
+        "C": "限制实体访问权限",
+        "D": "计算实体的财务指标"
+      },
+      "answer": "B",
+      "explanation": "实体风险评级功能基于控制状态和风险暴露对实体进行风险分级，支持风险导向的资源分配和监控重点。",
+      "difficulty": "medium",
+      "answerType": "single"
+    },
+    {
+      "id": 27,
+      "question": "以下哪些是 Process Control 数据归档策略的考虑因素？",
+      "options": {
+        "A": "法规要求的保留期限",
+        "B": "系统性能影响",
+        "C": "审计追溯需求",
+        "D": "存储成本"
+      },
+      "answer": ["A", "B", "C", "D"],
+      "explanation": "数据归档策略需考虑：法规要求的保留期限、系统性能影响、审计追溯需求和存储成本等因素。",
+      "difficulty": "medium",
+      "answerType": "multiple"
+    },
+    {
+      "id": 28,
+      "question": "什么是 Process Control 中的补偿控制（Compensating Control）？",
+      "options": {
+        "A": "用于替代无法实施的主要控制的替代控制",
+        "B": "用于补偿员工的控制",
+        "C": "自动执行的控制",
+        "D": "高级别的控制"
+      },
+      "answer": "A",
+      "explanation": "补偿控制是用于替代无法实施的主要控制的替代控制，当主要控制存在缺陷时提供额外的风险降低。",
+      "difficulty": "medium",
+      "answerType": "single"
+    },
+    {
+      "id": 29,
+      "question": "在 Process Control 中配置审批矩阵时，以下哪些是可用的维度？",
+      "options": {
+        "A": "金额范围",
+        "B": "控制类型",
+        "C": "组织单元",
+        "D": "风险级别"
+      },
+      "answer": ["A", "B", "C", "D"],
+      "explanation": "审批矩阵可基于多个维度配置：金额范围、控制类型、组织单元、风险级别等，实现灵活的审批路由。",
+      "difficulty": "medium",
+      "answerType": "multiple"
+    },
+    {
+      "id": 30,
+      "question": "CCM 规则的版本控制功能有什么作用？",
+      "options": {
+        "A": "只用于备份规则",
+        "B": "跟踪规则变更历史并支持回滚",
+        "C": "限制规则修改权限",
+        "D": "自动创建规则副本"
+      },
+      "answer": "B",
+      "explanation": "版本控制功能跟踪规则变更历史并支持回滚到之前的版本，便于审计和错误恢复。",
+      "difficulty": "medium",
+      "answerType": "single"
+    },
+    {
+      "id": 31,
+      "question": "Process Control 中的 COSO 2013 框架包含哪些组成部分？",
+      "options": {
+        "A": "控制环境",
+        "B": "风险评估",
+        "C": "控制活动",
+        "D": "信息与沟通",
+        "E": "监控活动"
+      },
+      "answer": ["A", "B", "C", "D"],
+      "explanation": "COSO 2013 框架的五个组成部分是：控制环境、风险评估、控制活动、信息与沟通、监控活动。选项中列出了前四个。",
+      "difficulty": "medium",
+      "answerType": "multiple"
+    },
+    {
+      "id": 32,
+      "question": "在 Process Control 中，什么是控制自动化机会评估？",
+      "options": {
+        "A": "评估哪些手动控制可以转换为自动控制",
+        "B": "自动执行所有评估",
+        "C": "删除所有手动控制",
+        "D": "评估系统自动化程度"
+      },
+      "answer": "A",
+      "explanation": "控制自动化机会评估是识别和评估哪些手动控制可以转换为自动控制，以提高效率和降低人为错误风险。",
+      "difficulty": "medium",
+      "answerType": "single"
+    },
+    {
+      "id": 33,
+      "question": "以下哪些是配置 CCM 预警规则的最佳实践？",
+      "options": {
+        "A": "设置适当的严重性级别",
+        "B": "定义清晰的升级路径",
+        "C": "将所有异常设为最高优先级",
+        "D": "配置响应时间 SLA"
+      },
+      "answer": ["A", "B", "D"],
+      "explanation": "CCM 预警规则最佳实践包括：设置适当的严重性级别、定义清晰的升级路径、配置响应 SLA。将所有异常设为最高优先级会导致真正的高风险问题被淹没。",
+      "difficulty": "medium",
+      "answerType": "multiple"
+    },
+    {
+      "id": 34,
+      "question": "什么是 Process Control 中的控制测试轮换（Control Testing Rotation）？",
+      "options": {
+        "A": "更换测试执行人员",
+        "B": "按计划周期性地测试不同控制组合",
+        "C": "旋转测试结果显示",
+        "D": "自动重试失败的测试"
+      },
+      "answer": "B",
+      "explanation": "控制测试轮换是按计划周期性地测试不同控制组合，确保在一定周期内所有控制都被测试，同时优化资源使用。",
+      "difficulty": "hard",
+      "answerType": "single"
+    },
+    {
+      "id": 35,
+      "question": "在 Process Control 中，实体层级结构的设计应考虑哪些因素？",
+      "options": {
+        "A": "组织管理架构",
+        "B": "合规报告需求",
+        "C": "控制继承需求",
+        "D": "系统性能限制"
+      },
+      "answer": ["A", "B", "C", "D"],
+      "explanation": "实体层级结构设计需考虑：组织管理架构、合规报告维度需求、控制继承逻辑和系统性能限制。",
+      "difficulty": "medium",
+      "answerType": "multiple"
+    },
+    {
+      "id": 36,
+      "question": "Process Control 中的审计接口（Audit Interface）功能支持什么？",
+      "options": {
+        "A": "外部审计师只读访问控制文档和评估结果",
+        "B": "自动生成审计报告",
+        "C": "审计师直接修改控制",
+        "D": "限制所有用户的访问"
+      },
+      "answer": "A",
+      "explanation": "审计接口功能支持外部审计师以只读方式访问控制文档和评估结果，方便审计工作而不影响数据完整性。",
+      "difficulty": "medium",
+      "answerType": "single"
+    },
+    {
+      "id": 37,
+      "question": "以下哪些是 CCM 异常误报（False Positive）管理的方法？",
+      "options": {
+        "A": "优化规则逻辑减少误报",
+        "B": "建立白名单排除已知例外",
+        "C": "调整阈值参数",
+        "D": "记录并定期审核误报模式"
+      },
+      "answer": ["A", "B", "C", "D"],
+      "explanation": "CCM 误报管理方法包括：优化规则逻辑、建立白名单、调整阈值、记录并审核误报模式以持续改进。",
+      "difficulty": "medium",
+      "answerType": "multiple"
+    },
+    {
+      "id": 38,
+      "question": "什么是 Process Control 中的控制库（Control Library）？",
+      "options": {
+        "A": "存储控制相关书籍的地方",
+        "B": "集中存储和管理可重用控制模板的仓库",
+        "C": "系统函数库",
+        "D": "用户操作日志库"
+      },
+      "answer": "B",
+      "explanation": "控制库是集中存储和管理可重用控制模板的仓库，支持控制标准化和跨实体的控制复用。",
+      "difficulty": "easy",
+      "answerType": "single"
+    },
+    {
+      "id": 39,
+      "question": "在 Process Control 中配置多语言支持时，以下哪些内容可以翻译？",
+      "options": {
+        "A": "控制描述",
+        "B": "评估问题",
+        "C": "邮件通知模板",
+        "D": "报告标签"
+      },
+      "answer": ["A", "B", "C", "D"],
+      "explanation": "多语言支持可配置控制描述、评估问题、邮件通知模板和报告标签的翻译，满足全球化部署需求。",
+      "difficulty": "easy",
+      "answerType": "multiple"
+    },
+    {
+      "id": 40,
+      "question": "在 Process Control 中，什么是控制设计评估与运行有效性评估的区别？",
+      "options": {
+        "A": "设计评估关注控制是否能达到目标，运行评估关注实际执行效果",
+        "B": "没有区别",
+        "C": "设计评估更重要",
+        "D": "运行评估只针对自动控制"
+      },
+      "answer": "A",
+      "explanation": "设计评估关注控制是否按设计能够达到风险控制目标，运行有效性评估关注控制是否按设计持续有效执行。",
+      "difficulty": "hard",
+      "answerType": "single"
+    },
+    {
+      "id": 41,
+      "question": "Process Control 的批量操作功能支持哪些场景？",
+      "options": {
+        "A": "批量更新控制属性",
+        "B": "批量分配评估任务",
+        "C": "批量关闭已解决问题",
+        "D": "批量导出报告"
+      },
+      "answer": ["A", "B", "C", "D"],
+      "explanation": "批量操作功能支持批量更新控制属性、批量分配评估任务、批量关闭问题和批量导出报告，提高运营效率。",
+      "difficulty": "easy",
+      "answerType": "multiple"
+    },
+    {
+      "id": 42,
+      "question": "什么是 Process Control 中的控制相关性评估（Control Relevance Assessment）？",
+      "options": {
+        "A": "评估控制与用户的相关性",
+        "B": "定期审核控制是否仍然适用于当前业务环境",
+        "C": "评估控制的执行成本",
+        "D": "比较不同控制的优先级"
+      },
+      "answer": "B",
+      "explanation": "控制相关性评估定期审核控制是否仍然适用于当前业务环境，识别需要更新或淘汰的控制。",
+      "difficulty": "medium",
+      "answerType": "single"
+    },
+    {
+      "id": 43,
+      "question": "以下哪些是 CCM 规则测试环境的最佳实践？",
+      "options": {
+        "A": "使用生产数据子集进行测试",
+        "B": "先在开发环境验证规则逻辑",
+        "C": "记录测试用例和预期结果",
+        "D": "直接在生产环境测试"
+      },
+      "answer": ["A", "B", "C"],
+      "explanation": "CCM 规则测试最佳实践包括：使用生产数据子集、在开发环境验证、记录测试用例。不应直接在生产环境测试新规则。",
+      "difficulty": "medium",
+      "answerType": "multiple"
+    },
+    {
+      "id": 44,
+      "question": "Process Control 中的控制变更管理流程应包含哪些步骤？",
+      "options": {
+        "A": "变更申请和审批",
+        "B": "影响评估",
+        "C": "实施和测试",
+        "D": "文档更新"
+      },
+      "answer": ["A", "B", "C", "D"],
+      "explanation": "控制变更管理流程应包含：变更申请和审批、影响评估、实施和测试、文档更新，确保变更受控进行。",
+      "difficulty": "medium",
+      "answerType": "multiple"
+    },
+    {
+      "id": 45,
+      "question": "在 Process Control 中，什么是合规日历（Compliance Calendar）？",
+      "options": {
+        "A": "国家法定假日日历",
+        "B": "显示合规活动时间线和截止日期的视图",
+        "C": "系统维护计划",
+        "D": "员工考勤日历"
+      },
+      "answer": "B",
+      "explanation": "合规日历是显示合规活动时间线和截止日期的视图，帮助规划和跟踪评估、认证等合规任务。",
+      "difficulty": "easy",
+      "answerType": "single"
+    },
+    {
+      "id": 46,
+      "question": "以下哪些因素影响 CCM 规则的执行性能？",
+      "options": {
+        "A": "数据源查询复杂度",
+        "B": "规则条件数量",
+        "C": "数据量大小",
+        "D": "并发执行的规则数量"
+      },
+      "answer": ["A", "B", "C", "D"],
+      "explanation": "CCM 规则执行性能受多因素影响：数据源查询复杂度、规则条件数量、数据量大小和并发执行规则数量。",
+      "difficulty": "medium",
+      "answerType": "multiple"
+    },
+    {
+      "id": 47,
+      "question": "Process Control 中的管理层报告应具备哪些特点？",
+      "options": {
+        "A": "高度汇总的关键指标",
+        "B": "清晰的风险和例外突出显示",
+        "C": "与战略目标的关联",
+        "D": "详细的技术细节"
+      },
+      "answer": ["A", "B", "C"],
+      "explanation": "管理层报告应具备高度汇总、风险突出显示和战略关联等特点，而不应包含过多技术细节。",
+      "difficulty": "medium",
+      "answerType": "multiple"
+    },
+    {
+      "id": 48,
+      "question": "什么是 Process Control 中的控制重复检测功能？",
+      "options": {
+        "A": "检测重复执行的控制测试",
+        "B": "识别相似或重复的控制定义以支持整合",
+        "C": "防止用户重复登录",
+        "D": "检测重复的数据记录"
+      },
+      "answer": "B",
+      "explanation": "控制重复检测功能识别相似或重复的控制定义，帮助组织整合冗余控制，优化控制框架。",
+      "difficulty": "medium",
+      "answerType": "single"
+    },
+    {
+      "id": 49,
+      "question": "以下哪些是 Process Control 用户培训的推荐内容？",
+      "options": {
+        "A": "系统基本操作",
+        "B": "控制概念和方法论",
+        "C": "合规要求理解",
+        "D": "角色特定的功能培训"
+      },
+      "answer": ["A", "B", "C", "D"],
+      "explanation": "用户培训应涵盖系统操作、控制概念、合规要求和角色特定功能，确保用户能有效使用系统。",
+      "difficulty": "easy",
+      "answerType": "multiple"
+    },
+    {
+      "id": 50,
+      "question": "在 Process Control 中，什么是持续改进（Continuous Improvement）框架？",
+      "options": {
+        "A": "系统自动升级功能",
+        "B": "基于评估反馈和趋势分析持续优化控制的方法论",
+        "C": "员工绩效改进计划",
+        "D": "硬件升级计划"
+      },
+      "answer": "B",
+      "explanation": "持续改进框架是基于评估反馈和趋势分析持续优化控制的方法论，推动控制有效性和效率的不断提升。",
+      "difficulty": "medium",
+      "answerType": "single"
+    }
+  ]
+}

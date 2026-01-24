@@ -1,0 +1,772 @@
+{
+  "exam": {
+    "id": "n8n-integration-set2-ja",
+    "name": "n8n 統合 模擬試験 #2",
+    "code": "N8N-INT",
+    "provider": "n8n",
+    "language": "ja",
+    "description": "n8n ワークフロー自動化プラットフォーム統合認定 - 第2セット",
+    "totalQuestions": 50,
+    "passingScore": 75,
+    "examTime": 90,
+    "domains": [
+      { "id": 1, "name": "API Integration", "weight": 25 },
+      { "id": 2, "name": "Webhooks", "weight": 20 },
+      { "id": 3, "name": "Database Connections", "weight": 25 },
+      { "id": 4, "name": "AI/LLM Integration", "weight": 30 }
+    ],
+    "tags": ["n8n", "workflow", "automation", "integration", "認定試験"]
+  },
+  "questions": [
+    {
+      "id": "q1",
+      "domain": 1,
+      "question": "n8nでHTTP Requestノードを使用してmultipart/form-dataリクエストを送信する際、正しく設定するにはどうすればよいですか？",
+      "options": {
+        "A": "Content-Typeヘッダーを手動で設定する",
+        "B": "Body Content TypeをForm-Dataに選択する",
+        "C": "Codeノードを使用してリクエストを構築する",
+        "D": "Binary Fileノードを使用する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "HTTP RequestノードはForm-Dataオプションを提供し、正しいContent-Typeとboundaryを自動的に設定するため、手動設定は不要です。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q2",
+      "domain": 1,
+      "question": "APIがリクエストボディとしてJSON配列を必要とする場合、n8nでどのように処理しますか？",
+      "options": {
+        "A": "単一オブジェクトのみ送信可能",
+        "B": "式を使用して直接JSON配列を構築する",
+        "C": "Codeノードを使用してデータ形式を変換する",
+        "D": "BとCの両方が可能"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "n8n式を使用してJSON配列を構築でき、Codeノードを使用してより複雑なデータ形式変換を行うこともできます。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q3",
+      "domain": 2,
+      "question": "n8n Webhookで同じパスに対する異なるHTTPメソッドをどのように処理しますか？",
+      "options": {
+        "A": "異なるメソッドを区別できない",
+        "B": "Webhookノードで受け入れるHTTPメソッドを選択する",
+        "C": "異なるパスで複数のWebhookを作成する",
+        "D": "IFノードを使用してメソッドで分岐する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Webhookノードで受け入れるHTTPメソッドを設定でき、同じパスでGET、POSTなどの異なるメソッドを処理するよう選択できます。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q4",
+      "domain": 3,
+      "question": "n8nでデータベース操作を実行する際、挿入レコードの自動増分IDを取得するにはどうすればよいですか？",
+      "options": {
+        "A": "追加のクエリを実行して最新のIDを取得する",
+        "B": "INSERT RETURNING文を使用する（サポートされているデータベース）",
+        "C": "LAST_INSERT_ID()関数を使用する",
+        "D": "データベースの種類によって異なり、BとCは異なるデータベースで使用される"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "PostgreSQLはRETURNING句を使用し、MySQLはLAST_INSERT_ID()を使用し、SQL ServerはSCOPE_IDENTITY()を使用するなど、方法はデータベースによって異なります。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q5",
+      "domain": 4,
+      "question": "n8nでOpenAIノードを使用してテキスト埋め込みを行う場合、どの操作を使用すべきですか？",
+      "options": {
+        "A": "Chat操作",
+        "B": "Complete操作",
+        "C": "Embedding操作",
+        "D": "Analyze操作"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "OpenAIノードは専用のEmbedding操作を提供し、テキストをベクトル表現に変換して、セマンティック検索などのシナリオで使用します。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q6",
+      "domain": 1,
+      "question": "n8nでAPI呼び出しの指数バックオフリトライを実装するにはどうすればよいですか？",
+      "options": {
+        "A": "固定間隔でリトライする",
+        "B": "HTTP Requestノードのリトライ設定でExponential Backoffを使用する",
+        "C": "Codeノードで手動で実装する",
+        "D": "Waitノードで手動で遅延を増やす"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "HTTP Requestノードはリトライ戦略の設定をサポートしており、指数バックオフ（Exponential Backoff）を選択してリトライ間隔を自動的に増やすことができます。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q7",
+      "domain": 2,
+      "question": "n8nでWebhookリクエストの生のbodyデータを取得するにはどうすればよいですか？",
+      "options": {
+        "A": "$json.bodyを使用する",
+        "B": "$binary.dataを使用する",
+        "C": "Webhookノードオプションでraw Bodyを有効にする",
+        "D": "$request.bodyを使用する"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "WebhookノードにはRaw Bodyオプションがあり、有効にすると未解析の生のリクエストボディを取得でき、特殊な形式の処理や署名検証に使用できます。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q8",
+      "domain": 3,
+      "question": "n8nでSQLiteデータベースに接続する主な用途は何ですか？",
+      "options": {
+        "A": "本番環境の高同時実行データストレージ",
+        "B": "ローカル開発テストと軽量データストレージ",
+        "C": "Redisキャッシュの代替",
+        "D": "大型バイナリファイルの保存"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "SQLiteはローカル開発、テスト、軽量アプリケーションに適しており、高同時実行の本番環境での使用には適していません。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q9",
+      "domain": 4,
+      "question": "n8n AI AgentでToolsの役割は何ですか？",
+      "options": {
+        "A": "AIが呼び出せる外部機能を定義する",
+        "B": "AIモデルのパラメータを設定する",
+        "C": "AIトレーニングデータを保存する",
+        "D": "AI会話履歴を管理する"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "ToolsはAI Agentが呼び出せる外部機能を定義します。ウェブ検索、データベースクエリ、計算の実行など、AIの能力を拡張します。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q10",
+      "domain": 1,
+      "question": "n8nでAPIが返すXMLレスポンスをどのように処理しますか？",
+      "options": {
+        "A": "自動的にJSONに変換される",
+        "B": "XMLノードを使用して解析する",
+        "C": "Codeノードを使用して解析する",
+        "D": "BとCの両方が可能"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "n8nはXMLノードを提供してXMLデータをJSONに変換して解析でき、Codeノードでカスタム解析を行うこともできます。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q11",
+      "domain": 2,
+      "question": "n8nでWebhookのリクエストレート制限を実装するにはどうすればよいですか？",
+      "options": {
+        "A": "組み込みのレート制限機能を使用する",
+        "B": "リバースプロキシ層（Nginxなど）で設定する",
+        "C": "Redisを使用してリクエスト回数を記録し、ワークフローでチェックする",
+        "D": "BとCの両方が実現可能な方法"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "n8n自体には組み込みのレート制限がないため、リバースプロキシ層で設定するか、ワークフロー内でRedisなどを使用してカスタムレート制限を実装する必要があります。",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q12",
+      "domain": 3,
+      "question": "n8nでデータベース接続文字列内の特殊文字を安全に処理するにはどうすればよいですか？",
+      "options": {
+        "A": "URLエンコーディングを使用する",
+        "B": "引用符で囲む",
+        "C": "n8n認証情報システムを使用する（自動的に処理される）",
+        "D": "パスワードに特殊文字を使用しない"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "n8nの認証情報システムは特殊文字を正しく処理するため、データベース接続認証情報を処理する推奨方法です。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q13",
+      "domain": 4,
+      "question": "n8nでAnthropic Claude APIを使用する際、長い会話履歴をどのように処理しますか？",
+      "options": {
+        "A": "完全な会話履歴を送信する",
+        "B": "最新のメッセージのみを送信する",
+        "C": "Memoryノードを使用して会話の長さを自動管理する",
+        "D": "古いメッセージを手動で切り捨てる"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "Memoryノードは保持するメッセージ数やトークン制限を設定でき、会話履歴の長さを自動的に管理してモデルの制限を超えないようにします。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q14",
+      "domain": 1,
+      "question": "n8nでAPI呼び出しのサーキットブレーカーパターンを実装するにはどうすればよいですか？",
+      "options": {
+        "A": "組み込みのサーキットブレーカーノードを使用する",
+        "B": "Redisを使用して失敗回数を記録し、閾値に達したら呼び出しをスキップする",
+        "C": "API自体のサーキットブレーカーに依存する",
+        "D": "エラーハンドリングで失敗したリクエストをスキップする"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "n8nには組み込みのサーキットブレーカーがないため、Redisなどのストレージを使用して失敗回数を記録し、ワークフロー内でサーキットブレーカーロジックを実装する必要があります。",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q15",
+      "domain": 2,
+      "question": "n8nでWebhookの長時間実行タスクをどのように処理しますか？",
+      "options": {
+        "A": "すべてのタスクを同期的に実行する",
+        "B": "即座に202 Acceptedを返し、別のワークフローで非同期処理する",
+        "C": "Webhookのタイムアウト時間を延長する",
+        "D": "複数のWebhookを使用して負荷を分散する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "長時間タスクは即座にレスポンスを返し、Execute Workflowやメッセージキューを使用して非同期で処理し、リクエストのタイムアウトを回避すべきです。",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q16",
+      "domain": 3,
+      "question": "n8nで大量のデータベース更新を実行する際、テーブルロックを回避するにはどうすればよいですか？",
+      "options": {
+        "A": "すべてのレコードを一度に更新する",
+        "B": "SplitInBatchesでバッチ更新し、各バッチ間に小さな遅延を追加する",
+        "C": "トランザクションロックを使用する",
+        "D": "オフピーク時に更新を実行する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "バッチ更新と遅延の追加により、長時間のテーブルロックを減らし、他の操作が実行される機会を提供し、システムの可用性を向上させます。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q17",
+      "domain": 4,
+      "question": "n8nでベクトルデータベースを使用してセマンティック検索を行う際、類似度閾値はどのように設定すべきですか？",
+      "options": {
+        "A": "常に最高の類似度を使用する",
+        "B": "ビジネス要件に基づいて適切な閾値を設定し、低関連性の結果をフィルタリングする",
+        "C": "閾値を設定せずすべての結果を返す",
+        "D": "固定値0.5を使用する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "類似度閾値は具体的なシナリオに応じて調整する必要があります。高すぎると関連する結果を見逃し、低すぎるとノイズが入ります。通常、実際のテストで最適な値を決定する必要があります。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q18",
+      "domain": 1,
+      "question": "n8nでAPIレスポンスのデータ変換とマッピングを実装するにはどうすればよいですか？",
+      "options": {
+        "A": "Setノードを使用してフィールドを手動でマッピングする",
+        "B": "Codeノードを使用して変換ロジックを書く",
+        "C": "Item Listsノードを使用して配列を処理する",
+        "D": "上記すべてを要件に応じて選択可能"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "データ変換には複数の方法があります：Setノードは簡単なマッピングに適し、Codeノードは複雑なロジックに適し、Item Listsは配列操作を処理します。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q19",
+      "domain": 2,
+      "question": "n8nでWebhookのIPホワイトリスト検証を実装するにはどうすればよいですか？",
+      "options": {
+        "A": "Webhookノードで設定する",
+        "B": "リバースプロキシ層で設定する",
+        "C": "ワークフロー内でIFノードを使用して$request.headers内のIPをチェックする",
+        "D": "BとCの両方が可能"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "IPホワイトリストはリバースプロキシ（Nginxなど）で設定するとより効率的ですが、ワークフロー内でリクエスト元IPをチェックして実装することもできます。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q20",
+      "domain": 3,
+      "question": "n8nでデータベースクエリのタイムアウト問題をどのように処理しますか？",
+      "options": {
+        "A": "グローバルタイムアウト設定を延長する",
+        "B": "クエリ内でタイムアウトパラメータを設定する",
+        "C": "クエリを最適化するかインデックスを追加する",
+        "D": "BとCを組み合わせて使用する"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "クエリレベルで適切なタイムアウトを設定し、同時に遅いクエリを最適化（インデックスの追加、クエリの書き直し）して問題を根本的に解決すべきです。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q21",
+      "domain": 4,
+      "question": "n8nでOpenAIのVision機能を使用して画像を分析する際、画像をどのように渡しますか？",
+      "options": {
+        "A": "画像URLのみ使用可能",
+        "B": "base64エンコーディングのみ使用可能",
+        "C": "URLまたはbase64エンコーディングの両方を使用可能",
+        "D": "まずOpenAIサーバーにアップロードする必要がある"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "OpenAI Vision APIは画像URLとbase64エンコーディングの両方をサポートしており、n8nでは画像のソースに応じて適切な方法を選択できます。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q22",
+      "domain": 1,
+      "question": "n8nでクライアント証明書認証が必要なAPIを統合する際、どのように設定しますか？",
+      "options": {
+        "A": "クライアント証明書はサポートされていない",
+        "B": "HTTP RequestノードのSSLオプションで設定する",
+        "C": "環境変数を使用して証明書パスを設定する",
+        "D": "外部プロキシを使用して処理する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "HTTP RequestノードはSSL/TLS設定でクライアント証明書と秘密鍵を設定でき、双方向SSL認証に使用します。",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q23",
+      "domain": 2,
+      "question": "n8n Webhookでファイルアップロードをどのように処理しますか？",
+      "options": {
+        "A": "JSONでファイル内容を転送する",
+        "B": "Webhookをmultipart/form-dataを受け入れるよう設定し、ファイルはbinaryデータに含まれる",
+        "C": "URLでのみファイルを参照できる",
+        "D": "別のファイルアップロードサービスを使用する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Webhookはmultipart/form-data形式のファイルアップロードを受け入れることができ、アップロードされたファイルはワークフロー内でbinaryデータとして渡されます。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q24",
+      "domain": 3,
+      "question": "n8nでデータベースの読み書き分離を実装するにはどうすればよいですか？",
+      "options": {
+        "A": "単一のデータベース接続を使用する",
+        "B": "2つのデータベース認証情報を設定し、読み取りはスレーブ、書き込みはマスターを使用する",
+        "C": "データベースドライバの自動分離に依存する",
+        "D": "n8nは読み書き分離をサポートしていない"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "マスターとスレーブの異なる認証情報を設定し、ワークフロー内で操作タイプに応じて適切なデータベース接続を選択できます。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q25",
+      "domain": 4,
+      "question": "n8nでAIを使用して感情分析を行う際、出力形式を標準化するにはどうすればよいですか？",
+      "options": {
+        "A": "AIの自由形式出力に依存する",
+        "B": "プロンプトで出力JSON形式を明示的に指定する",
+        "C": "後処理ノードを使用して結果を解析する",
+        "D": "BとCを組み合わせると最も信頼性が高い"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "プロンプトでJSON形式の出力を要求し、同時に後処理で検証と解析を行い、一貫性があり使用可能な出力形式を確保します。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q26",
+      "domain": 1,
+      "question": "n8nでAPIの冪等性問題をどのように処理しますか？",
+      "options": {
+        "A": "毎回同じリクエストでリトライする",
+        "B": "リクエストに一意の冪等キー（Idempotency Key）を含める",
+        "C": "リクエストのリトライを避ける",
+        "D": "キャッシュを使用して重複呼び出しを避ける"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "冪等キーを使用することで、リクエストがリトライされてもAPIが操作を1回だけ実行することを保証します。これは支払いなどのシナリオでの一般的な方法です。",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q27",
+      "domain": 2,
+      "question": "n8n WebhookでURL内の動的パスパラメータをどのように処理しますか？",
+      "options": {
+        "A": "動的パスはサポートされていない",
+        "B": "ワイルドカードパターンを使用する",
+        "C": "すべてのパスパラメータは$request.paramsで利用可能",
+        "D": "正規表現を使用する必要がある"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "Webhookはパスパラメータ（/webhook/:idなど）をサポートしており、パラメータ値は$request.paramsで取得できます。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q28",
+      "domain": 3,
+      "question": "n8nでデータベースのソフトデリートを実装するにはどうすればよいですか？",
+      "options": {
+        "A": "DELETE文を使用する",
+        "B": "実際にレコードを削除せずに削除フラグフィールドを更新する",
+        "C": "アーカイブテーブルに移動する",
+        "D": "BとCの両方がソフトデリートの実装方法"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "ソフトデリートはis_deletedフラグやdeleted_atタイムスタンプの設定で実装でき、データをアーカイブテーブルに移動することもできます。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q29",
+      "domain": 4,
+      "question": "n8nでAI生成コンテンツのハルシネーション問題をどのように処理しますか？",
+      "options": {
+        "A": "AI出力を完全に信頼する",
+        "B": "RAGを使用して実際のデータソースを提供し、AIにデータに基づいて回答するよう要求する",
+        "C": "temperature値を上げる",
+        "D": "より安価なモデルを使用する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "RAGは実際のデータソースを提供することでハルシネーションを大幅に減らすことができ、AIに虚構のコンテンツを生成せずに提供されたデータのみに基づいて回答するよう要求します。",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q30",
+      "domain": 1,
+      "question": "n8nでAPIのバージョンネゴシエーションを実装するにはどうすればよいですか？",
+      "options": {
+        "A": "APIバージョンをハードコードする",
+        "B": "ヘッダーにAccept-Versionまたは同様のフィールドを設定する",
+        "C": "URLパスでバージョンを指定する",
+        "D": "BとCの両方が一般的な方法"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "APIバージョンはヘッダー（Accept-Version）またはURLパス（/v1/、/v2/）で指定でき、APIの設計によります。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q31",
+      "domain": 2,
+      "question": "n8nでWebhookのリクエストリプレイ保護を実装するにはどうすればよいですか？",
+      "options": {
+        "A": "保護は不要",
+        "B": "リクエスト内のタイムスタンプを検証し、古いリクエストを拒否する",
+        "C": "処理済みのリクエストIDを記録し、重複をチェックする",
+        "D": "BとCを組み合わせて使用する"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "リプレイ保護はタイムスタンプのチェック（古いリクエストの拒否）とリクエストIDのチェック（重複防止）の両方を行い、二重検証でより安全になります。",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q32",
+      "domain": 3,
+      "question": "n8nで複雑なデータベースレポートクエリを実行する際のベストプラクティスは何ですか？",
+      "options": {
+        "A": "本番データベースで直接クエリする",
+        "B": "読み取り専用レプリカを使用してレポートクエリを実行する",
+        "C": "オフピーク時に実行する",
+        "D": "BとCの両方が良いプラクティス"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "複雑なレポートはメインデータベースへの影響を避けるために読み取り専用レプリカを使用し、システム負荷を減らすためにできるだけオフピーク時に実行すべきです。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q33",
+      "domain": 4,
+      "question": "n8nでRAGシステムを構築する際、適切なチャンクサイズをどのように選択しますか？",
+      "options": {
+        "A": "大きいほど良い",
+        "B": "小さいほど良い",
+        "C": "コンテンツタイプとクエリ要件に基づいてバランスを取り、通常500-1000文字",
+        "D": "固定でデフォルト値を使用する"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "チャンクサイズはバランスが必要です：大きすぎると無関係な情報が含まれ、小さすぎるとコンテキストが失われます。通常500-1000文字が良い出発点で、実際のテストで調整する必要があります。",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q34",
+      "domain": 1,
+      "question": "n8nでAPIの条件付きリクエストをどのように処理しますか？",
+      "options": {
+        "A": "条件付きリクエストはサポートされていない",
+        "B": "If-Modified-SinceまたはETagヘッダーを使用して実装する",
+        "C": "毎回完全なデータを取得する",
+        "D": "キャッシュで代替する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "HTTP RequestノードでIf-Modified-Since、If-None-Matchなどのヘッダーを設定して、条件付きリクエストを実装しデータ転送を削減できます。",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q35",
+      "domain": 2,
+      "question": "n8nでWebhookのイベント順序保証を実装するにはどうすればよいですか？",
+      "options": {
+        "A": "Webhookは本来順序を保証する",
+        "B": "シーケンス番号で順序を検証し、順序が乱れた場合は待機または拒否する",
+        "C": "キューを使用してバッファリングし、ソート後に処理する",
+        "D": "BとCの両方が実装方法"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "ネットワークの理由でWebhookの順序が乱れる可能性があるため、シーケンス番号やキューソートを使用してビジネス層で順序保証を実装する必要があります。",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q36",
+      "domain": 3,
+      "question": "n8nでデータベースの楽観的ロックを実装するにはどうすればよいですか？",
+      "options": {
+        "A": "SELECT FOR UPDATEを使用する",
+        "B": "更新時にversionフィールドをチェックしてインクリメントする",
+        "C": "データベーストランザクションを使用する",
+        "D": "Aは悲観的ロック、Bは楽観的ロックの実装"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "楽観的ロックはversionフィールドを通じて更新時に同時実行の競合をチェックします。SELECT FOR UPDATEは悲観的ロックです。両者の用途は異なります。",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q37",
+      "domain": 4,
+      "question": "n8nで複数のAIモデルを使用した投票決定を実装するにはどうすればよいですか？",
+      "options": {
+        "A": "単一の最良のモデルのみを使用する",
+        "B": "複数のモデルを並列で呼び出し、結果を集約して多数意見を選択する",
+        "C": "一貫した結果が得られるまでモデルを順次呼び出す",
+        "D": "加重平均を使用する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "投票メカニズムは通常、複数のモデルを並列で呼び出し、結果を集約して多数が一致した回答を選択し、信頼性を向上させます。",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q38",
+      "domain": 1,
+      "question": "n8nでAPI呼び出しのサーキットブレーカー回復を実装するにはどうすればよいですか？",
+      "options": {
+        "A": "失敗したAPIを永久に無効にする",
+        "B": "サーキットブレーカー後、定期的に少量のリクエストを試行し、成功したら徐々に回復する",
+        "C": "即座に完全に回復する",
+        "D": "手動介入で回復する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "サーキットブレーカーの回復はハーフオープン状態を採用し、定期的にプローブリクエストを送信し、成功したら徐々にトラフィックを増やし、突然の回復による再度のサーキットブレーカーを避けます。",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q39",
+      "domain": 2,
+      "question": "n8nでWebhookのメッセージ確認メカニズムを実装するにはどうすればよいですか？",
+      "options": {
+        "A": "常に200を返す",
+        "B": "処理成功時は2xxを返し、失敗時は4xx/5xxを返す",
+        "C": "コールバックURLを使用して処理結果を通知する",
+        "D": "BとCをシナリオに応じて選択する"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "同期確認はHTTPステータスコードを使用し、非同期シナリオではまず202を返してからコールバックで最終結果を通知できます。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q40",
+      "domain": 3,
+      "question": "n8nでクロスタイムゾーンのデータベース時間処理を実装するにはどうすればよいですか？",
+      "options": {
+        "A": "ローカル時間を使用する",
+        "B": "常にUTCで保存し、表示時に変換する",
+        "C": "データベースにタイムゾーン情報を保存する",
+        "D": "BとCの両方が良いプラクティス"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "すべての時間をUTCで保存することを推奨し、同時にユーザーのタイムゾーン情報を保存して表示変換に使用し、タイムゾーンの混乱を避けます。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q41",
+      "domain": 4,
+      "question": "n8nでAIコンテンツの増分生成を実装するにはどうすればよいですか？",
+      "options": {
+        "A": "毎回完全なコンテンツを生成する",
+        "B": "streamingレスポンスを使用して段階的に出力する",
+        "C": "複数回の呼び出しで異なる部分を生成する",
+        "D": "BとCの両方で実装可能"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "増分生成はstreamingでリアルタイム出力するか、複数回のAI呼び出しで異なる部分を生成して組み合わせることで実現できます。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q42",
+      "domain": 1,
+      "question": "n8nでAPIのコンテンツネゴシエーションをどのように処理しますか？",
+      "options": {
+        "A": "固定でJSONを使用する",
+        "B": "Acceptヘッダーを設定して期待するレスポンス形式を指定する",
+        "C": "レスポンスのContent-Typeに基づいて解析する",
+        "D": "BとCを組み合わせて使用する"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "リクエスト時にAcceptヘッダーを設定して期待する形式を指定し、レスポンス受信後はContent-Typeに基づいて正しい解析方法を選択します。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q43",
+      "domain": 2,
+      "question": "n8nでWebhookのデッドレターキューを実装するにはどうすればよいですか？",
+      "options": {
+        "A": "失敗したメッセージを破棄する",
+        "B": "処理に失敗したメッセージを専用のストレージまたはキューに書き込む",
+        "C": "無限にリトライする",
+        "D": "アラートを送信して手動で処理する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "失敗したメッセージはデッドレターキューに書き込み、元のデータを保持して後続の分析、リトライ、または手動処理に使用すべきです。",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q44",
+      "domain": 3,
+      "question": "n8nでデータベース接続プールの状態をどのように監視しますか？",
+      "options": {
+        "A": "n8nが自動管理するため監視不要",
+        "B": "データベース管理ツールを使用して接続数を確認する",
+        "C": "データベースシステムテーブルをクエリしてアクティブな接続を確認する",
+        "D": "BとCの両方が可能"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "DBAツールを使用するか、データベースシステムテーブル（pg_stat_activityなど）をクエリして接続数を監視し、接続リークなどの問題を早期に発見できます。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q45",
+      "domain": 4,
+      "question": "n8nでAIモデルのA/Bテストを実装するにはどうすればよいですか？",
+      "options": {
+        "A": "モデルを手動で切り替える",
+        "B": "異なるモデルにランダムに分岐し、結果を記録して比較する",
+        "C": "最新のモデルを使用する",
+        "D": "最も安価なモデルを使用する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "A/Bテストは異なるモデルにリクエストをランダムに割り当て、結果の指標を収集して比較し、最適なモデルを決定する必要があります。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q46",
+      "domain": 1,
+      "question": "n8nでAPI呼び出しの同時実行制御を実装するにはどうすればよいですか？",
+      "options": {
+        "A": "同時実行を制限しない",
+        "B": "SplitInBatchesを使用して各バッチの数量を制限する",
+        "C": "外部セマフォを使用して制御する",
+        "D": "BとCの両方が可能"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "SplitInBatchesは各バッチの処理数を制御でき、外部セマフォ（Redisなど）を使用してより精密な同時実行制御を実装できます。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q47",
+      "domain": 2,
+      "question": "n8nでWebhookの大きなペイロードをどのように処理しますか？",
+      "options": {
+        "A": "任意のサイズのペイロードを受け入れる",
+        "B": "ペイロードサイズ制限を設定し、大きすぎるリクエストを拒否する",
+        "C": "送信側にバッチ送信を要求する",
+        "D": "BとCの両方が合理的な戦略"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "システムを保護するために最大ペイロードサイズを制限すべきで、大きなデータについてはバッチ送信またはファイルアップロード方式を要求できます。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q48",
+      "domain": 3,
+      "question": "n8nでデータベースマイグレーションを実装するにはどうすればよいですか？",
+      "options": {
+        "A": "本番データベースを直接変更する",
+        "B": "SQLスクリプトを使用して構造変更を行う",
+        "C": "データベースマイグレーションツール（Flyway、Liquibaseなど）を使用する",
+        "D": "BとCの両方が正しい方法"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "データベースマイグレーションはバージョン管理されたSQLスクリプトまたは専門のマイグレーションツールを使用し、変更が追跡可能でロールバック可能であることを確保すべきです。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q49",
+      "domain": 4,
+      "question": "n8nでAI生成の構造化データ検証をどのように処理しますか？",
+      "options": {
+        "A": "AI出力を直接使用する",
+        "B": "JSON Schemaを使用してAI出力形式を検証する",
+        "C": "Codeノードで手動検証を実装する",
+        "D": "BとCの両方が良い方法"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "AI出力の構造化データは検証すべきで、JSON Schemaで自動検証するか、Codeノードでカスタム検証ロジックを実装できます。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q50",
+      "domain": 1,
+      "question": "n8nでAPIゲートウェイパターンを実装するにはどうすればよいですか？",
+      "options": {
+        "A": "バックエンドAPIを直接呼び出す",
+        "B": "n8n Webhookを統一エントリーポイントとして使用し、異なるバックエンドにルーティングする",
+        "C": "専用のAPIゲートウェイ製品を使用する",
+        "D": "BとCの両方が可能で、規模と要件に応じて選択する"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "小規模ではn8n Webhookで簡単なAPIゲートウェイ機能を実装でき、大規模ではKong、AWS API Gatewayなどの専用ゲートウェイを使用すべきです。",
+      "difficulty": "hard"
+    }
+  ]
+}

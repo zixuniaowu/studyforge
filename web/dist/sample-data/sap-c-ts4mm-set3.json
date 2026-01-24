@@ -1,0 +1,773 @@
+{
+  "exam": {
+    "id": "sap-c-ts4mm-set3",
+    "name": "SAP C_TS4MM 模拟考试 #3",
+    "code": "C_TS4MM",
+    "provider": "SAP",
+    "language": "zh-CN",
+    "description": "SAP S/4HANA 物料管理认证考试模拟题 - 第3套",
+    "totalQuestions": 50,
+    "passingScore": 65,
+    "examTime": 180,
+    "domains": [
+      { "id": 1, "name": "采购流程", "weight": 25 },
+      { "id": 2, "name": "物料主数据", "weight": 20 },
+      { "id": 3, "name": "库存管理", "weight": 20 },
+      { "id": 4, "name": "采购组织结构", "weight": 15 },
+      { "id": 5, "name": "定价与条件", "weight": 20 }
+    ],
+    "tags": ["SAP", "S/4HANA", "MM", "物料管理", "采购", "认证考试"]
+  },
+  "questions": [
+    {
+      "id": "q1",
+      "domain": 1,
+      "question": "在 SAP S/4HANA 中，以下哪种采购文档类型允许基于数量的发布？",
+      "options": {
+        "A": "标准采购订单",
+        "B": "数量合同",
+        "C": "价值合同",
+        "D": "询价"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "数量合同特点：\n- 定义目标总数量\n- 基于数量发布采购订单\n- 价值合同基于金额发布\n- 标准采购订单是一次性的",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q2",
+      "domain": 1,
+      "question": "采购文档中\"采购凭证类型\"控制以下哪些方面？（选择两项）",
+      "options": {
+        "A": "编号范围",
+        "B": "供应商评级",
+        "C": "字段选择",
+        "D": "物料价格"
+      },
+      "answer": ["A", "C"],
+      "answerType": "multiple",
+      "explanation": "采购凭证类型控制：\n- A正确：决定编号范围\n- C正确：控制字段显示和必填性\n- B错误：评级是独立功能\n- D错误：价格由条件技术控制",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q3",
+      "domain": 2,
+      "question": "物料主数据的\"危险物料指标\"存储在哪个视图？",
+      "options": {
+        "A": "基本数据视图",
+        "B": "采购视图",
+        "C": "工厂数据/存储视图",
+        "D": "外贸数据视图"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "危险物料指标：\n- 存储在工厂数据/存储视图\n- 与存储和处理相关\n- 影响仓库管理决策\n- 可能触发特殊处理流程",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q4",
+      "domain": 2,
+      "question": "物料主数据的\"MRP类型\"字段控制什么？",
+      "options": {
+        "A": "物料是否可以销售",
+        "B": "物料如何参与需求计划",
+        "C": "物料的会计处理方式",
+        "D": "物料的质量检验流程"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "MRP类型：\n- 决定物料如何被MRP处理\n- 选项包括：MRP、再订货点、手动等\n- 影响自动计划建议\n- 不控制销售或会计",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q5",
+      "domain": 3,
+      "question": "SAP 中移动类型 311 代表什么操作？",
+      "options": {
+        "A": "采购订单收货",
+        "B": "一步库存转储",
+        "C": "发货到成本中心",
+        "D": "退货到供应商"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "移动类型 311/312：\n- 一步库存转储（同一工厂内）\n- 311 转出，312 自动转入\n- 不同于两步转储（301/302）\n- 适用于简单的存储位置间转移",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q6",
+      "domain": 3,
+      "question": "\"库存确定\"功能用于什么？",
+      "options": {
+        "A": "计算库存价值",
+        "B": "自动选择最优存储位置或批次",
+        "C": "确定安全库存水平",
+        "D": "验证库存数据准确性"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "库存确定：\n- 发货时自动选择批次/存储位置\n- 基于配置的策略（如FIFO、FEFO）\n- 优化库存管理\n- 减少手动选择工作",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q7",
+      "domain": 4,
+      "question": "采购组的最大长度是多少字符？",
+      "options": {
+        "A": "2字符",
+        "B": "3字符",
+        "C": "4字符",
+        "D": "10字符"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "采购组标识符：\n- 标准配置为3字符\n- 用于标识采购员或部门\n- 是组织配置的一部分\n- 可在采购相关报表中使用",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q8",
+      "domain": 4,
+      "question": "以下哪个是采购组织的标准分配模式？（选择两项）",
+      "options": {
+        "A": "标准（分配给一个公司代码）",
+        "B": "跨公司代码",
+        "C": "按产品线",
+        "D": "按地区"
+      },
+      "answer": ["A", "B"],
+      "answerType": "multiple",
+      "explanation": "SAP 标准采购组织模式：\n- A正确：标准分配给单一公司代码\n- B正确：跨公司代码集中采购\n- C/D 不是SAP标准模式，但可通过配置实现类似效果",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q9",
+      "domain": 5,
+      "question": "采购定价中\"条件基数\"的作用是什么？",
+      "options": {
+        "A": "定义条件的有效期开始日期",
+        "B": "指定计算条件值的数量或金额基础",
+        "C": "设置条件的最低金额",
+        "D": "确定条件的审批级别"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "条件基数：\n- 如\"每100件\"或\"每公斤\"\n- 用于计算实际条件值\n- 与计量单位配合使用\n- 影响最终计算结果",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q10",
+      "domain": 5,
+      "question": "以下哪种情况需要维护\"定价日期\"？",
+      "options": {
+        "A": "所有采购订单",
+        "B": "当条件记录有时间依赖性时",
+        "C": "仅限国际采购",
+        "D": "仅限服务采购"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "定价日期：\n- 决定使用哪个时间段的条件\n- 条件记录有有效期时很重要\n- 不是所有订单都需要手动设置\n- 通常默认为订单日期",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q11",
+      "domain": 1,
+      "question": "在 Ariba 集成场景中，SAP S/4HANA 主要扮演什么角色？",
+      "options": {
+        "A": "供应商门户",
+        "B": "后端 ERP 系统执行采购",
+        "C": "电子目录管理",
+        "D": "供应商发现平台"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Ariba + S/4HANA 集成：\n- Ariba 提供云端采购平台\n- S/4HANA 执行实际采购操作\n- 包括收货、付款等\n- 数据在两系统间同步",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q12",
+      "domain": 1,
+      "question": "\"采购申请跟踪\"功能的事务代码是什么？",
+      "options": {
+        "A": "ME51N",
+        "B": "ME52N",
+        "C": "ME5A",
+        "D": "ME53N"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "采购申请相关事务：\n- ME51N 创建\n- ME52N 修改\n- ME53N 显示\n- ME5A 采购申请清单/跟踪",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q13",
+      "domain": 2,
+      "question": "物料状态\"01\"在采购视图中通常表示什么？",
+      "options": {
+        "A": "物料已锁定",
+        "B": "物料处于警告状态，需要审批",
+        "C": "物料可以正常采购",
+        "D": "物料已停产"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "物料状态配置：\n- 01 通常配置为警告\n- 系统会发出警告但允许继续\n- 空白表示正常\n- 具体含义取决于客户配置",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q14",
+      "domain": 2,
+      "question": "物料主数据扩展到新工厂时，必须复制哪些视图？",
+      "options": {
+        "A": "所有视图都必须复制",
+        "B": "只需要基本数据视图",
+        "C": "取决于物料类型的配置",
+        "D": "只需要采购视图"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "物料扩展：\n- 基本数据在客户端级别，只需一次\n- 工厂级别视图需要按工厂扩展\n- 具体要求取决于物料类型配置\n- 可以有选择地扩展需要的视图",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q15",
+      "domain": 3,
+      "question": "\"初始化盘点\"功能的主要用途是什么？",
+      "options": {
+        "A": "创建新物料",
+        "B": "在系统上线时录入期初库存",
+        "C": "清除库存数据",
+        "D": "重置盘点周期"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "初始化盘点：\n- 系统上线或切换时使用\n- 录入期初库存余额\n- 不创建会计凭证（可选）\n- 确保库存数据准确开始",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q16",
+      "domain": 3,
+      "question": "移动类型 561 的用途是什么？",
+      "options": {
+        "A": "采购订单收货",
+        "B": "无采购订单的初始录入/调整收货",
+        "C": "生产订单收货",
+        "D": "库存转储"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "移动类型 561：\n- 其他收货（不参考订单）\n- 用于期初导入或调整\n- 562 是相应的出库\n- 适用于例外情况处理",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q17",
+      "domain": 4,
+      "question": "\"采购数据视图扩展\"需要指定哪些组织单元？",
+      "options": {
+        "A": "只需要公司代码",
+        "B": "采购组织和工厂",
+        "C": "销售组织",
+        "D": "成本中心"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "采购视图扩展：\n- 需要指定采购组织\n- 可能需要工厂（取决于物料类型）\n- 不涉及销售组织或成本中心\n- 是采购功能的必要数据",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q18",
+      "domain": 4,
+      "question": "\"输出控制\"在采购中用于什么？",
+      "options": {
+        "A": "控制采购金额上限",
+        "B": "管理打印、传真、EDI等采购文档输出",
+        "C": "控制库存出库",
+        "D": "限制用户访问"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "输出控制：\n- 控制采购文档的输出方式\n- 包括打印、传真、电子邮件、EDI\n- 可配置输出时间和条件\n- 是 SAP 的标准功能",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q19",
+      "domain": 5,
+      "question": "\"信息更新\"在采购价格中的作用是什么？",
+      "options": {
+        "A": "更新供应商联系信息",
+        "B": "将采购订单条件自动更新到信息记录",
+        "C": "更新物料主数据",
+        "D": "更新汇率"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "信息更新：\n- 将订单条件写回信息记录\n- 保持信息记录价格最新\n- 在条件类型中配置\n- 简化价格维护工作",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q20",
+      "domain": 5,
+      "question": "采购订单中的\"有效价格\"来自以下哪里？",
+      "options": {
+        "A": "只来自物料主数据",
+        "B": "通过条件技术从多个来源确定",
+        "C": "只来自供应商主数据",
+        "D": "手动输入"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "有效价格确定：\n- 条件技术按存取顺序搜索\n- 可能来自信息记录、合同、目录价格\n- 多个来源按优先级确定\n- 也可手动覆盖",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q21",
+      "domain": 1,
+      "question": "\"分割估价\"对采购的影响是什么？",
+      "options": {
+        "A": "允许对同一物料维护多个供应商价格",
+        "B": "允许同一物料按不同估值类型分别记账",
+        "C": "分割采购订单",
+        "D": "分割付款"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "分割估价对采购的影响：\n- 收货时需要指定估值类型\n- 影响库存估值\n- 如进口vs国产有不同价格\n- 不是关于供应商或订单分割",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q22",
+      "domain": 1,
+      "question": "\"采购类别\"用于区分什么？",
+      "options": {
+        "A": "供应商等级",
+        "B": "标准采购、外包、寄售等不同采购类型",
+        "C": "付款方式",
+        "D": "交货方式"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "采购类别区分：\n- 标准采购\n- 外包\n- 寄售\n- 股票转移等\n不同类别有不同的处理流程",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q23",
+      "domain": 2,
+      "question": "物料主数据中\"源清单要求\"标志的作用是什么？",
+      "options": {
+        "A": "要求在采购前必须有货源清单记录",
+        "B": "自动创建货源清单",
+        "C": "删除现有货源清单",
+        "D": "导出货源清单"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "源清单要求：\n- 强制采购前检查货源清单\n- 没有有效货源则不能创建订单\n- 提高采购合规性\n- 在采购视图中设置",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q24",
+      "domain": 2,
+      "question": "物料的\"采购状态\"可以设置在哪些级别？（选择两项）",
+      "options": {
+        "A": "客户端级别",
+        "B": "采购组织级别",
+        "C": "工厂级别",
+        "D": "存储位置级别"
+      },
+      "answer": ["B", "C"],
+      "answerType": "multiple",
+      "explanation": "采购状态级别：\n- 采购组织级别（采购视图）\n- 工厂级别（采购数据）\n- 允许不同的粒度控制\n- 不在客户端或存储位置级别",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q25",
+      "domain": 3,
+      "question": "SAP 中\"批次确定\"规则的作用是什么？",
+      "options": {
+        "A": "创建新批次号",
+        "B": "根据策略自动选择出库批次",
+        "C": "删除过期批次",
+        "D": "合并多个批次"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "批次确定：\n- 按配置的策略选择批次\n- 如FIFO（先进先出）\n- FEFO（先到期先出）\n- 提高库存管理效率",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q26",
+      "domain": 3,
+      "question": "\"可用性检查\"在库存管理中检查什么？",
+      "options": {
+        "A": "供应商是否可用",
+        "B": "物料是否有足够库存满足需求",
+        "C": "用户是否有权限",
+        "D": "系统是否在线"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "可用性检查：\n- 检查库存是否能满足需求\n- 考虑现有库存、预留、已计划收货\n- 返回确认数量和日期\n- 可配置检查范围",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q27",
+      "domain": 4,
+      "question": "\"LSMW\"在物料主数据管理中的用途是什么？",
+      "options": {
+        "A": "查询物料数据",
+        "B": "批量导入或更新物料主数据",
+        "C": "删除物料数据",
+        "D": "打印物料报表"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "LSMW（Legacy System Migration Workbench）：\n- 用于数据迁移和批量更新\n- 支持物料主数据导入\n- 从 Excel 或其他系统迁移\n- SAP 标准数据迁移工具",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q28",
+      "domain": 4,
+      "question": "一个存储位置可以分配给多个工厂吗？",
+      "options": {
+        "A": "是的，可以共享",
+        "B": "不可以，存储位置专属于单一工厂",
+        "C": "取决于配置",
+        "D": "只有在同一公司代码下才可以"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "存储位置与工厂关系：\n- 存储位置只能属于一个工厂\n- 是1:N关系中的\"1\"\n- 每个工厂可有多个存储位置\n- 不能跨工厂共享",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q29",
+      "domain": 5,
+      "question": "\"混合条件\"在采购定价中指什么？",
+      "options": {
+        "A": "多种货币混合",
+        "B": "同时包含固定金额和百分比的条件",
+        "C": "混合批次的条件",
+        "D": "混合供应商的条件"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "混合条件：\n- 可包含固定部分和百分比部分\n- 如\"100元 + 5%\"\n- 在条件类型中配置\n- 提供更灵活的定价方式",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q30",
+      "domain": 5,
+      "question": "以下哪个是有效的条件限制功能？",
+      "options": {
+        "A": "条件上限",
+        "B": "条件合并",
+        "C": "条件转换",
+        "D": "条件分割"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "条件限制功能：\n- 设置条件的上限或下限\n- 如折扣不超过20%\n- 控制价格波动范围\n- 在条件类型中配置",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q31",
+      "domain": 1,
+      "question": "\"后继文档\"在采购文档流中指什么？",
+      "options": {
+        "A": "被取消的文档",
+        "B": "从当前文档创建或引用的后续文档",
+        "C": "草稿文档",
+        "D": "审批文档"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "后继文档概念：\n- 文档流中的下游文档\n- 如采购申请→采购订单→收货\n- 用于追踪完整采购流程\n- 是SAP文档管理的核心",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q32",
+      "domain": 1,
+      "question": "\"反向拍卖\"在 SAP Ariba 中的目的是什么？",
+      "options": {
+        "A": "销售商品给供应商",
+        "B": "让供应商竞价以获得最低采购价格",
+        "C": "退货给供应商",
+        "D": "供应商自助服务"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "反向拍卖：\n- 买方发起，供应商竞价\n- 目标是获得最低价格\n- 与传统拍卖相反\n- 是战略采购工具",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q33",
+      "domain": 2,
+      "question": "物料主数据的\"配置控制\"用于什么类型的物料？",
+      "options": {
+        "A": "标准库存物料",
+        "B": "可配置物料（变式配置）",
+        "C": "服务物料",
+        "D": "原材料"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "配置控制：\n- 用于可配置物料\n- 定义变式特性和选项\n- 支持按订单配置\n- 与 LO-VC 功能集成",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q34",
+      "domain": 2,
+      "question": "物料主数据创建后，以下哪个字段不能更改？",
+      "options": {
+        "A": "物料描述",
+        "B": "物料类型",
+        "C": "采购组",
+        "D": "MRP控制者"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "物料类型限制：\n- 创建后不能更改\n- 决定物料的基本属性\n- 其他字段通常可修改\n- 若需更改，要创建新物料",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q35",
+      "domain": 3,
+      "question": "\"库存差异\"在盘点中如何处理？",
+      "options": {
+        "A": "自动忽略",
+        "B": "必须人工批准后过账",
+        "C": "直接调整库存",
+        "D": "发送给供应商"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "库存差异处理：\n- 需要审查和批准\n- 过账调整库存\n- 创建会计凭证\n- 保留审计轨迹",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q36",
+      "domain": 3,
+      "question": "\"抽样检验\"在库存管理中指什么？",
+      "options": {
+        "A": "全部检查",
+        "B": "只检查样本数量来评估整批质量",
+        "C": "跳过检验",
+        "D": "供应商自检"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "抽样检验：\n- 只检查部分样本\n- 基于统计方法评估\n- 节省检验成本\n- 与 QM 模块集成",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q37",
+      "domain": 4,
+      "question": "\"公司间采购\"需要哪些前提条件？（选择两项）",
+      "options": {
+        "A": "公司间客户/供应商关系定义",
+        "B": "相同的物料编号",
+        "C": "公司间库存转储流程配置",
+        "D": "相同的货币"
+      },
+      "answer": ["A", "C"],
+      "answerType": "multiple",
+      "explanation": "公司间采购前提：\n- A正确：需要定义公司间业务伙伴关系\n- C正确：需要配置转储流程\n- B错误：可以是不同物料号\n- D错误：可以是不同货币",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q38",
+      "domain": 4,
+      "question": "\"采购审批层级\"如何配置？",
+      "options": {
+        "A": "在物料主数据中",
+        "B": "在发布策略中定义",
+        "C": "在供应商主数据中",
+        "D": "在会计配置中"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "采购审批配置：\n- 在发布策略中定义\n- 基于特性（如金额、采购组）\n- 定义审批层级和流程\n- 使用发布代码和组",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q39",
+      "domain": 5,
+      "question": "\"期间条件\"的特点是什么？",
+      "options": {
+        "A": "永久有效",
+        "B": "与特定采购订单绑定",
+        "C": "有时间有效期，影响特定期间的定价",
+        "D": "只用于年度合同"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "期间条件：\n- 有明确的有效期\n- 支持价格变动管理\n- 可提前维护未来价格\n- 系统按日期自动选取",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q40",
+      "domain": 5,
+      "question": "采购定价中\"必填条件\"意味着什么？",
+      "options": {
+        "A": "条件金额必须大于零",
+        "B": "定价过程中此条件类型必须有值才能继续",
+        "C": "必须手动输入",
+        "D": "必须获得审批"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "必填条件：\n- 在定价过程中配置\n- 如果没有值，会报错\n- 如主价格条件通常是必填\n- 确保关键定价要素存在",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q41",
+      "domain": 1,
+      "question": "\"自动来源确定\"基于什么进行？",
+      "options": {
+        "A": "随机选择",
+        "B": "货源清单、配额安排和采购信息记录",
+        "C": "用户偏好",
+        "D": "地理位置"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "自动来源确定：\n- 查找货源清单\n- 应用配额安排（如有）\n- 参考采购信息记录\n- 是MRP和采购的自动化功能",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q42",
+      "domain": 1,
+      "question": "\"框架合同\"与\"采购订单\"的主要处理差异是什么？",
+      "options": {
+        "A": "框架合同可以直接收货",
+        "B": "框架合同需要通过发布订单实际采购",
+        "C": "采购订单是长期协议",
+        "D": "没有区别"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "框架合同处理：\n- 框架合同定义条款\n- 通过发布订单实际执行\n- 采购订单是一次性的\n- 框架合同跟踪消耗",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q43",
+      "domain": 2,
+      "question": "物料主数据中\"GR处理时间\"的作用是什么？",
+      "options": {
+        "A": "定义质检时间",
+        "B": "收货后到物料可用的缓冲时间",
+        "C": "定义发货时间",
+        "D": "审批时间"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "GR处理时间：\n- 收货后的处理缓冲\n- 考虑入库、检验等时间\n- 影响MRP可用日期计算\n- 在采购或MRP视图设置",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q44",
+      "domain": 2,
+      "question": "以下哪个字段在物料主数据的\"会计\"视图中？",
+      "options": {
+        "A": "MRP类型",
+        "B": "估值类",
+        "C": "采购组",
+        "D": "批次管理"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "会计视图字段：\n- 估值类\n- 价格控制\n- 标准价格/移动平均价\n- 用于财务过账的配置",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q45",
+      "domain": 3,
+      "question": "\"期末结算\"在库存管理中包括哪些活动？（选择两项）",
+      "options": {
+        "A": "库存重估",
+        "B": "删除所有库存",
+        "C": "GR/IR清账",
+        "D": "创建新物料"
+      },
+      "answer": ["A", "C"],
+      "answerType": "multiple",
+      "explanation": "期末结算活动：\n- A正确：可能需要库存重估\n- C正确：GR/IR账户清账\n- B错误：不删除库存\n- D错误：不是期末活动",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q46",
+      "domain": 3,
+      "question": "\"库存管理报表 MBBS\" 显示什么？",
+      "options": {
+        "A": "物料凭证清单",
+        "B": "库存余额和期间变动",
+        "C": "供应商清单",
+        "D": "采购订单状态"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "MBBS报表：\n- 分析期间的库存流动\n- 显示期初、收货、发货、期末余额\n- 用于库存分析\n- 是重要的库存报表",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q47",
+      "domain": 4,
+      "question": "\"物料分类账\"对物料管理有什么影响？",
+      "options": {
+        "A": "只影响报表",
+        "B": "支持多币种和平行估价",
+        "C": "只用于成本核算",
+        "D": "没有影响"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "物料分类账功能：\n- 支持平行估价（多种货币/会计准则）\n- 期末实际成本计算\n- 与MM库存估价集成\n- 是S/4HANA的重要功能",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q48",
+      "domain": 4,
+      "question": "在 SAP 中，\"采购组织\"与\"销售组织\"的关系是什么？",
+      "options": {
+        "A": "必须一一对应",
+        "B": "完全独立，没有直接关系",
+        "C": "共享相同的配置",
+        "D": "采购组织是销售组织的子集"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "采购组织与销售组织：\n- 是两个独立的组织单元\n- 分别用于MM和SD模块\n- 可以有不同的结构\n- 只在公司代码层面可能有关联",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q49",
+      "domain": 5,
+      "question": "\"条件拆分\"功能用于什么场景？",
+      "options": {
+        "A": "将条件应用于多个订单",
+        "B": "将头条件分摊到行项目",
+        "C": "拆分付款",
+        "D": "拆分交货"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "条件拆分：\n- 抬头级条件分摊到行项目\n- 如运费按数量或金额分摊\n- 确保行项目成本准确\n- 在条件类型配置中设置",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q50",
+      "domain": 5,
+      "question": "采购定价中的\"定价报表\"用于什么？",
+      "options": {
+        "A": "创建条件记录",
+        "B": "分析和比较定价数据",
+        "C": "审批价格变更",
+        "D": "删除过期条件"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "定价报表：\n- 分析条件记录数据\n- 比较不同供应商价格\n- 支持采购决策\n- 是价格管理的重要工具",
+      "difficulty": "easy"
+    }
+  ]
+}

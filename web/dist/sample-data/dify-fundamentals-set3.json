@@ -1,0 +1,772 @@
+{
+  "exam": {
+    "id": "dify-fundamentals-set3",
+    "name": "Dify 基础认证 模拟考试 #3",
+    "code": "DIFY-FUND",
+    "provider": "Dify",
+    "language": "zh-CN",
+    "description": "Dify AI应用开发平台基础认证 - 第3套",
+    "totalQuestions": 50,
+    "passingScore": 70,
+    "examTime": 60,
+    "domains": [
+      { "id": 1, "name": "Dify Platform Basics", "weight": 25 },
+      { "id": 2, "name": "Prompt Engineering", "weight": 25 },
+      { "id": 3, "name": "Application Types", "weight": 25 },
+      { "id": 4, "name": "Basic Configuration", "weight": 25 }
+    ],
+    "tags": ["Dify", "LLMOps", "AI", "认证考试"]
+  },
+  "questions": [
+    {
+      "id": "q1",
+      "domain": 1,
+      "question": "Dify 与传统的 LLM API 直接调用相比，主要优势是什么？",
+      "options": {
+        "A": "API 响应更快",
+        "B": "提供可视化编排、内置 RAG、应用管理等一站式能力",
+        "C": "只支持特定模型",
+        "D": "价格更便宜"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Dify 相比直接调用 API 的优势：\n- 可视化编排：无需编码构建复杂应用\n- 内置 RAG：知识库管理和检索\n- 多模型支持：统一接入多个 LLM\n- 应用管理：监控、日志、版本控制\n- 快速部署：API 和嵌入式部署\n\n大大降低了 LLM 应用开发的门槛。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q2",
+      "domain": 1,
+      "question": "Dify 中的\"发布\"功能有什么作用？",
+      "options": {
+        "A": "删除应用",
+        "B": "将当前配置保存为新版本，供 API 和嵌入使用",
+        "C": "分享到社交媒体",
+        "D": "导出代码"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "发布功能的作用：\n- 保存当前应用配置为正式版本\n- API 调用使用发布后的版本\n- 嵌入式部署使用发布版本\n- 可以继续编辑而不影响线上版本\n- 支持版本管理和回滚",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q3",
+      "domain": 1,
+      "question": "如何在 Dify 中复制一个应用？",
+      "options": {
+        "A": "无法复制",
+        "B": "在应用设置中选择\"复制\"或\"导出后重新导入\"",
+        "C": "只能手动重建",
+        "D": "需要联系管理员"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "复制应用的方法：\n- 在应用列表右键菜单选择复制\n- 导出 DSL 文件后重新导入\n- 使用模板功能保存和复用\n\n复制后可以独立修改，不影响原应用。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q4",
+      "domain": 1,
+      "question": "Dify 的 DSL（Domain Specific Language）文件用于什么？",
+      "options": {
+        "A": "编写程序代码",
+        "B": "导出和导入应用配置",
+        "C": "存储用户数据",
+        "D": "配置服务器"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "DSL 文件的用途：\n- 导出完整的应用配置\n- 在不同环境间迁移应用\n- 分享应用配置给他人\n- 版本控制和备份\n- 格式为 YAML，便于查看和编辑",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q5",
+      "domain": 1,
+      "question": "Dify Cloud 和自托管版本的主要区别是什么？（选择两项）",
+      "options": {
+        "A": "Cloud 版无需维护基础设施",
+        "B": "自托管版数据完全由自己控制",
+        "C": "Cloud 版功能更少",
+        "D": "自托管版不支持团队协作"
+      },
+      "answer": ["A", "B"],
+      "answerType": "multiple",
+      "explanation": "两种部署方式的区别：\n\nCloud 版：\n- 开箱即用，无需维护\n- 由 Dify 官方托管\n- 按量付费\n\n自托管版：\n- 数据完全自主控制\n- 可部署在私有环境\n- 需要自己维护\n- 企业版有更多功能",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q6",
+      "domain": 2,
+      "question": "什么是 User/Assistant Prompt Format？",
+      "options": {
+        "A": "一种加密方式",
+        "B": "对话中用户和 AI 消息的格式模板",
+        "C": "数据库表结构",
+        "D": "API 响应格式"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "User/Assistant Format 定义对话格式：\n- User：用户消息的前缀和格式\n- Assistant：AI 回复的前缀和格式\n- 保持对话的一致性\n- 某些模型有特定格式要求\n\n例如：\"User: \" 和 \"Assistant: \" 前缀。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q7",
+      "domain": 2,
+      "question": "在 Prompt 中使用 {{#query#}} 变量的作用是什么？",
+      "options": {
+        "A": "插入系统时间",
+        "B": "插入用户当前输入的问题",
+        "C": "插入知识库内容",
+        "D": "插入对话历史"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "{{#query#}} 变量用于插入用户输入：\n- 代表用户当前的问题或指令\n- 在 Prompt 模板中占位\n- 运行时被实际用户输入替换\n- 是最基本的动态变量之一",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q8",
+      "domain": 2,
+      "question": "如何在 Prompt 中实现条件逻辑？",
+      "options": {
+        "A": "Prompt 不支持条件逻辑",
+        "B": "使用 Jinja2 模板语法的 if/else",
+        "C": "使用 JavaScript",
+        "D": "使用 SQL"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Dify 支持 Jinja2 模板语法：\n- {% if condition %}...{% endif %}\n- {% if condition %}...{% else %}...{% endif %}\n- 可以根据变量值动态改变 Prompt\n\n例如：根据用户语言切换提示词。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q9",
+      "domain": 2,
+      "question": "什么是 Pre-prompt 和 Post-prompt？",
+      "options": {
+        "A": "两个不同的应用类型",
+        "B": "在用户输入前后添加的固定指令",
+        "C": "两种加密方式",
+        "D": "前端和后端接口"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Pre-prompt 和 Post-prompt：\n- Pre-prompt：在用户输入之前添加的内容\n- Post-prompt：在用户输入之后添加的内容\n- 用于包装和增强用户输入\n- 可以添加上下文或格式要求\n\n完整结构：Pre-prompt + 用户输入 + Post-prompt",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q10",
+      "domain": 2,
+      "question": "Seed 参数在模型调用中的作用是什么？",
+      "options": {
+        "A": "设置随机种子以获得可重现的输出",
+        "B": "加速模型推理",
+        "C": "增加创造性",
+        "D": "压缩输出"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Seed 参数的作用：\n- 设置随机数种子\n- 相同 seed + 相同输入 = 相同输出\n- 用于结果可重现性测试\n- 便于调试和对比\n\n注意：不是所有模型都支持 seed 参数。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q11",
+      "domain": 2,
+      "question": "什么是 Instruction Tuning？",
+      "options": {
+        "A": "调整模型参数",
+        "B": "通过明确的指令微调模型行为",
+        "C": "硬件调优",
+        "D": "网络配置"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Instruction Tuning 是一种技术：\n- 使用指令-响应对来微调模型\n- 让模型更好地理解和遵循指令\n- 提高模型的任务完成能力\n\n在 Prompt 工程中，我们利用经过指令调优的模型特性。",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q12",
+      "domain": 2,
+      "question": "如何处理 Prompt 中的敏感信息？",
+      "options": {
+        "A": "直接写在 Prompt 中",
+        "B": "使用变量引用，将敏感信息存储在安全位置",
+        "C": "忽略安全问题",
+        "D": "使用 Base64 编码"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "处理敏感信息的最佳实践：\n- 使用变量而非硬编码\n- 将敏感数据存储在环境变量或密钥管理服务\n- 在 Prompt 中使用变量引用\n- 审计和监控敏感操作\n\nBase64 不是加密，无法保护敏感信息。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q13",
+      "domain": 3,
+      "question": "Completion API 和 Chat API 的主要区别是什么？",
+      "options": {
+        "A": "没有区别",
+        "B": "Chat API 支持多轮对话历史，Completion 是单次文本补全",
+        "C": "Completion 更快",
+        "D": "Chat 只能用于聊天"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "两种 API 的区别：\n\nCompletion API：\n- 单次文本补全\n- 不维护对话历史\n- 适合文本生成任务\n\nChat API：\n- 支持多轮对话\n- 维护消息历史（user/assistant）\n- 适合对话类应用",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q14",
+      "domain": 3,
+      "question": "Agent 中的\"提前终止\"（Early Stop）功能有什么作用？",
+      "options": {
+        "A": "强制关闭应用",
+        "B": "当达到特定条件时提前结束推理循环",
+        "C": "节省电量",
+        "D": "加密数据"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Early Stop 的作用：\n- 当 Agent 完成任务时提前结束\n- 避免不必要的额外循环\n- 节省 token 和响应时间\n- 基于模型输出判断是否完成\n\n例如：Agent 回复\"任务已完成\"时终止。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q15",
+      "domain": 3,
+      "question": "Workflow 中的\"并行分支\"有什么优势？",
+      "options": {
+        "A": "没有优势",
+        "B": "多个独立任务可以同时执行，减少总耗时",
+        "C": "增加可靠性",
+        "D": "减少代码量"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "并行分支的优势：\n- 多个独立任务同时执行\n- 减少总处理时间\n- 提高吞吐量\n- 适合无依赖关系的多个操作\n\n例如：同时查询多个数据源，然后合并结果。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q16",
+      "domain": 3,
+      "question": "什么场景下应该使用 Chatflow 而不是普通 Chatbot？",
+      "options": {
+        "A": "简单问答",
+        "B": "需要复杂逻辑分支和多步处理的对话",
+        "C": "纯文本生成",
+        "D": "文件处理"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Chatflow 适合的场景：\n- 复杂的对话流程控制\n- 需要条件分支判断\n- 多步骤的信息收集\n- 需要调用多个工具或 API\n- 自定义的对话状态管理\n\n简单问答使用 Chatbot 即可。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q17",
+      "domain": 3,
+      "question": "Agent 应用中如何限制可调用的工具范围？",
+      "options": {
+        "A": "无法限制",
+        "B": "在 Agent 配置中只添加需要的工具",
+        "C": "需要修改代码",
+        "D": "联系管理员"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "限制 Agent 工具的方法：\n- 在 Agent 配置界面选择工具\n- 只添加业务需要的工具\n- 移除不需要的工具\n- 这样 Agent 只能调用已配置的工具\n\n这是保证 Agent 行为可控的重要方式。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q18",
+      "domain": 3,
+      "question": "Workflow 的\"模板转换\"节点用于什么？",
+      "options": {
+        "A": "转换文件格式",
+        "B": "使用 Jinja2 模板处理和转换数据",
+        "C": "翻译语言",
+        "D": "压缩图片"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "模板转换节点的作用：\n- 使用 Jinja2 语法处理数据\n- 格式化输出内容\n- 组合多个变量\n- 条件性地构建内容\n\n例如：将多个字段组合成邮件模板。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q19",
+      "domain": 4,
+      "question": "知识库的\"问题优化\"功能有什么作用？",
+      "options": {
+        "A": "优化数据库性能",
+        "B": "使用 LLM 重写用户问题以提高检索效果",
+        "C": "压缩问题长度",
+        "D": "翻译问题"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "问题优化功能：\n- 使用 LLM 改写用户问题\n- 提取关键信息\n- 扩展同义词\n- 提高向量检索的匹配度\n\n例如：将口语化问题改写为更结构化的查询。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q20",
+      "domain": 4,
+      "question": "如何处理知识库中的结构化数据（如表格）？",
+      "options": {
+        "A": "不支持结构化数据",
+        "B": "使用 CSV/Excel 导入，系统会解析表格结构",
+        "C": "只能手动输入",
+        "D": "需要转换为纯文本"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "处理结构化数据的方法：\n- 支持 CSV、Excel 格式导入\n- 系统自动解析表格结构\n- 保持行列关系\n- 可以按行或按单元格切片\n\n对于复杂表格，建议添加描述性文字辅助理解。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q21",
+      "domain": 4,
+      "question": "什么是知识库的\"分段总结\"功能？",
+      "options": {
+        "A": "计算文档统计信息",
+        "B": "为每个切片生成摘要以辅助检索",
+        "C": "压缩存储空间",
+        "D": "生成目录"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "分段总结的作用：\n- 使用 LLM 为每个切片生成摘要\n- 摘要用于辅助检索匹配\n- 提高长文档片段的检索准确性\n- 需要额外的 token 消耗\n\n适合技术文档、研究论文等复杂内容。",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q22",
+      "domain": 4,
+      "question": "Dify 支持哪种 Embedding 模型类型？（选择两项）",
+      "options": {
+        "A": "OpenAI Embedding",
+        "B": "本地 Embedding 模型",
+        "C": "只支持商业模型",
+        "D": "不支持 Embedding"
+      },
+      "answer": ["A", "B"],
+      "answerType": "multiple",
+      "explanation": "Dify 支持多种 Embedding 模型：\n- OpenAI text-embedding-ada-002 等\n- Azure OpenAI Embedding\n- 本地模型（Hugging Face、Ollama）\n- 其他云服务商的 Embedding\n\n可以根据成本和性能需求选择。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q23",
+      "domain": 4,
+      "question": "如何在 Dify 中实现多知识库联合检索？",
+      "options": {
+        "A": "不支持多知识库",
+        "B": "在应用中关联多个知识库，系统自动联合检索",
+        "C": "需要编写代码",
+        "D": "只能合并为一个知识库"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "多知识库检索的实现：\n- 在应用配置中添加多个知识库\n- 系统自动从所有关联知识库检索\n- 合并结果并排序\n- 无需编写代码\n\n适合内容分散在不同知识库的场景。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q24",
+      "domain": 4,
+      "question": "什么是 Dify 的\"调试预览\"功能？",
+      "options": {
+        "A": "查看错误日志",
+        "B": "实时测试应用效果并查看中间过程",
+        "C": "预览部署后的界面",
+        "D": "检查代码语法"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "调试预览功能：\n- 实时测试应用效果\n- 查看变量值和中间结果\n- 观察知识库检索过程\n- 查看 Prompt 组装结果\n- 无需发布即可测试\n\n是开发和调优应用的重要工具。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q25",
+      "domain": 4,
+      "question": "如何给应用设置使用配额限制？",
+      "options": {
+        "A": "无法设置配额",
+        "B": "在应用设置中配置 API 调用次数或 token 限制",
+        "C": "只能在代码中限制",
+        "D": "需要额外付费"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "配额限制设置：\n- 可以限制每日/每月 API 调用次数\n- 可以限制 token 使用量\n- 可以按用户或全局设置\n- 超出限制时拒绝请求\n\n这是控制成本和防止滥用的重要手段。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q26",
+      "domain": 1,
+      "question": "Dify 的插件系统可以做什么？",
+      "options": {
+        "A": "只能安装官方插件",
+        "B": "扩展平台功能，如添加新的模型提供商或工具",
+        "C": "修改核心代码",
+        "D": "替换整个系统"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "插件系统的功能：\n- 添加新的模型提供商\n- 添加自定义工具\n- 扩展知识库功能\n- 集成外部服务\n\n插件机制让平台具有良好的扩展性。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q27",
+      "domain": 1,
+      "question": "如何在 Dify 中配置 SMTP 邮件服务？",
+      "options": {
+        "A": "不支持邮件",
+        "B": "在环境变量中配置 SMTP 服务器信息",
+        "C": "只支持 Gmail",
+        "D": "需要安装插件"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "配置 SMTP 服务：\n- 在 .env 文件设置 SMTP 参数\n- 包括服务器地址、端口、账号密码\n- 用于发送密码重置、通知等邮件\n- 支持各种 SMTP 服务商",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q28",
+      "domain": 1,
+      "question": "Dify 的 API 限流机制是什么？",
+      "options": {
+        "A": "没有限流",
+        "B": "基于请求频率和 token 的多维度限流",
+        "C": "只限制错误请求",
+        "D": "只在高峰期限流"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Dify 的限流机制：\n- 请求频率限制（QPM/QPS）\n- Token 使用量限制\n- 可按应用和用户分别设置\n- 超限返回 429 错误\n\n合理的限流保护系统稳定性和成本可控。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q29",
+      "domain": 2,
+      "question": "什么是 In-Context Learning？",
+      "options": {
+        "A": "在线学习课程",
+        "B": "模型通过 Prompt 中的示例学习完成任务，无需微调",
+        "C": "数据库查询",
+        "D": "代码编译"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "In-Context Learning（上下文学习）：\n- 在 Prompt 中提供示例\n- 模型从示例中学习任务模式\n- 无需更新模型权重\n- 是 Few-shot Learning 的基础\n\n大语言模型的这种能力使 Prompt 工程成为可能。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q30",
+      "domain": 2,
+      "question": "如何设计一个好的 System Prompt？（选择两项）",
+      "options": {
+        "A": "明确定义 AI 的角色和行为规则",
+        "B": "设定清晰的边界和禁止事项",
+        "C": "越短越好",
+        "D": "包含所有可能的问答"
+      },
+      "answer": ["A", "B"],
+      "answerType": "multiple",
+      "explanation": "好的 System Prompt 设计：\n- 明确角色：你是谁、专业背景\n- 行为规则：如何回答、什么风格\n- 边界限制：什么不能做、不能说\n- 输出格式：期望的回答结构\n\n简短不代表好，关键是清晰和完整。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q31",
+      "domain": 2,
+      "question": "Prompt 中的\"格式说明\"应该包含什么？",
+      "options": {
+        "A": "只说明使用 JSON",
+        "B": "期望的输出结构、字段名称、示例",
+        "C": "代码注释",
+        "D": "版本号"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "格式说明应该包含：\n- 输出结构（JSON、列表、段落等）\n- 字段名称和类型\n- 各字段的含义说明\n- 具体的输出示例\n- 特殊情况的处理方式\n\n详细的格式说明能大大提高输出一致性。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q32",
+      "domain": 3,
+      "question": "Agent 的\"反思\"（Reflection）能力是什么？",
+      "options": {
+        "A": "镜像备份",
+        "B": "Agent 检查和改进自己的推理过程",
+        "C": "用户反馈",
+        "D": "数据回滚"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Agent 反思能力：\n- 检查之前的推理步骤\n- 发现错误或不足\n- 调整后续策略\n- 提高任务完成质量\n\n高级 Agent 架构会包含反思机制。",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q33",
+      "domain": 3,
+      "question": "Workflow 中的\"变量提取\"节点用于什么？",
+      "options": {
+        "A": "删除变量",
+        "B": "从 LLM 输出中提取结构化信息",
+        "C": "加密变量",
+        "D": "计算数学公式"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "变量提取节点的作用：\n- 从 LLM 的自由文本输出中提取结构化信息\n- 定义要提取的字段和类型\n- 输出可用于后续节点\n- 适合处理非结构化到结构化的转换\n\n例如：从描述中提取产品名称、价格等。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q34",
+      "domain": 3,
+      "question": "如何在 Chatbot 中实现\"建议回复\"功能？",
+      "options": {
+        "A": "不支持",
+        "B": "在配置中启用建议问题功能",
+        "C": "需要编写前端代码",
+        "D": "只能使用 API"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "建议回复功能：\n- 在应用设置中启用\n- AI 会在回答后提供后续问题建议\n- 引导用户继续对话\n- 提升用户体验\n\nDify 内置支持此功能，无需额外开发。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q35",
+      "domain": 3,
+      "question": "Workflow 中如何实现人工审核节点？",
+      "options": {
+        "A": "不支持人工节点",
+        "B": "使用\"人工审核\"节点暂停流程等待人工操作",
+        "C": "只能用代码实现",
+        "D": "需要第三方工具"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "人工审核节点：\n- 流程执行到此处暂停\n- 等待人工审核和决策\n- 支持审批/拒绝等操作\n- 审核后继续执行后续流程\n\n适合需要人工把关的场景，如内容发布、订单审批等。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q36",
+      "domain": 4,
+      "question": "如何提高知识库检索的召回率？",
+      "options": {
+        "A": "使用更小的切片",
+        "B": "增加 Top-K 值，使用混合检索",
+        "C": "删除大部分文档",
+        "D": "关闭向量检索"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "提高召回率的方法：\n- 增加 Top-K 返回更多结果\n- 使用混合检索（向量 + 关键词）\n- 优化切片策略\n- 降低 Score Threshold\n- 启用问题优化\n\n召回率和精确率需要平衡。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q37",
+      "domain": 4,
+      "question": "Dify 的\"注解回复\"功能有什么作用？",
+      "options": {
+        "A": "给代码添加注释",
+        "B": "为特定问题预设标准答案，优先于 AI 生成",
+        "C": "翻译功能",
+        "D": "语法检查"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "注解回复功能：\n- 为特定问题设置预定义答案\n- 优先匹配预设答案\n- 未匹配时使用 AI 生成\n- 确保关键问题回答准确\n\n适合 FAQ、政策性问题等需要精确回答的场景。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q38",
+      "domain": 4,
+      "question": "如何通过 Webhook 实现 Dify 与外部系统的集成？",
+      "options": {
+        "A": "Dify 不支持 Webhook",
+        "B": "在 Workflow 中使用 HTTP 请求节点调用外部 Webhook",
+        "C": "只能手动集成",
+        "D": "需要购买企业版"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Webhook 集成方式：\n- 使用 HTTP 请求节点\n- 配置目标 URL 和请求格式\n- 发送事件通知或数据\n- 接收外部响应\n\n可以实现与 CRM、ERP 等系统的集成。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q39",
+      "domain": 1,
+      "question": "Dify 的多租户架构如何实现资源隔离？",
+      "options": {
+        "A": "每个租户独立数据库",
+        "B": "通过 Workspace 实现逻辑隔离",
+        "C": "物理服务器隔离",
+        "D": "不支持多租户"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Dify 多租户实现：\n- 通过 Workspace 逻辑隔离\n- 每个 Workspace 有独立的资源\n- 共享底层基础设施\n- 权限控制确保数据隔离\n\n这种方式平衡了隔离性和资源效率。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q40",
+      "domain": 1,
+      "question": "如何查看 Dify 的 API 调用记录？",
+      "options": {
+        "A": "只能通过服务器日志",
+        "B": "在应用的日志页面查看请求和响应详情",
+        "C": "需要第三方工具",
+        "D": "没有记录功能"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "API 调用记录查看：\n- 在应用管理界面有日志功能\n- 查看每次请求的输入输出\n- 查看 token 消耗\n- 查看响应时间\n- 支持搜索和筛选",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q41",
+      "domain": 2,
+      "question": "什么是 Prompt 的\"泛化性\"？",
+      "options": {
+        "A": "适用于所有语言",
+        "B": "Prompt 能处理多种类似情况，不局限于特定案例",
+        "C": "运行速度快",
+        "D": "占用内存小"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Prompt 泛化性：\n- 能处理各种输入变化\n- 不仅适用于示例中的情况\n- 对边缘案例也有效\n- 避免过度具体化\n\n好的 Prompt 应该有良好的泛化能力。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q42",
+      "domain": 2,
+      "question": "如何评估 Prompt 的效果？（选择两项）",
+      "options": {
+        "A": "使用测试数据集验证",
+        "B": "A/B 测试比较不同版本",
+        "C": "只看响应速度",
+        "D": "只测试一个案例"
+      },
+      "answer": ["A", "B"],
+      "answerType": "multiple",
+      "explanation": "评估 Prompt 效果的方法：\n- 准备测试数据集，涵盖各种情况\n- 定义评估指标（准确率、相关性等）\n- A/B 测试比较不同版本\n- 收集用户反馈\n- 持续迭代优化\n\n系统性的评估比单案例测试更可靠。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q43",
+      "domain": 3,
+      "question": "Agent 的\"记忆\"机制有什么作用？",
+      "options": {
+        "A": "存储模型权重",
+        "B": "保存对话历史和重要信息供后续使用",
+        "C": "备份数据",
+        "D": "加速推理"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Agent 记忆机制：\n- 保存对话历史\n- 记录重要的上下文信息\n- 跨轮次保持状态\n- 支持长期和短期记忆\n\n记忆使 Agent 能够理解上下文并保持一致性。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q44",
+      "domain": 3,
+      "question": "Workflow 的\"参数提取\"节点与\"变量提取\"有什么区别？",
+      "options": {
+        "A": "没有区别",
+        "B": "参数提取用于从用户输入提取，变量提取用于从 LLM 输出提取",
+        "C": "性能不同",
+        "D": "一个用于输入一个用于输出"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "两者的区别：\n\n参数提取：\n- 从用户输入中提取信息\n- 理解用户意图和参数\n\n变量提取：\n- 从 LLM 输出中提取\n- 将非结构化输出转为结构化\n\n使用场景和数据来源不同。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q45",
+      "domain": 4,
+      "question": "知识库的\"分段处理规则\"可以配置什么？（选择两项）",
+      "options": {
+        "A": "切片最大长度",
+        "B": "切片重叠大小",
+        "C": "文档作者",
+        "D": "上传时间"
+      },
+      "answer": ["A", "B"],
+      "answerType": "multiple",
+      "explanation": "分段处理规则配置：\n- 最大切片长度（字符数或 token 数）\n- 重叠大小（相邻切片共享内容）\n- 分隔符选择\n- 清理规则（去除特殊字符等）\n\n合理的分段配置影响检索效果。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q46",
+      "domain": 4,
+      "question": "什么是知识库的\"增量更新\"？",
+      "options": {
+        "A": "完全重建索引",
+        "B": "只处理新增或修改的内容，不影响已有数据",
+        "C": "删除所有数据",
+        "D": "备份数据"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "增量更新：\n- 只处理变化的部分\n- 不需要重新索引全部内容\n- 节省时间和资源\n- 适合频繁更新的知识库\n\n相比全量更新更高效。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q47",
+      "domain": 1,
+      "question": "Dify 如何处理并发请求？",
+      "options": {
+        "A": "只能单线程处理",
+        "B": "使用异步任务队列和工作进程并行处理",
+        "C": "拒绝所有并发",
+        "D": "随机丢弃请求"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Dify 并发处理机制：\n- 使用 Celery 异步任务队列\n- 多 Worker 并行处理\n- 可配置 Worker 数量\n- Redis 作为消息中间件\n\n这种架构能有效处理高并发场景。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q48",
+      "domain": 2,
+      "question": "什么是 Constitutional AI 原则在 Prompt 中的应用？",
+      "options": {
+        "A": "法律文档处理",
+        "B": "在 Prompt 中嵌入道德和安全准则",
+        "C": "加密通信",
+        "D": "政府项目专用"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Constitutional AI 在 Prompt 中的应用：\n- 嵌入道德准则\n- 设定安全边界\n- 拒绝有害请求\n- 保持输出质量\n\n通过 Prompt 约束模型行为，确保输出符合预期标准。",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q49",
+      "domain": 3,
+      "question": "如何在 Workflow 中处理异常情况？",
+      "options": {
+        "A": "忽略所有异常",
+        "B": "使用条件分支判断并设置异常处理路径",
+        "C": "让系统自动重启",
+        "D": "只能终止流程"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "异常处理方法：\n- 使用条件分支检测异常情况\n- 设置专门的异常处理路径\n- 记录错误信息\n- 发送通知或触发告警\n- 可以优雅降级或重试\n\n完善的异常处理是可靠系统的必备。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q50",
+      "domain": 4,
+      "question": "如何优化 Dify 应用的响应速度？（选择两项）",
+      "options": {
+        "A": "使用流式输出",
+        "B": "优化知识库检索配置",
+        "C": "增加更多文档",
+        "D": "使用更复杂的 Prompt"
+      },
+      "answer": ["A", "B"],
+      "answerType": "multiple",
+      "explanation": "优化响应速度的方法：\n- 使用流式输出减少等待感\n- 优化检索配置（Top-K、阈值）\n- 选择快速的模型\n- 精简 Prompt 内容\n- 使用缓存\n- 并行处理\n\n复杂的 Prompt 和更多文档反而可能降低速度。",
+      "difficulty": "medium"
+    }
+  ]
+}

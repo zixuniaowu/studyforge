@@ -1,0 +1,660 @@
+{
+  "examId": "sap-c-btpint-set3",
+  "provider": "SAP",
+  "title": "SAP BTP 集成 (C_BTPINT) 模拟题 Set 3",
+  "description": "SAP Business Technology Platform 集成认证模拟试题第三套",
+  "icon": "sap",
+  "setNumber": 3,
+  "questions": [
+    {
+      "id": 1,
+      "question": "SAP Integration Suite 的 Integration Flow Simulation 功能用于什么？",
+      "options": {
+        "A": "在不部署的情况下测试 Integration Flow 逻辑",
+        "B": "模拟网络延迟",
+        "C": "模拟用户行为",
+        "D": "模拟数据库操作"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Simulation 允许在设计时测试 Integration Flow：提供测试输入消息，查看各步骤的处理结果，无需部署到运行时环境。加速开发和调试。"
+    },
+    {
+      "id": 2,
+      "question": "在 Cloud Integration 中，如何配置 Webhook？",
+      "options": {
+        "A": "使用 HTTPS Sender Adapter 暴露端点接收回调",
+        "B": "使用专用 Webhook Adapter",
+        "C": "配置防火墙规则",
+        "D": "创建数据库触发器"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "HTTPS Sender Adapter 暴露端点 URL，外部系统（如 GitHub、Stripe）配置此 URL 作为 Webhook。收到回调时触发 Integration Flow 处理。"
+    },
+    {
+      "id": 3,
+      "question": "SAP API Management 中的 API Provider 是什么概念？",
+      "options": {
+        "A": "定义后端系统连接信息的配置",
+        "B": "API 开发者",
+        "C": "API 消费者",
+        "D": "API 网关"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "API Provider 是后端系统的逻辑表示：配置后端 URL、认证方式、连接参数等。创建 API Proxy 时选择 Provider，简化多 API 管理。"
+    },
+    {
+      "id": 4,
+      "question": "在 Cloud Integration 中，如何实现消息内容的条件选择？",
+      "options": {
+        "A": "使用 Content-Based Router 或 Condition in Script",
+        "B": "使用数据库查询",
+        "C": "使用文件读取",
+        "D": "手动选择"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Content-Based Router 根据消息内容（XPath、Header、Property）决定路由。也可以在 Groovy Script 中编写条件逻辑进行更复杂的选择。"
+    },
+    {
+      "id": 5,
+      "question": "SAP Integration Suite 的 Cloud Integration 支持哪些消息协议？",
+      "options": {
+        "A": "HTTP/HTTPS、SOAP、OData、SFTP、AS2、Mail 等",
+        "B": "只有 HTTP",
+        "C": "只有 SOAP",
+        "D": "只有文件传输"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Cloud Integration 支持多种协议：HTTP/HTTPS（REST）、SOAP、OData、SFTP/FTP、AS2（B2B）、Mail、JMS、RFC、IDoc、SuccessFactors 等专用连接器。"
+    },
+    {
+      "id": 6,
+      "question": "在 API Management 中，Fault Rules 用于什么？",
+      "options": {
+        "A": "定义 API 错误时的处理逻辑",
+        "B": "定义故障转移规则",
+        "C": "定义负载均衡规则",
+        "D": "定义缓存规则"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Fault Rules 捕获 API 执行错误：后端失败、策略违规等。可以定义错误响应格式、记录日志、发送告警。提供一致的错误处理体验。"
+    },
+    {
+      "id": 7,
+      "question": "在 Cloud Integration 中，如何处理 JSON 消息？",
+      "options": {
+        "A": "使用 JSON to XML Converter 转换后处理或直接使用 Script",
+        "B": "只能处理 XML",
+        "C": "转换为文本处理",
+        "D": "不支持 JSON"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "JSON 处理有两种方式：转换为 XML 后使用标准 Mapping/XPath；或在 Groovy Script 中直接解析 JSON（使用 JsonSlurper）。取决于复杂度和偏好。"
+    },
+    {
+      "id": 8,
+      "question": "SAP Integration Suite 的 Integration Package 是什么？",
+      "options": {
+        "A": "预构建的可重用集成内容集合",
+        "B": "软件安装包",
+        "C": "数据备份包",
+        "D": "文档集合"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Integration Package 是 SAP 或合作伙伴提供的预构建集成内容：包含 Integration Flow、Value Mapping、文档等。可以直接使用或作为模板定制。"
+    },
+    {
+      "id": 9,
+      "question": "在 Cloud Integration 中，Sequential Multicast 和 Parallel Multicast 的区别是什么？",
+      "options": {
+        "A": "Sequential 按顺序执行分支，Parallel 同时执行",
+        "B": "性能相同",
+        "C": "功能相同",
+        "D": "一个用于发送，一个用于接收"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Sequential Multicast 按定义顺序依次执行各分支，一个完成后执行下一个。Parallel Multicast 同时启动所有分支并行执行。选择取决于业务需求。"
+    },
+    {
+      "id": 10,
+      "question": "SAP API Management 中的 Access Token 有哪些类型？",
+      "options": {
+        "A": "Bearer Token、API Key、OAuth Token 等",
+        "B": "只有密码",
+        "C": "只有证书",
+        "D": "只有 Session ID"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "API Management 支持多种认证方式：API Key（简单令牌）、OAuth 2.0 Bearer Token（标准授权）、SAML、Basic Auth 等。可以组合使用。"
+    },
+    {
+      "id": 11,
+      "question": "在 Cloud Integration 中，如何实现消息的并行拆分处理？",
+      "options": {
+        "A": "使用 Parallel Splitter 设置并行处理",
+        "B": "使用多个流程",
+        "C": "使用定时器",
+        "D": "使用外部调度"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Parallel Splitter 将消息拆分为多个并行处理：设置 Parallel Processing 启用，定义 Number of Concurrent Processes。利用多核提高处理速度。"
+    },
+    {
+      "id": 12,
+      "question": "SAP Integration Suite 的 Tenant Isolation 如何实现？",
+      "options": {
+        "A": "每个租户独立的运行时和数据存储",
+        "B": "共享所有资源",
+        "C": "使用虚拟网络",
+        "D": "使用密码隔离"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "多租户架构中，每个租户有独立的运行时环境、数据存储、安全材料。租户间完全隔离，保证数据安全和隐私。"
+    },
+    {
+      "id": 13,
+      "question": "在 Cloud Integration 中，如何配置 Retry 策略？",
+      "options": {
+        "A": "在 Adapter Channel 配置重试次数和间隔",
+        "B": "在代码中实现重试",
+        "C": "使用外部服务",
+        "D": "手动重新执行"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Receiver Adapter 配置 Retry：Maximum Retries（最大重试次数）、Retry Interval（间隔时间）、Exponential Backoff（指数退避）。自动处理临时故障。"
+    },
+    {
+      "id": 14,
+      "question": "SAP API Management 的 API Best Practices 包括什么？",
+      "options": {
+        "A": "版本控制、错误处理标准化、文档完善、安全设计",
+        "B": "只关注性能",
+        "C": "只关注功能",
+        "D": "只关注成本"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "API 最佳实践：语义化版本控制、RESTful 设计原则、统一错误响应格式、完整的 OpenAPI 文档、OAuth 安全、速率限制、监控和分析。"
+    },
+    {
+      "id": 15,
+      "question": "在 Cloud Integration 中，如何处理多值 Header？",
+      "options": {
+        "A": "使用 Content Modifier 的 Header 操作或 Script 处理",
+        "B": "自动合并",
+        "C": "忽略多值",
+        "D": "拆分为多条消息"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "多值 Header 需要特殊处理：Content Modifier 可以设置/修改 Header，Script 可以遍历和操作 Header 集合。注意 HTTP 规范的多值 Header 格式。"
+    },
+    {
+      "id": 16,
+      "question": "SAP Integration Suite 的 Usage Metering 功能是什么？",
+      "options": {
+        "A": "监控和报告集成资源使用量",
+        "B": "计量电力消耗",
+        "C": "计量网络流量",
+        "D": "计量存储空间"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Usage Metering 跟踪 Integration Suite 资源使用：消息处理量、API 调用量、存储使用等。用于成本分析、容量规划和计费。"
+    },
+    {
+      "id": 17,
+      "question": "在 Cloud Integration 中，如何处理附件？",
+      "options": {
+        "A": "使用 Attachment Handling 配置和相关 API",
+        "B": "只能丢弃附件",
+        "C": "转换为文本",
+        "D": "存储到数据库"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "消息附件通过 Attachment API 处理：读取附件内容、添加附件、修改附件。MIME 多部分消息可以使用 Encoder/Decoder 处理。"
+    },
+    {
+      "id": 18,
+      "question": "SAP API Management 中的 Shared Flow 是什么？",
+      "options": {
+        "A": "可在多个 API Proxy 中重用的 Policy 集合",
+        "B": "共享网络",
+        "C": "共享数据",
+        "D": "共享用户"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Shared Flow 是可重用的 Policy 序列：定义一次，多个 API Proxy 引用。用于共享认证逻辑、日志记录、转换等通用功能。"
+    },
+    {
+      "id": 19,
+      "question": "在 Cloud Integration 中，如何实现消息的延迟处理？",
+      "options": {
+        "A": "使用 Timer 或结合 Data Store 实现延迟",
+        "B": "使用 sleep 函数",
+        "C": "等待用户操作",
+        "D": "不支持延迟"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "延迟处理方式：Timer Sender 定时触发；Data Store 存储后按计划处理；或使用消息队列的延迟投递功能。不建议在流程中使用 Thread.sleep。"
+    },
+    {
+      "id": 20,
+      "question": "SAP Integration Suite 中如何实现 API 的 CORS 支持？",
+      "options": {
+        "A": "在 API Management 中配置 CORS Policy",
+        "B": "在后端配置",
+        "C": "在浏览器配置",
+        "D": "不需要配置"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "CORS Policy 在 API Proxy 中配置：允许的 Origin、Methods、Headers、是否允许凭据等。处理浏览器的跨域请求限制。"
+    },
+    {
+      "id": 21,
+      "question": "在 Cloud Integration 中，如何监控消息吞吐量？",
+      "options": {
+        "A": "使用 Monitoring Dashboard 的 Message Statistics",
+        "B": "手动计数",
+        "C": "使用外部工具",
+        "D": "查看日志文件"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Monitor Dashboard 提供消息统计：处理量、成功/失败数、处理时间分布等。可以按时间范围、Integration Flow 过滤查看。"
+    },
+    {
+      "id": 22,
+      "question": "SAP API Management 的 Custom Reports 功能用于什么？",
+      "options": {
+        "A": "创建自定义分析报告和可视化",
+        "B": "生成财务报告",
+        "C": "生成用户报告",
+        "D": "生成系统报告"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Custom Reports 基于 Analytics 数据创建自定义视图：选择维度和指标、定义过滤条件、设置可视化图表类型。满足特定业务分析需求。"
+    },
+    {
+      "id": 23,
+      "question": "在 Cloud Integration 中，General Splitter 和 Iterating Splitter 的区别是什么？",
+      "options": {
+        "A": "General 一次拆分所有，Iterating 逐条处理",
+        "B": "没有区别",
+        "C": "性能不同",
+        "D": "支持的格式不同"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "General Splitter 一次将消息拆分为多个，全部存入内存。Iterating Splitter 逐条迭代处理，内存消耗低，适合大批量数据。"
+    },
+    {
+      "id": 24,
+      "question": "SAP Integration Suite 的 Secure Store 用于什么？",
+      "options": {
+        "A": "安全存储敏感配置和凭据",
+        "B": "存储文件",
+        "C": "存储消息",
+        "D": "存储日志"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Secure Store（Security Material）安全存储：User Credentials、OAuth Credentials、Known Hosts、PGP Keys、Keystore 等敏感信息。加密存储，访问控制。"
+    },
+    {
+      "id": 25,
+      "question": "在 Cloud Integration 中，如何处理 EDI 消息？",
+      "options": {
+        "A": "使用 EDI Splitter、Converter 和 Integration Advisor",
+        "B": "手动解析",
+        "C": "转换为 JSON",
+        "D": "忽略 EDI 格式"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "EDI 处理：EDI Splitter 拆分交换中的消息、EDI to XML Converter 转换格式、Integration Advisor 定义消息指南和映射。支持 EDIFACT、X12。"
+    },
+    {
+      "id": 26,
+      "question": "SAP API Management 中如何实现 API Throttling？",
+      "options": {
+        "A": "使用 Quota 和 Spike Arrest Policy 组合",
+        "B": "使用防火墙",
+        "C": "限制网络带宽",
+        "D": "只能使用外部服务"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Throttling 组合使用：Quota 设置时间窗口内的总限额、Spike Arrest 限制瞬时请求率。两者配合保护后端免受过载。"
+    },
+    {
+      "id": 27,
+      "question": "在 Cloud Integration 中，Scripting API 提供什么功能？",
+      "options": {
+        "A": "访问消息内容、Headers、Properties 和外部资源",
+        "B": "只能记录日志",
+        "C": "只能修改消息体",
+        "D": "只能调用 REST API"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Scripting API 提供全面的访问能力：message.getBody()、message.getHeaders()、message.getProperties()、调用外部服务、访问 ValueMapping、SecureStore 等。"
+    },
+    {
+      "id": 28,
+      "question": "SAP Integration Suite 的 Git 集成功能用于什么？",
+      "options": {
+        "A": "将 Integration Content 与 Git 仓库同步",
+        "B": "代码版本控制",
+        "C": "用户管理",
+        "D": "数据备份"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Git 集成允许将 Integration Flow 等内容导出到 Git 仓库：版本控制、团队协作、CI/CD 集成。支持从 Git 导入内容到租户。"
+    },
+    {
+      "id": 29,
+      "question": "在 Cloud Integration 中，如何实现请求认证？",
+      "options": {
+        "A": "配置 Sender Adapter 的 Authentication 选项",
+        "B": "在消息体中传递密码",
+        "C": "使用 IP 白名单",
+        "D": "不需要认证"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Sender Adapter 支持多种认证：Basic Auth、Client Certificate、OAuth 2.0。配置后自动验证请求，拒绝未授权访问。"
+    },
+    {
+      "id": 30,
+      "question": "SAP API Management 的 API Proxy Endpoint URL 结构是什么？",
+      "options": {
+        "A": "https://<virtual-host>/<base-path>/<resource-path>",
+        "B": "只有 IP 地址",
+        "C": "只有域名",
+        "D": "随机生成"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "API Proxy URL 结构：Virtual Host 定义域名、Base Path 定义 API 根路径、Resource Path 定义具体资源。例如：https://api.company.com/v1/orders。"
+    },
+    {
+      "id": 31,
+      "question": "在 Cloud Integration 中，如何处理 Binary 数据？",
+      "options": {
+        "A": "使用 Base64 编码或直接作为 InputStream 处理",
+        "B": "转换为文本",
+        "C": "压缩后处理",
+        "D": "只能丢弃"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Binary 数据处理：Base64 Encoder/Decoder 转换、Script 中使用 InputStream/OutputStream、某些 Adapter 原生支持 Binary（如 SFTP）。"
+    },
+    {
+      "id": 32,
+      "question": "SAP Integration Suite 的 Rate Limiting 与 Quota 的区别是什么？",
+      "options": {
+        "A": "Rate Limiting 是瞬时速率限制，Quota 是累计配额限制",
+        "B": "没有区别",
+        "C": "Rate Limiting 更严格",
+        "D": "Quota 更快"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Spike Arrest（Rate Limiting）限制每秒/分钟的请求速率，防止流量尖峰。Quota 限制时间窗口内的总请求数（如每天 1000 次）。"
+    },
+    {
+      "id": 33,
+      "question": "在 Cloud Integration 中，如何配置 SAP SuccessFactors 连接？",
+      "options": {
+        "A": "使用 SuccessFactors Adapter 配置 OAuth 认证",
+        "B": "使用通用 HTTP Adapter",
+        "C": "使用数据库连接",
+        "D": "使用文件传输"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "SuccessFactors Adapter 提供原生集成：支持 OData API、SFAPI、OAuth 2.0 SAML Bearer 认证。配置 API Server、Company ID、OAuth 参数。"
+    },
+    {
+      "id": 34,
+      "question": "SAP API Management 中的 Target SSL/TLS 配置用于什么？",
+      "options": {
+        "A": "配置与后端系统的安全连接",
+        "B": "配置前端加密",
+        "C": "配置数据库加密",
+        "D": "配置文件加密"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Target SSL/TLS 配置后端连接安全：信任的 CA 证书、客户端证书（双向 TLS）、TLS 版本、加密套件等。确保与后端的安全通信。"
+    },
+    {
+      "id": 35,
+      "question": "在 Cloud Integration 中，如何实现消息优先级处理？",
+      "options": {
+        "A": "使用多个队列和 Router 分流",
+        "B": "自动按优先级排序",
+        "C": "设置消息属性",
+        "D": "不支持优先级"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "优先级处理方案：根据消息内容（如客户等级）路由到不同队列，高优先级队列配置更多消费者或更短处理间隔。需要业务逻辑设计。"
+    },
+    {
+      "id": 36,
+      "question": "SAP Integration Suite 的 Content Type 检测基于什么？",
+      "options": {
+        "A": "消息 Content-Type Header 和内容分析",
+        "B": "文件扩展名",
+        "C": "用户设置",
+        "D": "随机猜测"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Content Type 由 HTTP Header 声明：application/xml、application/json、text/plain 等。某些场景会分析内容自动检测。处理步骤基于 Content Type 选择处理方式。"
+    },
+    {
+      "id": 37,
+      "question": "在 Cloud Integration 中，Local Process Call 与 Process Call 有什么区别？",
+      "options": {
+        "A": "Local Process 在同一执行线程，Process Call 可以是同步或异步",
+        "B": "没有区别",
+        "C": "Local Process 更慢",
+        "D": "Process Call 只能异步"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Local Process Call 同步调用本地子流程，共享上下文。Process Call 可以调用外部流程。Local Process 用于模块化组织，Process Call 用于流程解耦。"
+    },
+    {
+      "id": 38,
+      "question": "SAP API Management 的 Extension Callout 用于什么？",
+      "options": {
+        "A": "在 API 流程中调用外部服务扩展功能",
+        "B": "扩展存储空间",
+        "C": "扩展用户数量",
+        "D": "扩展网络带宽"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Service Callout Policy 在 API 流程中调用外部服务：获取额外数据、验证信息、触发通知等。响应可以用于后续处理或丰富响应。"
+    },
+    {
+      "id": 39,
+      "question": "在 Cloud Integration 中，如何实现幂等性检查？",
+      "options": {
+        "A": "使用 Idempotent Process Call 或自定义 Data Store 检查",
+        "B": "自动保证幂等",
+        "C": "由外部系统保证",
+        "D": "不需要幂等性"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Idempotent Process Call 使用消息 ID 检查是否已处理。也可以用 Data Store 存储处理过的 ID，新消息先查询再决定是否处理。"
+    },
+    {
+      "id": 40,
+      "question": "SAP Integration Suite 的 API Business Hub 是什么？",
+      "options": {
+        "A": "SAP 及合作伙伴 API 的发现和测试平台",
+        "B": "API 商店",
+        "C": "API 开发工具",
+        "D": "API 管理控制台"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "API Business Hub 是 SAP API 的中央目录：浏览 SAP 产品的 API、查看文档和规范、在线测试（Sandbox）、获取代码示例。帮助开发者发现和使用 SAP API。"
+    },
+    {
+      "id": 41,
+      "question": "在 Cloud Integration 中，如何处理 XML Namespace？",
+      "options": {
+        "A": "在 XPath 中声明 Namespace 前缀或使用 local-name() 函数",
+        "B": "自动处理",
+        "C": "删除 Namespace",
+        "D": "忽略 Namespace"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "XML Namespace 在 XPath 中需要显式处理：在 Router/Filter 中声明 ns 前缀、使用 //*[local-name()='element'] 忽略 namespace、在 Mapping 中正确配置 Namespace。"
+    },
+    {
+      "id": 42,
+      "question": "SAP API Management 中的 Analytics Metrics 包括什么？",
+      "options": {
+        "A": "请求量、响应时间、错误率、地理位置等",
+        "B": "只有请求量",
+        "C": "只有错误数",
+        "D": "只有用户数"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Analytics 收集丰富的指标：总请求数、响应时间分布、成功/失败率、按 API/App/Developer 分组、地理分布、时间趋势、Top 排名等。"
+    },
+    {
+      "id": 43,
+      "question": "在 Cloud Integration 中，如何实现消息签名验证？",
+      "options": {
+        "A": "使用 XML Signature Verifier 或 PKCS7 Verifier",
+        "B": "手动验证",
+        "C": "使用密码验证",
+        "D": "使用 Hash 比较"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "签名验证步骤：XML Signature Verifier 验证 XML 数字签名、PKCS#7 Verifier 验证 S/MIME 签名。使用发送方的公钥证书验证签名完整性。"
+    },
+    {
+      "id": 44,
+      "question": "SAP Integration Suite 的 Custom Tags 功能用于什么？",
+      "options": {
+        "A": "为 Integration Content 添加自定义分类标签",
+        "B": "添加 HTML 标签",
+        "C": "添加价格标签",
+        "D": "添加用户标签"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Custom Tags 帮助组织 Integration Content：添加业务领域、项目、团队等标签。支持按标签搜索和过滤，便于内容管理和发现。"
+    },
+    {
+      "id": 45,
+      "question": "在 Cloud Integration 中，如何处理循环依赖？",
+      "options": {
+        "A": "避免设计循环，使用队列解耦或异步回调",
+        "B": "系统自动处理",
+        "C": "增加超时",
+        "D": "忽略循环"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "循环依赖导致死锁或无限循环。解决方案：重构流程避免循环、使用消息队列解耦、设置处理计数器防止无限循环、使用异步模式。"
+    },
+    {
+      "id": 46,
+      "question": "SAP API Management 中如何配置 Backend SSL Validation？",
+      "options": {
+        "A": "在 Target Endpoint 配置 Trust Store",
+        "B": "在前端配置",
+        "C": "在数据库配置",
+        "D": "不需要配置"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Target Endpoint 配置 SSL 验证：上传后端 CA 证书到 Trust Store、配置 Hostname 验证、设置 TLS 版本。确保与后端的安全通信。"
+    },
+    {
+      "id": 47,
+      "question": "在 Cloud Integration 中，如何实现动态端点选择？",
+      "options": {
+        "A": "使用 Property/Header 动态设置 Receiver Adapter 的 URL",
+        "B": "只能使用固定端点",
+        "C": "使用多个流程",
+        "D": "使用负载均衡器"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "动态端点：在 Adapter 配置中使用 ${property.xxx} 或 ${header.xxx} 引用动态值。运行时根据消息内容决定目标端点，实现灵活路由。"
+    },
+    {
+      "id": 48,
+      "question": "SAP Integration Suite 的 Audit Log 记录什么内容？",
+      "options": {
+        "A": "用户操作、配置变更、安全事件等",
+        "B": "只有消息内容",
+        "C": "只有错误信息",
+        "D": "只有网络流量"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Audit Log 记录安全相关事件：用户登录/登出、Integration Content 变更、安全材料操作、权限修改等。用于合规审计和安全分析。"
+    },
+    {
+      "id": 49,
+      "question": "在 Cloud Integration 中，如何实现消息的条件存储？",
+      "options": {
+        "A": "在 Script 或 Router 后选择性调用 Data Store Write",
+        "B": "自动存储所有消息",
+        "C": "只能存储错误消息",
+        "D": "不支持条件存储"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "条件存储：使用 Router 根据条件分流，一个分支执行 Data Store Write；或在 Script 中判断条件后决定是否存储。实现业务规则驱动的存储。"
+    },
+    {
+      "id": 50,
+      "question": "SAP Integration Suite 的未来发展方向是什么？",
+      "options": {
+        "A": "云原生、AI 增强、低代码/无代码、事件驱动架构",
+        "B": "只关注本地部署",
+        "C": "只关注文件传输",
+        "D": "停止开发"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "SAP Integration Suite 发展方向：完全云原生架构、AI 辅助集成建议和错误诊断、低代码/无代码开发体验、强化事件驱动集成、与 SAP BTP 服务深度集成。"
+    }
+  ]
+}

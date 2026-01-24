@@ -1,0 +1,773 @@
+{
+  "exam": {
+    "id": "sap-c-ts410-set1-ja",
+    "name": "SAP C_TS410 模擬試験 #1",
+    "code": "C_TS410",
+    "provider": "SAP",
+    "language": "ja",
+    "description": "SAP S/4HANA 統合ビジネスプロセス認定試験模擬問題 - 第1セット",
+    "totalQuestions": 50,
+    "passingScore": 65,
+    "examTime": 180,
+    "domains": [
+      { "id": 1, "name": "SAP S/4HANA Overview", "weight": 20 },
+      { "id": 2, "name": "Procurement", "weight": 20 },
+      { "id": 3, "name": "Sales", "weight": 20 },
+      { "id": 4, "name": "Manufacturing", "weight": 20 },
+      { "id": 5, "name": "Project Management", "weight": 20 }
+    ],
+    "tags": ["SAP", "S/4HANA", "Integrated Business Processes", "認定試験"]
+  },
+  "questions": [
+    {
+      "id": "q1",
+      "domain": 1,
+      "question": "SAP S/4HANAが従来のSAP ERPと比較して最も顕著な技術アーキテクチャの変化は何ですか？",
+      "options": {
+        "A": "Oracleデータベースを使用",
+        "B": "SAP HANAインメモリデータベースに基づき、データモデルを簡素化",
+        "C": "オンプレミスサーバーへの導入が必須",
+        "D": "モバイルデバイスアクセスをサポートしない"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "SAP S/4HANAの核心的な変化：\n- SAP HANAインメモリデータベースに基づく\n- 簡素化されたデータモデル（集計テーブルの排除）\n- リアルタイム分析とトランザクション処理\n- クラウドとオンプレミス両方の導入をサポート",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q2",
+      "domain": 1,
+      "question": "SAP S/4HANAの「Universal Journal」はどのモジュールのデータを統合しますか？（2つ選択）",
+      "options": {
+        "A": "財務会計（FI）",
+        "B": "管理会計（CO）",
+        "C": "人事管理（HR）",
+        "D": "顧客関係管理（CRM）"
+      },
+      "answer": ["A", "B"],
+      "answerType": "multiple",
+      "explanation": "Universal Journal（ACDOCAテーブル）：\n- FIとCOデータを統合\n- データの冗長性と照合の必要性を排除\n- リアルタイムの財務レポートをサポート\n- 期末締めプロセスを簡素化",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q3",
+      "domain": 1,
+      "question": "SAP Fioriのユーザーエクスペリエンスは、従来のSAP GUIと比較して主にどのような利点がありますか？",
+      "options": {
+        "A": "Windowsシステムでのみ使用可能",
+        "B": "モダンでレスポンシブなデザイン、マルチデバイスアクセスをサポート",
+        "C": "より多くのシステムリソースが必要",
+        "D": "SAP GUIより機能が少ない"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "SAP Fioriの利点：\n- モダンなレスポンシブデザイン\n- クロスプラットフォームサポート（デスクトップ、タブレット、スマートフォン）\n- ロールベースの簡素化されたインターフェース\n- ユーザーの作業効率を向上",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q4",
+      "domain": 1,
+      "question": "SAP S/4HANAにおける「ビジネスパートナー」（Business Partner）モデルの役割は何ですか？",
+      "options": {
+        "A": "仕入先管理のみに使用",
+        "B": "得意先、仕入先、その他のビジネスパートナーのマスタデータモデルを統合",
+        "C": "すべての組織構造を置き換える",
+        "D": "レポート生成のみに使用"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "ビジネスパートナーモデル：\n- 統合マスタデータモデル\n- 1つのBPが同時に得意先と仕入先になれる\n- データの冗長性を削減\n- マスタデータの保守を簡素化",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q5",
+      "domain": 1,
+      "question": "SAP S/4HANAの導入オプションには何がありますか？（2つ選択）",
+      "options": {
+        "A": "On-Premise（オンプレミス）",
+        "B": "Private Cloud（プライベートクラウド）",
+        "C": "テスト環境でのみ使用可能",
+        "D": "サードパーティのクラウドサービスを使用する必要がある"
+      },
+      "answer": ["A", "B"],
+      "answerType": "multiple",
+      "explanation": "S/4HANAの導入オプション：\n- On-Premise：完全なオンプレミス制御\n- Private Cloud：SAP管理の専用環境\n- Public Cloud：マルチテナントSaaS\n- Hybrid：ハイブリッド導入",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q6",
+      "domain": 2,
+      "question": "SAP S/4HANA調達プロセスにおける「購買依頼」の役割は何ですか？",
+      "options": {
+        "A": "資材またはサービスの内部調達依頼",
+        "B": "仕入先への正式な発注",
+        "C": "入庫確認",
+        "D": "仕入先への支払処理"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "購買依頼の機能：\n- 内部での調達ニーズの提出\n- 手動で作成またはMRPで自動生成可能\n- 承認後に購買発注に変換\n- 調達プロセスの起点",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q7",
+      "domain": 2,
+      "question": "SAP S/4HANAにおける「購買発注」と「契約」の違いは何ですか？",
+      "options": {
+        "A": "購買発注は一回限りの購買、契約は長期契約",
+        "B": "両者に違いはない",
+        "C": "契約はサービスのみ、購買発注は資材のみに使用",
+        "D": "購買発注は承認不要"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "購買発注vs契約：\n- 購買発注：一回限り、明確な納期\n- 契約：長期枠組み契約、複数回の納品\n- 契約はリリース発注で出荷\n- 両方とも資材とサービスに使用可能",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q8",
+      "domain": 2,
+      "question": "SAP S/4HANAにおける「入庫」プロセスで自動的にトリガーされる更新は何ですか？（2つ選択）",
+      "options": {
+        "A": "在庫増加",
+        "B": "財務転記（GR/IR勘定）",
+        "C": "仕入先マスタデータの削除",
+        "D": "販売注文の変更"
+      },
+      "answer": ["A", "B"],
+      "answerType": "multiple",
+      "explanation": "入庫で自動トリガーされるもの：\n- 在庫数量と金額の増加\n- 財務転記（借方：在庫、貸方：GR/IR）\n- 購買発注履歴の更新\n- 仕入先評価データの更新",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q9",
+      "domain": 2,
+      "question": "SAP S/4HANAの「仕入先評価」ではどのような基準を評価できますか？（2つ選択）",
+      "options": {
+        "A": "価格",
+        "B": "納期遵守率",
+        "C": "従業員数",
+        "D": "会社の株価"
+      },
+      "answer": ["A", "B"],
+      "answerType": "multiple",
+      "explanation": "仕入先評価基準：\n- 価格水準とトレンド\n- 納期遵守率と完全性\n- 品質パフォーマンス\n- サービス対応速度",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q10",
+      "domain": 2,
+      "question": "SAP S/4HANAにおける「購買元リスト」（Source List）の役割は何ですか？",
+      "options": {
+        "A": "資材の優先仕入先と有効期間を定義",
+        "B": "すべての仕入先の連絡先情報を記録",
+        "C": "得意先クレームを管理",
+        "D": "製品価格を設定"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "購買元リストの機能：\n- 資材の適格仕入先を定義\n- 有効期間を設定\n- 固定仕入先と代替仕入先をサポート\n- 自動調達時に使用",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q11",
+      "domain": 3,
+      "question": "SAP S/4HANA販売プロセスにおける標準的な受注から入金までのフローの順序は何ですか？",
+      "options": {
+        "A": "引合→見積→販売注文→出荷→請求→入金",
+        "B": "入金→請求→出荷→販売注文",
+        "C": "出荷→販売注文→入金→請求",
+        "D": "請求→入金→出荷→販売注文"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "標準販売プロセス：\n1. 引合：得意先のニーズ\n2. 見積：価格提示\n3. 販売注文：注文確定\n4. 出荷：発送\n5. 請求：請求書発行\n6. 入金：代金回収",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q12",
+      "domain": 3,
+      "question": "SAP S/4HANAの「利用可能在庫チェック」（ATP）では何をチェックしますか？（2つ選択）",
+      "options": {
+        "A": "在庫数量",
+        "B": "計画された入出庫",
+        "C": "従業員の休暇",
+        "D": "得意先の信用履歴"
+      },
+      "answer": ["A", "B"],
+      "answerType": "multiple",
+      "explanation": "利用可能在庫チェックの内容：\n- 現在の在庫数量\n- 計画入庫（購買発注、製造指図）\n- 計画出庫（販売注文、予約）\n- 納期を守れるかどうかを判断",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q13",
+      "domain": 3,
+      "question": "SAP S/4HANAにおける「販売領域」はどの組織要素で構成されますか？",
+      "options": {
+        "A": "販売組織 + 流通チャネル + 製品部門",
+        "B": "会社コード + プラント + 保管場所",
+        "C": "得意先グループ + 仕入先グループ + 品目グループ",
+        "D": "国 + 地域 + 都市"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "販売領域の構成：\n- 販売組織：販売を担当する組織単位\n- 流通チャネル：販売経路（直販、卸売など）\n- 製品部門：製品分類\n- 組み合わせで価格と条件が決まる",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q14",
+      "domain": 3,
+      "question": "SAP S/4HANAにおける「与信管理」の販売プロセスでの役割は何ですか？",
+      "options": {
+        "A": "得意先の注文金額が与信限度額を超えないように制御",
+        "B": "銀行ローンを管理",
+        "C": "従業員ボーナスを計算",
+        "D": "製品原価を設定"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "販売与信管理：\n- 得意先の与信限度額をチェック\n- 限度超過の注文をブロック\n- 自動と手動の与信チェックをサポート\n- 貸倒リスクを削減",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q15",
+      "domain": 3,
+      "question": "SAP S/4HANAにおける「価格決定手続」は何を決定しますか？（2つ選択）",
+      "options": {
+        "A": "価格計算の条件タイプと順序",
+        "B": "割引と追加料金の適用ルール",
+        "C": "従業員の給与等級",
+        "D": "仕入先の評価スコア"
+      },
+      "answer": ["A", "B"],
+      "answerType": "multiple",
+      "explanation": "価格決定手続の機能：\n- 条件タイプと計算順序を定義\n- 割引、運賃、税金の適用を制御\n- 多段階価格設定をサポート\n- 得意先、製品などに基づいて柔軟に設定可能",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q16",
+      "domain": 4,
+      "question": "SAP S/4HANAにおける「資材所要量計画」（MRP）の主な出力は何ですか？",
+      "options": {
+        "A": "計画手配と購買依頼",
+        "B": "財務諸表",
+        "C": "従業員シフト表",
+        "D": "得意先クレームレポート"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "MRPの主な出力：\n- 計画手配（内製品目用）\n- 購買依頼（購買品目用）\n- 所要量、在庫、リードタイムに基づいて計算\n- 生産と調達計画をサポート",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q17",
+      "domain": 4,
+      "question": "SAP S/4HANAの「製造指図」にはどのような重要な情報が含まれますか？（2つ選択）",
+      "options": {
+        "A": "部品表（BOM）",
+        "B": "作業手順",
+        "C": "得意先の与信限度額",
+        "D": "仕入先の銀行口座番号"
+      },
+      "answer": ["A", "B"],
+      "answerType": "multiple",
+      "explanation": "製造指図の重要情報：\n- 部品表：必要な構成品目\n- 作業手順：製造ステップと工程\n- 計画日付と数量\n- 原価見積",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q18",
+      "domain": 4,
+      "question": "SAP S/4HANAにおける「製造指図確認」ではどのような情報を記録しますか？",
+      "options": {
+        "A": "実際に完了した工程、数量、工数",
+        "B": "得意先の支払情報",
+        "C": "仕入先の請求書",
+        "D": "従業員の休暇申請"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "製造指図確認の内容：\n- 実際の完成数量\n- 実際の消費工数\n- 不良数量\n- 原価計算と進捗追跡に使用",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q19",
+      "domain": 4,
+      "question": "SAP S/4HANAの「作業区」は何を表しますか？",
+      "options": {
+        "A": "製造工程を実行する機械、人員、または作業グループ",
+        "B": "財務部門のオフィス",
+        "C": "カスタマーサービスホットライン",
+        "D": "仕入先の倉庫"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "作業区の定義：\n- 機械、人員、または作業グループ\n- 能力と利用可能時間を定義\n- スケジューリングと原価計算に使用\n- 製造実行の基本単位",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q20",
+      "domain": 4,
+      "question": "SAP S/4HANAにおける「バックフラッシュ」による資材消費の特徴は何ですか？",
+      "options": {
+        "A": "製造指図確認時に在庫から構成品目を自動的に引き落とす",
+        "B": "各構成品目を手動で個別にスキャン",
+        "C": "廃棄品目のみに使用",
+        "D": "別途承認プロセスが必要"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "バックフラッシュによる資材消費：\n- 製造確認時に自動引き落とし\n- BOMに基づいて消費量を計算\n- 手作業を削減\n- 標準化された生産に適している",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q21",
+      "domain": 5,
+      "question": "SAP S/4HANAの「プロジェクト」はどのような業務活動を管理するために使用されますか？",
+      "options": {
+        "A": "明確な開始日と終了日を持つ複雑なタスク",
+        "B": "日常的な繰り返しの生産活動",
+        "C": "従業員の勤怠記録",
+        "D": "仕入先との契約交渉"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "プロジェクト管理の特徴：\n- 明確な開始日と終了日がある\n- 通常は複雑な一回限りのタスク\n- 複数部門の連携が必要\n- 予算と進捗管理が必要",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q22",
+      "domain": 5,
+      "question": "SAP S/4HANAプロジェクトシステムにおける「WBS要素」の役割は何ですか？",
+      "options": {
+        "A": "プロジェクトを管理可能な階層構造単位に分解",
+        "B": "仕入先の請求書を記録",
+        "C": "得意先クレームを管理",
+        "D": "従業員の給与を計算"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "WBS要素の機能：\n- プロジェクト作業分解構造のノード\n- プロジェクト作業を階層的に組織化\n- 予算配分と原価集計に使用\n- 進捗追跡をサポート",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q23",
+      "domain": 5,
+      "question": "SAP S/4HANAにおける「ネットワークアクティビティ」と「WBS要素」の関係は何ですか？",
+      "options": {
+        "A": "ネットワークアクティビティはWBS要素に割り当てることができ、具体的な作業タスクを表す",
+        "B": "両者は完全に独立している",
+        "C": "WBS要素はネットワークアクティビティに含まれる",
+        "D": "ネットワークアクティビティは財務レポートにのみ使用"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "ネットワークアクティビティとWBSの関係：\n- ネットワークアクティビティは具体的な作業タスク\n- WBS要素に割り当て可能\n- ネットワークはアクティビティ間の依存関係を定義\n- 詳細なスケジューリングをサポート",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q24",
+      "domain": 5,
+      "question": "SAP S/4HANAプロジェクト管理における「プロジェクト予算」は何の目的で使用されますか？（2つ選択）",
+      "options": {
+        "A": "プロジェクト原価支出の管理",
+        "B": "実際原価との差異分析",
+        "C": "従業員の休暇管理",
+        "D": "製品の販売価格設定"
+      },
+      "answer": ["A", "B"],
+      "answerType": "multiple",
+      "explanation": "プロジェクト予算の用途：\n- プロジェクト原価限度額を設定\n- 超過支出を制御\n- 実際と計画原価を比較\n- アーンドバリュー分析をサポート",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q25",
+      "domain": 5,
+      "question": "SAP S/4HANAにおける「マイルストーン」のプロジェクト管理での役割は何ですか？",
+      "options": {
+        "A": "プロジェクトの重要な節目と段階的な目標をマーク",
+        "B": "資材原価を計算",
+        "C": "仕入先契約を管理",
+        "D": "販売見積を生成"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "マイルストーンの機能：\n- 重要な節目をマーク\n- 請求または支払をトリガー\n- 進捗レポートに使用\n- プロジェクトモニタリングをサポート",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q26",
+      "domain": 1,
+      "question": "SAP S/4HANAの「組込み分析」は従来のBWと比較してどのような利点がありますか？",
+      "options": {
+        "A": "トランザクションデータへのリアルタイムアクセス、データ抽出不要",
+        "B": "より多くのストレージスペースが必要",
+        "C": "過去データのみ表示可能",
+        "D": "別途ライセンス購入が必須"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "組込み分析の利点：\n- トランザクションデータにリアルタイムでアクセス\n- ETLプロセス不要\n- 業務プロセスと統合\n- ITアーキテクチャを簡素化",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q27",
+      "domain": 1,
+      "question": "SAP S/4HANAにおける「組織構造」の階層関係は何ですか？",
+      "options": {
+        "A": "クライアント→会社コード→プラント→保管場所",
+        "B": "保管場所→プラント→会社コード→クライアント",
+        "C": "プラント→クライアント→会社コード→保管場所",
+        "D": "会社コード→クライアント→保管場所→プラント"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "組織構造の階層：\n- クライアント：最高レベル、データを分離\n- 会社コード：法的主体、財務的に独立した会計単位\n- プラント：生産または保管施設\n- 保管場所：保管場所",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q28",
+      "domain": 2,
+      "question": "SAP S/4HANAにおける「購買情報レコード」にはどのような内容が保存されますか？",
+      "options": {
+        "A": "品目-仕入先の調達条件（価格、納期など）",
+        "B": "従業員の研修記録",
+        "C": "得意先の信用履歴",
+        "D": "製造レシピ"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "購買情報レコードの内容：\n- 品目と仕入先の関連付け\n- 調達価格と条件\n- 納期\n- 最小注文数量など",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q29",
+      "domain": 2,
+      "question": "SAP S/4HANAの「サービス調達」と「資材調達」の違いは何ですか？（2つ選択）",
+      "options": {
+        "A": "サービス調達は在庫に関係ない",
+        "B": "サービス調達はサービス入力シートを使用",
+        "C": "資材調達は承認不要",
+        "D": "サービス調達は財務伝票を生成しない"
+      },
+      "answer": ["A", "B"],
+      "answerType": "multiple",
+      "explanation": "サービス調達の特徴：\n- 実物在庫に関係ない\n- サービス入力シートでサービス受領を記録\n- 進捗に応じて段階的に確認可能\n- 同様に承認と支払が必要",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q30",
+      "domain": 2,
+      "question": "SAP S/4HANAにおける「購買グループ」の役割は何ですか？",
+      "options": {
+        "A": "調達活動を担当する人員またはチームを表す",
+        "B": "得意先の与信等級のグループ分け",
+        "C": "製品の品質等級分類",
+        "D": "仕入先の地理的位置のグループ分け"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "購買グループの機能：\n- 購買担当者またはチームを表す\n- 業務分担に使用\n- 承認権限を設定可能\n- 調達レポートに影響",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q31",
+      "domain": 3,
+      "question": "SAP S/4HANAの「出荷伝票」にはどのような重要情報が含まれますか？（2つ選択）",
+      "options": {
+        "A": "出荷品目と数量",
+        "B": "ピッキング状況",
+        "C": "得意先の銀行口座番号",
+        "D": "仕入先の担当者"
+      },
+      "answer": ["A", "B"],
+      "answerType": "multiple",
+      "explanation": "出荷伝票の内容：\n- 出荷品目と数量\n- ピッキングと梱包情報\n- 出荷倉庫\n- 輸送情報",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q32",
+      "domain": 3,
+      "question": "SAP S/4HANAにおける「出荷転記」ではどのような自動処理がトリガーされますか？（2つ選択）",
+      "options": {
+        "A": "在庫減少",
+        "B": "原価転記",
+        "C": "購買依頼作成",
+        "D": "仕入先評価更新"
+      },
+      "answer": ["A", "B"],
+      "answerType": "multiple",
+      "explanation": "出荷転記でトリガーされるもの：\n- 在庫数量の減少\n- 売上原価の転記\n- 出荷伝票の更新\n- 輸送処理をトリガー可能",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q33",
+      "domain": 3,
+      "question": "SAP S/4HANAの「返品処理」フローは何ですか？",
+      "options": {
+        "A": "返品注文作成→返品受領→クレジットメモ発行",
+        "B": "元の販売注文を直接削除",
+        "C": "クレジットメモのみ発行",
+        "D": "得意先口座に自動返金"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "返品処理フロー：\n- 返品注文作成（元の注文を参照）\n- 返品を受領して入庫\n- クレジットメモ発行\n- 得意先の貸方処理",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q34",
+      "domain": 3,
+      "question": "SAP S/4HANAにおける「寄託在庫」の特徴は何ですか？",
+      "options": {
+        "A": "品目は得意先の場所に保管されるが、所有権は仕入先に残る",
+        "B": "前払いが必要",
+        "C": "棚卸不可",
+        "D": "期限切れ品目にのみ使用"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "寄託在庫の特徴：\n- 品目は得意先の場所に保管\n- 所有権は仕入先に残る\n- 消費時に所有権が移転\n- リアルタイムの在庫可視性をサポート",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q35",
+      "domain": 3,
+      "question": "SAP S/4HANAの「条件テクニック」は何の目的で使用されますか？",
+      "options": {
+        "A": "価格、割引、追加料金の計算ルールを柔軟に定義",
+        "B": "従業員の出勤条件を設定",
+        "C": "仕入先の支払条件を定義",
+        "D": "システムのログイン条件を設定"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "条件テクニックの用途：\n- 価格計算ルールを定義\n- 多段階割引をサポート\n- 運賃、税金などを処理\n- 高度に柔軟で設定可能",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q36",
+      "domain": 4,
+      "question": "SAP S/4HANAにおける「部品表」（BOM）は何を定義しますか？",
+      "options": {
+        "A": "1つの製品を製造するために必要なすべての構成品目と数量",
+        "B": "仕入先の請求書リスト",
+        "C": "得意先の注文履歴",
+        "D": "従業員の給与明細"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "部品表（BOM）の内容：\n- 製品の構成構造\n- 各構成品目の数量\n- 構成品目の有効期間\n- 代替構成品目情報",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q37",
+      "domain": 4,
+      "question": "SAP S/4HANAの「作業手順」にはどのような情報が含まれますか？（2つ選択）",
+      "options": {
+        "A": "製造工程の順序",
+        "B": "各工程の作業区と工数",
+        "C": "得意先の信用履歴",
+        "D": "仕入先の銀行口座番号"
+      },
+      "answer": ["A", "B"],
+      "answerType": "multiple",
+      "explanation": "作業手順の内容：\n- 工程の順序と説明\n- 各工程の作業区\n- 標準工数と段取時間\n- 制御パラメータ",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q38",
+      "domain": 4,
+      "question": "SAP S/4HANAにおける「能力計画」では何をチェックしますか？",
+      "options": {
+        "A": "作業区の利用可能能力が生産需要を満たすかどうか",
+        "B": "得意先の与信限度額",
+        "C": "仕入先の納品能力",
+        "D": "従業員の出勤率"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "能力計画の機能：\n- 作業区の利用可能能力をチェック\n- 能力ボトルネックを識別\n- 能力平準化をサポート\n- 生産スケジューリングを最適化",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q39",
+      "domain": 4,
+      "question": "SAP S/4HANAの「製造バージョン」は何に使用されますか？",
+      "options": {
+        "A": "同一製品の異なる製造方法を定義",
+        "B": "ソフトウェアのバージョン番号を記録",
+        "C": "得意先の契約バージョンを管理",
+        "D": "仕入先の見積履歴を保存"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "製造バージョンの用途：\n- 同一製品の異なるBOMと作業手順の組み合わせ\n- 代替製造方法をサポート\n- MRPが最適バージョンを選択\n- 製造需要に柔軟に対応",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q40",
+      "domain": 4,
+      "question": "SAP S/4HANAにおける「製造指図原価計算」では何を計算しますか？（2つ選択）",
+      "options": {
+        "A": "資材原価",
+        "B": "労務費と機械費",
+        "C": "得意先の輸送費",
+        "D": "仕入先の調達価格"
+      },
+      "answer": ["A", "B"],
+      "answerType": "multiple",
+      "explanation": "製造指図原価計算：\n- 資材原価（構成品目消費）\n- 労務費（工数×レート）\n- 機械費\n- 間接費配賦",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q41",
+      "domain": 1,
+      "question": "SAP S/4HANAの「Simple Finance」は現在何と呼ばれていますか？",
+      "options": {
+        "A": "SAP S/4HANA Finance",
+        "B": "SAP Business One",
+        "C": "SAP ECC Finance",
+        "D": "SAP R/3 Finance"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "名称の変遷：\n- 当初はSimple Finance\n- 現在はSAP S/4HANA Finance\n- FI、CO、AAなどのモジュールを含む\n- S/4HANAの財務の中核",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q42",
+      "domain": 2,
+      "question": "SAP S/4HANAにおける「自動調達」はどのソースからトリガーできますか？（2つ選択）",
+      "options": {
+        "A": "MRP実行",
+        "B": "在庫が発注点を下回る",
+        "C": "従業員の手動依頼",
+        "D": "得意先クレーム"
+      },
+      "answer": ["A", "B"],
+      "answerType": "multiple",
+      "explanation": "自動調達のトリガー：\n- MRP計算で購買依頼を生成\n- 在庫が発注点を下回る\n- 購買発注に変換可能\n- 手作業を削減",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q43",
+      "domain": 3,
+      "question": "SAP S/4HANAの「未完了ログ」とは何ですか？",
+      "options": {
+        "A": "販売伝票で欠落している必須フィールドを記録",
+        "B": "システムエラーを記録",
+        "C": "仕入先の出荷記録",
+        "D": "従業員の勤怠異常"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "未完了ログの機能：\n- 販売伝票のデータ完全性をチェック\n- 欠落している必須フィールドをリスト表示\n- 不完全な伝票の保存を阻止\n- データ品質を確保",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q44",
+      "domain": 4,
+      "question": "SAP S/4HANAにおける「PP-DS」（生産計画-詳細スケジューリング）と従来のMRPの違いは何ですか？",
+      "options": {
+        "A": "PP-DSは有限能力を考慮し、従来のMRPは無限能力を想定",
+        "B": "両者の機能は完全に同じ",
+        "C": "PP-DSは調達のみに使用",
+        "D": "従来のMRPの方が精度が高い"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "PP-DSの特徴：\n- 有限能力制約を考慮\n- より精度の高いスケジューリング\n- 最適化アルゴリズムをサポート\n- 複雑な製造環境に適している",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q45",
+      "domain": 5,
+      "question": "SAP S/4HANAにおける「プロジェクト収益認識」はどの時点で発生しますか？",
+      "options": {
+        "A": "進捗度法またはマイルストーン法に基づく",
+        "B": "プロジェクト完了時のみ",
+        "C": "得意先の前受金時",
+        "D": "プロジェクト作成時"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "プロジェクト収益認識：\n- 進捗度法（進捗に応じて）\n- マイルストーン法（節目達成時）\n- 会計基準に準拠\n- 複数の認識方法をサポート",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q46",
+      "domain": 1,
+      "question": "SAP S/4HANAの「マスタデータガバナンス」（MDG）は何に使用されますか？",
+      "options": {
+        "A": "マスタデータの品質、一貫性、完全性を確保",
+        "B": "製造指図を管理",
+        "C": "得意先クレームを処理",
+        "D": "従業員の給与を計算"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "マスタデータガバナンスの機能：\n- マスタデータ作成と変更のワークフロー\n- データ品質チェック\n- システム間同期\n- データの一貫性を確保",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q47",
+      "domain": 2,
+      "question": "SAP S/4HANAにおける「請求書照合」では何をチェックしますか？（2つ選択）",
+      "options": {
+        "A": "請求書金額と購買発注の照合",
+        "B": "請求書数量と入庫数量の照合",
+        "C": "仕入先の与信等級",
+        "D": "得意先の支払履歴"
+      },
+      "answer": ["A", "B"],
+      "answerType": "multiple",
+      "explanation": "請求書照合のチェック：\n- 価格照合（POと比較）\n- 数量照合（入庫と比較）\n- 許容差処理\n- 異常な請求書をブロック",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q48",
+      "domain": 3,
+      "question": "SAP S/4HANAの「得意先マスタデータ」にはどのようなビューが含まれますか？（2つ選択）",
+      "options": {
+        "A": "一般データビュー",
+        "B": "販売領域ビュー",
+        "C": "製造バージョンビュー",
+        "D": "作業手順ビュー"
+      },
+      "answer": ["A", "B"],
+      "answerType": "multiple",
+      "explanation": "得意先マスタデータのビュー：\n- 一般データ：基本情報（組織横断）\n- 販売領域データ：販売条件\n- 会社コードデータ：財務情報\n- 製造関連ビューは含まない",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q49",
+      "domain": 4,
+      "question": "SAP S/4HANAにおける「在庫管理」ではどのような在庫タイプをサポートしていますか？（2つ選択）",
+      "options": {
+        "A": "利用可能在庫",
+        "B": "品質検査在庫",
+        "C": "仮想在庫",
+        "D": "得意先在庫"
+      },
+      "answer": ["A", "B"],
+      "answerType": "multiple",
+      "explanation": "在庫タイプ：\n- 利用可能在庫：自由に使用可能\n- 品質検査在庫：検査待ち\n- ブロック在庫：使用不可\n- その他、寄託、プロジェクト在庫など",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q50",
+      "domain": 5,
+      "question": "SAP S/4HANAにおける「プロジェクト決済」では原価をどこに振り替えますか？",
+      "options": {
+        "A": "決済ルールに基づいて資産、原価センタ、または収益性分析に振替",
+        "B": "すべての原価記録を削除",
+        "C": "仕入先勘定に振替",
+        "D": "得意先売掛金に振替"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "プロジェクト決済の振替先：\n- 資産（資本化プロジェクト）\n- 原価センタ（費用プロジェクト）\n- 収益性分析（CO-PA）\n- 決済ルールの設定に基づく",
+      "difficulty": "hard"
+    }
+  ]
+}

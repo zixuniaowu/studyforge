@@ -1,0 +1,660 @@
+{
+  "examId": "sap-c-btpdev-set2-ja",
+  "provider": "SAP",
+  "title": "SAP BTP 開発者 (C_BTPDEV) 模擬問題 Set 2",
+  "description": "SAP Business Technology Platform 開発者認定模擬試験第2セット",
+  "icon": "sap",
+  "setNumber": 2,
+  "questions": [
+    {
+      "id": 1,
+      "question": "CAPプロジェクトでActionsとFunctionsをどのように使用しますか？",
+      "options": {
+        "A": "CDSサービスでaction/functionを定義し、JSでハンドラーを実装する",
+        "B": "データベースに直接ストアドプロシージャを作成する",
+        "C": "REST APIアノテーションを使用する",
+        "D": "ODataメタデータファイルを修正する"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "CDSでaction（データ変更可能）またはfunction（読み取り専用）を使用してカスタム操作を定義します。例：action approve(orderID: UUID); その後、サービス実装ファイルでハンドラーを登録：this.on('approve', ...)。"
+    },
+    {
+      "id": 2,
+      "question": "SAP UI5のComponent.jsファイルの主な役割は何ですか？",
+      "options": {
+        "A": "アプリのエントリーポイントとコンポーネント設定を定義する",
+        "B": "ユーザーデータを保存する",
+        "C": "データベース接続を設定する",
+        "D": "CSSスタイルを定義する"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Component.jsはUI5アプリのエントリーポイントで、UIComponentを継承します。アプリの初期化、manifest.jsonの読み込み、ルートビューの作成、ルーティングの設定を行います。コンポーネントは他のアプリに埋め込んだり、単独で実行できます。"
+    },
+    {
+      "id": 3,
+      "question": "BTP開発において、CQL（CDS Query Language）とは何ですか？",
+      "options": {
+        "A": "CAPでデータを照会するための言語、SQLに類似",
+        "B": "CSSクエリ言語",
+        "C": "ユーザーインターフェースクエリ",
+        "D": "ネットワークプロトコル"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "CQLはCAPのクエリ言語で、構文はSQLに似ていますがより簡潔です。SELECT、INSERT、UPDATE、DELETE、UPSERT操作をサポートします。例：SELECT.from('Books').where({price:{'>':100}})。"
+    },
+    {
+      "id": 4,
+      "question": "SAP UI5で、バックエンドODataサービスのエラーをどのように処理しますか？",
+      "options": {
+        "A": "errorコールバックまたはPromise catchを使用する",
+        "B": "エラーを無視する",
+        "C": "アプリを再起動する",
+        "D": "ブラウザキャッシュをクリアする"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "OData操作（read、createなど）はerrorコールバックまたはPromiseのcatchメソッドでエラーを処理します。エラーステータスコード、メッセージを取得し、MessageBoxでユーザーに表示したり、ログを記録できます。"
+    },
+    {
+      "id": 5,
+      "question": "CAPの@assert.rangeアノテーションは何に使用されますか？",
+      "options": {
+        "A": "数値が指定範囲内にあることを検証する",
+        "B": "データベースインデックス範囲を設定する",
+        "C": "ネットワークアクセス範囲を定義する",
+        "D": "クエリ結果数を制限する"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "@assert.rangeはフィールド値が指定範囲内にあることを検証します。例：@assert.range: [0, 100]は値を0-100に制限します。検証失敗時は自動的にエラーを返し、手動チェックは不要です。"
+    },
+    {
+      "id": 6,
+      "question": "SAP Fiori ElementsでList Reportのフィルターフィールドをどのようにカスタマイズしますか？",
+      "options": {
+        "A": "@UI.SelectionFieldsアノテーションを使用する",
+        "B": "HTMLファイルを編集する",
+        "C": "データベーステーブルを修正する",
+        "D": "ネットワークプロキシを設定する"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "@UI.SelectionFieldsアノテーションはList Reportのフィルターバーに表示するフィールドを定義します。例：@UI.SelectionFields: [category, status, createdAt]でこれら3つのフィールドをフィルターバーに表示します。"
+    },
+    {
+      "id": 7,
+      "question": "BTPでアプリの多言語サポートをどのように実装しますか？",
+      "options": {
+        "A": "i18nファイルと@titleアノテーションを使用する",
+        "B": "複数のアプリバージョンを作成する",
+        "C": "機械翻訳APIを使用する",
+        "D": "手動で言語ファイルを切り替える"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "CAPとUI5はどちらもi18nをサポートします：i18n.propertiesと言語固有のファイルを作成し、@titleアノテーションで参照します。実行時にユーザーの言語に応じて対応する翻訳が自動的に読み込まれます。"
+    },
+    {
+      "id": 8,
+      "question": "SAP UI5のExpression Bindingとは何ですか？",
+      "options": {
+        "A": "バインディングで式を使用して簡単な計算や条件判断を行う",
+        "B": "正規表現マッチング",
+        "C": "数学式計算機",
+        "D": "データベース式"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Expression Bindingはデータバインディングで式を使用できます。例：条件判断{= ${amount} > 100 ? 'High' : 'Low'}。比較、論理演算、三項演算子などをサポートし、formatter関数は不要です。"
+    },
+    {
+      "id": 9,
+      "question": "CAPでデータの論理削除をどのように実装しますか？",
+      "options": {
+        "A": "@cds.on.insertを使用して削除フラグフィールドを追加する",
+        "B": "データベーステーブルを削除する",
+        "C": "すべてのデータをクリアする",
+        "D": "ネットワーク設定を修正する"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "論理削除はdeletedフラグフィールドを追加して実装します。@cds.on.insert/@cds.on.updateを使用してフラグを自動設定し、読み取り時に削除済みレコードをフィルタリングします。aspectでこのパターンをカプセル化することもできます。"
+    },
+    {
+      "id": 10,
+      "question": "SAP BTPのcf marketplaceコマンドは何を表示しますか？",
+      "options": {
+        "A": "利用可能なサービスとプランのリスト",
+        "B": "オンラインストア製品",
+        "C": "アプリケーションログ",
+        "D": "ユーザーリスト"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "cf marketplaceは現在のSpaceで利用可能なサービスとそのプランを一覧表示します。開発者はサービス名、プランオプションを確認し、cf create-serviceでサービスインスタンスを作成できます。"
+    },
+    {
+      "id": 11,
+      "question": "SAP UI5のBindingContextの役割は何ですか？",
+      "options": {
+        "A": "コントロールとモデル内の特定データのコンテキストを関連付ける",
+        "B": "ユーザーセッションを保存する",
+        "C": "ネットワーク接続を設定する",
+        "D": "スタイルルールを定義する"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "BindingContextはコントロールとモデルデータの関連付けを確立します。例えばテーブル行のBindingContextはその行に対応するデータオブジェクトを指し、子コントロールは相対パスでコンテキスト内のプロパティにアクセスできます。"
+    },
+    {
+      "id": 12,
+      "question": "CAPの@requiresアノテーションは何に使用されますか？",
+      "options": {
+        "A": "リソースへのアクセスに必要な権限を指定する",
+        "B": "npm依存関係を宣言する",
+        "C": "外部モジュールをインポートする",
+        "D": "データベースを設定する"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "@requiresアノテーションはエンティティまたは操作へのアクセスに必要な権限スコープを指定します。例：@requires: 'Admin'はAdmin権限を持つユーザーのみがアクセスできることを意味します。xs-security.jsonで定義されたscopeに対応します。"
+    },
+    {
+      "id": 13,
+      "question": "SAP UI5でビューの遅延読み込みをどのように実装しますか？",
+      "options": {
+        "A": "ルーティング設定でtargetのviewLevelを設定する",
+        "B": "手動でスクリプトの遅延読み込みを行う",
+        "C": "setTimeoutを使用する",
+        "D": "ブラウザキャッシュをクリアする"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "UI5ルーティングはデフォルトでビューをオンデマンドで読み込みます。targetとpatternを設定することで、ユーザーが特定のルートに移動したときにのみ対応するビューが読み込まれ、初期読み込み時間が短縮されます。"
+    },
+    {
+      "id": 14,
+      "question": "CAPで既存のエンティティをどのように拡張しますか？",
+      "options": {
+        "A": "extendキーワードを使用する",
+        "B": "元のファイルを修正する",
+        "C": "データベーストリガーを作成する",
+        "D": "CSS拡張を使用する"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "extendキーワードを使用して定義済みエンティティを拡張し、新しいフィールドやアノテーションを追加できます。元の定義を修正する必要はありません。例：extend my.Books with { rating: Integer; @UI.Hidden: true };"
+    },
+    {
+      "id": 15,
+      "question": "SAP BTPのcf create-serviceコマンドは何をしますか？",
+      "options": {
+        "A": "サービスインスタンスを作成する",
+        "B": "ユーザーアカウントを作成する",
+        "C": "データベーステーブルを作成する",
+        "D": "ネットワークルートを作成する"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "cf create-serviceは指定されたサービスのインスタンスを作成します。構文：cf create-service <service> <plan> <instance-name>。例：cf create-service xsuaa application my-xsuaa。"
+    },
+    {
+      "id": 16,
+      "question": "SAP UI5のObjectPageLayoutの特徴は何ですか？",
+      "options": {
+        "A": "固定ヘッダー領域とスクロール可能なコンテンツ領域をサポートする",
+        "B": "リストのみ表示可能",
+        "C": "チャート表示用",
+        "D": "モバイルのみサポート"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "ObjectPageLayoutは固定のヘッダー領域とスクロール可能なコンテンツ領域（Sections）を提供します。動的ヘッダーモード、アンカーナビゲーション、Sectionの折りたたみなどの機能をサポートし、詳細ページの標準レイアウトです。"
+    },
+    {
+      "id": 17,
+      "question": "CAPのsrv.reject()メソッドは何に使用されますか？",
+      "options": {
+        "A": "ハンドラーでエラーを返してリクエストを拒否する",
+        "B": "ネットワーク接続を拒否する",
+        "C": "データを削除する",
+        "D": "キャッシュをクリアする"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "srv.reject(code, message)はハンドラーでエラーを返します。例：req.reject(403, 'Not authorized')はリクエストを拒否し、403ステータスコードを返します。Errorオブジェクトをスローすることもできます。"
+    },
+    {
+      "id": 18,
+      "question": "SAP UI5でFragmentを使用して再利用可能なダイアログをどのように作成しますか？",
+      "options": {
+        "A": "XML Fragmentを定義し、Fragment.load()で読み込む",
+        "B": "ビューで直接定義する",
+        "C": "JavaScript alertを使用する",
+        "D": "新しいアプリを作成する"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "fragmentファイルでDialogを定義し、Fragment.load()で非同期に読み込み、返されたDialogインスタンスでopen()を呼び出せます。FragmentはControllerを必要とせず、イベント処理は呼び出し元が提供します。"
+    },
+    {
+      "id": 19,
+      "question": "BTP開発において、mbt buildコマンドの役割は何ですか？",
+      "options": {
+        "A": "MTAプロジェクトをビルドしてデプロイパッケージを生成する",
+        "B": "開発サーバーを起動する",
+        "C": "テストを実行する",
+        "D": "クラウドにデプロイする"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "mbt buildはMTA Build Toolコマンドで、mta.yamlに基づいてマルチターゲットアプリケーションをビルドし、.mtarデプロイパッケージを生成します。このパッケージにはすべてのモジュールと設定が含まれ、cf deployでデプロイできます。"
+    },
+    {
+      "id": 20,
+      "question": "SAP UI5のbusy indicatorは何に使用されますか？",
+      "options": {
+        "A": "読み込み状態を表示し、ユーザー操作をブロックする",
+        "B": "エラーメッセージを表示する",
+        "C": "オーディオを再生する",
+        "D": "広告を表示する"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Busy Indicatorは非同期操作中に読み込み状態を表示します。コントロールまたはアプリ全体をbusy状態に設定し、回転アイコンを表示してユーザーインタラクションをブロックし、操作完了後に解除します。"
+    },
+    {
+      "id": 21,
+      "question": "CAPで仮想フィールド（計算フィールド）をどのように定義しますか？",
+      "options": {
+        "A": "virtualキーワードまたは@cds.persistence.skipを使用する",
+        "B": "データベースビューを作成する",
+        "C": "JavaScriptで計算する",
+        "D": "フロントエンド表示時に計算する"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "virtualフィールドはデータベースに保存されず、実行時に計算されます。定義：virtual fullName: String; その後、afterハンドラーで値を埋めます。@cds.persistence.skipを使用して非永続化フィールドをマークすることもできます。"
+    },
+    {
+      "id": 22,
+      "question": "SAP UI5のFlexBoxコントロールは何に使用されますか？",
+      "options": {
+        "A": "柔軟なレスポンシブレイアウトを作成する",
+        "B": "データを保存する",
+        "C": "ネットワーク通信",
+        "D": "ファイル操作"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "FlexBoxはCSS Flexboxに基づくレイアウトコントロールで、柔軟な子要素の配置をサポートします。方向、配置、折り返しなどのプロパティを設定して、異なる画面サイズに適応するレスポンシブレイアウトを作成できます。"
+    },
+    {
+      "id": 23,
+      "question": "CAPでSELECT.oneとSELECTの違いは何ですか？",
+      "options": {
+        "A": "SELECT.oneは1件のレコードのみ返し、SELECTは配列を返す",
+        "B": "パフォーマンスが異なる",
+        "C": "権限が異なる",
+        "D": "違いはない"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "SELECTはレコード配列を返し、SELECT.oneは最初の1件（またはnull）のみを返します。単一エンティティを取得する場合、SELECT.oneを使用するとより簡潔で、配列インデックスは不要です。例：const book = await SELECT.one.from('Books').where({ID: id});"
+    },
+    {
+      "id": 24,
+      "question": "SAP UI5のOverflowToolbarの特徴は何ですか？",
+      "options": {
+        "A": "オーバーフローしたコンテンツを自動的にもっとメニューに移動する",
+        "B": "すべてのコンテンツを固定表示する",
+        "C": "すべてのコンテンツを非表示にする",
+        "D": "アイコンのみ表示する"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "OverflowToolbarはスペースが不足した場合、自動的にコンテンツをオーバーフローメニュー（もっとボタン）に移動します。各項目のオーバーフロー優先度を設定でき、重要なボタンは表示を維持し、優先度の低いボタンから先にメニューに移動します。"
+    },
+    {
+      "id": 25,
+      "question": "CAPの@cds.autoexposeアノテーションの役割は何ですか？",
+      "options": {
+        "A": "エンティティを自動的にODataエンドポイントとして公開する",
+        "B": "ドキュメントを自動生成する",
+        "C": "インデックスを自動作成する",
+        "D": "データを自動バックアップする"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "@cds.autoexposeでマークされたエンティティ（およびCompositionで関連付けられたエンティティ）は、サービスの一部として自動的に公開されます。サービス定義で明示的にリストする必要がなく、サービス設定が簡素化されます。"
+    },
+    {
+      "id": 26,
+      "question": "SAP BTPでアプリの環境変数をどのように確認しますか？",
+      "options": {
+        "A": "cf env <app-name>コマンドを使用する",
+        "B": "ブラウザコンソールで確認する",
+        "C": "ローカルファイルを読み取る",
+        "D": "メールで問い合わせる"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "cf env <app-name>はアプリの環境変数を表示します。ユーザー定義変数とシステムが注入するVCAP_SERVICES（サービスバインディング情報）、VCAP_APPLICATIONなどが含まれます。"
+    },
+    {
+      "id": 27,
+      "question": "UI5のsap.ui.core.format.DateFormatは何に使用されますか？",
+      "options": {
+        "A": "日付と時刻の表示をフォーマットする",
+        "B": "日付を保存する",
+        "C": "日付の差を計算する",
+        "D": "日付を検証する"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "DateFormatはDateオブジェクトを文字列にフォーマットしたり、日付文字列を解析するために使用します。さまざまな定義済みスタイルとカスタムパターンをサポートし、ローカライゼーション（言語ごとの日付形式）を自動処理します。"
+    },
+    {
+      "id": 28,
+      "question": "CAPで楽観的ロックをどのように実装しますか？",
+      "options": {
+        "A": "@cds.on.update付きのタイムスタンプフィールドを追加する",
+        "B": "データベースロックを使用する",
+        "C": "同時アクセスを禁止する",
+        "D": "競合を無視する"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "@cds.on.update: $now付きのタイムスタンプフィールドをETagソースとして使用し、@odata.etagと組み合わせて楽観的ロックを実装します。更新時にタイムスタンプを自動チェックし、データが既に変更されている場合は412エラーを返します。"
+    },
+    {
+      "id": 29,
+      "question": "SAP UI5のSmartFormコントロールの特徴は何ですか？",
+      "options": {
+        "A": "メタデータからフォームレイアウトを自動生成する",
+        "B": "各フィールドを手動設定する",
+        "C": "読み取り専用表示のみサポート",
+        "D": "検証をサポートしない"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "SmartFormはSmartFieldと組み合わせてODataメタデータからフォームを自動生成します。フィールドタイプ、ラベル、検証ルールなどはすべてバックエンドのメタデータとアノテーションに基づいて自動設定され、編集モードの切り替えをサポートします。"
+    },
+    {
+      "id": 30,
+      "question": "BTP開発において、cds deployコマンドの役割は何ですか？",
+      "options": {
+        "A": "データモデルをデータベースにデプロイする",
+        "B": "UIアプリをデプロイする",
+        "C": "本番環境にデプロイする",
+        "D": "バックアップを作成する"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "cds deployはCDSモデルをターゲットデータベースにデプロイし、テーブル構造を作成または更新します。SQLite（ローカル開発）とSAP HANAをサポートします。--to hanaを指定してHANAにデプロイできます。"
+    },
+    {
+      "id": 31,
+      "question": "SAP UI5でフォーム検証をどのように処理しますか？",
+      "options": {
+        "A": "コントロールのvalueStateとvalueStateTextプロパティを使用する",
+        "B": "バックエンドでのみ検証できる",
+        "C": "alertで通知する",
+        "D": "送信ボタンを無効にする"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "UI5コントロールにはvalueState（None/Error/Warning/Success）とvalueStateTextプロパティがあり、検証状態とメッセージを表示します。changeイベントで検証したり、MessageManagerで検証メッセージを統一管理できます。"
+    },
+    {
+      "id": 32,
+      "question": "CAPのsrv.emit()メソッドは何に使用されますか？",
+      "options": {
+        "A": "非同期処理のためにイベントを発行する",
+        "B": "メールを送信する",
+        "C": "ネットワークリクエストを送信する",
+        "D": "ログを出力する"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "srv.emit()はメッセージキュー（SAP Event Meshなど）にイベントを発行します。非同期シナリオで使用：emit('OrderCreated', { orderID })でイベントを発行し、他のサービスがサブスクライブして処理できます。"
+    },
+    {
+      "id": 33,
+      "question": "SAP UI5のTableコントロールのgrowingプロパティは何に使用されますか？",
+      "options": {
+        "A": "スクロール時にさらにデータを読み込む",
+        "B": "列幅を自動増加する",
+        "C": "行の高さを増加する",
+        "D": "拡大表示する"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "growing=trueを設定するとインクリメンタル読み込みが有効になります。ユーザーがテーブルの下部までスクロールすると、より多くのデータが自動的に読み込まれます。growingThresholdで一度に読み込む行数を設定し、バックエンドのページングと組み合わせて使用します。"
+    },
+    {
+      "id": 34,
+      "question": "CAPで列挙型をどのように定義しますか？",
+      "options": {
+        "A": "type...enum構文を使用する",
+        "B": "文字列配列を使用する",
+        "C": "データベース制約を使用する",
+        "D": "フロントエンドで定義する"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "CDSは列挙型をサポートします：type Status: String enum { draft; active; closed }; このタイプを使用するフィールドは、値が列挙範囲内にあるかどうかを自動的に検証し、UIではドロップダウン選択を表示できます。"
+    },
+    {
+      "id": 35,
+      "question": "SAP BTPのcf scaleコマンドは何に使用されますか？",
+      "options": {
+        "A": "アプリのインスタンス数またはリソースを調整する",
+        "B": "画像を拡大縮小する",
+        "C": "フォントサイズを調整する",
+        "D": "ストレージ容量を拡張する"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "cf scaleはアプリリソースを調整します：cf scale <app> -i 3でインスタンス数を3に設定、cf scale <app> -m 512Mでメモリを調整、cf scale <app> -k 1Gでディスクを調整します。"
+    },
+    {
+      "id": 36,
+      "question": "SAP UI5でディープリンク（Deep Linking）をどのように実装しますか？",
+      "options": {
+        "A": "ルーティング設定とURLハッシュを通じて",
+        "B": "Cookieを使用する",
+        "C": "データベースに保存する",
+        "D": "メールリンクを送信する"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "ディープリンクはルーティングで実装されます：URLハッシュ（例：#/orders/123）を特定のビューとデータにマッピングします。ユーザーは特定ページのURLに直接アクセスしたり共有でき、アプリは対応する状態に自動的にナビゲートします。"
+    },
+    {
+      "id": 37,
+      "question": "CAPの@mandatoryアノテーションは何に使用されますか？",
+      "options": {
+        "A": "フィールドを必須としてマークする",
+        "B": "暗号化を強制する",
+        "C": "バックアップを強制する",
+        "D": "ソートを強制する"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "@mandatoryはフィールドを必須としてマークします。作成または更新時にフィールド値が提供されない場合、CAPは自動的に検証エラーを返します。ODataメタデータにもこの制約が反映されます。"
+    },
+    {
+      "id": 38,
+      "question": "SAP UI5のIconTabBarは何に使用されますか？",
+      "options": {
+        "A": "アイコン付きのタブ式ナビゲーションを作成する",
+        "B": "アイコンリストを表示する",
+        "C": "アプリアイコンを設定する",
+        "D": "アイコンをダウンロードする"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "IconTabBarはタブ式ナビゲーションを作成し、各タブにはアイコン、テキスト、カウンターを設定できます。同じページ内で異なるコンテンツ領域を切り替えるために使用され、詳細ページの異なるビュー切り替えによく使用されます。"
+    },
+    {
+      "id": 39,
+      "question": "BTP開発で、CAPがSAP HANAデータベースを使用するようにどのように設定しますか？",
+      "options": {
+        "A": "package.jsonのcds.requiresでhanaを指定する",
+        "B": "オペレーティングシステム設定を変更する",
+        "C": "ローカルソフトウェアをインストールする",
+        "D": "SAPサポートに連絡する"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "package.jsonで設定：\"cds\": { \"requires\": { \"db\": { \"kind\": \"hana\" } } }。同時にhanaサービスインスタンスをバインドする必要があり、実行時にCAPが自動的にHANAに接続します。"
+    },
+    {
+      "id": 40,
+      "question": "SAP UI5のXMLViewはJavaScript Viewと比較してどのような利点がありますか？",
+      "options": {
+        "A": "宣言的構文がより明確で、より良いツールサポートがある",
+        "B": "パフォーマンスが高い",
+        "C": "より多くのコントロールをサポート",
+        "D": "学習が不要"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "XMLViewは宣言的XML構文を使用してUIを定義し、構造が明確で読みやすいです。より良いIDEツール（オートコンプリート、検証）、プリプロセスディレクティブをサポートします。UI5で推奨されるビュー定義方法です。"
+    },
+    {
+      "id": 41,
+      "question": "CAPでバッチ操作（Batch Request）をどのように処理しますか？",
+      "options": {
+        "A": "CAPは自動的にOData Batchをサポートする",
+        "B": "手動で実装する必要がある",
+        "C": "バッチ操作はサポートされていない",
+        "D": "サードパーティライブラリを使用する"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "CAPはOData $batchリクエストを追加設定なしで自動的にサポートします。クライアントは単一のHTTPリクエストで複数の操作を送信でき、CAPフレームワークが解析して順番に実行し、トランザクションをサポートします。"
+    },
+    {
+      "id": 42,
+      "question": "SAP UI5のColumnListItemは何に使用されますか？",
+      "options": {
+        "A": "テーブル行のテンプレートを定義する",
+        "B": "列ヘッダーを作成する",
+        "C": "列幅を設定する",
+        "D": "列をソートする"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "ColumnListItemはTableコントロール内の行のテンプレートで、各行に含まれるセルを定義します。データバインディングにより、各データに対してColumnListItemインスタンスが自動生成されます。"
+    },
+    {
+      "id": 43,
+      "question": "CAPの@Common.ValueListアノテーションは何に使用されますか？",
+      "options": {
+        "A": "フィールドの値ヘルプ（ドロップダウン選択）を定義する",
+        "B": "デフォルト値を設定する",
+        "C": "値の範囲を検証する",
+        "D": "表示順序をソートする"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "@Common.ValueListはフィールドの値ヘルプを定義し、オプションのソースとして別のエンティティを指定します。Fiori Elementsは自動的にValue Helpダイアログを生成し、ユーザーは値を検索して選択できます。"
+    },
+    {
+      "id": 44,
+      "question": "SAP BTPのcf restageコマンドの役割は何ですか？",
+      "options": {
+        "A": "コードを再アップロードせずにアプリのdropletを再構築する",
+        "B": "サーバーを再起動する",
+        "C": "キャッシュをクリアする",
+        "D": "データをバックアップする"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "cf restageは既にアップロードされたコードを使用してアプリを再構築します。環境変数を変更したり、新しいサービスをバインドした後にrestageして変更を有効にする必要があり、完全なpushより高速です。"
+    },
+    {
+      "id": 45,
+      "question": "SAP UI5でコントロールのレスポンシブな可視性をどのように実装しますか？",
+      "options": {
+        "A": "visibleプロパティとDevice APIまたはメディアクエリを組み合わせて使用する",
+        "B": "複数のビューを作成する",
+        "C": "CSSで非表示にする",
+        "D": "固定表示のみ可能"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "sap.ui.Deviceのデバイス検出に基づいてvisibleプロパティを設定したり、Expression Bindingを使用できます：visible=\"{= ${device>/system/desktop}}\"。CSSメディアクエリも使用できます。"
+    },
+    {
+      "id": 46,
+      "question": "CAPのINSERT.into()メソッドの役割は何ですか？",
+      "options": {
+        "A": "データ挿入用のCQLステートメントを構築する",
+        "B": "HTML要素を挿入する",
+        "C": "画像を挿入する",
+        "D": "改ページを挿入する"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "INSERT.into()は挿入ステートメントを構築します：await INSERT.into('Books').entries({title: 'New Book'})。単一または複数のレコードの挿入をサポートし、srv.run()と組み合わせて実行します。"
+    },
+    {
+      "id": 47,
+      "question": "SAP UI5のDialogコントロールの特徴は何ですか？",
+      "options": {
+        "A": "モーダルポップアップで、背景とのインタラクションをブロックする",
+        "B": "非モーダルウィンドウ",
+        "C": "テキストのみ表示可能",
+        "D": "閉じることができない"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Dialogはモーダルポップアップで、開くとオーバーレイ層を表示して背景とのインタラクションをブロックします。任意のコンテンツとボタンを含めることができ、操作確認、データ入力、詳細表示などのシナリオで使用されます。"
+    },
+    {
+      "id": 48,
+      "question": "CAPマルチテナントアプリケーションで、@sap/cds-mtxsモジュールは何の機能を提供しますか？",
+      "options": {
+        "A": "テナントライフサイクル管理とデータ分離",
+        "B": "ユーザーインターフェースコンポーネント",
+        "C": "ネットワーク高速化",
+        "D": "ログ管理"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "@sap/cds-mtxsはマルチテナントサポートを提供します：テナントのオンボーディング/オフボーディング、テナントごとのデータベース分離、サブスクリプション管理。SaaS Provisioning Serviceと統合してテナントライフサイクルを管理します。"
+    },
+    {
+      "id": 49,
+      "question": "SAP UI5のsap.m.InputのliveChangeイベントはいつトリガーされますか？",
+      "options": {
+        "A": "ユーザーが文字を入力するたびに",
+        "B": "入力フィールドがフォーカスを失ったとき",
+        "C": "Enterキーを押したとき",
+        "D": "ページ読み込み時"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "liveChangeは入力が変わるたびにトリガーされます（各文字）。リアルタイム検索に適しています。changeイベントはフォーカスを失うかEnterを押したときにトリガーされます。要件に応じて適切なイベントを選択してください。"
+    },
+    {
+      "id": 50,
+      "question": "BTP開発で、CAPアプリにユニットテストをどのように追加しますか？",
+      "options": {
+        "A": "JestまたはMochaテストフレームワークを使用する",
+        "B": "手動でテストする",
+        "C": "本番環境でのみテストできる",
+        "D": "テストは不要"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "CAPプロジェクトはJestまたはMochaを使用してテストを作成できます。cds.testはテストツールを提供し、一時サーバーを起動します。testディレクトリにテストファイルを作成し、npm testで実行します。"
+    }
+  ]
+}

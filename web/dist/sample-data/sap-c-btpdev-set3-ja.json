@@ -1,0 +1,660 @@
+{
+  "examId": "sap-c-btpdev-set3-ja",
+  "provider": "SAP",
+  "title": "SAP BTP 開発者 (C_BTPDEV) 模擬問題 Set 3",
+  "description": "SAP Business Technology Platform 開発者認定模擬試験第3セット",
+  "icon": "sap",
+  "setNumber": 3,
+  "questions": [
+    {
+      "id": 1,
+      "question": "SAP Buildでローコードアプリをどのように作成しますか？",
+      "options": {
+        "A": "ビジュアルエディターでコンポーネントをドラッグ＆ドロップし、データバインディングを設定する",
+        "B": "純粋なJavaScriptコードを書く",
+        "C": "オペレーティングシステム設定を変更する",
+        "D": "ローカルソフトウェアをインストールする"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "SAP Buildはビジュアル開発環境を提供し、UIコンポーネントのドラッグ＆ドロップ、データソースとビジネスロジックの設定でアプリを作成します。複雑なコードを書かずにエンタープライズアプリを構築できます。"
+    },
+    {
+      "id": 2,
+      "question": "CAPのcds.contextは何の機能を提供しますか？",
+      "options": {
+        "A": "現在のリクエストのコンテキスト情報（ユーザー、テナントなど）にアクセスする",
+        "B": "UIレイアウトを定義する",
+        "C": "ネットワーク設定を構成する",
+        "D": "ファイルを保存する"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "cds.contextはリクエストレベルのコンテキストを提供し、現在のユーザー（cds.context.user）、テナント（cds.context.tenant）、言語設定などが含まれます。非同期操作でコンテキストの伝播を維持します。"
+    },
+    {
+      "id": 3,
+      "question": "SAP UI5でMessageToastとMessageBoxの違いは何ですか？",
+      "options": {
+        "A": "MessageToastは非ブロッキング通知、MessageBoxはモーダルダイアログ",
+        "B": "機能は完全に同じ",
+        "C": "MessageToastはエラーのみ表示できる",
+        "D": "MessageBoxにはボタンを含められない"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "MessageToastは短時間の非ブロッキング通知を表示し、数秒後に自動的に消え、ユーザー操作を中断しません。MessageBoxはモーダルダイアログで、ユーザーのインタラクション（ボタンクリック）がないと閉じられません。"
+    },
+    {
+      "id": 4,
+      "question": "BTP開発において、@sap/approuterの役割は何ですか？",
+      "options": {
+        "A": "アプリケーションルーティングと認証機能を提供する",
+        "B": "データベース管理",
+        "C": "ファイルストレージ",
+        "D": "ログ収集"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "@sap/approuterはBTPアプリのエントリーポイントで、ルーティングルール、JWT認証、XSUAA統合を処理します。xs-app.json設定に基づいてリクエストをバックエンドサービスに転送します。"
+    },
+    {
+      "id": 5,
+      "question": "CAPのsrv.before()とsrv.on()ハンドラーの違いは何ですか？",
+      "options": {
+        "A": "beforeは操作実行前に実行され、onはメインハンドラー",
+        "B": "順序は同じ",
+        "C": "beforeはデータの読み取りのみ可能",
+        "D": "onはリクエストを変更できない"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "srv.before()はメインハンドラーの前に実行され、検証やデータ変換に使用します。srv.on()はメインハンドラーで、コアビジネスロジックを実装します。srv.after()はメイン処理後に実行されます。"
+    },
+    {
+      "id": 6,
+      "question": "SAP UI5でコンポーネント間通信をどのように実装しますか？",
+      "options": {
+        "A": "EventBusまたは共有モデルを使用する",
+        "B": "URLパラメータのみで可能",
+        "C": "グローバル変数を変更する",
+        "D": "Cookieを使用する"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "EventBusはパブリッシュ/サブスクライブパターンのコンポーネント通信を提供します。共有JSONモデルを使用してコンポーネント間でデータを渡すこともできます。Owner ComponentはAPIを通じて子コンポーネントのメソッドを直接呼び出すこともできます。"
+    },
+    {
+      "id": 7,
+      "question": "SAP BTPのService Keyは何に使用されますか？",
+      "options": {
+        "A": "外部アプリケーションで使用するサービス認証情報を取得する",
+        "B": "データを暗号化する",
+        "C": "SSHキーを生成する",
+        "D": "ユーザーを作成する"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Service Keyはサービスインスタンスの認証情報セットで、URL、client ID/secretなどが含まれます。Cloud Foundryにアプリをデプロイせずに、ローカル開発や外部システムがBTPサービスにアクセスするために使用します。"
+    },
+    {
+      "id": 8,
+      "question": "CAPで長時間実行タスクをどのように処理しますか？",
+      "options": {
+        "A": "非同期処理とメッセージキューを使用する",
+        "B": "リクエストタイムアウトを増やす",
+        "C": "複数回リトライする",
+        "D": "タスクを無視する"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "長時間タスクにはcds.spawn()でバックグラウンドタスクを作成するか、SAP Event Meshでメッセージを送信して非同期処理します。HTTPリクエストをブロックせず、より良いユーザー体験を提供します。"
+    },
+    {
+      "id": 9,
+      "question": "SAP UI5のPersonalization機能は何に使用されますか？",
+      "options": {
+        "A": "ユーザーのカスタムテーブル列、フィルター設定を保存する",
+        "B": "アプリコードを変更する",
+        "C": "システム言語を変更する",
+        "D": "プラグインをインストールする"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "PersonalizationはユーザーがUI設定（テーブル列の順序/表示、フィルター条件など）をカスタマイズして永続化できます。FlexibleColumnLayoutのP13nサービスを使用してユーザー設定を保存します。"
+    },
+    {
+      "id": 10,
+      "question": "BTP開発において、hybrid profileの用途は何ですか？",
+      "options": {
+        "A": "ローカルでアプリを実行しながらクラウドサービスに接続する",
+        "B": "ハイブリッドデータベースモード",
+        "C": "マルチクラウドデプロイ",
+        "D": "オフラインアクセス"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "hybrid profileはローカル開発のCAPアプリをBTP上の実際のサービス（HANA、XSUAAなど）に接続します。cds bind --execでサービスをバインドし、hybridモードで起動します。"
+    },
+    {
+      "id": 11,
+      "question": "CAPの@Core.MediaTypeアノテーションは何に使用されますか？",
+      "options": {
+        "A": "フィールドに保存されるメディアタイプ（image/pngなど）を指定する",
+        "B": "UIスタイルを定義する",
+        "C": "ネットワークプロトコルを設定する",
+        "D": "ログ形式を設定する"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "@Core.MediaTypeはフィールドがバイナリメディアコンテンツのMIMEタイプを保存することをマークします。@Core.ContentDispositionと組み合わせて、ファイルのアップロードとダウンロード機能をサポートします。"
+    },
+    {
+      "id": 12,
+      "question": "SAP UI5のStandardListItemのtype属性の役割は何ですか？",
+      "options": {
+        "A": "リスト項目のインタラクションタイプを定義する（ナビゲーション可能、選択可能など）",
+        "B": "フォントサイズを設定する",
+        "C": "データ型を定義する",
+        "D": "ネットワークタイプを設定する"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "type属性はリスト項目の動作を定義します：Navigation（矢印を表示、クリックでナビゲーション）、Active（クリックでハイライト）、Inactive（表示のみ）、Detail（詳細ボタンを表示）など。"
+    },
+    {
+      "id": 13,
+      "question": "SAP BTPのcf sshコマンドは何に使用されますか？",
+      "options": {
+        "A": "実行中のアプリコンテナにSSH接続する",
+        "B": "SSHキーを作成する",
+        "C": "ファイアウォールを設定する",
+        "D": "メールを送信する"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "cf sshは開発者がアプリコンテナにSSH接続してデバッグできます。ファイルシステム、環境変数の確認、診断コマンドの実行が可能です。アプリでSSHアクセスを有効にする必要があります。"
+    },
+    {
+      "id": 14,
+      "question": "CAPで外部APIサービスをどのように使用しますか？",
+      "options": {
+        "A": "API定義をインポートし、srv.connect()で接続する",
+        "B": "HTTPリクエストを直接送信する",
+        "C": "データベースを変更する",
+        "D": "ローカルソフトウェアをインストールする"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "cds importで外部API定義（edmxファイルなど）をインポートし、Destinationを設定します。コードでsrv.connect('API_NAME')で接続を取得し、CQL構文で外部データをクエリします。"
+    },
+    {
+      "id": 15,
+      "question": "SAP UI5のXMLTemplateProcessorは何に使用されますか？",
+      "options": {
+        "A": "XMLビューでテンプレートロジック（条件レンダリング、ループ）を使用する",
+        "B": "XMLファイルを圧縮する",
+        "C": "XML形式を検証する",
+        "D": "XMLをJSONに変換する"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "XMLTemplateProcessorはXMLビューでtemplate:if、template:repeatなどのディレクティブを使用して条件レンダリングとループを実装します。データに基づいてUI構造を動的に生成できます。"
+    },
+    {
+      "id": 16,
+      "question": "BTP開発において、cds watchの--portパラメータは何に使用されますか？",
+      "options": {
+        "A": "開発サーバーがリッスンするポートを指定する",
+        "B": "データベースポートを設定する",
+        "C": "プロキシポートを設定する",
+        "D": "HTTPSポートを定義する"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "cds watch --port 4005で開発サーバーのポートを指定します（デフォルトは4004）。複数のCAPプロジェクトを同時に開発する場合、異なるポートを使用して競合を避けます。"
+    },
+    {
+      "id": 17,
+      "question": "CAPの@readonlyアノテーションの効果は何ですか？",
+      "options": {
+        "A": "エンティティまたはフィールドを読み取り専用としてマークし、CUD操作を禁止する",
+        "B": "データを暗号化する",
+        "C": "ストレージを圧縮する",
+        "D": "キャッシュを有効にする"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "@readonlyでマークされたエンティティはREAD操作のみ許可され、CREATE/UPDATE/DELETEは拒否されます。読み取り専用データビューや保護されたシステムデータに使用します。個別のフィールドにも適用できます。"
+    },
+    {
+      "id": 18,
+      "question": "SAP UI5のNavContainerの役割は何ですか？",
+      "options": {
+        "A": "ページナビゲーションとアニメーション遷移を管理する",
+        "B": "ナビゲーション履歴を保存する",
+        "C": "ルーティングルールを設定する",
+        "D": "ナビゲーションメニューを表示する"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "NavContainerはページコンテナで、子ページの表示とナビゲーション遷移アニメーションを管理します。to()/back()メソッドでページ間をナビゲートし、スライド、フェードインなどの遷移効果をサポートします。"
+    },
+    {
+      "id": 19,
+      "question": "SAP BTPのcf eventsコマンドは何を表示しますか？",
+      "options": {
+        "A": "アプリに関連する最近のイベントとアクティビティ",
+        "B": "システムカレンダーイベント",
+        "C": "ユーザーの予約",
+        "D": "ネットワークイベント"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "cf events <app-name>はアプリの最近のイベントを表示します：起動、停止、クラッシュ、スケーリングなど。アプリの状態を監視し、クラッシュの原因を調査するなど、問題のトラブルシューティングに使用します。"
+    },
+    {
+      "id": 20,
+      "question": "CAPでComposition関係をどのように定義しますか？",
+      "options": {
+        "A": "Composition of構文を使用して包含関係を表す",
+        "B": "JOINステートメントを使用する",
+        "C": "外部キーを作成する",
+        "D": "JavaScriptでリンクする"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Compositionは強い包含関係（親子）を表します：entity Order { Items: Composition of many OrderItem; }。子エンティティは親エンティティと一緒に作成/削除され、ODataのディープインサート/カスケード削除が自動処理されます。"
+    },
+    {
+      "id": 21,
+      "question": "SAP UI5のFiori Launchpadとは何ですか？",
+      "options": {
+        "A": "企業アプリの統一エントリーポイントとアプリ統合プラットフォーム",
+        "B": "コードエディター",
+        "C": "データベース管理ツール",
+        "D": "バージョン管理システム"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Fiori LaunchpadはSAP企業アプリの中央エントリーポイントで、統一されたアプリナビゲーション、パーソナライズされたタイル、通知センター、検索などの機能を提供します。アプリはタイルとして表示され、ユーザーはロールに応じてアプリが割り当てられます。"
+    },
+    {
+      "id": 22,
+      "question": "BTP開発において、package.jsonのcds.build設定は何に使用されますか？",
+      "options": {
+        "A": "ビルドタスクと出力ディレクトリを定義する",
+        "B": "ランタイム環境を設定する",
+        "C": "テストフレームワークを設定する",
+        "D": "エントリーファイルを指定する"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "cds.buildはビルド動作を設定します：tasksでビルドタスク（hanaデプロイなど）を定義し、destで出力ディレクトリを指定します。cds buildコマンドはこの設定を読み取ってデプロイ成果物を生成します。"
+    },
+    {
+      "id": 23,
+      "question": "CAPのsrv.tx()メソッドは何に使用されますか？",
+      "options": {
+        "A": "データベーストランザクションを開始する",
+        "B": "テキストメッセージを送信する",
+        "C": "データ形式を変換する",
+        "D": "データを暗号化する"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "srv.tx(req)はリクエストのトランザクションコンテキストを取得し、複数の操作が同じトランザクション内で実行されることを保証します。エラー時は自動ロールバック、成功時はコミットされます。データ整合性にとって重要です。"
+    },
+    {
+      "id": 24,
+      "question": "SAP UI5でデバイスタイプをどのように検出しますか？",
+      "options": {
+        "A": "sap.ui.Device APIを使用する",
+        "B": "User-Agent文字列をチェックする",
+        "C": "サーバーリクエストを送信する",
+        "D": "GPSを使用する"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "sap.ui.Deviceはデバイス情報を提供します：Device.system（desktop/phone/tablet）、Device.browser、Device.osなど。レスポンシブデザインや異なるデバイスに適応するUIレイアウトに使用します。"
+    },
+    {
+      "id": 25,
+      "question": "SAP BTPのcf logsコマンドの--recentパラメータの役割は何ですか？",
+      "options": {
+        "A": "リアルタイムストリームではなく最近のログを表示する",
+        "B": "最近のユーザーを表示する",
+        "C": "最近のデプロイを一覧表示する",
+        "D": "最近のエラーを表示する"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "cf logs <app> --recentはアプリの最近のログ履歴を表示します（リアルタイム追跡ではなく）。アプリ起動ログ、発生したエラーなどの履歴を確認するために使用します。"
+    },
+    {
+      "id": 26,
+      "question": "CAPの@odata.singletonアノテーションは何に使用されますか？",
+      "options": {
+        "A": "エンティティをODataシングルトンとして定義する",
+        "B": "シングルトンパターンクラスを作成する",
+        "C": "同時アクセスを制限する",
+        "D": "シングルサインオンを有効にする"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "@odata.singletonはエンティティをODataシングルトンにし、コレクションではなく1つのインスタンスのみ持ちます。設定、ユーザー設定などのシナリオに適しており、アクセスパスはコレクション名ではなくエンティティ名に直接なります。"
+    },
+    {
+      "id": 27,
+      "question": "SAP UI5のResourceBundleは何に使用されますか？",
+      "options": {
+        "A": "i18n翻訳テキストを読み込んでアクセスする",
+        "B": "静的リソースをパッケージ化する",
+        "C": "アイコンリソースを管理する",
+        "D": "ファイルを圧縮する"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "ResourceBundleはi18nのコアクラスで、propertiesファイルを読み込み、getText()メソッドで翻訳を取得します。パラメータ置換をサポート：getText('greeting', [userName])。"
+    },
+    {
+      "id": 28,
+      "question": "BTP開発でマルチ環境デプロイをどのように設定しますか？",
+      "options": {
+        "A": "mta.yamlのparametersとpropertiesを使用する",
+        "B": "複数のプロジェクトを作成する",
+        "C": "ソースコードを変更する",
+        "D": "異なるGitブランチを使用する"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "mta.yamlはパラメータ化された設定をサポートします：parametersで変数を定義し、propertiesで環境固有の値を注入します。デプロイ時にextension descriptorファイルを使用して異なる環境のパラメータを上書きします。"
+    },
+    {
+      "id": 29,
+      "question": "CAPの@assert.uniqueアノテーションは何に使用されますか？",
+      "options": {
+        "A": "フィールド組み合わせの一意性を確保する",
+        "B": "一意のIDを生成する",
+        "C": "一意のインデックスを作成する",
+        "D": "UUID形式を検証する"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "@assert.uniqueは一意性制約を定義します：@assert.unique: {code}または@assert.unique: [field1, field2]。作成または更新時に自動的にチェックし、重複があればエラーを返します。"
+    },
+    {
+      "id": 30,
+      "question": "SAP UI5でテーブル内でインライン編集をどのように実装しますか？",
+      "options": {
+        "A": "Tableのmodeプロパティと編集コントロールを使用する",
+        "B": "ポップアップ編集ボックスを作成する",
+        "C": "ContentEditableを使用する",
+        "D": "詳細ページでのみ編集可能"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Table modeをEditに設定し、cellsでInput、DatePickerなどの編集コントロールを使用します。editableプロパティで編集状態を制御し、ODataバッチ送信で変更をコミットします。"
+    },
+    {
+      "id": 31,
+      "question": "SAP BTPのcf set-envコマンドは何に使用されますか？",
+      "options": {
+        "A": "アプリの環境変数を設定する",
+        "B": "システム環境を設定する",
+        "C": "開発環境を設定する",
+        "D": "ネットワーク環境を設定する"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "cf set-env <app> <var> <value>でアプリの環境変数を設定します。設定後、変数を有効にするためにcf restageが必要です。コードを変更せずにアプリの動作を設定するために使用します。"
+    },
+    {
+      "id": 32,
+      "question": "CAPで大きなファイルのアップロードをどのように処理しますか？",
+      "options": {
+        "A": "ストリーミング処理と@Core.MediaTypeを使用する",
+        "B": "メモリ制限を増やす",
+        "C": "ファイルを圧縮する",
+        "D": "データベースにチャンク保存する"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "CAPはメディアストリーム処理をサポートし、@Core.MediaTypeアノテーションをフィールドに使用します。大きなファイルはストリーム方式で処理され、すべてをメモリにロードする必要がありません。Object Storeサービスと組み合わせてバイナリデータを保存します。"
+    },
+    {
+      "id": 33,
+      "question": "SAP UI5のsap.ui.model.Sorterは何に使用されますか？",
+      "options": {
+        "A": "データソート規則を定義する",
+        "B": "UIコントロールを整理する",
+        "C": "アイコンを配置する",
+        "D": "ファイルをソートする"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Sorterはバインドデータのソートを定義します：new Sorter('fieldName', true/false)でソートフィールドと方向を指定します。bindingのsorterパラメータに渡して動的ソートを実装できます。"
+    },
+    {
+      "id": 34,
+      "question": "BTP開発において、xs-security.jsonファイルの役割は何ですか？",
+      "options": {
+        "A": "XSUAAセキュリティ設定（scopes、role-templates）を定義する",
+        "B": "SSL証明書を設定する",
+        "C": "ネットワークセキュリティを設定する",
+        "D": "データ暗号化を定義する"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "xs-security.jsonはアプリのセキュリティ記述子を定義します：scopes（権限）、role-templates（ロールテンプレート）、role-collections（ロールコレクション）。XSUAAサービス作成時にこの設定を使用します。"
+    },
+    {
+      "id": 35,
+      "question": "CAPの@insertonlyアノテーションは何に使用されますか？",
+      "options": {
+        "A": "エンティティを作成のみに制限し、更新や削除を禁止する",
+        "B": "挿入パフォーマンスを最適化する",
+        "C": "バッチ挿入を強制する",
+        "D": "挿入ログを有効にする"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "@insertonlyはエンティティにINSERT操作のみを許可し、UPDATEとDELETEは禁止されます。監査ログ、イベントレコードなど、追加のみで変更できないデータに適しています。"
+    },
+    {
+      "id": 36,
+      "question": "SAP UI5のSmartTableは通常のTableと比較してどのような利点がありますか？",
+      "options": {
+        "A": "ODataメタデータから列と機能を自動生成する",
+        "B": "パフォーマンスが高い",
+        "C": "より多くの行をサポート",
+        "D": "メモリ使用量が少ない"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "SmartTableはODataメタデータとアノテーションからテーブル列、ソート、フィルター、グループ化機能を自動生成します。開発者はエンティティ名を提供するだけで、各列を手動で設定する必要がありません。"
+    },
+    {
+      "id": 37,
+      "question": "SAP BTPのcf create-service-keyコマンドは何に使用されますか？",
+      "options": {
+        "A": "外部アクセス用のサービスキーを作成する",
+        "B": "SSHキーを作成する",
+        "C": "暗号化キーを生成する",
+        "D": "APIキーを作成する"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "cf create-service-key <service> <key-name>でサービスキーを作成し、サービスにアクセスするための認証情報が含まれます。ローカル開発や外部システムがBTPサービスにアクセスするために使用します。"
+    },
+    {
+      "id": 38,
+      "question": "CAPでデータ変更監査をどのように実装しますか？",
+      "options": {
+        "A": "@cds.auditアノテーションを使用する",
+        "B": "変更ごとに手動で記録する",
+        "C": "データベーストリガーを使用する",
+        "D": "監査サービスを作成する"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "@cds.auditはエンティティの変更監査を有効にします。すべてのCUD操作が自動的に監査ログに記録され、操作タイプ、時間、ユーザー、変更内容が含まれます。監査履歴をクエリできます。"
+    },
+    {
+      "id": 39,
+      "question": "SAP UI5のODataListBindingとJSONListBindingの違いは何ですか？",
+      "options": {
+        "A": "ODataListBindingはサーバーサイド操作（ソート、フィルター）をサポートする",
+        "B": "パフォーマンスは完全に同じ",
+        "C": "ODataListBindingはローカル操作をサポートしない",
+        "D": "JSONListBindingはリモートデータをサポートする"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "ODataListBindingはソート/フィルター/ページングリクエストをサーバーに送信して処理できます（applicationFilters）。また、ローカル処理も可能です（controlFilters）。JSONListBindingはローカル操作のみサポートします。"
+    },
+    {
+      "id": 40,
+      "question": "BTP開発において、destination設定のproxyTypeプロパティは何に使用されますか？",
+      "options": {
+        "A": "インターネット経由かCloud Connector経由でアクセスするかを指定する",
+        "B": "プロキシサーバーを設定する",
+        "C": "負荷分散を設定する",
+        "D": "キャッシュ戦略を定義する"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "proxyTypeはアクセス方法を定義します：Internet（直接インターネットアクセス）またはOnPremise（Cloud Connector経由で内部ネットワークシステムにアクセス）。SAP S/4HANA On-Premiseへの接続にはOnPremiseを選択する必要があります。"
+    },
+    {
+      "id": 41,
+      "question": "CAPのSELECT.forUpdate()は何に使用されますか？",
+      "options": {
+        "A": "レコードを取得し、同時変更を防ぐためにロックする",
+        "B": "更新するフィールドを選択する",
+        "C": "更新ステートメントを準備する",
+        "D": "更新権限をチェックする"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "SELECT.forUpdate()はレコードを読み取る際に悲観的ロックを取得し、他のトランザクションが同時にこれらのレコードを変更できなくなります。データ整合性を確保する必要がある並行シナリオで使用します。"
+    },
+    {
+      "id": 42,
+      "question": "SAP UI5のDynamicPageのheaderContentPinnableプロパティは何に使用されますか？",
+      "options": {
+        "A": "ユーザーがヘッダーコンテンツを固定できるようにする",
+        "B": "ヘッダーを自動的に非表示にする",
+        "C": "ヘッダーを無効にする",
+        "D": "ヘッダーの高さを設定する"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "headerContentPinnable=trueの場合、ユーザーはヘッダーコンテンツ領域を固定（pin）でき、スクロール時もヘッダーが表示され続けます。falseの場合、ヘッダーはコンテンツのスクロールに伴って自動的に折りたたまれます。"
+    },
+    {
+      "id": 43,
+      "question": "SAP BTPのcf run-taskコマンドは何に使用されますか？",
+      "options": {
+        "A": "ワンショットタスクを実行する（メインアプリに影響しない）",
+        "B": "スケジュールタスクを開始する",
+        "C": "テストを実行する",
+        "D": "データベーススクリプトを実行する"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "cf run-taskは新しいコンテナでワンショットタスクを実行し、メインアプリとは独立しています。データ移行、バッチ処理ジョブなどに適しています。タスク完了後、コンテナは自動的に停止します。"
+    },
+    {
+      "id": 44,
+      "question": "CAPでHANA計算ビューをどのように使用しますか？",
+      "options": {
+        "A": "CDSで外部エンティティとして定義しマッピングする",
+        "B": "直接SQLクエリ",
+        "C": "REST API経由",
+        "D": "使用できない"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "@cds.persistence.existsを使用して外部エンティティをHANA計算ビューにマッピングします。エンティティ構造をビュー出力に一致させて定義し、CAPクエリは計算ビューに転送されます。"
+    },
+    {
+      "id": 45,
+      "question": "SAP UI5のControl.prototype.invalidate()メソッドは何に使用されますか？",
+      "options": {
+        "A": "コントロールに再レンダリングが必要であることをマークする",
+        "B": "コントロールを無効にする",
+        "C": "コントロールを削除する",
+        "D": "コントロールを無効化する"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "invalidate()はコントロールを無効状態としてマークし、次のレンダリングサイクルで再描画をトリガーします。コントロールの内部状態が変更され、DOMの更新が必要な場合に呼び出します。UI5は無効なコントロールをバッチ処理してパフォーマンスを最適化します。"
+    },
+    {
+      "id": 46,
+      "question": "BTP開発において、cf pushの--strategyパラメータは何に使用されますか？",
+      "options": {
+        "A": "デプロイ戦略を指定する（rolling、blue-green）",
+        "B": "ストレージ戦略を選択する",
+        "C": "キャッシュ戦略を設定する",
+        "D": "ルーティング戦略を定義する"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "--strategy rollingはローリングアップデートを実装し、インスタンスを段階的に置き換えます。--strategy blue-green（v3 APIが必要）はブルーグリーンデプロイをサポートします。本番環境のゼロダウンタイム更新に使用します。"
+    },
+    {
+      "id": 47,
+      "question": "CAPの@protocol: 'none'アノテーションは何に使用されますか？",
+      "options": {
+        "A": "サービスがプロトコルエンドポイントを公開しない",
+        "B": "ネットワークを無効にする",
+        "C": "HTTPSを使用しない",
+        "D": "認証をスキップする"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "@protocol: 'none'はサービスを純粋に内部使用にし、ODataやRESTエンドポイントを公開しません。他のサービスから内部的にのみ呼び出されるビジネスロジックを定義するために使用します。"
+    },
+    {
+      "id": 48,
+      "question": "SAP UI5で大量データの仮想化レンダリングをどのように処理しますか？",
+      "options": {
+        "A": "Tableのgrowing機能またはGrid Tableを使用する",
+        "B": "すべてのデータをロードする",
+        "C": "ページング表示する",
+        "D": "チャートで代替する"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "sap.ui.table.Table（Grid Table）は仮想スクロールをサポートし、可視行のみをレンダリングします。sap.m.Tableはgrowing機能でプログレッシブローディングを実装します。大量のDOM要素を一度にレンダリングすることを避けます。"
+    },
+    {
+      "id": 49,
+      "question": "SAP BTPのcf delete-serviceコマンドは何をしますか？",
+      "options": {
+        "A": "サービスインスタンスを削除する",
+        "B": "サービス定義を削除する",
+        "C": "サービスプランを削除する",
+        "D": "サービスブローカーを削除する"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "cf delete-service <instance-name>でサービスインスタンスを削除します。削除前に、このサービスを使用しているすべてのアプリをアンバインドする必要があります（cf unbind-service）。一部のサービスは-fで強制削除が必要な場合があります。"
+    },
+    {
+      "id": 50,
+      "question": "CAPでリクエストレート制限をどのように実装しますか？",
+      "options": {
+        "A": "ミドルウェアまたはAPI Managementを使用する",
+        "B": "データベース設定を変更する",
+        "C": "サーバーメモリを増やす",
+        "D": "CAPはレート制限をサポートしていない"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "CAP自体にはレート制限が組み込まれていません。Expressミドルウェア（express-rate-limitなど）またはSAP API Managementサービスを使用して、エントリーポイントでAPIレート制限とクォータ管理を実装できます。"
+    }
+  ]
+}

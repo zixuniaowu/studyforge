@@ -1,0 +1,772 @@
+{
+  "exam": {
+    "id": "n8n-advanced-set2",
+    "name": "n8n 高级 模拟考试 #2",
+    "code": "N8N-ADV",
+    "provider": "n8n",
+    "language": "zh-CN",
+    "description": "n8n 工作流自动化平台高级认证 - 第2套",
+    "totalQuestions": 50,
+    "passingScore": 70,
+    "examTime": 90,
+    "domains": [
+      { "id": 1, "name": "Error Handling", "weight": 20 },
+      { "id": 2, "name": "Sub-workflows & Architecture", "weight": 25 },
+      { "id": 3, "name": "Custom Development", "weight": 30 },
+      { "id": 4, "name": "Environment & Deployment", "weight": 25 }
+    ],
+    "tags": ["n8n", "workflow", "automation", "advanced", "认证考试"]
+  },
+  "questions": [
+    {
+      "id": "q1",
+      "domain": 1,
+      "question": "如何在 n8n 中实现全局错误通知？",
+      "options": {
+        "A": "在每个节点配置通知",
+        "B": "创建一个包含 Error Trigger 的错误处理工作流",
+        "C": "n8n 自动发送通知",
+        "D": "不支持错误通知"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "通过创建一个专门的错误处理工作流，使用 Error Trigger 节点捕获所有工作流的错误，然后通过邮件、Slack 等节点发送通知，实现全局错误通知。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q2",
+      "domain": 1,
+      "question": "节点的 'Max Tries' 设置影响什么？",
+      "options": {
+        "A": "节点执行的最大时间",
+        "B": "失败时的最大重试次数",
+        "C": "处理的最大数据量",
+        "D": "并发执行数"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "'Max Tries' 设置定义节点执行失败时的最大重试次数。例如设置为 3，节点最多尝试执行 3 次后才标记为失败。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q3",
+      "domain": 1,
+      "question": "如何处理工作流执行中的部分失败？",
+      "options": {
+        "A": "整个工作流必须失败",
+        "B": "使用 Continue On Fail 让成功的 items 继续处理",
+        "C": "无法处理部分失败",
+        "D": "手动重新运行失败的部分"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "使用 'Continue On Fail' 选项，即使某些 items 处理失败，其他成功的 items 仍可继续处理。失败的 items 会带有错误标记传递。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q4",
+      "domain": 1,
+      "question": "错误处理工作流可以访问失败工作流的哪些信息？（选择两个）",
+      "options": {
+        "A": "失败的节点名称",
+        "B": "错误消息",
+        "C": "源代码",
+        "D": "用户密码"
+      },
+      "answer": ["A", "B"],
+      "answerType": "multiple",
+      "explanation": "错误处理工作流通过 Error Trigger 接收的数据包含失败的节点名称、错误消息、工作流信息、执行 ID 等，但不包含敏感信息或源代码。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q5",
+      "domain": 1,
+      "question": "如何在 Code 节点中主动抛出错误？",
+      "options": {
+        "A": "使用 return error",
+        "B": "使用 throw new Error('message')",
+        "C": "使用 stop()",
+        "D": "不能在 Code 节点中抛出错误"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "在 Code 节点中使用 JavaScript 的 throw new Error('错误消息') 可以主动抛出错误。这会导致节点执行失败，触发错误处理流程。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q6",
+      "domain": 2,
+      "question": "使用子工作流的最佳实践是什么？（选择两个）",
+      "options": {
+        "A": "将可重用的逻辑封装成子工作流",
+        "B": "每个操作都创建一个子工作流",
+        "C": "保持子工作流功能单一和专注",
+        "D": "避免使用子工作流"
+      },
+      "answer": ["A", "C"],
+      "answerType": "multiple",
+      "explanation": "子工作流的最佳实践包括将可重用的逻辑封装起来，保持每个子工作流功能单一和专注。这提高了代码的可维护性和可复用性。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q7",
+      "domain": 2,
+      "question": "如何在父工作流中接收子工作流返回的多个 items？",
+      "options": {
+        "A": "不能接收多个 items",
+        "B": "子工作流返回数组，父工作流自动拆分",
+        "C": "需要使用特殊节点处理",
+        "D": "只能接收第一个 item"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "子工作流可以返回多个 items，父工作流的 Execute Workflow 节点会接收所有返回的 items，可以继续在下游节点中处理。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q8",
+      "domain": 2,
+      "question": "工作流之间的循环调用会导致什么问题？",
+      "options": {
+        "A": "没有问题",
+        "B": "无限循环和资源耗尽",
+        "C": "自动终止",
+        "D": "性能提升"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "工作流之间的循环调用（A 调用 B，B 又调用 A）会导致无限循环，耗尽系统资源。应该避免这种情况，使用明确的终止条件。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q9",
+      "domain": 2,
+      "question": "如何调试子工作流？",
+      "options": {
+        "A": "只能通过父工作流调试",
+        "B": "可以独立执行子工作流进行测试",
+        "C": "不支持调试",
+        "D": "只能查看日志"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "子工作流可以独立打开和执行进行调试。使用 Execute Workflow Trigger 的测试数据模拟父工作流的输入，验证逻辑正确性。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q10",
+      "domain": 2,
+      "question": "事件驱动架构在 n8n 中如何实现？",
+      "options": {
+        "A": "使用轮询触发器",
+        "B": "使用 Webhook 和消息队列触发器",
+        "C": "不支持事件驱动",
+        "D": "使用定时器"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "事件驱动架构通过 Webhook 触发器（接收 HTTP 事件）和消息队列触发器（如 RabbitMQ、Kafka）实现。工作流响应外部事件而不是轮询。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q11",
+      "domain": 3,
+      "question": "自定义节点的 INodeType 接口必须实现哪些属性？（选择两个）",
+      "options": {
+        "A": "description",
+        "B": "execute",
+        "C": "render",
+        "D": "style"
+      },
+      "answer": ["A", "B"],
+      "answerType": "multiple",
+      "explanation": "自定义节点必须实现 description（描述节点的元数据、属性等）和 execute（执行逻辑）。description 定义节点如何在 UI 中显示，execute 定义实际功能。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q12",
+      "domain": 3,
+      "question": "如何在自定义节点中定义多个操作（Operation）？",
+      "options": {
+        "A": "创建多个节点",
+        "B": "在 properties 中添加 operation 类型的属性，使用 options 定义操作列表",
+        "C": "使用不同的方法名",
+        "D": "不支持多操作"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "通过在 properties 数组中添加 operation 类型的属性，使用 options 数组定义多个操作。然后在 execute 方法中根据选择的 operation 执行不同逻辑。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q13",
+      "domain": 3,
+      "question": "自定义凭证类型需要继承哪个接口？",
+      "options": {
+        "A": "ICredentialType",
+        "B": "IAuthType",
+        "C": "ISecurityType",
+        "D": "ILoginType"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "自定义凭证类型需要实现 ICredentialType 接口，定义凭证的名称、属性（如 API Key、用户名、密码等）和验证逻辑。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q14",
+      "domain": 3,
+      "question": "如何在自定义节点中支持 OAuth2 认证？",
+      "options": {
+        "A": "手动实现 OAuth 流程",
+        "B": "使用 n8n 提供的 OAuth2 凭证基类",
+        "C": "不支持 OAuth2",
+        "D": "使用第三方库"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "n8n 提供 OAuth2 凭证基类，自定义节点可以继承并配置 OAuth2 参数（授权 URL、令牌 URL、作用域等）。n8n 处理令牌获取和刷新。",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q15",
+      "domain": 3,
+      "question": "Code 节点中 $() 函数的作用是什么？",
+      "options": {
+        "A": "jQuery 选择器",
+        "B": "访问指定节点的输出数据",
+        "C": "定义变量",
+        "D": "执行 SQL 查询"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "$('NodeName') 函数用于访问工作流中指定名称节点的输出数据。例如 $('HTTP Request').all() 获取 HTTP Request 节点的所有输出 items。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q16",
+      "domain": 3,
+      "question": "如何在 Code 节点中使用外部 npm 包？",
+      "options": {
+        "A": "直接 import",
+        "B": "需要在 n8n 配置中允许并安装包",
+        "C": "不支持外部包",
+        "D": "只能使用内置包"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "使用外部 npm 包需要：1) 设置 NODE_FUNCTION_ALLOW_EXTERNAL 环境变量允许外部包，2) 在 n8n 环境中安装包，3) 在 Code 节点中导入使用。",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q17",
+      "domain": 3,
+      "question": "自定义节点的 trigger 方法用于什么类型的节点？",
+      "options": {
+        "A": "所有节点",
+        "B": "触发器节点",
+        "C": "Action 节点",
+        "D": "条件节点"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "trigger 方法用于触发器类型的节点，定义如何监听外部事件（如 Webhook、轮询）并触发工作流执行。非触发器节点使用 execute 方法。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q18",
+      "domain": 4,
+      "question": "n8n 的高可用部署通常包括哪些组件？（选择两个）",
+      "options": {
+        "A": "多个 n8n 实例",
+        "B": "负载均衡器",
+        "C": "单一服务器",
+        "D": "本地文件存储"
+      },
+      "answer": ["A", "B"],
+      "answerType": "multiple",
+      "explanation": "高可用部署通常包括多个 n8n 实例（主实例或 worker）和负载均衡器分发请求。还需要共享数据库和队列系统。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q19",
+      "domain": 4,
+      "question": "N8N_DIAGNOSTICS_ENABLED 环境变量控制什么？",
+      "options": {
+        "A": "错误诊断",
+        "B": "向 n8n 发送匿名使用统计",
+        "C": "性能监控",
+        "D": "日志级别"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "N8N_DIAGNOSTICS_ENABLED 控制是否向 n8n 官方发送匿名使用统计数据。设置为 false 可以禁用此功能，保护隐私。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q20",
+      "domain": 4,
+      "question": "如何配置 n8n 的 Webhook 路径？",
+      "options": {
+        "A": "只能使用默认路径",
+        "B": "通过 WEBHOOK_URL 环境变量",
+        "C": "在 Webhook 节点中自定义 path",
+        "D": "B 和 C 都正确"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "可以通过 WEBHOOK_URL 环境变量设置 Webhook 的基础 URL，同时在每个 Webhook 节点中可以自定义 path 部分，两者结合形成完整 URL。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q21",
+      "domain": 4,
+      "question": "在 Kubernetes 中部署 n8n 时，工作流数据应存储在哪里？",
+      "options": {
+        "A": "Pod 本地存储",
+        "B": "外部持久化存储（如 PostgreSQL）",
+        "C": "ConfigMap",
+        "D": "Secret"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "在 Kubernetes 中，工作流数据应存储在外部持久化存储（如 PostgreSQL 数据库）中。Pod 可能被销毁和重建，本地存储会丢失数据。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q22",
+      "domain": 4,
+      "question": "如何限制 n8n API 的访问？",
+      "options": {
+        "A": "无法限制",
+        "B": "使用 API Key 认证",
+        "C": "禁用 API",
+        "D": "使用 IP 白名单"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "n8n API 使用 API Key 进行认证。需要在请求头中包含 X-N8N-API-KEY。可以在设置中生成和管理 API Key。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q23",
+      "domain": 1,
+      "question": "如何记录工作流执行的审计日志？",
+      "options": {
+        "A": "n8n 自动记录完整审计日志",
+        "B": "使用外部日志系统集成",
+        "C": "在工作流中添加日志节点",
+        "D": "B 和 C 都可行"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "可以将 n8n 日志输出到外部日志系统（如 ELK），也可以在工作流中添加节点记录关键操作到数据库或日志服务。两种方式结合更全面。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q24",
+      "domain": 1,
+      "question": "如何防止工作流的无限重试？",
+      "options": {
+        "A": "设置合理的 Max Tries 值",
+        "B": "禁用所有重试",
+        "C": "使用外部监控",
+        "D": "n8n 自动防止"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "设置合理的 Max Tries 值可以防止无限重试。同时可以配置重试间隔递增策略，避免短时间内大量重试影响系统。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q25",
+      "domain": 1,
+      "question": "如何在错误发生时保留失败的数据以便重新处理？",
+      "options": {
+        "A": "n8n 自动保留",
+        "B": "将失败的 items 存储到死信队列或数据库",
+        "C": "无法保留",
+        "D": "使用版本控制"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "可以创建错误处理分支，将失败的 items 存储到 '死信队列'（数据库表或消息队列）中。稍后可以创建另一个工作流重新处理这些失败的数据。",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q26",
+      "domain": 2,
+      "question": "如何在不同环境（开发、测试、生产）之间迁移工作流？",
+      "options": {
+        "A": "手动复制粘贴",
+        "B": "导出 JSON 并导入到目标环境",
+        "C": "使用 Git 版本控制工作流文件",
+        "D": "B 和 C 都可行"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "可以导出工作流 JSON 文件并导入到其他环境，也可以使用 Git 管理工作流文件实现版本控制和跨环境部署。推荐结合使用。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q27",
+      "domain": 2,
+      "question": "微服务架构中，n8n 通常扮演什么角色？",
+      "options": {
+        "A": "数据库",
+        "B": "服务编排和集成层",
+        "C": "前端 UI",
+        "D": "认证服务"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "在微服务架构中，n8n 通常作为服务编排和集成层，连接和协调不同的微服务，处理跨服务的业务流程和数据转换。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q28",
+      "domain": 2,
+      "question": "如何实现工作流的版本回滚？",
+      "options": {
+        "A": "n8n 不支持版本控制",
+        "B": "使用工作流版本历史功能",
+        "C": "只能手动恢复",
+        "D": "使用 Git"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "n8n 提供工作流版本历史功能，可以查看和恢复之前的工作流版本。每次保存都会创建新版本，方便回滚到任意历史状态。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q29",
+      "domain": 2,
+      "question": "大量数据处理时，如何避免内存溢出？",
+      "options": {
+        "A": "增加服务器内存",
+        "B": "使用分批处理（Split In Batches）",
+        "C": "减少节点数量",
+        "D": "禁用日志"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "使用 Split In Batches 节点将大量数据分成小批次处理，每批处理完成后再处理下一批。这样可以控制内存使用，避免溢出。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q30",
+      "domain": 3,
+      "question": "如何为自定义节点添加图标？",
+      "options": {
+        "A": "不支持自定义图标",
+        "B": "在 description 中设置 icon 属性，引用 SVG 或 PNG 文件",
+        "C": "只能使用默认图标",
+        "D": "在 CSS 中定义"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "在自定义节点的 description 对象中，设置 icon 属性指向 SVG 或 PNG 文件。文件需要放在节点包的指定目录中。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q31",
+      "domain": 3,
+      "question": "自定义节点如何实现分页获取数据？",
+      "options": {
+        "A": "在 execute 方法中循环获取所有页",
+        "B": "只能获取第一页",
+        "C": "使用内置分页函数",
+        "D": "让用户手动处理分页"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "在 execute 方法中实现循环逻辑，根据 API 返回的分页信息（下一页 token 或页码）持续获取数据，直到获取所有页面的数据。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q32",
+      "domain": 3,
+      "question": "如何在 Code 节点中进行异步操作？",
+      "options": {
+        "A": "使用回调函数",
+        "B": "使用 async/await 语法",
+        "C": "不支持异步",
+        "D": "使用 setTimeout"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Code 节点支持 async/await 语法进行异步操作。例如使用 await fetch() 进行异步 HTTP 请求，或 await 其他异步函数。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q33",
+      "domain": 3,
+      "question": "如何测试自定义凭证是否工作？",
+      "options": {
+        "A": "只能在工作流中测试",
+        "B": "凭证定义中可以添加 test 方法",
+        "C": "n8n 自动测试",
+        "D": "使用单元测试"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "在凭证定义中可以添加 test 属性，定义一个 API 请求来验证凭证是否有效。用户保存凭证时可以点击测试按钮验证。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q34",
+      "domain": 3,
+      "question": "Binary 数据在 Code 节点中如何访问？",
+      "options": {
+        "A": "item.binary",
+        "B": "$binary",
+        "C": "getBinary()",
+        "D": "item.json.binary"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "在 Code 节点中，二进制数据通过 item.binary 访问。它是一个对象，键是二进制属性名（如 'data'），值包含 mimeType、data 等信息。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q35",
+      "domain": 4,
+      "question": "如何监控 n8n 的执行队列长度？",
+      "options": {
+        "A": "只能查看界面",
+        "B": "通过 Prometheus 指标或 API 查询",
+        "C": "无法监控",
+        "D": "使用数据库查询"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "启用 Prometheus 指标后，可以监控队列长度等指标。也可以通过 n8n API 查询执行状态。结合监控系统如 Grafana 可视化。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q36",
+      "domain": 4,
+      "question": "N8N_HIRING_BANNER_ENABLED 环境变量的作用是什么？",
+      "options": {
+        "A": "显示招聘信息",
+        "B": "禁用界面上的招聘横幅广告",
+        "C": "启用付费功能",
+        "D": "显示更新通知"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "设置 N8N_HIRING_BANNER_ENABLED=false 可以禁用 n8n 界面上的招聘横幅广告，使界面更简洁。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q37",
+      "domain": 4,
+      "question": "如何配置 n8n 的会话超时时间？",
+      "options": {
+        "A": "无法配置",
+        "B": "N8N_USER_MANAGEMENT_JWT_DURATION_HOURS",
+        "C": "在界面设置",
+        "D": "SESSION_TIMEOUT"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "N8N_USER_MANAGEMENT_JWT_DURATION_HOURS 环境变量设置 JWT 令牌的有效期（小时），控制用户会话的超时时间。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q38",
+      "domain": 4,
+      "question": "如何在 Docker Compose 中配置 n8n 的持久化存储？",
+      "options": {
+        "A": "不需要配置",
+        "B": "使用 volumes 挂载数据目录和数据库",
+        "C": "使用环境变量",
+        "D": "使用 ConfigMap"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "在 Docker Compose 中，使用 volumes 挂载 n8n 的数据目录（如 ~/.n8n）到宿主机，确保容器重启后数据不丢失。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q39",
+      "domain": 1,
+      "question": "如何实现工作流执行的速率限制？",
+      "options": {
+        "A": "n8n 内置速率限制",
+        "B": "使用 Wait 节点或外部队列控制",
+        "C": "无法实现",
+        "D": "使用 IF 节点"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "可以使用 Wait 节点在请求之间添加延迟，或使用外部队列（如 Redis）配合 Rate Limiter 模式控制执行速率，避免超过 API 限制。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q40",
+      "domain": 1,
+      "question": "如何处理 Webhook 的重复请求？",
+      "options": {
+        "A": "Webhook 不会重复",
+        "B": "使用幂等性检查，记录已处理的请求 ID",
+        "C": "忽略所有重复",
+        "D": "n8n 自动处理"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "实现幂等性检查，提取请求中的唯一标识符，检查是否已处理过。可以将已处理的 ID 存储在 Redis 或数据库中进行比对。",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q41",
+      "domain": 2,
+      "question": "如何设计可扩展的工作流架构？",
+      "options": {
+        "A": "创建一个大型工作流处理所有逻辑",
+        "B": "使用模块化子工作流和清晰的接口",
+        "C": "避免使用工作流",
+        "D": "每个功能一个 n8n 实例"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "可扩展的架构使用模块化子工作流封装独立功能，通过清晰定义的输入输出接口组合。这便于维护、测试和复用。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q42",
+      "domain": 2,
+      "question": "如何在工作流中实现重试补偿机制（Saga 模式）？",
+      "options": {
+        "A": "n8n 内置 Saga 支持",
+        "B": "在错误分支中执行补偿操作",
+        "C": "不支持",
+        "D": "使用外部事务管理器"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "在工作流的错误处理分支中定义补偿操作（如回滚之前的更改）。当后续步骤失败时，执行补偿逻辑恢复系统状态。",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q43",
+      "domain": 3,
+      "question": "如何发布自定义节点到 npm？",
+      "options": {
+        "A": "不能发布",
+        "B": "配置 package.json 并使用 npm publish",
+        "C": "只能在本地使用",
+        "D": "提交到 n8n 官方"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "自定义节点可以作为 npm 包发布。配置 package.json 包含 n8n 节点元数据，使用 npm publish 发布到 npm registry。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q44",
+      "domain": 3,
+      "question": "如何在自定义节点中实现 Webhook 监听？",
+      "options": {
+        "A": "使用内置的 Webhook 节点",
+        "B": "实现 webhook 和 webhookMethods 方法",
+        "C": "不支持自定义 Webhook",
+        "D": "使用外部服务"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "自定义触发器节点可以实现 webhook 方法处理请求，webhookMethods 对象定义创建、删除 webhook 的逻辑。n8n 管理 webhook 端点。",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q45",
+      "domain": 4,
+      "question": "如何配置 n8n 使用外部 SMTP 发送系统邮件？",
+      "options": {
+        "A": "在界面配置",
+        "B": "设置 N8N_EMAIL_MODE 和 SMTP 相关环境变量",
+        "C": "使用 Gmail 节点",
+        "D": "不支持系统邮件"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "设置 N8N_EMAIL_MODE=smtp 并配置 N8N_SMTP_* 环境变量（主机、端口、用户名、密码等）来配置系统邮件发送，用于密码重置等功能。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q46",
+      "domain": 4,
+      "question": "如何配置 n8n 的 CORS 设置？",
+      "options": {
+        "A": "不需要配置",
+        "B": "N8N_CORS_ALLOWED_ORIGINS 环境变量",
+        "C": "在 Nginx 配置",
+        "D": "B 和 C 都可行"
+      },
+      "answer": "D",
+      "answerType": "single",
+      "explanation": "可以通过 N8N_CORS_ALLOWED_ORIGINS 环境变量配置允许的来源，也可以在反向代理（如 Nginx）中配置 CORS 头。两种方式都有效。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q47",
+      "domain": 1,
+      "question": "如何在工作流失败时自动创建问题单？",
+      "options": {
+        "A": "手动创建",
+        "B": "在错误处理工作流中调用 Jira/GitHub Issues API",
+        "C": "n8n 内置问题单功能",
+        "D": "使用邮件通知替代"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "在错误处理工作流中，使用 Jira、GitHub Issues 或其他项目管理节点自动创建问题单。包含错误详情、工作流信息等便于跟踪和处理。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q48",
+      "domain": 2,
+      "question": "如何实现工作流的 A/B 测试？",
+      "options": {
+        "A": "创建两个独立工作流",
+        "B": "使用 Switch 节点根据条件路由到不同处理分支",
+        "C": "不支持",
+        "D": "使用外部 A/B 测试工具"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "使用 Switch 节点根据随机数或用户属性将流量路由到不同的处理分支（A 或 B）。可以记录结果进行分析比较。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q49",
+      "domain": 3,
+      "question": "如何调试自定义节点？",
+      "options": {
+        "A": "只能通过日志",
+        "B": "使用 VS Code 调试器和 n8n 开发模式",
+        "C": "不支持调试",
+        "D": "使用 console.log"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "可以使用 VS Code 调试器连接到 n8n 进程进行断点调试。在开发模式下运行 n8n，支持热重载和详细错误信息。也可以使用 console.log 输出调试信息。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q50",
+      "domain": 4,
+      "question": "如何配置 n8n 的反向代理健康检查？",
+      "options": {
+        "A": "检查任意端点",
+        "B": "使用 /healthz 或 /healthcheck 端点",
+        "C": "不支持健康检查",
+        "D": "检查端口连通性"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "n8n 提供 /healthz 和 /healthcheck 端点用于健康检查。返回 200 状态码表示服务正常。在负载均衡器或 Kubernetes 中配置这些端点。",
+      "difficulty": "easy"
+    }
+  ]
+}

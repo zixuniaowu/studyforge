@@ -1,0 +1,660 @@
+{
+  "examId": "sap-c-aicore-set3-ja",
+  "provider": "SAP",
+  "title": "SAP AI Core (C_AICORE) 模擬問題 Set 3",
+  "description": "SAP AI Core 認定模擬試験第3セット",
+  "icon": "sap",
+  "setNumber": 3,
+  "questions": [
+    {
+      "id": 1,
+      "question": "SAP AI Core で Deployment のカスタムドメインを構成する方法は？",
+      "options": {
+        "A": "Serving Template で直接構成",
+        "B": "SAP BTP でカスタムドメインサービスを構成し、AI Core は BTP が提供するエンドポイントを使用",
+        "C": "Configuration でドメインを指定",
+        "D": "データベースで構成"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "SAP AI Core デプロイメントのエンドポイントは BTP プラットフォームで管理されます。カスタムドメインは SAP BTP のカスタムドメインサービスを通じて構成する必要があります。"
+    },
+    {
+      "id": 2,
+      "question": "SAP AI Core の Model Registry 機能は主に何のために使用されますか？",
+      "options": {
+        "A": "ユーザーアカウントの登録",
+        "B": "異なるバージョンの ML モデル Artifact の保存と管理",
+        "C": "データベース接続の登録",
+        "D": "ネットワークドメインの管理"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Model Registry は機械学習モデルの異なるバージョンを保存および管理するために使用され、モデルのバージョン追跡、メタデータ管理、デプロイメント参照をサポートします。"
+    },
+    {
+      "id": 3,
+      "question": "SAP AI Core の Workflow で条件分岐実行を実装する方法は？",
+      "options": {
+        "A": "if-else 文を使用",
+        "B": "Argo Workflows の when 条件式を使用",
+        "C": "データベーストリガーを使用",
+        "D": "条件分岐はサポートされていない"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "SAP AI Core は Argo Workflows を使用しており、when 条件式を使用して条件分岐実行を実装し、前のステップの出力に基づいて後続の実行パスを決定できます。"
+    },
+    {
+      "id": 4,
+      "question": "SAP AI Core がサポートする GPU タイプはどれですか？（2つ選択）",
+      "options": {
+        "A": "NVIDIA Tesla T4",
+        "B": "NVIDIA Tesla V100",
+        "C": "AMD Radeon",
+        "D": "Intel Xe"
+      },
+      "answer": ["A", "B"],
+      "answerType": "multiple",
+      "explanation": "SAP AI Core は主に NVIDIA GPU をサポートしており、ディープラーニングのトレーニングと推論の高速化のために Tesla T4 や V100 などのモデルが含まれます。"
+    },
+    {
+      "id": 5,
+      "question": "SAP AI Core でモデルのカナリアリリース（Canary Release）を実装する方法は？",
+      "options": {
+        "A": "自動サポート、構成不要",
+        "B": "新旧2つの Deployment を作成し、トラフィック重みを制御して段階的に切り替え",
+        "C": "既存の Deployment 構成を修正",
+        "D": "データベースマーキングを使用"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "カナリアリリースには新バージョンの Deployment を作成し、外部トラフィック管理ツール（API Gateway など）でトラフィック重みを制御し、段階的に旧バージョンから新バージョンにトラフィックを切り替える必要があります。"
+    },
+    {
+      "id": 6,
+      "question": "SAP AI Core の Serving Template における command フィールドの役割は何ですか？",
+      "options": {
+        "A": "API コマンドの定義",
+        "B": "Docker イメージのデフォルトエントリポイントコマンドをオーバーライド",
+        "C": "ユーザー指示の送信",
+        "D": "データベースコマンドの構成"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "command フィールドは Docker イメージで定義されているデフォルトの ENTRYPOINT をオーバーライドし、コンテナ起動時に実行するコマンドを指定するために使用されます。"
+    },
+    {
+      "id": 7,
+      "question": "SAP AI Core でリソース使用状況を監視する方法は？",
+      "options": {
+        "A": "ログでのみ確認可能",
+        "B": "SAP AI Launchpad のリソースダッシュボードで確認するか、Metrics API を使用",
+        "C": "サードパーティ監視ツールのインストールが必要",
+        "D": "リソース監視はサポートされていない"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "SAP AI Launchpad はリソース使用ダッシュボードを提供し、Metrics API を通じて CPU、メモリ、GPU などのリソース使用データをプログラム的に取得することもできます。"
+    },
+    {
+      "id": 8,
+      "question": "SAP AI Core の Prompt Registry 機能とは何ですか？",
+      "options": {
+        "A": "ユーザープロンプト情報の保存",
+        "B": "生成 AI アプリケーションの Prompt テンプレートの管理とバージョン管理",
+        "C": "コマンドライン履歴の記録",
+        "D": "エラープロンプトの保存"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Prompt Registry は生成 AI アプリケーションの Prompt テンプレートを管理し、バージョン管理、再利用、異なる Prompt バリアントの A/B テストをサポートします。"
+    },
+    {
+      "id": 9,
+      "question": "SAP AI Core の Workflow における artifacts パラメータの役割は何ですか？（2つ選択）",
+      "options": {
+        "A": "ワークフローの入力データソースを定義",
+        "B": "ワークフローの出力データターゲットを定義",
+        "C": "ユーザーインターフェース要素を構成",
+        "D": "ネットワークパラメータを設定"
+      },
+      "answer": ["A", "B"],
+      "answerType": "multiple",
+      "explanation": "Workflow Template の artifacts パラメータはワークフローの入力（inputs.artifacts）と出力（outputs.artifacts）を定義し、データのソースと保存場所を指定するために使用されます。"
+    },
+    {
+      "id": 10,
+      "question": "SAP AI Core でモデル推論リクエストのバッチ処理を行う方法は？",
+      "options": {
+        "A": "リクエストを1つずつしか処理できない",
+        "B": "Batch Inference の Execution でバッチ処理を実行",
+        "C": "すべてのリクエストを自動的にバッチ処理",
+        "D": "モデルコードの修正が必要"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "大規模データのバッチ推論には、Online Inference の Deployment を使用する代わりに、Execution を作成して Batch Inference タスクを実行できます。"
+    },
+    {
+      "id": 11,
+      "question": "SAP AI Core における volumeMounts の役割は何ですか？",
+      "options": {
+        "A": "ネットワークストレージの構成",
+        "B": "外部ストレージボリュームをコンテナ内の指定パスにマウント",
+        "C": "音量レベルの設定",
+        "D": "ファイル権限の管理"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "volumeMounts は Secret や ConfigMap などの外部ストレージボリュームをコンテナ内の指定パスにマウントし、コンテナが外部データにアクセスできるようにするために使用されます。"
+    },
+    {
+      "id": 12,
+      "question": "SAP AI Core と SAP HANA の統合方法は？",
+      "options": {
+        "A": "直接組み込み統合",
+        "B": "標準データベース接続または SAP HANA ML ライブラリを通じて統合",
+        "C": "統合はサポートされていない",
+        "D": "追加ライセンスの購入が必要"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "SAP AI Core は標準データベース接続を通じて HANA データにアクセスしたり、SAP HANA ML ライブラリを使用して HANA のデータを AI トレーニングや推論に使用したりできます。"
+    },
+    {
+      "id": 13,
+      "question": "SAP AI Core でモデルサービスのレート制限を実装する方法は？",
+      "options": {
+        "A": "Serving Template で直接構成",
+        "B": "SAP API Management またはカスタムミドルウェアで実装",
+        "C": "すべてのリクエストを自動的に制限",
+        "D": "レート制限はサポートされていない"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "SAP AI Core 自体はレート制限機能を直接提供していないため、SAP API Management を使用するか、コンテナ内でカスタムミドルウェアを実装してリクエスト頻度を制御する必要があります。"
+    },
+    {
+      "id": 14,
+      "question": "SAP AI Core の Execution タイムアウトメカニズムは何ですか？",
+      "options": {
+        "A": "タイムアウトしない",
+        "B": "Workflow Template で activeDeadlineSeconds を使用してタイムアウト時間を構成可能",
+        "C": "1時間に固定",
+        "D": "データベースで制御"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Workflow Template で activeDeadlineSeconds パラメータを使用して実行の最大タイムアウト時間を設定でき、タイムアウト後はタスクが終了します。"
+    },
+    {
+      "id": 15,
+      "question": "SAP AI Core でリージョン間の災害復旧を構成する方法は？",
+      "options": {
+        "A": "自動的にリージョン間で複製",
+        "B": "複数のリージョンに独立した AI Core インスタンスをデプロイし、データ同期を構成する必要あり",
+        "C": "単一の構成で有効化",
+        "D": "リージョン間はサポートされていない"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "リージョン間の災害復旧には、複数の SAP BTP リージョンに独立した AI Core インスタンスをデプロイし、オブジェクトストレージでモデルとデータを同期し、トラフィック切り替えメカニズムを構成する必要があります。"
+    },
+    {
+      "id": 16,
+      "question": "SAP AI Core の Grounding サービスとは何ですか？",
+      "options": {
+        "A": "接地回路保護",
+        "B": "LLM 出力を企業データと関連付けて検証するサービス",
+        "C": "ネットワークインフラストラクチャサービス",
+        "D": "データベース接続サービス"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Grounding サービスは大規模言語モデル（LLM）の出力を企業のナレッジベースやドキュメントなどのデータと関連付け、ハルシネーションを減らし、回答の精度と関連性を向上させるために使用されます。"
+    },
+    {
+      "id": 17,
+      "question": "SAP AI Core の Serving Template における terminationGracePeriodSeconds の役割は何ですか？",
+      "options": {
+        "A": "コンテナ起動時間の設定",
+        "B": "コンテナ停止前のグレースフル終了待機時間の設定",
+        "C": "セッションタイムアウトの構成",
+        "D": "データバックアップ時間の設定"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "terminationGracePeriodSeconds は、コンテナが終了シグナルを受信した後のグレースフルシャットダウン待機時間を定義し、コンテナが処理中のリクエストを完了できるようにします。"
+    },
+    {
+      "id": 18,
+      "question": "SAP AI Core は連合学習（Federated Learning）をどのようにサポートしますか？",
+      "options": {
+        "A": "連合学習機能が組み込まれている",
+        "B": "カスタムコンテナで連合学習アルゴリズムを実装し、AI Core がオーケストレーション機能を提供",
+        "C": "連合学習はサポートされていない",
+        "D": "専用モジュールの購入が必要"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "SAP AI Core には連合学習機能が組み込まれていませんが、カスタムコンテナで連合学習フレームワークをデプロイし、AI Core のオーケストレーションとスケジューリング機能を活用できます。"
+    },
+    {
+      "id": 19,
+      "question": "SAP AI Core でモデルの説明可能性（Explainability）を実装する方法は？",
+      "options": {
+        "A": "すべてのモデルの説明を自動的に提供",
+        "B": "カスタムモデルサービスに SHAP、LIME などの説明ツールを統合",
+        "C": "データベースクエリで説明を取得",
+        "D": "モデル説明はサポートされていない"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "モデルの説明可能性はカスタムコンテナに SHAP、LIME などの説明ツールを統合し、推論エンドポイントで説明機能を提供する必要があります。"
+    },
+    {
+      "id": 20,
+      "question": "SAP AI Core の Data Binding 機能とは何ですか？",
+      "options": {
+        "A": "データ可視化バインディング",
+        "B": "外部データソース（Object Store 内のデータなど）をトレーニングまたは推論タスクにバインド",
+        "C": "データベース接続バインディング",
+        "D": "ユーザーインターフェースデータバインディング"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Data Binding は Object Store 内のデータセットやモデルファイルをトレーニングまたは推論タスクの入力としてバインドでき、Configuration の inputArtifactBindings で構成します。"
+    },
+    {
+      "id": 21,
+      "question": "SAP AI Core でコンテナのリソースリクエスト（resource requests）を構成する方法は？",
+      "options": {
+        "A": "annotations で構成",
+        "B": "spec.containers.resources.requests で最低リソース要件を定義",
+        "C": "リソースを自動割り当て",
+        "D": "データベースで構成"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "コンテナ仕様で resources.requests を使用してコンテナの最低リソース要件（CPU、メモリ）を定義し、Kubernetes は少なくともこれらのリソースを割り当てることを保証します。"
+    },
+    {
+      "id": 22,
+      "question": "SAP AI Core の Vector Engine 機能とは何ですか？",
+      "options": {
+        "A": "グラフィックレンダリングエンジン",
+        "B": "ベクトル埋め込みを保存および検索するサービスで、セマンティック検索をサポート",
+        "C": "数学計算エンジン",
+        "D": "ネットワークルーティングエンジン"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Vector Engine はベクトル埋め込みを保存および効率的に検索するサービスで、RAG（検索拡張生成）アプリケーションでのセマンティック類似度検索をサポートします。"
+    },
+    {
+      "id": 23,
+      "question": "SAP AI Core でモデル入力データの前処理を行う方法は？",
+      "options": {
+        "A": "AI Core がすべての前処理を自動的に処理",
+        "B": "カスタムコンテナの推論コードで前処理ロジックを実装",
+        "C": "構成ファイルで前処理ルールを定義",
+        "D": "データベースストアドプロシージャを使用"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "データ前処理ロジックはカスタムコンテナの推論サービスコードで実装する必要があり、データクレンジング、特徴エンジニアリング、フォーマット変換などの操作が含まれます。"
+    },
+    {
+      "id": 24,
+      "question": "SAP AI Core の Orchestration Service が提供する機能は何ですか？（2つ選択）",
+      "options": {
+        "A": "複数の LLM 呼び出しの複雑なワークフローの調整",
+        "B": "コンテナオーケストレーションの管理",
+        "C": "Prompt チェーン実行機能の提供",
+        "D": "ネットワークルーティングの構成"
+      },
+      "answer": ["A", "C"],
+      "answerType": "multiple",
+      "explanation": "Orchestration Service は複雑な生成 AI ワークフローを調整するために使用され、複数の LLM 呼び出しのオーケストレーションと Prompt のチェーン実行をサポートします。"
+    },
+    {
+      "id": 25,
+      "question": "SAP AI Core で自動ログ収集を構成する方法は？",
+      "options": {
+        "A": "各コンテナを手動で構成する必要あり",
+        "B": "AI Core がコンテナの stdout と stderr 出力をログシステムに自動収集",
+        "C": "ログ収集はサポートされていない",
+        "D": "追加のログエージェントをインストールする必要あり"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "SAP AI Core はコンテナの標準出力（stdout）と標準エラー（stderr）ストリームをログシステムに自動収集し、API または AI Launchpad で表示できます。"
+    },
+    {
+      "id": 26,
+      "question": "SAP AI Core がサポートするモデルフレームワークはどれですか？（3つ選択）",
+      "options": {
+        "A": "TensorFlow",
+        "B": "PyTorch",
+        "C": "scikit-learn",
+        "D": "SAP 専用フレームワークのみサポート"
+      },
+      "answer": ["A", "B", "C"],
+      "answerType": "multiple",
+      "explanation": "SAP AI Core はコンテナ化を通じて TensorFlow、PyTorch、scikit-learn などの主要フレームワークを含む任意の ML フレームワークをサポートしており、特定のフレームワークに限定されません。"
+    },
+    {
+      "id": 27,
+      "question": "SAP AI Core における initContainers の役割は何ですか？",
+      "options": {
+        "A": "初期化ユーザーインターフェースの定義",
+        "B": "メインコンテナ起動前に実行される初期化コンテナで、環境準備に使用",
+        "C": "データベース初期化の構成",
+        "D": "ネットワーク初期化の設定"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "initContainers はメインコンテナ起動前に実行される初期化コンテナで、データのダウンロード、構成ファイル、依存関係のチェックなどの準備作業に使用できます。"
+    },
+    {
+      "id": 28,
+      "question": "SAP AI Core の Content Filtering 機能とは何ですか？",
+      "options": {
+        "A": "ネットワークコンテンツのフィルタリング",
+        "B": "生成 AI 出力のセキュリティフィルタリング、有害コンテンツの検出",
+        "C": "データベースクエリ結果のフィルタリング",
+        "D": "ユーザー入力のフィルタリング"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Content Filtering は生成 AI モデル出力の有害、不適切、または機密コンテンツを検出およびフィルタリングし、AI アプリケーションのセキュリティとコンプライアンスを確保するために使用されます。"
+    },
+    {
+      "id": 29,
+      "question": "SAP AI Core で ConfigMap から Deployment の環境変数を構成する方法は？",
+      "options": {
+        "A": "env に直接値を記述",
+        "B": "configMapKeyRef を使用して ConfigMap 内のキー値を参照",
+        "C": "ConfigMap はサポートされていない",
+        "D": "データベースで構成"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "環境変数構成で configMapKeyRef を使用して、事前に作成した ConfigMap 内の特定のキー値を参照できます。"
+    },
+    {
+      "id": 30,
+      "question": "SAP AI Core の Model Monitoring 機能には何が含まれますか？（2つ選択）",
+      "options": {
+        "A": "モデルパフォーマンスドリフトの検出",
+        "B": "ユーザーインターフェースパフォーマンスの監視",
+        "C": "推論リクエストのレイテンシとスループットの追跡",
+        "D": "データベース接続の監視"
+      },
+      "answer": ["A", "C"],
+      "answerType": "multiple",
+      "explanation": "Model Monitoring 機能には、モデルパフォーマンスドリフト（データ分布の変化による精度低下）の検出と推論サービスのパフォーマンスメトリクスの追跡が含まれます。"
+    },
+    {
+      "id": 31,
+      "question": "SAP AI Core でモデルの Shadow デプロイメントを実装する方法は？",
+      "options": {
+        "A": "特別な構成を使用して有効化",
+        "B": "Shadow Deployment を作成し、リクエストを並行して受信するがクライアントに結果を返さない",
+        "C": "すべてのデプロイメントに自動的にシャドウを作成",
+        "D": "Shadow デプロイメントはサポートされていない"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Shadow デプロイメントには本番トラフィックをミラーリングする追加の Deployment を作成し、ユーザーに影響を与えずに新しいモデルをテストする必要があります。トラフィック複製ロジックは自分で実装する必要があります。"
+    },
+    {
+      "id": 32,
+      "question": "SAP AI Core の AI API で現在主に使用されているバージョンは？",
+      "options": {
+        "A": "v1",
+        "B": "v2",
+        "C": "v3",
+        "D": "beta"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "SAP AI Core は現在主に v2 バージョンの AI API（/v2/lm/...）を使用しており、完全なライフサイクル管理機能を提供しています。"
+    },
+    {
+      "id": 33,
+      "question": "SAP AI Core で Workflow のリトライ戦略を構成する方法は？",
+      "options": {
+        "A": "リトライはサポートされていない",
+        "B": "retryStrategy でリトライ回数とバックオフ戦略を構成",
+        "C": "すべての失敗タスクを自動リトライ",
+        "D": "データベースで構成"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Argo Workflows は retryStrategy 構成をサポートしており、リトライ回数、バックオフ戦略（exponential、linear）などを定義して、一時的な障害を処理できます。"
+    },
+    {
+      "id": 34,
+      "question": "SAP AI Core の Embeddings サービスが提供する機能は何ですか？",
+      "options": {
+        "A": "組み込みシステム開発",
+        "B": "テキストをベクトル埋め込みに変換し、セマンティック検索と類似度計算に使用",
+        "C": "埋め込みデータベース",
+        "D": "埋め込み Web コンポーネント"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Embeddings サービスはテキストを高次元ベクトル表現に変換し、セマンティック検索、ドキュメント類似度計算、クラスタリングなどの NLP タスクに使用されます。"
+    },
+    {
+      "id": 35,
+      "question": "SAP AI Core で複数ステージのトレーニングパイプラインを実装する方法は？",
+      "options": {
+        "A": "複数の独立した Execution を作成",
+        "B": "Workflow Template で複数のステップを含む DAG を定義",
+        "C": "複数ステージのトレーニングはサポートされていない",
+        "D": "データベーススケジューリングを使用"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Workflow Template で DAG（有向非巡回グラフ）を定義することで、データ前処理、特徴エンジニアリング、モデルトレーニング、評価などのステップを含む複数ステージのトレーニングパイプラインをオーケストレーションできます。"
+    },
+    {
+      "id": 36,
+      "question": "SAP AI Core の Usage Tracking 機能とは何ですか？",
+      "options": {
+        "A": "ユーザーログインの追跡",
+        "B": "課金とコスト管理のための AI リソース使用量の追跡",
+        "C": "コード変更の追跡",
+        "D": "ネットワークトラフィックの追跡"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Usage Tracking は AI リソース（計算時間、API 呼び出し数など）の使用量を追跡し、コスト分析、予算管理、課金レポートをサポートします。"
+    },
+    {
+      "id": 37,
+      "question": "SAP AI Core で Pod のアフィニティ（Affinity）を構成する方法は？",
+      "options": {
+        "A": "Serving Template で affinity を使用してノード選択ルールを構成",
+        "B": "システムが自動的に決定",
+        "C": "データベースで構成",
+        "D": "アフィニティ構成はサポートされていない"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Serving Template の Pod 仕様で affinity を構成し、ノードアフィニティルールを定義して、特定のタイプのノードへの Pod スケジューリングを制御できます。"
+    },
+    {
+      "id": 38,
+      "question": "SAP AI Core の Document Grounding 機能とは何ですか？",
+      "options": {
+        "A": "ドキュメントストレージサービス",
+        "B": "LLM の回答を企業ドキュメントコンテンツと関連付け、根拠のある回答を提供",
+        "C": "ドキュメントフォーマット変換",
+        "D": "ドキュメント署名サービス"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Document Grounding は LLM が生成した回答を企業ドキュメントと関連付け、引用元を提供し、ハルシネーションを減らして回答の信頼性を高めます。"
+    },
+    {
+      "id": 39,
+      "question": "SAP AI Core でコンテナのセキュリティコンテキスト（Security Context）を構成する方法は？",
+      "options": {
+        "A": "セキュリティ構成はサポートされていない",
+        "B": "securityContext で実行ユーザー、ファイルシステム権限などを構成",
+        "C": "セキュリティ設定は SAP が固定構成",
+        "D": "データベースで管理"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "コンテナ仕様で securityContext を構成し、実行ユーザー ID、グループ ID、読み取り専用ファイルシステムなどのセキュリティオプションを設定できます。"
+    },
+    {
+      "id": 40,
+      "question": "SAP AI Core の Scenario バージョン管理はどの戦略に従いますか？",
+      "options": {
+        "A": "最新バージョンのみを保持",
+        "B": "複数バージョンの共存をサポートし、バージョンタグで区別",
+        "C": "古いバージョンを自動削除",
+        "D": "バージョン管理はサポートされていない"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "SAP AI Core は Scenario の複数バージョン共存をサポートしており、metadata.labels の ai.sap.com/version タグで異なるバージョンを区別し、並行デプロイメントをサポートします。"
+    },
+    {
+      "id": 41,
+      "question": "SAP AI Core でモデルサービスのグレースケールリリースを実装する方法は？",
+      "options": {
+        "A": "既存のデプロイメント構成を修正",
+        "B": "新バージョン Deployment を作成し、トラフィック管理で段階的にユーザー比率を切り替え",
+        "C": "データベースで制御",
+        "D": "自動グレースケールリリース"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "グレースケールリリースには新バージョン Deployment を作成し、API Gateway またはカスタムルーティングロジックを通じて、段階的に一定比率のトラフィックを新バージョンに切り替える必要があります。"
+    },
+    {
+      "id": 42,
+      "question": "SAP AI Core の Function Calling 機能とは何ですか？",
+      "options": {
+        "A": "システム関数の呼び出し",
+        "B": "LLM が事前定義された外部ツールや API を呼び出してタスクを完了できるようにする",
+        "C": "データベース関数呼び出し",
+        "D": "ネットワーク関数呼び出し"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Function Calling は、大規模言語モデルがユーザーのニーズに基づいて事前定義された外部ツールや API を選択して呼び出し、AI の機能範囲を拡張できるようにします。"
+    },
+    {
+      "id": 43,
+      "question": "SAP AI Core で永続ストレージを構成する方法は？",
+      "options": {
+        "A": "永続ストレージを自動提供",
+        "B": "Object Store で外部ストレージを構成し、コンテナ自体はステートレス",
+        "C": "ローカルディスクを使用",
+        "D": "データベースストレージを使用"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "SAP AI Core コンテナはステートレスであり、永続データは Object Store（S3 など）に保存し、Artifact と構成で参照する必要があります。"
+    },
+    {
+      "id": 44,
+      "question": "SAP AI Core の Compliance 機能には何が含まれますか？（2つ選択）",
+      "options": {
+        "A": "監査ログ記録",
+        "B": "フロントエンドスタイルチェック",
+        "C": "データ駐在とプライバシーコンプライアンス",
+        "D": "コード構文チェック"
+      },
+      "answer": ["A", "C"],
+      "answerType": "multiple",
+      "explanation": "SAP AI Core のコンプライアンス機能には、完全な監査ログ記録（すべての操作を追跡可能）とデータ駐在およびプライバシーコンプライアンス（GDPR などの規制に準拠）が含まれます。"
+    },
+    {
+      "id": 45,
+      "question": "SAP AI Core でモデル推論の同時リクエストを処理する方法は？",
+      "options": {
+        "A": "シリアル処理のみ可能",
+        "B": "複数レプリカデプロイメントと Kubernetes 負荷分散で自動処理",
+        "C": "リクエストを手動で割り当てる必要あり",
+        "D": "同時処理はサポートされていない"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "SAP AI Core は複数のレプリカをデプロイし、Kubernetes の負荷分散機能を活用して、同時リクエストを異なるレプリカに自動的に分散して処理します。"
+    },
+    {
+      "id": 46,
+      "question": "SAP AI Core の Fine-tuning Service が提供する機能は何ですか？",
+      "options": {
+        "A": "システムパラメータの調整",
+        "B": "基盤モデルに対するドメイン固有の微調整トレーニング",
+        "C": "ユーザーインターフェースの調整",
+        "D": "ネットワーク構成の調整"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Fine-tuning Service により、ユーザーは自身のデータを使用して基盤モデル（Foundation Model）をドメイン固有で微調整し、特定タスクでのモデルパフォーマンスを向上させることができます。"
+    },
+    {
+      "id": 47,
+      "question": "SAP AI Core でサービスアカウント（Service Account）を構成する方法は？",
+      "options": {
+        "A": "テンプレートで serviceAccountName を指定",
+        "B": "デフォルトサービスアカウントを自動使用",
+        "C": "サービスアカウントはサポートされていない",
+        "D": "データベースで構成"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Pod 仕様で serviceAccountName を使用して、使用する Kubernetes サービスアカウントを指定し、コンテナの権限とアクセス機能を制御できます。"
+    },
+    {
+      "id": 48,
+      "question": "SAP AI Core で RAG（Retrieval-Augmented Generation）を実装するために必要なコンポーネントは？（2つ選択）",
+      "options": {
+        "A": "ドキュメント埋め込みを保存する Vector Engine",
+        "B": "フロントエンドインターフェースコンポーネント",
+        "C": "最終回答を生成する LLM",
+        "D": "データベーストリガー"
+      },
+      "answer": ["A", "C"],
+      "answerType": "multiple",
+      "explanation": "RAG 実装には、関連コンテンツを検索するためのドキュメントのベクトル埋め込みを保存する Vector Engine と、検索されたコンテキストに基づいて最終回答を生成する LLM が必要です。"
+    },
+    {
+      "id": 49,
+      "question": "SAP AI Core で Resource Group 間のリソース共有を実装する方法は？",
+      "options": {
+        "A": "すべてのリソースを自動共有",
+        "B": "Main Tenant レベルの Artifact 共有または共有 Object Store を使用",
+        "C": "Resource Group 間の共有はサポートされていない",
+        "D": "データベースリンクを使用"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Resource Group 間のリソース共有は、Main Tenant レベルで登録された Artifact または共有 Object Store パスを使用して実現できます。"
+    },
+    {
+      "id": 50,
+      "question": "SAP AI Core と SAP Analytics Cloud の統合方法は？",
+      "options": {
+        "A": "直接組み込み統合",
+        "B": "API 呼び出しを通じて AI 予測結果を SAC の分析とレポートに統合",
+        "C": "統合はサポートされていない",
+        "D": "追加ライセンスの購入が必要"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "SAP AI Core は API を通じて SAP Analytics Cloud と統合し、AI 予測結果とインサイトを SAC のダッシュボード、レポート、計画機能に埋め込むことができます。"
+    }
+  ]
+}

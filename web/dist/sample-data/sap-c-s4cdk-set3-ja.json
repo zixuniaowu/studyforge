@@ -1,0 +1,656 @@
+{
+  "examId": "sap-c-s4cdk",
+  "setNumber": 3,
+  "questions": [
+    {
+      "id": "sap-c-s4cdk-3-001",
+      "question": "SAP Cloud SDK と SAP CAP (Cloud Application Programming Model) はどのように連携しますか？",
+      "options": {
+        "A": "一緒に使用できない",
+        "B": "CAP アプリは Cloud SDK を使用して外部 SAP システムを呼び出せる",
+        "C": "Cloud SDK は CAP を置き換えた",
+        "D": "どちらか一方しか選べない"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "CAP アプリは SAP Cloud SDK を統合して外部 SAP システムの API を呼び出すことができます。CAP はアプリロジックとデータモデルを処理し、Cloud SDK はシステム統合を担当します。"
+    },
+    {
+      "id": "sap-c-s4cdk-3-002",
+      "question": "SAP Cloud SDK において、「OData V4 Batch」と V2 の違いは何ですか？（2つ選択）",
+      "options": {
+        "A": "V4 は JSON 形式を使用する",
+        "B": "V4 と V2 は完全に同じ",
+        "C": "V4 はより柔軟な Changeset をサポートする",
+        "D": "V2 にはバッチ処理がない"
+      },
+      "answer": ["A", "C"],
+      "answerType": "multiple",
+      "explanation": "OData V4 Batch は JSON 形式を使用し（V2 はマルチパート MIME を使用）、より柔軟な Changeset 定義と参照メカニズムをサポートします。"
+    },
+    {
+      "id": "sap-c-s4cdk-3-003",
+      "question": "SAP Cloud SDK の「BTP Service Consumption」パターンとは何ですか？",
+      "options": {
+        "A": "物品の消費",
+        "B": "サービスバインディングを通じて BTP サービスを自動検出して使用する",
+        "C": "データの消費",
+        "D": "リソースの消費"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "BTP Service Consumption パターンは、サービスバインディング（VCAP_SERVICES）を通じて BTP サービスを自動検出して使用し、手動での資格情報設定が不要です。"
+    },
+    {
+      "id": "sap-c-s4cdk-3-004",
+      "question": "SAP Cloud SDK で、S/4HANA の「Extensibility API」をどのように処理しますか？",
+      "options": {
+        "A": "拡張 API をサポートしていない",
+        "B": "Generator を使用してカスタム拡張 API 用のクライアントを生成する",
+        "C": "手動呼び出しのみ",
+        "D": "標準 VDM を使用する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "S/4HANA のカスタム拡張 API については、Cloud SDK Generator を使用して EDMX メタデータから型安全なクライアントコードを生成できます。"
+    },
+    {
+      "id": "sap-c-s4cdk-3-005",
+      "question": "SAP Cloud SDK の「Multitenancy Provider」の役割は何ですか？",
+      "options": {
+        "A": "テナントを提供する",
+        "B": "マルチテナントアプリのテナントライフサイクルを管理する",
+        "C": "サービスを提供する",
+        "D": "データを提供する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Multitenancy Provider は SAP BTP の概念で、マルチテナントアプリのテナントライフサイクルを管理します。Cloud SDK はこれと統合してサブスクリプションとコンテキストを処理します。"
+    },
+    {
+      "id": "sap-c-s4cdk-3-006",
+      "question": "SAP Cloud SDK for JavaScript において、「TypeScript Strict Mode」の影響は何ですか？",
+      "options": {
+        "A": "影響なし",
+        "B": "より厳格な型チェックと優れた IDE サポートを提供する",
+        "C": "パフォーマンスが低下する",
+        "D": "コード量が増加する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "TypeScript Strict Mode はより厳格な型チェックを提供し、Cloud SDK の型安全な VDM と組み合わせることで、優れた IDE サポートとコンパイル時のエラー検出が可能になります。"
+    },
+    {
+      "id": "sap-c-s4cdk-3-007",
+      "question": "SAP Cloud SDK の「Event Mesh Integration」は何に使用されますか？",
+      "options": {
+        "A": "イベント管理",
+        "B": "SAP Event Mesh と統合してイベント駆動アーキテクチャを実現する",
+        "C": "グリッドコンピューティング",
+        "D": "データグリッド"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Event Mesh Integration により、アプリは SAP Event Mesh と統合してイベント駆動アーキテクチャを実現し、S/4HANA やその他のシステムのビジネスイベントに応答できます。"
+    },
+    {
+      "id": "sap-c-s4cdk-3-008",
+      "question": "SAP Cloud SDK において、「Entity Key」は複合主キーをどのように表現しますか？",
+      "options": {
+        "A": "複合主キーをサポートしていない",
+        "B": "複数のキーフィールドを組み合わせて使用する",
+        "C": "単一キーのみ使用可能",
+        "D": "GUID を使用する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "複合主キーは複数のキーフィールドを組み合わせて表現され、VDM が生成するコードには複合キーを処理するメソッドと型が含まれます。"
+    },
+    {
+      "id": "sap-c-s4cdk-3-009",
+      "question": "SAP Cloud SDK の「Draft Handling」はどのようなシナリオで使用されますか？",
+      "options": {
+        "A": "図面の処理",
+        "B": "OData V4 のドラフト編集モードをサポートする",
+        "C": "メールのドラフト処理",
+        "D": "ドキュメントのドラフト処理"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Draft Handling は OData V4 のドラフト編集モードをサポートし、ユーザーが未完成のデータを保存して後で編集を続けることができます。Fiori アプリでよく使用されます。"
+    },
+    {
+      "id": "sap-c-s4cdk-3-010",
+      "question": "SAP Cloud SDK において、「Bound Action」と「Unbound Action」の違いは何ですか？",
+      "options": {
+        "A": "違いはない",
+        "B": "Bound Action は特定のエンティティにバインドされ、Unbound Action は独立している",
+        "C": "名前だけが異なる",
+        "D": "パフォーマンスが異なる"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Bound Action は特定のエンティティインスタンスにバインドされ（エンティティキーが必要）、Unbound Action は特定のエンティティに関連付けられない独立したグローバル操作です。"
+    },
+    {
+      "id": "sap-c-s4cdk-3-011",
+      "question": "SAP Cloud SDK の「API Business Hub Enterprise」統合は何を提供しますか？",
+      "options": {
+        "A": "エンタープライズストア",
+        "B": "企業内の API カタログと仕様へのアクセス",
+        "C": "ビジネス分析",
+        "D": "企業管理"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "API Business Hub Enterprise は企業内の API カタログで、Cloud SDK はここから API 仕様を取得してクライアントコードを生成できます。"
+    },
+    {
+      "id": "sap-c-s4cdk-3-012",
+      "question": "SAP Cloud SDK において、「Partial Update」（PATCH）と「Full Update」（PUT）の違いは何ですか？",
+      "options": {
+        "A": "違いはない",
+        "B": "PATCH は変更フィールドのみ送信、PUT は完全なエンティティを送信",
+        "C": "PATCH の方が高速",
+        "D": "PUT の方が安全"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "PATCH は部分更新に使用され、変更されたフィールドのみを送信します。PUT は完全更新に使用され、エンティティ全体を送信します（提供されていないフィールドはクリアされる可能性があります）。"
+    },
+    {
+      "id": "sap-c-s4cdk-3-013",
+      "question": "SAP Cloud SDK の「Locale Handling」はどのように機能しますか？",
+      "options": {
+        "A": "多言語をサポートしていない",
+        "B": "リクエストヘッダーから言語設定を取得して SAP システムに渡す",
+        "C": "言語をハードコード",
+        "D": "英語のみサポート"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Locale Handling は HTTP リクエストの Accept-Language ヘッダーからユーザーの言語設定を取得し、SAP システムを呼び出す際に渡して、対応する言語のテキストを返すようにします。"
+    },
+    {
+      "id": "sap-c-s4cdk-3-014",
+      "question": "SAP Cloud SDK において、「Complex Type」はどのように処理されますか？",
+      "options": {
+        "A": "文字列として処理される",
+        "B": "対応する型安全なクラスまたはインターフェースを生成する",
+        "C": "無視される",
+        "D": "単純型に変換される"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "OData Complex Type は型安全なクラスまたはインターフェースにマッピングされ、構造の整合性を維持し、エンティティ以外の構造化データを表現するために使用されます。"
+    },
+    {
+      "id": "sap-c-s4cdk-3-015",
+      "question": "SAP Cloud SDK の「Connectivity Service」と「Destination Service」の関係は何ですか？",
+      "options": {
+        "A": "同じサービス",
+        "B": "Connectivity は Cloud Connector への接続を提供、Destination はすべての接続設定を管理",
+        "C": "関連がない",
+        "D": "相互に排他的"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Connectivity Service は Cloud Connector を介したオンプレミスシステムへの接続を提供し、Destination Service はすべてのシステム（クラウドとオンプレミス）の接続設定を管理します。両者は連携して使用されます。"
+    },
+    {
+      "id": "sap-c-s4cdk-3-016",
+      "question": "SAP Cloud SDK において、「Sidecar Proxy」パターンは何に使用されますか？",
+      "options": {
+        "A": "プロキシサーバー",
+        "B": "Kyma 環境で認証と接続を処理する",
+        "C": "ネットワークプロキシ",
+        "D": "データプロキシ"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Sidecar Proxy パターンは Kyma（Kubernetes）環境で使用され、Istio などのサービスメッシュが認証と接続を処理し、Cloud SDK はこれと統合します。"
+    },
+    {
+      "id": "sap-c-s4cdk-3-017",
+      "question": "SAP Cloud SDK の「Custom HTTP Client」は何を可能にしますか？",
+      "options": {
+        "A": "カスタムクライアント",
+        "B": "デフォルトの HTTP クライアント実装を置き換える",
+        "C": "カスタムユーザー",
+        "D": "カスタムサービス"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Custom HTTP Client は Cloud SDK のデフォルト HTTP クライアント実装を置き換えることを可能にし、カスタムコネクションプール、特殊なプロトコルサポートなどの特別な要件に対応します。"
+    },
+    {
+      "id": "sap-c-s4cdk-3-018",
+      "question": "SAP Cloud SDK において、「Service Metadata」はどこから取得できますか？（2つ選択）",
+      "options": {
+        "A": "SAP API Business Hub",
+        "B": "ユーザー入力",
+        "C": "ランタイムサービスの $metadata エンドポイント",
+        "D": "データベース"
+      },
+      "answer": ["A", "C"],
+      "answerType": "multiple",
+      "explanation": "Service Metadata（EDMX）は SAP API Business Hub からダウンロードするか、ランタイムでサービスの $metadata エンドポイントから取得できます。"
+    },
+    {
+      "id": "sap-c-s4cdk-3-019",
+      "question": "SAP Cloud SDK の「Lambda Expression」は何をサポートしますか？",
+      "options": {
+        "A": "AWS Lambda",
+        "B": "$filter クエリで any/all オペレーターを使用する",
+        "C": "Lambda 計算",
+        "D": "関数型プログラミング"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Lambda Expression は OData $filter で any/all オペレーターを使用してコレクションプロパティをフィルタリングします。例えば、特定のアイテムを含む注文を検索するなどです。"
+    },
+    {
+      "id": "sap-c-s4cdk-3-020",
+      "question": "SAP Cloud SDK において、「Extension Field」はどのように処理されますか？",
+      "options": {
+        "A": "拡張フィールドを無視する",
+        "B": "動的アクセスまたは VDM の再生成でサポートする",
+        "C": "サポートしていない",
+        "D": "手動で処理する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "S/4HANA の拡張フィールドは、動的フィールドアクセス API を通じて取得するか、Generator を再実行して拡張フィールドを含む新しい VDM を生成できます。"
+    },
+    {
+      "id": "sap-c-s4cdk-3-021",
+      "question": "SAP Cloud SDK の「CI/CD Integration」は何をサポートしますか？（2つ選択）",
+      "options": {
+        "A": "SAP CI/CD Service",
+        "B": "ネットワーク CI/CD",
+        "C": "Jenkins、GitHub Actions など",
+        "D": "手動デプロイ"
+      },
+      "answer": ["A", "C"],
+      "answerType": "multiple",
+      "explanation": "SAP Cloud SDK プロジェクトは SAP CI/CD Service や一般的な CI/CD ツール（Jenkins、GitHub Actions など）と統合して、自動ビルドとデプロイを実現できます。"
+    },
+    {
+      "id": "sap-c-s4cdk-3-022",
+      "question": "SAP Cloud SDK において、「Blob/Binary Data」はどのように処理されますか？",
+      "options": {
+        "A": "バイナリデータをサポートしていない",
+        "B": "ストリーミングまたは Base64 エンコーディングを使用する",
+        "C": "テキストに変換する",
+        "D": "ローカルファイルに保存する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "バイナリデータ（ファイル、画像など）はストリーミングで効率的に処理するか、Base64 エンコーディングを使用して JSON で転送できます。"
+    },
+    {
+      "id": "sap-c-s4cdk-3-023",
+      "question": "SAP Cloud SDK の「Singleton」エンティティタイプとは何ですか？",
+      "options": {
+        "A": "独身ユーザー",
+        "B": "キーを持たない一意のエンティティインスタンス",
+        "C": "単一サーバー",
+        "D": "単一データベース"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Singleton は OData V4 でキーを持たない一意のエンティティインスタンスで、現在のユーザー設定やシステム設定などがあり、アクセス時にキーを指定する必要がありません。"
+    },
+    {
+      "id": "sap-c-s4cdk-3-024",
+      "question": "SAP Cloud SDK において、「Cross-Origin Resource Sharing」(CORS)はどのように処理されますか？",
+      "options": {
+        "A": "SDK が自動的に処理する",
+        "B": "通常は App Router または API Gateway で処理される",
+        "C": "サポートしていない",
+        "D": "CORS を無視する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "CORS は通常、フロントエンドの App Router または API Gateway で処理され、Cloud SDK バックエンドアプリはブラウザの CORS リクエストを直接処理しません。"
+    },
+    {
+      "id": "sap-c-s4cdk-3-025",
+      "question": "SAP Cloud SDK の「Performance Tracing」機能は何を提供しますか？",
+      "options": {
+        "A": "位置追跡",
+        "B": "API 呼び出しのパフォーマンスメトリクスとトレース情報",
+        "C": "ユーザー追跡",
+        "D": "データ追跡"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Performance Tracing は API 呼び出しのパフォーマンスメトリクス（応答時間など）とトレース情報を提供し、パフォーマンス分析と最適化を容易にします。"
+    },
+    {
+      "id": "sap-c-s4cdk-3-026",
+      "question": "SAP Cloud SDK において、「Conditional Request」（If-Match/If-None-Match）は何に使用されますか？",
+      "options": {
+        "A": "条件判断",
+        "B": "楽観的ロックとキャッシュ検証を実装する",
+        "C": "条件クエリ",
+        "D": "条件削除"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Conditional Request は ETag を使用して楽観的ロック（If-Match は更新用）とキャッシュ検証（If-None-Match はデータが変更されたかチェック）を実装します。"
+    },
+    {
+      "id": "sap-c-s4cdk-3-027",
+      "question": "SAP Cloud SDK の「Namespace Handling」はどのように機能しますか？",
+      "options": {
+        "A": "名前空間を無視する",
+        "B": "OData サービスの名前空間構造を保持する",
+        "C": "すべての名前空間をフラット化する",
+        "D": "ランダムな名前空間を使用する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Cloud SDK は OData サービスの名前空間構造を保持し、生成された VDM コードは元のサービスの名前空間組織を反映します。"
+    },
+    {
+      "id": "sap-c-s4cdk-3-028",
+      "question": "SAP Cloud SDK において、「Annotation」情報はどのように使用されますか？",
+      "options": {
+        "A": "アノテーションを無視する",
+        "B": "UI レンダリングのヒントとビジネスセマンティクスに使用する",
+        "C": "ドキュメントに使用する",
+        "D": "テストに使用する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "OData Annotation には UI レンダリングのヒント、値ヘルプ、フィールドラベルなどのメタデータが含まれ、動的な UI 生成やビジネスセマンティクスの理解に使用できます。"
+    },
+    {
+      "id": "sap-c-s4cdk-3-029",
+      "question": "SAP Cloud SDK の「Dependency Versioning」のベストプラクティスは何ですか？",
+      "options": {
+        "A": "最新バージョンを使用する",
+        "B": "BOM（Bill of Materials）を使用してバージョンの一貫性を管理する",
+        "C": "すべてのバージョンを固定する",
+        "D": "バージョンを管理しない"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "SAP Cloud SDK が提供する BOM を使用して、すべての SDK コンポーネントのバージョンが一貫していることを確保し、バージョンの競合問題を回避します。"
+    },
+    {
+      "id": "sap-c-s4cdk-3-030",
+      "question": "SAP Cloud SDK において、マルチテナントでの「Service Instance Isolation」はどのように実現されますか？",
+      "options": {
+        "A": "物理的な分離",
+        "B": "テナント対応の Destination 設定を通じて",
+        "C": "ネットワーク分離",
+        "D": "データベース分離"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "マルチテナントでのサービスインスタンス分離は、テナント対応の Destination 設定を通じて実現され、各テナントは異なる SAP システムインスタンスに接続するよう設定できます。"
+    },
+    {
+      "id": "sap-c-s4cdk-3-031",
+      "question": "SAP Cloud SDK の「Application Logging」と「Audit Logging」の違いは何ですか？",
+      "options": {
+        "A": "同じ",
+        "B": "Application は技術ログ、Audit はコンプライアンスログ",
+        "C": "パフォーマンスが異なる",
+        "D": "フォーマットが異なる"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Application Logging は技術ログ（デバッグ、エラー、パフォーマンス）で、Audit Logging はコンプライアンスログ（データアクセス、セキュリティイベント）で、規制要件を満たすために使用されます。"
+    },
+    {
+      "id": "sap-c-s4cdk-3-032",
+      "question": "SAP Cloud SDK において、「Deep Update」操作とは何ですか？",
+      "options": {
+        "A": "ディープクリーニング",
+        "B": "1回のリクエストでメインエンティティと関連エンティティを更新する",
+        "C": "ディープサーチ",
+        "D": "ディープバックアップ"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Deep Update は1回の OData リクエストでメインエンティティとその関連する子エンティティを更新できます。Deep Insert に似ていますが、更新操作用です。"
+    },
+    {
+      "id": "sap-c-s4cdk-3-033",
+      "question": "SAP Cloud SDK の「Unit of Work」パターンとは何ですか？",
+      "options": {
+        "A": "作業単位",
+        "B": "複数の関連操作を1つのアトミック単位として実行する",
+        "C": "計量単位",
+        "D": "組織単位"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Unit of Work パターンは複数の関連データ操作を1つのアトミック単位としてまとめ、Changeset を通じてすべて成功するかすべてロールバックすることを保証します。"
+    },
+    {
+      "id": "sap-c-s4cdk-3-034",
+      "question": "SAP Cloud SDK において、VDM と比較した「Generic OData Client」の長所と短所は何ですか？",
+      "options": {
+        "A": "VDM の方が汎用的",
+        "B": "Generic は柔軟だが型安全ではなく、VDM は型安全だが事前生成が必要",
+        "C": "違いはない",
+        "D": "Generic の方が高速"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Generic OData Client は柔軟で任意のサービスを呼び出せますが、コンパイル時の型チェックがありません。VDM は型安全と IDE サポートを提供しますが、事前にコードを生成する必要があります。"
+    },
+    {
+      "id": "sap-c-s4cdk-3-035",
+      "question": "SAP Cloud SDK の「Stability Contract」は何を約束しますか？",
+      "options": {
+        "A": "システムの安定性",
+        "B": "API の後方互換性と廃止ポリシー",
+        "C": "価格の安定性",
+        "D": "パフォーマンスの安定性"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Stability Contract は Cloud SDK API の後方互換性に関する SAP の約束で、廃止ポリシーと移行ガイドを含み、開発者がスムーズにアップグレードできるようにします。"
+    },
+    {
+      "id": "sap-c-s4cdk-3-036",
+      "question": "SAP Cloud SDK において、「Request Interceptor」は何に使用されますか？",
+      "options": {
+        "A": "ユーザーのインターセプト",
+        "B": "リクエスト送信前後にカスタムロジックを実行する",
+        "C": "データのインターセプト",
+        "D": "エラーのインターセプト"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Request Interceptor は HTTP リクエスト送信前とレスポンス受信後にカスタムロジックを実行でき、ヘッダーの追加、リクエストの修正、レスポンスの処理などを行います。"
+    },
+    {
+      "id": "sap-c-s4cdk-3-037",
+      "question": "SAP Cloud SDK の「Destination Caching」にはどのような考慮事項がありますか？",
+      "options": {
+        "A": "常にキャッシュする",
+        "B": "パフォーマンスと設定更新のタイムリーさのバランスが必要",
+        "C": "キャッシュしない",
+        "D": "システムが決定する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Destination Caching はパフォーマンス（API 呼び出しの削減）とタイムリーさ（設定変更の反映）のバランスが必要で、キャッシュ戦略と有効期限を設定できます。"
+    },
+    {
+      "id": "sap-c-s4cdk-3-038",
+      "question": "SAP Cloud SDK において、「Virtual Data Model Version」はどのように管理されますか？",
+      "options": {
+        "A": "自動更新",
+        "B": "SDK バージョンとともに更新され、S/4HANA の新しい API を含む",
+        "C": "ユーザーが管理する",
+        "D": "更新されない"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "VDM は SDK バージョンとともに更新され、新しいバージョンには最新の S/4HANA API サポートが含まれます。SDK バージョンをアップグレードすると、新しい API の VDM を取得できます。"
+    },
+    {
+      "id": "sap-c-s4cdk-3-039",
+      "question": "SAP Cloud SDK の「Message Server Response」はどのように処理されますか？",
+      "options": {
+        "A": "メッセージを無視する",
+        "B": "SAP が返すビジネスメッセージと警告を解析する",
+        "C": "エラーのみ処理する",
+        "D": "メッセージを転送する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "SAP システムはレスポンスにビジネスメッセージと警告を含めることがあり、Cloud SDK はこれらのメッセージを解析して、アプリがユーザーに表示したり処理したりできるようにします。"
+    },
+    {
+      "id": "sap-c-s4cdk-3-040",
+      "question": "SAP Cloud SDK において、「Destination Authentication Type」にはどのようなものがありますか？（2つ選択）",
+      "options": {
+        "A": "BasicAuthentication",
+        "B": "生体認証",
+        "C": "OAuth2SAMLBearerAssertion",
+        "D": "音声認識"
+      },
+      "answer": ["A", "C"],
+      "answerType": "multiple",
+      "explanation": "Destination は BasicAuthentication（ユーザー名とパスワード）、OAuth2SAMLBearerAssertion（SAML アサーションを OAuth トークンに交換）など、複数の認証タイプをサポートしています。"
+    },
+    {
+      "id": "sap-c-s4cdk-3-041",
+      "question": "SAP Cloud SDK の「Proxy Type」設定は何に使用されますか？",
+      "options": {
+        "A": "代理料金",
+        "B": "インターネットまたは Cloud Connector を介した接続かを指定する",
+        "C": "代理人",
+        "D": "代理サービス"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Proxy Type 設定は接続タイプを指定します：Internet（クラウドシステムへの直接インターネット接続）または OnPremise（Cloud Connector を介したオンプレミスシステムへの接続）。"
+    },
+    {
+      "id": "sap-c-s4cdk-3-042",
+      "question": "SAP Cloud SDK において、複数の個別リクエストと比較した「Batch Read」の利点は何ですか？",
+      "options": {
+        "A": "コードがシンプル",
+        "B": "ネットワークラウンドトリップと接続オーバーヘッドを削減する",
+        "C": "結果がより正確",
+        "D": "デバッグが容易"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Batch Read は複数の読み取りリクエストを1つの HTTP リクエストにまとめ、ネットワークラウンドトリップ数と接続確立のオーバーヘッドを削減してパフォーマンスを向上させます。"
+    },
+    {
+      "id": "sap-c-s4cdk-3-043",
+      "question": "SAP Cloud SDK の「Context Propagation」はマイクロサービスアーキテクチャで何に使用されますか？",
+      "options": {
+        "A": "ウイルスの伝播",
+        "B": "サービス呼び出しチェーンでユーザーとテナントのコンテキストを伝達する",
+        "C": "データの伝播",
+        "D": "設定の伝播"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Context Propagation はマイクロサービス呼び出しチェーンでユーザー ID、テナントなどのコンテキスト情報を伝達し、下流サービスが呼び出し元のコンテキストを正しく識別できるようにします。"
+    },
+    {
+      "id": "sap-c-s4cdk-3-044",
+      "question": "SAP Cloud SDK において、「Service Deprecation」はどのように処理されますか？",
+      "options": {
+        "A": "廃止を無視する",
+        "B": "コンパイル警告と移行ガイド",
+        "C": "自動移行",
+        "D": "コードを削除する"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "廃止された API はコンパイル時に警告を生成し、SDK ドキュメントは開発者が新しい API に移行するための移行ガイドを提供します。廃止された API は一定期間後に削除されます。"
+    },
+    {
+      "id": "sap-c-s4cdk-3-045",
+      "question": "SAP Cloud SDK の「SDK Maven Archetype」は何を提供しますか？",
+      "options": {
+        "A": "ドキュメントテンプレート",
+        "B": "プロジェクトを迅速に作成するためのテンプレート",
+        "C": "テストテンプレート",
+        "D": "デプロイテンプレート"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Maven Archetype はプロジェクトテンプレートで、必要な依存関係と設定を含む設定済みの Cloud SDK プロジェクト構造を迅速に作成できます。"
+    },
+    {
+      "id": "sap-c-s4cdk-3-046",
+      "question": "SAP Cloud SDK において、「Tenant-Aware Caching」はどのように実現されますか？",
+      "options": {
+        "A": "単一キャッシュ",
+        "B": "テナントごとに分離されたキャッシュインスタンスまたはキー",
+        "C": "キャッシュなし",
+        "D": "共有キャッシュ"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "テナント対応キャッシュは、テナントごとにキャッシュインスタンスを分離するか、キャッシュキーにテナント識別子を含めることで、異なるテナントのデータが混在しないようにします。"
+    },
+    {
+      "id": "sap-c-s4cdk-3-047",
+      "question": "SAP Cloud SDK の「Mocking Framework」は何をサポートしますか？",
+      "options": {
+        "A": "ユーザーの模倣",
+        "B": "テスト用に OData サービスのレスポンスをシミュレートする",
+        "C": "システムの模倣",
+        "D": "データの模倣"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Mocking Framework は OData サービスのレスポンスをシミュレートし、実際のシステムに接続せずに単体テストや統合テストを行うことをサポートします。"
+    },
+    {
+      "id": "sap-c-s4cdk-3-048",
+      "question": "SAP Cloud SDK において、「Custom Deserializer」はどのようなシナリオで使用されますか？",
+      "options": {
+        "A": "ユーザーのデシリアライズ",
+        "B": "非標準または特殊なフォーマットの API レスポンスを処理する",
+        "C": "設定のデシリアライズ",
+        "D": "ログのデシリアライズ"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Custom Deserializer は非標準または特殊なフォーマットの API レスポンスを処理するために使用され、デフォルトのデシリアライゼーションで正しく処理できない場合に使用します。"
+    },
+    {
+      "id": "sap-c-s4cdk-3-049",
+      "question": "SAP Cloud SDK の「Error Classification」は開発者をどのように助けますか？",
+      "options": {
+        "A": "ユーザーエラーの分類",
+        "B": "一時的エラーと永続的エラーを区別してリトライ戦略を決定する",
+        "C": "データエラーの分類",
+        "D": "システムエラーの分類"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Error Classification は一時的エラー（ネットワークタイムアウトなど、リトライ可能）と永続的エラー（認証失敗など、リトライ不可）を区別し、リトライの判断をガイドします。"
+    },
+    {
+      "id": "sap-c-s4cdk-3-050",
+      "question": "SAP Cloud SDK の将来の開発方向には何が含まれますか？",
+      "options": {
+        "A": "開発停止",
+        "B": "より多くの S/4HANA Cloud API サポートと CAP との深い統合",
+        "C": "既存機能のメンテナンスのみ",
+        "D": "他の技術への移行"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "SAP Cloud SDK は継続的に発展しており、将来はより多くの S/4HANA Cloud Public Edition API サポートの追加、CAP とのより深い統合、開発者体験の改善が予定されています。"
+    }
+  ]
+}
