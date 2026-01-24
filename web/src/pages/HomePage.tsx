@@ -196,6 +196,7 @@ type ViewType = ProviderKey | AIToolKey | LearningKey | null;
 export const HomePage: React.FC = () => {
   const { exams, loading, error, loadExams, deleteExam } = useExamStore();
   const [importing, setImporting] = useState(false);
+  const [importProgress, setImportProgress] = useState({ current: 0, total: 0 });
   const hasCheckedImport = useRef(false);
   const [selectedView, setSelectedView] = useState<ViewType>(null);
   const [certCodeFilter, setCertCodeFilter] = useState<string | null>(null);
@@ -501,8 +502,14 @@ export const HomePage: React.FC = () => {
           // Only import if there are missing exams
           if (missingExams.length > 0) {
             setImporting(true);
-            try {
-              for (const examFile of missingExams) {
+            setImportProgress({ current: 0, total: missingExams.length });
+
+            // Parallel import with concurrency limit
+            const BATCH_SIZE = 10;
+            let completed = 0;
+
+            const importBatch = async (batch: string[]) => {
+              await Promise.all(batch.map(async (examFile) => {
                 try {
                   const res = await fetch(`./sample-data/${examFile}${langSuffix}.json`);
                   if (res.ok) {
@@ -512,12 +519,23 @@ export const HomePage: React.FC = () => {
                 } catch (e) {
                   console.error(`Failed to import ${examFile}:`, e);
                 }
+                completed++;
+                setImportProgress({ current: completed, total: missingExams.length });
+              }));
+            };
+
+            try {
+              // Process in batches
+              for (let i = 0; i < missingExams.length; i += BATCH_SIZE) {
+                const batch = missingExams.slice(i, i + BATCH_SIZE);
+                await importBatch(batch);
               }
               await loadExams();
             } catch (e) {
               console.error('Auto-import failed:', e);
             } finally {
               setImporting(false);
+              setImportProgress({ current: 0, total: 0 });
             }
           }
     };
@@ -671,21 +689,32 @@ export const HomePage: React.FC = () => {
     }
   };
 
-  // Loading state - only show for active import operations
-  // Don't block on loading for better perceived performance
-  if (importing) {
+  // Non-blocking import progress bar component
+  const ImportProgressBar = () => {
+    if (!importing || importProgress.total === 0) return null;
+    const percent = Math.round((importProgress.current / importProgress.total) * 100);
     return (
-      <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-indigo-50/30 flex flex-col items-center justify-center">
-        <div className="relative">
-          <div className="absolute inset-0 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-full blur-xl opacity-30 animate-pulse"></div>
-          <Loader2 size={56} className="relative animate-spin text-indigo-600" />
+      <div className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 shadow-lg z-50 p-3">
+        <div className="max-w-2xl mx-auto flex items-center gap-4">
+          <Loader2 size={20} className="animate-spin text-indigo-600 flex-shrink-0" />
+          <div className="flex-1">
+            <div className="flex items-center justify-between text-sm mb-1">
+              <span className="text-gray-600">
+                {language === 'ja' ? 'データを読み込み中...' : '正在加载题库...'}
+              </span>
+              <span className="text-indigo-600 font-medium">{percent}%</span>
+            </div>
+            <div className="h-2 bg-gray-200 rounded-full overflow-hidden">
+              <div
+                className="h-full bg-indigo-600 rounded-full transition-all duration-300"
+                style={{ width: `${percent}%` }}
+              />
+            </div>
+          </div>
         </div>
-        <p className="mt-6 text-xl text-gray-600">
-          {language === 'ja' ? 'データを読み込み中...' : '正在加载题库...'}
-        </p>
       </div>
     );
-  }
+  };
 
   // Exam list view (when provider or AI tool is selected)
   if (selectedView && (selectedView in providerConfig || selectedView in aiToolsConfig)) {
@@ -1403,6 +1432,9 @@ export const HomePage: React.FC = () => {
           </div>
         </div>
       </footer>
+
+      {/* Non-blocking import progress */}
+      <ImportProgressBar />
     </div>
   );
 };
