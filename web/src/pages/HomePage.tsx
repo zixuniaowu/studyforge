@@ -239,8 +239,10 @@ export const HomePage: React.FC = () => {
     }
   }, [location.key, location.state]);
 
+  // Defer data loading to let UI render first
   useEffect(() => {
-    const init = async () => {
+    // Use requestIdleCallback to load data when browser is idle
+    const loadData = async () => {
       await loadExams();
       const wrongAnswers = await db.wrongAnswers.filter(w => !w.mastered).toArray();
       const wrongCount = wrongAnswers.length;
@@ -331,7 +333,12 @@ export const HomePage: React.FC = () => {
         });
       }
     };
-    init();
+    // Defer loading to let UI render first
+    if ('requestIdleCallback' in window) {
+      requestIdleCallback(() => loadData(), { timeout: 1000 });
+    } else {
+      setTimeout(loadData, 100);
+    }
   }, [loadExams]);
 
   const langCode = language === 'ja' ? 'ja' : 'zh-CN';
@@ -539,7 +546,9 @@ export const HomePage: React.FC = () => {
             }
           }
     };
-    autoImport();
+    // Delay auto-import to let UI render first (2 seconds)
+    const timer = setTimeout(autoImport, 2000);
+    return () => clearTimeout(timer);
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [loading, importing, language]);
 
