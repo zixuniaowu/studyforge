@@ -671,8 +671,9 @@ export const HomePage: React.FC = () => {
     }
   };
 
-  // Loading state
-  if (loading || importing) {
+  // Loading state - only show for active import operations
+  // Don't block on loading for better perceived performance
+  if (importing) {
     return (
       <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-indigo-50/30 flex flex-col items-center justify-center">
         <div className="relative">
@@ -680,7 +681,7 @@ export const HomePage: React.FC = () => {
           <Loader2 size={56} className="relative animate-spin text-indigo-600" />
         </div>
         <p className="mt-6 text-xl text-gray-600">
-          {importing ? (language === 'ja' ? 'データを読み込み中...' : '正在加载题库...') : (language === 'ja' ? '読み込み中...' : '加载中...')}
+          {language === 'ja' ? 'データを読み込み中...' : '正在加载题库...'}
         </p>
       </div>
     );
@@ -736,7 +737,12 @@ export const HomePage: React.FC = () => {
         </div>
         <div className="px-4 lg:px-8 py-8">
           {error && <div className="mb-6 p-5 bg-red-50 text-red-700 rounded-xl text-lg border border-red-100">{error}</div>}
-          {filteredExams.length === 0 ? (
+          {loading ? (
+            <div className="text-center py-24 bg-white rounded-2xl border border-gray-200 shadow-sm">
+              <Loader2 size={48} className="animate-spin text-indigo-600 mx-auto mb-4" />
+              <p className="text-lg text-gray-500">{language === 'ja' ? '読み込み中...' : '加载中...'}</p>
+            </div>
+          ) : filteredExams.length === 0 ? (
             <div className="text-center py-24 bg-white rounded-2xl border border-gray-200 shadow-sm">
               <div className="inline-flex p-5 bg-gray-100 rounded-2xl mb-6"><BookOpen size={56} className="text-gray-400" /></div>
               <h3 className="text-2xl font-semibold text-gray-600 mb-4">{isAITool ? (language === 'ja' ? 'この練習問題がありません' : '暂无此工具的练习题') : (language === 'ja' ? 'この認定の試験がありません' : '暂无此认证的题库')}</h3>
@@ -1316,7 +1322,7 @@ export const HomePage: React.FC = () => {
                 </div>
               </button>
 
-              {/* Kids AI Course */}
+              {/* Kids AI Course - Hidden for now
               <button
                 onClick={() => navigate('/kids-course')}
                 className="group bg-gradient-to-r from-pink-50 to-purple-50 rounded-xl p-6 border-2 border-pink-200 hover:border-pink-300 hover:shadow-md transition-all text-left"
@@ -1332,6 +1338,25 @@ export const HomePage: React.FC = () => {
                   <ChevronRight size={20} className="text-pink-400 group-hover:text-pink-600" />
                 </div>
               </button>
+              */}
+
+              {/* Middle School Study - Hidden for now
+              <button
+                onClick={() => navigate('/middle-school')}
+                className="group bg-gradient-to-r from-blue-50 to-indigo-50 rounded-xl p-6 border-2 border-blue-200 hover:border-blue-300 hover:shadow-md transition-all text-left"
+              >
+                <div className="flex items-center gap-4">
+                  <div className="w-12 h-12 rounded-xl bg-gradient-to-r from-blue-500 to-indigo-500 flex items-center justify-center text-2xl">
+                    📚
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="text-base font-semibold text-blue-700">{language === 'ja' ? '中学校学習' : '中学学习'}</h3>
+                    <p className="text-base text-indigo-500">{language === 'ja' ? '数学・英語・理科・社会' : '数学·英语·理科·社会'}</p>
+                  </div>
+                  <ChevronRight size={20} className="text-blue-400 group-hover:text-blue-600" />
+                </div>
+              </button>
+              */}
             </div>
 
             {/* Quick Tools */}

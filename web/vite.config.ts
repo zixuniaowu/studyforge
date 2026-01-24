@@ -12,5 +12,8 @@ export default defineConfig({
         changeOrigin: true,
       }
     }
+  },
+  optimizeDeps: {
+    exclude: ['box2d-wasm']
   }
 })
