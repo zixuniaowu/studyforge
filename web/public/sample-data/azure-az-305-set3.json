@@ -4,30 +4,30 @@
     "name": "Azure AZ-305 Solutions Architect Practice Exam #3",
     "code": "AZ-305",
     "provider": "Azure",
-    "language": "en",
-    "description": "Practice questions for Microsoft Azure Solutions Architect Expert certification exam, covering core domains including design identity, governance, and monitoring solutions, design data storage solutions, design business continuity solutions, and design infrastructure solutions.",
-    "totalQuestions": 10,
+    "language": "zh-CN",
+    "description": "微软 Azure 解决方案架构师专家认证考试练习题，涵盖设计身份、治理和监控解决方案、设计数据存储解决方案、设计业务连续性解决方案和设计基础设施解决方案等核心领域。",
+    "totalQuestions": 40,
     "passingScore": 70,
     "examTime": 120,
     "domains": [
       {
         "id": 1,
-        "name": "Design identity, governance, and monitoring solutions",
+        "name": "设计身份、治理和监控解决方案",
         "weight": 28
       },
       {
         "id": 2,
-        "name": "Design data storage solutions",
+        "name": "设计数据存储解决方案",
         "weight": 27
       },
       {
         "id": 3,
-        "name": "Design business continuity solutions",
+        "name": "设计业务连续性解决方案",
         "weight": 13
       },
       {
         "id": 4,
-        "name": "Design infrastructure solutions",
+        "name": "设计基础设施解决方案",
         "weight": 32
       }
     ],
@@ -35,15 +35,15 @@
       "Azure",
       "AZ-305",
       "Solutions Architect",
-      "Certification Exam",
-      "Cloud Computing"
+      "解决方案架构师",
+      "认证考试"
     ]
   },
   "questions": [
     {
       "id": "q1",
       "domain": 1,
-      "question": "A company needs to implement a governance solution that automatically remediates non-compliant resources. When a storage account is created without HTTPS-only traffic enabled, the policy should automatically enable it. Which Azure Policy effect should be used?",
+      "question": "一家公司需要实现治理解决方案，自动修复不合规的资源。当创建未启用 HTTPS 传输的存储账户时，策略应自动启用它。应该使用哪种 Azure Policy 效果？",
       "options": {
         "A": "Deny",
         "B": "Audit",
@@ -52,28 +52,28 @@
       },
       "answer": "C",
       "answerType": "single",
-      "explanation": "The DeployIfNotExists effect allows Azure Policy to automatically deploy a remediation task when a non-compliant resource is detected. This can automatically enable HTTPS-only traffic on storage accounts that don't have it enabled. The Deny effect would block creation, while Audit only reports non-compliance without remediation.\n---",
+      "explanation": "DeployIfNotExists 效果允许 Azure Policy 在检测到不合规资源时自动部署修复任务。这可以自动在未启用 HTTPS 传输的存储账户上启用该功能。Deny 效果会阻止创建，而 Audit 只报告不合规情况而不进行修复。",
       "difficulty": "medium"
     },
     {
       "id": "q2",
       "domain": 1,
-      "question": "A company is implementing Microsoft Entra ID (formerly Azure AD) for their multi-cloud environment. They need to provide single sign-on access to AWS and GCP consoles for their users. What should they configure?",
+      "question": "一家公司正在为其多云环境实施 Microsoft Entra ID（原 Azure AD）。他们需要为用户提供对 AWS 和 GCP 控制台的单点登录访问。应该配置什么？",
       "options": {
-        "A": "Azure AD B2C custom policies",
-        "B": "Enterprise applications with SAML-based SSO",
-        "C": "Azure AD Application Proxy",
-        "D": "Azure AD Domain Services"
+        "A": "Azure AD B2C 自定义策略",
+        "B": "使用 SAML SSO 的企业应用程序",
+        "C": "Azure AD 应用程序代理",
+        "D": "Azure AD 域服务"
       },
       "answer": "B",
       "answerType": "single",
-      "explanation": "Enterprise applications in Microsoft Entra ID support SAML-based single sign-on, which is the standard protocol for federating with AWS and GCP consoles. Both AWS and GCP have pre-configured gallery applications in Entra ID that can be configured for SSO using SAML federation.\n---",
+      "explanation": "Microsoft Entra ID 中的企业应用程序支持基于 SAML 的单点登录，这是与 AWS 和 GCP 控制台联合的标准协议。AWS 和 GCP 在 Entra ID 中都有预配置的库应用程序，可以使用 SAML 联合进行 SSO 配置。",
       "difficulty": "medium"
     },
     {
       "id": "q3",
       "domain": 2,
-      "question": "A company needs to design a data storage solution for a machine learning workload. The solution must support storing large binary files (models and datasets), provide high throughput for parallel reads, and integrate with Azure Machine Learning. What should you recommend?",
+      "question": "一家公司需要为机器学习工作负载设计数据存储解决方案。该解决方案必须支持存储大型二进制文件（模型和数据集）、为并行读取提供高吞吐量，并与 Azure 机器学习集成。您应该推荐什么？",
       "options": {
         "A": "Azure SQL Database",
         "B": "Azure Data Lake Storage Gen2",
@@ -82,113 +82,563 @@
       },
       "answer": "B",
       "answerType": "single",
-      "explanation": "Azure Data Lake Storage Gen2 is optimized for big data analytics and machine learning workloads. It provides hierarchical namespace for efficient data organization, high throughput for parallel processing, and native integration with Azure Machine Learning for storing datasets and model artifacts.\n---",
+      "explanation": "Azure Data Lake Storage Gen2 针对大数据分析和机器学习工作负载进行了优化。它提供分层命名空间以实现高效的数据组织、并行处理的高吞吐量，以及与 Azure 机器学习的原生集成，用于存储数据集和模型工件。",
       "difficulty": "medium"
     },
     {
       "id": "q4",
       "domain": 2,
-      "question": "A company needs to implement a caching strategy for their e-commerce application. The cache must support data persistence, geo-replication for disaster recovery, and clustering for high availability. Which Azure Cache for Redis tier should they choose?",
+      "question": "一家公司需要为其电子商务应用程序实现缓存策略。缓存必须支持数据持久化、用于灾难恢复的异地复制和用于高可用性的集群。应该选择哪个 Azure Cache for Redis 层级？",
       "options": {
-        "A": "Basic tier",
-        "B": "Standard tier",
-        "C": "Premium tier",
-        "D": "Enterprise tier"
+        "A": "基本层",
+        "B": "标准层",
+        "C": "高级层",
+        "D": "企业层"
       },
       "answer": "C",
       "answerType": "single",
-      "explanation": "Azure Cache for Redis Premium tier provides data persistence (RDB/AOF snapshots), geo-replication for disaster recovery, and Redis clustering for horizontal scaling and high availability. Basic tier is for development only, Standard adds replication but not persistence, and Enterprise is for specialized Redis modules.\n---",
+      "explanation": "Azure Cache for Redis 高级层提供数据持久化（RDB/AOF 快照）、用于灾难恢复的异地复制和用于水平扩展和高可用性的 Redis 集群。基本层仅用于开发，标准层添加复制但不提供持久化，企业层用于专门的 Redis 模块。",
       "difficulty": "medium"
     },
     {
       "id": "q5",
       "domain": 3,
-      "question": "A company needs to design a disaster recovery solution for their Azure SQL Database. The solution must provide automatic failover with zero data loss (RPO=0) and support readable secondary replicas. What should you configure?",
+      "question": "一家公司需要为其 Azure SQL Database 设计灾难恢复解决方案。该解决方案必须提供零数据丢失（RPO=0）的自动故障转移，并支持可读辅助副本。应该配置什么？",
       "options": {
-        "A": "Geo-restore from automated backups",
-        "B": "Active geo-replication",
-        "C": "Auto-failover groups with synchronous replication",
-        "D": "Long-term backup retention"
+        "A": "从自动备份进行异地还原",
+        "B": "活动异地复制",
+        "C": "具有同步复制的自动故障转移组",
+        "D": "长期备份保留"
       },
       "answer": "C",
       "answerType": "single",
-      "explanation": "Auto-failover groups provide automatic failover capability with synchronous replication to achieve RPO=0 (zero data loss). They also support readable secondary replicas for read scale-out. Active geo-replication requires manual failover, while geo-restore from backups has RPO measured in hours.\n---",
+      "explanation": "自动故障转移组通过同步复制提供自动故障转移能力，实现 RPO=0（零数据丢失）。它们还支持可读辅助副本以实现读取横向扩展。活动异地复制需要手动故障转移，而从备份进行异地还原的 RPO 以小时计。",
       "difficulty": "hard"
     },
     {
       "id": "q6",
       "domain": 3,
-      "question": "A company is planning their Azure backup strategy. They need to protect Azure VMs, Azure Files, and SQL databases running on Azure VMs with a single backup solution. What should they use?",
+      "question": "一家公司正在规划其 Azure 备份策略。他们需要使用单一备份解决方案保护 Azure VM、Azure Files 和在 Azure VM 上运行的 SQL 数据库。应该使用什么？",
       "options": {
-        "A": "Azure Blob Storage snapshots",
-        "B": "Azure Recovery Services vault",
-        "C": "Azure managed disk snapshots",
-        "D": "SQL Server native backup to Azure Blob"
+        "A": "Azure Blob Storage 快照",
+        "B": "Azure 恢复服务保管库",
+        "C": "Azure 托管磁盘快照",
+        "D": "SQL Server 原生备份到 Azure Blob"
       },
       "answer": "B",
       "answerType": "single",
-      "explanation": "Azure Recovery Services vault provides a unified backup solution for multiple Azure workloads including Azure VMs, Azure Files, and SQL Server on Azure VMs. It offers centralized management, policy-based backup scheduling, and cross-region restore capabilities for all these workload types.\n---",
+      "explanation": "Azure 恢复服务保管库为多种 Azure 工作负载提供统一的备份解决方案，包括 Azure VM、Azure Files 和 Azure VM 上的 SQL Server。它为所有这些工作负载类型提供集中管理、基于策略的备份调度和跨区域还原功能。",
       "difficulty": "easy"
     },
     {
       "id": "q7",
       "domain": 4,
-      "question": "A company needs to deploy a globally distributed web application with automatic traffic distribution based on endpoint performance. The solution should route users to the endpoint with the lowest latency. Which Azure service and routing method should be used?",
+      "question": "一家公司需要部署具有基于端点性能的自动流量分配的全球分布式 Web 应用程序。该解决方案应将用户路由到延迟最低的端点。应该使用哪种 Azure 服务和路由方法？",
       "options": {
-        "A": "Azure Load Balancer with round-robin",
-        "B": "Azure Traffic Manager with Performance routing",
-        "C": "Azure Application Gateway with path-based routing",
-        "D": "Azure Front Door with weighted routing"
+        "A": "具有轮询的 Azure 负载均衡器",
+        "B": "具有性能路由的 Azure Traffic Manager",
+        "C": "具有基于路径路由的 Azure 应用程序网关",
+        "D": "具有加权路由的 Azure Front Door"
       },
       "answer": "B",
       "answerType": "single",
-      "explanation": "Azure Traffic Manager with Performance routing method measures network latency from the client to each endpoint and routes traffic to the endpoint with the lowest latency. This provides optimal user experience for globally distributed applications by directing users to the geographically closest healthy endpoint.\n---",
+      "explanation": "Azure Traffic Manager 使用性能路由方法测量从客户端到每个端点的网络延迟，并将流量路由到延迟最低的端点。这通过将用户引导到地理位置最近的健康端点，为全球分布式应用程序提供最佳用户体验。",
       "difficulty": "medium"
     },
     {
       "id": "q8",
       "domain": 4,
-      "question": "A company is designing a microservices architecture on Azure Kubernetes Service (AKS). They need to implement service-to-service authentication without managing certificates manually. What should they use?",
+      "question": "一家公司正在 Azure Kubernetes Service (AKS) 上设计微服务架构。他们需要实现服务到服务的身份验证，而无需手动管理证书。应该使用什么？",
       "options": {
-        "A": "Kubernetes Secrets for storing certificates",
-        "B": "Azure Key Vault with CSI driver",
-        "C": "Workload Identity with Microsoft Entra ID",
-        "D": "Self-signed certificates in ConfigMaps"
+        "A": "用于存储证书的 Kubernetes Secrets",
+        "B": "带有 CSI 驱动程序的 Azure Key Vault",
+        "C": "具有 Microsoft Entra ID 的工作负载标识",
+        "D": "ConfigMaps 中的自签名证书"
       },
       "answer": "C",
       "answerType": "single",
-      "explanation": "Workload Identity allows Kubernetes pods to authenticate to Azure services and other workloads using Microsoft Entra ID tokens. This eliminates the need to manage certificates or secrets manually. Pods can use their workload identity to authenticate to other services that trust Entra ID tokens.\n---",
+      "explanation": "工作负载标识允许 Kubernetes Pod 使用 Microsoft Entra ID 令牌向 Azure 服务和其他工作负载进行身份验证。这消除了手动管理证书或密钥的需要。Pod 可以使用其工作负载标识向信任 Entra ID 令牌的其他服务进行身份验证。",
       "difficulty": "hard"
     },
     {
       "id": "q9",
       "domain": 4,
-      "question": "A company needs to implement a content delivery solution for their static website assets. The solution must support custom domain with HTTPS, automatic certificate management, and integration with Azure Blob Storage. What should they use?",
+      "question": "一家公司需要为其静态网站资产实现内容分发解决方案。该解决方案必须支持带有 HTTPS 的自定义域、自动证书管理，并与 Azure Blob Storage 集成。应该使用什么？",
       "options": {
-        "A": "Azure Application Gateway",
-        "B": "Azure CDN with managed certificates",
+        "A": "Azure 应用程序网关",
+        "B": "具有托管证书的 Azure CDN",
         "C": "Azure Traffic Manager",
-        "D": "Azure Load Balancer"
+        "D": "Azure 负载均衡器"
       },
       "answer": "B",
       "answerType": "single",
-      "explanation": "Azure CDN supports custom domains with HTTPS and provides managed certificates that are automatically provisioned and renewed. It integrates natively with Azure Blob Storage as an origin, caching static content at edge locations globally for improved performance and reduced latency.\n---",
+      "explanation": "Azure CDN 支持带有 HTTPS 的自定义域，并提供自动配置和续订的托管证书。它与 Azure Blob Storage 作为源进行原生集成，在全球边缘位置缓存静态内容以提高性能和减少延迟。",
       "difficulty": "easy"
     },
     {
       "id": "q10",
       "domain": 1,
-      "question": "A company needs to implement centralized logging for compliance requirements. Logs from Azure resources, on-premises servers, and third-party applications must be retained for 7 years with immutable storage. What architecture should be designed?",
+      "question": "一家公司需要实现集中式日志记录以满足合规要求。来自 Azure 资源、本地服务器和第三方应用程序的日志必须以不可变存储保留 7 年。应该设计什么架构？",
       "options": {
-        "A": "Log Analytics workspace with 7-year retention",
-        "B": "Log Analytics workspace with data export to immutable Blob Storage",
-        "C": "Event Hubs with Capture to standard Blob Storage",
-        "D": "Application Insights with continuous export"
+        "A": "具有 7 年保留期的 Log Analytics 工作区",
+        "B": "具有数据导出到不可变 Blob Storage 的 Log Analytics 工作区",
+        "C": "具有捕获到标准 Blob Storage 的事件中心",
+        "D": "具有持续导出的 Application Insights"
       },
       "answer": "B",
       "answerType": "single",
-      "explanation": "Log Analytics workspace supports log collection from multiple sources but has a maximum retention of 2 years. For 7-year retention with immutability, configure data export to Azure Blob Storage with immutable storage policies (WORM). This provides compliance-grade log retention while maintaining query capabilities in Log Analytics for recent data.\n---",
+      "explanation": "Log Analytics 工作区支持从多个源收集日志，但最大保留期为 2 年。对于具有不可变性的 7 年保留，配置数据导出到具有不可变存储策略（WORM）的 Azure Blob Storage。这提供合规级别的日志保留，同时在 Log Analytics 中保持对近期数据的查询能力。",
       "difficulty": "hard"
+    },
+    {
+      "id": "q11",
+      "domain": 1,
+      "question": "您的组织需要实现条件访问策略，要求具有特权角色的用户从合规设备登录时使用多重身份验证。应该配置哪个组件？",
+      "options": {
+        "A": "Azure AD Identity Protection 风险策略",
+        "B": "具有设备状态和用户角色条件的条件访问策略",
+        "C": "Azure AD Privileged Identity Management",
+        "D": "Azure AD B2B 协作设置"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "条件访问策略可以组合多个条件，包括用户角色（特权用户）和设备状态（合规设备）。可以配置策略在这些条件匹配时强制要求 MFA。PIM 用于即时特权访问管理，不是条件访问的替代品。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q12",
+      "domain": 1,
+      "question": "一家公司需要监控跨多个订阅的 Azure 资源健康状况和配置合规性。他们希望使用单个仪表板查看所有资源的安全状态。应该使用什么服务？",
+      "options": {
+        "A": "Azure Monitor",
+        "B": "Microsoft Defender for Cloud",
+        "C": "Azure Advisor",
+        "D": "Azure Service Health"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Microsoft Defender for Cloud 提供跨多个订阅的统一安全管理和高级威胁防护。它提供安全评分、合规性仪表板和安全建议，可以在单个视图中监控所有资源的安全状态。Azure Monitor 用于性能监控，Advisor 提供优化建议。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q13",
+      "domain": 1,
+      "question": "您需要为组织实现管理组层次结构。根管理组下有三个子管理组：生产、开发和测试。您需要确保开发和测试环境无法创建超过 D4 大小的虚拟机。应该如何配置？",
+      "options": {
+        "A": "在根管理组应用 Azure Policy",
+        "B": "在开发和测试管理组分别应用允许的 VM SKU 策略",
+        "C": "在每个订阅中配置预算限制",
+        "D": "使用 Azure Blueprints 部署标准配置"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "在开发和测试管理组级别应用"允许的虚拟机 SKU"策略，可以限制这些环境中创建的 VM 大小，而不影响生产环境。在根管理组应用会影响所有环境，不符合需求。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q14",
+      "domain": 2,
+      "question": "一家公司需要设计一个数据仓库解决方案，支持 PB 级数据存储、复杂分析查询和与 Power BI 的无缝集成。该解决方案还需要支持数据湖集成。应该推荐什么？",
+      "options": {
+        "A": "Azure SQL Database",
+        "B": "Azure Synapse Analytics",
+        "C": "Azure Cosmos DB",
+        "D": "Azure Database for PostgreSQL"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure Synapse Analytics 是一个企业分析服务，结合了数据仓库和大数据分析。它支持 PB 级数据存储、复杂的 SQL 分析查询、与 Power BI 的原生集成，以及与 Azure Data Lake 的集成用于大数据场景。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q15",
+      "domain": 2,
+      "question": "一家公司有一个需要全球分布式数据库的应用程序，要求多区域写入、亚毫秒级读取延迟和自动故障转移。数据模型是文档类型。应该使用什么数据库服务？",
+      "options": {
+        "A": "Azure SQL Database 与活动异地复制",
+        "B": "Azure Cosmos DB 与多区域写入",
+        "C": "Azure Database for MongoDB",
+        "D": "Azure Cache for Redis"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure Cosmos DB 提供全球分布式、多区域写入功能，保证亚毫秒级读取延迟，支持自动故障转移，并原生支持文档数据模型。它的五个一致性级别允许根据需求在一致性和延迟之间进行权衡。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q16",
+      "domain": 2,
+      "question": "您需要设计一个存储解决方案来处理物联网设备生成的时序数据。该解决方案需要每秒处理数百万条记录的写入，并支持时间范围查询。应该推荐什么？",
+      "options": {
+        "A": "Azure SQL Database",
+        "B": "Azure Data Explorer",
+        "C": "Azure Table Storage",
+        "D": "Azure Files"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure Data Explorer 是一个快速、完全托管的大数据分析服务，专门针对日志和遥测数据的近实时分析。它针对时序数据进行了优化，可以处理每秒数百万条记录的高速写入，并提供强大的时间范围查询功能。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q17",
+      "domain": 2,
+      "question": "一家公司需要将本地 Oracle 数据库迁移到 Azure。应用程序使用了大量 Oracle 特定的功能（如 PL/SQL 存储过程和包）。迁移应该最大限度地减少代码更改。应该推荐什么目标数据库？",
+      "options": {
+        "A": "Azure SQL Database",
+        "B": "Azure Database for PostgreSQL",
+        "C": "在 Azure VM 上运行 Oracle Database",
+        "D": "Azure Cosmos DB"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "由于应用程序大量使用 Oracle 特定功能，在 Azure VM 上运行 Oracle Database 是最大限度减少代码更改的最佳选择。这是一种"直接迁移"方法，保持与现有 Oracle 代码的完全兼容性。Azure 也支持 Oracle 许可证移动性。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q18",
+      "domain": 3,
+      "question": "一家公司的关键业务应用程序运行在 Azure 虚拟机上，使用托管磁盘。他们需要设计一个解决方案，在区域故障时能够在 15 分钟内恢复应用程序，数据丢失不超过 1 小时。应该使用什么？",
+      "options": {
+        "A": "Azure Backup 与跨区域还原",
+        "B": "Azure Site Recovery 与连续复制到次要区域",
+        "C": "可用性区域部署",
+        "D": "托管磁盘快照复制到另一个区域"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure Site Recovery 提供到次要区域的连续复制，RPO（恢复点目标）通常在几分钟内，RTO（恢复时间目标）可以在 15 分钟左右实现故障转移。这满足了 1 小时 RPO 和 15 分钟 RTO 的要求。Azure Backup 的 RPO 通常以小时计。",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q19",
+      "domain": 3,
+      "question": "您需要设计一个高可用性解决方案，使应用程序能够在单个 Azure 数据中心故障时继续运行，同时最小化成本。应用程序部署在 Azure 虚拟机上。应该使用什么？",
+      "options": {
+        "A": "虚拟机规模集跨可用性区域部署",
+        "B": "在两个区域部署并使用 Traffic Manager",
+        "C": "可用性集部署",
+        "D": "单个大型虚拟机"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "虚拟机规模集跨可用性区域部署可以保护应用程序免受单个数据中心故障的影响，因为可用性区域是同一区域内物理隔离的数据中心。这比多区域部署更具成本效益，同时提供数据中心级别的冗余。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q20",
+      "domain": 4,
+      "question": "一家公司需要部署一个 Web 应用程序，要求自动扩展、无需管理底层基础设施，并支持多个部署槽位用于蓝绿部署。应该使用什么计算服务？",
+      "options": {
+        "A": "Azure 虚拟机规模集",
+        "B": "Azure App Service",
+        "C": "Azure Functions",
+        "D": "Azure Container Instances"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure App Service 是一个完全托管的 PaaS 平台，提供自动扩展、无需管理基础设施，并内置支持部署槽位用于蓝绿部署和滚动更新。虚拟机规模集需要更多管理工作，Functions 更适合事件驱动场景。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q21",
+      "domain": 4,
+      "question": "一家公司需要在 Azure 和本地数据中心之间建立私有连接。连接需要保证带宽、低延迟，并避免通过公共互联网传输数据。应该使用什么服务？",
+      "options": {
+        "A": "Site-to-Site VPN",
+        "B": "Azure ExpressRoute",
+        "C": "Point-to-Site VPN",
+        "D": "Azure Virtual WAN"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure ExpressRoute 提供通过连接提供商建立的到 Azure 的专用私有连接，不通过公共互联网。它提供保证的带宽、更低且一致的延迟，以及比 VPN 连接更高的可靠性。VPN 连接通过公共互联网，无法保证带宽。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q22",
+      "domain": 4,
+      "question": "您需要设计一个解决方案，允许多个虚拟网络中的资源访问 Azure SQL Database，同时确保流量不通过公共互联网。应该配置什么？",
+      "options": {
+        "A": "服务终结点",
+        "B": "私有终结点",
+        "C": "虚拟网络对等互连",
+        "D": "应用程序安全组"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "私有终结点在您的虚拟网络中创建一个私有 IP 地址，通过 Azure Private Link 连接到 Azure SQL Database。流量完全通过 Microsoft 骨干网络，不通过公共互联网。服务终结点虽然也保护流量，但 SQL 端仍使用公共 IP。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q23",
+      "domain": 4,
+      "question": "一家公司正在将其容器化应用程序迁移到 Azure。应用程序由 20 个微服务组成，需要服务发现、负载均衡和自动扩展。团队熟悉 Kubernetes。应该使用什么服务？",
+      "options": {
+        "A": "Azure Container Instances",
+        "B": "Azure App Service for Containers",
+        "C": "Azure Kubernetes Service (AKS)",
+        "D": "Azure Container Apps"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "Azure Kubernetes Service (AKS) 是一个托管的 Kubernetes 服务，适合需要 Kubernetes 功能的复杂容器化工作负载。由于团队熟悉 Kubernetes，AKS 提供了服务发现、负载均衡、自动扩展以及完整的 Kubernetes 生态系统支持。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q24",
+      "domain": 1,
+      "question": "一家公司需要实现身份治理解决方案，自动管理用户对应用程序和资源的访问权限。当用户加入、调动或离开组织时，访问权限应自动调整。应该使用什么功能？",
+      "options": {
+        "A": "Azure AD 动态组",
+        "B": "Azure AD 权利管理",
+        "C": "Azure AD 访问审查",
+        "D": "Azure AD Privileged Identity Management"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure AD 权利管理（Entitlement Management）提供访问包，可以将应用程序、组和 SharePoint 站点的访问权限打包在一起。结合生命周期策略，可以根据用户属性变化自动授予或撤销访问权限，实现完整的 Joiner-Mover-Leaver 场景。",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q25",
+      "domain": 1,
+      "question": "您的组织需要确保所有 Azure 资源都有成本分配标签。如果资源没有必需的标签，则应阻止创建。应该如何实现？",
+      "options": {
+        "A": "使用 Azure Policy 的 Audit 效果",
+        "B": "使用 Azure Policy 的 Deny 效果和标签条件",
+        "C": "使用 Azure Cost Management 标签策略",
+        "D": "使用 Azure Blueprints 强制标签"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "使用具有 Deny 效果的 Azure Policy，配置条件检查必需的标签是否存在。当资源缺少必需标签时，Deny 效果会阻止资源创建。Audit 效果只会报告不合规情况而不会阻止创建。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q26",
+      "domain": 2,
+      "question": "一家公司需要设计存储解决方案来存储文档，这些文档在创建后的前 30 天频繁访问，之后 90 天偶尔访问，然后很少访问但必须保留 7 年。应该使用什么存储策略？",
+      "options": {
+        "A": "始终使用热存储层",
+        "B": "使用生命周期管理策略在热、冷和存档层之间自动转换",
+        "C": "手动将旧文件移动到存档存储",
+        "D": "使用 Azure Files Premium 存储"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure Blob Storage 生命周期管理允许您根据上次修改或访问时间自动将 Blob 在热、冷和存档层之间转换。这可以配置为 30 天后移至冷存储，120 天后移至存档存储，从而优化成本同时满足保留要求。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q27",
+      "domain": 2,
+      "question": "一家公司需要使用 Azure Database for MySQL 部署关系数据库。数据库需要高可用性，在区域故障时自动故障转移，且数据丢失最小。应该选择哪个部署选项？",
+      "options": {
+        "A": "单服务器部署",
+        "B": "灵活服务器与同区域高可用性",
+        "C": "灵活服务器与跨区域高可用性",
+        "D": "使用读取副本的单服务器"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "Azure Database for MySQL 灵活服务器支持跨区域高可用性，在不同区域部署同步备用副本。这提供区域级别的故障防护，在主区域故障时自动故障转移，同步复制确保最小的数据丢失。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q28",
+      "domain": 3,
+      "question": "您需要为运行在 Azure 虚拟机上的 SAP HANA 数据库设计备份解决方案。备份需要保证应用程序一致性，并支持即时恢复功能。应该使用什么？",
+      "options": {
+        "A": "Azure Backup 与 SAP HANA 备份",
+        "B": "SAP HANA 原生备份到 Azure Blob Storage",
+        "C": "Azure 托管磁盘快照",
+        "D": "Azure Site Recovery"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Azure Backup 提供针对 SAP HANA 的专门备份解决方案，保证应用程序一致性备份。它与 SAP HANA 集成，使用 Backint 接口进行备份，支持完整备份、差异备份和日志备份，并提供即时恢复功能。",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q29",
+      "domain": 4,
+      "question": "一家公司需要部署一个无服务器 API 后端，可以自动扩展到零并按执行付费。API 需要处理 HTTP 请求并连接到 Azure SQL Database。应该使用什么服务？",
+      "options": {
+        "A": "Azure App Service",
+        "B": "Azure Functions 与消耗计划",
+        "C": "Azure Container Instances",
+        "D": "Azure Logic Apps"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure Functions 消耗计划提供真正的无服务器体验，可以自动扩展到零（无请求时不收费），并按执行次数和执行时间付费。它支持 HTTP 触发器和各种输出绑定，包括 Azure SQL Database。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q30",
+      "domain": 4,
+      "question": "一家公司需要实现网络安全解决方案，在所有虚拟网络之间集中检查和过滤出站流量。该解决方案需要支持 FQDN 过滤、威胁情报和 TLS 检查。应该使用什么？",
+      "options": {
+        "A": "网络安全组 (NSG)",
+        "B": "Azure Firewall Premium",
+        "C": "应用程序安全组",
+        "D": "Azure DDoS Protection"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure Firewall Premium 提供高级网络安全功能，包括 FQDN（完全限定域名）过滤、威胁情报集成和 TLS 检查。它可以部署在中心虚拟网络中，使用用户定义路由将所有出站流量路由通过防火墙进行集中检查。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q31",
+      "domain": 4,
+      "question": "您正在设计一个混合身份解决方案，需要将本地 Active Directory 用户同步到 Azure AD，并允许用户使用相同的凭据访问云和本地资源。应该实现什么？",
+      "options": {
+        "A": "Azure AD Connect 与密码哈希同步",
+        "B": "Azure AD B2C",
+        "C": "Azure AD 域服务",
+        "D": "仅云身份"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Azure AD Connect 将本地 Active Directory 用户同步到 Azure AD。密码哈希同步将用户密码的哈希同步到 Azure AD，允许用户使用相同的凭据登录云和本地资源，实现无缝的混合身份体验。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q32",
+      "domain": 1,
+      "question": "一家公司需要实现实时监控解决方案，当 Azure 资源的性能指标超过阈值时自动发送警报并触发自动修复操作。应该如何配置？",
+      "options": {
+        "A": "Azure Monitor 指标警报与操作组",
+        "B": "Azure Service Health 警报",
+        "C": "Azure Advisor 建议",
+        "D": "Application Insights 可用性测试"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Azure Monitor 指标警报可以配置为当指标超过阈值时触发。操作组定义警报触发时要执行的操作，包括发送通知（电子邮件、短信、Webhook）和执行自动修复操作（如 Azure Automation Runbook、Azure Functions）。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q33",
+      "domain": 2,
+      "question": "一家公司需要在 Azure Blob Storage 中存储敏感数据。安全要求包括：使用客户管理的密钥加密、防止数据泄露到其他 Azure 订阅、以及确保数据在指定时间内不能被删除或修改。应该配置哪些功能？（选择三个）",
+      "options": {
+        "A": "客户管理的密钥 (CMK) 加密",
+        "B": "Azure Private Link",
+        "C": "不可变 Blob 存储",
+        "D": "存储账户防火墙"
+      },
+      "answer": ["A", "B", "C"],
+      "answerType": "multiple",
+      "explanation": "CMK 提供客户控制的加密密钥；Azure Private Link 确保数据通过私有连接访问，防止数据泄露；不可变 Blob 存储通过 WORM（一次写入多次读取）策略防止数据在保留期内被删除或修改。存储账户防火墙控制网络访问但不是这些特定需求的完整解决方案。",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q34",
+      "domain": 4,
+      "question": "一家公司需要部署一个具有高可用性的 API 管理解决方案。API 网关需要在区域故障时继续可用，并支持多区域部署。应该使用什么部署配置？",
+      "options": {
+        "A": "开发人员层与单个单位",
+        "B": "高级层与可用性区域和多区域部署",
+        "C": "标准层与自动扩展",
+        "D": "消耗层与多个实例"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure API Management 高级层支持可用性区域部署（区域内高可用性）和多区域部署（跨区域高可用性）。这提供了最高级别的可用性，API 网关可以在单个数据中心或整个区域故障时继续运行。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q35",
+      "domain": 4,
+      "question": "您需要设计一个解决方案，将 Web 应用程序防火墙 (WAF) 功能与全球负载均衡和 SSL 终止相结合。该解决方案需要保护多个区域的 Web 应用程序。应该使用什么服务？",
+      "options": {
+        "A": "Azure 应用程序网关与 WAF",
+        "B": "Azure Front Door 与 WAF 策略",
+        "C": "Azure Traffic Manager 与 NSG",
+        "D": "Azure Load Balancer 与 Azure Firewall"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure Front Door 提供全球负载均衡、SSL 终止和集成的 Web 应用程序防火墙功能。它在 Microsoft 全球边缘网络上运行，可以保护分布在多个区域的 Web 应用程序。应用程序网关是区域性服务，不提供全球负载均衡。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q36",
+      "domain": 3,
+      "question": "一家公司需要设计一个灾难恢复解决方案，用于在 Azure VM 上运行的多层应用程序。该解决方案需要保持应用程序层之间的一致性，并在故障转移时维护网络配置。应该使用什么？",
+      "options": {
+        "A": "为每个 VM 单独配置 Azure Backup",
+        "B": "Azure Site Recovery 与恢复计划",
+        "C": "跨区域复制托管磁盘快照",
+        "D": "Azure Traffic Manager 与健康探测"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure Site Recovery 恢复计划允许您将多个 VM 分组并定义故障转移顺序，确保应用程序层之间的一致性。恢复计划还可以包含脚本来更新 DNS 和配置网络设置，确保故障转移后应用程序正常运行。",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q37",
+      "domain": 1,
+      "question": "一家公司需要在其 Azure 环境中实现零信任安全模型。他们希望对所有用户访问实施持续验证，即使用户已经通过身份验证。应该实现什么？",
+      "options": {
+        "A": "仅使用多重身份验证",
+        "B": "条件访问与持续访问评估 (CAE)",
+        "C": "Azure AD 密码保护",
+        "D": "Azure AD Identity Protection 仅用于风险用户"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "持续访问评估 (CAE) 是零信任实现的关键组件，它允许 Azure AD 和资源提供程序之间进行近实时通信。当用户的安全状态发生变化（如位置变化、设备变为不合规）时，可以立即撤销访问权限，而不是等待令牌过期。",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q38",
+      "domain": 2,
+      "question": "一家公司需要设计一个数据管道，从多个源（包括 IoT 设备、Web 应用程序和第三方 API）实时收集数据，进行转换，然后加载到数据仓库。应该使用什么架构？",
+      "options": {
+        "A": "Azure Data Factory 批处理管道",
+        "B": "Azure Event Hubs + Azure Stream Analytics + Azure Synapse Analytics",
+        "C": "直接从源写入 Azure SQL Database",
+        "D": "Azure Logic Apps 工作流"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure Event Hubs 作为实时数据引入服务，可以从多个源收集大量数据。Azure Stream Analytics 提供实时数据转换和处理。Azure Synapse Analytics 作为目标数据仓库。这种架构专门设计用于实时流处理场景。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q39",
+      "domain": 4,
+      "question": "一家公司正在将传统单体应用程序重构为微服务架构。他们需要实现服务之间的异步通信，支持多个订阅者接收相同的消息。应该使用什么服务？",
+      "options": {
+        "A": "Azure Queue Storage",
+        "B": "Azure Service Bus 主题与订阅",
+        "C": "Azure Event Grid",
+        "D": "Azure SignalR Service"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure Service Bus 主题与订阅实现发布-订阅模式，允许多个订阅者接收相同消息的副本。这是微服务架构中服务解耦的理想选择。Queue Storage 只支持点对点通信，Event Grid 更适合事件驱动场景。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q40",
+      "domain": 4,
+      "question": "您需要设计一个解决方案，在 Azure 中运行需要 GPU 加速的机器学习训练工作负载。工作负载需要能够弹性扩展，并在训练完成后自动缩减以节省成本。应该使用什么服务？",
+      "options": {
+        "A": "Azure 虚拟机 NC 系列",
+        "B": "Azure Machine Learning 计算群集",
+        "C": "Azure Databricks GPU 群集",
+        "D": "Azure Batch with GPU 节点"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Azure Machine Learning 计算群集支持 GPU VM SKU，提供自动扩展功能（可以扩展到零节点），并与 Azure Machine Learning 工作流无缝集成。当没有训练作业时，群集可以自动缩减到零节点，最大限度地节省成本。",
+      "difficulty": "medium"
     }
   ]
 }

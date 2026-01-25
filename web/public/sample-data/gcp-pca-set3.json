@@ -1,43 +1,43 @@
 {
   "exam": {
     "id": "gcp-pca-set3",
-    "name": "GCP Professional Cloud Architect Practice Exam #3",
+    "name": "GCP 专业云架构师练习题 #3",
     "code": "PCA",
     "provider": "GCP",
-    "language": "en",
-    "description": "Google Cloud Professional Cloud Architect certification practice questions",
-    "totalQuestions": 10,
+    "language": "zh-CN",
+    "description": "Google Cloud Professional Cloud Architect 认证练习题集3",
+    "totalQuestions": 40,
     "passingScore": 70,
     "examTime": 120,
     "domains": [
       {
         "id": 1,
-        "name": "Design and plan cloud solutions",
+        "name": "设计和规划云解决方案",
         "weight": 24
       },
       {
         "id": 2,
-        "name": "Manage and provision cloud infrastructure",
+        "name": "管理和配置云基础设施",
         "weight": 15
       },
       {
         "id": 3,
-        "name": "Design for security and compliance",
+        "name": "安全性和合规性设计",
         "weight": 18
       },
       {
         "id": 4,
-        "name": "Analyze and optimize technical and business processes",
+        "name": "分析和优化技术与业务流程",
         "weight": 18
       },
       {
         "id": 5,
-        "name": "Manage implementation",
+        "name": "管理实施",
         "weight": 11
       },
       {
         "id": 6,
-        "name": "Ensure solution and operations reliability",
+        "name": "确保解决方案和运维可靠性",
         "weight": 14
       }
     ],
@@ -47,159 +47,609 @@
       "PCA",
       "Professional",
       "Architect",
-      "Certification"
+      "认证"
     ]
   },
   "questions": [
     {
       "id": "q1",
       "domain": 1,
-      "question": "A healthcare company needs to build a data analytics platform that processes sensitive patient data. The solution must comply with HIPAA regulations and ensure data is encrypted both at rest and in transit. Which architecture best meets these requirements?",
+      "question": "一家医疗公司需要构建处理敏感患者数据的数据分析平台。解决方案必须符合 HIPAA 法规，并确保数据在静态和传输中都被加密。哪种架构最能满足这些要求？",
       "options": {
-        "A": "Store data in Cloud Storage with default encryption and access via public endpoints",
-        "B": "Use BigQuery with customer-managed encryption keys (CMEK), VPC Service Controls, and Private Google Access",
-        "C": "Deploy a self-managed Hadoop cluster on Compute Engine with custom encryption",
-        "D": "Use Cloud SQL with SSL connections and standard Google-managed encryption"
+        "A": "使用默认加密将数据存储在 Cloud Storage 中，并通过公共端点访问",
+        "B": "使用带有客户管理加密密钥 (CMEK)、VPC Service Controls 和私有 Google 访问的 BigQuery",
+        "C": "在 Compute Engine 上部署自管理的 Hadoop 集群并使用自定义加密",
+        "D": "使用带有 SSL 连接和标准 Google 管理加密的 Cloud SQL"
       },
       "answer": "B",
       "answerType": "single",
-      "explanation": "BigQuery with CMEK provides customer-controlled encryption keys for compliance requirements. VPC Service Controls create a security perimeter to prevent data exfiltration. Private Google Access ensures traffic to Google APIs doesn't traverse the public internet. This combination provides comprehensive protection for sensitive healthcare data while maintaining analytics capabilities.",
+      "explanation": "BigQuery 配合 CMEK 提供客户控制的加密密钥以满足合规要求。VPC Service Controls 创建安全边界以防止数据外泄。私有 Google 访问确保到 Google API 的流量不经过公共互联网。这种组合为敏感医疗数据提供全面保护，同时保持分析能力。",
       "difficulty": "hard"
     },
     {
       "id": "q2",
       "domain": 1,
-      "question": "A company is designing a global mobile gaming backend that needs to handle millions of concurrent users with sub-10ms latency for player state updates. Which database solution is most appropriate?",
+      "question": "一家公司正在设计全球移动游戏后端，需要处理数百万并发用户，玩家状态更新延迟要求低于 10 毫秒。哪种数据库解决方案最合适？",
       "options": {
-        "A": "Cloud SQL with read replicas in multiple regions",
-        "B": "Cloud Spanner with a multi-regional configuration",
-        "C": "Memorystore for Redis with regional clusters",
-        "D": "Cloud Firestore in Native mode"
+        "A": "多区域带读副本的 Cloud SQL",
+        "B": "多区域配置的 Cloud Spanner",
+        "C": "带区域集群的 Memorystore for Redis",
+        "D": "原生模式的 Cloud Firestore"
       },
       "answer": "C",
       "answerType": "single",
-      "explanation": "Memorystore for Redis provides sub-millisecond latency, which is essential for real-time gaming state updates. Its in-memory architecture is ideal for frequently accessed, rapidly changing data like player states. While Cloud Spanner offers global consistency, its latency (typically 10-100ms) may not meet the sub-10ms requirement for gaming workloads.",
+      "explanation": "Memorystore for Redis 提供亚毫秒级延迟，这对实时游戏状态更新至关重要。其内存架构非常适合频繁访问、快速变化的数据，如玩家状态。虽然 Cloud Spanner 提供全局一致性，但其延迟（通常为 10-100 毫秒）可能无法满足游戏工作负载的亚 10 毫秒要求。",
       "difficulty": "medium"
     },
     {
       "id": "q3",
       "domain": 2,
-      "question": "Your organization wants to implement a hub-and-spoke network topology where multiple VPCs in different projects can communicate through a central hub VPC. What is the recommended approach?",
+      "question": "您的组织希望实现中心辐射型网络拓扑，其中不同项目中的多个 VPC 可以通过中央集线器 VPC 进行通信。推荐的方法是什么？",
       "options": {
-        "A": "Create VPC peering between each spoke VPC and all other spoke VPCs",
-        "B": "Use Shared VPC with the hub as the host project and spokes as service projects",
-        "C": "Deploy Cloud VPN tunnels between all VPCs",
-        "D": "Use VPC peering from each spoke to the hub, and enable transitive routing via Cloud Router"
+        "A": "在每个辐射 VPC 和所有其他辐射 VPC 之间创建 VPC 对等互连",
+        "B": "使用共享 VPC，将集线器作为宿主项目，辐射作为服务项目",
+        "C": "在所有 VPC 之间部署 Cloud VPN 隧道",
+        "D": "使用从每个辐射到集线器的 VPC 对等互连，并通过 Cloud Router 启用传递路由"
       },
       "answer": "B",
       "answerType": "single",
-      "explanation": "Shared VPC is the recommended approach for hub-and-spoke topologies in Google Cloud. The hub project becomes the host project containing the shared network, while spoke projects become service projects that can use resources in the shared network. This provides centralized network administration while allowing resource separation across projects.",
+      "explanation": "共享 VPC 是 Google Cloud 中中心辐射型拓扑的推荐方法。集线器项目成为包含共享网络的宿主项目，而辐射项目成为可以使用共享网络中资源的服务项目。这提供了集中式网络管理，同时允许跨项目的资源分离。",
       "difficulty": "medium"
     },
     {
       "id": "q4",
       "domain": 2,
-      "question": "You need to configure DNS resolution so that resources in your VPC can resolve private hostnames for Cloud SQL instances without exposing them to the public internet. What should you configure?",
+      "question": "您需要配置 DNS 解析，使 VPC 中的资源可以解析 Cloud SQL 实例的私有主机名，而不将其暴露给公共互联网。您应该配置什么？",
       "options": {
-        "A": "Create a public DNS zone in Cloud DNS",
-        "B": "Configure Private Service Connect for Cloud SQL",
-        "C": "Enable Private IP for Cloud SQL and use Cloud DNS private zones",
-        "D": "Set up a DNS forwarding zone to on-premises DNS servers"
+        "A": "在 Cloud DNS 中创建公共 DNS 区域",
+        "B": "为 Cloud SQL 配置 Private Service Connect",
+        "C": "为 Cloud SQL 启用私有 IP 并使用 Cloud DNS 私有区域",
+        "D": "设置 DNS 转发区域到本地 DNS 服务器"
       },
       "answer": "C",
       "answerType": "single",
-      "explanation": "Enabling Private IP for Cloud SQL assigns an internal IP address to the instance, making it accessible only within the VPC. Cloud DNS private zones allow you to create custom DNS records that are only resolvable from within specified VPC networks. This combination provides secure, private DNS resolution for Cloud SQL instances.",
+      "explanation": "为 Cloud SQL 启用私有 IP 会为实例分配内部 IP 地址，使其只能在 VPC 内访问。Cloud DNS 私有区域允许您创建只能从指定 VPC 网络内解析的自定义 DNS 记录。这种组合为 Cloud SQL 实例提供安全的私有 DNS 解析。",
       "difficulty": "medium"
     },
     {
       "id": "q5",
       "domain": 3,
-      "question": "Your security team requires that all API calls to Google Cloud services from your organization must originate from corporate-managed devices or the corporate network. How can you enforce this requirement?",
+      "question": "您的安全团队要求所有从组织到 Google Cloud 服务的 API 调用必须来自企业管理的设备或企业网络。您如何强制执行此要求？",
       "options": {
-        "A": "Configure firewall rules to block external access",
-        "B": "Use VPC Service Controls with access levels based on device and IP",
-        "C": "Implement custom authentication middleware",
-        "D": "Restrict IAM permissions to specific service accounts"
+        "A": "配置防火墙规则以阻止外部访问",
+        "B": "使用基于设备和 IP 的访问级别的 VPC Service Controls",
+        "C": "实现自定义身份验证中间件",
+        "D": "将 IAM 权限限制为特定服务账号"
       },
       "answer": "B",
       "answerType": "single",
-      "explanation": "VPC Service Controls access levels allow you to define conditions based on IP address ranges (corporate network), device attributes (corporate-managed devices via BeyondCorp Enterprise), and other factors. Combined with service perimeters, this enforces that only requests meeting these conditions can access protected Google Cloud resources.",
+      "explanation": "VPC Service Controls 访问级别允许您根据 IP 地址范围（企业网络）、设备属性（通过 BeyondCorp Enterprise 的企业管理设备）和其他因素定义条件。结合服务边界，这强制只有满足这些条件的请求才能访问受保护的 Google Cloud 资源。",
       "difficulty": "hard"
     },
     {
       "id": "q6",
       "domain": 3,
-      "question": "A financial services company needs to implement data loss prevention for BigQuery datasets containing PII. The solution should automatically detect and mask sensitive data in query results. What should you use?",
+      "question": "一家金融服务公司需要为包含 PII 的 BigQuery 数据集实现数据丢失防护。解决方案应自动检测和掩码查询结果中的敏感数据。您应该使用什么？",
       "options": {
-        "A": "BigQuery column-level security with IAM",
-        "B": "Cloud Data Loss Prevention (DLP) API integrated with BigQuery",
-        "C": "BigQuery authorized views with CASE statements",
-        "D": "Customer-managed encryption keys (CMEK) for BigQuery"
+        "A": "带有 IAM 的 BigQuery 列级安全",
+        "B": "与 BigQuery 集成的 Cloud Data Loss Prevention (DLP) API",
+        "C": "带有 CASE 语句的 BigQuery 授权视图",
+        "D": "BigQuery 的客户管理加密密钥 (CMEK)"
       },
       "answer": "B",
       "answerType": "single",
-      "explanation": "Cloud DLP API provides automatic detection and classification of sensitive data types like PII. It integrates with BigQuery to scan datasets and can apply de-identification transformations such as masking, tokenization, and redaction. This provides comprehensive, automated data protection without requiring manual identification of sensitive fields.",
+      "explanation": "Cloud DLP API 提供敏感数据类型（如 PII）的自动检测和分类。它与 BigQuery 集成以扫描数据集，并可应用脱敏转换，如掩码、令牌化和编辑。这提供全面、自动化的数据保护，无需手动识别敏感字段。",
       "difficulty": "medium"
     },
     {
       "id": "q7",
       "domain": 4,
-      "question": "Your team manages multiple GKE clusters across different environments (dev, staging, production). You want to ensure consistent configuration and policy enforcement across all clusters. What is the recommended approach?",
+      "question": "您的团队管理跨不同环境（开发、预发布、生产）的多个 GKE 集群。您希望确保所有集群的配置和策略执行一致。推荐的方法是什么？",
       "options": {
-        "A": "Manually apply kubectl commands to each cluster",
-        "B": "Use Anthos Config Management with Policy Controller",
-        "C": "Create Terraform modules for cluster configuration",
-        "D": "Export and import YAML manifests between clusters"
+        "A": "手动对每个集群应用 kubectl 命令",
+        "B": "使用带有策略控制器的 Anthos Config Management",
+        "C": "为集群配置创建 Terraform 模块",
+        "D": "在集群之间导出和导入 YAML 清单"
       },
       "answer": "B",
       "answerType": "single",
-      "explanation": "Anthos Config Management enables GitOps-style configuration management across multiple Kubernetes clusters. It automatically syncs configurations from a Git repository to all managed clusters. Policy Controller (based on Open Policy Agent) allows you to define and enforce policies across clusters, ensuring compliance and consistency.",
+      "explanation": "Anthos Config Management 支持跨多个 Kubernetes 集群的 GitOps 风格配置管理。它自动将配置从 Git 仓库同步到所有托管集群。策略控制器（基于 Open Policy Agent）允许您定义和执行跨集群的策略，确保合规性和一致性。",
       "difficulty": "medium"
     },
     {
       "id": "q8",
       "domain": 4,
-      "question": "A data engineering team needs to orchestrate complex data pipelines that include BigQuery jobs, Dataflow processing, and Cloud Functions. The pipelines have dependencies and require retry logic. What service should they use?",
+      "question": "数据工程团队需要编排复杂的数据管道，包括 BigQuery 作业、Dataflow 处理和 Cloud Functions。管道具有依赖关系并需要重试逻辑。他们应该使用什么服务？",
       "options": {
-        "A": "Cloud Scheduler with Pub/Sub triggers",
-        "B": "Cloud Composer (managed Apache Airflow)",
-        "C": "Cloud Tasks for job queuing",
-        "D": "Workflows for serverless orchestration"
+        "A": "带有 Pub/Sub 触发器的 Cloud Scheduler",
+        "B": "Cloud Composer（托管 Apache Airflow）",
+        "C": "用于作业队列的 Cloud Tasks",
+        "D": "用于无服务器编排的 Workflows"
       },
       "answer": "B",
       "answerType": "single",
-      "explanation": "Cloud Composer is a fully managed Apache Airflow service designed for complex workflow orchestration. It provides visual DAG representation, dependency management, retry logic, and native integration with Google Cloud services including BigQuery, Dataflow, and Cloud Functions. It's ideal for data engineering pipelines with complex dependencies.",
+      "explanation": "Cloud Composer 是专为复杂工作流编排设计的全托管 Apache Airflow 服务。它提供可视化 DAG 表示、依赖管理、重试逻辑以及与 Google Cloud 服务（包括 BigQuery、Dataflow 和 Cloud Functions）的原生集成。它非常适合具有复杂依赖关系的数据工程管道。",
       "difficulty": "medium"
     },
     {
       "id": "q9",
       "domain": 5,
-      "question": "Your development team wants to implement a GitOps workflow where infrastructure changes are automatically applied when merged to the main branch. The infrastructure is defined using Terraform. What is the recommended setup?",
+      "question": "您的开发团队希望实现 GitOps 工作流，当合并到主分支时自动应用基础设施更改。基础设施使用 Terraform 定义。推荐的设置是什么？",
       "options": {
-        "A": "Run Terraform commands manually after each merge",
-        "B": "Use Cloud Build triggers with Terraform Cloud backend",
-        "C": "Deploy Jenkins on GKE for Terraform automation",
-        "D": "Use Cloud Functions triggered by repository events"
+        "A": "每次合并后手动运行 Terraform 命令",
+        "B": "使用带有 Terraform Cloud 后端的 Cloud Build 触发器",
+        "C": "在 GKE 上部署 Jenkins 进行 Terraform 自动化",
+        "D": "使用由仓库事件触发的 Cloud Functions"
       },
       "answer": "B",
       "answerType": "single",
-      "explanation": "Cloud Build triggers can automatically execute Terraform plans and applies when code is merged to specific branches. Using Terraform Cloud (or Cloud Storage) as a remote backend ensures state locking and collaboration. This provides a fully automated, auditable GitOps workflow for infrastructure management on Google Cloud.",
+      "explanation": "Cloud Build 触发器可以在代码合并到特定分支时自动执行 Terraform plan 和 apply。使用 Terraform Cloud（或 Cloud Storage）作为远程后端确保状态锁定和协作。这为 Google Cloud 上的基础设施管理提供完全自动化、可审计的 GitOps 工作流。",
       "difficulty": "medium"
     },
     {
       "id": "q10",
       "domain": 6,
-      "question": "You need to design a disaster recovery strategy for a critical application with RPO of 1 hour and RTO of 4 hours. The application uses Cloud SQL, GKE, and Cloud Storage. Which approach best meets these requirements?",
+      "question": "您需要为 RPO 为 1 小时、RTO 为 4 小时的关键应用程序设计灾难恢复策略。应用程序使用 Cloud SQL、GKE 和 Cloud Storage。哪种方法最能满足这些要求？",
       "options": {
-        "A": "Use automated backups for all services and restore manually when needed",
-        "B": "Deploy a warm standby in another region with Cloud SQL cross-region replicas and GKE cluster",
-        "C": "Rely on Google's built-in redundancy within a single region",
-        "D": "Use only Cloud Storage multi-regional buckets for data redundancy"
+        "A": "为所有服务使用自动备份，需要时手动恢复",
+        "B": "在另一个区域部署带有 Cloud SQL 跨区域副本和 GKE 集群的温备份",
+        "C": "依赖单个区域内 Google 的内置冗余",
+        "D": "仅使用 Cloud Storage 多区域存储桶进行数据冗余"
       },
       "answer": "B",
       "answerType": "single",
-      "explanation": "A warm standby approach with cross-region Cloud SQL replicas provides continuous replication (meeting RPO < 1 hour). A pre-provisioned GKE cluster in the DR region can be scaled up quickly during failover. This architecture balances cost with recovery objectives, allowing you to meet both the 1-hour RPO and 4-hour RTO requirements.",
+      "explanation": "带有跨区域 Cloud SQL 副本的温备份方法提供持续复制（满足 RPO < 1 小时）。DR 区域中预配置的 GKE 集群可以在故障转移期间快速扩展。这种架构在成本和恢复目标之间取得平衡，允许您同时满足 1 小时 RPO 和 4 小时 RTO 要求。",
       "difficulty": "hard"
+    },
+    {
+      "id": "q11",
+      "domain": 1,
+      "question": "您正在为一家零售公司设计电子商务平台。在促销期间，流量可能增加 10 倍。该系统需要自动扩展并在全球范围内提供低延迟体验。最佳架构是什么？",
+      "options": {
+        "A": "在 Compute Engine 上部署单体应用，使用托管实例组",
+        "B": "使用 Cloud Run 部署微服务，配合 Cloud CDN 和全局负载均衡",
+        "C": "使用 App Engine 标准环境部署所有组件",
+        "D": "在单个区域的 GKE 集群上部署应用"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Cloud Run 提供自动扩展能力，可以从零扩展到处理任意流量。Cloud CDN 缓存静态内容，减少源服务器负载并降低全球用户的延迟。全局负载均衡将用户路由到最近的健康端点。这种组合非常适合流量波动大的电子商务平台。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q12",
+      "domain": 1,
+      "question": "一家制造公司需要从工厂设备收集遥测数据进行实时异常检测。每天将生成约 1 TB 数据。数据需要存储 7 年以满足合规要求。哪种架构最合适？",
+      "options": {
+        "A": "使用 Cloud IoT Core 接收数据，Dataflow 进行实时处理，BigQuery 用于分析和长期存储",
+        "B": "将数据直接发送到 Cloud Storage，使用 Cloud Functions 处理",
+        "C": "使用 Pub/Sub 接收数据，存储在 Cloud SQL 中",
+        "D": "使用 Compute Engine 上的自定义 MQTT 代理和本地数据库"
+      },
+      "answer": "A",
+      "answerType": "single",
+      "explanation": "Cloud IoT Core（注：已迁移到第三方解决方案）或 Pub/Sub 可安全接收设备遥测数据。Dataflow 提供实时流处理用于异常检测。BigQuery 具有成本效益的存储和强大的分析能力，支持分区表和长期存储定价，非常适合 7 年数据保留要求。",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q13",
+      "domain": 1,
+      "question": "您的公司需要迁移一个遗留的三层 Web 应用程序到 Google Cloud。应用程序有紧密耦合的组件，不能进行重大重构。迁移策略应最小化风险和停机时间。最佳方法是什么？",
+      "options": {
+        "A": "直接重写应用程序为微服务架构并部署到 GKE",
+        "B": "使用 Migrate to VMs 将虚拟机直接迁移到 Compute Engine",
+        "C": "将应用程序容器化并部署到 Cloud Run",
+        "D": "使用 App Engine 柔性环境托管应用程序"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "对于紧密耦合、不能重大重构的遗留应用，Migrate to VMs 提供最低风险的迁移路径。它支持直接迁移（lift and shift），保持应用架构不变，最小化停机时间和迁移复杂性。迁移后可以逐步进行现代化改造。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q14",
+      "domain": 2,
+      "question": "您需要在 VPC 中部署具有高可用性的应用程序。应用程序需要访问互联网进行软件更新，但不应直接暴露于公共互联网。最佳配置是什么？",
+      "options": {
+        "A": "为 VM 分配公共 IP 并使用防火墙规则限制入站流量",
+        "B": "使用仅私有 IP 的 VM，配置 Cloud NAT 进行出站访问",
+        "C": "使用带有公共 IP 的堡垒主机转发所有流量",
+        "D": "配置 Cloud VPN 连接到本地代理服务器"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Cloud NAT 允许没有公共 IP 的 VM 进行出站互联网访问，同时保持私有。这提供了安全性（无入站公共访问）和功能性（可以下载更新）的最佳平衡。Cloud NAT 是高可用的托管服务，无需管理 NAT 实例。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q15",
+      "domain": 2,
+      "question": "您的组织需要将现有的 Active Directory 基础设施与 Google Cloud 集成，以实现单点登录和身份联合。推荐的方法是什么？",
+      "options": {
+        "A": "在 Compute Engine 上部署 Active Directory 副本",
+        "B": "使用 Google Cloud Directory Sync 和 SAML 联合",
+        "C": "使用托管 Microsoft Active Directory 服务",
+        "D": "手动在 Cloud Identity 中创建所有用户账户"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "托管 Microsoft Active Directory 是完全托管的 AD 服务，可以与现有本地 AD 建立信任关系。它提供与 Google Cloud 资源的无缝集成，同时保持现有的 AD 基础设施和策略。这是企业级 Windows 工作负载最推荐的解决方案。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q16",
+      "domain": 3,
+      "question": "您的公司需要确保特定 Google Cloud 项目中的数据永远不会离开特定地理区域（如欧盟）。如何强制执行此要求？",
+      "options": {
+        "A": "使用 IAM 策略限制用户只能创建特定区域的资源",
+        "B": "使用组织策略约束限制资源位置",
+        "C": "创建自定义脚本监控资源创建并删除不合规资源",
+        "D": "仅使用支持区域选择的服务"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "组织策略约束 (constraints/gcp.resourceLocations) 允许您在组织、文件夹或项目级别强制执行资源位置限制。这是预防性控制，可以阻止在不允许的区域创建资源，确保数据主权合规。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q17",
+      "domain": 3,
+      "question": "安全团队需要检测和响应 Google Cloud 环境中的安全威胁。他们需要集中的威胁检测、漏洞管理和安全态势可见性。应该使用什么？",
+      "options": {
+        "A": "在每个项目中启用 Cloud Audit Logs",
+        "B": "使用 Security Command Center Premium",
+        "C": "部署第三方 SIEM 解决方案",
+        "D": "配置 Cloud Monitoring 告警"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Security Command Center Premium 提供全面的安全管理平台，包括：Event Threat Detection（威胁检测）、Security Health Analytics（安全配置错误检测）、Web Security Scanner（Web 漏洞扫描）和集成的安全发现管理。它是 Google Cloud 原生的统一安全视图。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q18",
+      "domain": 3,
+      "question": "您的应用程序需要安全地存储和管理 API 密钥、数据库密码和其他敏感配置。应用程序运行在 GKE 上。推荐的方法是什么？",
+      "options": {
+        "A": "将敏感信息存储在环境变量中",
+        "B": "使用 Kubernetes Secrets 并启用加密",
+        "C": "使用 Secret Manager 并通过 Workload Identity 访问",
+        "D": "将配置文件挂载为 ConfigMap"
+      },
+      "answer": "C",
+      "answerType": "single",
+      "explanation": "Secret Manager 是 Google Cloud 的托管密钥管理服务，提供版本控制、访问控制和审计日志。与 GKE Workload Identity 结合，Pod 可以使用服务账号身份安全访问密钥，无需管理静态凭证。这是 GKE 工作负载管理密钥的最佳实践。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q19",
+      "domain": 4,
+      "question": "您的团队需要优化 BigQuery 成本。当前查询经常扫描大量数据，但只使用少量列。哪些优化措施最有效？（选择两项）",
+      "options": {
+        "A": "使用 SELECT * 确保获取所有需要的数据",
+        "B": "使用分区表和聚簇表",
+        "C": "启用 BigQuery BI Engine",
+        "D": "只选择需要的列，并使用分区修剪"
+      },
+      "answer": ["B", "D"],
+      "answerType": "multiple",
+      "explanation": "分区表允许查询只扫描相关分区，大大减少处理的数据量。聚簇表进一步优化扫描，将相似数据存储在一起。只选择需要的列而不是 SELECT * 可以减少读取的数据量。这些都是 BigQuery 成本优化的关键最佳实践。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q20",
+      "domain": 4,
+      "question": "您的应用程序使用 Pub/Sub 进行消息传递。最近收到消息处理延迟增加的报告。您如何诊断问题？",
+      "options": {
+        "A": "增加发布者的消息发送速率",
+        "B": "检查订阅者的积压消息数量和最早未确认消息的年龄",
+        "C": "将消息大小限制减少到 1KB",
+        "D": "禁用消息排序以提高吞吐量"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Pub/Sub 提供关键指标来诊断延迟问题：subscription/num_undelivered_messages（积压消息数量）和 subscription/oldest_unacked_message_age（最早未确认消息年龄）。这些指标可以揭示订阅者是否跟不上消息速率，帮助确定是需要增加订阅者实例还是优化处理逻辑。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q21",
+      "domain": 5,
+      "question": "您的组织正在采用基础设施即代码 (IaC)。团队需要能够在应用更改之前预览 Terraform 计划，并确保所有更改都经过代码审查。推荐的工作流是什么？",
+      "options": {
+        "A": "开发人员在本地运行 terraform apply 并手动记录更改",
+        "B": "使用 Cloud Build 在 PR 中运行 terraform plan，合并后运行 terraform apply",
+        "C": "将 Terraform 状态存储在本地并通过电子邮件共享",
+        "D": "使用 Cloud Console 手动配置资源，然后导出为 Terraform"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "这是标准的 GitOps IaC 工作流：PR 创建时触发 terraform plan，将计划输出作为 PR 评论以便审查；PR 合并后触发 terraform apply。这确保所有基础设施更改都经过代码审查，并有完整的审计跟踪。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q22",
+      "domain": 5,
+      "question": "您负责管理多个 Google Cloud 项目的标签和成本分配。需要确保所有资源都有正确的成本中心标签。如何强制执行？",
+      "options": {
+        "A": "创建文档说明标签要求并培训团队",
+        "B": "使用组织策略要求特定标签",
+        "C": "定期运行脚本检查并报告缺少标签的资源",
+        "D": "在 IAM 角色中添加标签要求"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "组织策略支持标签要求约束（如 constraints/gcp.resourceTags），可以强制要求特定标签才能创建资源。这是预防性控制，确保在资源创建时就应用正确的标签，而不是事后修复。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q23",
+      "domain": 6,
+      "question": "您的生产应用程序需要 99.99% 的可用性 SLO。应用程序部署在单个区域的 GKE 上。为了提高可用性，您应该做什么？",
+      "options": {
+        "A": "增加 Pod 副本数量到 10 个",
+        "B": "部署多区域 GKE 集群并使用全局负载均衡",
+        "C": "启用 GKE 节点自动修复",
+        "D": "配置更频繁的健康检查"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "99.99% 可用性（每年约 52 分钟停机）需要跨区域冗余。单区域部署无论有多少副本都无法在区域故障时保持可用。多区域 GKE 集群配合全局负载均衡可以在一个区域完全故障时自动故障转移到另一个区域。",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q24",
+      "domain": 6,
+      "question": "您的团队需要实现 SRE 实践来管理服务可靠性。他们需要定义和跟踪 SLI、SLO 和错误预算。Google Cloud 中哪个工具最适合此目的？",
+      "options": {
+        "A": "Cloud Logging 仪表板",
+        "B": "Cloud Monitoring SLO 监控",
+        "C": "BigQuery 自定义报告",
+        "D": "Cloud Profiler 性能分析"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Cloud Monitoring 提供内置的 SLO 监控功能，可以定义基于可用性或延迟的 SLI，设置 SLO 目标，并自动计算错误预算。它与告警集成，可以在错误预算消耗过快时通知团队，是实现 SRE 实践的原生工具。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q25",
+      "domain": 1,
+      "question": "一家媒体公司需要构建视频转码管道。上传的视频需要转换为多种格式和分辨率。管道需要能够处理突发工作负载。最佳架构是什么？",
+      "options": {
+        "A": "使用具有固定大小实例组的 Compute Engine 运行 FFmpeg",
+        "B": "使用 Transcoder API 进行视频转码",
+        "C": "在 Cloud Run 上运行自定义转码容器",
+        "D": "使用 App Engine 处理转码请求"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Transcoder API 是 Google Cloud 的托管视频转码服务，专门为此用例设计。它自动处理扩展，支持多种输入和输出格式，提供作业队列和优先级管理。使用托管服务比自建转码基础设施更具成本效益和可维护性。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q26",
+      "domain": 1,
+      "question": "您正在设计一个事件驱动架构，需要将来自多个来源的事件路由到不同的处理程序。事件需要支持过滤和转换。推荐使用什么服务？",
+      "options": {
+        "A": "直接使用 Pub/Sub 主题和订阅",
+        "B": "使用 Eventarc 进行事件路由",
+        "C": "使用 Cloud Tasks 管理事件队列",
+        "D": "使用 Cloud Scheduler 定期轮询事件"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Eventarc 是 Google Cloud 的事件路由服务，支持从 90+ Google Cloud 服务、自定义应用和第三方 SaaS 接收事件。它提供事件过滤、目标路由（Cloud Run、GKE、Workflows 等）和标准化的 CloudEvents 格式。是构建事件驱动架构的推荐方式。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q27",
+      "domain": 2,
+      "question": "您的组织需要为多租户 SaaS 应用程序设计网络隔离。每个租户的数据和流量需要完全隔离。推荐的方法是什么？",
+      "options": {
+        "A": "在同一 VPC 中使用防火墙规则隔离租户",
+        "B": "为每个租户创建单独的 VPC 和项目",
+        "C": "使用子网分离租户流量",
+        "D": "使用网络标签区分租户资源"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "为每个租户使用单独的项目和 VPC 提供最强的隔离：独立的 IAM 权限边界、独立的配额和计费、独立的网络边界。这种模式称为"项目即租户"，是多租户 SaaS 的最佳实践，特别是在需要严格数据隔离的情况下。",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q28",
+      "domain": 2,
+      "question": "您需要在 Google Cloud 和 AWS 之间建立安全、高带宽的专用连接。数据传输量大，需要一致的低延迟。最佳选择是什么？",
+      "options": {
+        "A": "使用站点对站点 VPN",
+        "B": "使用 Cloud Interconnect 连接到共置设施，再连接到 AWS Direct Connect",
+        "C": "通过公共互联网传输并使用加密",
+        "D": "使用 Cloud VPN HA 配置"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "对于高带宽、低延迟的多云连接，使用 Cloud Interconnect（Dedicated 或 Partner）连接到共置设施，然后从同一设施使用 AWS Direct Connect。许多托管服务提供商提供这种跨云连接服务。这提供专用带宽、一致延迟和私有连接。",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q29",
+      "domain": 3,
+      "question": "您需要确保 GKE 集群中只能部署来自可信仓库的容器镜像。如何强制执行此策略？",
+      "options": {
+        "A": "使用 Kubernetes NetworkPolicy 限制镜像拉取",
+        "B": "配置 Binary Authorization 策略",
+        "C": "在 Dockerfile 中添加签名验证",
+        "D": "使用私有 Container Registry 并限制网络访问"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Binary Authorization 是部署时安全控制，可以要求容器镜像必须来自可信的注册表、经过漏洞扫描、有特定的签名或证明。它与 GKE 和 Cloud Run 集成，可以阻止不符合策略的镜像部署，是实现软件供应链安全的关键服务。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q30",
+      "domain": 3,
+      "question": "安全审计发现您的 Cloud Storage 存储桶可能被意外设为公开访问。您如何预防此问题并检测现有的公开存储桶？",
+      "options": {
+        "A": "定期手动检查每个存储桶的权限",
+        "B": "使用组织策略阻止公开访问，使用 Security Command Center 检测现有问题",
+        "C": "在存储桶名称中添加 'private' 前缀",
+        "D": "仅使用 Cloud Console 创建存储桶以避免错误"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "组织策略 constraints/storage.publicAccessPrevention 可以在组织或文件夹级别阻止创建公开访问的存储桶。Security Command Center 的 Security Health Analytics 可以扫描并报告已经公开的存储桶。这种预防 + 检测的组合提供全面保护。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q31",
+      "domain": 4,
+      "question": "您的机器学习团队需要训练大型模型，但 GPU 成本很高。训练作业可以容忍中断。如何优化成本？",
+      "options": {
+        "A": "使用更小的模型减少训练时间",
+        "B": "使用 Preemptible/Spot VMs 并实现检查点机制",
+        "C": "在夜间运行训练作业",
+        "D": "使用 CPU 而不是 GPU 进行训练"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Spot VMs（以前称为 Preemptible VMs）的成本比标准 VM 低 60-91%。对于可以容忍中断的 ML 训练工作负载，使用 Spot VMs 配合定期检查点保存可以大幅降低成本。如果 VM 被抢占，作业可以从最近的检查点恢复继续训练。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q32",
+      "domain": 4,
+      "question": "您的应用程序日志显示 Cloud SQL 数据库查询性能下降。您需要识别慢查询并优化它们。应该使用什么工具？",
+      "options": {
+        "A": "Cloud Monitoring CPU 指标",
+        "B": "Cloud SQL Query Insights",
+        "C": "Cloud Logging 日志分析",
+        "D": "导出数据到 BigQuery 分析"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Cloud SQL Query Insights 提供专门的数据库性能分析，包括：识别资源消耗最高的查询、查看查询执行计划、跟踪查询延迟趋势、识别锁等待和其他性能问题。它是优化 Cloud SQL 查询性能的首选工具。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q33",
+      "domain": 5,
+      "question": "您的团队需要跨多个 Google Cloud 项目部署相同的基础设施。项目具有不同的环境特定配置。管理此场景的最佳方法是什么？",
+      "options": {
+        "A": "为每个项目复制 Terraform 代码并手动修改",
+        "B": "使用 Terraform 工作空间和变量文件管理环境差异",
+        "C": "使用 Cloud Console 在每个项目中手动配置",
+        "D": "创建通用 shell 脚本调用 gcloud 命令"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Terraform 工作空间允许使用相同的配置管理多个环境（如 dev/staging/prod）。结合变量文件（.tfvars）可以为每个环境指定不同的值。这是 DRY（Don't Repeat Yourself）原则的实践，减少重复代码并确保环境一致性。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q34",
+      "domain": 5,
+      "question": "您的组织正在将服务从本地迁移到 Google Cloud。迁移需要最小化停机时间，并且必须在特定的维护窗口内完成。您应该使用什么方法？",
+      "options": {
+        "A": "在周末完全停止服务，复制数据，然后切换",
+        "B": "使用 Database Migration Service 进行持续复制，然后在维护窗口切换",
+        "C": "先迁移所有数据，然后逐步迁移应用程序",
+        "D": "使用导出/导入方式迁移数据"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Database Migration Service (DMS) 支持持续复制，允许在迁移期间保持源数据库运行。数据持续同步到目标，在维护窗口内只需完成最后的增量同步和切换，最小化停机时间。DMS 支持多种数据库引擎的迁移到 Cloud SQL 和 AlloyDB。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q35",
+      "domain": 6,
+      "question": "您的应用程序需要能够在 Compute Engine 实例出现故障时自动恢复。实例需要保持其持久化数据。最佳配置是什么？",
+      "options": {
+        "A": "使用托管实例组，数据存储在本地 SSD",
+        "B": "使用托管实例组配合持久化磁盘和实例模板",
+        "C": "手动监控实例并在需要时创建新实例",
+        "D": "使用单个实例并启用自动重启"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "托管实例组 (MIG) 提供自动修复功能：当实例健康检查失败时，MIG 会自动删除不健康实例并基于实例模板创建新实例。持久化磁盘独立于 VM 生命周期，可以附加到新实例。这种组合提供自动故障恢复和数据持久性。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q36",
+      "domain": 6,
+      "question": "您的生产 Cloud SQL 实例需要维护更新。您希望最小化对应用程序的影响。您应该配置什么？",
+      "options": {
+        "A": "禁用所有维护更新",
+        "B": "配置维护窗口和维护拒绝期",
+        "C": "使用只读副本作为主实例",
+        "D": "每次维护前手动进行故障转移"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Cloud SQL 维护窗口允许您指定首选的维护时间（如周日凌晨），将维护影响集中在低流量时段。维护拒绝期可以在关键业务时段（如年度促销）阻止维护。配合高可用性配置，维护期间会自动故障转移以最小化停机时间。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q37",
+      "domain": 1,
+      "question": "您正在为一家初创公司设计应用架构。初期用户量小，但预计快速增长。架构需要具有成本效益并能轻松扩展。推荐什么方法？",
+      "options": {
+        "A": "立即部署多区域高可用基础设施",
+        "B": "从无服务器架构开始（Cloud Run、Cloud Functions），按需扩展",
+        "C": "租用专用硬件以确保性能",
+        "D": "使用大型 Compute Engine 实例以预留容量"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "对于用户量不确定的初创公司，无服务器架构是理想选择：Cloud Run 和 Cloud Functions 按实际使用计费，初期成本接近零；自动扩展可以处理流量增长；无需管理基础设施，让团队专注于产品开发。随着业务增长，可以逐步优化架构。",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q38",
+      "domain": 4,
+      "question": "您需要分析存储在 Cloud Storage 中的 PB 级数据。数据以 Parquet 格式存储，需要使用 SQL 进行临时查询。最具成本效益的方法是什么？",
+      "options": {
+        "A": "将所有数据加载到 BigQuery 表中",
+        "B": "使用 BigQuery 外部表直接查询 Cloud Storage 中的数据",
+        "C": "将数据复制到 Compute Engine 并使用 Apache Spark",
+        "D": "使用 Cloud SQL 导入数据进行分析"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "BigQuery 外部表允许直接查询 Cloud Storage 中的 Parquet、ORC、Avro 等格式数据，无需加载到 BigQuery。对于临时查询和不经常访问的数据，这避免了数据加载成本和 BigQuery 存储成本，只需支付查询处理费用。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q39",
+      "domain": 3,
+      "question": "您的应用程序需要进行服务到服务的身份验证。服务 A（运行在 Cloud Run 上）需要调用服务 B（也运行在 Cloud Run 上）。推荐的身份验证方法是什么？",
+      "options": {
+        "A": "在服务 A 中硬编码服务 B 的 API 密钥",
+        "B": "使用 Cloud Run 的内置服务到服务身份验证（服务账号 + IAM）",
+        "C": "创建共享密钥并存储在两个服务中",
+        "D": "禁用服务 B 的身份验证以允许所有调用"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Cloud Run 支持基于 IAM 的服务到服务身份验证。配置服务 A 的服务账号具有调用服务 B 的 Cloud Run Invoker 角色。Cloud Run 会自动获取身份令牌并在请求中传递。这是零信任架构中服务间通信的最佳实践，无需管理密钥。",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q40",
+      "domain": 6,
+      "question": "您的团队需要调试一个生产问题，需要了解分布式系统中请求的完整路径和延迟。哪个工具最适合此目的？",
+      "options": {
+        "A": "Cloud Logging 查看日志",
+        "B": "Cloud Trace 进行分布式跟踪",
+        "C": "Cloud Profiler 分析 CPU 使用",
+        "D": "Cloud Monitoring 查看指标仪表板"
+      },
+      "answer": "B",
+      "answerType": "single",
+      "explanation": "Cloud Trace 是分布式跟踪系统，可以可视化请求在多个服务间的完整路径、每个步骤的延迟、以及服务间的调用关系。它自动与 Google Cloud 服务集成，也支持 OpenTelemetry 用于自定义服务。是诊断分布式系统延迟问题的关键工具。",
+      "difficulty": "easy"
     }
   ]
 }
