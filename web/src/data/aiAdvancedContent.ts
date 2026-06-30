@@ -29,148 +29,124 @@ export const aiAdvancedBook: Book = {
       sections: [
         {
           id: 'ch0-timeline',
-          title: { zh: '2025 年 AI 大事记', ja: '2025年AI大事記' },
+          title: { zh: '2026 年 AI 技术动态', ja: '2026年AI技術動向' },
           content: {
             zh: `
 ## 🚀 AI 技术动态时间轴
 
-追踪最新 AI 发展动态，点击链接深入了解相关知识点。
+更新时间：2026-06。这里聚焦会影响实际选型和工作流的变化，不追逐每一个营销名词。
 
 ---
 
 \`\`\`
 ┌─────────────────────────────────────────────────────────────────────────┐
-│                        2025 年 AI 技术发展时间轴                          │
+│                      2025-2026 AI 技术发展时间轴                          │
 └─────────────────────────────────────────────────────────────────────────┘
 
-  2025.01                                                          2025.07
+  2025.03                                                          2026.06
      │                                                                │
      ▼                                                                ▼
 ─────●────────●────────●────────●────────●────────●────────●────────●─────
      │        │        │        │        │        │        │        │
-   Claude   GPT-5    Claude   Codex    Sub-     Skills   Chrome   最新
-   Opus4.5  发布     Code     Agent    agents   标准化   集成     动态
-   发布              MCP      Skills   功能     通用
+   Gemini   OpenAI  MCP     Claude   GPT-5.5 Gemini   Agent   最新
+   2.5      Responses生态    Code     发布     3.5     工具化  实践
+   推理     API     扩张    成熟              系列
 \`\`\`
 
 ---
 
 ## 📅 详细时间轴
 
-### 🔵 2025年1月 - Claude Opus 4.5 发布
+### 🔵 2025年3月 - Gemini 2.5 推理模型发布
 
-Anthropic 发布 Claude Opus 4.5，成为当时最强大的 AI 模型。
+Google 发布 Gemini 2.5，将“thinking / 推理”能力作为主线，并强化长上下文、多模态和代码能力。
 
-| 特性 | 说明 |
-|------|------|
-| 知识截止 | 2025年1月 |
-| 长文本能力 | 可输出 1.2 万+ 字符 |
-| 创作能力 | 文学创作、设计感更强 |
+| 变化 | 实战意义 |
+|------|----------|
+| 长上下文成为默认竞争点 | 可以直接处理长文档、代码库、会议记录 |
+| 多模态更稳定 | 图像、视频、音频不再是附加能力 |
+| 推理模型普及 | 复杂任务更适合“规划-执行-验证”流程 |
 
-📖 **相关知识点**：→ 本书 [3.10 AI 模型对比与选型]
-
----
-
-### 🔵 2025年2月 - GPT-5 系列发布
-
-OpenAI 陆续发布 GPT-5.0、5.1、5.2，持续迭代改进。
-
-**实测对比要点**：
-- 长文本生成：Claude 约 12000 字符，GPT-5.1 约 6900 字符
-- 数学编程：GPT-5.1 更强
-- 浏览器自动化：GPT-5.1 略胜
-
-📖 **深入学习**：→ 本书 [3.10 Claude vs GPT 实测对比]
+📖 **相关知识点**：→ 本书 [9.1 Gemini 大模型家族]
 
 ---
 
-### 🟢 2025年3月 - Claude Code 正式发布
+### 🔵 2025年5月 - OpenAI Responses API 工具生态成熟
 
-基于 MCP 协议的 AI 编程助手 Claude Code 发布，改变开发方式。
+OpenAI 将工具调用、文件检索、代码执行、图像生成、后台任务和远程 MCP 连接集中到 Responses API 体系里。
 
-**核心特性**：
-- ✅ 直接读写代码文件
-- ✅ 运行终端命令
-- ✅ MCP 协议扩展能力
+**你需要掌握的变化**：
+- 不要只学“单轮聊天”，要学会把模型接入工具和业务数据
+- RAG、代码执行、文件搜索、MCP 正在变成 Agent 的基础设施
+- 长任务要设计异步执行、状态恢复和可观察日志
 
-**Boris 核心经验**：Opus 4.5 + Plan 模式、多实例并行、Slash 命令自动化
-
-📖 **深入学习**：→ 本书 [3.3 MCP：AI 的"万能接口"] 和 [序章：大佬经验分享]
+📖 **深入学习**：→ 本书 [3.3 MCP：AI 的"万能接口"] 和 [4.4 RAG 实战代码]
 
 ---
 
-### 🟢 2025年4月 - Sub-agents 功能上线
+### 🟢 2025-2026 - GPT-5 系列进入主流工作流
 
-Claude Code 支持 Sub-agents，实现专家团队协作模式。
+GPT-5 系列把通用对话、代码、工具调用和长任务能力继续整合。到 2026 年中，OpenAI 官方文档已将 GPT-5.5 作为最新主力入口，并把 Codex、Agents SDK、MCP、Computer Use、Evals 等放在同一开发者体系下。
+
+**选型建议**：
+- 复杂代码、数据分析、文档综合：优先选择 Thinking/Reasoning 型号
+- 低延迟客服、分类、提取：优先选择轻量或 mini/flash 型号
+- 生产系统：固定具体模型版本，不要无脑使用 latest
+
+📖 **深入学习**：→ 本书 [3.10 AI 模型对比与选型]
+
+---
+
+### 🟢 2025-2026 - Claude 4 系列与 Claude Code 升级
+
+Claude Opus 4.5 是 2025 年的重要节点，强化了长时间自主任务、复杂编码、Excel 自动化和 Prompt Injection 防护。到 2026 年中，Anthropic 模型页已列出 Claude Opus 4.8、Claude Sonnet 4.6、Claude Haiku 4.5 等主力模型。
+
+**实战重点**：
+- Claude Code 从“代码助手”升级为可长时间执行的开发 Agent
+- Plan 模式、上下文压缩、记忆、子代理成为复杂工程任务的关键
+- Prompt Injection 防护和工具权限控制必须纳入开发流程
+
+📖 **深入学习**：→ 本书 [3.3 Claude Code：MCP 的实战应用]
+
+---
+
+### 🟡 2026年上半年 - Gemini 3 系列与 Agent 平台化
+
+Google AI 开发者文档显示 Gemini 3.5 Flash、Gemini 3.1 Pro、Gemini 3.1 Flash Live、TTS、Veo 3.1、Deep Research、Computer Use、Antigravity Agent 等能力已经成为独立模型/工具类别。
 
 \`\`\`
-Sub-agents 架构示意
-───────────────────
-        主 Agent
+现代 Agent 架构
+────────────────
+        Orchestrator
             │
-    ┌───────┼───────┐
-    ▼       ▼       ▼
-  代码    测试    文档
-  审查    专家    生成
+    ┌───────┼────────┬────────┐
+    ▼       ▼        ▼        ▼
+  模型     工具      记忆     评测
+ Reason  MCP/API   Context   Evals
 \`\`\`
 
-**核心价值**：上下文隔离避免污染、专业化分工成功率更高、可复用团队共享
+**核心变化**：模型能力仍重要，但真正拉开差距的是工具编排、上下文管理、权限边界、自动评测和回滚机制。
 
-📖 **深入学习**：→ 本书 [3.3 Sub-agents 专家团队协作]
-
----
-
-### 🟡 2025年5月 - Agent Skills 成为行业标准
-
-OpenAI Codex 采用 Anthropic 的 Skills 规范，实现跨平台通用。
-
-| 平台 | Skills 支持 |
-|------|------------|
-| Claude Code | ✅ 原生支持 |
-| GPT Codex | ✅ 新增支持 |
-| Cursor | ✅ 兼容 |
-
-> 💡 你写的 Skills 可以在 Claude 和 Codex 之间通用！
-
-**重大意义**：一次编写到处运行，团队知识资产化，AI 能力可定制
-
-📖 **深入学习**：→ 本书 [3.9 OpenAI Codex 使用指南]
+📖 **深入学习**：→ 本书 [3.2 AI Agent 架构]
 
 ---
 
-### 🟡 2025年6月 - Claude Code Chrome 集成
+### 🔴 2026年6月 - 最新实践判断
 
-Claude Code 原生支持 Chrome 浏览器，实现端到端自动化测试。
+**现在更值得投入的方向：**
 
-**应用场景**：
-- 前端 UI 调试
-- 浏览器自动化测试
-- 保留登录状态和扩展插件
-
-**验证循环技巧**：让 Claude 通过 Chrome 自动验证 UI，直到功能和体验满意，质量可提升 2-3 倍
-
-📖 **深入学习**：→ 本书 [3.3 Boris 的验证反馈循环]
-
----
-
-### 🔴 2025年7月 - 最新动态
-
-**最新工具一览：**
-
-| 工具 | 功能 | 亮点 |
-|------|------|------|
-| Ralph Wiggum | AI 自动迭代修复 | Bug 到完美应用只需一条命令 |
-| Claudia | Claude Code GUI | 告别命令行，可视化操作 |
-| SuperClaude | 能力增强 300% | 19 个命令 + 9 大专家角色 |
-| Claude Code PM | 并行开发 | GitHub Issues 秒变独立分支 |
-| Kilo Code | 融合 Cline + Roo | 5 种智能模式切换 |
+| 方向 | 为什么重要 | 推荐练习 |
+|------|------------|----------|
+| Agent 工程 | 模型会用工具才有业务价值 | 让 Agent 读文件、查资料、改代码、跑测试 |
+| RAG + 引用 | 降低幻觉，接入私有知识 | 做一个带引用的知识库问答 |
+| 上下文工程 | 长任务质量取决于上下文组织 | 写 PRD、任务分解、验收标准 |
+| 评测与监控 | 生产可用不能靠感觉 | 建立回归测试、日志和失败样本库 |
+| 成本分层 | 好模型贵，小模型快 | 小模型初筛，大模型复核 |
 
 **发展趋势总结**：
-- 📊 Spec-Driven 开发逐渐取代 Vibe Coding（先写规格再编码）
-- 🔧 上下文工程比提示工程效果好 10 倍（给足背景信息）
-- 🤝 多 AI 协作成为常态（Claude + GPT + Gemini 各取所长）
-
-📖 **深入学习**：→ 本书 [序章：大佬经验分享] 有 SuperClaude 完整使用指南
+- 📊 Spec-Driven 开发比纯 Vibe Coding 更可靠
+- 🔧 上下文工程、工具权限和自动验证比“神奇提示词”更重要
+- 🤝 多模型协作成为常态：OpenAI、Claude、Gemini、开源模型各取所长
 
 ---
 
@@ -180,7 +156,7 @@ Claude Code 原生支持 Chrome 浏览器，实现端到端自动化测试。
 
 | 章节 | 内容 |
 |------|------|
-| 第0章 | AI 动态时间轴 - 追踪2025年AI发展 |
+| 第0章 | AI 动态时间轴 - 追踪2025-2026年AI发展 |
 | 第2章 | 提示词工程进阶 - 与AI对话的艺术 |
 | 第3章 | AI Agents 智能体 - MCP、Claude Code等 |
 | 第4章 | RAG 检索增强生成 - 让AI获取新知识 |
@@ -188,102 +164,103 @@ Claude Code 原生支持 Chrome 浏览器，实现端到端自动化测试。
 
 ---
 
-> 📌 **提示**：本时间轴会持续更新，记录 AI 领域重要发展节点。
+> 📌 **提示**：AI 工具更新很快。学习时优先掌握不容易过时的方法：任务拆解、工具编排、RAG、评测、权限和成本控制。
             `,
             ja: `
 ## 🚀 AI技術動向タイムライン
 
-最新のAI発展動向を追跡し、リンクをクリックして関連知識を深く理解しましょう。
+更新日：2026-06。ここでは実務の選定とワークフローに影響する変化に絞ります。
 
 ---
 
 \`\`\`
 ┌─────────────────────────────────────────────────────────────────────────┐
-│                        2025年 AI技術発展タイムライン                       │
+│                      2025-2026年 AI技術発展タイムライン                    │
 └─────────────────────────────────────────────────────────────────────────┘
 
-  2025.01                                                          2025.07
+  2025.03                                                          2026.06
      │                                                                │
 ─────●────────●────────●────────●────────●────────●────────●────────●─────
-   Claude   GPT-5    Claude   Codex    Sub-     Skills   Chrome   最新
-   Opus4.5  発表     Code     Agent    agents   標準化   統合     動向
+   Gemini   OpenAI  MCP     Claude   GPT-5.5 Gemini   Agent   最新
+   2.5      Responses拡張    Code     発表     3.5     工具化  実践
+   推論     API             成熟              系列
 \`\`\`
 
 ---
 
 ## 📅 詳細タイムライン
 
-### 🔵 2025年1月 - Claude Opus 4.5 リリース
+### 🔵 2025年3月 - Gemini 2.5 推論モデル公開
 
-AnthropicがClaude Opus 4.5をリリース。当時最強のAIモデルに。
+Google は Gemini 2.5 で thinking / 推論能力を前面に出し、長文コンテキスト、マルチモーダル、コード能力を強化しました。
 
-📖 **関連知識**：→ 本書 [3.5 AIモデル比較と選定]
-
----
-
-### 🔵 2025年2月 - GPT-5シリーズ発表
-
-OpenAIがGPT-5.0、5.1、5.2を順次リリース。
-
-**実測比較ポイント**：長文生成はClaude優位（約12000字 vs 6900字）、数学・プログラミングはGPT-5.1が強い
-
-📖 **詳細**：→ 本書 [3.10 Claude vs GPT 実測比較]
+📖 **関連知識**：→ 本書 [9.1 Gemini大規模モデルファミリー]
 
 ---
 
-### 🟢 2025年3月 - Claude Code 正式リリース
+### 🔵 2025年5月 - OpenAI Responses API のツールエコシステム
 
-MCPベースのAIプログラミングアシスタントがリリース。
+OpenAI は Responses API で、ツール呼び出し、ファイル検索、コード実行、画像生成、バックグラウンド実行、リモート MCP を統合しました。
 
-**Borisの核心経験**：Opus 4.5 + Planモード、マルチインスタンス並列、Slashコマンド自動化
+**実務で重要な変化**：
+- 単発チャットではなく、モデルを業務データとツールにつなぐ設計が重要
+- RAG、コード実行、ファイル検索、MCP は Agent の基盤になりつつある
+- 長時間タスクには非同期実行、状態復元、ログ設計が必要
 
-📖 **詳細**：→ 本書 [3.3 MCP] と [序章：エキスパートの知見]
-
----
-
-### 🟢 2025年4月 - Sub-agents 機能リリース
-
-Claude CodeがSub-agentsをサポート、専門家チーム協力を実現。
-
-**コアバリュー**：コンテキスト分離で汚染防止、専門化分業で成功率向上、再利用可能
-
-📖 **詳細**：→ 本書 [3.3 Sub-agents 専門家チーム協力]
+📖 **詳細**：→ 本書 [3.3 MCP] と [4.4 RAG 実践コード]
 
 ---
 
-### 🟡 2025年5月 - Agent Skills が業界標準に
+### 🟢 2025-2026 - GPT-5 系列が主流ワークフローへ
 
-OpenAI CodexがAnthropicのSkills仕様を採用。
+GPT-5 系列は対話、コード、ツール呼び出し、長時間タスクをさらに統合しました。2026年中頃の OpenAI 公式ドキュメントでは GPT-5.5 が最新モデルとして案内され、Codex、Agents SDK、MCP、Computer Use、Evals も同じ開発者体系に整理されています。
 
-**重要な意義**：一度作成すればどこでも使える、チーム知識の資産化、AIカスタマイズ可能
+**選定の考え方**：
+- 複雑なコード、データ分析、文書統合：Thinking / Reasoning 系を優先
+- 低遅延の分類・抽出・CS：小型または Flash 系を優先
+- 本番環境：latest ではなく具体的なモデルバージョンを固定
 
-📖 **詳細**：→ 本書 [3.9 OpenAI Codex 使用ガイド]
-
----
-
-### 🟡 2025年6月 - Claude Code Chrome 統合
-
-Claude CodeがChromeブラウザをネイティブサポート。
-
-**検証ループ技術**：ClaudeがChromeでUI自動検証、品質2〜3倍向上
+📖 **詳細**：→ 本書 [3.10 AIモデル比較と選定]
 
 ---
 
-### 🔴 2025年7月 - 最新動向
+### 🟢 2025-2026 - Claude 4 系列と Claude Code の進化
 
-| ツール | 機能 | ハイライト |
-|--------|------|-----------|
-| Ralph Wiggum | AI自動反復修正 | バグから完璧なアプリへ一コマンド |
-| Claudia | Claude Code GUI | コマンドライン不要、視覚化操作 |
-| SuperClaude | 能力強化300% | 19コマンド + 9エキスパートロール |
-| Kilo Code | Cline + Roo融合 | 5つのスマートモード |
+Claude Opus 4.5 は2025年の重要な節目で、長時間自律タスク、複雑なコーディング、Excel 自動化、Prompt Injection 対策を強化しました。2026年中頃の Anthropic モデルページでは Claude Opus 4.8、Claude Sonnet 4.6、Claude Haiku 4.5 が主力として掲載されています。
+
+**実践ポイント**：
+- Claude Code はコード補助から長時間実行できる開発 Agent へ
+- Plan モード、コンテキスト圧縮、メモリ、Sub-agents が重要
+- Prompt Injection 対策とツール権限管理は必須
+
+📖 **詳細**：→ 本書 [3.3 Claude Code：MCP実践]
+
+---
+
+### 🟡 2026年上半期 - Gemini 3 系列と Agent のプラットフォーム化
+
+Google AI の開発者向けドキュメントでは、Gemini 3.5 Flash、Gemini 3.1 Pro、Gemini 3.1 Flash Live、TTS、Veo 3.1、Deep Research、Computer Use、Antigravity Agent などが独立したモデル/ツールカテゴリとして整理されています。
+
+**変化の本質**：モデル単体の賢さだけでなく、ツール編成、コンテキスト管理、権限境界、自動評価、ロールバック設計が成果を左右します。
+
+📖 **詳細**：→ 本書 [3.2 AI Agent アーキテクチャ]
+
+---
+
+### 🔴 2026年6月 - 最新実践判断
+
+| 方向 | 重要な理由 | 練習テーマ |
+|------|------------|------------|
+| Agent 工学 | ツールを使えて初めて業務価値が出る | ファイル読取、調査、コード修正、テスト実行 |
+| RAG + 引用 | ハルシネーションを減らし私有知識に接続 | 引用付きナレッジベースQ&A |
+| コンテキスト設計 | 長時間タスクの品質を左右 | PRD、分解、受け入れ基準 |
+| 評価と監視 | 本番品質は感覚では測れない | 回帰テスト、ログ、失敗サンプル管理 |
+| コスト分階層 | 高性能モデルは高価、小型モデルは高速 | 小型で一次処理、大型で確認 |
 
 **トレンド**：
-- Spec-Driven開発がVibeコーディングに代わる
-- コンテキストエンジニアリングはプロンプトの10倍効果的
-- マルチAI協力が常態化（Claude + GPT + Gemini）
-
-📖 **詳細**：→ 本書 [序章：エキスパートの知見] に SuperClaude 完全ガイド
+- Spec-Driven 開発は純粋な Vibe Coding より安定
+- コンテキスト設計、権限、検証は「魔法のプロンプト」より重要
+- OpenAI、Claude、Gemini、OSS モデルを使い分ける時代
 
 ---
 
@@ -1186,7 +1163,7 @@ self.position_embedding = nn.Embedding(max_seq_len, d_model)
   ─────────────────────────────────────────────────────────────────
   Claude 3 Haiku      ~20B         ?         ?         ?
   Claude 3 Sonnet     ~70B         ?         ?         ?
-  Claude 3 Opus       ~200B        ?         ?         ?
+  Claude Opus 4.8       ~200B        ?         ?         ?
 
   参数主要分布在:
   • 词嵌入矩阵: vocab_size × d_model
@@ -1395,7 +1372,7 @@ LayerNorm(x) = γ * (x - μ) / σ + β
 GPT-2 XL            1.5B         48
 GPT-3 175B          175B         96
 Llama 2 70B         70B          80
-Claude 3 Opus       ~200B        ?
+Claude Opus 4.8       ~200B        ?
 
 Scaling Law:
 性能 ∝ (パラメータ)^0.076 × (データ)^0.095
@@ -5523,7 +5500,7 @@ client = anthropic.Anthropic()
 
 # 方法1：Prompt 引导
 response = client.messages.create(
-    model="claude-sonnet-4-20250514",
+    model="claude-sonnet-4-6",
     max_tokens=1024,
     system="""你是一个数据提取助手。
 请严格按照以下 JSON Schema 输出，不要包含任何其他文字：
@@ -5570,7 +5547,7 @@ tools = [
 ]
 
 response = client.messages.create(
-    model="claude-sonnet-4-20250514",
+    model="claude-sonnet-4-6",
     max_tokens=1024,
     tools=tools,
     tool_choice={"type": "tool", "name": "extract_contact"},  # 强制使用工具
@@ -5590,10 +5567,9 @@ print(result)  # {"name": "张三", "email": "zhangsan@example.com"}
 ## 🔧 Gemini 结构化输出
 
 \`\`\`python
-import google.generativeai as genai
-from google.generativeai import types
+from google import genai
 
-genai.configure(api_key="YOUR_API_KEY")
+client = genai.Client(api_key="YOUR_API_KEY")
 
 # 定义输出 Schema
 response_schema = {
@@ -5606,15 +5582,14 @@ response_schema = {
     "required": ["sentiment", "score"]
 }
 
-model = genai.GenerativeModel(
-    "gemini-1.5-pro",
-    generation_config=types.GenerationConfig(
-        response_mime_type="application/json",
-        response_schema=response_schema
-    )
+response = client.models.generate_content(
+    model="gemini-3.5-flash",
+    contents="分析：这个电影太精彩了！",
+    config={
+        "response_mime_type": "application/json",
+        "response_schema": response_schema
+    }
 )
-
-response = model.generate_content("分析：这个电影太精彩了！")
 print(response.text)  # 保证符合 Schema 的 JSON
 \`\`\`
 
@@ -5818,7 +5793,7 @@ import json
 client = anthropic.Anthropic()
 
 response = client.messages.create(
-    model="claude-sonnet-4-20250514",
+    model="claude-sonnet-4-6",
     max_tokens=1024,
     system="""データ抽出アシスタントです。
 以下のJSON Schemaに厳密に従って出力してください：
@@ -5859,7 +5834,7 @@ tools = [
 ]
 
 response = client.messages.create(
-    model="claude-sonnet-4-20250514",
+    model="claude-sonnet-4-6",
     max_tokens=1024,
     tools=tools,
     tool_choice={"type": "tool", "name": "extract_contact"},
@@ -9001,7 +8976,7 @@ gemini chat
 gemini chat --context src/
 
 # 指定模型
-gemini chat --model gemini-3-pro-preview
+gemini chat --model gemini-3.1-pro
 \`\`\`
 
 ### 交互式命令
@@ -9459,7 +9434,7 @@ codex "实现这个设计，样式要和截图一致" \
 
   特性               Claude Code          OpenAI Codex
   ────               ───────────          ────────────
-  基础模型           Claude Opus 4.5      GPT-5.2
+  基础模型           Claude Opus 4.5      GPT-5.5
   Skills 支持        ✅ 原生              ✅ 兼容
   MCP 协议           ✅ 完整              ❌ 不支持
   浏览器自动化       ✅ Chrome 集成       ✅ Playwright
@@ -9529,7 +9504,7 @@ codex test fix
 \`\`\`json
 // .codex/config.json
 {
-  "model": "gpt-5.2-codex",
+  "model": "gpt-5.5-codex",
   "temperature": 0.3,
   "max_tokens": 8192,
 
@@ -9751,7 +9726,7 @@ triggers:
 
 | 特性 | Claude Code | OpenAI Codex |
 |-----|------------|--------------|
-| ベースモデル | Claude Opus 4.5 | GPT-5.2 |
+| ベースモデル | Claude Opus 4.5 | GPT-5.5 |
 | Skills対応 | ✅ ネイティブ | ✅ 互換 |
 | MCP対応 | ✅ 完全 | ❌ 非対応 |
 | マルチモーダル | 画像 | 画像 + 動画 |
@@ -9923,7 +9898,7 @@ client = anthropic.Anthropic()
 
 # Computer Use 需要特殊的 tool 配置
 response = client.messages.create(
-    model="claude-sonnet-4-20250514",
+    model="claude-sonnet-4-6",
     max_tokens=1024,
     tools=[
         {
@@ -10218,7 +10193,7 @@ client = anthropic.Anthropic()
 
 # Computer Use は特別な tool 設定が必要
 response = client.messages.create(
-    model="claude-sonnet-4-20250514",
+    model="claude-sonnet-4-6",
     max_tokens=1024,
     tools=[
         {
@@ -10821,9 +10796,9 @@ Googleが発表したオープン標準、Agent間通信規範を定義。
 
 ---
 
-## GPT-5.2-Codex 与 Agent Skills
+## GPT-5.5-Codex 与 Agent Skills
 
-OpenAI 最新的 GPT-5.2-Codex 引入了 Agent Skills 功能，这是一个重要的行业趋势。
+OpenAI 最新的 GPT-5.5-Codex 引入了 Agent Skills 功能，这是一个重要的行业趋势。
 
 ### 什么是 Skills？
 
@@ -10854,7 +10829,7 @@ OpenAI 最新的 GPT-5.2-Codex 引入了 Agent Skills 功能，这是一个重�
         重要：Skills 在 Claude 和 Codex 之间通用！
 \`\`\`
 
-### GPT-5.2-Codex 优缺点
+### GPT-5.5-Codex 优缺点
 
 **优点：**
 - ✅ 编码能力确实提升
@@ -10932,9 +10907,9 @@ AI超元域の詳細評価によると、ClaudeとGPTにはそれぞれ長所が
 
 ---
 
-## GPT-5.2-CodexとAgent Skills
+## GPT-5.5-CodexとAgent Skills
 
-OpenAI最新のGPT-5.2-CodexはAgent Skills機能を導入。重要な業界トレンドです。
+OpenAI最新のGPT-5.5-CodexはAgent Skills機能を導入。重要な業界トレンドです。
 
 ### Skillsとは？
 
@@ -10942,7 +10917,7 @@ Skillsは「AIの作業マニュアル」—— あなたの専門知識とワ�
 
 **重要**：SkillsはClaudeとCodex間で互換性あり！
 
-### GPT-5.2-Codexの長所短所
+### GPT-5.5-Codexの長所短所
 
 **長所：**
 - ✅ コーディング能力が確実に向上
@@ -13116,15 +13091,17 @@ graph.add_graph_documents(graph_documents)
 
 ---
 
-## 📊 主流多模态模型对比
+## 📊 主流多模态模型对比（2026-06）
 
-| 模型 | 厂商 | 视觉理解 | 音频 | 视频 | 生成 |
-|------|------|----------|------|------|------|
-| **GPT-4o** | OpenAI | ✅ 强 | ✅ 语音 | ⚠️ 有限 | ✅ DALL-E |
-| **Claude 3.5** | Anthropic | ✅ 强 | ❌ | ❌ | ❌ |
-| **Gemini 1.5** | Google | ✅ 强 | ✅ 语音 | ✅ 长视频 | ✅ Imagen |
-| **Qwen-VL** | 阿里 | ✅ 强 | ✅ 语音 | ✅ | ❌ |
-| **GPT-4o** 实时 | OpenAI | ✅ | ✅ 实时语音 | ✅ | ✅ |
+| 模型/平台 | 厂商 | 强项 | 适合场景 |
+|-----------|------|------|----------|
+| **GPT-5.5 / GPT-4o Realtime** | OpenAI | 工具调用、视觉理解、实时语音 | Agent、客服、代码、数据分析 |
+| **Claude Opus 4.8 / Sonnet 4.6** | Anthropic | 长任务、代码、文档推理、工具安全 | 软件工程、研究、企业知识工作 |
+| **Gemini 3.5 Flash / 3.1 Pro** | Google | 长上下文、视频、多模态、低延迟 | 视频理解、移动端、Google Cloud |
+| **Qwen3 / Qwen-VL 系列** | 阿里 | 中文、多模态、开源生态 | 本地化部署、中文业务 |
+| **开源视觉语言模型** | Meta/Qwen/Mistral 等 | 可私有化、可微调 | 内网、合规、成本敏感场景 |
+
+> 选型不要只看榜单：先确认输入形态、上下文长度、工具调用、延迟、价格、数据合规，再做小样本评测。
 
 ---
 
@@ -13140,7 +13117,7 @@ client = OpenAI()
 
 # 方法1：URL 图片
 response = client.chat.completions.create(
-    model="gpt-4o",
+    model="gpt-5.5",
     messages=[
         {
             "role": "user",
@@ -13160,7 +13137,7 @@ def encode_image(image_path):
 base64_image = encode_image("local_image.jpg")
 
 response = client.chat.completions.create(
-    model="gpt-4o",
+    model="gpt-5.5",
     messages=[
         {
             "role": "user",
@@ -13186,7 +13163,7 @@ with open("image.jpg", "rb") as f:
     image_data = base64.standard_b64encode(f.read()).decode("utf-8")
 
 response = client.messages.create(
-    model="claude-sonnet-4-20250514",
+    model="claude-sonnet-4-6",
     max_tokens=1024,
     messages=[
         {
@@ -13249,13 +13226,16 @@ response = client.messages.create(
 
 ---
 
-## 📊 主要マルチモーダルモデル比較
+## 📊 主要マルチモーダルモデル比較（2026-06）
 
-| モデル | メーカー | 視覚理解 | 音声 | 動画 | 生成 |
-|--------|----------|----------|------|------|------|
-| **GPT-4o** | OpenAI | ✅ 強い | ✅ 音声 | ⚠️ 限定 | ✅ DALL-E |
-| **Claude 3.5** | Anthropic | ✅ 強い | ❌ | ❌ | ❌ |
-| **Gemini 1.5** | Google | ✅ 強い | ✅ 音声 | ✅ 長時間動画 | ✅ Imagen |
+| モデル/平台 | メーカー | 強み | 適用シーン |
+|-------------|----------|------|------------|
+| **GPT-5.5 / GPT-4o Realtime** | OpenAI | ツール呼び出し、視覚理解、リアルタイム音声 | Agent、CS、コード、データ分析 |
+| **Claude Opus 4.8 / Sonnet 4.6** | Anthropic | 長時間タスク、コード、文書推論、ツール安全性 | ソフトウェア開発、調査、企業知識作業 |
+| **Gemini 3.5 Flash / 3.1 Pro** | Google | 長文コンテキスト、動画、マルチモーダル、低遅延 | 動画理解、モバイル、Google Cloud |
+| **Qwen3 / Qwen-VL 系列** | Alibaba | 中国語、マルチモーダル、OSS エコシステム | ローカルデプロイ、中国語業務 |
+
+> ランキングだけで選ばず、入力形式、コンテキスト長、ツール呼び出し、遅延、価格、データ規制を確認して小規模評価を行います。
 
 ---
 
@@ -13281,14 +13261,14 @@ response = client.messages.create(
 
 ---
 
-## 📊 主流图像生成模型
+## 📊 主流图像生成模型（2026-06）
 
 | 模型 | 特点 | 适用场景 | 价格 |
 |------|------|----------|------|
-| **DALL-E 3** | 语义理解强 | 创意插图 | API 付费 |
+| **GPT Image / DALL-E 3** | 指令跟随强，适合产品化 | 创意图、编辑、营销素材 | API 付费 |
 | **Midjourney** | 艺术感强 | 设计海报 | 订阅制 |
-| **Stable Diffusion** | 开源可控 | 本地部署 | 免费 |
-| **Imagen 3** | Google最新 | 真实感强 | API 付费 |
+| **Stable Diffusion / FLUX** | 开源可控，可本地部署 | 私有化、批量生成、风格微调 | 免费/自托管成本 |
+| **Imagen / Gemini 图像能力** | 与 Google 生态结合 | 广告、电商、Workspace 场景 | API 付费 |
 
 ---
 
@@ -13299,9 +13279,9 @@ from openai import OpenAI
 
 client = OpenAI()
 
-# 生成图片
+# 生成图片。生产项目中优先查看官方当前推荐模型名。
 response = client.images.generate(
-    model="dall-e-3",
+    model="gpt-image-1",
     prompt="一只穿着西装的柴犬，正在咖啡馆喝咖啡，温暖的下午阳光，油画风格",
     size="1024x1024",
     quality="hd",
@@ -13374,13 +13354,13 @@ DALL-EからMidjourneyまで、AI絵画がクリエイティブ産業を変え�
 
 ---
 
-## 📊 主要画像生成モデル
+## 📊 主要画像生成モデル（2026-06）
 
 | モデル | 特徴 | 適用シーン | 価格 |
 |--------|------|------------|------|
-| **DALL-E 3** | 意味理解が強い | クリエイティブイラスト | API課金 |
+| **GPT Image / DALL-E 3** | 指示追従が強い | クリエイティブ、編集、マーケ素材 | API課金 |
 | **Midjourney** | 芸術性が高い | デザインポスター | サブスク |
-| **Stable Diffusion** | オープンソース | ローカルデプロイ | 無料 |
+| **Stable Diffusion / FLUX** | オープンソース、制御しやすい | ローカル、量産、スタイル調整 | 無料/自前コスト |
 
 ---
 
@@ -13392,7 +13372,7 @@ from openai import OpenAI
 client = OpenAI()
 
 response = client.images.generate(
-    model="dall-e-3",
+    model="gpt-image-1",
     prompt="スーツを着た柴犬、カフェでコーヒーを飲んでいる、暖かい午後の光、油絵スタイル",
     size="1024x1024",
     quality="hd",
@@ -13651,36 +13631,35 @@ response.stream_to_file("output.mp3")
 
 | 技术 | 模型 | 能力 | 限制 |
 |------|------|------|------|
-| **视频理解** | Gemini 1.5 | 分析1小时视频 | - |
-| **视频理解** | GPT-4o | 短视频分析 | 帧数限制 |
-| **视频生成** | Sora | 60秒电影级 | 未公开 |
-| **视频生成** | Runway Gen-3 | 10秒高质量 | 订阅制 |
-| **视频生成** | Pika | 4秒动画 | 免费额度 |
+| **视频理解** | Gemini 3.5 / 3.1 / 2.5 | 长视频、多模态摘要 | 费用与上下文长度相关 |
+| **视频理解** | GPT-5.5 / GPT-4o | 短视频、帧级问答、代码结合 | 取决于产品/API限制 |
+| **视频生成** | Sora / OpenAI 视频模型 | 高质量文本/图像到视频 | 可用性与地区/产品有关 |
+| **视频生成** | Google Veo | 写实视频、广告创意 | Google 生态内使用 |
+| **视频生成** | Runway / Pika | 创意短视频、快速迭代 | 订阅制 |
 
 ---
 
 ## 🔧 Gemini 视频分析
 
 \`\`\`python
-import google.generativeai as genai
+from google import genai
 
-genai.configure(api_key="YOUR_API_KEY")
+client = genai.Client(api_key="YOUR_API_KEY")
 
 # 上传视频
-video_file = genai.upload_file("video.mp4")
+video_file = client.files.upload(file="video.mp4")
 
 # 等待处理完成
 import time
 while video_file.state.name == "PROCESSING":
     time.sleep(10)
-    video_file = genai.get_file(video_file.name)
+    video_file = client.files.get(name=video_file.name)
 
 # 分析视频
-model = genai.GenerativeModel("gemini-1.5-pro")
-response = model.generate_content([
-    video_file,
-    "详细描述这个视频的内容，包括场景、人物、动作"
-])
+response = client.models.generate_content(
+    model="gemini-3.5-flash",
+    contents=[video_file, "详细描述这个视频的内容，包括场景、人物、动作"]
+)
 
 print(response.text)
 \`\`\`
@@ -13751,9 +13730,9 @@ video_url = status.output[0]
 ## 💡 未来展望
 
 > 🎬 **趋势预测**：
-> - 2025：AI 短视频普及
-> - 2026：AI 长视频成熟
-> - 2027：AI 互动电影出现
+> - 2025：AI 短视频进入创作工作流
+> - 2026：视频理解、生成、剪辑开始和 Agent 工具链结合
+> - 未来：互动视频和个性化内容会先在广告、教育、游戏中落地
             `,
             ja: `
 ## AI映画監督：動画技術
@@ -13766,26 +13745,27 @@ video_url = status.output[0]
 
 | 技術 | モデル | 能力 | 制限 |
 |------|--------|------|------|
-| **動画理解** | Gemini 1.5 | 1時間動画分析 | - |
-| **動画生成** | Sora | 60秒映画級 | 未公開 |
-| **動画生成** | Runway Gen-3 | 10秒高品質 | サブスク |
+| **動画理解** | Gemini 3.5 / 3.1 / 2.5 | 長時間動画、マルチモーダル要約 | コストは長さに依存 |
+| **動画理解** | GPT-5.5 / GPT-4o | 短編動画、フレーム質問応答、コード連携 | 製品/API制限に依存 |
+| **動画生成** | Sora / OpenAI動画モデル | 高品質なテキスト/画像から動画 | 提供地域と製品に依存 |
+| **動画生成** | Google Veo | 写実動画、広告クリエイティブ | Google エコシステム |
+| **動画生成** | Runway / Pika | 短編動画、素早い反復 | サブスク |
 
 ---
 
 ## 🔧 Gemini 動画分析
 
 \`\`\`python
-import google.generativeai as genai
+from google import genai
 
-genai.configure(api_key="YOUR_API_KEY")
+client = genai.Client(api_key="YOUR_API_KEY")
 
-video_file = genai.upload_file("video.mp4")
+video_file = client.files.upload(file="video.mp4")
 
-model = genai.GenerativeModel("gemini-1.5-pro")
-response = model.generate_content([
-    video_file,
-    "この動画の内容を詳しく説明してください"
-])
+response = client.models.generate_content(
+    model="gemini-3.5-flash",
+    contents=[video_file, "この動画の内容を詳しく説明してください"]
+)
 \`\`\`
 
 ---
@@ -13793,9 +13773,9 @@ response = model.generate_content([
 ## 💡 将来展望
 
 > 🎬 **トレンド予測**：
-> - 2025：AI短編動画が普及
-> - 2026：AI長編動画が成熟
-> - 2027：AIインタラクティブ映画が登場
+> - 2025：AI短編動画が制作ワークフローに入る
+> - 2026：動画理解、生成、編集が Agent ツールチェーンと結合
+> - 将来：インタラクティブ動画と個別化コンテンツは広告、教育、ゲームから普及
             `
           }
         },
@@ -13829,12 +13809,12 @@ response = model.generate_content([
 
 ## 💡 关键要点
 
-1. **图像理解** —— GPT-4o、Claude 都很强
-2. **图像生成** —— DALL-E 易用，SD 可控
+1. **图像理解** —— GPT-5.5、Claude、Gemini 都已进入可实用阶段
+2. **图像生成** —— GPT Image/DALL-E 易用，Stable Diffusion/FLUX 可控
 3. **语音识别** —— Whisper 开源最佳
 4. **语音合成** —— Edge TTS 免费，OpenAI 高质量
-5. **视频分析** —— Gemini 支持长视频
-6. **视频生成** —— Sora 领先，Runway 可用
+5. **视频分析** —— Gemini 长上下文仍有优势，GPT/Claude 适合结合文档和代码
+6. **视频生成** —— Sora、Veo、Runway、Pika 各有定位，生产前必须小样本评测
 
 > 🎯 **建议**：根据具体需求选择工具，多模态能力正在快速发展。
             `,
@@ -13845,12 +13825,12 @@ response = model.generate_content([
 
 ## 💡 重要ポイント
 
-1. **画像理解** —— GPT-4o、Claude共に強力
-2. **画像生成** —— DALL-E使いやすい、SD制御可能
+1. **画像理解** —— GPT-5.5、Claude、Gemini は実用段階
+2. **画像生成** —— GPT Image/DALL-E は使いやすく、Stable Diffusion/FLUX は制御しやすい
 3. **音声認識** —— Whisperオープンソース最強
 4. **音声合成** —— Edge TTS無料、OpenAI高品質
-5. **動画分析** —— Gemini長時間動画対応
-6. **動画生成** —— Soraリード、Runway使用可能
+5. **動画分析** —— Gemini は長文コンテキストに強く、GPT/Claude は文書・コード連携に向く
+6. **動画生成** —— Sora、Veo、Runway、Pika は用途別に評価する
 
 > 🎯 **アドバイス**：具体的なニーズに応じてツールを選択。マルチモーダル能力は急速に発展中。
             `
@@ -14352,7 +14332,7 @@ class Settings(BaseSettings):
     llm_provider: str = "anthropic"  # anthropic / openai
     anthropic_api_key: str = ""
     openai_api_key: str = ""
-    model_name: str = "claude-sonnet-4-20250514"
+    model_name: str = "claude-sonnet-4-6"
 
     # 向量数据库
     chroma_persist_dir: str = "./chroma_db"
@@ -15008,7 +14988,7 @@ from pydantic_settings import BaseSettings
 class Settings(BaseSettings):
     llm_provider: str = "anthropic"
     anthropic_api_key: str = ""
-    model_name: str = "claude-sonnet-4-20250514"
+    model_name: str = "claude-sonnet-4-6"
     chroma_persist_dir: str = "./chroma_db"
     top_k: int = 5
     max_history: int = 10
@@ -15052,7 +15032,7 @@ from langchain_core.prompts import ChatPromptTemplate
 class ChatEngine:
     def __init__(self):
         self.llm = ChatAnthropic(
-            model="claude-sonnet-4-20250514",
+            model="claude-sonnet-4-6",
             streaming=True
         )
 
@@ -15512,7 +15492,7 @@ class QAResponse:
 class DocumentQAEngine:
     """文档问答引擎"""
 
-    def __init__(self, model: str = "claude-sonnet-4-20250514"):
+    def __init__(self, model: str = "claude-sonnet-4-6"):
         self.llm = ChatAnthropic(
             model=model,
             streaming=True
@@ -16464,7 +16444,7 @@ class CodeAssistant:
 
     def __init__(
         self,
-        model: str = "claude-sonnet-4-20250514",
+        model: str = "claude-sonnet-4-6",
         max_iterations: int = 20
     ):
         self.client = Anthropic()
@@ -16786,7 +16766,7 @@ def edit_file(path: str, old_text: str, new_text: str) -> str:
 
 \`\`\`python
 class CodeAssistant:
-    def __init__(self, model: str = "claude-sonnet-4-20250514"):
+    def __init__(self, model: str = "claude-sonnet-4-6"):
         self.client = Anthropic()
         self.tools = FILE_TOOLS + SEARCH_TOOLS + SHELL_TOOLS
 
@@ -17062,7 +17042,7 @@ class BrowserAgent:
 
         for i in range(max_iterations):
             response = self.client.messages.create(
-                model="claude-sonnet-4-20250514",
+                model="claude-sonnet-4-6",
                 max_tokens=4096,
                 system="""你是一个网页自动化助手。你可以：
 1. 导航到网页
@@ -17441,7 +17421,7 @@ from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.output_parsers import StrOutputParser
 
 # LCEL 链式调用
-llm = ChatAnthropic(model="claude-sonnet-4-20250514")
+llm = ChatAnthropic(model="claude-sonnet-4-6")
 prompt = ChatPromptTemplate.from_template("用一句话解释{topic}")
 parser = StrOutputParser()
 
@@ -17699,17 +17679,18 @@ Gemini 是 Google 最新一代大模型，原生支持多模态，在多项基�
 
 ---
 
-## 📊 Gemini 模型对比（2025.11 最新）
+## 📊 Gemini 模型对比（2026-06 最新）
 
 | 模型 | 发布时间 | 特点 | 适用场景 |
 |------|----------|------|----------|
-| **Gemini 3 Pro** 🆕 | 2025.11.18 | 最新旗舰，Google 最强模型 | 复杂推理、研究、代码 |
-| **Gemini 3 Deep Think** 🆕 | 2025.11.18 | 深度思考模式 | 数学、科学、长程推理 |
-| **Gemini 2.5 Pro** | 2025.03 | 上一代旗舰 | 通用任务、多模态 |
-| **Gemini 2.5 Flash** | 2025.05 | 快速高效 | 实时应用、高并发 |
+| **Gemini 3.5 Flash** 🆕 | 2026 | 当前快速多模态模型 | 实时应用、高并发、视频摘要 |
+| **Gemini 3.1 Pro** | 2026 | 强推理与复杂任务 | 研究、代码、长文档分析 |
+| **Gemini 3.1 Flash Live** | 2026 | 实时多模态交互 | 语音助手、实时客服 |
+| **Gemini 2.5 Pro** | 2025.03 | 稳定长上下文旗舰 | 通用任务、多模态 |
+| **Veo 3.1** | 2026 | 视频生成 | 广告、短视频、创意制作 |
 | **Gemini Nano** | 设备端 | 端侧部署 | 移动端、离线场景 |
 
-> 💡 **2025年11月更新**：Gemini 3 系列已取代 2.5 系列成为主力模型
+> 💡 **2026年6月更新**：新项目优先从 Gemini 3.5 Flash / 3.1 Pro 开始评测，已有 2.5 项目无需盲目迁移，先用业务样本比较质量、延迟和成本。
 
 ---
 
@@ -17718,22 +17699,21 @@ Gemini 是 Google 最新一代大模型，原生支持多模态，在多项基�
 ### 安装 SDK
 
 \`\`\`bash
-pip install google-generativeai
+pip install google-genai
 \`\`\`
 
 ### 基础调用
 
 \`\`\`python
-import google.generativeai as genai
+from google import genai
 
-# 配置 API Key
-genai.configure(api_key="YOUR_API_KEY")
-
-# 创建模型
-model = genai.GenerativeModel("gemini-3-pro-preview")
+client = genai.Client(api_key="YOUR_API_KEY")
 
 # 文本生成
-response = model.generate_content("解释量子计算的基本原理")
+response = client.models.generate_content(
+    model="gemini-3.5-flash",
+    contents="解释量子计算的基本原理"
+)
 print(response.text)
 \`\`\`
 
@@ -17750,10 +17730,10 @@ import PIL.Image
 image = PIL.Image.open("diagram.png")
 
 # 图文混合输入
-response = model.generate_content([
-    "请详细分析这张架构图，解释各组件之间的关系：",
-    image
-])
+response = client.models.generate_content(
+    model="gemini-3.5-flash",
+    contents=["请详细分析这张架构图，解释各组件之间的关系：", image]
+)
 print(response.text)
 \`\`\`
 
@@ -17763,18 +17743,18 @@ print(response.text)
 import time
 
 # 上传视频文件
-video_file = genai.upload_file("presentation.mp4")
+video_file = client.files.upload(file="presentation.mp4")
 
 # 等待处理完成
 while video_file.state.name == "PROCESSING":
     time.sleep(5)
-    video_file = genai.get_file(video_file.name)
+    video_file = client.files.get(name=video_file.name)
 
 # 分析视频内容
-response = model.generate_content([
-    video_file,
-    "总结这个视频的主要内容，列出关键要点"
-])
+response = client.models.generate_content(
+    model="gemini-3.5-flash",
+    contents=[video_file, "总结这个视频的主要内容，列出关键要点"]
+)
 print(response.text)
 \`\`\`
 
@@ -17783,20 +17763,18 @@ print(response.text)
 ## 💬 多轮对话
 
 \`\`\`python
-# 创建对话
-chat = model.start_chat(history=[])
+# 多轮对话可以在应用层保存 history，再作为 contents 传入。
+history = [
+    "用户：我想学习机器学习，应该从哪里开始？",
+    "助手：先学 Python、线性代数基础和一个入门项目。",
+    "用户：Python 基础需要学到什么程度？"
+]
 
-# 第一轮
-response = chat.send_message("我想学习机器学习，应该从哪里开始？")
+response = client.models.generate_content(
+    model="gemini-3.5-flash",
+    contents="\\n".join(history)
+)
 print(response.text)
-
-# 第二轮（自动携带上下文）
-response = chat.send_message("Python 基础需要学到什么程度？")
-print(response.text)
-
-# 查看对话历史
-for message in chat.history:
-    print(f"{message.role}: {message.parts[0].text[:100]}...")
 \`\`\`
 
 ---
@@ -17804,19 +17782,13 @@ for message in chat.history:
 ## 🔒 安全设置
 
 \`\`\`python
-from google.generativeai.types import HarmCategory, HarmBlockThreshold
-
-# 配置安全过滤
-safety_settings = {
-    HarmCategory.HARM_CATEGORY_HARASSMENT: HarmBlockThreshold.BLOCK_MEDIUM_AND_ABOVE,
-    HarmCategory.HARM_CATEGORY_HATE_SPEECH: HarmBlockThreshold.BLOCK_MEDIUM_AND_ABOVE,
-    HarmCategory.HARM_CATEGORY_SEXUALLY_EXPLICIT: HarmBlockThreshold.BLOCK_MEDIUM_AND_ABOVE,
-    HarmCategory.HARM_CATEGORY_DANGEROUS_CONTENT: HarmBlockThreshold.BLOCK_MEDIUM_AND_ABOVE,
-}
-
-response = model.generate_content(
-    "你的问题",
-    safety_settings=safety_settings
+# 生产环境建议把安全策略、系统指令和日志审计放在应用层统一管理。
+response = client.models.generate_content(
+    model="gemini-3.5-flash",
+    contents="请用专业、合规的方式回答：如何设计企业知识库？",
+    config={
+        "system_instruction": "不要输出违法、危险或未经验证的建议。"
+    }
 )
 \`\`\`
 
@@ -17827,44 +17799,25 @@ response = model.generate_content(
 \`\`\`python
 import json
 
-# 方法1：通过 Prompt 指定
-response = model.generate_content(
-    """分析以下文本的情感，返回 JSON 格式：
-    {"sentiment": "positive/negative/neutral", "confidence": 0.0-1.0, "keywords": [...]}
-
-    文本：这款产品真的太棒了，用户体验非常流畅！
-    """,
-    generation_config=genai.types.GenerationConfig(
-        response_mime_type="application/json"
-    )
+response = client.models.generate_content(
+    model="gemini-3.5-flash",
+    contents="分析这句话的情感：这款产品真的太棒了，用户体验非常流畅！",
+    config={
+        "response_mime_type": "application/json",
+        "response_schema": {
+            "type": "object",
+            "properties": {
+                "sentiment": {"type": "string"},
+                "confidence": {"type": "number"},
+                "keywords": {"type": "array", "items": {"type": "string"}}
+            },
+            "required": ["sentiment", "confidence"]
+        }
+    }
 )
 
 result = json.loads(response.text)
 print(result)
-
-# 方法2：使用 Schema（更严格）
-from google.generativeai.types import content_types
-
-schema = content_types.Schema(
-    type=content_types.Type.OBJECT,
-    properties={
-        "sentiment": content_types.Schema(type=content_types.Type.STRING),
-        "confidence": content_types.Schema(type=content_types.Type.NUMBER),
-        "keywords": content_types.Schema(
-            type=content_types.Type.ARRAY,
-            items=content_types.Schema(type=content_types.Type.STRING)
-        )
-    },
-    required=["sentiment", "confidence"]
-)
-
-response = model.generate_content(
-    "分析：这个服务太慢了，等了半天",
-    generation_config=genai.types.GenerationConfig(
-        response_mime_type="application/json",
-        response_schema=schema
-    )
-)
 \`\`\`
 
 ---
@@ -17890,18 +17843,12 @@ def search_flights(origin: str, destination: str, date: str) -> list:
         {"flight": "MU456", "price": 1200, "departure": "14:30"}
     ]
 
-# 创建带工具的模型
-model = genai.GenerativeModel(
-    "gemini-3-pro-preview",
-    tools=[get_weather, search_flights]
+# 实际项目中，将工具注册到你的 Agent 框架或服务层，
+# 让模型只输出要调用的工具和参数，再由后端执行。
+response = client.models.generate_content(
+    model="gemini-3.1-pro",
+    contents="用户问：北京今天天气怎么样？请判断是否需要调用 get_weather。"
 )
-
-# 自动调用工具
-chat = model.start_chat(enable_automatic_function_calling=True)
-response = chat.send_message("北京今天天气怎么样？")
-print(response.text)
-
-response = chat.send_message("帮我查一下明天从北京到上海的航班")
 print(response.text)
 \`\`\`
 
@@ -17911,9 +17858,9 @@ print(response.text)
 
 \`\`\`python
 # 流式生成
-response = model.generate_content(
-    "写一篇关于人工智能发展历史的文章",
-    stream=True
+response = client.models.generate_content_stream(
+    model="gemini-3.5-flash",
+    contents="写一篇关于人工智能发展历史的文章"
 )
 
 for chunk in response:
@@ -17926,30 +17873,25 @@ for chunk in response:
 
 \`\`\`python
 # 计算 Token 数量
-model = genai.GenerativeModel("gemini-3-pro-preview")
-
-# 文本 Token
 text = "这是一段测试文本，用于计算 Token 数量。"
-token_count = model.count_tokens(text)
+token_count = client.models.count_tokens(
+    model="gemini-3.5-flash",
+    contents=text
+)
 print(f"Token 数量: {token_count.total_tokens}")
-
-# 图片 Token（每张图约 258 tokens）
-image = PIL.Image.open("image.png")
-token_count = model.count_tokens([text, image])
-print(f"图文混合 Token: {token_count.total_tokens}")
 \`\`\`
 
 ---
 
-## 💰 定价参考 (2024)
+## 💰 成本判断（2026）
 
-| 模型 | 输入 (每百万 Token) | 输出 (每百万 Token) |
-|------|---------------------|---------------------|
-| Gemini 2.0 Flash | $0.10 | $0.40 |
-| Gemini 1.5 Pro | $1.25 - $2.50 | $5.00 - $10.00 |
-| Gemini 1.5 Flash | $0.075 | $0.30 |
+| 任务 | 建议模型层级 | 成本策略 |
+|------|--------------|----------|
+| 分类、提取、摘要 | Flash / 小模型 | 批量、缓存、限制输出长度 |
+| 复杂推理、代码、研究 | Pro / Thinking | 只用于关键步骤 |
+| 视频/长文档 | 长上下文模型 | 先切分和摘要，再精读 |
 
-*价格可能变动，以官网为准*
+*价格和限额变化很快，以 Google AI 官方模型页和价格页为准。*
             `,
             ja: `
 ## Google Gemini：マルチモーダルネイティブ大規模モデル
@@ -17958,29 +17900,32 @@ GeminiはGoogleの最新世代大規模モデルで、ネイティブでマル�
 
 ---
 
-## 📊 Geminiモデル比較（2025年11月最新）
+## 📊 Geminiモデル比較（2026年6月最新）
 
 | モデル | リリース日 | 特徴 | 用途 |
 |--------|------------|------|------|
-| **Gemini 3 Pro** 🆕 | 2025.11.18 | 最新フラッグシップ、Google最強 | 複雑な推論、研究、コード |
-| **Gemini 3 Deep Think** 🆕 | 2025.11.18 | 深い思考モード | 数学、科学、長期推論 |
-| **Gemini 2.5 Pro** | 2025.03 | 前世代フラッグシップ | 汎用、マルチモーダル |
-| **Gemini 2.5 Flash** | 2025.05 | 高速高効率 | リアルタイムアプリ |
+| **Gemini 3.5 Flash** 🆕 | 2026 | 高速マルチモーダル | リアルタイム、高並列、動画要約 |
+| **Gemini 3.1 Pro** | 2026 | 強い推論と複雑タスク | 研究、コード、長文分析 |
+| **Gemini 3.1 Flash Live** | 2026 | リアルタイム対話 | 音声アシスタント、CS |
+| **Gemini 2.5 Pro** | 2025.03 | 安定した長文コンテキスト | 汎用、マルチモーダル |
+| **Veo 3.1** | 2026 | 動画生成 | 広告、短編動画、制作 |
 | **Gemini Nano** | オンデバイス | 端末デプロイ | モバイル、オフライン |
 
-> 💡 **2025年11月更新**：Gemini 3シリーズが2.5シリーズに代わり主力モデルに
+> 💡 **2026年6月更新**：新規開発は Gemini 3.5 Flash / 3.1 Pro から評価し、既存の 2.5 系は品質・遅延・コストを比較してから移行します。
 
 ---
 
 ## 🔧 クイックスタート
 
 \`\`\`python
-import google.generativeai as genai
+from google import genai
 
-genai.configure(api_key="YOUR_API_KEY")
-model = genai.GenerativeModel("gemini-3-pro-preview")
+client = genai.Client(api_key="YOUR_API_KEY")
 
-response = model.generate_content("量子コンピューティングの基本原理を説明して")
+response = client.models.generate_content(
+    model="gemini-3.5-flash",
+    contents="量子コンピューティングの基本原理を説明して"
+)
 print(response.text)
 \`\`\`
 
@@ -17992,10 +17937,10 @@ print(response.text)
 import PIL.Image
 
 image = PIL.Image.open("diagram.png")
-response = model.generate_content([
-    "このアーキテクチャ図を分析してください：",
-    image
-])
+response = client.models.generate_content(
+    model="gemini-3.5-flash",
+    contents=["このアーキテクチャ図を分析してください：", image]
+)
 \`\`\`
 
 ---
@@ -18006,13 +17951,10 @@ response = model.generate_content([
 def get_weather(location: str) -> dict:
     return {"location": location, "temperature": 22}
 
-model = genai.GenerativeModel(
-    "gemini-3-pro-preview",
-    tools=[get_weather]
+response = client.models.generate_content(
+    model="gemini-3.5-flash",
+    contents="東京の天気は？必要なら get_weather を使ってください。"
 )
-
-chat = model.start_chat(enable_automatic_function_calling=True)
-response = chat.send_message("東京の天気は？")
 \`\`\`
             `
           }
@@ -18076,7 +18018,7 @@ from vertexai.generative_models import GenerativeModel, Part
 vertexai.init(project="your-project-id", location="us-central1")
 
 # 创建模型
-model = GenerativeModel("gemini-3-pro-preview")
+model = GenerativeModel("gemini-3.1-pro")
 
 # 文本生成
 response = model.generate_content("解释机器学习和深度学习的区别")
@@ -18259,7 +18201,7 @@ import vertexai
 from vertexai.generative_models import GenerativeModel
 
 vertexai.init(project="your-project-id", location="us-central1")
-model = GenerativeModel("gemini-3-pro-preview")
+model = GenerativeModel("gemini-3.1-pro")
 
 response = model.generate_content("機械学習と深層学習の違いを説明して")
 print(response.text)
@@ -18353,43 +18295,39 @@ AI Studio 可以一键导出为多种语言：
 ### Python
 
 \`\`\`python
-import google.generativeai as genai
+from google import genai
 
-genai.configure(api_key="YOUR_API_KEY")
+client = genai.Client(api_key="YOUR_API_KEY")
 
-generation_config = {
-    "temperature": 0.7,
-    "top_p": 0.95,
-    "top_k": 40,
-    "max_output_tokens": 8192,
-}
-
-model = genai.GenerativeModel(
-    model_name="gemini-3-pro-preview",
-    generation_config=generation_config,
-    system_instruction="你是一个专业的技术顾问"
+response = client.models.generate_content(
+    model="gemini-3.5-flash",
+    contents="如何优化数据库查询性能？",
+    config={
+        "temperature": 0.7,
+        "max_output_tokens": 8192,
+        "system_instruction": "你是一个专业的技术顾问"
+    }
 )
-
-chat = model.start_chat(history=[])
-response = chat.send_message("如何优化数据库查询性能？")
 print(response.text)
 \`\`\`
 
 ### JavaScript/Node.js
 
 \`\`\`javascript
-const { GoogleGenerativeAI } = require("@google/generative-ai");
+import { GoogleGenAI } from "@google/genai";
 
-const genAI = new GoogleGenerativeAI("YOUR_API_KEY");
+const ai = new GoogleGenAI({ apiKey: "YOUR_API_KEY" });
 
 async function run() {
-    const model = genAI.getGenerativeModel({
-        model: "gemini-3-pro-preview",
-        systemInstruction: "你是一个专业的技术顾问"
+    const result = await ai.models.generateContent({
+        model: "gemini-3.1-pro",
+        contents: "如何优化数据库？",
+        config: {
+            systemInstruction: "你是一个专业的技术顾问"
+        }
     });
 
-    const result = await model.generateContent("如何优化数据库？");
-    console.log(result.response.text());
+    console.log(result.text);
 }
 
 run();
@@ -18398,7 +18336,7 @@ run();
 ### cURL
 
 \`\`\`bash
-curl "https://generativelanguage.googleapis.com/v1beta/models/gemini-3-pro-preview:generateContent?key=YOUR_API_KEY" \\
+curl "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-pro:generateContent?key=YOUR_API_KEY" \\
   -H 'Content-Type: application/json' \\
   -d '{
     "contents": [{
@@ -18431,12 +18369,12 @@ AI Studio 提供丰富的 Prompt 模板：
 
 | 资源 | 免费额度 |
 |------|----------|
-| Gemini 2.0 Flash | 15 RPM / 100万 TPM |
-| Gemini 1.5 Pro | 2 RPM / 32K TPM |
+| Flash 系列 | 适合高并发、低延迟原型 |
+| Pro 系列 | 适合复杂推理和长上下文测试 |
 | 图片处理 | 包含在请求中 |
 | 视频处理 | 包含在请求中 |
 
-*RPM = 每分钟请求数，TPM = 每分钟 Token 数*
+*免费额度、RPM、TPM 经常调整，以 AI Studio 和 Google AI 官方配额页为准。*
 
 ---
 
@@ -18472,16 +18410,15 @@ AI StudioはGoogleが提供する無料オンラインツールで、迅速な�
 ## 🔧 エクスポートコード例
 
 \`\`\`python
-import google.generativeai as genai
+from google import genai
 
-genai.configure(api_key="YOUR_API_KEY")
+client = genai.Client(api_key="YOUR_API_KEY")
 
-model = genai.GenerativeModel(
-    model_name="gemini-3-pro-preview",
-    system_instruction="あなたは技術コンサルタントです"
+response = client.models.generate_content(
+    model="gemini-3.5-flash",
+    contents="データベースの最適化方法は？",
+    config={"system_instruction": "あなたは技術コンサルタントです"}
 )
-
-response = model.generate_content("データベースの最適化方法は？")
 print(response.text)
 \`\`\`
 
@@ -18491,8 +18428,8 @@ print(response.text)
 
 | リソース | 無料枠 |
 |----------|--------|
-| Gemini 2.0 Flash | 15 RPM / 100万 TPM |
-| Gemini 1.5 Pro | 2 RPM / 32K TPM |
+| Flash 系列 | 高並列、低遅延のプロトタイプ向け |
+| Pro 系列 | 複雑な推論と長文コンテキスト向け |
             `
           }
         },
@@ -19457,10 +19394,10 @@ n8n 提供丰富的 AI 节点，让你轻松构建智能工作流。
 ### 1. OpenAI 节点
 \`\`\`
 功能：调用 GPT 模型进行文本生成、分析、翻译等
-支持：GPT-4, GPT-3.5, Embeddings, DALL-E, Whisper
+支持：GPT-5.5, GPT-4o, Embeddings, GPT Image/DALL-E, Whisper
 
 配置示例：
-- Model: gpt-4
+- Model: gpt-5.5 或 gpt-4o
 - Temperature: 0.7
 - Max Tokens: 2000
 \`\`\`
@@ -19468,7 +19405,7 @@ n8n 提供丰富的 AI 节点，让你轻松构建智能工作流。
 ### 2. Anthropic 节点
 \`\`\`
 功能：调用 Claude 模型
-支持：Claude 3 Opus/Sonnet/Haiku
+支持：Claude Opus 4.8/Sonnet 4.6/Haiku 4.5
 
 特点：
 - 更长的上下文窗口
@@ -19525,7 +19462,7 @@ n8n 提供丰富的 AI 节点，让你轻松构建智能工作流。
        ▼
 ┌──────────────┐
 │ LLM Generate │  ← 基于上下文生成回答
-│ (GPT-4)      │
+│ (GPT-5.5)    │
 └──────┬───────┘
        │
        ▼
@@ -19556,10 +19493,10 @@ n8n は豊富な AI ノードを提供し、インテリジェントなワーク
 ### 1. OpenAI ノード
 \`\`\`
 機能：GPT モデルでテキスト生成、分析、翻訳など
-対応：GPT-4, GPT-3.5, Embeddings, DALL-E, Whisper
+対応：GPT-5.5, GPT-4o, Embeddings, GPT Image/DALL-E, Whisper
 
 設定例：
-- Model: gpt-4
+- Model: gpt-5.5 または gpt-4o
 - Temperature: 0.7
 - Max Tokens: 2000
 \`\`\`
@@ -19567,7 +19504,7 @@ n8n は豊富な AI ノードを提供し、インテリジェントなワーク
 ### 2. Anthropic ノード
 \`\`\`
 機能：Claude モデルを呼び出し
-対応：Claude 3 Opus/Sonnet/Haiku
+対応：Claude Opus 4.8/Sonnet 4.6/Haiku 4.5
 
 特徴：
 - より長いコンテキストウィンドウ
